@@ -9,7 +9,7 @@ namespace CesiumLanguageWriter
     /// </summary>
     [CSToJavaExcludeBase("IComparable")]
     [CSToJavaImmutableValueType]
-    internal struct YearMonthDay :
+    public struct YearMonthDay :
         IComparable<YearMonthDay>,
         IComparable,
         IEquatable<YearMonthDay>

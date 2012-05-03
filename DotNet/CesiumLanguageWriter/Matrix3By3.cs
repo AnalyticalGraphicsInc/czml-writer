@@ -348,38 +348,6 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Computes the square of the Frobenius norm of the matrix.
-        /// </summary>
-        /// <returns>The square of the Frobenius norm.</returns>
-        public double FrobeniusNormSquared()
-        {
-            double norm2 = 0.0;
-
-            norm2 += m_m11 * m_m11;
-            norm2 += m_m12 * m_m12;
-            norm2 += m_m13 * m_m13;
-
-            norm2 += m_m21 * m_m21;
-            norm2 += m_m22 * m_m22;
-            norm2 += m_m23 * m_m23;
-
-            norm2 += m_m31 * m_m31;
-            norm2 += m_m32 * m_m32;
-            norm2 += m_m33 * m_m33;
-
-            return norm2;
-        }
-
-        /// <summary>
-        /// Computes the Frobenius norm of the matrix.
-        /// </summary>
-        /// <returns>The Frobenius norm.</returns>
-        public double FrobeniusNorm()
-        {
-            return Math.Sqrt(FrobeniusNormSquared());
-        }
-
-        /// <summary>
         /// Adds a matrix to this matrix.
         /// </summary>
         /// <param name="matrix">The matrix.</param>

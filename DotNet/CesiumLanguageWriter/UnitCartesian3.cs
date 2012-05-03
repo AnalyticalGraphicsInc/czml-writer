@@ -476,6 +476,44 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Produces a set of <see cref="UnitCartesian3"/> coordinates representing this instance which results from rotating
+        /// the original axes used to represent this instance by the provided <see cref="Matrix3By3"/> rotation.
+        /// </summary>
+        /// <param name="rotation">The <see cref="Matrix3By3"/> rotation.</param>
+        /// <returns>A set of <see cref="UnitCartesian3"/> coordinates which is the result of the rotation.</returns>
+        /// <remarks>
+        /// This type of rotation is sometimes referred to as an "alias rotation".
+        /// </remarks>
+        public UnitCartesian3 Rotate(Matrix3By3 rotation)
+        {
+            return new UnitCartesian3(rotation.M11 * m_x + rotation.M12 * m_y + rotation.M13 * m_z,
+                                      rotation.M21 * m_x + rotation.M22 * m_y + rotation.M23 * m_z,
+                                      rotation.M31 * m_x + rotation.M32 * m_y + rotation.M33 * m_z,
+                                      Normalization.Normalized);
+        }
+
+        /// <summary>
+        /// Produces a set of <see cref="UnitCartesian3"/> coordinates representing this instance which results from rotating
+        /// the original axes used to represent this instance by the provided <see cref="UnitQuaternion"/> rotation.
+        /// </summary>
+        /// <param name="rotation">The <see cref="UnitQuaternion"/> rotation.</param>
+        /// <returns>A set of <see cref="UnitCartesian3"/> coordinates which is the result of the rotation.</returns>
+        /// <remarks>
+        /// This type of rotation is sometimes referred to as an "alias rotation".
+        /// </remarks>
+        public UnitCartesian3 Rotate(UnitQuaternion rotation)
+        {
+            double w = rotation.W;
+            double difference = w * w - rotation.X * rotation.X - rotation.Y * rotation.Y - rotation.Z * rotation.Z;
+            double dot = m_x * rotation.X + m_y * rotation.Y + m_z * rotation.Z;
+
+            return new UnitCartesian3(difference * m_x + 2.0 * (w * (m_y * rotation.Z - m_z * rotation.Y) + dot * rotation.X),
+                                      difference * m_y + 2.0 * (w * (m_z * rotation.X - m_x * rotation.Z) + dot * rotation.Y),
+                                      difference * m_z + 2.0 * (w * (m_x * rotation.Y - m_y * rotation.X) + dot * rotation.Z),
+                                      Normalization.Normalized);
+        }
+
+        /// <summary>
         /// Gets the axis that is most orthogonal to this instance.
         /// </summary>
         public UnitCartesian3 MostOrthogonalAxis

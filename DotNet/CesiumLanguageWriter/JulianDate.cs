@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
     /// An astronomical Julian Date, which is the number of days since noon on January 1, -4712 (4713 BC).
@@ -247,6 +243,12 @@ namespace CesiumLanguageWriter
         /// requested <see cref="TimeStandard"/>, otherwise false.</returns>
         public bool TryConvertTimeStandard(TimeStandard timeStandard, out JulianDate result)
         {
+            if (timeStandard == m_timeStandard)
+            {
+                result = this;
+                return true;
+            }
+
             if (timeStandard == TimeStandard.InternationalAtomicTime && m_timeStandard == TimeStandard.CoordinatedUniversalTime)
             {
                 result = new JulianDate(Day, SecondsOfDay + LeapSeconds.Instance.GetTaiMinusUtc(this), timeStandard);
@@ -650,7 +652,7 @@ namespace CesiumLanguageWriter
         /// <returns>The string.</returns>
         public override string ToString()
         {
-            return String.Format(CultureInfo.CurrentCulture, "{0}:{1} ({2})", Day, SecondsOfDay, Standard);
+            return String.Format(CultureInfo.CurrentCulture, "{0}:{1} ({2})", Day, SecondsOfDay, Standard == TimeStandard.CoordinatedUniversalTime ? "UTC" : "TAI");
         }
 
         /// <summary>
@@ -811,73 +813,6 @@ namespace CesiumLanguageWriter
         public GregorianDate ToGregorianDate(TimeStandard standard)
         {
             return new GregorianDate(this, standard);
-        }
-
-        /// <exclude/>
-        /// <summary>
-        /// Divides time into windows, each of length <paramref name="windowLength"/> seconds, with the first
-        /// window centered on <paramref name="referenceEpoch"/>.  Then, identifies which window contains
-        /// <paramref name="date"/> and returns the date that is at the center of that window.  This is helpful
-        /// for computing a discrete value for a range of Julian dates.
-        /// </summary>
-        /// <param name="referenceEpoch">The Julian date that defines the start of a window.</param>
-        /// <param name="windowLength">The length of each window, in seconds.</param>
-        /// <param name="date">The date to find.</param>
-        /// <returns>The date at the center of the window that contains the specified date.</returns>
-        public static JulianDate GetCenterOfWindow(JulianDate referenceEpoch, double windowLength, JulianDate date)
-        {
-            if (windowLength < Constants.Epsilon15)
-            {
-                return date;
-            }
-
-            if (date <= referenceEpoch)
-            {
-                return referenceEpoch +
-                       Duration.FromSeconds(
-                           (int)((referenceEpoch.SecondsDifference(date) - windowLength / 2.0) / windowLength) * windowLength);
-            }
-            else
-            {
-                return referenceEpoch +
-                       Duration.FromSeconds(
-                           (int)((referenceEpoch.SecondsDifference(date) + windowLength / 2.0) / windowLength) * windowLength);
-            }
-        }
-
-        /// <exclude/>
-        /// <summary>
-        /// Computes the fraction of the year corresponding the given Julian date.
-        /// </summary>
-        /// <param name="julianDate">The current Julian date.</param>
-        /// <returns>The year fraction.</returns>
-        public static double JulianDateToYearFraction(JulianDate julianDate)
-        {
-            YearMonthDay yearMonthDay;
-            double dayOfYear;
-            double fractionOfDay;
-
-            if (julianDate.SecondsOfDay / TimeConstants.SecondsPerDay < .5)
-            {
-                yearMonthDay = new YearMonthDay(julianDate.Day);
-                dayOfYear = yearMonthDay.DayOfYear - 1;
-                fractionOfDay = (julianDate.SecondsOfDay / TimeConstants.SecondsPerDay) + .5;
-            }
-            else
-            {
-                yearMonthDay = new YearMonthDay(julianDate.Day + 1);
-                dayOfYear = yearMonthDay.DayOfYear - 1;
-                fractionOfDay = (julianDate.SecondsOfDay / TimeConstants.SecondsPerDay) - .5;
-            }
-
-            if (YearMonthDay.IsLeapYear(yearMonthDay.Year))
-            {
-                return (dayOfYear + fractionOfDay) / 366.0;
-            }
-            else
-            {
-                return (dayOfYear + fractionOfDay) / 365.0;
-            }
         }
 
         /// <summary>
