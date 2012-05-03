@@ -15,7 +15,6 @@ namespace CesiumLanguageWriter
     /// performed either at the end of 30 June or 31 December UTC though a leap second could, by rule,
     /// be applied at the end of any month.
     /// </remarks>
-    /// <seealso cref="LeapSecondFile"/>
     [CSToJavaImmutableValueType]
     public struct LeapSecond : IEquatable<LeapSecond>
     {

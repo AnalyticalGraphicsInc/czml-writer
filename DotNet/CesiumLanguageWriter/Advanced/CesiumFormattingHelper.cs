@@ -19,8 +19,7 @@ namespace CesiumLanguageWriter.Advanced
     public static class CesiumFormattingHelper
     {
         /// <summary>
-        /// Converts a <see cref="TimeInterval"/> as an ISO8601 interval string.  The <see cref="TimeInterval.IsStartIncluded"/>
-        /// and <see cref="TimeInterval.IsStopIncluded"/> properties of the interval are ignored.
+        /// Converts a <see cref="TimeInterval"/> as an ISO8601 interval string.
         /// </summary>
         /// <param name="start">The start of the interval.</param>
         /// <param name="stop">The end of the interval.</param>

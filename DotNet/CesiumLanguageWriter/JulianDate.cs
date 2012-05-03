@@ -343,16 +343,6 @@ namespace CesiumLanguageWriter
         /// <returns>
         /// A new <see cref="JulianDate"/> that is the result of the addition.
         /// </returns>
-        /// <remarks>
-        /// If the <see cref="Duration.Standard"/> of <paramref name="duration"/> is
-        /// different from the <see cref="Standard"/> of this <see cref="JulianDate"/>, the
-        /// <see cref="JulianDate"/> will be converted to <paramref name="duration"/>'s
-        /// time standard before performing the addition.  Then, the result will be
-        /// converted to this <see cref="JulianDate"/>'s time standard before it is
-        /// returned, unless the result cannot be represented in this 
-        /// <see cref="JulianDate"/>'s time standard, in which case it will remain in a
-        /// time standard that can represent the result.
-        /// </remarks>
         public JulianDate Add(Duration duration)
         {
             if (m_timeStandard == TimeStandard.CoordinatedUniversalTime)
@@ -433,16 +423,6 @@ namespace CesiumLanguageWriter
         /// <returns>
         /// A new <see cref="JulianDate"/> that is the result of the subtraction.
         /// </returns>
-        /// <remarks>
-        /// If the <see cref="Duration.Standard"/> of <paramref name="duration"/> is
-        /// different from the <see cref="Standard"/> of this <see cref="JulianDate"/>, the
-        /// <see cref="JulianDate"/> will be converted to <paramref name="duration"/>'s
-        /// time standard before performing the subtraction.  Then, the result will be
-        /// converted to this <see cref="JulianDate"/>'s time standard before it is
-        /// returned, unless the result cannot be represented in this 
-        /// <see cref="JulianDate"/>'s time standard, in which case it will remain in a
-        /// time standard that can represent the result.
-        /// </remarks>
         public JulianDate Subtract(Duration duration)
         {
             return Add(new Duration(-duration.Days, -duration.Seconds));
@@ -490,14 +470,6 @@ namespace CesiumLanguageWriter
         /// <paramref name="left"/> minus <paramref name="right"/>.  The time standard will
         /// be the same as the time standard of the subtrahend.
         /// </returns>
-        /// <remarks>
-        /// This method subtracts <paramref name="right"/> from <paramref name="left"/> and
-        /// returns the <see cref="Duration"/> between them.  The computation is done in
-        /// the time standard of <paramref name="right"/>, or the closest standard that is
-        /// safe for arithmetic if <paramref name="right"/>'s time standard is not safe. 
-        /// For best performance, the left and right Julian dates should have the same time
-        /// standard and it should be safe for arithmetic.
-        /// </remarks>
         public static Duration operator -(JulianDate left, JulianDate right)
         {
             return left.Subtract(right);
@@ -513,16 +485,6 @@ namespace CesiumLanguageWriter
         /// A new Julian Date that is the result of the subtraction; that is, 
         /// <paramref name="left"/> minus <paramref name="right"/>.
         /// </returns>
-        /// <remarks>
-        /// If the <see cref="Duration.Standard"/> of <paramref name="right"/> is different
-        /// from the <see cref="Standard"/> of <paramref name="left"/>, 
-        /// <paramref name="left"/> will be converted to <paramref name="right"/>'s time
-        /// standard before performing the subtraction.  Then, the result will be converted
-        /// to this <see cref="JulianDate"/>'s time standard before it is returned, unless
-        /// the result cannot be represented in this <see cref="JulianDate"/>'s time
-        /// standard, in which case it will remain in a <see cref="TimeStandard"/> that can
-        /// represent the result.
-        /// </remarks>
         public static JulianDate operator -(JulianDate left, Duration right)
         {
             return left.Subtract(right);
@@ -535,16 +497,6 @@ namespace CesiumLanguageWriter
         /// <param name="left">The Julian date.</param>
         /// <param name="right">The duration.</param>
         /// <returns>A new Julian Date that is the result of the addition.</returns>
-        /// <remarks>
-        /// If the <see cref="Duration.Standard"/> of <paramref name="right"/> is different
-        /// from the <see cref="Standard"/> of <paramref name="left"/>, 
-        /// <paramref name="left"/> will be converted to <paramref name="right"/>'s time
-        /// standard before performing the addition.  Then, the result will be converted to
-        /// <paramref name="left"/>'s time standard before it is returned, unless the
-        /// result cannot be represented in <paramref name="left"/>'s time standard, in
-        /// which case it will remain in a <see cref="TimeStandard"/> that can represent
-        /// the result.
-        /// </remarks>
         public static JulianDate operator +(JulianDate left, Duration right)
         {
             return left.Add(right);

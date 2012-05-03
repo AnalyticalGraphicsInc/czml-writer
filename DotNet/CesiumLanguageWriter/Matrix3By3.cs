@@ -6,12 +6,7 @@ namespace CesiumLanguageWriter
     /// <summary>
     /// A 3-by-3 matrix. This type is often used to represent a rotation.
     /// </summary>
-    /// <seealso cref="AngleAxisRotation"/>
-    /// <seealso cref="ElementaryRotation"/>
-    /// <seealso cref="EulerSequence"/>
-    /// <seealso cref="Quaternion"/>
     /// <seealso cref="UnitQuaternion"/>
-    /// <seealso cref="YawPitchRoll"/>
     [CSToJavaImmutableValueType]
     public struct Matrix3By3 : IEquatable<Matrix3By3>
     {
@@ -540,7 +535,11 @@ namespace CesiumLanguageWriter
                    Math.Abs(M33 - other.M33) < epsilon;
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Method[@name="Equals"]/*'/>
+        /// <summary>
+        /// Indicates whether another object is exactly equal to this instance.
+        /// </summary>
+        /// <param name="obj">The object to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
             if (obj is Matrix3By3)
@@ -553,7 +552,10 @@ namespace CesiumLanguageWriter
             }
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Method[@name="GetHashCode"]/*'/>
+        /// <summary>
+        /// Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
+        /// </summary>
+        /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
             return m_m11.GetHashCode() ^ m_m12.GetHashCode() ^ m_m13.GetHashCode()
@@ -561,13 +563,27 @@ namespace CesiumLanguageWriter
                  ^ m_m31.GetHashCode() ^ m_m32.GetHashCode() ^ m_m33.GetHashCode();
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Operator[@name="Equality"]/*'/>
+        /// <summary>
+        /// Returns <see langword="true"/> if the two instances are exactly equal.
+        /// </summary>
+        /// <param name="left">The instance to compare to <paramref name="right"/>.</param>
+        /// <param name="right">The instance to compare to <paramref name="left"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="left"/> represents the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
+        /// </returns>
         public static bool operator ==(Matrix3By3 left, Matrix3By3 right)
         {
             return left.Equals(right);
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Operator[@name="Inequality"]/*'/>
+        /// <summary>
+        /// Returns <see langword="true"/> if the two instances are not exactly equal.
+        /// </summary>
+        /// <param name="left">The instance to compare to <paramref name="right"/>.</param>
+        /// <param name="right">The instance to compare to <paramref name="left"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="left"/> does not represent the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
+        /// </returns>
         public static bool operator !=(Matrix3By3 left, Matrix3By3 right)
         {
             return !left.Equals(right);
@@ -599,7 +615,11 @@ namespace CesiumLanguageWriter
 
         #region IEquatable<Matrix3By3> Members
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/IEquatableOfT/Method[@name="Equals"]/*'/>
+        /// <summary>
+        /// Indicates whether another instance of this type is exactly equal to this instance.
+        /// </summary>
+        /// <param name="other">The instance to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public bool Equals(Matrix3By3 other)
         {
             return other.M11 == M11 && other.M12 == M12 && other.M13 == M13

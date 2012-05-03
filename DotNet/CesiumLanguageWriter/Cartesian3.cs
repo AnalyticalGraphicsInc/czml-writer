@@ -263,7 +263,47 @@ namespace CesiumLanguageWriter
             return new Cartesian3(-coordinates.m_x, -coordinates.m_y, -coordinates.m_z);
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Method[@name="Equals"]/*'/>
+        /// <summary>
+        /// Produces a set of <see cref="Cartesian3"/> coordinates representing this instance which results from rotating
+        /// the original axes used to represent this instance by the provided <see cref="Matrix3By3"/> rotation.
+        /// </summary>
+        /// <param name="rotation">The <see cref="Matrix3By3"/> rotation.</param>
+        /// <returns>A set of <see cref="Cartesian3"/> coordinates which is the result of the rotation.</returns>
+        /// <remarks>
+        /// This type of rotation is sometimes referred to as an "alias rotation".
+        /// </remarks>
+        public Cartesian3 Rotate(Matrix3By3 rotation)
+        {
+            return new Cartesian3(rotation.M11 * m_x + rotation.M12 * m_y + rotation.M13 * m_z,
+                                  rotation.M21 * m_x + rotation.M22 * m_y + rotation.M23 * m_z,
+                                  rotation.M31 * m_x + rotation.M32 * m_y + rotation.M33 * m_z);
+        }
+
+        /// <summary>
+        /// Produces a set of <see cref="Cartesian3"/> coordinates representing this instance which results from rotating
+        /// the original axes used to represent this instance by the provided <see cref="UnitQuaternion"/> rotation.
+        /// </summary>
+        /// <param name="rotation">The <see cref="UnitQuaternion"/> rotation.</param>
+        /// <returns>A set of <see cref="Cartesian3"/> coordinates which is the result of the rotation.</returns>
+        /// <remarks>
+        /// This type of rotation is sometimes referred to as an "alias rotation".
+        /// </remarks>
+        public Cartesian3 Rotate(UnitQuaternion rotation)
+        {
+            double w = rotation.W;
+            double difference = w * w - rotation.X * rotation.X - rotation.Y * rotation.Y - rotation.Z * rotation.Z;
+            double dot = m_x * rotation.X + m_y * rotation.Y + m_z * rotation.Z;
+
+            return new Cartesian3(difference * m_x + 2.0 * (w * (m_y * rotation.Z - m_z * rotation.Y) + dot * rotation.X),
+                                  difference * m_y + 2.0 * (w * (m_z * rotation.X - m_x * rotation.Z) + dot * rotation.Y),
+                                  difference * m_z + 2.0 * (w * (m_x * rotation.Y - m_y * rotation.X) + dot * rotation.Z));
+        }
+
+        /// <summary>
+        /// Indicates whether another object is exactly equal to this instance.
+        /// </summary>
+        /// <param name="obj">The object to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
             if (obj is Cartesian3)
@@ -292,7 +332,10 @@ namespace CesiumLanguageWriter
                    Math.Abs(Z - other.Z) < epsilon;
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Method[@name="GetHashCode"]/*'/>
+        /// <summary>
+        /// Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
+        /// </summary>
+        /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
             return m_x.GetHashCode() ^ m_y.GetHashCode() ^ m_z.GetHashCode();
@@ -316,13 +359,27 @@ namespace CesiumLanguageWriter
             return build.ToString();
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Operator[@name="Equality"]/*'/>
+        /// <summary>
+        /// Returns <see langword="true"/> if the two instances are exactly equal.
+        /// </summary>
+        /// <param name="left">The instance to compare to <paramref name="right"/>.</param>
+        /// <param name="right">The instance to compare to <paramref name="left"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="left"/> represents the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
+        /// </returns>
         public static bool operator ==(Cartesian3 left, Cartesian3 right)
         {
             return left.Equals(right);
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Operator[@name="Inequality"]/*'/>
+        /// <summary>
+        /// Returns <see langword="true"/> if the two instances are not exactly equal.
+        /// </summary>
+        /// <param name="left">The instance to compare to <paramref name="right"/>.</param>
+        /// <param name="right">The instance to compare to <paramref name="left"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="left"/> does not represent the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
+        /// </returns>
         public static bool operator !=(Cartesian3 left, Cartesian3 right)
         {
             return !left.Equals(right);
@@ -415,7 +472,7 @@ namespace CesiumLanguageWriter
         /// Converts a set of <see cref="UnitCartesian3"/> coordinates to a set of <see cref="Cartesian3"/> coordinates.
         /// </summary>
         /// <param name="coordinates">The set of <see cref="UnitCartesian3"/> coordinates.</param>
-        /// <returns>The resulting set of <see cref="Cartesian"/> coordinates.</returns>
+        /// <returns>The resulting set of <see cref="Cartesian3"/> coordinates.</returns>
         public static implicit operator Cartesian3(UnitCartesian3 coordinates)
         {
             return new Cartesian3(coordinates.X, coordinates.Y, coordinates.Z);
@@ -434,7 +491,11 @@ namespace CesiumLanguageWriter
 
         #region IEquatable<Cartesian3> Members
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/IEquatableOfT/Method[@name="Equals"]/*'/>
+        /// <summary>
+        /// Indicates whether another instance of this type is exactly equal to this instance.
+        /// </summary>
+        /// <param name="other">The instance to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public bool Equals(Cartesian3 other)
         {
             return other.m_x == m_x && other.m_y == m_y && other.m_z == m_z;

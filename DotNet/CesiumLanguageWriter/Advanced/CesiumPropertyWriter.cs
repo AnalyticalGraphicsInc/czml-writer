@@ -68,7 +68,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Gets a writer for intervals of this property.  The returned instance must be opened by calling
         /// the <see cref="ICesiumElementWriter.Open"/> method before it can be used for writing.  Consider
-        /// calling the <see cref="OpenInterval(TimeInterval)"/> or <see cref="OpenMultipleIntervals"/> method, which will automatically
+        /// calling the <see cref="OpenInterval(JulianDate,JulianDate)"/> or <see cref="OpenMultipleIntervals"/> method, which will automatically
         /// open the writer, instead of accessing this property directly.
         /// </summary>
         public TDerived IntervalWriter
@@ -95,10 +95,9 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Opens a writer that is used to write information about this property for a single interval.
         /// </summary>
-        /// <param name="interval">The interval of time covered by this interval element.</param>
-        /// <returns>The writer.</returns>
         /// <param name="start">The start of the interval of time covered by this interval element.</param>
         /// <param name="stop">The end of the interval of time covered by this interval element.</param>
+        /// <returns>The writer.</returns>
         public TDerived OpenInterval(JulianDate start, JulianDate stop)
         {
             TDerived result = OpenAndReturn(m_interval.Value);
@@ -128,10 +127,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes the actual interval of time covered by this <topic name="Cesium">Cesium</topic> interval.
         /// </summary>
-        /// <param name="interval">
-        /// The interval.  The <see cref="TimeInterval.IsStartIncluded"/> and <see cref="TimeInterval.IsStopIncluded"/>
-        /// properties are ignored.
-        /// </param>
+        /// <param name="interval">The interval.</param>
         public void WriteInterval(TimeInterval interval)
         {
             Output.WritePropertyName("interval");

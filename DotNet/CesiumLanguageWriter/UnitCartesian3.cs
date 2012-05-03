@@ -9,7 +9,6 @@ namespace CesiumLanguageWriter
     /// A set of rectilinear 3-dimensional coordinates with unit magnitude.
     /// </summary>
     /// <remarks>
-    /// The corresponding 2-dimensional coordinates are <see cref="UnitRectangular"/> coordinates.
     /// </remarks>
     [CSToJavaImmutableValueType]
     public struct UnitCartesian3 : IEquatable<UnitCartesian3>
@@ -520,7 +519,11 @@ namespace CesiumLanguageWriter
             }
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Method[@name="Equals"]/*'/>
+        /// <summary>
+        /// Indicates whether another object is exactly equal to this instance.
+        /// </summary>
+        /// <param name="obj">The object to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
             if (obj is UnitCartesian3)
@@ -549,7 +552,10 @@ namespace CesiumLanguageWriter
                    Math.Abs(Z - other.Z) < epsilon;
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Method[@name="GetHashCode"]/*'/>
+        /// <summary>
+        /// Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
+        /// </summary>
+        /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
             return m_x.GetHashCode() ^ m_y.GetHashCode() ^ m_z.GetHashCode();
@@ -573,13 +579,27 @@ namespace CesiumLanguageWriter
             return build.ToString();
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Operator[@name="Equality"]/*'/>
+        /// <summary>
+        /// Returns <see langword="true"/> if the two instances are exactly equal.
+        /// </summary>
+        /// <param name="left">The instance to compare to <paramref name="right"/>.</param>
+        /// <param name="right">The instance to compare to <paramref name="left"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="left"/> represents the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
+        /// </returns>
         public static bool operator ==(UnitCartesian3 left, UnitCartesian3 right)
         {
             return left.Equals(right);
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Operator[@name="Inequality"]/*'/>
+        /// <summary>
+        /// Returns <see langword="true"/> if the two instances are not exactly equal.
+        /// </summary>
+        /// <param name="left">The instance to compare to <paramref name="right"/>.</param>
+        /// <param name="right">The instance to compare to <paramref name="left"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="left"/> does not represent the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
+        /// </returns>
         public static bool operator !=(UnitCartesian3 left, UnitCartesian3 right)
         {
             return !left.Equals(right);
@@ -671,7 +691,11 @@ namespace CesiumLanguageWriter
 
         #region IEquatable<UnitCartesian3> Members
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/IEquatableOfT/Method[@name="Equals"]/*'/>
+        /// <summary>
+        /// Indicates whether another instance of this type is exactly equal to this instance.
+        /// </summary>
+        /// <param name="other">The instance to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public bool Equals(UnitCartesian3 other)
         {
             return other.m_x == m_x && other.m_y == m_y && other.m_z == m_z;

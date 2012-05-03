@@ -67,7 +67,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Initializes a set of <see cref="UnitSpherical"/> coordinates from the provided set of <see cref="UnitCartesian"/> coordinates.
+        /// Initializes a set of <see cref="UnitSpherical"/> coordinates from the provided set of <see cref="UnitCartesian3"/> coordinates.
         /// </summary>
         /// <param name="coordinates">The set of UnitCartesian3 coordinates.</param>
         public UnitSpherical(UnitCartesian3 coordinates)
@@ -104,7 +104,11 @@ namespace CesiumLanguageWriter
             get { return 1.0; }
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Method[@name="Equals"]/*'/>
+        /// <summary>
+        /// Indicates whether another object is exactly equal to this instance.
+        /// </summary>
+        /// <param name="obj">The object to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
             if (obj is UnitSpherical)
@@ -132,7 +136,10 @@ namespace CesiumLanguageWriter
                    Math.Abs(Cone - other.Cone) < epsilon;
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Method[@name="GetHashCode"]/*'/>
+        /// <summary>
+        /// Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
+        /// </summary>
+        /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
             return m_clock.GetHashCode() ^ m_cone.GetHashCode();
@@ -154,13 +161,27 @@ namespace CesiumLanguageWriter
             return build.ToString();
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Operator[@name="Equality"]/*'/>
+        /// <summary>
+        /// Returns <see langword="true"/> if the two instances are exactly equal.
+        /// </summary>
+        /// <param name="left">The instance to compare to <paramref name="right"/>.</param>
+        /// <param name="right">The instance to compare to <paramref name="left"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="left"/> represents the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
+        /// </returns>
         public static bool operator ==(UnitSpherical left, UnitSpherical right)
         {
             return left.Equals(right);
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Operator[@name="Inequality"]/*'/>
+        /// <summary>
+        /// Returns <see langword="true"/> if the two instances are not exactly equal.
+        /// </summary>
+        /// <param name="left">The instance to compare to <paramref name="right"/>.</param>
+        /// <param name="right">The instance to compare to <paramref name="left"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="left"/> does not represent the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
+        /// </returns>
         public static bool operator !=(UnitSpherical left, UnitSpherical right)
         {
             return !left.Equals(right);
@@ -174,7 +195,11 @@ namespace CesiumLanguageWriter
 
         #region IEquatable<UnitSpherical> Members
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/IEquatableOfT/Method[@name="Equals"]/*'/>
+        /// <summary>
+        /// Indicates whether another instance of this type is exactly equal to this instance.
+        /// </summary>
+        /// <param name="other">The instance to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public bool Equals(UnitSpherical other)
         {
             return Clock == other.Clock && Cone == other.Cone;

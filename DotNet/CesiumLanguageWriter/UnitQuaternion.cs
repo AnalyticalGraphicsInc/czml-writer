@@ -9,14 +9,9 @@ namespace CesiumLanguageWriter
     /// A set of 4-dimensional coordinates used to represent rotation in 3-dimensional space.
     /// </summary>
     /// <remarks>
-    /// To transform a <see cref="Cartesian"/> with this rotation, see <see cref="Cartesian.Rotate(UnitQuaternion)"/>.
+    /// To transform a <see cref="Cartesian3"/> with this rotation, see <see cref="Cartesian3.Rotate(UnitQuaternion)"/>.
     /// </remarks>
-    /// <seealso cref="AngleAxisRotation"/>
-    /// <seealso cref="ElementaryRotation"/>
-    /// <seealso cref="EulerSequence"/>
     /// <seealso cref="Matrix3By3"/>
-    /// <seealso cref="Quaternion"/>
-    /// <seealso cref="YawPitchRoll"/>
     [CSToJavaImmutableValueType]
     public struct UnitQuaternion : IEquatable<UnitQuaternion>
     {
@@ -39,66 +34,6 @@ namespace CesiumLanguageWriter
         public static UnitQuaternion Identity
         {
             get { return s_identity; }
-        }
-
-        /// <summary>
-        /// Initializes a set of <see cref="UnitQuaternion"/> coordinates from 4 consecutive elements in the provided array.
-        /// Note that the elements will not be normalized and may represent an invalid unit quaternion.  
-        /// </summary>
-        /// <param name="elements">The array of coordinate values.</param>
-        /// <param name="startIndex">The index of the first element in the array to use.</param>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when the array of <paramref name="elements"/> is null.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when an object of this type is constructed from an array with less than 4 <paramref name="elements"/>.
-        /// </exception>
-        /// <remarks>
-        /// For performance reasons, no checks or normalization procedures are performed when creating a <see cref="UnitQuaternion"/> from
-        /// the given <paramref name="elements"/>.  The surrounding code is responsible for making sure that the given values
-        /// represent a unit magnitude.  To ensure proper normalization, create a <see cref="Quaternion"/> and then use the
-        /// <see cref="Quaternion.Normalize()"/> method to create a valid <see cref="UnitQuaternion"/>.
-        /// </remarks>
-        public UnitQuaternion(double[] elements, int startIndex)
-        {
-            if (elements == null)
-            {
-                throw new ArgumentNullException("elements");
-            }
-            else if (startIndex >= elements.Length ||
-                     elements.Length - startIndex < s_length)
-            {
-                throw new ArgumentOutOfRangeException("elements", String.Format(CultureInfo.CurrentCulture, CesiumLocalization.MustBeConstructedFromSpecificNumberOfElements, typeof(UnitQuaternion), 4));
-            }
-            else
-            {
-                m_w = elements[startIndex + 0];
-                m_x = elements[startIndex + 1];
-                m_y = elements[startIndex + 2];
-                m_z = elements[startIndex + 3];
-            }
-        }
-
-        /// <summary>
-        /// Initializes a set of <see cref="UnitQuaternion"/> coordinates from the first 4 consecutive elements in the provided array.
-        /// Note that the elements will not be normalized and may represent an invalid unit quaternion.  
-        /// </summary>
-        /// <param name="elements">The array of coordinate values.</param>
-        /// <exception cref="ArgumentNullException">
-        /// The array of <paramref name="elements"/> cannot be null.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// An object of this type must be constructed from an array with at least 4 <paramref name="elements"/>.
-        /// </exception>
-        /// <remarks>
-        /// For performance reasons, no checks or normalization procedures are performed when creating a <see cref="UnitQuaternion"/> from
-        /// the given <paramref name="elements"/>.  The surrounding code is responsible for making sure that the given values
-        /// represent a unit magnitude.  To ensure proper normalization, create a <see cref="Quaternion"/> and then use the
-        /// <see cref="Quaternion.Normalize()"/> method to create a valid <see cref="UnitQuaternion"/>.
-        /// </remarks>
-        public UnitQuaternion(double[] elements)
-            : this(elements, 0)
-        {
         }
 
         /// <summary>
@@ -166,9 +101,7 @@ namespace CesiumLanguageWriter
         /// <returns>The resulting quaternion.</returns>
         /// <remarks>For performance reasons, there is no check to ensure that the <paramref name="matrix"/> is a unit rotation prior
         /// to converting to a unit quaternion.  If necessary, the surrounding code is responsible for ensuring that the given
-        /// <paramref name="matrix"/> is a valid orthogonal rotation matrix.  One simple way to ensure a valid <see cref="UnitQuaternion"/> is to
-        /// first create a <see cref="Quaternion"/> from the <see cref="Matrix3By3"/> and then <see cref="Quaternion.Normalize()"/>
-        /// the quaternion to produce a <see cref="UnitQuaternion"/>.</remarks>
+        /// <paramref name="matrix"/> is a valid orthogonal rotation matrix.</remarks>
         public UnitQuaternion(Matrix3By3 matrix)
         {
             double factor = matrix.M11 + matrix.M22 + matrix.M33;
@@ -333,7 +266,11 @@ namespace CesiumLanguageWriter
             return new UnitQuaternion(-coordinates.m_w, -coordinates.m_x, -coordinates.m_y, -coordinates.m_z, Normalization.Normalized);
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Method[@name="Equals"]/*'/>
+        /// <summary>
+        /// Indicates whether another object is exactly equal to this instance.
+        /// </summary>
+        /// <param name="obj">The object to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
             if (obj is UnitQuaternion)
@@ -363,7 +300,10 @@ namespace CesiumLanguageWriter
                    Math.Abs(Z - other.Z) < epsilon;
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Method[@name="GetHashCode"]/*'/>
+        /// <summary>
+        /// Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
+        /// </summary>
+        /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
             return m_w.GetHashCode() ^ m_x.GetHashCode() ^ m_y.GetHashCode() ^ m_z.GetHashCode();
@@ -389,13 +329,27 @@ namespace CesiumLanguageWriter
             return build.ToString();
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Operator[@name="Equality"]/*'/>
+        /// <summary>
+        /// Returns <see langword="true"/> if the two instances are exactly equal.
+        /// </summary>
+        /// <param name="left">The instance to compare to <paramref name="right"/>.</param>
+        /// <param name="right">The instance to compare to <paramref name="left"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="left"/> represents the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
+        /// </returns>
         public static bool operator ==(UnitQuaternion left, UnitQuaternion right)
         {
             return left.Equals(right);
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Operator[@name="Inequality"]/*'/>
+        /// <summary>
+        /// Returns <see langword="true"/> if the two instances are not exactly equal.
+        /// </summary>
+        /// <param name="left">The instance to compare to <paramref name="right"/>.</param>
+        /// <param name="right">The instance to compare to <paramref name="left"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="left"/> does not represent the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
+        /// </returns>
         public static bool operator !=(UnitQuaternion left, UnitQuaternion right)
         {
             return !left.Equals(right);
@@ -474,7 +428,11 @@ namespace CesiumLanguageWriter
 
         #region IEquatable<UnitQuaternion> Members
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/IEquatableOfT/Method[@name="Equals"]/*'/>
+        /// <summary>
+        /// Indicates whether another instance of this type is exactly equal to this instance.
+        /// </summary>
+        /// <param name="other">The instance to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public bool Equals(UnitQuaternion other)
         {
             return other.W == W && other.X == X && other.Y == Y && other.Z == Z;

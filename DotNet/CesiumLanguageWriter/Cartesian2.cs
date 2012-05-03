@@ -209,7 +209,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Adds a specified set of <see cref="Cartesian2"/> coordinates to another specified set of <see cref="Cartesian"/> coordinates.
+        /// Adds a specified set of <see cref="Cartesian2"/> coordinates to another specified set of <see cref="Cartesian3"/> coordinates.
         /// </summary>
         /// <param name="left">The augend, or value to which <paramref name="right"/> is to be added.</param>
         /// <param name="right">The addend, or value which is to be added to <paramref name="left"/>.</param>
@@ -256,7 +256,11 @@ namespace CesiumLanguageWriter
             return new Cartesian2(c * m_x - s * m_y, s * m_x + c * m_y);
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Method[@name="Equals"]/*'/>
+        /// <summary>
+        /// Indicates whether another object is exactly equal to this instance.
+        /// </summary>
+        /// <param name="obj">The object to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
             if (obj is Cartesian2)
@@ -284,7 +288,10 @@ namespace CesiumLanguageWriter
                    Math.Abs(Y - other.Y) < epsilon;
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Method[@name="GetHashCode"]/*'/>
+        /// <summary>
+        /// Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
+        /// </summary>
+        /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
             return m_x.GetHashCode() ^ m_y.GetHashCode();
@@ -306,13 +313,27 @@ namespace CesiumLanguageWriter
             return build.ToString();
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Operator[@name="Equality"]/*'/>
+        /// <summary>
+        /// Returns <see langword="true"/> if the two instances are exactly equal.
+        /// </summary>
+        /// <param name="left">The instance to compare to <paramref name="right"/>.</param>
+        /// <param name="right">The instance to compare to <paramref name="left"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="left"/> represents the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
+        /// </returns>
         public static bool operator ==(Cartesian2 left, Cartesian2 right)
         {
             return left.Equals(right);
         }
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/ValueType/Operator[@name="Inequality"]/*'/>
+        /// <summary>
+        /// Returns <see langword="true"/> if the two instances are not exactly equal.
+        /// </summary>
+        /// <param name="left">The instance to compare to <paramref name="right"/>.</param>
+        /// <param name="right">The instance to compare to <paramref name="left"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="left"/> does not represent the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
+        /// </returns>
         public static bool operator !=(Cartesian2 left, Cartesian2 right)
         {
             return !left.Equals(right);
@@ -375,7 +396,11 @@ namespace CesiumLanguageWriter
 
         #region IEquatable<Cartesian2> Members
 
-        /// <include file='../Documentation/StandardMethods.xml' path='StandardMethods/IEquatableOfT/Method[@name="Equals"]/*'/>
+        /// <summary>
+        /// Indicates whether another instance of this type is exactly equal to this instance.
+        /// </summary>
+        /// <param name="other">The instance to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public bool Equals(Cartesian2 other)
         {
             return other.m_x == m_x && other.m_y == m_y;
