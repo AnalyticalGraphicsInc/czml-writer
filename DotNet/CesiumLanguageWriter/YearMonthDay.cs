@@ -35,7 +35,7 @@ namespace CesiumLanguageWriter
             }
             else
             {
-                throw new ArgumentException(Localization.YearMonthDayInvalidArgument);
+                throw new ArgumentException(CesiumLocalization.YearMonthDayInvalidArgument);
             }
         }
 
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
             }
             else
             {
-                throw new ArgumentException(Localization.YearMonthDayInvalidArgument);
+                throw new ArgumentException(CesiumLocalization.YearMonthDayInvalidArgument);
             }
         }
 
@@ -412,7 +412,7 @@ namespace CesiumLanguageWriter
 
             if (!(obj is YearMonthDay))
             {
-                throw new ArgumentException(Localization.ArgumentTypeInvalid, "obj");
+                throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "obj");
             }
 
             return CompareTo((YearMonthDay) obj);

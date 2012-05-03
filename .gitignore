@@ -3,6 +3,7 @@ bin
 obj
 _ReSharper.*
 *.suo
+*.DotSettings.user
 
 # mstest test results
 TestResults

@@ -22,14 +22,14 @@ namespace CesiumLanguageWriter {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Localization {
+    internal class CesiumLocalization {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Localization() {
+        internal CesiumLocalization() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CesiumLanguageWriter {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CesiumLanguageWriter.Localization", typeof(Localization).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CesiumLanguageWriter.CesiumLocalization", typeof(CesiumLocalization).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -178,6 +178,42 @@ namespace CesiumLanguageWriter {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The magnitude of the provided coordinates must not be infinite..
+        /// </summary>
+        internal static string MagnitudeMustNotBeInfinite {
+            get {
+                return ResourceManager.GetString("MagnitudeMustNotBeInfinite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The magnitude of the provided coordinates must not be zero..
+        /// </summary>
+        internal static string MagnitudeMustNotBeZero {
+            get {
+                return ResourceManager.GetString("MagnitudeMustNotBeZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This collection must have the same number of elements as the &quot;dates&quot; collection..
+        /// </summary>
+        internal static string MismatchedNumberOfDatesAndValues {
+            get {
+                return ResourceManager.GetString("MismatchedNumberOfDatesAndValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An object of the type {0} must be constructed from an array with at least {1} elements..
+        /// </summary>
+        internal static string MustBeConstructedFromSpecificNumberOfElements {
+            get {
+                return ResourceManager.GetString("MustBeConstructedFromSpecificNumberOfElements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TAI.
         /// </summary>
         internal static string TaiAbbreviation {
@@ -196,6 +232,15 @@ namespace CesiumLanguageWriter {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The enumeration has an invalid or unsupported value..
+        /// </summary>
+        internal static string UnknownEnumerationValue {
+            get {
+                return ResourceManager.GetString("UnknownEnumerationValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UTC.
         /// </summary>
         internal static string UtcAbbreviation {
@@ -210,6 +255,33 @@ namespace CesiumLanguageWriter {
         internal static string UtcName {
             get {
                 return ResourceManager.GetString("UtcName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Cesium writer cannot be closed because it is not open..
+        /// </summary>
+        internal static string WriterAlreadyClosed {
+            get {
+                return ResourceManager.GetString("WriterAlreadyClosed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Cesium writer cannot be opened because it is already opened.  Please close the previous element before opening a new one..
+        /// </summary>
+        internal static string WriterAlreadyOpen {
+            get {
+                return ResourceManager.GetString("WriterAlreadyOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Cesium writer cannot be used to write elements because it is not currently open.  This usually indicates an attempt to use a writer after is has been closed..
+        /// </summary>
+        internal static string WriterNotOpen {
+            get {
+                return ResourceManager.GetString("WriterNotOpen", resourceCulture);
             }
         }
         

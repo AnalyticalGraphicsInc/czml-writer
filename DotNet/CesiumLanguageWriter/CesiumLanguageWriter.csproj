@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,31 +41,93 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Advanced\CesiumElementWriter.cs" />
+    <Compile Include="Advanced\CesiumFormattingHelper.cs" />
+    <Compile Include="Advanced\CesiumInterpolatableValuePropertyWriter.cs" />
+    <Compile Include="Advanced\CesiumPropertyWriter.cs" />
+    <Compile Include="Advanced\CesiumValuePropertyWriter.cs" />
+    <Compile Include="Advanced\ICesiumElementWriter.cs" />
+    <Compile Include="Advanced\ICesiumInterpolatableValuePropertyWriter.cs" />
+    <Compile Include="Advanced\ICesiumIntervalListWriter.cs" />
+    <Compile Include="Advanced\ICesiumPropertyWriter.cs" />
+    <Compile Include="Advanced\ICesiumValuePropertyWriter.cs" />
     <Compile Include="Attributes\CoverageExcludeAttribute.cs" />
     <Compile Include="Attributes\CSToJavaExcludeAttribute.cs" />
     <Compile Include="Attributes\CSToJavaExcludeBaseAttribute.cs" />
     <Compile Include="Attributes\CSToJavaImmutableValueType.cs" />
     <Compile Include="Attributes\CSToJavaRenameAttribute.cs" />
+    <Compile Include="BillboardCesiumWriter.cs" />
+    <Compile Include="BlobMaterialCesiumWriter.cs" />
+    <Compile Include="BooleanCesiumWriter.cs" />
+    <Compile Include="Cartesian3.cs" />
+    <Compile Include="Cartographic.cs" />
+    <Compile Include="CesiumHorizontalOrigin.cs" />
+    <Compile Include="CesiumImageFormat.cs" />
+    <Compile Include="CesiumInterpolationAlgorithm.cs" />
+    <Compile Include="CesiumIntervalListWriter.cs" />
+    <Compile Include="CesiumLabelStyle.cs" />
+    <Compile Include="CesiumOutputStream.cs" />
+    <Compile Include="CesiumPacketWriter.cs" />
+    <Compile Include="CesiumStreamWriter.cs" />
+    <Compile Include="CesiumVerticalOrigin.cs" />
+    <Compile Include="CheckerboardMaterialCesiumWriter.cs" />
+    <Compile Include="ColorCesiumWriter.cs" />
+    <Compile Include="ConeCesiumWriter.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Localization.Designer.cs">
+    <Compile Include="DirectionListCesiumWriter.cs" />
+    <Compile Include="DotMaterialCesiumWriter.cs" />
+    <Compile Include="DoubleCesiumWriter.cs" />
+    <Compile Include="EyeOffsetCesiumWriter.cs" />
+    <Compile Include="FacetMaterialCesiumWriter.cs" />
+    <Compile Include="FontCesiumWriter.cs" />
+    <Compile Include="grisu\DiyFp.cs" />
+    <Compile Include="grisu\Grisu.cs" />
+    <Compile Include="grisu\GrisuDouble.cs" />
+    <Compile Include="grisu\PowersOfTenCache.cs" />
+    <Compile Include="HorizontalOriginCesiumWriter.cs" />
+    <Compile Include="HorizontalStripeMaterialCesiumWriter.cs" />
+    <Compile Include="ImageCesiumWriter.cs" />
+    <Compile Include="LabelCesiumWriter.cs" />
+    <Compile Include="LabelStyleCesiumWriter.cs" />
+    <Compile Include="CesiumLocalization.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Localization.resx</DependentUpon>
+      <DependentUpon>CesiumLocalization.resx</DependentUpon>
     </Compile>
     <Compile Include="GregorianDate.cs" />
     <Compile Include="Duration.cs" />
     <Compile Include="JulianDate.cs" />
     <Compile Include="LeapSecond.cs" />
     <Compile Include="LeapSeconds.cs" />
+    <Compile Include="MaterialCesiumWriter.cs" />
+    <Compile Include="Matrix3By3.cs" />
+    <Compile Include="OrientationAxesCesiumWriter.cs" />
+    <Compile Include="PathCesiumWriter.cs" />
+    <Compile Include="PixelOffsetCesiumWriter.cs" />
+    <Compile Include="PointGraphicsCesiumWriter.cs" />
+    <Compile Include="PolylineCesiumWriter.cs" />
+    <Compile Include="PositionCesiumWriter.cs" />
+    <Compile Include="PositionListCesiumWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PyramidCesiumWriter.cs" />
+    <Compile Include="Cartesian2.cs" />
+    <Compile Include="SolidColorMaterialCesiumWriter.cs" />
+    <Compile Include="StringCesiumWriter.cs" />
+    <Compile Include="TieDyeMaterialCesiumWriter.cs" />
     <Compile Include="TimeConstants.cs" />
+    <Compile Include="TimeInterval.cs" />
     <Compile Include="TimeStandard.cs" />
+    <Compile Include="UnitCartesian3.cs" />
+    <Compile Include="UnitQuaternion.cs" />
+    <Compile Include="UnitSpherical.cs" />
+    <Compile Include="VerticalOriginCesiumWriter.cs" />
+    <Compile Include="VerticalStripeMaterialCesiumWriter.cs" />
     <Compile Include="YearMonthDay.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization.resx">
+    <EmbeddedResource Include="CesiumLocalization.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Localization.Designer.cs</LastGenOutput>
+      <LastGenOutput>CesiumLocalization.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

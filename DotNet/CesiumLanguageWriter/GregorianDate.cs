@@ -259,7 +259,7 @@ namespace CesiumLanguageWriter
                 }
 
                 if (setExceptionOnError)
-                    exception = new FormatException(Localization.GregorianDateFormatInvalid);
+                    exception = new FormatException(CesiumLocalization.GregorianDateFormatInvalid);
                 ret = MinValue;
                 return false;
             }
@@ -270,7 +270,7 @@ namespace CesiumLanguageWriter
                 if (string.IsNullOrEmpty(s))
                 {
                     if (setExceptionOnError)
-                        exception = new FormatException(Localization.GregorianDateFormatInvalid);
+                        exception = new FormatException(CesiumLocalization.GregorianDateFormatInvalid);
                     result = MinValue;
                     return false;
                 }
@@ -315,7 +315,7 @@ namespace CesiumLanguageWriter
                 {
                     result = MinValue;
                     if (setExceptionOnError)
-                        exception = new FormatException(string.Format(Localization.GregorianDateOrderOfMonthAndDateNotDefined, dfi.MonthDayPattern));
+                        exception = new FormatException(string.Format(CesiumLocalization.GregorianDateOrderOfMonthAndDateNotDefined, dfi.MonthDayPattern));
                     return false;
                 }
                 bool isDayBeforeMonth = dayIndex < monthIndex;
@@ -369,7 +369,7 @@ namespace CesiumLanguageWriter
                 if (!setExceptionOnError)
                     return false;
 
-                exception = new FormatException(string.Format(Localization.GregorianDateStringNotRecognized, s));
+                exception = new FormatException(string.Format(CesiumLocalization.GregorianDateStringNotRecognized, s));
                 return false;
             }
 
@@ -381,7 +381,7 @@ namespace CesiumLanguageWriter
                 if (dayIndex == -1 || monthIndex == -1 || yearIndex == -1)
                 {
                     if (setExceptionOnError)
-                        ex = new FormatException(string.Format(Localization.GregorianDateOrderOfYearMonthAndDateNotDefined, dfi.ShortDatePattern));
+                        ex = new FormatException(string.Format(CesiumLocalization.GregorianDateOrderOfYearMonthAndDateNotDefined, dfi.ShortDatePattern));
                     return null;
                 }
 
@@ -395,7 +395,7 @@ namespace CesiumLanguageWriter
                         // The year cannot be between the date and the month
                         if (setExceptionOnError)
                         {
-                            string msg = string.Format(Localization.GregorianDateOrderOfYearMonthAndDateNotSupported, dfi.ShortDatePattern);
+                            string msg = string.Format(CesiumLocalization.GregorianDateOrderOfYearMonthAndDateNotSupported, dfi.ShortDatePattern);
                             ex = new FormatException(msg);
                         }
                         return null;
@@ -410,7 +410,7 @@ namespace CesiumLanguageWriter
                 // The year cannot be between the month and the date
                 if (setExceptionOnError)
                 {
-                    string msg = string.Format(Localization.GregorianDateOrderOfYearMonthAndDateNotSupported, dfi.ShortDatePattern);
+                    string msg = string.Format(CesiumLocalization.GregorianDateOrderOfYearMonthAndDateNotSupported, dfi.ShortDatePattern);
                     ex = new FormatException(msg);
                 }
                 return null;
@@ -1136,7 +1136,7 @@ namespace CesiumLanguageWriter
                     {
                         // C-Style escape
                         if (pos >= len)
-                            throw new FormatException(Localization.GregorianDateQuoteNotTerminated);
+                            throw new FormatException(CesiumLocalization.GregorianDateQuoteNotTerminated);
 
                         output.Append(fmt[pos++]);
                     }
@@ -1146,7 +1146,7 @@ namespace CesiumLanguageWriter
                     }
                 }
 
-                throw new FormatException(Localization.GregorianDateQuoteNotTerminated);
+                throw new FormatException(CesiumLocalization.GregorianDateQuoteNotTerminated);
             }
 
             // This is intended as a last resort when all the other formats fail to parse a "day of year" format
@@ -1169,7 +1169,7 @@ namespace CesiumLanguageWriter
                 int yr4;
                 if (tokens[0].Length != 4 || !int.TryParse(tokens[0], out yr4))
                 {
-                    exception = new FormatException(string.Format(Localization.GregorianDateStringNotRecognized, isoString));
+                    exception = new FormatException(string.Format(CesiumLocalization.GregorianDateStringNotRecognized, isoString));
                     if (setExceptionOnError)
                         return false;
                     else
@@ -1180,7 +1180,7 @@ namespace CesiumLanguageWriter
                 // The 366 out-of-range check below will handle cases where there are 4 or more digits
                 if (!int.TryParse(tokens[0], out doy))
                 {
-                    exception = new FormatException(string.Format(Localization.GregorianDateStringNotRecognized, isoString));
+                    exception = new FormatException(string.Format(CesiumLocalization.GregorianDateStringNotRecognized, isoString));
                     if (setExceptionOnError)
                         return false;
                     else
@@ -1189,7 +1189,7 @@ namespace CesiumLanguageWriter
 
                 if (doy > 366)
                 {
-                    exception = new FormatException(string.Format(Localization.DayOfYearOutOfRange, isoString));
+                    exception = new FormatException(string.Format(CesiumLocalization.DayOfYearOutOfRange, isoString));
                     if (setExceptionOnError)
                         return false;
                     else
@@ -1226,7 +1226,7 @@ namespace CesiumLanguageWriter
                     format = GetStandardPattern(fchar, dfi, out useInvariant);
 
                     if (format == null)
-                        throw new FormatException(string.Format(Localization.GregorianDateInvalidFormatSpecifier, fchar));
+                        throw new FormatException(string.Format(CesiumLocalization.GregorianDateInvalidFormatSpecifier, fchar));
                 }
 
                 // the length of the format is usually a good guess of the number
@@ -1282,7 +1282,7 @@ namespace CesiumLanguageWriter
                             tokLen = CountRepeat(format, i, ch);
 
                             if (tokLen > 15)
-                                throw new FormatException(Localization.GregorianDateFormatInvalid);
+                                throw new FormatException(CesiumLocalization.GregorianDateFormatInvalid);
 
                             int startLen = result.Length;
 
@@ -1388,9 +1388,9 @@ namespace CesiumLanguageWriter
                             break;
                         case '%':
                             if (i >= format.Length - 1)
-                                throw new FormatException(string.Format(Localization.GregorianDateInvalidCharacterAtEnd, "%"));
+                                throw new FormatException(string.Format(CesiumLocalization.GregorianDateInvalidCharacterAtEnd, "%"));
                             if (format[i + 1] == '%')
-                                throw new FormatException(string.Format(Localization.GregorianDateInvalidCharacter, "%%"));
+                                throw new FormatException(string.Format(CesiumLocalization.GregorianDateInvalidCharacter, "%%"));
 
                             // Look for the next char
                             tokLen = 1;
@@ -1398,7 +1398,7 @@ namespace CesiumLanguageWriter
                         case '\\':
                             // C-Style escape
                             if (i >= format.Length - 1)
-                                throw new FormatException(string.Format(Localization.GregorianDateInvalidCharacterAtEnd, "\\"));
+                                throw new FormatException(string.Format(CesiumLocalization.GregorianDateInvalidCharacterAtEnd, "\\"));
 
                             result.Append(format[i + 1]);
                             tokLen = 2;
@@ -1444,7 +1444,7 @@ namespace CesiumLanguageWriter
             }
             else
             {
-                throw new ArgumentException(Localization.HourMinuteSecondInvalidArgument);
+                throw new ArgumentException(CesiumLocalization.HourMinuteSecondInvalidArgument);
             }
         }
 
@@ -1490,7 +1490,7 @@ namespace CesiumLanguageWriter
             }
             else
             {
-                throw new ArgumentException(Localization.HourMinuteSecondInvalidArgument);
+                throw new ArgumentException(CesiumLocalization.HourMinuteSecondInvalidArgument);
             }
         }
 
@@ -1871,7 +1871,7 @@ namespace CesiumLanguageWriter
 
             if (!(obj is GregorianDate))
             {
-                throw new ArgumentException(Localization.ArgumentTypeInvalid, "obj");
+                throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "obj");
             }
 
             return CompareTo((GregorianDate) obj);

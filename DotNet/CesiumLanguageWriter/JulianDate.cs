@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Globalization;
 
+#if StkComponents
+namespace AGI.Foundation.Cesium
+#else
 namespace CesiumLanguageWriter
+#endif
 {
     /// <summary>
     /// An astronomical Julian Date, which is the number of days since noon on January 1, -4712 (4713 BC).
@@ -222,7 +226,7 @@ namespace CesiumLanguageWriter
         {
             JulianDate result;
             if (!TryConvertTimeStandard(timeStandard, out result))
-                throw new ArgumentOutOfRangeException(Localization.CannotRepresentLeapSecondAsUTCJulianDate);
+                throw new ArgumentOutOfRangeException(CesiumLocalization.CannotRepresentLeapSecondAsUTCJulianDate);
             return result;
         }
 
@@ -804,7 +808,7 @@ namespace CesiumLanguageWriter
             }
             else if (!(obj is JulianDate))
             {
-                throw new ArgumentException(Localization.ArgumentTypeInvalid, "obj");
+                throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "obj");
             }
             else
             {

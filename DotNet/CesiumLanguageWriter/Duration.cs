@@ -365,7 +365,7 @@ namespace CesiumLanguageWriter
             }
             else if (!(obj is Duration))
             {
-                throw new ArgumentException(Localization.ArgumentTypeInvalid, "obj");
+                throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "obj");
             }
             else
             {

@@ -156,17 +156,41 @@
   <data name="HourMinuteSecondInvalidArgument" xml:space="preserve">
     <value>One or more of the hour, minute, and second arguments is outside of the acceptable range.</value>
   </data>
+  <data name="MagnitudeMustNotBeInfinite" xml:space="preserve">
+    <value>The magnitude of the provided coordinates must not be infinite.</value>
+  </data>
+  <data name="MagnitudeMustNotBeZero" xml:space="preserve">
+    <value>The magnitude of the provided coordinates must not be zero.</value>
+  </data>
+  <data name="MismatchedNumberOfDatesAndValues" xml:space="preserve">
+    <value>This collection must have the same number of elements as the "dates" collection.</value>
+  </data>
+  <data name="MustBeConstructedFromSpecificNumberOfElements" xml:space="preserve">
+    <value>An object of the type {0} must be constructed from an array with at least {1} elements.</value>
+  </data>
   <data name="TaiAbbreviation" xml:space="preserve">
     <value>TAI</value>
   </data>
   <data name="TaiName" xml:space="preserve">
     <value>International Atomic Time</value>
   </data>
+  <data name="UnknownEnumerationValue" xml:space="preserve">
+    <value>The enumeration has an invalid or unsupported value.</value>
+  </data>
   <data name="UtcAbbreviation" xml:space="preserve">
     <value>UTC</value>
   </data>
   <data name="UtcName" xml:space="preserve">
     <value>Coordinated Universal Time</value>
+  </data>
+  <data name="WriterAlreadyClosed" xml:space="preserve">
+    <value>The Cesium writer cannot be closed because it is not open.</value>
+  </data>
+  <data name="WriterAlreadyOpen" xml:space="preserve">
+    <value>The Cesium writer cannot be opened because it is already opened.  Please close the previous element before opening a new one.</value>
+  </data>
+  <data name="WriterNotOpen" xml:space="preserve">
+    <value>The Cesium writer cannot be used to write elements because it is not currently open.  This usually indicates an attempt to use a writer after is has been closed.</value>
   </data>
   <data name="YearMonthDayInvalidArgument" xml:space="preserve">
     <value>One or more of the year, month, and day arguments is outside of the acceptable range.</value>

@@ -124,7 +124,7 @@ namespace CesiumLanguageWriter
             if (TryConvertTaiToUtc(date, out result))
                 return result;
 
-            throw new ArgumentOutOfRangeException(Localization.CannotRepresentLeapSecondAsUTCJulianDate);
+            throw new ArgumentOutOfRangeException(CesiumLocalization.CannotRepresentLeapSecondAsUTCJulianDate);
         }
 
         /// <summary>
