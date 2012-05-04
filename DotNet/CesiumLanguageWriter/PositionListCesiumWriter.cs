@@ -15,7 +15,7 @@ namespace CesiumLanguageWriter
 #endif
 {
     /// <summary>
-    /// A <see cref="CesiumPropertyWriter{T}"/> used to write the Cartesian3 positions property that
+    /// A <see cref="CesiumPropertyWriter{T}"/> used to write the cartesian positions property that
     /// optionally has different values over different intervals of time.  Instances of this class generally should not
     /// be constructed directly, but should instead be obtained from a <see cref="CesiumPropertyWriter{T}"/>.
     /// </summary>
@@ -50,7 +50,7 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
 
-            Output.WritePropertyName("Cartesian3");
+            Output.WritePropertyName("cartesian");
             Output.WriteStartSequence();
             foreach (var position in positions)
             {

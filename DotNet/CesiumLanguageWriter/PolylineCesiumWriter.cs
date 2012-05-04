@@ -238,7 +238,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a constant value for the <code>polyline_positions</code> property in Cartesian3 coordinates.
+        /// Writes a constant value for the <code>polyline_positions</code> property in cartesian coordinates.
         /// See the documentation for the <see cref="OpenVertexPositionsProperty"/> method for more information.
         /// </summary>
         /// <param name="value">The value of the property.</param>

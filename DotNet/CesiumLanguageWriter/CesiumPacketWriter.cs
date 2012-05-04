@@ -29,6 +29,8 @@ namespace CesiumLanguageWriter
         private readonly Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<PyramidCesiumWriter>(() => new PyramidCesiumWriter("pyramid"), false);
         private readonly Lazy<PathCesiumWriter> m_path = new Lazy<PathCesiumWriter>(() => new PathCesiumWriter("path"), false);
         private readonly Lazy<PolylineCesiumWriter> m_polyline = new Lazy<PolylineCesiumWriter>(() => new PolylineCesiumWriter("polyline"), false);
+        private readonly Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(() => new CameraCesiumWriter("camera"), false);
+
         /// <summary>
         /// Writes the start of a new JSON object representing the packet.
         /// </summary>
@@ -298,6 +300,25 @@ namespace CesiumLanguageWriter
         public PolylineCesiumWriter OpenPolylineProperty()
         {
             return OpenAndReturn(PolylineWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>camera</code> property.  See the documentation for the 
+        /// <see cref="OpenCameraProperty"/> method for more information.  The returned instance must
+        /// be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be
+        /// used for writing.
+        /// </summary>
+        public CameraCesiumWriter CameraWriter
+        {
+            get { return m_camera.Value; }
+        }
+
+        /// <summary>
+        /// Gets a group of camera-related properties. 
+        /// </summary>
+        public CameraCesiumWriter OpenCameraProperty()
+        {
+            return OpenAndReturn(CameraWriter);
         }
     }
 }

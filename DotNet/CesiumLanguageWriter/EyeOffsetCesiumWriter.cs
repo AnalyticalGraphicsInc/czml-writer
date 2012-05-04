@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
 
-            Output.WritePropertyName("Cartesian3");
+            Output.WritePropertyName("cartesian");
             Output.WriteStartSequence();
             Output.WriteValue(position.X);
             Output.WriteValue(position.Y);

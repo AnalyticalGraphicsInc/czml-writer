@@ -64,7 +64,7 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
 
-            Output.WritePropertyName("Cartesian3");
+            Output.WritePropertyName("cartesian");
             Output.WriteStartSequence();
             Output.WriteValue(position.X);
             Output.WriteValue(position.Y);
@@ -101,7 +101,7 @@ namespace CesiumLanguageWriter
         /// within an interval will never be used to determine the value within another interval.
         /// </summary>
         /// <param name="positions">The time-tagged positions.</param>
-        public void WriteValue(DateMotionCollection<Cartesian3> positions)
+        public void WriteValue(DateMotionCollection<Cartesian> positions)
         {
             WriteValue(positions.Dates, positions.Values);
         }
@@ -134,7 +134,7 @@ namespace CesiumLanguageWriter
         /// <param name="positions">The time-tagged positions.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="positions"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="positions"/> collection.</param>
-        public void WriteValue(DateMotionCollection<Cartesian3> positions, int startIndex, int length)
+        public void WriteValue(DateMotionCollection<Cartesian> positions, int startIndex, int length)
         {
             WriteValue(positions.Dates, positions.Values, startIndex, length);
         }
@@ -161,7 +161,7 @@ namespace CesiumLanguageWriter
 
             JulianDate epoch = GetAndWriteEpoch(dates, startIndex, length);
 
-            Output.WritePropertyName("Cartesian3");
+            Output.WritePropertyName("cartesian");
             Output.WriteStartSequence();
             int last = startIndex + length;
             for (int i = startIndex; i < last; ++i)
