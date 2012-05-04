@@ -17,7 +17,7 @@ namespace CesiumLanguageWriter
     /// and to the right to place an element, relative to an origin.  Instances of this class generally should not
     /// be constructed directly, but should instead be obtained from a <see cref="CesiumPropertyWriter{T}"/>.
     /// </summary>
-    public class PixelOffsetCesiumWriter : CesiumValuePropertyWriter<Cartesian2, PixelOffsetCesiumWriter>
+    public class PixelOffsetCesiumWriter : CesiumValuePropertyWriter<Rectangular, PixelOffsetCesiumWriter>
     {
         /// <summary>
         /// Initializes a new instance.
@@ -41,12 +41,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as a <see cref="Cartesian2"/> value, where
-        /// <see cref="Cartesian2.X"/> is to the right and <see cref="Cartesian2.Y"/> is up.  The offset is
+        /// Writes the value of the property for this interval as a <see cref="Rectangular"/> value, where
+        /// <see cref="Rectangular.X"/> is to the right and <see cref="Rectangular.Y"/> is up.  The offset is
         /// constant for the entire interval.
         /// </summary>
         /// <param name="position">The position.</param>
-        public override void WriteValue(Cartesian2 position)
+        public override void WriteValue(Rectangular position)
         {
             OpenIntervalIfNecessary();
 

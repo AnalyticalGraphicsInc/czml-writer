@@ -19,7 +19,7 @@ namespace CesiumLanguageWriter
     /// optionally has different values over different intervals of time.  Instances of this class generally should not
     /// be constructed directly, but should instead be obtained from a <see cref="CesiumPropertyWriter{T}"/>.
     /// </summary>
-    public class PositionCesiumWriter : CesiumInterpolatableValuePropertyWriter<Cartesian3, PositionCesiumWriter>
+    public class PositionCesiumWriter : CesiumInterpolatableValuePropertyWriter<Cartesian, PositionCesiumWriter>
     {
         /// <summary>
         /// Initializes a new instance.
@@ -56,11 +56,11 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as a <see cref="Cartesian3"/> value specified
+        /// Writes the value of the property for this interval as a <see cref="Cartesian"/> value specified
         /// in the <see cref="WriteReferenceFrame"/>.  The position is constant for the entire interval.
         /// </summary>
         /// <param name="position">The position.</param>
-        public override void WriteValue(Cartesian3 position)
+        public override void WriteValue(Cartesian position)
         {
             OpenIntervalIfNecessary();
 
@@ -117,7 +117,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the position is specified.</param>
         /// <param name="positions">The corresponding position for each date.</param>
-        public void WriteValue(IList<JulianDate> dates, IList<Cartesian3> positions)
+        public void WriteValue(IList<JulianDate> dates, IList<Cartesian> positions)
         {
             WriteValue(dates, positions, 0, dates.Count);
         }
@@ -152,7 +152,7 @@ namespace CesiumLanguageWriter
         /// <param name="positions">The corresponding position for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="positions"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="positions"/> collection.</param>
-        public override void WriteValue(IList<JulianDate> dates, IList<Cartesian3> positions, int startIndex, int length)
+        public override void WriteValue(IList<JulianDate> dates, IList<Cartesian> positions, int startIndex, int length)
         {
             if (dates.Count != positions.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "positions");
@@ -167,7 +167,7 @@ namespace CesiumLanguageWriter
             for (int i = startIndex; i < last; ++i)
             {
                 Output.WriteValue(epoch.SecondsDifference(dates[i]));
-                Cartesian3 position = positions[i];
+                Cartesian position = positions[i];
                 Output.WriteValue(position.X);
                 Output.WriteValue(position.Y);
                 Output.WriteValue(position.Z);

@@ -90,7 +90,7 @@ namespace CesiumLanguageWriterTests
         public void TestEqualityWithWrongType()
         {
             Matrix3By3 first = Matrix3By3.Identity;
-            Cartesian3 second = new Cartesian3(1.0, 2.0, 3.0);
+            Cartesian second = new Cartesian(1.0, 2.0, 3.0);
 
             Assert.IsFalse(first.Equals(second));
         }
@@ -391,7 +391,7 @@ namespace CesiumLanguageWriterTests
             double x = 1;
             double y = 2;
             double z = 3;
-            Matrix3By3 mat1 = Matrix3By3.CrossProductEquivalentMatrix(new Cartesian3(x, y, z));
+            Matrix3By3 mat1 = Matrix3By3.CrossProductEquivalentMatrix(new Cartesian(x, y, z));
             Assert.AreEqual(0.0, mat1.M11);
             Assert.AreEqual(-z, mat1.M12);
             Assert.AreEqual(y, mat1.M13);
@@ -402,7 +402,7 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(x, mat1.M32);
             Assert.AreEqual(0.0, mat1.M33);
 
-            UnitCartesian3 u = new UnitCartesian3(x, y, z);
+            UnitCartesian u = new UnitCartesian(x, y, z);
             x = u.X;
             y = u.Y;
             z = u.Z;
@@ -417,11 +417,11 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(x, mat2.M32);
             Assert.AreEqual(0.0, mat2.M33);
 
-            Matrix3By3 mat3 = Matrix3By3.DiagonalMatrix(new Cartesian3(1, 2, 3));
+            Matrix3By3 mat3 = Matrix3By3.DiagonalMatrix(new Cartesian(1, 2, 3));
             Assert.AreEqual(mat3.M11, 1);
             Assert.AreEqual(mat3.M22, 2);
             Assert.AreEqual(mat3.M33, 3);
-            Matrix3By3 mat4 = Matrix3By3.DiagonalMatrix(new UnitCartesian3(1, 0, 0));
+            Matrix3By3 mat4 = Matrix3By3.DiagonalMatrix(new UnitCartesian(1, 0, 0));
             Assert.AreEqual(mat4.M11, 1);
             Assert.AreEqual(mat4.M22, 0);
             Assert.AreEqual(mat4.M33, 0);
@@ -451,9 +451,9 @@ namespace CesiumLanguageWriterTests
         public void TestMathOperatorsWithCartesian()
         {
             Matrix3By3 test = new Matrix3By3(1.0, 2.0, 4.0, 2.0, 3.0, 5.0, 4.0, 5.0, 6.0);
-            Cartesian3 mult = new Cartesian3(1, 2, 3);
-            Assert.IsTrue((new Cartesian3(17, 23, 32).Equals(test.Multiply(mult))));
-            Assert.IsTrue((new Cartesian3(17, 23, 32).Equals(test * mult)));
+            Cartesian mult = new Cartesian(1, 2, 3);
+            Assert.IsTrue((new Cartesian(17, 23, 32).Equals(test.Multiply(mult))));
+            Assert.IsTrue((new Cartesian(17, 23, 32).Equals(test * mult)));
         }
 
         /// <summary>

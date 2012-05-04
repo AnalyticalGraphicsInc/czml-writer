@@ -99,8 +99,8 @@ namespace CesiumLanguageWriter
         /// Writes a constant value for the <code>directions</code> property.
         /// See the documentation for the <see cref="OpenDirectionsProperty"/> method for more information.
         /// </summary>
-        /// <param name="coordinates">The <see cref="UnitCartesian3"/> coordinates of the property.</param>
-        public void WriteDirectionsProperty(IEnumerable<UnitCartesian3> coordinates)
+        /// <param name="coordinates">The <see cref="UnitCartesian"/> coordinates of the property.</param>
+        public void WriteDirectionsProperty(IEnumerable<UnitCartesian> coordinates)
         {
             using (var writer = OpenDirectionsProperty())
             {

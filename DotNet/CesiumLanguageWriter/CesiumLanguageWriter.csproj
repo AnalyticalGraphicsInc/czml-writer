@@ -61,7 +61,7 @@
     <Compile Include="BillboardCesiumWriter.cs" />
     <Compile Include="BlobMaterialCesiumWriter.cs" />
     <Compile Include="BooleanCesiumWriter.cs" />
-    <Compile Include="Cartesian3.cs" />
+    <Compile Include="Cartesian.cs" />
     <Compile Include="Cartographic.cs" />
     <Compile Include="CesiumHorizontalOrigin.cs" />
     <Compile Include="CesiumImageFormat.cs" />
@@ -112,14 +112,14 @@
     <Compile Include="PositionListCesiumWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PyramidCesiumWriter.cs" />
-    <Compile Include="Cartesian2.cs" />
+    <Compile Include="Rectangular.cs" />
     <Compile Include="SolidColorMaterialCesiumWriter.cs" />
     <Compile Include="StringCesiumWriter.cs" />
     <Compile Include="TieDyeMaterialCesiumWriter.cs" />
     <Compile Include="TimeConstants.cs" />
     <Compile Include="TimeInterval.cs" />
     <Compile Include="TimeStandard.cs" />
-    <Compile Include="UnitCartesian3.cs" />
+    <Compile Include="UnitCartesian.cs" />
     <Compile Include="UnitQuaternion.cs" />
     <Compile Include="UnitSpherical.cs" />
     <Compile Include="VerticalOriginCesiumWriter.cs" />

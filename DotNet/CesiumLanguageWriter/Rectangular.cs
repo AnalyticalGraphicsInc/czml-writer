@@ -9,15 +9,15 @@ namespace CesiumLanguageWriter
     /// A set of rectilinear 2-dimensional coordinates.
     /// </summary>
     /// <remarks>
-    /// The corresponding 3-dimensional coordinates are <see cref="Cartesian3"/> coordinates.
+    /// The corresponding 3-dimensional coordinates are <see cref="Cartesian"/> coordinates.
     /// </remarks>
     [CSToJavaImmutableValueType]
-    public struct Cartesian2 : IEquatable<Cartesian2>
+    public struct Rectangular : IEquatable<Rectangular>
     {
         /// <summary>
-        /// Gets a set of <see cref="Cartesian2"/> coordinates with values of zero.
+        /// Gets a set of <see cref="Rectangular"/> coordinates with values of zero.
         /// </summary>
-        public static Cartesian2 Zero
+        public static Rectangular Zero
         {
             get
             {
@@ -26,14 +26,14 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets a set of <see cref="Cartesian2"/> coordinates with values of <see cref="Double.NaN"/>.
+        /// Gets a set of <see cref="Rectangular"/> coordinates with values of <see cref="Double.NaN"/>.
         /// </summary>
         /// <remarks>
-        /// Use <see cref="Cartesian2.IsUndefined"/> to test whether a <see cref="Cartesian2"/> instance
+        /// Use <see cref="Rectangular.IsUndefined"/> to test whether a <see cref="Rectangular"/> instance
         /// is undefined since it will return <see langword="true"/> if any of the coordinate values
         /// are <see cref="Double.NaN"/>.
         /// </remarks>
-        public static Cartesian2 Undefined
+        public static Rectangular Undefined
         {
             get
             {
@@ -42,7 +42,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Initializes a set of <see cref="Cartesian2"/> coordinates from 2 consecutive elements in the provided array.
+        /// Initializes a set of <see cref="Rectangular"/> coordinates from 2 consecutive elements in the provided array.
         /// </summary>
         /// <param name="elements">The array of coordinate values.</param>
         /// <param name="startIndex">The index of the first element in the array to use.</param>
@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         /// <exception cref="ArgumentOutOfRangeException">
         /// Thrown when an object of this type is constructed from an array with less than 2 <paramref name="elements"/>.
         /// </exception>
-        public Cartesian2(double[] elements, int startIndex)
+        public Rectangular(double[] elements, int startIndex)
         {
             if (elements == null)
             {
@@ -61,7 +61,7 @@ namespace CesiumLanguageWriter
             else if (startIndex >= elements.Length ||
                      elements.Length - startIndex < s_length)
             {
-                throw new ArgumentOutOfRangeException("elements", String.Format(CultureInfo.CurrentCulture, CesiumLocalization.MustBeConstructedFromSpecificNumberOfElements, typeof(Cartesian2), 2));
+                throw new ArgumentOutOfRangeException("elements", String.Format(CultureInfo.CurrentCulture, CesiumLocalization.MustBeConstructedFromSpecificNumberOfElements, typeof(Rectangular), 2));
             }
             else
             {
@@ -71,7 +71,7 @@ namespace CesiumLanguageWriter
         }
         
         /// <summary>
-        /// Initializes a set of <see cref="Cartesian2"/> coordinates from the first 2 consecutive elements in the provided array.
+        /// Initializes a set of <see cref="Rectangular"/> coordinates from the first 2 consecutive elements in the provided array.
         /// </summary>
         /// <param name="elements">The array of coordinate values.</param>
         /// <exception cref="ArgumentNullException">
@@ -80,19 +80,19 @@ namespace CesiumLanguageWriter
         /// <exception cref="ArgumentOutOfRangeException">
         /// An object of this type must be constructed from an array with at least 2 <paramref name="elements"/>.
         /// </exception>
-        public Cartesian2(double[] elements)
+        public Rectangular(double[] elements)
             : this(elements, 0)
         {
         }
 
         /// <summary>
-        /// Initializes a set of <see cref="Cartesian2"/> coordinates from the provided values.
+        /// Initializes a set of <see cref="Rectangular"/> coordinates from the provided values.
         /// </summary>
         /// <param name="x">The linear coordinate along the positive x-axis.</param>
         /// <param name="y">The linear coordinate along the positive y-axis.</param>
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "0#x")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "1#y")]
-        public Cartesian2(double x, double y)
+        public Rectangular(double x, double y)
         {
             m_x = x;
             m_y = y;
@@ -119,141 +119,141 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Inverts this instance.
         /// </summary>
-        /// <returns>A set of <see cref="Cartesian2"/> coordinates that represents the inverse of this instance.</returns>
-        public Cartesian2 Invert()
+        /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the inverse of this instance.</returns>
+        public Rectangular Invert()
         {
-            return new Cartesian2(-m_x, -m_y);
+            return new Rectangular(-m_x, -m_y);
         }
 
         /// <summary>
         /// Multiplies this instance by a scalar.
         /// </summary>
         /// <param name="scalar">The multiplier, or value which is to multiply this instance.</param>
-        /// <returns>A set of <see cref="Cartesian2"/> coordinates that represents the result of the multiplication.</returns>
-        public Cartesian2 Multiply(double scalar)
+        /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the result of the multiplication.</returns>
+        public Rectangular Multiply(double scalar)
         {
-            return new Cartesian2(m_x * scalar, m_y * scalar);
+            return new Rectangular(m_x * scalar, m_y * scalar);
         }
 
         /// <summary>
         /// Divides this instance by a scalar.
         /// </summary>
         /// <param name="scalar">The divisor, or value which is to divide this instance.</param>
-        /// <returns>A set of <see cref="Cartesian2"/> coordinates that represents the result of the division.</returns>
-        public Cartesian2 Divide(double scalar)
+        /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the result of the division.</returns>
+        public Rectangular Divide(double scalar)
         {
-            return new Cartesian2(m_x / scalar, m_y / scalar);
+            return new Rectangular(m_x / scalar, m_y / scalar);
         }
 
         /// <summary>
-        /// Adds the specified set of <see cref="Cartesian2"/> coordinates to this instance.
+        /// Adds the specified set of <see cref="Rectangular"/> coordinates to this instance.
         /// </summary>
         /// <param name="other">The addend, or value which is to be added to this instance.</param>
-        /// <returns>A set of <see cref="Cartesian2"/> coordinates that represents the result of the addition.</returns>
-        public Cartesian2 Add(Cartesian2 other)
+        /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the result of the addition.</returns>
+        public Rectangular Add(Rectangular other)
         {
-            return new Cartesian2(m_x + other.m_x, m_y + other.m_y);
+            return new Rectangular(m_x + other.m_x, m_y + other.m_y);
         }
 
         /// <summary>
-        /// Subtracts the specified set of <see cref="Cartesian2"/> coordinates from this instance.
+        /// Subtracts the specified set of <see cref="Rectangular"/> coordinates from this instance.
         /// </summary>
         /// <param name="other">The subtrahend, or value which is to be subtracted from this instance.</param>
-        /// <returns>A set of <see cref="Cartesian2"/> coordinates that represents the result of the subtraction.</returns>
-        public Cartesian2 Subtract(Cartesian2 other)
+        /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the result of the subtraction.</returns>
+        public Rectangular Subtract(Rectangular other)
         {
-            return new Cartesian2(m_x - other.m_x, m_y - other.m_y);
+            return new Rectangular(m_x - other.m_x, m_y - other.m_y);
         }
 
         /// <summary>
-        /// Forms the dot product of the specified set of <see cref="Cartesian2"/> coordinates with this instance.
+        /// Forms the dot product of the specified set of <see cref="Rectangular"/> coordinates with this instance.
         /// </summary>
-        /// <param name="other">The set of <see cref="Cartesian2"/> coordinates to dot with this instance.</param>
+        /// <param name="other">The set of <see cref="Rectangular"/> coordinates to dot with this instance.</param>
         /// <returns>A <see cref="double"/> that represents the result of the product.</returns>
-        public double Dot(Cartesian2 other)
+        public double Dot(Rectangular other)
         {
             return m_x * other.m_x + m_y * other.m_y;
         }
 
         /// <summary>
-        /// Multiplies a specified set of <see cref="Cartesian2"/> coordinates by a scalar.
+        /// Multiplies a specified set of <see cref="Rectangular"/> coordinates by a scalar.
         /// </summary>
         /// <param name="left">The multiplicand, or value which is to be multiplied by <paramref name="right"/>.</param>
         /// <param name="right">The multiplier, or value which is to multiply <paramref name="left"/>.</param>
-        /// <returns>A set of <see cref="Cartesian2"/> coordinates that represents the result of the multiplication.</returns>
-        public static Cartesian2 operator *(Cartesian2 left, double right)
+        /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the result of the multiplication.</returns>
+        public static Rectangular operator *(Rectangular left, double right)
         {
             return left.Multiply(right);
         }
 
         /// <summary>
-        /// Multiplies a scalar by a specified set of set of <see cref="Cartesian2"/> coordinates.
+        /// Multiplies a scalar by a specified set of set of <see cref="Rectangular"/> coordinates.
         /// </summary>
         /// <param name="left">The multiplicand, or value which is to be multiplied by <paramref name="right"/>.</param>
         /// <param name="right">The multiplier, or value which is to multiply <paramref name="left"/>.</param>
-        /// <returns>A set of <see cref="Cartesian2"/> coordinates that represents the result of the multiplication.</returns>
-        public static Cartesian2 operator *(double left, Cartesian2 right)
+        /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the result of the multiplication.</returns>
+        public static Rectangular operator *(double left, Rectangular right)
         {
             return right.Multiply(left);
         }
 
         /// <summary>
-        /// Divides a specified set of <see cref="Cartesian2"/> coordinates by a scalar.
+        /// Divides a specified set of <see cref="Rectangular"/> coordinates by a scalar.
         /// </summary>
         /// <param name="left">The dividend, or value which is to be divided by <paramref name="right"/>.</param>
         /// <param name="right">The divisor, or value which is to divide <paramref name="left"/>.</param>
-        /// <returns>A set of <see cref="Cartesian2"/> coordinates that represents the result of the division.</returns>
-        public static Cartesian2 operator /(Cartesian2 left, double right)
+        /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the result of the division.</returns>
+        public static Rectangular operator /(Rectangular left, double right)
         {
             return left.Divide(right);
         }
 
         /// <summary>
-        /// Adds a specified set of <see cref="Cartesian2"/> coordinates to another specified set of <see cref="Cartesian3"/> coordinates.
+        /// Adds a specified set of <see cref="Rectangular"/> coordinates to another specified set of <see cref="Cartesian"/> coordinates.
         /// </summary>
         /// <param name="left">The augend, or value to which <paramref name="right"/> is to be added.</param>
         /// <param name="right">The addend, or value which is to be added to <paramref name="left"/>.</param>
-        /// <returns>A set of <see cref="Cartesian2"/> coordinates that represents the result of the addition.</returns>
-        public static Cartesian2 operator +(Cartesian2 left, Cartesian2 right)
+        /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the result of the addition.</returns>
+        public static Rectangular operator +(Rectangular left, Rectangular right)
         {
             return left.Add(right);
         }
 
         /// <summary>
-        /// Subtracts a specified set of <see cref="Cartesian2"/> coordinates from another specified set of <see cref="Cartesian2"/> coordinates.
+        /// Subtracts a specified set of <see cref="Rectangular"/> coordinates from another specified set of <see cref="Rectangular"/> coordinates.
         /// </summary>
         /// <param name="left">The minuend, or value from which <paramref name="right"/> is to be subtracted.</param>
         /// <param name="right">The subtrahend, or value which is to be subtracted from <paramref name="left"/>.</param>
-        /// <returns>A set of <see cref="Cartesian2"/> coordinates that represents the result of the subtraction.</returns>
-        public static Cartesian2 operator -(Cartesian2 left, Cartesian2 right)
+        /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the result of the subtraction.</returns>
+        public static Rectangular operator -(Rectangular left, Rectangular right)
         {
             return left.Subtract(right);
         }
 
         /// <summary>
-        /// Negates the specified set of <see cref="Cartesian2"/> coordinates, yielding a new set of <see cref="Cartesian2"/> coordinates.
+        /// Negates the specified set of <see cref="Rectangular"/> coordinates, yielding a new set of <see cref="Rectangular"/> coordinates.
         /// </summary>
         /// <param name="coordinates">The set of coordinates.</param>
-        /// <returns>The result of negating the elements of the original set of <see cref="Cartesian2"/> coordinates.</returns>
-        public static Cartesian2 operator -(Cartesian2 coordinates)
+        /// <returns>The result of negating the elements of the original set of <see cref="Rectangular"/> coordinates.</returns>
+        public static Rectangular operator -(Rectangular coordinates)
         {
-            return new Cartesian2(-coordinates.m_x, -coordinates.m_y);
+            return new Rectangular(-coordinates.m_x, -coordinates.m_y);
         }
 
         /// <summary>
-        /// Produces a set of <see cref="Cartesian2"/> coordinates representing this instance which results from rotating
+        /// Produces a set of <see cref="Rectangular"/> coordinates representing this instance which results from rotating
         /// the original axes used to represent this instance by the provided angle.
         /// </summary>
         /// <param name="angle">The angle of rotation.</param>
-        /// <returns>A set of <see cref="Cartesian2"/> coordinates which is the result of the rotation.</returns>
+        /// <returns>A set of <see cref="Rectangular"/> coordinates which is the result of the rotation.</returns>
         /// <remarks>
         /// This type of rotation is sometimes referred to as an "alias rotation".
         /// </remarks>
-        public Cartesian2 Rotate(double angle)
+        public Rectangular Rotate(double angle)
         {
             double c = Math.Cos(angle);
             double s = Math.Sin(angle);
-            return new Cartesian2(c * m_x - s * m_y, s * m_x + c * m_y);
+            return new Rectangular(c * m_x - s * m_y, s * m_x + c * m_y);
         }
 
         /// <summary>
@@ -263,9 +263,9 @@ namespace CesiumLanguageWriter
         /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
-            if (obj is Cartesian2)
+            if (obj is Rectangular)
             {
-                return Equals((Cartesian2)obj);
+                return Equals((Rectangular)obj);
             }
             else
             {
@@ -277,12 +277,12 @@ namespace CesiumLanguageWriter
         /// Indicates whether each coordinate value of another instance of this type
         /// is within the required tolerance of the corresponding coordinate value of this instance.
         /// </summary>
-        /// <param name="other">The set of <see cref="Cartesian2"/> coordinates to compare to this instance.</param>
+        /// <param name="other">The set of <see cref="Rectangular"/> coordinates to compare to this instance.</param>
         /// <param name="epsilon">The limit at which the absolute differences between the coordinate values will not be considered equal.</param>
         /// <returns>
         /// <see langword="true"/> if the absolute differences are less than <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
         /// </returns>
-        public bool EqualsEpsilon(Cartesian2 other, double epsilon)
+        public bool EqualsEpsilon(Rectangular other, double epsilon)
         {
             return Math.Abs(X - other.X) < epsilon &&
                    Math.Abs(Y - other.Y) < epsilon;
@@ -321,7 +321,7 @@ namespace CesiumLanguageWriter
         /// <returns>
         /// <see langword="true"/> if <paramref name="left"/> represents the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
         /// </returns>
-        public static bool operator ==(Cartesian2 left, Cartesian2 right)
+        public static bool operator ==(Rectangular left, Rectangular right)
         {
             return left.Equals(right);
         }
@@ -334,7 +334,7 @@ namespace CesiumLanguageWriter
         /// <returns>
         /// <see langword="true"/> if <paramref name="left"/> does not represent the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
         /// </returns>
-        public static bool operator !=(Cartesian2 left, Cartesian2 right)
+        public static bool operator !=(Rectangular left, Rectangular right)
         {
             return !left.Equals(right);
         }
@@ -390,9 +390,9 @@ namespace CesiumLanguageWriter
         [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
         private static readonly int s_length = 2;
 
-        private static readonly Cartesian2 s_zero = new Cartesian2(0.0, 0.0);
+        private static readonly Rectangular s_zero = new Rectangular(0.0, 0.0);
 
-        private static readonly Cartesian2 s_undefined = new Cartesian2(Double.NaN, Double.NaN);
+        private static readonly Rectangular s_undefined = new Rectangular(Double.NaN, Double.NaN);
 
         #region IEquatable<Cartesian2> Members
 
@@ -401,7 +401,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The instance to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
-        public bool Equals(Cartesian2 other)
+        public bool Equals(Rectangular other)
         {
             return other.m_x == m_x && other.m_y == m_y;
         }

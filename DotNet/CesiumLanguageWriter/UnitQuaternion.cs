@@ -9,7 +9,7 @@ namespace CesiumLanguageWriter
     /// A set of 4-dimensional coordinates used to represent rotation in 3-dimensional space.
     /// </summary>
     /// <remarks>
-    /// To transform a <see cref="Cartesian3"/> with this rotation, see <see cref="Cartesian3.Rotate(UnitQuaternion)"/>.
+    /// To transform a <see cref="Cartesian"/> with this rotation, see <see cref="Cartesian.Rotate(UnitQuaternion)"/>.
     /// </remarks>
     /// <seealso cref="Matrix3By3"/>
     [CSToJavaImmutableValueType]

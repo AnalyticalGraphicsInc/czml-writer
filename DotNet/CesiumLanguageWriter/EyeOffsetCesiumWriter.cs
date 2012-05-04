@@ -20,7 +20,7 @@ namespace CesiumLanguageWriter
     /// up, and <code>z</code> points into the screen.  Instances of this class generally should not
     /// be constructed directly, but should instead be obtained from a <see cref="CesiumPropertyWriter{T}"/>.
     /// </summary>
-    public class EyeOffsetCesiumWriter : CesiumValuePropertyWriter<Cartesian3, EyeOffsetCesiumWriter>
+    public class EyeOffsetCesiumWriter : CesiumValuePropertyWriter<Cartesian, EyeOffsetCesiumWriter>
     {
         /// <summary>
         /// Initializes a new instance.
@@ -44,11 +44,11 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as a <see cref="Cartesian3"/> value.
+        /// Writes the value of the property for this interval as a <see cref="Cartesian"/> value.
         /// The position is constant for the entire interval.
         /// </summary>
         /// <param name="position">The position.</param>
-        public override void WriteValue(Cartesian3 position)
+        public override void WriteValue(Cartesian position)
         {
             OpenIntervalIfNecessary();
 

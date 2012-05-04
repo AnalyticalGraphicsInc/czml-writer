@@ -47,18 +47,18 @@ namespace CesiumLanguageWriterTests
             double angle = Math.PI / 6; // 60 degrees.
 
             // Test "type == 0:"
-            _TestFromMatrix3By3(angle, new Cartesian3(2.0, 3.0, 6.0)); //rotation about 2/7, 3/7, 6/7 vector.
+            _TestFromMatrix3By3(angle, new Cartesian(2.0, 3.0, 6.0)); //rotation about 2/7, 3/7, 6/7 vector.
 
             angle = 2 * Math.PI / 3; // 120 degrees.
 
             // Test "type == 1:"
-            _TestFromMatrix3By3(angle, new Cartesian3(6.0, -3.0, -2.0)); // rotation about 6/7, -3/7, -2/7 vector.
+            _TestFromMatrix3By3(angle, new Cartesian(6.0, -3.0, -2.0)); // rotation about 6/7, -3/7, -2/7 vector.
 
             // Test "type == 2:"
-            _TestFromMatrix3By3(angle, new Cartesian3(-2.0, -3.0, 6.0)); // rotation about -2/7, -3/7, 6/7 vector.
+            _TestFromMatrix3By3(angle, new Cartesian(-2.0, -3.0, 6.0)); // rotation about -2/7, -3/7, 6/7 vector.
 
             // Test "type == 3:"
-            _TestFromMatrix3By3(angle, new Cartesian3(-2.0, 6.0, -3.0)); // rotation about -2/7, 6/7, -3/7 vector.
+            _TestFromMatrix3By3(angle, new Cartesian(-2.0, 6.0, -3.0)); // rotation about -2/7, 6/7, -3/7 vector.
         }
 
         /// <summary>
@@ -199,9 +199,9 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(new UnitQuaternion(1.0, 1.0, 1.0, Double.NaN).IsUndefined);
         }
 
-        private void _TestFromMatrix3By3(double angle, Cartesian3 axis)
+        private void _TestFromMatrix3By3(double angle, Cartesian axis)
         {
-            Cartesian3 unit = axis.Normalize();
+            Cartesian unit = axis.Normalize();
 
             double c = Math.Cos(angle);
             double s = Math.Sin(angle);

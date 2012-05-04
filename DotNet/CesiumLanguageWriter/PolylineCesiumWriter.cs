@@ -242,7 +242,7 @@ namespace CesiumLanguageWriter
         /// See the documentation for the <see cref="OpenVertexPositionsProperty"/> method for more information.
         /// </summary>
         /// <param name="value">The value of the property.</param>
-        public void WritePositionsProperty(IEnumerable<Cartesian3> value)
+        public void WritePositionsProperty(IEnumerable<Cartesian> value)
         {
             using (var writer = OpenVertexPositionsProperty())
             {

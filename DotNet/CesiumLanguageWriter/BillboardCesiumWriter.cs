@@ -161,7 +161,7 @@ namespace CesiumLanguageWriter
         /// See the documentation for the <see cref="OpenEyeOffsetProperty"/> method for more information.
         /// </summary>
         /// <param name="value">The value of the property.</param>
-        public void WriteEyeOffsetProperty(Cartesian3 value)
+        public void WriteEyeOffsetProperty(Cartesian value)
         {
             using (var writer = OpenEyeOffsetProperty())
             {
@@ -277,7 +277,7 @@ namespace CesiumLanguageWriter
         /// See the documentation for the <see cref="OpenPixelOffsetProperty"/> method for more information.
         /// </summary>
         /// <param name="value">The value of the property.</param>
-        public void WritePixelOffsetProperty(Cartesian2 value)
+        public void WritePixelOffsetProperty(Rectangular value)
         {
             using (var writer = OpenPixelOffsetProperty())
             {

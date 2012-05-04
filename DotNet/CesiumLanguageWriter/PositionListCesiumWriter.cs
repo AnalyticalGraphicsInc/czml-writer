@@ -19,7 +19,7 @@ namespace CesiumLanguageWriter
     /// optionally has different values over different intervals of time.  Instances of this class generally should not
     /// be constructed directly, but should instead be obtained from a <see cref="CesiumPropertyWriter{T}"/>.
     /// </summary>
-    public class PositionListCesiumWriter : CesiumValuePropertyWriter<IEnumerable<Cartesian3>, PositionListCesiumWriter>
+    public class PositionListCesiumWriter : CesiumValuePropertyWriter<IEnumerable<Cartesian>, PositionListCesiumWriter>
     {
         /// <summary>
         /// Initializes a new instance.
@@ -43,10 +43,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as an array of <see cref="Cartesian3"/>
+        /// Writes the value of the property for this interval as an array of <see cref="Cartesian"/>
         /// </summary>
         /// <param name="positions">The positions.</param>
-        public override void WriteValue(IEnumerable<Cartesian3> positions)
+        public override void WriteValue(IEnumerable<Cartesian> positions)
         {
             OpenIntervalIfNecessary();
 

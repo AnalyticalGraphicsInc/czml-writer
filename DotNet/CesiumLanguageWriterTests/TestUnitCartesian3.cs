@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace CesiumLanguageWriterTests
 {
     /// <summary>
-    /// Tests the <see cref="UnitCartesian3"/> type.
+    /// Tests the <see cref="UnitCartesian"/> type.
     /// </summary>
     [TestFixture]
     public class TestUnitCartesian3
@@ -16,7 +16,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestHoldValue()
         {
-            UnitCartesian3 test = new UnitCartesian3(2.0, 3.0, 6.0);
+            UnitCartesian test = new UnitCartesian(2.0, 3.0, 6.0);
             Assert.AreEqual(2.0 / 7.0, test.X);
             Assert.AreEqual(3.0 / 7.0, test.Y);
             Assert.AreEqual(6.0 / 7.0, test.Z);
@@ -30,7 +30,7 @@ namespace CesiumLanguageWriterTests
         {
             double[] values = { 2.0, 3.0, 6.0 };
 
-            UnitCartesian3 test = new UnitCartesian3(values);
+            UnitCartesian test = new UnitCartesian(values);
             Assert.AreEqual(values.Length, test.Length);
             Assert.AreEqual(test.X, test[0]);
             Assert.AreEqual(test.Y, test[1]);
@@ -38,25 +38,25 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests initialization from <see cref="Cartesian3"/> coordinates.
+        /// Tests initialization from <see cref="Cartesian"/> coordinates.
         /// </summary>
         [Test]
         public void TestFromCartesian()
         {
-            UnitCartesian3 test = new UnitCartesian3(new Cartesian3(2.0, 3.0, 6.0));
+            UnitCartesian test = new UnitCartesian(new Cartesian(2.0, 3.0, 6.0));
             Assert.AreEqual(2.0 / 7.0, test.X, Constants.Epsilon15);
             Assert.AreEqual(3.0 / 7.0, test.Y, Constants.Epsilon15);
             Assert.AreEqual(6.0 / 7.0, test.Z, Constants.Epsilon15);
         }
 
         /// <summary>
-        /// Tests initialization from <see cref="Cartesian3"/> coordinates.
+        /// Tests initialization from <see cref="Cartesian"/> coordinates.
         /// </summary>
         [Test]
         public void TestFromCartesianAndReturnMagnitude()
         {
             double magnitude;
-            UnitCartesian3 test = new UnitCartesian3(new Cartesian3(2.0, 3.0, 6.0), out magnitude);
+            UnitCartesian test = new UnitCartesian(new Cartesian(2.0, 3.0, 6.0), out magnitude);
             Assert.AreEqual(2.0 / 7.0, test.X, Constants.Epsilon15);
             Assert.AreEqual(3.0 / 7.0, test.Y, Constants.Epsilon15);
             Assert.AreEqual(6.0 / 7.0, test.Z, Constants.Epsilon15);
@@ -70,7 +70,7 @@ namespace CesiumLanguageWriterTests
         public void TestInitializeAndReturnMagnitude()
         {
             double magnitude;
-            UnitCartesian3 test = new UnitCartesian3(2.0, 3.0, 6.0, out magnitude);
+            UnitCartesian test = new UnitCartesian(2.0, 3.0, 6.0, out magnitude);
             Assert.AreEqual(2.0 / 7.0, test.X, Constants.Epsilon15);
             Assert.AreEqual(3.0 / 7.0, test.Y, Constants.Epsilon15);
             Assert.AreEqual(6.0 / 7.0, test.Z, Constants.Epsilon15);
@@ -86,7 +86,7 @@ namespace CesiumLanguageWriterTests
             double fortyFiveDegrees = Math.PI / 4.0;
             double thirtyDegrees = Math.PI / 6.0;
 
-            UnitCartesian3 test = new UnitCartesian3(thirtyDegrees, fortyFiveDegrees);
+            UnitCartesian test = new UnitCartesian(thirtyDegrees, fortyFiveDegrees);
             Assert.AreEqual(Math.Sqrt(3.0) / Math.Sqrt(8.0), test.X, Constants.Epsilon15);
             Assert.AreEqual(1.0 / Math.Sqrt(8.0), test.Y, Constants.Epsilon15);
             Assert.AreEqual(1.0 / Math.Sqrt(2.0), test.Z, Constants.Epsilon15);
@@ -98,8 +98,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestEquality()
         {
-            UnitCartesian3 first = new UnitCartesian3(1.0, 2.0, 3.0);
-            UnitCartesian3 second = new UnitCartesian3(1.0, 2.0, 3.0);
+            UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
+            UnitCartesian second = new UnitCartesian(1.0, 2.0, 3.0);
             Assert.AreEqual(first, second);
             Assert.AreEqual(second, first);
             Assert.IsTrue(first == second);
@@ -109,7 +109,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(first.Equals(second));
             Assert.IsTrue(second.Equals(first));
 
-            second = new UnitCartesian3(0.0, 2.0, 3.0);
+            second = new UnitCartesian(0.0, 2.0, 3.0);
             Assert.AreNotEqual(first, second);
             Assert.AreNotEqual(second, first);
             Assert.IsFalse(first == second);
@@ -119,7 +119,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsFalse(first.Equals(second));
             Assert.IsFalse(second.Equals(first));
 
-            second = new UnitCartesian3(1.0, 0.0, 3.0);
+            second = new UnitCartesian(1.0, 0.0, 3.0);
             Assert.AreNotEqual(first, second);
             Assert.AreNotEqual(second, first);
             Assert.IsFalse(first == second);
@@ -129,7 +129,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsFalse(first.Equals(second));
             Assert.IsFalse(second.Equals(first));
 
-            second = new UnitCartesian3(1.0, 2.0, 0.0);
+            second = new UnitCartesian(1.0, 2.0, 0.0);
             Assert.AreNotEqual(first, second);
             Assert.AreNotEqual(second, first);
             Assert.IsFalse(first == second);
@@ -141,13 +141,13 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests the <see cref="UnitCartesian3.EqualsEpsilon"/> method.
+        /// Tests the <see cref="UnitCartesian.EqualsEpsilon"/> method.
         /// </summary>
         [Test]
         public void TestEqualsEpsilon()
         {
-            UnitCartesian3 first = new UnitCartesian3(1.0, 1.0, 1.0);
-            UnitCartesian3 second = new UnitCartesian3(0.99, 1.0, 1.01);
+            UnitCartesian first = new UnitCartesian(1.0, 1.0, 1.0);
+            UnitCartesian second = new UnitCartesian(0.99, 1.0, 1.01);
             Assert.IsTrue(second.EqualsEpsilon(first, 1e-1));
             Assert.IsTrue(second.EqualsEpsilon(first, 1e-2));
             Assert.IsFalse(second.EqualsEpsilon(first, 1e-3));
@@ -161,23 +161,23 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestEqualityWithWrongType()
         {
-            UnitCartesian3 first = new UnitCartesian3(1.0, 2.0, 3.0);
+            UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
             Cartographic second = new Cartographic(1.0, 2.0, 3.0);
 
             Assert.IsFalse(first.Equals(second));
         }
 
         /// <summary>
-        /// Tests the <see cref="UnitCartesian3.IsUndefined"/> method.
+        /// Tests the <see cref="UnitCartesian.IsUndefined"/> method.
         /// </summary>
         [Test]
         public void TestIsUndefined()
         {
-            Assert.IsFalse(new UnitCartesian3(1.0, 1.0, 1.0).IsUndefined);
-            Assert.IsTrue(UnitCartesian3.Undefined.IsUndefined);
-            Assert.IsTrue(new UnitCartesian3(Double.NaN, 1.0, 1.0).IsUndefined);
-            Assert.IsTrue(new UnitCartesian3(1.0, Double.NaN, 1.0).IsUndefined);
-            Assert.IsTrue(new UnitCartesian3(1.0, 1.0, Double.NaN).IsUndefined);
+            Assert.IsFalse(new UnitCartesian(1.0, 1.0, 1.0).IsUndefined);
+            Assert.IsTrue(UnitCartesian.Undefined.IsUndefined);
+            Assert.IsTrue(new UnitCartesian(Double.NaN, 1.0, 1.0).IsUndefined);
+            Assert.IsTrue(new UnitCartesian(1.0, Double.NaN, 1.0).IsUndefined);
+            Assert.IsTrue(new UnitCartesian(1.0, 1.0, Double.NaN).IsUndefined);
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace CesiumLanguageWriterTests
         [ExpectedException(typeof(DivideByZeroException))]
         public void TestFromZero()
         {
-            UnitCartesian3 first = new UnitCartesian3(Cartesian3.Zero);
+            UnitCartesian first = new UnitCartesian(Cartesian.Zero);
         }
 
         /// <summary>
@@ -199,58 +199,58 @@ namespace CesiumLanguageWriterTests
         [ExpectedException(typeof(NotFiniteNumberException))]
         public void TestFromInfinity()
         {
-            UnitCartesian3 first = new UnitCartesian3(Double.PositiveInfinity, 0.0, 0.0);
+            UnitCartesian first = new UnitCartesian(Double.PositiveInfinity, 0.0, 0.0);
         }
 
         /// <summary>
-        /// Tests the <see cref="UnitCartesian3.AngleBetween"/> method.
+        /// Tests the <see cref="UnitCartesian.AngleBetween"/> method.
         /// </summary>
         [Test]
         public void TestAngleBetween()
         {
             double fortyFiveDegrees = Math.PI / 4.0;
 
-            UnitCartesian3 first = new UnitCartesian3(1.0, 1.0, 0.0);
-            UnitCartesian3 second = new UnitCartesian3(1.0, 1.0, Math.Sqrt(2.0));
+            UnitCartesian first = new UnitCartesian(1.0, 1.0, 0.0);
+            UnitCartesian second = new UnitCartesian(1.0, 1.0, Math.Sqrt(2.0));
             Assert.AreEqual(fortyFiveDegrees, second.AngleBetween(first), Constants.Epsilon15);
         }
 
         /// <summary>
-        /// Tests the <see cref="UnitCartesian3.MostOrthogonalAxis"/> method.
+        /// Tests the <see cref="UnitCartesian.MostOrthogonalAxis"/> method.
         /// </summary>
         [Test]
         public void TestMostOrthogonalAxis()
         {
-            UnitCartesian3 Cartesian3 = new UnitCartesian3(1.0, 2.0, 3.0);
-            Assert.AreEqual(UnitCartesian3.UnitX, Cartesian3.MostOrthogonalAxis);
-            Cartesian3 = new UnitCartesian3(2.0, 3.0, 1.0);
-            Assert.AreEqual(UnitCartesian3.UnitZ, Cartesian3.MostOrthogonalAxis);
-            Cartesian3 = new UnitCartesian3(3.0, 1.0, 2.0);
-            Assert.AreEqual(UnitCartesian3.UnitY, Cartesian3.MostOrthogonalAxis);
+            UnitCartesian Cartesian3 = new UnitCartesian(1.0, 2.0, 3.0);
+            Assert.AreEqual(UnitCartesian.UnitX, Cartesian3.MostOrthogonalAxis);
+            Cartesian3 = new UnitCartesian(2.0, 3.0, 1.0);
+            Assert.AreEqual(UnitCartesian.UnitZ, Cartesian3.MostOrthogonalAxis);
+            Cartesian3 = new UnitCartesian(3.0, 1.0, 2.0);
+            Assert.AreEqual(UnitCartesian.UnitY, Cartesian3.MostOrthogonalAxis);
         }
 
         /// <summary>
-        /// Tests the <see cref="UnitCartesian3.MostParallelAxis"/> method.
+        /// Tests the <see cref="UnitCartesian.MostParallelAxis"/> method.
         /// </summary>
         [Test]
         public void TestMostParallelAxis()
         {
-            UnitCartesian3 Cartesian3 = new UnitCartesian3(1.0, 2.0, 3.0);
-            Assert.AreEqual(UnitCartesian3.UnitZ, Cartesian3.MostParallelAxis);
-            Cartesian3 = new UnitCartesian3(2.0, 3.0, 1.0);
-            Assert.AreEqual(UnitCartesian3.UnitY, Cartesian3.MostParallelAxis);
-            Cartesian3 = new UnitCartesian3(3.0, 1.0, 2.0);
-            Assert.AreEqual(UnitCartesian3.UnitX, Cartesian3.MostParallelAxis);
+            UnitCartesian Cartesian3 = new UnitCartesian(1.0, 2.0, 3.0);
+            Assert.AreEqual(UnitCartesian.UnitZ, Cartesian3.MostParallelAxis);
+            Cartesian3 = new UnitCartesian(2.0, 3.0, 1.0);
+            Assert.AreEqual(UnitCartesian.UnitY, Cartesian3.MostParallelAxis);
+            Cartesian3 = new UnitCartesian(3.0, 1.0, 2.0);
+            Assert.AreEqual(UnitCartesian.UnitX, Cartesian3.MostParallelAxis);
         }
 
         /// <summary>
-        /// Tests the <see cref="UnitCartesian3.Invert"/> method.
+        /// Tests the <see cref="UnitCartesian.Invert"/> method.
         /// </summary>
         [Test]
         public void TestInvert()
         {
-            UnitCartesian3 Cartesian3 = new UnitCartesian3(2.0, 3.0, 6.0);
-            UnitCartesian3 inverted = Cartesian3.Invert();
+            UnitCartesian Cartesian3 = new UnitCartesian(2.0, 3.0, 6.0);
+            UnitCartesian inverted = Cartesian3.Invert();
             Assert.AreEqual(-2.0 / 7.0, inverted.X);
             Assert.AreEqual(-3.0 / 7.0, inverted.Y);
             Assert.AreEqual(-6.0 / 7.0, inverted.Z);
@@ -262,7 +262,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestNegation()
         {
-            UnitCartesian3 u = -new UnitCartesian3(2.0, 3.0, 6.0);
+            UnitCartesian u = -new UnitCartesian(2.0, 3.0, 6.0);
             Assert.AreEqual(-2.0 / 7.0, u.X);
             Assert.AreEqual(-3.0 / 7.0, u.Y);
             Assert.AreEqual(-6.0 / 7.0, u.Z);
@@ -274,21 +274,21 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestAdd()
         {
-            UnitCartesian3 original1 = UnitCartesian3.UnitX;
-            UnitCartesian3 toAdd1 = UnitCartesian3.UnitY;
-            Cartesian3 result = original1 + toAdd1;
+            UnitCartesian original1 = UnitCartesian.UnitX;
+            UnitCartesian toAdd1 = UnitCartesian.UnitY;
+            Cartesian result = original1 + toAdd1;
             Assert.AreEqual(1.0, result.X);
             Assert.AreEqual(1.0, result.Y);
             Assert.AreEqual(0.0, result.Z);
 
-            Cartesian3 toAdd2 = new Cartesian3(0.0, 1.0, 1.0);
+            Cartesian toAdd2 = new Cartesian(0.0, 1.0, 1.0);
             result = original1 + toAdd2;
             Assert.AreEqual(1.0, result.X);
             Assert.AreEqual(1.0, result.Y);
             Assert.AreEqual(1.0, result.Z);
 
-            Cartesian3 original2 = new Cartesian3(0.0, 1.0, 1.0);
-            UnitCartesian3 toAdd3 = UnitCartesian3.UnitX;
+            Cartesian original2 = new Cartesian(0.0, 1.0, 1.0);
+            UnitCartesian toAdd3 = UnitCartesian.UnitX;
             result = original2 + toAdd3;
             Assert.AreEqual(1.0, result.X);
             Assert.AreEqual(1.0, result.Y);
@@ -301,21 +301,21 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestSubtract()
         {
-            UnitCartesian3 original = UnitCartesian3.UnitX;
-            UnitCartesian3 toAdd1 = UnitCartesian3.UnitY;
-            Cartesian3 result = original - toAdd1;
+            UnitCartesian original = UnitCartesian.UnitX;
+            UnitCartesian toAdd1 = UnitCartesian.UnitY;
+            Cartesian result = original - toAdd1;
             Assert.AreEqual(1.0, result.X);
             Assert.AreEqual(-1.0, result.Y);
             Assert.AreEqual(0.0, result.Z);
 
-            Cartesian3 toAdd2 = new Cartesian3(0.0, 1.0, 1.0);
+            Cartesian toAdd2 = new Cartesian(0.0, 1.0, 1.0);
             result = original - toAdd2;
             Assert.AreEqual(1.0, result.X);
             Assert.AreEqual(-1.0, result.Y);
             Assert.AreEqual(-1.0, result.Z);
 
-            Cartesian3 original2 = new Cartesian3(0.0, 1.0, 1.0);
-            UnitCartesian3 toAdd3 = UnitCartesian3.UnitX;
+            Cartesian original2 = new Cartesian(0.0, 1.0, 1.0);
+            UnitCartesian toAdd3 = UnitCartesian.UnitX;
             result = original2 - toAdd3;
             Assert.AreEqual(-1.0, result.X);
             Assert.AreEqual(1.0, result.Y);
@@ -328,8 +328,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestMultiply()
         {
-            UnitCartesian3 original = new UnitCartesian3(2.0, 3.0, 6.0);
-            Cartesian3 multiplied = original * 7.0;
+            UnitCartesian original = new UnitCartesian(2.0, 3.0, 6.0);
+            Cartesian multiplied = original * 7.0;
             Assert.AreEqual(2.0, multiplied.X);
             Assert.AreEqual(3.0, multiplied.Y);
             Assert.AreEqual(6.0, multiplied.Z);
@@ -346,8 +346,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestDivide()
         {
-            UnitCartesian3 original = new UnitCartesian3(2.0, 3.0, 6.0);
-            Cartesian3 result = original / 2.0;
+            UnitCartesian original = new UnitCartesian(2.0, 3.0, 6.0);
+            Cartesian result = original / 2.0;
             Assert.AreEqual(2.0 / 14.0, result.X);
             Assert.AreEqual(3.0 / 14.0, result.Y);
             Assert.AreEqual(6.0 / 14.0, result.Z);
@@ -364,12 +364,12 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestDotProduct()
         {
-            UnitCartesian3 first = new UnitCartesian3(1.0, 3.0, -2.0);
-            UnitCartesian3 second = new UnitCartesian3(4.0, -2.0, -1.0);
+            UnitCartesian first = new UnitCartesian(1.0, 3.0, -2.0);
+            UnitCartesian second = new UnitCartesian(4.0, -2.0, -1.0);
             Assert.AreEqual(0, first.Dot(second), Constants.Epsilon15);
             Assert.AreEqual(0, second.Dot(first), Constants.Epsilon15);
 
-            Cartesian3 result = new Cartesian3(4.0, -2.0, -1.0);
+            Cartesian result = new Cartesian(4.0, -2.0, -1.0);
             Assert.AreEqual(0, first.Dot(result));
         }
 
@@ -390,16 +390,16 @@ namespace CesiumLanguageWriterTests
             // The three vectors here are the orthonormal set obtained by rotating
             // the x-axis, y-axis, and z-axis through an angle of 45 degrees about
             // the (1,1,1) vector.
-            UnitCartesian3 first = new UnitCartesian3(a, b, c);
-            UnitCartesian3 second = new UnitCartesian3(c, a, b);
-            UnitCartesian3 third = new UnitCartesian3(b, c, a);
-            Cartesian3 result = first.Cross(second);
+            UnitCartesian first = new UnitCartesian(a, b, c);
+            UnitCartesian second = new UnitCartesian(c, a, b);
+            UnitCartesian third = new UnitCartesian(b, c, a);
+            Cartesian result = first.Cross(second);
 
             Assert.AreEqual(third.X, result.X, Constants.Epsilon14);
             Assert.AreEqual(third.Y, result.Y, Constants.Epsilon14);
             Assert.AreEqual(third.Z, result.Z, Constants.Epsilon14);
 
-            Cartesian3 Cartesian3 = new Cartesian3(c, a, b);
+            Cartesian Cartesian3 = new Cartesian(c, a, b);
             result = first.Cross(Cartesian3);
 
             Assert.AreEqual(third.X, result.X, Constants.Epsilon14);
@@ -417,7 +417,7 @@ namespace CesiumLanguageWriterTests
             double cos = Math.Cos(angle);
             double sin = Math.Sin(angle);
 
-            UnitCartesian3 axis = new UnitCartesian3(1.0, 1.0, 1.0); // unit vector along [1,1,1]
+            UnitCartesian axis = new UnitCartesian(1.0, 1.0, 1.0); // unit vector along [1,1,1]
 
             double w = cos;
             double x = sin * axis.X;
@@ -425,10 +425,10 @@ namespace CesiumLanguageWriterTests
             double z = sin * axis.Z;
 
             // The original vector is along the x-axis.
-            UnitCartesian3 original = UnitCartesian3.UnitX;
+            UnitCartesian original = UnitCartesian.UnitX;
 
             // The rotated vector is along the z-axis.
-            UnitCartesian3 rotated = original.Rotate(new UnitQuaternion(w, x, y, z));
+            UnitCartesian rotated = original.Rotate(new UnitQuaternion(w, x, y, z));
             Assert.AreEqual(0.0, rotated.X, Constants.Epsilon15);
             Assert.AreEqual(0.0, rotated.Y, Constants.Epsilon15);
             Assert.AreEqual(1.0, rotated.Z, Constants.Epsilon15);
@@ -444,7 +444,7 @@ namespace CesiumLanguageWriterTests
             double cos = Math.Cos(angle);
             double sin = Math.Sin(angle);
 
-            UnitCartesian3 axis = new UnitCartesian3(1.0, 1.0, 1.0); // unit vector along [1,1,1]
+            UnitCartesian axis = new UnitCartesian(1.0, 1.0, 1.0); // unit vector along [1,1,1]
 
             double w = cos;
             double x = sin * axis.X;
@@ -452,10 +452,10 @@ namespace CesiumLanguageWriterTests
             double z = sin * axis.Z;
 
             // The original vector is along the x-axis.
-            UnitCartesian3 original = new UnitCartesian3(1.0, 0.0, 0.0);
+            UnitCartesian original = new UnitCartesian(1.0, 0.0, 0.0);
 
             // The rotated vector is along the z-axis.
-            UnitCartesian3 rotated = original.Rotate(new Matrix3By3(new UnitQuaternion(w, x, y, z)));
+            UnitCartesian rotated = original.Rotate(new Matrix3By3(new UnitQuaternion(w, x, y, z)));
             Assert.AreEqual(0.0, rotated.X, Constants.Epsilon15);
             Assert.AreEqual(0.0, rotated.Y, Constants.Epsilon15);
             Assert.AreEqual(1.0, rotated.Z, Constants.Epsilon15);
@@ -467,9 +467,9 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestGetHashCode()
         {
-            UnitCartesian3 object1 = new UnitCartesian3(1.0, 2.0, 3.0);
-            UnitCartesian3 object2 = new UnitCartesian3(1.0, 2.0, 3.0);
-            UnitCartesian3 object3 = new UnitCartesian3(1.0, 2.0, 3.1);
+            UnitCartesian object1 = new UnitCartesian(1.0, 2.0, 3.0);
+            UnitCartesian object2 = new UnitCartesian(1.0, 2.0, 3.0);
+            UnitCartesian object3 = new UnitCartesian(1.0, 2.0, 3.1);
             Assert.AreEqual(object1.GetHashCode(), object2.GetHashCode());
             Assert.AreNotEqual(object1.GetHashCode(), object3.GetHashCode());
         }
@@ -482,7 +482,7 @@ namespace CesiumLanguageWriterTests
         public void TestInitializationFromNull()
         {
             double[] array = null;
-            UnitCartesian3 first = new UnitCartesian3(array, 0);
+            UnitCartesian first = new UnitCartesian(array, 0);
         }
 
         /// <summary>
@@ -493,7 +493,7 @@ namespace CesiumLanguageWriterTests
         public void TestInitializationFromBadArray()
         {
             double[] array = new double[2];
-            UnitCartesian3 first = new UnitCartesian3(array, 0);
+            UnitCartesian first = new UnitCartesian(array, 0);
         }
 
         /// <summary>
@@ -503,7 +503,7 @@ namespace CesiumLanguageWriterTests
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestIndexTooHigh()
         {
-            UnitCartesian3 first = new UnitCartesian3(1.0, 2.0, 3.0);
+            UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
             double bad = first[3];
         }
 
@@ -514,7 +514,7 @@ namespace CesiumLanguageWriterTests
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestIndexTooLow()
         {
-            UnitCartesian3 first = new UnitCartesian3(1.0, 2.0, 3.0);
+            UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
             double bad = first[-1];
         }
 
@@ -524,9 +524,9 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestToString()
         {
-            UnitCartesian3 test1 = new UnitCartesian3(1.0, 0.0, 0.0);
-            UnitCartesian3 test2 = new UnitCartesian3(0.0, 1.0, 0.0);
-            UnitCartesian3 test3 = new UnitCartesian3(0.0, 0.0, 1.0);
+            UnitCartesian test1 = new UnitCartesian(1.0, 0.0, 0.0);
+            UnitCartesian test2 = new UnitCartesian(0.0, 1.0, 0.0);
+            UnitCartesian test3 = new UnitCartesian(0.0, 0.0, 1.0);
 
             Assert.AreEqual("1, 0, 0", test1.ToString());
             Assert.AreEqual("0, 1, 0", test2.ToString());

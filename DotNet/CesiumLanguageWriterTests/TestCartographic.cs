@@ -89,7 +89,7 @@ namespace CesiumLanguageWriterTests
         public void TestEqualityWithWrongType()
         {
             Cartographic first = new Cartographic(1.0, 2.0, 3.0);
-            Cartesian3 second = new Cartesian3(1.0, 2.0, 3.0);
+            Cartesian second = new Cartesian(1.0, 2.0, 3.0);
 
             Assert.IsFalse(first.Equals(second));
         }

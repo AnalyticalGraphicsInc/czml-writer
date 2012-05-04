@@ -9,15 +9,15 @@ namespace CesiumLanguageWriter
     /// A set of rectilinear 3-dimensional coordinates.
     /// </summary>
     /// <remarks>
-    /// The corresponding 2-dimensional coordinates are <see cref="Cartesian2"/> coordinates.
+    /// The corresponding 2-dimensional coordinates are <see cref="Rectangular"/> coordinates.
     /// </remarks>
     [CSToJavaImmutableValueType]
-    public struct Cartesian3 : IEquatable<Cartesian3>
+    public struct Cartesian : IEquatable<Cartesian>
     {
         /// <summary>
-        /// Gets a set of <see cref="Cartesian3"/> coordinates with values of zero.
+        /// Gets a set of <see cref="Cartesian"/> coordinates with values of zero.
         /// </summary>
-        public static Cartesian3 Zero
+        public static Cartesian Zero
         {
             get
             {
@@ -26,14 +26,14 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets a set of <see cref="Cartesian3"/> coordinates with values of <see cref="Double.NaN"/>.
+        /// Gets a set of <see cref="Cartesian"/> coordinates with values of <see cref="Double.NaN"/>.
         /// </summary>
         /// <remarks>
-        /// Use <see cref="Cartesian3.IsUndefined"/> to test whether a <see cref="Cartesian3"/> instance
+        /// Use <see cref="Cartesian.IsUndefined"/> to test whether a <see cref="Cartesian"/> instance
         /// is undefined since it will return <see langword="true"/> if any of the coordinate values
         /// are <see cref="Double.NaN"/>.
         /// </remarks>
-        public static Cartesian3 Undefined
+        public static Cartesian Undefined
         {
             get
             {
@@ -42,7 +42,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Initializes a set of <see cref="Cartesian3"/> coordinates from 3 consecutive elements in the provided array.
+        /// Initializes a set of <see cref="Cartesian"/> coordinates from 3 consecutive elements in the provided array.
         /// </summary>
         /// <param name="elements">The array of coordinate values.</param>
         /// <param name="startIndex">The index of the first element in the array to use.</param>
@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         /// <exception cref="ArgumentOutOfRangeException">
         /// Thrown when an object of this type is constructed from an array with less than 3 <paramref name="elements"/>.
         /// </exception>
-        public Cartesian3(double[] elements, int startIndex)
+        public Cartesian(double[] elements, int startIndex)
         {
             if (elements == null)
             {
@@ -61,7 +61,7 @@ namespace CesiumLanguageWriter
             else if (startIndex >= elements.Length ||
                      elements.Length - startIndex < s_length)
             {
-                throw new ArgumentOutOfRangeException("elements", String.Format(CultureInfo.CurrentCulture, CesiumLocalization.MustBeConstructedFromSpecificNumberOfElements, typeof(Cartesian3), 3));
+                throw new ArgumentOutOfRangeException("elements", String.Format(CultureInfo.CurrentCulture, CesiumLocalization.MustBeConstructedFromSpecificNumberOfElements, typeof(Cartesian), 3));
             }
             else
             {
@@ -72,7 +72,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Initializes a set of <see cref="Cartesian3"/> coordinates from the first 3 consecutive elements in the provided array.
+        /// Initializes a set of <see cref="Cartesian"/> coordinates from the first 3 consecutive elements in the provided array.
         /// </summary>
         /// <param name="elements">The array of coordinate values.</param>
         /// <exception cref="ArgumentNullException">
@@ -81,13 +81,13 @@ namespace CesiumLanguageWriter
         /// <exception cref="ArgumentOutOfRangeException">
         /// An object of this type must be constructed from an array with at least 3 <paramref name="elements"/>.
         /// </exception>
-        public Cartesian3(double[] elements)
+        public Cartesian(double[] elements)
             : this(elements, 0)
         {
         }
 
         /// <summary>
-        /// Initializes a set of <see cref="Cartesian3"/> coordinates from the provided values.
+        /// Initializes a set of <see cref="Cartesian"/> coordinates from the provided values.
         /// </summary>
         /// <param name="x">The linear coordinate along the positive x-axis.</param>
         /// <param name="y">The linear coordinate along the positive y-axis.</param>
@@ -95,7 +95,7 @@ namespace CesiumLanguageWriter
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "2#z")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "1#y")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "0#x")]
-        public Cartesian3(double x, double y, double z)
+        public Cartesian(double x, double y, double z)
         {
             m_x = x;
             m_y = y;
@@ -132,169 +132,169 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Inverts this instance.
         /// </summary>
-        /// <returns>A set of <see cref="Cartesian3"/> coordinates that represents the inverse of this instance.</returns>
-        public Cartesian3 Invert()
+        /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the inverse of this instance.</returns>
+        public Cartesian Invert()
         {
-            return new Cartesian3(-m_x, -m_y, -m_z);
+            return new Cartesian(-m_x, -m_y, -m_z);
         }
 
         /// <summary>
         /// Multiplies this instance by a scalar.
         /// </summary>
         /// <param name="scalar">The multiplier, or value which is to multiply this instance.</param>
-        /// <returns>A set of <see cref="Cartesian3"/> coordinates that represents the result of the multiplication.</returns>
-        public Cartesian3 Multiply(double scalar)
+        /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the multiplication.</returns>
+        public Cartesian Multiply(double scalar)
         {
-            return new Cartesian3(m_x * scalar, m_y * scalar, m_z * scalar);
+            return new Cartesian(m_x * scalar, m_y * scalar, m_z * scalar);
         }
 
         /// <summary>
         /// Divides this instance by a scalar.
         /// </summary>
         /// <param name="scalar">The divisor, or value which is to divide this instance.</param>
-        /// <returns>A set of <see cref="Cartesian3"/> coordinates that represents the result of the division.</returns>
-        public Cartesian3 Divide(double scalar)
+        /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the division.</returns>
+        public Cartesian Divide(double scalar)
         {
-            return new Cartesian3(m_x / scalar, m_y / scalar, m_z / scalar);
+            return new Cartesian(m_x / scalar, m_y / scalar, m_z / scalar);
         }
 
         /// <summary>
-        /// Adds the specified set of <see cref="Cartesian3"/> coordinates to this instance.
+        /// Adds the specified set of <see cref="Cartesian"/> coordinates to this instance.
         /// </summary>
         /// <param name="other">The addend, or value which is to be added to this instance.</param>
-        /// <returns>A set of <see cref="Cartesian3"/> coordinates that represents the result of the addition.</returns>
-        public Cartesian3 Add(Cartesian3 other)
+        /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the addition.</returns>
+        public Cartesian Add(Cartesian other)
         {
-            return new Cartesian3(m_x + other.m_x, m_y + other.m_y, m_z + other.m_z);
+            return new Cartesian(m_x + other.m_x, m_y + other.m_y, m_z + other.m_z);
         }
 
         /// <summary>
-        /// Subtracts the specified set of <see cref="Cartesian3"/> coordinates from this instance.
+        /// Subtracts the specified set of <see cref="Cartesian"/> coordinates from this instance.
         /// </summary>
         /// <param name="other">The subtrahend, or value which is to be subtracted from this instance.</param>
-        /// <returns>A set of <see cref="Cartesian3"/> coordinates that represents the result of the subtraction.</returns>
-        public Cartesian3 Subtract(Cartesian3 other)
+        /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the subtraction.</returns>
+        public Cartesian Subtract(Cartesian other)
         {
-            return new Cartesian3(m_x - other.m_x, m_y - other.m_y, m_z - other.m_z);
+            return new Cartesian(m_x - other.m_x, m_y - other.m_y, m_z - other.m_z);
         }
 
         /// <summary>
-        /// Forms the cross product of the specified set of <see cref="Cartesian3"/> coordinates with this instance.
+        /// Forms the cross product of the specified set of <see cref="Cartesian"/> coordinates with this instance.
         /// </summary>
-        /// <param name="other">The set of <see cref="Cartesian3"/> coordinates to cross with this instance.</param>
-        /// <returns>A set of <see cref="Cartesian3"/> coordinates that represents the result of the product.</returns>
-        public Cartesian3 Cross(Cartesian3 other)
+        /// <param name="other">The set of <see cref="Cartesian"/> coordinates to cross with this instance.</param>
+        /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the product.</returns>
+        public Cartesian Cross(Cartesian other)
         {
-            return new Cartesian3(m_y * other.m_z - m_z * other.m_y, m_z * other.m_x - m_x * other.m_z, m_x * other.m_y - m_y * other.m_x);
+            return new Cartesian(m_y * other.m_z - m_z * other.m_y, m_z * other.m_x - m_x * other.m_z, m_x * other.m_y - m_y * other.m_x);
         }
 
         /// <summary>
-        /// Forms the dot product of the specified set of <see cref="Cartesian3"/> coordinates with this instance.
+        /// Forms the dot product of the specified set of <see cref="Cartesian"/> coordinates with this instance.
         /// </summary>
-        /// <param name="other">The set of <see cref="Cartesian3"/> coordinates to dot with this instance.</param>
+        /// <param name="other">The set of <see cref="Cartesian"/> coordinates to dot with this instance.</param>
         /// <returns>A <see cref="double"/> that represents the result of the product.</returns>
-        public double Dot(Cartesian3 other)
+        public double Dot(Cartesian other)
         {
             return m_x * other.m_x + m_y * other.m_y + m_z * other.m_z;
         }
 
         /// <summary>
-        /// Multiplies a specified set of <see cref="Cartesian3"/> coordinates by a scalar.
+        /// Multiplies a specified set of <see cref="Cartesian"/> coordinates by a scalar.
         /// </summary>
         /// <param name="left">The multiplicand, or value which is to be multiplied by <paramref name="right"/>.</param>
         /// <param name="right">The multiplier, or value which is to multiply <paramref name="left"/>.</param>
-        /// <returns>A set of <see cref="Cartesian3"/> coordinates that represents the result of the multiplication.</returns>
-        public static Cartesian3 operator *(Cartesian3 left, double right)
+        /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the multiplication.</returns>
+        public static Cartesian operator *(Cartesian left, double right)
         {
             return left.Multiply(right);
         }
 
         /// <summary>
-        /// Multiplies a scalar by a specified set of set of <see cref="Cartesian3"/> coordinates.
+        /// Multiplies a scalar by a specified set of set of <see cref="Cartesian"/> coordinates.
         /// </summary>
         /// <param name="left">The multiplicand, or value which is to be multiplied by <paramref name="right"/>.</param>
         /// <param name="right">The multiplier, or value which is to multiply <paramref name="left"/>.</param>
-        /// <returns>A set of <see cref="Cartesian3"/> coordinates that represents the result of the multiplication.</returns>
-        public static Cartesian3 operator *(double left, Cartesian3 right)
+        /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the multiplication.</returns>
+        public static Cartesian operator *(double left, Cartesian right)
         {
             return right.Multiply(left);
         }
 
         /// <summary>
-        /// Divides a specified set of <see cref="Cartesian3"/> coordinates by a scalar.
+        /// Divides a specified set of <see cref="Cartesian"/> coordinates by a scalar.
         /// </summary>
         /// <param name="left">The dividend, or value which is to be divided by <paramref name="right"/>.</param>
         /// <param name="right">The divisor, or value which is to divide <paramref name="left"/>.</param>
-        /// <returns>A set of <see cref="Cartesian3"/> coordinates that represents the result of the division.</returns>
-        public static Cartesian3 operator /(Cartesian3 left, double right)
+        /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the division.</returns>
+        public static Cartesian operator /(Cartesian left, double right)
         {
             return left.Divide(right);
         }
 
         /// <summary>
-        /// Adds a specified set of <see cref="Cartesian3"/> coordinates to another specified set of <see cref="Cartesian3"/> coordinates.
+        /// Adds a specified set of <see cref="Cartesian"/> coordinates to another specified set of <see cref="Cartesian"/> coordinates.
         /// </summary>
         /// <param name="left">The augend, or value to which <paramref name="right"/> is to be added.</param>
         /// <param name="right">The addend, or value which is to be added to <paramref name="left"/>.</param>
-        /// <returns>A set of <see cref="Cartesian3"/> coordinates that represents the result of the addition.</returns>
-        public static Cartesian3 operator +(Cartesian3 left, Cartesian3 right)
+        /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the addition.</returns>
+        public static Cartesian operator +(Cartesian left, Cartesian right)
         {
             return left.Add(right);
         }
 
         /// <summary>
-        /// Subtracts a specified set of <see cref="Cartesian3"/> coordinates from another specified set of <see cref="Cartesian3"/> coordinates.
+        /// Subtracts a specified set of <see cref="Cartesian"/> coordinates from another specified set of <see cref="Cartesian"/> coordinates.
         /// </summary>
         /// <param name="left">The minuend, or value from which <paramref name="right"/> is to be subtracted.</param>
         /// <param name="right">The subtrahend, or value which is to be subtracted from <paramref name="left"/>.</param>
-        /// <returns>A set of <see cref="Cartesian3"/> coordinates that represents the result of the subtraction.</returns>
-        public static Cartesian3 operator -(Cartesian3 left, Cartesian3 right)
+        /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the subtraction.</returns>
+        public static Cartesian operator -(Cartesian left, Cartesian right)
         {
             return left.Subtract(right);
         }
 
         /// <summary>
-        /// Negates the specified set of <see cref="Cartesian3"/> coordinates, yielding a new set of <see cref="Cartesian3"/> coordinates.
+        /// Negates the specified set of <see cref="Cartesian"/> coordinates, yielding a new set of <see cref="Cartesian"/> coordinates.
         /// </summary>
         /// <param name="coordinates">The set of coordinates.</param>
-        /// <returns>The result of negating the elements of the original set of <see cref="Cartesian3"/> coordinates.</returns>
-        public static Cartesian3 operator -(Cartesian3 coordinates)
+        /// <returns>The result of negating the elements of the original set of <see cref="Cartesian"/> coordinates.</returns>
+        public static Cartesian operator -(Cartesian coordinates)
         {
-            return new Cartesian3(-coordinates.m_x, -coordinates.m_y, -coordinates.m_z);
+            return new Cartesian(-coordinates.m_x, -coordinates.m_y, -coordinates.m_z);
         }
 
         /// <summary>
-        /// Produces a set of <see cref="Cartesian3"/> coordinates representing this instance which results from rotating
+        /// Produces a set of <see cref="Cartesian"/> coordinates representing this instance which results from rotating
         /// the original axes used to represent this instance by the provided <see cref="Matrix3By3"/> rotation.
         /// </summary>
         /// <param name="rotation">The <see cref="Matrix3By3"/> rotation.</param>
-        /// <returns>A set of <see cref="Cartesian3"/> coordinates which is the result of the rotation.</returns>
+        /// <returns>A set of <see cref="Cartesian"/> coordinates which is the result of the rotation.</returns>
         /// <remarks>
         /// This type of rotation is sometimes referred to as an "alias rotation".
         /// </remarks>
-        public Cartesian3 Rotate(Matrix3By3 rotation)
+        public Cartesian Rotate(Matrix3By3 rotation)
         {
-            return new Cartesian3(rotation.M11 * m_x + rotation.M12 * m_y + rotation.M13 * m_z,
+            return new Cartesian(rotation.M11 * m_x + rotation.M12 * m_y + rotation.M13 * m_z,
                                   rotation.M21 * m_x + rotation.M22 * m_y + rotation.M23 * m_z,
                                   rotation.M31 * m_x + rotation.M32 * m_y + rotation.M33 * m_z);
         }
 
         /// <summary>
-        /// Produces a set of <see cref="Cartesian3"/> coordinates representing this instance which results from rotating
+        /// Produces a set of <see cref="Cartesian"/> coordinates representing this instance which results from rotating
         /// the original axes used to represent this instance by the provided <see cref="UnitQuaternion"/> rotation.
         /// </summary>
         /// <param name="rotation">The <see cref="UnitQuaternion"/> rotation.</param>
-        /// <returns>A set of <see cref="Cartesian3"/> coordinates which is the result of the rotation.</returns>
+        /// <returns>A set of <see cref="Cartesian"/> coordinates which is the result of the rotation.</returns>
         /// <remarks>
         /// This type of rotation is sometimes referred to as an "alias rotation".
         /// </remarks>
-        public Cartesian3 Rotate(UnitQuaternion rotation)
+        public Cartesian Rotate(UnitQuaternion rotation)
         {
             double w = rotation.W;
             double difference = w * w - rotation.X * rotation.X - rotation.Y * rotation.Y - rotation.Z * rotation.Z;
             double dot = m_x * rotation.X + m_y * rotation.Y + m_z * rotation.Z;
 
-            return new Cartesian3(difference * m_x + 2.0 * (w * (m_y * rotation.Z - m_z * rotation.Y) + dot * rotation.X),
+            return new Cartesian(difference * m_x + 2.0 * (w * (m_y * rotation.Z - m_z * rotation.Y) + dot * rotation.X),
                                   difference * m_y + 2.0 * (w * (m_z * rotation.X - m_x * rotation.Z) + dot * rotation.Y),
                                   difference * m_z + 2.0 * (w * (m_x * rotation.Y - m_y * rotation.X) + dot * rotation.Z));
         }
@@ -306,9 +306,9 @@ namespace CesiumLanguageWriter
         /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
-            if (obj is Cartesian3)
+            if (obj is Cartesian)
             {
-                return Equals((Cartesian3)obj);
+                return Equals((Cartesian)obj);
             }
             else
             {
@@ -320,12 +320,12 @@ namespace CesiumLanguageWriter
         /// Indicates whether each coordinate value of another instance of this type
         /// is within the required tolerance of the corresponding coordinate value of this instance.
         /// </summary>
-        /// <param name="other">The set of <see cref="Cartesian3"/> coordinates to compare to this instance.</param>
+        /// <param name="other">The set of <see cref="Cartesian"/> coordinates to compare to this instance.</param>
         /// <param name="epsilon">The limit at which the absolute differences between the coordinate values will not be considered equal.</param>
         /// <returns>
         /// <see langword="true"/> if the absolute differences are less than <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
         /// </returns>
-        public bool EqualsEpsilon(Cartesian3 other, double epsilon)
+        public bool EqualsEpsilon(Cartesian other, double epsilon)
         {
             return Math.Abs(X - other.X) < epsilon &&
                    Math.Abs(Y - other.Y) < epsilon &&
@@ -367,7 +367,7 @@ namespace CesiumLanguageWriter
         /// <returns>
         /// <see langword="true"/> if <paramref name="left"/> represents the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
         /// </returns>
-        public static bool operator ==(Cartesian3 left, Cartesian3 right)
+        public static bool operator ==(Cartesian left, Cartesian right)
         {
             return left.Equals(right);
         }
@@ -380,7 +380,7 @@ namespace CesiumLanguageWriter
         /// <returns>
         /// <see langword="true"/> if <paramref name="left"/> does not represent the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
         /// </returns>
-        public static bool operator !=(Cartesian3 left, Cartesian3 right)
+        public static bool operator !=(Cartesian left, Cartesian right)
         {
             return !left.Equals(right);
         }
@@ -431,31 +431,31 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Forms a set of <see cref="UnitCartesian3"/> coordinates from this instance.
+        /// Forms a set of <see cref="UnitCartesian"/> coordinates from this instance.
         /// </summary>
-        /// <returns>The resulting set of <see cref="UnitCartesian3"/> coordinates.</returns>
+        /// <returns>The resulting set of <see cref="UnitCartesian"/> coordinates.</returns>
         /// <exception cref="DivideByZeroException">
         /// The magnitude of the provided coordinates must not be zero.
         /// </exception>
         /// <exception cref="NotFiniteNumberException">
         /// The magnitude of the provided coordinates must not be infinite.
         /// </exception>
-        public UnitCartesian3 Normalize()
+        public UnitCartesian Normalize()
         {
             double magnitude;
             return Normalize(out magnitude);
         }
 
         /// <summary>
-        /// Forms a set of <see cref="UnitCartesian3"/> coordinates from this instance
+        /// Forms a set of <see cref="UnitCartesian"/> coordinates from this instance
         /// and returns the <see cref="Magnitude"/> of the original instance in the provided parameter.
         /// </summary>
         /// <param name="magnitude">
         /// <filter name="Java">On input, an array with one element.  On return, the array is populated with</filter>
         /// <filter name="DotNet,Silverlight">On return,</filter>
-        /// the magnitude of the original set of <see cref="Cartesian3"/> coordinates.
+        /// the magnitude of the original set of <see cref="Cartesian"/> coordinates.
         /// </param>
-        /// <returns>The resulting set of <see cref="UnitCartesian3"/> coordinates.</returns>
+        /// <returns>The resulting set of <see cref="UnitCartesian"/> coordinates.</returns>
         /// <exception cref="DivideByZeroException">
         /// The magnitude of the provided coordinates must not be zero.
         /// </exception>
@@ -463,19 +463,19 @@ namespace CesiumLanguageWriter
         /// The magnitude of the provided coordinates must not be infinite.
         /// </exception>
         [SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId = "0#")]
-        public UnitCartesian3 Normalize(out double magnitude)
+        public UnitCartesian Normalize(out double magnitude)
         {
-            return new UnitCartesian3(m_x, m_y, m_z, out magnitude);
+            return new UnitCartesian(m_x, m_y, m_z, out magnitude);
         }
 
         /// <summary>
-        /// Converts a set of <see cref="UnitCartesian3"/> coordinates to a set of <see cref="Cartesian3"/> coordinates.
+        /// Converts a set of <see cref="UnitCartesian"/> coordinates to a set of <see cref="Cartesian"/> coordinates.
         /// </summary>
-        /// <param name="coordinates">The set of <see cref="UnitCartesian3"/> coordinates.</param>
-        /// <returns>The resulting set of <see cref="Cartesian3"/> coordinates.</returns>
-        public static implicit operator Cartesian3(UnitCartesian3 coordinates)
+        /// <param name="coordinates">The set of <see cref="UnitCartesian"/> coordinates.</param>
+        /// <returns>The resulting set of <see cref="Cartesian"/> coordinates.</returns>
+        public static implicit operator Cartesian(UnitCartesian coordinates)
         {
-            return new Cartesian3(coordinates.X, coordinates.Y, coordinates.Z);
+            return new Cartesian(coordinates.X, coordinates.Y, coordinates.Z);
         }
 
         private readonly double m_x;
@@ -485,9 +485,9 @@ namespace CesiumLanguageWriter
         [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
         private static readonly int s_length = 3;
 
-        private static readonly Cartesian3 s_zero = new Cartesian3(0.0, 0.0, 0.0);
+        private static readonly Cartesian s_zero = new Cartesian(0.0, 0.0, 0.0);
 
-        private static readonly Cartesian3 s_undefined = new Cartesian3(Double.NaN, Double.NaN, Double.NaN);
+        private static readonly Cartesian s_undefined = new Cartesian(Double.NaN, Double.NaN, Double.NaN);
 
         #region IEquatable<Cartesian3> Members
 
@@ -496,7 +496,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The instance to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
-        public bool Equals(Cartesian3 other)
+        public bool Equals(Cartesian other)
         {
             return other.m_x == m_x && other.m_y == m_y && other.m_z == m_z;
         }

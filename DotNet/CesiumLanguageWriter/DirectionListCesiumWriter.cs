@@ -59,10 +59,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as an array of <see cref="UnitCartesian3"/>
+        /// Writes the value of the property for this interval as an array of <see cref="UnitCartesian"/>
         /// </summary>
         /// <param name="coordinates">The coordinates.</param>
-        public void WriteValue(IEnumerable<UnitCartesian3> coordinates)
+        public void WriteValue(IEnumerable<UnitCartesian> coordinates)
         {
             OpenIntervalIfNecessary();
 

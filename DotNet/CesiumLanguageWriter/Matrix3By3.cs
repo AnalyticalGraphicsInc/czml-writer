@@ -47,7 +47,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="vector">The vector for which the cross product equivalent matrix is desired.</param>
         /// <returns>The cross product equivalent matrix.</returns>
-        public static Matrix3By3 CrossProductEquivalentMatrix(Cartesian3 vector)
+        public static Matrix3By3 CrossProductEquivalentMatrix(Cartesian vector)
         {
             return new Matrix3By3(0.0, -vector.Z, vector.Y, vector.Z, 0.0, -vector.X, -vector.Y, vector.X, 0.0);
         }
@@ -58,7 +58,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="vector">The unit vector for which the cross product equivalent matrix is desired.</param>
         /// <returns>The cross product equivalent matrix.</returns>
-        public static Matrix3By3 CrossProductEquivalentMatrix(UnitCartesian3 vector)
+        public static Matrix3By3 CrossProductEquivalentMatrix(UnitCartesian vector)
         {
             return new Matrix3By3(0.0, -vector.Z, vector.Y, vector.Z, 0.0, -vector.X, -vector.Y, vector.X, 0.0);
         }
@@ -81,7 +81,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="vector">The vector.</param>
         /// <returns>The diagonal matrix</returns>
-        public static Matrix3By3 DiagonalMatrix(Cartesian3 vector)
+        public static Matrix3By3 DiagonalMatrix(Cartesian vector)
         {
             return DiagonalMatrix(vector.X, vector.Y, vector.Z);
         }
@@ -91,7 +91,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="vector">The vector.</param>
         /// <returns>The diagonal matrix.</returns>
-        public static Matrix3By3 DiagonalMatrix(UnitCartesian3 vector)
+        public static Matrix3By3 DiagonalMatrix(UnitCartesian vector)
         {
             return DiagonalMatrix(vector.X, vector.Y, vector.Z);
         }
@@ -408,9 +408,9 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="vector">The vector.</param>
         /// <returns>The resulting Cartesian3 vector.</returns>
-        public Cartesian3 Multiply(Cartesian3 vector)
+        public Cartesian Multiply(Cartesian vector)
         {
-            return new Cartesian3(m_m11 * vector.X + m_m12 * vector.Y + m_m13 * vector.Z,
+            return new Cartesian(m_m11 * vector.X + m_m12 * vector.Y + m_m13 * vector.Z,
                                  m_m21 * vector.X + m_m22 * vector.Y + m_m23 * vector.Z,
                                  m_m31 * vector.X + m_m32 * vector.Y + m_m33 * vector.Z);
         }
@@ -454,7 +454,7 @@ namespace CesiumLanguageWriter
         /// <param name="matrix">The matrix.</param>
         /// <param name="vector">The vector.</param>
         /// <returns>The result of the multiplication.</returns>
-        public static Cartesian3 operator *(Matrix3By3 matrix, Cartesian3 vector)
+        public static Cartesian operator *(Matrix3By3 matrix, Cartesian vector)
         {
             return matrix.Multiply(vector);
         }

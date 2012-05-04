@@ -38,7 +38,7 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests initialization from <see cref="UnitCartesian3"/> coordinates.
+        /// Tests initialization from <see cref="UnitCartesian"/> coordinates.
         /// </summary>
         [Test]
         public void TestFromUnitCartesian()
@@ -46,7 +46,7 @@ namespace CesiumLanguageWriterTests
             double fortyFiveDegrees = Math.PI / 4.0;
             double sixtyDegrees = Math.PI / 3.0;
 
-            UnitSpherical test = new UnitSpherical(new UnitCartesian3(1.0, Math.Sqrt(3.0), -2.0));
+            UnitSpherical test = new UnitSpherical(new UnitCartesian(1.0, Math.Sqrt(3.0), -2.0));
             Assert.AreEqual(sixtyDegrees, test.Clock, Constants.Epsilon15);
             Assert.AreEqual(fortyFiveDegrees + Math.PI / 2.0, test.Cone, Constants.Epsilon15);
         }
