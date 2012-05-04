@@ -40,6 +40,16 @@ namespace CesiumLanguageWriter.Advanced
         {
             return ToIso8601Interval(interval.Start, interval.Stop);
         }
+#else
+        /// <summary>
+        /// Converts a <see cref="TimeInterval"/> as an ISO8601 interval string.
+        /// </summary>
+        /// <param name="interval">The interval to convert.</param>
+        /// <returns>The interval represented as an ISO8601 interval string.</returns>
+        public static string ToIso8601Interval(TimeInterval interval)
+        {
+            return ToIso8601Interval(interval.Start, interval.Stop);
+        }
 #endif
 
         /// <summary>
