@@ -225,6 +225,23 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the position is specified.</param>
         /// <param name="positions">The corresponding position for each date.</param>
+        public void WriteCartographicRadiansValue(IList<JulianDate> dates, IList<Cartographic> positions)
+        {
+            WriteCartographicRadiansValue(dates, positions, 0, dates.Count);
+        }
+
+        /// <summary>
+        /// Writes the value of the property for this interval as a collection of time-tagged positions
+        /// expressed as WGS84 <see cref="Cartographic"/> values where
+        /// <see cref="Cartographic.Longitude"/> and <see cref="Cartographic.Latitude"/> are expressed in radians
+        /// and <see cref="Cartographic.Height"/> is meters above the WGS84 ellipsoid.
+        /// Clients will interpolate over the samples to determine the property value at a given time.  The
+        /// <paramref name="dates"/> need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
+        /// because having samples outside the interval is often useful for interpolation.  However, the samples
+        /// within an interval will never be used to determine the value within another interval.
+        /// </summary>
+        /// <param name="dates">The dates at which the position is specified.</param>
+        /// <param name="positions">The corresponding position for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="positions"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="positions"/> collection.</param>
         public void WriteCartographicRadiansValue(IList<JulianDate> dates, IList<Cartographic> positions, int startIndex, int length)

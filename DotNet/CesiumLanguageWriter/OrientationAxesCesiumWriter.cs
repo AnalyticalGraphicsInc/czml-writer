@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 #if StkComponents
+using AGI.Foundation.Time;
+using AGI.Foundation.Coordinates;
 using AGI.Foundation.Cesium.Advanced;
 #else
 using CesiumLanguageWriter.Advanced;

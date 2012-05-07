@@ -65,6 +65,7 @@
     <Compile Include="TestCesiumInterpolatablePropertyWriter.cs" />
     <Compile Include="TestCesiumPacketWriter.cs" />
     <Compile Include="TestCesiumPropertyWriter.cs" />
+    <Compile Include="TestCesiumStreamWriter.cs" />
     <Compile Include="TestDuration.cs" />
     <Compile Include="TestGregorianDate.cs" />
     <Compile Include="TestGregorianDateFormatting.cs" />
@@ -74,6 +75,8 @@
     <Compile Include="TestLeapSecond.cs" />
     <Compile Include="TestLeapSeconds.cs" />
     <Compile Include="TestMatrix3By3.cs" />
+    <Compile Include="TestOrientationCesiumWriter.cs" />
+    <Compile Include="TestPositionCesiumWriter.cs" />
     <Compile Include="TestTimeInterval.cs" />
     <Compile Include="TestUnitCartesian3.cs" />
     <Compile Include="TestUnitQuaternion.cs" />

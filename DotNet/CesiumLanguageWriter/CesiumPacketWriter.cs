@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 #if StkComponents
 using AGI.Foundation.Cesium.Advanced;
 using AGI.Foundation.Time;
 #else
 using CesiumLanguageWriter.Advanced;
-using System.Collections.Generic;
 #endif
 
 #if StkComponents
