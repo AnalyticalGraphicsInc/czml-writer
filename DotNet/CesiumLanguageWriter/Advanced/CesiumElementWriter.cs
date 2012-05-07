@@ -13,6 +13,11 @@ namespace CesiumLanguageWriter.Advanced
     {
         private CesiumOutputStream m_output;
 
+        CesiumOutputStream ICesiumElementWriter.Output
+        {
+            get { return Output; }
+        }
+
         /// <summary>
         /// Opens this writer on a given <see cref="CesiumOutputStream"/>.  A single writer can write to multiple
         /// streams over its lifetime.  Opening a writer on a stream may cause data to be written to the stream.

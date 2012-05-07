@@ -14,6 +14,13 @@ namespace CesiumLanguageWriter.Advanced
     public interface ICesiumElementWriter : IDisposable
     {
         /// <summary>
+        /// Gets the <see cref="CesiumOutputStream"/> on which this writer is currently open.  If the writer is
+        /// not open, accessing this property will throw an exception.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">The writer is not currently open on a stream.</exception>
+        CesiumOutputStream Output { get; }
+
+        /// <summary>
         /// Opens this writer on a given <see cref="CesiumOutputStream"/>.  A single writer can write to multiple
         /// streams over its lifetime.  Opening a writer on a stream may cause data to be written to the stream.
         /// </summary>

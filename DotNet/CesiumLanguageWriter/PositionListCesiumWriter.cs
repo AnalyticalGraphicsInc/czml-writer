@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using AGI.Foundation.Cesium.Advanced;
 using AGI.Foundation.Coordinates;
 using AGI.Foundation.Infrastructure;
+using AGI.Foundation.Time;
 #else
 using CesiumLanguageWriter.Advanced;
 #endif
@@ -21,6 +22,8 @@ namespace CesiumLanguageWriter
     /// </summary>
     public class PositionListCesiumWriter : CesiumValuePropertyWriter<IEnumerable<Cartesian>, PositionListCesiumWriter>
     {
+        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>> m_cartographic;
+
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
@@ -28,18 +31,32 @@ namespace CesiumLanguageWriter
         public PositionListCesiumWriter(string propertyName)
             : base(propertyName)
         {
+            m_cartographic = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>>(CreateCartographicAdaptor, false);
         }
 
         /// <inheritdoc />
         private PositionListCesiumWriter(PositionListCesiumWriter existingInstance)
             : base(existingInstance)
         {
+            m_cartographic = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>>(CreateCartographicAdaptor, false);
         }
 
         /// <inheritdoc />
         public override PositionListCesiumWriter Clone()
         {
             return new PositionListCesiumWriter(this);
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}"/> to
+        /// write a list of <see cref="Cartographic"/> values.  Because the returned instance is a wrapper
+        /// for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance
+        /// or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumValuePropertyWriter<IEnumerable<Cartographic>> AsCartographic()
+        {
+            return m_cartographic.Value;
         }
 
         /// <summary>
@@ -78,6 +95,12 @@ namespace CesiumLanguageWriter
                 Output.WriteValue(position.Height);
             }
             Output.WriteEndSequence();
+        }
+
+        private ICesiumValuePropertyWriter<IEnumerable<Cartographic>> CreateCartographicAdaptor()
+        {
+            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<Cartographic>>(
+                this, (me, value) => me.WriteValue(value));
         }
     }
 }

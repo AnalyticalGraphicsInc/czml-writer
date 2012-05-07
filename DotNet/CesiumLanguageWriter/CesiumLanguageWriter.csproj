@@ -48,6 +48,7 @@
     <Compile Include="Advanced\CesiumInterpolatableValuePropertyWriter.cs" />
     <Compile Include="Advanced\CesiumPropertyWriter.cs" />
     <Compile Include="Advanced\CesiumValuePropertyWriter.cs" />
+    <Compile Include="Advanced\CesiumWriterAdaptor.cs" />
     <Compile Include="Advanced\ICesiumElementWriter.cs" />
     <Compile Include="Advanced\ICesiumInterpolatableValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumIntervalListWriter.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="PathCesiumWriter.cs" />
     <Compile Include="PixelOffsetCesiumWriter.cs" />
     <Compile Include="PointGraphicsCesiumWriter.cs" />
+    <Compile Include="PolygonCesiumWriter.cs" />
     <Compile Include="PolylineCesiumWriter.cs" />
     <Compile Include="PositionCesiumWriter.cs" />
     <Compile Include="PositionListCesiumWriter.cs" />

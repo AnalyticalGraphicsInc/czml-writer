@@ -29,7 +29,9 @@ namespace CesiumLanguageWriter
         private readonly Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<PyramidCesiumWriter>(() => new PyramidCesiumWriter("pyramid"), false);
         private readonly Lazy<PathCesiumWriter> m_path = new Lazy<PathCesiumWriter>(() => new PathCesiumWriter("path"), false);
         private readonly Lazy<PolylineCesiumWriter> m_polyline = new Lazy<PolylineCesiumWriter>(() => new PolylineCesiumWriter("polyline"), false);
+        private readonly Lazy<PolygonCesiumWriter> m_polygon = new Lazy<PolygonCesiumWriter>(() => new PolygonCesiumWriter("polygon"), false);
         private readonly Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(() => new CameraCesiumWriter("camera"), false);
+        private readonly Lazy<PositionListCesiumWriter> m_vertexPositions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter("vertexPositions"), false); 
 
         /// <summary>
         /// Writes the start of a new JSON object representing the packet.
@@ -303,6 +305,25 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Gets the writer for the <code>polygon</code> property.  See the documentation for the 
+        /// <see cref="OpenPolygonProperty"/> method for more information.  The returned instance must
+        /// be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be
+        /// used for writing.
+        /// </summary>
+        public PolygonCesiumWriter PolygonWriter
+        {
+            get { return m_polygon.Value; }
+        }
+
+        /// <summary>
+        /// Gets a group of polygon-related properties.  
+        /// </summary>
+        public PolygonCesiumWriter OpenPolygonProperty()
+        {
+            return OpenAndReturn(PolygonWriter);
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>camera</code> property.  See the documentation for the 
         /// <see cref="OpenCameraProperty"/> method for more information.  The returned instance must
         /// be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be
@@ -319,6 +340,26 @@ namespace CesiumLanguageWriter
         public CameraCesiumWriter OpenCameraProperty()
         {
             return OpenAndReturn(CameraWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>vertexPositions</code> property.  See the documentation for the 
+        /// <see cref="OpenVertexPositionsProperty"/> method for more information.  The returned instance must
+        /// be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be
+        /// used for writing.
+        /// </summary>
+        public PositionListCesiumWriter VertexPositionsWriter
+        {
+            get { return m_vertexPositions.Value; }
+        }
+
+        /// <summary>
+        /// Opens a property describing the vertex positions of an object, optionally over time.
+        /// </summary>
+        /// <returns>A writer that is used to write vertex position information.</returns>
+        public PositionListCesiumWriter OpenVertexPositionsProperty()
+        {
+            return OpenAndReturn(VertexPositionsWriter);
         }
     }
 }
