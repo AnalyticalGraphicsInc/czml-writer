@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 #if StkComponents
 using AGI.Foundation.Cesium.Advanced;
 #else
@@ -20,16 +21,86 @@ namespace CesiumLanguageWriter
     /// </summary>
     public class ConeCesiumWriter : CesiumPropertyWriter<ConeCesiumWriter>
     {
-        private readonly Lazy<DoubleCesiumWriter> m_innerHalfAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter("innerHalfAngle"), false);
-        private readonly Lazy<DoubleCesiumWriter> m_outerHalfAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter("outerHalfAngle"), false);
-        private readonly Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter("radius"), false);
-        private readonly Lazy<DoubleCesiumWriter> m_minimumClockAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter("minimumClockAngle"), false);
-        private readonly Lazy<DoubleCesiumWriter> m_maximumClockAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter("maximumClockAngle"), false);
+        /// <summary>
+        /// The name of the <code>show</code> property.
+        /// </summary>
+        public static readonly string ShowPropertyName = "show";
 
-        private readonly Lazy<MaterialCesiumWriter> m_capMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter("capMaterial"), false);
-        private readonly Lazy<MaterialCesiumWriter> m_innerMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter("innerMaterial"), false);
-        private readonly Lazy<MaterialCesiumWriter> m_outerMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter("outerMaterial"), false);
-        private readonly Lazy<MaterialCesiumWriter> m_silhouetteMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter("silhouetteMaterial"), false);
+        /// <summary>
+        /// The name of the <code>innerHalfAngle</code> property.
+        /// </summary>
+        public static readonly string InnerHalfAnglePropertyName = "innerHalfAngle";
+
+        /// <summary>
+        /// The name of the <code>outerHalfAngle</code> property.
+        /// </summary>
+        public static readonly string OuterHalfAnglePropertyName = "outerHalfAngle";
+
+        /// <summary>
+        /// The name of the <code>radius</code> property.
+        /// </summary>
+        public static readonly string RadiusPropertyName = "radius";
+
+        /// <summary>
+        /// The name of the <code>minimumClockAngle</code> property.
+        /// </summary>
+        public static readonly string MinimumClockAnglePropertyName = "minimumClockAngle";
+
+        /// <summary>
+        /// The name of the <code>maximumClockAngle</code> property.
+        /// </summary>
+        public static readonly string MaximumClockAnglePropertyName = "maximumClockAngle";
+
+        /// <summary>
+        /// The name of the <code>showIntersection</code> property.
+        /// </summary>
+        public static readonly string ShowIntersectionPropertyName = "showIntersection";
+
+        /// <summary>
+        /// The name of the <code>intersectionColor</code> property.
+        /// </summary>
+        public static readonly string IntersectionColorPropertyName = "intersectionColor";
+
+        /// <summary>
+        /// The name of the <code>erosion</code> property.
+        /// </summary>
+        public static readonly string ErosionPropertyName = "erosion";
+
+        /// <summary>
+        /// The name of the <code>capMaterial</code> property.
+        /// </summary>
+        public static readonly string CapMaterialPropertyName = "capMaterial";
+
+        /// <summary>
+        /// The name of the <code>innerMaterial</code> property.
+        /// </summary>
+        public static readonly string InnerMaterialPropertyName = "innerMaterial";
+
+        /// <summary>
+        /// The name of the <code>outerMaterial</code> property.
+        /// </summary>
+        public static readonly string OuterMaterialPropertyName = "outerMaterial";
+
+        /// <summary>
+        /// The name of the <code>silhouetteMaterial</code> property.
+        /// </summary>
+        public static readonly string SilhouetteMaterialPropertyName = "silhouetteMaterial";
+
+        private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
+
+        private readonly Lazy<DoubleCesiumWriter> m_innerHalfAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(InnerHalfAnglePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_outerHalfAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OuterHalfAnglePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RadiusPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_minimumClockAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MinimumClockAnglePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_maximumClockAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MaximumClockAnglePropertyName), false);
+
+        private readonly Lazy<BooleanCesiumWriter> m_showIntersection = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowIntersectionPropertyName), false);
+        private readonly Lazy<ColorCesiumWriter> m_intersectionColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(IntersectionColorPropertyName), false); 
+        private readonly Lazy<DoubleCesiumWriter> m_erosion = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ErosionPropertyName), false);
+        private readonly Lazy<MaterialCesiumWriter> m_capMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(CapMaterialPropertyName), false);
+        private readonly Lazy<MaterialCesiumWriter> m_innerMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(InnerMaterialPropertyName), false);
+        private readonly Lazy<MaterialCesiumWriter> m_outerMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(OuterMaterialPropertyName), false);
+        private readonly Lazy<MaterialCesiumWriter> m_silhouetteMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(SilhouetteMaterialPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -52,6 +123,37 @@ namespace CesiumLanguageWriter
         public override ConeCesiumWriter Clone()
         {
             return new ConeCesiumWriter(this);
+        }
+
+        /// <summary>
+        /// Gets a writer for writing the <code>show</code> property.
+        /// </summary>
+        public BooleanCesiumWriter ShowWriter
+        {
+            get { return m_show.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the a writer for the <code>show</code> property.
+        /// </summary>
+        /// <returns>The writer.</returns>
+        public BooleanCesiumWriter OpenShowProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ShowWriter);
+        }
+
+        /// <summary>
+        /// Writes a constant value for the <code>show</code> property.
+        /// See the documentation for the <see cref="OpenShowProperty"/> method for more information.
+        /// </summary>
+        /// <param name="value">The value of the property.</param>
+        public void WriteShowProperty(bool value)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteValue(value);
+            }
         }
 
         /// <summary>
@@ -204,6 +306,99 @@ namespace CesiumLanguageWriter
         public void WriteMaximumClockAngleProperty(double value)
         {
             using (var writer = OpenMaximumClockAngleProperty())
+            {
+                writer.WriteValue(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets a writer for writing the <code>showIntersection</code> property.
+        /// </summary>
+        public BooleanCesiumWriter ShowIntersectionWriter
+        {
+            get { return m_showIntersection.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the a writer for the <code>showIntersection</code> property.
+        /// </summary>
+        /// <returns>The writer.</returns>
+        public BooleanCesiumWriter OpenShowIntersectionProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ShowIntersectionWriter);
+        }
+
+        /// <summary>
+        /// Writes a constant value for the <code>showIntersection</code> property.
+        /// See the documentation for the <see cref="OpenShowIntersectionProperty"/> method for more information.
+        /// </summary>
+        /// <param name="value">The value of the property.</param>
+        public void WriteShowIntersectionProperty(bool value)
+        {
+            using (var writer = OpenShowIntersectionProperty())
+            {
+                writer.WriteValue(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets a writer for writing the <code>intersectionColor</code> property.
+        /// </summary>
+        public ColorCesiumWriter IntersectionColorWriter
+        {
+            get { return m_intersectionColor.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the a writer for the <code>intersectionColor</code> property.
+        /// </summary>
+        /// <returns>The writer.</returns>
+        public ColorCesiumWriter OpenIntersectionColorProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(IntersectionColorWriter);
+        }
+
+        /// <summary>
+        /// Writes a constant value for the <code>intersectionColor</code> property.
+        /// See the documentation for the <see cref="OpenIntersectionColorProperty"/> method for more information.
+        /// </summary>
+        /// <param name="value">The value of the property.</param>
+        public void WriteIntersectionColorProperty(Color value)
+        {
+            using (var writer = OpenIntersectionColorProperty())
+            {
+                writer.WriteValue(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets a writer for writing the <code>erosion</code> property.
+        /// </summary>
+        public DoubleCesiumWriter ErosionWriter
+        {
+            get { return m_erosion.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the a writer for the <code>erosion</code> property.
+        /// </summary>
+        /// <returns>The writer.</returns>
+        public DoubleCesiumWriter OpenErosionProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ErosionWriter);
+        }
+
+        /// <summary>
+        /// Writes a constant value for the <code>erosion</code> property.
+        /// See the documentation for the <see cref="OpenErosionProperty"/> method for more information.
+        /// </summary>
+        /// <param name="value">The value of the property.</param>
+        public void WriteErosionProperty(double value)
+        {
+            using (var writer = OpenErosionProperty())
             {
                 writer.WriteValue(value);
             }
