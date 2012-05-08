@@ -21,11 +21,36 @@ namespace CesiumLanguageWriter
     /// </summary>
     public class PointGraphicsCesiumWriter : CesiumPropertyWriter<PointGraphicsCesiumWriter>
     {
-        private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter("color"), false);
-        private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter("outlineColor"), false);
-        private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter("outlineWidth"), false);
-        private readonly Lazy<DoubleCesiumWriter> m_pixelSize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter("pixelSize"), false);
-        private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter("show"), false);
+        /// <summary>
+        /// The name of the <code>color</code> property.
+        /// </summary>
+        public static readonly string ColorPropertyName = "color";
+
+        /// <summary>
+        /// The name of the <code>outlineColor</code> property.
+        /// </summary>
+        public static readonly string OutlineColorPropertyName = "outlineColor";
+
+        /// <summary>
+        /// The name of the <code>outlineWidth</code> property.
+        /// </summary>
+        public static readonly string OutlineWidthPropertyName = "outlineWidth";
+
+        /// <summary>
+        /// The name of the <code>pixelSize</code> property.
+        /// </summary>
+        public static readonly string PixelSizePropertyName = "pixelSize";
+
+        /// <summary>
+        /// The name of the <code>show</code> property.
+        /// </summary>
+        public static readonly string ShowPropertyName = "show";
+
+        private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
+        private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_pixelSize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(PixelSizePropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
