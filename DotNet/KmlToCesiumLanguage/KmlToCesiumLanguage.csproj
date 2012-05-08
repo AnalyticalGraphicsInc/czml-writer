@@ -72,6 +72,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -79,7 +80,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="CzmlDocument.cs" />
+    <Compile Include="Geometry.cs" />
+    <Compile Include="GeometryFactory.cs" />
+    <Compile Include="ImageProcessing.cs" />
+    <Compile Include="KmlConverter.cs" />
+    <Compile Include="LineString.cs" />
+    <Compile Include="Placemark.cs" />
+    <Compile Include="Point.cs" />
+    <Compile Include="Polygon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CesiumLanguageWriter\CesiumLanguageWriter.csproj">
+      <Project>{085359F8-CC1D-4561-94C7-0BF067B8E370}</Project>
+      <Name>CesiumLanguageWriter</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
