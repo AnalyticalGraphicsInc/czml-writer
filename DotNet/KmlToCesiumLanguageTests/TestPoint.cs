@@ -32,5 +32,16 @@ namespace KmlToCesiumLanguageTests
             Assert.That(result.Contains("\"availability\":\"2007-12-06T16:31:00Z/-4713-11--2147483625T11:59:25Z\""));
             Assert.That(result.Contains("\"position\":{\"cartographicRadians\":[-1.4068054520768973,0.4993091156647564,0.8470082860008401]}"));
         }
+
+        [Test]
+        [Explicit]
+        public void Sandbox()
+        {
+            CzmlDocument document = new CzmlDocument();
+            document.CesiumOutputStream.PrettyFormatting = true;
+            XDocument kml = XDocument.Load(@"KmlDocs\STS-122-STS-122Ascent.kml");
+            KmlConverter.ConvertToCZML(kml, document);
+            Console.WriteLine(document.StringWriter.ToString());
+        }
     }
 }

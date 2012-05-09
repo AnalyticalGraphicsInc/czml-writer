@@ -48,10 +48,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CesiumLanguageWriter\CesiumLanguageWriter.csproj">
+      <Project>{085359F8-CC1D-4561-94C7-0BF067B8E370}</Project>
+      <Name>CesiumLanguageWriter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KmlToCesiumLanguage\KmlToCesiumLanguage.csproj">
       <Project>{A3F1CB98-2E69-4CDE-9A9F-8B93719F5621}</Project>
       <Name>KmlToCesiumLanguage</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="KmlDocs\STS-122-STS-122Ascent.kml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
