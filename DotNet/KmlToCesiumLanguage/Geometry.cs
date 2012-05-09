@@ -13,117 +13,91 @@ namespace KmlToCesiumLanguage
         protected Geometry(CzmlDocument document)
         {
             m_document = document;
+            this.PacketWriter = document.CesiumStreamWriter.OpenPacket(document.CesiumOutputStream);
         }
 
-        public abstract Dictionary<string, object> Properties { get; }
-        public abstract void AddProperty(object property);
-        public abstract void AddTimeSpan(XElement placemark);
+        public CesiumPacketWriter PacketWriter { get; private set; }
 
-        public virtual void AddIconStyle(XElement styleElement)
+        public void AddTimeSpan(XElement placemark)
         {
+            TimeInterval interval = GetInterval(placemark);
+            if (interval != null)
+            {
+                this.PacketWriter.WriteAvailability(GetInterval(placemark));
+            }
         }
 
+        public void Close()
+        {
+            this.PacketWriter.Close();
+        }
+
+        public virtual void AddIconStyle(XElement styleElement) { }
         public virtual void AddPolyStyle(XElement polyElement) { }
         public virtual void AddLineStyle(XElement lineElement) { }
-        public virtual void AddLabelStyle(XElement labelElement)
-        {
-            XElement colorElement = labelElement.Element(Document.Namespace + "color");
-            if (colorElement != null)
-            {
-                string hexColor = colorElement.Value;
-                Color color = ColorTranslator.FromHtml("#" + hexColor);
-                //B and R intentionally switched
-                AddProperty(new { name = "label_color", value = new { a = color.A, r = color.B, g = color.G, b = color.R } });
-            }
-            XElement scaleElement = labelElement.Element(Document.Namespace + "scale");
-            if (scaleElement != null)
-            {
-                AddProperty(new { name = "label_scale", value = scaleElement.Value });
-            }
-        }
 
         protected CzmlDocument Document { get { return m_document; } }
 
-        protected void InternalAddTimeSpan(string propertyName, XElement placemark)
+        private TimeInterval GetInterval(XElement placemark)
         {
             XElement timespan = placemark.Element(Document.Namespace + "TimeSpan");
             if (timespan != null)
             {
-                AddProperty(new { name = propertyName, intervals = GetIntervals(timespan) });
+                return GetTimeSpan(timespan);
             }
             else
             {
                 XElement timeStamp = placemark.Element(Document.Namespace + "TimeStamp");
                 if (timeStamp != null)
                 {
-                    AddProperty(new { name = propertyName, intervals = GetTimeStamp(timeStamp) });
-                }
-                else
-                {
-                    AddProperty(new { name = propertyName, value = true });
+                    return GetTimeStamp(timeStamp);
                 }
             }
+            return null;
         }
 
-        private List<object> GetIntervals(XElement timespan)
+        private TimeInterval GetTimeSpan(XElement timespan)
         {
             XElement beginElement = timespan.Element(Document.Namespace + "begin");
-            double startTotalDays = JulianDate.MinValue.TotalDays;
-            double startSecondsOfDay = 0;
-            double endTotalDays = JulianDate.MaxValue.TotalDays;
-            double endSecondsOfDay = 0;
+            JulianDate begin =JulianDate.MinValue;
+            JulianDate end = JulianDate.MaxValue;
             if (beginElement != null)
             {
-                JulianDate beginJulian = new JulianDate(GregorianDate.Parse(beginElement.Value));
-                startTotalDays = beginJulian.Day;
-                startSecondsOfDay = beginJulian.SecondsOfDay;
-                if (m_document.MinimumTime == null || m_document.MinimumTime > beginJulian)
+                begin = new JulianDate(GregorianDate.Parse(beginElement.Value));
+                if (m_document.MinimumTime == null || m_document.MinimumTime > begin)
                 {
-                    m_document.MinimumTime = beginJulian;
+                    m_document.MinimumTime = begin;
                 }
-                if (m_document.MaximumTime == null || m_document.MaximumTime < beginJulian)
+                if (m_document.MaximumTime == null || m_document.MaximumTime < begin)
                 {
-                    m_document.MaximumTime = beginJulian;
+                    m_document.MaximumTime = begin;
                 }
             }
             XElement endElement = timespan.Element(Document.Namespace + "end");
             if (endElement != null)
             {
-                JulianDate endJulian = new JulianDate(GregorianDate.Parse(endElement.Value));
-                endTotalDays = endJulian.Day;
-                endSecondsOfDay = endJulian.SecondsOfDay;
-                if (m_document.MaximumTime == null || endJulian > m_document.MaximumTime)
+                end = new JulianDate(GregorianDate.Parse(endElement.Value));
+
+                if (m_document.MaximumTime == null || end > m_document.MaximumTime)
                 {
-                    m_document.MaximumTime = endJulian;
+                    m_document.MaximumTime = end;
                 }
-                if (m_document.MinimumTime == null || m_document.MinimumTime > endJulian)
+                if (m_document.MinimumTime == null || m_document.MinimumTime > end)
                 {
-                    m_document.MinimumTime = endJulian;
+                    m_document.MinimumTime = end;
                 }
             }
 
-            return new List<object> { new 
-                { start = new { day = startTotalDays, secondsOfDay = startSecondsOfDay }, 
-                    stop = new { day = endTotalDays, secondsOfDay = endSecondsOfDay }, 
-                    isStartIncluded = true, 
-                    isStopIncluded = true, 
-                    value = true 
-                }
-            };
+            return new TimeInterval(begin, end);
         }
 
-        private List<object> GetTimeStamp(XElement timestamp)
+        private TimeInterval GetTimeStamp(XElement timestamp)
         {
             XElement whenElement = timestamp.Element(Document.Namespace + "when");
-            double startTotalDays = JulianDate.MinValue.TotalDays;
-            double startSecondsOfDay = 0;
-            double endTotalDays = JulianDate.MaxValue.TotalDays;
-            double endSecondsOfDay = 0;
             if (whenElement != null)
             {
                 JulianDate beginJulian = new JulianDate(GregorianDate.Parse(whenElement.Value));
-                startTotalDays = beginJulian.TotalDays;
-                startSecondsOfDay = beginJulian.SecondsOfDay;
+
                 if (m_document.MinimumTime == null || m_document.MinimumTime > beginJulian)
                 {
                     m_document.MinimumTime = beginJulian;
@@ -132,16 +106,9 @@ namespace KmlToCesiumLanguage
                 {
                     m_document.MaximumTime = beginJulian;
                 }
+                return new TimeInterval(beginJulian, JulianDate.MaxValue);
             }
-
-            return new List<object> { new 
-                { start = new { day = startTotalDays, secondsOfDay = startSecondsOfDay }, 
-                    stop = new { day = endTotalDays, secondsOfDay = endSecondsOfDay }, 
-                    isStartIncluded = true, 
-                    isStopIncluded = true, 
-                    value = true 
-                }
-            };
+            return null;
         }
 
         private CzmlDocument m_document;

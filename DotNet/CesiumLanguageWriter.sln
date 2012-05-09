@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CesiumLanguageWriterTests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KmlToCesiumLanguage", "KmlToCesiumLanguage\KmlToCesiumLanguage.csproj", "{A3F1CB98-2E69-4CDE-9A9F-8B93719F5621}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KmlToCesiumLanguageTests", "KmlToCesiumLanguageTests\KmlToCesiumLanguageTests.csproj", "{FDDACCE4-CA40-458E-9134-EC8275D7DCC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{A3F1CB98-2E69-4CDE-9A9F-8B93719F5621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A3F1CB98-2E69-4CDE-9A9F-8B93719F5621}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3F1CB98-2E69-4CDE-9A9F-8B93719F5621}.Release|Any CPU.ActiveCfg = Release|x86
+		{FDDACCE4-CA40-458E-9134-EC8275D7DCC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDDACCE4-CA40-458E-9134-EC8275D7DCC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDDACCE4-CA40-458E-9134-EC8275D7DCC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDDACCE4-CA40-458E-9134-EC8275D7DCC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

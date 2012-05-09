@@ -11,14 +11,10 @@ namespace KmlToCesiumLanguage
 {
     internal class LineString : Geometry
     {
-        private Dictionary<string, object> m_values;
-        private List<object> m_innerProperties;
-        
         public LineString(XElement element, CzmlDocument document)
             : base(document)
         {
-            this.Points = new List<Cartographic>();
-            m_values = new Dictionary<string, object>();
+            this.m_points = new List<Cartographic>();
             string coordinates = element.Element(Document.Namespace + "coordinates").Value.Trim();
             XElement tessellateElement = element.Element(Document.Namespace + "tessellate");
             XElement altitudeModeElement = element.Element(Document.Namespace + "altitudeMode");
@@ -59,48 +55,44 @@ namespace KmlToCesiumLanguage
 
             for (int i = 0; i < coord.Length; i += 3)
             {
-                this.Points.Add(new Cartographic (double.Parse(coord[i]) * Constants.RadiansPerDegree, double.Parse(coord[i + 1]) * Constants.RadiansPerDegree, double.Parse(coord[i + 2]) * Constants.RadiansPerDegree));
+                this.m_points.Add(new Cartographic (double.Parse(coord[i]) * Constants.RadiansPerDegree, double.Parse(coord[i + 1]) * Constants.RadiansPerDegree, double.Parse(coord[i + 2]) * Constants.RadiansPerDegree));
             }
+            this.PacketWriter.WriteIdentifier(Guid.NewGuid().ToString());
 
-            m_values.Add("id", Guid.NewGuid().ToString());
-            m_innerProperties = new List<object>();
-            m_values.Add("properties", m_innerProperties);
-            m_innerProperties.Add(new { name = "points", value = this.Points });
+            using (var positions = this.PacketWriter.OpenVertexPositionsProperty())
+            {
+                positions.WriteValue(m_points);
+            }
         }
 
-        public override Dictionary<string, object> Properties
-        {
-            get { return m_values; } 
-        }
-
-        public override void AddProperty(object property)
-        {
-            m_innerProperties.Add(property);
-        }
-
-        public override void AddTimeSpan(System.Xml.Linq.XElement placemark)
-        {
-            InternalAddTimeSpan("polyline_show", placemark);
-        }
 
         public override void AddLineStyle(XElement lineElement)
         {
             XElement colorElement = lineElement.Element(Document.Namespace + "color");
+            PolylineCesiumWriter polyline = null;
             if (colorElement != null)
             {
                 string hexColor = colorElement.Value;
                 Color color = ColorTranslator.FromHtml("#" + hexColor);
-                //B and R intentionally switched
-                AddProperty(new { name = "polyline_color", value = new { a = color.A, r = color.B, g = color.G, b = color.R } });
+                polyline = this.PacketWriter.OpenPolylineProperty();
+                polyline.WriteColorProperty(color);
             }
             XElement widthElement = lineElement.Element(Document.Namespace + "width");
             if (widthElement != null)
             {
-                AddProperty(new { name = "polyline_width", value = widthElement.Value });
-                AddProperty(new { name = "polyline_outlineWidth", value = 0 });
+                if (polyline == null)
+                {
+                    polyline = this.PacketWriter.OpenPolylineProperty();
+                }
+                polyline.WriteWidthProperty(double.Parse(widthElement.Value));
+                polyline.WriteOutlineWidthProperty(0);
+            }
+            if (polyline != null)
+            {
+                polyline.Close();
             }
         }
 
-        public List<Cartographic> Points { get; private set; }
+        private List<Cartographic> m_points;
     }
 }
