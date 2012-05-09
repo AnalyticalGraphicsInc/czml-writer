@@ -12,61 +12,17 @@ using System.IO;
 
 namespace KmlToCesiumLanguage
 {
-    internal class Point : Geometry
+    public class Point : Geometry
     {
-        private XElement m_element;
-        private Dictionary<string, object> m_values;
         private double defaultTextureSize = 24;
-
-        public Point(XElement element, CzmlDocument document)
-            : base(document)
+        private XElement m_element;
+        public Point(XElement element, CzmlDocument document, XElement placemark)
+            : base(document, placemark)
         {
-            this.m_element = element;
-            m_values = new Dictionary<string, object>();
-
-            this.PacketWriter.WriteIdentifier(Guid.NewGuid().ToString());
-            string coordinates = element.Element(Document.Namespace + "coordinates").Value.Trim();
-            string[] coord = Regex.Split(coordinates, @"[,\s]+", RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
-            XElement altitudeMode = element.Element(Document.Namespace + "altitudeMode");
-            Cartographic coordinate;
-            if (altitudeMode != null && altitudeMode.Value == "clampToGround")
-            {
-                coordinate = new Cartographic (double.Parse(coord[0]) * Constants.RadiansPerDegree, double.Parse(coord[1]) * Constants.RadiansPerDegree, 0);
-                Debug.Assert(coord.Length == 2 || coord.Length == 3);
-            }
-            else
-            {
-                if (coord.Length == 1)
-                {
-                    coord = coord.Concat(new List<string> { "0.0", "0.0" }).ToArray();
-                }
-                if (coord.Length == 2)
-                {
-                    coord = coord.Concat(new List<string> { "0.0" }).ToArray();
-                }
-                coordinate = new Cartographic(double.Parse(coord[0]) * Constants.RadiansPerDegree, double.Parse(coord[1]) * Constants.RadiansPerDegree, double.Parse(coord[2]) * Constants.RadiansPerDegree);
-            }
-            
-            using (PositionCesiumWriter position = this.PacketWriter.OpenPositionProperty())
-            {
-                position.WriteCartographicRadiansValue(coordinate);
-            }
-
-            XElement extrudeElement = element.Element(Document.Namespace + "extrude");
-            if (extrudeElement != null && extrudeElement.Value == "1")
-            {
-                using (PolylineCesiumWriter polyline = this.PacketWriter.OpenPolylineProperty())
-                {
-                    List<Cartographic> positions = new List<Cartographic>();
-                    positions.Add(coordinate);
-                    positions.Add(new Cartographic(coordinate.Longitude, coordinate.Latitude, 0.0));
-                    polyline.WritePositionsProperty(positions);
-                }
-            }
+            m_element = element;
         }
 
-
-        public override void AddIconStyle(XElement iconElement)
+        protected override void AddIconStyle(XElement iconElement)
         {
             using (var billboard = this.PacketWriter.OpenBillboardProperty())
             {
@@ -109,6 +65,48 @@ namespace KmlToCesiumLanguage
                 }
 
                 billboard.WriteImageProperty(href);
+            }
+        }
+
+        protected override void Write()
+        {
+            string coordinates = m_element.Element(Document.Namespace + "coordinates").Value.Trim();
+            string[] coord = Regex.Split(coordinates, @"[,\s]+", RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+            XElement altitudeMode = m_element.Element(Document.Namespace + "altitudeMode");
+            Cartographic coordinate;
+            if (altitudeMode != null && altitudeMode.Value == "clampToGround")
+            {
+                coordinate = new Cartographic(double.Parse(coord[0]) * Constants.RadiansPerDegree, double.Parse(coord[1]) * Constants.RadiansPerDegree, 0);
+                Debug.Assert(coord.Length == 2 || coord.Length == 3);
+            }
+            else
+            {
+                if (coord.Length == 1)
+                {
+                    coord = coord.Concat(new List<string> { "0.0", "0.0" }).ToArray();
+                }
+                if (coord.Length == 2)
+                {
+                    coord = coord.Concat(new List<string> { "0.0" }).ToArray();
+                }
+                coordinate = new Cartographic(double.Parse(coord[0]) * Constants.RadiansPerDegree, double.Parse(coord[1]) * Constants.RadiansPerDegree, double.Parse(coord[2]) * Constants.RadiansPerDegree);
+            }
+
+            using (PositionCesiumWriter position = this.PacketWriter.OpenPositionProperty())
+            {
+                position.WriteCartographicRadiansValue(coordinate);
+            }
+
+            XElement extrudeElement = m_element.Element(Document.Namespace + "extrude");
+            if (extrudeElement != null && extrudeElement.Value == "1")
+            {
+                using (PolylineCesiumWriter polyline = this.PacketWriter.OpenPolylineProperty())
+                {
+                    List<Cartographic> positions = new List<Cartographic>();
+                    positions.Add(coordinate);
+                    positions.Add(new Cartographic(coordinate.Longitude, coordinate.Latitude, 0.0));
+                    polyline.WritePositionsProperty(positions);
+                }
             }
         }
 

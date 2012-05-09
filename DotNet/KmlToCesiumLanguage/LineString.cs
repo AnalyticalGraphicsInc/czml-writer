@@ -9,15 +9,48 @@ using System.Text.RegularExpressions;
 
 namespace KmlToCesiumLanguage
 {
-    internal class LineString : Geometry
+    public class LineString : Geometry
     {
-        public LineString(XElement element, CzmlDocument document)
-            : base(document)
+        private XElement m_element;
+        public LineString(XElement element, CzmlDocument document, XElement placemark)
+            : base(document, placemark)
         {
-            this.m_points = new List<Cartographic>();
-            string coordinates = element.Element(Document.Namespace + "coordinates").Value.Trim();
-            XElement tessellateElement = element.Element(Document.Namespace + "tessellate");
-            XElement altitudeModeElement = element.Element(Document.Namespace + "altitudeMode");
+            m_element = element;
+        }
+
+        protected override void AddLineStyle(XElement lineElement)
+        {
+            XElement colorElement = lineElement.Element(Document.Namespace + "color");
+            PolylineCesiumWriter polyline = null;
+            if (colorElement != null)
+            {
+                string hexColor = colorElement.Value;
+                Color color = ColorTranslator.FromHtml("#" + hexColor);
+                polyline = this.PacketWriter.OpenPolylineProperty();
+                polyline.WriteColorProperty(color);
+            }
+            XElement widthElement = lineElement.Element(Document.Namespace + "width");
+            if (widthElement != null)
+            {
+                if (polyline == null)
+                {
+                    polyline = this.PacketWriter.OpenPolylineProperty();
+                }
+                polyline.WriteWidthProperty(double.Parse(widthElement.Value));
+                polyline.WriteOutlineWidthProperty(0);
+            }
+            if (polyline != null)
+            {
+                polyline.Close();
+            }
+        }
+
+        protected override void Write()
+        {
+            List<Cartographic> points = new List<Cartographic>();
+            string coordinates = m_element.Element(Document.Namespace + "coordinates").Value.Trim();
+            XElement tessellateElement = m_element.Element(Document.Namespace + "tessellate");
+            XElement altitudeModeElement = m_element.Element(Document.Namespace + "altitudeMode");
             int tessellate = tessellateElement != null ? int.Parse(tessellateElement.Value) : 0;
             string altitudeMode = altitudeModeElement != null ? altitudeModeElement.Value : "clampToGround";
             Regex r = new Regex(@"(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)");
@@ -55,44 +88,12 @@ namespace KmlToCesiumLanguage
 
             for (int i = 0; i < coord.Length; i += 3)
             {
-                this.m_points.Add(new Cartographic (double.Parse(coord[i]) * Constants.RadiansPerDegree, double.Parse(coord[i + 1]) * Constants.RadiansPerDegree, double.Parse(coord[i + 2]) * Constants.RadiansPerDegree));
+                points.Add(new Cartographic(double.Parse(coord[i]) * Constants.RadiansPerDegree, double.Parse(coord[i + 1]) * Constants.RadiansPerDegree, double.Parse(coord[i + 2]) * Constants.RadiansPerDegree));
             }
-            this.PacketWriter.WriteIdentifier(Guid.NewGuid().ToString());
-
             using (var positions = this.PacketWriter.OpenVertexPositionsProperty())
             {
-                positions.WriteValue(m_points);
+                positions.WriteValue(points);
             }
         }
-
-
-        public override void AddLineStyle(XElement lineElement)
-        {
-            XElement colorElement = lineElement.Element(Document.Namespace + "color");
-            PolylineCesiumWriter polyline = null;
-            if (colorElement != null)
-            {
-                string hexColor = colorElement.Value;
-                Color color = ColorTranslator.FromHtml("#" + hexColor);
-                polyline = this.PacketWriter.OpenPolylineProperty();
-                polyline.WriteColorProperty(color);
-            }
-            XElement widthElement = lineElement.Element(Document.Namespace + "width");
-            if (widthElement != null)
-            {
-                if (polyline == null)
-                {
-                    polyline = this.PacketWriter.OpenPolylineProperty();
-                }
-                polyline.WriteWidthProperty(double.Parse(widthElement.Value));
-                polyline.WriteOutlineWidthProperty(0);
-            }
-            if (polyline != null)
-            {
-                polyline.Close();
-            }
-        }
-
-        private List<Cartographic> m_points;
     }
 }

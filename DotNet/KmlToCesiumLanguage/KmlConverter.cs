@@ -14,8 +14,11 @@ namespace KmlToCesiumLanguage
         {
             document.Namespace = root.Root.GetDefaultNamespace();
             var properties = new List<Dictionary<string, object>>();
-            var placemarks = root.Descendants(document.Namespace + "Placemark").Select(o => new Placemark(o, document)).ToArray();
-            
+            var placemarks = root.Descendants(document.Namespace + "Placemark").Select(o => new Placemark(o, document));
+            foreach (var placemark in placemarks)
+            {
+                placemark.Write();
+            }
         }
     }
 }

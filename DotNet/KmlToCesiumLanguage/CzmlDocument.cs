@@ -15,7 +15,6 @@ namespace KmlToCesiumLanguage
         {
             m_sw = new StringWriter();
             m_output = new CesiumOutputStream(m_sw);
-            m_output.PrettyFormatting = true;
             m_writer = new CesiumStreamWriter();
         }
 

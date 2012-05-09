@@ -8,17 +8,35 @@ using CesiumLanguageWriter;
 
 namespace KmlToCesiumLanguage
 {
-    internal abstract class Geometry
+    public abstract class Geometry
     {
-        protected Geometry(CzmlDocument document)
+        private XElement m_placemark;
+        protected Geometry(CzmlDocument document, XElement placemark)
         {
             m_document = document;
-            this.PacketWriter = document.CesiumStreamWriter.OpenPacket(document.CesiumOutputStream);
+            m_placemark = placemark;
         }
 
-        public CesiumPacketWriter PacketWriter { get; private set; }
+        public void WritePacket()
+        {
+            this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream);
+            this.PacketWriter.WriteIdentifier(Guid.NewGuid().ToString());
+            this.AddTimeSpan(m_placemark);
+            this.AddStyleInformation();
+            this.Write();
+            this.PacketWriter.Close();
+        }
 
-        public void AddTimeSpan(XElement placemark)
+        protected abstract void Write();
+
+        protected virtual void AddIconStyle(XElement styleElement) { }
+        protected virtual void AddPolyStyle(XElement polyElement) { }
+        protected virtual void AddLineStyle(XElement lineElement) { }
+
+        protected CzmlDocument Document { get { return m_document; } }
+        protected CesiumPacketWriter PacketWriter { get; private set; }
+
+        private void AddTimeSpan(XElement placemark)
         {
             TimeInterval interval = GetInterval(placemark);
             if (interval != null)
@@ -26,17 +44,6 @@ namespace KmlToCesiumLanguage
                 this.PacketWriter.WriteAvailability(GetInterval(placemark));
             }
         }
-
-        public void Close()
-        {
-            this.PacketWriter.Close();
-        }
-
-        public virtual void AddIconStyle(XElement styleElement) { }
-        public virtual void AddPolyStyle(XElement polyElement) { }
-        public virtual void AddLineStyle(XElement lineElement) { }
-
-        protected CzmlDocument Document { get { return m_document; } }
 
         private TimeInterval GetInterval(XElement placemark)
         {
@@ -109,6 +116,109 @@ namespace KmlToCesiumLanguage
                 return new TimeInterval(beginJulian, JulianDate.MaxValue);
             }
             return null;
+        }
+
+        private void AddStyleInformation()
+        {
+            XElement styleElement = m_placemark.Element(m_document.Namespace + "Style");
+            if (styleElement == null)
+            {
+                styleElement = RetrieveStyleUrl(m_placemark, m_placemark.Document);
+            }
+            if (styleElement != null)
+            {
+                AddIconStyleInformation(styleElement);
+                AddLabelStyleInformation(styleElement);
+                AddLineStyleInformation(styleElement);
+                AddPolyStyleInformation(styleElement);
+            }
+        }
+
+        private XElement RetrieveStyleUrl(XElement element, XDocument doc)
+        {
+            XElement styleUrl = element.Element(m_document.Namespace + "styleUrl");
+            if (styleUrl != null)
+            {
+                string value = styleUrl.Value.Trim();
+                if (value.StartsWith("#"))
+                {
+                    value = value.Substring(1);
+                    var referredStyle = doc.Descendants().Where(o => o.Name == m_document.Namespace + "Style").Where(o => (string)o.Attribute("id") == value).FirstOrDefault();
+                    if (referredStyle != null)
+                    {
+                        return referredStyle;
+                    }
+                    else
+                    {
+                        referredStyle = m_placemark.Document.Descendants().Where(o => o.Name == m_document.Namespace + "StyleMap").Where(o => (string)o.Attribute("id") == value).FirstOrDefault();
+                        if (referredStyle != null)
+                        {
+                            styleUrl = referredStyle.Elements(m_document.Namespace + "Pair").Where(o => o.Element(m_document.Namespace + "key").Value == "normal").FirstOrDefault();
+                            return RetrieveStyleUrl(styleUrl, doc);
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void AddPolyStyleInformation(XElement styleElement)
+        {
+            XElement polyElement = styleElement.Element(m_document.Namespace + "PolyStyle");
+            if (polyElement != null)
+            {
+                AddPolyStyle(polyElement);
+            }
+        }
+
+        private void AddLineStyleInformation(XElement styleElement)
+        {
+            XElement lineElement = styleElement.Element(m_document.Namespace + "LineStyle");
+            if (lineElement != null)
+            {
+                AddLineStyle(lineElement);
+            }
+        }
+
+        private void AddLabelStyleInformation(XElement styleElement)
+        {
+            XElement nameElement = m_placemark.Element(m_document.Namespace + "name");
+            if (nameElement != null)
+            {
+                using (var label = PacketWriter.OpenLabelProperty())
+                {
+                    label.WriteShowProperty(false);
+                    label.WriteTextProperty(nameElement.Value);
+                    if (styleElement != null)
+                    {
+                        XElement labelElement = styleElement.Element(m_document.Namespace + "LabelStyle");
+                        if (labelElement != null)
+                        {
+                            XElement colorElement = labelElement.Element(m_document.Namespace + "color");
+                            if (colorElement != null)
+                            {
+                                string hexColor = colorElement.Value;
+                                Color color = ColorTranslator.FromHtml("#" + hexColor);
+                                label.WriteFillColorProperty(color);
+                            }
+                            XElement scaleElement = labelElement.Element(m_document.Namespace + "scale");
+                            if (scaleElement != null)
+                            {
+                                label.WriteScaleProperty(double.Parse(scaleElement.Value));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void AddIconStyleInformation(XElement styleElement)
+        {
+            XElement iconElement = styleElement.Element(m_document.Namespace + "IconStyle");
+            if (iconElement != null)
+            {
+                AddIconStyle(iconElement);
+            }
         }
 
         private CzmlDocument m_document;
