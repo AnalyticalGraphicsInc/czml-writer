@@ -103,7 +103,7 @@ namespace CesiumLanguageWriter
         /// Opens and returns the a writer for the <code>material</code> property.
         /// </summary>
         /// <returns>The writer.</returns>
-        public MaterialCesiumWriter OpenCapMaterialProperty()
+        public MaterialCesiumWriter OpenMaterialProperty()
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(MaterialWriter);
