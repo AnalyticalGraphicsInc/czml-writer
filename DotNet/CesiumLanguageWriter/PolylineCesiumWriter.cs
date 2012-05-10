@@ -241,51 +241,5 @@ namespace CesiumLanguageWriter
                 writer.WriteValue(value);
             }
         }
-
-        /// <summary>
-        /// Gets the writer for the <code>polyline_positions</code> property.  The returned instance must be opened by calling
-        /// the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  See the
-        /// documentation for the <see cref="OpenVertexPositionsProperty"/> method for more information.
-        /// </summary>
-        public PositionListCesiumWriter VertexPositionsWriter
-        {
-            get { return m_vertexPositions.Value; }
-        }
-
-        /// <summary>
-        /// Opens a property describing the polyline positions.
-        /// </summary>
-        /// <returns>A writer that is used to write positions information.</returns>
-        public PositionListCesiumWriter OpenVertexPositionsProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(VertexPositionsWriter);
-        }
-
-        /// <summary>
-        /// Writes a constant value for the <code>polyline_positions</code> property in cartesian coordinates.
-        /// See the documentation for the <see cref="OpenVertexPositionsProperty"/> method for more information.
-        /// </summary>
-        /// <param name="value">The value of the property.</param>
-        public void WritePositionsProperty(IEnumerable<Cartesian> value)
-        {
-            using (var writer = OpenVertexPositionsProperty())
-            {
-                writer.WriteValue(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a constant value for the <code>polyline_positions</code> property in cartographic coordinates.
-        /// See the documentation for the <see cref="OpenVertexPositionsProperty"/> method for more information.
-        /// </summary>
-        /// <param name="value">The value of the property.</param>
-        public void WritePositionsProperty(IEnumerable<Cartographic> value)
-        {
-            using (var writer = OpenVertexPositionsProperty())
-            {
-                writer.WriteValue(value);
-            }
-        }
     }
 }
