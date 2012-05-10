@@ -1,23 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using CesiumLanguageWriter;
-using System.Drawing;
-using System.Text.RegularExpressions;
 
 namespace KmlToCesiumLanguage
 {
+    /// <summary>
+    /// Defines a connected set of line segments.
+    /// </summary>
     public class LineString : Geometry
     {
-        private XElement m_element;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LineString"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="document">The document.</param>
+        /// <param name="placemark">The placemark.</param>
         public LineString(XElement element, CzmlDocument document, XElement placemark)
             : base(document, placemark)
         {
             m_element = element;
         }
 
+        /// <inheritdoc />
         protected override void AddLineStyle(XElement lineElement)
         {
             XElement colorElement = lineElement.Element(Document.Namespace + "color");
@@ -45,6 +53,7 @@ namespace KmlToCesiumLanguage
             }
         }
 
+        /// <inheritdoc />
         protected override void Write()
         {
             List<Cartographic> points = new List<Cartographic>();
@@ -95,5 +104,7 @@ namespace KmlToCesiumLanguage
                 positions.WriteValue(points);
             }
         }
+
+        private XElement m_element;
     }
 }

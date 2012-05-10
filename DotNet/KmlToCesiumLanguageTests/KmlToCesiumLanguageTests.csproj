@@ -44,8 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestLineString.cs" />
     <Compile Include="TestPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestPolygon.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CesiumLanguageWriter\CesiumLanguageWriter.csproj">

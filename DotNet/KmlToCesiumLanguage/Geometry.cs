@@ -1,22 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
 using System.Drawing;
+using System.Linq;
+using System.Xml.Linq;
 using CesiumLanguageWriter;
 
 namespace KmlToCesiumLanguage
 {
+    /// <summary>
+    /// This class provides a placeholder object for all derived Geometry objects.
+    /// </summary>
     public abstract class Geometry
     {
-        private XElement m_placemark;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Geometry"/> class.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="placemark">The placemark.</param>
         protected Geometry(CzmlDocument document, XElement placemark)
         {
             m_document = document;
             m_placemark = placemark;
         }
 
+        /// <summary>
+        /// Writes the czml packet of the Kml geometry.
+        /// </summary>
         public void WritePacket()
         {
             this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream);
@@ -27,13 +35,37 @@ namespace KmlToCesiumLanguage
             this.PacketWriter.Close();
         }
 
+        /// <summary>
+        /// Writes the CZML representation of the particular Kml geometry.
+        /// </summary>
         protected abstract void Write();
 
+        /// <summary>
+        /// Adds the information contained in the Kml IconStyle element to the <see cref="CesiumPacketWriter"/>.
+        /// </summary>
+        /// <param name="styleElement">The IconStyle element.</param>
         protected virtual void AddIconStyle(XElement styleElement) { }
+
+        /// <summary>
+        /// Adds the information contained in the Kml Polystyle element to the <see cref="CesiumPacketWriter"/>.
+        /// </summary>
+        /// <param name="polyElement">The PolyStyle element.</param>
         protected virtual void AddPolyStyle(XElement polyElement) { }
+
+        /// <summary>
+        /// Adds the information contained in the Kml Lolystyle element to the <see cref="CesiumPacketWriter"/>.
+        /// </summary>
+        /// <param name="lineElement">The LineStyle element.</param>
         protected virtual void AddLineStyle(XElement lineElement) { }
 
+        /// <summary>
+        /// Gets the document.
+        /// </summary>
         protected CzmlDocument Document { get { return m_document; } }
+
+        /// <summary>
+        /// Gets the packet writer.
+        /// </summary>
         protected CesiumPacketWriter PacketWriter { get; private set; }
 
         private void AddTimeSpan(XElement placemark)
@@ -221,6 +253,7 @@ namespace KmlToCesiumLanguage
             }
         }
 
+        private XElement m_placemark;
         private CzmlDocument m_document;
     }
 }

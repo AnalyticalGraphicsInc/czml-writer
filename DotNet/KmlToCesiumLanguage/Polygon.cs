@@ -1,24 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using CesiumLanguageWriter;
-using System.Text.RegularExpressions;
-using System.Drawing;
 
 namespace KmlToCesiumLanguage
 {
+    /// <summary>
+    /// A Polygon is defined by an outer boundary. Inner boundaries are not supported in CZML yet. 
+    /// </summary>
     public class Polygon : Geometry
     {
-        private XElement m_element;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Polygon"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="document">The document.</param>
+        /// <param name="placemark">The placemark.</param>
         public Polygon(XElement element, CzmlDocument document, XElement placemark)
             : base(document, placemark)
         {
             m_element = element;
         }
 
-
+        /// <inheritdoc />
         protected override void AddPolyStyle(XElement polyElement)
         {
             XElement colorElement = polyElement.Element(Document.Namespace + "color");
@@ -39,6 +44,7 @@ namespace KmlToCesiumLanguage
             }
         }
 
+        /// <inheritdoc />
         protected override void Write()
         {
             List<Cartographic> points = new List<Cartographic>();
@@ -67,5 +73,7 @@ namespace KmlToCesiumLanguage
                 positions.WriteValue(points);
             }
         }
+
+        private XElement m_element;
     }
 }

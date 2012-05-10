@@ -1,27 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Linq;
-using System.Text.RegularExpressions;
-using CesiumLanguageWriter;
 using System.Diagnostics;
 using System.Drawing;
-using System.Net;
 using System.IO;
+using System.Linq;
+using System.Net;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
+using CesiumLanguageWriter;
 
 namespace KmlToCesiumLanguage
 {
+    /// <summary>
+    /// A geographic location defined by longitude, latitude, and (optional) altitude. 
+    /// When a Point is contained by a Placemark, the point itself determines the position of the Placemark's name and icon. 
+    /// When a Point is extruded, it is connected to the ground with a line. This "tether" uses the current LineStyle.
+    /// </summary>
     public class Point : Geometry
     {
-        private double defaultTextureSize = 24;
-        private XElement m_element;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Point"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="document">The document.</param>
+        /// <param name="placemark">The placemark.</param>
         public Point(XElement element, CzmlDocument document, XElement placemark)
             : base(document, placemark)
         {
             m_element = element;
         }
 
+        /// <inheritdoc />
         protected override void AddIconStyle(XElement iconElement)
         {
             using (var billboard = this.PacketWriter.OpenBillboardProperty())
@@ -37,10 +47,10 @@ namespace KmlToCesiumLanguage
                         href = "data:image/" + extension + ";base64," + ImageProcessing.ToBase64String(image);
                         double height = image.Height;
                         double width = image.Width;
-                        if (width > defaultTextureSize || height > defaultTextureSize || (width < defaultTextureSize && height < defaultTextureSize))
+                        if (width > Constants.DefaultTextureSize || height > Constants.DefaultTextureSize || (width < Constants.DefaultTextureSize && height < Constants.DefaultTextureSize))
                         {
                             var max = Math.Max(width, height);
-                            var scale = defaultTextureSize / max;
+                            var scale = Constants.DefaultTextureSize / max;
                             billboard.WriteScaleProperty(scale);
                         }
                     }
@@ -68,6 +78,7 @@ namespace KmlToCesiumLanguage
             }
         }
 
+        /// <inheritdoc />
         protected override void Write()
         {
             string coordinates = m_element.Element(Document.Namespace + "coordinates").Value.Trim();
@@ -118,5 +129,8 @@ namespace KmlToCesiumLanguage
                 billboard.WriteScaleProperty(double.Parse(scaleElement.Value));
             }
         }
+
+
+        private XElement m_element;
     }
 }
