@@ -18,10 +18,30 @@ namespace CesiumLanguageWriter
     /// </summary>
     public class DotMaterialCesiumWriter : CesiumPropertyWriter<DotMaterialCesiumWriter>
     {
-        private readonly Lazy<ColorCesiumWriter> m_darkColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter("darkColor"), false);
-        private readonly Lazy<ColorCesiumWriter> m_lightColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter("lightColor"), false);
-        private readonly Lazy<DoubleCesiumWriter> m_sRepeat = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter("sRepeat"), false);
-        private readonly Lazy<DoubleCesiumWriter> m_tRepeat = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter("tRepeat"), false);
+        /// <summary>
+        /// The name of the <code>darkColor</code> property.
+        /// </summary>
+        public static readonly string DarkColorPropertyName = "darkColor";
+
+        /// <summary>
+        /// The name of the <code>lightColor</code> property.
+        /// </summary>
+        public static readonly string LightColorPropertyName = "lightColor";
+
+        /// <summary>
+        /// The name of the <code>sRepeat</code> property.
+        /// </summary>
+        public static readonly string SRepeatPropertyName = "sRepeat";
+
+        /// <summary>
+        /// The name of the <code>tRepeat</code> property.
+        /// </summary>
+        public static readonly string TRepeatPropertyName = "tRepeat";
+
+        private readonly Lazy<ColorCesiumWriter> m_darkColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(DarkColorPropertyName), false);
+        private readonly Lazy<ColorCesiumWriter> m_lightColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(LightColorPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_sRepeat = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SRepeatPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_tRepeat = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(TRepeatPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.

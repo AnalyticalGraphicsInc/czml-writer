@@ -18,9 +18,24 @@ namespace CesiumLanguageWriter
     /// </summary>
     public class BlobMaterialCesiumWriter : CesiumPropertyWriter<BlobMaterialCesiumWriter>
     {
-        private readonly Lazy<ColorCesiumWriter> m_darkColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter("darkColor"), false);
-        private readonly Lazy<ColorCesiumWriter> m_lightColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter("lightColor"), false);
-        private readonly Lazy<DoubleCesiumWriter> m_repeat = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter("repeat"), false);
+        /// <summary>
+        /// The name of the <code>darkColor</code> property.
+        /// </summary>
+        public static readonly string DarkColorPropertyName = "darkColor";
+
+        /// <summary>
+        /// The name of the <code>lightColor</code> property.
+        /// </summary>
+        public static readonly string LightColorPropertyName = "lightColor";
+
+        /// <summary>
+        /// The name of the <code>repeat</code> property.
+        /// </summary>
+        public static readonly string RepeatPropertyName = "repeat";
+
+        private readonly Lazy<ColorCesiumWriter> m_darkColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(DarkColorPropertyName), false);
+        private readonly Lazy<ColorCesiumWriter> m_lightColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(LightColorPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_repeat = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RepeatPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.

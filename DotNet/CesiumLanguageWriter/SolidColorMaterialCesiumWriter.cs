@@ -18,7 +18,12 @@ namespace CesiumLanguageWriter
     /// </summary>
     public class SolidColorMaterialCesiumWriter : CesiumPropertyWriter<SolidColorMaterialCesiumWriter>
     {
-        private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter("color"), false);
+        /// <summary>
+        /// The name of the <code>color</code> property.
+        /// </summary>
+        public static readonly string ColorPropertyName = "color";
+
+        private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
