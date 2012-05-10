@@ -33,7 +33,7 @@ namespace KmlToCesiumLanguage
                 Color color = ColorTranslator.FromHtml("#" + hexColor);
                 using (var polygon = this.PacketWriter.OpenPolygonProperty())
                 {
-                    using (var material = polygon.OpenCapMaterialProperty())
+                    using (var material = polygon.OpenMaterialProperty())
                     {
                         using (var solidColor = material.OpenSolidColorProperty())
                         {
