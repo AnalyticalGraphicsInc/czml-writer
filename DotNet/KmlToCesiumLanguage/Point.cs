@@ -29,6 +29,26 @@ namespace KmlToCesiumLanguage
             : base(document, placemark)
         {
             m_element = element;
+            string coordinates = m_element.Element(Document.Namespace + "coordinates").Value.Trim();
+            string[] coord = Regex.Split(coordinates, @"[,\s]+", RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+            XElement altitudeMode = m_element.Element(Document.Namespace + "altitudeMode");
+            if (altitudeMode != null && altitudeMode.Value == "clampToGround")
+            {
+                m_position = new Cartographic(double.Parse(coord[0]) * Constants.RadiansPerDegree, double.Parse(coord[1]) * Constants.RadiansPerDegree, 0);
+                Debug.Assert(coord.Length == 2 || coord.Length == 3);
+            }
+            else
+            {
+                if (coord.Length == 1)
+                {
+                    coord = coord.Concat(new List<string> { "0.0", "0.0" }).ToArray();
+                }
+                if (coord.Length == 2)
+                {
+                    coord = coord.Concat(new List<string> { "0.0" }).ToArray();
+                }
+                m_position = new Cartographic(double.Parse(coord[0]) * Constants.RadiansPerDegree, double.Parse(coord[1]) * Constants.RadiansPerDegree, double.Parse(coord[2]));
+            }
         }
 
         /// <inheritdoc />
@@ -47,10 +67,10 @@ namespace KmlToCesiumLanguage
                         href = "data:image/" + extension + ";base64," + ImageProcessing.ToBase64String(image);
                         double height = image.Height;
                         double width = image.Width;
-                        if (width > Constants.DefaultTextureSize || height > Constants.DefaultTextureSize || (width < Constants.DefaultTextureSize && height < Constants.DefaultTextureSize))
+                        if (width > DefaultTextureSize || height > DefaultTextureSize || (width < DefaultTextureSize && height < DefaultTextureSize))
                         {
                             var max = Math.Max(width, height);
-                            var scale = Constants.DefaultTextureSize / max;
+                            var scale = DefaultTextureSize / max;
                             billboard.WriteScaleProperty(scale);
                         }
                     }
@@ -81,42 +101,36 @@ namespace KmlToCesiumLanguage
         /// <inheritdoc />
         protected override void Write()
         {
-            string coordinates = m_element.Element(Document.Namespace + "coordinates").Value.Trim();
-            string[] coord = Regex.Split(coordinates, @"[,\s]+", RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
-            XElement altitudeMode = m_element.Element(Document.Namespace + "altitudeMode");
-            Cartographic coordinate;
-            if (altitudeMode != null && altitudeMode.Value == "clampToGround")
-            {
-                coordinate = new Cartographic(double.Parse(coord[0]) * Constants.RadiansPerDegree, double.Parse(coord[1]) * Constants.RadiansPerDegree, 0);
-                Debug.Assert(coord.Length == 2 || coord.Length == 3);
-            }
-            else
-            {
-                if (coord.Length == 1)
-                {
-                    coord = coord.Concat(new List<string> { "0.0", "0.0" }).ToArray();
-                }
-                if (coord.Length == 2)
-                {
-                    coord = coord.Concat(new List<string> { "0.0" }).ToArray();
-                }
-                coordinate = new Cartographic(double.Parse(coord[0]) * Constants.RadiansPerDegree, double.Parse(coord[1]) * Constants.RadiansPerDegree, double.Parse(coord[2]) * Constants.RadiansPerDegree);
-            }
-
             using (PositionCesiumWriter position = this.PacketWriter.OpenPositionProperty())
             {
-                position.WriteCartographicRadiansValue(coordinate);
+                position.WriteCartographicRadiansValue(m_position);
             }
+        }
 
+        /// <inheritdoc/>
+        protected override void AddLineStyle(XElement lineElement)
+        {
             XElement extrudeElement = m_element.Element(Document.Namespace + "extrude");
             if (extrudeElement != null && extrudeElement.Value == "1")
             {
                 using (PolylineCesiumWriter polyline = this.PacketWriter.OpenPolylineProperty())
                 {
                     List<Cartographic> positions = new List<Cartographic>();
-                    positions.Add(coordinate);
-                    positions.Add(new Cartographic(coordinate.Longitude, coordinate.Latitude, 0.0));
+                    positions.Add(m_position);
+                    positions.Add(new Cartographic(m_position.Longitude, m_position.Latitude, 0.0));
                     polyline.WritePositionsProperty(positions);
+                    XElement colorElement = lineElement.Element(Document.Namespace + "color");
+                    if (colorElement != null)
+                    {
+                        string hexColor = colorElement.Value;
+                        Color color = ColorTranslator.FromHtml("#" + hexColor);
+                        polyline.WriteColorProperty(color);
+                    }
+                    XElement widthElement = lineElement.Element(Document.Namespace + "width");
+                    if (widthElement != null)
+                    {
+                        polyline.WriteWidthProperty(double.Parse(widthElement.Value));
+                    }
                 }
             }
         }
@@ -130,7 +144,8 @@ namespace KmlToCesiumLanguage
             }
         }
 
-
+        private Cartographic m_position;
         private XElement m_element;
+        private static readonly double DefaultTextureSize = 24;
     }
 }

@@ -7,14 +7,14 @@ namespace KmlToCesiumLanguage
     /// <summary>
     /// The entry point to convert a kml file.
     /// </summary>
-    public class KmlConverter
+    public static class KmlConverter
     {
         /// <summary>
         /// Converts an kml document to CZML.
         /// </summary>
         /// <param name="kmlDocument">The kml document.</param>
         /// <param name="document">The czml document.</param>
-        public static void ConvertToCZML(XDocument kmlDocument, CzmlDocument document)
+        public static void ConvertToCesiumLanguage(XDocument kmlDocument, CzmlDocument document)
         {
             document.Namespace = kmlDocument.Root.GetDefaultNamespace();
             var properties = new List<Dictionary<string, object>>();

@@ -62,7 +62,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
     <Compile Include="CzmlDocument.cs" />
     <Compile Include="Geometry.cs" />
     <Compile Include="GeometryFactory.cs" />

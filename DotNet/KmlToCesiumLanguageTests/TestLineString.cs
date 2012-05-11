@@ -7,6 +7,9 @@ namespace KmlToCesiumLanguageTests
     [TestFixture]
     class TestLineString
     {
+        /// <summary>
+        /// This will be broken down. Just a starting point.
+        /// </summary>
         [Test]
         public void BasicLineString()
         {
@@ -25,7 +28,7 @@ namespace KmlToCesiumLanguageTests
             lineString.WritePacket();
             string result = document.StringWriter.ToString();
             Assert.That(result.Contains("\"availability\":\"2007-12-06T16:31:00Z/2007-12-06T16:40:18.0400000000009Z\""));
-            Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.199672027924945,0.6518798123947666,1833.392789010122,-1.1997160587632991,0.6518491712145866,1833.3264486682451]}"));
+            Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.199672027924945,0.6518798123947666,105045.668999999,-1.1997160587632991,0.6518491712145866,105041.867978398]}"));
         }
     }
 }

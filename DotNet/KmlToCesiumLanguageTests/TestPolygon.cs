@@ -11,6 +11,9 @@ namespace KmlToCesiumLanguageTests
     [TestFixture]
     class TestPolygon
     {
+        /// <summary>
+        /// This will be broken down. Just a starting point.
+        /// </summary>
         [Test]
         public void BasicPolygon()
         {

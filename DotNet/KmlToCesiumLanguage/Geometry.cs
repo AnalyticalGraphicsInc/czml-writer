@@ -27,12 +27,13 @@ namespace KmlToCesiumLanguage
         /// </summary>
         public void WritePacket()
         {
-            this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream);
-            this.PacketWriter.WriteIdentifier(Guid.NewGuid().ToString());
-            this.AddTimeSpan(m_placemark);
-            this.AddStyleInformation();
-            this.Write();
-            this.PacketWriter.Close();
+            using (this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
+            {
+                this.PacketWriter.WriteIdentifier(Guid.NewGuid().ToString());
+                this.AddTimeSpan(m_placemark);
+                this.AddStyleInformation();
+                this.Write();
+            }
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace KmlToCesiumLanguage
             TimeInterval interval = GetInterval(placemark);
             if (interval != null)
             {
-                this.PacketWriter.WriteAvailability(GetInterval(placemark));
+                this.PacketWriter.WriteAvailability(interval);
             }
         }
 
@@ -157,10 +158,10 @@ namespace KmlToCesiumLanguage
             {
                 styleElement = RetrieveStyleUrl(m_placemark, m_placemark.Document);
             }
+            AddLabelStyleInformation(styleElement);
             if (styleElement != null)
             {
                 AddIconStyleInformation(styleElement);
-                AddLabelStyleInformation(styleElement);
                 AddLineStyleInformation(styleElement);
                 AddPolyStyleInformation(styleElement);
             }

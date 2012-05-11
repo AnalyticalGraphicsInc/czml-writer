@@ -46,10 +46,14 @@ namespace KmlToCesiumLanguage
         /// </value>
         public JulianDate? MaximumTime { get; set; }
 
+
         /// <summary>
-        /// Gets the image map.
+        /// Gets or sets the image map.
         /// </summary>
-        public Dictionary<string, object> ImageMap { get; private set; }
+        /// <value>
+        /// The image map.
+        /// </value>
+        public Dictionary<string, object> ImageMap { get; set; }
 
         /// <summary>
         /// Gets or sets the namespace.
