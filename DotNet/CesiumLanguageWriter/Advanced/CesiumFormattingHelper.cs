@@ -64,33 +64,30 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts an image to a data URL in the form <code>date:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>,
-        /// where <code>&lt;MimeType&gt;</code> is the MIME type of the specified <paramref name="imageFormat"/>, and
+        /// where <code>&lt;MimeType&gt;</code> is the MIME type of the specified <paramref name="image"/>, and
         /// <code>&lt;ImageData&gt;</code> is the image data encoded as a Base 64 string.
         /// </summary>
         /// <param name="image">The image to convert.</param>
-        /// <param name="imageFormat">The format of image to encode in the data URL.</param>
         /// <returns>A data URL containing the content of the image.</returns>
-        public static string ImageToDataUrl(Image image, CesiumImageFormat imageFormat)
+        public static string ImageToDataUrl(Image image)
         {
-            ImageFormat format;
             string mimeType;
-            switch (imageFormat)
+            if (image.RawFormat.Equals(System.Drawing.Imaging.ImageFormat.Jpeg))
             {
-                case CesiumImageFormat.Png:
-                    format = ImageFormat.Png;
-                    mimeType = "image/png";
-                    break;
-                case CesiumImageFormat.Jpeg:
-                    format = ImageFormat.Jpeg;
-                    mimeType = "image/jpeg";
-                    break;
-                default:
-                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "imageFormat");
+                mimeType = "image/jpeg";
+            }
+            else if(image.RawFormat.Equals(System.Drawing.Imaging.ImageFormat.Png))
+            {
+                mimeType = "image/png";
+            }
+            else
+            {
+                throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "image");
             }
 
             using (MemoryStream stream = new MemoryStream())
             {
-                image.Save(stream, format);
+                image.Save(stream, image.RawFormat);
                 byte[] imageData = stream.GetBuffer();
 
                 StringBuilder builder = new StringBuilder();

@@ -55,10 +55,9 @@ namespace CesiumLanguageWriter
         /// a specified image.
         /// </summary>
         /// <param name="image">The image for which to create a data URL.</param>
-        /// <param name="imageFormat">The format to use for the image in the data URL.</param>
-        public void WriteValue(Image image, CesiumImageFormat imageFormat)
+        public void WriteValue(Image image)
         {
-            WriteValue(CesiumFormattingHelper.ImageToDataUrl(image, imageFormat));
+            WriteValue(CesiumFormattingHelper.ImageToDataUrl(image));
         }
     }
 }

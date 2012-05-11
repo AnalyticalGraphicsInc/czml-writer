@@ -14,7 +14,7 @@ namespace KmlToCesiumLanguage
         /// Initializes a new instance of the <see cref="CzmlDocument"/> class.
         /// </summary>
         public CzmlDocument()
-            : this(new Dictionary<string, object>())
+            : this(new Dictionary<string, string>())
         {
             m_sw = new StringWriter();
             m_output = new CesiumOutputStream(m_sw);
@@ -25,7 +25,7 @@ namespace KmlToCesiumLanguage
         /// Initializes a new instance of the <see cref="CzmlDocument"/> class.
         /// </summary>
         /// <param name="imageMap">The image map.</param>
-        public CzmlDocument(Dictionary<string, object> imageMap)
+        public CzmlDocument(Dictionary<string, string> imageMap)
         {
             this.ImageMap = imageMap;
         }
@@ -53,7 +53,7 @@ namespace KmlToCesiumLanguage
         /// <value>
         /// The image map.
         /// </value>
-        public Dictionary<string, object> ImageMap { get; set; }
+        public Dictionary<string, string> ImageMap { get; set; }
 
         /// <summary>
         /// Gets or sets the namespace.

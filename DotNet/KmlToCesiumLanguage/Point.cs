@@ -47,13 +47,16 @@ namespace KmlToCesiumLanguage
             {
                 if (coord.Length == 1)
                 {
-                    coord = coord.Concat(new List<string> { "0.0", "0.0" }).ToArray();
-                }
-                if (coord.Length == 2)
+                    m_position = new Cartographic(double.Parse(coord[0]) * Constants.RadiansPerDegree, 0.0, 0.0);
+                } 
+                else if (coord.Length == 2)
                 {
-                    coord = coord.Concat(new List<string> { "0.0" }).ToArray();
+                    m_position = new Cartographic(double.Parse(coord[0]) * Constants.RadiansPerDegree, double.Parse(coord[1]) * Constants.RadiansPerDegree, 0.0);
                 }
-                m_position = new Cartographic(double.Parse(coord[0]) * Constants.RadiansPerDegree, double.Parse(coord[1]) * Constants.RadiansPerDegree, double.Parse(coord[2]));
+                else
+                {
+                    m_position = new Cartographic(double.Parse(coord[0]) * Constants.RadiansPerDegree, double.Parse(coord[1]) * Constants.RadiansPerDegree, double.Parse(coord[2]));
+                }
             }
         }
 
@@ -63,43 +66,22 @@ namespace KmlToCesiumLanguage
             using (var billboard = this.PacketWriter.OpenBillboardProperty())
             {
                 string href = iconElement.Element(Document.Namespace + "Icon").Element(Document.Namespace + "href").Value;
-                object imageRef;
+                string imageRef;
                 if (Document.ImageMap.TryGetValue(href, out imageRef))
-                {
-                    if (imageRef is Image)
-                    {
-                        Image image = imageRef as Image;
-                        string extension = Path.GetExtension(href).Remove(0, 1);
-                        href = "data:image/" + extension + ";base64," + ImageProcessing.ToBase64String(image);
-                        double height = image.Height;
-                        double width = image.Width;
-                        if (width > DefaultTextureSize || height > DefaultTextureSize || (width < DefaultTextureSize && height < DefaultTextureSize))
-                        {
-                            var max = Math.Max(width, height);
-                            var scale = DefaultTextureSize / max;
-                            billboard.WriteScaleProperty(scale);
-                        }
-                    }
-                    else
-                    {
-                        href = imageRef as string;
-                        AddScaleProperty(iconElement, billboard);
-                    }
+                {  
+                    href = imageRef as string;
+                    AddScaleProperty(iconElement, billboard);
                 }
                 else
                 {
-                    if (href.StartsWith("http:"))
-                    {
-                        string extension = Path.GetExtension(href).Remove(0, 1);
-                        WebClient client = new WebClient();
-                        byte[] data = client.DownloadData(href);
-                        string hrefValue = "data:image/" + extension + ";base64," + Convert.ToBase64String(data);
-                        AddScaleProperty(iconElement, billboard);
-                        Document.ImageMap.Add(href, hrefValue);
-                        href = hrefValue;
-                    }
+                    string extension = Path.GetExtension(href).Remove(0, 1);
+                    WebClient client = new WebClient();
+                    byte[] data = client.DownloadData(href);
+                    string hrefValue = "data:image/" + extension + ";base64," + Convert.ToBase64String(data);
+                    AddScaleProperty(iconElement, billboard);
+                    Document.ImageMap.Add(href, hrefValue);
+                    href = hrefValue;
                 }
-
                 billboard.WriteImageProperty(href);
             }
         }
@@ -157,6 +139,5 @@ namespace KmlToCesiumLanguage
         private Cartographic m_position;
         private XElement m_element;
         private bool m_extrude;
-        private static readonly double DefaultTextureSize = 24;
     }
 }
