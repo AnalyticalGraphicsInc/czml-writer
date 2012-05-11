@@ -64,7 +64,7 @@ namespace KmlToCesiumLanguage
             {
                 for (int i = 0; i < coord.Length; i += 3)
                 {
-                    points.Add(new Cartographic(double.Parse(coord[i]) * Constants.RadiansPerDegree, double.Parse(coord[i + 1]) * Constants.RadiansPerDegree, double.Parse(coord[i + 2]) * Constants.RadiansPerDegree));
+                    points.Add(new Cartographic(double.Parse(coord[i]) * Constants.RadiansPerDegree, double.Parse(coord[i + 1]) * Constants.RadiansPerDegree, double.Parse(coord[i + 2])));
                 }
             }
 
