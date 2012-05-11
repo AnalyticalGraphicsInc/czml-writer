@@ -69,6 +69,31 @@ namespace KmlToCesiumLanguage
         /// </summary>
         protected CesiumPacketWriter PacketWriter { get; private set; }
 
+        /// <summary>
+        /// Converts the hex color string to a <see cref="System.Drawing.Color"/>
+        /// </summary>
+        /// <param name="hex">The hex string.</param>
+        /// <returns></returns>
+        protected Color HexStringToColor(string hex)
+        {
+            hex = hex.ToLowerInvariant();
+            if (hex.Length == 6)
+            {
+                hex = "ff" + hex;
+            }
+            else if (hex.Length != 8)
+            {
+                throw new Exception(hex + " is not a valid color code");
+            }
+            int a, r, g, b;
+            //https://developers.google.com/kml/documentation/kmlreference#color
+            a = Convert.ToInt32(hex.Substring(0, 2), 16);
+            b = Convert.ToInt32(hex.Substring(2, 2), 16);
+            g = Convert.ToInt32(hex.Substring(4, 2), 16);
+            r = Convert.ToInt32(hex.Substring(6, 2), 16);
+            return Color.FromArgb(a, r, g, b);
+        }
+
         private void AddTimeSpan(XElement placemark)
         {
             TimeInterval interval = GetInterval(placemark);
@@ -230,8 +255,7 @@ namespace KmlToCesiumLanguage
                             XElement colorElement = labelElement.Element(m_document.Namespace + "color");
                             if (colorElement != null)
                             {
-                                string hexColor = colorElement.Value;
-                                Color color = ColorTranslator.FromHtml("#" + hexColor);
+                                Color color = HexStringToColor(colorElement.Value);
                                 label.WriteFillColorProperty(color);
                             }
                             XElement scaleElement = labelElement.Element(m_document.Namespace + "scale");

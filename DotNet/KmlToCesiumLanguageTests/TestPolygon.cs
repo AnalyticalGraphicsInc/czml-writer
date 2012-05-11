@@ -33,7 +33,7 @@ namespace KmlToCesiumLanguageTests
             polygon.WritePacket();
             string result = document.StringWriter.ToString();
             Assert.That(result.Contains("\"availability\":\"2007-12-06T16:38:22.9199999999983Z/2007-12-06T16:38:32.9199999999983Z\""));
-            Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.2989321487982717,0.6870342516417286,0.017453292519943295,-1.2947816105749124,0.583457652686429,1843.4556175675614]}"));
+            Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.2989321487982717,0.6870342516417286,1.0,-1.2947816105749124,0.583457652686429,105622.226606304]}"));
         }
     }
 }

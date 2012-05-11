@@ -122,8 +122,7 @@ namespace KmlToCesiumLanguage
                     XElement colorElement = lineElement.Element(Document.Namespace + "color");
                     if (colorElement != null)
                     {
-                        string hexColor = colorElement.Value;
-                        Color color = ColorTranslator.FromHtml("#" + hexColor);
+                        Color color = HexStringToColor(colorElement.Value);
                         polyline.WriteColorProperty(color);
                     }
                     XElement widthElement = lineElement.Element(Document.Namespace + "width");

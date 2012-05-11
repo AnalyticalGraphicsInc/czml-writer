@@ -48,7 +48,7 @@ namespace KmlToCesiumLanguageTests
             var point = new Point(element.Element("Point"), m_document, element);
             point.WritePacket();
             string result = m_document.StringWriter.ToString();
-            Assert.That(result.Contains("\"position\":{\"cartographicRadians\":[-1.4068054520768973,0.4993091156647564,0.8470082860008401]}"));
+            Assert.That(result.Contains("\"position\":{\"cartographicRadians\":[-1.4068054520768973,0.4993091156647564,48.5300000004579]}"));
         }
 
         [Test]
@@ -89,7 +89,7 @@ namespace KmlToCesiumLanguageTests
             var point = new Point(element.Element("Point"), m_document, element);
             point.WritePacket();
             string result = m_document.StringWriter.ToString();
-            Assert.That(result.Contains("\"polyline\":{\"positions\":{\"cartographicRadians\":[-1.4068054520768973,0.4993091156647564,0.8470082860008401,-1.4068054520768973,0.4993091156647564,0.0]}}"));
+            Assert.That(result.Contains("\"polyline\":{\"positions\":{\"cartographicRadians\":[-1.4068054520768973,0.4993091156647564,48.5300000004579,-1.4068054520768973,0.4993091156647564,0.0]}}"));
         }
 
         [Test]
@@ -108,7 +108,7 @@ namespace KmlToCesiumLanguageTests
             var point = new Point(element.Element("Point"), m_document, element);
             point.WritePacket();
             string result = m_document.StringWriter.ToString();
-            Assert.That(result.Contains("\"polyline\":{\"positions\":{\"cartographicRadians\":[-1.4068054520768973,0.4993091156647564,0.8470082860008401,-1.4068054520768973,0.4993091156647564,0.0]},\"color\":{\"rgba\":[255,0,255,161]}}"));
+            Assert.That(result.Contains("\"polyline\":{\"positions\":{\"cartographicRadians\":[-1.4068054520768973,0.4993091156647564,48.5300000004579,-1.4068054520768973,0.4993091156647564,0.0]},\"color\":{\"rgba\":[255,0,255,161]}}"));
         }
 
 
