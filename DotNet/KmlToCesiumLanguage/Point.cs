@@ -29,6 +29,12 @@ namespace KmlToCesiumLanguage
             : base(document, placemark)
         {
             m_element = element;
+            XElement extrudeElement = m_element.Element(Document.Namespace + "extrude");
+            if (extrudeElement != null && extrudeElement.Value == "1")
+            {
+                m_extrude = true;
+            }
+
             string coordinates = m_element.Element(Document.Namespace + "coordinates").Value.Trim();
             string[] coord = Regex.Split(coordinates, @"[,\s]+", RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
             XElement altitudeMode = m_element.Element(Document.Namespace + "altitudeMode");
@@ -105,20 +111,25 @@ namespace KmlToCesiumLanguage
             {
                 position.WriteCartographicRadiansValue(m_position);
             }
+            if (m_extrude)
+            {
+                List<Cartographic> positions = new List<Cartographic>();
+                positions.Add(m_position);
+                positions.Add(new Cartographic(m_position.Longitude, m_position.Latitude, 0.0));
+                using (PositionListCesiumWriter polyline = this.PacketWriter.OpenVertexPositionsProperty())
+                {
+                    polyline.WriteValue(positions);
+                }
+            }
         }
 
         /// <inheritdoc/>
         protected override void AddLineStyle(XElement lineElement)
         {
-            XElement extrudeElement = m_element.Element(Document.Namespace + "extrude");
-            if (extrudeElement != null && extrudeElement.Value == "1")
+            if (m_extrude)
             {
                 using (PolylineCesiumWriter polyline = this.PacketWriter.OpenPolylineProperty())
                 {
-                    List<Cartographic> positions = new List<Cartographic>();
-                    positions.Add(m_position);
-                    positions.Add(new Cartographic(m_position.Longitude, m_position.Latitude, 0.0));
-                    polyline.WritePositionsProperty(positions);
                     XElement colorElement = lineElement.Element(Document.Namespace + "color");
                     if (colorElement != null)
                     {
@@ -145,6 +156,7 @@ namespace KmlToCesiumLanguage
 
         private Cartographic m_position;
         private XElement m_element;
+        private bool m_extrude;
         private static readonly double DefaultTextureSize = 24;
     }
 }
