@@ -186,40 +186,43 @@ function checkTab(evt) {
 /* Form Logic */
 
 window.addEventListener("load", function (event) {
-	var textareas = document.getElementsByTagName("textarea");
-	for (var x = 0, xl = textareas.length; x < xl; ++x) {
-		textareas[x].addEventListener("keypress", checkTab);
-	}
+    var textareas = document.getElementsByTagName("textarea");
+    for (var x = 0, xl = textareas.length; x < xl; ++x) {
+        textareas[x].addEventListener("keypress", checkTab);
+    }
 
-	var form = document.forms["jsv"];
-	form.addEventListener("submit", function (event) {
-		try {
-			var environmentId = form.elements["environment"].value;
-			var json =  form.elements["json"].value;
-			var jsonUri =  form.elements["json_uri"].value;
-			var schema =  form.elements["schema"].value;
-			var schemaUri =  form.elements["schema_uri"].value;
-			
-			try {
-				json = json ? JSON.parse(json) : undefined;
-			} catch (e) {
-				throw new Error("Input is not valid JSON");
-			}
-			
-			try {
-				schema = schema ? JSON.parse(schema) : undefined;
-			} catch (e) {
-				throw new Error("Schema is not valid JSON");
-			}
-			
-			var environment = JSV.createEnvironment(environmentId);
-			
+    var form = document.forms["jsv"];
+    form.addEventListener("submit", function (event) {
+        try {
+            var environmentId = form.elements["environment"].value;
+            var json = form.elements["json"].value;
+            var jsonUri = form.elements["json_uri"].value;
+            var schema = form.elements["schema"].value;
+            var schemaUri = form.elements["schema_uri"].value;
+
+            try {
+                json = json ? JSON.parse(json) : undefined;
+            } catch (e) {
+                throw new Error("Input is not valid JSON");
+            }
+
+            try {
+                schema = schema ? JSON.parse(schema) : undefined;
+            } catch (e) {
+                throw new Error("Schema is not valid JSON");
+            }
+
+            var environment = JSV.createEnvironment(environmentId);
+
+            var currentLoadingUri = null;
+            var currentLoadingSchema = null;
+
             var originalFindSchema = environment.findSchema;
-            environment.findSchema = function(uri) {
+            environment.findSchema = function (uri) {
                 var foundSchema = originalFindSchema.call(this, uri);
                 if (!foundSchema) {
                     var xhr = new XMLHttpRequest();
-                    xhr.open('GET', uri, false);  
+                    xhr.open('GET', uri, false);
                     xhr.send();
                     environment.createSchema(JSON.parse(xhr.responseText), undefined, uri);
                     foundSchema = originalFindSchema.call(this, uri);
@@ -227,40 +230,40 @@ window.addEventListener("load", function (event) {
                 return foundSchema;
             };
 
-			var report = environment.validate(environment.createInstance(json, jsonUri), environment.createSchema(schema, null, schemaUri));
-			var reportElement = document.getElementById("report");
-			var output;
-						
-			if (report.errors.length) {
-				reportElement.className = "invalid";
-				output = "";
-				for (var x = 0, xl = report.errors.length; x < xl; ++x) {
-					output += '<div class="error"><span class="error_uri">Problem with <code>' +
+            var report = environment.validate(environment.createInstance(json, jsonUri), environment.createSchema(schema, null, schemaUri));
+            var reportElement = document.getElementById("report");
+            var output;
+
+            if (report.errors.length) {
+                reportElement.className = "invalid";
+                output = "";
+                for (var x = 0, xl = report.errors.length; x < xl; ++x) {
+                    output += '<div class="error"><span class="error_uri">Problem with <code>' +
 						report.errors[x].uri +
 						'</code> : </span><span class="error_message">' +
 						report.errors[x].message +
 						'</span><br/><span class="error_schemaUri">Reported by <code>' +
 						report.errors[x].schemaUri +
 						'</code></span><br/><span class="error_attribute">Attribute "<code>' +
-						report.errors[x].attribute + 
+						report.errors[x].attribute +
 						'</code>"</span><span class="error_details"> (<code>' +
 						JSON.stringify(report.errors[x].details) +
 						'</code>)</span></div>';
-				}
-				reportElement.innerHTML = output;
-			} else {
-				reportElement.className = "valid";
-				reportElement.textContent = "Input is valid!";
-			}
-		} catch (e) {
-			var reportElement = document.getElementById("report");
-			reportElement.className = "invalid";
-			reportElement.textContent = e;
-		}
-		
-		event.preventDefault();
-		return false;
-	});
+                }
+                reportElement.innerHTML = output;
+            } else {
+                reportElement.className = "valid";
+                reportElement.textContent = "Input is valid!";
+            }
+        } catch (e) {
+            var reportElement = document.getElementById("report");
+            reportElement.className = "invalid";
+            reportElement.textContent = e;
+        }
+
+        event.preventDefault();
+        return false;
+    });
 });
 
 	</script>
