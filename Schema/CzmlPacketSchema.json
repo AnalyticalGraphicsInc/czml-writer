@@ -1,65 +1,43 @@
 {
-	"title": "Packet",
-	"description": "Describes the graphical properties of a single object in a scene, such as a single aircraft.",
-	"type": "object",
-	"properties": {
-		"id": {
-			"title": "Identifier",
-			"description": "The ID of the object described by this packet.  IDs do not need to be GUIDs, but they do need to uniquely identify a single object within a CZML source and any other CZML sources loaded into the same scope.  If this property is not specified, the client will automatically generate a unique one.  However, this prevents later packets from referring to this object in order to, for example, add more data to it.",
-			"type": "string",
-			"default": "unique"
-		},
-		"availability": {
-			"title": "Availability",
-			"description": "Indicates when data for an object is available. If data for an object is known to be available at the current animation time, but the client does not yet have that data (presumably because it will arrive in a later packet), the client will pause with a message like \"Buffering...\" while it waits to receive the data. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may report availability for all time, but then later the propagator throws an exception and the availability needs to be adjusted. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is available at a time, the client expects the object to have at least one property, and it expects all properties that it needs to be defined at that time. If the object doesn't have any properties, or a needed property is defined but not at the animation time, the client will pause animation and wait for more data.",
-			"type": "string",
-			"default": "0000-00-00T00:00:00Z/9999-12-31T24:00:00Z"
-		},
-		"position": {
-			"title": "Position",
-			"description": "Specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.",
-			"type": ["array", "object"],
-			"items": { "$ref": "#/properties/position" },
-			"properties": {
-				"epoch": {
-					"title": "Epoch",
-					"description": "Specifies the epoch to use for times specifies as seconds since an epoch.",
-					"type": "string",
-					"format": "date-time"
-				},
-				"nextTime": {
-					"title": "NextTime",
-					"description": "The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets.",
-					"type": ["string", "number"],
-					"format": "date-time"
-				},
-				"previousTime": {
-					"title": "PreviousTime",
-					"description": "The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets.",
-					"type": ["string", "number"],
-					"format": "date-time"
-				},
-				"referenceFrame": {
-					"title": "ReferenceFrame",
-					"description": "The reference frame in which cartesian positions are specified. Possible values are FIXED and INERTIAL. This property is ignored when specifying position with any type other than cartesian. If this property is not specified, the default reference frame is FIXED.",
-					"type": "string"
-				},
-				"cartesian": {
-					"title": "Cartesian",
-					"description": "The position specified as a Cartesian [X, Y, Z] position in the meters relative to the referenceFrame. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
-					"type": "array"
-				},
-				"cartographicRadians": {
-					"title": "CartographicRadians",
-					"description": "The position specified as a WGS 84 Cartographic [Longitude, Latitude, Height] where longitude and latitude are in radians and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
-					"type": "array"
-				},
-				"cartographicDegrees": {
-					"title": "CartographicDegrees",
-					"description": "The position specified as a WGS 84 Cartographic [Longitude, Latitude, Height] where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
-					"type": "array"
-				}
-			}
-		}
-	}
+    "title": "Packet",
+    "description": "Describes the graphical properties of a single object in a scene, such as a single aircraft.",
+    "type": "object",
+    "properties": {
+        "id": {
+            "title": "Identifier",
+            "description": "The ID of the object described by this packet.  IDs do not need to be GUIDs, but they do need to uniquely identify a single object within a CZML source and any other CZML sources loaded into the same scope.  If this property is not specified, the client will automatically generate a unique one.  However, this prevents later packets from referring to this object in order to, for example, add more data to it.",
+            "type": "string",
+            "default": "unique"
+        },
+        "availability": {
+            "title": "Availability",
+            "description": "Indicates when data for an object is available. If data for an object is known to be available at the current animation time, but the client does not yet have that data (presumably because it will arrive in a later packet), the client will pause with a message like \"Buffering...\" while it waits to receive the data. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may report availability for all time, but then later the propagator throws an exception and the availability needs to be adjusted. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is available at a time, the client expects the object to have at least one property, and it expects all properties that it needs to be defined at that time. If the object doesn't have any properties, or a needed property is defined but not at the animation time, the client will pause animation and wait for more data.",
+            "type": "string",
+            "default": "0000-00-00T00:00:00Z/9999-12-31T24:00:00Z"
+        },
+        "position": {
+            "title": "Position",
+            "description": "Specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.",
+            "extends": { "$ref": "CzmlInterpolatablePropertySchema.json" },
+            "type": ["array", "object"],
+            "items": { "$ref": "#/properties/position" },
+            "properties": {
+                "cartesian": {
+                    "title": "Cartesian",
+                    "description": "The position specified as a Cartesian [X, Y, Z] position in the meters relative to the referenceFrame. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
+                    "type": "array"
+                },
+                "cartographicRadians": {
+                    "title": "CartographicRadians",
+                    "description": "The position specified as a WGS 84 Cartographic [Longitude, Latitude, Height] where longitude and latitude are in radians and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
+                    "type": "array"
+                },
+                "cartographicDegrees": {
+                    "title": "CartographicDegrees",
+                    "description": "The position specified as a WGS 84 Cartographic [Longitude, Latitude, Height] where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
+                    "type": "array"
+                }
+            }
+        }
+    }
 }
