@@ -74,6 +74,7 @@ namespace CesiumLanguageWriter
                 Output.WriteValue(position.X);
                 Output.WriteValue(position.Y);
                 Output.WriteValue(position.Z);
+                Output.WriteLineBreak();
             }
             Output.WriteEndSequence();
         }
@@ -93,6 +94,7 @@ namespace CesiumLanguageWriter
                 Output.WriteValue(position.Longitude);
                 Output.WriteValue(position.Latitude);
                 Output.WriteValue(position.Height);
+                Output.WriteLineBreak();
             }
             Output.WriteEndSequence();
         }
