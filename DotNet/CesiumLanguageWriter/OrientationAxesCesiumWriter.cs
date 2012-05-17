@@ -135,10 +135,10 @@ namespace CesiumLanguageWriter
 
             Output.WritePropertyName(UnitQuaternionPropertyName);
             Output.WriteStartSequence();
-            Output.WriteValue(orientation.W);
             Output.WriteValue(orientation.X);
             Output.WriteValue(orientation.Y);
             Output.WriteValue(orientation.Z);
+            Output.WriteValue(orientation.W);
             Output.WriteEndSequence();
         }
 
