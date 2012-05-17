@@ -72,13 +72,17 @@ namespace CesiumLanguageWriter.Advanced
         public static string ImageToDataUrl(Image image)
         {
             string mimeType;
-            if (image.RawFormat == System.Drawing.Imaging.ImageFormat.Jpeg)
+            if (image.RawFormat.Equals(System.Drawing.Imaging.ImageFormat.Jpeg))
             {
                 mimeType = "image/jpeg";
             }
-            else if(image.RawFormat == System.Drawing.Imaging.ImageFormat.Png)
+            else if(image.RawFormat.Equals(System.Drawing.Imaging.ImageFormat.Png))
             {
                 mimeType = "image/png";
+            }
+            else if (image.RawFormat.Equals(System.Drawing.Imaging.ImageFormat.Bmp))
+            {
+                mimeType = "image/bmp";
             }
             else
             {
