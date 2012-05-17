@@ -60,31 +60,40 @@ namespace KmlToCesiumLanguage
             XElement altitudeModeElement = m_element.Element(Document.Namespace + "altitudeMode");
             int tessellate = tessellateElement != null ? int.Parse(tessellateElement.Value) : 0;
             string altitudeMode = altitudeModeElement != null ? altitudeModeElement.Value : "clampToGround";
-            Regex r = new Regex(@"(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)");
-            MatchCollection mc = r.Matches(coordinates);
+            Regex coordinateExpression = new Regex(@"(?<longitude>-?\d+\.?\d*)          # capture longitude value
+                                                     \s*,\s*                            # capture separator 
+                                                     (?<latitude>-?\d+\.?\d*)           # capture latitude value
+                                                     \s*,\s*                            # capture separator
+                                                     (?<altitude>-?\d+\.?\d*)           # capture altitude value", RegexOptions.IgnorePatternWhitespace);
+            MatchCollection mc = coordinateExpression.Matches(coordinates);
             List<Cartographic> points = new List<Cartographic>();
             if (mc.Count > 0)
             {
                 foreach (Match match in mc)
                 {
-                    string[] location = Regex.Split(match.Value.Trim(), @"[,\s]+", RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+                    string longitude = match.Groups["longitude"].Value;
+                    string latitude = match.Groups["latitude"].Value;
+                    string altitude = match.Groups["altitude"].Value;
                     if (tessellate == 1 && altitudeMode == "clampToGround")
                     {
-                        location[2] = "0";
+                        altitude = "0";
                     }
-                    points.Add(new Cartographic(double.Parse(location[0]) * Constants.RadiansPerDegree, double.Parse(location[1]) * Constants.RadiansPerDegree, double.Parse(location[2])));
+                    points.Add(new Cartographic(double.Parse(longitude) * Constants.RadiansPerDegree, double.Parse(latitude) * Constants.RadiansPerDegree, double.Parse(altitude)));
                 }
             }
             else
             {
-                r = new Regex(@"(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*\s+)");
-                mc = r.Matches(coordinates);
+                coordinateExpression = new Regex(@"(?<longitude>-?\d+\.?\d*)    # capture longitude value
+                                                   \s*,\s*                      # capture separator
+                                                   (?<latitude>-?\d+\.?\d*)     # capture latitude value", RegexOptions.IgnorePatternWhitespace);
+                mc = coordinateExpression.Matches(coordinates);
                 if (mc.Count > 0)
                 {
                     foreach (Match match in mc)
                     {
-                        string[] location = Regex.Split(match.Value.Trim(), @"[,\s]+", RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
-                        points.Add(new Cartographic(double.Parse(location[0]) * Constants.RadiansPerDegree, double.Parse(location[1]) * Constants.RadiansPerDegree, 0.00));
+                        string longitude = match.Groups["longitude"].Value;
+                        string latitude = match.Groups["latitude"].Value;
+                        points.Add(new Cartographic(double.Parse(longitude) * Constants.RadiansPerDegree, double.Parse(latitude) * Constants.RadiansPerDegree, 0.00));
                     }
                 }
                 else

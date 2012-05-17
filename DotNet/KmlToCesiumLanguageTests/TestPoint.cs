@@ -15,7 +15,6 @@ namespace KmlToCesiumLanguageTests
         public TestPoint()
         {
             m_document = new CzmlDocument();
-            m_document.Namespace = "";
         }
 
         [Test]

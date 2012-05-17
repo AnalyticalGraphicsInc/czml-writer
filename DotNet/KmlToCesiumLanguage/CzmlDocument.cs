@@ -16,9 +16,6 @@ namespace KmlToCesiumLanguage
         public CzmlDocument()
             : this(new Dictionary<string, string>())
         {
-            m_sw = new StringWriter();
-            m_output = new CesiumOutputStream(m_sw);
-            m_writer = new CesiumStreamWriter();
         }
 
         /// <summary>
@@ -28,6 +25,10 @@ namespace KmlToCesiumLanguage
         public CzmlDocument(Dictionary<string, string> imageMap)
         {
             this.ImageMap = imageMap;
+            m_sw = new StringWriter();
+            m_output = new CesiumOutputStream(m_sw);
+            m_writer = new CesiumStreamWriter();
+            Namespace = "";
         }
 
         /// <summary>

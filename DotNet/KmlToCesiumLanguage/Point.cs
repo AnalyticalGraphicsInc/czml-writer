@@ -36,7 +36,7 @@ namespace KmlToCesiumLanguage
             }
 
             string coordinates = m_element.Element(Document.Namespace + "coordinates").Value.Trim();
-            string[] coord = Regex.Split(coordinates, @"[,\s]+", RegexOptions.Multiline | RegexOptions.IgnorePatternWhitespace);
+            string[] coord = Regex.Split(coordinates, @"[,\s]+", RegexOptions.Multiline);
             XElement altitudeMode = m_element.Element(Document.Namespace + "altitudeMode");
             if (altitudeMode != null && altitudeMode.Value == "clampToGround")
             {
