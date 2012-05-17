@@ -1,0 +1,26 @@
+{
+    "title": "InterpolatableProperty",
+    "description": "The base schema for a property whose value may be determined by interpolating over provided time-tagged samples.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "epoch": {
+            "title": "Epoch",
+            "description": "Specifies the epoch to use for times specifies as seconds since an epoch.",
+            "type": "string",
+            "format": "date-time"
+        },
+        "nextTime": {
+            "title": "NextTime",
+            "description": "The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets.",
+            "type": ["string", "number"],
+            "format": "date-time"
+        },
+        "previousTime": {
+            "title": "PreviousTime",
+            "description": "The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets.",
+            "type": ["string", "number"],
+            "format": "date-time"
+        }
+    }
+}
