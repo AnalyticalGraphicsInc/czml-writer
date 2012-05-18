@@ -102,6 +102,8 @@ namespace CesiumLanguageWriter
         private readonly Lazy<MaterialCesiumWriter> m_outerMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(OuterMaterialPropertyName), false);
         private readonly Lazy<MaterialCesiumWriter> m_silhouetteMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(SilhouetteMaterialPropertyName), false);
 
+        private readonly Lazy<CustomCesiumWriter> m_custom = new Lazy<CustomCesiumWriter>(() => new CustomCesiumWriter("custom"), false); 
+
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
@@ -474,6 +476,26 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(SilhouetteMaterialWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>custom</code> property.  See the documentation for the 
+        /// <see cref="OpenCustomProperty"/> method for more information.  The returned instance must
+        /// be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be
+        /// used for writing.
+        /// </summary>
+        public CustomCesiumWriter CustomWriter
+        {
+            get { return m_custom.Value; }
+        }
+
+        /// <summary>
+        /// Opens a property containing additional custom properties, optionally over time.
+        /// </summary>
+        /// <returns>A writer that is used to write custom properties.</returns>
+        public CustomCesiumWriter OpenCustomProperty()
+        {
+            return OpenAndReturn(CustomWriter);
         }
     }
 }

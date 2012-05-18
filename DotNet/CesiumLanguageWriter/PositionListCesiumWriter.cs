@@ -23,6 +23,7 @@ namespace CesiumLanguageWriter
     public class PositionListCesiumWriter : CesiumValuePropertyWriter<IEnumerable<Cartesian>, PositionListCesiumWriter>
     {
         private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>> m_cartographic;
+        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<string>>> m_references; 
 
         /// <summary>
         /// Initializes a new instance.
@@ -32,6 +33,7 @@ namespace CesiumLanguageWriter
             : base(propertyName)
         {
             m_cartographic = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>>(CreateCartographicAdaptor, false);
+            m_references = new Lazy<ICesiumValuePropertyWriter<IEnumerable<string>>>(CreateReferencesAdaptor, false);
         }
 
         /// <inheritdoc />
@@ -57,6 +59,19 @@ namespace CesiumLanguageWriter
         public ICesiumValuePropertyWriter<IEnumerable<Cartographic>> AsCartographic()
         {
             return m_cartographic.Value;
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}"/> to
+        /// write a list of string values representing references.  Because the returned instance is a wrapper
+        /// for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance
+        /// or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        /// <seealso cref="WriteValue(IEnumerable{string})"/>
+        public ICesiumValuePropertyWriter<IEnumerable<string>> AsReferences()
+        {
+            return m_references.Value;
         }
 
         /// <summary>
@@ -99,9 +114,34 @@ namespace CesiumLanguageWriter
             Output.WriteEndSequence();
         }
 
+        /// <summary>
+        /// Writes the value of the property for this interval as an array of references.  Each
+        /// reference is to a property that defines a single position, possibly as it changes with time.
+        /// </summary>
+        /// <param name="references">The list of references.</param>
+        public void WriteValue(IEnumerable<string> references)
+        {
+            OpenIntervalIfNecessary();
+
+            Output.WritePropertyName("references");
+            Output.WriteStartSequence();
+            foreach (string reference in references)
+            {
+                Output.WriteValue(reference);
+                Output.WriteLineBreak();
+            }
+            Output.WriteEndSequence();
+        }
+
         private ICesiumValuePropertyWriter<IEnumerable<Cartographic>> CreateCartographicAdaptor()
         {
             return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<Cartographic>>(
+                this, (me, value) => me.WriteValue(value));
+        }
+
+        private ICesiumValuePropertyWriter<IEnumerable<string>> CreateReferencesAdaptor()
+        {
+            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<string>>(
                 this, (me, value) => me.WriteValue(value));
         }
     }

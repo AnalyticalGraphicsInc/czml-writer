@@ -20,7 +20,12 @@ namespace CesiumLanguageWriter
     /// </summary>
     public class CesiumPacketWriter : CesiumElementWriter
     {
-        private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter("position"), false);
+        /// <summary>
+        /// The name of the <code>position</code> property.
+        /// </summary>
+        public static readonly string PositionPropertyName = "position";
+
+        private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter("billboard"), false);
         private readonly Lazy<PointGraphicsCesiumWriter> m_pointGraphics = new Lazy<PointGraphicsCesiumWriter>(() => new PointGraphicsCesiumWriter("point"), false);
         private readonly Lazy<ConeCesiumWriter> m_cone = new Lazy<ConeCesiumWriter>(() => new ConeCesiumWriter("cone"), false);
@@ -32,6 +37,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<PolygonCesiumWriter> m_polygon = new Lazy<PolygonCesiumWriter>(() => new PolygonCesiumWriter("polygon"), false);
         private readonly Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(() => new CameraCesiumWriter("camera"), false);
         private readonly Lazy<PositionListCesiumWriter> m_vertexPositions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter("vertexPositions"), false); 
+        private readonly Lazy<CustomCesiumWriter> m_custom = new Lazy<CustomCesiumWriter>(() => new CustomCesiumWriter("custom"), false); 
 
         /// <summary>
         /// Writes the start of a new JSON object representing the packet.
@@ -360,6 +366,26 @@ namespace CesiumLanguageWriter
         public PositionListCesiumWriter OpenVertexPositionsProperty()
         {
             return OpenAndReturn(VertexPositionsWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>custom</code> property.  See the documentation for the 
+        /// <see cref="OpenCustomProperty"/> method for more information.  The returned instance must
+        /// be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be
+        /// used for writing.
+        /// </summary>
+        public CustomCesiumWriter CustomWriter
+        {
+            get { return m_custom.Value; }
+        }
+
+        /// <summary>
+        /// Opens a property containing additional custom properties, optionally over time.
+        /// </summary>
+        /// <returns>A writer that is used to write custom properties.</returns>
+        public CustomCesiumWriter OpenCustomProperty()
+        {
+            return OpenAndReturn(CustomWriter);
         }
     }
 }

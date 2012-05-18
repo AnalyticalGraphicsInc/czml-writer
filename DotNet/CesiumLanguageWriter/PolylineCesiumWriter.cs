@@ -52,6 +52,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
+        private readonly Lazy<CustomCesiumWriter> m_custom = new Lazy<CustomCesiumWriter>(() => new CustomCesiumWriter("custom"), false); 
 
         /// <summary>
         /// Initializes a new instance.
@@ -239,6 +240,26 @@ namespace CesiumLanguageWriter
             {
                 writer.WriteValue(value);
             }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>custom</code> property.  See the documentation for the 
+        /// <see cref="OpenCustomProperty"/> method for more information.  The returned instance must
+        /// be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be
+        /// used for writing.
+        /// </summary>
+        public CustomCesiumWriter CustomWriter
+        {
+            get { return m_custom.Value; }
+        }
+
+        /// <summary>
+        /// Opens a property containing additional custom properties, optionally over time.
+        /// </summary>
+        /// <returns>A writer that is used to write custom properties.</returns>
+        public CustomCesiumWriter OpenCustomProperty()
+        {
+            return OpenAndReturn(CustomWriter);
         }
     }
 }
