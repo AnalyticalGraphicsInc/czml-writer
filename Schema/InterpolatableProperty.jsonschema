@@ -1,8 +1,6 @@
 {
     "title": "InterpolatableProperty",
     "description": "The base schema for a property whose value may be determined by interpolating over provided time-tagged samples.",
-    "type": ["array", "object"],
-    "items": { "$ref": "#" },
     "properties": {
         "epoch": {
             "title": "Epoch",

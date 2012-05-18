@@ -16,9 +16,9 @@
             "default": "0000-00-00T00:00:00Z/9999-12-31T24:00:00Z"
         },
         "position": {
-            "title": "Position",
-            "description": "Specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.",
-			"type": { "$ref": "Position.jsonschema" }
+          "title": "Position",
+          "description": "Specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.",
+          "$ref": "Position.jsonschema"
         }
     }
 }

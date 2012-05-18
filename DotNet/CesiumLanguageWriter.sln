@@ -9,6 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KmlToCesiumLanguage", "KmlT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KmlToCesiumLanguageTests", "KmlToCesiumLanguageTests\KmlToCesiumLanguageTests.csproj", "{FDDACCE4-CA40-458E-9134-EC8275D7DCC7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F4E-CD74-44F3-9A80-604BCA10FB67}"
+	ProjectSection(SolutionItems) = preProject
+		..\Schema\InterpolatableProperty.jsonschema = ..\Schema\InterpolatableProperty.jsonschema
+		..\Schema\Packet.jsonschema = ..\Schema\Packet.jsonschema
+		..\Schema\Position.jsonschema = ..\Schema\Position.jsonschema
+		..\Schema\Validator.html = ..\Schema\Validator.html
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
