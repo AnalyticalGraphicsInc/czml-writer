@@ -78,6 +78,7 @@
     <Compile Include="ColorCesiumWriter.cs" />
     <Compile Include="ConeCesiumWriter.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="CustomCesiumWriter.cs" />
     <Compile Include="DirectionListCesiumWriter.cs" />
     <Compile Include="DotMaterialCesiumWriter.cs" />
     <Compile Include="DoubleCesiumWriter.cs" />
