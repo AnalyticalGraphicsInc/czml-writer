@@ -20,7 +20,12 @@ namespace CesiumLanguageWriter
     /// </summary>
     public class CesiumPacketWriter : CesiumElementWriter
     {
-        private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter("position"), false);
+        /// <summary>
+        /// The name of the <code>position</code> property.
+        /// </summary>
+        public static readonly string PositionPropertyName = "position";
+
+        private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter("billboard"), false);
         private readonly Lazy<PointGraphicsCesiumWriter> m_pointGraphics = new Lazy<PointGraphicsCesiumWriter>(() => new PointGraphicsCesiumWriter("point"), false);
         private readonly Lazy<ConeCesiumWriter> m_cone = new Lazy<ConeCesiumWriter>(() => new ConeCesiumWriter("cone"), false);
