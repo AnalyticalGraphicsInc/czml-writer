@@ -1,0 +1,5 @@
+{
+    "title": "Cartographic",
+    "description": "A geodetic, WGS84 position using longitude, latitude, and height components.",
+    "type": "array"
+}

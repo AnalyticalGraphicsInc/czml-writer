@@ -1,0 +1,12 @@
+{
+    "title": "Billboard",
+    "description": "Specifies a billboard, or viewport-aligned image. The billboard is positioned in the scene by the position property. A billboard is sometimes called a marker.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "color": {
+            "description": "The color of the billboard.  This color value is multiplied with the values of the billboard's \"image\" to produce the final color.",
+            "$ref": "Color.jsonschema"
+        }
+    }
+}
