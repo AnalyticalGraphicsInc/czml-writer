@@ -92,6 +92,7 @@
     <Compile Include="HorizontalOriginCesiumWriter.cs" />
     <Compile Include="HorizontalStripeMaterialCesiumWriter.cs" />
     <Compile Include="ImageCesiumWriter.cs" />
+    <Compile Include="Iso8601Format.cs" />
     <Compile Include="LabelCesiumWriter.cs" />
     <Compile Include="LabelStyleCesiumWriter.cs" />
     <Compile Include="CesiumLocalization.Designer.cs">

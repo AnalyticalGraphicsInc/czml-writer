@@ -1969,8 +1969,42 @@ namespace CesiumLanguageWriter
         /// <returns>A string representing this date and time in ISO8601 format.</returns>
         public string ToIso8601String()
         {
-            return string.Format(CultureInfo.InvariantCulture, "{0:00}-{1:00}-{2:00}T{3:00}:{4:00}:{5:00.###############}Z",
-                m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute, m_second);
+            return ToIso8601String(Iso8601Format.Extended);
+        }
+
+        /// <summary>
+        /// Converts the value of this instance to its equivalent ISO8601 string representation,
+        /// corresponding to year month day hours minutes and seconds with seconds
+        /// represented to machine precision.
+        /// </summary>
+        /// <param name="format">The type of ISO9601 string to create.</param>
+        /// <returns>A string representing this date and time in ISO8601 format.</returns>
+        public string ToIso8601String(Iso8601Format format)
+        {
+            switch (format)
+            {
+                case Iso8601Format.Basic:
+                    return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}{4:00}{5:00.###############}Z",
+                        m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute, m_second);
+                case Iso8601Format.Extended:
+                    return string.Format(CultureInfo.InvariantCulture, "{0:0000}-{1:00}-{2:00}T{3:00}:{4:00}:{5:00.###############}Z",
+                        m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute, m_second);
+                case Iso8601Format.Compact:
+                    {
+                        if (m_second != 0)
+                            return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}{4:00}{5:00.###############}Z",
+                                m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute, m_second);
+
+                        if (m_minute != 0)
+                            return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}{4:00}Z",
+                                m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute);
+
+                        return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}Z",
+                            m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour);
+                    }
+            }
+
+            throw new InvalidOperationException();
         }
 
         /// <summary>Converts the value of this instance to its equivalent long date string representation.</summary>
