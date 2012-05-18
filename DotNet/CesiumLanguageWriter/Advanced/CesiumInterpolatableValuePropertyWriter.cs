@@ -96,7 +96,7 @@ namespace CesiumLanguageWriter.Advanced
             {
                 JulianDate epoch = dates[startIndex];
                 Output.WritePropertyName("epoch");
-                Output.WriteValue(CesiumFormattingHelper.ToIso8601(epoch));
+                Output.WriteValue(CesiumFormattingHelper.ToIso8601(epoch, Output.PrettyFormatting ? Iso8601Format.Extended : Iso8601Format.Compact));
                 return epoch;
             }
             else

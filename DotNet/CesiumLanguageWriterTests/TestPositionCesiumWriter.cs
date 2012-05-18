@@ -82,7 +82,7 @@ namespace CesiumLanguageWriterTests
 
                 interval.WriteValue(dates, positions);
             }
-            Assert.AreEqual("{\"position\":{\"epoch\":\"2012-04-02T12:00:00Z\",\"cartesian\":[0.0,1.0,2.0,3.0,60.0,4.0,5.0,6.0]}}", StringWriter.ToString());
+            Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartesian\":[0.0,1.0,2.0,3.0,60.0,4.0,5.0,6.0]}}", StringWriter.ToString());
         }
 
         [Test]
@@ -108,7 +108,7 @@ namespace CesiumLanguageWriterTests
 
                 interval.WriteValue(dates, positions, 1, 1);
             }
-            Assert.AreEqual("{\"position\":{\"epoch\":\"2012-04-02T12:01:00Z\",\"cartesian\":[0.0,4.0,5.0,6.0]}}", StringWriter.ToString());
+            Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartesian\":[0.0,4.0,5.0,6.0]}}", StringWriter.ToString());
         }
 
         [Test]
@@ -131,7 +131,7 @@ namespace CesiumLanguageWriterTests
 
                 interval.WriteCartographicRadiansValue(dates, positions);
             }
-            Assert.AreEqual("{\"position\":{\"epoch\":\"2012-04-02T12:00:00Z\",\"cartographicRadians\":[0.0,1.0,2.0,3.0,60.0,4.0,5.0,6.0]}}", StringWriter.ToString());
+            Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartographicRadians\":[0.0,1.0,2.0,3.0,60.0,4.0,5.0,6.0]}}", StringWriter.ToString());
         }
 
         [Test]
@@ -157,7 +157,7 @@ namespace CesiumLanguageWriterTests
 
                 interval.WriteCartographicRadiansValue(dates, positions, 1, 1);
             }
-            Assert.AreEqual("{\"position\":{\"epoch\":\"2012-04-02T12:01:00Z\",\"cartographicRadians\":[0.0,4.0,5.0,6.0]}}", StringWriter.ToString());
+            Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartographicRadians\":[0.0,4.0,5.0,6.0]}}", StringWriter.ToString());
         }
 
         [Test]

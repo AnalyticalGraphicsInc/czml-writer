@@ -131,7 +131,7 @@ namespace CesiumLanguageWriter.Advanced
         public void WriteInterval(TimeInterval interval)
         {
             Output.WritePropertyName("interval");
-            Output.WriteValue(CesiumFormattingHelper.ToIso8601Interval(interval.Start, interval.Stop));
+            Output.WriteValue(CesiumFormattingHelper.ToIso8601Interval(interval.Start, interval.Stop, Output.PrettyFormatting ? Iso8601Format.Extended : Iso8601Format.Compact));
         }
 
         /// <inheritdoc />

@@ -23,10 +23,11 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="start">The start of the interval.</param>
         /// <param name="stop">The end of the interval.</param>
+        /// <param name="format">The format to use.</param>
         /// <returns>The interval represented as an ISO8601 interval string.</returns>
-        public static string ToIso8601Interval(JulianDate start, JulianDate stop)
+        public static string ToIso8601Interval(JulianDate start, JulianDate stop, Iso8601Format format)
         {
-            return ToIso8601(start) + "/" + ToIso8601(stop);
+            return ToIso8601(start, format) + "/" + ToIso8601(stop, format);
         }
 
 #if StkComponents
@@ -35,20 +36,22 @@ namespace CesiumLanguageWriter.Advanced
         /// and <see cref="TimeInterval.IsStopIncluded"/> properties of the interval are ignored.
         /// </summary>
         /// <param name="interval">The interval to convert.</param>
+        /// <param name="format">The format to use.</param>
         /// <returns>The interval represented as an ISO8601 interval string.</returns>
-        public static string ToIso8601Interval(TimeInterval interval)
+        public static string ToIso8601Interval(TimeInterval interval, Iso8601Format format)
         {
-            return ToIso8601Interval(interval.Start, interval.Stop);
+            return ToIso8601Interval(interval.Start, interval.Stop, format);
         }
 #else
         /// <summary>
         /// Converts a <see cref="TimeInterval"/> as an ISO8601 interval string.
         /// </summary>
         /// <param name="interval">The interval to convert.</param>
+        /// <param name="format">The format to use.</param>
         /// <returns>The interval represented as an ISO8601 interval string.</returns>
-        public static string ToIso8601Interval(TimeInterval interval)
+        public static string ToIso8601Interval(TimeInterval interval, Iso8601Format format)
         {
-            return ToIso8601Interval(interval.Start, interval.Stop);
+            return ToIso8601Interval(interval.Start, interval.Stop, format);
         }
 #endif
 
@@ -56,10 +59,11 @@ namespace CesiumLanguageWriter.Advanced
         /// Converts a <see cref="JulianDate"/> to an ISO8601 date string.
         /// </summary>
         /// <param name="date">The date to convert.</param>
+        /// <param name="format">The format to use.</param>
         /// <returns>The date represented as an ISO8601 date string.</returns>
-        public static string ToIso8601(JulianDate date)
+        public static string ToIso8601(JulianDate date, Iso8601Format format)
         {
-            return date.ToGregorianDate().ToIso8601String();
+            return date.ToGregorianDate().ToIso8601String(format);
         }
 
         /// <summary>

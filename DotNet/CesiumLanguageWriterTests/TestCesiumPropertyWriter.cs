@@ -116,7 +116,7 @@ namespace CesiumLanguageWriterTests
                 interval.WriteInterval(new TimeInterval(start, stop));
             }
             intervalList.Close();
-            Assert.AreEqual("{\"woot\":[{\"interval\":\"2012-04-02T12:00:00Z/2012-04-02T13:00:00Z\"},{\"interval\":\"2012-04-02T12:00:00Z/2012-04-02T13:00:00Z\"}]", StringWriter.ToString());
+            Assert.AreEqual("{\"woot\":[{\"interval\":\"20120402T12Z/20120402T13Z\"},{\"interval\":\"20120402T12Z/20120402T13Z\"}]", StringWriter.ToString());
         }
 
         [Test]

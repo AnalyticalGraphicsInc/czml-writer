@@ -90,9 +90,9 @@ namespace CesiumLanguageWriterTests
             }
             m_output.WriteEndSequence();
 
-            Assert.AreEqual("[{\"availability\":\"2012-04-02T01:02:03Z/2012-04-03T01:02:03Z\"}," +
-                             "{\"availability\":\"2012-04-02T01:02:03Z/2012-04-03T01:02:03Z\"}," +
-                             "{\"availability\":[\"2012-04-02T01:02:03Z/2012-04-03T01:02:03Z\",\"2012-04-04T01:02:03Z/2012-04-05T01:02:03Z\"]}]",
+            Assert.AreEqual("[{\"availability\":\"20120402T010203Z/20120403T010203Z\"}," +
+                             "{\"availability\":\"20120402T010203Z/20120403T010203Z\"}," +
+                             "{\"availability\":[\"20120402T010203Z/20120403T010203Z\",\"20120404T010203Z/20120405T010203Z\"]}]",
                             m_sw.ToString());
         }
 

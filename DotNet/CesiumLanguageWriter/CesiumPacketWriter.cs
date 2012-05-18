@@ -89,7 +89,7 @@ namespace CesiumLanguageWriter
         public void WriteAvailability(TimeInterval availability)
         {
             Output.WritePropertyName("availability");
-            Output.WriteValue(CesiumFormattingHelper.ToIso8601Interval(availability.Start, availability.Stop));
+            Output.WriteValue(CesiumFormattingHelper.ToIso8601Interval(availability.Start, availability.Stop, Output.PrettyFormatting ? Iso8601Format.Extended : Iso8601Format.Compact));
         }
 
 #if StkComponents
@@ -118,14 +118,14 @@ namespace CesiumLanguageWriter
             if (availability.Count == 1)
             {
                 TimeInterval interval = availability[0];
-                Output.WriteValue(CesiumFormattingHelper.ToIso8601Interval(interval.Start, interval.Stop));
+                Output.WriteValue(CesiumFormattingHelper.ToIso8601Interval(interval.Start, interval.Stop, Output.PrettyFormatting ? Iso8601Format.Extended : Iso8601Format.Compact));
             }
             else
             {
                 Output.WriteStartSequence();
                 foreach (TimeInterval interval in availability)
                 {
-                    Output.WriteValue(CesiumFormattingHelper.ToIso8601Interval(interval.Start, interval.Stop));
+                    Output.WriteValue(CesiumFormattingHelper.ToIso8601Interval(interval.Start, interval.Stop, Output.PrettyFormatting ? Iso8601Format.Extended : Iso8601Format.Compact));
                 }
                 Output.WriteEndSequence();
             }
