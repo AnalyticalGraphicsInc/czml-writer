@@ -5,6 +5,7 @@ using System.Text;
 using NUnit.Framework;
 using KmlToCesiumLanguage;
 using System.Xml.Linq;
+using System.IO;
 
 namespace KmlToCesiumLanguageTests
 {
@@ -118,8 +119,17 @@ namespace KmlToCesiumLanguageTests
         {
             CzmlDocument document = new CzmlDocument();
             document.CesiumOutputStream.PrettyFormatting = true;
-            XDocument kml = XDocument.Load(@"KmlDocs\STS-122-STS-122Ascent.kml");
-            KmlConverter.ConvertToCesiumLanguage(kml, document);
+            KmlConverter.KmlToCesiumLanguage(File.ReadAllBytes(@"KmlDocs\STS-122-STS-122Ascent.kml"), document);
+            Console.WriteLine(document.StringWriter.ToString());
+        }
+
+        [Test]
+        [Explicit]
+        public void KmzSandbox()
+        {
+            CzmlDocument document = new CzmlDocument();
+            document.CesiumOutputStream.PrettyFormatting = true;
+            KmlConverter.KmzToCesiumLanguage(File.ReadAllBytes(@"KmlDocs\I&W KML.kmz"), document);
             Console.WriteLine(document.StringWriter.ToString());
         }
     }
