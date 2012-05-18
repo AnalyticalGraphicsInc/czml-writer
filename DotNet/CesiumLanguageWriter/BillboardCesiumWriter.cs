@@ -243,12 +243,11 @@ namespace CesiumLanguageWriter
         /// method for more information.
         /// </summary>
         /// <param name="image">The image for which to create a data URL.</param>
-        /// <param name="imageFormat">The format to use for the image in the data URL.</param>
-        public void WriteImageProperty(Image image, CesiumImageFormat imageFormat)
+        public void WriteImageProperty(Image image)
         {
             using (var writer = OpenImageProperty())
             {
-                writer.WriteValue(image, imageFormat);
+                writer.WriteValue(image);
             }
         }
 
