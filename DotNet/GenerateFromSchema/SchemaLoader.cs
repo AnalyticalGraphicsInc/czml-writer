@@ -79,6 +79,18 @@ namespace GenerateWritersFromSchema
                 valueSchema.JsonTypes = LoadJsonSchemaType(propertyObject);
                 property.ValueType = valueSchema;
             }
+
+            JProperty examplesProperty = propertyObject.Property("czmlExamples");
+            if (examplesProperty != null)
+            {
+                var examplesJson = (JArray)examplesProperty.Value;
+                property.Examples = new List<string>();
+                
+                foreach (string filename in examplesJson.Values<string>())
+                {
+                    property.Examples.Add(File.ReadAllText(Path.Combine(m_schemaDirectory, filename)));
+                }
+            }
         }
 
         private JsonSchemaType LoadJsonSchemaType(JObject schema)

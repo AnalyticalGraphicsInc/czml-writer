@@ -45,9 +45,23 @@ namespace GenerateWritersFromSchema
                         GenerateProperty(level + 1, newPrefix, nestedProperty, output);
                     }
                 }
+
+                Console.WriteLine();
             }
 
-            Console.WriteLine();
+            if (property.Examples != null)
+            {
+                output.WriteLine("Examples:");
+                output.WriteLine();
+
+                foreach (string example in property.Examples)
+                {
+                    output.WriteLine("```javascript");
+                    output.WriteLine(example);
+                    output.WriteLine("```");
+                    output.WriteLine();
+                }
+            }
         }
 
         private void GenerateLeafProperties(Schema schema, TextWriter output)

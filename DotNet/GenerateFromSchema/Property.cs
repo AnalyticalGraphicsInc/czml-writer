@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
 namespace GenerateWritersFromSchema
@@ -14,6 +15,8 @@ namespace GenerateWritersFromSchema
         public JToken Default { get; set; }
 
         public Scope Scope { get; set; }
+
+        public List<string> Examples { get; set; }
 
         public string NameWithPascalCase
         {
