@@ -12,17 +12,17 @@
         },
         "cartesian": {
             "$ref": "CartesianValue.jsonschema",
-            "description": "The position specified as a Cartesian [X, Y, Z] position in the meters relative to the referenceFrame. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
+            "description": "The position specified as a Cartesian `[X, Y, Z]` position in the meters relative to the referenceFrame. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.",
             "czmlScope": "INTERVAL"
         },
         "cartographicRadians": {
             "$ref": "CartographicValue.jsonschema",
-            "description": "The position specified as a WGS 84 Cartographic [Longitude, Latitude, Height] where longitude and latitude are in radians and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
+            "description": "The position specified as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in radians and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.",
             "czmlScope": "INTERVAL"
         },
         "cartographicDegrees": {
             "$ref": "CartographicValue.jsonschema",
-            "description": "The position specified as a WGS 84 Cartographic [Longitude, Latitude, Height] where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
+            "description": "The position specified as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.",
             "czmlScope": "INTERVAL"
         }
     }
