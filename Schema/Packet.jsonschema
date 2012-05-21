@@ -26,7 +26,6 @@
             "description": "Specifies a billboard, or viewport-aligned image. The billboard is positioned in the scene by the position property. A billboard is sometimes called a marker."
         },
         "vertexPositions": {
-            "title": "Vertex Positions",
             "description": "Specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.",
         },
         "orientation": {

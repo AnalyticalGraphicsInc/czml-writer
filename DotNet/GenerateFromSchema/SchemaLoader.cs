@@ -61,7 +61,7 @@ namespace GenerateFromSchema
         private void LoadProperty(JProperty propertyJson, Property property)
         {
             var propertyObject = (JObject)propertyJson.Value;
-            property.Name = GetValue<string>(propertyObject, "title", propertyJson.Name);
+            property.Name = propertyJson.Name;
             property.Description = GetValue<string>(propertyObject, "description", null);
             property.Scope = GetValue<string>(propertyObject, "czmlScope", "INTERVAL") == "PACKET"
                                  ? Scope.Packet
