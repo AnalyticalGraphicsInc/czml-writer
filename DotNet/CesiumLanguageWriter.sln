@@ -15,6 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\CartesianValue.jsonschema = ..\Schema\CartesianValue.jsonschema
 		..\Schema\CartographicValue.jsonschema = ..\Schema\CartographicValue.jsonschema
 		..\Schema\Color.jsonschema = ..\Schema\Color.jsonschema
+		..\Schema\EyeOffset.jsonschema = ..\Schema\EyeOffset.jsonschema
 		..\Schema\InterpolatableProperty.jsonschema = ..\Schema\InterpolatableProperty.jsonschema
 		..\Schema\Packet.jsonschema = ..\Schema\Packet.jsonschema
 		..\Schema\Position.jsonschema = ..\Schema\Position.jsonschema

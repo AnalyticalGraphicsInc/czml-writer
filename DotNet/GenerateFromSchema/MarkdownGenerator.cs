@@ -9,6 +9,11 @@ namespace GenerateWritersFromSchema
     {
         public void Generate(Schema packetSchema, TextWriter output)
         {
+            output.WriteLine("This page describes the possible content of a CZML document or stream.  Please read [[CZML Structure]] for an explanation of how a CZML document is put together.");
+            output.WriteLine();
+            output.WriteLine("_NOTE: This is a work in progress and reflects our plans NOT our current capabilities._");
+            output.WriteLine();
+
             foreach (Property property in packetSchema.Properties)
             {
                 GenerateProperty(2, "", property, output);
