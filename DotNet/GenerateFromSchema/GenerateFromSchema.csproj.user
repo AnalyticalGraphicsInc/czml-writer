@@ -3,4 +3,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <StartArguments>"C:\Components\Development\Libra\ThirdParty\czml-writer\Schema\Packet.jsonschema"</StartArguments>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <StartArguments>"C:\Components\Development\Libra\ThirdParty\czml-writer\Schema\Packet.jsonschema"</StartArguments>
+  </PropertyGroup>
 </Project>

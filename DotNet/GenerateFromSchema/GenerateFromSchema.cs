@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace GenerateWritersFromSchema
+namespace GenerateFromSchema
 {
     public class GenerateFromSchema
     {

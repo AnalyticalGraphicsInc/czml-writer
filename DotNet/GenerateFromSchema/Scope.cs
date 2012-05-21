@@ -1,4 +1,4 @@
-﻿namespace GenerateWritersFromSchema
+﻿namespace GenerateFromSchema
 {
     public enum Scope
     {

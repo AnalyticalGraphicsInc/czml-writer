@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json.Schema;
 
-namespace GenerateWritersFromSchema
+namespace GenerateFromSchema
 {
     public class MarkdownGenerator
     {

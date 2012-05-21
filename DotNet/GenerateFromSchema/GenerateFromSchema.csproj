@@ -8,8 +8,8 @@
     <ProjectGuid>{6D67C4D1-C88F-440A-9820-580D030EAB4B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GenerateWritersFromSchema</RootNamespace>
-    <AssemblyName>GenerateWritersFromSchema</AssemblyName>
+    <RootNamespace>GenerateFromSchema</RootNamespace>
+    <AssemblyName>GenerateFromSchema</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>

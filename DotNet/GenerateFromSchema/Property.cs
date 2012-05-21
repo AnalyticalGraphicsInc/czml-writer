@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
-namespace GenerateWritersFromSchema
+namespace GenerateFromSchema
 {
     public class Property
     {
