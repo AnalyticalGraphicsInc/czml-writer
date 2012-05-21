@@ -5,8 +5,8 @@
     "items": { "$ref": "#" },
     "properties": {
         "color": {
-            "description": "The color of the billboard.  This color value is multiplied with the values of the billboard's \"image\" to produce the final color.",
-            "$ref": "Color.jsonschema"
+            "$ref": "Color.jsonschema",
+            "description": "The color of the billboard.  This color value is multiplied with the values of the billboard's \"image\" to produce the final color."
         }
     }
 }
