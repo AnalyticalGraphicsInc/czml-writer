@@ -27,7 +27,6 @@ namespace KmlToCesiumLanguage
             {
                 XDocument kmlDocument = XDocument.Load(stream);
                 document.Namespace = kmlDocument.Root.GetDefaultNamespace();
-                var properties = new List<Dictionary<string, object>>();
                 var placemarks = kmlDocument.Descendants(document.Namespace + "Placemark").Select(o => new Placemark(o, document));
                 foreach (var placemark in placemarks)
                 {

@@ -71,8 +71,6 @@ namespace GenerateFromSchema
 
         private void GenerateLeafProperties(Schema schema, TextWriter output)
         {
-            IEnumerable<Property> properties = schema.Properties;
-
             output.WriteLine("**Sub-properties**:");
             output.WriteLine();
 
