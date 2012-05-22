@@ -7,6 +7,7 @@ _ReSharper.*
 *.DotSettings.user
 *.userprefs
 *.resources
+*.user
 
 # mstest test results
 TestResults

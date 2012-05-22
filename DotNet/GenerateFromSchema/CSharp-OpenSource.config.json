@@ -1,0 +1,24 @@
+﻿{
+    "namespace": "CesiumLanguageWriter",
+    "advancedNamespace": "CesiumLanguageWriter.Advanced",
+    "advancedRelativeDirectory": "Advanced",
+    "types": {
+        "TimeIntervalValue.jsonschema": [
+            {
+                "namespaces": [],
+                "parameters": "TimeInterval value",
+                "writeValue": "CesiumWritingHelper.WriteValue(value);"
+            },
+            {
+                "namespaces": [],
+                "parameters": "JulianDate start, JulianDate stop",
+                "callOverload": "new TimeInterval(start, stop)"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": "IList<TimeInterval> value",
+                "writeValue": "CesiumWritingHelper.WriteValue(value);"
+            }
+        ]
+    }
+}

@@ -5,20 +5,29 @@ using Newtonsoft.Json.Schema;
 
 namespace GenerateFromSchema
 {
-    public class MarkdownGenerator
+    public class MarkdownGenerator : Generator
     {
-        public void Generate(Schema packetSchema, TextWriter output)
+        private readonly string m_outputFilename;
+
+        public MarkdownGenerator(string outputFilename)
         {
-            output.WriteLine("This page describes the possible content of a CZML document or stream.  Please read [[CZML Structure]] for an explanation of how a CZML document is put together.");
-            output.WriteLine();
-            output.WriteLine("_NOTE: This is a work in progress and reflects our plans NOT our current capabilities._");
-            output.WriteLine();
+            m_outputFilename = outputFilename;
+        }
 
-            foreach (Property property in packetSchema.Properties)
+        public override void Generate(Schema packetSchema)
+        {
+            using (StreamWriter output = new StreamWriter(m_outputFilename))
             {
-                GenerateProperty(2, "", property, output);
-            }
+                output.WriteLine("This page describes the possible content of a CZML document or stream.  Please read [[CZML Structure]] for an explanation of how a CZML document is put together.");
+                output.WriteLine();
+                output.WriteLine("_NOTE: This is a work in progress and reflects our plans NOT our current capabilities._");
+                output.WriteLine();
 
+                foreach (Property property in packetSchema.Properties)
+                {
+                    GenerateProperty(2, "", property, output);
+                }
+            }
         }
 
         private void GenerateProperty(int level, string prefix, Property property, TextWriter output)
@@ -51,7 +60,7 @@ namespace GenerateFromSchema
                     }
                 }
 
-                Console.WriteLine();
+                output.WriteLine();
             }
 
             if (property.Examples != null)
