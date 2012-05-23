@@ -28,6 +28,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateFromSchema", "GenerateFromSchema\GenerateFromSchema.csproj", "{6D67C4D1-C88F-440A-9820-580D030EAB4B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{5E4C0F36-35DC-4ED8-91EC-EAAC109836A0}"
+	ProjectSection(SolutionItems) = preProject
+		..\Schema\Examples\SimplePosition.json = ..\Schema\Examples\SimplePosition.json
+		..\Schema\Examples\TimeVaryingPosition.json = ..\Schema\Examples\TimeVaryingPosition.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
