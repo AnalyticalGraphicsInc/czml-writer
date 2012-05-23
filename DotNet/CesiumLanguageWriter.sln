@@ -15,14 +15,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\CartesianValue.jsonschema = ..\Schema\CartesianValue.jsonschema
 		..\Schema\CartographicValue.jsonschema = ..\Schema\CartographicValue.jsonschema
 		..\Schema\Color.jsonschema = ..\Schema\Color.jsonschema
+		..\Schema\Cone.jsonschema = ..\Schema\Cone.jsonschema
 		..\Schema\EyeOffset.jsonschema = ..\Schema\EyeOffset.jsonschema
 		..\Schema\InterpolatableProperty.jsonschema = ..\Schema\InterpolatableProperty.jsonschema
+		..\Schema\Label.jsonschema = ..\Schema\Label.jsonschema
+		..\Schema\Orientation.jsonschema = ..\Schema\Orientation.jsonschema
 		..\Schema\Packet.jsonschema = ..\Schema\Packet.jsonschema
+		..\Schema\Path.jsonschema = ..\Schema\Path.jsonschema
+		..\Schema\Point.jsonschema = ..\Schema\Point.jsonschema
+		..\Schema\Polygon.jsonschema = ..\Schema\Polygon.jsonschema
+		..\Schema\Polyline.jsonschema = ..\Schema\Polyline.jsonschema
 		..\Schema\Position.jsonschema = ..\Schema\Position.jsonschema
+		..\Schema\Pyramid.jsonschema = ..\Schema\Pyramid.jsonschema
 		..\Schema\RgbafValue.jsonschema = ..\Schema\RgbafValue.jsonschema
 		..\Schema\RgbaValue.jsonschema = ..\Schema\RgbaValue.jsonschema
 		..\Schema\TimeIntervalValue.jsonschema = ..\Schema\TimeIntervalValue.jsonschema
 		..\Schema\Validator.html = ..\Schema\Validator.html
+		..\Schema\VertexPositions.jsonschema = ..\Schema\VertexPositions.jsonschema
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateFromSchema", "GenerateFromSchema\GenerateFromSchema.csproj", "{6D67C4D1-C88F-440A-9820-580D030EAB4B}"

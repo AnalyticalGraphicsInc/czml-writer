@@ -1,0 +1,6 @@
+{
+    "title": "Polygon",
+    "description": "TODO",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" }
+}

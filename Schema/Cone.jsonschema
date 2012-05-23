@@ -1,0 +1,6 @@
+{
+    "title": "Cone",
+    "description": "TODO",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" }
+}

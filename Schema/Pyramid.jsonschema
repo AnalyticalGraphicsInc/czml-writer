@@ -1,0 +1,6 @@
+{
+    "title": "Pyramid",
+    "description": "TODO",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" }
+}

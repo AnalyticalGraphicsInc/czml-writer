@@ -75,7 +75,7 @@ namespace GenerateFromSchema
             else
             {
                 var valueSchema = new Schema();
-                valueSchema.Name = "<Schema from Type>";
+                valueSchema.Name = Schema.SchemaFromTypeName;
                 valueSchema.JsonTypes = LoadJsonSchemaType(propertyObject);
                 property.ValueType = valueSchema;
             }

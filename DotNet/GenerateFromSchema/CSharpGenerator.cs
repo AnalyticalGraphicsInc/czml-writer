@@ -40,7 +40,7 @@ namespace GenerateFromSchema
             {
                 WriteGeneratedWarning(writer);
                 writer.WriteLine();
-                WritePacketNamespaces(writer, packetSchema);
+                WriteNamespaces(writer, packetSchema);
                 writer.WriteLine();
 
                 writer.WriteLine("namespace {0}", m_configuration.Namespace);
@@ -67,8 +67,22 @@ namespace GenerateFromSchema
             writer.WriteLine("// https://github.com/AnalyticalGraphicsInc/czml-writer");
         }
 
-        private void WritePacketNamespaces(CodeWriter writer, Schema packetSchema)
+        private void WriteNamespaces(CodeWriter writer, Schema schema)
         {
+            foreach (Property property in schema.Properties)
+            {
+                OverloadInfo[] overloads = GetOverloadsForProperty(property);
+                foreach (OverloadInfo overload in overloads)
+                {
+                    if (overload.Namespaces != null)
+                    {
+                        foreach (string ns in overload.Namespaces)
+                        {
+                            writer.WriteLine("using {0};", ns);
+                        }
+                    }
+                }
+            }
         }
 
         private void WriteSummaryText(CodeWriter writer, string text)
@@ -142,10 +156,6 @@ namespace GenerateFromSchema
         {
             foreach (Property property in schema.Properties)
             {
-                // TODO: Remove this check when the schema is more complete.
-                if (property.ValueType.JsonTypes == JsonSchemaType.Any)
-                    return;
-
                 if (PropertyValueIsIntervals(property))
                     WriteIntervalsProperty(writer, schema, property);
                 else
@@ -174,9 +184,32 @@ namespace GenerateFromSchema
 
         private void WriteSimpleProperty(CodeWriter writer, Schema schema, Property property)
         {
+            OverloadInfo[] overloads = GetOverloadsForProperty(property);
+
+            foreach (OverloadInfo overload in overloads)
+            {
+                WriteSummaryText(writer, string.Format("Writes the <code>{0}</code> property.  The <code>{0}</code> property specifies {1}", property.Name, StringHelper.UncapitalizeFirstLetter(property.Description)));
+                writer.WriteLine("public void Write{0}({1})", property.NameWithPascalCase, overload.Parameters);
+                writer.OpenScope();
+                if (overload.CallOverload != null)
+                {
+                    writer.WriteLine("Write{0}({1});", property.NameWithPascalCase, overload.CallOverload);
+                }
+                else
+                {
+                    writer.WriteLine("Output.WritePropertyName({0}PropertyName);", property.NameWithPascalCase);
+                    writer.WriteLine(overload.WriteValue);
+                }
+                writer.CloseScope();
+                writer.WriteLine();
+            }
+        }
+
+        private OverloadInfo[] GetOverloadsForProperty(Property property)
+        {
             OverloadInfo[] overloads;
 
-            if (property.ValueType.Name == "<Schema from Type>")
+            if (property.ValueType.IsSchemaFromType)
             {
                 overloads = new OverloadInfo[4];
 
@@ -210,24 +243,7 @@ namespace GenerateFromSchema
                     m_configuration.Types[property.ValueType.Name] = overloads;
                 }
             }
-
-            foreach (OverloadInfo overload in overloads)
-            {
-                WriteSummaryText(writer, string.Format("Writes the <code>{0}</code> property.  The <code>{0}</code> property specifies {1}", property.Name, StringHelper.UncapitalizeFirstLetter(property.Description)));
-                writer.WriteLine("public void Write{0}({1})", property.NameWithPascalCase, overload.Parameters);
-                writer.OpenScope();
-                if (overload.CallOverload != null)
-                {
-                    writer.WriteLine("Write{0}({1});", property.NameWithPascalCase, overload.CallOverload);
-                }
-                else
-                {
-                    writer.WriteLine("Output.WritePropertyName(\"{0}\");", property.Name);
-                    writer.WriteLine(overload.WriteValue);
-                }
-                writer.CloseScope();
-                writer.WriteLine();
-            }
+            return overloads;
         }
 
         private OverloadInfo[] CreateDefaultOverload(Schema schema)

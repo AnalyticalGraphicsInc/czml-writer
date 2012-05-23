@@ -16,6 +16,11 @@ namespace GenerateFromSchema
 
         public List<Property> Properties { get; set; }
 
+        public bool IsSchemaFromType
+        {
+            get { return Name == SchemaFromTypeName; }
+        }
+
         public string NameWithPascalCase
         {
             get
@@ -26,5 +31,7 @@ namespace GenerateFromSchema
                 return Char.ToUpperInvariant(Name[0]) + Name.Substring(1);
             }
         }
+
+        public static readonly string SchemaFromTypeName = "<Schema from Type>";
     }
 }
