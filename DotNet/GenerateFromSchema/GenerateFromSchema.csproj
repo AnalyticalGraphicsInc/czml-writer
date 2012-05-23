@@ -58,7 +58,7 @@
     <Compile Include="StringHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CSharp-OpenSource.config.json">
+    <None Include="GenerateCSharp.config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
