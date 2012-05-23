@@ -155,7 +155,7 @@ namespace GenerateFromSchema
 
         private void WriteIntervalsProperty(CodeWriter writer, Schema schema, Property property)
         {
-            WriteSummaryText(writer, string.Format("Gets the writer for the <code>{0}</code> property.  The returned instance must be opened by calling the <see cref=\"CesiumElementWriter.Open\"/> method before it can be used for writing.  The <code>{0}</code> property {1}",
+            WriteSummaryText(writer, string.Format("Gets the writer for the <code>{0}</code> property.  The returned instance must be opened by calling the <see cref=\"CesiumElementWriter.Open\"/> method before it can be used for writing.  The <code>{0}</code> property defines {1}",
                 property.Name, StringHelper.UncapitalizeFirstLetter(property.Description)));
             writer.WriteLine("public {0}CesiumWriter {1}Writer", property.ValueType.NameWithPascalCase, property.NameWithPascalCase);
             writer.OpenScope();
@@ -163,7 +163,7 @@ namespace GenerateFromSchema
             writer.CloseScope();
             writer.WriteLine();
 
-            WriteSummaryText(writer, string.Format("Opens and returns the writer for the <code>{0}</code> property.  The <code>{0}</code> property {1}",
+            WriteSummaryText(writer, string.Format("Opens and returns the writer for the <code>{0}</code> property.  The <code>{0}</code> property defines {1}",
                 property.Name, StringHelper.UncapitalizeFirstLetter(property.Description)));
             writer.WriteLine("public {0}CesiumWriter Open{1}Property()", property.ValueType.NameWithPascalCase, property.NameWithPascalCase);
             writer.OpenScope();
@@ -213,7 +213,7 @@ namespace GenerateFromSchema
 
             foreach (OverloadInfo overload in overloads)
             {
-                WriteSummaryText(writer, string.Format("Writes the <code>{0}</code> property.  The <code>{0}</code> property {1}", property.Name, StringHelper.UncapitalizeFirstLetter(property.Description)));
+                WriteSummaryText(writer, string.Format("Writes the <code>{0}</code> property.  The <code>{0}</code> property specifies {1}", property.Name, StringHelper.UncapitalizeFirstLetter(property.Description)));
                 writer.WriteLine("public void Write{0}({1})", property.NameWithPascalCase, overload.Parameters);
                 writer.OpenScope();
                 if (overload.CallOverload != null)
