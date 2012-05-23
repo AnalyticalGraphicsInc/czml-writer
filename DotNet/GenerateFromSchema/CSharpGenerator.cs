@@ -4,15 +4,14 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Schema;
 using System.Text;
+using System.Collections.Generic;
 
 namespace GenerateFromSchema
 {
     public class CSharpGenerator : Generator
     {
         private readonly string m_outputDirectory;
-        private readonly string m_advancedOutputDirectory;
-        private readonly string m_namespace;
-        private readonly string m_advancedNamespace;
+        private readonly Configuration m_configuration;
 
         public CSharpGenerator(
             string outputDirectory,
@@ -25,16 +24,8 @@ namespace GenerateFromSchema
 
             m_outputDirectory = outputDirectory;
 
-            using (var packetStream = new StreamReader(configurationFileName))
-            using (var packetJsonReader = new JsonTextReader(packetStream))
-            {
-                JObject schemaJson = JObject.Load(packetJsonReader);
-
-                string advancedRelativeDirectory = schemaJson.Value<string>("advancedRelativeDirectory");
-                m_advancedOutputDirectory = Path.Combine(m_outputDirectory, advancedRelativeDirectory);
-                m_namespace = schemaJson.Value<string>("namespace");
-                m_advancedNamespace = schemaJson.Value<string>("advancedNamespace");
-            }
+            string configuration = File.ReadAllText(configurationFileName);
+            m_configuration = JsonConvert.DeserializeObject<Configuration>(configuration);
         }
 
         public override void Generate(Schema packetSchema)
@@ -52,7 +43,7 @@ namespace GenerateFromSchema
                 WritePacketNamespaces(writer, packetSchema);
                 writer.WriteLine();
 
-                writer.WriteLine("namespace {0}", m_namespace);
+                writer.WriteLine("namespace {0}", m_configuration.Namespace);
                 writer.OpenScope();
 
                 WriteDescriptionAsClassSummary(writer, packetSchema);
@@ -143,13 +134,15 @@ namespace GenerateFromSchema
 
         private bool PropertyValueIsIntervals(Property property)
         {
-            return ((property.ValueType.JsonTypes & (JsonSchemaType.Object | JsonSchemaType.Array)) == (JsonSchemaType.Object | JsonSchemaType.Array));
+            return ((property.ValueType.JsonTypes & (JsonSchemaType.Object | JsonSchemaType.Array)) == (JsonSchemaType.Object | JsonSchemaType.Array)) &&
+                    (property.ValueType.JsonTypes & JsonSchemaType.Null) != JsonSchemaType.Null;
         }
 
         private void WriteProperties(CodeWriter writer, Schema schema)
         {
             foreach (Property property in schema.Properties)
             {
+                // TODO: Remove this check when the schema is more complete.
                 if (property.ValueType.JsonTypes == JsonSchemaType.Any)
                     return;
 
@@ -181,14 +174,100 @@ namespace GenerateFromSchema
 
         private void WriteSimpleProperty(CodeWriter writer, Schema schema, Property property)
         {
-            WriteSummaryText(writer, string.Format("Writes {0}", StringHelper.UncapitalizeFirstLetter(property.Description)));
-            writer.WriteLine("public void Write{0}({1} value)", property.NameWithPascalCase, property.ValueType.NameWithPascalCase);
-            writer.OpenScope();
-            writer.WriteLine("Output.WritePropertyName(\"{0}\");", property.Name);
-            writer.WriteLine("Output.WriteValue(value)");
-            writer.CloseScope();
-            writer.WriteLine();
+            OverloadInfo[] overloads;
+
+            if (property.ValueType.Name == "<Schema from Type>")
+            {
+                overloads = new OverloadInfo[4];
+
+                int index = 0;
+                JsonSchemaType type = property.ValueType.JsonTypes;
+
+                if ((type & JsonSchemaType.String) == JsonSchemaType.String)
+                    overloads[index++] = s_defaultStringOverload;
+                if ((type & JsonSchemaType.Float) == JsonSchemaType.Float)
+                    overloads[index++] = s_defaultDoubleOverload;
+                if ((type & JsonSchemaType.Float) == JsonSchemaType.Integer)
+                    overloads[index++] = s_defaultIntegerOverload;
+                if ((type & JsonSchemaType.Boolean) == JsonSchemaType.Boolean)
+                    overloads[index++] = s_defaultBooleanOverload;
+                if ((type & JsonSchemaType.Object) == JsonSchemaType.Object ||
+                    (type & JsonSchemaType.Array) == JsonSchemaType.Array ||
+                    (type & JsonSchemaType.Null) == JsonSchemaType.Null ||
+                    (type & JsonSchemaType.Any) == JsonSchemaType.Any ||
+                    type == JsonSchemaType.None)
+                {
+                    throw new Exception(string.Format("Property '{0}' does not specify a $ref to a schema, nor is it a simple JSON type.", property.Name));
+                }
+
+                Array.Resize(ref overloads, index);
+            }
+            else
+            {
+                if (!m_configuration.Types.TryGetValue(property.ValueType.Name, out overloads))
+                {
+                    overloads = CreateDefaultOverload(property.ValueType);
+                    m_configuration.Types[property.ValueType.Name] = overloads;
+                }
+            }
+
+            foreach (OverloadInfo overload in overloads)
+            {
+                WriteSummaryText(writer, string.Format("Writes the <code>{0}</code> property.  The <code>{0}</code> property {1}", property.Name, StringHelper.UncapitalizeFirstLetter(property.Description)));
+                writer.WriteLine("public void Write{0}({1})", property.NameWithPascalCase, overload.Parameters);
+                writer.OpenScope();
+                if (overload.CallOverload != null)
+                {
+                    writer.WriteLine("Write{0}({1});", property.NameWithPascalCase, overload.CallOverload);
+                }
+                else
+                {
+                    writer.WriteLine("Output.WritePropertyName(\"{0}\");", property.Name);
+                    writer.WriteLine(overload.WriteValue);
+                }
+                writer.CloseScope();
+                writer.WriteLine();
+            }
         }
 
+        private OverloadInfo[] CreateDefaultOverload(Schema schema)
+        {
+            return new[]
+            {
+                new OverloadInfo()
+                {
+                    Parameters = schema.Name + " value",
+                    WriteValue = "Output.WriteValue(value);"
+                }
+            };
+        }
+
+        // All the "= null" nonsense is to avoid warnings from Visual Studio, which isn't aware of
+        // JSON.NET's treachery.
+
+        private class OverloadInfo
+        {
+            [JsonProperty("namespaces")]
+            public string[] Namespaces = null;
+            [JsonProperty("parameters")]
+            public string Parameters = null;
+            [JsonProperty("writeValue")]
+            public string WriteValue = null;
+            [JsonProperty("callOverload")]
+            public string CallOverload = null;
+        }
+
+        private class Configuration
+        {
+            [JsonProperty("namespace")]
+            public string Namespace = null;
+            [JsonProperty("types")]
+            public Dictionary<string, OverloadInfo[]> Types = null;
+        }
+
+        private static readonly OverloadInfo s_defaultStringOverload = new OverloadInfo() { Parameters = "string value", WriteValue = "Output.WriteValue(value)" };
+        private static readonly OverloadInfo s_defaultDoubleOverload = new OverloadInfo() { Parameters = "double value", WriteValue = "Output.WriteValue(value)" };
+        private static readonly OverloadInfo s_defaultIntegerOverload = new OverloadInfo() { Parameters = "int value", WriteValue = "Output.WriteValue(value)" };
+        private static readonly OverloadInfo s_defaultBooleanOverload = new OverloadInfo() { Parameters = "bool value", WriteValue = "Output.WriteValue(value)" };
     }
 }

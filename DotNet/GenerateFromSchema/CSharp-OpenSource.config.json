@@ -3,7 +3,7 @@
     "advancedNamespace": "CesiumLanguageWriter.Advanced",
     "advancedRelativeDirectory": "Advanced",
     "types": {
-        "TimeIntervalValue.jsonschema": [
+        "TimeInterval": [
             {
                 "namespaces": [],
                 "parameters": "TimeInterval value",
