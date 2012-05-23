@@ -31,6 +31,49 @@ namespace GenerateFromSchema
         public override void Generate(Schema packetSchema)
         {
             GeneratePacketWriter(packetSchema);
+
+            HashSet<Schema> generated = new HashSet<Schema>();
+
+            foreach (Property property in packetSchema.Properties)
+            {
+                if (!PropertyValueIsIntervals(property))
+                    continue;
+
+                if (generated.Contains(property.ValueType))
+                    continue;
+
+                generated.Add(property.ValueType);
+
+                GenerateWriterClass(property.ValueType);
+            }
+        }
+
+        private void GenerateWriterClass(Schema schema)
+        {
+            string writerFilename = Path.Combine(m_outputDirectory, schema.NameWithPascalCase + "CesiumWriter.cs");
+            using (CodeWriter writer = new CodeWriter(writerFilename))
+            {
+                WriteGeneratedWarning(writer);
+                writer.WriteLine();
+                WriteNamespaces(writer, schema);
+                writer.WriteLine();
+
+                writer.WriteLine("namespace {0}", m_configuration.Namespace);
+                writer.OpenScope();
+
+                WriteDescriptionAsClassSummary(writer, schema);
+                writer.WriteLine("public class {0}CesiumWriter : CesiumPropertyWriter<{0}CesiumWriter>", schema.NameWithPascalCase);
+                writer.OpenScope();
+
+                WritePropertyNameConstants(writer, schema);
+                WritePropertyLazyFields(writer, schema);
+                WriteConstructorsAndCloneMethod(writer, schema);
+                WriteProperties(writer, schema);
+
+                writer.CloseScope();
+
+                writer.CloseScope();
+            }
         }
 
         private void GeneratePacketWriter(Schema packetSchema)
@@ -69,6 +112,9 @@ namespace GenerateFromSchema
 
         private void WriteNamespaces(CodeWriter writer, Schema schema)
         {
+            if (schema.Properties == null)
+                return;
+
             foreach (Property property in schema.Properties)
             {
                 OverloadInfo[] overloads = GetOverloadsForProperty(property);
@@ -103,6 +149,9 @@ namespace GenerateFromSchema
 
         private void WritePropertyNameConstants(CodeWriter writer, Schema schema)
         {
+            if (schema.Properties == null)
+                return;
+
             foreach (Property property in schema.Properties)
             {
                 WriteSummaryText(writer, string.Format("The name of the <code>{0}</code> property.", property.Name));
@@ -113,6 +162,9 @@ namespace GenerateFromSchema
 
         private void WritePropertyLazyFields(CodeWriter writer, Schema schema)
         {
+            if (schema.Properties == null)
+                return;
+
             foreach (Property property in schema.Properties)
             {
                 if (!PropertyValueIsIntervals(property))
@@ -154,6 +206,9 @@ namespace GenerateFromSchema
 
         private void WriteProperties(CodeWriter writer, Schema schema)
         {
+            if (schema.Properties == null)
+                return;
+
             foreach (Property property in schema.Properties)
             {
                 if (PropertyValueIsIntervals(property))
@@ -203,6 +258,31 @@ namespace GenerateFromSchema
                 writer.CloseScope();
                 writer.WriteLine();
             }
+        }
+
+        private void WriteConstructorsAndCloneMethod(CodeWriter writer, Schema schema)
+        {
+            WriteSummaryText(writer, "Initializes a new instance.");
+            writer.WriteLine("public {0}CesiumWriter(string propertyName)", schema.NameWithPascalCase);
+            writer.WriteLine("    : base(propertyName)");
+            writer.OpenScope();
+            writer.CloseScope();
+            writer.WriteLine();
+
+            WriteSummaryText(writer, "Initializes a new instance as a copy of an existing instance.");
+            writer.WriteLine("/// <param name=\"existingInstance\">The existing instance to copy.</param> ");
+            writer.WriteLine("protected {0}CesiumWriter({0}CesiumWriter existingInstance)", schema.NameWithPascalCase);
+            writer.WriteLine("    : base(existingInstance)");
+            writer.OpenScope();
+            writer.CloseScope();
+            writer.WriteLine();
+
+            writer.WriteLine("/// <inheritdoc />");
+            writer.WriteLine("public override {0}CesiumWriter Clone()", schema.NameWithPascalCase);
+            writer.OpenScope();
+            writer.WriteLine("return new {0}CesiumWriter(this);", schema.NameWithPascalCase);
+            writer.CloseScope();
+            writer.WriteLine();
         }
 
         private OverloadInfo[] GetOverloadsForProperty(Property property)
