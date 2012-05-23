@@ -205,7 +205,7 @@ namespace CesiumLanguageWriter
                 return res;
             }
 
-            public static GregorianDate ParseExact(string s, string format, IFormatProvider provider)
+            public static GregorianDate ParseExact(string s, string[] format, IFormatProvider provider)
             {
                 if (s == null)
                     throw new ArgumentNullException("s");
@@ -217,7 +217,7 @@ namespace CesiumLanguageWriter
                 GregorianDate result;
                 bool longYear = false;
                 FormatException e = null;
-                if (!ParseExact(s, new[] {format}, dfi, out result, true, ref longYear, true, ref e))
+                if (!ParseExact(s, format, dfi, out result, true, ref longYear, true, ref e))
                     throw e;
                 return result;
             }
@@ -2202,7 +2202,7 @@ namespace CesiumLanguageWriter
         /// pattern specified in
         /// <paramref name="format"/>. 
         /// </exception>
-        public static GregorianDate ParseExact(string s, string format, IFormatProvider provider)
+        public static GregorianDate ParseExact(string s, string[] format, IFormatProvider provider)
         {
             return Parser.ParseExact(s, format, provider);
         }
