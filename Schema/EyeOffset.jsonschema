@@ -8,7 +8,7 @@
         "cartesian": {
             "$ref": "CartesianValue.jsonschema",
             "description": "The eye offset specified as a Cartesian `[X, Y, Z]` position in eye coordinates in  meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.",
-            "czmlScope": "INTERVAL"
+            "czmlValue": true
         }
     }
 }
