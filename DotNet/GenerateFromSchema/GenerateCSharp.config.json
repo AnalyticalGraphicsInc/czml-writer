@@ -5,19 +5,188 @@
     "types": {
         "TimeInterval": [
             {
-                "namespaces": [],
-                "parameters": "TimeInterval value",
+                "parameters": [
+                    {
+                        "type": "TimeInterval",
+                        "name": "value",
+                        "description": "The interval."
+                    }
+                ],
                 "writeValue": "CesiumWritingHelper.WriteValue(value);"
             },
             {
-                "namespaces": [],
-                "parameters": "JulianDate start, JulianDate stop",
+                "parameters": [
+                    {
+                        "type": "JulianDate",
+                        "name": "start",
+                        "description": "The earliest date of the interval."
+                    },
+                    {
+                        "type": "JulianDate",
+                        "name": "stop",
+                        "description": "The latest date of the interval."
+                    }
+                ],
                 "callOverload": "new TimeInterval(start, stop)"
             },
             {
                 "namespaces": ["System.Collections.Generic"],
-                "parameters": "IList<TimeInterval> value",
+                "parameters": [
+                    {
+                        "type": "IList<TimeInterval>",
+                        "name": "value",
+                        "description": "The intervals."
+                    }
+                ],
                 "writeValue": "CesiumWritingHelper.WriteValue(value);"
+            }
+        ],
+        "Cartesian": [
+            {
+                "parameters": [
+                    {
+                        "type": "Cartesian",
+                        "name": "value",
+                        "description": "The interval."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteValue(value);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "double",
+                        "name": "x",
+                        "description": "The X component."
+                    },
+                    {
+                        "type": "double",
+                        "name": "y",
+                        "description": "The Y component."
+                    },
+                    {
+                        "type": "double",
+                        "name": "z",
+                        "description": "The Z component."
+                    }
+                ],
+                "callOverload": "new Cartesian(x, y, z)"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the vector is specified."
+                    },
+                    {
+                        "type": "IList<Cartesian>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the vector is specified."
+                    },
+                    {
+                        "type": "IList<Cartesian>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to use in the `values` collection."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to use from the `values` collection."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteValue(dates, values, startIndex, length);"
+            }
+        ],
+        "Cartographic": [
+            {
+                "parameters": [
+                    {
+                        "type": "Cartographic",
+                        "name": "value",
+                        "description": "The interval."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteValue(value);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "double",
+                        "name": "longitude",
+                        "description": "The longitude component."
+                    },
+                    {
+                        "type": "double",
+                        "name": "latitude",
+                        "description": "The latitude component."
+                    },
+                    {
+                        "type": "double",
+                        "name": "height",
+                        "description": "The height component."
+                    }
+                ],
+                "callOverload": "new Cartographic(longitude, latitude, height)"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the position is specified."
+                    },
+                    {
+                        "type": "IList<Cartographic>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the vector is specified."
+                    },
+                    {
+                        "type": "IList<Cartographic>",
+                        "name": "values",
+                        "description": "The position corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to use in the `values` collection."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to use from the `values` collection."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteValue(dates, values, startIndex, length);"
             }
         ]
     }

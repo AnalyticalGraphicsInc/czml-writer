@@ -62,7 +62,22 @@ namespace GenerateFromSchema
                 writer.OpenScope();
 
                 WriteDescriptionAsClassSummary(writer, schema);
-                writer.WriteLine("public class {0}CesiumWriter : CesiumPropertyWriter<{0}CesiumWriter>", schema.NameWithPascalCase);
+
+                string defaultValueType = GetDefaultValueType(schema);
+
+                if (defaultValueType != null)
+                {
+                    bool isInterpolatable = schema.Extends != null && schema.Extends.Name == "InterpolatableProperty";
+                    if (isInterpolatable)
+                        writer.WriteLine("public class {0}CesiumWriter : CesiumInterpolatableValuePropertyWriter<{1}, {0}CesiumWriter>", schema.NameWithPascalCase, defaultValueType);
+                    else
+                        writer.WriteLine("public class {0}CesiumWriter : CesiumValuePropertyWriter<{1}, {0}CesiumWriter>", schema.NameWithPascalCase, defaultValueType);
+                }
+                else
+                {
+                    writer.WriteLine("public class {0}CesiumWriter : CesiumPropertyWriter<{0}CesiumWriter>", schema.NameWithPascalCase);
+                }
+
                 writer.OpenScope();
 
                 WritePropertyNameConstants(writer, schema);
@@ -209,12 +224,17 @@ namespace GenerateFromSchema
             if (schema.Properties == null)
                 return;
 
+            bool isFirstValueProperty = true;
+
             foreach (Property property in schema.Properties)
             {
                 if (PropertyValueIsIntervals(property))
                     WriteIntervalsProperty(writer, schema, property);
                 else
-                    WriteSimpleProperty(writer, schema, property);
+                    WriteLeafProperty(writer, schema, property, property.IsValue && isFirstValueProperty);
+
+                if (property.IsValue)
+                    isFirstValueProperty = false;
             }
         }
 
@@ -237,18 +257,24 @@ namespace GenerateFromSchema
             writer.WriteLine();
         }
 
-        private void WriteSimpleProperty(CodeWriter writer, Schema schema, Property property)
+        private void WriteLeafProperty(CodeWriter writer, Schema schema, Property property, bool isFirstValueProperty)
         {
             OverloadInfo[] overloads = GetOverloadsForProperty(property);
 
             foreach (OverloadInfo overload in overloads)
             {
                 WriteSummaryText(writer, string.Format("Writes the <code>{0}</code> property.  The <code>{0}</code> property specifies {1}", property.Name, StringHelper.UncapitalizeFirstLetter(property.Description)));
-                writer.WriteLine("public void Write{0}({1})", property.NameWithPascalCase, overload.Parameters);
+                foreach (ParameterInfo parameter in overload.Parameters)
+                {
+                    if (string.IsNullOrEmpty(parameter.Description))
+                        continue;
+                    WriteParameterText(writer, parameter.Name, parameter.Description);
+                }
+                writer.WriteLine("public void Write{0}({1})", isFirstValueProperty ? "Value" : property.NameWithPascalCase, overload.FormattedParameters);
                 writer.OpenScope();
                 if (overload.CallOverload != null)
                 {
-                    writer.WriteLine("Write{0}({1});", property.NameWithPascalCase, overload.CallOverload);
+                    writer.WriteLine("Write{0}({1});", isFirstValueProperty ? "Value" : property.NameWithPascalCase, overload.CallOverload);
                 }
                 else
                 {
@@ -258,6 +284,11 @@ namespace GenerateFromSchema
                 writer.CloseScope();
                 writer.WriteLine();
             }
+        }
+
+        private void WriteParameterText(CodeWriter writer, string name, string description)
+        {
+            writer.WriteLine("/// <param name=\"{0}\">{1}</param>", name, description);
         }
 
         private void WriteConstructorsAndCloneMethod(CodeWriter writer, Schema schema)
@@ -319,38 +350,80 @@ namespace GenerateFromSchema
             {
                 if (!m_configuration.Types.TryGetValue(property.ValueType.Name, out overloads))
                 {
-                    overloads = CreateDefaultOverload(property.ValueType);
+                    overloads = new[] { OverloadInfo.CreateDefault(property.ValueType.NameWithPascalCase) };
                     m_configuration.Types[property.ValueType.Name] = overloads;
                 }
             }
             return overloads;
         }
 
-        private OverloadInfo[] CreateDefaultOverload(Schema schema)
+        private string GetDefaultValueType(Schema schema)
         {
-            return new[]
+            Property firstValueProperty = schema.FindFirstValueProperty();
+
+            if (firstValueProperty != null)
             {
-                new OverloadInfo()
+                OverloadInfo[] overloads = GetOverloadsForProperty(firstValueProperty);
+                OverloadInfo firstOverloadWithOneParameter = Array.Find(overloads, overload => overload.Parameters.Length == 1);
+                if (firstOverloadWithOneParameter != null)
                 {
-                    Parameters = schema.Name + " value",
-                    WriteValue = "Output.WriteValue(value);"
+                    return firstOverloadWithOneParameter.Parameters[0].Type;
                 }
-            };
+            }
+
+            return null;
         }
 
         // All the "= null" nonsense is to avoid warnings from Visual Studio, which isn't aware of
         // JSON.NET's treachery.
+
+        private class ParameterInfo
+        {
+            [JsonProperty("type")]
+            public string Type = null;
+            [JsonProperty("name")]
+            public string Name = null;
+            [JsonProperty("description")]
+            public string Description = null;
+
+            public static ParameterInfo SimpleValue(string type)
+            {
+                return new ParameterInfo()
+                {
+                    Type = type,
+                    Name = "value",
+                    Description = "The value."
+                };
+            }
+        }
 
         private class OverloadInfo
         {
             [JsonProperty("namespaces")]
             public string[] Namespaces = null;
             [JsonProperty("parameters")]
-            public string Parameters = null;
+            public ParameterInfo[] Parameters = null;
             [JsonProperty("writeValue")]
             public string WriteValue = null;
             [JsonProperty("callOverload")]
             public string CallOverload = null;
+
+            public string FormattedParameters
+            {
+                get
+                {
+                    return string.Join(", ", Array.ConvertAll(Parameters, parameter => parameter.Type + ' ' + parameter.Name));
+                }
+            }
+
+            public static OverloadInfo CreateDefault(string typeName)
+            {
+                return new OverloadInfo()
+                {
+                    Parameters = new[] { new ParameterInfo() { Type = typeName, Name = "value", Description = "The value." } },
+                    WriteValue = "Output.WriteValue(value);"
+                };
+            }
         }
 
         private class Configuration
@@ -361,9 +434,9 @@ namespace GenerateFromSchema
             public Dictionary<string, OverloadInfo[]> Types = null;
         }
 
-        private static readonly OverloadInfo s_defaultStringOverload = new OverloadInfo() { Parameters = "string value", WriteValue = "Output.WriteValue(value)" };
-        private static readonly OverloadInfo s_defaultDoubleOverload = new OverloadInfo() { Parameters = "double value", WriteValue = "Output.WriteValue(value)" };
-        private static readonly OverloadInfo s_defaultIntegerOverload = new OverloadInfo() { Parameters = "int value", WriteValue = "Output.WriteValue(value)" };
-        private static readonly OverloadInfo s_defaultBooleanOverload = new OverloadInfo() { Parameters = "bool value", WriteValue = "Output.WriteValue(value)" };
+        private static readonly OverloadInfo s_defaultStringOverload = OverloadInfo.CreateDefault("string");
+        private static readonly OverloadInfo s_defaultDoubleOverload = OverloadInfo.CreateDefault("double");
+        private static readonly OverloadInfo s_defaultIntegerOverload = OverloadInfo.CreateDefault("int");
+        private static readonly OverloadInfo s_defaultBooleanOverload = OverloadInfo.CreateDefault("bool");
     }
 }

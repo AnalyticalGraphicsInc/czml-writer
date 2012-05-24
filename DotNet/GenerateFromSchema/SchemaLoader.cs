@@ -66,6 +66,7 @@ namespace GenerateFromSchema
             property.Scope = GetValue<string>(propertyObject, "czmlScope", "INTERVAL") == "PACKET"
                                  ? Scope.Packet
                                  : Scope.Interval;
+            property.IsValue = GetValue<bool>(propertyObject, "czmlValue", false);
 
             string refString = GetValue<string>(propertyObject, "$ref", null);
             if (refString != null)

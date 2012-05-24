@@ -32,6 +32,13 @@ namespace GenerateFromSchema
             }
         }
 
+        public Property FindFirstValueProperty()
+        {
+            if (Properties == null)
+                return null;
+            return Properties.Find(property => property.IsValue);
+        }
+
         public static readonly string SchemaFromTypeName = "<Schema from Type>";
     }
 }
