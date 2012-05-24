@@ -13,7 +13,7 @@ namespace GenerateFromSchema
 
         public static string UncapitalizeFirstLetter(string s)
         {
-            if (s.Length == 0)
+            if (string.IsNullOrEmpty(s))
                 return s;
 
             return char.ToLowerInvariant(s[0]) + s.Substring(1);

@@ -3,7 +3,7 @@
     "advancedNamespace": "CesiumLanguageWriter.Advanced",
     "advancedRelativeDirectory": "Advanced",
     "types": {
-        "TimeInterval": [
+        "TimeIntervalCollection": [
             {
                 "parameters": [
                     {
@@ -39,6 +39,33 @@
                     }
                 ],
                 "writeValue": "CesiumWritingHelper.WriteValue(value);"
+            }
+        ],
+        "TimeInterval": [
+            {
+                "parameters": [
+                    {
+                        "type": "TimeInterval",
+                        "name": "value",
+                        "description": "The interval."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteValue(value);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "JulianDate",
+                        "name": "start",
+                        "description": "The earliest date of the interval."
+                    },
+                    {
+                        "type": "JulianDate",
+                        "name": "stop",
+                        "description": "The latest date of the interval."
+                    }
+                ],
+                "callOverload": "new TimeInterval(start, stop)"
             }
         ],
         "Cartesian": [

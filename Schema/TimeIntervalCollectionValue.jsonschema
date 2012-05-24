@@ -1,0 +1,5 @@
+{
+    "title": "TimeIntervalCollection",
+    "description": "A collection of intervals of time.",
+    "type": ["array", "string"]
+}
