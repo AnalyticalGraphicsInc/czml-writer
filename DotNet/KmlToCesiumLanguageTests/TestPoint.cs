@@ -120,7 +120,8 @@ namespace KmlToCesiumLanguageTests
             CzmlDocument document = new CzmlDocument();
             document.CesiumOutputStream.PrettyFormatting = true;
             KmlConverter.KmlToCesiumLanguage(File.ReadAllBytes(@"KmlDocs\STS-122-STS-122Ascent.kml"), document);
-            Console.WriteLine(document.StringWriter.ToString());
+            string czml = document.StringWriter.ToString();
+            Console.WriteLine(czml);
         }
 
         [Test]
@@ -130,7 +131,8 @@ namespace KmlToCesiumLanguageTests
             CzmlDocument document = new CzmlDocument();
             document.CesiumOutputStream.PrettyFormatting = true;
             KmlConverter.KmzToCesiumLanguage(File.ReadAllBytes(@"KmlDocs\I&W KML.kmz"), document);
-            Console.WriteLine(document.StringWriter.ToString());
+            string czml = document.StringWriter.ToString();
+            Console.WriteLine(czml);
         }
     }
 }

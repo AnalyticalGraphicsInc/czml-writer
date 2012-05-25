@@ -18,6 +18,8 @@ namespace GenerateFromSchema
 
         public List<string> Examples { get; set; }
 
+        public bool IsValue { get; set; }
+
         public string NameWithPascalCase
         {
             get

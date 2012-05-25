@@ -32,23 +32,6 @@ namespace KmlToCesiumLanguage
         }
 
         /// <summary>
-        /// Gets or sets the minimum time.
-        /// </summary>
-        /// <value>
-        /// The minimum time.
-        /// </value>
-        public JulianDate? MinimumTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the maximum time.
-        /// </summary>
-        /// <value>
-        /// The maximum time.
-        /// </value>
-        public JulianDate? MaximumTime { get; set; }
-
-
-        /// <summary>
         /// Gets or sets the image map.
         /// </summary>
         /// <value>

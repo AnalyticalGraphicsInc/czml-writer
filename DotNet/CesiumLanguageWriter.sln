@@ -12,22 +12,48 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F4E-CD74-44F3-9A80-604BCA10FB67}"
 	ProjectSection(SolutionItems) = preProject
 		..\Schema\Billboard.jsonschema = ..\Schema\Billboard.jsonschema
-		..\Schema\CartesianValue.jsonschema = ..\Schema\CartesianValue.jsonschema
+		..\Schema\Boolean.jsonschema = ..\Schema\Boolean.jsonschema
+		..\Schema\BooleanValue.jsonschema = ..\Schema\BooleanValue.jsonschema
+		..\Schema\Cartesian2Value.jsonschema = ..\Schema\Cartesian2Value.jsonschema
+		..\Schema\Cartesian3Value.jsonschema = ..\Schema\Cartesian3Value.jsonschema
 		..\Schema\CartographicValue.jsonschema = ..\Schema\CartographicValue.jsonschema
 		..\Schema\Color.jsonschema = ..\Schema\Color.jsonschema
+		..\Schema\Cone.jsonschema = ..\Schema\Cone.jsonschema
+		..\Schema\Double.jsonschema = ..\Schema\Double.jsonschema
+		..\Schema\DoubleValue.jsonschema = ..\Schema\DoubleValue.jsonschema
 		..\Schema\EyeOffset.jsonschema = ..\Schema\EyeOffset.jsonschema
+		..\Schema\HorizontalOrigin.jsonschema = ..\Schema\HorizontalOrigin.jsonschema
+		..\Schema\HorizontalOriginValue.jsonschema = ..\Schema\HorizontalOriginValue.jsonschema
+		..\Schema\Image.jsonschema = ..\Schema\Image.jsonschema
+		..\Schema\ImageValue.jsonschema = ..\Schema\ImageValue.jsonschema
 		..\Schema\InterpolatableProperty.jsonschema = ..\Schema\InterpolatableProperty.jsonschema
+		..\Schema\Label.jsonschema = ..\Schema\Label.jsonschema
+		..\Schema\Orientation.jsonschema = ..\Schema\Orientation.jsonschema
 		..\Schema\Packet.jsonschema = ..\Schema\Packet.jsonschema
+		..\Schema\Path.jsonschema = ..\Schema\Path.jsonschema
+		..\Schema\PixelOffset.jsonschema = ..\Schema\PixelOffset.jsonschema
+		..\Schema\Point.jsonschema = ..\Schema\Point.jsonschema
+		..\Schema\Polygon.jsonschema = ..\Schema\Polygon.jsonschema
+		..\Schema\Polyline.jsonschema = ..\Schema\Polyline.jsonschema
 		..\Schema\Position.jsonschema = ..\Schema\Position.jsonschema
+		..\Schema\Pyramid.jsonschema = ..\Schema\Pyramid.jsonschema
 		..\Schema\RgbafValue.jsonschema = ..\Schema\RgbafValue.jsonschema
 		..\Schema\RgbaValue.jsonschema = ..\Schema\RgbaValue.jsonschema
+		..\Schema\TimeIntervalCollectionValue.jsonschema = ..\Schema\TimeIntervalCollectionValue.jsonschema
 		..\Schema\TimeIntervalValue.jsonschema = ..\Schema\TimeIntervalValue.jsonschema
 		..\Schema\Validator.html = ..\Schema\Validator.html
+		..\Schema\VertexPositions.jsonschema = ..\Schema\VertexPositions.jsonschema
+		..\Schema\VerticalOrigin.jsonschema = ..\Schema\VerticalOrigin.jsonschema
+		..\Schema\VerticalOriginValue.jsonschema = ..\Schema\VerticalOriginValue.jsonschema
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateFromSchema", "GenerateFromSchema\GenerateFromSchema.csproj", "{6D67C4D1-C88F-440A-9820-580D030EAB4B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{5E4C0F36-35DC-4ED8-91EC-EAAC109836A0}"
+	ProjectSection(SolutionItems) = preProject
+		..\Schema\Examples\SimplePosition.json = ..\Schema\Examples\SimplePosition.json
+		..\Schema\Examples\TimeVaryingPosition.json = ..\Schema\Examples\TimeVaryingPosition.json
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGlGlobeJsonToCesiumLanguage", "WebGlGlobeJsonToCesiumLanguage\WebGlGlobeJsonToCesiumLanguage.csproj", "{4F0AC6EB-6E10-4CA8-870D-B6B2C9C969E3}"
 EndProject

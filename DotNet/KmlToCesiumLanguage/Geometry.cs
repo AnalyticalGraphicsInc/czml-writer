@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Xml.Linq;
 using CesiumLanguageWriter;
@@ -124,35 +125,27 @@ namespace KmlToCesiumLanguage
         private TimeInterval GetTimeSpan(XElement timespan)
         {
             XElement beginElement = timespan.Element(Document.Namespace + "begin");
-            JulianDate begin =JulianDate.MinValue;
-            JulianDate end = JulianDate.MaxValue;
+            JulianDate begin =new JulianDate(GregorianDate.MinValue);
+            JulianDate end = new JulianDate(GregorianDate.MaxValue);
             if (beginElement != null)
             {
-                begin = new JulianDate(GregorianDate.Parse(beginElement.Value));
-                if (m_document.MinimumTime == null || m_document.MinimumTime > begin)
+                GregorianDate beginDate;
+                if (!GregorianDate.TryParse(beginElement.Value, out beginDate))
                 {
-                    m_document.MinimumTime = begin;
+                    beginDate = GregorianDate.ParseExact(beginElement.Value, s_validIso8601Formats, CultureInfo.CurrentCulture);
                 }
-                if (m_document.MaximumTime == null || m_document.MaximumTime < begin)
-                {
-                    m_document.MaximumTime = begin;
-                }
+                begin = new JulianDate(beginDate);
             }
             XElement endElement = timespan.Element(Document.Namespace + "end");
             if (endElement != null)
             {
-                end = new JulianDate(GregorianDate.Parse(endElement.Value));
-
-                if (m_document.MaximumTime == null || end > m_document.MaximumTime)
+                GregorianDate endDate;
+                if (!GregorianDate.TryParse(endElement.Value, out endDate))
                 {
-                    m_document.MaximumTime = end;
+                    endDate = GregorianDate.ParseExact(endElement.Value, s_validIso8601Formats, CultureInfo.CurrentCulture);
                 }
-                if (m_document.MinimumTime == null || m_document.MinimumTime > end)
-                {
-                    m_document.MinimumTime = end;
-                }
+                end = new JulianDate(endDate);
             }
-
             return new TimeInterval(begin, end);
         }
 
@@ -161,17 +154,12 @@ namespace KmlToCesiumLanguage
             XElement whenElement = timestamp.Element(Document.Namespace + "when");
             if (whenElement != null)
             {
-                JulianDate beginJulian = new JulianDate(GregorianDate.Parse(whenElement.Value));
-
-                if (m_document.MinimumTime == null || m_document.MinimumTime > beginJulian)
+                GregorianDate whenDate;
+                if (!GregorianDate.TryParse(whenElement.Value, out whenDate))
                 {
-                    m_document.MinimumTime = beginJulian;
+                    whenDate = GregorianDate.ParseExact(whenElement.Value, s_validIso8601Formats, CultureInfo.CurrentCulture);
                 }
-                if (m_document.MaximumTime == null || m_document.MaximumTime < beginJulian)
-                {
-                    m_document.MaximumTime = beginJulian;
-                }
-                return new TimeInterval(beginJulian, JulianDate.MaxValue);
+                return new TimeInterval(new JulianDate(whenDate), new JulianDate(GregorianDate.MaxValue));
             }
             return null;
         }
@@ -280,5 +268,12 @@ namespace KmlToCesiumLanguage
 
         private XElement m_placemark;
         private CzmlDocument m_document;
+        private static readonly string[] s_validIso8601Formats =
+                new[]
+                    {
+                        "yyyy", 
+                        "yyyy-MM", 
+                        "yyyy-MM-dd"
+                    };
     }
 }

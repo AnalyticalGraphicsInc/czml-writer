@@ -61,11 +61,12 @@ namespace GenerateFromSchema
         private void LoadProperty(JProperty propertyJson, Property property)
         {
             var propertyObject = (JObject)propertyJson.Value;
-            property.Name = GetValue<string>(propertyObject, "title", propertyJson.Name);
+            property.Name = propertyJson.Name;
             property.Description = GetValue<string>(propertyObject, "description", null);
             property.Scope = GetValue<string>(propertyObject, "czmlScope", "INTERVAL") == "PACKET"
                                  ? Scope.Packet
                                  : Scope.Interval;
+            property.IsValue = GetValue<bool>(propertyObject, "czmlValue", false);
 
             string refString = GetValue<string>(propertyObject, "$ref", null);
             if (refString != null)
@@ -75,7 +76,7 @@ namespace GenerateFromSchema
             else
             {
                 var valueSchema = new Schema();
-                valueSchema.Name = "<Schema from Type>";
+                valueSchema.Name = Schema.SchemaFromTypeName;
                 valueSchema.JsonTypes = LoadJsonSchemaType(propertyObject);
                 property.ValueType = valueSchema;
             }

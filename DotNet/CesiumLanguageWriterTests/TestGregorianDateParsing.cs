@@ -215,7 +215,7 @@ namespace CesiumLanguagerWriterTests
         [ExpectedException(typeof (ArgumentNullException))]
         public void ParseExactThrowsOnNullFormat()
         {
-            GregorianDate.ParseExact("1/1/2009", null, m_cultureInfo);
+            GregorianDate.ParseExact("1/1/2009", (string)null, m_cultureInfo);
         }
 
         [Test]

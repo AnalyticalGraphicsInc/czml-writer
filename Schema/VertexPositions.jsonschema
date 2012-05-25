@@ -1,0 +1,6 @@
+{
+    "title": "VertexPositions",
+    "description": "TODO",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" }
+}
