@@ -1,0 +1,6 @@
+{
+    "title": "VerticalOrigin",
+    "description": "A vertical origin, which specifies whether an element is bottom-, center-, or top-aligned with respect to an origin.  Valid values are \"BOTTOM\", \"CENTER\", and \"TOP\".",
+    "type": "string",
+    "enum": ["BOTTOM", "CENTER", "TOP"]
+}

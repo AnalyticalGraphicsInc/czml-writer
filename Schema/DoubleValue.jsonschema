@@ -1,0 +1,5 @@
+{
+    "title": "Double",
+    "description": "A floating-point value. The value may be a single number, in which case the value is constant over the interval, or it may be an array.  If it is an array and the array has one element, the value is constant over the interval. If it has two or more elements, they are time-tagged samples arranged as [Time, Value, Time, Value, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
+    "type": ["number", "array"]
+}

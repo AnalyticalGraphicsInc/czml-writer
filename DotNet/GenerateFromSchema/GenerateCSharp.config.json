@@ -215,6 +215,42 @@
                 ],
                 "writeValue": "CesiumWritingHelper.WriteValue(dates, values, startIndex, length);"
             }
+        ],
+        "Image": [
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "url",
+                        "description": "The URL of the image."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(url);"
+            },
+            {
+                "namespaces": ["System.Drawing"],
+                "parameters": [
+                    {
+                        
+                        "type": "Image",
+                        "name": "image",
+                        "description": "The image for which to create a data URL."
+                    }
+                ],
+                "callOverload": "CesiumFormattingHelper.ImageToDataUrl(image)"
+            },
+        ],
+        "HorizontalOrigin": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumHorizontalOrigin",
+                        "name": "value",
+                        "description": "The horizontal origin"
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.HorizontalOriginToString(value));"
+            }
         ]
     }
 }
