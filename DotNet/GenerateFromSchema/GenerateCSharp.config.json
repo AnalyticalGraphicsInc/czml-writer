@@ -1,7 +1,5 @@
 ﻿{
     "namespace": "CesiumLanguageWriter",
-    "advancedNamespace": "CesiumLanguageWriter.Advanced",
-    "advancedRelativeDirectory": "Advanced",
     "types": {
         "TimeIntervalCollection": [
             {
@@ -68,13 +66,82 @@
                 "callOverload": "new TimeInterval(start, stop)"
             }
         ],
-        "Cartesian": [
+        "Cartesian2": [
+            {
+                "parameters": [
+                    {
+                        "type": "Rectangular",
+                        "name": "value",
+                        "description": "The value."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteValue(value);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "double",
+                        "name": "x",
+                        "description": "The X component."
+                    },
+                    {
+                        "type": "double",
+                        "name": "y",
+                        "description": "The Y component."
+                    }
+                ],
+                "callOverload": "new Rectangular(x, y)"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the vector is specified."
+                    },
+                    {
+                        "type": "IList<Rectangular>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the vector is specified."
+                    },
+                    {
+                        "type": "IList<Rectangular>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to use in the `values` collection."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to use from the `values` collection."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteValue(dates, values, startIndex, length);"
+            }
+        ],
+        "Cartesian3": [
             {
                 "parameters": [
                     {
                         "type": "Cartesian",
                         "name": "value",
-                        "description": "The interval."
+                        "description": "The value."
                     }
                 ],
                 "writeValue": "CesiumWritingHelper.WriteValue(value);"
