@@ -30,7 +30,7 @@ namespace KmlToCesiumLanguage
         {
             using (this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
             {
-                this.PacketWriter.WriteIdentifier(Guid.NewGuid().ToString());
+                this.PacketWriter.WriteId(Guid.NewGuid().ToString());
                 this.AddTimeSpan(m_placemark);
                 this.AddStyleInformation();
                 this.Write();
@@ -68,7 +68,7 @@ namespace KmlToCesiumLanguage
         /// <summary>
         /// Gets the packet writer.
         /// </summary>
-        protected CesiumPacketWriter PacketWriter { get; private set; }
+        protected PacketCesiumWriter PacketWriter { get; private set; }
 
         /// <summary>
         /// Converts the hex color string to a <see cref="System.Drawing.Color"/>

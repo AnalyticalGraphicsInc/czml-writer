@@ -123,6 +123,9 @@ namespace GenerateFromSchema
 
             HashSet<string> namespaces = new HashSet<string>();
 
+            namespaces.Add(m_configuration.Namespace + ".Advanced");
+            namespaces.Add(m_configuration.LazyNamespace);
+
             foreach (Property property in schema.Properties)
             {
                 OverloadInfo[] overloads = GetOverloadsForProperty(property);
@@ -283,9 +286,9 @@ namespace GenerateFromSchema
                         writer.WriteLine("public void Write{0}Property{1}({2})", property.NameWithPascalCase, subPropertyName, overload.FormattedParameters);
                         writer.OpenScope();
 
-                        writer.WriteLine("using (var writer = Open{0}Property()", property.NameWithPascalCase);
+                        writer.WriteLine("using (var writer = Open{0}Property())", property.NameWithPascalCase);
                         writer.OpenScope();
-                        writer.WriteLine("writer.WriteValue({0});", string.Join(", ", Array.ConvertAll(overload.Parameters, p => p.Name)));
+                        writer.WriteLine("writer.Write{0}({1});", isFirstValueProperty ? "Value" : nestedProperty.NameWithPascalCase, string.Join(", ", Array.ConvertAll(overload.Parameters, p => p.Name)));
                         writer.CloseScope();
 
                         writer.CloseScope();
@@ -321,9 +324,13 @@ namespace GenerateFromSchema
                     // First the first value property only, if an overload has one parameter and that
                     // parameter is a simple JSON type (string, number, boolean), we can skip opening an
                     // interval and just write the property value directly.
-                    if (isFirstValueProperty && overload.Parameters.Length == 1 &&
-                        (overload.Parameters[0].Type == "string" || overload.Parameters[0].Type == "double" ||
-                         overload.Parameters[0].Type == "int" || overload.Parameters[0].Type == "bool"))
+                    if (schema.Name == "Packet")
+                    {
+                        writer.WriteLine("Output.WritePropertyName({0}PropertyName);", property.NameWithPascalCase);
+                    }
+                    else if (isFirstValueProperty && overload.Parameters.Length == 1 &&
+                             (overload.Parameters[0].Type == "string" || overload.Parameters[0].Type == "double" ||
+                              overload.Parameters[0].Type == "int" || overload.Parameters[0].Type == "bool"))
                     {
                         writer.WriteLine("if (IsInterval)");
                         writer.WriteLine("    Output.WritePropertyName({0}PropertyName);", property.NameWithPascalCase);
@@ -333,6 +340,7 @@ namespace GenerateFromSchema
                         writer.WriteLine("OpenIntervalIfNecessary();");
                         writer.WriteLine("Output.WritePropertyName({0}PropertyName);", property.NameWithPascalCase);
                     }
+
                     writer.WriteLine(overload.WriteValue);
                 }
                 writer.CloseScope();
@@ -484,6 +492,8 @@ namespace GenerateFromSchema
         {
             [JsonProperty("namespace")]
             public string Namespace = null;
+            [JsonProperty("lazyNamespace")]
+            public string LazyNamespace = null;
             [JsonProperty("types")]
             public Dictionary<string, OverloadInfo[]> Types = null;
         }

@@ -16,7 +16,7 @@ namespace CesiumLanguageWriter
     /// A <see cref="CesiumPropertyWriter{T}"/> for writing path-related properties to a
     /// <topic name="Cesium">Cesium</topic> stream.  A path is a line in the 3D scene composed of
     /// multiple segments.  Instances of this class should not be created
-    /// directly, but should instead be obtained from a <see cref="CesiumPacketWriter"/>.
+    /// directly, but should instead be obtained from a <see cref="PacketCesiumWriter"/>.
     /// </summary>
     public class PathCesiumWriter : CesiumPropertyWriter<PathCesiumWriter>
     {

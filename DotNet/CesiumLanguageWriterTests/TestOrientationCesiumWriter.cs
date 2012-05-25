@@ -20,11 +20,11 @@ namespace CesiumLanguageWriterTests
 #endif
 {
     [TestFixture]
-    class TestOrientationCesiumWriter : TestCesiumInterpolatablePropertyWriter<UnitQuaternion, OrientationAxesCesiumWriter>
+    class TestOrientationCesiumWriter : TestCesiumInterpolatablePropertyWriter<UnitQuaternion, OrientationCesiumWriter>
     {
-        protected override CesiumPropertyWriter<OrientationAxesCesiumWriter> CreatePropertyWriter(string propertyName)
+        protected override CesiumPropertyWriter<OrientationCesiumWriter> CreatePropertyWriter(string propertyName)
         {
-            return new OrientationAxesCesiumWriter(propertyName);
+            return new OrientationCesiumWriter(propertyName);
         }
 
         [Test]
@@ -39,9 +39,9 @@ namespace CesiumLanguageWriterTests
                 output.PrettyFormatting = true;
                 CesiumStreamWriter writer = new CesiumStreamWriter();
 
-                using (CesiumPacketWriter packet = writer.OpenPacket(output))
+                using (PacketCesiumWriter packet = writer.OpenPacket(output))
                 {
-                    packet.WriteIdentifier("MyID");
+                    packet.WriteId("MyID");
                     packet.WriteAvailability(date, date.AddDays(1.0));
 
                     using (PositionCesiumWriter position = packet.OpenPositionProperty())
@@ -67,19 +67,19 @@ namespace CesiumLanguageWriterTests
                             dates.Add(date.AddDays(2.0));
                             positions.Add(new Cartographic(0.0, 1.0, 0.0));
 
-                            interval.WriteCartographicRadiansValue(dates, positions);
+                            interval.WriteCartographicRadians(dates, positions);
                         }
                     }
-                    using (OrientationAxesCesiumWriter orientation = packet.OpenOrientationProperty())
-                    using (CesiumIntervalListWriter<OrientationAxesCesiumWriter> intervalList = orientation.OpenMultipleIntervals())
+                    using (OrientationCesiumWriter orientation = packet.OpenOrientationProperty())
+                    using (CesiumIntervalListWriter<OrientationCesiumWriter> intervalList = orientation.OpenMultipleIntervals())
                     {
-                        using (OrientationAxesCesiumWriter interval = intervalList.OpenInterval())
+                        using (OrientationCesiumWriter interval = intervalList.OpenInterval())
                         {
                             interval.WriteAxes("MyMadeUpAxes");
                             interval.WriteInterval(new TimeInterval(date, date.AddDays(1.0)));
                             interval.WriteValue(new UnitQuaternion(1, 0, 0, 0));
                         }
-                        using (OrientationAxesCesiumWriter interval = intervalList.OpenInterval())
+                        using (OrientationCesiumWriter interval = intervalList.OpenInterval())
                         {
                             interval.WriteInterpolationAlgorithm(CesiumInterpolationAlgorithm.Linear);
                             interval.WriteInterpolationDegree(1);

@@ -41,7 +41,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void OpensObjectLiteralOnOpenAndClosesItOnClose()
         {
-            CesiumPacketWriter packet = new CesiumPacketWriter();
+            PacketCesiumWriter packet = new PacketCesiumWriter();
             packet.Open(m_output);
             Assert.AreEqual("{", m_sw.ToString());
             packet.Close();
@@ -51,7 +51,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void DisposeClosesPacket()
         {
-            using (CesiumPacketWriter packet = m_writer.OpenPacket(m_output))
+            using (PacketCesiumWriter packet = m_writer.OpenPacket(m_output))
             {
             }
             Assert.AreEqual("{}", m_sw.ToString());
@@ -60,8 +60,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void IdValueWritesIdProperty()
         {
-            CesiumPacketWriter packet = m_writer.OpenPacket(m_output);
-            packet.WriteIdentifier("foo");
+            PacketCesiumWriter packet = m_writer.OpenPacket(m_output);
+            packet.WriteId("foo");
             packet.Close();
             Assert.AreEqual("{\"id\":\"foo\"}", m_sw.ToString());
         }
@@ -73,15 +73,15 @@ namespace CesiumLanguageWriterTests
             JulianDate stop = new JulianDate(new GregorianDate(2012, 4, 3, 1, 2, 3));
 
             m_output.WriteStartSequence();
-            using (CesiumPacketWriter packet = m_writer.OpenPacket(m_output))
+            using (PacketCesiumWriter packet = m_writer.OpenPacket(m_output))
             {
                 packet.WriteAvailability(start, stop);
             }
-            using (CesiumPacketWriter packet = m_writer.OpenPacket(m_output))
+            using (PacketCesiumWriter packet = m_writer.OpenPacket(m_output))
             {
                 packet.WriteAvailability(new TimeInterval(start, stop));
             }
-            using (CesiumPacketWriter packet = m_writer.OpenPacket(m_output))
+            using (PacketCesiumWriter packet = m_writer.OpenPacket(m_output))
             {
                 var intervals = new List<TimeInterval>();
                 intervals.Add(new TimeInterval(start, stop));
@@ -99,7 +99,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void PositionWritesPositionProperty()
         {
-            CesiumPacketWriter packet = m_writer.OpenPacket(m_output);
+            PacketCesiumWriter packet = m_writer.OpenPacket(m_output);
             PositionCesiumWriter position = packet.OpenPositionProperty();
             Assert.IsNotNull(position);
             Assert.AreEqual("{\"position\":", m_sw.ToString());
@@ -108,7 +108,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void BillboardWritesBillboardProperty()
         {
-            CesiumPacketWriter packet = m_writer.OpenPacket(m_output);
+            PacketCesiumWriter packet = m_writer.OpenPacket(m_output);
             using (BillboardCesiumWriter billboard = packet.OpenBillboardProperty())
             {
                 Assert.IsNotNull(billboard);

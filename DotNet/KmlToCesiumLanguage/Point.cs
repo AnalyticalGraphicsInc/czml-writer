@@ -91,7 +91,7 @@ namespace KmlToCesiumLanguage
         {
             using (PositionCesiumWriter position = this.PacketWriter.OpenPositionProperty())
             {
-                position.WriteCartographicRadiansValue(m_position);
+                position.WriteCartographicRadians(m_position);
             }
             if (m_extrude)
             {

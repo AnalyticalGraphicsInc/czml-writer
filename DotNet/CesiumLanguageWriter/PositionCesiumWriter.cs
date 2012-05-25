@@ -79,11 +79,30 @@ namespace CesiumLanguageWriter
         /// The position is constant for the entire interval.
         /// </summary>
         /// <param name="position"></param>
-        public void WriteCartographicRadiansValue(Cartographic position)
+        public void WriteCartographicRadians(Cartographic position)
         {
             OpenIntervalIfNecessary();
 
             Output.WritePropertyName("cartographicRadians");
+            Output.WriteStartSequence();
+            Output.WriteValue(position.Longitude);
+            Output.WriteValue(position.Latitude);
+            Output.WriteValue(position.Height);
+            Output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes the value of the property for this interval as a WGS84 <see cref="Cartographic"/> value where
+        /// <see cref="Cartographic.Longitude"/> and <see cref="Cartographic.Latitude"/> are expressed in degrees
+        /// and <see cref="Cartographic.Height"/> is meters above the WGS84 ellipsoid.
+        /// The position is constant for the entire interval.
+        /// </summary>
+        /// <param name="position"></param>
+        public void WriteCartographicDegrees(Cartographic position)
+        {
+            OpenIntervalIfNecessary();
+
+            Output.WritePropertyName("cartographicDegrees");
             Output.WriteStartSequence();
             Output.WriteValue(position.Longitude);
             Output.WriteValue(position.Latitude);
@@ -225,9 +244,9 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the position is specified.</param>
         /// <param name="positions">The corresponding position for each date.</param>
-        public void WriteCartographicRadiansValue(IList<JulianDate> dates, IList<Cartographic> positions)
+        public void WriteCartographicRadians(IList<JulianDate> dates, IList<Cartographic> positions)
         {
-            WriteCartographicRadiansValue(dates, positions, 0, dates.Count);
+            WriteCartographicRadians(dates, positions, 0, dates.Count);
         }
 
         /// <summary>
@@ -244,7 +263,7 @@ namespace CesiumLanguageWriter
         /// <param name="positions">The corresponding position for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="positions"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="positions"/> collection.</param>
-        public void WriteCartographicRadiansValue(IList<JulianDate> dates, IList<Cartographic> positions, int startIndex, int length)
+        public void WriteCartographicRadians(IList<JulianDate> dates, IList<Cartographic> positions, int startIndex, int length)
         {
             if (dates.Count != positions.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "positions");
@@ -254,6 +273,61 @@ namespace CesiumLanguageWriter
             JulianDate epoch = GetAndWriteEpoch(dates, startIndex, length);
 
             Output.WritePropertyName("cartographicRadians");
+            Output.WriteStartSequence();
+            int last = startIndex + length;
+            for (int i = startIndex; i < last; ++i)
+            {
+                Output.WriteValue(epoch.SecondsDifference(dates[i]));
+                Cartographic position = positions[i];
+                Output.WriteValue(position.Longitude);
+                Output.WriteValue(position.Latitude);
+                Output.WriteValue(position.Height);
+                Output.WriteLineBreak();
+            }
+            Output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes the value of the property for this interval as a collection of time-tagged positions
+        /// expressed as WGS84 <see cref="Cartographic"/> values where
+        /// <see cref="Cartographic.Longitude"/> and <see cref="Cartographic.Latitude"/> are expressed in degrees
+        /// and <see cref="Cartographic.Height"/> is meters above the WGS84 ellipsoid.
+        /// Clients will interpolate over the samples to determine the property value at a given time.  The
+        /// <paramref name="dates"/> need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
+        /// because having samples outside the interval is often useful for interpolation.  However, the samples
+        /// within an interval will never be used to determine the value within another interval.
+        /// </summary>
+        /// <param name="dates">The dates at which the position is specified.</param>
+        /// <param name="positions">The corresponding position for each date.</param>
+        public void WriteCartographicDegrees(IList<JulianDate> dates, IList<Cartographic> positions)
+        {
+            WriteCartographicDegrees(dates, positions, 0, dates.Count);
+        }
+
+        /// <summary>
+        /// Writes the value of the property for this interval as a collection of time-tagged positions
+        /// expressed as WGS84 <see cref="Cartographic"/> values where
+        /// <see cref="Cartographic.Longitude"/> and <see cref="Cartographic.Latitude"/> are expressed in degrees
+        /// and <see cref="Cartographic.Height"/> is meters above the WGS84 ellipsoid.
+        /// Clients will interpolate over the samples to determine the property value at a given time.  The
+        /// <paramref name="dates"/> need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
+        /// because having samples outside the interval is often useful for interpolation.  However, the samples
+        /// within an interval will never be used to determine the value within another interval.
+        /// </summary>
+        /// <param name="dates">The dates at which the position is specified.</param>
+        /// <param name="positions">The corresponding position for each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the <paramref name="positions"/> collection.</param>
+        /// <param name="length">The number of elements to use from the <paramref name="positions"/> collection.</param>
+        public void WriteCartographicDegrees(IList<JulianDate> dates, IList<Cartographic> positions, int startIndex, int length)
+        {
+            if (dates.Count != positions.Count)
+                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "positions");
+
+            OpenIntervalIfNecessary();
+
+            JulianDate epoch = GetAndWriteEpoch(dates, startIndex, length);
+
+            Output.WritePropertyName("cartographicDegrees");
             Output.WriteStartSequence();
             int last = startIndex + length;
             for (int i = startIndex; i < last; ++i)

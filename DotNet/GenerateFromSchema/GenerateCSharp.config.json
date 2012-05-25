@@ -1,5 +1,6 @@
 ﻿{
     "namespace": "CesiumLanguageWriter",
+    "lazyNamespace": "System",
     "types": {
         "TimeIntervalCollection": [
             {
@@ -10,7 +11,7 @@
                         "description": "The interval."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(value);"
+                "writeValue": "CesiumWritingHelper.WriteValue(Output, value);"
             },
             {
                 "parameters": [
@@ -36,7 +37,7 @@
                         "description": "The intervals."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(value);"
+                "writeValue": "CesiumWritingHelper.WriteValue(Output, value);"
             }
         ],
         "TimeInterval": [
@@ -48,7 +49,7 @@
                         "description": "The interval."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(value);"
+                "writeValue": "CesiumWritingHelper.WriteValue(Output, value);"
             },
             {
                 "parameters": [
@@ -75,7 +76,7 @@
                         "description": "The value."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(value);"
+                "writeValue": "CesiumWritingHelper.WriteValue(Output, value);"
             },
             {
                 "parameters": [
@@ -132,7 +133,7 @@
                         "description": "The number of elements to use from the `values` collection."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(dates, values, startIndex, length);"
+                "writeValue": "CesiumWritingHelper.WriteValue(Output, dates, values, startIndex, length);"
             }
         ],
         "Cartesian3": [
@@ -144,27 +145,7 @@
                         "description": "The value."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(value);"
-            },
-            {
-                "parameters": [
-                    {
-                        "type": "double",
-                        "name": "x",
-                        "description": "The X component."
-                    },
-                    {
-                        "type": "double",
-                        "name": "y",
-                        "description": "The Y component."
-                    },
-                    {
-                        "type": "double",
-                        "name": "z",
-                        "description": "The Z component."
-                    }
-                ],
-                "callOverload": "new Cartesian(x, y, z)"
+                "writeValue": "CesiumWritingHelper.WriteValue(Output, value);"
             },
             {
                 "namespaces": ["System.Collections.Generic"],
@@ -206,7 +187,7 @@
                         "description": "The number of elements to use from the `values` collection."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(dates, values, startIndex, length);"
+                "writeValue": "CesiumWritingHelper.WriteValue(Output, dates, values, startIndex, length);"
             }
         ],
         "Cartographic": [
@@ -218,27 +199,7 @@
                         "description": "The interval."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(value);"
-            },
-            {
-                "parameters": [
-                    {
-                        "type": "double",
-                        "name": "longitude",
-                        "description": "The longitude component."
-                    },
-                    {
-                        "type": "double",
-                        "name": "latitude",
-                        "description": "The latitude component."
-                    },
-                    {
-                        "type": "double",
-                        "name": "height",
-                        "description": "The height component."
-                    }
-                ],
-                "callOverload": "new Cartographic(longitude, latitude, height)"
+                "writeValue": "CesiumWritingHelper.WriteValue(Output, value);"
             },
             {
                 "namespaces": ["System.Collections.Generic"],
@@ -280,7 +241,7 @@
                         "description": "The number of elements to use from the `values` collection."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(dates, values, startIndex, length);"
+                "writeValue": "CesiumWritingHelper.WriteValue(Output, dates, values, startIndex, length);"
             }
         ],
         "Image": [

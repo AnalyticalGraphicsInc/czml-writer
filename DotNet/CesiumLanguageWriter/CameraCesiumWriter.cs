@@ -14,8 +14,8 @@ namespace CesiumLanguageWriter
     /// <summary>
     /// A <see cref="CesiumPropertyWriter{TDerived}"/> for writing camera-related properties to a
     /// <topic name="Cesium">Cesium</topic> stream. The camera is positioned in the scene
-    /// by the <see cref="CesiumPacketWriter.OpenPositionProperty">Position</see> property.  Instances of this class should not be created
-    /// directly, but should instead be obtained from a <see cref="CesiumPacketWriter"/>.
+    /// by the <see cref="PacketCesiumWriter.OpenPositionProperty">Position</see> property.  Instances of this class should not be created
+    /// directly, but should instead be obtained from a <see cref="PacketCesiumWriter"/>.
     /// </summary>
     public class CameraCesiumWriter : CesiumPropertyWriter<CameraCesiumWriter>
     {

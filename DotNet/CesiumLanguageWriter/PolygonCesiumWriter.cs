@@ -18,7 +18,7 @@ namespace CesiumLanguageWriter
     /// A <see cref="CesiumPropertyWriter{T}"/> for writing polygon-related properties to a
     /// <topic name="Cesium">Cesium</topic> stream.  A polygon is a closed figure on the surface of
     /// the Earth.  Instances of this class should not be created
-    /// directly, but should instead be obtained from a <see cref="CesiumPacketWriter"/>.
+    /// directly, but should instead be obtained from a <see cref="PacketCesiumWriter"/>.
     /// </summary>
     public class PolygonCesiumWriter : CesiumPropertyWriter<PolygonCesiumWriter>
     {

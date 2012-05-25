@@ -18,8 +18,8 @@ namespace CesiumLanguageWriter
     /// A <see cref="CesiumPropertyWriter{T}"/> for writing billboard-related properties to a
     /// <topic name="Cesium">Cesium</topic> stream.  A billboard is a viewport-aligned image positioned
     /// in the 3D scene, and is sometimes called a marker.  The billboard is positioned in the scene
-    /// by the <see cref="CesiumPacketWriter.OpenPositionProperty">Position</see> property.  Instances of this class should not be created
-    /// directly, but should instead be obtained from a <see cref="CesiumPacketWriter"/>.
+    /// by the <see cref="PacketCesiumWriter.OpenPositionProperty">Position</see> property.  Instances of this class should not be created
+    /// directly, but should instead be obtained from a <see cref="PacketCesiumWriter"/>.
     /// </summary>
     public class BillboardCesiumWriter : CesiumPropertyWriter<BillboardCesiumWriter>
     {
@@ -148,7 +148,7 @@ namespace CesiumLanguageWriter
 
         /// <summary>
         /// Opens a property describing the offset in eye coordinates of the billboard origin from the
-        /// <see cref="CesiumPacketWriter.OpenPositionProperty"/>.
+        /// <see cref="PacketCesiumWriter.OpenPositionProperty"/>.
         /// </summary>
         /// <returns>The writer that is used to write eye offset information.</returns>
         public EyeOffsetCesiumWriter OpenEyeOffsetProperty()
@@ -182,7 +182,7 @@ namespace CesiumLanguageWriter
 
         /// <summary>
         /// Opens a property describing the horizontal origin of the billboard image.  It controls whether the
-        /// billboard image is left-, center-, or right-aligned with the <see cref="CesiumPacketWriter.OpenPositionProperty"/>.
+        /// billboard image is left-, center-, or right-aligned with the <see cref="PacketCesiumWriter.OpenPositionProperty"/>.
         /// </summary>
         /// <returns>A writer that is used to write horizontal origin information.</returns>
         public HorizontalOriginCesiumWriter OpenHorizontalOriginProperty()
@@ -263,7 +263,7 @@ namespace CesiumLanguageWriter
 
         /// <summary>
         /// Opens a property describing the offset, in viewport pixels, of the billboard origin from the
-        /// <see cref="CesiumPacketWriter.OpenPositionProperty"/>.
+        /// <see cref="PacketCesiumWriter.OpenPositionProperty"/>.
         /// </summary>
         /// <returns>The writer that is used to write pixel offset information.</returns>
         public PixelOffsetCesiumWriter OpenPixelOffsetProperty()
@@ -398,7 +398,7 @@ namespace CesiumLanguageWriter
 
         /// <summary>
         /// Opens a property describing the vertical origin of the billboard image.  It controls whether the
-        /// billboard image is bottom-, center-, or top-aligned with the <see cref="CesiumPacketWriter.OpenPositionProperty"/>.
+        /// billboard image is bottom-, center-, or top-aligned with the <see cref="PacketCesiumWriter.OpenPositionProperty"/>.
         /// </summary>
         /// <returns>A writer that is used to write vertical origin information.</returns>
         public VerticalOriginCesiumWriter OpenVerticalOriginProperty()

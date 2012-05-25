@@ -41,7 +41,7 @@ namespace CesiumLanguageWriterTests
             private set;
         }
 
-        public CesiumPacketWriter Packet
+        public PacketCesiumWriter Packet
         {
             get;
             private set;

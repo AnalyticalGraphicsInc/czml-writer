@@ -71,9 +71,9 @@
     <Compile Include="CesiumIntervalListWriter.cs" />
     <Compile Include="CesiumLabelStyle.cs" />
     <Compile Include="CesiumOutputStream.cs" />
-    <Compile Include="CesiumPacketWriter.cs" />
     <Compile Include="CesiumStreamWriter.cs" />
     <Compile Include="CesiumVerticalOrigin.cs" />
+    <Compile Include="CesiumWritingHelper.cs" />
     <Compile Include="CheckerboardMaterialCesiumWriter.cs" />
     <Compile Include="ColorCesiumWriter.cs" />
     <Compile Include="ConeCesiumWriter.cs" />
@@ -107,10 +107,11 @@
     <Compile Include="LeapSeconds.cs" />
     <Compile Include="MaterialCesiumWriter.cs" />
     <Compile Include="Matrix3By3.cs" />
-    <Compile Include="OrientationAxesCesiumWriter.cs" />
+    <Compile Include="OrientationCesiumWriter.cs" />
+    <Compile Include="PacketCesiumWriter.cs" />
     <Compile Include="PathCesiumWriter.cs" />
     <Compile Include="PixelOffsetCesiumWriter.cs" />
-    <Compile Include="PointGraphicsCesiumWriter.cs" />
+    <Compile Include="PointCesiumWriter.cs" />
     <Compile Include="PolygonCesiumWriter.cs" />
     <Compile Include="PolylineCesiumWriter.cs" />
     <Compile Include="PositionCesiumWriter.cs" />
