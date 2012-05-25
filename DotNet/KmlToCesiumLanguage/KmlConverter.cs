@@ -23,17 +23,9 @@ namespace KmlToCesiumLanguage
         /// <param name="document">The czml document.</param>
         public static void KmlToCesiumLanguage(byte[] kmlContents, CzmlDocument document)
         {
-            using (MemoryStream stream = new MemoryStream(kmlContents))
-            {
-                XDocument kmlDocument = XDocument.Load(stream);
-                document.Namespace = kmlDocument.Root.GetDefaultNamespace();
-                var properties = new List<Dictionary<string, object>>();
-                var placemarks = kmlDocument.Descendants(document.Namespace + "Placemark").Select(o => new Placemark(o, document));
-                foreach (var placemark in placemarks)
-                {
-                    placemark.Write();
-                }
-            }
+            document.CesiumOutputStream.WriteStartSequence();
+            Convert(kmlContents, document);
+            document.CesiumOutputStream.WriteEndSequence();
         }
 
         /// <summary>
@@ -68,9 +60,25 @@ namespace KmlToCesiumLanguage
                     }
                 }
             }
-            foreach (byte[] kmlDocument in documents)
+            document.CesiumOutputStream.WriteStartSequence();
+            foreach (byte[] kmlContents in documents)
             {
-                KmlConverter.KmlToCesiumLanguage(kmlDocument, document);
+                Convert(kmlContents, document);
+            }
+            document.CesiumOutputStream.WriteEndSequence();
+        }
+
+        private static void Convert(byte[] kmlContents, CzmlDocument document)
+        {
+            using (MemoryStream stream = new MemoryStream(kmlContents))
+            {
+                XDocument kmlDocument = XDocument.Load(stream);
+                document.Namespace = kmlDocument.Root.GetDefaultNamespace();
+                var placemarks = kmlDocument.Descendants(document.Namespace + "Placemark").Select(o => new Placemark(o, document));
+                foreach (var placemark in placemarks)
+                {
+                    placemark.Write();
+                }
             }
         }
     }

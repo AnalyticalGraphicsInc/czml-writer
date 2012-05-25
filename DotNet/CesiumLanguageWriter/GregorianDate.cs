@@ -205,7 +205,7 @@ namespace CesiumLanguageWriter
                 return res;
             }
 
-            public static GregorianDate ParseExact(string s, string format, IFormatProvider provider)
+            public static GregorianDate ParseExact(string s, string[] format, IFormatProvider provider)
             {
                 if (s == null)
                     throw new ArgumentNullException("s");
@@ -217,7 +217,7 @@ namespace CesiumLanguageWriter
                 GregorianDate result;
                 bool longYear = false;
                 FormatException e = null;
-                if (!ParseExact(s, new[] {format}, dfi, out result, true, ref longYear, true, ref e))
+                if (!ParseExact(s, format, dfi, out result, true, ref longYear, true, ref e))
                     throw e;
                 return result;
             }
@@ -2203,6 +2203,38 @@ namespace CesiumLanguageWriter
         /// <paramref name="format"/>. 
         /// </exception>
         public static GregorianDate ParseExact(string s, string format, IFormatProvider provider)
+        {
+            return Parser.ParseExact(s, new[] {format}, provider);
+        }
+
+        /// <summary>
+        /// Converts the specified string representation of a date and time to its
+        /// <see cref="GregorianDate"/> equivalent using the specified format and
+        /// culture-specific format information. The format of the string representation
+        /// must match the specified format exactly.
+        ///
+        /// Note: <see cref="GregorianDate"/> is always assumed to be in UTC.  You cannot
+        /// parse strings containing time zone information.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="GregorianDate"/> equivalent to the date and time contained in 
+        /// <paramref name="s"/> as specified by <paramref name="format"/> and 
+        /// <paramref name="provider"/>.
+        /// </returns>
+        /// <param name="s">A list of strings containing a date and time to convert. </param>
+        /// <param name="format">The expected format of <paramref name="s"/>. </param>
+        /// <param name="provider">An <see cref="IFormatProvider" /> that supplies
+        /// culture-specific format information about <paramref name="s"/>. </param>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="s"/> or <paramref name="format"/> is null.
+        /// </exception>
+        /// <exception cref="FormatException">
+        /// <paramref name="s"/> or <paramref name="format"/> is an empty string. -or- 
+        /// <paramref name="s"/> does not contain a date and time that corresponds to the
+        /// pattern specified in
+        /// <paramref name="format"/>. 
+        /// </exception>
+        public static GregorianDate ParseExact(string s, string[] format, IFormatProvider provider)
         {
             return Parser.ParseExact(s, format, provider);
         }

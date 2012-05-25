@@ -1,0 +1,6 @@
+{
+    "title": "Orientation",
+    "description": "TODO",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" }
+}

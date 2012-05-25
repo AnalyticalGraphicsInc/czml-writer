@@ -1,0 +1,6 @@
+{
+    "title": "Image",
+    "description": "The URI of the image.",
+    "type": "string",
+    "format": "uri"
+}
