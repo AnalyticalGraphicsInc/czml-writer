@@ -4,7 +4,7 @@
     "type": ["array", "object"],
     "items": { "$ref": "#" },
     "properties": {
-        "horizontalOrigin": {
+        "verticalOrigin": {
             "$ref": "VerticalOriginValue.jsonschema",
             "description": "The vertical origin.  Valid values are \"BOTTOM\", \"CENTER\", and \"TOP\".",
             "czmlValue": true

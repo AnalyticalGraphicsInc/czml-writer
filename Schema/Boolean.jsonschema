@@ -6,7 +6,8 @@
     "properties": {
         "boolean": {
             "$ref": "BooleanValue.jsonschema",
-            "description": "The boolean value."
+            "description": "The boolean value.",
+            "czmlValue": true
         }
     }
 }
