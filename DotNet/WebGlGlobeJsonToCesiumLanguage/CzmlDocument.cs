@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using CesiumLanguageWriter;
 
-namespace WebGlGlobeJsonToCesiumLanguage
+namespace WebGLGlobeJsonToCesiumLanguage
 {
     /// <summary>
     /// Stores data about the json file.

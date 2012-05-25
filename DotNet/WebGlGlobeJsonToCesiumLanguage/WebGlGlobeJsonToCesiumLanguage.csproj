@@ -8,8 +8,8 @@
     <ProjectGuid>{4F0AC6EB-6E10-4CA8-870D-B6B2C9C969E3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebGlGlobeJsonToCesiumLanguage</RootNamespace>
-    <AssemblyName>WebGlGlobeJsonToCesiumLanguage</AssemblyName>
+    <RootNamespace>WebGLGlobeJsonToCesiumLanguage</RootNamespace>
+    <AssemblyName>WebGLGlobeJsonToCesiumLanguage</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -71,7 +71,7 @@
   <ItemGroup>
     <Compile Include="CzmlDocument.cs" />
     <Compile Include="Series.cs" />
-    <Compile Include="WebGlGlobeJsonConverter.cs" />
+    <Compile Include="WebGLGlobeJsonConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,6 +81,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

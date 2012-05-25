@@ -29,9 +29,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateFromSchema", "Gener
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{5E4C0F36-35DC-4ED8-91EC-EAAC109836A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGlGlobeJsonToCesiumLanguage", "WebGlGlobeJsonToCesiumLanguage\WebGlGlobeJsonToCesiumLanguage.csproj", "{4F0AC6EB-6E10-4CA8-870D-B6B2C9C969E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGLGlobeJsonToCesiumLanguage", "WebGlGlobeJsonToCesiumLanguage\WebGLGlobeJsonToCesiumLanguage.csproj", "{4F0AC6EB-6E10-4CA8-870D-B6B2C9C969E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGlGlobeJsonToCesiumLanguageTests", "WebGlGlobeJsonToCesiumLanguageTests\WebGlGlobeJsonToCesiumLanguageTests.csproj", "{D8E5C88F-7FCB-4298-83FD-75B71BCDF781}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGLGlobeJsonToCesiumLanguageTests", "WebGlGlobeJsonToCesiumLanguageTests\WebGLGlobeJsonToCesiumLanguageTests.csproj", "{D8E5C88F-7FCB-4298-83FD-75B71BCDF781}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

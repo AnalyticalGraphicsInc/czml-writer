@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using CesiumLanguageWriter;
 
-namespace WebGlGlobeJsonToCesiumLanguage
+namespace WebGLGlobeJsonToCesiumLanguage
 {
     public class Series
     {
@@ -12,40 +12,22 @@ namespace WebGlGlobeJsonToCesiumLanguage
         /// Initializes a new instance of the <see cref="Series"/> class.
         /// </summary>
         /// <param name="id">The <see cref="Series"/>'s ide</param>
-        /// <param name="coordinates">An array of coordinate components. 
-        /// e.g. [latitude, longitude, magnitude, latitude, longitude, magnitude, ... ] 
-        /// where the latitude and longitude are given in degrees.</param>
-        public Series(string id, double[] coordinates, CzmlDocument document)
+        /// <param name="coordinates">An array of <see cref="Cartographic"/> coordinates in radians.</param>
+        /// <example>
+        /// Cartographic[] coordinates = new Cartographic[] { new Cartographic(Constants.HalfPi, Constants.Pi, 1.0) };
+        /// Series s = new Series("test", coordinates, new CzmlDocument());
+        /// </example>
+        public Series(string id, Cartographic[] coordinates, CzmlDocument document)
         {
-            if (coordinates.Length % 3 != 0)
-            {
-                throw new System.ArgumentException("coordinates must contain a multiple of 3 element", "coordinates");
-            }
-            
             m_id = id;
-            m_document = document;            
-            m_coordinates = new Cartographic[coordinates.Length / 3];
-
-            for (int i = 0, j = 0; i < coordinates.Length; i+=3, j++)
-            {
-                m_coordinates[j] = new Cartographic(Constants.RadiansPerDegree * coordinates[i], 
-                                                    Constants.RadiansPerDegree * coordinates[i+1],
-                                                    coordinates[i+2]);
-            }
+            m_document = document;
+            m_coordinates = (Cartographic[])coordinates.Clone();
         }
 
         /// <summary>
         /// Gets or sets the id.
         /// </summary>
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets the <see cref="Cartographic"/> array of coordinates.
-        /// </summary>
-        public Cartographic[] getCoordinates 
-        {
-            get { return m_coordinates; } 
-        }
 
         /// <summary>
         ///  Writes the CZML representation of the <see cref="Series"/>.
