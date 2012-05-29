@@ -9,8 +9,9 @@ namespace ShapefileReader
             int recordNumber,
             CartographicExtent extent,
             int[] parts,
-            Rectangular[] positions)
-            : base(recordNumber, ShapeType.Polygon)
+            Rectangular[] positions,
+            ShapeType shapeType = ShapeType.Polygon)
+            : base(recordNumber, shapeType)
         {
             _extent = extent;
 

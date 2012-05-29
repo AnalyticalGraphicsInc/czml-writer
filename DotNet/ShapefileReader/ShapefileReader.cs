@@ -176,13 +176,14 @@ namespace ShapefileReader
                                 double[] measures = new double[numberOfPoints];
                                 for (int i = 0; i < numberOfPoints; i++)
                                 {
-                                    double[i] = ToDouble(record, pointsOffset + (8 * i), ByteOrder.LittleEndian);
+                                    measures[i] = ToDouble(record, pointsOffset + (8 * i), ByteOrder.LittleEndian);
                                 }
                                 _shapes.Add(new MultiPointMShape(recordNumber, extent, points, mMin, mMax, measures));
                             }
                             break;
 
                         case ShapeType.Polyline:
+                        case ShapeType.PolylineM:
                         case ShapeType.Polygon:
                             extent = new CartographicExtent(
                                 ToDouble(record, 4, ByteOrder.LittleEndian),
@@ -215,10 +216,31 @@ namespace ShapefileReader
                             {
                                 _shapes.Add(new PolylineShape(recordNumber, extent, parts, points));
                             }
-                            else
+                            else if (recordShapeType == ShapeType.Polygon)
                             {
                                 _shapes.Add(new PolygonShape(recordNumber, extent, parts, points));
                             }
+                            else
+                            {
+                                int offset = pointsOffset + (16 * numberOfPoints);
+                                double mMin = ToDouble(record, offset, ByteOrder.LittleEndian);
+                                double mMax = ToDouble(record, offset + 8, ByteOrder.LittleEndian);
+                                double[] measures = new double[numberOfPoints];
+                                for (int i = 0; i < numberOfPoints; i++)
+                                {
+                                    measures[i] = ToDouble(record, pointsOffset + (8 * i), ByteOrder.LittleEndian);
+                                }
+
+                                if (recordShapeType == ShapeType.PolylineM)
+                                {
+                                    _shapes.Add(new PolylineMShape(recordNumber, extent, parts, points, mMin, mMax, measures));
+                                }
+                                else
+                                {
+                                    _shapes.Add(new PolygonMShape(recordNumber, extent, parts, points, mMin, mMax, measures));
+                                }
+                            }
+
 
                             break;
 

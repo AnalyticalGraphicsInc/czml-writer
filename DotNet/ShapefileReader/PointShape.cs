@@ -4,8 +4,8 @@ namespace ShapefileReader
 {
     public class PointShape : Shape
     {
-        internal PointShape(int recordNumber, Rectangular position)
-            : base(recordNumber, ShapeType.Point)
+        internal PointShape(int recordNumber, Rectangular position, ShapeType shapeType = ShapeType.Point)
+            : base(recordNumber, shapeType)
         {
             _position = position;
         }

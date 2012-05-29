@@ -3,16 +3,17 @@ using CesiumLanguageWriter;
 
 namespace ShapefileReader
 {
-    public class MultiPointMShape : MultiPointShape
+    public class PolygonMShape : PolygonShape
     {
-        internal MultiPointMShape(
+        internal PolygonMShape(
             int recordNumber,
             CartographicExtent extent,
+            int[] parts,
             Rectangular[] positions,
             double minimumMeasure,
             double maximumMeasure,
             double[] measures)
-            : base(recordNumber, extent, positions, ShapeType.PointM)
+            : base(recordNumber, extent, parts, positions, ShapeType.PolygonM)
         {
             _measureRange = new double[] { minimumMeasure, maximumMeasure };
             _measures = (double[])measures.Clone();
@@ -34,4 +35,5 @@ namespace ShapefileReader
         private readonly double[] _measureRange;
         private readonly double[] _measures;
     }
+
 }

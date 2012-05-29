@@ -2,18 +2,12 @@
 
 namespace ShapefileReader
 {
-    public class PointMShape : Shape
+    public class PointMShape : PointShape
     {
         internal PointMShape(int recordNumber, Rectangular position, double measure)
-            : base(recordNumber, ShapeType.PointM)
+            : base(recordNumber, position, ShapeType.PointM)
         {
-            _position = position;
             _measure = measure;
-        }
-
-        public Rectangular Position
-        {
-            get { return _position; }
         }
 
         public double Measure
@@ -21,7 +15,6 @@ namespace ShapefileReader
             get { return _measure; }
         }
 
-        private readonly Rectangular _position;
         private readonly double _measure;
     }
 }
