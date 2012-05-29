@@ -120,6 +120,7 @@ namespace ShapefileReader
                     int recordNumber = ToInteger(recordHeader, 0, ByteOrder.BigEndian);
                     int contextLengthInBytes = ToInteger(recordHeader, 4, ByteOrder.BigEndian) * 2;
                     byte[] record = Read(fs, contextLengthInBytes);
+                    int pointsOffset;
 
                     ShapeType recordShapeType = (ShapeType)ToInteger(record, 0, ByteOrder.LittleEndian);
                     switch (recordShapeType)
@@ -132,13 +133,22 @@ namespace ShapefileReader
                             break;
 
                         case ShapeType.Point:
-                            _shapes.Add(new PointShape(recordNumber,
-                                new Rectangular(
-                                    ToDouble(record, 4, ByteOrder.LittleEndian),
-                                    ToDouble(record, 12, ByteOrder.LittleEndian))));
+                        case ShapeType.PointM:
+                            Rectangular position = new Rectangular(
+                                                    ToDouble(record, 4, ByteOrder.LittleEndian),
+                                                    ToDouble(record, 12, ByteOrder.LittleEndian));
+                            if (recordShapeType == ShapeType.Polyline)
+                            {
+                                _shapes.Add(new PointShape(recordNumber, position));
+                            }
+                            else
+                            {
+                                _shapes.Add(new PointMShape(recordNumber, position, ToDouble(record, 20, ByteOrder.LittleEndian)));
+                            }
                             break;
 
                         case ShapeType.MultiPoint:
+                        case ShapeType.MultiPointM:
                             CartographicExtent extent = new CartographicExtent(
                                 ToDouble(record, 4, ByteOrder.LittleEndian),
                                 ToDouble(record, 12, ByteOrder.LittleEndian),
@@ -153,7 +163,23 @@ namespace ShapefileReader
                                     ToDouble(record, 40 + (16 * i), ByteOrder.LittleEndian),
                                     ToDouble(record, 40 + (16 * i) + 8, ByteOrder.LittleEndian));
                             }
-                            _shapes.Add(new MultiPointShape(recordNumber, extent, points));
+
+                            if (recordShapeType == ShapeType.MultiPoint)
+                            {
+                                _shapes.Add(new MultiPointShape(recordNumber, extent, points));
+                            }
+                            else
+                            {
+                                pointsOffset = 40 + (16 * numberOfPoints);
+                                double mMin = ToDouble(record, pointsOffset, ByteOrder.LittleEndian);
+                                double mMax = ToDouble(record, pointsOffset + 8, ByteOrder.LittleEndian);
+                                double[] measures = new double[numberOfPoints];
+                                for (int i = 0; i < numberOfPoints; i++)
+                                {
+                                    double[i] = ToDouble(record, pointsOffset + (8 * i), ByteOrder.LittleEndian);
+                                }
+                                _shapes.Add(new MultiPointMShape(recordNumber, extent, points, mMin, mMax, measures));
+                            }
                             break;
 
                         case ShapeType.Polyline:
@@ -177,7 +203,7 @@ namespace ShapefileReader
                                 parts[i] = ToInteger(record, 44 + (4 * i), ByteOrder.LittleEndian);
                             }
 
-                            int pointsOffset = 44 + (4 * numberOfParts);
+                            pointsOffset = 44 + (4 * numberOfParts);
                             for (int i = 0; i < numberOfPoints; ++i)
                             {
                                 points[i] = new Rectangular(
