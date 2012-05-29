@@ -66,14 +66,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CzmlDocument.cs" />
+    <Compile Include="Feature.cs" />
+    <Compile Include="FeatureFactory.cs" />
     <Compile Include="Geometry.cs" />
     <Compile Include="GeometryFactory.cs" />
+    <Compile Include="GroundOverlay.cs" />
     <Compile Include="KmlConverter.cs" />
     <Compile Include="LineString.cs" />
     <Compile Include="Placemark.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Polygon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CesiumLanguageWriter\CesiumLanguageWriter.csproj">

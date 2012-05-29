@@ -32,7 +32,7 @@ namespace KmlToCesiumLanguage
             PolylineCesiumWriter polyline = null;
             if (colorElement != null)
             {
-                Color color = HexStringToColor(colorElement.Value);
+                Color color = Utility.HexStringToColor(colorElement.Value);
                 polyline = this.PacketWriter.OpenPolylineProperty();
                 polyline.WriteColorProperty(color);
             }
