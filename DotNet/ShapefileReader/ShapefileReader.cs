@@ -138,18 +138,36 @@ namespace ShapefileReader
                                     ToDouble(record, 12, ByteOrder.LittleEndian))));
                             break;
 
-                        case ShapeType.Polyline:
-                        case ShapeType.Polygon:
+                        case ShapeType.MultiPoint:
                             CartographicExtent extent = new CartographicExtent(
                                 ToDouble(record, 4, ByteOrder.LittleEndian),
                                 ToDouble(record, 12, ByteOrder.LittleEndian),
                                 ToDouble(record, 20, ByteOrder.LittleEndian),
                                 ToDouble(record, 28, ByteOrder.LittleEndian));
+
+                            int numberOfPoints = ToInteger(record, 36, ByteOrder.LittleEndian);
+                            Rectangular[] points = new Rectangular[numberOfPoints];
+                            for (int i = 0; i < numberOfPoints; ++i)
+                            {
+                                points[i] = new Rectangular(
+                                    ToDouble(record, 40 + (16 * i), ByteOrder.LittleEndian),
+                                    ToDouble(record, 40 + (16 * i) + 8, ByteOrder.LittleEndian));
+                            }
+                            _shapes.Add(new MultiPointShape(recordNumber, extent, points));
+                            break;
+
+                        case ShapeType.Polyline:
+                        case ShapeType.Polygon:
+                            extent = new CartographicExtent(
+                                ToDouble(record, 4, ByteOrder.LittleEndian),
+                                ToDouble(record, 12, ByteOrder.LittleEndian),
+                                ToDouble(record, 20, ByteOrder.LittleEndian),
+                                ToDouble(record, 28, ByteOrder.LittleEndian));
                             int numberOfParts = ToInteger(record, 36, ByteOrder.LittleEndian);
-                            int numberOfPoints = ToInteger(record, 40, ByteOrder.LittleEndian);
+                            numberOfPoints = ToInteger(record, 40, ByteOrder.LittleEndian);
 
                             int[] parts = new int[numberOfParts];
-                            Rectangular[] points = new Rectangular[numberOfPoints];
+                            points = new Rectangular[numberOfPoints];
 
                             //
                             // These two loops can be optimized if the machine is little endian.
