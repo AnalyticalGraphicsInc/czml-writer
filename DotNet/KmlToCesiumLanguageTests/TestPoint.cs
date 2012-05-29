@@ -33,7 +33,7 @@ namespace KmlToCesiumLanguageTests
             var point = new Point(element.Element("Point"), m_document, element);
             point.WritePacket();
             string result = m_document.StringWriter.ToString();
-            Assert.That(result.Contains("\"availability\":\"2007-12-06T16:31:00Z/-4713-11--2147483625T11:59:25Z\""));
+            Assert.That(result.Contains("\"availability\":\"20071206T1631Z/99991231T235959.9999998999992Z\""));
         }
 
         [Test]
@@ -73,7 +73,7 @@ namespace KmlToCesiumLanguageTests
             string result = m_document.StringWriter.ToString();
             Assert.That(result.Contains("\"billboard\":{"));
             Assert.That(result.Contains("\"scale\":2.0"));
-            Assert.That(result.Contains("\"image\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QAAAAAAAD5Q7t/AAAACW9GRnMAAACgAAAA4ACdSFTMAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVRYw+2WIQ6EMBREMdhVtVVLuAQSLMla7MpaFKfAcguOwNFgSMaR/JC0S1fMJM/N/51fQtuikCRJuqcSOOBBbeDpK1Mu/gIVaEAHeoOOvop1SSY/m7VgAAGMBoG+lnXRO+E40dl0AjNYDGb6Bta52ACe2xrYfAWbwUpfYJ2PDVDz246ccNsNMcRCf8/69AHen+8FBVCARwM8+RdkPweyn4TZ74Lst+FfvAckSfqpDm/T4z3U/oIsAAAAAElFTkSuQmCC\"}"));
+            Assert.That(result.Contains("\"image\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAGYktHRAAAAAAAAPlDu38AAAAJb0ZGcwAAAKAAAADgAJ1IVMwAAADPSURBVFhH7ZYhDsJQEERrsKhaFIRLVIIlwWKRtShOgeUWHKFHK/MSMAQWkgXWzCZP7czP/mnZ0jQuJ+AEnMBnCUwka8VMLAPoo0P/tZrqpIXoxFpsAuijQ48vXdyEw1ZiJ3pxCKCPDj2+dBLEyY049ChO4hxAHx16fPhTxTMlVm7G4RcxBNBHhx4f/lTxwvHMiZ2bD2NQt8HQoceHP1VPB5hv9+MjzOUBnMDfEnj1Q/jFAOV7oHwTln8L2GKlX8P7Gi39P5Da5TY7ASfwLoErb9PjPacZAtEAAAAASUVORK5CYII=\"}"));
         }
 
         [Test]
@@ -119,7 +119,7 @@ namespace KmlToCesiumLanguageTests
         {
             CzmlDocument document = new CzmlDocument();
             document.CesiumOutputStream.PrettyFormatting = true;
-            KmlConverter.KmlToCesiumLanguage(File.ReadAllBytes(@"KmlDocs\STS-122-STS-122Ascent.kml"), document);
+            KmlConverter.KmlToCesiumLanguage(File.ReadAllBytes(@"\\agi\common\Dev\Test_and_Release\KML_TestData\AutomatedTestData\CCMC-SpaceWeatherContent.kml"), document);
             string czml = document.StringWriter.ToString();
             Console.WriteLine(czml);
         }
