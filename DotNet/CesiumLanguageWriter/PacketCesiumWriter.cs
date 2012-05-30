@@ -124,7 +124,7 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = AvailabilityPropertyName;
             Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteValue(Output, value);
+            CesiumWritingHelper.WriteTimeInterval(Output, value);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = AvailabilityPropertyName;
             Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteValue(Output, value);
+            CesiumWritingHelper.WriteTimeIntervalCollection(Output, value);
         }
 
         /// <summary>
@@ -330,6 +330,46 @@ namespace CesiumLanguageWriter
         public OrientationCesiumWriter OpenOrientationProperty()
         {
             return OpenAndReturn(OrientationWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>orientation</code> property as a <code>unitQuaternion</code> value.  The <code>orientation</code> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteOrientationProperty(UnitQuaternion value)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteValue(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>orientation</code> property as a <code>unitQuaternion</code> value.  The <code>orientation</code> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
+        /// </summary>
+        /// <param name="dates">The dates at which the rotation is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteOrientationProperty(IList<JulianDate> dates, IList<UnitQuaternion> values)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteValue(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>orientation</code> property as a <code>unitQuaternion</code> value.  The <code>orientation</code> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
+        /// </summary>
+        /// <param name="dates">The dates at which the rotation is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteOrientationProperty(IList<JulianDate> dates, IList<UnitQuaternion> values, int startIndex, int length)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteValue(dates, values, startIndex, length);
+            }
         }
 
         /// <summary>

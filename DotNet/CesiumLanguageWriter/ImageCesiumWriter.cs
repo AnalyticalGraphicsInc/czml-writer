@@ -1,34 +1,36 @@
-﻿using System.Drawing;
-#if StkComponents
-using AGI.Foundation.Cesium.Advanced;
-#else
-using CesiumLanguageWriter.Advanced;
-#endif
+// This file was generated automatically by GenerateFromSchema.  Do NOT edit it.
+// https://github.com/AnalyticalGraphicsInc/czml-writer
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
+using CesiumLanguageWriter.Advanced;
+using System;
+using System.Drawing;
+
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
-    /// A <see cref="CesiumPropertyWriter{T}"/> used to write an image property that
-    /// optionally has different values over different intervals of time.  Instances of this class generally should not
-    /// be constructed directly, but should instead be obtained from a <see cref="CesiumPropertyWriter{T}"/>.
+    /// Writes a <code>Image</code> to a <see cref="CesiumOutputStream" />.  A <code>Image</code> defines an image associated with an element, which can optionally vary over time.  The image is specified as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
     /// </summary>
     public class ImageCesiumWriter : CesiumValuePropertyWriter<string, ImageCesiumWriter>
     {
         /// <summary>
+        /// The name of the <code>image</code> property.
+        /// </summary>
+        public const string ImagePropertyName = "image";
+
+
+        /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        /// <param name="propertyName">The name of the property.</param>
         public ImageCesiumWriter(string propertyName)
             : base(propertyName)
         {
         }
 
-        /// <inheritdoc />
-        private ImageCesiumWriter(ImageCesiumWriter existingInstance)
+        /// <summary>
+        /// Initializes a new instance as a copy of an existing instance.
+        /// </summary>
+        /// <param name="existingInstance">The existing instance to copy.</param> 
+        protected ImageCesiumWriter(ImageCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -40,24 +42,25 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value of the property for all time.
+        /// Writes the <code>image</code> property.  The <code>image</code> property specifies the URL of the image.
         /// </summary>
-        /// <param name="imageUrl">The URL of the image.  If the URL is relative, it must be relative to the <topic name="Cesium">Cesium</topic> stream.</param>
-        public override void WriteValue(string imageUrl)
+        /// <param name="url">The URL of the image.</param>
+        public override void WriteValue(string url)
         {
+            const string PropertyName = ImagePropertyName;
             if (IsInterval)
-                Output.WritePropertyName("image");
-            Output.WriteValue(imageUrl);
+                Output.WritePropertyName(PropertyName);
+            Output.WriteValue(url);
         }
 
         /// <summary>
-        /// Writes the value of the property for all time by building a data URL from
-        /// a specified image.
+        /// Writes the <code>image</code> property.  The <code>image</code> property specifies the URL of the image.
         /// </summary>
         /// <param name="image">The image for which to create a data URL.</param>
         public void WriteValue(Image image)
         {
             WriteValue(CesiumFormattingHelper.ImageToDataUrl(image));
         }
+
     }
 }

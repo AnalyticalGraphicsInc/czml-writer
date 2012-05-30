@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using CesiumLanguageWriter.Advanced;
 
 namespace CesiumLanguageWriter
@@ -12,9 +13,9 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a <see cref="TimeInterval"/> as an ISO 8601 interval string.
         /// </summary>
-        /// <param name="output">The stream to which to write the interval.</param>
+        /// <param name="output">The stream to which to write the value.</param>
         /// <param name="interval">The interval to write.</param>
-        public static void WriteValue(CesiumOutputStream output, TimeInterval interval)
+        public static void WriteTimeInterval(CesiumOutputStream output, TimeInterval interval)
         {
             output.WriteValue(CesiumFormattingHelper.ToIso8601Interval(interval.Start, interval.Stop, output.PrettyFormatting ? Iso8601Format.Extended : Iso8601Format.Compact));
         }
@@ -24,32 +25,78 @@ namespace CesiumLanguageWriter
         /// interval, the interval is written as an ISO 8601 interval string.  If it has multiple intervals,
         /// it is written as an array of ISO 8601 interval strings.
         /// </summary>
-        /// <param name="output">The stream to which to write the interval.</param>
+        /// <param name="output">The stream to which to write the value.</param>
         /// <param name="intervals">The intervals to write.</param>
-        public static void WriteValue(CesiumOutputStream output, IList<TimeInterval> intervals)
+        public static void WriteTimeIntervalCollection(CesiumOutputStream output, IList<TimeInterval> intervals)
         {
             if (intervals.Count == 1)
             {
                 TimeInterval interval = intervals[0];
-                WriteValue(output, interval);
+                WriteTimeInterval(output, interval);
             }
             else
             {
                 output.WriteStartSequence();
                 foreach (TimeInterval interval in intervals)
                 {
-                    WriteValue(output, interval);
+                    WriteTimeInterval(output, interval);
                 }
                 output.WriteEndSequence();
             }
         }
 
         /// <summary>
+        /// Writes a <see cref="Rectangular"/> value as an array in X, Y order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="value">The value to write.</param>
+        public static void WriteCartesian2(CesiumOutputStream output, Rectangular value)
+        {
+            output.WriteStartSequence();
+            output.WriteValue(value.X);
+            output.WriteValue(value.Y);
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes time-tagged <see cref="Rectangular"/> values as an array in [Time, X, Y] order.
+        /// Times are epoch seconds since an epoch that is determined from the first date to be written.
+        /// The epoch property is written as well.
+        /// </summary>
+        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="propertyName">The name of the property to write.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The corresponding value for each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
+        /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
+        public static void WriteCartesian2(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
+        {
+            if (dates.Count != values.Count)
+                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
+
+            JulianDate epoch = GetAndWriteEpoch(output, dates, startIndex, length);
+
+            output.WritePropertyName(propertyName);
+            output.WriteStartSequence();
+            int last = startIndex + length;
+            for (int i = startIndex; i < last; ++i)
+            {
+                output.WriteValue(epoch.SecondsDifference(dates[i]));
+                Rectangular value = values[i];
+                output.WriteValue(value.X);
+                output.WriteValue(value.Y);
+                output.WriteLineBreak();
+            }
+
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
         /// Writes a <see cref="Cartesian"/> value as an array in X, Y, Z order.
         /// </summary>
-        /// <param name="output">The stream to which to write the interval.</param>
+        /// <param name="output">The stream to which to write the value.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteValue(CesiumOutputStream output, Cartesian value)
+        public static void WriteCartesian3(CesiumOutputStream output, Cartesian value)
         {
             output.WriteStartSequence();
             output.WriteValue(value.X);
@@ -69,7 +116,7 @@ namespace CesiumLanguageWriter
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteValue(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        public static void WriteCartesian3(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -95,9 +142,9 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a <see cref="Cartographic"/> value as an array in Longitude, Latitude, Height order.
         /// </summary>
-        /// <param name="output">The stream to which to write the interval.</param>
+        /// <param name="output">The stream to which to write the value.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteValue(CesiumOutputStream output, Cartographic value)
+        public static void WriteCartographic(CesiumOutputStream output, Cartographic value)
         {
             output.WriteStartSequence();
             output.WriteValue(value.Longitude);
@@ -117,7 +164,7 @@ namespace CesiumLanguageWriter
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteValue(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Cartographic> values, int startIndex, int length)
+        public static void WriteCartographic(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Cartographic> values, int startIndex, int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -134,6 +181,169 @@ namespace CesiumLanguageWriter
                 output.WriteValue(value.Longitude);
                 output.WriteValue(value.Latitude);
                 output.WriteValue(value.Height);
+                output.WriteLineBreak();
+            }
+
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes a color value as an array in Red, Green, Blue, Alpha order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the color.</param>
+        /// <param name="value">The value to write.</param>
+        public static void WriteRgba(CesiumOutputStream output, Color value)
+        {
+            WriteRgba(output, value.R, value.G, value.B, value.A);
+        }
+
+        /// <summary>
+        /// Writes a color value as an array in Red, Green, Blue, Alpha order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the color.</param>
+        /// <param name="red">The red component in the range 0-255.</param>
+        /// <param name="green">The green component in the range 0-255.</param>
+        /// <param name="blue">The blue component in the range 0-255.</param>
+        /// <param name="alpha">The alpha component in the range 0-255.</param>
+        public static void WriteRgba(CesiumOutputStream output, int red, int green, int blue, int alpha)
+        {
+            output.WriteStartSequence();
+            output.WriteValue(red);
+            output.WriteValue(green);
+            output.WriteValue(blue);
+            output.WriteValue(alpha);
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes time-tagged color values as an array in [Time, Red, Green, Blue, Alpha] order.
+        /// Times are epoch seconds since an epoch that is determined from the first date to be written.
+        /// The epoch property is written as well.
+        /// </summary>
+        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="propertyName">The name of the property to write.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The corresponding value for each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
+        /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
+        public static void WriteRgba(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Color> values, int startIndex, int length)
+        {
+            if (dates.Count != values.Count)
+                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
+
+            JulianDate epoch = GetAndWriteEpoch(output, dates, startIndex, length);
+
+            output.WritePropertyName(propertyName);
+            output.WriteStartSequence();
+            int last = startIndex + length;
+            for (int i = startIndex; i < last; ++i)
+            {
+                output.WriteValue(epoch.SecondsDifference(dates[i]));
+                Color value = values[i];
+                output.WriteValue(value.R);
+                output.WriteValue(value.G);
+                output.WriteValue(value.B);
+                output.WriteValue(value.A);
+                output.WriteLineBreak();
+            }
+
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes a color value as an array in Red, Green, Blue, Alpha order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the color.</param>
+        /// <param name="red">The red component in the range 0.0-1.0.</param>
+        /// <param name="green">The green component in the range 0.0-1.0.</param>
+        /// <param name="blue">The blue component in the range 0.0-1.0.</param>
+        /// <param name="alpha">The alpha component in the range 0.0-1.0.</param>
+        public static void WriteRgbaf(CesiumOutputStream output, float red, float green, float blue, float alpha)
+        {
+            output.WriteStartSequence();
+            output.WriteValue(red);
+            output.WriteValue(green);
+            output.WriteValue(blue);
+            output.WriteValue(alpha);
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes time-tagged floating-point values as an array in [Time, Value] order.
+        /// Times are epoch seconds since an epoch that is determined from the first date to be written.
+        /// The epoch property is written as well.
+        /// </summary>
+        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="propertyName">The name of the property to write.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The corresponding value for each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
+        /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
+        public static void WriteDouble(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            if (dates.Count != values.Count)
+                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
+
+            JulianDate epoch = GetAndWriteEpoch(output, dates, startIndex, length);
+
+            output.WritePropertyName(propertyName);
+            output.WriteStartSequence();
+            int last = startIndex + length;
+            for (int i = startIndex; i < last; ++i)
+            {
+                output.WriteValue(epoch.SecondsDifference(dates[i]));
+                output.WriteValue(values[i]);
+                output.WriteLineBreak();
+            }
+
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes a <see cref="UnitQuaternion"/> as an array in [X, Y, Z, W] order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="value">The value to write.</param>
+        public static void WriteUnitQuaternion(CesiumOutputStream output, UnitQuaternion value)
+        {
+            output.WriteStartSequence();
+            output.WriteValue(value.X);
+            output.WriteValue(value.Y);
+            output.WriteValue(value.Z);
+            output.WriteValue(value.W);
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes the time-tagged <see cref="UnitQuaternion"/> collection as an array in
+        /// [Time, X, Y, Z, W] order.
+        /// Times are epoch seconds since an epoch that is determined from the first date to be written.
+        /// The epoch property is written as well.
+        /// </summary>
+        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="propertyName">The name of the property to write.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The corresponding value for each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
+        /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
+        public static void WriteUnitQuaternion(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<UnitQuaternion> values, int startIndex, int length)
+        {
+            if (dates.Count != values.Count)
+                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
+
+            JulianDate epoch = GetAndWriteEpoch(output, dates, startIndex, length);
+
+            output.WritePropertyName(propertyName);
+            output.WriteStartSequence();
+            int last = startIndex + length;
+            for (int i = startIndex; i < last; ++i)
+            {
+                output.WriteValue(epoch.SecondsDifference(dates[i]));
+                UnitQuaternion quaternion = values[i];
+                output.WriteValue(quaternion.W);
+                output.WriteValue(quaternion.X);
+                output.WriteValue(quaternion.Y);
+                output.WriteValue(quaternion.Z);
                 output.WriteLineBreak();
             }
 

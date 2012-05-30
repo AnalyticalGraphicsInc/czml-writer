@@ -77,7 +77,7 @@ namespace CesiumLanguageWriter
             const string PropertyName = CartesianPropertyName;
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteValue(Output, value);
+            CesiumWritingHelper.WriteCartesian3(Output, value);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = CartesianPropertyName;
             OpenIntervalIfNecessary();
-            CesiumWritingHelper.WriteValue(Output, PropertyName, dates, values, startIndex, length);
+            CesiumWritingHelper.WriteCartesian3(Output, PropertyName, dates, values, startIndex, length);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace CesiumLanguageWriter
             const string PropertyName = CartographicRadiansPropertyName;
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteValue(Output, value);
+            CesiumWritingHelper.WriteCartographic(Output, value);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = CartographicRadiansPropertyName;
             OpenIntervalIfNecessary();
-            CesiumWritingHelper.WriteValue(Output, PropertyName, dates, values, startIndex, length);
+            CesiumWritingHelper.WriteCartographic(Output, PropertyName, dates, values, startIndex, length);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace CesiumLanguageWriter
             const string PropertyName = CartographicDegreesPropertyName;
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteValue(Output, value);
+            CesiumWritingHelper.WriteCartographic(Output, value);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = CartographicDegreesPropertyName;
             OpenIntervalIfNecessary();
-            CesiumWritingHelper.WriteValue(Output, PropertyName, dates, values, startIndex, length);
+            CesiumWritingHelper.WriteCartographic(Output, PropertyName, dates, values, startIndex, length);
         }
 
     }

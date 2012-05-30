@@ -18,7 +18,7 @@
         },
         "image": {
             "$ref": "Image.jsonschema",
-            "description": "The image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI<a/>."
+            "description": "The image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
         },
         "pixelOffset": {
             "$ref": "PixelOffset.jsonschema",

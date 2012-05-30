@@ -1,37 +1,35 @@
-﻿#if StkComponents
-using AGI.Foundation.Cesium.Advanced;
-using AGI.Foundation.Coordinates;
-using Cartesian3 = AGI.Foundation.Coordinates.Cartesian;
-#else
-using CesiumLanguageWriter.Advanced;
-#endif
+// This file was generated automatically by GenerateFromSchema.  Do NOT edit it.
+// https://github.com/AnalyticalGraphicsInc/czml-writer
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
+using CesiumLanguageWriter.Advanced;
+using System;
+using System.Collections.Generic;
+
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
-    /// A <see cref="CesiumPropertyWriter{T}"/> used to write an eye offset property that
-    /// optionally has different values over different intervals of time.  An eye offset specifies the offset
-    /// from an origin at which to place an element.  The offset is specified in eye coordinates, which is a
-    /// left-handed coordinate system where <code>x</code> points toward the viewer's right, <code>y</code> points
-    /// up, and <code>z</code> points into the screen.  Instances of this class generally should not
-    /// be constructed directly, but should instead be obtained from a <see cref="CesiumPropertyWriter{T}"/>.
+    /// Writes a <code>EyeOffset</code> to a <see cref="CesiumOutputStream" />.  A <code>EyeOffset</code> defines an offset in eye coordinates which can optionally vary over time.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen.
     /// </summary>
-    public class EyeOffsetCesiumWriter : CesiumValuePropertyWriter<Cartesian, EyeOffsetCesiumWriter>
+    public class EyeOffsetCesiumWriter : CesiumInterpolatableValuePropertyWriter<Cartesian, EyeOffsetCesiumWriter>
     {
+        /// <summary>
+        /// The name of the <code>cartesian</code> property.
+        /// </summary>
+        public const string CartesianPropertyName = "cartesian";
+
+
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        /// <param name="propertyName">The name of the property.</param>
         public EyeOffsetCesiumWriter(string propertyName)
             : base(propertyName)
         {
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Initializes a new instance as a copy of an existing instance.
+        /// </summary>
+        /// <param name="existingInstance">The existing instance to copy.</param> 
         protected EyeOffsetCesiumWriter(EyeOffsetCesiumWriter existingInstance)
             : base(existingInstance)
         {
@@ -44,20 +42,40 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as a <see cref="Cartesian"/> value.
-        /// The position is constant for the entire interval.
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the eye offset specified as a Cartesian `[X, Y, Z]` position in eye coordinates in  meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
         /// </summary>
-        /// <param name="position">The position.</param>
-        public override void WriteValue(Cartesian position)
+        /// <param name="value">The value.</param>
+        public override void WriteValue(Cartesian value)
         {
+            const string PropertyName = CartesianPropertyName;
             OpenIntervalIfNecessary();
-
-            Output.WritePropertyName("cartesian");
-            Output.WriteStartSequence();
-            Output.WriteValue(position.X);
-            Output.WriteValue(position.Y);
-            Output.WriteValue(position.Z);
-            Output.WriteEndSequence();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteCartesian3(Output, value);
         }
+
+        /// <summary>
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the eye offset specified as a Cartesian `[X, Y, Z]` position in eye coordinates in  meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteValue(IList<JulianDate> dates, IList<Cartesian> values)
+        {
+            WriteValue(dates, values, 0, dates.Count);
+        }
+
+        /// <summary>
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the eye offset specified as a Cartesian `[X, Y, Z]` position in eye coordinates in  meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public override void WriteValue(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        {
+            const string PropertyName = CartesianPropertyName;
+            OpenIntervalIfNecessary();
+            CesiumWritingHelper.WriteCartesian3(Output, PropertyName, dates, values, startIndex, length);
+        }
+
     }
 }

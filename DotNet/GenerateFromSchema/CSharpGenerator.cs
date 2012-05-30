@@ -118,24 +118,24 @@ namespace GenerateFromSchema
 
         private void WriteNamespaces(CodeWriter writer, Schema schema)
         {
-            if (schema.Properties == null)
-                return;
-
             HashSet<string> namespaces = new HashSet<string>();
 
             namespaces.Add(m_configuration.Namespace + ".Advanced");
             namespaces.Add(m_configuration.LazyNamespace);
 
-            foreach (Property property in schema.Properties)
+            if (schema.Properties != null)
             {
-                OverloadInfo[] overloads = GetOverloadsForProperty(property);
-                foreach (OverloadInfo overload in overloads)
+                foreach (Property property in schema.Properties)
                 {
-                    if (overload.Namespaces != null)
+                    OverloadInfo[] overloads = GetOverloadsForProperty(property);
+                    foreach (OverloadInfo overload in overloads)
                     {
-                        foreach (string ns in overload.Namespaces)
+                        if (overload.Namespaces != null)
                         {
-                            namespaces.Add(ns);
+                            foreach (string ns in overload.Namespaces)
+                            {
+                                namespaces.Add(ns);
+                            }
                         }
                     }
                 }
@@ -318,7 +318,7 @@ namespace GenerateFromSchema
                 string modifier = "";
                 if (isFirstValueProperty)
                 {
-                    if (overload.Parameters.Length == 1)
+                    if (overload.Parameters.Length == 1 && overload.Parameters[0].Type == GetDefaultValueType(schema))
                         modifier = "override ";
                     else if (overload.Parameters.Length == 4)
                     {
@@ -351,8 +351,10 @@ namespace GenerateFromSchema
                         writer.WriteLine("Output.WritePropertyName(PropertyName);");
                     }
                     else if (isFirstValueProperty && overload.Parameters.Length == 1 &&
-                                (overload.Parameters[0].Type == "string" || overload.Parameters[0].Type == "double" ||
-                                overload.Parameters[0].Type == "int" || overload.Parameters[0].Type == "bool"))
+                                (overload.Parameters[0].Type == "string" ||
+                        overload.Parameters[0].Type == "double" || overload.Parameters[0].Type == "float" ||
+                        overload.Parameters[0].Type == "int" || overload.Parameters[0].Type == "long" ||
+                        overload.Parameters[0].Type == "bool"))
                     {
                         writer.WriteLine("if (IsInterval)");
                         writer.WriteLine("    Output.WritePropertyName(PropertyName);");

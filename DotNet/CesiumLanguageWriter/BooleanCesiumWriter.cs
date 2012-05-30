@@ -1,33 +1,35 @@
-﻿#if StkComponents
-using AGI.Foundation.Cesium.Advanced;
-#else
-using CesiumLanguageWriter.Advanced;
-#endif
+// This file was generated automatically by GenerateFromSchema.  Do NOT edit it.
+// https://github.com/AnalyticalGraphicsInc/czml-writer
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
+using CesiumLanguageWriter.Advanced;
+using System;
+
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
-    /// A <see cref="CesiumPropertyWriter{T}"/> used to write a boolean (true/false) property that
-    /// optionally has different values over different intervals of time.  Instances of this class generally should not
-    /// be constructed directly, but should instead be obtained from a <see cref="CesiumPropertyWriter{T}"/>.
+    /// Writes a <code>Boolean</code> to a <see cref="CesiumOutputStream" />.  A <code>Boolean</code> a boolean value.
     /// </summary>
     public class BooleanCesiumWriter : CesiumValuePropertyWriter<bool, BooleanCesiumWriter>
     {
         /// <summary>
+        /// The name of the <code>boolean</code> property.
+        /// </summary>
+        public const string BooleanPropertyName = "boolean";
+
+
+        /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        /// <param name="propertyName">The name of the property.</param>
         public BooleanCesiumWriter(string propertyName)
             : base(propertyName)
         {
         }
 
-        /// <inheritdoc />
-        private BooleanCesiumWriter(BooleanCesiumWriter existingInstance)
+        /// <summary>
+        /// Initializes a new instance as a copy of an existing instance.
+        /// </summary>
+        /// <param name="existingInstance">The existing instance to copy.</param> 
+        protected BooleanCesiumWriter(BooleanCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -38,12 +40,17 @@ namespace CesiumLanguageWriter
             return new BooleanCesiumWriter(this);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Writes the <code>boolean</code> property.  The <code>boolean</code> property specifies the boolean value.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public override void WriteValue(bool value)
         {
+            const string PropertyName = BooleanPropertyName;
             if (IsInterval)
-                Output.WritePropertyName("boolean");
+                Output.WritePropertyName(PropertyName);
             Output.WriteValue(value);
         }
+
     }
 }

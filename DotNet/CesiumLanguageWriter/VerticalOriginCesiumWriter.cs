@@ -1,33 +1,35 @@
-﻿#if StkComponents
-using AGI.Foundation.Cesium.Advanced;
-#else
-using CesiumLanguageWriter.Advanced;
-#endif
+// This file was generated automatically by GenerateFromSchema.  Do NOT edit it.
+// https://github.com/AnalyticalGraphicsInc/czml-writer
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
+using CesiumLanguageWriter.Advanced;
+using System;
+
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
-    /// A <see cref="CesiumPropertyWriter{T}"/> used to write a <see cref="CesiumVerticalOrigin"/> property that
-    /// optionally has different values over different intervals of time.  Instances of this class generally should not
-    /// be constructed directly, but should instead be obtained from a <see cref="CesiumPropertyWriter{T}"/>.
+    /// Writes a <code>VerticalOrigin</code> to a <see cref="CesiumOutputStream" />.  A <code>VerticalOrigin</code> defines the vertical origin of an element, which can optionally vary over time.  It controls whether the element is bottom-, center-, or top-aligned with the `position`.
     /// </summary>
     public class VerticalOriginCesiumWriter : CesiumValuePropertyWriter<CesiumVerticalOrigin, VerticalOriginCesiumWriter>
     {
         /// <summary>
+        /// The name of the <code>verticalOrigin</code> property.
+        /// </summary>
+        public const string VerticalOriginPropertyName = "verticalOrigin";
+
+
+        /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        /// <param name="propertyName">The name of the property.</param>
         public VerticalOriginCesiumWriter(string propertyName)
-            : base(propertyName) 
+            : base(propertyName)
         {
         }
 
-        /// <inheritdoc />
-        private VerticalOriginCesiumWriter(VerticalOriginCesiumWriter existingInstance)
+        /// <summary>
+        /// Initializes a new instance as a copy of an existing instance.
+        /// </summary>
+        /// <param name="existingInstance">The existing instance to copy.</param> 
+        protected VerticalOriginCesiumWriter(VerticalOriginCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -38,12 +40,17 @@ namespace CesiumLanguageWriter
             return new VerticalOriginCesiumWriter(this);
         }
 
-        /// <inheritdoc />
-        public override void WriteValue(CesiumVerticalOrigin verticalOrigin)
+        /// <summary>
+        /// Writes the <code>verticalOrigin</code> property.  The <code>verticalOrigin</code> property specifies the vertical origin.  Valid values are "BOTTOM", "CENTER", and "TOP".
+        /// </summary>
+        /// <param name="value">The vertical origin.</param>
+        public override void WriteValue(CesiumVerticalOrigin value)
         {
-            if (IsInterval)
-                Output.WritePropertyName("verticalOrigin");
-            Output.WriteValue(CesiumFormattingHelper.VerticalOriginToString(verticalOrigin));
+            const string PropertyName = VerticalOriginPropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            Output.WriteValue(CesiumFormattingHelper.VerticalOriginToString(value));
         }
+
     }
 }

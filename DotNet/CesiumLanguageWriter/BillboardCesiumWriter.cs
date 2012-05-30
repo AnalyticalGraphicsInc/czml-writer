@@ -1,72 +1,62 @@
-﻿using System;
-using System.Drawing;
-#if StkComponents
-using AGI.Foundation.Cesium.Advanced;
-using AGI.Foundation.Coordinates;
-using AGI.Foundation.Time;
-#else
-using CesiumLanguageWriter.Advanced;
-#endif
+// This file was generated automatically by GenerateFromSchema.  Do NOT edit it.
+// https://github.com/AnalyticalGraphicsInc/czml-writer
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
+using CesiumLanguageWriter.Advanced;
+using System;
+using System.Drawing;
+using System.Collections.Generic;
+
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
-    /// A <see cref="CesiumPropertyWriter{T}"/> for writing billboard-related properties to a
-    /// <topic name="Cesium">Cesium</topic> stream.  A billboard is a viewport-aligned image positioned
-    /// in the 3D scene, and is sometimes called a marker.  The billboard is positioned in the scene
-    /// by the <see cref="PacketCesiumWriter.OpenPositionProperty">Position</see> property.  Instances of this class should not be created
-    /// directly, but should instead be obtained from a <see cref="PacketCesiumWriter"/>.
+    /// Writes a <code>Billboard</code> to a <see cref="CesiumOutputStream" />.  A <code>Billboard</code> specifies a billboard, or viewport-aligned image. The billboard is positioned in the scene by the `position` property. A billboard is sometimes called a marker.
     /// </summary>
     public class BillboardCesiumWriter : CesiumPropertyWriter<BillboardCesiumWriter>
     {
         /// <summary>
         /// The name of the <code>color</code> property.
         /// </summary>
-        public static readonly string ColorPropertyName = "color";
+        public const string ColorPropertyName = "color";
 
         /// <summary>
         /// The name of the <code>eyeOffset</code> property.
         /// </summary>
-        public static readonly string EyeOffsetPropertyName = "eyeOffset";
+        public const string EyeOffsetPropertyName = "eyeOffset";
 
         /// <summary>
         /// The name of the <code>horizontalOrigin</code> property.
         /// </summary>
-        public static readonly string HorizontalOriginPropertyName = "horizontalOrigin";
+        public const string HorizontalOriginPropertyName = "horizontalOrigin";
 
         /// <summary>
         /// The name of the <code>image</code> property.
         /// </summary>
-        public static readonly string ImagePropertyName = "image";
+        public const string ImagePropertyName = "image";
 
         /// <summary>
         /// The name of the <code>pixelOffset</code> property.
         /// </summary>
-        public static readonly string PixelOffsetPropertyName = "pixelOffset";
+        public const string PixelOffsetPropertyName = "pixelOffset";
 
         /// <summary>
         /// The name of the <code>rotation</code> property.
         /// </summary>
-        public static readonly string RotationPropertyName = "rotation";
+        public const string RotationPropertyName = "rotation";
 
         /// <summary>
         /// The name of the <code>scale</code> property.
         /// </summary>
-        public static readonly string ScalePropertyName = "scale";
+        public const string ScalePropertyName = "scale";
 
         /// <summary>
         /// The name of the <code>show</code> property.
         /// </summary>
-        public static readonly string ShowPropertyName = "show";
+        public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <code>verticalOrigin</code> property.
         /// </summary>
-        public static readonly string VerticalOriginPropertyName = "verticalOrigin";
+        public const string VerticalOriginPropertyName = "verticalOrigin";
 
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
         private readonly Lazy<EyeOffsetCesiumWriter> m_eyeOffset = new Lazy<EyeOffsetCesiumWriter>(() => new EyeOffsetCesiumWriter(EyeOffsetPropertyName), false);
@@ -77,7 +67,6 @@ namespace CesiumLanguageWriter
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<VerticalOriginCesiumWriter>(() => new VerticalOriginCesiumWriter(VerticalOriginPropertyName), false);
-        private readonly Lazy<CustomCesiumWriter> m_custom = new Lazy<CustomCesiumWriter>(() => new CustomCesiumWriter("custom"), false); 
 
         /// <summary>
         /// Initializes a new instance.
@@ -90,7 +79,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
-        /// <param name="existingInstance">The existing instance to copy.</param>
+        /// <param name="existingInstance">The existing instance to copy.</param> 
         protected BillboardCesiumWriter(BillboardCesiumWriter existingInstance)
             : base(existingInstance)
         {
@@ -103,9 +92,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>color</code> property.  The returned instance must be opened by calling
-        /// the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  See the
-        /// documentation for the <see cref="OpenColorProperty"/> method for more information.
+        /// Gets the writer for the <code>color</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>color</code> property defines the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
         /// </summary>
         public ColorCesiumWriter ColorWriter
         {
@@ -113,33 +100,72 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens a property describing the color of the billboard.  This color value is multiplied with the values
-        /// of the billboard <see cref="OpenImageProperty"/> to produce the final color.
+        /// Opens and returns the writer for the <code>color</code> property.  The <code>color</code> property defines the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
         /// </summary>
-        /// <returns>The writer that is used to write color information.</returns>
         public ColorCesiumWriter OpenColorProperty()
         {
-            OpenIntervalIfNecessary();
             return OpenAndReturn(ColorWriter);
         }
 
         /// <summary>
-        /// Writes a constant value for the <code>color</code> property.
-        /// See the documentation for the <see cref="OpenColorProperty"/> method for more information.
+        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
         /// </summary>
-        /// <param name="value">The value of the property.</param>
-        public void WriteColorProperty(Color value)
+        /// <param name="color">The color.</param>
+        public void WriteColorProperty(Color color)
         {
             using (var writer = OpenColorProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteValue(color);
             }
         }
 
         /// <summary>
-        /// Gets the writer for the <code>eyeOffset</code> property.  The returned instance must be opened by calling
-        /// the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  See the
-        /// documentation for the <see cref="OpenEyeOffsetProperty"/> method for more information.
+        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 255.</param>
+        /// <param name="green">The green component in the range 0 to 255.</param>
+        /// <param name="blue">The blue component in the range 0 to 255.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 255.</param>
+        public void WriteColorProperty(int red, int green, int blue, int alpha)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteValue(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
+        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        public void WriteColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteValue(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 1.0.</param>
+        /// <param name="green">The green component in the range 0 to 1.0.</param>
+        /// <param name="blue">The blue component in the range 0 to 1.0.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 1.0.</param>
+        public void WriteColorPropertyRgbaf(float red, float green, float blue, float alpha)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>eyeOffset</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>eyeOffset</code> property defines the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen.
         /// </summary>
         public EyeOffsetCesiumWriter EyeOffsetWriter
         {
@@ -147,21 +173,17 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens a property describing the offset in eye coordinates of the billboard origin from the
-        /// <see cref="PacketCesiumWriter.OpenPositionProperty"/>.
+        /// Opens and returns the writer for the <code>eyeOffset</code> property.  The <code>eyeOffset</code> property defines the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen.
         /// </summary>
-        /// <returns>The writer that is used to write eye offset information.</returns>
         public EyeOffsetCesiumWriter OpenEyeOffsetProperty()
         {
-            OpenIntervalIfNecessary();
             return OpenAndReturn(EyeOffsetWriter);
         }
 
         /// <summary>
-        /// Writes a constant value for the <code>eyeOffset</code> property.
-        /// See the documentation for the <see cref="OpenEyeOffsetProperty"/> method for more information.
+        /// Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen.
         /// </summary>
-        /// <param name="value">The value of the property.</param>
+        /// <param name="value">The value.</param>
         public void WriteEyeOffsetProperty(Cartesian value)
         {
             using (var writer = OpenEyeOffsetProperty())
@@ -171,9 +193,35 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>horizontalOrigin</code> property.  The returned instance must be opened by calling
-        /// the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  See the
-        /// documentation for the <see cref="OpenHorizontalOriginProperty"/> method for more information.
+        /// Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteEyeOffsetProperty(IList<JulianDate> dates, IList<Cartesian> values)
+        {
+            using (var writer = OpenEyeOffsetProperty())
+            {
+                writer.WriteValue(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteEyeOffsetProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        {
+            using (var writer = OpenEyeOffsetProperty())
+            {
+                writer.WriteValue(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>horizontalOrigin</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>horizontalOrigin</code> property defines the horizontal origin of the billboard.  It controls whether the billboard image is left-, center-, or right-aligned with the `position`.
         /// </summary>
         public HorizontalOriginCesiumWriter HorizontalOriginWriter
         {
@@ -181,21 +229,17 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens a property describing the horizontal origin of the billboard image.  It controls whether the
-        /// billboard image is left-, center-, or right-aligned with the <see cref="PacketCesiumWriter.OpenPositionProperty"/>.
+        /// Opens and returns the writer for the <code>horizontalOrigin</code> property.  The <code>horizontalOrigin</code> property defines the horizontal origin of the billboard.  It controls whether the billboard image is left-, center-, or right-aligned with the `position`.
         /// </summary>
-        /// <returns>A writer that is used to write horizontal origin information.</returns>
         public HorizontalOriginCesiumWriter OpenHorizontalOriginProperty()
         {
-            OpenIntervalIfNecessary();
             return OpenAndReturn(HorizontalOriginWriter);
         }
 
         /// <summary>
-        /// Writes a constant value for the <code>horizontalOrigin</code> property.
-        /// See the documentation for the <see cref="OpenHorizontalOriginProperty"/> method for more information.
+        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>horizontalOrigin</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard.  It controls whether the billboard image is left-, center-, or right-aligned with the `position`.
         /// </summary>
-        /// <param name="value">The value of the property.</param>
+        /// <param name="value">The horizontal origin.</param>
         public void WriteHorizontalOriginProperty(CesiumHorizontalOrigin value)
         {
             using (var writer = OpenHorizontalOriginProperty())
@@ -205,9 +249,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>image</code> property.  The returned instance must be opened by calling
-        /// the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  See the
-        /// documentation for the <see cref="OpenImageProperty"/> method for more information.
+        /// Gets the writer for the <code>image</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>image</code> property defines the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         public ImageCesiumWriter ImageWriter
         {
@@ -215,32 +257,27 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens a property describing the billboard image.
+        /// Opens and returns the writer for the <code>image</code> property.  The <code>image</code> property defines the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
-        /// <returns>A writer that is used to write image information.</returns>
         public ImageCesiumWriter OpenImageProperty()
         {
-            OpenIntervalIfNecessary();
             return OpenAndReturn(ImageWriter);
         }
 
         /// <summary>
-        /// Writes a constant value for the <code>image</code> property.
-        /// See the documentation for the <see cref="OpenImageProperty"/> method for more information.
+        /// Writes a value for the <code>image</code> property as a <code>image</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
-        /// <param name="imageUrl">The value of the property.</param>
-        public void WriteImageProperty(string imageUrl)
+        /// <param name="url">The URL of the image.</param>
+        public void WriteImageProperty(string url)
         {
             using (var writer = OpenImageProperty())
             {
-                writer.WriteValue(imageUrl);
+                writer.WriteValue(url);
             }
         }
 
         /// <summary>
-        /// Writes a constant value for the <code>image</code> property by building a data
-        /// URL from a specified image.  See the documentation for the <see cref="OpenImageProperty"/>
-        /// method for more information.
+        /// Writes a value for the <code>image</code> property as a <code>image</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="image">The image for which to create a data URL.</param>
         public void WriteImageProperty(Image image)
@@ -252,9 +289,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>pixelOffset</code> property.  The returned instance must be opened by calling
-        /// the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  See the
-        /// documentation for the <see cref="OpenPixelOffsetProperty"/> method for more information.
+        /// Gets the writer for the <code>pixelOffset</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>pixelOffset</code> property defines the offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`.
         /// </summary>
         public PixelOffsetCesiumWriter PixelOffsetWriter
         {
@@ -262,21 +297,17 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens a property describing the offset, in viewport pixels, of the billboard origin from the
-        /// <see cref="PacketCesiumWriter.OpenPositionProperty"/>.
+        /// Opens and returns the writer for the <code>pixelOffset</code> property.  The <code>pixelOffset</code> property defines the offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`.
         /// </summary>
-        /// <returns>The writer that is used to write pixel offset information.</returns>
         public PixelOffsetCesiumWriter OpenPixelOffsetProperty()
         {
-            OpenIntervalIfNecessary();
             return OpenAndReturn(PixelOffsetWriter);
         }
 
         /// <summary>
-        /// Writes a constant value for the <code>pixelOffset</code> property.
-        /// See the documentation for the <see cref="OpenPixelOffsetProperty"/> method for more information.
+        /// Writes a value for the <code>pixelOffset</code> property as a <code>cartesian2</code> value.  The <code>pixelOffset</code> property specifies the offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`.
         /// </summary>
-        /// <param name="value">The value of the property.</param>
+        /// <param name="value">The value.</param>
         public void WritePixelOffsetProperty(Rectangular value)
         {
             using (var writer = OpenPixelOffsetProperty())
@@ -286,9 +317,48 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling
-        /// the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  See the
-        /// documentation for the <see cref="OpenRotationProperty"/> method for more information.
+        /// Writes a value for the <code>pixelOffset</code> property as a <code>cartesian2</code> value.  The <code>pixelOffset</code> property specifies the offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`.
+        /// </summary>
+        /// <param name="x">The X component.</param>
+        /// <param name="y">The Y component.</param>
+        public void WritePixelOffsetProperty(double x, double y)
+        {
+            using (var writer = OpenPixelOffsetProperty())
+            {
+                writer.WriteValue(x, y);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffset</code> property as a <code>cartesian2</code> value.  The <code>pixelOffset</code> property specifies the offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WritePixelOffsetProperty(IList<JulianDate> dates, IList<Rectangular> values)
+        {
+            using (var writer = OpenPixelOffsetProperty())
+            {
+                writer.WriteValue(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffset</code> property as a <code>cartesian2</code> value.  The <code>pixelOffset</code> property specifies the offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WritePixelOffsetProperty(IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
+        {
+            using (var writer = OpenPixelOffsetProperty())
+            {
+                writer.WriteValue(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the billboard expressed as a clockwise rotation in radians.
         /// </summary>
         public DoubleCesiumWriter RotationWriter
         {
@@ -296,20 +366,17 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens a property describing the clockwise rotation of the billboard in radians.
+        /// Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the billboard expressed as a clockwise rotation in radians.
         /// </summary>
-        /// <returns>A writer that is used to write rotation information.</returns>
         public DoubleCesiumWriter OpenRotationProperty()
         {
-            OpenIntervalIfNecessary();
             return OpenAndReturn(RotationWriter);
         }
 
         /// <summary>
-        /// Writes a constant value for the <code>rotation</code> property.
-        /// See the documentation for the <see cref="OpenRotationProperty"/> method for more information.
+        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard expressed as a clockwise rotation in radians.
         /// </summary>
-        /// <param name="value">The value of the property.</param>
+        /// <param name="value">The value.</param>
         public void WriteRotationProperty(double value)
         {
             using (var writer = OpenRotationProperty())
@@ -319,9 +386,22 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling
-        /// the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  See the
-        /// documentation for the <see cref="OpenScaleProperty"/> method for more information.
+        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard expressed as a clockwise rotation in radians.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteRotationProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenRotationProperty())
+            {
+                writer.WriteValue(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scale</code> property defines the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
         /// </summary>
         public DoubleCesiumWriter ScaleWriter
         {
@@ -329,22 +409,17 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens a property describing the uniform scale of the billbord.  The scale is multiplied with the pixel
-        /// size of the billboard's <see cref="OpenImageProperty"/>.  For example, if the scale is 2.0, the billboard will be
-        /// rendered with twice the number of pixels, in each direction, of the <see cref="OpenImageProperty"/>.
+        /// Opens and returns the writer for the <code>scale</code> property.  The <code>scale</code> property defines the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
         /// </summary>
-        /// <returns>A writer that is used to write scale information.</returns>
         public DoubleCesiumWriter OpenScaleProperty()
         {
-            OpenIntervalIfNecessary();
             return OpenAndReturn(ScaleWriter);
         }
 
         /// <summary>
-        /// Writes a constant value for the <code>scale</code> property.
-        /// See the documentation for the <see cref="OpenScaleProperty"/> method for more information.
+        /// Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
         /// </summary>
-        /// <param name="value">The value of the property.</param>
+        /// <param name="value">The value.</param>
         public void WriteScaleProperty(double value)
         {
             using (var writer = OpenScaleProperty())
@@ -354,9 +429,22 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling
-        /// the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  See the
-        /// documentation for the <see cref="OpenShowProperty"/> method for more information.
+        /// Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteScaleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteValue(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the billboard is shown.
         /// </summary>
         public BooleanCesiumWriter ShowWriter
         {
@@ -364,20 +452,17 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens a property describing whether or not the billboard is shown.
+        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the billboard is shown.
         /// </summary>
-        /// <returns>A writer that is used to write show information.</returns>
         public BooleanCesiumWriter OpenShowProperty()
         {
-            OpenIntervalIfNecessary();
             return OpenAndReturn(ShowWriter);
         }
 
         /// <summary>
-        /// Writes a constant value for the <code>show</code> property.
-        /// See the documentation for the <see cref="OpenShowProperty"/> method for more information.
+        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
         /// </summary>
-        /// <param name="value">The value of the property.</param>
+        /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
         {
             using (var writer = OpenShowProperty())
@@ -387,9 +472,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>verticalOrigin</code> property.  The returned instance must be opened by calling
-        /// the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  See the
-        /// documentation for the <see cref="OpenVerticalOriginProperty"/> method for more information.
+        /// Gets the writer for the <code>verticalOrigin</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>verticalOrigin</code> property defines the vertical origin of the billboard.  It controls whether the billboard image is bottom-, center-, or top-aligned with the `position`.
         /// </summary>
         public VerticalOriginCesiumWriter VerticalOriginWriter
         {
@@ -397,21 +480,17 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens a property describing the vertical origin of the billboard image.  It controls whether the
-        /// billboard image is bottom-, center-, or top-aligned with the <see cref="PacketCesiumWriter.OpenPositionProperty"/>.
+        /// Opens and returns the writer for the <code>verticalOrigin</code> property.  The <code>verticalOrigin</code> property defines the vertical origin of the billboard.  It controls whether the billboard image is bottom-, center-, or top-aligned with the `position`.
         /// </summary>
-        /// <returns>A writer that is used to write vertical origin information.</returns>
         public VerticalOriginCesiumWriter OpenVerticalOriginProperty()
         {
-            OpenIntervalIfNecessary();
             return OpenAndReturn(VerticalOriginWriter);
         }
 
         /// <summary>
-        /// Writes a constant value for the <code>verticalOrigin</code> property.
-        /// See the documentation for the <see cref="OpenVerticalOriginProperty"/> method for more information.
+        /// Writes a value for the <code>verticalOrigin</code> property as a <code>verticalOrigin</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard.  It controls whether the billboard image is bottom-, center-, or top-aligned with the `position`.
         /// </summary>
-        /// <param name="value">The value of the property.</param>
+        /// <param name="value">The vertical origin.</param>
         public void WriteVerticalOriginProperty(CesiumVerticalOrigin value)
         {
             using (var writer = OpenVerticalOriginProperty())
@@ -420,24 +499,5 @@ namespace CesiumLanguageWriter
             }
         }
 
-        /// <summary>
-        /// Gets the writer for the <code>custom</code> property.  See the documentation for the 
-        /// <see cref="OpenCustomProperty"/> method for more information.  The returned instance must
-        /// be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be
-        /// used for writing.
-        /// </summary>
-        public CustomCesiumWriter CustomWriter
-        {
-            get { return m_custom.Value; }
-        }
-
-        /// <summary>
-        /// Opens a property containing additional custom properties, optionally over time.
-        /// </summary>
-        /// <returns>A writer that is used to write custom properties.</returns>
-        public CustomCesiumWriter OpenCustomProperty()
-        {
-            return OpenAndReturn(CustomWriter);
-        }
     }
 }

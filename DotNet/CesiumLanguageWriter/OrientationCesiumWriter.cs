@@ -1,37 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-#if StkComponents
-using AGI.Foundation.Time;
-using AGI.Foundation.Coordinates;
-using AGI.Foundation.Cesium.Advanced;
-#else
-using CesiumLanguageWriter.Advanced;
-#endif
+// This file was generated automatically by GenerateFromSchema.  Do NOT edit it.
+// https://github.com/AnalyticalGraphicsInc/czml-writer
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
+using CesiumLanguageWriter.Advanced;
+using System;
+using System.Collections.Generic;
+
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
-    /// A <see cref="CesiumPropertyWriter{T}"/> used to write an orientation property that
-    /// optionally has different values over different intervals of time.  Instances of this class generally should not
-    /// be constructed directly, but should instead be obtained from a <see cref="CesiumPropertyWriter{T}"/>.
+    /// Writes a <code>Orientation</code> to a <see cref="CesiumOutputStream" />.  A <code>Orientation</code> defines an orientation.  An orientation is a rotation that takes a vector expressed in the "body" axes of the object and transforms it to the set of axes identified by the `axes` property.
     /// </summary>
     public class OrientationCesiumWriter : CesiumInterpolatableValuePropertyWriter<UnitQuaternion, OrientationCesiumWriter>
     {
         /// <summary>
+        /// The name of the <code>axes</code> property.
+        /// </summary>
+        public const string AxesPropertyName = "axes";
+
+        /// <summary>
+        /// The name of the <code>unitQuaternion</code> property.
+        /// </summary>
+        public const string UnitQuaternionPropertyName = "unitQuaternion";
+
+
+        /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        /// <param name="propertyName">The name of the property.</param>
         public OrientationCesiumWriter(string propertyName)
             : base(propertyName)
         {
         }
 
-        /// <inheritdoc />
-        private OrientationCesiumWriter(OrientationCesiumWriter existingInstance)
+        /// <summary>
+        /// Initializes a new instance as a copy of an existing instance.
+        /// </summary>
+        /// <param name="existingInstance">The existing instance to copy.</param> 
+        protected OrientationCesiumWriter(OrientationCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -43,105 +47,52 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as a collection of time-tagged orientations
-        /// expressed in the <see cref="WriteAxes"/>.
-        /// Clients will interpolate over the samples to determine the property value at a given time.  The
-        /// <paramref name="dates"/> need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
-        /// because having samples outside the interval is often useful for interpolation.  However, the samples
-        /// within an interval will never be used to determine the value within another interval.
+        /// Writes the <code>axes</code> property.  The <code>axes</code> property specifies tODO
         /// </summary>
-        /// <param name="dates">The dates at which the position is specified.</param>
-        /// <param name="orientations">The corresponding orientation for each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the <paramref name="orientations"/> collection.</param>
-        /// <param name="length">The number of elements to use from the <paramref name="orientations"/> collection.</param>
-        public override void WriteValue(IList<JulianDate> dates, IList<UnitQuaternion> orientations, int startIndex, int length)
+        /// <param name="value">The value.</param>
+        public void WriteAxes(string value)
         {
-            if (dates.Count != orientations.Count)
-                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
-
+            const string PropertyName = AxesPropertyName;
             OpenIntervalIfNecessary();
-
-            JulianDate epoch = GetAndWriteEpoch(dates, startIndex, length);
-
-            Output.WritePropertyName(UnitQuaternionPropertyName);
-            Output.WriteStartSequence();
-            int last = startIndex + length;
-            for (int i = startIndex; i < last; ++i)
-            {
-                Output.WriteValue(epoch.SecondsDifference(dates[i]));
-                UnitQuaternion quaternion = orientations[i];
-                Output.WriteValue(quaternion.W);
-                Output.WriteValue(quaternion.X);
-                Output.WriteValue(quaternion.Y);
-                Output.WriteValue(quaternion.Z);
-                Output.WriteLineBreak();
-            }
-
-            Output.WriteEndSequence();
+            Output.WritePropertyName(PropertyName);
+            Output.WriteValue(value);
         }
 
         /// <summary>
-        /// Writes the identifier of the axes in which the orientation is defined.  If this property is not
-        /// specified, the orientation is assumed to be defined in Earth's EastNorthUp Axes.
+        /// Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies tODO
         /// </summary>
-        /// <param name="axesId"></param>
-        public void WriteAxes(string axesId)
+        /// <param name="value">The value.</param>
+        public override void WriteValue(UnitQuaternion value)
         {
+            const string PropertyName = UnitQuaternionPropertyName;
             OpenIntervalIfNecessary();
-
-            Output.WritePropertyName("axes");
-            Output.WriteValue(axesId);
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteUnitQuaternion(Output, value);
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as a collection of time-tagged orientations
-        /// expressed in the <see cref="WriteAxes"/>.
-        /// Clients will interpolate over the samples to determine the property value at a given time.  The
-        /// <paramref name="dates"/> need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
-        /// because having samples outside the interval is often useful for interpolation.  However, the samples
-        /// within an interval will never be used to determine the value within another interval.
+        /// Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies tODO
         /// </summary>
-        /// <param name="dates">The dates at which the position is specified.</param>
-        /// <param name="orientations">The corresponding orientation for each date.</param>
-        public void WriteValue(IList<JulianDate> dates, IList<UnitQuaternion> orientations)
+        /// <param name="dates">The dates at which the rotation is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteValue(IList<JulianDate> dates, IList<UnitQuaternion> values)
         {
-            WriteValue(dates, orientations, 0, dates.Count);
+            WriteValue(dates, values, 0, dates.Count);
         }
 
-#if StkComponents
         /// <summary>
-        /// Writes the value of the property for this interval as a collection of time-tagged orientations
-        /// expressed in the <see cref="WriteAxes"/>.
-        /// Clients will interpolate over the samples to determine the property value at a given time.  The
-        /// sample dates need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
-        /// because having samples outside the interval is often useful for interpolation.  However, the samples
-        /// within an interval will never be used to determine the value within another interval.
+        /// Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies tODO
         /// </summary>
-        /// <param name="orientations">The time-tagged orientations.</param>
-        public void WriteValue(DateMotionCollection<UnitQuaternion> orientations)
+        /// <param name="dates">The dates at which the rotation is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public override void WriteValue(IList<JulianDate> dates, IList<UnitQuaternion> values, int startIndex, int length)
         {
-            WriteValue(orientations.Dates, orientations.Values);
-        }
-#endif
-
-        /// <summary>
-        /// Writes the value of the property for this interval as a <see cref="UnitQuaternionPropertyName"/> value specified
-        /// in the <see cref="WriteAxes"/>.  The orientation is constant for the entire interval.
-        /// </summary>
-        /// <param name="orientation">The orientation.</param>
-        public override void WriteValue(UnitQuaternion orientation)
-        {
+            const string PropertyName = UnitQuaternionPropertyName;
             OpenIntervalIfNecessary();
-
-            Output.WritePropertyName(UnitQuaternionPropertyName);
-            Output.WriteStartSequence();
-            Output.WriteValue(orientation.X);
-            Output.WriteValue(orientation.Y);
-            Output.WriteValue(orientation.Z);
-            Output.WriteValue(orientation.W);
-            Output.WriteEndSequence();
+            CesiumWritingHelper.WriteUnitQuaternion(Output, PropertyName, dates, values, startIndex, length);
         }
 
-        private const string UnitQuaternionPropertyName = "unitQuaternion";
     }
 }
