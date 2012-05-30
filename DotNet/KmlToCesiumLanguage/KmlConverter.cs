@@ -74,10 +74,10 @@ namespace KmlToCesiumLanguage
             {
                 XDocument kmlDocument = XDocument.Load(stream);
                 document.Namespace = kmlDocument.Root.GetDefaultNamespace();
-                var placemarks = kmlDocument.Descendants(document.Namespace + "Placemark").Select(o => new Placemark(o, document));
-                foreach (var placemark in placemarks)
+                var features = kmlDocument.Descendants().Where(o => o.Name == document.Namespace + "Placemark" || o.Name == document.Namespace + "GroundOverlay").Select(o => FeatureFactory.Create(o, document));
+                foreach (var feature in features)
                 {
-                    placemark.Write();
+                    feature.WritePacket();
                 }
             }
         }

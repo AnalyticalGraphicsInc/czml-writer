@@ -30,7 +30,7 @@ namespace KmlToCesiumLanguage
             XElement colorElement = polyElement.Element(Document.Namespace + "color");
             if (colorElement != null)
             {
-                Color color = HexStringToColor(colorElement.Value);
+                Color color = Utility.HexStringToColor(colorElement.Value);
                 using (var polygon = this.PacketWriter.OpenPolygonProperty())
                 {
                     using (var material = polygon.OpenMaterialProperty())

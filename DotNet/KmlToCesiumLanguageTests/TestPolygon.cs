@@ -27,7 +27,7 @@ namespace KmlToCesiumLanguageTests
             var polygon = new Polygon(placemark.Element("Polygon"), document, placemark);
             polygon.WritePacket();
             string result = document.StringWriter.ToString();
-            Assert.That(result.Contains("\"availability\":\"2007-12-06T16:38:22.9199999999983Z/2007-12-06T16:38:32.9199999999983Z\""));
+            Assert.That(result.Contains("\"availability\":\"20071206T163822.9199999999983Z/20071206T163832.9199999999983Z\""));
         }
 
         [Test]
