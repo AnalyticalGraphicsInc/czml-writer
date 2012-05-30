@@ -4,8 +4,12 @@ namespace ShapefileReader
 {
     public class PointMShape : PointShape
     {
-        internal PointMShape(int recordNumber, Rectangular position, double measure)
-            : base(recordNumber, position, ShapeType.PointM)
+        internal PointMShape(
+            int recordNumber, 
+            Rectangular position, 
+            double measure, 
+            ShapeType shapeType = ShapeType.PointM)
+            : base(recordNumber, position, shapeType)
         {
             _measure = measure;
         }

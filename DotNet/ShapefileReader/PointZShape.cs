@@ -2,30 +2,24 @@
 
 namespace ShapefileReader
 {
-    public class PointZShape : Shape
+    public class PointZShape : PointMShape
     {
         internal PointZShape(
             int recordNumber, 
-            Cartesian position, 
+            Rectangular position,
+            double z,
             double measure, 
             ShapeType shapeType = ShapeType.PointZ)
-            : base(recordNumber, shapeType)
+            : base(recordNumber, position, measure, shapeType)
         {
-            _position = position;
-            _measure = measure;
+            _z = z;
         }
 
-        public Cartesian Position
+        public double Z
         {
-            get { return _position; }
+            get { return _z; }
         }
 
-        public double Measure
-        {
-            get { return _measure; }
-        }
-
-        private readonly Cartesian _position;
-        private readonly double _measure;
+        private readonly double _z;
     }
 }

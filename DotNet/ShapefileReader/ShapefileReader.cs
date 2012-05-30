@@ -134,6 +134,7 @@ namespace ShapefileReader
 
                         case ShapeType.Point:
                         case ShapeType.PointM:
+                        case ShapeType.PointZ:
                             Rectangular position = new Rectangular(
                                                     ToDouble(record, 4, ByteOrder.LittleEndian),
                                                     ToDouble(record, 12, ByteOrder.LittleEndian));
@@ -141,23 +142,23 @@ namespace ShapefileReader
                             {
                                 _shapes.Add(new PointShape(recordNumber, position));
                             }
+                            else if (recordShapeType == ShapeType.PointM)
+                            {
+                                double measure = ToDouble(record, 20, ByteOrder.LittleEndian);
+                                _shapes.Add(new PointMShape(recordNumber, position, measure));
+                            }
                             else
                             {
-                                _shapes.Add(new PointMShape(recordNumber, position, ToDouble(record, 20, ByteOrder.LittleEndian)));
+                                double z = ToDouble(record, 20, ByteOrder.LittleEndian);
+                                double measure = ToDouble(record, 28, ByteOrder.LittleEndian);
+                                _shapes.Add(new PointZShape(recordNumber, position, z, measure));
                             }
-                            break;
 
-                        case ShapeType.PointZ:
-                            Cartesian point = new Cartesian(
-                                                    ToDouble(record, 4, ByteOrder.LittleEndian),
-                                                    ToDouble(record, 12, ByteOrder.LittleEndian),
-                                                    ToDouble(record, 20, ByteOrder.LittleEndian));
-                            double measure = ToDouble(record, 28, ByteOrder.LittleEndian);
-                            _shapes.Add(new PointZShape(recordNumber, point, measure));
                             break;
 
                         case ShapeType.MultiPoint:
                         case ShapeType.MultiPointM:
+                        case ShapeType.MultiPointZ:
                             CartographicExtent extent = new CartographicExtent(
                                 ToDouble(record, 4, ByteOrder.LittleEndian),
                                 ToDouble(record, 12, ByteOrder.LittleEndian),
@@ -179,16 +180,38 @@ namespace ShapefileReader
                             }
                             else
                             {
-                                pointsOffset = 40 + (16 * numberOfPoints);
-                                double mMin = ToDouble(record, pointsOffset, ByteOrder.LittleEndian);
-                                double mMax = ToDouble(record, pointsOffset + 8, ByteOrder.LittleEndian);
+                                int mOffset = 40 + (16 * numberOfPoints);
+                                int zOffset = 40 + (16 * numberOfPoints);
+                                if (recordShapeType == ShapeType.MultiPointZ)
+                                {
+                                    mOffset = zOffset + 16 + (8 * numberOfPoints);
+                                }
+
+                                double mMin = ToDouble(record, mOffset, ByteOrder.LittleEndian);
+                                double mMax = ToDouble(record, mOffset + 8, ByteOrder.LittleEndian);
                                 double[] measures = new double[numberOfPoints];
                                 for (int i = 0; i < numberOfPoints; i++)
                                 {
-                                    measures[i] = ToDouble(record, pointsOffset + (8 * i), ByteOrder.LittleEndian);
+                                    measures[i] = ToDouble(record, mOffset + 16 + (8 * i), ByteOrder.LittleEndian);
                                 }
-                                _shapes.Add(new MultiPointMShape(recordNumber, extent, points, mMin, mMax, measures));
+
+                                if (recordShapeType == ShapeType.MultiPointM)
+                                {
+                                    _shapes.Add(new MultiPointMShape(recordNumber, extent, points, mMin, mMax, measures));
+                                }
+                                else
+                                {
+                                    double zMin = ToDouble(record, zOffset, ByteOrder.LittleEndian);
+                                    double zMax = ToDouble(record, zOffset + 8, ByteOrder.LittleEndian);
+                                    double[] zValues = new double[numberOfPoints];
+                                    for (int i = 0; i < numberOfPoints; i++)
+                                    {
+                                        zValues[i] = ToDouble(record, zOffset + 16 + (8 * i), ByteOrder.LittleEndian);
+                                    }
+                                    _shapes.Add(new MultiPointZShape(recordNumber, extent, points, zMin, zMax, zValues, mMin, mMax, measures));
+                                }
                             }
+
                             break;
 
                         case ShapeType.Polyline:
@@ -250,7 +273,6 @@ namespace ShapefileReader
                                     _shapes.Add(new PolygonMShape(recordNumber, extent, parts, points, mMin, mMax, measures));
                                 }
                             }
-
 
                             break;
 
