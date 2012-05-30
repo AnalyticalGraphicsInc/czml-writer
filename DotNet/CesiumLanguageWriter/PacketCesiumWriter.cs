@@ -15,67 +15,67 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <code>id</code> property.
         /// </summary>
-        public static readonly string IdPropertyName = "id";
+        public const string IdPropertyName = "id";
 
         /// <summary>
         /// The name of the <code>availability</code> property.
         /// </summary>
-        public static readonly string AvailabilityPropertyName = "availability";
+        public const string AvailabilityPropertyName = "availability";
 
         /// <summary>
         /// The name of the <code>position</code> property.
         /// </summary>
-        public static readonly string PositionPropertyName = "position";
+        public const string PositionPropertyName = "position";
 
         /// <summary>
         /// The name of the <code>billboard</code> property.
         /// </summary>
-        public static readonly string BillboardPropertyName = "billboard";
+        public const string BillboardPropertyName = "billboard";
 
         /// <summary>
         /// The name of the <code>vertexPositions</code> property.
         /// </summary>
-        public static readonly string VertexPositionsPropertyName = "vertexPositions";
+        public const string VertexPositionsPropertyName = "vertexPositions";
 
         /// <summary>
         /// The name of the <code>orientation</code> property.
         /// </summary>
-        public static readonly string OrientationPropertyName = "orientation";
+        public const string OrientationPropertyName = "orientation";
 
         /// <summary>
         /// The name of the <code>point</code> property.
         /// </summary>
-        public static readonly string PointPropertyName = "point";
+        public const string PointPropertyName = "point";
 
         /// <summary>
         /// The name of the <code>label</code> property.
         /// </summary>
-        public static readonly string LabelPropertyName = "label";
+        public const string LabelPropertyName = "label";
 
         /// <summary>
         /// The name of the <code>polyline</code> property.
         /// </summary>
-        public static readonly string PolylinePropertyName = "polyline";
+        public const string PolylinePropertyName = "polyline";
 
         /// <summary>
         /// The name of the <code>path</code> property.
         /// </summary>
-        public static readonly string PathPropertyName = "path";
+        public const string PathPropertyName = "path";
 
         /// <summary>
         /// The name of the <code>polygon</code> property.
         /// </summary>
-        public static readonly string PolygonPropertyName = "polygon";
+        public const string PolygonPropertyName = "polygon";
 
         /// <summary>
         /// The name of the <code>cone</code> property.
         /// </summary>
-        public static readonly string ConePropertyName = "cone";
+        public const string ConePropertyName = "cone";
 
         /// <summary>
         /// The name of the <code>pyramid</code> property.
         /// </summary>
-        public static readonly string PyramidPropertyName = "pyramid";
+        public const string PyramidPropertyName = "pyramid";
 
         private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter(BillboardPropertyName), false);
@@ -111,7 +111,8 @@ namespace CesiumLanguageWriter
         /// <param name="value">The value.</param>
         public void WriteId(string value)
         {
-            Output.WritePropertyName(IdPropertyName);
+            const string PropertyName = IdPropertyName;
+            Output.WritePropertyName(PropertyName);
             Output.WriteValue(value);
         }
 
@@ -121,7 +122,8 @@ namespace CesiumLanguageWriter
         /// <param name="value">The interval.</param>
         public void WriteAvailability(TimeInterval value)
         {
-            Output.WritePropertyName(AvailabilityPropertyName);
+            const string PropertyName = AvailabilityPropertyName;
+            Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteValue(Output, value);
         }
 
@@ -141,7 +143,8 @@ namespace CesiumLanguageWriter
         /// <param name="value">The intervals.</param>
         public void WriteAvailability(IList<TimeInterval> value)
         {
-            Output.WritePropertyName(AvailabilityPropertyName);
+            const string PropertyName = AvailabilityPropertyName;
+            Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteValue(Output, value);
         }
 

@@ -1,37 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-#if StkComponents
-using AGI.Foundation.Cesium.Advanced;
-using AGI.Foundation.Coordinates;
-using AGI.Foundation.Time;
-#else
-using CesiumLanguageWriter.Advanced;
-#endif
+// This file was generated automatically by GenerateFromSchema.  Do NOT edit it.
+// https://github.com/AnalyticalGraphicsInc/czml-writer
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
+using CesiumLanguageWriter.Advanced;
+using System;
+using System.Collections.Generic;
+
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
-    /// A <see cref="CesiumPropertyWriter{T}"/> used to write a position property that
-    /// optionally has different values over different intervals of time.  Instances of this class generally should not
-    /// be constructed directly, but should instead be obtained from a <see cref="CesiumPropertyWriter{T}"/>.
+    /// Writes a <code>Position</code> to a <see cref="CesiumOutputStream" />.  A <code>Position</code> defines a position.  The position can optionally vary over time.
     /// </summary>
     public class PositionCesiumWriter : CesiumInterpolatableValuePropertyWriter<Cartesian, PositionCesiumWriter>
     {
         /// <summary>
+        /// The name of the <code>referenceFrame</code> property.
+        /// </summary>
+        public const string ReferenceFramePropertyName = "referenceFrame";
+
+        /// <summary>
+        /// The name of the <code>cartesian</code> property.
+        /// </summary>
+        public const string CartesianPropertyName = "cartesian";
+
+        /// <summary>
+        /// The name of the <code>cartographicRadians</code> property.
+        /// </summary>
+        public const string CartographicRadiansPropertyName = "cartographicRadians";
+
+        /// <summary>
+        /// The name of the <code>cartographicDegrees</code> property.
+        /// </summary>
+        public const string CartographicDegreesPropertyName = "cartographicDegrees";
+
+
+        /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        /// <param name="propertyName">The name of the property.</param>
         public PositionCesiumWriter(string propertyName)
             : base(propertyName)
         {
         }
 
-        /// <inheritdoc />
-        private PositionCesiumWriter(PositionCesiumWriter existingInstance)
+        /// <summary>
+        /// Initializes a new instance as a copy of an existing instance.
+        /// </summary>
+        /// <param name="existingInstance">The existing instance to copy.</param> 
+        protected PositionCesiumWriter(PositionCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -43,303 +57,124 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the identifier of the reference frame in which the position is defined.  If this property is not
-        /// specified, the position is assumed to be defined in the Earth Fixed frame.
+        /// Writes the <code>referenceFrame</code> property.  The <code>referenceFrame</code> property specifies the reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". In addition, the value of this property can be a hash (#) symbol followed by the ID of another object in the same scope whose "position" and "orientation" properties define the reference frame in which this position is defined.  This property is ignored when specifying position with any type other than cartesian. If this property is not specified, the default reference frame is "FIXED".
         /// </summary>
-        /// <param name="referenceFrameID"></param>
-        public void WriteReferenceFrame(string referenceFrameID)
+        /// <param name="value">The value.</param>
+        public void WriteReferenceFrame(string value)
         {
+            const string PropertyName = ReferenceFramePropertyName;
             OpenIntervalIfNecessary();
-
-            Output.WritePropertyName("referenceFrame");
-            Output.WriteValue(referenceFrameID);
+            Output.WritePropertyName(PropertyName);
+            Output.WriteValue(value);
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as a <see cref="Cartesian"/> value specified
-        /// in the <see cref="WriteReferenceFrame"/>.  The position is constant for the entire interval.
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the position represented as a Cartesian `[X, Y, Z]` in the meters relative to the `referenceFrame`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
         /// </summary>
-        /// <param name="position">The position.</param>
-        public override void WriteValue(Cartesian position)
+        /// <param name="value">The value.</param>
+        public override void WriteValue(Cartesian value)
         {
+            const string PropertyName = CartesianPropertyName;
             OpenIntervalIfNecessary();
-
-            Output.WritePropertyName("cartesian");
-            Output.WriteStartSequence();
-            Output.WriteValue(position.X);
-            Output.WriteValue(position.Y);
-            Output.WriteValue(position.Z);
-            Output.WriteEndSequence();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteValue(Output, value);
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as a WGS84 <see cref="Cartographic"/> value where
-        /// <see cref="Cartographic.Longitude"/> and <see cref="Cartographic.Latitude"/> are expressed in radians
-        /// and <see cref="Cartographic.Height"/> is meters above the WGS84 ellipsoid.
-        /// The position is constant for the entire interval.
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the position represented as a Cartesian `[X, Y, Z]` in the meters relative to the `referenceFrame`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
         /// </summary>
-        /// <param name="position"></param>
-        public void WriteCartographicRadians(Cartographic position)
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteValue(IList<JulianDate> dates, IList<Cartesian> values)
         {
+            WriteValue(dates, values, 0, dates.Count);
+        }
+
+        /// <summary>
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the position represented as a Cartesian `[X, Y, Z]` in the meters relative to the `referenceFrame`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public override void WriteValue(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        {
+            const string PropertyName = CartesianPropertyName;
             OpenIntervalIfNecessary();
-
-            Output.WritePropertyName("cartographicRadians");
-            Output.WriteStartSequence();
-            Output.WriteValue(position.Longitude);
-            Output.WriteValue(position.Latitude);
-            Output.WriteValue(position.Height);
-            Output.WriteEndSequence();
+            CesiumWritingHelper.WriteValue(Output, PropertyName, dates, values, startIndex, length);
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as a WGS84 <see cref="Cartographic"/> value where
-        /// <see cref="Cartographic.Longitude"/> and <see cref="Cartographic.Latitude"/> are expressed in degrees
-        /// and <see cref="Cartographic.Height"/> is meters above the WGS84 ellipsoid.
-        /// The position is constant for the entire interval.
+        /// Writes the <code>cartographicRadians</code> property.  The <code>cartographicRadians</code> property specifies the position represented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in radians and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
         /// </summary>
-        /// <param name="position"></param>
-        public void WriteCartographicDegrees(Cartographic position)
+        /// <param name="value">The interval.</param>
+        public void WriteCartographicRadians(Cartographic value)
         {
+            const string PropertyName = CartographicRadiansPropertyName;
             OpenIntervalIfNecessary();
-
-            Output.WritePropertyName("cartographicDegrees");
-            Output.WriteStartSequence();
-            Output.WriteValue(position.Longitude);
-            Output.WriteValue(position.Latitude);
-            Output.WriteValue(position.Height);
-            Output.WriteEndSequence();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteValue(Output, value);
         }
 
-#if StkComponents
         /// <summary>
-        /// Writes the value of the property for this interval as a collection of time-tagged positions
-        /// expressed in the <see cref="WriteReferenceFrame"/>.
-        /// Clients will interpolate over the samples to determine the property value at a given time.  The
-        /// sample dates need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
-        /// because having samples outside the interval is often useful for interpolation.  However, the samples
-        /// within an interval will never be used to determine the value within another interval.
-        /// </summary>
-        /// <param name="positions">The time-tagged positions.</param>
-        public void WriteValue(DateMotionCollection<Cartesian> positions)
-        {
-            WriteValue(positions.Dates, positions.Values);
-        }
-#endif
-
-        /// <summary>
-        /// Writes the value of the property for this interval as a collection of time-tagged positions
-        /// expressed in the <see cref="WriteReferenceFrame"/>.
-        /// Clients will interpolate over the samples to determine the property value at a given time.  The
-        /// <paramref name="dates"/> need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
-        /// because having samples outside the interval is often useful for interpolation.  However, the samples
-        /// within an interval will never be used to determine the value within another interval.
+        /// Writes the <code>cartographicRadians</code> property.  The <code>cartographicRadians</code> property specifies the position represented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in radians and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
         /// </summary>
         /// <param name="dates">The dates at which the position is specified.</param>
-        /// <param name="positions">The corresponding position for each date.</param>
-        public void WriteValue(IList<JulianDate> dates, IList<Cartesian> positions)
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteCartographicRadians(IList<JulianDate> dates, IList<Cartographic> values)
         {
-            WriteValue(dates, positions, 0, dates.Count);
+            WriteCartographicRadians(dates, values, 0, dates.Count);
         }
 
-#if StkComponents
         /// <summary>
-        /// Writes the value of the property for this interval as a collection of time-tagged positions
-        /// expressed in the <see cref="WriteReferenceFrame"/>.
-        /// Clients will interpolate over the samples to determine the property value at a given time.  The
-        /// sample dates need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
-        /// because having samples outside the interval is often useful for interpolation.  However, the samples
-        /// within an interval will never be used to determine the value within another interval.
+        /// Writes the <code>cartographicRadians</code> property.  The <code>cartographicRadians</code> property specifies the position represented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in radians and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
         /// </summary>
-        /// <param name="positions">The time-tagged positions.</param>
-        /// <param name="startIndex">The index of the first element to use in the <paramref name="positions"/> collection.</param>
-        /// <param name="length">The number of elements to use from the <paramref name="positions"/> collection.</param>
-        public void WriteValue(DateMotionCollection<Cartesian> positions, int startIndex, int length)
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The position corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteCartographicRadians(IList<JulianDate> dates, IList<Cartographic> values, int startIndex, int length)
         {
-            WriteValue(positions.Dates, positions.Values, startIndex, length);
-        }
-#endif
-
-        /// <summary>
-        /// Writes the value of the property for this interval as a collection of time-tagged positions
-        /// expressed in the <see cref="WriteReferenceFrame"/>.
-        /// Clients will interpolate over the samples to determine the property value at a given time.  The
-        /// <paramref name="dates"/> need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
-        /// because having samples outside the interval is often useful for interpolation.  However, the samples
-        /// within an interval will never be used to determine the value within another interval.
-        /// </summary>
-        /// <param name="dates">The dates at which the position is specified.</param>
-        /// <param name="positions">The corresponding position for each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the <paramref name="positions"/> collection.</param>
-        /// <param name="length">The number of elements to use from the <paramref name="positions"/> collection.</param>
-        public override void WriteValue(IList<JulianDate> dates, IList<Cartesian> positions, int startIndex, int length)
-        {
-            if (dates.Count != positions.Count)
-                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "positions");
-
+            const string PropertyName = CartographicRadiansPropertyName;
             OpenIntervalIfNecessary();
-
-            JulianDate epoch = GetAndWriteEpoch(dates, startIndex, length);
-
-            Output.WritePropertyName("cartesian");
-            Output.WriteStartSequence();
-            int last = startIndex + length;
-            for (int i = startIndex; i < last; ++i)
-            {
-                Output.WriteValue(epoch.SecondsDifference(dates[i]));
-                Cartesian position = positions[i];
-                Output.WriteValue(position.X);
-                Output.WriteValue(position.Y);
-                Output.WriteValue(position.Z);
-                Output.WriteLineBreak();
-            }
-
-            Output.WriteEndSequence();
-        }
-
-#if StkComponents
-        /// <summary>
-        /// Writes the value of the property for this interval as a collection of time-tagged positions
-        /// expressed as WGS84 <see cref="Cartographic"/> values where
-        /// <see cref="Cartographic.Longitude"/> and <see cref="Cartographic.Latitude"/> are expressed in radians
-        /// and <see cref="Cartographic.Height"/> is meters above the WGS84 ellipsoid.
-        /// Clients will interpolate over the samples to determine the property value at a given time.  The
-        /// sample dates need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
-        /// because having samples outside the interval is often useful for interpolation.  However, the samples
-        /// within an interval will never be used to determine the value within another interval.
-        /// </summary>
-        /// <param name="positions">The time-tagged positions.</param>
-        public void WriteCartographicRadiansValue(DateMotionCollection<Cartographic> positions)
-        {
-            WriteCartographicRadiansValue(positions, 0, positions.Count);
+            CesiumWritingHelper.WriteValue(Output, PropertyName, dates, values, startIndex, length);
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as a collection of time-tagged positions
-        /// expressed as WGS84 <see cref="Cartographic"/> values where
-        /// <see cref="Cartographic.Longitude"/> and <see cref="Cartographic.Latitude"/> are expressed in radians
-        /// and <see cref="Cartographic.Height"/> is meters above the WGS84 ellipsoid.
-        /// Clients will interpolate over the samples to determine the property value at a given time.  The
-        /// sample dates need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
-        /// because having samples outside the interval is often useful for interpolation.  However, the samples
-        /// within an interval will never be used to determine the value within another interval.
+        /// Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the position reprsented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
         /// </summary>
-        /// <param name="positions">The time-tagged positions.</param>
-        /// <param name="startIndex">The index of the first element to use in the <paramref name="positions"/> collection.</param>
-        /// <param name="length">The number of elements to use from the <paramref name="positions"/> collection.</param>
-        public void WriteCartographicRadiansValue(DateMotionCollection<Cartographic> positions, int startIndex, int length)
+        /// <param name="value">The interval.</param>
+        public void WriteCartographicDegrees(Cartographic value)
         {
-            WriteCartographicRadiansValue(positions.Dates, positions.Values, startIndex, length);
-        }
-#endif
-
-        /// <summary>
-        /// Writes the value of the property for this interval as a collection of time-tagged positions
-        /// expressed as WGS84 <see cref="Cartographic"/> values where
-        /// <see cref="Cartographic.Longitude"/> and <see cref="Cartographic.Latitude"/> are expressed in radians
-        /// and <see cref="Cartographic.Height"/> is meters above the WGS84 ellipsoid.
-        /// Clients will interpolate over the samples to determine the property value at a given time.  The
-        /// <paramref name="dates"/> need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
-        /// because having samples outside the interval is often useful for interpolation.  However, the samples
-        /// within an interval will never be used to determine the value within another interval.
-        /// </summary>
-        /// <param name="dates">The dates at which the position is specified.</param>
-        /// <param name="positions">The corresponding position for each date.</param>
-        public void WriteCartographicRadians(IList<JulianDate> dates, IList<Cartographic> positions)
-        {
-            WriteCartographicRadians(dates, positions, 0, dates.Count);
-        }
-
-        /// <summary>
-        /// Writes the value of the property for this interval as a collection of time-tagged positions
-        /// expressed as WGS84 <see cref="Cartographic"/> values where
-        /// <see cref="Cartographic.Longitude"/> and <see cref="Cartographic.Latitude"/> are expressed in radians
-        /// and <see cref="Cartographic.Height"/> is meters above the WGS84 ellipsoid.
-        /// Clients will interpolate over the samples to determine the property value at a given time.  The
-        /// <paramref name="dates"/> need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
-        /// because having samples outside the interval is often useful for interpolation.  However, the samples
-        /// within an interval will never be used to determine the value within another interval.
-        /// </summary>
-        /// <param name="dates">The dates at which the position is specified.</param>
-        /// <param name="positions">The corresponding position for each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the <paramref name="positions"/> collection.</param>
-        /// <param name="length">The number of elements to use from the <paramref name="positions"/> collection.</param>
-        public void WriteCartographicRadians(IList<JulianDate> dates, IList<Cartographic> positions, int startIndex, int length)
-        {
-            if (dates.Count != positions.Count)
-                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "positions");
-
+            const string PropertyName = CartographicDegreesPropertyName;
             OpenIntervalIfNecessary();
-
-            JulianDate epoch = GetAndWriteEpoch(dates, startIndex, length);
-
-            Output.WritePropertyName("cartographicRadians");
-            Output.WriteStartSequence();
-            int last = startIndex + length;
-            for (int i = startIndex; i < last; ++i)
-            {
-                Output.WriteValue(epoch.SecondsDifference(dates[i]));
-                Cartographic position = positions[i];
-                Output.WriteValue(position.Longitude);
-                Output.WriteValue(position.Latitude);
-                Output.WriteValue(position.Height);
-                Output.WriteLineBreak();
-            }
-            Output.WriteEndSequence();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteValue(Output, value);
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as a collection of time-tagged positions
-        /// expressed as WGS84 <see cref="Cartographic"/> values where
-        /// <see cref="Cartographic.Longitude"/> and <see cref="Cartographic.Latitude"/> are expressed in degrees
-        /// and <see cref="Cartographic.Height"/> is meters above the WGS84 ellipsoid.
-        /// Clients will interpolate over the samples to determine the property value at a given time.  The
-        /// <paramref name="dates"/> need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
-        /// because having samples outside the interval is often useful for interpolation.  However, the samples
-        /// within an interval will never be used to determine the value within another interval.
+        /// Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the position reprsented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
         /// </summary>
         /// <param name="dates">The dates at which the position is specified.</param>
-        /// <param name="positions">The corresponding position for each date.</param>
-        public void WriteCartographicDegrees(IList<JulianDate> dates, IList<Cartographic> positions)
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteCartographicDegrees(IList<JulianDate> dates, IList<Cartographic> values)
         {
-            WriteCartographicDegrees(dates, positions, 0, dates.Count);
+            WriteCartographicDegrees(dates, values, 0, dates.Count);
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as a collection of time-tagged positions
-        /// expressed as WGS84 <see cref="Cartographic"/> values where
-        /// <see cref="Cartographic.Longitude"/> and <see cref="Cartographic.Latitude"/> are expressed in degrees
-        /// and <see cref="Cartographic.Height"/> is meters above the WGS84 ellipsoid.
-        /// Clients will interpolate over the samples to determine the property value at a given time.  The
-        /// <paramref name="dates"/> need not all fall within the <see cref="CesiumPropertyWriter{T}.WriteInterval(TimeInterval)"/>,
-        /// because having samples outside the interval is often useful for interpolation.  However, the samples
-        /// within an interval will never be used to determine the value within another interval.
+        /// Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the position reprsented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
         /// </summary>
-        /// <param name="dates">The dates at which the position is specified.</param>
-        /// <param name="positions">The corresponding position for each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the <paramref name="positions"/> collection.</param>
-        /// <param name="length">The number of elements to use from the <paramref name="positions"/> collection.</param>
-        public void WriteCartographicDegrees(IList<JulianDate> dates, IList<Cartographic> positions, int startIndex, int length)
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The position corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteCartographicDegrees(IList<JulianDate> dates, IList<Cartographic> values, int startIndex, int length)
         {
-            if (dates.Count != positions.Count)
-                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "positions");
-
+            const string PropertyName = CartographicDegreesPropertyName;
             OpenIntervalIfNecessary();
-
-            JulianDate epoch = GetAndWriteEpoch(dates, startIndex, length);
-
-            Output.WritePropertyName("cartographicDegrees");
-            Output.WriteStartSequence();
-            int last = startIndex + length;
-            for (int i = startIndex; i < last; ++i)
-            {
-                Output.WriteValue(epoch.SecondsDifference(dates[i]));
-                Cartographic position = positions[i];
-                Output.WriteValue(position.Longitude);
-                Output.WriteValue(position.Latitude);
-                Output.WriteValue(position.Height);
-                Output.WriteLineBreak();
-            }
-            Output.WriteEndSequence();
+            CesiumWritingHelper.WriteValue(Output, PropertyName, dates, values, startIndex, length);
         }
+
     }
 }

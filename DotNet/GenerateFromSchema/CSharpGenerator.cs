@@ -171,7 +171,7 @@ namespace GenerateFromSchema
             foreach (Property property in schema.Properties)
             {
                 WriteSummaryText(writer, string.Format("The name of the <code>{0}</code> property.", property.Name));
-                writer.WriteLine("public static readonly string {0}PropertyName = \"{1}\";", property.NameWithPascalCase, property.Name);
+                writer.WriteLine("public const string {0}PropertyName = \"{1}\";", property.NameWithPascalCase, property.Name);
                 writer.WriteLine();
             }
         }
@@ -313,7 +313,27 @@ namespace GenerateFromSchema
                         continue;
                     WriteParameterText(writer, parameter.Name, parameter.Description);
                 }
-                writer.WriteLine("public void Write{0}({1})", isFirstValueProperty ? "Value" : property.NameWithPascalCase, overload.FormattedParameters);
+
+                // If this is the override of the base class WriteValue, add the modifier.
+                string modifier = "";
+                if (isFirstValueProperty)
+                {
+                    if (overload.Parameters.Length == 1)
+                        modifier = "override ";
+                    else if (overload.Parameters.Length == 4)
+                    {
+                        string defaultValueType = GetDefaultValueType(schema);
+                        if (overload.Parameters[0].Type == "IList<JulianDate>" &&
+                            overload.Parameters[1].Type == "IList<" + defaultValueType + ">" &&
+                            overload.Parameters[2].Type == "int" &&
+                            overload.Parameters[3].Type == "int")
+                        {
+                            modifier = "override ";
+                        }
+                    }
+                }
+
+                writer.WriteLine("public {0}void Write{1}({2})", modifier, isFirstValueProperty ? "Value" : property.NameWithPascalCase, overload.FormattedParameters);
                 writer.OpenScope();
                 if (overload.CallOverload != null)
                 {
@@ -321,24 +341,28 @@ namespace GenerateFromSchema
                 }
                 else
                 {
-                    // First the first value property only, if an overload has one parameter and that
+                    writer.WriteLine("const string PropertyName = {0}PropertyName;", property.NameWithPascalCase);
+
+                    // For the first value property only, if an overload has one parameter and that
                     // parameter is a simple JSON type (string, number, boolean), we can skip opening an
                     // interval and just write the property value directly.
                     if (schema.Name == "Packet")
                     {
-                        writer.WriteLine("Output.WritePropertyName({0}PropertyName);", property.NameWithPascalCase);
+                        writer.WriteLine("Output.WritePropertyName(PropertyName);");
                     }
                     else if (isFirstValueProperty && overload.Parameters.Length == 1 &&
-                             (overload.Parameters[0].Type == "string" || overload.Parameters[0].Type == "double" ||
-                              overload.Parameters[0].Type == "int" || overload.Parameters[0].Type == "bool"))
+                                (overload.Parameters[0].Type == "string" || overload.Parameters[0].Type == "double" ||
+                                overload.Parameters[0].Type == "int" || overload.Parameters[0].Type == "bool"))
                     {
                         writer.WriteLine("if (IsInterval)");
-                        writer.WriteLine("    Output.WritePropertyName({0}PropertyName);", property.NameWithPascalCase);
+                        writer.WriteLine("    Output.WritePropertyName(PropertyName);");
                     }
                     else
                     {
                         writer.WriteLine("OpenIntervalIfNecessary();");
-                        writer.WriteLine("Output.WritePropertyName({0}PropertyName);", property.NameWithPascalCase);
+
+                        if (overload.WritePropertyName)
+                            writer.WriteLine("Output.WritePropertyName(PropertyName);");
                     }
 
                     writer.WriteLine(overload.WriteValue);
@@ -469,6 +493,8 @@ namespace GenerateFromSchema
             public string WriteValue = null;
             [JsonProperty("callOverload")]
             public string CallOverload = null;
+            [JsonProperty("writePropertyName")]
+            public bool WritePropertyName = true;
 
             public string FormattedParameters
             {

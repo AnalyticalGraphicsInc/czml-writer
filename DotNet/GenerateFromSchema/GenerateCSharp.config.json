@@ -133,7 +133,8 @@
                         "description": "The number of elements to use from the `values` collection."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(Output, dates, values, startIndex, length);"
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteValue(Output, PropertyName, dates, values, startIndex, length);"
             }
         ],
         "Cartesian3": [
@@ -187,7 +188,8 @@
                         "description": "The number of elements to use from the `values` collection."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(Output, dates, values, startIndex, length);"
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteValue(Output, PropertyName, dates, values, startIndex, length);"
             }
         ],
         "Cartographic": [
@@ -241,7 +243,8 @@
                         "description": "The number of elements to use from the `values` collection."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(Output, dates, values, startIndex, length);"
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteValue(Output, PropertyName, dates, values, startIndex, length);"
             }
         ],
         "Image": [
@@ -274,10 +277,49 @@
                     {
                         "type": "CesiumHorizontalOrigin",
                         "name": "value",
-                        "description": "The horizontal origin"
+                        "description": "The horizontal origin."
                     }
                 ],
                 "writeValue": "Output.WriteValue(CesiumFormattingHelper.HorizontalOriginToString(value));"
+            }
+        ],
+        "Double": [
+            {
+                "parameters": [
+                    {
+                        "type": "double",
+                        "name": "value",
+                        "description": "The value."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(value);"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<double>",
+                        "name": "values",
+                        "description": "The value corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to use in the `values` collection."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to use from the `values` collection."
+                    }
+                ],
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteValue(Output, PropertyName, dates, values, startIndex, length);"
             }
         ]
     }
