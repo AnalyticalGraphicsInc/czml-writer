@@ -240,6 +240,12 @@ namespace ShapefileReader
                             }
 
                             int pointOffset = 44 + (4 * numberOfParts);
+                            int partTypeOffset = 44 + (4 * numberOfParts);
+                            if (recordShapeType == ShapeType.MultiPatch)
+                            {
+                                pointOffset = partTypeOffset + (4 * numberOfParts);
+                            }
+
                             for (int i = 0; i < numberOfPoints; ++i)
                             {
                                 points[i] = new Rectangular(
@@ -259,10 +265,11 @@ namespace ShapefileReader
                             {
                                 mOffset = pointOffset + (16 * numberOfPoints);
                                 zOffset = pointOffset + (16 * numberOfPoints);
-                                if (recordShapeType == ShapeType.PolylineZ || recordShapeType == ShapeType.PolygonZ)
+                                if (recordShapeType == ShapeType.PolylineZ || recordShapeType == ShapeType.PolygonZ || recordShapeType == ShapeType.MultiPatch)
                                 {
                                     mOffset = zOffset + 16 + (8 * numberOfPoints);
                                 }
+
                                 double mMin = ToDouble(record, mOffset, ByteOrder.LittleEndian);
                                 double mMax = ToDouble(record, mOffset + 8, ByteOrder.LittleEndian);
                                 double[] measures = new double[numberOfPoints];
@@ -296,6 +303,15 @@ namespace ShapefileReader
                                     else if (recordShapeType == ShapeType.PolygonZ)
                                     {
                                         _shapes.Add(new PolygonZShape(recordNumber, extent, parts, points, zMin, zMax, zValues, mMin, mMax, measures));
+                                    }
+                                    else
+                                    {
+                                        MultiPatchPartType[] partTypes = new MultiPatchPartType[numberOfParts];
+                                        for (int i = 0; i < numberOfParts; i++)
+                                        {
+                                            partTypes[i] = (MultiPatchPartType)ToInteger(record, partTypeOffset + (4 * i), ByteOrder.LittleEndian);
+                                        }
+                                        _shapes.Add(new MultiPatchShape(recordNumber, extent, parts, partTypes, points, zMin, zMax, zValues, mMin, mMax, measures));
                                     }
                                 }
                             }
