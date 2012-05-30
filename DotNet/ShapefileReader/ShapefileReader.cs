@@ -120,7 +120,7 @@ namespace ShapefileReader
                     int recordNumber = ToInteger(recordHeader, 0, ByteOrder.BigEndian);
                     int contextLengthInBytes = ToInteger(recordHeader, 4, ByteOrder.BigEndian) * 2;
                     byte[] record = Read(fs, contextLengthInBytes);
-                    int pointsOffset;
+                    int mOffset, zOffset;
 
                     ShapeType recordShapeType = (ShapeType)ToInteger(record, 0, ByteOrder.LittleEndian);
                     switch (recordShapeType)
@@ -180,8 +180,8 @@ namespace ShapefileReader
                             }
                             else
                             {
-                                int mOffset = 40 + (16 * numberOfPoints);
-                                int zOffset = 40 + (16 * numberOfPoints);
+                                mOffset = 40 + (16 * numberOfPoints);
+                                zOffset = 40 + (16 * numberOfPoints);
                                 if (recordShapeType == ShapeType.MultiPointZ)
                                 {
                                     mOffset = zOffset + 16 + (8 * numberOfPoints);
@@ -216,8 +216,10 @@ namespace ShapefileReader
 
                         case ShapeType.Polyline:
                         case ShapeType.PolylineM:
+                        case ShapeType.PolylineZ:
                         case ShapeType.Polygon:
                         case ShapeType.PolygonM:
+                        case ShapeType.PolygonZ:
                             extent = new CartographicExtent(
                                 ToDouble(record, 4, ByteOrder.LittleEndian),
                                 ToDouble(record, 12, ByteOrder.LittleEndian),
@@ -237,12 +239,12 @@ namespace ShapefileReader
                                 parts[i] = ToInteger(record, 44 + (4 * i), ByteOrder.LittleEndian);
                             }
 
-                            pointsOffset = 44 + (4 * numberOfParts);
+                            int pointOffset = 44 + (4 * numberOfParts);
                             for (int i = 0; i < numberOfPoints; ++i)
                             {
                                 points[i] = new Rectangular(
-                                    ToDouble(record, pointsOffset + (16 * i), ByteOrder.LittleEndian),
-                                    ToDouble(record, pointsOffset + (16 * i) + 8, ByteOrder.LittleEndian));
+                                    ToDouble(record, pointOffset + (16 * i), ByteOrder.LittleEndian),
+                                    ToDouble(record, pointOffset + (16 * i) + 8, ByteOrder.LittleEndian));
                             }
 
                             if (recordShapeType == ShapeType.Polyline)
@@ -255,22 +257,46 @@ namespace ShapefileReader
                             }
                             else
                             {
-                                int offset = pointsOffset + (16 * numberOfPoints);
-                                double mMin = ToDouble(record, offset, ByteOrder.LittleEndian);
-                                double mMax = ToDouble(record, offset + 8, ByteOrder.LittleEndian);
+                                mOffset = pointOffset + (16 * numberOfPoints);
+                                zOffset = pointOffset + (16 * numberOfPoints);
+                                if (recordShapeType == ShapeType.PolylineZ || recordShapeType == ShapeType.PolygonZ)
+                                {
+                                    mOffset = zOffset + 16 + (8 * numberOfPoints);
+                                }
+                                double mMin = ToDouble(record, mOffset, ByteOrder.LittleEndian);
+                                double mMax = ToDouble(record, mOffset + 8, ByteOrder.LittleEndian);
                                 double[] measures = new double[numberOfPoints];
                                 for (int i = 0; i < numberOfPoints; i++)
                                 {
-                                    measures[i] = ToDouble(record, pointsOffset + (8 * i), ByteOrder.LittleEndian);
+                                    measures[i] = ToDouble(record, mOffset + 16 + (8 * i), ByteOrder.LittleEndian);
                                 }
 
                                 if (recordShapeType == ShapeType.PolylineM)
                                 {
                                     _shapes.Add(new PolylineMShape(recordNumber, extent, parts, points, mMin, mMax, measures));
                                 }
-                                else
+                                else if (recordShapeType == ShapeType.PolygonM)
                                 {
                                     _shapes.Add(new PolygonMShape(recordNumber, extent, parts, points, mMin, mMax, measures));
+                                }
+                                else
+                                {
+                                    double zMin = ToDouble(record, zOffset, ByteOrder.LittleEndian);
+                                    double zMax = ToDouble(record, zOffset + 8, ByteOrder.LittleEndian);
+                                    double[] zValues = new double[numberOfPoints];
+                                    for (int i = 0; i < numberOfPoints; i++)
+                                    {
+                                        zValues[i] = ToDouble(record, zOffset + 16 + (8 * i), ByteOrder.LittleEndian);
+                                    }
+
+                                    if (recordShapeType == ShapeType.PolylineZ)
+                                    {
+                                        _shapes.Add(new PolylineZShape(recordNumber, extent, parts, points, zMin, zMax, zValues, mMin, mMax, measures));
+                                    }
+                                    else if (recordShapeType == ShapeType.PolygonZ)
+                                    {
+                                        _shapes.Add(new PolygonZShape(recordNumber, extent, parts, points, zMin, zMax, zValues, mMin, mMax, measures));
+                                    }
                                 }
                             }
 

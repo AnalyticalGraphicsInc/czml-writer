@@ -12,8 +12,9 @@ namespace ShapefileReader
             Rectangular[] positions,
             double minimumMeasure,
             double maximumMeasure,
-            double[] measures)
-            : base(recordNumber, extent, parts, positions, ShapeType.PolygonM)
+            double[] measures,
+            ShapeType shapeType = ShapeType.PolygonM)
+            : base(recordNumber, extent, parts, positions, shapeType)
         {
             _measureRange = new double[] { minimumMeasure, maximumMeasure };
             _measures = (double[])measures.Clone();
