@@ -17,10 +17,9 @@ namespace WebGlGlobeJsonToCesiumLanguage
         /// The main entry point to convert a WebGL-globe JSON file.
         /// </summary>
         /// <param name="jsonContents">The JSON contents.</param>
-        public static void WebGlGlobeJsonToCesiumLanguage(byte[] jsonContents, CzmlDocument document)
+        public static void WebGlGlobeJsonToCesiumLanguage(TextReader jsonContents, CzmlDocument document)
         {
-            string jsonString = Encoding.ASCII.GetString(jsonContents);
-            JsonTextReader jsReader = new JsonTextReader(new StringReader(jsonString));
+            JsonTextReader jsReader = new JsonTextReader(jsonContents);
             JArray json = (JArray)new JsonSerializer().Deserialize(jsReader);
 
             foreach (JToken item in json)

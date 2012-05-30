@@ -35,8 +35,8 @@ namespace WebGlGlobeJsonToCesiumLanguage
         /// </summary>
         public CesiumStreamWriter CesiumStreamWriter { get { return m_writer; } }
 
-        private StringWriter m_sw;
-        private CesiumOutputStream m_output;
-        private CesiumStreamWriter m_writer;
+        private readonly StringWriter m_sw;
+        private readonly CesiumOutputStream m_output;
+        private readonly CesiumStreamWriter m_writer;
     }
 }

@@ -11,9 +11,9 @@ namespace WebGlGlobeJsonToCesiumLanguage
         /// <summary>
         /// Initializes a new instance of the <see cref="Series"/> class.
         /// </summary>
-        /// <param name="id">The <see cref="Series"/>'s ide</param>
+        /// <param name="id">The ID of the <see cref="Series"/></param>
         /// <param name="coordinates">An array of coordinate components. 
-        /// e.g. [latitude, longitude, magnitude, latitude, longitude, magnitude, ... ] 
+        /// e.g. [latitude, longitude, magnitude, latitude, longitude, height, ... ] 
         /// where the latitude and longitude are given in degrees.</param>
         public Series(string id, double[] coordinates, CzmlDocument document)
         {
@@ -35,14 +35,14 @@ namespace WebGlGlobeJsonToCesiumLanguage
         }
 
         /// <summary>
-        /// Gets or sets the id.
+        /// Gets the ID.
         /// </summary>
-        public string Id { get; set; }
+        public string ID { get; }
 
         /// <summary>
         /// Gets the <see cref="Cartographic"/> array of coordinates.
         /// </summary>
-        public Cartographic[] getCoordinates 
+        public Cartographic[] Coordinates 
         {
             get { return m_coordinates; } 
         }
@@ -78,8 +78,8 @@ namespace WebGlGlobeJsonToCesiumLanguage
             }
         }
 
-        private string m_id;
-        private Cartographic[] m_coordinates;
-        private CzmlDocument m_document;
+        private readonly string m_id;
+        private readonly Cartographic[] m_coordinates;
+        private readonly CzmlDocument m_document;
     }
 }
