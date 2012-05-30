@@ -31,7 +31,7 @@ namespace KmlToCesiumLanguage
             using (this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
             {
                 this.PacketWriter.WriteId(Guid.NewGuid().ToString());
-                this.AddTimeSpan(m_placemark);
+                Utility.WriteAvailability(m_placemark, this.PacketWriter, m_document.Namespace);
                 this.AddStyleInformation();
                 this.Write();
             }
@@ -70,106 +70,13 @@ namespace KmlToCesiumLanguage
         /// </summary>
         protected PacketCesiumWriter PacketWriter { get; private set; }
 
-        /// <summary>
-        /// Converts the hex color string to a <see cref="System.Drawing.Color"/>
-        /// </summary>
-        /// <param name="hex">The hex string.</param>
-        /// <returns></returns>
-        protected Color HexStringToColor(string hex)
-        {
-            hex = hex.ToLowerInvariant();
-            if (hex.Length == 6)
-            {
-                hex = "ff" + hex;
-            }
-            else if (hex.Length != 8)
-            {
-                throw new Exception(hex + " is not a valid color code");
-            }
-            int a, r, g, b;
-            //https://developers.google.com/kml/documentation/kmlreference#color
-            a = Convert.ToInt32(hex.Substring(0, 2), 16);
-            b = Convert.ToInt32(hex.Substring(2, 2), 16);
-            g = Convert.ToInt32(hex.Substring(4, 2), 16);
-            r = Convert.ToInt32(hex.Substring(6, 2), 16);
-            return Color.FromArgb(a, r, g, b);
-        }
-
-        private void AddTimeSpan(XElement placemark)
-        {
-            TimeInterval interval = GetInterval(placemark);
-            if (interval != null)
-            {
-                this.PacketWriter.WriteAvailability(interval);
-            }
-        }
-
-        private TimeInterval GetInterval(XElement placemark)
-        {
-            XElement timespan = placemark.Element(Document.Namespace + "TimeSpan");
-            if (timespan != null)
-            {
-                return GetTimeSpan(timespan);
-            }
-            else
-            {
-                XElement timeStamp = placemark.Element(Document.Namespace + "TimeStamp");
-                if (timeStamp != null)
-                {
-                    return GetTimeStamp(timeStamp);
-                }
-            }
-            return null;
-        }
-
-        private TimeInterval GetTimeSpan(XElement timespan)
-        {
-            XElement beginElement = timespan.Element(Document.Namespace + "begin");
-            JulianDate begin =new JulianDate(GregorianDate.MinValue);
-            JulianDate end = new JulianDate(GregorianDate.MaxValue);
-            if (beginElement != null)
-            {
-                GregorianDate beginDate;
-                if (!GregorianDate.TryParse(beginElement.Value, out beginDate))
-                {
-                    beginDate = GregorianDate.ParseExact(beginElement.Value, s_validIso8601Formats, CultureInfo.CurrentCulture);
-                }
-                begin = new JulianDate(beginDate);
-            }
-            XElement endElement = timespan.Element(Document.Namespace + "end");
-            if (endElement != null)
-            {
-                GregorianDate endDate;
-                if (!GregorianDate.TryParse(endElement.Value, out endDate))
-                {
-                    endDate = GregorianDate.ParseExact(endElement.Value, s_validIso8601Formats, CultureInfo.CurrentCulture);
-                }
-                end = new JulianDate(endDate);
-            }
-            return new TimeInterval(begin, end);
-        }
-
-        private TimeInterval GetTimeStamp(XElement timestamp)
-        {
-            XElement whenElement = timestamp.Element(Document.Namespace + "when");
-            if (whenElement != null)
-            {
-                GregorianDate whenDate;
-                if (!GregorianDate.TryParse(whenElement.Value, out whenDate))
-                {
-                    whenDate = GregorianDate.ParseExact(whenElement.Value, s_validIso8601Formats, CultureInfo.CurrentCulture);
-                }
-                return new TimeInterval(new JulianDate(whenDate), new JulianDate(GregorianDate.MaxValue));
-            }
-            return null;
-        }
 
         private void AddStyleInformation()
         {
             XElement styleElement = m_placemark.Element(m_document.Namespace + "Style");
             if (styleElement == null)
             {
-                styleElement = RetrieveStyleUrl(m_placemark, m_placemark.Document);
+                styleElement = Utility.RetrieveStyleElement(m_placemark, m_placemark.Document, m_document.Namespace);
             }
             AddLabelStyleInformation(styleElement);
             if (styleElement != null)
@@ -178,34 +85,6 @@ namespace KmlToCesiumLanguage
                 AddLineStyleInformation(styleElement);
                 AddPolyStyleInformation(styleElement);
             }
-        }
-
-        private XElement RetrieveStyleUrl(XElement element, XDocument doc)
-        {
-            XElement styleUrl = element.Element(m_document.Namespace + "styleUrl");
-            if (styleUrl != null)
-            {
-                string value = styleUrl.Value.Trim();
-                if (value.StartsWith("#"))
-                {
-                    value = value.Substring(1);
-                    var referredStyle = doc.Descendants().Where(o => o.Name == m_document.Namespace + "Style").Where(o => (string)o.Attribute("id") == value).FirstOrDefault();
-                    if (referredStyle != null)
-                    {
-                        return referredStyle;
-                    }
-                    else
-                    {
-                        referredStyle = m_placemark.Document.Descendants().Where(o => o.Name == m_document.Namespace + "StyleMap").Where(o => (string)o.Attribute("id") == value).FirstOrDefault();
-                        if (referredStyle != null)
-                        {
-                            styleUrl = referredStyle.Elements(m_document.Namespace + "Pair").Where(o => o.Element(m_document.Namespace + "key").Value == "normal").FirstOrDefault();
-                            return RetrieveStyleUrl(styleUrl, doc);
-                        }
-                    }
-                }
-            }
-            return null;
         }
 
         private void AddPolyStyleInformation(XElement styleElement)
@@ -243,7 +122,7 @@ namespace KmlToCesiumLanguage
                             XElement colorElement = labelElement.Element(m_document.Namespace + "color");
                             if (colorElement != null)
                             {
-                                Color color = HexStringToColor(colorElement.Value);
+                                Color color = Utility.HexStringToColor(colorElement.Value);
                                 label.WriteFillColorProperty(color);
                             }
                             XElement scaleElement = labelElement.Element(m_document.Namespace + "scale");
@@ -268,12 +147,5 @@ namespace KmlToCesiumLanguage
 
         private XElement m_placemark;
         private CzmlDocument m_document;
-        private static readonly string[] s_validIso8601Formats =
-                new[]
-                    {
-                        "yyyy", 
-                        "yyyy-MM", 
-                        "yyyy-MM-dd"
-                    };
     }
 }

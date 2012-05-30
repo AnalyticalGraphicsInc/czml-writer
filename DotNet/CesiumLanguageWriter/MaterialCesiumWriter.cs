@@ -26,6 +26,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<DotMaterialCesiumWriter> m_dot = new Lazy<DotMaterialCesiumWriter>(() => new DotMaterialCesiumWriter("dot"), false);
         private readonly Lazy<FacetMaterialCesiumWriter> m_facet = new Lazy<FacetMaterialCesiumWriter>(() => new FacetMaterialCesiumWriter("facet"), false);
         private readonly Lazy<BlobMaterialCesiumWriter> m_blob = new Lazy<BlobMaterialCesiumWriter>(() => new BlobMaterialCesiumWriter("blob"), false);
+        private readonly Lazy<ImageMaterialCesiumWriter> m_image = new Lazy<ImageMaterialCesiumWriter>(() => new ImageMaterialCesiumWriter("image"), false);
         
         /// <summary>
         /// Initializes a new instance.
@@ -198,6 +199,25 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(BlobWriter);
+        }
+
+        /// <summary>
+        /// Gets a group of properties describing the image material.  Theses properties only have
+        /// an effect if the object is configured to use the image material.
+        /// </summary>
+        public ImageMaterialCesiumWriter ImageWriter
+        {
+            get { return m_image.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the a writer for the <code>image</code> property.
+        /// </summary>
+        /// <returns>The writer.</returns>
+        public ImageMaterialCesiumWriter OpenImageProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ImageWriter);
         }
     }
 }

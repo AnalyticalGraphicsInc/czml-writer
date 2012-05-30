@@ -23,7 +23,7 @@ namespace KmlToCesiumLanguageTests
             var lineString = new LineString(placemark.Element("LineString"), document, placemark);
             lineString.WritePacket();
             string result = document.StringWriter.ToString();
-            Assert.That(result.Contains("\"availability\":\"2007-12-06T16:31:00Z/2007-12-06T16:40:18.0400000000009Z\""));
+            Assert.That(result.Contains("\"availability\":\"20071206T1631Z/20071206T164018.0400000000009Z\""));
         }
 
         [Test]

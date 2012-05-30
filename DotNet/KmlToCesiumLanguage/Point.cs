@@ -74,13 +74,10 @@ namespace KmlToCesiumLanguage
                 }
                 else
                 {
-                    string extension = Path.GetExtension(href).Remove(0, 1);
-                    WebClient client = new WebClient();
-                    byte[] data = client.DownloadData(href);
-                    string hrefValue = "data:image/" + extension + ";base64," + Convert.ToBase64String(data);
+                    string dataUrl = Utility.DownloadImage(href);
                     AddScaleProperty(iconElement, billboard);
-                    Document.ImageMap.Add(href, hrefValue);
-                    href = hrefValue;
+                    Document.ImageMap.Add(href, dataUrl);
+                    href = dataUrl;
                 }
                 billboard.WriteImageProperty(href);
             }
@@ -115,7 +112,7 @@ namespace KmlToCesiumLanguage
                     XElement colorElement = lineElement.Element(Document.Namespace + "color");
                     if (colorElement != null)
                     {
-                        Color color = HexStringToColor(colorElement.Value);
+                        Color color = Utility.HexStringToColor(colorElement.Value);
                         polyline.WriteColorProperty(color);
                     }
                     XElement widthElement = lineElement.Element(Document.Namespace + "width");
