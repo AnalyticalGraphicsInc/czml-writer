@@ -26,7 +26,7 @@ namespace KmlToCesiumLanguage
             m_document = document;
         }
 
-        /// inheritdoc
+        /// <inheritdoc />
         public override void WritePacket()
         {
             using (var packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))

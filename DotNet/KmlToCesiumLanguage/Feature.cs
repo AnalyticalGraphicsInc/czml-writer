@@ -6,7 +6,7 @@ using System.Text;
 namespace KmlToCesiumLanguage
 {
     /// <summary>
-    /// This is an abstract element and cannot be used directly. In Kml, classes that extend this are Container, Overlay, Placemark, NetworkLink and gx:Tour 
+    /// This is an abstract element and cannot be used directly. In KML, classes that extend this are Container, Overlay, Placemark, NetworkLink and gx:Tour. 
     /// </summary>
     public abstract class Feature
     {
