@@ -147,6 +147,15 @@ namespace ShapefileReader
                             }
                             break;
 
+                        case ShapeType.PointZ:
+                            Cartesian point = new Cartesian(
+                                                    ToDouble(record, 4, ByteOrder.LittleEndian),
+                                                    ToDouble(record, 12, ByteOrder.LittleEndian),
+                                                    ToDouble(record, 20, ByteOrder.LittleEndian));
+                            double measure = ToDouble(record, 28, ByteOrder.LittleEndian);
+                            _shapes.Add(new PointZShape(recordNumber, point, measure));
+                            break;
+
                         case ShapeType.MultiPoint:
                         case ShapeType.MultiPointM:
                             CartographicExtent extent = new CartographicExtent(
@@ -185,6 +194,7 @@ namespace ShapefileReader
                         case ShapeType.Polyline:
                         case ShapeType.PolylineM:
                         case ShapeType.Polygon:
+                        case ShapeType.PolygonM:
                             extent = new CartographicExtent(
                                 ToDouble(record, 4, ByteOrder.LittleEndian),
                                 ToDouble(record, 12, ByteOrder.LittleEndian),
