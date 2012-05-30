@@ -119,7 +119,7 @@ namespace KmlToCesiumLanguageTests
         {
             CzmlDocument document = new CzmlDocument();
             document.CesiumOutputStream.PrettyFormatting = true;
-            KmlConverter.KmlToCesiumLanguage(File.ReadAllBytes(@"\\agi\common\Dev\Test_and_Release\KML_TestData\AutomatedTestData\CCMC-SpaceWeatherContent.kml"), document);
+            KmlConverter.KmlToCesiumLanguage(File.ReadAllBytes(@"\KmlDocs\STS-122-STS-122Ascent.kml"), document);
             string czml = document.StringWriter.ToString();
             Console.WriteLine(czml);
         }
