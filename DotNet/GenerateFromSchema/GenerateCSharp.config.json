@@ -192,6 +192,19 @@
                 "writeValue": "CesiumWritingHelper.WriteCartesian3(Output, PropertyName, dates, values, startIndex, length);"
             }
         ],
+        "Cartesian3List": [
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<Cartesian>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteCartesian3List(Output, values);"
+            }
+        ],
         "Cartographic": [
             {
                 "parameters": [
@@ -245,6 +258,19 @@
                 ],
                 "writePropertyName": false,
                 "writeValue": "CesiumWritingHelper.WriteCartographic(Output, PropertyName, dates, values, startIndex, length);"
+            }
+        ],
+        "CartographicList": [
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<Cartographic>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteCartographicList(Output, values);"
             }
         ],
         "Image": [
@@ -491,6 +517,19 @@
                 ],
                 "writePropertyName": false,
                 "writeValue": "CesiumWritingHelper.WriteUnitQuaternion(Output, PropertyName, dates, values, startIndex, length);"
+            }
+        ],
+        "References": [
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<string>",
+                        "name": "references",
+                        "description": "The list of references."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReferences(Output, references);"
             }
         ]
     }

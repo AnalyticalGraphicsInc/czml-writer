@@ -4,6 +4,7 @@
 using CesiumLanguageWriter.Advanced;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace CesiumLanguageWriter
 {
@@ -314,6 +315,30 @@ namespace CesiumLanguageWriter
         public PositionListCesiumWriter OpenVertexPositionsProperty()
         {
             return OpenAndReturn(VertexPositionsWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>vertexPositions</code> property as a <code>cartesian</code> value.  The <code>vertexPositions</code> property specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public void WriteVertexPositionsProperty(IEnumerable<Cartesian> values)
+        {
+            using (var writer = OpenVertexPositionsProperty())
+            {
+                writer.WriteValue(values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>vertexPositions</code> property as a <code>cartographic</code> value.  The <code>vertexPositions</code> property specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public void WriteVertexPositionsPropertyCartographic(IEnumerable<Cartographic> values)
+        {
+            using (var writer = OpenVertexPositionsProperty())
+            {
+                writer.WriteCartographic(values);
+            }
         }
 
         /// <summary>

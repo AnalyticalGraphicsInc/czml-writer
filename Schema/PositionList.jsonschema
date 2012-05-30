@@ -1,6 +1,26 @@
 {
     "title": "PositionList",
-    "description": "TODO",
+    "description": "A list of positions.",
     "type": ["array", "object"],
-    "items": { "$ref": "#" }
+    "items": { "$ref": "#" },
+    "properties": {
+        "referenceFrame": {
+            "description": "The reference frame in which cartesian positions are specified. Possible values are \"FIXED\" and \"INERTIAL\". In addition, the value of this property can be a hash (#) symbol followed by the ID of another object in the same scope whose \"position\" and \"orientation\" properties define the reference frame in which this position is defined.  This property is ignored when specifying position with any type other than cartesian. If this property is not specified, the default reference frame is \"FIXED\".",
+            "type": "string",
+        },
+        "cartesian": {
+            "$ref": "Cartesian3ListValue.jsonschema",
+            "description": "The list of positions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]` in the meters relative to the `referenceFrame`.",
+            "czmlValue": true
+        },
+        "cartographic": {
+            "$ref": "CartographicListValue.jsonschema",
+            "description": "The list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`.",
+            "czmlValue": true
+        },
+        "references": {
+            "$ref": "ReferenceListValue.jsonschema",
+            "description": "The list of positions specified as references.  Each reference is to a property that defines a single position, possible as it changes with time."
+        }
+    }
 }

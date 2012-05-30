@@ -1,33 +1,29 @@
-﻿#if StkComponents
-using AGI.Foundation.Cesium.Advanced;
-#else
-using CesiumLanguageWriter.Advanced;
-#endif
+// This file was generated automatically by GenerateFromSchema.  Do NOT edit it.
+// https://github.com/AnalyticalGraphicsInc/czml-writer
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
+using CesiumLanguageWriter.Advanced;
+using System;
+
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
-    /// A <see cref="CesiumPropertyWriter{T}"/> used to write a label style property that
-    /// optionally has different values over different intervals of time.  Instances of this class generally should not
-    /// be constructed directly, but should instead be obtained from a <see cref="CesiumPropertyWriter{T}"/>.
+    /// Writes a <code>LabelStyle</code> to a <see cref="CesiumOutputStream" />.  A <code>LabelStyle</code> tODO
     /// </summary>
-    public class LabelStyleCesiumWriter : CesiumValuePropertyWriter<CesiumLabelStyle, LabelStyleCesiumWriter>
+    public class LabelStyleCesiumWriter : CesiumPropertyWriter<LabelStyleCesiumWriter>
     {
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        /// <param name="propertyName">The name of the property.</param>
         public LabelStyleCesiumWriter(string propertyName)
             : base(propertyName)
         {
         }
 
-        /// <inheritdoc />
-        private LabelStyleCesiumWriter(LabelStyleCesiumWriter existingInstance)
+        /// <summary>
+        /// Initializes a new instance as a copy of an existing instance.
+        /// </summary>
+        /// <param name="existingInstance">The existing instance to copy.</param> 
+        protected LabelStyleCesiumWriter(LabelStyleCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -38,12 +34,5 @@ namespace CesiumLanguageWriter
             return new LabelStyleCesiumWriter(this);
         }
 
-        /// <inheritdoc />
-        public override void WriteValue(CesiumLabelStyle value)
-        {
-            if (IsInterval)
-                Output.WritePropertyName("labelStyle");
-            Output.WriteValue(CesiumFormattingHelper.LabelStyleToString(value));
-        }
     }
 }

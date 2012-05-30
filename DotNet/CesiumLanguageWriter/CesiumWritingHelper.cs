@@ -140,6 +140,23 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a list of <see cref="Cartesian"/> values as an array in X, Y, Z order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="values">The values to write.</param>
+        public static void WriteCartesian3List(CesiumOutputStream output, IEnumerable<Cartesian> values)
+        {
+            output.WriteStartSequence();
+            foreach (Cartesian value in values)
+            {
+                output.WriteValue(value.X);
+                output.WriteValue(value.Y);
+                output.WriteValue(value.Z);
+            }
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
         /// Writes a <see cref="Cartographic"/> value as an array in Longitude, Latitude, Height order.
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
@@ -184,6 +201,23 @@ namespace CesiumLanguageWriter
                 output.WriteLineBreak();
             }
 
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes a list of <see cref="Cartographic"/> values as an array in Longitude, Latitude, Height order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="values">The values to write.</param>
+        public static void WriteCartographicList(CesiumOutputStream output, IEnumerable<Cartographic> values)
+        {
+            output.WriteStartSequence();
+            foreach (Cartographic value in values)
+            {
+                output.WriteValue(value.Longitude);
+                output.WriteValue(value.Latitude);
+                output.WriteValue(value.Height);
+            }
             output.WriteEndSequence();
         }
 
@@ -347,6 +381,22 @@ namespace CesiumLanguageWriter
                 output.WriteLineBreak();
             }
 
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes a list of references.
+        /// </summary>
+        /// <param name="output">The stream to which to write.</param>
+        /// <param name="references">The list of references to write.</param>
+        public static void WriteReferences(CesiumOutputStream output, IEnumerable<string> references)
+        {
+            output.WriteStartSequence();
+            foreach (string reference in references)
+            {
+                output.WriteValue(reference);
+                output.WriteLineBreak();
+            }
             output.WriteEndSequence();
         }
 

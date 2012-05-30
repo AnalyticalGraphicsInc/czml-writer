@@ -138,6 +138,24 @@ namespace GenerateFromSchema
                             }
                         }
                     }
+
+                    if (property.ValueType.Properties != null)
+                    {
+                        foreach (Property subProperty in property.ValueType.Properties)
+                        {
+                            OverloadInfo[] subOverloads = GetOverloadsForProperty(subProperty);
+                            foreach (OverloadInfo overload in subOverloads)
+                            {
+                                if (overload.Namespaces != null)
+                                {
+                                    foreach (string ns in overload.Namespaces)
+                                    {
+                                        namespaces.Add(ns);
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
 

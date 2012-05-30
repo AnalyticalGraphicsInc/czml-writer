@@ -1,6 +1,16 @@
 {
     "title": "Polygon",
-    "description": "TODO",
+    "description": "A polygon, which is a closed figure on the surface of the Earth.",
     "type": ["array", "object"],
-    "items": { "$ref": "#" }
+    "items": { "$ref": "#" },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the billboard is shown."
+        },
+        "material": {
+            "$ref": "Material.jsonschema",
+            "description": "The material to use to fill the polygon."
+        }
+    }
 }

@@ -1,0 +1,6 @@
+{
+    "title": "LabelStyle",
+    "description": "TODO",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" }
+}

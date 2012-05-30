@@ -1,33 +1,35 @@
-﻿#if StkComponents
-using AGI.Foundation.Cesium.Advanced;
-#else
-using CesiumLanguageWriter.Advanced;
-#endif
+// This file was generated automatically by GenerateFromSchema.  Do NOT edit it.
+// https://github.com/AnalyticalGraphicsInc/czml-writer
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
+using CesiumLanguageWriter.Advanced;
+using System;
+
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
-    /// A <see cref="CesiumPropertyWriter{T}"/> used to write a string (text) property that
-    /// optionally has different values over different intervals of time.  Instances of this class generally should not
-    /// be constructed directly, but should instead be obtained from a <see cref="CesiumPropertyWriter{T}"/>.
+    /// Writes a <code>String</code> to a <see cref="CesiumOutputStream" />.  A <code>String</code> a string value.  The string can optionally vary with time.
     /// </summary>
-    public class StringCesiumWriter : CesiumValuePropertyWriter<string, StringCesiumWriter>
+    public class StringCesiumWriter : CesiumValuePropertyWriter<String, StringCesiumWriter>
     {
+        /// <summary>
+        /// The name of the <code>string</code> property.
+        /// </summary>
+        public const string StringPropertyName = "string";
+
+
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        /// <param name="propertyName">The name of the property.</param>
         public StringCesiumWriter(string propertyName)
             : base(propertyName)
         {
         }
 
-        /// <inheritdoc />
-        private StringCesiumWriter(StringCesiumWriter existingInstance)
+        /// <summary>
+        /// Initializes a new instance as a copy of an existing instance.
+        /// </summary>
+        /// <param name="existingInstance">The existing instance to copy.</param> 
+        protected StringCesiumWriter(StringCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -38,12 +40,17 @@ namespace CesiumLanguageWriter
             return new StringCesiumWriter(this);
         }
 
-        /// <inheritdoc />
-        public override void WriteValue(string value)
+        /// <summary>
+        /// Writes the <code>string</code> property.  The <code>string</code> property specifies the string value.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public override void WriteValue(String value)
         {
-            if (IsInterval)
-                Output.WritePropertyName("string");
+            const string PropertyName = StringPropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
             Output.WriteValue(value);
         }
+
     }
 }
