@@ -79,7 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestSeries.cs" />
-    <Compile Include="TestWebGlGlobeJsonConverter.cs" />
+    <Compile Include="TestWebGLGlobeJsonConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -105,9 +105,9 @@
       <Project>{085359F8-CC1D-4561-94C7-0BF067B8E370}</Project>
       <Name>CesiumLanguageWriter</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebGlGlobeJsonToCesiumLanguage\WebGlGlobeJsonToCesiumLanguage.csproj">
+    <ProjectReference Include="..\WebGlGlobeJsonToCesiumLanguage\WebGLGlobeJsonToCesiumLanguage.csproj">
       <Project>{4F0AC6EB-6E10-4CA8-870D-B6B2C9C969E3}</Project>
-      <Name>WebGlGlobeJsonToCesiumLanguage</Name>
+      <Name>WebGLGlobeJsonToCesiumLanguage</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

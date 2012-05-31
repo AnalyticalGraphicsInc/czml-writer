@@ -71,7 +71,7 @@
   <ItemGroup>
     <Compile Include="CzmlDocument.cs" />
     <Compile Include="Series.cs" />
-    <Compile Include="WebGlGlobeJsonConverter.cs" />
+    <Compile Include="WebGLGlobeJsonConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

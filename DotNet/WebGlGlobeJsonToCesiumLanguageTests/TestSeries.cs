@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using CesiumLanguageWriter;
 using NUnit.Framework;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using CesiumLanguageWriter;
-using WebGlGlobeJsonToCesiumLanguage;
+using WebGLGlobeJsonToCesiumLanguage;
 
-namespace WebGlGlobeJsonToCesiumLanguageTests
+namespace WebGLGlobeJsonToCesiumLanguageTests
 {
     [TestFixture]
     public class TestSeries

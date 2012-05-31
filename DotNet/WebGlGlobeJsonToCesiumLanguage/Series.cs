@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CesiumLanguageWriter;
+﻿using CesiumLanguageWriter;
 
-namespace WebGlGlobeJsonToCesiumLanguage
+namespace WebGLGlobeJsonToCesiumLanguage
 {
     public class Series
     {
@@ -14,6 +10,11 @@ namespace WebGlGlobeJsonToCesiumLanguage
         /// <param name="id">The ID of the <see cref="Series"/></param>
         /// <param name="coordinates">An array of <see cref="Cartographic"/> positions
         /// where the latitude and longitude are given in degrees.</param>
+        /// <example>
+        /// CzmlDocument document = new CzmlDocument();
+        /// Cartographic[] positions = new Cartographic[] { new Cartographic(45.0, -90.0, 300), new Cartographic(50.0, -100.0, 400) };
+        /// Series series = new Series("test", positions, document);
+        /// </example>
         public Series(string id, Cartographic[] coordinates, CzmlDocument document)
         {        
             m_id = id;

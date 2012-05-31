@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using CesiumLanguageWriter;
 
-namespace WebGlGlobeJsonToCesiumLanguage
+namespace WebGLGlobeJsonToCesiumLanguage
 {
     /// <summary>
     /// Stores data about the json file.
