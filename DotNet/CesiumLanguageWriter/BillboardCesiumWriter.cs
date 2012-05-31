@@ -104,6 +104,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public ColorCesiumWriter OpenColorProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ColorWriter);
         }
 
@@ -177,6 +178,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public EyeOffsetCesiumWriter OpenEyeOffsetProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(EyeOffsetWriter);
         }
 
@@ -233,6 +235,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public HorizontalOriginCesiumWriter OpenHorizontalOriginProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(HorizontalOriginWriter);
         }
 
@@ -261,6 +264,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public ImageCesiumWriter OpenImageProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ImageWriter);
         }
 
@@ -301,6 +305,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public PixelOffsetCesiumWriter OpenPixelOffsetProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(PixelOffsetWriter);
         }
 
@@ -370,6 +375,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public DoubleCesiumWriter OpenRotationProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(RotationWriter);
         }
 
@@ -413,6 +419,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public DoubleCesiumWriter OpenScaleProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ScaleWriter);
         }
 
@@ -456,6 +463,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ShowWriter);
         }
 
@@ -484,6 +492,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public VerticalOriginCesiumWriter OpenVerticalOriginProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(VerticalOriginWriter);
         }
 

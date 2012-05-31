@@ -104,7 +104,7 @@ namespace KmlToCesiumLanguage
 
             using (var positions = this.PacketWriter.OpenVertexPositionsProperty())
             {
-                positions.WriteCartographic(points);
+                positions.WriteCartographicRadians(points);
             }
         }
 

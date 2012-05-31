@@ -273,6 +273,8 @@ namespace GenerateFromSchema
                 property.Name, StringHelper.UncapitalizeFirstLetter(property.Description)));
             writer.WriteLine("public {0}CesiumWriter Open{1}Property()", property.ValueType.NameWithPascalCase, property.NameWithPascalCase);
             writer.OpenScope();
+            if (schema.Name != "Packet")
+                writer.WriteLine("OpenIntervalIfNecessary();");
             writer.WriteLine("return OpenAndReturn({0}Writer);", property.NameWithPascalCase);
             writer.CloseScope();
             writer.WriteLine();

@@ -60,6 +60,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ShowWriter);
         }
 
@@ -88,6 +89,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public MaterialCesiumWriter OpenMaterialProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(MaterialWriter);
         }
 

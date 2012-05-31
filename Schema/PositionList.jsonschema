@@ -13,9 +13,14 @@
             "description": "The list of positions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]` in the meters relative to the `referenceFrame`.",
             "czmlValue": true
         },
-        "cartographic": {
+        "cartographicRadians": {
             "$ref": "CartographicListValue.jsonschema",
-            "description": "The list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`.",
+            "description": "The list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]` where longitude and latitude are in radians and height is in meters.",
+            "czmlValue": true
+        },
+        "cartographicDegrees": {
+            "$ref": "CartographicListValue.jsonschema",
+            "description": "The list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]` where longitude and latitude are in degrees and height is in meters.",
             "czmlValue": true
         },
         "references": {

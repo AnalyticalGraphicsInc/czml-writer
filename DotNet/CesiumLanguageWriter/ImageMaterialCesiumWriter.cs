@@ -55,6 +55,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public ImageCesiumWriter OpenImageProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ImageWriter);
         }
 

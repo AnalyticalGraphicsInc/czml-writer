@@ -122,6 +122,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ShowWriter);
         }
 
@@ -150,6 +151,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public DoubleCesiumWriter OpenInnerHalfAngleProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(InnerHalfAngleWriter);
         }
 
@@ -193,6 +195,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public DoubleCesiumWriter OpenOuterHalfAngleProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(OuterHalfAngleWriter);
         }
 
@@ -236,6 +239,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public DoubleCesiumWriter OpenRadiusProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(RadiusWriter);
         }
 
@@ -279,6 +283,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public DoubleCesiumWriter OpenMinimumClockAngleProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(MinimumClockAngleWriter);
         }
 
@@ -322,6 +327,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public BooleanCesiumWriter OpenShowIntersectionProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ShowIntersectionWriter);
         }
 
@@ -350,6 +356,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public ColorCesiumWriter OpenIntersectionColorProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(IntersectionColorWriter);
         }
 
@@ -423,6 +430,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public DoubleCesiumWriter OpenErosionProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ErosionWriter);
         }
 
@@ -466,6 +474,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public MaterialCesiumWriter OpenCapMaterialProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(CapMaterialWriter);
         }
 
@@ -482,6 +491,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public MaterialCesiumWriter OpenInnerMaterialProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(InnerMaterialWriter);
         }
 
@@ -498,6 +508,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public MaterialCesiumWriter OpenOuterMaterialProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(OuterMaterialWriter);
         }
 
@@ -514,6 +525,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public MaterialCesiumWriter OpenSilhouetteMaterialProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(SilhouetteMaterialWriter);
         }
 

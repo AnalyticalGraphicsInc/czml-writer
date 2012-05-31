@@ -80,6 +80,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ShowWriter);
         }
 
@@ -108,6 +109,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public ColorCesiumWriter OpenColorProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ColorWriter);
         }
 
@@ -181,6 +183,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public DoubleCesiumWriter OpenWidthProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(WidthWriter);
         }
 
@@ -224,6 +227,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public ColorCesiumWriter OpenOutlineColorProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(OutlineColorWriter);
         }
 
@@ -297,6 +301,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public DoubleCesiumWriter OpenOutlineWidthProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(OutlineWidthWriter);
         }
 

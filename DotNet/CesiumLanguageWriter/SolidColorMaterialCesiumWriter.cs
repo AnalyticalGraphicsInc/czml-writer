@@ -56,6 +56,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public ColorCesiumWriter OpenColorProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ColorWriter);
         }
 

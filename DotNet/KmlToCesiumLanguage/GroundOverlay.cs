@@ -62,7 +62,7 @@ namespace KmlToCesiumLanguage
                                                 new Cartographic(west, south, altitude)};
                     using (var positions = packetWriter.OpenVertexPositionsProperty())
                     {
-                        positions.WriteCartographic(cartographicPositions);
+                        positions.WriteCartographicRadians(cartographicPositions);
                     }
                 }
                 using (var polygon = packetWriter.OpenPolygonProperty())

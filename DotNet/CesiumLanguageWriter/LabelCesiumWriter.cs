@@ -116,6 +116,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public EyeOffsetCesiumWriter OpenEyeOffsetProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(EyeOffsetWriter);
         }
 
@@ -172,6 +173,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public ColorCesiumWriter OpenFillColorProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(FillColorWriter);
         }
 
@@ -245,6 +247,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public FontCesiumWriter OpenFontProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(FontWriter);
         }
 
@@ -261,6 +264,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public HorizontalOriginCesiumWriter OpenHorizontalOriginProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(HorizontalOriginWriter);
         }
 
@@ -289,6 +293,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public ColorCesiumWriter OpenOutlineColorProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(OutlineColorWriter);
         }
 
@@ -362,6 +367,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public PixelOffsetCesiumWriter OpenPixelOffsetProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(PixelOffsetWriter);
         }
 
@@ -431,6 +437,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public DoubleCesiumWriter OpenScaleProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ScaleWriter);
         }
 
@@ -474,6 +481,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ShowWriter);
         }
 
@@ -502,6 +510,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public LabelStyleCesiumWriter OpenStyleProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(StyleWriter);
         }
 
@@ -518,6 +527,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public StringCesiumWriter OpenTextProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(TextWriter);
         }
 
@@ -546,6 +556,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public VerticalOriginCesiumWriter OpenVerticalOriginProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(VerticalOriginWriter);
         }
 

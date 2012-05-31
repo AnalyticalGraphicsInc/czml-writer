@@ -23,9 +23,14 @@ namespace CesiumLanguageWriter
         public const string CartesianPropertyName = "cartesian";
 
         /// <summary>
-        /// The name of the <code>cartographic</code> property.
+        /// The name of the <code>cartographicRadians</code> property.
         /// </summary>
-        public const string CartographicPropertyName = "cartographic";
+        public const string CartographicRadiansPropertyName = "cartographicRadians";
+
+        /// <summary>
+        /// The name of the <code>cartographicDegrees</code> property.
+        /// </summary>
+        public const string CartographicDegreesPropertyName = "cartographicDegrees";
 
         /// <summary>
         /// The name of the <code>references</code> property.
@@ -81,12 +86,24 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartographic</code> property.  The <code>cartographic</code> property specifies the list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`.
+        /// Writes the <code>cartographicRadians</code> property.  The <code>cartographicRadians</code> property specifies the list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]` where longitude and latitude are in radians and height is in meters.
         /// </summary>
         /// <param name="values">The values.</param>
-        public void WriteCartographic(IEnumerable<Cartographic> values)
+        public void WriteCartographicRadians(IEnumerable<Cartographic> values)
         {
-            const string PropertyName = CartographicPropertyName;
+            const string PropertyName = CartographicRadiansPropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteCartographicList(Output, values);
+        }
+
+        /// <summary>
+        /// Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]` where longitude and latitude are in degrees and height is in meters.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public void WriteCartographicDegrees(IEnumerable<Cartographic> values)
+        {
+            const string PropertyName = CartographicDegreesPropertyName;
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteCartographicList(Output, values);

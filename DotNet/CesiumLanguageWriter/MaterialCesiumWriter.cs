@@ -61,6 +61,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public SolidColorMaterialCesiumWriter OpenSolidColorProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(SolidColorWriter);
         }
 
@@ -77,6 +78,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public ImageMaterialCesiumWriter OpenImageProperty()
         {
+            OpenIntervalIfNecessary();
             return OpenAndReturn(ImageWriter);
         }
 

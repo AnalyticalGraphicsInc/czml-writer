@@ -330,14 +330,26 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>vertexPositions</code> property as a <code>cartographic</code> value.  The <code>vertexPositions</code> property specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
+        /// Writes a value for the <code>vertexPositions</code> property as a <code>cartographicRadians</code> value.  The <code>vertexPositions</code> property specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
         /// </summary>
         /// <param name="values">The values.</param>
-        public void WriteVertexPositionsPropertyCartographic(IEnumerable<Cartographic> values)
+        public void WriteVertexPositionsPropertyCartographicRadians(IEnumerable<Cartographic> values)
         {
             using (var writer = OpenVertexPositionsProperty())
             {
-                writer.WriteCartographic(values);
+                writer.WriteCartographicRadians(values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>vertexPositions</code> property as a <code>cartographicDegrees</code> value.  The <code>vertexPositions</code> property specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public void WriteVertexPositionsPropertyCartographicDegrees(IEnumerable<Cartographic> values)
+        {
+            using (var writer = OpenVertexPositionsProperty())
+            {
+                writer.WriteCartographicDegrees(values);
             }
         }
 
