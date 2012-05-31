@@ -1,6 +1,16 @@
 {
     "title": "Material",
-    "description": "TODO",
+    "description": "Defines how a surface is colored or shaded.",
     "type": ["array", "object"],
-    "items": { "$ref": "#" }
+    "items": { "$ref": "#" },
+    "properties": {
+        "solidColor": {
+            "$ref": "SolidColorMaterial.jsonschema",
+            "description": "Fills the surface with a solid color, which may be translucent."
+        },
+        "image": {
+            "$ref": "ImageMaterial.jsonschema",
+            "description": "Fills the surface with an image."
+        }
+    }
 }

@@ -97,7 +97,7 @@ namespace KmlToCesiumLanguage
                 positions.Add(new Cartographic(m_position.Longitude, m_position.Latitude, 0.0));
                 using (PositionListCesiumWriter polyline = this.PacketWriter.OpenVertexPositionsProperty())
                 {
-                    polyline.WriteValue(positions);
+                    polyline.WriteCartographic(positions);
                 }
             }
         }
