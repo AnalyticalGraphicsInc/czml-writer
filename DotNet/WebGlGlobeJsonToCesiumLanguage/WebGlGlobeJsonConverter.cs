@@ -23,13 +23,19 @@ namespace WebGlGlobeJsonToCesiumLanguage
             JArray json = (JArray)new JsonSerializer().Deserialize(jsReader);
 
             foreach (JToken item in json)
-            {
-                int numCoords = item[1].Values().Count();
-                double[] coords = new double[numCoords];
-                for (int j = 0; j < numCoords; j++)
+            {                
+                if (item[1].Values().Count() % 3 != 0)
                 {
-                    coords[j] = (double)item[1][j];
+                    throw new System.ArgumentException("coordinates data must contain a multiple of 3 element", "jsonContents");
                 }
+
+                int numCoords = item[1].Values().Count() / 3;
+                Cartographic[] coords = new Cartographic[numCoords];
+                for (int i = 0, j = 0; i < numCoords; i += 3, j++)
+                {
+                    coords[j] = new Cartographic((double)item[1][i], (double)item[1][i + 1], (double)item[1][i + 2]);
+                }
+
                 Series series = new Series((string)item[0], coords, document);
                 series.Write();
             }

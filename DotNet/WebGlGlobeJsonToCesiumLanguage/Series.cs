@@ -12,32 +12,22 @@ namespace WebGlGlobeJsonToCesiumLanguage
         /// Initializes a new instance of the <see cref="Series"/> class.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Series"/></param>
-        /// <param name="coordinates">An array of coordinate components. 
-        /// e.g. [latitude, longitude, magnitude, latitude, longitude, height, ... ] 
+        /// <param name="coordinates">An array of <see cref="Cartographic"/> positions
         /// where the latitude and longitude are given in degrees.</param>
-        public Series(string id, double[] coordinates, CzmlDocument document)
-        {
-            if (coordinates.Length % 3 != 0)
-            {
-                throw new System.ArgumentException("coordinates must contain a multiple of 3 element", "coordinates");
-            }
-            
+        public Series(string id, Cartographic[] coordinates, CzmlDocument document)
+        {        
             m_id = id;
             m_document = document;            
-            m_coordinates = new Cartographic[coordinates.Length / 3];
-
-            for (int i = 0, j = 0; i < coordinates.Length; i+=3, j++)
-            {
-                m_coordinates[j] = new Cartographic(Constants.RadiansPerDegree * coordinates[i], 
-                                                    Constants.RadiansPerDegree * coordinates[i+1],
-                                                    coordinates[i+2]);
-            }
+            m_coordinates = (Cartographic[])coordinates.Clone();
         }
 
         /// <summary>
         /// Gets the ID.
         /// </summary>
-        public string ID { get; }
+        public string ID 
+        {
+            get { return m_id; } 
+        }
 
         /// <summary>
         /// Gets the <see cref="Cartographic"/> array of coordinates.
@@ -72,7 +62,7 @@ namespace WebGlGlobeJsonToCesiumLanguage
                     packetWriter.WriteIdentifier(m_id + index);
                     using (PositionCesiumWriter position = packetWriter.OpenPositionProperty())
                     {
-                        position.WriteCartographicRadiansValue(m_coordinates[index]);
+                        position.WriteCartographicDegreesValue(m_coordinates[index]);
                     }
                 }
             }

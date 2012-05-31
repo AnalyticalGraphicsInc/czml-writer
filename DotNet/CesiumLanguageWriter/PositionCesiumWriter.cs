@@ -91,6 +91,25 @@ namespace CesiumLanguageWriter
             Output.WriteEndSequence();
         }
 
+        /// <summary>
+        /// Writes the value of the property for this interval as a WGS84 <see cref="Cartographic"/> value where
+        /// <see cref="Cartographic.Longitude"/> and <see cref="Cartographic.Latitude"/> are expressed in degrees
+        /// and <see cref="Cartographic.Height"/> is meters above the WGS84 ellipsoid.
+        /// The position is constant for the entire interval.
+        /// </summary>
+        /// <param name="position"></param>
+        public void WriteCartographicDegreesValue(Cartographic position)
+        {
+            OpenIntervalIfNecessary();
+
+            Output.WritePropertyName("cartographicDegrees");
+            Output.WriteStartSequence();
+            Output.WriteValue(position.Longitude);
+            Output.WriteValue(position.Latitude);
+            Output.WriteValue(position.Height);
+            Output.WriteEndSequence();
+        }
+
 #if StkComponents
         /// <summary>
         /// Writes the value of the property for this interval as a collection of time-tagged positions
