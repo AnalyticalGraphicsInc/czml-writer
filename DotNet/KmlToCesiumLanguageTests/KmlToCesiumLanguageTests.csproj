@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestGroundOverlay.cs" />
     <Compile Include="TestLineString.cs" />
     <Compile Include="TestPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
