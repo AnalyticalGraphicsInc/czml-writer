@@ -1,17 +1,19 @@
 ﻿using System.Collections;
+using System.Collections.Specialized;
 using CesiumLanguageWriter;
 
-namespace ShapefileReader
+namespace Shapefile
 {
     public class PolylineShape : Shape
     {
         internal PolylineShape(
             int recordNumber,
+            StringDictionary metadata,
             CartographicExtent extent,
             int[] parts,
             Rectangular[] positions,
             ShapeType shapeType = ShapeType.Polyline)
-            : base(recordNumber, shapeType)
+            : base(recordNumber, metadata, shapeType)
         {
             _extent = extent;
 

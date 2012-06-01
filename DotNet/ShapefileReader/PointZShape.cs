@@ -1,16 +1,18 @@
-﻿using CesiumLanguageWriter;
+﻿using System.Collections.Specialized;
+using CesiumLanguageWriter;
 
-namespace ShapefileReader
+namespace Shapefile
 {
     public class PointZShape : PointMShape
     {
         internal PointZShape(
             int recordNumber, 
+            StringDictionary metadata,
             Rectangular position,
             double z,
             double measure, 
             ShapeType shapeType = ShapeType.PointZ)
-            : base(recordNumber, position, measure, shapeType)
+            : base(recordNumber, metadata, position, measure, shapeType)
         {
             _z = z;
         }

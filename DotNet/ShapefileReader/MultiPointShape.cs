@@ -1,16 +1,18 @@
 ﻿using System.Collections;
+using System.Collections.Specialized;
 using CesiumLanguageWriter;
 
-namespace ShapefileReader
+namespace Shapefile
 {
     public class MultiPointShape : Shape
     {
         internal MultiPointShape(
             int recordNumber,
+            StringDictionary metadata,
             CartographicExtent extent,
             Rectangular[] positions,
             ShapeType shapeType = ShapeType.MultiPoint)
-            : base(recordNumber, shapeType)
+            : base(recordNumber, metadata, shapeType)
         {
             _extent = extent;
             _positions = (Rectangular[])positions.Clone();

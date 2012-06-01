@@ -1,12 +1,14 @@
 ﻿using System.Collections;
+using System.Collections.Specialized;
 using CesiumLanguageWriter;
 
-namespace ShapefileReader
+namespace Shapefile
 {
     public class MultiPatchShape : Shape
     {
         internal MultiPatchShape(
             int recordNumber,
+            StringDictionary metadata,
             CartographicExtent extent,
             int[] parts,
             MultiPatchPartType[] partTypes,
@@ -18,7 +20,7 @@ namespace ShapefileReader
             double maximumMeasure,
             double[] measures,
             ShapeType shapeType = ShapeType.MultiPatch)
-            : base(recordNumber, shapeType)
+            : base(recordNumber, metadata, shapeType)
         {
 
             _extent = extent;

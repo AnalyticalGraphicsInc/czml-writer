@@ -1,17 +1,19 @@
 ﻿using System.Collections;
+using System.Collections.Specialized;
 using CesiumLanguageWriter;
 
-namespace ShapefileReader
+namespace Shapefile
 {
     public class PolygonShape : Shape
     {
         internal PolygonShape(
             int recordNumber,
+            StringDictionary metadata,
             CartographicExtent extent,
             int[] parts,
             Rectangular[] positions,
             ShapeType shapeType = ShapeType.Polygon)
-            : base(recordNumber, shapeType)
+            : base(recordNumber, metadata, shapeType)
         {
             _extent = extent;
 

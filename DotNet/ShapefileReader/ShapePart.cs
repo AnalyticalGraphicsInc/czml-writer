@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using CesiumLanguageWriter;
 
-namespace ShapefileReader
+namespace Shapefile
 {
     public class ShapePart
     {

@@ -1,12 +1,14 @@
 ﻿using System.Collections;
+using System.Collections.Specialized;
 using CesiumLanguageWriter;
 
-namespace ShapefileReader
+namespace Shapefile
 {
     public class MultiPointZShape : MultiPointMShape
     {
         internal MultiPointZShape(
             int recordNumber,
+            StringDictionary metadata,
             CartographicExtent extent,
             Rectangular[] positions,
             double minimumZ,
@@ -16,7 +18,7 @@ namespace ShapefileReader
             double maximumMeasure,
             double[] measures,
             ShapeType shapeType = ShapeType.MultiPointZ)
-            : base(recordNumber, extent, positions, minimumMeasure, maximumMeasure, measures, shapeType)
+            : base(recordNumber, metadata, extent, positions, minimumMeasure, maximumMeasure, measures, shapeType)
         {
             _zRange = new double[] { minimumZ, maximumZ };
             _zValues = (double[])zValues.Clone();

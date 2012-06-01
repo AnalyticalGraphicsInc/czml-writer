@@ -61,6 +61,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGlGlobeJsonToCesiumLangu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapefileReader", "ShapefileReader\ShapefileReader.csproj", "{205A9004-A4A0-44E6-B068-4EAD140748AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapefileReaderTests", "ShapefileReaderTests\ShapefileReaderTests.csproj", "{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -155,6 +157,17 @@ Global
 		{205A9004-A4A0-44E6-B068-4EAD140748AE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{205A9004-A4A0-44E6-B068-4EAD140748AE}.Release|x86.ActiveCfg = Release|x86
 		{205A9004-A4A0-44E6-B068-4EAD140748AE}.Release|x86.Build.0 = Release|x86
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Debug|x86.ActiveCfg = Debug|x86
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Debug|x86.Build.0 = Debug|x86
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Release|Any CPU.ActiveCfg = Release|x86
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Release|Mixed Platforms.Build.0 = Release|x86
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Release|x86.ActiveCfg = Release|x86
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

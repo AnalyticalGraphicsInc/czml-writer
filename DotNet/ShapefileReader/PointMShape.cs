@@ -1,15 +1,17 @@
-﻿using CesiumLanguageWriter;
+﻿using System.Collections.Specialized;
+using CesiumLanguageWriter;
 
-namespace ShapefileReader
+namespace Shapefile
 {
     public class PointMShape : PointShape
     {
         internal PointMShape(
-            int recordNumber, 
+            int recordNumber,
+            StringDictionary metadata,
             Rectangular position, 
             double measure, 
             ShapeType shapeType = ShapeType.PointM)
-            : base(recordNumber, position, shapeType)
+            : base(recordNumber, metadata, position, shapeType)
         {
             _measure = measure;
         }

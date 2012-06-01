@@ -1,4 +1,4 @@
-﻿namespace ShapefileReader
+﻿namespace Shapefile
 {
     public enum MultiPatchPartType
     {

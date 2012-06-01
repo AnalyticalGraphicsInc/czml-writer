@@ -1,12 +1,14 @@
 ﻿using System.Collections;
+using System.Collections.Specialized;
 using CesiumLanguageWriter;
 
-namespace ShapefileReader
+namespace Shapefile
 {
     public class PolylineMShape : PolylineShape
     {
         internal PolylineMShape(
             int recordNumber,
+            StringDictionary metadata,
             CartographicExtent extent,
             int[] parts,
             Rectangular[] positions,
@@ -14,7 +16,7 @@ namespace ShapefileReader
             double maximumMeasure,
             double[] measures,
             ShapeType shapeType = ShapeType.PolylineM) 
-            : base(recordNumber, extent, parts, positions, shapeType) 
+            : base(recordNumber, metadata, extent, parts, positions, shapeType) 
         { 
             _measureRange = new double[] { minimumMeasure, maximumMeasure };
             _measures = (double[])measures.Clone();
