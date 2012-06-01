@@ -22,7 +22,10 @@ namespace ShapefileReader
         {
 
             _extent = extent;
-            _zRange = new double[] {  };
+            _zRange = new double[] { minimumZ, maximumZ };
+            _zValues = (double[])zValues.Clone();
+            _measureRange = new double[] { minimumMeasure, maximumMeasure};
+            _measures = (double[])measures.Clone();
 
             _parts = new ShapePart[parts.Length];
             for (int i = 0; i < parts.Length; ++i)
