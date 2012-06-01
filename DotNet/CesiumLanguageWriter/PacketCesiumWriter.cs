@@ -78,6 +78,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string PyramidPropertyName = "pyramid";
 
+        /// <summary>
+        /// The name of the <code>camera</code> property.
+        /// </summary>
+        public const string CameraPropertyName = "camera";
+
         private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter(BillboardPropertyName), false);
         private readonly Lazy<PositionListCesiumWriter> m_vertexPositions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(VertexPositionsPropertyName), false);
@@ -89,6 +94,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<PolygonCesiumWriter> m_polygon = new Lazy<PolygonCesiumWriter>(() => new PolygonCesiumWriter(PolygonPropertyName), false);
         private readonly Lazy<ConeCesiumWriter> m_cone = new Lazy<ConeCesiumWriter>(() => new ConeCesiumWriter(ConePropertyName), false);
         private readonly Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<PyramidCesiumWriter>(() => new PyramidCesiumWriter(PyramidPropertyName), false);
+        private readonly Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(() => new CameraCesiumWriter(CameraPropertyName), false);
 
         /// <summary>
         /// Writes the start of a new JSON object representing the packet.
@@ -173,7 +179,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenPositionProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteCartesian(value);
             }
         }
 
@@ -186,7 +192,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenPositionProperty())
             {
-                writer.WriteValue(dates, values);
+                writer.WriteCartesian(dates, values);
             }
         }
 
@@ -201,7 +207,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenPositionProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteCartesian(dates, values, startIndex, length);
             }
         }
 
@@ -325,7 +331,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenVertexPositionsProperty())
             {
-                writer.WriteValue(values);
+                writer.WriteCartesian(values);
             }
         }
 
@@ -354,6 +360,18 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>vertexPositions</code> property as a <code>references</code> value.  The <code>vertexPositions</code> property specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
+        /// </summary>
+        /// <param name="references">The list of references.</param>
+        public void WriteVertexPositionsPropertyReferences(IEnumerable<string> references)
+        {
+            using (var writer = OpenVertexPositionsProperty())
+            {
+                writer.WriteReferences(references);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>orientation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>orientation</code> property defines the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
         /// </summary>
         public OrientationCesiumWriter OrientationWriter
@@ -377,7 +395,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenOrientationProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteUnitQuaternion(value);
             }
         }
 
@@ -390,7 +408,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenOrientationProperty())
             {
-                writer.WriteValue(dates, values);
+                writer.WriteUnitQuaternion(dates, values);
             }
         }
 
@@ -405,7 +423,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenOrientationProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteUnitQuaternion(dates, values, startIndex, length);
             }
         }
 
@@ -519,6 +537,22 @@ namespace CesiumLanguageWriter
         public PyramidCesiumWriter OpenPyramidProperty()
         {
             return OpenAndReturn(PyramidWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>camera</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>camera</code> property defines a camera.
+        /// </summary>
+        public CameraCesiumWriter CameraWriter
+        {
+            get { return m_camera.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>camera</code> property.  The <code>camera</code> property defines a camera.
+        /// </summary>
+        public CameraCesiumWriter OpenCameraProperty()
+        {
+            return OpenAndReturn(CameraWriter);
         }
 
     }

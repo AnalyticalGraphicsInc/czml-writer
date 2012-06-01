@@ -25,7 +25,8 @@
         },
         "references": {
             "$ref": "ReferenceListValue.jsonschema",
-            "description": "The list of positions specified as references.  Each reference is to a property that defines a single position, possible as it changes with time."
+            "description": "The list of positions specified as references.  Each reference is to a property that defines a single position, possible as it changes with time.",
+            "czmlValue": true
         }
     }
 }

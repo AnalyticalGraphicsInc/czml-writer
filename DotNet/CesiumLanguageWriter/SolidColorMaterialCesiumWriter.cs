@@ -68,7 +68,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenColorProperty())
             {
-                writer.WriteValue(color);
+                writer.WriteRgba(color);
             }
         }
 
@@ -83,7 +83,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenColorProperty())
             {
-                writer.WriteValue(red, green, blue, alpha);
+                writer.WriteRgba(red, green, blue, alpha);
             }
         }
 
@@ -98,7 +98,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenColorProperty())
             {
-                writer.WriteValue(dates, colors, startIndex, length);
+                writer.WriteRgba(dates, colors, startIndex, length);
             }
         }
 

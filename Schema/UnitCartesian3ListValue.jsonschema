@@ -1,0 +1,5 @@
+{
+    "title": "UnitCartesian3List",
+    "description": "A list of directions specified as Cartesian [X, Y, Z, X, Y, Z, ...].",
+    "type": "array"
+}

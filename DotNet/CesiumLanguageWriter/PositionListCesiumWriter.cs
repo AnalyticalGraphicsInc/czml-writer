@@ -10,7 +10,7 @@ namespace CesiumLanguageWriter
     /// <summary>
     /// Writes a <code>PositionList</code> to a <see cref="CesiumOutputStream" />.  A <code>PositionList</code> a list of positions.
     /// </summary>
-    public class PositionListCesiumWriter : CesiumValuePropertyWriter<IEnumerable<Cartesian>, PositionListCesiumWriter>
+    public class PositionListCesiumWriter : CesiumPropertyWriter<PositionListCesiumWriter>
     {
         /// <summary>
         /// The name of the <code>referenceFrame</code> property.
@@ -37,6 +37,10 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string ReferencesPropertyName = "references";
 
+        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartesian>>> m_asCartesian;
+        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>> m_asCartographicRadians;
+        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>> m_asCartographicDegrees;
+        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<string>>> m_asReferences;
 
         /// <summary>
         /// Initializes a new instance.
@@ -44,6 +48,10 @@ namespace CesiumLanguageWriter
         public PositionListCesiumWriter(string propertyName)
             : base(propertyName)
         {
+            m_asCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartesian>>>(CreateCartesianAdaptor, false);
+            m_asCartographicRadians = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>>(CreateCartographicRadiansAdaptor, false);
+            m_asCartographicDegrees = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>>(CreateCartographicDegreesAdaptor, false);
+            m_asReferences = new Lazy<ICesiumValuePropertyWriter<IEnumerable<string>>>(CreateReferencesAdaptor, false);
         }
 
         /// <summary>
@@ -53,6 +61,10 @@ namespace CesiumLanguageWriter
         protected PositionListCesiumWriter(PositionListCesiumWriter existingInstance)
             : base(existingInstance)
         {
+            m_asCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartesian>>>(CreateCartesianAdaptor, false);
+            m_asCartographicRadians = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>>(CreateCartographicRadiansAdaptor, false);
+            m_asCartographicDegrees = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>>(CreateCartographicDegreesAdaptor, false);
+            m_asReferences = new Lazy<ICesiumValuePropertyWriter<IEnumerable<string>>>(CreateReferencesAdaptor, false);
         }
 
         /// <inheritdoc />
@@ -77,7 +89,7 @@ namespace CesiumLanguageWriter
         /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the list of positions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]` in the meters relative to the `referenceFrame`.
         /// </summary>
         /// <param name="values">The values.</param>
-        public override void WriteValue(IEnumerable<Cartesian> values)
+        public void WriteCartesian(IEnumerable<Cartesian> values)
         {
             const string PropertyName = CartesianPropertyName;
             OpenIntervalIfNecessary();
@@ -119,6 +131,66 @@ namespace CesiumLanguageWriter
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteReferences(Output, references);
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Cartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumValuePropertyWriter<IEnumerable<Cartesian>> AsCartesian()
+        {
+            return m_asCartesian.Value;
+        }
+
+        private ICesiumValuePropertyWriter<IEnumerable<Cartesian>> CreateCartesianAdaptor()
+        {
+            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<Cartesian>>(
+                this, (me, value) => me.WriteCartesian(value));
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>CartographicRadians</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumValuePropertyWriter<IEnumerable<Cartographic>> AsCartographicRadians()
+        {
+            return m_asCartographicRadians.Value;
+        }
+
+        private ICesiumValuePropertyWriter<IEnumerable<Cartographic>> CreateCartographicRadiansAdaptor()
+        {
+            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<Cartographic>>(
+                this, (me, value) => me.WriteCartographicRadians(value));
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>CartographicDegrees</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumValuePropertyWriter<IEnumerable<Cartographic>> AsCartographicDegrees()
+        {
+            return m_asCartographicDegrees.Value;
+        }
+
+        private ICesiumValuePropertyWriter<IEnumerable<Cartographic>> CreateCartographicDegreesAdaptor()
+        {
+            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<Cartographic>>(
+                this, (me, value) => me.WriteCartographicDegrees(value));
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>References</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumValuePropertyWriter<IEnumerable<string>> AsReferences()
+        {
+            return m_asReferences.Value;
+        }
+
+        private ICesiumValuePropertyWriter<IEnumerable<string>> CreateReferencesAdaptor()
+        {
+            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<string>>(
+                this, (me, value) => me.WriteReferences(value));
         }
 
     }

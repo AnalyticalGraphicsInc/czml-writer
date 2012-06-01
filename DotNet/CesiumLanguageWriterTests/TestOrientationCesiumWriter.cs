@@ -50,7 +50,7 @@ namespace CesiumLanguageWriterTests
                         using (PositionCesiumWriter interval = intervalList.OpenInterval())
                         {
                             interval.WriteInterval(new TimeInterval(date, date.AddDays(1.0)));
-                            interval.WriteValue(new Cartesian(1.0, 2.0, 3.0));
+                            interval.WriteCartesian(new Cartesian(1.0, 2.0, 3.0));
                         }
 
                         using (PositionCesiumWriter interval = intervalList.OpenInterval(date.AddDays(1.0), date.AddDays(2.0)))
@@ -77,7 +77,7 @@ namespace CesiumLanguageWriterTests
                         {
                             interval.WriteAxes("MyMadeUpAxes");
                             interval.WriteInterval(new TimeInterval(date, date.AddDays(1.0)));
-                            interval.WriteValue(new UnitQuaternion(1, 0, 0, 0));
+                            interval.WriteUnitQuaternion(new UnitQuaternion(1, 0, 0, 0));
                         }
                         using (OrientationCesiumWriter interval = intervalList.OpenInterval())
                         {
@@ -96,7 +96,7 @@ namespace CesiumLanguageWriterTests
                             dates.Add(date.AddDays(2.0));
                             orientations.Add(new UnitQuaternion(0.0, 0.0, 1.0, 0.0));
 
-                            interval.WriteValue(dates, orientations);
+                            interval.WriteUnitQuaternion(dates, orientations);
                         }
                     }
 

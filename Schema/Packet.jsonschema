@@ -60,6 +60,10 @@
         "pyramid": {
             "$ref": "Pyramid.jsonschema",
             "description": "A pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit."
+        },
+        "camera": {
+            "$ref": "Camera.jsonschema",
+            "description": "A camera."
         }
     }
 }

@@ -67,7 +67,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenImageProperty())
             {
-                writer.WriteValue(url);
+                writer.WriteImage(url);
             }
         }
 
@@ -79,7 +79,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenImageProperty())
             {
-                writer.WriteValue(image);
+                writer.WriteImage(image);
             }
         }
 

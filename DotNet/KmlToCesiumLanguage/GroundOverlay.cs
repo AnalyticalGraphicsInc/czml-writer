@@ -72,7 +72,7 @@ namespace KmlToCesiumLanguage
                     {
                         using (var visibility = polygon.OpenShowProperty())
                         {
-                            visibility.WriteValue(Convert.ToBoolean(int.Parse(visibilityElement.Value)));
+                            visibility.WriteBoolean(Convert.ToBoolean(int.Parse(visibilityElement.Value)));
                         }
                     }
                     XElement iconElement = m_element.Element(m_document.Namespace + "Icon");

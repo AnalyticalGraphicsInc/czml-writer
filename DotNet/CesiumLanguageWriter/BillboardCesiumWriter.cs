@@ -116,7 +116,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenColorProperty())
             {
-                writer.WriteValue(color);
+                writer.WriteRgba(color);
             }
         }
 
@@ -131,7 +131,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenColorProperty())
             {
-                writer.WriteValue(red, green, blue, alpha);
+                writer.WriteRgba(red, green, blue, alpha);
             }
         }
 
@@ -146,7 +146,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenColorProperty())
             {
-                writer.WriteValue(dates, colors, startIndex, length);
+                writer.WriteRgba(dates, colors, startIndex, length);
             }
         }
 
@@ -190,7 +190,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenEyeOffsetProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteCartesian(value);
             }
         }
 
@@ -203,7 +203,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenEyeOffsetProperty())
             {
-                writer.WriteValue(dates, values);
+                writer.WriteCartesian(dates, values);
             }
         }
 
@@ -218,7 +218,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenEyeOffsetProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteCartesian(dates, values, startIndex, length);
             }
         }
 
@@ -247,7 +247,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenHorizontalOriginProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteHorizontalOrigin(value);
             }
         }
 
@@ -276,7 +276,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenImageProperty())
             {
-                writer.WriteValue(url);
+                writer.WriteImage(url);
             }
         }
 
@@ -288,7 +288,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenImageProperty())
             {
-                writer.WriteValue(image);
+                writer.WriteImage(image);
             }
         }
 
@@ -317,7 +317,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenPixelOffsetProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteCartesian2(value);
             }
         }
 
@@ -330,7 +330,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenPixelOffsetProperty())
             {
-                writer.WriteValue(x, y);
+                writer.WriteCartesian2(x, y);
             }
         }
 
@@ -343,7 +343,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenPixelOffsetProperty())
             {
-                writer.WriteValue(dates, values);
+                writer.WriteCartesian2(dates, values);
             }
         }
 
@@ -358,7 +358,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenPixelOffsetProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteCartesian2(dates, values, startIndex, length);
             }
         }
 
@@ -387,7 +387,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenRotationProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteNumber(value);
             }
         }
 
@@ -402,7 +402,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenRotationProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 
@@ -431,7 +431,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenScaleProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteNumber(value);
             }
         }
 
@@ -446,7 +446,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenScaleProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 
@@ -475,7 +475,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenShowProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteBoolean(value);
             }
         }
 
@@ -504,7 +504,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenVerticalOriginProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteVerticalOrigin(value);
             }
         }
 

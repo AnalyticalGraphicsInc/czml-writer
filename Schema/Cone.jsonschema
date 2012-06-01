@@ -24,7 +24,7 @@
             "$ref": "Double.jsonschema",
             "description": "The minimum clock angle limit of the cone."
         },
-        "minimumClockAngle": {
+        "maximumClockAngle": {
             "$ref": "Double.jsonschema",
             "description": "The maximum clock angle limit of the cone."
         },

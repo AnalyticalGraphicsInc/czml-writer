@@ -1,6 +1,13 @@
 {
     "title": "LabelStyle",
-    "description": "TODO",
-    "type": ["array", "object"],
-    "items": { "$ref": "#" }
+    "description": "The style of a label.",
+    "type": ["array", "object", "string"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "labelStyle": {
+            "$ref": "LabelStyleValue.jsonschema",
+            "description": "The label style.  Valid values are \"FILL\", \"OUTLINE\", and \"FILL_AND_OUTLINE\".",
+            "czmlValue": true
+        }
+    }
 }

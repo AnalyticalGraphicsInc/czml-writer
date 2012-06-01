@@ -1,37 +1,49 @@
-﻿using System.Collections.Generic;
-#if StkComponents
-using AGI.Foundation.Cesium.Advanced;
-using AGI.Foundation.Coordinates;
-#else
-using CesiumLanguageWriter.Advanced;
-#endif
+// This file was generated automatically by GenerateFromSchema.  Do NOT edit it.
+// https://github.com/AnalyticalGraphicsInc/czml-writer
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
+using CesiumLanguageWriter.Advanced;
+using System;
+using System.Collections.Generic;
+
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
-    /// A <see cref="CesiumPropertyWriter{T}"/> used to write the unitspherical coordinates property that
-    /// optionally has different values over different intervals of time.  Instances of this class generally should not
-    /// be constructed directly, but should instead be obtained from a <see cref="CesiumPropertyWriter{T}"/>.
+    /// Writes a <code>DirectionList</code> to a <see cref="CesiumOutputStream" />.  A <code>DirectionList</code> a list of directions.
     /// </summary>
-    public class DirectionListCesiumWriter : CesiumValuePropertyWriter<IEnumerable<UnitSpherical>, DirectionListCesiumWriter>
+    public class DirectionListCesiumWriter : CesiumPropertyWriter<DirectionListCesiumWriter>
     {
+        /// <summary>
+        /// The name of the <code>unitSpherical</code> property.
+        /// </summary>
+        public const string UnitSphericalPropertyName = "unitSpherical";
+
+        /// <summary>
+        /// The name of the <code>unitCartesian</code> property.
+        /// </summary>
+        public const string UnitCartesianPropertyName = "unitCartesian";
+
+        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>> m_asUnitSpherical;
+        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>> m_asUnitCartesian;
+
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        /// <param name="propertyName">The name of the property.</param>
         public DirectionListCesiumWriter(string propertyName)
             : base(propertyName)
         {
+            m_asUnitSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>>(CreateUnitSphericalAdaptor, false);
+            m_asUnitCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>>(CreateUnitCartesianAdaptor, false);
         }
 
-        /// <inheritdoc />
-        private DirectionListCesiumWriter(DirectionListCesiumWriter existingInstance)
+        /// <summary>
+        /// Initializes a new instance as a copy of an existing instance.
+        /// </summary>
+        /// <param name="existingInstance">The existing instance to copy.</param> 
+        protected DirectionListCesiumWriter(DirectionListCesiumWriter existingInstance)
             : base(existingInstance)
         {
+            m_asUnitSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>>(CreateUnitSphericalAdaptor, false);
+            m_asUnitCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>>(CreateUnitCartesianAdaptor, false);
         }
 
         /// <inheritdoc />
@@ -41,40 +53,57 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as an array of <see cref="UnitSpherical"/>
+        /// Writes the <code>unitSpherical</code> property.  The <code>unitSpherical</code> property specifies the list of directions represented as a clock angle and a cone angle, both in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
         /// </summary>
-        /// <param name="coordinates">The coordinates.</param>
-        public override void WriteValue(IEnumerable<UnitSpherical> coordinates)
+        /// <param name="values">The values.</param>
+        public void WriteUnitSpherical(IEnumerable<UnitSpherical> values)
         {
+            const string PropertyName = UnitSphericalPropertyName;
             OpenIntervalIfNecessary();
-
-            Output.WritePropertyName("unitSpherical");
-            Output.WriteStartSequence();
-            foreach (var coordinate in coordinates)
-            {
-                Output.WriteValue(coordinate.Clock);
-                Output.WriteValue(coordinate.Cone);
-            }
-            Output.WriteEndSequence();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteUnitSphericalList(Output, values);
         }
 
         /// <summary>
-        /// Writes the value of the property for this interval as an array of <see cref="UnitCartesian"/>
+        /// Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`.
         /// </summary>
-        /// <param name="coordinates">The coordinates.</param>
-        public void WriteValue(IEnumerable<UnitCartesian> coordinates)
+        /// <param name="values">The values.</param>
+        public void WriteUnitCartesian(IEnumerable<UnitCartesian> values)
         {
+            const string PropertyName = UnitCartesianPropertyName;
             OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteUnitCartesian3List(Output, values);
+        }
 
-            Output.WritePropertyName("unitCartesian");
-            Output.WriteStartSequence();
-            foreach (var coordinate in coordinates)
-            {
-                Output.WriteValue(coordinate.X);
-                Output.WriteValue(coordinate.Y);
-                Output.WriteValue(coordinate.Z);
-            }
-            Output.WriteEndSequence();
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>UnitSpherical</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>> AsUnitSpherical()
+        {
+            return m_asUnitSpherical.Value;
+        }
+
+        private ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>> CreateUnitSphericalAdaptor()
+        {
+            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<UnitSpherical>>(
+                this, (me, value) => me.WriteUnitSpherical(value));
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>UnitCartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>> AsUnitCartesian()
+        {
+            return m_asUnitCartesian.Value;
+        }
+
+        private ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>> CreateUnitCartesianAdaptor()
+        {
+            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<UnitCartesian>>(
+                this, (me, value) => me.WriteUnitCartesian(value));
         }
 
     }

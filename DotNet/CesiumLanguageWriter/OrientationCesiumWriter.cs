@@ -10,7 +10,7 @@ namespace CesiumLanguageWriter
     /// <summary>
     /// Writes a <code>Orientation</code> to a <see cref="CesiumOutputStream" />.  A <code>Orientation</code> defines an orientation.  An orientation is a rotation that takes a vector expressed in the "body" axes of the object and transforms it to the set of axes identified by the `axes` property.
     /// </summary>
-    public class OrientationCesiumWriter : CesiumInterpolatableValuePropertyWriter<UnitQuaternion, OrientationCesiumWriter>
+    public class OrientationCesiumWriter : CesiumInterpolatablePropertyWriter<OrientationCesiumWriter>
     {
         /// <summary>
         /// The name of the <code>axes</code> property.
@@ -22,6 +22,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string UnitQuaternionPropertyName = "unitQuaternion";
 
+        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>> m_asUnitQuaternion;
 
         /// <summary>
         /// Initializes a new instance.
@@ -29,6 +30,7 @@ namespace CesiumLanguageWriter
         public OrientationCesiumWriter(string propertyName)
             : base(propertyName)
         {
+            m_asUnitQuaternion = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(CreateUnitQuaternionAdaptor, false);
         }
 
         /// <summary>
@@ -38,6 +40,7 @@ namespace CesiumLanguageWriter
         protected OrientationCesiumWriter(OrientationCesiumWriter existingInstance)
             : base(existingInstance)
         {
+            m_asUnitQuaternion = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(CreateUnitQuaternionAdaptor, false);
         }
 
         /// <inheritdoc />
@@ -62,7 +65,7 @@ namespace CesiumLanguageWriter
         /// Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies tODO
         /// </summary>
         /// <param name="value">The value.</param>
-        public override void WriteValue(UnitQuaternion value)
+        public void WriteUnitQuaternion(UnitQuaternion value)
         {
             const string PropertyName = UnitQuaternionPropertyName;
             OpenIntervalIfNecessary();
@@ -75,9 +78,9 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the rotation is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteValue(IList<JulianDate> dates, IList<UnitQuaternion> values)
+        public void WriteUnitQuaternion(IList<JulianDate> dates, IList<UnitQuaternion> values)
         {
-            WriteValue(dates, values, 0, dates.Count);
+            WriteUnitQuaternion(dates, values, 0, dates.Count);
         }
 
         /// <summary>
@@ -87,11 +90,26 @@ namespace CesiumLanguageWriter
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public override void WriteValue(IList<JulianDate> dates, IList<UnitQuaternion> values, int startIndex, int length)
+        public void WriteUnitQuaternion(IList<JulianDate> dates, IList<UnitQuaternion> values, int startIndex, int length)
         {
             const string PropertyName = UnitQuaternionPropertyName;
             OpenIntervalIfNecessary();
             CesiumWritingHelper.WriteUnitQuaternion(Output, PropertyName, dates, values, startIndex, length);
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>UnitQuaternion</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumInterpolatableValuePropertyWriter<UnitQuaternion> AsUnitQuaternion()
+        {
+            return m_asUnitQuaternion.Value;
+        }
+
+        private ICesiumInterpolatableValuePropertyWriter<UnitQuaternion> CreateUnitQuaternionAdaptor()
+        {
+            return new CesiumInterpolatableWriterAdaptor<OrientationCesiumWriter, UnitQuaternion>(
+                this, (me, value) => me.WriteUnitQuaternion(value), (me, dates, values, startIndex, length) => me.WriteUnitQuaternion(dates, values, startIndex, length));
         }
 
     }

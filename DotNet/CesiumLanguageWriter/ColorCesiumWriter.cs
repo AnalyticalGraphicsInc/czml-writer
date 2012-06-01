@@ -11,7 +11,7 @@ namespace CesiumLanguageWriter
     /// <summary>
     /// Writes a <code>Color</code> to a <see cref="CesiumOutputStream" />.  A <code>Color</code> defines a a color.  The color can optionally vary over time.
     /// </summary>
-    public class ColorCesiumWriter : CesiumInterpolatableValuePropertyWriter<Color, ColorCesiumWriter>
+    public class ColorCesiumWriter : CesiumInterpolatablePropertyWriter<ColorCesiumWriter>
     {
         /// <summary>
         /// The name of the <code>rgba</code> property.
@@ -23,6 +23,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string RgbafPropertyName = "rgbaf";
 
+        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Color>> m_asRgba;
 
         /// <summary>
         /// Initializes a new instance.
@@ -30,6 +31,7 @@ namespace CesiumLanguageWriter
         public ColorCesiumWriter(string propertyName)
             : base(propertyName)
         {
+            m_asRgba = new Lazy<ICesiumInterpolatableValuePropertyWriter<Color>>(CreateRgbaAdaptor, false);
         }
 
         /// <summary>
@@ -39,6 +41,7 @@ namespace CesiumLanguageWriter
         protected ColorCesiumWriter(ColorCesiumWriter existingInstance)
             : base(existingInstance)
         {
+            m_asRgba = new Lazy<ICesiumInterpolatableValuePropertyWriter<Color>>(CreateRgbaAdaptor, false);
         }
 
         /// <inheritdoc />
@@ -51,7 +54,7 @@ namespace CesiumLanguageWriter
         /// Writes the <code>rgba</code> property.  The <code>rgba</code> property specifies the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
         /// </summary>
         /// <param name="color">The color.</param>
-        public override void WriteValue(Color color)
+        public void WriteRgba(Color color)
         {
             const string PropertyName = RgbaPropertyName;
             OpenIntervalIfNecessary();
@@ -66,7 +69,7 @@ namespace CesiumLanguageWriter
         /// <param name="green">The green component in the range 0 to 255.</param>
         /// <param name="blue">The blue component in the range 0 to 255.</param>
         /// <param name="alpha">The alpha component in the range 0 to 255.</param>
-        public void WriteValue(int red, int green, int blue, int alpha)
+        public void WriteRgba(int red, int green, int blue, int alpha)
         {
             const string PropertyName = RgbaPropertyName;
             OpenIntervalIfNecessary();
@@ -81,7 +84,7 @@ namespace CesiumLanguageWriter
         /// <param name="colors">The color corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
         /// <param name="length">The number of elements to use from the `colors` collection.</param>
-        public override void WriteValue(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        public void WriteRgba(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             const string PropertyName = RgbaPropertyName;
             OpenIntervalIfNecessary();
@@ -101,6 +104,21 @@ namespace CesiumLanguageWriter
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteRgbaf(Output, red, green, blue, alpha);
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>Rgba</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumInterpolatableValuePropertyWriter<Color> AsRgba()
+        {
+            return m_asRgba.Value;
+        }
+
+        private ICesiumInterpolatableValuePropertyWriter<Color> CreateRgbaAdaptor()
+        {
+            return new CesiumInterpolatableWriterAdaptor<ColorCesiumWriter, Color>(
+                this, (me, value) => me.WriteRgba(value), (me, dates, values, startIndex, length) => me.WriteRgba(dates, values, startIndex, length));
         }
 
     }

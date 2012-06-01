@@ -1,30 +1,23 @@
-﻿using System;
-#if StkComponents
-using AGI.Foundation.Cesium.Advanced;
-#else
-using CesiumLanguageWriter.Advanced;
-#endif
+// This file was generated automatically by GenerateFromSchema.  Do NOT edit it.
+// https://github.com/AnalyticalGraphicsInc/czml-writer
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
+using CesiumLanguageWriter.Advanced;
+using System;
+
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
-    /// A <see cref="CesiumPropertyWriter{TDerived}"/> for writing camera-related properties to a
-    /// <topic name="Cesium">Cesium</topic> stream. The camera is positioned in the scene
-    /// by the <see cref="PacketCesiumWriter.OpenPositionProperty">Position</see> property.  Instances of this class should not be created
-    /// directly, but should instead be obtained from a <see cref="PacketCesiumWriter"/>.
+    /// Writes a <code>Camera</code> to a <see cref="CesiumOutputStream" />.  A <code>Camera</code> a camera.
     /// </summary>
     public class CameraCesiumWriter : CesiumPropertyWriter<CameraCesiumWriter>
     {
         /// <summary>
         /// The name of the <code>enable</code> property.
         /// </summary>
-        public static readonly string EnablePropertyName = "enable";
+        public const string EnablePropertyName = "enable";
 
         private readonly Lazy<BooleanCesiumWriter> m_enable = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(EnablePropertyName), false);
+
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
@@ -36,7 +29,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
-        /// <param name="existingInstance">The existing instance to copy.</param>
+        /// <param name="existingInstance">The existing instance to copy.</param> 
         protected CameraCesiumWriter(CameraCesiumWriter existingInstance)
             : base(existingInstance)
         {
@@ -49,9 +42,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>enable</code> property.  The returned instance must be opened by calling
-        /// the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  See the
-        /// documentation for the <see cref="OpenEnableProperty"/> method for more information.
+        /// Gets the writer for the <code>enable</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>enable</code> property defines whether or not the camera is enabled.
         /// </summary>
         public BooleanCesiumWriter EnableWriter
         {
@@ -59,9 +50,8 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens a property describing whether the camera is enabled. 
+        /// Opens and returns the writer for the <code>enable</code> property.  The <code>enable</code> property defines whether or not the camera is enabled.
         /// </summary>
-        /// <returns>The writer that is used to write color information.</returns>
         public BooleanCesiumWriter OpenEnableProperty()
         {
             OpenIntervalIfNecessary();
@@ -69,16 +59,16 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a constant value for the <code>enable</code> property.
-        /// See the documentation for the <see cref="OpenEnableProperty"/> method for more information.
+        /// Writes a value for the <code>enable</code> property as a <code>boolean</code> value.  The <code>enable</code> property specifies whether or not the camera is enabled.
         /// </summary>
-        /// <param name="value">The value of the property.</param>
+        /// <param name="value">The value.</param>
         public void WriteEnableProperty(bool value)
         {
             using (var writer = OpenEnableProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteBoolean(value);
             }
         }
+
     }
 }

@@ -1,0 +1,5 @@
+{
+    "title": "UnitSpherical",
+    "description": "A direction specified as a spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
+    "type": "array"
+}

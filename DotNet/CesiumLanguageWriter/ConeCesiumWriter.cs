@@ -39,6 +39,11 @@ namespace CesiumLanguageWriter
         public const string MinimumClockAnglePropertyName = "minimumClockAngle";
 
         /// <summary>
+        /// The name of the <code>maximumClockAngle</code> property.
+        /// </summary>
+        public const string MaximumClockAnglePropertyName = "maximumClockAngle";
+
+        /// <summary>
         /// The name of the <code>showIntersection</code> property.
         /// </summary>
         public const string ShowIntersectionPropertyName = "showIntersection";
@@ -78,6 +83,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<DoubleCesiumWriter> m_outerHalfAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OuterHalfAnglePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RadiusPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_minimumClockAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MinimumClockAnglePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_maximumClockAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MaximumClockAnglePropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_showIntersection = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowIntersectionPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_intersectionColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(IntersectionColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_erosion = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ErosionPropertyName), false);
@@ -134,7 +140,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenShowProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteBoolean(value);
             }
         }
 
@@ -163,7 +169,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenInnerHalfAngleProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteNumber(value);
             }
         }
 
@@ -178,7 +184,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenInnerHalfAngleProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 
@@ -207,7 +213,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenOuterHalfAngleProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteNumber(value);
             }
         }
 
@@ -222,7 +228,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenOuterHalfAngleProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 
@@ -251,7 +257,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenRadiusProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteNumber(value);
             }
         }
 
@@ -266,12 +272,12 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenRadiusProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 
         /// <summary>
-        /// Gets the writer for the <code>minimumClockAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>minimumClockAngle</code> property defines the maximum clock angle limit of the cone.
+        /// Gets the writer for the <code>minimumClockAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>minimumClockAngle</code> property defines the minimum clock angle limit of the cone.
         /// </summary>
         public DoubleCesiumWriter MinimumClockAngleWriter
         {
@@ -279,7 +285,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>minimumClockAngle</code> property.  The <code>minimumClockAngle</code> property defines the maximum clock angle limit of the cone.
+        /// Opens and returns the writer for the <code>minimumClockAngle</code> property.  The <code>minimumClockAngle</code> property defines the minimum clock angle limit of the cone.
         /// </summary>
         public DoubleCesiumWriter OpenMinimumClockAngleProperty()
         {
@@ -288,19 +294,19 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>number</code> value.  The <code>minimumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>number</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteMinimumClockAngleProperty(double value)
         {
             using (var writer = OpenMinimumClockAngleProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteNumber(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>number</code> value.  The <code>minimumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>number</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -310,7 +316,51 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenMinimumClockAngleProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>maximumClockAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>maximumClockAngle</code> property defines the maximum clock angle limit of the cone.
+        /// </summary>
+        public DoubleCesiumWriter MaximumClockAngleWriter
+        {
+            get { return m_maximumClockAngle.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>maximumClockAngle</code> property.  The <code>maximumClockAngle</code> property defines the maximum clock angle limit of the cone.
+        /// </summary>
+        public DoubleCesiumWriter OpenMaximumClockAngleProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(MaximumClockAngleWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>number</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteMaximumClockAngleProperty(double value)
+        {
+            using (var writer = OpenMaximumClockAngleProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>number</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteMaximumClockAngleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenMaximumClockAngleProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 
@@ -339,7 +389,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenShowIntersectionProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteBoolean(value);
             }
         }
 
@@ -368,7 +418,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenIntersectionColorProperty())
             {
-                writer.WriteValue(color);
+                writer.WriteRgba(color);
             }
         }
 
@@ -383,7 +433,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenIntersectionColorProperty())
             {
-                writer.WriteValue(red, green, blue, alpha);
+                writer.WriteRgba(red, green, blue, alpha);
             }
         }
 
@@ -398,7 +448,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenIntersectionColorProperty())
             {
-                writer.WriteValue(dates, colors, startIndex, length);
+                writer.WriteRgba(dates, colors, startIndex, length);
             }
         }
 
@@ -442,7 +492,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenErosionProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteNumber(value);
             }
         }
 
@@ -457,7 +507,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenErosionProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 

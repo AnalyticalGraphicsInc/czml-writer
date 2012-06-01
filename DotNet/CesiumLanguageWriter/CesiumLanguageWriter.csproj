@@ -45,12 +45,13 @@
   <ItemGroup>
     <Compile Include="Advanced\CesiumElementWriter.cs" />
     <Compile Include="Advanced\CesiumFormattingHelper.cs" />
-    <Compile Include="Advanced\CesiumInterpolatableValuePropertyWriter.cs" />
+    <Compile Include="Advanced\CesiumInterpolatablePropertyWriter.cs" />
+    <Compile Include="Advanced\CesiumInterpolatableWriterAdaptor.cs" />
     <Compile Include="Advanced\CesiumPropertyWriter.cs" />
-    <Compile Include="Advanced\CesiumValuePropertyWriter.cs" />
     <Compile Include="Advanced\CesiumWriterAdaptor.cs" />
     <Compile Include="Advanced\ICesiumElementWriter.cs" />
     <Compile Include="Advanced\ICesiumInterpolatableValuePropertyWriter.cs" />
+    <Compile Include="Advanced\ICesiumInterpolationInformationWriter.cs" />
     <Compile Include="Advanced\ICesiumIntervalListWriter.cs" />
     <Compile Include="Advanced\ICesiumPropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumValuePropertyWriter.cs" />
@@ -60,7 +61,6 @@
     <Compile Include="Attributes\CSToJavaImmutableValueType.cs" />
     <Compile Include="Attributes\CSToJavaRenameAttribute.cs" />
     <Compile Include="BillboardCesiumWriter.cs" />
-    <Compile Include="BlobMaterialCesiumWriter.cs" />
     <Compile Include="BooleanCesiumWriter.cs" />
     <Compile Include="CameraCesiumWriter.cs" />
     <Compile Include="Cartesian.cs" />
@@ -74,23 +74,19 @@
     <Compile Include="CesiumStreamWriter.cs" />
     <Compile Include="CesiumVerticalOrigin.cs" />
     <Compile Include="CesiumWritingHelper.cs" />
-    <Compile Include="CheckerboardMaterialCesiumWriter.cs" />
     <Compile Include="ColorCesiumWriter.cs" />
     <Compile Include="ConeCesiumWriter.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CustomCesiumWriter.cs" />
     <Compile Include="DirectionListCesiumWriter.cs" />
-    <Compile Include="DotMaterialCesiumWriter.cs" />
     <Compile Include="DoubleCesiumWriter.cs" />
     <Compile Include="EyeOffsetCesiumWriter.cs" />
-    <Compile Include="FacetMaterialCesiumWriter.cs" />
     <Compile Include="FontCesiumWriter.cs" />
     <Compile Include="grisu\DiyFp.cs" />
     <Compile Include="grisu\Grisu.cs" />
     <Compile Include="grisu\GrisuDouble.cs" />
     <Compile Include="grisu\PowersOfTenCache.cs" />
     <Compile Include="HorizontalOriginCesiumWriter.cs" />
-    <Compile Include="HorizontalStripeMaterialCesiumWriter.cs" />
     <Compile Include="ImageCesiumWriter.cs" />
     <Compile Include="ImageMaterialCesiumWriter.cs" />
     <Compile Include="Iso8601Format.cs" />
@@ -122,7 +118,6 @@
     <Compile Include="Rectangular.cs" />
     <Compile Include="SolidColorMaterialCesiumWriter.cs" />
     <Compile Include="StringCesiumWriter.cs" />
-    <Compile Include="TieDyeMaterialCesiumWriter.cs" />
     <Compile Include="TimeConstants.cs" />
     <Compile Include="TimeInterval.cs" />
     <Compile Include="TimeStandard.cs" />
@@ -130,7 +125,6 @@
     <Compile Include="UnitQuaternion.cs" />
     <Compile Include="UnitSpherical.cs" />
     <Compile Include="VerticalOriginCesiumWriter.cs" />
-    <Compile Include="VerticalStripeMaterialCesiumWriter.cs" />
     <Compile Include="YearMonthDay.cs" />
   </ItemGroup>
   <ItemGroup>

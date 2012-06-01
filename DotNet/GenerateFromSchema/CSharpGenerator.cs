@@ -54,20 +54,11 @@ namespace GenerateFromSchema
 
                 WriteDescriptionAsClassSummary(writer, schema);
 
-                string defaultValueType = GetDefaultValueType(schema);
-
-                if (defaultValueType != null)
-                {
-                    bool isInterpolatable = schema.Extends != null && schema.Extends.Name == "InterpolatableProperty";
-                    if (isInterpolatable)
-                        writer.WriteLine("public class {0}CesiumWriter : CesiumInterpolatableValuePropertyWriter<{1}, {0}CesiumWriter>", schema.NameWithPascalCase, defaultValueType);
-                    else
-                        writer.WriteLine("public class {0}CesiumWriter : CesiumValuePropertyWriter<{1}, {0}CesiumWriter>", schema.NameWithPascalCase, defaultValueType);
-                }
+                bool isInterpolatable = schema.Extends != null && schema.Extends.Name == "InterpolatableProperty";
+                if (isInterpolatable)
+                    writer.WriteLine("public class {0}CesiumWriter : CesiumInterpolatablePropertyWriter<{0}CesiumWriter>", schema.NameWithPascalCase);
                 else
-                {
                     writer.WriteLine("public class {0}CesiumWriter : CesiumPropertyWriter<{0}CesiumWriter>", schema.NameWithPascalCase);
-                }
 
                 writer.OpenScope();
 
@@ -75,6 +66,7 @@ namespace GenerateFromSchema
                 WritePropertyLazyFields(writer, schema);
                 WriteConstructorsAndCloneMethod(writer, schema);
                 WriteProperties(writer, schema);
+                WriteAsTypeMethods(writer, schema);
 
                 writer.CloseScope();
 
@@ -201,13 +193,30 @@ namespace GenerateFromSchema
 
             foreach (Property property in schema.Properties)
             {
-                if (!PropertyValueIsIntervals(property))
-                    continue;
+                if (PropertyValueIsIntervals(property))
+                {
+                    writer.WriteLine("private readonly Lazy<{0}CesiumWriter> m_{1} = new Lazy<{0}CesiumWriter>(() => new {0}CesiumWriter({2}PropertyName), false);",
+                        property.ValueType.NameWithPascalCase,
+                        property.Name,
+                        property.NameWithPascalCase);
+                }
+                else if (property.IsValue)
+                {
+                    // Does this property have an overload to write sampled data?
+                    // If so, it's interpolatable.
+                    OverloadInfo[] overloads = GetOverloadsForProperty(property);
+                    if (overloads[0].Parameters.Length == 1)
+                    {
+                        string interfaceName = "ICesiumValuePropertyWriter";
+                        if (FindSampledDataOverload(overloads) != null)
+                            interfaceName = "ICesiumInterpolatableValuePropertyWriter";
 
-                writer.WriteLine("private readonly Lazy<{0}CesiumWriter> m_{1} = new Lazy<{0}CesiumWriter>(() => new {0}CesiumWriter({2}PropertyName), false);",
-                    property.ValueType.NameWithPascalCase,
-                    property.Name,
-                    property.NameWithPascalCase);
+                        writer.WriteLine("private readonly Lazy<{0}<{1}>> m_as{2};",
+                            interfaceName,
+                            overloads[0].Parameters[0].Type,
+                            property.NameWithPascalCase);
+                    }
+                }
             }
 
             writer.WriteLine();
@@ -308,7 +317,7 @@ namespace GenerateFromSchema
 
                         writer.WriteLine("using (var writer = Open{0}Property())", property.NameWithPascalCase);
                         writer.OpenScope();
-                        writer.WriteLine("writer.Write{0}({1});", isFirstValueProperty ? "Value" : nestedProperty.NameWithPascalCase, string.Join(", ", Array.ConvertAll(overload.Parameters, p => p.Name)));
+                        writer.WriteLine("writer.Write{0}({1});", nestedProperty.NameWithPascalCase, string.Join(", ", Array.ConvertAll(overload.Parameters, p => p.Name)));
                         writer.CloseScope();
 
                         writer.CloseScope();
@@ -334,30 +343,11 @@ namespace GenerateFromSchema
                     WriteParameterText(writer, parameter.Name, parameter.Description);
                 }
 
-                // If this is the override of the base class WriteValue, add the modifier.
-                string modifier = "";
-                if (isFirstValueProperty)
-                {
-                    if (overload.Parameters.Length == 1 && overload.Parameters[0].Type == GetDefaultValueType(schema))
-                        modifier = "override ";
-                    else if (overload.Parameters.Length == 4)
-                    {
-                        string defaultValueType = GetDefaultValueType(schema);
-                        if (overload.Parameters[0].Type == "IList<JulianDate>" &&
-                            overload.Parameters[1].Type == "IList<" + defaultValueType + ">" &&
-                            overload.Parameters[2].Type == "int" &&
-                            overload.Parameters[3].Type == "int")
-                        {
-                            modifier = "override ";
-                        }
-                    }
-                }
-
-                writer.WriteLine("public {0}void Write{1}({2})", modifier, isFirstValueProperty ? "Value" : property.NameWithPascalCase, overload.FormattedParameters);
+                writer.WriteLine("public void Write{0}({1})", property.NameWithPascalCase, overload.FormattedParameters);
                 writer.OpenScope();
                 if (overload.CallOverload != null)
                 {
-                    writer.WriteLine("Write{0}({1});", isFirstValueProperty ? "Value" : property.NameWithPascalCase, overload.CallOverload);
+                    writer.WriteLine("Write{0}({1});", property.NameWithPascalCase, overload.CallOverload);
                 }
                 else
                 {
@@ -405,6 +395,7 @@ namespace GenerateFromSchema
             writer.WriteLine("public {0}CesiumWriter(string propertyName)", schema.NameWithPascalCase);
             writer.WriteLine("    : base(propertyName)");
             writer.OpenScope();
+            WriteAsTypeLazyInitialization(writer, schema);
             writer.CloseScope();
             writer.WriteLine();
 
@@ -413,6 +404,7 @@ namespace GenerateFromSchema
             writer.WriteLine("protected {0}CesiumWriter({0}CesiumWriter existingInstance)", schema.NameWithPascalCase);
             writer.WriteLine("    : base(existingInstance)");
             writer.OpenScope();
+            WriteAsTypeLazyInitialization(writer, schema);
             writer.CloseScope();
             writer.WriteLine();
 
@@ -422,6 +414,97 @@ namespace GenerateFromSchema
             writer.WriteLine("return new {0}CesiumWriter(this);", schema.NameWithPascalCase);
             writer.CloseScope();
             writer.WriteLine();
+        }
+
+        private void WriteAsTypeLazyInitialization(CodeWriter writer, Schema schema)
+        {
+            if (schema.Properties == null)
+                return;
+
+            foreach (Property property in schema.Properties)
+            {
+                if (!property.IsValue)
+                    continue;
+                if (PropertyValueIsIntervals(property))
+                    continue;
+
+                OverloadInfo[] overloads = GetOverloadsForProperty(property);
+                if (overloads[0].Parameters.Length != 1)
+                    continue;
+
+                OverloadInfo sampleOverload = FindSampledDataOverload(overloads);
+
+                string interfaceName = "ICesiumValuePropertyWriter";
+                if (sampleOverload != null)
+                    interfaceName = "ICesiumInterpolatableValuePropertyWriter";
+
+                writer.WriteLine("m_as{0} = new Lazy<{1}<{2}>>(Create{0}Adaptor, false);",
+                    property.NameWithPascalCase,
+                    interfaceName,
+                    overloads[0].Parameters[0].Type);
+            }
+        }
+
+        private void WriteAsTypeMethods(CodeWriter writer, Schema schema)
+        {
+            if (schema.Properties == null)
+                return;
+
+            foreach (Property property in schema.Properties)
+            {
+                if (!property.IsValue)
+                    continue;
+                if (PropertyValueIsIntervals(property))
+                    continue;
+
+                OverloadInfo[] overloads = GetOverloadsForProperty(property);
+
+                if (overloads[0].Parameters.Length != 1)
+                    continue;
+
+                OverloadInfo sampleOverload = FindSampledDataOverload(overloads);
+
+                string interfaceName = "ICesiumValuePropertyWriter";
+                if (sampleOverload != null)
+                    interfaceName = "ICesiumInterpolatableValuePropertyWriter";
+
+                WriteSummaryText(writer, string.Format("Returns a wrapper for this instance that implements <see cref=\"{0}{{T}}\" /> to write a value in <code>{1}</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref=\"ICesiumElementWriter.Close\" /> on either this instance or the wrapper, but you must not call it on both.", interfaceName, property.NameWithPascalCase));
+                writer.WriteLine("/// <returns>The wrapper.</returns>");
+                writer.WriteLine("public {0}<{1}> As{2}()",
+                    interfaceName,
+                    overloads[0].Parameters[0].Type,
+                    property.NameWithPascalCase);
+                writer.OpenScope();
+                writer.WriteLine("return m_as{0}.Value;", property.NameWithPascalCase);
+                writer.CloseScope();
+                writer.WriteLine();
+
+                string adaptorName = "CesiumWriterAdaptor";
+                if (sampleOverload != null)
+                    adaptorName = "CesiumInterpolatableWriterAdaptor";
+
+                writer.WriteLine("private {0}<{1}> Create{2}Adaptor()",
+                    interfaceName,
+                    overloads[0].Parameters[0].Type,
+                    property.NameWithPascalCase);
+                writer.OpenScope();
+                writer.WriteLine("return new {0}<{1}CesiumWriter, {2}>(",
+                    adaptorName,
+                    schema.Name,
+                    overloads[0].Parameters[0].Type);
+                if (sampleOverload != null)
+                {
+                    writer.WriteLine("    this, (me, value) => me.Write{0}(value), (me, dates, values, startIndex, length) => me.Write{0}(dates, values, startIndex, length));",
+                        property.NameWithPascalCase);
+                }
+                else
+                {
+                    writer.WriteLine("    this, (me, value) => me.Write{0}(value));",
+                        property.NameWithPascalCase);
+                }
+                writer.CloseScope();
+                writer.WriteLine();
+            }
         }
 
         private OverloadInfo[] GetOverloadsForProperty(Property property)
@@ -480,6 +563,20 @@ namespace GenerateFromSchema
             }
 
             return null;
+        }
+
+        private OverloadInfo FindSampledDataOverload(OverloadInfo[] overloads)
+        {
+            return Array.Find(overloads, IsSampledDataOverload);
+        }
+
+        private bool IsSampledDataOverload(OverloadInfo overload)
+        {
+            return overload.Parameters.Length == 4 &&
+                   overload.Parameters[0].Type == "IList<JulianDate>" &&
+                   overload.Parameters[1].Type.StartsWith("IList<") &&
+                   overload.Parameters[2].Type == "int" &&
+                   overload.Parameters[3].Type == "int";
         }
 
         // All the "= null" nonsense is to avoid warnings from Visual Studio, which isn't aware of

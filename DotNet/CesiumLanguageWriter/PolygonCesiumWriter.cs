@@ -72,7 +72,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenShowProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteBoolean(value);
             }
         }
 

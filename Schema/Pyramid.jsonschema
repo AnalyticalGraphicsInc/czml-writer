@@ -1,6 +1,36 @@
 {
     "title": "Pyramid",
-    "description": "TODO",
+    "description": "A pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit.",
     "type": ["array", "object"],
-    "items": { "$ref": "#" }
+    "items": { "$ref": "#" },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the pyramid is shown."
+        },
+        "directions": {
+            "$ref": "DirectionList.jsonschema",
+            "description": "The list of directions defining the pyramid."
+        },
+        "radius": {
+            "$ref": "Double.jsonschema",
+            "description": "The radial limit of the pyramid."
+        },
+        "showIntersection": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the intersection of the pyramid with the Earth is shown."
+        },
+        "intersectionColor": {
+            "$ref": "Color.jsonschema",
+            "description": "The color of the intersection of the pyramid with the Earth."
+        },
+        "erosion": {
+            "$ref": "Double.jsonschema",
+            "description": "The erosion of the pyramid."
+        },
+        "material": {
+            "$ref": "Material.jsonschema",
+            "description": "The material to display on the surface of the pyramid."
+        }
+    }
 }

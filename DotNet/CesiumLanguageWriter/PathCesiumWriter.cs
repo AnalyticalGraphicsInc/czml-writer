@@ -104,7 +104,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenShowProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteBoolean(value);
             }
         }
 
@@ -133,7 +133,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenColorProperty())
             {
-                writer.WriteValue(color);
+                writer.WriteRgba(color);
             }
         }
 
@@ -148,7 +148,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenColorProperty())
             {
-                writer.WriteValue(red, green, blue, alpha);
+                writer.WriteRgba(red, green, blue, alpha);
             }
         }
 
@@ -163,7 +163,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenColorProperty())
             {
-                writer.WriteValue(dates, colors, startIndex, length);
+                writer.WriteRgba(dates, colors, startIndex, length);
             }
         }
 
@@ -207,7 +207,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenWidthProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteNumber(value);
             }
         }
 
@@ -222,7 +222,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenWidthProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 
@@ -251,7 +251,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenOutlineColorProperty())
             {
-                writer.WriteValue(color);
+                writer.WriteRgba(color);
             }
         }
 
@@ -266,7 +266,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenOutlineColorProperty())
             {
-                writer.WriteValue(red, green, blue, alpha);
+                writer.WriteRgba(red, green, blue, alpha);
             }
         }
 
@@ -281,7 +281,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenOutlineColorProperty())
             {
-                writer.WriteValue(dates, colors, startIndex, length);
+                writer.WriteRgba(dates, colors, startIndex, length);
             }
         }
 
@@ -325,7 +325,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenOutlineWidthProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteNumber(value);
             }
         }
 
@@ -340,7 +340,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenOutlineWidthProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 
@@ -369,7 +369,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenLeadTimeProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteNumber(value);
             }
         }
 
@@ -384,7 +384,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenLeadTimeProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 
@@ -413,7 +413,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenTrailTimeProperty())
             {
-                writer.WriteValue(value);
+                writer.WriteNumber(value);
             }
         }
 
@@ -428,7 +428,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenTrailTimeProperty())
             {
-                writer.WriteValue(dates, values, startIndex, length);
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 

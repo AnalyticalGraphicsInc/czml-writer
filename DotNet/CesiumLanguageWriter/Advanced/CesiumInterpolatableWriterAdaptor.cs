@@ -1,15 +1,7 @@
 ﻿using System;
-#if StkComponents
-using AGI.Foundation.Cesium;
-using AGI.Foundation.Cesium.Advanced;
-using AGI.Foundation.Time;
-#endif
+using System.Collections.Generic;
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
 namespace CesiumLanguageWriter.Advanced
-#endif
 {
     /// <summary>
     /// A callback to write a value to a <see cref="CesiumOutputStream"/> using a given
@@ -18,39 +10,50 @@ namespace CesiumLanguageWriter.Advanced
     /// <typeparam name="TWrappedWriter">The type of the wrapped writer.</typeparam>
     /// <typeparam name="TValue">The type of the value to write.</typeparam>
     /// <param name="wrappedWriter">The wrapper writer.</param>
-    /// <param name="value">The value.</param>
-    public delegate void CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue>(TWrappedWriter wrappedWriter, TValue value);
+    /// <param name="dates">The dates at which samples are provided.</param>
+    /// <param name="values">The sampled value corresponding to each date.</param>
+    /// <param name="startIndex">The index of the first sample to write.</param>
+    /// <param name="length">The number of samples to write.</param>
+    public delegate void CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue>(TWrappedWriter wrappedWriter, IList<JulianDate> dates, IList<TValue> values, int startIndex, int length);
 
     /// <summary>
-    /// Adapts a class derived from <see cref="CesiumPropertyWriter{TValue,TDerived}"/> to implement
+    /// Adapts a class derived from <see cref="CesiumInterpolatablePropertyWriter{TValue,TDerived}"/> to implement
     /// <see cref="ICesiumValuePropertyWriter{TValue}"/> for a different type of value.  Typically, the
     /// class has a method to write values of the new type, but that method is not exposed via an interface.
     /// This class adapts the method to the interface via a callback delegate.
     /// </summary>
-    /// <typeparam name="TFrom">The class derived from <see cref="CesiumPropertyWriter{TValue,TDerived}"/> to adapt.</typeparam>
+    /// <typeparam name="TFrom">The class derived from <see cref="CesiumInterpolatablePropertyWriter{TValue,TDerived}"/> to adapt.</typeparam>
     /// <typeparam name="TValue">The type of value to which to adapt the class to write.</typeparam>
-    public class CesiumWriterAdaptor<TFrom, TValue> : ICesiumValuePropertyWriter<TValue>
-        where TFrom: ICesiumPropertyWriter
+    public class CesiumInterpolatableWriterAdaptor<TFrom, TValue> : ICesiumValuePropertyWriter<TValue>, ICesiumInterpolatableValuePropertyWriter<TValue>
+        where TFrom : ICesiumPropertyWriter, ICesiumInterpolationInformationWriter
     {
         private readonly TFrom m_parent;
         private readonly CesiumWriterAdaptorWriteCallback<TFrom, TValue> m_writeValueCallback;
-        private readonly Lazy<CesiumWriterAdaptor<TFrom, TValue>> m_interval;
+        private readonly CesiumWriterAdaptorWriteSamplesCallback<TFrom, TValue> m_writeSamplesCallback;
+        private readonly Lazy<CesiumInterpolatableWriterAdaptor<TFrom, TValue>> m_interval;
 
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
         /// <param name="parent">The instance to wrap.</param>
-        /// <param name="writeValueCallback">The callback to write values of type <typeparamref name="TValue"/>.</param>
-        public CesiumWriterAdaptor(TFrom parent, CesiumWriterAdaptorWriteCallback<TFrom, TValue> writeValueCallback)
+        /// <param name="writeValueCallback">The callback to write a value of type <typeparamref name="TValue"/>.</param>
+        /// <param name="writeSamplesCallback">The callback to write samples of type <typeparamref name="TValue"/>.</param>
+        public CesiumInterpolatableWriterAdaptor(
+            TFrom parent,
+            CesiumWriterAdaptorWriteCallback<TFrom, TValue> writeValueCallback,
+            CesiumWriterAdaptorWriteSamplesCallback<TFrom, TValue> writeSamplesCallback)
         {
             if (parent == null)
                 throw new ArgumentNullException("parent");
             if (writeValueCallback == null)
                 throw new ArgumentNullException("writeValueCallback");
+            if (writeSamplesCallback == null)
+                throw new ArgumentNullException("writeSamplesCallback");
 
             m_parent = parent;
             m_writeValueCallback = writeValueCallback;
-            m_interval = new Lazy<CesiumWriterAdaptor<TFrom, TValue>>(() => new CesiumWriterAdaptor<TFrom, TValue>((TFrom)m_parent.IntervalWriter, m_writeValueCallback), false);
+            m_writeSamplesCallback = writeSamplesCallback;
+            m_interval = new Lazy<CesiumInterpolatableWriterAdaptor<TFrom, TValue>>(() => new CesiumInterpolatableWriterAdaptor<TFrom, TValue>((TFrom)m_parent.IntervalWriter, m_writeValueCallback, m_writeSamplesCallback), false);
         }
 
         /// <inheritdoc />
@@ -63,6 +66,24 @@ namespace CesiumLanguageWriter.Advanced
         public void WriteValue(TValue value)
         {
             m_writeValueCallback(m_parent, value);
+        }
+
+        /// <inheritdoc />
+        public void WriteValue(IList<JulianDate> dates, IList<TValue> values, int startIndex, int length)
+        {
+            m_writeSamplesCallback(m_parent, dates, values, startIndex, length);
+        }
+
+        /// <inheritdoc />
+        public void WriteInterpolationAlgorithm(CesiumInterpolationAlgorithm interpolationAlgorithm)
+        {
+            m_parent.WriteInterpolationAlgorithm(interpolationAlgorithm);
+        }
+
+        /// <inheritdoc />
+        public void WriteInterpolationDegree(int degree)
+        {
+            m_parent.WriteInterpolationDegree(degree);
         }
 
         /// <inheritdoc />

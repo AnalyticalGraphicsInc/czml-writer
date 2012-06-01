@@ -8,7 +8,7 @@ namespace CesiumLanguageWriter
     /// <summary>
     /// Contains helper methods for writing CZML values.
     /// </summary>
-    public static class CesiumWritingHelper
+    internal static class CesiumWritingHelper
     {
         /// <summary>
         /// Writes a <see cref="TimeInterval"/> as an ISO 8601 interval string.
@@ -396,6 +396,39 @@ namespace CesiumLanguageWriter
             {
                 output.WriteValue(reference);
                 output.WriteLineBreak();
+            }
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes a list of <see cref="UnitCartesian"/> values as an array in X, Y, Z order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="values">The values to write.</param>
+        public static void WriteUnitCartesian3List(CesiumOutputStream output, IEnumerable<UnitCartesian> values)
+        {
+            output.WriteStartSequence();
+            foreach (UnitCartesian value in values)
+            {
+                output.WriteValue(value.X);
+                output.WriteValue(value.Y);
+                output.WriteValue(value.Z);
+            }
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes a list of <see cref="UnitSpherical"/> values as an array in Clock, Cone order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="values">The values to write.</param>
+        public static void WriteUnitSphericalList(CesiumOutputStream output, IEnumerable<UnitSpherical> values)
+        {
+            output.WriteStartSequence();
+            foreach (UnitSpherical value in values)
+            {
+                output.WriteValue(value.Clock);
+                output.WriteValue(value.Cone);
             }
             output.WriteEndSequence();
         }

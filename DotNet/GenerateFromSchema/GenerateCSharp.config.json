@@ -205,6 +205,32 @@
                 "writeValue": "CesiumWritingHelper.WriteCartesian3List(Output, values);"
             }
         ],
+        "UnitCartesian3List": [
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<UnitCartesian>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteUnitCartesian3List(Output, values);"
+            }
+        ],
+        "UnitSphericalList": [
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<UnitSpherical>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteUnitSphericalList(Output, values);"
+            }
+        ],
         "Cartographic": [
             {
                 "parameters": [
@@ -319,6 +345,18 @@
                     }
                 ],
                 "writeValue": "Output.WriteValue(CesiumFormattingHelper.VerticalOriginToString(value));"
+            }
+        ],
+        "LabelStyle": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumLabelStyle",
+                        "name": "value",
+                        "description": "The label style."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.LabelStyleToString(value));"
             }
         ],
         "Double": [
@@ -530,6 +568,30 @@
                     }
                 ],
                 "writeValue": "CesiumWritingHelper.WriteReferences(Output, references);"
+            }
+        ],
+        "String": [
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "value",
+                        "description": "The value."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(value);"
+            }
+        ],
+        "Font": [
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "font",
+                        "description": "The font."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(font);"
             }
         ]
     }
