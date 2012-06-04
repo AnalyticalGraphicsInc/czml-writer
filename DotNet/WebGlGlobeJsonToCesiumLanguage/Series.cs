@@ -9,7 +9,7 @@ namespace WebGLGlobeJsonToCesiumLanguage
         /// Initializes a new instance of the <see cref="Series"/> class.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Series"/></param>
-        /// <param name="coordinatesDegrees">An array of <see cref="Cartographic"/> positions where 
+        /// <param name="coordinatesDegrees">An array of <see cref="Cartographic"/> positions 
         /// where the latitude and longitude are given in degrees.</param>
         /// <param name="color">The color used to visually represent the series.</param>
         /// <example>
