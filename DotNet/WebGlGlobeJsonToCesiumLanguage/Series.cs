@@ -1,4 +1,5 @@
-﻿using CesiumLanguageWriter;
+﻿using System.Drawing;
+using CesiumLanguageWriter;
 
 namespace WebGLGlobeJsonToCesiumLanguage
 {
@@ -10,16 +11,18 @@ namespace WebGLGlobeJsonToCesiumLanguage
         /// <param name="id">The ID of the <see cref="Series"/></param>
         /// <param name="coordinates">An array of <see cref="Cartographic"/> positions
         /// where the latitude and longitude are given in degrees.</param>
+        /// <param name="color">The color used to visually represent the series.</param>
         /// <example>
         /// CzmlDocument document = new CzmlDocument();
         /// Cartographic[] positions = new Cartographic[] { new Cartographic(45.0, -90.0, 300), new Cartographic(50.0, -100.0, 400) };
         /// Series series = new Series("test", positions, document);
         /// </example>
-        public Series(string id, Cartographic[] coordinates, CzmlDocument document)
+        public Series(string id, Cartographic[] coordinates, CzmlDocument document, Color color)
         {        
             m_id = id;
             m_document = document;            
             m_coordinates = (Cartographic[])coordinates.Clone();
+            m_color = color;
         }
 
         /// <summary>
@@ -36,6 +39,14 @@ namespace WebGLGlobeJsonToCesiumLanguage
         public Cartographic[] Coordinates 
         {
             get { return m_coordinates; } 
+        }
+
+        /// <summary>
+        /// Gets the array of rgba color values.
+        /// </summary>
+        public Color Color
+        {
+            get { return m_color; }
         }
 
         /// <summary>
@@ -61,9 +72,16 @@ namespace WebGLGlobeJsonToCesiumLanguage
                 using (CesiumPacketWriter packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
                 {
                     packetWriter.WriteIdentifier(m_id + index);
-                    using (PositionCesiumWriter position = packetWriter.OpenPositionProperty())
+                    using (PolylineCesiumWriter polyline = packetWriter.OpenPolylineProperty())
                     {
-                        position.WriteCartographicDegreesValue(m_coordinates[index]);
+                        polyline.WriteColorProperty(m_color);
+                    }
+                    using (PositionListCesiumWriter vertexPositions = packetWriter.OpenVertexPositionsProperty())
+                    {
+                        Cartographic[] positions = new Cartographic[] {
+                            new Cartographic(m_coordinates[index].Longitude, m_coordinates[index].Latitude, 0.0),
+                            m_coordinates[index] };
+                        vertexPositions.WriteCartographicDegreesValue(positions);
                     }
                 }
             }
@@ -72,5 +90,6 @@ namespace WebGLGlobeJsonToCesiumLanguage
         private readonly string m_id;
         private readonly Cartographic[] m_coordinates;
         private readonly CzmlDocument m_document;
+        private readonly Color m_color;
     }
 }
