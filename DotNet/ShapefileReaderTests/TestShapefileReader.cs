@@ -12,7 +12,7 @@ namespace ShapefileReaderTests
     public class TestShapefileReader
     {
         ShapefileReader m_reader;
-        private string shapefileName = ".\\ExampleShapefiles\\PhiladelphiaBuildings200712.shp";
+        private string shapefileName = ".\\..\\..\\ExampleShapefiles\\PhiladelphiaBuildings200712.shp";
 
         public TestShapefileReader()
         {
