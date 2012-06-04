@@ -22,12 +22,12 @@ namespace CesiumLanguageWriter.Advanced
     public delegate void CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue>(TWrappedWriter wrappedWriter, TValue value);
 
     /// <summary>
-    /// Adapts a class derived from <see cref="CesiumPropertyWriter{TValue,TDerived}"/> to implement
+    /// Adapts a class derived from <see cref="CesiumPropertyWriter{TDerived}"/> to implement
     /// <see cref="ICesiumValuePropertyWriter{TValue}"/> for a different type of value.  Typically, the
     /// class has a method to write values of the new type, but that method is not exposed via an interface.
     /// This class adapts the method to the interface via a callback delegate.
     /// </summary>
-    /// <typeparam name="TFrom">The class derived from <see cref="CesiumPropertyWriter{TValue,TDerived}"/> to adapt.</typeparam>
+    /// <typeparam name="TFrom">The class derived from <see cref="CesiumPropertyWriter{TDerived}"/> to adapt.</typeparam>
     /// <typeparam name="TValue">The type of value to which to adapt the class to write.</typeparam>
     public class CesiumWriterAdaptor<TFrom, TValue> : ICesiumValuePropertyWriter<TValue>
         where TFrom: ICesiumPropertyWriter

@@ -17,12 +17,12 @@ namespace CesiumLanguageWriter.Advanced
     public delegate void CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue>(TWrappedWriter wrappedWriter, IList<JulianDate> dates, IList<TValue> values, int startIndex, int length);
 
     /// <summary>
-    /// Adapts a class derived from <see cref="CesiumInterpolatablePropertyWriter{TValue,TDerived}"/> to implement
+    /// Adapts a class derived from <see cref="CesiumInterpolatablePropertyWriter{TDerived}"/> to implement
     /// <see cref="ICesiumValuePropertyWriter{TValue}"/> for a different type of value.  Typically, the
     /// class has a method to write values of the new type, but that method is not exposed via an interface.
     /// This class adapts the method to the interface via a callback delegate.
     /// </summary>
-    /// <typeparam name="TFrom">The class derived from <see cref="CesiumInterpolatablePropertyWriter{TValue,TDerived}"/> to adapt.</typeparam>
+    /// <typeparam name="TFrom">The class derived from <see cref="CesiumInterpolatablePropertyWriter{TDerived}"/> to adapt.</typeparam>
     /// <typeparam name="TValue">The type of value to which to adapt the class to write.</typeparam>
     public class CesiumInterpolatableWriterAdaptor<TFrom, TValue> : ICesiumValuePropertyWriter<TValue>, ICesiumInterpolatableValuePropertyWriter<TValue>
         where TFrom : ICesiumPropertyWriter, ICesiumInterpolationInformationWriter

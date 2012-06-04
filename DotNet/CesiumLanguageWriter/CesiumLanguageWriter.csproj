@@ -65,6 +65,7 @@
     <Compile Include="CameraCesiumWriter.cs" />
     <Compile Include="Cartesian.cs" />
     <Compile Include="Cartographic.cs" />
+    <Compile Include="CartographicExtent.cs" />
     <Compile Include="CesiumHorizontalOrigin.cs" />
     <Compile Include="CesiumImageFormat.cs" />
     <Compile Include="CesiumInterpolationAlgorithm.cs" />
