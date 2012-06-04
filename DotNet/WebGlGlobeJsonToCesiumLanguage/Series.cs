@@ -9,7 +9,7 @@ namespace WebGLGlobeJsonToCesiumLanguage
         /// Initializes a new instance of the <see cref="Series"/> class.
         /// </summary>
         /// <param name="id">The ID of the <see cref="Series"/></param>
-        /// <param name="coordinates">An array of <see cref="Cartographic"/> positions
+        /// <param name="coordinatesDegrees">An array of <see cref="Cartographic"/> positions where 
         /// where the latitude and longitude are given in degrees.</param>
         /// <param name="color">The color used to visually represent the series.</param>
         /// <example>
@@ -17,11 +17,11 @@ namespace WebGLGlobeJsonToCesiumLanguage
         /// Cartographic[] positions = new Cartographic[] { new Cartographic(45.0, -90.0, 300), new Cartographic(50.0, -100.0, 400) };
         /// Series series = new Series("test", positions, document);
         /// </example>
-        public Series(string id, Cartographic[] coordinates, CzmlDocument document, Color color)
+        public Series(string id, Cartographic[] coordinatesDegrees, CzmlDocument document, Color color)
         {        
             m_id = id;
-            m_document = document;            
-            m_coordinates = (Cartographic[])coordinates.Clone();
+            m_document = document;
+            m_coordinates = (Cartographic[])coordinatesDegrees.Clone();
             m_color = color;
         }
 
