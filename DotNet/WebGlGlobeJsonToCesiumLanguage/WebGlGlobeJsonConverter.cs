@@ -23,6 +23,8 @@ namespace WebGLGlobeJsonToCesiumLanguage
             JsonTextReader jsReader = new JsonTextReader(jsonContents);
             JArray json = (JArray)new JsonSerializer().Deserialize(jsReader);
 
+            document.CesiumOutputStream.WriteStartSequence();
+
             foreach (JToken item in json)
             {
                 int numCoordinateComponents = item[1].Values().Count();
@@ -41,6 +43,8 @@ namespace WebGLGlobeJsonToCesiumLanguage
                 Series series = new Series((string)item[0], coords, document, c);
                 series.Write();
             }
+
+            document.CesiumOutputStream.WriteEndSequence();
         }
     }
 }

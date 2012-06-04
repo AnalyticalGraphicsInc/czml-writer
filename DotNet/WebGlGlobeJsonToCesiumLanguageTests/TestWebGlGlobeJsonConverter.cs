@@ -20,8 +20,8 @@ namespace WebGLGlobeJsonToCesiumLanguageTests
             StringReader json = new StringReader("[['alpha', [45, -90, 1]], ['bravo', [50, -70, 2]]]");
             WebGLGlobeJsonConverter.WebGLGlobeJsonToCesiumLanguage(json, m_document);
             string result = m_document.StringWriter.ToString();
-            Assert.That(result.Contains("{\"id\":\"alpha0\",\"position\":{\"cartographicDegrees\":[45.0,-90.0,1.0]}}"));
-            Assert.That(result.Contains("{\"id\":\"bravo0\",\"position\":{\"cartographicDegrees\":[50.0,-70.0,2.0]}}"));
+            Assert.That(result.Contains("{\"id\":\"alpha0\",\"polyline\":{\"color\":{\"rgba\":[0,0,255,255]}},\"vertexPositions\":{\"cartographicDegrees\":[45.0,-90.0,0.0,45.0,-90.0,1.0]}}"));
+            Assert.That(result.Contains("{\"id\":\"bravo0\",\"polyline\":{\"color\":{\"rgba\":[0,0,255,255]}},\"vertexPositions\":{\"cartographicDegrees\":[50.0,-70.0,0.0,50.0,-70.0,2.0]}}"));
         }
 
         [Test]
