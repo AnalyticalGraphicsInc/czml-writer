@@ -105,7 +105,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Indicates whether another <see cref="CartographicExtent"/> is exactly equal to this instance.
         /// </summary>
-        /// <param name="obj">The <see cref="CartographicExtent"/> to compare to this instance.</param>
+        /// <param name="other">The <see cref="CartographicExtent"/> to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public bool Equals(CartographicExtent other)
         {
