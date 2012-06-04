@@ -7,7 +7,7 @@ namespace KmlToCesiumLanguage
     /// <summary>
     /// 
     /// </summary>
-    public class Placemark
+    public class Placemark : Feature
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Placemark"/> class.
@@ -22,7 +22,7 @@ namespace KmlToCesiumLanguage
         /// <summary>
         /// Writes this instance.
         /// </summary>
-        public void Write()
+        public override void WritePacket()
         {
             foreach (var geometry in m_geometries)
             {

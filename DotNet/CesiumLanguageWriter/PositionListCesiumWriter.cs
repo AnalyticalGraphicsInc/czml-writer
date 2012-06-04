@@ -115,6 +115,27 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes the value of the property for this interval as an array of <see cref="Cartographic"/> where
+        /// <see cref="Cartographic.Longitude"/> and <see cref="Cartographic.Latitude"/> are expressed in degrees.
+        /// </summary>
+        /// <param name="positions">The positions.</param>
+        public void WriteCartographicDegreesValue(IEnumerable<Cartographic> positions)
+        {
+            OpenIntervalIfNecessary();
+
+            Output.WritePropertyName("cartographicDegrees");
+            Output.WriteStartSequence();
+            foreach (var position in positions)
+            {
+                Output.WriteValue(position.Longitude);
+                Output.WriteValue(position.Latitude);
+                Output.WriteValue(position.Height);
+                Output.WriteLineBreak();
+            }
+            Output.WriteEndSequence();
+        }
+
+        /// <summary>
         /// Writes the value of the property for this interval as an array of references.  Each
         /// reference is to a property that defines a single position, possibly as it changes with time.
         /// </summary>
