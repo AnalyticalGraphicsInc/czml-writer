@@ -153,7 +153,7 @@ namespace Shapefile
                             Rectangular position = new Rectangular(
                                                     ToDouble(record, 4, ByteOrder.LittleEndian),
                                                     ToDouble(record, 12, ByteOrder.LittleEndian));
-                            if (recordShapeType == ShapeType.Polyline)
+                            if (recordShapeType == ShapeType.Point)
                             {
                                 _shapes.Add(new PointShape(recordNumber, metadata, position));
                             }
