@@ -118,7 +118,7 @@ namespace CesiumLanguageWriter
         private ICesiumInterpolatableValuePropertyWriter<Color> CreateRgbaAdaptor()
         {
             return new CesiumInterpolatableWriterAdaptor<ColorCesiumWriter, Color>(
-                this, (me, value) => me.WriteRgba(value), (me, dates, values, startIndex, length) => me.WriteRgba(dates, values, startIndex, length));
+                this, (me, value) => me.WriteRgba(value), (ColorCesiumWriter me, IList<JulianDate> dates, IList<Color> values, int startIndex, int length) => me.WriteRgba(dates, values, startIndex, length));
         }
 
     }

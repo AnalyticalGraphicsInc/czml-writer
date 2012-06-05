@@ -1,0 +1,74 @@
+Errors: 0
+Warnings: 12
+Crashes: Unique Crash: 0 Total Crash: 0
+Total Lines of Code [ C# ]: 5,250 non-blank lines.
+Total Lines of Code [Java]: 5,063 non-blank lines.
+
+
+Translator executable path: C:/Components/CSToJava/Release/Main/Translator/CSToJava/bin/Release/CSToJava.exe
+Translator modification time: 6/4/2012 5:57:42 PM
+Translating project CesiumLanguageWriterTests:
+   from: CesiumLanguageWriterTests\CesiumLanguageWriterTests.csproj
+   to  : C:\Components\Development\Libra\ThirdParty\czml-writer\Java\CesiumLanguageWriterTests\translatedSrc
+Performing Transformations on C# AST...
+........Pre-Translation Pass: 0.274 seconds (00:00:00.274)
+.....................Pass  1: 3.640 seconds (00:00:03.640)
+.....................Pass  2: 1.166 seconds (00:00:01.166)
+.....................Pass  3: 0.045 seconds (00:00:00.045)
+.....................Pass  4: 0.055 seconds (00:00:00.055)
+.....................Pass  5: 0.194 seconds (00:00:00.194)
+.....................Pass  6: 7.576 seconds (00:00:07.576)
+.....................Pass  7: 4.961 seconds (00:00:04.961)
+.....................Pass  8: 14.378 seconds (00:00:14.378)
+.....................Pass  9: 2.554 seconds (00:00:02.554)
+.....................Pass 10: 10.419 seconds (00:00:10.419)
+.....................Pass 11: 5.771 seconds (00:00:05.771)
+.....................Pass 12: 0.048 seconds (00:00:00.048)
+.....................Pass 13: 0.056 seconds (00:00:00.056)
+.....................Pass 14: 0.061 seconds (00:00:00.061)
+.....................Pass 15: 0.035 seconds (00:00:00.035)
+.....................Pass 16: 1.431 seconds (00:00:01.431)
+...........Building Java AST: 5.126 seconds (00:00:05.126)
+.Writing to output directory: 1.228 seconds (00:00:01.228)
+
+            Translation time: 59.159 seconds (00:00:59.159)
+
+
+==============================================
+              List of ERRORS! 
+==============================================
+
+
+==============================================
+             List of WARNINGS! 
+==============================================
+Source File: CesiumLanguageWriterTests\TestDuration.cs
+	Warning at line 383: Cannot resolve the right of assignment expression : [AssignmentExpression Left=[IdentifierExpression Identifier=result TypeArguments={}] Op=Assign Right=[InvocationExpression TargetObject=[MemberReferenceExpression TargetObject=[IdentifierExpression Identifier=duration TypeArguments={}] MemberName=toPeriod TypeArguments={}] Arguments={}]]in ArrayCastingIssuesFixerVisitor.cs
+	Warning at line 388: Cannot resolve the right of assignment expression : [AssignmentExpression Left=[IdentifierExpression Identifier=result TypeArguments={}] Op=Assign Right=[InvocationExpression TargetObject=[MemberReferenceExpression TargetObject=[IdentifierExpression Identifier=duration TypeArguments={}] MemberName=toPeriod TypeArguments={}] Arguments={}]]in ArrayCastingIssuesFixerVisitor.cs
+	Warning at line 381: Cannot resolve the right of assignment expression : [AssignmentExpression Left=[IdentifierExpression Identifier=timeSpan TypeArguments={}] Op=Assign Right=[InvocationExpression TargetObject=[MemberReferenceExpression TargetObject=[IdentifierExpression Identifier=TimeSpanHelper TypeArguments={}] MemberName=zero TypeArguments={}] Arguments={}]]in ArrayCastingIssuesFixerVisitor.cs
+	Warning at line 383: Cannot resolve the right of assignment expression : [AssignmentExpression Left=[IdentifierExpression Identifier=result TypeArguments={}] Op=Assign Right=[InvocationExpression TargetObject=[MemberReferenceExpression TargetObject=[IdentifierExpression Identifier=duration TypeArguments={}] MemberName=toPeriod TypeArguments={}] Arguments={}]]in ArrayCastingIssuesFixerVisitor.cs
+	Warning at line 386: Cannot resolve the right of assignment expression : [AssignmentExpression Left=[IdentifierExpression Identifier=timeSpan TypeArguments={}] Op=Assign Right=[InvocationExpression TargetObject=[MemberReferenceExpression TargetObject=[IdentifierExpression Identifier=TimeSpanHelper TypeArguments={}] MemberName=maxValue TypeArguments={}] Arguments={}]]in ArrayCastingIssuesFixerVisitor.cs
+	Warning at line 388: Cannot resolve the right of assignment expression : [AssignmentExpression Left=[IdentifierExpression Identifier=result TypeArguments={}] Op=Assign Right=[InvocationExpression TargetObject=[MemberReferenceExpression TargetObject=[IdentifierExpression Identifier=duration TypeArguments={}] MemberName=toPeriod TypeArguments={}] Arguments={}]]in ArrayCastingIssuesFixerVisitor.cs
+
+Source File: CesiumLanguageWriterTests\TestGregorianDate.cs
+	Warning at line 0: Could not determine the number of parameters for the Java method org.joda.time.DateTime:joda
+
+Source File: CesiumLanguageWriterTests\TestJulianDateConversions.cs
+	Warning at line 0: Could not determine the number of parameters for the Java method org.joda.time.DateTime:joda
+	Warning at line 0: Could not determine the number of parameters for the Java method org.joda.time.DateTime:joda
+	Warning at line 0: Could not determine the number of parameters for the Java method org.joda.time.DateTime:joda
+	Warning at line 0: Could not determine the number of parameters for the Java method org.joda.time.DateTime:joda
+	Warning at line 212: Cannot resolve the right of assignment expression : [AssignmentExpression Left=[IdentifierExpression Identifier=localNow TypeArguments={}] Op=Assign Right=[InvocationExpression TargetObject=[MemberReferenceExpression TargetObject=[IdentifierExpression Identifier=DateTimeHelper TypeArguments={}] MemberName=now TypeArguments={}] Arguments={}]]in ArrayCastingIssuesFixerVisitor.cs
+
+
+
+==============================================
+         List of translator CRASHES! 
+==============================================
+
+
+==============================================
+         List of files not converted to Java 
+==============================================
+
+

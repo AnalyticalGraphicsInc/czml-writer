@@ -155,7 +155,11 @@ namespace CesiumLanguageWriter
             StartNewValue();
             m_firstInContainer = false;
             m_inProperty = false;
+#if CSToJava
+            m_writer.Write(value);
+#else
             Grisu.DoubleToString(value, m_writer);
+#endif
         }
 
         /// <summary>

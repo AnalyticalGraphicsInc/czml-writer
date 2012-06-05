@@ -3,7 +3,7 @@ using System.Globalization;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
-namespace CesiumLanguagerWriterTests
+namespace CesiumLanguageWriterTests
 {
     [TestFixture]
     public class TestGregorianDateParsing

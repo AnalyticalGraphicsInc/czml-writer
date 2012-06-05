@@ -197,7 +197,7 @@ namespace CesiumLanguageWriter
         private ICesiumInterpolatableValuePropertyWriter<Cartesian> CreateCartesianAdaptor()
         {
             return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Cartesian>(
-                this, (me, value) => me.WriteCartesian(value), (me, dates, values, startIndex, length) => me.WriteCartesian(dates, values, startIndex, length));
+                this, (me, value) => me.WriteCartesian(value), (PositionCesiumWriter me, IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length) => me.WriteCartesian(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace CesiumLanguageWriter
         private ICesiumInterpolatableValuePropertyWriter<Cartographic> CreateCartographicRadiansAdaptor()
         {
             return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Cartographic>(
-                this, (me, value) => me.WriteCartographicRadians(value), (me, dates, values, startIndex, length) => me.WriteCartographicRadians(dates, values, startIndex, length));
+                this, (me, value) => me.WriteCartographicRadians(value), (PositionCesiumWriter me, IList<JulianDate> dates, IList<Cartographic> values, int startIndex, int length) => me.WriteCartographicRadians(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace CesiumLanguageWriter
         private ICesiumInterpolatableValuePropertyWriter<Cartographic> CreateCartographicDegreesAdaptor()
         {
             return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Cartographic>(
-                this, (me, value) => me.WriteCartographicDegrees(value), (me, dates, values, startIndex, length) => me.WriteCartographicDegrees(dates, values, startIndex, length));
+                this, (me, value) => me.WriteCartographicDegrees(value), (PositionCesiumWriter me, IList<JulianDate> dates, IList<Cartographic> values, int startIndex, int length) => me.WriteCartographicDegrees(dates, values, startIndex, length));
         }
 
     }

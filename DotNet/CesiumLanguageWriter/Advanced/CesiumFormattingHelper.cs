@@ -75,6 +75,9 @@ namespace CesiumLanguageWriter.Advanced
         /// <returns>A data URL containing the content of the image.</returns>
         public static string ImageToDataUrl(Image image)
         {
+#if CSToJava
+            throw new NotImplementedException();
+#else
             string mimeType;
             if (image.RawFormat.Equals(System.Drawing.Imaging.ImageFormat.Jpeg))
             {
@@ -105,6 +108,7 @@ namespace CesiumLanguageWriter.Advanced
                 builder.Append(Convert.ToBase64String(imageData, Base64FormattingOptions.None));
                 return builder.ToString();
             }
+#endif
         }
 
         /// <summary>

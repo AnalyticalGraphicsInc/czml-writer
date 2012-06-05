@@ -490,12 +490,14 @@ namespace GenerateFromSchema
                 writer.OpenScope();
                 writer.WriteLine("return new {0}<{1}CesiumWriter, {2}>(",
                     adaptorName,
-                    schema.Name,
+                    schema.NameWithPascalCase,
                     overloads[0].Parameters[0].Type);
                 if (sampleOverload != null)
                 {
-                    writer.WriteLine("    this, (me, value) => me.Write{0}(value), (me, dates, values, startIndex, length) => me.Write{0}(dates, values, startIndex, length));",
-                        property.NameWithPascalCase);
+                    writer.WriteLine("    this, (me, value) => me.Write{0}(value), ({1}CesiumWriter me, IList<JulianDate> dates, IList<{2}> values, int startIndex, int length) => me.Write{0}(dates, values, startIndex, length));",
+                        property.NameWithPascalCase,
+                        schema.NameWithPascalCase,
+                        overloads[0].Parameters[0].Type);
                 }
                 else
                 {

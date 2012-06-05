@@ -82,7 +82,7 @@ namespace CesiumLanguageWriter
         private ICesiumInterpolatableValuePropertyWriter<double> CreateNumberAdaptor()
         {
             return new CesiumInterpolatableWriterAdaptor<DoubleCesiumWriter, double>(
-                this, (me, value) => me.WriteNumber(value), (me, dates, values, startIndex, length) => me.WriteNumber(dates, values, startIndex, length));
+                this, (me, value) => me.WriteNumber(value), (DoubleCesiumWriter me, IList<JulianDate> dates, IList<double> values, int startIndex, int length) => me.WriteNumber(dates, values, startIndex, length));
         }
 
     }

@@ -92,7 +92,7 @@ namespace CesiumLanguageWriter
         private ICesiumInterpolatableValuePropertyWriter<Cartesian> CreateCartesianAdaptor()
         {
             return new CesiumInterpolatableWriterAdaptor<EyeOffsetCesiumWriter, Cartesian>(
-                this, (me, value) => me.WriteCartesian(value), (me, dates, values, startIndex, length) => me.WriteCartesian(dates, values, startIndex, length));
+                this, (me, value) => me.WriteCartesian(value), (EyeOffsetCesiumWriter me, IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length) => me.WriteCartesian(dates, values, startIndex, length));
         }
 
     }

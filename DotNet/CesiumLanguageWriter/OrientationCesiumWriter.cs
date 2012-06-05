@@ -109,7 +109,7 @@ namespace CesiumLanguageWriter
         private ICesiumInterpolatableValuePropertyWriter<UnitQuaternion> CreateUnitQuaternionAdaptor()
         {
             return new CesiumInterpolatableWriterAdaptor<OrientationCesiumWriter, UnitQuaternion>(
-                this, (me, value) => me.WriteUnitQuaternion(value), (me, dates, values, startIndex, length) => me.WriteUnitQuaternion(dates, values, startIndex, length));
+                this, (me, value) => me.WriteUnitQuaternion(value), (OrientationCesiumWriter me, IList<JulianDate> dates, IList<UnitQuaternion> values, int startIndex, int length) => me.WriteUnitQuaternion(dates, values, startIndex, length));
         }
 
     }
