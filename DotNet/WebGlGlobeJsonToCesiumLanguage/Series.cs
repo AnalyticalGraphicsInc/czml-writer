@@ -34,9 +34,9 @@ namespace WebGLGlobeJsonToCesiumLanguage
         }
 
         /// <summary>
-        /// Gets the <see cref="Cartographic"/> array of coordinates.
+        /// Gets the <see cref="Cartographic"/> array of coordinates in degrees.
         /// </summary>
-        public Cartographic[] Coordinates 
+        public Cartographic[] CoordinatesDegrees 
         {
             get { return m_coordinates; } 
         }

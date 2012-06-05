@@ -22,7 +22,7 @@ namespace WebGLGlobeJsonToCesiumLanguageTests
             series.Write();
             string result = m_document.StringWriter.ToString();
             Assert.That(result.Contains("\"cartographicDegrees\":"));
-            StringAssert.Contains(result, "[90.0,45.0,3.0]");
+            Assert.That(result.Contains("[90.0,45.0,0.0,90.0,45.0,3.0]"));
         }
 
         [Test]
