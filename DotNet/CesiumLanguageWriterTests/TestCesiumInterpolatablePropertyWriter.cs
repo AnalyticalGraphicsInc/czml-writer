@@ -14,7 +14,7 @@ namespace CesiumLanguageWriterTests
 #endif
 {
     public abstract class TestCesiumInterpolatablePropertyWriter<TValue, TDerived> : TestCesiumPropertyWriter<TValue, TDerived>
-        where TDerived : CesiumInterpolatableValuePropertyWriter<TValue, TDerived>
+        where TDerived : CesiumInterpolatablePropertyWriter<TDerived>
     {
         [Test]
         public void InterpolationAlgorithmValueWritesInterpolationAlgorithmProperty()

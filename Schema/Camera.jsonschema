@@ -1,0 +1,12 @@
+{
+    "title": "Camera",
+    "description": "A camera.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "enable": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the camera is enabled."
+        }
+    }
+}

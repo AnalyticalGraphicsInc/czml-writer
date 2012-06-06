@@ -20,7 +20,7 @@ namespace ShapefileToCesiumLanguage
         {
             using (this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
             {
-                this.PacketWriter.WriteIdentifier(m_shape.RecordNumber.ToString());
+                this.PacketWriter.WriteId(m_shape.RecordNumber.ToString());
                 // Add style information?
                 this.Write();
             }
@@ -39,7 +39,7 @@ namespace ShapefileToCesiumLanguage
         /// <summary>
         /// Gets the packet writer.
         /// </summary>
-        protected CesiumPacketWriter PacketWriter { get; private set; }
+        protected PacketCesiumWriter PacketWriter { get; private set; }
 
         protected Shape m_shape;
         protected CzmlDocument m_document;

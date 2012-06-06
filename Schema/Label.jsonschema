@@ -1,6 +1,52 @@
 {
     "title": "Label",
-    "description": "TODO",
+    "description": "A string of text.",
     "type": ["array", "object"],
-    "items": { "$ref": "#" }
+    "items": { "$ref": "#" },
+    "properties": {
+        "eyeOffset": {
+            "$ref": "EyeOffset.jsonschema",
+            "description": "The eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen."
+        },
+        "fillColor": {
+            "$ref": "Color.jsonschema",
+            "description": "The fill color of the label."
+        },
+        "font": {
+            "$ref": "Font.jsonschema",
+            "description": "The font to use for the label."
+        },
+        "horizontalOrigin": {
+            "$ref": "HorizontalOrigin.jsonschema",
+            "description": "The horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`."
+        },
+        "outlineColor": {
+            "$ref": "Color.jsonschema",
+            "description": "The outline color of the label."
+        },
+        "pixelOffset": {
+            "$ref": "PixelOffset.jsonschema",
+            "description": "The offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`."
+        },
+        "scale": {
+            "$ref": "Double.jsonschema",
+            "description": "The scale of the label.  The scale is multiplied with the pixel size of the label's text.  For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text."
+        },
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the label is shown."
+        },
+        "style": {
+            "$ref": "LabelStyle.jsonschema",
+            "description": "The style of the label."
+        },
+        "text": {
+            "$ref": "String.jsonschema",
+            "description": "The text displayed by the label."
+        },
+        "verticalOrigin": {
+            "$ref": "VerticalOrigin.jsonschema",
+            "description": "The vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`."
+        }
+    }
 }

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace grisu.net
 {
+    [CSToJavaExclude]
     internal static class Grisu
     {
         [ThreadStatic]

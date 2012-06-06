@@ -10,7 +10,7 @@
         },
         "eyeOffset": {
             "$ref": "EyeOffset.jsonschema",
-            "description": "The eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen."
+            "description": "The eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen."
         },
         "horizontalOrigin": {
             "$ref": "HorizontalOrigin.jsonschema",
@@ -18,7 +18,7 @@
         },
         "image": {
             "$ref": "Image.jsonschema",
-            "description": "The image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI<a/>."
+            "description": "The image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
         },
         "pixelOffset": {
             "$ref": "PixelOffset.jsonschema",

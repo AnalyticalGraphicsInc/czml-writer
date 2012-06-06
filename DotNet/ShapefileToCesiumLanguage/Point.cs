@@ -26,12 +26,12 @@ namespace ShapefileToCesiumLanguage
         {
             using (PositionCesiumWriter position = this.PacketWriter.OpenPositionProperty())
             {
-                position.WriteCartographicDegreesValue(new Cartographic(((PointShape)m_shape).Position.X,
+                position.WriteCartographicDegrees(new Cartographic(((PointShape)m_shape).Position.X,
                                                                         ((PointShape)m_shape).Position.Y,
                                                                         0.0));
             }
 
-            using (PointGraphicsCesiumWriter point = this.PacketWriter.OpenPointProperty())
+            using (PointCesiumWriter point = this.PacketWriter.OpenPointProperty())
             {
                 point.WriteColorProperty(m_color);
             }

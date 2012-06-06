@@ -69,9 +69,9 @@ namespace WebGLGlobeJsonToCesiumLanguage
         {
             if (index < m_coordinates.Length)
             {
-                using (CesiumPacketWriter packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
+                using (PacketCesiumWriter packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
                 {
-                    packetWriter.WriteIdentifier(m_id + index);
+                    packetWriter.WriteId(m_id + index);
                     using (PolylineCesiumWriter polyline = packetWriter.OpenPolylineProperty())
                     {
                         polyline.WriteColorProperty(m_color);
@@ -81,7 +81,7 @@ namespace WebGLGlobeJsonToCesiumLanguage
                         Cartographic[] positions = new Cartographic[] {
                             new Cartographic(m_coordinates[index].Longitude, m_coordinates[index].Latitude, 0.0),
                             m_coordinates[index] };
-                        vertexPositions.WriteCartographicDegreesValue(positions);
+                        vertexPositions.WriteCartographicDegrees(positions);
                     }
                 }
             }

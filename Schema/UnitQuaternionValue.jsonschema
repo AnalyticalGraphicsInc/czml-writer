@@ -1,0 +1,5 @@
+{
+    "title": "UnitQuaternion",
+    "description": "`[X, Y, Z, W]` TODO",
+    "type": "array"
+}

@@ -37,7 +37,7 @@ namespace ShapefileToCesiumLanguage
                         positions.Add(new Cartographic(pos.X, pos.Y, 0.0));
                     }
                 }
-                position.WriteCartographicDegreesValue(positions);
+                position.WriteCartographicDegrees(positions);
             }
 
             using (PolylineCesiumWriter polyline = this.PacketWriter.OpenPolylineProperty())

@@ -2,7 +2,7 @@ using System;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
-namespace CesiumLanguageWriterWriter
+namespace CesiumLanguageWriterTests
 {
     /// <summary>
     /// A series of tests to exercise the various date and time types.
