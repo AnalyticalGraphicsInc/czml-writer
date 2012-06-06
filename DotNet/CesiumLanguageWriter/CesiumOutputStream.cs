@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
-using grisu.net;
 
 #if StkComponents
 namespace AGI.Foundation.Cesium
@@ -158,7 +157,7 @@ namespace CesiumLanguageWriter
 #if CSToJava
             m_writer.Write(value);
 #else
-            Grisu.DoubleToString(value, m_writer);
+            grisu.net.Grisu.DoubleToString(value, m_writer);
 #endif
         }
 
