@@ -1,6 +1,18 @@
 {
     "title": "Orientation",
-    "description": "TODO",
+    "description": "Defines an orientation.  An orientation is a rotation that takes a vector expressed in the \"body\" axes of the object and transforms it to the set of axes identified by the `axes` property.",
+    "extends": { "$ref": "InterpolatableProperty.jsonschema" },
     "type": ["array", "object"],
-    "items": { "$ref": "#" }
+    "items": { "$ref": "#" },
+    "properties": {
+        "axes": {
+            "description": "TODO",
+            "type": "string"
+        },
+        "unitQuaternion": {
+            "$ref": "UnitQuaternionValue.jsonschema",
+            "description": "TODO",
+            "czmlValue": true
+        }
+    }
 }

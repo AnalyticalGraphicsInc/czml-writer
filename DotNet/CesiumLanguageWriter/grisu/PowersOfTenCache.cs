@@ -3,6 +3,7 @@ using System.Diagnostics;
 
 namespace grisu.net
 {
+    [CSToJavaExclude]
     internal class PowersOfTenCache
     {
         // Not all powers of ten are cached. The decimal exponent of two neighboring

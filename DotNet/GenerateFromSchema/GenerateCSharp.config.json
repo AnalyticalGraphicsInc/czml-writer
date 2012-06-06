@@ -1,5 +1,6 @@
 ﻿{
     "namespace": "CesiumLanguageWriter",
+    "lazyNamespace": "System",
     "types": {
         "TimeIntervalCollection": [
             {
@@ -10,7 +11,7 @@
                         "description": "The interval."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(value);"
+                "writeValue": "CesiumWritingHelper.WriteTimeInterval(Output, value);"
             },
             {
                 "parameters": [
@@ -36,7 +37,7 @@
                         "description": "The intervals."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(value);"
+                "writeValue": "CesiumWritingHelper.WriteTimeIntervalCollection(Output, value);"
             }
         ],
         "TimeInterval": [
@@ -48,7 +49,7 @@
                         "description": "The interval."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(value);"
+                "writeValue": "CesiumWritingHelper.WriteTimeInterval(Output, value);"
             },
             {
                 "parameters": [
@@ -75,7 +76,7 @@
                         "description": "The value."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(value);"
+                "writeValue": "CesiumWritingHelper.WriteCartesian2(Output, value);"
             },
             {
                 "parameters": [
@@ -132,7 +133,8 @@
                         "description": "The number of elements to use from the `values` collection."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(dates, values, startIndex, length);"
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteCartesian2(Output, PropertyName, dates, values, startIndex, length);"
             }
         ],
         "Cartesian3": [
@@ -144,27 +146,7 @@
                         "description": "The value."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(value);"
-            },
-            {
-                "parameters": [
-                    {
-                        "type": "double",
-                        "name": "x",
-                        "description": "The X component."
-                    },
-                    {
-                        "type": "double",
-                        "name": "y",
-                        "description": "The Y component."
-                    },
-                    {
-                        "type": "double",
-                        "name": "z",
-                        "description": "The Z component."
-                    }
-                ],
-                "callOverload": "new Cartesian(x, y, z)"
+                "writeValue": "CesiumWritingHelper.WriteCartesian3(Output, value);"
             },
             {
                 "namespaces": ["System.Collections.Generic"],
@@ -206,7 +188,47 @@
                         "description": "The number of elements to use from the `values` collection."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(dates, values, startIndex, length);"
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteCartesian3(Output, PropertyName, dates, values, startIndex, length);"
+            }
+        ],
+        "Cartesian3List": [
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<Cartesian>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteCartesian3List(Output, values);"
+            }
+        ],
+        "UnitCartesian3List": [
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<UnitCartesian>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteUnitCartesian3List(Output, values);"
+            }
+        ],
+        "UnitSphericalList": [
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<UnitSpherical>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteUnitSphericalList(Output, values);"
             }
         ],
         "Cartographic": [
@@ -218,27 +240,7 @@
                         "description": "The interval."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(value);"
-            },
-            {
-                "parameters": [
-                    {
-                        "type": "double",
-                        "name": "longitude",
-                        "description": "The longitude component."
-                    },
-                    {
-                        "type": "double",
-                        "name": "latitude",
-                        "description": "The latitude component."
-                    },
-                    {
-                        "type": "double",
-                        "name": "height",
-                        "description": "The height component."
-                    }
-                ],
-                "callOverload": "new Cartographic(longitude, latitude, height)"
+                "writeValue": "CesiumWritingHelper.WriteCartographic(Output, value);"
             },
             {
                 "namespaces": ["System.Collections.Generic"],
@@ -280,7 +282,21 @@
                         "description": "The number of elements to use from the `values` collection."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteValue(dates, values, startIndex, length);"
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteCartographic(Output, PropertyName, dates, values, startIndex, length);"
+            }
+        ],
+        "CartographicList": [
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<Cartographic>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteCartographicList(Output, values);"
             }
         ],
         "Image": [
@@ -313,10 +329,269 @@
                     {
                         "type": "CesiumHorizontalOrigin",
                         "name": "value",
-                        "description": "The horizontal origin"
+                        "description": "The horizontal origin."
                     }
                 ],
                 "writeValue": "Output.WriteValue(CesiumFormattingHelper.HorizontalOriginToString(value));"
+            }
+        ],
+        "VerticalOrigin": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumVerticalOrigin",
+                        "name": "value",
+                        "description": "The vertical origin."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.VerticalOriginToString(value));"
+            }
+        ],
+        "LabelStyle": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumLabelStyle",
+                        "name": "value",
+                        "description": "The label style."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.LabelStyleToString(value));"
+            }
+        ],
+        "Double": [
+            {
+                "parameters": [
+                    {
+                        "type": "double",
+                        "name": "value",
+                        "description": "The value."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(value);"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<double>",
+                        "name": "values",
+                        "description": "The value corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to use in the `values` collection."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to use from the `values` collection."
+                    }
+                ],
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteDouble(Output, PropertyName, dates, values, startIndex, length);"
+            }
+        ],
+        "Boolean": [
+            {
+                "parameters": [
+                    {
+                        "type": "bool",
+                        "name": "value",
+                        "description": "The value."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(value);"
+            }
+        ],
+        "Rgba": [
+            {
+                "namespaces": ["System.Drawing"],
+                "parameters": [
+                    {
+                        "type": "Color",
+                        "name": "color",
+                        "description": "The color."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteRgba(Output, color);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "int",
+                        "name": "red",
+                        "description": "The red component in the range 0 to 255."
+                    },
+                    {
+                        "type": "int",
+                        "name": "green",
+                        "description": "The green component in the range 0 to 255."
+                    },
+                    {
+                        "type": "int",
+                        "name": "blue",
+                        "description": "The blue component in the range 0 to 255."
+                    },
+                    {
+                        "type": "int",
+                        "name": "alpha",
+                        "description": "The alpha component in the range 0 to 255."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteRgba(Output, red, green, blue, alpha);"
+            },
+            {
+                "namespaces": ["System.Collections.Generic", "System.Drawing"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<Color>",
+                        "name": "colors",
+                        "description": "The color corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to use in the `colors` collection."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to use from the `colors` collection."
+                    }
+                ],
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteRgba(Output, PropertyName, dates, colors, startIndex, length);"
+            }
+        ],
+        "Rgbaf": [
+            {
+                "parameters": [
+                    {
+                        "type": "float",
+                        "name": "red",
+                        "description": "The red component in the range 0 to 1.0."
+                    },
+                    {
+                        "type": "float",
+                        "name": "green",
+                        "description": "The green component in the range 0 to 1.0."
+                    },
+                    {
+                        "type": "float",
+                        "name": "blue",
+                        "description": "The blue component in the range 0 to 1.0."
+                    },
+                    {
+                        "type": "float",
+                        "name": "alpha",
+                        "description": "The alpha component in the range 0 to 1.0."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteRgbaf(Output, red, green, blue, alpha);"
+            }
+        ],
+        "UnitQuaternion": [
+            {
+                "parameters": [
+                    {
+                        "type": "UnitQuaternion",
+                        "name": "value",
+                        "description": "The value."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteUnitQuaternion(Output, value);"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the rotation is specified."
+                    },
+                    {
+                        "type": "IList<UnitQuaternion>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the rotation is specified."
+                    },
+                    {
+                        "type": "IList<UnitQuaternion>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to use in the `values` collection."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to use from the `values` collection."
+                    }
+                ],
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteUnitQuaternion(Output, PropertyName, dates, values, startIndex, length);"
+            }
+        ],
+        "References": [
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<string>",
+                        "name": "references",
+                        "description": "The list of references."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReferences(Output, references);"
+            }
+        ],
+        "String": [
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "value",
+                        "description": "The value."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(value);"
+            }
+        ],
+        "Font": [
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "font",
+                        "description": "The font."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(font);"
             }
         ]
     }

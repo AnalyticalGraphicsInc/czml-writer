@@ -1,0 +1,5 @@
+{
+    "title": "CartographicList",
+    "description": "A list of geodetic, WGS84 positions using longitude, latitude, and height components.",
+    "type": "array"
+}

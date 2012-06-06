@@ -1,0 +1,5 @@
+{
+    "title": "Cartesian3List",
+    "description": "A list of positions specified as Cartesian [X, Y, Z, X, Y, Z, ...] positions.",
+    "type": "array"
+}

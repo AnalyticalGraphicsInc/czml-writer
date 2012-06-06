@@ -111,7 +111,7 @@ label {	display: block; font-weight: bold; }
     				try {
     					json = json ? JSON.parse(json) : undefined;
     				} catch (e) {
-    					throw new Error("Input is not valid JSON");
+    					throw new Error("Input is not valid JSON:" + e.message);
     				}
 
     				try {
@@ -120,7 +120,7 @@ label {	display: block; font-weight: bold; }
     					xhr.send();
     					schema = JSON.parse(xhr.responseText);
     				} catch (e) {
-    					throw new Error("Schema is not valid JSON");
+    					throw new Error("Packet.jsonschema is not valid JSON: " + e.message);
     				}
 
     				var environment = JSV.createEnvironment();
@@ -138,7 +138,11 @@ label {	display: block; font-weight: bold; }
     						var xhr = new XMLHttpRequest();
     						xhr.open('GET', uri, false);
     						xhr.send();
-    						environment.createSchema(JSON.parse(xhr.responseText), undefined, uri);
+    						try {
+    							environment.createSchema(JSON.parse(xhr.responseText), undefined, uri);
+    						} catch (e) {
+    							throw new Error("Error loading schema " + uri + ": " + e.message);
+    						}
     						foundSchema = originalFindSchema.call(this, uri);
     					}
     					return foundSchema;

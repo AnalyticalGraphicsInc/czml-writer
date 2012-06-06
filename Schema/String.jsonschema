@@ -1,0 +1,13 @@
+{
+    "title": "String",
+    "description": "A string value.  The string can optionally vary with time.",
+    "type": ["array", "object", "string"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "string": {
+            "$ref": "StringValue.jsonschema",
+            "description": "The string value.",
+            "czmlValue": true
+        }
+    }
+}

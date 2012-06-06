@@ -1,6 +1,36 @@
 {
     "title": "Path",
-    "description": "TODO",
+    "description": "A path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.",
     "type": ["array", "object"],
-    "items": { "$ref": "#" }
+    "items": { "$ref": "#" },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the path is shown."
+        },
+        "color": {
+            "$ref": "Color.jsonschema",
+            "description": "The color of the path line."
+        },
+        "width": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the path line."
+        },
+        "outlineColor": {
+            "$ref": "Color.jsonschema",
+            "description": "The color of the outline of the path."
+        },
+        "outlineWidth": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the outline of the path."
+        },
+        "leadTime": {
+            "$ref": "Double.jsonschema",
+            "description": "The time ahead of the animation time, in seconds, to show the path."
+        },
+        "trailTime": {
+            "$ref": "Double.jsonschema",
+            "description": "The time behind the animation time, in seconds, to show the path."
+        }
+    }
 }
