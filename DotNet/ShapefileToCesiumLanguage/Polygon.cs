@@ -40,13 +40,13 @@ namespace ShapefileToCesiumLanguage
                 position.WriteCartographicDegrees(positions);
             }
 
-            using (PolygonCesiumWriter polygon = this.PacketWriter.OpenPolygonProperty())
+            using (PolygonCesiumWriter polygonWriter = this.PacketWriter.OpenPolygonProperty())
             {
-                using ( MaterialCesiumWriter material = polygon.OpenMaterialProperty())
+                using (MaterialCesiumWriter materialWriter = polygonWriter.OpenMaterialProperty())
                 {
-                    using (SolidColorMaterialCesiumWriter color =  material.OpenSolidColorProperty()) 
+                    using (SolidColorMaterialCesiumWriter colorWriter = materialWriter.OpenSolidColorProperty()) 
                     {
-                        color.WriteColorProperty(m_color);
+                        colorWriter.WriteColorProperty(m_color);
                     }
                 }
             }
