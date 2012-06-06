@@ -55,7 +55,7 @@ namespace GenerateFromSchema
                     {
                         string newPrefix = property.NameWithPascalCase + ".";
                         if (prefix.Length != 0)
-                            newPrefix = prefix + "." + newPrefix;
+                            newPrefix = prefix + newPrefix;
                         GenerateProperty(level + 1, newPrefix, nestedProperty, output);
                     }
                 }
