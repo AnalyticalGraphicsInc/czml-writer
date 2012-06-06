@@ -1,0 +1,13 @@
+{
+    "title": "Font",
+    "description": "TODO",
+    "type": ["array", "object", "string"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "font": {
+            "$ref": "FontValue.jsonschema",
+            "description": "The font.",
+            "czmlValue": true
+        }
+    }
+}

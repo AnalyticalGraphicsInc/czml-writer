@@ -13,20 +13,8 @@ namespace CesiumLanguageWriter.Advanced
     /// An interface to a property that writes a sampled, interpolatable value.
     /// </summary>
     /// <typeparam name="TValue">The type of the value.</typeparam>
-    public interface ICesiumInterpolatableValuePropertyWriter<TValue> : ICesiumElementWriter
+    public interface ICesiumInterpolatableValuePropertyWriter<TValue> : ICesiumValuePropertyWriter<TValue>, ICesiumInterpolationInformationWriter
     {
-        /// <summary>
-        /// Writes the interpolation algorithm to use to interpolate the sampled data in this interval.
-        /// </summary>
-        /// <param name="interpolationAlgorithm">The interpolation algorithm.</param>
-        void WriteInterpolationAlgorithm(CesiumInterpolationAlgorithm interpolationAlgorithm);
-
-        /// <summary>
-        /// Writes the degree of polynomial to use to interpolate sampled data in this interval.
-        /// </summary>
-        /// <param name="degree">The degree.</param>
-        void WriteInterpolationDegree(int degree);
-
         /// <summary>
         /// Writes time-tagged samples for this property.  Clients will interpolate over the samples
         /// to determine the property value at a given time.  The <paramref name="dates"/> need not all

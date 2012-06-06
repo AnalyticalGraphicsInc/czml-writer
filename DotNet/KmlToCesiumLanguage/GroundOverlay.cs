@@ -31,7 +31,7 @@ namespace KmlToCesiumLanguage
         {
             using (var packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
             {
-                packetWriter.WriteIdentifier(Guid.NewGuid().ToString());
+                packetWriter.WriteId(Guid.NewGuid().ToString());
                 Utility.WriteAvailability(m_element, packetWriter, m_document.Namespace);
                 XElement latLon = m_element.Element(m_document.Namespace + "LatLonBox");
                 if (latLon != null)
@@ -62,7 +62,7 @@ namespace KmlToCesiumLanguage
                                                 new Cartographic(west, south, altitude)};
                     using (var positions = packetWriter.OpenVertexPositionsProperty())
                     {
-                        positions.WriteValue(cartographicPositions);
+                        positions.WriteCartographicRadians(cartographicPositions);
                     }
                 }
                 using (var polygon = packetWriter.OpenPolygonProperty())
@@ -72,7 +72,7 @@ namespace KmlToCesiumLanguage
                     {
                         using (var visibility = polygon.OpenShowProperty())
                         {
-                            visibility.WriteValue(Convert.ToBoolean(int.Parse(visibilityElement.Value)));
+                            visibility.WriteBoolean(Convert.ToBoolean(int.Parse(visibilityElement.Value)));
                         }
                     }
                     XElement iconElement = m_element.Element(m_document.Namespace + "Icon");

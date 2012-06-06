@@ -7,7 +7,7 @@
     "properties": {
         "referenceFrame": {
             "description": "The reference frame in which cartesian positions are specified. Possible values are \"FIXED\" and \"INERTIAL\". In addition, the value of this property can be a hash (#) symbol followed by the ID of another object in the same scope whose \"position\" and \"orientation\" properties define the reference frame in which this position is defined.  This property is ignored when specifying position with any type other than cartesian. If this property is not specified, the default reference frame is \"FIXED\".",
-            "type": "string",
+            "type": "string"
         },
         "cartesian": {
             "$ref": "Cartesian3Value.jsonschema",

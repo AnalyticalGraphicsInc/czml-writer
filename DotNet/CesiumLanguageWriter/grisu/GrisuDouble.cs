@@ -3,6 +3,7 @@ using System.Diagnostics;
 
 namespace grisu.net
 {
+    [CSToJavaExclude]
     internal struct GrisuDouble
     {
         const ulong kSignMask = 0x8000000000000000;

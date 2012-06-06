@@ -1,6 +1,28 @@
 {
     "title": "Polyline",
-    "description": "TODO",
+    "description": "A polyline, which is a line in the scene composed of multiple segments.",
     "type": ["array", "object"],
-    "items": { "$ref": "#" }
+    "items": { "$ref": "#" },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the polyline is shown."
+        },
+        "color": {
+            "$ref": "Color.jsonschema",
+            "description": "The color of the polyline."
+        },
+        "width": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the polyline."
+        },
+        "outlineColor": {
+            "$ref": "Color.jsonschema",
+            "description": "The color of the outline of the polyline."
+        },
+        "outlineWidth": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the outline of the polyline."
+        }
+    }
 }

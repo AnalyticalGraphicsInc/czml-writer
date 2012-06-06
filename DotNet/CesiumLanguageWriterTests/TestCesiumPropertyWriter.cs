@@ -21,7 +21,7 @@ namespace CesiumLanguageWriterTests
 #if StkComponents
         : ComponentsTestBase
 #endif
-        where TDerived : CesiumValuePropertyWriter<TValue, TDerived>
+        where TDerived : CesiumPropertyWriter<TDerived>
     {
         public StringWriter StringWriter
         {
@@ -41,7 +41,7 @@ namespace CesiumLanguageWriterTests
             private set;
         }
 
-        public CesiumPacketWriter Packet
+        public PacketCesiumWriter Packet
         {
             get;
             private set;

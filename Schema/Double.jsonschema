@@ -2,7 +2,7 @@
     "title": "Double",
     "description": "A floating-point value.",
     "extends": { "$ref": "InterpolatableProperty.jsonschema" },
-    "type": ["array", "object"],
+    "type": ["array", "object", "number"],
     "items": { "$ref": "#" },
     "properties": {
         "number": {

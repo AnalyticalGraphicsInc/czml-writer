@@ -60,7 +60,7 @@ namespace KmlToCesiumLanguage
         /// <param name="timePrimitiveParentElement">The parent element that contains the kml TimePrimitive element.</param>
         /// <param name="packetWriter">The packet writer.</param>
         /// <param name="docNamespace">The namespace of the kml document.</param>
-        public static void WriteAvailability(XElement timePrimitiveParentElement, CesiumPacketWriter packetWriter, XNamespace docNamespace)
+        public static void WriteAvailability(XElement timePrimitiveParentElement, PacketCesiumWriter packetWriter, XNamespace docNamespace)
         {
             TimeInterval interval = GetInterval(timePrimitiveParentElement, docNamespace);
             if (interval != null)
