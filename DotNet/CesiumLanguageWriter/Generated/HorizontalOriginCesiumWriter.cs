@@ -50,8 +50,8 @@ namespace CesiumLanguageWriter
         public void WriteHorizontalOrigin(CesiumHorizontalOrigin value)
         {
             const string PropertyName = HorizontalOriginPropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
+            if (IsInterval)
+                Output.WritePropertyName(PropertyName);
             Output.WriteValue(CesiumFormattingHelper.HorizontalOriginToString(value));
         }
 

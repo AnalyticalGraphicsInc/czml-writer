@@ -14,7 +14,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 @Internal
-public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropertyWriter<UnitQuaternion, OrientationCesiumWriter> {
+public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropertyWriter<OrientationCesiumWriter> {
 	@Override
 	protected CesiumPropertyWriter<OrientationCesiumWriter> createPropertyWriter(String propertyName) {
 		return new OrientationCesiumWriter(propertyName);

@@ -71,8 +71,9 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 	 */
 	public final void writeLabelStyle(CesiumLabelStyle value) {
 		String PropertyName = LabelStylePropertyName;
-		openIntervalIfNecessary();
-		getOutput().writePropertyName(PropertyName);
+		if (getIsInterval()) {
+			getOutput().writePropertyName(PropertyName);
+		}
 		getOutput().writeValue(CesiumFormattingHelper.labelStyleToString(value));
 	}
 

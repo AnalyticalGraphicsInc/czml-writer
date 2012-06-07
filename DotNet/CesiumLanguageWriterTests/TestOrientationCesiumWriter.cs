@@ -20,7 +20,7 @@ namespace CesiumLanguageWriterTests
 #endif
 {
     [TestFixture]
-    class TestOrientationCesiumWriter : TestCesiumInterpolatablePropertyWriter<UnitQuaternion, OrientationCesiumWriter>
+    class TestOrientationCesiumWriter : TestCesiumInterpolatablePropertyWriter<OrientationCesiumWriter>
     {
         protected override CesiumPropertyWriter<OrientationCesiumWriter> CreatePropertyWriter(string propertyName)
         {

@@ -73,6 +73,7 @@
     <Compile Include="TestMatrix3By3.cs" />
     <Compile Include="TestOrientationCesiumWriter.cs" />
     <Compile Include="TestPositionCesiumWriter.cs" />
+    <Compile Include="TestPropertiesOfSimpleJsonTypes.cs" />
     <Compile Include="TestTimeInterval.cs" />
     <Compile Include="TestUnitCartesian3.cs" />
     <Compile Include="TestUnitQuaternion.cs" />

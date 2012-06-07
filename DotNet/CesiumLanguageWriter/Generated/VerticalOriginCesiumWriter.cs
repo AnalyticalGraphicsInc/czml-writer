@@ -50,8 +50,8 @@ namespace CesiumLanguageWriter
         public void WriteVerticalOrigin(CesiumVerticalOrigin value)
         {
             const string PropertyName = VerticalOriginPropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
+            if (IsInterval)
+                Output.WritePropertyName(PropertyName);
             Output.WriteValue(CesiumFormattingHelper.VerticalOriginToString(value));
         }
 
