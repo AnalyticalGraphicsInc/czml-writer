@@ -9,7 +9,7 @@ import java.io.StringWriter;
 import org.junit.Assert;
 import org.junit.Test;
 
-public abstract class TestCesiumInterpolatablePropertyWriter<TValue, TDerived extends CesiumInterpolatablePropertyWriter<TDerived>> extends TestCesiumPropertyWriter<TValue, TDerived> {
+public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends CesiumInterpolatablePropertyWriter<TDerived>> extends TestCesiumPropertyWriter<TDerived> {
 	@Test
 	public final void interpolationAlgorithmValueWritesInterpolationAlgorithmProperty() {
 		CesiumPropertyWriter<TDerived> property = createPropertyWriter("foo");

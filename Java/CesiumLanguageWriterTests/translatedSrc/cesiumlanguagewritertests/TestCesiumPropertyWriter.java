@@ -10,7 +10,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public abstract class TestCesiumPropertyWriter<TValue, TDerived extends CesiumPropertyWriter<TDerived>> {
+public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWriter<TDerived>> {
 	public final StringWriter getStringWriter() {
 		return backingField$StringWriter;
 	}
