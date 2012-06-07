@@ -235,6 +235,7 @@ namespace Shapefile
                         case ShapeType.Polygon:
                         case ShapeType.PolygonM:
                         case ShapeType.PolygonZ:
+                        case ShapeType.MultiPatch:
                             extent = new CartographicExtent(
                                 ToDouble(record, 4, ByteOrder.LittleEndian),
                                 ToDouble(record, 12, ByteOrder.LittleEndian),
