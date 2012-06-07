@@ -50,8 +50,8 @@ namespace CesiumLanguageWriter
         public void WriteLabelStyle(CesiumLabelStyle value)
         {
             const string PropertyName = LabelStylePropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
+            if (IsInterval)
+                Output.WritePropertyName(PropertyName);
             Output.WriteValue(CesiumFormattingHelper.LabelStyleToString(value));
         }
 

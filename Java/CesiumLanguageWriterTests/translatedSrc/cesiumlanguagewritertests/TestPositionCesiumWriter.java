@@ -11,7 +11,7 @@ import java.util.Collection;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWriter<Cartesian, PositionCesiumWriter> {
+public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWriter<PositionCesiumWriter> {
 	@Override
 	protected CesiumPropertyWriter<PositionCesiumWriter> createPropertyWriter(String propertyName) {
 		return new PositionCesiumWriter(propertyName);

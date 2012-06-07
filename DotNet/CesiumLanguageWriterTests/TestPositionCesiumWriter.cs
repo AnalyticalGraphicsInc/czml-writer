@@ -19,7 +19,7 @@ namespace CesiumLanguageWriterTests
 #endif
 {
     [TestFixture]
-    public class TestPositionCesiumWriter : TestCesiumInterpolatablePropertyWriter<Cartesian, PositionCesiumWriter>
+    public class TestPositionCesiumWriter : TestCesiumInterpolatablePropertyWriter<PositionCesiumWriter>
     {
         protected override CesiumPropertyWriter<PositionCesiumWriter> CreatePropertyWriter(string propertyName)
         {

@@ -71,8 +71,9 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 	 */
 	public final void writeHorizontalOrigin(CesiumHorizontalOrigin value) {
 		String PropertyName = HorizontalOriginPropertyName;
-		openIntervalIfNecessary();
-		getOutput().writePropertyName(PropertyName);
+		if (getIsInterval()) {
+			getOutput().writePropertyName(PropertyName);
+		}
 		getOutput().writeValue(CesiumFormattingHelper.horizontalOriginToString(value));
 	}
 

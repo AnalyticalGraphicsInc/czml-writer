@@ -210,6 +210,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
 	 * @param interval The interval.
 	 */
 	public final void writeInterval(TimeInterval interval) {
+		openIntervalIfNecessary();
 		getOutput().writePropertyName("interval");
 		getOutput().writeValue(CesiumFormattingHelper.toIso8601Interval(interval.getStart(), interval.getStop(), getOutput().getPrettyFormatting() ? Iso8601Format.EXTENDED : Iso8601Format.COMPACT));
 	}
