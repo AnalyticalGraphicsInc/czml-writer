@@ -39,11 +39,6 @@ namespace CesiumLanguageWriter
         public const string PixelOffsetPropertyName = "pixelOffset";
 
         /// <summary>
-        /// The name of the <code>rotation</code> property.
-        /// </summary>
-        public const string RotationPropertyName = "rotation";
-
-        /// <summary>
         /// The name of the <code>scale</code> property.
         /// </summary>
         public const string ScalePropertyName = "scale";
@@ -63,7 +58,6 @@ namespace CesiumLanguageWriter
         private readonly Lazy<HorizontalOriginCesiumWriter> m_horizontalOrigin = new Lazy<HorizontalOriginCesiumWriter>(() => new HorizontalOriginCesiumWriter(HorizontalOriginPropertyName), false);
         private readonly Lazy<ImageCesiumWriter> m_image = new Lazy<ImageCesiumWriter>(() => new ImageCesiumWriter(ImagePropertyName), false);
         private readonly Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<PixelOffsetCesiumWriter>(() => new PixelOffsetCesiumWriter(PixelOffsetPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_rotation = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RotationPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<VerticalOriginCesiumWriter>(() => new VerticalOriginCesiumWriter(VerticalOriginPropertyName), false);
@@ -359,50 +353,6 @@ namespace CesiumLanguageWriter
             using (var writer = OpenPixelOffsetProperty())
             {
                 writer.WriteCartesian2(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the billboard expressed as a clockwise rotation in radians.
-        /// </summary>
-        public DoubleCesiumWriter RotationWriter
-        {
-            get { return m_rotation.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the billboard expressed as a clockwise rotation in radians.
-        /// </summary>
-        public DoubleCesiumWriter OpenRotationProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(RotationWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard expressed as a clockwise rotation in radians.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteRotationProperty(double value)
-        {
-            using (var writer = OpenRotationProperty())
-            {
-                writer.WriteNumber(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard expressed as a clockwise rotation in radians.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteRotationProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenRotationProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 

@@ -53,13 +53,6 @@ public class PyramidCesiumWriter extends CesiumPropertyWriter<PyramidCesiumWrite
 	public static final String IntersectionColorPropertyName = "intersectionColor";
 	/**
 	 *  
-	The name of the <code>erosion</code> property.
-	
-
-	 */
-	public static final String ErosionPropertyName = "erosion";
-	/**
-	 *  
 	The name of the <code>material</code> property.
 	
 
@@ -88,11 +81,6 @@ public class PyramidCesiumWriter extends CesiumPropertyWriter<PyramidCesiumWrite
 	private Lazy<ColorCesiumWriter> m_intersectionColor = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
 		public ColorCesiumWriter invoke() {
 			return new ColorCesiumWriter(IntersectionColorPropertyName);
-		}
-	}, false);
-	private Lazy<DoubleCesiumWriter> m_erosion = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-		public DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(ErosionPropertyName);
 		}
 	}, false);
 	private Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(new Func1<MaterialCesiumWriter>() {
@@ -436,70 +424,6 @@ public class PyramidCesiumWriter extends CesiumPropertyWriter<PyramidCesiumWrite
 			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
 			try {
 				writer.writeRgbaf(red, green, blue, alpha);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>erosion</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>erosion</code> property defines the erosion of the pyramid.
-	
-
-	 */
-	public final DoubleCesiumWriter getErosionWriter() {
-		return m_erosion.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>erosion</code> property.  The <code>erosion</code> property defines the erosion of the pyramid.
-	
-
-	 */
-	public final DoubleCesiumWriter openErosionProperty() {
-		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getErosionWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>erosion</code> property as a <code>number</code> value.  The <code>erosion</code> property specifies the erosion of the pyramid.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeErosionProperty(double value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openErosionProperty();
-			try {
-				writer.writeNumber(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>erosion</code> property as a <code>number</code> value.  The <code>erosion</code> property specifies the erosion of the pyramid.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeErosionProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openErosionProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

@@ -374,10 +374,10 @@ namespace CesiumLanguageWriter
             {
                 output.WriteValue(epoch.SecondsDifference(dates[i]));
                 UnitQuaternion quaternion = values[i];
-                output.WriteValue(quaternion.W);
                 output.WriteValue(quaternion.X);
                 output.WriteValue(quaternion.Y);
                 output.WriteValue(quaternion.Z);
+                output.WriteValue(quaternion.W);
                 output.WriteLineBreak();
             }
 

@@ -54,11 +54,6 @@ namespace CesiumLanguageWriter
         public const string IntersectionColorPropertyName = "intersectionColor";
 
         /// <summary>
-        /// The name of the <code>erosion</code> property.
-        /// </summary>
-        public const string ErosionPropertyName = "erosion";
-
-        /// <summary>
         /// The name of the <code>capMaterial</code> property.
         /// </summary>
         public const string CapMaterialPropertyName = "capMaterial";
@@ -86,7 +81,6 @@ namespace CesiumLanguageWriter
         private readonly Lazy<DoubleCesiumWriter> m_maximumClockAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MaximumClockAnglePropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_showIntersection = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowIntersectionPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_intersectionColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(IntersectionColorPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_erosion = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ErosionPropertyName), false);
         private readonly Lazy<MaterialCesiumWriter> m_capMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(CapMaterialPropertyName), false);
         private readonly Lazy<MaterialCesiumWriter> m_innerMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(InnerMaterialPropertyName), false);
         private readonly Lazy<MaterialCesiumWriter> m_outerMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(OuterMaterialPropertyName), false);
@@ -464,50 +458,6 @@ namespace CesiumLanguageWriter
             using (var writer = OpenIntersectionColorProperty())
             {
                 writer.WriteRgbaf(red, green, blue, alpha);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>erosion</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>erosion</code> property defines the erosion of the cone.
-        /// </summary>
-        public DoubleCesiumWriter ErosionWriter
-        {
-            get { return m_erosion.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>erosion</code> property.  The <code>erosion</code> property defines the erosion of the cone.
-        /// </summary>
-        public DoubleCesiumWriter OpenErosionProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(ErosionWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>erosion</code> property as a <code>number</code> value.  The <code>erosion</code> property specifies the erosion of the cone.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteErosionProperty(double value)
-        {
-            using (var writer = OpenErosionProperty())
-            {
-                writer.WriteNumber(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>erosion</code> property as a <code>number</code> value.  The <code>erosion</code> property specifies the erosion of the cone.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteErosionProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenErosionProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 
