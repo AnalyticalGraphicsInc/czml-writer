@@ -24,10 +24,6 @@
             "$ref": "Color.jsonschema",
             "description": "The color of the intersection of the pyramid with the Earth."
         },
-        "erosion": {
-            "$ref": "Double.jsonschema",
-            "description": "The erosion of the pyramid."
-        },
         "material": {
             "$ref": "Material.jsonschema",
             "description": "The material to display on the surface of the pyramid."

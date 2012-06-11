@@ -24,10 +24,6 @@
             "$ref": "PixelOffset.jsonschema",
             "description": "The offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`."
         },
-        "rotation": {
-            "$ref": "Double.jsonschema",
-            "description": "The rotation of the billboard expressed as a clockwise rotation in radians."
-        },
         "scale": {
             "$ref": "Double.jsonschema",
             "description": "The scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`."

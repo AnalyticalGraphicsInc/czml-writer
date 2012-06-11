@@ -54,13 +54,6 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	public static final String PixelOffsetPropertyName = "pixelOffset";
 	/**
 	 *  
-	The name of the <code>rotation</code> property.
-	
-
-	 */
-	public static final String RotationPropertyName = "rotation";
-	/**
-	 *  
 	The name of the <code>scale</code> property.
 	
 
@@ -103,11 +96,6 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	private Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<PixelOffsetCesiumWriter>(new Func1<PixelOffsetCesiumWriter>() {
 		public PixelOffsetCesiumWriter invoke() {
 			return new PixelOffsetCesiumWriter(PixelOffsetPropertyName);
-		}
-	}, false);
-	private Lazy<DoubleCesiumWriter> m_rotation = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-		public DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(RotationPropertyName);
 		}
 	}, false);
 	private Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
@@ -549,70 +537,6 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 			cesiumlanguagewriter.PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
 			try {
 				writer.writeCartesian2(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the billboard expressed as a clockwise rotation in radians.
-	
-
-	 */
-	public final DoubleCesiumWriter getRotationWriter() {
-		return m_rotation.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the billboard expressed as a clockwise rotation in radians.
-	
-
-	 */
-	public final DoubleCesiumWriter openRotationProperty() {
-		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getRotationWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard expressed as a clockwise rotation in radians.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeRotationProperty(double value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
-			try {
-				writer.writeNumber(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard expressed as a clockwise rotation in radians.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeRotationProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
