@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using Shapefile;
-using CesiumLanguageWriter;
 
 namespace ShapefileToCesiumLanguage
 {

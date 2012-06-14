@@ -33,7 +33,7 @@ namespace ShapefileToCesiumLanguage
         }
 
         /// <summary>
-        /// Writes a new polyline packet for each part of the shape
+        /// Writes a new polyline packet for each part of the shape.
         /// </summary>
         /// <param name="part">The index of the part to write</param>
         private void WritePacket(int part)
