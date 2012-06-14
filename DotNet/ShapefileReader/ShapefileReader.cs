@@ -150,9 +150,10 @@ namespace Shapefile
                         case ShapeType.Point:
                         case ShapeType.PointM:
                         case ShapeType.PointZ:
-                            Rectangular position = new Rectangular(
-                                                    ToDouble(record, 4, ByteOrder.LittleEndian),
-                                                    ToDouble(record, 12, ByteOrder.LittleEndian));
+                            double x = ToDouble(record, 4, ByteOrder.LittleEndian);
+                            double y = ToDouble(record, 12, ByteOrder.LittleEndian);
+                            double z = (recordShapeType == ShapeType.PointZ) ? ToDouble(record, 20, ByteOrder.LittleEndian) : 0.0;
+                            Cartesian position = new Cartesian(x, y, z);
                             if (recordShapeType == ShapeType.Point)
                             {
                                 _shapes.Add(new PointShape(recordNumber, metadata, position));
@@ -164,9 +165,8 @@ namespace Shapefile
                             }
                             else
                             {
-                                double z = ToDouble(record, 20, ByteOrder.LittleEndian);
                                 double measure = ToDouble(record, 28, ByteOrder.LittleEndian);
-                                _shapes.Add(new PointZShape(recordNumber, metadata, position, z, measure));
+                                _shapes.Add(new PointZShape(recordNumber, metadata, position, measure));
                             }
 
                             break;
