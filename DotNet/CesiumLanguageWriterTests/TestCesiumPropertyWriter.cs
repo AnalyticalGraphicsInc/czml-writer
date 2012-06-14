@@ -1,26 +1,12 @@
 ﻿using System;
 using System.IO;
-#if StkComponents
-using AGI.Foundation.Cesium;
-using AGI.Foundation.Cesium.Advanced;
-using AGI.Foundation.Time;
-using AGI.Test;
-#else
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
-#endif
 using NUnit.Framework;
 
-#if StkComponents
-namespace Cesium.Tests.Cesium
-#else
 namespace CesiumLanguageWriterTests
-#endif
 {
-    public abstract class TestCesiumPropertyWriter<TValue, TDerived>
-#if StkComponents
-        : ComponentsTestBase
-#endif
+    public abstract class TestCesiumPropertyWriter<TDerived>
         where TDerived : CesiumPropertyWriter<TDerived>
     {
         public StringWriter StringWriter

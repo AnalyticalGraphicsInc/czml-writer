@@ -457,10 +457,10 @@ public final class CesiumWritingHelper {
 		for (int i = startIndex; i < last; ++i) {
 			output.writeValue(epoch.secondsDifference(dates.get(i)));
 			UnitQuaternion quaternion = values.get(i);
-			output.writeValue(quaternion.getW());
 			output.writeValue(quaternion.getX());
 			output.writeValue(quaternion.getY());
 			output.writeValue(quaternion.getZ());
+			output.writeValue(quaternion.getW());
 			output.writeLineBreak();
 		}
 		output.writeEndSequence();

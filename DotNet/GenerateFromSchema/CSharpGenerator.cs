@@ -361,10 +361,11 @@ namespace GenerateFromSchema
                         writer.WriteLine("Output.WritePropertyName(PropertyName);");
                     }
                     else if (isFirstValueProperty && overload.Parameters.Length == 1 &&
-                                (overload.Parameters[0].Type == "string" ||
-                        overload.Parameters[0].Type == "double" || overload.Parameters[0].Type == "float" ||
-                        overload.Parameters[0].Type == "int" || overload.Parameters[0].Type == "long" ||
-                        overload.Parameters[0].Type == "bool"))
+                             (overload.Parameters[0].Type == "string" ||
+                              overload.Parameters[0].Type == "double" || overload.Parameters[0].Type == "float" ||
+                              overload.Parameters[0].Type == "int" || overload.Parameters[0].Type == "long" ||
+                              overload.Parameters[0].Type == "bool" ||
+                              property.ValueType.JsonTypes == JsonSchemaType.String))
                     {
                         writer.WriteLine("if (IsInterval)");
                         writer.WriteLine("    Output.WritePropertyName(PropertyName);");

@@ -36,10 +36,6 @@
             "$ref": "Color.jsonschema",
             "description": "The color of the intersection of the cone with the Earth."
         },
-        "erosion": {
-            "$ref": "Double.jsonschema",
-            "description": "The erosion of the cone."
-        },
         "capMaterial": {
             "$ref": "Material.jsonschema",
             "description": "The material to use to cap the cone at its radial limit."

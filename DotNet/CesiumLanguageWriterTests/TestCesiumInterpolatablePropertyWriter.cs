@@ -13,7 +13,7 @@ namespace Cesium.Tests.Cesium
 namespace CesiumLanguageWriterTests
 #endif
 {
-    public abstract class TestCesiumInterpolatablePropertyWriter<TValue, TDerived> : TestCesiumPropertyWriter<TValue, TDerived>
+    public abstract class TestCesiumInterpolatablePropertyWriter<TDerived> : TestCesiumPropertyWriter<TDerived>
         where TDerived : CesiumInterpolatablePropertyWriter<TDerived>
     {
         [Test]
