@@ -5,17 +5,17 @@ namespace Shapefile
 {
     public class PointShape : Shape
     {
-        internal PointShape(int recordNumber, StringDictionary metadata, Rectangular position, ShapeType shapeType = ShapeType.Point)
+        public PointShape(int recordNumber, StringDictionary metadata, Rectangular position, ShapeType shapeType = ShapeType.Point)
             : base(recordNumber, metadata, shapeType)
         {
-            _position = position;
+            _position = new Cartesian(position.X, position.Y, 0.0);
         }
 
-        public Rectangular Position
+        public Cartesian Position
         {
             get { return _position; }
         }
 
-        private readonly Rectangular _position;
+        protected readonly Cartesian _position;
     }
 }

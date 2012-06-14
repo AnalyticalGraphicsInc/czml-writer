@@ -6,7 +6,7 @@ namespace Shapefile
 {
     public class PolylineMShape : PolylineShape
     {
-        internal PolylineMShape(
+        public PolylineMShape(
             int recordNumber,
             StringDictionary metadata,
             CartographicExtent extent,

@@ -6,7 +6,7 @@ namespace Shapefile
 {
     public class PolylineShape : Shape
     {
-        internal PolylineShape(
+        public PolylineShape(
             int recordNumber,
             StringDictionary metadata,
             CartographicExtent extent,
@@ -48,6 +48,6 @@ namespace Shapefile
         }
 
         private readonly CartographicExtent _extent;
-        private readonly ShapePart[] _parts;
+        protected ShapePart[] _parts;
     }
 }

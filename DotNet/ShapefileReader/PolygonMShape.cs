@@ -6,7 +6,7 @@ namespace Shapefile
 {
     public class PolygonMShape : PolygonShape
     {
-        internal PolygonMShape(
+        public PolygonMShape(
             int recordNumber,
             StringDictionary metadata,
             CartographicExtent extent,

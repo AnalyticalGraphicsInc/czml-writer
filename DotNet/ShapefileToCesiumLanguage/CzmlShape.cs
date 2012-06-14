@@ -1,7 +1,6 @@
-﻿using System;
-using System.Drawing;
-using Shapefile;
+﻿using System.Drawing;
 using CesiumLanguageWriter;
+using Shapefile;
 
 namespace ShapefileToCesiumLanguage
 {
@@ -14,22 +13,9 @@ namespace ShapefileToCesiumLanguage
         }
 
         /// <summary>
-        /// Writes the czml packet of the shape.
+        /// Writes the CZML representation of the shape as a series of packets.
         /// </summary>
-        public void WritePacket()
-        {
-            using (this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
-            {
-                this.PacketWriter.WriteId(m_shape.RecordNumber.ToString());
-                // Add style information?
-                this.Write();
-            }
-        }
-
-        /// <summary>
-        /// Writes the CZML representation of the shape.
-        /// </summary>
-        protected abstract void Write();
+        public abstract void Write();
 
         /// <summary>
         /// Gets the document.
@@ -39,7 +25,7 @@ namespace ShapefileToCesiumLanguage
         /// <summary>
         /// Gets the packet writer.
         /// </summary>
-        protected PacketCesiumWriter PacketWriter { get; private set; }
+        protected PacketCesiumWriter PacketWriter { get; set; }
 
         protected Shape m_shape;
         protected CzmlDocument m_document;

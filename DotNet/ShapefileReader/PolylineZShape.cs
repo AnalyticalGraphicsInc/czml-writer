@@ -6,7 +6,7 @@ namespace Shapefile
 {
     public class PolylineZShape : PolylineMShape
     {
-        internal PolylineZShape(
+        public PolylineZShape(
             int recordNumber,
             StringDictionary metadata,
             CartographicExtent extent,
@@ -23,7 +23,15 @@ namespace Shapefile
             : base(recordNumber, metadata, extent, parts, positions, minimumMeasure, maximumMeasure, measures, shapeType)
         {
             _zRange = new double[] { minimumZ, maximumZ };
-            _zValues = (double[])zValues.Clone();
+
+            _parts = new ShapePart[parts.Length];
+            for (int i = 0; i < parts.Length; ++i)
+            {
+                int count = ((i == parts.Length - 1) ?
+                    positions.Length : parts[i + 1]) - parts[i];
+
+                _parts[i] = new ShapePart(positions, zValues, parts[i], count);
+            }
         }
 
         public double[] ZRange
@@ -31,12 +39,6 @@ namespace Shapefile
             get { return _zRange; }
         }
 
-        public double[] ZValues
-        {
-            get { return _zValues; }
-        }
-
         private readonly double[] _zRange;
-        private readonly double[] _zValues;
     }
 }

@@ -5,7 +5,7 @@ using CesiumLanguageWriter;
 
 namespace ShapefileToCesiumLanguage
 {
-    internal class Point : CzmlShape
+    public class Point : CzmlShape
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Point"/> class.
@@ -22,18 +22,22 @@ namespace ShapefileToCesiumLanguage
         /// <summary>
         /// Writes the point to its <see cref="CzmlDocument"/>.
         /// </summary>
-        protected override void Write()
+        public override void Write()
         {
-            PointShape point = (PointShape)m_shape;
-            using (PositionCesiumWriter position = this.PacketWriter.OpenPositionProperty())
+            using (this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
             {
-                position.WriteCartographicDegrees(new Cartographic(point.Position.X, point.Position.Y, 0.0));
-            }
+                this.PacketWriter.WriteId(Guid.NewGuid().ToString());
+                PointShape point = (PointShape)m_shape;
+                using (PositionCesiumWriter position = this.PacketWriter.OpenPositionProperty())
+                {
+                    position.WriteCartographicDegrees(new Cartographic(point.Position.X, point.Position.Y, 0.0));
+                }
 
-            using (PointCesiumWriter pointWriter = this.PacketWriter.OpenPointProperty())
-            {
-                pointWriter.WriteColorProperty(m_color);
-            }
+                using (PointCesiumWriter pointWriter = this.PacketWriter.OpenPointProperty())
+                {
+                    pointWriter.WriteColorProperty(m_color);
+                }
+            }           
         }
     }
 }

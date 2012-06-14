@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
-using CesiumLanguageWriter;
+﻿using System.Drawing;
 using Shapefile;
 
 namespace ShapefileToCesiumLanguage
@@ -28,8 +23,7 @@ namespace ShapefileToCesiumLanguage
         {
             foreach (Shape shape in shapefile) 
             {
-                CzmlShape _shape = ShapeFactory.Create(shape, document, color);
-                _shape.WritePacket();
+                ShapeFactory.Create(shape, document, color).Write();
             }
         }
     }

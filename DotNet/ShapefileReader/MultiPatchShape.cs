@@ -6,7 +6,7 @@ namespace Shapefile
 {
     public class MultiPatchShape : Shape
     {
-        internal MultiPatchShape(
+        public MultiPatchShape(
             int recordNumber,
             StringDictionary metadata,
             CartographicExtent extent,

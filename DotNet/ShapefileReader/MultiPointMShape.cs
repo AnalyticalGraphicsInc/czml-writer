@@ -6,7 +6,7 @@ namespace Shapefile
 {
     public class MultiPointMShape : MultiPointShape
     {
-        internal MultiPointMShape(
+        public MultiPointMShape(
             int recordNumber,
             StringDictionary metadata,
             CartographicExtent extent,

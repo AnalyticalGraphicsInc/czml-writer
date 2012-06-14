@@ -5,7 +5,7 @@ namespace Shapefile
 {
     public class PointMShape : PointShape
     {
-        internal PointMShape(
+        public PointMShape(
             int recordNumber,
             StringDictionary metadata,
             Rectangular position, 

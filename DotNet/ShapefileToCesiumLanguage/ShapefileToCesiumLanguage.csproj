@@ -72,7 +72,9 @@
   <ItemGroup>
     <Compile Include="CzmlDocument.cs" />
     <Compile Include="CzmlShape.cs" />
+    <Compile Include="MultiPatch.cs" />
     <Compile Include="Point.cs" />
+    <Compile Include="PointZ.cs" />
     <Compile Include="Polygon.cs" />
     <Compile Include="Polyline.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,12 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Runtime.CompilerServices;
 using CesiumLanguageWriter;
 
 namespace Shapefile
 {
     public class PolygonShape : Shape
     {
-        internal PolygonShape(
+        public PolygonShape(
             int recordNumber,
             StringDictionary metadata,
             CartographicExtent extent,
@@ -35,6 +38,7 @@ namespace Shapefile
         public ShapePart this[int index]
         {
             get { return _parts[index]; }
+            set { _parts[index] = value; }
         }
 
         public int Count
@@ -48,6 +52,6 @@ namespace Shapefile
         }
 
         private readonly CartographicExtent _extent;
-        private readonly ShapePart[] _parts;
+        protected ShapePart[] _parts;
     }
 }
