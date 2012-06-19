@@ -74,7 +74,6 @@ namespace ShapefileReaderTests
         [Test]
         public void TestMultiPointZShapeType()
         {
-            double[] zValues = new double[] { 0.0, 1.0 };
             double[] measures = new double[] { 0.0, 1.0 };
             MultiPointZShape points = new MultiPointZShape(m_recordNumber, m_metadata, m_extent, m_positions,0.0, 1.0, 0.0, 1.0, measures);
             Assert.That(points.ShapeType == ShapeType.MultiPointZ);

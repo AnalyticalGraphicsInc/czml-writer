@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestMultiPointShapes.cs" />
     <Compile Include="TestPointShapes.cs" />
     <Compile Include="TestPolygonShapes.cs" />
     <Compile Include="TestPolylineShapes.cs" />

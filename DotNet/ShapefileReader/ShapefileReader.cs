@@ -181,12 +181,13 @@ namespace Shapefile
                                 ToDouble(record, 28, ByteOrder.LittleEndian));
 
                             int numberOfPoints = ToInteger(record, 36, ByteOrder.LittleEndian);
-                            Rectangular[] points = new Rectangular[numberOfPoints];
+                            Cartesian[] points = new Cartesian[numberOfPoints];
                             for (int i = 0; i < numberOfPoints; ++i)
                             {
-                                points[i] = new Rectangular(
+                                points[i] = new Cartesian(
                                     ToDouble(record, 40 + (16 * i), ByteOrder.LittleEndian),
-                                    ToDouble(record, 40 + (16 * i) + 8, ByteOrder.LittleEndian));
+                                    ToDouble(record, 40 + (16 * i) + 8, ByteOrder.LittleEndian),
+                                    0.0);
                             }
 
                             if (recordShapeType == ShapeType.MultiPoint)
@@ -221,9 +222,12 @@ namespace Shapefile
                                     double[] zValues = new double[numberOfPoints];
                                     for (int i = 0; i < numberOfPoints; i++)
                                     {
-                                        zValues[i] = ToDouble(record, zOffset + 16 + (8 * i), ByteOrder.LittleEndian);
+                                        x = points[i].X;
+                                        y = points[i].Y;
+                                        z = ToDouble(record, zOffset + 16 + (8 * i), ByteOrder.LittleEndian);
+                                        points[i] = new Cartesian(x, y, z);
                                     }
-                                    _shapes.Add(new MultiPointZShape(recordNumber, metadata, extent, points, zMin, zMax, zValues, mMin, mMax, measures));
+                                    _shapes.Add(new MultiPointZShape(recordNumber, metadata, extent, points, zMin, zMax, mMin, mMax, measures));
                                 }
                             }
 
@@ -245,7 +249,7 @@ namespace Shapefile
                             numberOfPoints = ToInteger(record, 40, ByteOrder.LittleEndian);
 
                             int[] parts = new int[numberOfParts];
-                            points = new Rectangular[numberOfPoints];
+                            Rectangular[] positions = new Rectangular[numberOfPoints];
 
                             //
                             // These two loops can be optimized if the machine is little endian.
@@ -264,18 +268,18 @@ namespace Shapefile
 
                             for (int i = 0; i < numberOfPoints; ++i)
                             {
-                                points[i] = new Rectangular(
+                                positions[i] = new Rectangular(
                                     ToDouble(record, pointOffset + (16 * i), ByteOrder.LittleEndian),
                                     ToDouble(record, pointOffset + (16 * i) + 8, ByteOrder.LittleEndian));
                             }
 
                             if (recordShapeType == ShapeType.Polyline)
                             {
-                                _shapes.Add(new PolylineShape(recordNumber, metadata, extent, parts, points));
+                                _shapes.Add(new PolylineShape(recordNumber, metadata, extent, parts, positions));
                             }
                             else if (recordShapeType == ShapeType.Polygon)
                             {
-                                _shapes.Add(new PolygonShape(recordNumber, metadata, extent, parts, points));
+                                _shapes.Add(new PolygonShape(recordNumber, metadata, extent, parts, positions));
                             }
                             else
                             {
@@ -296,11 +300,11 @@ namespace Shapefile
 
                                 if (recordShapeType == ShapeType.PolylineM)
                                 {
-                                    _shapes.Add(new PolylineMShape(recordNumber, metadata, extent, parts, points, mMin, mMax, measures));
+                                    _shapes.Add(new PolylineMShape(recordNumber, metadata, extent, parts, positions, mMin, mMax, measures));
                                 }
                                 else if (recordShapeType == ShapeType.PolygonM)
                                 {
-                                    _shapes.Add(new PolygonMShape(recordNumber, metadata, extent, parts, points, mMin, mMax, measures));
+                                    _shapes.Add(new PolygonMShape(recordNumber, metadata, extent, parts, positions, mMin, mMax, measures));
                                 }
                                 else
                                 {
@@ -314,11 +318,11 @@ namespace Shapefile
 
                                     if (recordShapeType == ShapeType.PolylineZ)
                                     {
-                                        _shapes.Add(new PolylineZShape(recordNumber, metadata, extent, parts, points, zMin, zMax, zValues, mMin, mMax, measures));
+                                        _shapes.Add(new PolylineZShape(recordNumber, metadata, extent, parts, positions, zMin, zMax, zValues, mMin, mMax, measures));
                                     }
                                     else if (recordShapeType == ShapeType.PolygonZ)
                                     {
-                                        _shapes.Add(new PolygonZShape(recordNumber, metadata, extent, parts, points, zMin, zMax, zValues, mMin, mMax, measures));
+                                        _shapes.Add(new PolygonZShape(recordNumber, metadata, extent, parts, positions, zMin, zMax, zValues, mMin, mMax, measures));
                                     }
                                     else
                                     {
@@ -327,7 +331,7 @@ namespace Shapefile
                                         {
                                             partTypes[i] = (MultiPatchPartType)ToInteger(record, partTypeOffset + (4 * i), ByteOrder.LittleEndian);
                                         }
-                                        _shapes.Add(new MultiPatchShape(recordNumber, metadata, extent, parts, partTypes, points, zMin, zMax, zValues, mMin, mMax, measures));
+                                        _shapes.Add(new MultiPatchShape(recordNumber, metadata, extent, parts, partTypes, positions, zMin, zMax, zValues, mMin, mMax, measures));
                                     }
                                 }
                             }
