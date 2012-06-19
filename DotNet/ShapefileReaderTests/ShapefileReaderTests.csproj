@@ -74,6 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestPointShapes.cs" />
+    <Compile Include="TestPolygonShapes.cs" />
+    <Compile Include="TestPolylineShapes.cs" />
     <Compile Include="TestShapefileReader.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
