@@ -15,14 +15,13 @@ limitations under the License.
 
 Columbus View (Pat. Pend.)
 
-
--------------------------------------------------------------------------------
-
+Third-Party Code
+================
 
 Cesium includes third-party code from:
 
-
 Mono Project Class Library
+--------------------------
 
     http://www.mono-project.com
 
