@@ -347,5 +347,72 @@ namespace ShapefileToCesiumLanguageTests
             Regex polygonPattern = new Regex(@"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,?)+\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}");
             Assert.That(polygonPattern.Matches(result).Count == 2);
         }
+
+        [Test]
+        public void TestMultipatchConversionWithTriangleFan()
+        {
+            Rectangular[] positions = new Rectangular[] {
+                new Rectangular(0.0, 0.0),
+                new Rectangular(1.0, 2.0),
+                new Rectangular(2.0, 0.0),
+                new Rectangular(1.0, -1.0),
+                new Rectangular(-1.0, -1.0),
+                new Rectangular(-2.0, 0.0),
+                new Rectangular(-1.0, 2.0)
+            };
+
+            CartographicExtent extent = new CartographicExtent(-2.0, -1.0, 2.0, 2.0);
+            int[] parts = new int[] { 0 };
+            MultiPatchPartType[] partTypes = new MultiPatchPartType[] { MultiPatchPartType.TriangleFan };
+
+            double[] zValues = new double[] { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0 };
+            double[] measures = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+
+            MultiPatchShape multipatch = new MultiPatchShape(0, m_metadata, extent, parts, partTypes, positions, 0.0, 0.0, zValues, 0.0, 0.0, measures);
+            MultiPatch patch = new MultiPatch(multipatch, m_document, Color.Blue);
+            patch.Write();
+            string result = m_document.StringWriter.ToString();
+            Regex trianglePattern = new Regex(@"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,?){9}\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}");
+            Assert.That(trianglePattern.Matches(result).Count == 5);
+        }
+
+        [Test]
+        public void TestMultipatchConversionWithTriangleStrip()
+        {
+            Rectangular[] positions = new Rectangular[] {
+                new Rectangular(0.0, 0.0),
+                new Rectangular(0.0, 1.0),
+                new Rectangular(1.0, 0.0),
+                new Rectangular(1.0, 1.0),
+                new Rectangular(2.0, 0.0),
+                new Rectangular(2.0, 1.0),
+                new Rectangular(3.0, 0.0)
+            };
+
+            CartographicExtent extent = new CartographicExtent(0.0, 0.0, 3.0, 1.0);
+            int[] parts = new int[] { 0 };
+            MultiPatchPartType[] partTypes = new MultiPatchPartType[] { MultiPatchPartType.TriangleStrip };
+
+            double[] zValues = new double[] { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0 };
+            double[] measures = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+
+            MultiPatchShape multipatch = new MultiPatchShape(0, m_metadata, extent, parts, partTypes, positions, 0.0, 0.0, zValues, 0.0, 0.0, measures);
+            MultiPatch patch = new MultiPatch(multipatch, m_document, Color.Blue);
+            patch.Write();
+            string result = m_document.StringWriter.ToString();
+            Regex trianglePattern = new Regex(@"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,?){9}\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}");
+            Assert.That(trianglePattern.Matches(result).Count == 5);
+        }
+
+        [Test]
+        public void TestMultiPatchConversion()
+        {
+            string shapefileName = ".\\..\\..\\SampleShapefiles\\Financial_WGS84.shp";
+            ShapefileReader reader = new ShapefileReader(shapefileName);
+            ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
+            string result = m_document.StringWriter.ToString();
+            string multiplePolygonPattern = @"({""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,?)+\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}})+";
+            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, multiplePolygonPattern));
+        }
     }
 }

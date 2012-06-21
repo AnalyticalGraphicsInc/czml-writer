@@ -22,28 +22,45 @@ namespace ShapefileToCesiumLanguage
             for (int i = 0; i < multipatch.Count; i++)
             {
                 List<ShapePart> polygonParts = new List<ShapePart>();
+                PolygonShape temp;
 
-                if (multipatch.PartType(i) == MultiPatchPartType.Ring)
+                switch (multipatch.PartType(i))
                 {
-                    while (i < multipatch.Count && multipatch.PartType(i) == MultiPatchPartType.Ring)
-                    {
-                        PolygonShape p = new PolygonShape(multipatch.RecordNumber, multipatch.Metadata, multipatch.Extent, new ShapePart[] { multipatch[i] });
-                        polygons.Add(new Polygon(p, m_document, m_color));
-                        i++;
-                    }
-                }
-                else
-                {
-                    polygonParts.Add(multipatch[i]);
-                    MultiPatchPartType comparisonType = (multipatch.PartType(i) == MultiPatchPartType.OuterRing) ?  MultiPatchPartType.InnerRing : MultiPatchPartType.Ring;
-                    while (++i < multipatch.Count && multipatch.PartType(i) == comparisonType)
-                    {
+                    case MultiPatchPartType.TriangleFan:
+                    case MultiPatchPartType.TriangleStrip:
+                        for (int j = 2; j < multipatch[i].Count; j++)
+                        {
+                            int firstIndex = (multipatch.PartType(i) == MultiPatchPartType.TriangleFan) ? 0 : j - 2;
+                            Cartesian[] vertices = new Cartesian[] { multipatch[i][firstIndex], multipatch[i][j - 1], multipatch[i][j] };
+                            ShapePart triangle = new ShapePart(vertices, 0, vertices.Length);
+                            PolygonShape p = new PolygonShape(multipatch.RecordNumber, multipatch.Metadata, multipatch.Extent, new ShapePart[] { triangle });
+                            polygons.Add(new Polygon(p, m_document, m_color));
+                        }
+                        break;
+
+                    case MultiPatchPartType.Ring:
+                        while (i < multipatch.Count && multipatch.PartType(i) == MultiPatchPartType.Ring)
+                        {
+                            temp = new PolygonShape(multipatch.RecordNumber, multipatch.Metadata, multipatch.Extent, new ShapePart[] { multipatch[i] });
+                            polygons.Add(new Polygon(temp, m_document, m_color));
+                            i++;
+                        }
+                        i--;
+                        break;
+
+                    case MultiPatchPartType.OuterRing:
+                    case MultiPatchPartType.FirstRing:
                         polygonParts.Add(multipatch[i]);
-                    }
-                    PolygonShape p = new PolygonShape(multipatch.RecordNumber, multipatch.Metadata, multipatch.Extent, polygonParts.ToArray());
-                    polygons.Add(new Polygon(p, m_document, m_color));
+                        MultiPatchPartType comparisonType = (multipatch.PartType(i) == MultiPatchPartType.OuterRing) ? MultiPatchPartType.InnerRing : MultiPatchPartType.Ring;
+                        while (++i < multipatch.Count && multipatch.PartType(i) == comparisonType)
+                        {
+                            polygonParts.Add(multipatch[i]);
+                        }
+                        temp = new PolygonShape(multipatch.RecordNumber, multipatch.Metadata, multipatch.Extent, polygonParts.ToArray());
+                        polygons.Add(new Polygon(temp, m_document, m_color));
+                        i--;
+                        break;
                 }
-                i--;
             }
 
             foreach (Polygon polygon in polygons)

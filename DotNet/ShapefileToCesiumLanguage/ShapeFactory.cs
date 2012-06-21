@@ -22,6 +22,8 @@ namespace ShapefileToCesiumLanguage
                 case ShapeType.PolygonM:
                 case ShapeType.PolygonZ:
                     return new Polygon((PolygonShape)shape, document, color);
+                case ShapeType.MultiPatch:
+                    return new MultiPatch((MultiPatchShape)shape, document, color);
             }
             throw new NotImplementedException();
         }
