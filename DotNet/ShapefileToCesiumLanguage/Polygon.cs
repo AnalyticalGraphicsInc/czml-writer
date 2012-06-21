@@ -72,117 +72,124 @@ namespace ShapefileToCesiumLanguage
         {
             PolygonShape polygon = (PolygonShape)m_shape;
 
-            // Find a list of the outer rings. 
             this.OuterRingIndices = new List<int>();
-            List<CartographicExtent> ringExtents = new List<CartographicExtent>();
-            for (int i = 0; i < polygon.Count; i++)
+
+            if (polygon.Count > 1)
             {
-                IEnumerator enumerator = polygon[i].GetEnumerator();
-                enumerator.MoveNext();
-                Cartesian current = (Cartesian)enumerator.Current;
-                double south, west, east, north;
-                south = north = current.Y;
-                west = east = current.X;
-                while (enumerator.MoveNext())
+                List<CartographicExtent> ringExtents = new List<CartographicExtent>();
+                for (int i = 0; i < polygon.Count; i++)
                 {
-                    current = (Cartesian)enumerator.Current;
-                    if (current.X > east)
+                    IEnumerator enumerator = polygon[i].GetEnumerator();
+                    enumerator.MoveNext();
+                    Cartesian current = (Cartesian)enumerator.Current;
+                    double south, west, east, north;
+                    south = north = current.Y;
+                    west = east = current.X;
+                    while (enumerator.MoveNext())
                     {
-                        east = current.X;
-                    }
-                    if (current.X < west)
-                    {
-                        east = current.X;
-                    }
-                    if (current.Y > north)
-                    {
-                        north = current.Y;
-                    }
-                    if (current.Y < south)
-                    {
-                        south = current.Y;
-                    }
-                }
-                ringExtents.Add(new CartographicExtent(west, south, east, north));
-            }
-
-            for (int i = 0; i < ringExtents.Count; i++)
-            {
-                for (int j = 0; j < ringExtents.Count; j++)
-                {
-                    if (i != j && ringExtents[i].IsInsideExtent(ringExtents[j].EastLongitude, ringExtents[j].NorthLatitude))
-                    {
-                        this.OuterRingIndices.Add(i);
-                        break;
-                    }
-                }
-            }
-
-            // Extend each outer ring's list of vertices to include the vertices of its inner rings.
-            for (int i = 0; i < this.OuterRingIndices.Count; i++)
-            {
-                int outerRingIndex = this.OuterRingIndices[i];
-                List<int> innerRingIndices = new List<int>();
-                for (int j = 0; j < ringExtents.Count; j++)
-                {
-                    if (outerRingIndex != j && ringExtents[outerRingIndex].IsInsideExtent(ringExtents[j].EastLongitude, ringExtents[j].NorthLatitude))
-                    {
-                        innerRingIndices.Add(j);
-                    }
-                }
-
-                while (innerRingIndices.Count > 0)
-                {
-                    int innerRingIndex;
-                    Cartesian innerVertex;
-                    Cartesian visibleVertex = this.findMutuallyVisibleVertex(outerRingIndex, innerRingIndices, out innerRingIndex, out innerVertex);
-
-                    ShapePart innerRing = polygon[innerRingIndex];
-                    ShapePart outerRing = polygon[outerRingIndex];
-
-                    List<Cartesian> outerPositions = new List<Cartesian>();
-                    for (int k = 0; k < outerRing.Count; k++)
-                    {
-                        if (outerRing[k].Equals(visibleVertex))
+                        current = (Cartesian)enumerator.Current;
+                        if (current.X > east)
                         {
-                            outerPositions.Add(visibleVertex);
-                            int innerVertexIndex = 0;
-                            for (int j = 0; j < innerRing.Count; j++)
-                            {
-                                if (innerRing[j].Equals(innerVertex))
-                                {
-                                    innerVertexIndex = j;
-                                    break;
-                                }
-                            }
+                            east = current.X;
+                        }
+                        if (current.X < west)
+                        {
+                            east = current.X;
+                        }
+                        if (current.Y > north)
+                        {
+                            north = current.Y;
+                        }
+                        if (current.Y < south)
+                        {
+                            south = current.Y;
+                        }
+                    }
+                    ringExtents.Add(new CartographicExtent(west, south, east, north));
+                }
 
-                            // If the rightmost inner vertex is not the starting and ending point of the ring,
-                            // then some other point is duplicated in the inner ring and should be skipped once.
-                            if (innerVertexIndex != 0)
+                for (int i = 0; i < ringExtents.Count; i++)
+                {
+                    for (int j = 0; j < ringExtents.Count; j++)
+                    {
+                        if (i != j && ringExtents[i].IsInsideExtent(ringExtents[j].EastLongitude, ringExtents[j].NorthLatitude))
+                        {
+                            this.OuterRingIndices.Add(i);
+                            break;
+                        }
+                    }
+                }
+
+                // Add new edges and vertices to each outer ring to eliminate holes and form a single polygon.
+                for (int i = 0; i < this.OuterRingIndices.Count; i++)
+                {
+                    int outerRingIndex = this.OuterRingIndices[i];
+                    List<int> innerRingIndices = new List<int>();
+                    for (int j = 0; j < ringExtents.Count; j++)
+                    {
+                        if (outerRingIndex != j && ringExtents[outerRingIndex].IsInsideExtent(ringExtents[j].EastLongitude, ringExtents[j].NorthLatitude))
+                        {
+                            innerRingIndices.Add(j);
+                        }
+                    }
+
+                    while (innerRingIndices.Count > 0)
+                    {
+                        int innerRingIndex;
+                        Cartesian innerVertex;
+                        Cartesian visibleVertex = this.findMutuallyVisibleVertex(outerRingIndex, innerRingIndices, out innerRingIndex, out innerVertex);
+
+                        ShapePart innerRing = polygon[innerRingIndex];
+                        ShapePart outerRing = polygon[outerRingIndex];
+
+                        List<Cartesian> outerPositions = new List<Cartesian>();
+                        for (int k = 0; k < outerRing.Count; k++)
+                        {
+                            if (outerRing[k].Equals(visibleVertex))
                             {
-                                for (int j = 0; j <= innerRing.Count; j++)
+                                outerPositions.Add(visibleVertex);
+                                int innerVertexIndex = 0;
+                                for (int j = 0; j < innerRing.Count; j++)
                                 {
-                                    int index = (j + innerVertexIndex) % innerRing.Count;
-                                    if (index != 0)
+                                    if (innerRing[j].Equals(innerVertex))
                                     {
-                                        outerPositions.Add(innerRing[index]);
+                                        innerVertexIndex = j;
+                                        break;
+                                    }
+                                }
+
+                                // If the rightmost inner vertex is not the starting and ending point of the ring,
+                                // then some other point is duplicated in the inner ring and should be skipped once.
+                                if (innerVertexIndex != 0)
+                                {
+                                    for (int j = 0; j <= innerRing.Count; j++)
+                                    {
+                                        int index = (j + innerVertexIndex) % innerRing.Count;
+                                        if (index != 0)
+                                        {
+                                            outerPositions.Add(innerRing[index]);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    for (int j = 0; j < innerRing.Count; j++)
+                                    {
+                                        outerPositions.Add(innerRing[(j + innerVertexIndex) % innerRing.Count]);
                                     }
                                 }
                             }
-                            else
-                            {
-                                for (int j = 0; j < innerRing.Count; j++)
-                                {
-                                    outerPositions.Add(innerRing[(j + innerVertexIndex) % innerRing.Count]);
-                                }
-                            }
+                            outerPositions.Add(outerRing[k]);
                         }
-                        outerPositions.Add(outerRing[k]);
-                    }
 
-                    polygon[outerRingIndex] = new ShapePart(outerPositions.ToArray(), 0, outerPositions.Count);
-                    innerRingIndices.Remove(innerRingIndex);
+                        polygon[outerRingIndex] = new ShapePart(outerPositions.ToArray(), 0, outerPositions.Count);
+                        innerRingIndices.Remove(innerRingIndex);
+                    }
                 }
+            }
+            else
+            {
+                this.OuterRingIndices.Add(0);
             }
         }
 
@@ -191,7 +198,6 @@ namespace ShapefileToCesiumLanguage
             PolygonShape polygon = (PolygonShape)m_shape;
             ShapePart outerRing = polygon[outerRingIndex];
 
-            // Select the inner ring with the vertex farthest to the right.
             // Let point k = the inner ring vertex with the maximum x-value.
             ShapePart innerRing = polygon[innerRingIndices[0]];
             Cartesian k = innerRing[0];
@@ -233,7 +239,7 @@ namespace ShapefileToCesiumLanguage
                 }
             }
 
-            // Find the closest intersection, call this point l.
+            // Let point l = the closest intersection.
             int minDistanceIndex = 0;
             double minDistance = intersections[0] - k.X;
             for (int i = 0; i < intersections.Count; i++)
@@ -247,7 +253,7 @@ namespace ShapefileToCesiumLanguage
             }
             Cartesian l = new Cartesian(intersections[minDistanceIndex], k.Y, 0.0);
 
-            // Check to see if l is a vertex point. If it is, we're done.
+            // If l is a vertex point, we're done.
             for (int i = 0; i < outerRing.Count; i++)
             {
                 if(outerRing[i].Equals(l))
@@ -256,11 +262,10 @@ namespace ShapefileToCesiumLanguage
                 }
             }
 
-            // Otherwise, l is a point on the edge. Select point P to be the endpoint of maximum x-value for this edge.
+            // Let point P = the endpoint of maximum x-value on the edge containing l.
             Cartesian[] edge = edges[minDistanceIndex];
             Cartesian p = (edge[0].X > edge[1].X) ? edge[0] : edge[1];
 
-            // Determine a list of reflex vertices, not including P 
             List<Cartesian> reflexVertices = new List<Cartesian>();
             for (int i = 0; i < outerRing.Count; i++)
             {
@@ -280,7 +285,6 @@ namespace ShapefileToCesiumLanguage
                 }
             }
 
-            // Check all reflexive vertices to see if they are outside the triangle fromed by points k, l, and p.
             List<Cartesian> pointsInside = new List<Cartesian>();
             foreach (Cartesian vertex in reflexVertices)
             {
@@ -290,8 +294,8 @@ namespace ShapefileToCesiumLanguage
                 }
             }
 
-            // If all reflexive vertices are outside the triangle, then p is the visible vertex.
-            // Otherwise, find the reflex vertex that minimizes the angle between <1,0> and <k, reflex>.
+            // If all reflexive vertices are outside the triangle formed by points k, l, and p, then p is the visible vertex.
+            // Otherwise, return the reflex vertex that minimizes the angle between <1,0> and <k, reflex>.
             double minAngle = Math.PI;
             if (pointsInside.Count > 0)
             {

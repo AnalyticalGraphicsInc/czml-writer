@@ -30,6 +30,18 @@ namespace Shapefile
             }
         }
 
+        public PolygonShape(
+            int recordNumber,
+            StringDictionary metadata,
+            CartographicExtent extent,
+            ShapePart[] parts,
+            ShapeType shapeType = ShapeType.Polygon)
+            : base(recordNumber, metadata, shapeType)
+        {
+            _extent = extent;
+            _parts = parts;
+        }
+
         public CartographicExtent Extent
         {
             get { return _extent; }

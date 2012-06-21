@@ -12,10 +12,12 @@ namespace ShapefileToCesiumLanguageTests
     public class ShapefileToCesiumLanguageTests
     {
         CzmlDocument m_document;
+        StringDictionary m_metadata;
 
         public ShapefileToCesiumLanguageTests()
         {
             m_document = new CzmlDocument();
+            m_metadata = new StringDictionary();
         }
 
         [Test]
@@ -122,7 +124,7 @@ namespace ShapefileToCesiumLanguageTests
             CartographicExtent extent = new CartographicExtent(0.0, 0.0, 10.0, 10.0);
             int[] parts = new int[] { 0, 5 };
 
-            PolygonZShape polygonZShape = new PolygonZShape(0, new StringDictionary(), extent, parts, positions, 1.0, 8.0, zValues, 0.0, 0.0, new double[] { });
+            PolygonZShape polygonZShape = new PolygonZShape(0, m_metadata, extent, parts, positions, 1.0, 8.0, zValues, 0.0, 0.0, new double[] { });
             Polygon polygon = new Polygon(polygonZShape, m_document, Color.Blue);
             polygon.Write();
             string result = m_document.StringWriter.ToString();
@@ -149,7 +151,7 @@ namespace ShapefileToCesiumLanguageTests
             CartographicExtent extent = new CartographicExtent(0.0, 0.0, 10.0, 10.0);
             int[] parts = new int[] {0, 5};
 
-            Polygon polygon = new Polygon(new PolygonShape(0, new StringDictionary(), extent, parts, positions), m_document, Color.Blue);
+            Polygon polygon = new Polygon(new PolygonShape(0, m_metadata, extent, parts, positions), m_document, Color.Blue);
             polygon.Write();
             string result = m_document.StringWriter.ToString();
             string polygonPattern = @"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[0.0,5.0,0.0,5.0,10.0,0.0,10.0,5.0,0.0,8.0,5.0,0.0,5.0,8.0,0.0,2.0,5.0,0.0,5.0,2.0,0.0,8.0,5.0,0.0,10.0,5.0,0.0,5.0,0.0,0.0,0.0,5.0,0.0\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}";
@@ -175,7 +177,7 @@ namespace ShapefileToCesiumLanguageTests
             CartographicExtent extent = new CartographicExtent(0.0, 0.0, 10.0, 10.0);
             int[] parts = new int[] { 0, 5 };
 
-            Polygon polygon = new Polygon(new PolygonShape(0, new StringDictionary(), extent, parts, positions), m_document, Color.Blue);
+            Polygon polygon = new Polygon(new PolygonShape(0, m_metadata, extent, parts, positions), m_document, Color.Blue);
             polygon.Write();
             string result = m_document.StringWriter.ToString();
             string polygonPattern = @"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[0.0,5.0,0.0,5.0,10.0,0.0,10.0,5.0,0.0,7.0,3.0,0.0,7.0,7.0,0.0,3.0,7.0,0.0,3.0,3.0,0.0,7.0,3.0,0.0,10.0,5.0,0.0,5.0,0.0,0.0,0.0,5.0,0.0\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}";
@@ -205,7 +207,7 @@ namespace ShapefileToCesiumLanguageTests
             CartographicExtent extent = new CartographicExtent(0.0, 0.0, 10.0, 10.0);
             int[] parts = new int[] { 0, 10 };
 
-            Polygon polygon = new Polygon(new PolygonShape(0, new StringDictionary(), extent, parts, positions), m_document, Color.Blue);
+            Polygon polygon = new Polygon(new PolygonShape(0, m_metadata, extent, parts, positions), m_document, Color.Blue);
             polygon.Write();
             string result = m_document.StringWriter.ToString();
             string polygonPattern = @"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[0.0,0.0,0.0,0.0,10.0,0.0,9.0,10.0,0.0,10.0,2.0,0.0,8.0,0.0,0.0,7.0,4.5,0.0,6.0,5.2,0.0,5.5,4.75,0.0,5.0,5.5,0.0,3.0,6.0,0.0,2.0,6.0,0.0,2.0,4.0,0.0,3.0,6.0,0.0,5.0,5.5,0.0,0.0,0.0,0.0\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}";
@@ -237,7 +239,7 @@ namespace ShapefileToCesiumLanguageTests
             CartographicExtent extent = new CartographicExtent(0.0, 0.0, 10.0, 10.0);
             int[] parts = new int[] { 0, 5, 10 };
 
-            Polygon polygon = new Polygon(new PolygonShape(0, new StringDictionary(), extent, parts, positions), m_document, Color.Blue);
+            Polygon polygon = new Polygon(new PolygonShape(0, m_metadata, extent, parts, positions), m_document, Color.Blue);
             polygon.Write();
             string result = m_document.StringWriter.ToString();
             string polygonPattern = @"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[0.0,5.0,0.0,5.0,10.0,0.0,10.0,5.0,0.0,8.0,5.0,0.0,7.0,6.0,0.0,6.0,5.0,0.0,5.0,5.0,0.0,5.0,8.0,0.0,3.0,6.0,0.0,3.0,5.0,0.0,5.0,5.0,0.0,6.0,5.0,0.0,7.0,4.0,0.0,8.0,5.0,0.0,10.0,5.0,0.0,5.0,0.0,0.0,0.0,5.0,0.0\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}";
@@ -275,8 +277,72 @@ namespace ShapefileToCesiumLanguageTests
             CartographicExtent extent = new CartographicExtent(0.0, 0.0, 30.0, 10.0);
             int[] parts = new int[] { 0, 5, 10, 15 };
 
-            Polygon polygon = new Polygon(new PolygonShape(0, new StringDictionary(), extent, parts, positions), m_document, Color.Blue);
+            Polygon polygon = new Polygon(new PolygonShape(0, m_metadata, extent, parts, positions), m_document, Color.Blue);
             polygon.Write();
+            string result = m_document.StringWriter.ToString();
+            Regex polygonPattern = new Regex(@"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,?)+\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}");
+            Assert.That(polygonPattern.Matches(result).Count == 2);
+        }
+
+        [Test]
+        public void TestMultipatchConversionWithInnerAndOuterRings()
+        {
+            Rectangular[] positions = new Rectangular[] {
+                new Rectangular(0.0, 5.0),
+                new Rectangular(5.0, 10.0),
+                new Rectangular(10.0, 5.0),
+                new Rectangular(5.0, 0.0),
+                new Rectangular(0.0, 5.0),
+
+                new Rectangular(2.0, 5.0),
+                new Rectangular(5.0, 2.0),
+                new Rectangular(8.0, 5.0),
+                new Rectangular(5.0, 8.0),
+                new Rectangular(2.0, 5.0),
+            };
+
+            CartographicExtent extent = new CartographicExtent(0.0, 0.0, 10.0, 10.0);
+            int[] parts = new int[] { 0, 5 };
+            MultiPatchPartType[] partTypes = new MultiPatchPartType[] { MultiPatchPartType.OuterRing, MultiPatchPartType.InnerRing} ;
+
+            double[] zValues = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+            double[] measures = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+
+            MultiPatchShape multipatch = new MultiPatchShape(0, m_metadata, extent, parts, partTypes, positions, 0.0, 0.0, zValues, 0.0, 0.0, measures);
+            MultiPatch patch = new MultiPatch(multipatch, m_document, Color.Blue);
+            patch.Write();
+            string result = m_document.StringWriter.ToString();
+            string polygonPattern = @"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[0.0,5.0,0.0,5.0,10.0,0.0,10.0,5.0,0.0,8.0,5.0,0.0,5.0,8.0,0.0,2.0,5.0,0.0,5.0,2.0,0.0,8.0,5.0,0.0,10.0,5.0,0.0,5.0,0.0,0.0,0.0,5.0,0.0\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}";
+            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, polygonPattern));
+        }
+
+        [Test]
+        public void TestMultipatchConversionWithMultipleRings()
+        {
+            Rectangular[] positions = new Rectangular[] {
+                new Rectangular(0.0, 5.0),
+                new Rectangular(5.0, 10.0),
+                new Rectangular(10.0, 5.0),
+                new Rectangular(5.0, 0.0),
+                new Rectangular(0.0, 5.0),
+
+                new Rectangular(2.0, 5.0),
+                new Rectangular(5.0, 2.0),
+                new Rectangular(8.0, 5.0),
+                new Rectangular(5.0, 8.0),
+                new Rectangular(2.0, 5.0),
+            };
+
+            CartographicExtent extent = new CartographicExtent(0.0, 0.0, 10.0, 10.0);
+            int[] parts = new int[] { 0, 5 };
+            MultiPatchPartType[] partTypes = new MultiPatchPartType[] { MultiPatchPartType.Ring, MultiPatchPartType.Ring };
+
+            double[] zValues = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+            double[] measures = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+
+            MultiPatchShape multipatch = new MultiPatchShape(0, m_metadata, extent, parts, partTypes, positions, 0.0, 0.0, zValues, 0.0, 0.0, measures);
+            MultiPatch patch = new MultiPatch(multipatch, m_document, Color.Blue);
+            patch.Write();
             string result = m_document.StringWriter.ToString();
             Regex polygonPattern = new Regex(@"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,?)+\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}");
             Assert.That(polygonPattern.Matches(result).Count == 2);

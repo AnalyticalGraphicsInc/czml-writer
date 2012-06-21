@@ -25,7 +25,6 @@ namespace Shapefile
 
             _extent = extent;
             _zRange = new double[] { minimumZ, maximumZ };
-            _zValues = (double[])zValues.Clone();
             _measureRange = new double[] { minimumMeasure, maximumMeasure};
             _measures = (double[])measures.Clone();
 
@@ -35,7 +34,7 @@ namespace Shapefile
                 int count = ((i == parts.Length - 1) ?
                     positions.Length : parts[i + 1]) - parts[i];
 
-                _parts[i] = new ShapePart(positions, parts[i], count);
+                _parts[i] = new ShapePart(positions, zValues, parts[i], count);
             }
 
             _partTypes = (MultiPatchPartType[])partTypes.Clone();
@@ -44,6 +43,11 @@ namespace Shapefile
         public CartographicExtent Extent
         {
             get { return _extent; }
+        }
+
+        public int Count
+        {
+            get { return _parts.Length; }
         }
 
         public ShapePart this[int index]
@@ -61,11 +65,6 @@ namespace Shapefile
             get { return _zRange; }
         }
 
-        public double[] ZValues
-        {
-            get { return _zValues; }
-        }
-
         public double[] MeasureRange
         {
             get { return _measureRange; }
@@ -80,7 +79,6 @@ namespace Shapefile
         private readonly ShapePart[] _parts;
         private readonly MultiPatchPartType[] _partTypes;
         private readonly double[] _zRange;
-        private readonly double[] _zValues;
         private readonly double[] _measureRange;
         private readonly double[] _measures;
     }

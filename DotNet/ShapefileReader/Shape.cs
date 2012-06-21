@@ -19,6 +19,11 @@ namespace Shapefile
             get { return _recordNumber; }
         }
 
+        public StringDictionary Metadata
+        {
+            get { return _metadata; }
+        }
+
         public string[] GetMetadataFields()
         {
             string[] keys = new string[_metadata.Keys.Count];
