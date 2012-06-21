@@ -414,5 +414,22 @@ namespace ShapefileToCesiumLanguageTests
             string multiplePolygonPattern = @"({""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,?)+\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}})+";
             Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, multiplePolygonPattern));
         }
+
+        [Test]
+        public void TestMultiPoint()
+        {
+            Cartesian[] points = new Cartesian[] {
+                new Cartesian(0.0, 0.0, 0.0),
+                new Cartesian(1.0, 1.0, 1.0),
+                new Cartesian(2.0, 2.0, 2.0)
+            };
+            CartographicExtent extent = new CartographicExtent(0.0, 0.0, 2.0, 2.0);
+            MultiPointShape multipoint = new MultiPointShape(0, m_metadata, extent, points);
+            MultiPoint mp = new MultiPoint(multipoint, m_document, Color.Blue);
+            mp.Write();
+            string result = m_document.StringWriter.ToString();
+            Regex pointPattern = new Regex(@"{""id"":""[0-9a-zA-Z-]+"",""position"":{""cartographicDegrees"":\[-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*\]},""point"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}");
+            Assert.That(pointPattern.Matches(result).Count == 3);
+        }
     }
 }

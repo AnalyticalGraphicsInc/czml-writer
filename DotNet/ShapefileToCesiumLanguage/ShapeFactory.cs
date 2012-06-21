@@ -14,6 +14,10 @@ namespace ShapefileToCesiumLanguage
                 case ShapeType.PointM:
                 case ShapeType.PointZ:
                     return new Point((PointShape)shape, document, color);
+                case ShapeType.MultiPoint:
+                case ShapeType.MultiPointM:
+                case ShapeType.MultiPointZ:
+                    return new MultiPoint((MultiPointShape)shape, document, color);
                 case ShapeType.Polyline:
                 case ShapeType.PolylineM:
                 case ShapeType.PolylineZ:
