@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 11
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFastDBF", "TestDbfLib\TestFastDBF.csproj", "{500A2192-A212-4DE0-8F47-3B0D453D9066}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialExplorer.FastDBF", "FastDBF\SocialExplorer.FastDBF.csproj", "{9CF5ED11-6D2B-4FEF-8A0A-B2E12DE59867}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{500A2192-A212-4DE0-8F47-3B0D453D9066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{500A2192-A212-4DE0-8F47-3B0D453D9066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{500A2192-A212-4DE0-8F47-3B0D453D9066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{500A2192-A212-4DE0-8F47-3B0D453D9066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CF5ED11-6D2B-4FEF-8A0A-B2E12DE59867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CF5ED11-6D2B-4FEF-8A0A-B2E12DE59867}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CF5ED11-6D2B-4FEF-8A0A-B2E12DE59867}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CF5ED11-6D2B-4FEF-8A0A-B2E12DE59867}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

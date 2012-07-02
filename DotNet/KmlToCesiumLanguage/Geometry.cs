@@ -43,19 +43,19 @@ namespace KmlToCesiumLanguage
         protected abstract void Write();
 
         /// <summary>
-        /// Adds the information contained in the Kml IconStyle element to the <see cref="CesiumPacketWriter"/>.
+        /// Adds the information contained in the Kml IconStyle element to the <see cref="PacketCesiumWriter"/>.
         /// </summary>
         /// <param name="styleElement">The IconStyle element.</param>
         protected virtual void AddIconStyle(XElement styleElement) { }
 
         /// <summary>
-        /// Adds the information contained in the Kml Polystyle element to the <see cref="CesiumPacketWriter"/>.
+        /// Adds the information contained in the Kml Polystyle element to the <see cref="PacketCesiumWriter"/>.
         /// </summary>
         /// <param name="polyElement">The PolyStyle element.</param>
         protected virtual void AddPolyStyle(XElement polyElement) { }
 
         /// <summary>
-        /// Adds the information contained in the Kml Lolystyle element to the <see cref="CesiumPacketWriter"/>.
+        /// Adds the information contained in the Kml Polystyle element to the <see cref="PacketCesiumWriter"/>.
         /// </summary>
         /// <param name="lineElement">The LineStyle element.</param>
         protected virtual void AddLineStyle(XElement lineElement) { }
