@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Data;
+using System.Data.OleDb;
 using System.IO;
 using System.Text;
 using CesiumLanguageWriter;
@@ -118,10 +120,40 @@ namespace Shapefile
                 _shapes = new List<Shape>();
                 byte[] recordHeader;
 
-                string dBaseFilename = Path.ChangeExtension(filename, "dbf");
-                DbfFile dbfFile = new DbfFile(Encoding.Default);
-                dbfFile.Open(dBaseFilename, FileMode.Open);
-                DbfRecord metadataRecord = new DbfRecord(dbfFile.Header);
+                string dBaseFilepath = Path.ChangeExtension(filename, "dbf");
+
+                // The drivers for DBF files require filenames <= 8 characters
+                if (Path.GetFileNameWithoutExtension(dBaseFilepath).Length > 8)
+                {
+                    string initialTempFile = Path.GetTempFileName();
+                    File.Delete(initialTempFile);
+                    string tempDBasePath = Path.ChangeExtension(initialTempFile, "dbf");
+                    File.Copy(dBaseFilepath, tempDBasePath, true);
+                    dBaseFilepath = tempDBasePath;
+                }
+
+                string dBaseFilename = Path.GetFileNameWithoutExtension(dBaseFilepath);
+
+                var csb = new OleDbConnectionStringBuilder();
+                csb.Provider = @"Microsoft.ACE.OLEDB.12.0";
+                csb.DataSource = Path.GetDirectoryName(dBaseFilepath);
+                csb.Add("Extended Properties", "dBASE IV");
+
+                DataTable metadataTable = new DataTable();
+                string selectString = string.Format("SELECT * FROM [{0}]", dBaseFilename);
+
+                using (OleDbConnection db = new OleDbConnection(csb.ConnectionString))
+                {
+                    using (OleDbCommand cmd = new OleDbCommand(selectString, db))
+                    {
+                        db.Open();
+                        using(OleDbDataReader reader = cmd.ExecuteReader())
+                        {
+                            metadataTable.Load(reader);
+                        }
+                        db.Close();
+                    }
+                }
 
                 while ((recordHeader = Read(fs, _recordHeaderLength)) != null)
                 {
@@ -131,10 +163,9 @@ namespace Shapefile
                     int mOffset, zOffset;
 
                     StringDictionary metadata = new StringDictionary();
-                    dbfFile.ReadNext(metadataRecord);
-                    for (int i = 0; i < metadataRecord.ColumnCount; i++)
+                    foreach (DataColumn column in metadataTable.Columns)
                     {
-                        metadata.Add(metadataRecord.Column(i).Name, metadataRecord[i].Trim());
+                        metadata.Add(column.ColumnName, Convert.ToString(metadataTable.Rows[recordNumber - 1][column]));
                     }
 
                     ShapeType recordShapeType = (ShapeType)ToInteger(record, 0, ByteOrder.LittleEndian);

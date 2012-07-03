@@ -42,7 +42,7 @@ namespace ShapefileReaderTests
             Assert.That(value.Equals("Afg."));
 
             value = shape.GetMetadataValue("pop_est");
-            Assert.That(value.Equals("28400000.00"));
+            Assert.That(value.Equals("28400000"));
         }
 
         [Test]
