@@ -17,7 +17,6 @@ namespace WebGLGlobeJsonToCesiumLanguage
         /// <param name="heightScalar">An optional value used to scale the height component of each coordinate.</param>
         public static void WebGLGlobeJsonToCesiumLanguage(TextReader jsonContents,
                                                           CzmlDocument document,
-                                                          Color? color = null,
                                                           double heightScalar = 1.0)
         {
             JsonTextReader jsReader = new JsonTextReader(jsonContents);
@@ -36,11 +35,10 @@ namespace WebGLGlobeJsonToCesiumLanguage
                 Cartographic[] coords = new Cartographic[numCoordinateComponents / 3];
                 for (int i = 0, j = 0; i < numCoordinateComponents; i += 3, j++)
                 {
-                    coords[j] = new Cartographic((double)item[1][i], (double)item[1][i + 1], heightScalar * (double)item[1][i + 2]);
+                    coords[j] = new Cartographic((double)item[1][i + 1], (double)item[1][i], (double)item[1][i + 2]);
                 }
 
-                Color c = color.HasValue ? color.Value : Color.Blue;
-                Series series = new Series((string)item[0], coords, document, c);
+                Series series = new Series((string)item[0], coords, document, heightScalar);
                 series.Write();
             }
 
