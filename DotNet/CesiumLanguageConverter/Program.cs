@@ -16,8 +16,12 @@ namespace CesiumLanguageConverter
     internal class Conversion
     {
         public string InputFileName { get; set; }
+
         public string InputFileType { get; set; }
+
         public string OutputFileName { get; set; }
+
+        public bool PrettyPrint { get; set; }
     }
 
     public class Program
@@ -28,6 +32,7 @@ namespace CesiumLanguageConverter
         private static readonly string s_helpParamDesc;
         private static readonly string s_outputFileParamDesc;
         private static readonly string s_inputFileTypeParamDesc;
+        private static readonly string s_prettyPrintParamDesc;
 
         static Program()
         {
@@ -47,6 +52,7 @@ namespace CesiumLanguageConverter
             s_helpParamDesc = "Show this message and exit.";
             s_outputFileParamDesc = "Specify the output file name.  Defaults to the input file name, with extension changed to czml.";
             s_inputFileTypeParamDesc = string.Format("Specify the type of input file.  By default it will be inferred from the extension of the input file.  Valid options: {0}.", InputFileTypeOptions);
+            s_prettyPrintParamDesc = "Produce pretty-printed output, which is more easily readable, but produces larger files.";
         }
 
         private static string InputFileTypeOptions
@@ -65,6 +71,7 @@ namespace CesiumLanguageConverter
                         { "h|?|help", s_helpParamDesc, v => showHelp = v != null },
                         { "o=|outputFile=", s_outputFileParamDesc, v => conversion.OutputFileName = v },
                         { "t=|type=", s_inputFileTypeParamDesc, v => conversion.InputFileType = v },
+                        { "pretty", s_prettyPrintParamDesc, v => conversion.PrettyPrint = v != null },
                         { "<>", "", v => conversion.InputFileName = v },
                     };
 
@@ -136,12 +143,12 @@ namespace CesiumLanguageConverter
                 if (".kml".Equals(extension, StringComparison.OrdinalIgnoreCase))
                 {
                     using (var inputReader = new StreamReader(conversion.InputFileName))
-                        KmlConverter.KmlToCesiumLanguage(inputReader, outputWriter);
+                        KmlConverter.KmlToCesiumLanguage(inputReader, outputWriter, conversion.PrettyPrint);
                 }
                 else if (".kmz".Equals(extension, StringComparison.OrdinalIgnoreCase))
                 {
                     using (var inputStream = new FileStream(conversion.InputFileName, FileMode.Open, FileAccess.Read))
-                        KmlConverter.KmzToCesiumLanguage(inputStream, outputWriter);
+                        KmlConverter.KmzToCesiumLanguage(inputStream, outputWriter, conversion.PrettyPrint);
                 }
             }
         }
@@ -151,7 +158,7 @@ namespace CesiumLanguageConverter
             using (var inputReader = new StreamReader(conversion.InputFileName))
             using (var outputWriter = new StreamWriter(conversion.OutputFileName))
             {
-                WebGLGlobeJsonConverter.WebGLGlobeJsonToCesiumLanguage(inputReader, outputWriter);
+                WebGLGlobeJsonConverter.WebGLGlobeJsonToCesiumLanguage(inputReader, outputWriter, conversion.PrettyPrint);
             }
         }
     }

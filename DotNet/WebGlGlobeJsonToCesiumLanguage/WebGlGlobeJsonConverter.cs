@@ -14,12 +14,16 @@ namespace WebGLGlobeJsonToCesiumLanguage
         /// </summary>
         /// <param name="inputReader">A reader for a WebGL Globe JSON document.</param>
         /// <param name="outputWriter">A writer that will receive the converted CZML document.</param>
+        /// <param name="prettyFormatting">If true, produces larger, more readable.  False by default.</param>
         /// <param name="heightScalar">An optional value used to scale the height component of each coordinate.</param>
         public static void WebGLGlobeJsonToCesiumLanguage(TextReader inputReader,
                                                           TextWriter outputWriter,
+                                                          bool prettyFormatting = false,
                                                           double heightScalar = 1.0)
         {
             CzmlDocument document = new CzmlDocument(outputWriter);
+
+            document.CesiumOutputStream.PrettyFormatting = prettyFormatting;
 
             document.CesiumOutputStream.WriteStartSequence();
 

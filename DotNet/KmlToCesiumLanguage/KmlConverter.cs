@@ -18,9 +18,14 @@ namespace KmlToCesiumLanguage
         /// </summary>
         /// <param name="inputReader">A reader for a KML document.</param>
         /// <param name="outputWriter">A writer that will receive the converted CZML document.</param>
-        public static void KmlToCesiumLanguage(TextReader inputReader, TextWriter outputWriter)
+        /// <param name="prettyFormatting">If true, produces larger, more readable.  False by default.</param>
+        public static void KmlToCesiumLanguage(TextReader inputReader,
+                                               TextWriter outputWriter,
+                                               bool prettyFormatting = false)
         {
             CzmlDocument document = new CzmlDocument(outputWriter);
+
+            document.CesiumOutputStream.PrettyFormatting = prettyFormatting;
 
             document.CesiumOutputStream.WriteStartSequence();
             Convert(inputReader, document);
@@ -32,9 +37,14 @@ namespace KmlToCesiumLanguage
         /// </summary>
         /// <param name="inputStream">A stream for a KMZ file.</param>
         /// <param name="outputWriter">A writer that will receive the converted CZML document.</param>
-        public static void KmzToCesiumLanguage(Stream inputStream, TextWriter outputWriter)
+        /// <param name="prettyFormatting">If true, produces larger, more readable.  False by default.</param>
+        public static void KmzToCesiumLanguage(Stream inputStream,
+                                               TextWriter outputWriter,
+                                               bool prettyFormatting = false)
         {
             CzmlDocument document = new CzmlDocument(outputWriter);
+
+            document.CesiumOutputStream.PrettyFormatting = prettyFormatting;
 
             document.CesiumOutputStream.WriteStartSequence();
 
