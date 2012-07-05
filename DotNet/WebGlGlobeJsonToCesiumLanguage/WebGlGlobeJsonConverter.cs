@@ -1,5 +1,5 @@
-﻿using System.IO;
-using System.Drawing;
+﻿using System;
+using System.IO;
 using System.Linq;
 using CesiumLanguageWriter;
 using Newtonsoft.Json;
@@ -10,36 +10,41 @@ namespace WebGLGlobeJsonToCesiumLanguage
     public static class WebGLGlobeJsonConverter
     {
         /// <summary>
-        /// The main entry point to convert a WebGL-globe JSON file.
+        /// Converts a WebGL Globe JSON document to CZML.
         /// </summary>
-        /// <param name="jsonContents">The JSON contents.</param>
-        /// <param name="color">An optional color to use to visually represent the data. The default color is blue.</param>
+        /// <param name="inputReader">A reader for a WebGL Globe JSON document.</param>
+        /// <param name="outputWriter">A writer that will receive the converted CZML document.</param>
         /// <param name="heightScalar">An optional value used to scale the height component of each coordinate.</param>
-        public static void WebGLGlobeJsonToCesiumLanguage(TextReader jsonContents,
-                                                          CzmlDocument document,
+        public static void WebGLGlobeJsonToCesiumLanguage(TextReader inputReader,
+                                                          TextWriter outputWriter,
                                                           double heightScalar = 1.0)
         {
-            JsonTextReader jsReader = new JsonTextReader(jsonContents);
-            JArray json = (JArray)new JsonSerializer().Deserialize(jsReader);
+            CzmlDocument document = new CzmlDocument(outputWriter);
 
             document.CesiumOutputStream.WriteStartSequence();
 
-            foreach (JToken item in json)
+            JsonSerializer serializer = new JsonSerializer();
+            using (JsonReader jsonReader = new JsonTextReader(inputReader))
             {
-                int numCoordinateComponents = item[1].Values().Count();
-                if (numCoordinateComponents % 3 != 0)
-                {
-                    throw new System.ArgumentException("Coordinates listed in jsonContents must have 3 components.", "jsonContents");
-                }
+                JArray jsonArray = (JArray)serializer.Deserialize(jsonReader);
 
-                Cartographic[] coords = new Cartographic[numCoordinateComponents / 3];
-                for (int i = 0, j = 0; i < numCoordinateComponents; i += 3, j++)
+                foreach (JToken item in jsonArray)
                 {
-                    coords[j] = new Cartographic((double)item[1][i + 1], (double)item[1][i], (double)item[1][i + 2]);
-                }
+                    int numCoordinateComponents = item[1].Values().Count();
+                    if (numCoordinateComponents % 3 != 0)
+                    {
+                        throw new ArgumentException("Coordinates listed in jsonContents must have 3 components.", "inputReader");
+                    }
 
-                Series series = new Series((string)item[0], coords, document, heightScalar);
-                series.Write();
+                    Cartographic[] coords = new Cartographic[numCoordinateComponents / 3];
+                    for (int i = 0, j = 0; i < numCoordinateComponents; i += 3, j++)
+                    {
+                        coords[j] = new Cartographic((double)item[1][i + 1], (double)item[1][i], (double)item[1][i + 2]);
+                    }
+
+                    Series series = new Series((string)item[0], coords, document, heightScalar);
+                    series.Write();
+                }
             }
 
             document.CesiumOutputStream.WriteEndSequence();

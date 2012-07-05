@@ -1,84 +1,91 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using System.Xml;
-using System.Drawing;
 using CesiumLanguageWriter.Advanced;
-using System.IO;
-using System.IO.Compression;
 using Ionic.Zip;
-using System;
 
 namespace KmlToCesiumLanguage
 {
     /// <summary>
-    /// The entry point to convert a kml file.
+    /// The entry point to convert a KML file.
     /// </summary>
     public static class KmlConverter
     {
         /// <summary>
-        /// Converts an kml document to CZML.
+        /// Converts a KML document to CZML.
         /// </summary>
-        /// <param name="kmlContents">The KML contents.</param>
-        /// <param name="document">The czml document.</param>
-        public static void KmlToCesiumLanguage(byte[] kmlContents, CzmlDocument document)
+        /// <param name="inputReader">A reader for a KML document.</param>
+        /// <param name="outputWriter">A writer that will receive the converted CZML document.</param>
+        public static void KmlToCesiumLanguage(TextReader inputReader, TextWriter outputWriter)
         {
+            CzmlDocument document = new CzmlDocument(outputWriter);
+
             document.CesiumOutputStream.WriteStartSequence();
-            Convert(kmlContents, document);
+            Convert(inputReader, document);
             document.CesiumOutputStream.WriteEndSequence();
         }
 
         /// <summary>
-        /// Converts a kmz file to CZML.
+        /// Converts a KMZ file to CZML.
         /// </summary>
-        /// <param name="kmzContents">The content of the kmz file.</param>
-        /// <param name="document">The czml document.</param>
-        public static void KmzToCesiumLanguage(byte[] kmzContents, CzmlDocument document)
+        /// <param name="inputStream">A stream for a KMZ file.</param>
+        /// <param name="outputWriter">A writer that will receive the converted CZML document.</param>
+        public static void KmzToCesiumLanguage(Stream inputStream, TextWriter outputWriter)
         {
-            List<byte[]> documents = new List<byte[]>();
-            using (ZipFile zip = ZipFile.Read(new MemoryStream(kmzContents)))
-            {
-                foreach(ZipEntry entry in zip)
-                {
-                    MemoryStream memoryStream = new MemoryStream();
-                    entry.Extract(memoryStream);
-                    memoryStream.Position = 0;
-                    if (entry.FileName.Contains(".kml"))
-                    {
-                        long size = memoryStream.Length;
-                        byte[] data = new byte[size];
-                        memoryStream.Read(data, 0, data.Length);
-                        documents.Add(data);
-                    }
+            CzmlDocument document = new CzmlDocument(outputWriter);
 
-                    if (entry.FileName.Contains(".jpg") || entry.FileName.Contains(".png") || entry.FileName.Contains(".gif"))
+            document.CesiumOutputStream.WriteStartSequence();
+
+            using (ZipFile zipFile = ZipFile.Read(inputStream))
+            {
+                foreach (ZipEntry entry in zipFile)
+                {
+                    string fileName = entry.FileName;
+                    string extension = Path.GetExtension(fileName);
+
+                    if (".jpg".Equals(extension, StringComparison.OrdinalIgnoreCase) ||
+                        ".png".Equals(extension, StringComparison.OrdinalIgnoreCase) ||
+                        ".gif".Equals(extension, StringComparison.OrdinalIgnoreCase))
                     {
-                        if (!document.ImageMap.ContainsKey(entry.FileName))
+                        if (!document.ImageMap.ContainsKey(fileName))
                         {
-                            document.ImageMap.Add(entry.FileName, CesiumFormattingHelper.ImageToDataUrl(Image.FromStream(memoryStream)));
+                            using (Stream stream = entry.OpenReader())
+                            using (Image image = Image.FromStream(stream))
+                            {
+                                string dataUrl = CesiumFormattingHelper.ImageToDataUrl(image);
+                                document.ImageMap.Add(fileName, dataUrl);
+                            }
                         }
                     }
                 }
+
+                foreach (ZipEntry entry in zipFile)
+                {
+                    string extension = Path.GetExtension(entry.FileName);
+                    if (".kml".Equals(extension, StringComparison.OrdinalIgnoreCase))
+                    {
+                        using (Stream stream = entry.OpenReader())
+                        using (StreamReader streamReader = new StreamReader(stream))
+                            Convert(streamReader, document);
+                    }
+                }
             }
-            document.CesiumOutputStream.WriteStartSequence();
-            foreach (byte[] kmlContents in documents)
-            {
-                Convert(kmlContents, document);
-            }
+
             document.CesiumOutputStream.WriteEndSequence();
         }
 
-        private static void Convert(byte[] kmlContents, CzmlDocument document)
+        private static void Convert(TextReader inputReader, CzmlDocument document)
         {
-            using (MemoryStream stream = new MemoryStream(kmlContents))
+            XDocument kmlDocument = XDocument.Load(inputReader);
+            document.Namespace = kmlDocument.Root.GetDefaultNamespace();
+            var features = kmlDocument.Descendants()
+                .Where(o => o.Name == document.Namespace + "Placemark" || o.Name == document.Namespace + "GroundOverlay")
+                .Select(o => FeatureFactory.Create(o, document));
+            foreach (var feature in features)
             {
-                XDocument kmlDocument = XDocument.Load(stream);
-                document.Namespace = kmlDocument.Root.GetDefaultNamespace();
-                var features = kmlDocument.Descendants().Where(o => o.Name == document.Namespace + "Placemark" || o.Name == document.Namespace + "GroundOverlay").Select(o => FeatureFactory.Create(o, document));
-                foreach (var feature in features)
-                {
-                    feature.WritePacket();
-                }
+                feature.WritePacket();
             }
         }
     }
