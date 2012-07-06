@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("KmlToCesiumLanguageTests")]
+[assembly: AssemblyTitle("CesiumLanguageConverter")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("KmlToCesiumLanguageTests")]
+[assembly: AssemblyProduct("CesiumLanguageConverter")]
 [assembly: AssemblyCopyright("Copyright © 2011-2012 Cesium Contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("824ea6a3-6850-4073-b1e6-2035834f8163")]
+[assembly: Guid("48e51305-808b-4b0f-91a2-f6e59794fb61")]
 
 // Version information for an assembly consists of the following four values:
 //

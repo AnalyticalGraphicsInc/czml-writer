@@ -43,28 +43,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestGroundOverlay.cs" />
+    <Compile Include="TestKmlConverter.cs" />
     <Compile Include="TestLineString.cs" />
     <Compile Include="TestPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestPolygon.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CesiumLanguageWriter\CesiumLanguageWriter.csproj">
-      <Project>{085359F8-CC1D-4561-94C7-0BF067B8E370}</Project>
-      <Name>CesiumLanguageWriter</Name>
-    </ProjectReference>
     <ProjectReference Include="..\KmlToCesiumLanguage\KmlToCesiumLanguage.csproj">
       <Project>{A3F1CB98-2E69-4CDE-9A9F-8B93719F5621}</Project>
       <Name>KmlToCesiumLanguage</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="KmlDocs\I&amp;W KML.kmz">
+    <Content Include="KmlDocs\I&amp;W KML.kmz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="KmlDocs\STS-122-STS-122Ascent.kml">
+    </Content>
+    <Content Include="KmlDocs\STS-122-STS-122Ascent.kml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

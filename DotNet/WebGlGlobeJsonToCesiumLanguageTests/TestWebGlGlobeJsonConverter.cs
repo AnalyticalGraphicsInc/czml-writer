@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using NUnit.Framework;
 using WebGLGlobeJsonToCesiumLanguage;
 
@@ -7,33 +8,42 @@ namespace WebGLGlobeJsonToCesiumLanguageTests
     [TestFixture]
     public class TestWebGLGlobeJsonConverter
     {
-        CzmlDocument m_document;
+        private StringWriter m_stringWriter;
 
-        public TestWebGLGlobeJsonConverter()
+        [SetUp]
+        public void SetUp()
         {
-            m_document = new CzmlDocument();
+            m_stringWriter = new StringWriter();
         }
 
         [Test]
         public void ConvertsValidJson()
         {
             StringReader json = new StringReader("[['alpha', [45, -90, 1]], ['bravo', [50, -70, 2]]]");
-            WebGLGlobeJsonConverter.WebGLGlobeJsonToCesiumLanguage(json, m_document);
-            string result = m_document.StringWriter.ToString();
-            Assert.That(result.Contains("{\"id\":\"alpha0\",\"polyline\":{\"color\":{\"rgba\":[0,0,255,255]}},\"vertexPositions\":{\"cartographicDegrees\":[45.0,-90.0,0.0,45.0,-90.0,1.0]}}"));
-            Assert.That(result.Contains("{\"id\":\"bravo0\",\"polyline\":{\"color\":{\"rgba\":[0,0,255,255]}},\"vertexPositions\":{\"cartographicDegrees\":[50.0,-70.0,0.0,50.0,-70.0,2.0]}}"));
+            WebGLGlobeJsonConverter.WebGLGlobeJsonToCesiumLanguage(json, m_stringWriter);
+
+            string result = m_stringWriter.ToString();
+            StringAssert.Contains("{\"id\":\"alpha0\",\"polyline\":{\"color\":{\"rgba\":[0,0,255,255]}},\"vertexPositions\":{\"cartographicDegrees\":[45.0,-90.0,0.0,45.0,-90.0,1.0]}}", result);
+            StringAssert.Contains("{\"id\":\"bravo0\",\"polyline\":{\"color\":{\"rgba\":[0,0,255,255]}},\"vertexPositions\":{\"cartographicDegrees\":[50.0,-70.0,0.0,50.0,-70.0,2.0]}}", result);
         }
 
         [Test]
-        public void ExpectAnArgumentException()
-        {
-            Assert.Throws(typeof(System.ArgumentException), convertInvalidWebGLGlobeJson);
-        }
-
-        void convertInvalidWebGLGlobeJson()
+        public void ConvertInvalidWebGLGlobeJson()
         {
             StringReader json = new StringReader("[['alpha', [1, 2, 3, 4]]]");
-            WebGLGlobeJsonConverter.WebGLGlobeJsonToCesiumLanguage(json, m_document);
+
+            Assert.Throws(typeof(ArgumentException), () => WebGLGlobeJsonConverter.WebGLGlobeJsonToCesiumLanguage(json, m_stringWriter));
+        }
+
+        [Test]
+        public void TestConvertingAnEntireFile()
+        {
+            using (var reader = new StreamReader("population909500.json"))
+            {
+                WebGLGlobeJsonConverter.WebGLGlobeJsonToCesiumLanguage(reader, m_stringWriter);
+            }
+
+            Assert.IsNotEmpty(m_stringWriter.ToString());
         }
     }
 }
