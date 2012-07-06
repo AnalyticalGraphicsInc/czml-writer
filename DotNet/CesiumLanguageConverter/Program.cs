@@ -7,27 +7,29 @@ using WebGLGlobeJsonToCesiumLanguage;
 
 namespace CesiumLanguageConverter
 {
-    internal enum InputFileType
-    {
-        KML,
-        WebGLGlobeJSON
-    }
-
-    internal class Conversion
-    {
-        public string InputFileName { get; set; }
-
-        public string InputFileType { get; set; }
-
-        public string OutputFileName { get; set; }
-
-        public bool PrettyPrint { get; set; }
-    }
-
     public class Program
     {
+        private class ConversionOptions
+        {
+            public string InputFileName;
+            public string InputFileType;
+            public string OutputFileName;
+            public bool PrettyPrint;
+            public readonly KmlConversionOptions Kml = new KmlConversionOptions();
+            public readonly WebGLGlobeJsonConversionOptions WebGLGlobeJson = new WebGLGlobeJsonConversionOptions();
+        }
+
+        private class KmlConversionOptions
+        {
+        }
+
+        private class WebGLGlobeJsonConversionOptions
+        {
+            public double HeightScalar = 1.0;
+        }
+
         private static readonly Dictionary<string, string> s_fileExtensionsToInputFileTypes;
-        private static readonly Dictionary<string, Action<Conversion>> s_conversionMethods;
+        private static readonly Dictionary<string, Action<ConversionOptions>> s_conversionMethods;
 
         private static readonly string s_helpParamDesc;
         private static readonly string s_outputFileParamDesc;
@@ -39,15 +41,15 @@ namespace CesiumLanguageConverter
             s_fileExtensionsToInputFileTypes =
                 new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)
                     {
-                        { ".kml", InputFileType.KML.ToString() },
-                        { ".kmz", InputFileType.KML.ToString() },
-                        { ".json", InputFileType.WebGLGlobeJSON.ToString() },
+                        { ".kml", "KML" },
+                        { ".kmz", "KML" },
+                        { ".json", "WebGLGlobeJSON" },
                     };
             s_conversionMethods =
-                new Dictionary<string, Action<Conversion>>(StringComparer.InvariantCultureIgnoreCase)
+                new Dictionary<string, Action<ConversionOptions>>(StringComparer.InvariantCultureIgnoreCase)
                     {
-                        { InputFileType.KML.ToString(), ConvertKml },
-                        { InputFileType.WebGLGlobeJSON.ToString(), ConvertWebGLGlobeJson },
+                        { "KML", ConvertKml },
+                        { "WebGLGlobeJSON", ConvertWebGLGlobeJson },
                     };
             s_helpParamDesc = "Show this message and exit.";
             s_outputFileParamDesc = "Specify the output file name.  Defaults to the input file name, with extension changed to czml.";
@@ -62,18 +64,21 @@ namespace CesiumLanguageConverter
 
         private static void Main(string[] args)
         {
-            Conversion conversion = new Conversion();
+            ConversionOptions options = new ConversionOptions();
             bool showHelp = false;
 
             var optionSet =
                 new OptionSet
                     {
                         { "h|?|help", s_helpParamDesc, v => showHelp = v != null },
-                        { "o=|outputFile=", s_outputFileParamDesc, v => conversion.OutputFileName = v },
-                        { "t=|type=", s_inputFileTypeParamDesc, v => conversion.InputFileType = v },
-                        { "pretty", s_prettyPrintParamDesc, v => conversion.PrettyPrint = v != null },
-                        { "<>", "", v => conversion.InputFileName = v },
+                        { "o=|outputFile=", s_outputFileParamDesc, v => options.OutputFileName = v },
+                        { "t=|type=", s_inputFileTypeParamDesc, v => options.InputFileType = v },
+                        { "pretty", s_prettyPrintParamDesc, v => options.PrettyPrint = v != null },
+                        { "<>", "", v => options.InputFileName = v },
                     };
+
+            AddKmlOptions(optionSet, options);
+            AddWebGLGlobeJsonOptions(optionSet, options);
 
             try
             {
@@ -87,14 +92,14 @@ namespace CesiumLanguageConverter
                 ShowHelpAndExit(optionSet);
             }
 
-            if (showHelp || conversion.InputFileName == null)
+            if (showHelp || options.InputFileName == null)
             {
                 ShowHelpAndExit(optionSet);
             }
 
-            if (conversion.InputFileType == null)
+            if (options.InputFileType == null)
             {
-                string extension = Path.GetExtension(conversion.InputFileName);
+                string extension = Path.GetExtension(options.InputFileName);
                 string inputFileType;
                 if (!s_fileExtensionsToInputFileTypes.TryGetValue(extension, out inputFileType))
                 {
@@ -102,25 +107,25 @@ namespace CesiumLanguageConverter
                     Console.Error.WriteLine();
                     ShowHelpAndExit(optionSet);
                 }
-                conversion.InputFileType = inputFileType;
+                options.InputFileType = inputFileType;
             }
 
-            if (conversion.OutputFileName == null)
+            if (options.OutputFileName == null)
             {
-                conversion.OutputFileName = Path.ChangeExtension(Path.GetFileName(conversion.InputFileName), "czml");
+                options.OutputFileName = Path.ChangeExtension(Path.GetFileName(options.InputFileName), "czml");
             }
 
-            Action<Conversion> conversionMethod;
-            if (!s_conversionMethods.TryGetValue(conversion.InputFileType, out conversionMethod))
+            Action<ConversionOptions> conversionMethod;
+            if (!s_conversionMethods.TryGetValue(options.InputFileType, out conversionMethod))
             {
-                Console.Error.Write("Unknown file type: {0}", conversion.InputFileType);
+                Console.Error.Write("Unknown file type: {0}", options.InputFileType);
                 Console.Error.WriteLine();
                 ShowHelpAndExit(optionSet);
             }
 
-            conversionMethod(conversion);
+            conversionMethod(options);
 
-            Console.WriteLine("Wrote CZML output to {0}.", conversion.OutputFileName);
+            Console.WriteLine("Wrote CZML output to {0}.", options.OutputFileName);
         }
 
         private static void ShowHelpAndExit(OptionSet optionSet)
@@ -135,30 +140,41 @@ namespace CesiumLanguageConverter
             Environment.Exit(0);
         }
 
-        private static void ConvertKml(Conversion conversion)
+        private static void AddKmlOptions(OptionSet optionSet, ConversionOptions options)
         {
-            using (var outputWriter = new StreamWriter(conversion.OutputFileName))
+        }
+
+        private static void ConvertKml(ConversionOptions options)
+        {
+            using (var outputWriter = new StreamWriter(options.OutputFileName))
             {
-                string extension = Path.GetExtension(conversion.InputFileName);
+                string extension = Path.GetExtension(options.InputFileName);
                 if (".kml".Equals(extension, StringComparison.OrdinalIgnoreCase))
                 {
-                    using (var inputReader = new StreamReader(conversion.InputFileName))
-                        KmlConverter.KmlToCesiumLanguage(inputReader, outputWriter, conversion.PrettyPrint);
+                    using (var inputReader = new StreamReader(options.InputFileName))
+                        KmlConverter.KmlToCesiumLanguage(inputReader, outputWriter, options.PrettyPrint);
                 }
                 else if (".kmz".Equals(extension, StringComparison.OrdinalIgnoreCase))
                 {
-                    using (var inputStream = new FileStream(conversion.InputFileName, FileMode.Open, FileAccess.Read))
-                        KmlConverter.KmzToCesiumLanguage(inputStream, outputWriter, conversion.PrettyPrint);
+                    using (var inputStream = new FileStream(options.InputFileName, FileMode.Open, FileAccess.Read))
+                        KmlConverter.KmzToCesiumLanguage(inputStream, outputWriter, options.PrettyPrint);
                 }
             }
         }
 
-        private static void ConvertWebGLGlobeJson(Conversion conversion)
+        private static void AddWebGLGlobeJsonOptions(OptionSet optionSet, ConversionOptions options)
         {
-            using (var inputReader = new StreamReader(conversion.InputFileName))
-            using (var outputWriter = new StreamWriter(conversion.OutputFileName))
+            const string heightScalarParamDesc = "A scale factor for the height component of each coordinate.  Defaults to 1.";
+
+            optionSet.Add("webGLGlobeJsonHeightScalar=", heightScalarParamDesc, (double v) => options.WebGLGlobeJson.HeightScalar = v);
+        }
+
+        private static void ConvertWebGLGlobeJson(ConversionOptions options)
+        {
+            using (var inputReader = new StreamReader(options.InputFileName))
+            using (var outputWriter = new StreamWriter(options.OutputFileName))
             {
-                WebGLGlobeJsonConverter.WebGLGlobeJsonToCesiumLanguage(inputReader, outputWriter, conversion.PrettyPrint);
+                WebGLGlobeJsonConverter.WebGLGlobeJsonToCesiumLanguage(inputReader, outputWriter, options.PrettyPrint, options.WebGLGlobeJson.HeightScalar);
             }
         }
     }
