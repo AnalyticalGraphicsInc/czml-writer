@@ -55,7 +55,7 @@ namespace KmlToCesiumLanguage
         protected virtual void AddPolyStyle(XElement polyElement) { }
 
         /// <summary>
-        /// Adds the information contained in the Kml Polystyle element to the <see cref="PacketCesiumWriter"/>.
+        /// Adds the information contained in the Kml Lolystyle element to the <see cref="PacketCesiumWriter"/>.
         /// </summary>
         /// <param name="lineElement">The LineStyle element.</param>
         protected virtual void AddLineStyle(XElement lineElement) { }

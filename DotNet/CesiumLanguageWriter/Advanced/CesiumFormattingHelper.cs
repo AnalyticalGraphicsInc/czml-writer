@@ -79,15 +79,19 @@ namespace CesiumLanguageWriter.Advanced
             throw new NotImplementedException();
 #else
             string mimeType;
-            if (image.RawFormat.Equals(System.Drawing.Imaging.ImageFormat.Jpeg))
+            if (image.RawFormat.Equals(ImageFormat.Jpeg))
             {
                 mimeType = "image/jpeg";
             }
-            else if(image.RawFormat.Equals(System.Drawing.Imaging.ImageFormat.Png))
+            else if (image.RawFormat.Equals(ImageFormat.Png))
             {
                 mimeType = "image/png";
             }
-            else if (image.RawFormat.Equals(System.Drawing.Imaging.ImageFormat.Bmp))
+            else if (image.RawFormat.Equals(ImageFormat.Gif))
+            {
+                mimeType = "image/gif";
+            }
+            else if (image.RawFormat.Equals(ImageFormat.Bmp))
             {
                 mimeType = "image/bmp";
             }

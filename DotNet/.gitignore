@@ -1,0 +1,9 @@
+bin
+obj
+!ThirdParty/**/bin/
+_ReSharper.*
+*.suo
+*.DotSettings.user
+*.userprefs
+*.resources
+*.user

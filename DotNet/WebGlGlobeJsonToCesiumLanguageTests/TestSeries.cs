@@ -1,6 +1,6 @@
-﻿using CesiumLanguageWriter;
+﻿using System.IO;
+using CesiumLanguageWriter;
 using NUnit.Framework;
-using System.Drawing;
 using WebGLGlobeJsonToCesiumLanguage;
 
 namespace WebGLGlobeJsonToCesiumLanguageTests
@@ -8,19 +8,23 @@ namespace WebGLGlobeJsonToCesiumLanguageTests
     [TestFixture]
     public class TestSeries
     {
-        CzmlDocument m_document;
+        private StringWriter m_stringWriter;
+        private CzmlDocument m_document;
 
-        public TestSeries()
+        [SetUp]
+        public void SetUp()
         {
-            m_document = new CzmlDocument();
+            m_stringWriter = new StringWriter();
+            m_document = new CzmlDocument(m_stringWriter);
         }
-        
+
         [Test]
         public void UsesCartographicDegrees()
         {
-            Series series = new Series("test", new Cartographic[] {new Cartographic(90.0, 45.0, 3.0)}, m_document, Color.Blue);
+            Series series = new Series("test", new[] { new Cartographic(90.0, 45.0, 3.0) }, m_document);
             series.Write();
-            string result = m_document.StringWriter.ToString();
+
+            string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"cartographicDegrees\":"));
             Assert.That(result.Contains("[90.0,45.0,0.0,90.0,45.0,3.0]"));
         }
@@ -28,9 +32,10 @@ namespace WebGLGlobeJsonToCesiumLanguageTests
         [Test]
         public void GeneratesIndexedIds()
         {
-            Series series = new Series("test", new Cartographic[] { new Cartographic(1.0, 2.0, 3.0), new Cartographic(4.0, 5.0, 6.0) }, m_document, Color.Blue);
+            Series series = new Series("test", new[] { new Cartographic(1.0, 2.0, 3.0), new Cartographic(4.0, 5.0, 6.0) }, m_document);
             series.Write();
-            string result = m_document.StringWriter.ToString();
+
+            string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"id\":\"test0\""));
             Assert.That(result.Contains("\"id\":\"test1\""));
         }
@@ -38,9 +43,10 @@ namespace WebGLGlobeJsonToCesiumLanguageTests
         [Test]
         public void ListsVertexPositionsForBothEndPoints()
         {
-            Series series = new Series("test", new Cartographic[] { new Cartographic(1.0, 2.0, 3.0) }, m_document, Color.Blue);
+            Series series = new Series("test", new[] { new Cartographic(1.0, 2.0, 3.0) }, m_document);
             series.Write();
-            string result = m_document.StringWriter.ToString();
+
+            string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"vertexPositions\":{\"cartographicDegrees\":[1.0,2.0,0.0,1.0,2.0,3.0]}"));
         }
     }
