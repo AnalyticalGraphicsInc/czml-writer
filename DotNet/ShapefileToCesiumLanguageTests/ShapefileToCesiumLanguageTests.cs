@@ -24,7 +24,7 @@ namespace ShapefileToCesiumLanguageTests
         public void TestPointConversion()
         {
             // Shapefile contains 37 points
-            string shapefileName = ".\\..\\..\\SampleShapefiles\\110m_admin_0_tiny_countries.shp";
+            string shapefileName = "SampleShapefiles/110m_admin_0_tiny_countries.shp";
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
             string result = m_document.StringWriter.ToString();
@@ -35,7 +35,7 @@ namespace ShapefileToCesiumLanguageTests
         [Test]
         public void TestPointZConversion()
         {
-            string shapefileName = ".\\..\\..\\SampleShapefiles\\zpoint_example.shp";
+            string shapefileName = "SampleShapefiles/zpoint_example.shp";
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
             string result = m_document.StringWriter.ToString();
@@ -47,7 +47,7 @@ namespace ShapefileToCesiumLanguageTests
         public void TestPolylineConversion()
         {
             // Shapefile contains 8 polylines: 7 with 1 part, and 1 with 4 parts
-            string shapefileName = ".\\..\\..\\SampleShapefiles\\ne_110m_geographic_lines.shp";
+            string shapefileName = "SampleShapefiles/ne_110m_geographic_lines.shp";
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
             string result = m_document.StringWriter.ToString();
@@ -58,7 +58,7 @@ namespace ShapefileToCesiumLanguageTests
         [Test]
         public void TestPolylineZConversion()
         {
-            string shapefileName = ".\\..\\..\\SampleShapefiles\\iran_road.shp";
+            string shapefileName = "SampleShapefiles/iran_road.shp";
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
             string result = m_document.StringWriter.ToString();
@@ -92,7 +92,7 @@ namespace ShapefileToCesiumLanguageTests
         [Test]
         public void TestPolygonConversion()
         {
-            string shapefileName = ".\\..\\..\\SampleShapefiles\\110m_ocean.shp";
+            string shapefileName = "SampleShapefiles/110m_ocean.shp";
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
             string result = m_document.StringWriter.ToString();
@@ -409,7 +409,7 @@ namespace ShapefileToCesiumLanguageTests
         [Test]
         public void TestMultiPatchConversion()
         {
-            string shapefileName = ".\\..\\..\\SampleShapefiles\\Financial_WGS84.shp";
+            string shapefileName = "SampleShapefiles/Financial_WGS84.shp";
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
             string result = m_document.StringWriter.ToString();
