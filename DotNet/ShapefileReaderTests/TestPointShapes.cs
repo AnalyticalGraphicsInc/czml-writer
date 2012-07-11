@@ -5,13 +5,14 @@ using Shapefile;
 
 namespace ShapefileReaderTests
 {
-     [TestFixture]
+    [TestFixture]
     public class TestPointShapes
     {
-         StringDictionary m_metadata;
-         Cartesian m_position;
+         private StringDictionary m_metadata;
+         private Cartesian m_position;
 
-         public TestPointShapes()
+         [SetUp]
+         public void SetUp()
          {
              m_metadata = new StringDictionary();
              m_position = new Cartesian(1.0, 2.0, 0.0);

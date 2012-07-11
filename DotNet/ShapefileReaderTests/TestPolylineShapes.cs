@@ -8,12 +8,13 @@ namespace ShapefileReaderTests
     [TestFixture]
     public class TestPolylineShapes
     {
-        StringDictionary m_metadata;
-        Rectangular[] m_positions;
-        CartographicExtent m_extent;
-        int[] m_parts;
+        private StringDictionary m_metadata;
+        private Rectangular[] m_positions;
+        private CartographicExtent m_extent;
+        private int[] m_parts;
 
-        public TestPolylineShapes()
+        [SetUp]
+        public void SetUp()
         {
             m_metadata = new StringDictionary();
             m_positions = new Rectangular[] {

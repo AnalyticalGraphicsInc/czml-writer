@@ -12,11 +12,12 @@ namespace ShapefileToCesiumLanguageTests
     [TestFixture]
     public class ShapefileToCesiumLanguageTests
     {
-        CzmlDocument m_document;
-        StringDictionary m_metadata;
-        StringWriter result;
+        private CzmlDocument m_document;
+        private StringDictionary m_metadata;
+        private StringWriter result;
 
-        public ShapefileToCesiumLanguageTests()
+        [SetUp]
+        public void SetUp()
         {
             result = new StringWriter();
             m_document = new CzmlDocument(result);

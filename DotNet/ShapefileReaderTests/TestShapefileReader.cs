@@ -7,11 +7,13 @@ namespace ShapefileReaderTests
     [TestFixture]
     public class TestShapefileReader
     {
-        ShapefileReader m_reader;
-        private string shapefileName = "SampleShapefiles/ne_110m_admin_0_countries.shp";
+        private ShapefileReader m_reader;
+        private string shapefileName;
 
-        public TestShapefileReader()
+        [SetUp]
+        public void SetUp()
         {
+            shapefileName = "SampleShapefiles/ne_110m_admin_0_countries.shp";
             m_reader = new ShapefileReader(shapefileName);
         }
 

@@ -13,7 +13,8 @@ namespace ShapefileReaderTests
         CartographicExtent m_extent;
         int[] m_parts;
 
-        public TestPolygonShapes()
+        [SetUp]
+        public void SetUp()
         {
             m_metadata = new StringDictionary();
             m_positions = new Rectangular[] {

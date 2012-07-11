@@ -8,12 +8,13 @@ namespace ShapefileReaderTests
     [TestFixture]
     public class TestMultiPointShapes
     {
-        int m_recordNumber;
-        StringDictionary m_metadata;
-        CartographicExtent m_extent;
-        Cartesian[] m_positions;
+        private int m_recordNumber;
+        private StringDictionary m_metadata;
+        private CartographicExtent m_extent;
+        private Cartesian[] m_positions;
 
-        public TestMultiPointShapes()
+        [SetUp]
+        public void SetUp()
         {
             m_recordNumber = 1;
             m_metadata = new StringDictionary();
@@ -27,7 +28,6 @@ namespace ShapefileReaderTests
         [Test]
         public void TestMultiPointShapeType()
         {
-            Cartesian position = new Cartesian(1.0, 2.0, 0.0);
             MultiPointShape points = new MultiPointShape(m_recordNumber, m_metadata, m_extent, m_positions);
             Assert.That(points.ShapeType == ShapeType.MultiPoint);
         }
@@ -35,7 +35,6 @@ namespace ShapefileReaderTests
         [Test]
         public void TestMultiPointShapePosition()
         {
-
             MultiPointShape points = new MultiPointShape(m_recordNumber, m_metadata, m_extent, m_positions);
             Assert.That(points[0].Equals(m_positions[0]));
             Assert.That(points[1].Equals(m_positions[1]));
