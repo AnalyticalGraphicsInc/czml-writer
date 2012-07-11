@@ -25,13 +25,12 @@ namespace Shapefile
             _minimumZ = minimumZ;
             _maximumZ = maximumZ;
 
-            _parts = new ShapePart[parts.Length];
             for (int i = 0; i < parts.Length; ++i)
             {
                 int count = ((i == parts.Length - 1) ?
                     positions.Length : parts[i + 1]) - parts[i];
 
-                _parts[i] = new ShapePart(positions, zValues, parts[i], count);
+                _parts[i] = new ShapePart(positions, zValues, measures, parts[i], count);
             }
         }
 

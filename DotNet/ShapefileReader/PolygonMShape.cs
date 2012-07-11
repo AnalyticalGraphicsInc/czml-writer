@@ -20,7 +20,14 @@ namespace Shapefile
         {
             _minimumMeasure = minimumMeasure;
             _maximumMeasure = maximumMeasure;
-            _measures = (double[])measures.Clone();
+
+            for (int i = 0; i < parts.Length; ++i)
+            {
+                int count = ((i == parts.Length - 1) ?
+                    positions.Length : parts[i + 1]) - parts[i];
+
+                _parts[i] = new ShapePart(positions, measures, parts[i], count);
+            }
         }
 
         public double MinimumMeasure
@@ -33,14 +40,8 @@ namespace Shapefile
             get { return _maximumMeasure; }
         }
 
-        public double[] Measures
-        {
-            get { return _measures; }
-        }
-
         private readonly double _minimumMeasure;
         private readonly double _maximumMeasure;
-        private readonly double[] _measures;
     }
 
 }
