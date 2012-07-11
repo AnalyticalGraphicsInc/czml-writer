@@ -7,7 +7,6 @@ using System.Data.OleDb;
 using System.IO;
 using System.Text;
 using CesiumLanguageWriter;
-using SocialExplorer.IO.FastDBF;
 
 namespace Shapefile
 {
@@ -82,13 +81,7 @@ namespace Shapefile
                 double yMin = ToDouble(fileHeader, 44, ByteOrder.LittleEndian);
                 double xMax = ToDouble(fileHeader, 52, ByteOrder.LittleEndian);
                 double yMax = ToDouble(fileHeader, 60, ByteOrder.LittleEndian);
-
-                // TODO: Publicly expose these
-                //double zMin = NoDataToZero(ToDouble(fileHeader, 68, ByteOrder.LittleEndian));
-                //double zMax = NoDataToZero(ToDouble(fileHeader, 76, ByteOrder.LittleEndian));
-                //double mMin = NoDataToZero(ToDouble(fileHeader, 84, ByteOrder.LittleEndian));
-                //double mMax = NoDataToZero(ToDouble(fileHeader, 92, ByteOrder.LittleEndian));
-
+                
                 if (fileLengthInBytes == _fileHeaderLength)
                 {
                     //
@@ -411,11 +404,6 @@ namespace Shapefile
 
             return BitConverter.ToDouble(swapped, 0);
         }
-
-        //private double NoDataToZero(double value)
-        //{
-        //    return (value < _noData) ? 0.0 : value;
-        //}
 
         private static byte[] Read(FileStream fileStream, int count)
         {
