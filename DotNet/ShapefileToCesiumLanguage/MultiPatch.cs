@@ -34,7 +34,7 @@ namespace ShapefileToCesiumLanguage
                             Cartesian[] vertices = new Cartesian[] { multipatch[i][firstIndex], multipatch[i][j - 1], multipatch[i][j] };
                             ShapePart triangle = new ShapePart(vertices, 0, vertices.Length);
                             PolygonShape p = new PolygonShape(multipatch.RecordNumber, multipatch.Metadata, multipatch.Extent, new ShapePart[] { triangle });
-                            polygons.Add(new Polygon(p, m_document, m_color));
+                            (new Polygon(p, m_document, m_color)).Write();
                         }
                         break;
 
@@ -42,7 +42,7 @@ namespace ShapefileToCesiumLanguage
                         while (i < multipatch.Count && multipatch.GetPartType(i) == MultiPatchPartType.Ring)
                         {
                             temp = new PolygonShape(multipatch.RecordNumber, multipatch.Metadata, multipatch.Extent, new ShapePart[] { multipatch[i] });
-                            polygons.Add(new Polygon(temp, m_document, m_color));
+                            (new Polygon(temp, m_document, m_color)).Write();
                             i++;
                         }
                         i--;
@@ -57,15 +57,10 @@ namespace ShapefileToCesiumLanguage
                             polygonParts.Add(multipatch[i]);
                         }
                         temp = new PolygonShape(multipatch.RecordNumber, multipatch.Metadata, multipatch.Extent, polygonParts.ToArray());
-                        polygons.Add(new Polygon(temp, m_document, m_color));
+                        (new Polygon(temp, m_document, m_color)).Write();
                         i--;
                         break;
                 }
-            }
-
-            foreach (Polygon polygon in polygons)
-            {
-                polygon.Write();
             }
         }
     }
