@@ -62,11 +62,11 @@ namespace ShapefileReaderTests
         {
             double[] measures = new double[] { 1.0, 2.0, 3.0, 4.0, 1.0 };
             PolygonMShape polygon = new PolygonMShape(1, m_metadata, m_extent, m_parts, m_positions, 1.0, 4.0, measures);
-            Assert.That(polygon.Measures[0] == 1.0);
-            Assert.That(polygon.Measures[1] == 2.0);
-            Assert.That(polygon.Measures[2] == 3.0);
-            Assert.That(polygon.Measures[3] == 4.0);
-            Assert.That(polygon.Measures[4] == 1.0);
+            Assert.That(polygon[0].GetMeasure(0) == 1.0);
+            Assert.That(polygon[0].GetMeasure(1) == 2.0);
+            Assert.That(polygon[0].GetMeasure(2) == 3.0);
+            Assert.That(polygon[0].GetMeasure(3) == 4.0);
+            Assert.That(polygon[0].GetMeasure(4) == 1.0);
         }
 
         [Test]
@@ -85,7 +85,8 @@ namespace ShapefileReaderTests
         public void TestPolygonZShapeType()
         {
             double[] zValues = new double[] { 1.0, 2.0, 3.0, 4.0, 1.0 };
-            PolygonZShape polygon = new PolygonZShape(1, m_metadata, m_extent, m_parts, m_positions, 1.0, 2.0, zValues, 0.0, 0.0, new double[] { });
+            double[] measures = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0 };
+            PolygonZShape polygon = new PolygonZShape(1, m_metadata, m_extent, m_parts, m_positions, 1.0, 2.0, zValues, 0.0, 0.0, measures);
             Assert.That(polygon.ShapeType == ShapeType.PolygonZ);
         }
 
@@ -93,7 +94,8 @@ namespace ShapefileReaderTests
         public void TestPolygonZPositions()
         {
             double[] zValues = new double[] { 1.0, 2.0, 3.0, 4.0, 1.0 };
-            PolygonZShape polygon = new PolygonZShape(1, m_metadata, m_extent, m_parts, m_positions, 1.0, 2.0, zValues, 0.0, 0.0, new double[] { });
+            double[] measures = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0 };
+            PolygonZShape polygon = new PolygonZShape(1, m_metadata, m_extent, m_parts, m_positions, 1.0, 2.0, zValues, 0.0, 0.0, measures);
             Assert.That(polygon[0][0].Equals(new Cartesian(0.0, 0.0, 1.0)));
             Assert.That(polygon[0][1].Equals(new Cartesian(0.0, 1.0, 2.0)));
             Assert.That(polygon[0][2].Equals(new Cartesian(1.0, 1.0, 3.0)));

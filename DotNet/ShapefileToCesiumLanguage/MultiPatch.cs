@@ -24,13 +24,13 @@ namespace ShapefileToCesiumLanguage
                 List<ShapePart> polygonParts = new List<ShapePart>();
                 PolygonShape temp;
 
-                switch (multipatch.PartType(i))
+                switch (multipatch.GetPartType(i))
                 {
                     case MultiPatchPartType.TriangleFan:
                     case MultiPatchPartType.TriangleStrip:
                         for (int j = 2; j < multipatch[i].Count; j++)
                         {
-                            int firstIndex = (multipatch.PartType(i) == MultiPatchPartType.TriangleFan) ? 0 : j - 2;
+                            int firstIndex = (multipatch.GetPartType(i) == MultiPatchPartType.TriangleFan) ? 0 : j - 2;
                             Cartesian[] vertices = new Cartesian[] { multipatch[i][firstIndex], multipatch[i][j - 1], multipatch[i][j] };
                             ShapePart triangle = new ShapePart(vertices, 0, vertices.Length);
                             PolygonShape p = new PolygonShape(multipatch.RecordNumber, multipatch.Metadata, multipatch.Extent, new ShapePart[] { triangle });
@@ -39,7 +39,7 @@ namespace ShapefileToCesiumLanguage
                         break;
 
                     case MultiPatchPartType.Ring:
-                        while (i < multipatch.Count && multipatch.PartType(i) == MultiPatchPartType.Ring)
+                        while (i < multipatch.Count && multipatch.GetPartType(i) == MultiPatchPartType.Ring)
                         {
                             temp = new PolygonShape(multipatch.RecordNumber, multipatch.Metadata, multipatch.Extent, new ShapePart[] { multipatch[i] });
                             polygons.Add(new Polygon(temp, m_document, m_color));
@@ -51,8 +51,8 @@ namespace ShapefileToCesiumLanguage
                     case MultiPatchPartType.OuterRing:
                     case MultiPatchPartType.FirstRing:
                         polygonParts.Add(multipatch[i]);
-                        MultiPatchPartType comparisonType = (multipatch.PartType(i) == MultiPatchPartType.OuterRing) ? MultiPatchPartType.InnerRing : MultiPatchPartType.Ring;
-                        while (++i < multipatch.Count && multipatch.PartType(i) == comparisonType)
+                        MultiPatchPartType comparisonType = (multipatch.GetPartType(i) == MultiPatchPartType.OuterRing) ? MultiPatchPartType.InnerRing : MultiPatchPartType.Ring;
+                        while (++i < multipatch.Count && multipatch.GetPartType(i) == comparisonType)
                         {
                             polygonParts.Add(multipatch[i]);
                         }

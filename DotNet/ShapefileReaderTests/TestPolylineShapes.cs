@@ -56,8 +56,8 @@ namespace ShapefileReaderTests
         {
             double[] measures = new double[] { 1.0, 2.0 };
             PolylineMShape line = new PolylineMShape(1, m_metadata, m_extent, m_parts, m_positions, 1.0, 2.0, measures);
-            Assert.That(line.Measures[0] == 1.0);
-            Assert.That(line.Measures[1] == 2.0);
+            Assert.That(line[0].GetMeasure(0) == 1.0);
+            Assert.That(line[0].GetMeasure(1) == 2.0);
         }
 
         [Test]
@@ -73,7 +73,8 @@ namespace ShapefileReaderTests
         public void TestPolylineZShapeType()
         {
             double[] zValues = new double[] { 1.0, 2.0 };
-            PolylineZShape line = new PolylineZShape(1, m_metadata, m_extent, m_parts, m_positions, 1.0, 2.0, zValues, 0.0, 0.0, new double[] { });
+            double[] measures = new double[] { 0.0, 0.0 };
+            PolylineZShape line = new PolylineZShape(1, m_metadata, m_extent, m_parts, m_positions, 1.0, 2.0, zValues, 0.0, 0.0, measures);
             Assert.That(line.ShapeType == ShapeType.PolylineZ);
         }
 
@@ -81,7 +82,8 @@ namespace ShapefileReaderTests
         public void TestPolylineZPositions()
         {
             double[] zValues = new double[] { 1.0, 2.0 };
-            PolylineZShape line = new PolylineZShape(1, m_metadata, m_extent, m_parts, m_positions, 1.0, 2.0, zValues, 0.0, 0.0, new double[] { });
+            double[] measures = new double[] { 0.0, 0.0 };
+            PolylineZShape line = new PolylineZShape(1, m_metadata, m_extent, m_parts, m_positions, 1.0, 2.0, zValues, 0.0, 0.0, measures);
             Assert.That(line[0][0].Equals(new Cartesian(1.0, 1.0, 1.0)));
             Assert.That(line[0][1].Equals(new Cartesian(2.0, 2.0, 2.0)));
         }

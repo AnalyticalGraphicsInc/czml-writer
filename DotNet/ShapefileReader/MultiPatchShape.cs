@@ -57,7 +57,7 @@ namespace Shapefile
             get { return _parts[index]; }
         }
 
-        public MultiPatchPartType PartType(int index)
+        public MultiPatchPartType GetPartType(int index)
         {
             return _partTypes[index];
         }

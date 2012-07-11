@@ -79,8 +79,9 @@ namespace ShapefileToCesiumLanguageTests
             double[] zValues = new double[] { 0.0, 1.0, 2.0, 3.0 };
             CartographicExtent extent = new CartographicExtent(0.0, 0.0, 3.0, 3.0);
             int[] parts = new int[] { 0 };
+            double[] measures = new double[] { 0.0, 0.0, 0.0, 0.0 };
 
-            PolylineZShape polylineZShape = new PolylineZShape(0, new StringDictionary(), extent, parts, positions, 1.0, 8.0, zValues, 0.0, 0.0, new double[] { });
+            PolylineZShape polylineZShape = new PolylineZShape(0, new StringDictionary(), extent, parts, positions, 1.0, 8.0, zValues, 0.0, 0.0, measures);
             Polyline polyline = new Polyline(polylineZShape, m_document, Color.Blue);
             polyline.Write();
             string result = m_document.StringWriter.ToString();
@@ -123,8 +124,9 @@ namespace ShapefileToCesiumLanguageTests
 
             CartographicExtent extent = new CartographicExtent(0.0, 0.0, 10.0, 10.0);
             int[] parts = new int[] { 0, 5 };
+            double[] measures = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 
-            PolygonZShape polygonZShape = new PolygonZShape(0, m_metadata, extent, parts, positions, 1.0, 8.0, zValues, 0.0, 0.0, new double[] { });
+            PolygonZShape polygonZShape = new PolygonZShape(0, m_metadata, extent, parts, positions, 1.0, 8.0, zValues, 0.0, 0.0, measures);
             Polygon polygon = new Polygon(polygonZShape, m_document, Color.Blue);
             polygon.Write();
             string result = m_document.StringWriter.ToString();
