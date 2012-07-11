@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using Shapefile;
 using NUnit.Framework;
+using Shapefile;
 
 namespace ShapefileReaderTests
 {

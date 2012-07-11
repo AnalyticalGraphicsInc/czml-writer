@@ -1,5 +1,6 @@
 ﻿using System.Collections.Specialized;
 using System.Drawing;
+using System.IO;
 using System.Text.RegularExpressions;
 using CesiumLanguageWriter;
 using NUnit.Framework;
@@ -13,10 +14,12 @@ namespace ShapefileToCesiumLanguageTests
     {
         CzmlDocument m_document;
         StringDictionary m_metadata;
+        StringWriter result;
 
         public ShapefileToCesiumLanguageTests()
         {
-            m_document = new CzmlDocument();
+            result = new StringWriter();
+            m_document = new CzmlDocument(result);
             m_metadata = new StringDictionary();
         }
 
@@ -27,9 +30,8 @@ namespace ShapefileToCesiumLanguageTests
             string shapefileName = "SampleShapefiles/110m_admin_0_tiny_countries.shp";
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
-            string result = m_document.StringWriter.ToString();
             Regex pointPattern = new Regex(@"{""id"":""[0-9a-zA-Z-]+"",""position"":{""cartographicDegrees"":\[-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*\]},""point"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}");
-            Assert.That(pointPattern.Matches(result).Count == 37);
+            Assert.That(pointPattern.Matches(result.ToString()).Count == 37);
         }
 
         [Test]
@@ -38,9 +40,8 @@ namespace ShapefileToCesiumLanguageTests
             string shapefileName = "SampleShapefiles/zpoint_example.shp";
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
-            string result = m_document.StringWriter.ToString();
             string pointPattern = @"{""id"":""[0-9a-zA-Z-]+"",""position"":{""cartographicDegrees"":\[-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*\]},""point"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}";
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, pointPattern));
+            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result.ToString(), pointPattern));
         }
 
         [Test]
@@ -50,9 +51,8 @@ namespace ShapefileToCesiumLanguageTests
             string shapefileName = "SampleShapefiles/ne_110m_geographic_lines.shp";
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
-            string result = m_document.StringWriter.ToString();
             Regex polylinePattern = new Regex(@"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,?)+\]},""polyline"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}");
-            Assert.That(polylinePattern.Matches(result).Count == 11);
+            Assert.That(polylinePattern.Matches(result.ToString()).Count == 11);
         }
 
         [Test]
@@ -61,9 +61,8 @@ namespace ShapefileToCesiumLanguageTests
             string shapefileName = "SampleShapefiles/iran_road.shp";
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
-            string result = m_document.StringWriter.ToString();
             string polylinePattern = @"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,?)+\]},""polyline"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}";
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, polylinePattern));
+            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result.ToString(), polylinePattern));
         }
 
         [Test]
@@ -84,9 +83,8 @@ namespace ShapefileToCesiumLanguageTests
             PolylineZShape polylineZShape = new PolylineZShape(0, new StringDictionary(), extent, parts, positions, 1.0, 8.0, zValues, 0.0, 0.0, measures);
             Polyline polyline = new Polyline(polylineZShape, m_document, Color.Blue);
             polyline.Write();
-            string result = m_document.StringWriter.ToString();
             string polylinePattern = @"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[0.0,0.0,0.0,1.0,1.0,1.0,2.0,2.0,2.0,3.0,3.0,3.0\]},""polyline"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}";
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, polylinePattern));
+            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result.ToString(), polylinePattern));
         }
 
         [Test]
@@ -95,9 +93,8 @@ namespace ShapefileToCesiumLanguageTests
             string shapefileName = "SampleShapefiles/110m_ocean.shp";
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
-            string result = m_document.StringWriter.ToString();
             string polygonPattern = @"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,?)+\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}";
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, polygonPattern));
+            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result.ToString(), polygonPattern));
         }
 
         [Test]
@@ -129,9 +126,8 @@ namespace ShapefileToCesiumLanguageTests
             PolygonZShape polygonZShape = new PolygonZShape(0, m_metadata, extent, parts, positions, 1.0, 8.0, zValues, 0.0, 0.0, measures);
             Polygon polygon = new Polygon(polygonZShape, m_document, Color.Blue);
             polygon.Write();
-            string result = m_document.StringWriter.ToString();
             string polygonPattern = @"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[0.0,5.0,1.0,5.0,10.0,2.0,10.0,5.0,3.0,8.0,5.0,7.0,5.0,8.0,8.0,2.0,5.0,5.0,5.0,2.0,6.0,8.0,5.0,7.0,10.0,5.0,3.0,5.0,0.0,4.0,0.0,5.0,1.0\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}";
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, polygonPattern));
+            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result.ToString(), polygonPattern));
         }
 
         [Test]
@@ -155,9 +151,8 @@ namespace ShapefileToCesiumLanguageTests
 
             Polygon polygon = new Polygon(new PolygonShape(0, m_metadata, extent, parts, positions), m_document, Color.Blue);
             polygon.Write();
-            string result = m_document.StringWriter.ToString();
             string polygonPattern = @"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[0.0,5.0,0.0,5.0,10.0,0.0,10.0,5.0,0.0,8.0,5.0,0.0,5.0,8.0,0.0,2.0,5.0,0.0,5.0,2.0,0.0,8.0,5.0,0.0,10.0,5.0,0.0,5.0,0.0,0.0,0.0,5.0,0.0\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}";
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, polygonPattern));
+            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result.ToString(), polygonPattern));
         }
 
         [Test]
@@ -181,9 +176,8 @@ namespace ShapefileToCesiumLanguageTests
 
             Polygon polygon = new Polygon(new PolygonShape(0, m_metadata, extent, parts, positions), m_document, Color.Blue);
             polygon.Write();
-            string result = m_document.StringWriter.ToString();
             string polygonPattern = @"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[0.0,5.0,0.0,5.0,10.0,0.0,10.0,5.0,0.0,7.0,3.0,0.0,7.0,7.0,0.0,3.0,7.0,0.0,3.0,3.0,0.0,7.0,3.0,0.0,10.0,5.0,0.0,5.0,0.0,0.0,0.0,5.0,0.0\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}";
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, polygonPattern));
+            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result.ToString(), polygonPattern));
         }
 
         [Test]
@@ -211,9 +205,8 @@ namespace ShapefileToCesiumLanguageTests
 
             Polygon polygon = new Polygon(new PolygonShape(0, m_metadata, extent, parts, positions), m_document, Color.Blue);
             polygon.Write();
-            string result = m_document.StringWriter.ToString();
             string polygonPattern = @"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[0.0,0.0,0.0,0.0,10.0,0.0,9.0,10.0,0.0,10.0,2.0,0.0,8.0,0.0,0.0,7.0,4.5,0.0,6.0,5.2,0.0,5.5,4.75,0.0,5.0,5.5,0.0,3.0,6.0,0.0,2.0,6.0,0.0,2.0,4.0,0.0,3.0,6.0,0.0,5.0,5.5,0.0,0.0,0.0,0.0\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}";
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, polygonPattern));
+            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result.ToString(), polygonPattern));
         }
 
         [Test]
@@ -243,9 +236,8 @@ namespace ShapefileToCesiumLanguageTests
 
             Polygon polygon = new Polygon(new PolygonShape(0, m_metadata, extent, parts, positions), m_document, Color.Blue);
             polygon.Write();
-            string result = m_document.StringWriter.ToString();
             string polygonPattern = @"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[0.0,5.0,0.0,5.0,10.0,0.0,10.0,5.0,0.0,8.0,5.0,0.0,7.0,6.0,0.0,6.0,5.0,0.0,5.0,5.0,0.0,5.0,8.0,0.0,3.0,6.0,0.0,3.0,5.0,0.0,5.0,5.0,0.0,6.0,5.0,0.0,7.0,4.0,0.0,8.0,5.0,0.0,10.0,5.0,0.0,5.0,0.0,0.0,0.0,5.0,0.0\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}";
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, polygonPattern));
+            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result.ToString(), polygonPattern));
         }
 
         [Test]
@@ -281,9 +273,8 @@ namespace ShapefileToCesiumLanguageTests
 
             Polygon polygon = new Polygon(new PolygonShape(0, m_metadata, extent, parts, positions), m_document, Color.Blue);
             polygon.Write();
-            string result = m_document.StringWriter.ToString();
             Regex polygonPattern = new Regex(@"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,?)+\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}");
-            Assert.That(polygonPattern.Matches(result).Count == 2);
+            Assert.That(polygonPattern.Matches(result.ToString()).Count == 2);
         }
 
         [Test]
@@ -313,9 +304,8 @@ namespace ShapefileToCesiumLanguageTests
             MultiPatchShape multipatch = new MultiPatchShape(0, m_metadata, extent, parts, partTypes, positions, 0.0, 0.0, zValues, 0.0, 0.0, measures);
             MultiPatch patch = new MultiPatch(multipatch, m_document, Color.Blue);
             patch.Write();
-            string result = m_document.StringWriter.ToString();
             string polygonPattern = @"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[0.0,5.0,0.0,5.0,10.0,0.0,10.0,5.0,0.0,8.0,5.0,0.0,5.0,8.0,0.0,2.0,5.0,0.0,5.0,2.0,0.0,8.0,5.0,0.0,10.0,5.0,0.0,5.0,0.0,0.0,0.0,5.0,0.0\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}";
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, polygonPattern));
+            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result.ToString(), polygonPattern));
         }
 
         [Test]
@@ -345,9 +335,8 @@ namespace ShapefileToCesiumLanguageTests
             MultiPatchShape multipatch = new MultiPatchShape(0, m_metadata, extent, parts, partTypes, positions, 0.0, 0.0, zValues, 0.0, 0.0, measures);
             MultiPatch patch = new MultiPatch(multipatch, m_document, Color.Blue);
             patch.Write();
-            string result = m_document.StringWriter.ToString();
             Regex polygonPattern = new Regex(@"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,?)+\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}");
-            Assert.That(polygonPattern.Matches(result).Count == 2);
+            Assert.That(polygonPattern.Matches(result.ToString()).Count == 2);
         }
 
         [Test]
@@ -373,9 +362,8 @@ namespace ShapefileToCesiumLanguageTests
             MultiPatchShape multipatch = new MultiPatchShape(0, m_metadata, extent, parts, partTypes, positions, 0.0, 0.0, zValues, 0.0, 0.0, measures);
             MultiPatch patch = new MultiPatch(multipatch, m_document, Color.Blue);
             patch.Write();
-            string result = m_document.StringWriter.ToString();
             Regex trianglePattern = new Regex(@"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,?){9}\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}");
-            Assert.That(trianglePattern.Matches(result).Count == 5);
+            Assert.That(trianglePattern.Matches(result.ToString()).Count == 5);
         }
 
         [Test]
@@ -401,9 +389,8 @@ namespace ShapefileToCesiumLanguageTests
             MultiPatchShape multipatch = new MultiPatchShape(0, m_metadata, extent, parts, partTypes, positions, 0.0, 0.0, zValues, 0.0, 0.0, measures);
             MultiPatch patch = new MultiPatch(multipatch, m_document, Color.Blue);
             patch.Write();
-            string result = m_document.StringWriter.ToString();
             Regex trianglePattern = new Regex(@"{""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,?){9}\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}}");
-            Assert.That(trianglePattern.Matches(result).Count == 5);
+            Assert.That(trianglePattern.Matches(result.ToString()).Count == 5);
         }
 
         [Test]
@@ -412,9 +399,8 @@ namespace ShapefileToCesiumLanguageTests
             string shapefileName = "SampleShapefiles/Financial_WGS84.shp";
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
-            string result = m_document.StringWriter.ToString();
             string multiplePolygonPattern = @"({""id"":""[0-9a-zA-Z-]+"",""vertexPositions"":{""cartographicDegrees"":\[(-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,?)+\]},""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}}})+";
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, multiplePolygonPattern));
+            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result.ToString(), multiplePolygonPattern));
         }
 
         [Test]
@@ -429,9 +415,8 @@ namespace ShapefileToCesiumLanguageTests
             MultiPointShape multipoint = new MultiPointShape(0, m_metadata, extent, points);
             MultiPoint mp = new MultiPoint(multipoint, m_document, Color.Blue);
             mp.Write();
-            string result = m_document.StringWriter.ToString();
             Regex pointPattern = new Regex(@"{""id"":""[0-9a-zA-Z-]+"",""position"":{""cartographicDegrees"":\[-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*\]},""point"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}");
-            Assert.That(pointPattern.Matches(result).Count == 3);
+            Assert.That(pointPattern.Matches(result.ToString()).Count == 3);
         }
     }
 }
