@@ -2,7 +2,9 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Net;
 using System.Text;
+
 #if StkComponents
 using AGI.Foundation.Time;
 #endif
@@ -10,6 +12,7 @@ using AGI.Foundation.Time;
 #if StkComponents
 namespace AGI.Foundation.Cesium.Advanced
 #else
+
 namespace CesiumLanguageWriter.Advanced
 #endif
 {
@@ -67,52 +70,121 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Converts an image to a data URL in the form <code>date:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>,
-        /// where <code>&lt;MimeType&gt;</code> is the MIME type of the specified <paramref name="image"/>, and
+        /// Downloads and converts a remote resource URL into a data URI in the form
+        /// <code>date:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>, where
+        /// <code>&lt;MimeType&gt;</code> is the MIME type of the specified resource, and
+        /// <code>&lt;ImageData&gt;</code> is the data encoded as a Base 64 string.
+        /// </summary>
+        /// <param name="url">The URL of the resource to convert.</param>
+        /// <returns>A data URI containing the content of the resource.</returns>
+        public static string DownloadUrlIntoDataUri(string url)
+        {
+            if (url.StartsWith("data:"))
+                return url;
+
+            WebRequest request = WebRequest.Create(url);
+            HttpWebRequest httpWebRequest = request as HttpWebRequest;
+            if (httpWebRequest != null)
+            {
+                httpWebRequest.UserAgent = "CesiumWriter";
+            }
+
+            using (WebResponse webResponse = request.GetResponse())
+            using (Stream responseStream = webResponse.GetResponseStream())
+            {
+                string mimeType = webResponse.ContentType;
+                return BuildDataUri(mimeType, responseStream);
+            }
+        }
+
+        /// <summary>
+        /// Reads from a stream containing an image into a data URI in the form
+        /// <code>date:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>, where
+        /// <code>&lt;MimeType&gt;</code> is the MIME type of the specified image format, and
+        /// <code>&lt;ImageData&gt;</code> is the image data encoded as a Base 64 string.
+        /// This method does not attempt to decode the image data, but simply writes it directly to the data URI.
+        /// </summary>
+        /// <param name="stream">The stream containing the image to encode into a data URI.</param>
+        /// <param name="imageFormat">The format of the image, which controls the mime type.</param>
+        /// <returns>A data URI containing the content of the image.</returns>
+        public static string ImageToDataUri(Stream stream, CesiumImageFormat imageFormat)
+        {
+            string mimeType = GetMimeTypeFromCesiumImageFormat(imageFormat);
+            return BuildDataUri(mimeType, stream);
+        }
+
+        /// <summary>
+        /// Converts an image to a data URI in the form
+        /// <code>date:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>, where
+        /// <code>&lt;MimeType&gt;</code> is the MIME type of the specified <paramref name="image"/>, and
         /// <code>&lt;ImageData&gt;</code> is the image data encoded as a Base 64 string.
         /// </summary>
         /// <param name="image">The image to convert.</param>
-        /// <returns>A data URL containing the content of the image.</returns>
-        public static string ImageToDataUrl(Image image)
+        /// <param name="imageFormat">The format of the image, which controls the mime type.</param>
+        /// <returns>A data URI containing the content of the image.</returns>
+        public static string ImageToDataUri(Image image, CesiumImageFormat imageFormat)
         {
-#if CSToJava
-            throw new NotImplementedException();
-#else
-            string mimeType;
-            if (image.RawFormat.Equals(ImageFormat.Jpeg))
-            {
-                mimeType = "image/jpeg";
-            }
-            else if (image.RawFormat.Equals(ImageFormat.Png))
-            {
-                mimeType = "image/png";
-            }
-            else if (image.RawFormat.Equals(ImageFormat.Gif))
-            {
-                mimeType = "image/gif";
-            }
-            else if (image.RawFormat.Equals(ImageFormat.Bmp))
-            {
-                mimeType = "image/bmp";
-            }
-            else
-            {
-                throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "image");
-            }
-
+            string mimeType = GetMimeTypeFromCesiumImageFormat(imageFormat);
             using (MemoryStream stream = new MemoryStream())
             {
-                image.Save(stream, image.RawFormat);
-                byte[] imageData = stream.GetBuffer();
-
-                StringBuilder builder = new StringBuilder();
-                builder.Append("data:");
-                builder.Append(mimeType);
-                builder.Append(";base64,");
-                builder.Append(Convert.ToBase64String(imageData, Base64FormattingOptions.None));
-                return builder.ToString();
+                image.Save(stream, CesiumImageFormatToImageFormat(imageFormat));
+                stream.Position = 0;
+                return BuildDataUri(mimeType, stream);
             }
-#endif
+        }
+
+        private static ImageFormat CesiumImageFormatToImageFormat(CesiumImageFormat imageFormat)
+        {
+            switch (imageFormat)
+            {
+                case CesiumImageFormat.Jpeg:
+                    return ImageFormat.Jpeg;
+                case CesiumImageFormat.Png:
+                    return ImageFormat.Png;
+                case CesiumImageFormat.Bmp:
+                    return ImageFormat.Bmp;
+                case CesiumImageFormat.Gif:
+                    return ImageFormat.Gif;
+                default:
+                    throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "imageFormat");
+            }
+        }
+
+        private static string BuildDataUri(string mimeType, Stream dataStream)
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append("data:");
+            builder.Append(mimeType);
+            builder.Append(";base64,");
+
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                byte[] buffer = new byte[8192];
+                int bytesRead;
+                while ((bytesRead = dataStream.Read(buffer, 0, buffer.Length)) > 0)
+                    memoryStream.Write(buffer, 0, bytesRead);
+
+                builder.Append(Convert.ToBase64String(memoryStream.GetBuffer(), 0, (int)memoryStream.Length));
+            }
+
+            return builder.ToString();
+        }
+
+        private static string GetMimeTypeFromCesiumImageFormat(CesiumImageFormat imageFormat)
+        {
+            switch (imageFormat)
+            {
+                case CesiumImageFormat.Jpeg:
+                    return "image/jpeg";
+                case CesiumImageFormat.Png:
+                    return "image/png";
+                case CesiumImageFormat.Bmp:
+                    return "image/bmp";
+                case CesiumImageFormat.Gif:
+                    return "image/gif";
+                default:
+                    throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "imageFormat");
+            }
         }
 
         /// <summary>

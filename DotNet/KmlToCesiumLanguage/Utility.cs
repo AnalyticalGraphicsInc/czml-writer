@@ -41,20 +41,6 @@ namespace KmlToCesiumLanguage
         }
 
         /// <summary>
-        /// Downloads the image and returns the base64 encoding.
-        /// </summary>
-        /// <param name="url">The url of the image.</param>
-        /// <returns>A base64 data url of the downloaded image</returns>
-        public static string DownloadImage(string url)
-        {
-            string extension = Path.GetExtension(url).Remove(0, 1);
-            WebClient client = new WebClient();
-            client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;)");
-            byte[] data = client.DownloadData(url);
-            return CesiumFormattingHelper.ImageToDataUrl(Image.FromStream(new MemoryStream(data)));
-        }
-
-        /// <summary>
         /// Writes the availability intervals from either the TimeSpan or TimeStamp elements from the kml document.
         /// </summary>
         /// <param name="timePrimitiveParentElement">The parent element that contains the kml TimePrimitive element.</param>

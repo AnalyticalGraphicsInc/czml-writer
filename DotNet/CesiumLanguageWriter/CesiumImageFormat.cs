@@ -1,5 +1,4 @@
-﻿
-#if StkComponents
+﻿#if StkComponents
 namespace AGI.Foundation.Cesium
 #else
 namespace CesiumLanguageWriter
@@ -18,6 +17,16 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The image is in Joint Photographic Experts Group (JPEG) format.
         /// </summary>
-        Jpeg
+        Jpeg,
+
+        /// <summary>
+        /// The image is in Graphics Interchange Format (GIF) format.
+        /// </summary>
+        Gif,
+
+        /// <summary>
+        /// The image is in bitmap (BMP) format.
+        /// </summary>
+        Bmp,
     }
 }

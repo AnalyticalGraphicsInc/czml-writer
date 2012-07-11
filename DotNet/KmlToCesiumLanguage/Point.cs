@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Net;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using CesiumLanguageWriter;
@@ -18,7 +14,6 @@ namespace KmlToCesiumLanguage
     /// </summary>
     public class Point : Geometry
     {
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Point"/> class.
         /// </summary>
@@ -48,7 +43,7 @@ namespace KmlToCesiumLanguage
                 if (coord.Length == 1)
                 {
                     m_position = new Cartographic(double.Parse(coord[0]) * Constants.RadiansPerDegree, 0.0, 0.0);
-                } 
+                }
                 else if (coord.Length == 2)
                 {
                     m_position = new Cartographic(double.Parse(coord[0]) * Constants.RadiansPerDegree, double.Parse(coord[1]) * Constants.RadiansPerDegree, 0.0);
@@ -63,30 +58,21 @@ namespace KmlToCesiumLanguage
         /// <inheritdoc />
         protected override void AddIconStyle(XElement iconElement)
         {
-            using (var billboard = this.PacketWriter.OpenBillboardProperty())
+            using (var billboard = PacketWriter.OpenBillboardProperty())
             {
+                XElement scaleElement = iconElement.Element(Document.Namespace + "scale");
+                if (scaleElement != null)
+                    billboard.WriteScaleProperty(double.Parse(scaleElement.Value));
+
                 string href = iconElement.Element(Document.Namespace + "Icon").Element(Document.Namespace + "href").Value;
-                string imageRef;
-                if (Document.ImageMap.TryGetValue(href, out imageRef))
-                {  
-                    href = imageRef as string;
-                    AddScaleProperty(iconElement, billboard);
-                }
-                else
-                {
-                    string dataUrl = Utility.DownloadImage(href);
-                    AddScaleProperty(iconElement, billboard);
-                    Document.ImageMap.Add(href, dataUrl);
-                    href = dataUrl;
-                }
-                billboard.WriteImageProperty(href);
+                billboard.WriteImageProperty(href, Document.ImageResolver);
             }
         }
 
         /// <inheritdoc />
         protected override void Write()
         {
-            using (PositionCesiumWriter position = this.PacketWriter.OpenPositionProperty())
+            using (PositionCesiumWriter position = PacketWriter.OpenPositionProperty())
             {
                 position.WriteCartographicRadians(m_position);
             }
@@ -95,7 +81,7 @@ namespace KmlToCesiumLanguage
                 List<Cartographic> positions = new List<Cartographic>();
                 positions.Add(m_position);
                 positions.Add(new Cartographic(m_position.Longitude, m_position.Latitude, 0.0));
-                using (PositionListCesiumWriter polyline = this.PacketWriter.OpenVertexPositionsProperty())
+                using (PositionListCesiumWriter polyline = PacketWriter.OpenVertexPositionsProperty())
                 {
                     polyline.WriteCartographicRadians(positions);
                 }
@@ -107,7 +93,7 @@ namespace KmlToCesiumLanguage
         {
             if (m_extrude)
             {
-                using (PolylineCesiumWriter polyline = this.PacketWriter.OpenPolylineProperty())
+                using (PolylineCesiumWriter polyline = PacketWriter.OpenPolylineProperty())
                 {
                     XElement colorElement = lineElement.Element(Document.Namespace + "color");
                     if (colorElement != null)
@@ -124,17 +110,8 @@ namespace KmlToCesiumLanguage
             }
         }
 
-        private void AddScaleProperty(XElement iconElement, BillboardCesiumWriter billboard)
-        {
-            XElement scaleElement = iconElement.Element(Document.Namespace + "scale");
-            if (scaleElement != null)
-            {
-                billboard.WriteScaleProperty(double.Parse(scaleElement.Value));
-            }
-        }
-
         private Cartographic m_position;
-        private XElement m_element;
-        private bool m_extrude;
+        private readonly XElement m_element;
+        private readonly bool m_extrude;
     }
 }
