@@ -58,9 +58,6 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SocialExplorer.FastDBF">
-      <HintPath>..\ThirdParty\alacevic-FastDBF-876ec93\FastDBF\bin\Debug\SocialExplorer.FastDBF.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
