@@ -6,6 +6,7 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.ImageCesiumWriter;
 import java.awt.image.RenderedImage;
 
 /**
@@ -22,8 +23,8 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	 */
 	public static final String ImagePropertyName = "image";
-	private Lazy<ImageCesiumWriter> m_image = new Lazy<ImageCesiumWriter>(new Func1<ImageCesiumWriter>() {
-		public ImageCesiumWriter invoke() {
+	private Lazy<ImageCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.ImageCesiumWriter>(new Func1<cesiumlanguagewriter.ImageCesiumWriter>() {
+		public cesiumlanguagewriter.ImageCesiumWriter invoke() {
 			return new ImageCesiumWriter(ImagePropertyName);
 		}
 	}, false);
@@ -81,7 +82,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	
 	
 
-	 * @param url The URL of the image.
+	 * @param url The URL of the image.  If this URL is not a data URI, it will be downloaded and embedded in the document, using a thread-local cache to avoid downloading the same image multiple times.  For more control over how the image is referenced in the document, use the overload that takes a ICesiumUrlResolver.
 	 */
 	public final void writeImageProperty(String url) {
 		{
@@ -99,14 +100,56 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	Writes a value for the <code>image</code> property as a <code>image</code> value.  The <code>image</code> property specifies the image to display on the surface.
 	
 	
+	
 
-	 * @param image The image for which to create a data URL.
+	 * @param url The URL of the image.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.
+	 * @param resolver An ICesiumUrlResolver used to build the final URL that will be embedded in the document.
+	 */
+	public final void writeImageProperty(String url, ICesiumUrlResolver resolver) {
+		{
+			cesiumlanguagewriter.ImageCesiumWriter writer = openImageProperty();
+			try {
+				writer.writeImage(url, resolver);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>image</code> property as a <code>image</code> value.  The <code>image</code> property specifies the image to display on the surface.
+	
+	
+
+	 * @param image The image.  A data URI will be created for this image, using PNG encoding.
 	 */
 	public final void writeImageProperty(RenderedImage image) {
 		{
 			cesiumlanguagewriter.ImageCesiumWriter writer = openImageProperty();
 			try {
 				writer.writeImage(image);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>image</code> property as a <code>image</code> value.  The <code>image</code> property specifies the image to display on the surface.
+	
+	
+	
+
+	 * @param image The image.  A data URI will be created for this image.
+	 * @param imageFormat The image format to use to encode the image in the data URI.
+	 */
+	public final void writeImageProperty(RenderedImage image, CesiumImageFormat imageFormat) {
+		{
+			cesiumlanguagewriter.ImageCesiumWriter writer = openImageProperty();
+			try {
+				writer.writeImage(image, imageFormat);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

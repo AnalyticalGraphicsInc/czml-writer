@@ -305,10 +305,26 @@
                     {
                         "type": "string",
                         "name": "url",
-                        "description": "The URL of the image."
+                        "description": "The URL of the image.  If this URL is not a data URI, it will be downloaded and embedded in the document, using a thread-local cache to avoid downloading the same image multiple times.  For more control over how the image is referenced in the document, use the overload that takes a ICesiumUrlResolver."
                     }
                 ],
-                "writeValue": "Output.WriteValue(url);"
+                "callOverload": "url, CachingCesiumUrlResolver.ThreadLocalInstance"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "url",
+                        "description": "The URL of the image.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document."
+                    },
+                    {
+                        "type": "ICesiumUrlResolver",
+                        "name": "resolver",
+                        "description": "An ICesiumUrlResolver used to build the final URL that will be embedded in the document."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(resolver.ResolveUrl(url));",
+				"needsInterval": false
             },
             {
                 "namespaces": ["System.Drawing"],
@@ -317,10 +333,29 @@
                         
                         "type": "Image",
                         "name": "image",
-                        "description": "The image for which to create a data URL."
+                        "description": "The image.  A data URI will be created for this image, using PNG encoding."
                     }
                 ],
-                "callOverload": "CesiumFormattingHelper.ImageToDataUrl(image)"
+                "callOverload": "image, CesiumImageFormat.Png"
+            },
+            {
+                "namespaces": ["System.Drawing"],
+                "parameters": [
+                    {
+                        
+                        "type": "Image",
+                        "name": "image",
+                        "description": "The image.  A data URI will be created for this image."
+                    },
+					{
+                        
+                        "type": "CesiumImageFormat",
+                        "name": "imageFormat",
+                        "description": "The image format to use to encode the image in the data URI."
+                    }
+                ],
+				"writeValue": "Output.WriteValue(CesiumFormattingHelper.ImageToDataUri(image, imageFormat));",
+				"needsInterval": false
             },
         ],
         "HorizontalOrigin": [
@@ -332,7 +367,8 @@
                         "description": "The horizontal origin."
                     }
                 ],
-                "writeValue": "Output.WriteValue(CesiumFormattingHelper.HorizontalOriginToString(value));"
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.HorizontalOriginToString(value));",
+				"needsInterval": false
             }
         ],
         "VerticalOrigin": [
@@ -344,7 +380,8 @@
                         "description": "The vertical origin."
                     }
                 ],
-                "writeValue": "Output.WriteValue(CesiumFormattingHelper.VerticalOriginToString(value));"
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.VerticalOriginToString(value));",
+				"needsInterval": false
             }
         ],
         "LabelStyle": [
@@ -356,7 +393,8 @@
                         "description": "The label style."
                     }
                 ],
-                "writeValue": "Output.WriteValue(CesiumFormattingHelper.LabelStyleToString(value));"
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.LabelStyleToString(value));",
+				"needsInterval": false
             }
         ],
         "Double": [
@@ -368,7 +406,8 @@
                         "description": "The value."
                     }
                 ],
-                "writeValue": "Output.WriteValue(value);"
+                "writeValue": "Output.WriteValue(value);",
+				"needsInterval": false
             },
             {
                 "namespaces": ["System.Collections.Generic"],
@@ -407,7 +446,8 @@
                         "description": "The value."
                     }
                 ],
-                "writeValue": "Output.WriteValue(value);"
+                "writeValue": "Output.WriteValue(value);",
+				"needsInterval": false
             }
         ],
         "Rgba": [
@@ -579,7 +619,8 @@
                         "description": "The value."
                     }
                 ],
-                "writeValue": "Output.WriteValue(value);"
+                "writeValue": "Output.WriteValue(value);",
+				"needsInterval": false
             }
         ],
         "Font": [
@@ -591,7 +632,8 @@
                         "description": "The font."
                     }
                 ],
-                "writeValue": "Output.WriteValue(font);"
+                "writeValue": "Output.WriteValue(font);",
+				"needsInterval": false
             }
         ]
     }

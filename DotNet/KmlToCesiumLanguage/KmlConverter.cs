@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using Ionic.Zip;
 
@@ -53,20 +54,14 @@ namespace KmlToCesiumLanguage
                 foreach (ZipEntry entry in zipFile)
                 {
                     string fileName = entry.FileName;
-                    string extension = Path.GetExtension(fileName);
+                    CesiumImageFormat? imageFormat = InferImageFormat(fileName);
 
-                    if (".jpg".Equals(extension, StringComparison.OrdinalIgnoreCase) ||
-                        ".png".Equals(extension, StringComparison.OrdinalIgnoreCase) ||
-                        ".gif".Equals(extension, StringComparison.OrdinalIgnoreCase))
+                    if (imageFormat != null && !document.ImageResolver.ContainsUrl(fileName))
                     {
-                        if (!document.ImageMap.ContainsKey(fileName))
+                        using (Stream stream = entry.OpenReader())
                         {
-                            using (Stream stream = entry.OpenReader())
-                            using (Image image = Image.FromStream(stream))
-                            {
-                                string dataUrl = CesiumFormattingHelper.ImageToDataUrl(image);
-                                document.ImageMap.Add(fileName, dataUrl);
-                            }
+                            string dataUrl = CesiumFormattingHelper.ImageToDataUri(stream, imageFormat.Value);
+                            document.ImageResolver.AddUrl(fileName, dataUrl);
                         }
                     }
                 }
@@ -84,6 +79,20 @@ namespace KmlToCesiumLanguage
             }
 
             document.CesiumOutputStream.WriteEndSequence();
+        }
+
+        private static CesiumImageFormat? InferImageFormat(string fileName)
+        {
+            string extension = Path.GetExtension(fileName);
+            if (".jpg".Equals(extension, StringComparison.OrdinalIgnoreCase) || ".jpeg".Equals(extension, StringComparison.OrdinalIgnoreCase))
+                return CesiumImageFormat.Jpeg;
+            if (".png".Equals(extension, StringComparison.OrdinalIgnoreCase))
+                return CesiumImageFormat.Png;
+            if (".gif".Equals(extension, StringComparison.OrdinalIgnoreCase))
+                return CesiumImageFormat.Gif;
+            if (".bmp".Equals(extension, StringComparison.OrdinalIgnoreCase))
+                return CesiumImageFormat.Bmp;
+            return null;
         }
 
         private static void Convert(TextReader inputReader, CzmlDocument document)
