@@ -464,7 +464,6 @@ namespace Shapefile
 
         private readonly IList<Shape> _shapes;
 
-        //private static readonly double _noData = Math.Pow(-10, 38);
         private const int _fileHeaderLength = 100;
         private const int _fileCode = 9994;
         private const int _version = 1000;

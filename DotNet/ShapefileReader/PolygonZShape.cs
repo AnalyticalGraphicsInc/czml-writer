@@ -22,7 +22,8 @@ namespace Shapefile
             )
             : base(recordNumber, metadata, extent, parts, positions, minimumMeasure, maximumMeasure, measures, shapeType)
         {
-            _zRange = new double[] { minimumZ, maximumZ };
+            _minimumZ = minimumZ;
+            _maximumZ = maximumZ;
 
             _parts = new ShapePart[parts.Length];
             for (int i = 0; i < parts.Length; ++i)
@@ -34,11 +35,17 @@ namespace Shapefile
             }
         }
 
-        public double[] ZRange
+        public double MinimumZ
         {
-            get { return _zRange; }
+            get { return _minimumZ; }
         }
 
-        private readonly double[] _zRange;
+        public double MaximumZ
+        {
+            get { return _maximumZ; }
+        }
+
+        private readonly double _minimumZ;
+        private readonly double _maximumZ;
     }
 }

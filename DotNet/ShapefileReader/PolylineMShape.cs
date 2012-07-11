@@ -17,17 +17,20 @@ namespace Shapefile
             double[] measures,
             ShapeType shapeType = ShapeType.PolylineM) 
             : base(recordNumber, metadata, extent, parts, positions, shapeType) 
-        { 
-            _measureRange = new double[] { minimumMeasure, maximumMeasure };
+        {
+            _minimumMeasure = minimumMeasure;
+            _maximumMeasure = maximumMeasure;
             _measures = (double[])measures.Clone();
         }
 
-        /// <summary>
-        /// Returns an array containing the minimum and maximum measures.
-        /// </summary>
-        public double[] MeasureRange
+        public double MinimumMeasure
         {
-            get { return _measureRange; }
+            get { return _minimumMeasure; }
+        }
+
+        public double MaximumMeasure
+        {
+            get { return _maximumMeasure; }
         }
 
         public double[] Measures
@@ -35,7 +38,8 @@ namespace Shapefile
             get { return _measures; }
         }
 
-        private readonly double[] _measureRange;
+        private readonly double _minimumMeasure;
+        private readonly double _maximumMeasure;
         private readonly double[] _measures;
     }
 

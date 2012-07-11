@@ -24,8 +24,10 @@ namespace Shapefile
         {
 
             _extent = extent;
-            _zRange = new double[] { minimumZ, maximumZ };
-            _measureRange = new double[] { minimumMeasure, maximumMeasure};
+            _minimumZ = minimumZ;
+            _maximumZ = maximumZ;
+            _minimumMeasure = minimumMeasure;
+            _maximumMeasure = maximumMeasure;
             _measures = (double[])measures.Clone();
 
             _parts = new ShapePart[parts.Length];
@@ -60,14 +62,24 @@ namespace Shapefile
             return _partTypes[index];
         }
 
-        public double[] ZRange
+        public double MinimumZ
         {
-            get { return _zRange; }
+            get { return _minimumZ; }
         }
 
-        public double[] MeasureRange
+        public double MaximumZ
         {
-            get { return _measureRange; }
+            get { return _maximumZ; }
+        }
+
+        public double MinimumMeasure
+        {
+            get { return _minimumMeasure; }
+        }
+
+        public double MaximumMeasure
+        {
+            get { return _maximumMeasure; }
         }
 
         public double[] Measures
@@ -78,8 +90,10 @@ namespace Shapefile
         private readonly CartographicExtent _extent;
         private readonly ShapePart[] _parts;
         private readonly MultiPatchPartType[] _partTypes;
-        private readonly double[] _zRange;
-        private readonly double[] _measureRange;
+        private readonly double _minimumZ;
+        private readonly double _maximumZ;
+        private readonly double _minimumMeasure;
+        private readonly double _maximumMeasure;
         private readonly double[] _measures;
     }
 }
