@@ -24,16 +24,16 @@ namespace ShapefileToCesiumLanguage
         /// </summary>
         public override void Write()
         {
-            using (this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
+            using (PacketCesiumWriter packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
             {
-                this.PacketWriter.WriteId(Guid.NewGuid().ToString());
+                packetWriter.WriteId(Guid.NewGuid().ToString());
                 PointShape point = (PointShape)m_shape;
-                using (PositionCesiumWriter position = this.PacketWriter.OpenPositionProperty())
+                using (PositionCesiumWriter position = packetWriter.OpenPositionProperty())
                 {
                     position.WriteCartographicDegrees(new Cartographic(point.Position.X, point.Position.Y, point.Position.Z));
                 }
 
-                using (PointCesiumWriter pointWriter = this.PacketWriter.OpenPointProperty())
+                using (PointCesiumWriter pointWriter = packetWriter.OpenPointProperty())
                 {
                     pointWriter.WriteColorProperty(m_color);
                 }

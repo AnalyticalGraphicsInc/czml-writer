@@ -39,11 +39,11 @@ namespace ShapefileToCesiumLanguage
 
         private void WritePacket(int part)
         {
-            using (this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
+            using (PacketCesiumWriter packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
             {
-                this.PacketWriter.WriteId(Guid.NewGuid().ToString());
+                packetWriter.WriteId(Guid.NewGuid().ToString());
 
-                using (PositionListCesiumWriter positionWriter = this.PacketWriter.OpenVertexPositionsProperty())
+                using (PositionListCesiumWriter positionWriter = packetWriter.OpenVertexPositionsProperty())
                 {
                     PolygonShape polygon = (PolygonShape)m_shape;
                     List<Cartographic> positions = new List<Cartographic>();
@@ -55,7 +55,7 @@ namespace ShapefileToCesiumLanguage
                     positionWriter.WriteCartographicDegrees(positions);
                 }
 
-                using (PolygonCesiumWriter polygonWriter = this.PacketWriter.OpenPolygonProperty())
+                using (PolygonCesiumWriter polygonWriter = packetWriter.OpenPolygonProperty())
                 {
                     using (MaterialCesiumWriter materialWriter = polygonWriter.OpenMaterialProperty())
                     {

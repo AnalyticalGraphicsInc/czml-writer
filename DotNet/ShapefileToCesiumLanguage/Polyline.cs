@@ -38,10 +38,10 @@ namespace ShapefileToCesiumLanguage
         /// <param name="part">The index of the part to write</param>
         private void WritePacket(int part)
         {
-            using (this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
+            using (PacketCesiumWriter packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
             {
-                this.PacketWriter.WriteId(Guid.NewGuid().ToString());
-                using (PositionListCesiumWriter position = this.PacketWriter.OpenVertexPositionsProperty())
+                packetWriter.WriteId(Guid.NewGuid().ToString());
+                using (PositionListCesiumWriter position = packetWriter.OpenVertexPositionsProperty())
                 {
                     PolylineShape polyline = (PolylineShape)m_shape;
                     List<Cartographic> positions = new List<Cartographic>();
@@ -52,7 +52,7 @@ namespace ShapefileToCesiumLanguage
                     }
                     position.WriteCartographicDegrees(positions);
                 }
-                using (PolylineCesiumWriter polylineWriter = this.PacketWriter.OpenPolylineProperty())
+                using (PolylineCesiumWriter polylineWriter = packetWriter.OpenPolylineProperty())
                 {
                     polylineWriter.WriteColorProperty(m_color);
                 }
