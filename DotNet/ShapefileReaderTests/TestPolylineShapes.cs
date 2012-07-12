@@ -12,7 +12,7 @@ namespace ShapefileReaderTests
         private Rectangular[] m_positions;
         private CartographicExtent m_extent;
         private int[] m_parts;
-
+        
         [SetUp]
         public void SetUp()
         {

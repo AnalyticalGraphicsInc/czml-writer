@@ -75,6 +75,7 @@
     <Compile Include="MultiPointMShape.cs" />
     <Compile Include="MultiPointShape.cs" />
     <Compile Include="MultiPointZShape.cs" />
+    <Compile Include="ParseDBF.cs" />
     <Compile Include="PointMShape.cs" />
     <Compile Include="PointShape.cs" />
     <Compile Include="PointZShape.cs" />

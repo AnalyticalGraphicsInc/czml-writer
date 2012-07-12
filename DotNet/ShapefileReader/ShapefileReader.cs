@@ -114,40 +114,8 @@ namespace Shapefile
                 byte[] recordHeader;
 
                 string dBaseFilepath = Path.ChangeExtension(filename, "dbf");
-
-                // The drivers for DBF files require filenames <= 8 characters
-                if (Path.GetFileNameWithoutExtension(dBaseFilepath).Length > 8)
-                {
-                    string initialTempFile = Path.GetTempFileName();
-                    File.Delete(initialTempFile);
-                    string tempDBasePath = Path.ChangeExtension(initialTempFile, "dbf");
-                    File.Copy(dBaseFilepath, tempDBasePath, true);
-                    dBaseFilepath = tempDBasePath;
-                }
-
-                string dBaseFilename = Path.GetFileNameWithoutExtension(dBaseFilepath);
-
-                var csb = new OleDbConnectionStringBuilder();
-                csb.Provider = @"Microsoft.ACE.OLEDB.12.0";
-                csb.DataSource = Path.GetDirectoryName(dBaseFilepath);
-                csb.Add("Extended Properties", "dBASE IV");
-
-                DataTable metadataTable = new DataTable();
-                string selectString = string.Format("SELECT * FROM [{0}]", dBaseFilename);
-
-                using (OleDbConnection db = new OleDbConnection(csb.ConnectionString))
-                {
-                    using (OleDbCommand cmd = new OleDbCommand(selectString, db))
-                    {
-                        db.Open();
-                        using(OleDbDataReader reader = cmd.ExecuteReader())
-                        {
-                            metadataTable.Load(reader);
-                        }
-                        db.Close();
-                    }
-                }
-
+                DataTable metadataTable = ParseDBF.ReadDBF(dBaseFilepath);
+                
                 while ((recordHeader = Read(fs, _recordHeaderLength)) != null)
                 {
                     int recordNumber = ToInteger(recordHeader, 0, ByteOrder.BigEndian);
@@ -158,7 +126,7 @@ namespace Shapefile
                     StringDictionary metadata = new StringDictionary();
                     foreach (DataColumn column in metadataTable.Columns)
                     {
-                        metadata.Add(column.ColumnName, Convert.ToString(metadataTable.Rows[recordNumber - 1][column]));
+                        metadata.Add(column.ColumnName, Convert.ToString(metadataTable.Rows[recordNumber - 1][column]).Trim());
                     }
 
                     ShapeType recordShapeType = (ShapeType)ToInteger(record, 0, ByteOrder.LittleEndian);
