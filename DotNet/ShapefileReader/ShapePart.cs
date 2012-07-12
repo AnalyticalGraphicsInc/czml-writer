@@ -1,50 +1,51 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using CesiumLanguageWriter;
 
 namespace Shapefile
 {
-    public class ShapePart
+    public class ShapePart : IEnumerable<Cartesian>
     {
         public ShapePart(Cartesian[] positions, int offset, int count)
         {
-            _positions = new Cartesian[count];
+            _positions = new List<Cartesian>();
 
             for (int i = 0; i < count; ++i)
             {
-                _positions[i] = new Cartesian(positions[offset + i].X, positions[offset + i].Y, positions[offset + i].Z);
+                _positions.Add(new Cartesian(positions[offset + i].X, positions[offset + i].Y, positions[offset + i].Z));
             }
         }
 
         public ShapePart(Rectangular[] positions, int offset, int count)
         {
-            _positions = new Cartesian[count];
+            _positions = new List<Cartesian>();
 
             for (int i = 0; i < count; ++i)
             {
-                _positions[i] = new Cartesian(positions[offset + i].X, positions[offset + i].Y, 0.0);
+                _positions.Add(new Cartesian(positions[offset + i].X, positions[offset + i].Y, 0.0));
             }
         }
 
         public ShapePart(Rectangular[] positions, double[] measures, int offset, int count)
         {
-            _positions = new Cartesian[count];
+            _positions = new List<Cartesian>();
             _measures = new double[count];
 
             for (int i = 0; i < count; ++i)
             {
-                _positions[i] = new Cartesian(positions[offset + i].X, positions[offset + i].Y, 0.0);
+                _positions.Add(new Cartesian(positions[offset + i].X, positions[offset + i].Y, 0.0));
                 _measures[i] = measures[offset + i];
             }
         }
 
         public ShapePart(Rectangular[] positions, double[] zValues, double[] measures, int offset, int count)
         {
-            _positions = new Cartesian[count];
+            _positions = new List<Cartesian>();
             _measures = new double[count];
           
             for (int i = 0; i < count; ++i)
             {
-                _positions[i] = new Cartesian(positions[offset + i].X, positions[offset + i].Y, zValues[offset + i]);
+                _positions.Add(new Cartesian(positions[offset + i].X, positions[offset + i].Y, zValues[offset + i]));
                 _measures[i] = measures[offset + i];
             }
         }
@@ -61,15 +62,20 @@ namespace Shapefile
 
         public int Count
         {
-            get { return _positions.Length; }
+            get { return _positions.Count; }
         }
 
-        public IEnumerator GetEnumerator()
+        public IEnumerator<Cartesian> GetEnumerator()
         {
-            return _positions.GetEnumerator();
+            return (IEnumerator<Cartesian>)_positions.GetEnumerator();
         }
 
-        private readonly Cartesian[] _positions;
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        private readonly List<Cartesian> _positions;
         private readonly double[] _measures;
     }
 }

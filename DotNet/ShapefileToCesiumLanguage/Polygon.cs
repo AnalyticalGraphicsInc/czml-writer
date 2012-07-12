@@ -79,30 +79,26 @@ namespace ShapefileToCesiumLanguage
                 List<CartographicExtent> ringExtents = new List<CartographicExtent>();
                 for (int i = 0; i < polygon.Count; i++)
                 {
-                    IEnumerator enumerator = polygon[i].GetEnumerator();
-                    enumerator.MoveNext();
-                    Cartesian current = (Cartesian)enumerator.Current;
                     double south, west, east, north;
-                    south = north = current.Y;
-                    west = east = current.X;
-                    while (enumerator.MoveNext())
+                    south = north = polygon[i][0].Y;
+                    west = east = polygon[i][0].X;
+                    foreach (Cartesian point in polygon[i])
                     {
-                        current = (Cartesian)enumerator.Current;
-                        if (current.X > east)
+                        if (point.X > east)
                         {
-                            east = current.X;
+                            east = point.X;
                         }
-                        if (current.X < west)
+                        if (point.X < west)
                         {
-                            east = current.X;
+                            east = point.X;
                         }
-                        if (current.Y > north)
+                        if (point.Y > north)
                         {
-                            north = current.Y;
+                            north = point.Y;
                         }
-                        if (current.Y < south)
+                        if (point.Y < south)
                         {
-                            south = current.Y;
+                            south = point.Y;
                         }
                     }
                     ringExtents.Add(new CartographicExtent(west, south, east, north));

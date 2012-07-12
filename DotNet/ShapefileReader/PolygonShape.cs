@@ -58,9 +58,9 @@ namespace Shapefile
             get { return _parts.Length; }
         }
 
-        public IEnumerator GetEnumerator()
+        public IEnumerator<Cartesian> GetEnumerator()
         {
-            return _parts.GetEnumerator();
+            return (IEnumerator<Cartesian>)_parts.GetEnumerator();
         }
 
         private readonly CartographicExtent _extent;
