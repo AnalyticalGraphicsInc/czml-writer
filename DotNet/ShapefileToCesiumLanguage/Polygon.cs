@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using CesiumLanguageWriter;
+using GeometricComputations;
 using Shapefile;
 
 namespace ShapefileToCesiumLanguage
@@ -284,7 +285,7 @@ namespace ShapefileToCesiumLanguage
             List<Cartesian> pointsInside = new List<Cartesian>();
             foreach (Cartesian vertex in reflexVertices)
             {
-                if(pointInTriangle(k, l, p, vertex))
+                if(PolygonAlgorithms.IsPointInTriangle(k, l, p, vertex))
                 {
                     pointsInside.Add(vertex);
                 }
@@ -310,26 +311,7 @@ namespace ShapefileToCesiumLanguage
 
             return p;    
         }
-
-        private bool pointInTriangle(Cartesian a, Cartesian b, Cartesian c, Cartesian point)
-        {
-            Cartesian v0 = c - a;
-            Cartesian v1 = b - a;
-            Cartesian v2 = point - a;
-
-            double dot00 = v0.Dot(v0);
-            double dot01 = v0.Dot(v1);
-            double dot02 = v0.Dot(v2);
-            double dot11 = v1.Dot(v1);
-            double dot12 = v1.Dot(v2);
-
-            double inverseDenominator = 1 / (dot00 * dot11 - dot01 * dot01);
-            double u = (dot11 * dot02 - dot01 * dot12) * inverseDenominator;
-            double v = (dot00 * dot12 - dot01 * dot02) * inverseDenominator;
-
-            return (u >= 0) && (v >= 0) && (u + v < 1);
-        }
-
+        
         private List<int> OuterRingIndices { get; set; }
     }
 }
