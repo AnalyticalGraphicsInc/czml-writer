@@ -195,7 +195,7 @@ namespace GeometricComputations
             int innerRingVertexIndex = GetRightmostVertexIndex(innerRings[innerRingIndex]);
             Cartesian innerRingVertex = innerRings[innerRingIndex][innerRingVertexIndex];
             Cartesian[] edge;
-            Cartesian intersection = IntersectPointWithRing(innerRingVertex, innerRings[innerRingIndex], out edge);
+            Cartesian intersection = IntersectPointWithRing(innerRingVertex, outerRing, out edge);
 
             Cartesian visibleVertex;
             if (IsVertex(outerRing, intersection))
