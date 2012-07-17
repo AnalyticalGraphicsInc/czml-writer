@@ -4,53 +4,53 @@ using CesiumLanguageWriter;
 
 namespace Shapefile
 {
-    public class ShapePart : IEnumerable<Cartesian>
+    public class ShapePart : IEnumerable<Cartographic>
     {
-        public ShapePart(Cartesian[] positions, int offset, int count)
+        public ShapePart(Cartographic[] positions, int offset, int count)
         {
-            _positions = new List<Cartesian>();
+            _positions = new List<Cartographic>();
 
             for (int i = 0; i < count; ++i)
             {
-                _positions.Add(new Cartesian(positions[offset + i].X, positions[offset + i].Y, positions[offset + i].Z));
+                _positions.Add(new Cartographic(positions[offset + i].Longitude, positions[offset + i].Latitude, positions[offset + i].Height));
             }
         }
 
         public ShapePart(Rectangular[] positions, int offset, int count)
         {
-            _positions = new List<Cartesian>();
+            _positions = new List<Cartographic>();
 
             for (int i = 0; i < count; ++i)
             {
-                _positions.Add(new Cartesian(positions[offset + i].X, positions[offset + i].Y, 0.0));
+                _positions.Add(new Cartographic(positions[offset + i].X, positions[offset + i].Y, 0.0));
             }
         }
 
         public ShapePart(Rectangular[] positions, double[] measures, int offset, int count)
         {
-            _positions = new List<Cartesian>();
+            _positions = new List<Cartographic>();
             _measures = new double[count];
 
             for (int i = 0; i < count; ++i)
             {
-                _positions.Add(new Cartesian(positions[offset + i].X, positions[offset + i].Y, 0.0));
+                _positions.Add(new Cartographic(positions[offset + i].X, positions[offset + i].Y, 0.0));
                 _measures[i] = measures[offset + i];
             }
         }
 
         public ShapePart(Rectangular[] positions, double[] zValues, double[] measures, int offset, int count)
         {
-            _positions = new List<Cartesian>();
+            _positions = new List<Cartographic>();
             _measures = new double[count];
           
             for (int i = 0; i < count; ++i)
             {
-                _positions.Add(new Cartesian(positions[offset + i].X, positions[offset + i].Y, zValues[offset + i]));
+                _positions.Add(new Cartographic(positions[offset + i].X, positions[offset + i].Y, zValues[offset + i]));
                 _measures[i] = measures[offset + i];
             }
         }
 
-        public Cartesian this[int index]
+        public Cartographic this[int index]
         {
             get { return _positions[index]; }
         }
@@ -65,9 +65,9 @@ namespace Shapefile
             get { return _positions.Count; }
         }
 
-        public IEnumerator<Cartesian> GetEnumerator()
+        public IEnumerator<Cartographic> GetEnumerator()
         {
-            return (IEnumerator<Cartesian>)_positions.GetEnumerator();
+            return (IEnumerator<Cartographic>)_positions.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -75,7 +75,7 @@ namespace Shapefile
             return GetEnumerator();
         }
 
-        private readonly List<Cartesian> _positions;
+        private readonly List<Cartographic> _positions;
         private readonly double[] _measures;
     }
 }

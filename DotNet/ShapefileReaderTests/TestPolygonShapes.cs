@@ -39,11 +39,11 @@ namespace ShapefileReaderTests
         public void TestPolygonPositions()
         {
             PolygonShape polygon = new PolygonShape(1, m_metadata, m_extent, m_parts, m_positions);
-            Assert.That(polygon[0][0].Equals(new Cartesian(0.0, 0.0, 0.0)));
-            Assert.That(polygon[0][1].Equals(new Cartesian(0.0, 1.0, 0.0)));
-            Assert.That(polygon[0][2].Equals(new Cartesian(1.0, 1.0, 0.0)));
-            Assert.That(polygon[0][3].Equals(new Cartesian(1.0, 0.0, 0.0)));
-            Assert.That(polygon[0][4].Equals(new Cartesian(0.0, 0.0, 0.0)));
+            Assert.That(polygon[0][0].Equals(new Cartographic(0.0, 0.0, 0.0)));
+            Assert.That(polygon[0][1].Equals(new Cartographic(0.0, 1.0, 0.0)));
+            Assert.That(polygon[0][2].Equals(new Cartographic(1.0, 1.0, 0.0)));
+            Assert.That(polygon[0][3].Equals(new Cartographic(1.0, 0.0, 0.0)));
+            Assert.That(polygon[0][4].Equals(new Cartographic(0.0, 0.0, 0.0)));
         }
 
         [Test]
@@ -71,11 +71,11 @@ namespace ShapefileReaderTests
         {
             double[] measures = new double[] { 1.0, 2.0, 3.0, 4.0, 1.0 };
             PolygonMShape polygon = new PolygonMShape(1, m_metadata, m_extent, m_parts, m_positions, 1.0, 4.0, measures);
-            Assert.That(polygon[0][0].Equals(new Cartesian(0.0, 0.0, 0.0)));
-            Assert.That(polygon[0][1].Equals(new Cartesian(0.0, 1.0, 0.0)));
-            Assert.That(polygon[0][2].Equals(new Cartesian(1.0, 1.0, 0.0)));
-            Assert.That(polygon[0][3].Equals(new Cartesian(1.0, 0.0, 0.0)));
-            Assert.That(polygon[0][4].Equals(new Cartesian(0.0, 0.0, 0.0)));
+            Assert.That(polygon[0][0].Equals(new Cartographic(0.0, 0.0, 0.0)));
+            Assert.That(polygon[0][1].Equals(new Cartographic(0.0, 1.0, 0.0)));
+            Assert.That(polygon[0][2].Equals(new Cartographic(1.0, 1.0, 0.0)));
+            Assert.That(polygon[0][3].Equals(new Cartographic(1.0, 0.0, 0.0)));
+            Assert.That(polygon[0][4].Equals(new Cartographic(0.0, 0.0, 0.0)));
         }
 
         [Test]
@@ -93,11 +93,11 @@ namespace ShapefileReaderTests
             double[] zValues = new double[] { 1.0, 2.0, 3.0, 4.0, 1.0 };
             double[] measures = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0 };
             PolygonZShape polygon = new PolygonZShape(1, m_metadata, m_extent, m_parts, m_positions, 1.0, 2.0, zValues, 0.0, 0.0, measures);
-            Assert.That(polygon[0][0].Equals(new Cartesian(0.0, 0.0, 1.0)));
-            Assert.That(polygon[0][1].Equals(new Cartesian(0.0, 1.0, 2.0)));
-            Assert.That(polygon[0][2].Equals(new Cartesian(1.0, 1.0, 3.0)));
-            Assert.That(polygon[0][3].Equals(new Cartesian(1.0, 0.0, 4.0)));
-            Assert.That(polygon[0][4].Equals(new Cartesian(0.0, 0.0, 1.0)));
+            Assert.That(polygon[0][0].Equals(new Cartographic(0.0, 0.0, 1.0)));
+            Assert.That(polygon[0][1].Equals(new Cartographic(0.0, 1.0, 2.0)));
+            Assert.That(polygon[0][2].Equals(new Cartographic(1.0, 1.0, 3.0)));
+            Assert.That(polygon[0][3].Equals(new Cartographic(1.0, 0.0, 4.0)));
+            Assert.That(polygon[0][4].Equals(new Cartographic(0.0, 0.0, 1.0)));
         }
     }
 }

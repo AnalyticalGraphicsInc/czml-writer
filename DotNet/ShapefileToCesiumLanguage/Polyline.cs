@@ -47,8 +47,7 @@ namespace ShapefileToCesiumLanguage
                     List<Cartographic> positions = new List<Cartographic>();
                     for (int i = 0; i < polyline[part].Count; i++)
                     {
-                        var pos = polyline[part][i];
-                        positions.Add(new Cartographic(pos.X, pos.Y, pos.Z));
+                        positions.Add(polyline[part][i]);
                     }
                     position.WriteCartographicDegrees(positions);
                 }

@@ -53,8 +53,7 @@ namespace ShapefileToCesiumLanguage
                     List<Cartographic> positions = new List<Cartographic>();
                     for (int i = 0; i < part.Count; i++)
                     {
-                        var pos = part[i];
-                        positions.Add(new Cartographic(pos.X, pos.Y, pos.Z));
+                        positions.Add(part[i]);
                     }
                     positionWriter.WriteCartographicDegrees(positions);
                 }
@@ -84,25 +83,25 @@ namespace ShapefileToCesiumLanguage
                 for (int i = 0; i < polygon.Count; i++)
                 {
                     double south, west, east, north;
-                    south = north = polygon[i][0].Y;
-                    west = east = polygon[i][0].X;
-                    foreach (Cartesian point in polygon[i])
+                    south = north = polygon[i][0].Latitude;
+                    west = east = polygon[i][0].Longitude;
+                    foreach (Cartographic point in polygon[i])
                     {
-                        if (point.X > east)
+                        if (point.Longitude > east)
                         {
-                            east = point.X;
+                            east = point.Longitude;
                         }
-                        if (point.X < west)
+                        if (point.Longitude < west)
                         {
-                            east = point.X;
+                            east = point.Longitude;
                         }
-                        if (point.Y > north)
+                        if (point.Latitude > north)
                         {
-                            north = point.Y;
+                            north = point.Latitude;
                         }
-                        if (point.Y < south)
+                        if (point.Latitude < south)
                         {
-                            south = point.Y;
+                            south = point.Latitude;
                         }
                     }
                     ringExtents.Add(new CartographicExtent(west, south, east, north));
@@ -128,8 +127,8 @@ namespace ShapefileToCesiumLanguage
                     {
                         if (outerRingIndex != j && ringExtents[outerRingIndex].IsInsideExtent(ringExtents[j].EastLongitude, ringExtents[j].NorthLatitude))
                         {
-                            List<Cartesian> innerRing = new List<Cartesian>();
-                            foreach (Cartesian point in polygon[j])
+                            List<Cartographic> innerRing = new List<Cartographic>();
+                            foreach (Cartographic point in polygon[j])
                             {
                                 innerRing.Add(point);
                             }
@@ -137,8 +136,8 @@ namespace ShapefileToCesiumLanguage
                         }
                     }
 
-                    List<Cartesian> outerRing = new List<Cartesian>();
-                    foreach (Cartesian point in polygon[outerRingIndex])
+                    List<Cartographic> outerRing = new List<Cartographic>();
+                    foreach (Cartographic point in polygon[outerRingIndex])
                     {
                         outerRing.Add(point);
                     }

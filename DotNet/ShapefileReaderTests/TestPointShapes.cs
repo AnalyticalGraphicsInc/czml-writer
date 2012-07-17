@@ -9,13 +9,13 @@ namespace ShapefileReaderTests
     public class TestPointShapes
     {
          private StringDictionary m_metadata;
-         private Cartesian m_position;
+         private Cartographic m_position;
 
          [SetUp]
          public void SetUp()
          {
              m_metadata = new StringDictionary();
-             m_position = new Cartesian(1.0, 2.0, 0.0);
+             m_position = new Cartographic(1.0, 2.0, 0.0);
          }
 
          [Test]
@@ -65,7 +65,7 @@ namespace ShapefileReaderTests
          [Test]
          public void TestPointZShapePosition()
          {
-             Cartesian position = new Cartesian(1.0, 2.0, 3.0);
+             Cartographic position = new Cartographic(1.0, 2.0, 3.0);
              PointZShape point = new PointZShape(2, m_metadata, position, 5.0);
              Assert.That(position.Equals(point.Position));
          }

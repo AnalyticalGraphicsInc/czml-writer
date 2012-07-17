@@ -24,7 +24,6 @@ namespace GeometricComputations
                 cosLatitude * Math.Cos(cartographic.Longitude),
                 cosLatitude * Math.Sin(cartographic.Longitude),
                 Math.Sin(cartographic.Latitude));
-                            
         }
 
         public Cartesian ToCartesian(Cartographic cartographic)

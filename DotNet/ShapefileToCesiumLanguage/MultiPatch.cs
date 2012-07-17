@@ -39,7 +39,7 @@ namespace ShapefileToCesiumLanguage
                         for (int j = 2; j < multipatch[i].Count; j++)
                         {
                             int firstIndex = (multipatch.GetPartType(i) == MultiPatchPartType.TriangleFan) ? 0 : j - 2;
-                            Cartesian[] vertices = new Cartesian[] { multipatch[i][firstIndex], multipatch[i][j - 1], multipatch[i][j] };
+                            Cartographic[] vertices = new Cartographic[] { multipatch[i][firstIndex], multipatch[i][j - 1], multipatch[i][j] };
                             ShapePart triangle = new ShapePart(vertices, 0, vertices.Length);
                             PolygonShape p = new PolygonShape(multipatch.RecordNumber, metadata, multipatch.Extent, new ShapePart[] { triangle });
                             (new Polygon(p, m_document, m_color)).Write();

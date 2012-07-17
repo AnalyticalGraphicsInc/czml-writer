@@ -142,14 +142,14 @@ namespace Shapefile
                         case ShapeType.Point:
                             double x = ToDouble(record, 4, ByteOrder.LittleEndian);
                             double y = ToDouble(record, 12, ByteOrder.LittleEndian);
-                            Cartesian position = new Cartesian(x, y, 0.0);
+                            Cartographic position = new Cartographic(x, y, 0.0);
                             _shapes.Add(new PointShape(recordNumber, metadata, position));
                             break;
 
                         case ShapeType.PointM:
                              x = ToDouble(record, 4, ByteOrder.LittleEndian);
                              y = ToDouble(record, 12, ByteOrder.LittleEndian);
-                             position = new Cartesian(x, y, 0.0);
+                             position = new Cartographic(x, y, 0.0);
                              double measure = ToDouble(record, 20, ByteOrder.LittleEndian);
                              _shapes.Add(new PointMShape(recordNumber, metadata, position, measure));
                              break;
@@ -158,7 +158,7 @@ namespace Shapefile
                             x = ToDouble(record, 4, ByteOrder.LittleEndian);
                             y = ToDouble(record, 12, ByteOrder.LittleEndian);
                             double z = ToDouble(record, 20, ByteOrder.LittleEndian);
-                            position = new Cartesian(x, y, z);
+                            position = new Cartographic(x, y, z);
                             measure = ToDouble(record, 28, ByteOrder.LittleEndian);
                             _shapes.Add(new PointZShape(recordNumber, metadata, position, measure));
                             break;
@@ -173,10 +173,10 @@ namespace Shapefile
                                 ToDouble(record, 28, ByteOrder.LittleEndian));
 
                             int numberOfPoints = ToInteger(record, 36, ByteOrder.LittleEndian);
-                            Cartesian[] points = new Cartesian[numberOfPoints];
+                            Cartographic[] points = new Cartographic[numberOfPoints];
                             for (int i = 0; i < numberOfPoints; ++i)
                             {
-                                points[i] = new Cartesian(
+                                points[i] = new Cartographic(
                                     ToDouble(record, 40 + (16 * i), ByteOrder.LittleEndian),
                                     ToDouble(record, 40 + (16 * i) + 8, ByteOrder.LittleEndian),
                                     0.0);
@@ -214,10 +214,10 @@ namespace Shapefile
                                     double[] zValues = new double[numberOfPoints];
                                     for (int i = 0; i < numberOfPoints; i++)
                                     {
-                                        x = points[i].X;
-                                        y = points[i].Y;
+                                        x = points[i].Longitude;
+                                        y = points[i].Latitude;
                                         z = ToDouble(record, zOffset + 16 + (8 * i), ByteOrder.LittleEndian);
-                                        points[i] = new Cartesian(x, y, z);
+                                        points[i] = new Cartographic(x, y, z);
                                     }
                                     _shapes.Add(new MultiPointZShape(recordNumber, metadata, extent, points, zMin, zMax, mMin, mMax, measures));
                                 }
