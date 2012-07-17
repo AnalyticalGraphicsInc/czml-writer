@@ -122,7 +122,7 @@ namespace ShapefileToCesiumLanguage
                 for (int i = 0; i < outerRingIndices.Count; i++)
                 {
                     int outerRingIndex = outerRingIndices[i];
-                    List<List<Cartesian>> innerRings = new List<List<Cartesian>>();
+                    List<List<Cartographic>> innerRings = new List<List<Cartographic>>();
                     for (int j = 0; j < ringExtents.Count; j++)
                     {
                         if (outerRingIndex != j && ringExtents[outerRingIndex].IsInsideExtent(ringExtents[j].EastLongitude, ringExtents[j].NorthLatitude))
