@@ -140,27 +140,27 @@ namespace Shapefile
                             break;
 
                         case ShapeType.Point:
-                        case ShapeType.PointM:
-                        case ShapeType.PointZ:
                             double x = ToDouble(record, 4, ByteOrder.LittleEndian);
                             double y = ToDouble(record, 12, ByteOrder.LittleEndian);
-                            double z = (recordShapeType == ShapeType.PointZ) ? ToDouble(record, 20, ByteOrder.LittleEndian) : 0.0;
-                            Cartesian position = new Cartesian(x, y, z);
-                            if (recordShapeType == ShapeType.Point)
-                            {
-                                _shapes.Add(new PointShape(recordNumber, metadata, position));
-                            }
-                            else if (recordShapeType == ShapeType.PointM)
-                            {
-                                double measure = ToDouble(record, 20, ByteOrder.LittleEndian);
-                                _shapes.Add(new PointMShape(recordNumber, metadata, position, measure));
-                            }
-                            else
-                            {
-                                double measure = ToDouble(record, 28, ByteOrder.LittleEndian);
-                                _shapes.Add(new PointZShape(recordNumber, metadata, position, measure));
-                            }
+                            Cartesian position = new Cartesian(x, y, 0.0);
+                            _shapes.Add(new PointShape(recordNumber, metadata, position));
+                            break;
 
+                        case ShapeType.PointM:
+                             x = ToDouble(record, 4, ByteOrder.LittleEndian);
+                             y = ToDouble(record, 12, ByteOrder.LittleEndian);
+                             position = new Cartesian(x, y, 0.0);
+                             double measure = ToDouble(record, 20, ByteOrder.LittleEndian);
+                             _shapes.Add(new PointMShape(recordNumber, metadata, position, measure));
+                             break;
+
+                        case ShapeType.PointZ:
+                            x = ToDouble(record, 4, ByteOrder.LittleEndian);
+                            y = ToDouble(record, 12, ByteOrder.LittleEndian);
+                            double z = ToDouble(record, 20, ByteOrder.LittleEndian);
+                            position = new Cartesian(x, y, z);
+                            measure = ToDouble(record, 28, ByteOrder.LittleEndian);
+                            _shapes.Add(new PointZShape(recordNumber, metadata, position, measure));
                             break;
 
                         case ShapeType.MultiPoint:
