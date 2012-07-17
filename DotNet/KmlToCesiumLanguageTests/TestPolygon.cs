@@ -51,7 +51,7 @@ namespace KmlToCesiumLanguageTests
             polygon.WritePacket();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.2989321487982717,0.6870342516417286,1.0,-1.2947816105749124,0.583457652686429,105622.226606304]}"));
+            Assert.That(result.Contains("\"vertexPositions\":{\"cartesian\":[1325931.7904320182,-4756430.587707164,4023655.821483748,1476128.3382630164,-5211500.059230109,3552014.7369627557]}"));
         }
 
         [Test]
@@ -87,7 +87,32 @@ namespace KmlToCesiumLanguageTests
             polygon.WritePacket();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.2989321487982717,0.6870342516417286,0.0,-1.2947816105749124,0.583457652686429,0.0]}"));
+            Assert.That(result.Contains("\"vertexPositions\":{\"cartesian\":[1325931.5828251496,-4756429.842972279,4023655.1872366834,1452105.843660085,-5126688.17072362,3493826.094821111]}"));
+        }
+
+        [Test]
+        public void PolygonWithHoles()
+        {
+            XElement placemark = new XElement("Placemark",
+                                              new XElement("name", "Access Polygon"),
+                                              new XElement(
+                                                  "Polygon",
+                                                  new XElement("altitudeMode", "clampToGround"),
+                                                  new XElement(
+                                                      "outerBoundaryIs",
+                                                      new XElement(
+                                                          "LinearRing",
+                                                          new XElement("coordinates", "-122.0,37.0 -121.9,37.0 -121.9,37.1 -122.0,37.1 -122.0,37.0"))),
+                                                      new XElement(
+                                                      "innerBoundaryIs",
+                                                      new XElement(
+                                                          "LinearRing",
+                                                          new XElement("coordinates", "-121.99,37.01 -121.96,37.01 -121.96,37.04 -121.99,37.04 -121.99,37.01")))));
+            var polygon = new Polygon(placemark.Element("Polygon"), m_document, placemark);
+            polygon.WritePacket();
+
+            string result = m_stringWriter.ToString();
+            Assert.That(result.Contains("\"vertexPositions\":{\"cartesian\":[1325931.5828251496,-4756429.842972279,4023655.1872366834,1452105.843660085,-5126688.17072362,3493826.094821111]}"));
         }
     }
 }

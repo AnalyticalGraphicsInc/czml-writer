@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using CesiumLanguageWriter;
 using System;
+using GeometricComputations;
 
 namespace KmlToCesiumLanguage
 {
@@ -22,6 +23,12 @@ namespace KmlToCesiumLanguage
             : base(document, placemark)
         {
             m_element = element;
+            XElement altitudeMode = m_element.Element(Document.Namespace + "altitudeMode");
+            if (altitudeMode != null)
+            {
+                m_altitudeMode = altitudeMode.Value;
+            }
+            
         }
 
         /// <inheritdoc />
@@ -47,11 +54,36 @@ namespace KmlToCesiumLanguage
         /// <inheritdoc />
         protected override void Write()
         {
-            List<Cartographic> points = new List<Cartographic>();
             XElement coordinatesElement = m_element.Element(Document.Namespace + "outerBoundaryIs").Element(Document.Namespace + "LinearRing").Element(Document.Namespace + "coordinates");
+            IEnumerable<XElement> innerElements = m_element.Elements(Document.Namespace + "innerBoundaryIs");
+            List<List<Cartesian>> innerRings = new List<List<Cartesian>>();
+            foreach (XElement innerElement in innerElements)
+            {
+                string innerCoords = innerElement.Element(Document.Namespace + "LinearRing").Element(Document.Namespace + "coordinates").Value.Trim();
+                List<Cartesian> innerCoordinates = ParseCoordinates(innerCoords);
+                innerRings.Add(innerCoordinates);
+            }
             //outerboundary/linearRing
-            XElement altitudeMode = m_element.Element(Document.Namespace + "altitudeMode");
+            
             string coordinates = coordinatesElement.Value.Trim();
+            var outerRing = ParseCoordinates(coordinates);
+            List<Cartesian> outerPositions = outerRing;
+            if(innerRings.Count > 0)
+            {
+                while (innerRings.Count > 0)
+                {
+                    outerPositions = PolygonAlgorithms.EliminateHole(outerPositions, ref innerRings);
+                }
+            }
+            using (var positions = this.PacketWriter.OpenVertexPositionsProperty())
+            {
+                positions.WriteCartesian(outerPositions);
+            }
+        }
+
+        private List<Cartesian> ParseCoordinates(string coordinates)
+        {
+            List<Cartesian> points = new List<Cartesian>();
             Regex coordinateExpression = new Regex(@"(?<longitude>-?\d+\.?\d*)          # capture longitude value
                                                      \s*,\s*                            # capture separator 
                                                      (?<latitude>-?\d+\.?\d*)           # capture latitude value
@@ -65,11 +97,11 @@ namespace KmlToCesiumLanguage
                     string longitude = match.Groups["longitude"].Value;
                     string latitude = match.Groups["latitude"].Value;
                     string altitude = match.Groups["altitude"].Value;
-                    if (altitudeMode == null || (altitudeMode != null && altitudeMode.Value == "clampToGround"))
+                    if (m_altitudeMode == "" || (m_altitudeMode == "clampToGround"))
                     {
                         altitude = "0";
                     }
-                    points.Add(new Cartographic(double.Parse(longitude) * Constants.RadiansPerDegree, double.Parse(latitude) * Constants.RadiansPerDegree, double.Parse(altitude)));
+                    points.Add(Ellipsoid.Wgs84.ToCartesian(new Cartographic(double.Parse(longitude) * Constants.RadiansPerDegree, double.Parse(latitude) * Constants.RadiansPerDegree, double.Parse(altitude))));
                 }
             }
             else
@@ -84,7 +116,7 @@ namespace KmlToCesiumLanguage
                     {
                         string longitude = match.Groups["longitude"].Value;
                         string latitude = match.Groups["latitude"].Value;
-                        points.Add(new Cartographic(double.Parse(longitude) * Constants.RadiansPerDegree, double.Parse(latitude) * Constants.RadiansPerDegree, 0.00));
+                        points.Add(Ellipsoid.Wgs84.ToCartesian(new Cartographic(double.Parse(longitude) * Constants.RadiansPerDegree, double.Parse(latitude) * Constants.RadiansPerDegree, 0.00)));
                     }
                 }
                 else
@@ -92,13 +124,48 @@ namespace KmlToCesiumLanguage
                     throw new NotSupportedException("The coordinates value describing the Polygon is improperly formatted.");
                 }
             }
+            return points;
+        }
 
-            using (var positions = this.PacketWriter.OpenVertexPositionsProperty())
+        private class Ellipsoid
+        {
+            public static readonly Ellipsoid Wgs84 = new Ellipsoid(new Cartesian(6378137.0, 6378137.0, 6356752.314245));
+            public Ellipsoid(Cartesian radii)
             {
-                positions.WriteCartographicRadians(points);
+                _radiiSquared = new Cartesian(radii.X * radii.X,
+                                               radii.Y * radii.Y,
+                                               radii.Z * radii.Z);
             }
+
+            public Cartesian GeodeticSurfaceNormal(Cartographic cartographic)
+            {
+                double cosLatitude = Math.Cos(cartographic.Latitude);
+                return new Cartesian(
+                    cosLatitude * Math.Cos(cartographic.Longitude),
+                    cosLatitude * Math.Sin(cartographic.Longitude),
+                    Math.Sin(cartographic.Latitude));
+                            
+            }
+
+            public Cartesian ToCartesian(Cartographic cartographic)
+            {
+                Cartesian n = GeodeticSurfaceNormal(cartographic);
+                Cartesian k = new Cartesian(
+                    _radiiSquared.X * n.X,
+                    _radiiSquared.Y * n.Y,
+                    _radiiSquared.Z * n.Z);
+
+                double gamma = Math.Sqrt(
+                    k.X * n.X +
+                    k.Y * n.Y +
+                    k.Z * n.Z);
+                Cartesian rSurface = k / gamma;
+                return rSurface + (cartographic.Height * n);
+            }
+            private readonly Cartesian _radiiSquared;
         }
 
         private XElement m_element;
+        private string m_altitudeMode;
     }
 }
