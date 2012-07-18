@@ -130,6 +130,32 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Gets the <see cref="UnitCartesian"/> of the axis most orthogonal to this Cartesian.
+        /// </summary>
+        public Cartesian MostOrthogonalAxis
+        {
+            get
+            {
+                double x = Math.Abs(X);
+                double y = Math.Abs(Y);
+                double z = Math.Abs(Z);
+
+                if ((x < y) && (x < z))
+                {
+                    return UnitCartesian.UnitX;
+                }
+                else if ((y < x) && (y < z))
+                {
+                    return UnitCartesian.UnitY;
+                }
+                else
+                {
+                    return UnitCartesian.UnitZ;
+                }
+            }
+        }
+
+        /// <summary>
         /// Inverts this instance.
         /// </summary>
         /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the inverse of this instance.</returns>
@@ -261,6 +287,50 @@ namespace CesiumLanguageWriter
         public static Cartesian operator -(Cartesian coordinates)
         {
             return new Cartesian(-coordinates.m_x, -coordinates.m_y, -coordinates.m_z);
+        }
+
+        /// <summary>
+        /// Performs a component-wise greater than check.
+        /// </summary>
+        /// <param name="left">The first <see cref="Cartesian"/> to compare.</param>
+        /// <param name="right">The second <see cref="Cartesian"/> to compare.</param>
+        /// <returns><see langword="true"/> if all components of <paramref name="left"/> are greater than all components of <paramref name="right"/></returns>
+        public static bool operator >(Cartesian left, Cartesian right)
+        {
+            return (left.X > right.X) && (left.Y > right.Y) && (left.Z > right.Z);
+        }
+
+        /// <summary>
+        /// Performs a component-wise greater than or equal to check.
+        /// </summary>
+        /// <param name="left">The first <see cref="Cartesian"/> to compare.</param>
+        /// <param name="right">The second <see cref="Cartesian"/> to compare.</param>
+        /// <returns><see langword="true"/> if all components of <paramref name="left"/> are greater than or equal to all components of <paramref name="right"/></returns>
+        public static bool operator >=(Cartesian left, Cartesian right)
+        {
+            return (left.X >= right.X) && (left.Y >= right.Y) && (left.Z >= right.Z);
+        }
+
+        /// <summary>
+        /// Performs a component-wise less than check.
+        /// </summary>
+        /// <param name="left">The first <see cref="Cartesian"/> to compare.</param>
+        /// <param name="right">The second <see cref="Cartesian"/> to compare.</param>
+        /// <returns><see langword="true"/> if all components of <paramref name="left"/> are less than all components of <paramref name="right"/></returns>
+        public static bool operator <(Cartesian left, Cartesian right)
+        {
+            return (left.X < right.X) && (left.Y < right.Y) && (left.Z < right.Z);
+        }
+
+        /// <summary>
+        /// Performs a component-wise less than or equal to check.
+        /// </summary>
+        /// <param name="left">The first <see cref="Cartesian"/> to compare.</param>
+        /// <param name="right">The second <see cref="Cartesian"/> to compare.</param>
+        /// <returns><see langword="true"/> if all components of <paramref name="left"/> are less than or equal to all components of <paramref name="right"/></returns>
+        public static bool operator <=(Cartesian left, Cartesian right)
+        {
+            return (left.X <= right.X) && (left.Y <= right.Y) && (left.Z <= right.Z);
         }
 
         /// <summary>

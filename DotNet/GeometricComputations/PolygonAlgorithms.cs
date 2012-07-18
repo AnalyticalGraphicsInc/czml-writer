@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using CesiumLanguageWriter;
 
 namespace GeometricComputations
@@ -54,6 +54,21 @@ namespace GeometricComputations
             return rightmostVertexIndex;
         }
 
+        public static int GetRightmostVertexIndex(List<Cartographic> vertices)
+        {
+            double maximumX = vertices[0].Longitude;
+            int rightmostVertexIndex = 0;
+            for (int i = 0; i < vertices.Count; i++)
+            {
+                if (vertices[i].Longitude > maximumX)
+                {
+                    maximumX = vertices[i].Longitude;
+                    rightmostVertexIndex = i;
+                }
+            }
+            return rightmostVertexIndex;
+        }
+
         /// <summary>
         /// Returns the index of the inner ring that contains the rightmost vertex.
         /// </summary>
@@ -66,6 +81,23 @@ namespace GeometricComputations
             for (int ring = 0; ring < rings.Count; ring++)
             {
                 double maximumX = rings[ring].Max(vertex => vertex.X);
+                if (maximumX > rightmostX)
+                {
+                    rightmostX = maximumX;
+                    rightmostRingIndex = ring;
+                }
+            }
+
+            return rightmostRingIndex;
+        }
+
+        public static int GetRightmostRingIndex(List<List<Cartographic>> rings)
+        {
+            double rightmostX = rings[0][0].Longitude;
+            int rightmostRingIndex = 0;
+            for (int ring = 0; ring < rings.Count; ring++)
+            {
+                double maximumX = rings[ring].Max(vertex => vertex.Longitude);
                 if (maximumX > rightmostX)
                 {
                     rightmostX = maximumX;
@@ -152,15 +184,18 @@ namespace GeometricComputations
                 Cartesian v2 = ring[(i + 1) % ring.Count];
 
                 double m = (v2.Y - v1.Y) / (v2.X - v1.X);
+                double x = v1.X;
+
                 if (m != 0.0)
                 {
-                    double x = v1.X + (point.Y - v1.Y) / m;
-                    // We only care about intersections on edges to the right of the point
-                    if ((x >= point.X))
-                    {
-                        intersections.Add(x);
-                        edges.Add(new Cartesian[] { v1, v2 });
-                    }
+                    x = v1.X + (point.Y - v1.Y) / m;
+                }
+
+                // We only care about intersections on edges to the right of the point
+                if ((x >= point.X))
+                {
+                    intersections.Add(x);
+                    edges.Add(new Cartesian[] { v1, v2 });
                 }
             }
                         
@@ -187,8 +222,8 @@ namespace GeometricComputations
         /// </summary>
         /// <param name="outerRing"></param>
         /// <param name="innerRings"></param>
-        /// <returns></returns>
-        public static Cartesian FindMutuallyVisibleVertex(List<Cartesian> outerRing, List<List<Cartesian>> innerRings)
+        /// <returns>The index of the vertex in <paramref name="outerRing"/> that is mutually visible to the rightmost vertex in <paramref name="innerRings"/></returns>
+        public static int GetMutuallyVisibleVertexIndex(List<Cartesian> outerRing, List<List<Cartesian>> innerRings)
         {
             int innerRingIndex = GetRightmostRingIndex(innerRings);
             List<Cartesian> innerRing = innerRings[innerRingIndex];
@@ -239,43 +274,56 @@ namespace GeometricComputations
                 visibleVertex = p;
             }
 
-            return visibleVertex;
+            return outerRing.FindIndex(delegate(Cartesian point)
+            {
+                return point.Equals(visibleVertex);
+            });
         }
 
-        /// <summary>
-        /// Given an outer ring and list of inner rings ("holes") composing a polygon, remove one of the inner rings
-        /// from the list and return a new list of <see cref="Cartesian"/>s that represents the polygon formed by
-        /// the outer ring plus the removed inner ring.
-        /// </summary>
-        /// <param name="outerRing">The outer ring of the polygon.</param>
-        /// <param name="innerRings">A list of the vertex lists for each of the polygon's inner rings.</param>
-        /// <returns>A list of vertices defining the new polygon without any holes.</returns>
-        public static List<Cartesian> EliminateHole(List<Cartesian> outerRing, ref List<List<Cartesian>> innerRings)
+        public static List<Cartographic> EliminateHole(List<Cartographic> outerRing, ref List<List<Cartographic>> innerRings)
         {
-            int innerRingIndex = GetRightmostRingIndex(innerRings);
-            int innerRingVertexIndex = GetRightmostVertexIndex(innerRings[innerRingIndex]);
+            // Convert from LLA -> XYZ and project points onto a tangent plane to find the mutually visible vertex.
+            List<Cartesian> cartesianOuterRing = new List<Cartesian>();
+            foreach (Cartographic point in outerRing)
+            { 
+                cartesianOuterRing.Add(Ellipsoid.Wgs84.ToCartesian(point));
+            }
+            
+            List<List<Cartesian>> cartesianInnerRings = new List<List<Cartesian>>();
+            foreach (IList<Cartographic> ring in innerRings)
+            {
+                List<Cartesian> cartesianInnerRing = new List<Cartesian>();
+                foreach (Cartographic point in ring)
+                {
+                    cartesianInnerRing.Add(Ellipsoid.Wgs84.ToCartesian(point));
+                }
+                cartesianInnerRings.Add(cartesianInnerRing);
+            }
 
-            Cartesian innerRingVertex = innerRings[innerRingIndex][innerRingVertexIndex];
-            Cartesian visibleVertex = FindMutuallyVisibleVertex(outerRing, innerRings);
+            EllipsoidTangentPlane tangentPlane = new EllipsoidTangentPlane(Ellipsoid.Wgs84, cartesianOuterRing);
+            cartesianOuterRing = (List<Cartesian>)(tangentPlane.ComputePositionsOnPlane(cartesianOuterRing));
+            for (int i = 0; i < cartesianInnerRings.Count; i++) 
+            {
+                cartesianInnerRings[i] = (List<Cartesian>)(tangentPlane.ComputePositionsOnPlane(cartesianInnerRings[i]));
+            }
 
-            List<Cartesian> innerRing = innerRings[innerRingIndex];
-            List<Cartesian> newPolygonVertices = new List<Cartesian>();
+            int visibleVertexIndex = GetMutuallyVisibleVertexIndex(cartesianOuterRing, cartesianInnerRings);
 
+            int innerRingIndex = GetRightmostRingIndex(cartesianInnerRings);
+            int innerRingVertexIndex = GetRightmostVertexIndex(cartesianInnerRings[innerRingIndex]);
+            
+            List<Cartographic> innerRing = innerRings[innerRingIndex];
+            List<Cartographic> newPolygonVertices = new List<Cartographic>();
+
+            Cartographic innerRingVertex = innerRings[innerRingIndex][innerRingVertexIndex];
+            bool addedInnerRing = false;
             for (int i = 0; i < outerRing.Count; i++)
             {
-                if (outerRing[i].Equals(visibleVertex))
+                if (outerRing[i].Equals(outerRing[visibleVertexIndex]) && !addedInnerRing)
                 {
-                    newPolygonVertices.Add(visibleVertex);
-                    int innerVertexIndex = 0;
-                    for (int j = 0; j < innerRing.Count; j++)
-                    {
-                        if (innerRing[j].Equals(innerRingVertex))
-                        {
-                            innerVertexIndex = j;
-                            break;
-                        }
-                    }
-
+                    newPolygonVertices.Add(outerRing[visibleVertexIndex]);
+                    int innerVertexIndex = innerRing.IndexOf(innerRingVertex);
+                    
                     // If the rightmost inner vertex is not the starting and ending point of the ring,
                     // then some other point is duplicated in the inner ring and should be skipped once.
                     if (innerVertexIndex != 0)
@@ -296,11 +344,12 @@ namespace GeometricComputations
                             newPolygonVertices.Add(innerRing[(j + innerVertexIndex) % innerRing.Count]);
                         }
                     }
+                    addedInnerRing = true;
                 }
                 newPolygonVertices.Add(outerRing[i]);
             }
 
-            innerRings.RemoveAt(innerRingIndex);
+            innerRings.RemoveAt(innerRingIndex);            
             return newPolygonVertices;
         }
     }

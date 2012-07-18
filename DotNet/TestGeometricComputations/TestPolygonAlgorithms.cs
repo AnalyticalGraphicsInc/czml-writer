@@ -170,49 +170,45 @@ namespace TestGeometricComputations
                 new Cartesian(3.0, 7.0, 0.0)
             };
 
-            List<List<Cartesian>> innerRings = new List<List<Cartesian>>
-            {
-                innerRing
-            };
+            List<List<Cartesian>> innerRings = new List<List<Cartesian>>();
+            innerRings.Add(innerRing);
 
-            Cartesian expectedResult = outerRing[2];
-            Cartesian result = PolygonAlgorithms.FindMutuallyVisibleVertex(outerRing, innerRings);
-            Assert.That(result.Equals(expectedResult));
+            int expectedResult = 2;
+            int result = PolygonAlgorithms.GetMutuallyVisibleVertexIndex(outerRing, innerRings);
+            Assert.That(result == expectedResult);
             
         }
 
         [Test]
         public void TestEliminateHole()
         {
-            List<Cartesian> outerRing = new List<Cartesian> {
-                new Cartesian(0.0, 5.0, 0.0),
-                new Cartesian(5.0, 10.0, 0.0),
-                new Cartesian(10.0, 5.0, 0.0),
-                new Cartesian(5.0, 0.0, 0.0),
-                new Cartesian(0.0, 5.0, 0.0)
+            List<Cartographic> outerRing = new List<Cartographic> {
+                new Cartographic(-122.0, 37.0, 0.0),
+                new Cartographic(-122.0, 37.1, 0.0),
+                new Cartographic(-121.9, 37.1, 0.0),
+                new Cartographic(-121.9, 37.0, 0.0),
+                new Cartographic(-122.0, 37.0, 0.0)
             };
 
-            List<Cartesian> innerRing = new List<Cartesian> {
-                new Cartesian(3.0, 7.0, 0.0),
-                new Cartesian(3.0, 3.0, 0.0),
-                new Cartesian(7.0, 3.0, 0.0),
-                new Cartesian(7.0, 7.0, 0.0),
-                new Cartesian(3.0, 7.0, 0.0)
+            List<Cartographic> innerRing = new List<Cartographic> {
+                new Cartographic(-121.99, 37.01, 0.0),
+                new Cartographic(-121.96, 37.01, 0.0),
+                new Cartographic(-121.96, 37.04, 0.0),
+                new Cartographic(-121.99, 37.04, 0.0),
+                new Cartographic(-121.99, 37.01, 0.0)
             };
 
-            List<List<Cartesian>> innerRings = new List<List<Cartesian>>
-            {
-                innerRing
-            };
+            List<List<Cartographic>> innerRings = new List<List<Cartographic>>();
+            innerRings.Add(innerRing);
 
-            List<Cartesian> expectedResult = new List<Cartesian> {
+            List<Cartographic> expectedResult = new List<Cartographic> {
                 outerRing[0], outerRing[1], outerRing[2],
                 innerRing[2], innerRing[3], innerRing [0], innerRing[1], innerRing[2],
                 outerRing[2], outerRing[3], outerRing[0]
 
             };
 
-            List<Cartesian> result = PolygonAlgorithms.EliminateHole(outerRing, ref innerRings);
+            List<Cartographic> result = PolygonAlgorithms.EliminateHole(outerRing, ref innerRings);
 
             for (int i = 0; i < result.Count; i++)
             {
