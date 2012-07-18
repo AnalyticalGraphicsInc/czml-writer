@@ -14,27 +14,29 @@ import cesiumlanguagewriter.PositionCesiumWriter;
 
 public class Sandbox {
 	@Test
-	public void Go() throws IOException {
+	public void go() throws IOException {
 		StringWriter sw = new StringWriter();
 
 		CesiumOutputStream output = new CesiumOutputStream(sw);
 		output.setPrettyFormatting(true);
-		
+
 		CesiumStreamWriter stream = new CesiumStreamWriter();
 		PacketCesiumWriter packet = stream.openPacket(output);
-		
+
+		packet.writeId("Test");
+
 		BillboardCesiumWriter billboard = packet.openBillboardProperty();
 		billboard.writeColorProperty(123, 67, 0, 255);
-		billboard.writeImageProperty("images/foo.jpg");
+		billboard.writeImageProperty("http://cesium.agi.com/Cesium-Logo-onBlack.jpg");
 		billboard.close();
-		
+
 		PositionCesiumWriter position = packet.openPositionProperty();
 		position.writeCartographicDegrees(new Cartographic(-75.0, 45.0, 100.0));
 		position.close();
-		
-		packet.close();		
+
+		packet.close();
 		sw.close();
-		
+
 		System.out.println(sw.toString());
 	}
 }

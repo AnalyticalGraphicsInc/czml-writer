@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Xml.Linq;
 using CesiumLanguageWriter;
+using CesiumLanguageWriter.Advanced;
 
 namespace KmlToCesiumLanguage
 {
@@ -17,17 +17,17 @@ namespace KmlToCesiumLanguage
         {
             m_output = new CesiumOutputStream(outputWriter);
             m_writer = new CesiumStreamWriter();
-            ImageMap = new Dictionary<string, string>();
+            m_imageResolver = new CachingCesiumUrlResolver(int.MaxValue);
             Namespace = "";
         }
 
         /// <summary>
-        /// Gets or sets the image map.
+        /// Gets the resolver to use for images.
         /// </summary>
-        /// <value>
-        /// The image map.
-        /// </value>
-        public Dictionary<string, string> ImageMap { get; set; }
+        public CachingCesiumUrlResolver ImageResolver
+        {
+            get { return m_imageResolver; }
+        }
 
         /// <summary>
         /// Gets or sets the namespace.
@@ -55,5 +55,6 @@ namespace KmlToCesiumLanguage
 
         private readonly CesiumOutputStream m_output;
         private readonly CesiumStreamWriter m_writer;
+        private readonly CachingCesiumUrlResolver m_imageResolver;
     }
 }
