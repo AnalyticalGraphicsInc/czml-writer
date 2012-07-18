@@ -71,7 +71,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Downloads and converts a remote resource URL into a data URI in the form
-        /// <code>date:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>, where
+        /// <code>data:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>, where
         /// <code>&lt;MimeType&gt;</code> is the MIME type of the specified resource, and
         /// <code>&lt;ImageData&gt;</code> is the data encoded as a Base 64 string.
         /// </summary>
@@ -99,7 +99,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Reads from a stream containing an image into a data URI in the form
-        /// <code>date:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>, where
+        /// <code>data:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>, where
         /// <code>&lt;MimeType&gt;</code> is the MIME type of the specified image format, and
         /// <code>&lt;ImageData&gt;</code> is the image data encoded as a Base 64 string.
         /// This method does not attempt to decode the image data, but simply writes it directly to the data URI.
@@ -115,7 +115,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts an image to a data URI in the form
-        /// <code>date:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>, where
+        /// <code>data:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>, where
         /// <code>&lt;MimeType&gt;</code> is the MIME type of the specified <paramref name="image"/>, and
         /// <code>&lt;ImageData&gt;</code> is the image data encoded as a Base 64 string.
         /// </summary>
