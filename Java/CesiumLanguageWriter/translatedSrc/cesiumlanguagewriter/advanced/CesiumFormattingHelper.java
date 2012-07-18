@@ -79,7 +79,7 @@ public final class CesiumFormattingHelper {
 	/**
 	 *  
 	Downloads and converts a remote resource URL into a data URI in the form
-	<code>date:<MimeType>;base64,<ImageData></code>, where
+	<code>data:<MimeType>;base64,<ImageData></code>, where
 	<code><MimeType></code> is the MIME type of the specified resource, and
 	<code><ImageData></code> is the data encoded as a Base 64 string.
 	
@@ -119,7 +119,7 @@ public final class CesiumFormattingHelper {
 	/**
 	 *  
 	Reads from a stream containing an image into a data URI in the form
-	<code>date:<MimeType>;base64,<ImageData></code>, where
+	<code>data:<MimeType>;base64,<ImageData></code>, where
 	<code><MimeType></code> is the MIME type of the specified image format, and
 	<code><ImageData></code> is the image data encoded as a Base 64 string.
 	This method does not attempt to decode the image data, but simply writes it directly to the data URI.
@@ -140,7 +140,7 @@ public final class CesiumFormattingHelper {
 	/**
 	 *  
 	Converts an image to a data URI in the form
-	<code>date:<MimeType>;base64,<ImageData></code>, where
+	<code>data:<MimeType>;base64,<ImageData></code>, where
 	<code><MimeType></code> is the MIME type of the specified <code>image</code>, and
 	<code><ImageData></code> is the image data encoded as a Base 64 string.
 	
