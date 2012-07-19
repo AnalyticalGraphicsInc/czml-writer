@@ -54,21 +54,6 @@ namespace GeometricComputations
             return rightmostVertexIndex;
         }
 
-        public static int GetRightmostVertexIndex(List<Cartographic> vertices)
-        {
-            double maximumX = vertices[0].Longitude;
-            int rightmostVertexIndex = 0;
-            for (int i = 0; i < vertices.Count; i++)
-            {
-                if (vertices[i].Longitude > maximumX)
-                {
-                    maximumX = vertices[i].Longitude;
-                    rightmostVertexIndex = i;
-                }
-            }
-            return rightmostVertexIndex;
-        }
-
         /// <summary>
         /// Returns the index of the inner ring that contains the rightmost vertex.
         /// </summary>
@@ -81,23 +66,6 @@ namespace GeometricComputations
             for (int ring = 0; ring < rings.Count; ring++)
             {
                 double maximumX = rings[ring].Max(vertex => vertex.X);
-                if (maximumX > rightmostX)
-                {
-                    rightmostX = maximumX;
-                    rightmostRingIndex = ring;
-                }
-            }
-
-            return rightmostRingIndex;
-        }
-
-        public static int GetRightmostRingIndex(List<List<Cartographic>> rings)
-        {
-            double rightmostX = rings[0][0].Longitude;
-            int rightmostRingIndex = 0;
-            for (int ring = 0; ring < rings.Count; ring++)
-            {
-                double maximumX = rings[ring].Max(vertex => vertex.Longitude);
                 if (maximumX > rightmostX)
                 {
                     rightmostX = maximumX;
@@ -184,18 +152,21 @@ namespace GeometricComputations
                 Cartesian v2 = ring[(i + 1) % ring.Count];
 
                 double m = (v2.Y - v1.Y) / (v2.X - v1.X);
-                double x = v1.X;
-
                 if (m != 0.0)
                 {
-                    x = v1.X + (point.Y - v1.Y) / m;
-                }
+                    double x = v2.X;
 
-                // We only care about intersections on edges to the right of the point
-                if ((x >= point.X))
-                {
-                    intersections.Add(x);
-                    edges.Add(new Cartesian[] { v1, v2 });
+                    if (!(double.IsNaN(m)))
+                    {
+                        x = v1.X + (point.Y - v1.Y) / m;
+                    }
+
+                    // We only care about intersections on edges to the right of the point
+                    if (x >= point.X)
+                    {
+                        intersections.Add(x);
+                        edges.Add(new Cartesian[] { v1, v2 });
+                    }
                 }
             }
                         
@@ -316,40 +287,44 @@ namespace GeometricComputations
             List<Cartographic> newPolygonVertices = new List<Cartographic>();
 
             Cartographic innerRingVertex = innerRings[innerRingIndex][innerRingVertexIndex];
-            bool addedInnerRing = false;
+            
             for (int i = 0; i < outerRing.Count; i++)
             {
-                if (outerRing[i].Equals(outerRing[visibleVertexIndex]) && !addedInnerRing)
-                {
-                    newPolygonVertices.Add(outerRing[visibleVertexIndex]);
-                    int innerVertexIndex = innerRing.IndexOf(innerRingVertex);
-                    
-                    // If the rightmost inner vertex is not the starting and ending point of the ring,
-                    // then some other point is duplicated in the inner ring and should be skipped once.
-                    if (innerVertexIndex != 0)
-                    {
-                        for (int j = 0; j <= innerRing.Count; j++)
-                        {
-                            int index = (j + innerVertexIndex) % innerRing.Count;
-                            if (index != 0)
-                            {
-                                newPolygonVertices.Add(innerRing[index]);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        for (int j = 0; j < innerRing.Count; j++)
-                        {
-                            newPolygonVertices.Add(innerRing[(j + innerVertexIndex) % innerRing.Count]);
-                        }
-                    }
-                    addedInnerRing = true;
-                }
                 newPolygonVertices.Add(outerRing[i]);
             }
 
-            innerRings.RemoveAt(innerRingIndex);            
+            List<Cartographic> holeVerticesToAdd = new List<Cartographic>();
+            
+            // If the rightmost inner vertex is not the starting and ending point of the ring,
+            // then some other point is duplicated in the inner ring and should be skipped once.
+            if (innerRingVertexIndex != 0)
+            {
+                for (int j = 0; j <= innerRing.Count; j++)
+                {
+                    int index = (j + innerRingVertexIndex) % innerRing.Count;
+                    if (index != 0)
+                    {
+                        holeVerticesToAdd.Add(innerRing[index]);
+                    }
+                }
+            }
+            else
+            {
+                for (int j = 0; j < innerRing.Count; j++)
+                {
+                    holeVerticesToAdd.Add(innerRing[(j + innerRingVertexIndex) % innerRing.Count]);
+                }
+            }
+
+            int lastVisibleVertexIndex = newPolygonVertices.FindLastIndex(delegate(Cartographic point)
+            {
+                return point.Equals(outerRing[visibleVertexIndex]);
+            });
+
+            holeVerticesToAdd.Add(outerRing[lastVisibleVertexIndex]);
+            newPolygonVertices.InsertRange(lastVisibleVertexIndex + 1, holeVerticesToAdd);
+            innerRings.RemoveAt(innerRingIndex);    
+        
             return newPolygonVertices;
         }
     }

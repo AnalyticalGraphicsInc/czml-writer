@@ -176,7 +176,6 @@ namespace TestGeometricComputations
             int expectedResult = 2;
             int result = PolygonAlgorithms.GetMutuallyVisibleVertexIndex(outerRing, innerRings);
             Assert.That(result == expectedResult);
-            
         }
 
         [Test]
@@ -201,19 +200,9 @@ namespace TestGeometricComputations
             List<List<Cartographic>> innerRings = new List<List<Cartographic>>();
             innerRings.Add(innerRing);
 
-            List<Cartographic> expectedResult = new List<Cartographic> {
-                outerRing[0], outerRing[1], outerRing[2],
-                innerRing[2], innerRing[3], innerRing [0], innerRing[1], innerRing[2],
-                outerRing[2], outerRing[3], outerRing[0]
-
-            };
-
             List<Cartographic> result = PolygonAlgorithms.EliminateHole(outerRing, ref innerRings);
 
-            for (int i = 0; i < result.Count; i++)
-            {
-                Assert.That(result[i].Equals(expectedResult[i]));
-            }            
+            Assert.That(innerRings.Count == 0);
         }
     }
 }
