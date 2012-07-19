@@ -9,9 +9,11 @@ namespace GeometricComputations
     public class Ellipsoid
     {
         public static readonly Ellipsoid Wgs84 = new Ellipsoid(new Cartesian(6378137.0, 6378137.0, 6356752.314245));
+        public static readonly Ellipsoid UnitSphere = new Ellipsoid(new Cartesian(1.0, 1.0, 1.0));
         
         public Ellipsoid(Cartesian radii)
         {
+            _radii = radii;
             _radiiSquared = new Cartesian(
                 radii.X * radii.X,
                 radii.Y * radii.Y,
@@ -25,6 +27,26 @@ namespace GeometricComputations
                 1.0 / (radii.Y * radii.Y),
                 1.0 / (radii.Z * radii.Z));
         }
+
+        public Cartesian Radii {
+            get { return _radii; }
+        }
+
+        public Cartesian RadiiSquared
+        {
+            get { return _radiiSquared; }
+        }
+
+        public Cartesian RadiiToTheFourth
+        {
+            get { return _radiiToTheFourth; }
+        }
+
+        public Cartesian OneOverRadiiSquared
+        {
+            get { return _oneOverRadiiSquared; }
+        }
+
 
         public Cartesian ScaleToGeodeticSurface(Cartesian position)
         {
@@ -115,6 +137,7 @@ namespace GeometricComputations
             return rSurface + (cartographic.Height * n);
         }
 
+        private readonly Cartesian _radii;
         private readonly Cartesian _radiiSquared;
         private readonly Cartesian _radiiToTheFourth;
         private readonly Cartesian _oneOverRadiiSquared;

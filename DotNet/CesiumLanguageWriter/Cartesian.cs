@@ -136,21 +136,17 @@ namespace CesiumLanguageWriter
         {
             get
             {
-                double x = Math.Abs(X);
-                double y = Math.Abs(Y);
-                double z = Math.Abs(Z);
+                double x = Math.Abs(m_x);
+                double y = Math.Abs(m_y);
+                double z = Math.Abs(m_z);
 
-                if ((x < y) && (x < z))
+                if (x <= y)
                 {
-                    return UnitCartesian.UnitX;
-                }
-                else if ((y < x) && (y < z))
-                {
-                    return UnitCartesian.UnitY;
+                    return ((x <= z) ? UnitCartesian.UnitX : UnitCartesian.UnitZ);
                 }
                 else
                 {
-                    return UnitCartesian.UnitZ;
+                    return ((y <= z) ? UnitCartesian.UnitY : UnitCartesian.UnitZ);
                 }
             }
         }

@@ -73,6 +73,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestAxisAlignedBoundingBox.cs" />
+    <Compile Include="TestEllipsoid.cs" />
+    <Compile Include="TestEllipsoidTangentPlane.cs" />
     <Compile Include="TestPolygonAlgorithms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
