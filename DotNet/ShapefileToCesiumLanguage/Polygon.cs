@@ -129,8 +129,6 @@ namespace ShapefileToCesiumLanguage
                     List<List<Cartographic>> innerRings = new List<List<Cartographic>>();
                     for (int j = 0; j < ringExtents.Count; j++)
                     {
-                        double longitude = (ringExtents[j].EastLongitude + ringExtents[j].WestLongitude) / 2;
-                        double latitude = (ringExtents[j].NorthLatitude + ringExtents[j].SouthLatitude) / 2;
                         if (outerRingIndex != j
                             && ringExtents[j].WestLongitude >= ringExtents[outerRingIndex].WestLongitude
                             && ringExtents[j].EastLongitude <= ringExtents[outerRingIndex].EastLongitude
