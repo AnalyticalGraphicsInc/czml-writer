@@ -150,7 +150,7 @@ namespace GeometricComputations
             {
                 Cartesian v1 = ring[i];
                 Cartesian v2 = ring[(i + 1) % ring.Count];
-
+               
                 double m = (v2.Y - v1.Y) / (v2.X - v1.X);
                 if (m != 0.0)
                 {
@@ -323,7 +323,32 @@ namespace GeometricComputations
 
             holeVerticesToAdd.Add(outerRing[lastVisibleVertexIndex]);
             newPolygonVertices.InsertRange(lastVisibleVertexIndex + 1, holeVerticesToAdd);
-            innerRings.RemoveAt(innerRingIndex);    
+            innerRings.RemoveAt(innerRingIndex);
+            
+            if (innerRings.Count == 0)
+            {
+                // Create a simple polygon by removing duplicates of vertices that have more than one incoming and outgoing edge.
+                for (int i = 1; i < newPolygonVertices.Count; i++)
+                {
+                    Predicate<Cartographic> matchPoint = delegate(Cartographic p)
+                    {
+                        return p.Equals(newPolygonVertices[i]) && !p.Equals(newPolygonVertices[0]);
+                    };
+
+                    List<Cartographic> copies = newPolygonVertices.FindAll(matchPoint);
+
+                    if (copies.Count > 2)
+                    {
+                        int firstIndex = newPolygonVertices.FindIndex(matchPoint);
+                        int lastIndex = newPolygonVertices.FindLastIndex(matchPoint);
+                        for (int j = 0; j < copies.Count - 2; j++)
+                        {
+                            int indexToRemove = newPolygonVertices.FindIndex(firstIndex + 1, lastIndex - firstIndex - 1, matchPoint);
+                            newPolygonVertices.RemoveAt(indexToRemove);
+                        }
+                    }
+                }
+            }
         
             return newPolygonVertices;
         }
