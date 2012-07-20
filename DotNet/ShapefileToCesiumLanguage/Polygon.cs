@@ -20,6 +20,7 @@ namespace ShapefileToCesiumLanguage
             : base(document, color)
         {
             m_shape = polygon;
+            simplifiedRings = new List<ShapePart>();
         }
         
         /// <summary>
@@ -30,16 +31,18 @@ namespace ShapefileToCesiumLanguage
         {
             PolygonShape polygon = (PolygonShape)m_shape;
 
-            this.joinInnerRings();
+            JoinInnerRings();
 
-            for (int i = 0; i < this.OuterRingIndices.Count; i++)
+            for (int i = 0; i < simplifiedRings.Count; i++)
             {
-                this.WritePacket(this.OuterRingIndices[i]);
+                this.WritePacket(i);
             }
         }
 
-        private void WritePacket(int part)
+        private void WritePacket(int index)
         {
+            ShapePart part = simplifiedRings[index];
+
             using (PacketCesiumWriter packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
             {
                 packetWriter.WriteId(Guid.NewGuid().ToString());
@@ -48,10 +51,9 @@ namespace ShapefileToCesiumLanguage
                 {
                     PolygonShape polygon = (PolygonShape)m_shape;
                     List<Cartographic> positions = new List<Cartographic>();
-                    for (int i = 0; i < polygon[part].Count; i++)
+                    for (int i = 0; i < part.Count; i++)
                     {
-                        var pos = polygon[part][i];
-                        positions.Add(new Cartographic(pos.X, pos.Y, pos.Z));
+                        positions.Add(part[i]);
                     }
                     positionWriter.WriteCartographicDegrees(positions);
                 }
@@ -69,11 +71,11 @@ namespace ShapefileToCesiumLanguage
             }
         }
 
-        private void joinInnerRings()
+        private void JoinInnerRings()
         {
             PolygonShape polygon = (PolygonShape)m_shape;
 
-            this.OuterRingIndices = new List<int>();
+            List<int> outerRingIndices = new List<int>();
 
             if (polygon.Count > 1)
             {
@@ -81,25 +83,25 @@ namespace ShapefileToCesiumLanguage
                 for (int i = 0; i < polygon.Count; i++)
                 {
                     double south, west, east, north;
-                    south = north = polygon[i][0].Y;
-                    west = east = polygon[i][0].X;
-                    foreach (Cartesian point in polygon[i])
+                    south = north = polygon[i][0].Latitude;
+                    west = east = polygon[i][0].Longitude;
+                    foreach (Cartographic point in polygon[i])
                     {
-                        if (point.X > east)
+                        if (point.Longitude > east)
                         {
-                            east = point.X;
+                            east = point.Longitude;
                         }
-                        if (point.X < west)
+                        if (point.Longitude < west)
                         {
-                            east = point.X;
+                            east = point.Longitude;
                         }
-                        if (point.Y > north)
+                        if (point.Latitude > north)
                         {
-                            north = point.Y;
+                            north = point.Latitude;
                         }
-                        if (point.Y < south)
+                        if (point.Latitude < south)
                         {
-                            south = point.Y;
+                            south = point.Latitude;
                         }
                     }
                     ringExtents.Add(new CartographicExtent(west, south, east, north));
@@ -111,22 +113,22 @@ namespace ShapefileToCesiumLanguage
                     {
                         if (i != j && ringExtents[i].IsInsideExtent(ringExtents[j].EastLongitude, ringExtents[j].NorthLatitude))
                         {
-                            this.OuterRingIndices.Add(i);
+                            outerRingIndices.Add(i);
                             break;
                         }
                     }
                 }
 
-                for (int i = 0; i < this.OuterRingIndices.Count; i++)
+                for (int i = 0; i < outerRingIndices.Count; i++)
                 {
-                    int outerRingIndex = this.OuterRingIndices[i];
-                    List<List<Cartesian>> innerRings = new List<List<Cartesian>>();
+                    int outerRingIndex = outerRingIndices[i];
+                    List<List<Cartographic>> innerRings = new List<List<Cartographic>>();
                     for (int j = 0; j < ringExtents.Count; j++)
                     {
                         if (outerRingIndex != j && ringExtents[outerRingIndex].IsInsideExtent(ringExtents[j].EastLongitude, ringExtents[j].NorthLatitude))
                         {
-                            List<Cartesian> innerRing = new List<Cartesian>();
-                            foreach (Cartesian point in polygon[j])
+                            List<Cartographic> innerRing = new List<Cartographic>();
+                            foreach (Cartographic point in polygon[j])
                             {
                                 innerRing.Add(point);
                             }
@@ -134,24 +136,26 @@ namespace ShapefileToCesiumLanguage
                         }
                     }
 
+                    List<Cartographic> outerRing = new List<Cartographic>();
+                    foreach (Cartographic point in polygon[outerRingIndex])
+                    {
+                        outerRing.Add(point);
+                    }
+
                     while (innerRings.Count > 0)
                     {
-                        List<Cartesian> outerRing = new List<Cartesian>();
-                        foreach (Cartesian point in polygon[outerRingIndex])
-                        {
-                            outerRing.Add(point);
-                        }
-                        List<Cartesian> outerPositions = PolygonAlgorithms.EliminateHole(outerRing, ref innerRings);
-                        polygon[outerRingIndex] = new ShapePart(outerPositions.ToArray(), 0, outerPositions.Count);
+                        outerRing = PolygonAlgorithms.EliminateHole(outerRing, ref innerRings);
                     }
+
+                    simplifiedRings.Add(new ShapePart(outerRing.ToArray(), 0, outerRing.Count));
                 }
             }
             else
             {
-                this.OuterRingIndices.Add(0);
+                simplifiedRings.Add(polygon[0]);
             }
         }
         
-        private List<int> OuterRingIndices { get; set; }
+        private List<ShapePart> simplifiedRings { get; set; }
     }
 }

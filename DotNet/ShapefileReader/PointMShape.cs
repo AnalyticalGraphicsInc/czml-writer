@@ -8,7 +8,7 @@ namespace Shapefile
         public PointMShape(
             int recordNumber,
             StringDictionary metadata,
-            Cartesian position, 
+            Cartographic position, 
             double measure, 
             ShapeType shapeType = ShapeType.PointM)
             : base(recordNumber, metadata, position, shapeType)

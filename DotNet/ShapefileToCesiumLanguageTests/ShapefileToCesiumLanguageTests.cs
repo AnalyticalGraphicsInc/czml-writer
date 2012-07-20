@@ -407,10 +407,10 @@ namespace ShapefileToCesiumLanguageTests
         [Test]
         public void TestMultiPoint()
         {
-            Cartesian[] points = new Cartesian[] {
-                new Cartesian(0.0, 0.0, 0.0),
-                new Cartesian(1.0, 1.0, 1.0),
-                new Cartesian(2.0, 2.0, 2.0)
+            Cartographic[] points = new Cartographic[] {
+                new Cartographic(0.0, 0.0, 0.0),
+                new Cartographic(1.0, 1.0, 1.0),
+                new Cartographic(2.0, 2.0, 2.0)
             };
             CartographicExtent extent = new CartographicExtent(0.0, 0.0, 2.0, 2.0);
             MultiPointShape multipoint = new MultiPointShape(0, m_metadata, extent, points);

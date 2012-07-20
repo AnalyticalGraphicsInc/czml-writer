@@ -10,7 +10,7 @@ namespace Shapefile
             int recordNumber,
             StringDictionary metadata,
             CartographicExtent extent,
-            Cartesian[] positions,
+            Cartographic[] positions,
             double minimumMeasure,
             double maximumMeasure,
             double[] measures,

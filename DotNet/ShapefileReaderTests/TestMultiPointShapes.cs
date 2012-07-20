@@ -11,7 +11,7 @@ namespace ShapefileReaderTests
         private int m_recordNumber;
         private StringDictionary m_metadata;
         private CartographicExtent m_extent;
-        private Cartesian[] m_positions;
+        private Cartographic[] m_positions;
 
         [SetUp]
         public void SetUp()
@@ -19,9 +19,9 @@ namespace ShapefileReaderTests
             m_recordNumber = 1;
             m_metadata = new StringDictionary();
             m_extent = new CartographicExtent(0.0, 0.0, 1.0, 1.0);
-            m_positions = new Cartesian[] {
-                new Cartesian(0.0, 0.0, 0.0),
-                new Cartesian(1.0, 1.0, 1.0),
+            m_positions = new Cartographic[] {
+                new Cartographic(0.0, 0.0, 0.0),
+                new Cartographic(1.0, 1.0, 1.0),
             };
         }
 

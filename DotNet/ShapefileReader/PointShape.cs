@@ -5,17 +5,17 @@ namespace Shapefile
 {
     public class PointShape : Shape
     {
-        public PointShape(int recordNumber, StringDictionary metadata, Cartesian position, ShapeType shapeType = ShapeType.Point)
+        public PointShape(int recordNumber, StringDictionary metadata, Cartographic position, ShapeType shapeType = ShapeType.Point)
             : base(recordNumber, metadata, shapeType)
         {
-            _position = new Cartesian(position.X, position.Y, position.Z);
+            _position = new Cartographic(position.Longitude, position.Latitude, position.Height);
         }
 
-        public Cartesian Position
+        public Cartographic Position
         {
             get { return _position; }
         }
 
-        protected readonly Cartesian _position;
+        protected readonly Cartographic _position;
     }
 }

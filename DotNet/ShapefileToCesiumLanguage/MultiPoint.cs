@@ -40,7 +40,7 @@ namespace ShapefileToCesiumLanguage
                 MultiPointShape multipoint = (MultiPointShape)m_shape;
                 using (PositionCesiumWriter position = packetWriter.OpenPositionProperty())
                 {
-                    position.WriteCartographicDegrees(new Cartographic(multipoint[index].X, multipoint[index].Y, multipoint[index].Z));
+                    position.WriteCartographicDegrees(multipoint[index]);
                 }
 
                 using (PointCesiumWriter pointWriter = packetWriter.OpenPointProperty())

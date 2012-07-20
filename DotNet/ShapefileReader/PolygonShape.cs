@@ -50,7 +50,6 @@ namespace Shapefile
         public ShapePart this[int index]
         {
             get { return _parts[index]; }
-            set { _parts[index] = value; }
         }
 
         public int Count

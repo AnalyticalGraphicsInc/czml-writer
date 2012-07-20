@@ -10,12 +10,12 @@ namespace Shapefile
             int recordNumber,
             StringDictionary metadata,
             CartographicExtent extent,
-            Cartesian[] positions,
+            Cartographic[] positions,
             ShapeType shapeType = ShapeType.MultiPoint)
             : base(recordNumber, metadata, shapeType)
         {
             _extent = extent;
-            _positions = (Cartesian[])positions.Clone();
+            _positions = (Cartographic[])positions.Clone();
         }
 
         public CartographicExtent Extent
@@ -23,7 +23,7 @@ namespace Shapefile
             get { return _extent; }
         }
 
-        public Cartesian this[int index]
+        public Cartographic this[int index]
         {
             get { return _positions[index]; }
         }
@@ -34,6 +34,6 @@ namespace Shapefile
         }
 
         private readonly CartographicExtent _extent;
-        private readonly Cartesian[] _positions;
+        private readonly Cartographic[] _positions;
     }
 }
