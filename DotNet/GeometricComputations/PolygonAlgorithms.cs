@@ -65,13 +65,13 @@ namespace GeometricComputations
             int rightmostRingIndex = 0;
             for (int ring = 0; ring < rings.Count; ring++)
             {
-                double maximumX = rings[ring].Max(vertex => vertex.X);
-                if (maximumX > rightmostX)
-                {
-                    rightmostX = maximumX;
-                    rightmostRingIndex = ring;
+                    double maximumX = rings[ring].Max(vertex => vertex.X);
+                    if (maximumX > rightmostX)
+                    {
+                        rightmostX = maximumX;
+                        rightmostRingIndex = ring;
+                    }
                 }
-            }
 
             return rightmostRingIndex;
         }
@@ -256,10 +256,10 @@ namespace GeometricComputations
             // Convert from LLA -> XYZ and project points onto a tangent plane to find the mutually visible vertex.
             List<Cartesian> cartesianOuterRing = new List<Cartesian>();
             foreach (Cartographic point in outerRing)
-            { 
+            {
                 cartesianOuterRing.Add(Ellipsoid.Wgs84.ToCartesian(point));
             }
-            
+
             List<List<Cartesian>> cartesianInnerRings = new List<List<Cartesian>>();
             foreach (IList<Cartographic> ring in innerRings)
             {
@@ -273,28 +273,28 @@ namespace GeometricComputations
 
             EllipsoidTangentPlane tangentPlane = new EllipsoidTangentPlane(Ellipsoid.Wgs84, cartesianOuterRing);
             cartesianOuterRing = (List<Cartesian>)(tangentPlane.ComputePositionsOnPlane(cartesianOuterRing));
-            for (int i = 0; i < cartesianInnerRings.Count; i++) 
+            for (int i = 0; i < cartesianInnerRings.Count; i++)
             {
                 cartesianInnerRings[i] = (List<Cartesian>)(tangentPlane.ComputePositionsOnPlane(cartesianInnerRings[i]));
             }
 
             int visibleVertexIndex = GetMutuallyVisibleVertexIndex(cartesianOuterRing, cartesianInnerRings);
-
+                
             int innerRingIndex = GetRightmostRingIndex(cartesianInnerRings);
             int innerRingVertexIndex = GetRightmostVertexIndex(cartesianInnerRings[innerRingIndex]);
-            
+
             List<Cartographic> innerRing = innerRings[innerRingIndex];
             List<Cartographic> newPolygonVertices = new List<Cartographic>();
 
             Cartographic innerRingVertex = innerRings[innerRingIndex][innerRingVertexIndex];
-            
+
             for (int i = 0; i < outerRing.Count; i++)
             {
                 newPolygonVertices.Add(outerRing[i]);
             }
 
             List<Cartographic> holeVerticesToAdd = new List<Cartographic>();
-            
+
             // If the rightmost inner vertex is not the starting and ending point of the ring,
             // then some other point is duplicated in the inner ring and should be skipped once.
             if (innerRingVertexIndex != 0)
@@ -324,32 +324,51 @@ namespace GeometricComputations
             holeVerticesToAdd.Add(outerRing[lastVisibleVertexIndex]);
             newPolygonVertices.InsertRange(lastVisibleVertexIndex + 1, holeVerticesToAdd);
             innerRings.RemoveAt(innerRingIndex);
-            
-            if (innerRings.Count == 0)
+
+            // Simplify the polygon - Avoid consecutively traversing the same edge twice in a given direction.
+            for (int i = 0; i < newPolygonVertices.Count; i++)
             {
-                // Create a simple polygon by removing duplicates of vertices that have more than one incoming and outgoing edge.
-                for (int i = 1; i < newPolygonVertices.Count; i++)
+                if (!newPolygonVertices[i].Equals(newPolygonVertices[0]))
                 {
+                    int count = newPolygonVertices.Where(p => p.Equals(newPolygonVertices[i])).Count();
+
                     Predicate<Cartographic> matchPoint = delegate(Cartographic p)
                     {
                         return p.Equals(newPolygonVertices[i]) && !p.Equals(newPolygonVertices[0]);
                     };
 
-                    List<Cartographic> copies = newPolygonVertices.FindAll(matchPoint);
-
-                    if (copies.Count > 2)
+                    if (count >= 3)
                     {
-                        int firstIndex = newPolygonVertices.FindIndex(matchPoint);
-                        int lastIndex = newPolygonVertices.FindLastIndex(matchPoint);
-                        for (int j = 0; j < copies.Count - 2; j++)
+                        List<int> indices = new List<int>();
+                        int index = newPolygonVertices.FindIndex(0, matchPoint);
+                        while (index >= 0)
                         {
-                            int indexToRemove = newPolygonVertices.FindIndex(firstIndex + 1, lastIndex - firstIndex - 1, matchPoint);
-                            newPolygonVertices.RemoveAt(indexToRemove);
+                            indices.Add(index);
+                            index = newPolygonVertices.FindIndex(index + 1, matchPoint);
+                        }
+
+                        List<Cartesian> previousVertices = new List<Cartesian>();
+                        previousVertices.Add(Ellipsoid.Wgs84.ToCartesian(newPolygonVertices[i]));
+                        for (int j = 1; j < indices.Count; j++)
+                        {
+                            previousVertices.Add(Ellipsoid.Wgs84.ToCartesian(newPolygonVertices[indices[j] - 1]));
+                        }
+
+                        List<Cartesian> points = (List<Cartesian>)tangentPlane.ComputePositionsOnPlane(previousVertices);
+
+                        for (int j = 1; j < indices.Count - 1; j++)
+                        {
+                            var m1 = (points[0].Y - points[j].Y) / (points[0].X - points[j].X);
+                            var m2 = (points[0].Y - points[j + 1].Y) / (points[0].X - points[j + 1].X);
+                            if (m1 - m2 <= Constants.Epsilon10)
+                            {
+                                newPolygonVertices.RemoveAt(indices[j]);
+                                i--;
+                            }
                         }
                     }
                 }
             }
-        
             return newPolygonVertices;
         }
     }

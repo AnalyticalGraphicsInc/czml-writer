@@ -153,13 +153,13 @@ namespace ShapefileToCesiumLanguageTests
                 new Rectangular(-121.96, 37.04),
                 new Rectangular(-121.99, 37.04),
                 new Rectangular(-121.99, 37.01),
-
+                
                 new Rectangular(-121.94, 37.06),
                 new Rectangular(-121.91, 37.06),
                 new Rectangular(-121.91, 37.09),
                 new Rectangular(-121.94, 37.09),
                 new Rectangular(-121.94, 37.06),
-                
+
                 new Rectangular(-121.99, 37.06),
                 new Rectangular(-121.96, 37.06),
                 new Rectangular(-121.96, 37.09),
@@ -173,7 +173,7 @@ namespace ShapefileToCesiumLanguageTests
                 new Rectangular(-121.94, 37.01)
             };
             CartographicExtent extent = new CartographicExtent(0.0, 0.0, 10.0, 10.0);
-            int[] parts = new int[] { 0, 5, 10, 15, 20};
+            int[] parts = new int[] { 0, 5, 10, 15, 20 };
 
             Polygon polygon = new Polygon(new PolygonShape(0, m_metadata, extent, parts, positions), m_document, Color.Blue);
             polygon.Write();
