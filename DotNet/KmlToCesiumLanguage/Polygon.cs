@@ -56,18 +56,18 @@ namespace KmlToCesiumLanguage
         {
             XElement coordinatesElement = m_element.Element(Document.Namespace + "outerBoundaryIs").Element(Document.Namespace + "LinearRing").Element(Document.Namespace + "coordinates");
             IEnumerable<XElement> innerElements = m_element.Elements(Document.Namespace + "innerBoundaryIs");
-            List<List<Cartesian>> innerRings = new List<List<Cartesian>>();
+            List<List<Cartographic>> innerRings = new List<List<Cartographic>>();
             foreach (XElement innerElement in innerElements)
             {
                 string innerCoords = innerElement.Element(Document.Namespace + "LinearRing").Element(Document.Namespace + "coordinates").Value.Trim();
-                List<Cartesian> innerCoordinates = ParseCoordinates(innerCoords);
+                List<Cartographic> innerCoordinates = ParseCoordinates(innerCoords);
                 innerRings.Add(innerCoordinates);
             }
             //outerboundary/linearRing
             
             string coordinates = coordinatesElement.Value.Trim();
             var outerRing = ParseCoordinates(coordinates);
-            List<Cartesian> outerPositions = outerRing;
+            List<Cartographic> outerPositions = outerRing;
             if(innerRings.Count > 0)
             {
                 while (innerRings.Count > 0)
@@ -77,13 +77,13 @@ namespace KmlToCesiumLanguage
             }
             using (var positions = this.PacketWriter.OpenVertexPositionsProperty())
             {
-                positions.WriteCartesian(outerPositions);
+                positions.WriteCartographicRadians(outerPositions);
             }
         }
 
-        private List<Cartesian> ParseCoordinates(string coordinates)
+        private List<Cartographic> ParseCoordinates(string coordinates)
         {
-            List<Cartesian> points = new List<Cartesian>();
+            List<Cartographic> points = new List<Cartographic>();
             Regex coordinateExpression = new Regex(@"(?<longitude>-?\d+\.?\d*)          # capture longitude value
                                                      \s*,\s*                            # capture separator 
                                                      (?<latitude>-?\d+\.?\d*)           # capture latitude value
@@ -101,7 +101,7 @@ namespace KmlToCesiumLanguage
                     {
                         altitude = "0";
                     }
-                    points.Add(Ellipsoid.Wgs84.ToCartesian(new Cartographic(double.Parse(longitude) * Constants.RadiansPerDegree, double.Parse(latitude) * Constants.RadiansPerDegree, double.Parse(altitude))));
+                    points.Add(new Cartographic(double.Parse(longitude) * Constants.RadiansPerDegree, double.Parse(latitude) * Constants.RadiansPerDegree, double.Parse(altitude)));
                 }
             }
             else
@@ -116,7 +116,7 @@ namespace KmlToCesiumLanguage
                     {
                         string longitude = match.Groups["longitude"].Value;
                         string latitude = match.Groups["latitude"].Value;
-                        points.Add(Ellipsoid.Wgs84.ToCartesian(new Cartographic(double.Parse(longitude) * Constants.RadiansPerDegree, double.Parse(latitude) * Constants.RadiansPerDegree, 0.00)));
+                        points.Add(new Cartographic(double.Parse(longitude) * Constants.RadiansPerDegree, double.Parse(latitude) * Constants.RadiansPerDegree, 0.00));
                     }
                 }
                 else
@@ -125,44 +125,6 @@ namespace KmlToCesiumLanguage
                 }
             }
             return points;
-        }
-
-        private class Ellipsoid
-        {
-            public static readonly Ellipsoid Wgs84 = new Ellipsoid(new Cartesian(6378137.0, 6378137.0, 6356752.314245));
-            public Ellipsoid(Cartesian radii)
-            {
-                _radiiSquared = new Cartesian(radii.X * radii.X,
-                                               radii.Y * radii.Y,
-                                               radii.Z * radii.Z);
-            }
-
-            public Cartesian GeodeticSurfaceNormal(Cartographic cartographic)
-            {
-                double cosLatitude = Math.Cos(cartographic.Latitude);
-                return new Cartesian(
-                    cosLatitude * Math.Cos(cartographic.Longitude),
-                    cosLatitude * Math.Sin(cartographic.Longitude),
-                    Math.Sin(cartographic.Latitude));
-                            
-            }
-
-            public Cartesian ToCartesian(Cartographic cartographic)
-            {
-                Cartesian n = GeodeticSurfaceNormal(cartographic);
-                Cartesian k = new Cartesian(
-                    _radiiSquared.X * n.X,
-                    _radiiSquared.Y * n.Y,
-                    _radiiSquared.Z * n.Z);
-
-                double gamma = Math.Sqrt(
-                    k.X * n.X +
-                    k.Y * n.Y +
-                    k.Z * n.Z);
-                Cartesian rSurface = k / gamma;
-                return rSurface + (cartographic.Height * n);
-            }
-            private readonly Cartesian _radiiSquared;
         }
 
         private XElement m_element;
