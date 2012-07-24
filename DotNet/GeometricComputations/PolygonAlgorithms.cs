@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using CesiumLanguageWriter;
 
 namespace GeometricComputations
@@ -150,13 +150,19 @@ namespace GeometricComputations
             {
                 Cartesian v1 = ring[i];
                 Cartesian v2 = ring[(i + 1) % ring.Count];
-
+               
                 double m = (v2.Y - v1.Y) / (v2.X - v1.X);
                 if (m != 0.0)
                 {
-                    double x = v1.X + (point.Y - v1.Y) / m;
+                    double x = v2.X;
+
+                    if (!(double.IsNaN(m)))
+                    {
+                        x = v1.X + (point.Y - v1.Y) / m;
+                    }
+
                     // We only care about intersections on edges to the right of the point
-                    if ((x >= point.X))
+                    if (x >= point.X)
                     {
                         intersections.Add(x);
                         edges.Add(new Cartesian[] { v1, v2 });
@@ -187,8 +193,8 @@ namespace GeometricComputations
         /// </summary>
         /// <param name="outerRing"></param>
         /// <param name="innerRings"></param>
-        /// <returns></returns>
-        public static Cartesian FindMutuallyVisibleVertex(List<Cartesian> outerRing, List<List<Cartesian>> innerRings)
+        /// <returns>The index of the vertex in <paramref name="outerRing"/> that is mutually visible to the rightmost vertex in <paramref name="innerRings"/></returns>
+        public static int GetMutuallyVisibleVertexIndex(List<Cartesian> outerRing, List<List<Cartesian>> innerRings)
         {
             int innerRingIndex = GetRightmostRingIndex(innerRings);
             List<Cartesian> innerRing = innerRings[innerRingIndex];
@@ -239,68 +245,111 @@ namespace GeometricComputations
                 visibleVertex = p;
             }
 
-            return visibleVertex;
+            return outerRing.FindIndex(delegate(Cartesian point)
+            {
+                return point.Equals(visibleVertex);
+            });
         }
 
-        /// <summary>
-        /// Given an outer ring and list of inner rings ("holes") composing a polygon, remove one of the inner rings
-        /// from the list and return a new list of <see cref="Cartesian"/>s that represents the polygon formed by
-        /// the outer ring plus the removed inner ring.
-        /// </summary>
-        /// <param name="outerRing">The outer ring of the polygon.</param>
-        /// <param name="innerRings">A list of the vertex lists for each of the polygon's inner rings.</param>
-        /// <returns>A list of vertices defining the new polygon without any holes.</returns>
-        public static List<Cartesian> EliminateHole(List<Cartesian> outerRing, ref List<List<Cartesian>> innerRings)
+        public static List<Cartographic> EliminateHole(List<Cartographic> outerRing, ref List<List<Cartographic>> innerRings)
         {
-            int innerRingIndex = GetRightmostRingIndex(innerRings);
-            int innerRingVertexIndex = GetRightmostVertexIndex(innerRings[innerRingIndex]);
+            // Convert from LLA -> XYZ and project points onto a tangent plane to find the mutually visible vertex.
+            List<Cartesian> cartesianOuterRing = new List<Cartesian>();
+            foreach (Cartographic point in outerRing)
+            { 
+                cartesianOuterRing.Add(Ellipsoid.Wgs84.ToCartesian(point));
+            }
+            
+            List<List<Cartesian>> cartesianInnerRings = new List<List<Cartesian>>();
+            foreach (IList<Cartographic> ring in innerRings)
+            {
+                List<Cartesian> cartesianInnerRing = new List<Cartesian>();
+                foreach (Cartographic point in ring)
+                {
+                    cartesianInnerRing.Add(Ellipsoid.Wgs84.ToCartesian(point));
+                }
+                cartesianInnerRings.Add(cartesianInnerRing);
+            }
 
-            Cartesian innerRingVertex = innerRings[innerRingIndex][innerRingVertexIndex];
-            Cartesian visibleVertex = FindMutuallyVisibleVertex(outerRing, innerRings);
+            EllipsoidTangentPlane tangentPlane = new EllipsoidTangentPlane(Ellipsoid.Wgs84, cartesianOuterRing);
+            cartesianOuterRing = (List<Cartesian>)(tangentPlane.ComputePositionsOnPlane(cartesianOuterRing));
+            for (int i = 0; i < cartesianInnerRings.Count; i++) 
+            {
+                cartesianInnerRings[i] = (List<Cartesian>)(tangentPlane.ComputePositionsOnPlane(cartesianInnerRings[i]));
+            }
 
-            List<Cartesian> innerRing = innerRings[innerRingIndex];
-            List<Cartesian> newPolygonVertices = new List<Cartesian>();
+            int visibleVertexIndex = GetMutuallyVisibleVertexIndex(cartesianOuterRing, cartesianInnerRings);
 
+            int innerRingIndex = GetRightmostRingIndex(cartesianInnerRings);
+            int innerRingVertexIndex = GetRightmostVertexIndex(cartesianInnerRings[innerRingIndex]);
+            
+            List<Cartographic> innerRing = innerRings[innerRingIndex];
+            List<Cartographic> newPolygonVertices = new List<Cartographic>();
+
+            Cartographic innerRingVertex = innerRings[innerRingIndex][innerRingVertexIndex];
+            
             for (int i = 0; i < outerRing.Count; i++)
             {
-                if (outerRing[i].Equals(visibleVertex))
-                {
-                    newPolygonVertices.Add(visibleVertex);
-                    int innerVertexIndex = 0;
-                    for (int j = 0; j < innerRing.Count; j++)
-                    {
-                        if (innerRing[j].Equals(innerRingVertex))
-                        {
-                            innerVertexIndex = j;
-                            break;
-                        }
-                    }
-
-                    // If the rightmost inner vertex is not the starting and ending point of the ring,
-                    // then some other point is duplicated in the inner ring and should be skipped once.
-                    if (innerVertexIndex != 0)
-                    {
-                        for (int j = 0; j <= innerRing.Count; j++)
-                        {
-                            int index = (j + innerVertexIndex) % innerRing.Count;
-                            if (index != 0)
-                            {
-                                newPolygonVertices.Add(innerRing[index]);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        for (int j = 0; j < innerRing.Count; j++)
-                        {
-                            newPolygonVertices.Add(innerRing[(j + innerVertexIndex) % innerRing.Count]);
-                        }
-                    }
-                }
                 newPolygonVertices.Add(outerRing[i]);
             }
 
+            List<Cartographic> holeVerticesToAdd = new List<Cartographic>();
+            
+            // If the rightmost inner vertex is not the starting and ending point of the ring,
+            // then some other point is duplicated in the inner ring and should be skipped once.
+            if (innerRingVertexIndex != 0)
+            {
+                for (int j = 0; j <= innerRing.Count; j++)
+                {
+                    int index = (j + innerRingVertexIndex) % innerRing.Count;
+                    if (index != 0)
+                    {
+                        holeVerticesToAdd.Add(innerRing[index]);
+                    }
+                }
+            }
+            else
+            {
+                for (int j = 0; j < innerRing.Count; j++)
+                {
+                    holeVerticesToAdd.Add(innerRing[(j + innerRingVertexIndex) % innerRing.Count]);
+                }
+            }
+
+            int lastVisibleVertexIndex = newPolygonVertices.FindLastIndex(delegate(Cartographic point)
+            {
+                return point.Equals(outerRing[visibleVertexIndex]);
+            });
+
+            holeVerticesToAdd.Add(outerRing[lastVisibleVertexIndex]);
+            newPolygonVertices.InsertRange(lastVisibleVertexIndex + 1, holeVerticesToAdd);
             innerRings.RemoveAt(innerRingIndex);
+            
+            if (innerRings.Count == 0)
+            {
+                // Create a simple polygon by removing duplicates of vertices that have more than one incoming and outgoing edge.
+                for (int i = 1; i < newPolygonVertices.Count; i++)
+                {
+                    Predicate<Cartographic> matchPoint = delegate(Cartographic p)
+                    {
+                        return p.Equals(newPolygonVertices[i]) && !p.Equals(newPolygonVertices[0]);
+                    };
+
+                    List<Cartographic> copies = newPolygonVertices.FindAll(matchPoint);
+
+                    if (copies.Count > 2)
+                    {
+                        int firstIndex = newPolygonVertices.FindIndex(matchPoint);
+                        int lastIndex = newPolygonVertices.FindLastIndex(matchPoint);
+                        for (int j = 0; j < copies.Count - 2; j++)
+                        {
+                            int indexToRemove = newPolygonVertices.FindIndex(firstIndex + 1, lastIndex - firstIndex - 1, matchPoint);
+                            newPolygonVertices.RemoveAt(indexToRemove);
+                        }
+                    }
+                }
+            }
+        
             return newPolygonVertices;
         }
     }
