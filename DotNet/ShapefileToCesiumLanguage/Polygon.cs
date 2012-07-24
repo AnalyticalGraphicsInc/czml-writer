@@ -111,7 +111,11 @@ namespace ShapefileToCesiumLanguage
                 {
                     for (int j = 0; j < ringExtents.Count; j++)
                     {
-                        if (i != j && ringExtents[i].IsInsideExtent(ringExtents[j].EastLongitude, ringExtents[j].NorthLatitude))
+                        if (i != j 
+                            && ringExtents[j].WestLongitude >= ringExtents[i].WestLongitude
+                            && ringExtents[j].EastLongitude <= ringExtents[i].EastLongitude
+                            && ringExtents[j].NorthLatitude <= ringExtents[i].NorthLatitude
+                            && ringExtents[j].SouthLatitude >= ringExtents[i].SouthLatitude)
                         {
                             outerRingIndices.Add(i);
                             break;
@@ -125,7 +129,11 @@ namespace ShapefileToCesiumLanguage
                     List<List<Cartographic>> innerRings = new List<List<Cartographic>>();
                     for (int j = 0; j < ringExtents.Count; j++)
                     {
-                        if (outerRingIndex != j && ringExtents[outerRingIndex].IsInsideExtent(ringExtents[j].EastLongitude, ringExtents[j].NorthLatitude))
+                        if (outerRingIndex != j
+                            && ringExtents[j].WestLongitude >= ringExtents[outerRingIndex].WestLongitude
+                            && ringExtents[j].EastLongitude <= ringExtents[outerRingIndex].EastLongitude
+                            && ringExtents[j].NorthLatitude <= ringExtents[outerRingIndex].NorthLatitude
+                            && ringExtents[j].SouthLatitude >= ringExtents[outerRingIndex].SouthLatitude)
                         {
                             List<Cartographic> innerRing = new List<Cartographic>();
                             foreach (Cartographic point in polygon[j])
