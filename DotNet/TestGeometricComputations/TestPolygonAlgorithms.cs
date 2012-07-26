@@ -87,7 +87,7 @@ namespace TestGeometricComputations
                 new Cartesian(3.0, 0.0, 0.0),
                 new Cartesian(2.0, 1.0, 0.0),   // reflex
                 new Cartesian(1.0, 0.0, 0.0),
-                new Cartesian(1.3, 1.0, 0.0),   // reflex
+                new Cartesian(1.3, 1.0, 0.0)   // reflex
             };
 
             List<Cartesian> reflexVertices = PolygonAlgorithms.GetReflexVertices(polygon);

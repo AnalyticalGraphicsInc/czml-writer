@@ -5,7 +5,7 @@ using CesiumLanguageWriter;
 
 namespace GeometricComputations
 {
-    public static class PolygonAlgorithms 
+    public static class PolygonAlgorithms
     {
         /// <summary>
         /// Determines if a given point lies inside or on the boundary of the triangle formed by three points.
@@ -27,7 +27,7 @@ namespace GeometricComputations
             double dot11 = v1.Dot(v1);
             double dot12 = v1.Dot(v2);
 
-            double inverseDenominator = 1 / (dot00 * dot11 - dot01 * dot01);
+            double inverseDenominator = 1.0 / (dot00 * dot11 - dot01 * dot01);
             double u = (dot11 * dot02 - dot01 * dot12) * inverseDenominator;
             double v = (dot00 * dot12 - dot01 * dot02) * inverseDenominator;
 
@@ -65,13 +65,13 @@ namespace GeometricComputations
             int rightmostRingIndex = 0;
             for (int ring = 0; ring < rings.Count; ring++)
             {
-                    double maximumX = rings[ring].Max(vertex => vertex.X);
-                    if (maximumX > rightmostX)
-                    {
-                        rightmostX = maximumX;
-                        rightmostRingIndex = ring;
-                    }
+                double maximumX = rings[ring].Max(vertex => vertex.X);
+                if (maximumX > rightmostX)
+                {
+                    rightmostX = maximumX;
+                    rightmostRingIndex = ring;
                 }
+            }
 
             return rightmostRingIndex;
         }
@@ -86,17 +86,13 @@ namespace GeometricComputations
             List<Cartesian> reflexVertices = new List<Cartesian>();
             for (int i = 0; i < polygon.Count; i++)
             {
-                Cartesian p0 = polygon[(i - 1 + polygon.Count) % polygon.Count];
+                Cartesian p0 = polygon[(i + 1) % polygon.Count];
                 Cartesian p1 = polygon[i];
-                Cartesian p2 = polygon[(i + 1) % polygon.Count];
+                Cartesian p2 = polygon[((i - 1) + polygon.Count) % polygon.Count];
 
-                Cartesian v0 = p0 - p1;
-                Cartesian v1 = p2 - p1;
-
-                Cartesian v0_perp = new Cartesian(-v0.Y, v0.X, 0.0);
-                double angle = Math.Atan2(v0_perp.Dot(v1), v0.Dot(v1));     // Signed angle from v0 to v1
-                double perpDotProduct = v0.Magnitude * v1.Magnitude * Math.Sin(angle);
-                if (perpDotProduct < 0)
+                Cartesian u = p1 - p0;
+                Cartesian v = p2 - p1;
+                if (((u.X * v.Y) - (u.Y * v.X)) < 0.0)
                 {
                     reflexVertices.Add(p1);
                 }
@@ -143,48 +139,59 @@ namespace GeometricComputations
         /// <returns>The intersected point on the ring.</returns>
         public static Cartesian IntersectPointWithRing(Cartesian point, List<Cartesian> ring, out Cartesian[] edge)
         {
-            // Intersect point + t(1,0) with all edges of the ring.
-            List<double> intersections = new List<double>();
-            List<Cartesian[]> edges = new List<Cartesian[]>();
+            double minDistance = System.Double.MaxValue;
+            Cartesian intersection = new Cartesian();
+            edge = new Cartesian[2];
+
+            double boundaryMinX = ring[0].X;
+            double boundaryMaxX = boundaryMinX;
+            for (int i = 1; i < ring.Count; ++i)
+            {
+                if (ring[i].X < boundaryMinX)
+                {
+                    boundaryMinX = ring[i].X;
+                }
+                else if (ring[i].X > boundaryMaxX)
+                {
+                    boundaryMaxX = ring[i].X;
+                }
+            }
+            boundaryMaxX += (boundaryMaxX - boundaryMinX);
+            Cartesian point2 = new Cartesian(boundaryMaxX, point.Y, 0.0);
+
+            // Find the nearest intersection.
             for (int i = 0; i < ring.Count; i++)
             {
                 Cartesian v1 = ring[i];
                 Cartesian v2 = ring[(i + 1) % ring.Count];
-               
-                double m = (v2.Y - v1.Y) / (v2.X - v1.X);
-                if (m != 0.0)
-                {
-                    double x = v2.X;
 
-                    if (!(double.IsNaN(m)))
+                if (((v1.X >= point.X) || (v2.X >= point.X)) && (((v1.Y >= point.Y) && (v2.Y <= point.Y)) ||
+                ((v1.Y <= point.Y) && (v2.Y >= point.Y))))
+                {
+                    double temp = ((v2.Y - v1.Y) * (point2.X - point.X)) - ((v2.X - v1.X) * (point2.Y - point.Y));
+                    if (temp != 0.0)
                     {
-                        x = v1.X + (point.Y - v1.Y) / m;
+                        temp = 1.0 / temp;
+                        double ua = (((v2.X - v1.X) * (point.Y - v1.Y)) - ((v2.Y - v1.Y) * (point.X - v1.X))) * temp;
+                        double ub = (((point2.X - point.X) * (point.Y - v1.Y)) - ((point2.Y - point.Y) * (point.X - v1.X))) * temp;
+                        if ((ua >= 0.0) && (ua <= 1.0) && (ub >= 0.0) && (ub <= 1.0))
+                        {
+                            Cartesian tempIntersection = new Cartesian(point.X + ua * (point2.X - point.X), point.Y + ua * (point2.Y - point.Y), 0.0);
+                            Cartesian dist = tempIntersection - point;
+                            temp = dist.MagnitudeSquared;
+                            if (temp < minDistance)
+                            {
+                                intersection = tempIntersection;
+                                minDistance = temp;
+                                edge = new Cartesian[] { v1, v2 };
+                            }
+                        }
                     }
 
-                    // We only care about intersections on edges to the right of the point
-                    if (x >= point.X)
-                    {
-                        intersections.Add(x);
-                        edges.Add(new Cartesian[] { v1, v2 });
-                    }
-                }
-            }
-                        
-            // Find the closest intersection
-            int minDistanceIndex = 0;
-            double minDistance = intersections[0] - point.X;
-            for (int i = 0; i < intersections.Count; i++)
-            {
-                double distance = intersections[i] - point.X;
-                if (distance < minDistance)
-                {
-                    minDistance = distance;
-                    minDistanceIndex = i;
                 }
             }
 
-            edge = edges[minDistanceIndex];
-            return new Cartesian(intersections[minDistanceIndex], point.Y, 0.0);
+            return intersection;
         }
 
         /// <summary>
@@ -200,7 +207,7 @@ namespace GeometricComputations
             List<Cartesian> innerRing = innerRings[innerRingIndex];
             int innerRingVertexIndex = GetRightmostVertexIndex(innerRings[innerRingIndex]);
             Cartesian innerRingVertex = innerRings[innerRingIndex][innerRingVertexIndex];
-            Cartesian[] edge;
+            Cartesian[] edge = new Cartesian[2];
             Cartesian intersection = IntersectPointWithRing(innerRingVertex, outerRing, out edge);
 
             Cartesian visibleVertex;
@@ -210,8 +217,11 @@ namespace GeometricComputations
             }
             else
             {
-                // Set P to be the endpoint of maximum x value for this edge
-                Cartesian p = (edge[0].X > edge[1].X) ? edge[0] : edge[1];
+                // Set P to be the edge endpoint closest to the inner ring vertex
+                var d1 = (edge[0] - innerRingVertex).MagnitudeSquared;
+                var d2 = (edge[1] - innerRingVertex).MagnitudeSquared;
+                Cartesian p = (d1 < d2) ? edge[0] : edge[1];
+
                 List<Cartesian> reflexVertices = GetReflexVertices(outerRing);
                 reflexVertices.Remove(p); // Do not include p if it happens to be reflex.
 
@@ -279,7 +289,6 @@ namespace GeometricComputations
             }
 
             int visibleVertexIndex = GetMutuallyVisibleVertexIndex(cartesianOuterRing, cartesianInnerRings);
-                
             int innerRingIndex = GetRightmostRingIndex(cartesianInnerRings);
             int innerRingVertexIndex = GetRightmostVertexIndex(cartesianInnerRings[innerRingIndex]);
 
@@ -325,50 +334,6 @@ namespace GeometricComputations
             newPolygonVertices.InsertRange(lastVisibleVertexIndex + 1, holeVerticesToAdd);
             innerRings.RemoveAt(innerRingIndex);
 
-            // Simplify the polygon - Avoid consecutively traversing the same edge twice in a given direction.
-            for (int i = 0; i < newPolygonVertices.Count; i++)
-            {
-                if (!newPolygonVertices[i].Equals(newPolygonVertices[0]))
-                {
-                    int count = newPolygonVertices.Where(p => p.Equals(newPolygonVertices[i])).Count();
-
-                    Predicate<Cartographic> matchPoint = delegate(Cartographic p)
-                    {
-                        return p.Equals(newPolygonVertices[i]) && !p.Equals(newPolygonVertices[0]);
-                    };
-
-                    if (count >= 3)
-                    {
-                        List<int> indices = new List<int>();
-                        int index = newPolygonVertices.FindIndex(0, matchPoint);
-                        while (index >= 0)
-                        {
-                            indices.Add(index);
-                            index = newPolygonVertices.FindIndex(index + 1, matchPoint);
-                        }
-
-                        List<Cartesian> previousVertices = new List<Cartesian>();
-                        previousVertices.Add(Ellipsoid.Wgs84.ToCartesian(newPolygonVertices[i]));
-                        for (int j = 1; j < indices.Count; j++)
-                        {
-                            previousVertices.Add(Ellipsoid.Wgs84.ToCartesian(newPolygonVertices[indices[j] - 1]));
-                        }
-
-                        List<Cartesian> points = (List<Cartesian>)tangentPlane.ComputePositionsOnPlane(previousVertices);
-
-                        for (int j = 1; j < indices.Count - 1; j++)
-                        {
-                            var m1 = (points[0].Y - points[j].Y) / (points[0].X - points[j].X);
-                            var m2 = (points[0].Y - points[j + 1].Y) / (points[0].X - points[j + 1].X);
-                            if (m1 - m2 <= Constants.Epsilon10)
-                            {
-                                newPolygonVertices.RemoveAt(indices[j]);
-                                i--;
-                            }
-                        }
-                    }
-                }
-            }
             return newPolygonVertices;
         }
     }
