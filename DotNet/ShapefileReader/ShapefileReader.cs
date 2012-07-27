@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using CesiumLanguageWriter;
 
 namespace Shapefile
@@ -73,6 +74,19 @@ namespace Shapefile
                 if (version != _version)
                 {
                     throw new InvalidDataException("Shapefile version " + version + " is not supported.  Only version " + _version + " is supported.");
+                }
+
+                // If a .prj file exists, check to see if the projection is supported.
+                string prjFilepath = Path.ChangeExtension(filename, "prj");
+                if (File.Exists(prjFilepath))
+                {
+                    string prj = System.IO.File.ReadAllText(prjFilepath);
+                    string projection = @"GCS_WGS_1984";
+                    string unit = @"Degree";
+                    if (! (Regex.IsMatch(prj, projection) && Regex.IsMatch(prj, unit)))
+                    {
+                        throw new InvalidDataException("Shapefile projection not supported. Only GCS_WGS_1984 in degrees is supported.");
+                    }
                 }
 
                 _shapeType = (ShapeType)ToInteger(fileHeader, 32, ByteOrder.LittleEndian);
@@ -147,12 +161,12 @@ namespace Shapefile
                             break;
 
                         case ShapeType.PointM:
-                             x = ToDouble(record, 4, ByteOrder.LittleEndian);
-                             y = ToDouble(record, 12, ByteOrder.LittleEndian);
-                             position = new Cartographic(x, y, 0.0);
-                             double measure = ToDouble(record, 20, ByteOrder.LittleEndian);
-                             _shapes.Add(new PointMShape(recordNumber, metadata, position, measure));
-                             break;
+                            x = ToDouble(record, 4, ByteOrder.LittleEndian);
+                            y = ToDouble(record, 12, ByteOrder.LittleEndian);
+                            position = new Cartographic(x, y, 0.0);
+                            double measure = ToDouble(record, 20, ByteOrder.LittleEndian);
+                            _shapes.Add(new PointMShape(recordNumber, metadata, position, measure));
+                            break;
 
                         case ShapeType.PointZ:
                             x = ToDouble(record, 4, ByteOrder.LittleEndian);

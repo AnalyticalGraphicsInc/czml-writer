@@ -140,8 +140,9 @@ namespace GeometricComputations
         public static Cartesian IntersectPointWithRing(Cartesian point, List<Cartesian> ring, out Cartesian[] edge)
         {
             double minDistance = System.Double.MaxValue;
-            Cartesian intersection = new Cartesian();
-            edge = new Cartesian[2];
+            int rightmostVertexIndex = GetRightmostVertexIndex(ring);
+            Cartesian intersection = new Cartesian(ring[rightmostVertexIndex].X, point.Y, 0.0);
+            edge = new Cartesian[] {ring[rightmostVertexIndex], ring[rightmostVertexIndex + 1]};
 
             double boundaryMinX = ring[0].X;
             double boundaryMaxX = boundaryMinX;

@@ -30,7 +30,7 @@ namespace ShapefileToCesiumLanguage
                 PointShape point = (PointShape)m_shape;
                 using (PositionCesiumWriter position = packetWriter.OpenPositionProperty())
                 {
-                    position.WriteCartographicDegrees(point.Position);
+                    position.WriteCartographicRadians(point.Position);
                 }
 
                 using (PointCesiumWriter pointWriter = packetWriter.OpenPointProperty())

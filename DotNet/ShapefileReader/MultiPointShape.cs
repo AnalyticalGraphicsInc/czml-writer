@@ -14,8 +14,20 @@ namespace Shapefile
             ShapeType shapeType = ShapeType.MultiPoint)
             : base(recordNumber, metadata, shapeType)
         {
-            _extent = extent;
-            _positions = (Cartographic[])positions.Clone();
+            _extent = new CartographicExtent(
+                extent.WestLongitude * Constants.RadiansPerDegree,
+                extent.SouthLatitude * Constants.RadiansPerDegree,
+                extent.EastLongitude * Constants.RadiansPerDegree,
+                extent.NorthLatitude * Constants.RadiansPerDegree);
+
+            _positions = new Cartographic[positions.Length];
+            for (int i = 0; i < positions.Length; i++)
+            {
+                _positions[i] = new Cartographic(
+                    positions[i].Longitude * Constants.RadiansPerDegree,
+                    positions[i].Latitude * Constants.RadiansPerDegree,
+                    positions[i].Height);
+            }
         }
 
         public CartographicExtent Extent
