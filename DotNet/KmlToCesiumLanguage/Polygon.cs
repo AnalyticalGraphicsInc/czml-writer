@@ -68,12 +68,10 @@ namespace KmlToCesiumLanguage
             string coordinates = coordinatesElement.Value.Trim();
             var outerRing = ParseCoordinates(coordinates);
             List<Cartographic> outerPositions = outerRing;
-            if(innerRings.Count > 0)
+
+            while (innerRings.Count > 0)
             {
-                while (innerRings.Count > 0)
-                {
-                    outerPositions = PolygonAlgorithms.EliminateHole(outerPositions, ref innerRings);
-                }
+                outerPositions = PolygonAlgorithms.EliminateHole(outerPositions, ref innerRings);
             }
             using (var positions = this.PacketWriter.OpenVertexPositionsProperty())
             {

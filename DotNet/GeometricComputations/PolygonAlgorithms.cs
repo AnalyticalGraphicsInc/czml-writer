@@ -54,6 +54,23 @@ namespace GeometricComputations
             return rightmostVertexIndex;
         }
 
+        public static double ComputeArea2D(List<Cartesian> positions)
+        {
+            if (positions == null)
+                throw new ArgumentNullException("positions");
+            var length = positions.Count;
+            if (length < 3)
+                throw new ArgumentException("At least three positions are required.");
+            var area = 0.0;
+            for (int i0 = length - 1, i1 = 0; i1 < length; i0 = i1++)
+            {
+                var v0 = positions[i0];
+                var v1 = positions[i1];
+                area += (v0.X * v1.Y) - (v1.X * v0.Y);
+            }
+            return area * 0.5;
+        }
+
         /// <summary>
         /// Returns the index of the inner ring that contains the rightmost vertex.
         /// </summary>
@@ -270,14 +287,21 @@ namespace GeometricComputations
             {
                 cartesianOuterRing.Add(Ellipsoid.Wgs84.ToCartesian(point));
             }
-
+            var windingOrder = ComputeArea2D(cartesianOuterRing) >= 0.0 ? 0 : 1;
             List<List<Cartesian>> cartesianInnerRings = new List<List<Cartesian>>();
-            foreach (IList<Cartographic> ring in innerRings)
+            for(int i = 0; i < innerRings.Count; ++i)
             {
+                var ring = innerRings[i];
                 List<Cartesian> cartesianInnerRing = new List<Cartesian>();
                 foreach (Cartographic point in ring)
                 {
                     cartesianInnerRing.Add(Ellipsoid.Wgs84.ToCartesian(point));
+                }
+                var innerWindingOrder = ComputeArea2D(cartesianInnerRing) >= 0.0 ? 0 : 1;
+                if (innerWindingOrder == windingOrder)
+                {
+                    ring.Reverse();
+                    cartesianInnerRing.Reverse();
                 }
                 cartesianInnerRings.Add(cartesianInnerRing);
             }
