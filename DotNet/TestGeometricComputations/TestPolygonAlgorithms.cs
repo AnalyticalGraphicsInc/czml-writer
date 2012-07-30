@@ -204,5 +204,37 @@ namespace TestGeometricComputations
 
             Assert.That(innerRings.Count == 0);
         }
+
+        [Test]
+        public void TestComputeArea2DClockWise()
+        {
+            List<Cartesian> outerRing = new List<Cartesian> {
+                new Cartesian(0.0, 5.0, 0.0),
+                new Cartesian(5.0, 10.0, 0.0),
+                new Cartesian(10.0, 5.0, 0.0),
+                new Cartesian(5.0, 0.0, 0.0),
+                new Cartesian(0.0, 5.0, 0.0)
+            };
+
+            var result = PolygonAlgorithms.ComputeArea2D(outerRing);
+
+            Assert.That(result < 0 );
+        }
+
+        [Test]
+        public void TestComputeArea2DCounterClockWise()
+        {
+            List<Cartesian> outerRing = new List<Cartesian> {
+                new Cartesian(0.0, 5.0, 0.0),
+                new Cartesian(5.0, 0.0, 0.0),
+                new Cartesian(10.0, 5.0, 0.0),
+                new Cartesian(5.0, 10.0, 0.0),
+                new Cartesian(0.0, 5.0, 0.0)
+            };
+
+            var result = PolygonAlgorithms.ComputeArea2D(outerRing);
+
+            Assert.That(result >= 0);
+        }
     }
 }
