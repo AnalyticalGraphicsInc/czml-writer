@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using NUnit.Framework;
 using Shapefile;
 
@@ -48,6 +49,13 @@ namespace ShapefileReaderTests
         {
             Shape shape = m_reader[0];
             Assert.That(shape.RecordNumber == 1);
+        }
+
+        [Test]
+        public void ConvertsUnsupportedProjection()
+        {
+            shapefileName = "SampleShapefiles/test.shp";
+            Assert.Throws(typeof(InvalidDataException), () => m_reader = new ShapefileReader(shapefileName));
         }
     }
 }

@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Data;
-using System.Data.OleDb;
 using System.IO;
-using System.Text;
 using System.Text.RegularExpressions;
 using CesiumLanguageWriter;
 
@@ -81,11 +79,15 @@ namespace Shapefile
                 if (File.Exists(prjFilepath))
                 {
                     string prj = System.IO.File.ReadAllText(prjFilepath);
-                    string projection = @"GCS_WGS_1984";
+                    string projection = @"PROJECTION";
                     string unit = @"Degree";
-                    if (! (Regex.IsMatch(prj, projection) && Regex.IsMatch(prj, unit)))
+                    if (Regex.IsMatch(prj, projection))
                     {
-                        throw new InvalidDataException("Shapefile projection not supported. Only GCS_WGS_1984 in degrees is supported.");
+                        throw new InvalidDataException("Shapefile projection not supported.");
+                    }
+                    else if (!(Regex.IsMatch(prj, unit)))
+                    {
+                        throw new InvalidDataException("Shapefile units not supported. Only degrees is supported.");
                     }
                 }
 
