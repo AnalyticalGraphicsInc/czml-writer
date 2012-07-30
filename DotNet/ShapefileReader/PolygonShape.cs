@@ -18,7 +18,16 @@ namespace Shapefile
             ShapeType shapeType = ShapeType.Polygon)
             : base(recordNumber, metadata, shapeType)
         {
-            _extent = extent;
+            _extent = new CartographicExtent(
+                extent.WestLongitude * Constants.RadiansPerDegree,
+                extent.SouthLatitude * Constants.RadiansPerDegree,
+                extent.EastLongitude * Constants.RadiansPerDegree,
+                extent.NorthLatitude * Constants.RadiansPerDegree);
+
+            for (int i = 0; i < positions.Length; i++)
+            {
+                positions[i] = new Rectangular(positions[i].X * Constants.RadiansPerDegree, positions[i].Y * Constants.RadiansPerDegree);
+            }
 
             _parts = new ShapePart[parts.Length];
             for (int i = 0; i < parts.Length; ++i)

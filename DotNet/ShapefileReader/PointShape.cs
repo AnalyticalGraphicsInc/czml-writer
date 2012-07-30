@@ -8,7 +8,7 @@ namespace Shapefile
         public PointShape(int recordNumber, StringDictionary metadata, Cartographic position, ShapeType shapeType = ShapeType.Point)
             : base(recordNumber, metadata, shapeType)
         {
-            _position = new Cartographic(position.Longitude, position.Latitude, position.Height);
+            _position = new Cartographic(position.Longitude * Constants.RadiansPerDegree, position.Latitude * Constants.RadiansPerDegree, position.Height);
         }
 
         public Cartographic Position

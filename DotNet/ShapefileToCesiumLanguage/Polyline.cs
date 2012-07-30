@@ -49,7 +49,7 @@ namespace ShapefileToCesiumLanguage
                     {
                         positions.Add(polyline[part][i]);
                     }
-                    position.WriteCartographicDegrees(positions);
+                    position.WriteCartographicRadians(positions);
                 }
                 using (PolylineCesiumWriter polylineWriter = packetWriter.OpenPolylineProperty())
                 {

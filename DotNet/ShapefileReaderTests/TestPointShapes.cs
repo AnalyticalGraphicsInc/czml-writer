@@ -31,7 +31,7 @@ namespace ShapefileReaderTests
          {
              
              PointShape point = new PointShape(1, m_metadata, m_position);
-             Assert.That(m_position.Equals(point.Position));
+             Assert.That(point.Position.Equals(new Cartographic(Constants.RadiansPerDegree, 2.0 * Constants.RadiansPerDegree, 0.0)));
          }
 
          [Test]
@@ -45,7 +45,7 @@ namespace ShapefileReaderTests
          public void TestPointMShapePosition()
          {
              PointMShape point = new PointMShape(2, m_metadata, m_position, 5.0);
-             Assert.That(m_position.Equals(point.Position));
+             Assert.That(point.Position.Equals(new Cartographic(Constants.RadiansPerDegree, 2.0 * Constants.RadiansPerDegree, 0.0)));
          }
 
          [Test]
@@ -67,7 +67,7 @@ namespace ShapefileReaderTests
          {
              Cartographic position = new Cartographic(1.0, 2.0, 3.0);
              PointZShape point = new PointZShape(2, m_metadata, position, 5.0);
-             Assert.That(position.Equals(point.Position));
+             Assert.That(point.Position.Equals(new Cartographic(Constants.RadiansPerDegree, 2.0 * Constants.RadiansPerDegree, 3.0)));
          }
     }
 }
