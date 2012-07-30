@@ -350,8 +350,8 @@ namespace ShapefileToCesiumLanguageTests
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
             string result = m_stringWriter.ToString();
-            string multiplePolygonPattern = @"({""id"":""[0-9a-zA-Z-]+"",""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}},""vertexPositions"":{""cartographicRadians"":\[(-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,-?(\d)*\.([\de-])*,?)+\]}})+";
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result.ToString(), multiplePolygonPattern));
+            Regex polygonPattern = new Regex(m_polygonPattern);
+            Assert.That(polygonPattern.Matches(result).Count > 1);
         }
 
         [Test]
