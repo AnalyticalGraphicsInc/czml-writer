@@ -39,6 +39,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Advanced\CachingCesiumUrlResolver.cs" />
     <Compile Include="Advanced\CesiumElementWriter.cs" />
     <Compile Include="Advanced\CesiumFormattingHelper.cs" />
     <Compile Include="Advanced\CesiumInterpolatablePropertyWriter.cs" />
@@ -46,11 +47,13 @@
     <Compile Include="Advanced\CesiumPropertyWriter.cs" />
     <Compile Include="Advanced\CesiumWriterAdaptor.cs" />
     <Compile Include="Advanced\ICesiumElementWriter.cs" />
+    <Compile Include="Advanced\ICesiumUrlResolver.cs" />
     <Compile Include="Advanced\ICesiumInterpolatableValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumInterpolationInformationWriter.cs" />
     <Compile Include="Advanced\ICesiumIntervalListWriter.cs" />
     <Compile Include="Advanced\ICesiumPropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumValuePropertyWriter.cs" />
+    <Compile Include="Advanced\PassThroughCesiumUrlResolver.cs" />
     <Compile Include="Attributes\CoverageExcludeAttribute.cs" />
     <Compile Include="Attributes\CSToJavaExcludeAttribute.cs" />
     <Compile Include="Attributes\CSToJavaExcludeBaseAttribute.cs" />

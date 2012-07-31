@@ -6,6 +6,8 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.BooleanCesiumWriter;
+import cesiumlanguagewriter.MaterialCesiumWriter;
 
 /**
  *  
@@ -28,13 +30,13 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	 */
 	public static final String MaterialPropertyName = "material";
-	private Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
-		public BooleanCesiumWriter invoke() {
+	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
 		}
 	}, false);
-	private Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(new Func1<MaterialCesiumWriter>() {
-		public MaterialCesiumWriter invoke() {
+	private Lazy<MaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
+		public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
 			return new MaterialCesiumWriter(MaterialPropertyName);
 		}
 	}, false);
