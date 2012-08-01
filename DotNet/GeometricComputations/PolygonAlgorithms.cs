@@ -199,8 +199,8 @@ namespace GeometricComputations
         /// Given an outer ring and multiple inner rings, determine the point on the outer ring that is visible
         /// to the rightmost vertex of the rightmost inner ring.
         /// </summary>
-        /// <param name="outerRing"></param>
-        /// <param name="innerRings"></param>
+        /// <param name="outerRing">A list of Cartesian points defining the outer polygon.</param>
+        /// <param name="innerRings">A list of lists of Cartesian points, each list defining a "hole" in the outer polygon.</param>
         /// <returns>The index of the vertex in <paramref name="outerRing"/> that is mutually visible to the rightmost vertex in <paramref name="innerRings"/></returns>
         public static int GetMutuallyVisibleVertexIndex(List<Cartesian> outerRing, List<List<Cartesian>> innerRings)
         {
@@ -262,6 +262,13 @@ namespace GeometricComputations
             });
         }
 
+        /// <summary>
+        /// Given a polygon defined by an outer ring with one or more inner rings (holes), return a single list of points representing
+        /// a polygon with a hole added to it. The added hole is removed from <paramref name="innerRings"/>.
+        /// </summary>
+        /// <param name="outerRing">A list of Cartesian points defining the outer polygon.</param>
+        /// <param name="innerRings">A list of lists of Cartesian points, each list defining a "hole" in the outer polygon.</param>
+        /// <returns>A single list of Cartographic points defining the polygon, including the eliminated inner ring.</returns>
         public static List<Cartographic> EliminateHole(List<Cartographic> outerRing, ref List<List<Cartographic>> innerRings)
         {
             // Convert from LLA -> XYZ and project points onto a tangent plane to find the mutually visible vertex.
