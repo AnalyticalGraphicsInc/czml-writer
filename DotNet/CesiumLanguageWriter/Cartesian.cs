@@ -132,7 +132,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the <see cref="UnitCartesian"/> of the axis most orthogonal to this Cartesian.
         /// </summary>
-        public Cartesian MostOrthogonalAxis
+        public UnitCartesian MostOrthogonalAxis
         {
             get
             {
