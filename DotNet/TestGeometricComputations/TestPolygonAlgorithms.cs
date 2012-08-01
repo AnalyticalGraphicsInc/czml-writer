@@ -173,7 +173,7 @@ namespace TestGeometricComputations
             List<List<Cartesian>> innerRings = new List<List<Cartesian>>();
             innerRings.Add(innerRing);
 
-            int expectedResult = 2;
+            int expectedResult = 3;
             int result = PolygonAlgorithms.GetMutuallyVisibleVertexIndex(outerRing, innerRings);
             Assert.That(result == expectedResult);
         }
