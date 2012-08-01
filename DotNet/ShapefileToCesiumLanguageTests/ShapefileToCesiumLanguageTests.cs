@@ -68,16 +68,6 @@ namespace ShapefileToCesiumLanguageTests
         }
 
         [Test]
-        public void TestPolylineZConversion()
-        {
-            string shapefileName = "SampleShapefiles/iran_road.shp";
-            ShapefileReader reader = new ShapefileReader(shapefileName);
-            ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
-            string result = m_stringWriter.ToString();
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, m_polylinePattern));
-        }
-
-        [Test]
         public void TestPolylineZValues()
         {
             Rectangular[] positions = new Rectangular[] {
@@ -341,17 +331,6 @@ namespace ShapefileToCesiumLanguageTests
             string result = m_stringWriter.ToString();
             Regex trianglePattern = new Regex(m_trianglePattern);
             Assert.That(trianglePattern.Matches(result).Count == 5);
-        }
-
-        [Test]
-        public void TestMultiPatchConversion()
-        {
-            string shapefileName = "SampleShapefiles/Financial_WGS84.shp";
-            ShapefileReader reader = new ShapefileReader(shapefileName);
-            ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
-            string result = m_stringWriter.ToString();
-            Regex polygonPattern = new Regex(m_polygonPattern);
-            Assert.That(polygonPattern.Matches(result).Count > 1);
         }
 
         [Test]
