@@ -16,9 +16,7 @@ namespace GeometricComputations
 
             if (Math.Abs(denominator) < 0.00000000000000000001)
             {
-                //
                 // Ray is parallel to plane.  The ray may be in the polygon's plane.
-                //
                 intersectionPoint = Cartesian.Zero;
                 return false;
             }

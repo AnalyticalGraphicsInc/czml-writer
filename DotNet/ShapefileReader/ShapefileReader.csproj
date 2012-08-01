@@ -75,7 +75,6 @@
     <Compile Include="MultiPointMShape.cs" />
     <Compile Include="MultiPointShape.cs" />
     <Compile Include="MultiPointZShape.cs" />
-    <Compile Include="ParseDBF.cs" />
     <Compile Include="PointMShape.cs" />
     <Compile Include="PointShape.cs" />
     <Compile Include="PointZShape.cs" />
@@ -95,6 +94,10 @@
     <ProjectReference Include="..\CesiumLanguageWriter\CesiumLanguageWriter.csproj">
       <Project>{085359F8-CC1D-4561-94C7-0BF067B8E370}</Project>
       <Name>CesiumLanguageWriter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ThirdParty\LoadDBF\LoadDBF.csproj">
+      <Project>{2FB1AEFA-3B28-42D0-9520-3F100E297601}</Project>
+      <Name>LoadDBF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

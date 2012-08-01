@@ -206,8 +206,8 @@ namespace GeometricComputations
         {
             int innerRingIndex = GetRightmostRingIndex(innerRings);
             List<Cartesian> innerRing = innerRings[innerRingIndex];
-            int innerRingVertexIndex = GetRightmostVertexIndex(innerRings[innerRingIndex]);
-            Cartesian innerRingVertex = innerRings[innerRingIndex][innerRingVertexIndex];
+            int innerRingVertexIndex = GetRightmostVertexIndex(innerRing);
+            Cartesian innerRingVertex = innerRing[innerRingVertexIndex];
             Cartesian[] edge = new Cartesian[2];
             Cartesian intersection = IntersectPointWithRing(innerRingVertex, outerRing, out edge);
 
@@ -295,8 +295,6 @@ namespace GeometricComputations
 
             List<Cartographic> innerRing = innerRings[innerRingIndex];
             List<Cartographic> newPolygonVertices = new List<Cartographic>();
-
-            Cartographic innerRingVertex = innerRings[innerRingIndex][innerRingVertexIndex];
 
             for (int i = 0; i < outerRing.Count; i++)
             {
