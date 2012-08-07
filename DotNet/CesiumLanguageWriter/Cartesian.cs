@@ -288,45 +288,41 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Performs a component-wise greater than check.
         /// </summary>
-        /// <param name="left">The first <see cref="Cartesian"/> to compare.</param>
-        /// <param name="right">The second <see cref="Cartesian"/> to compare.</param>
-        /// <returns><see langword="true"/> if all components of <paramref name="left"/> are greater than all components of <paramref name="right"/></returns>
-        public static bool operator >(Cartesian left, Cartesian right)
+        /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
+        /// <returns><see langword="true"/> if all components of this Cartesian are greater than all components of <paramref name="other"/></returns>
+        public bool IsGreaterThan(Cartesian other)
         {
-            return (left.X > right.X) && (left.Y > right.Y) && (left.Z > right.Z);
+            return (m_x > other.X) && (m_y > other.Y) && (m_z > other.Z);
         }
 
         /// <summary>
         /// Performs a component-wise greater than or equal to check.
         /// </summary>
-        /// <param name="left">The first <see cref="Cartesian"/> to compare.</param>
-        /// <param name="right">The second <see cref="Cartesian"/> to compare.</param>
-        /// <returns><see langword="true"/> if all components of <paramref name="left"/> are greater than or equal to all components of <paramref name="right"/></returns>
-        public static bool operator >=(Cartesian left, Cartesian right)
+        /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
+        /// <returns><see langword="true"/> if all components of this <see cref="Cartesian"/> are greater than or equal to all components of <paramref name="other"/></returns>
+        public bool IsGreaterThanOrEqualTo(Cartesian other)
         {
-            return (left.X >= right.X) && (left.Y >= right.Y) && (left.Z >= right.Z);
+            return (m_x >= other.X) && (m_y >= other.Y) && (m_z >= other.Z);
         }
 
         /// <summary>
         /// Performs a component-wise less than check.
         /// </summary>
-        /// <param name="left">The first <see cref="Cartesian"/> to compare.</param>
-        /// <param name="right">The second <see cref="Cartesian"/> to compare.</param>
-        /// <returns><see langword="true"/> if all components of <paramref name="left"/> are less than all components of <paramref name="right"/></returns>
-        public static bool operator <(Cartesian left, Cartesian right)
+        /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
+        /// <returns><see langword="true"/> if all components of this <see cref="Cartesian"/> are less than all components of <paramref name="other"/></returns>
+        public bool IsLessThan(Cartesian other)
         {
-            return (left.X < right.X) && (left.Y < right.Y) && (left.Z < right.Z);
+            return (m_x < other.X) && (m_y < other.Y) && (m_z < other.Z);
         }
 
         /// <summary>
         /// Performs a component-wise less than or equal to check.
         /// </summary>
-        /// <param name="left">The first <see cref="Cartesian"/> to compare.</param>
-        /// <param name="right">The second <see cref="Cartesian"/> to compare.</param>
-        /// <returns><see langword="true"/> if all components of <paramref name="left"/> are less than or equal to all components of <paramref name="right"/></returns>
-        public static bool operator <=(Cartesian left, Cartesian right)
+        /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
+        /// <returns><see langword="true"/> if all components of this <see cref="Cartesian"/> are less than or equal to all components of <paramref name="other"/></returns>
+        public bool IsLessThanOrEqualTo(Cartesian other)
         {
-            return (left.X <= right.X) && (left.Y <= right.Y) && (left.Z <= right.Z);
+            return (m_x <= other.X) && (m_y <= other.Y) && (m_z <= other.Z);
         }
 
         /// <summary>

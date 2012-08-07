@@ -6,11 +6,25 @@ using CesiumLanguageWriter;
 
 namespace GeometricComputations
 {
+    /// <summary>
+    /// Describes an ellipsoid and contains functions for coordinate transformations and scaling. 
+    /// </summary>
     public class Ellipsoid
     {
+        /// <summary>
+        /// Represents the Earth as a WGS84 ellipsoid.
+        /// </summary>
         public static readonly Ellipsoid Wgs84 = new Ellipsoid(new Cartesian(6378137.0, 6378137.0, 6356752.314245));
+
+        /// <summary>
+        /// The unit sphere.
+        /// </summary>
         public static readonly Ellipsoid UnitSphere = new Ellipsoid(new Cartesian(1.0, 1.0, 1.0));
         
+        /// <summary>
+        /// Constructs a new instance of an Ellipsoid with specific radii.
+        /// </summary>
+        /// <param name="radii">The ellipsoid's radius in the x, y, and z directions</param>
         public Ellipsoid(Cartesian radii)
         {
             _radii = radii;
@@ -28,26 +42,43 @@ namespace GeometricComputations
                 1.0 / (radii.Z * radii.Z));
         }
 
-        public Cartesian Radii {
+        /// <summary>
+        /// Gets the Ellipsoid's radii.
+        /// </summary>
+        public Cartesian Radii 
+        {
             get { return _radii; }
         }
 
+        /// <summary>
+        /// Gets the Ellipsoid's radii squared.
+        /// </summary>
         public Cartesian RadiiSquared
         {
             get { return _radiiSquared; }
         }
 
+        /// <summary>
+        /// Gets the Ellipsoid's radii raise to the fourth.
+        /// </summary>
         public Cartesian RadiiToTheFourth
         {
             get { return _radiiToTheFourth; }
         }
 
+        /// <summary>
+        /// Gets one over the Ellipsoid's radii squared.
+        /// </summary>
         public Cartesian OneOverRadiiSquared
         {
             get { return _oneOverRadiiSquared; }
         }
-
-
+        
+        /// <summary>
+        /// Scales a <see cref="Cartesian"/> point to the surface of the ellipsoid along the geodetic surface normal.
+        /// </summary>
+        /// <param name="position">The point to scale.</param>
+        /// <returns>The position of the point on the ellipsoid's surface.</returns>
         public Cartesian ScaleToGeodeticSurface(Cartesian position)
         {
             double beta = 1.0 / Math.Sqrt(
@@ -104,6 +135,11 @@ namespace GeometricComputations
                 position.Z / dc);
         }
 
+        /// <summary>
+        /// Calculates the geodetic surface normal at a <see cref="Cartographic"/> point on the ellipsoid.
+        /// </summary>
+        /// <param name="positionOnEllipsoid">A <see cref="Cartographic"/> point on the Ellipsoid.</param>
+        /// <returns>The geodetic surface normal at <paramref name="positionOnEllipsoid"/>.</returns>
         public Cartesian GeodeticSurfaceNormal(Cartographic cartographic)
         {
             double cosLatitude = Math.Cos(cartographic.Latitude);
@@ -113,6 +149,11 @@ namespace GeometricComputations
                 Math.Sin(cartographic.Latitude));
         }
 
+        /// <summary>
+        /// Calculates the geodetic surface normal at a point on the ellipsoid.
+        /// </summary>
+        /// <param name="positionOnEllipsoid">A <see cref="Cartesian"/> point on the Ellipsoid.</param>
+        /// <returns>The geodetic surface normal at <paramref name="positionOnEllipsoid"/>.</returns>
         public Cartesian GeodeticSurfaceNormal(Cartesian positionOnEllipsoid)
         {
             return new Cartesian(
@@ -121,6 +162,11 @@ namespace GeometricComputations
                 positionOnEllipsoid.Z * _oneOverRadiiSquared.Z).Normalize();
         }
         
+        /// <summary>
+        /// Converts a <see cref="Cartographic"/> point to a <see cref="Cartesian"/> point based on the Ellipsoid.
+        /// </summary>
+        /// <param name="cartographic">The point to convert.</param>
+        /// <returns>The transformed <see cref="Cartesian"/> point.</returns>
         public Cartesian ToCartesian(Cartographic cartographic)
         {
             Cartesian n = GeodeticSurfaceNormal(cartographic);

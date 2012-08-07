@@ -4,7 +4,7 @@ using CesiumLanguageWriter;
 namespace ShapefileToCesiumLanguage
 {
     /// <summary>
-    /// Stores data about the shapefile.
+    /// Contains the <see cref="CesiumOutputStream"/> and <see cref="CesiumStreamWriter"/> for converting to CZML.
     /// </summary>
     public class CzmlDocument
     {

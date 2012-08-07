@@ -5,6 +5,9 @@ using CesiumLanguageWriter;
 
 namespace GeometricComputations
 {
+    /// <summary>
+    /// A class containing methods for manipulating polygons, including simplifying polygons with holes.
+    /// </summary>
     public static class PolygonAlgorithms
     {
         /// <summary>
@@ -266,10 +269,10 @@ namespace GeometricComputations
         /// Given a polygon defined by an outer ring with one or more inner rings (holes), return a single list of points representing
         /// a polygon with a hole added to it. The added hole is removed from <paramref name="innerRings"/>.
         /// </summary>
-        /// <param name="outerRing">A list of Cartesian points defining the outer polygon.</param>
-        /// <param name="innerRings">A list of lists of Cartesian points, each list defining a "hole" in the outer polygon.</param>
+        /// <param name="outerRing">A list of Cartographic points defining the outer polygon.</param>
+        /// <param name="innerRings">A list of lists of Cartographic points, each list defining a "hole" in the outer polygon.</param>
         /// <returns>A single list of Cartographic points defining the polygon, including the eliminated inner ring.</returns>
-        public static List<Cartographic> EliminateHole(List<Cartographic> outerRing, ref List<List<Cartographic>> innerRings)
+        public static List<Cartographic> EliminateHole(List<Cartographic> outerRing, List<List<Cartographic>> innerRings)
         {
             // Convert from LLA -> XYZ and project points onto a tangent plane to find the mutually visible vertex.
             List<Cartesian> cartesianOuterRing = new List<Cartesian>();

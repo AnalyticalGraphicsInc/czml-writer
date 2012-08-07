@@ -5,7 +5,7 @@ namespace GeometricComputations
 {
     public static class IntersectionTests
     {
-        public static bool TryRayPlane(
+        public static bool TryIntersectRayPlane(
             Cartesian rayOrigin,
             Cartesian rayDirection,
             Cartesian planeNormal,

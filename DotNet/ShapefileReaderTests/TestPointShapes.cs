@@ -29,7 +29,6 @@ namespace ShapefileReaderTests
          [Test]
          public void TestPointShapePosition()
          {
-             
              PointShape point = new PointShape(1, m_metadata, m_position);
              Assert.That(point.Position.Equals(new Cartographic(Constants.RadiansPerDegree, 2.0 * Constants.RadiansPerDegree, 0.0)));
          }

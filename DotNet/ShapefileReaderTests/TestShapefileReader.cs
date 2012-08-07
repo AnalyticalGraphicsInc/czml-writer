@@ -48,7 +48,7 @@ namespace ShapefileReaderTests
         public void TestGetRecordNumber()
         {
             Shape shape = m_reader[0];
-            Assert.That(shape.RecordNumber == 1);
+            Assert.AreEqual(1, shape.RecordNumber);
         }
 
         [Test]
@@ -56,6 +56,14 @@ namespace ShapefileReaderTests
         {
             shapefileName = "SampleShapefiles/test.shp";
             Assert.Throws(typeof(InvalidDataException), () => m_reader = new ShapefileReader(shapefileName));
+        }
+
+        [Test]
+        public void ReadPointShapes()
+        {
+            shapefileName = "SampleShapefiles/Cities.shp";
+            m_reader = new ShapefileReader(shapefileName);
+            Assert.AreEqual(87, m_reader.Count);
         }
     }
 }

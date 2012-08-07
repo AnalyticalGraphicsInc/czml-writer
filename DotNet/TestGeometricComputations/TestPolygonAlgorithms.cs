@@ -41,7 +41,7 @@ namespace TestGeometricComputations
             };
             int expectedResult = 3;
             int result = PolygonAlgorithms.GetRightmostVertexIndex(ring);
-            Assert.That(expectedResult == result);
+            Assert.AreEqual(expectedResult, result);
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace TestGeometricComputations
 
             int expectedResult = 1;
             int result = PolygonAlgorithms.GetRightmostRingIndex(rings);
-            Assert.That(expectedResult == result);
+            Assert.AreEqual(expectedResult, result);
         }
 
         [Test]
@@ -124,34 +124,34 @@ namespace TestGeometricComputations
             Cartesian point = new Cartesian(0.5, 0.5, 0.0);
             Cartesian expectedResult = new Cartesian(1.0, 0.5, 0.0);
             Cartesian result = PolygonAlgorithms.IntersectPointWithRing(point, ring);
-            Assert.That(result.Equals(expectedResult));
+            Assert.AreEqual(expectedResult, result);
         }
         
         [Test]
         public void TestFindMutuallyVisibleVertex()
         {
             List<Cartesian> outerRing = new List<Cartesian> {
-                new Cartesian(0.0, 5.0, 0.0),
-                new Cartesian(5.0, 10.0, 0.0),
-                new Cartesian(10.0, 5.0, 0.0),
-                new Cartesian(5.0, 0.0, 0.0),
-                new Cartesian(0.0, 5.0, 0.0)
+                Ellipsoid.Wgs84.ToCartesian(new Cartographic(-122.0, 37.0, 0.0)),
+                Ellipsoid.Wgs84.ToCartesian(new Cartographic(-122.0, 37.1, 0.0)),
+                Ellipsoid.Wgs84.ToCartesian(new Cartographic(-121.9, 37.1, 0.0)),
+                Ellipsoid.Wgs84.ToCartesian(new Cartographic(-121.9, 37.0, 0.0)),
+                Ellipsoid.Wgs84.ToCartesian(new Cartographic(-122.0, 37.0, 0.0))
             };
 
             List<Cartesian> innerRing = new List<Cartesian> {
-                new Cartesian(3.0, 7.0, 0.0),
-                new Cartesian(3.0, 3.0, 0.0),
-                new Cartesian(7.0, 3.0, 0.0),
-                new Cartesian(7.0, 7.0, 0.0),
-                new Cartesian(3.0, 7.0, 0.0)
+                Ellipsoid.Wgs84.ToCartesian(new Cartographic(-121.99, 37.01, 0.0)),
+                Ellipsoid.Wgs84.ToCartesian(new Cartographic(-121.96, 37.01, 0.0)),
+                Ellipsoid.Wgs84.ToCartesian(new Cartographic(-121.96, 37.04, 0.0)),
+                Ellipsoid.Wgs84.ToCartesian(new Cartographic(-121.99, 37.04, 0.0)),
+                Ellipsoid.Wgs84.ToCartesian(new Cartographic(-121.99, 37.01, 0.0))
             };
 
             List<List<Cartesian>> innerRings = new List<List<Cartesian>>();
             innerRings.Add(innerRing);
 
-            int expectedResult = 3;
+            int expectedResult = 1;
             int result = PolygonAlgorithms.GetMutuallyVisibleVertexIndex(outerRing, innerRings);
-            Assert.That(result == expectedResult);
+            Assert.AreEqual(expectedResult, result);
         }
 
         [Test]
@@ -176,9 +176,9 @@ namespace TestGeometricComputations
             List<List<Cartographic>> innerRings = new List<List<Cartographic>>();
             innerRings.Add(innerRing);
 
-            List<Cartographic> result = PolygonAlgorithms.EliminateHole(outerRing, ref innerRings);
+            List<Cartographic> result = PolygonAlgorithms.EliminateHole(outerRing, innerRings);
 
-            Assert.That(innerRings.Count == 0);
+            Assert.AreEqual(0, innerRings.Count);
         }
     }
 }

@@ -7,7 +7,7 @@ using CesiumLanguageWriter;
 
 namespace Shapefile
 {
-    public class PolygonShape : Shape
+    public class PolygonShape : Shape, IEnumerable
     {
         public PolygonShape(
             int recordNumber,
@@ -66,9 +66,14 @@ namespace Shapefile
             get { return _parts.Length; }
         }
 
-        public IEnumerator<Cartesian> GetEnumerator()
+        public IEnumerator GetEnumerator()
         {
-            return (IEnumerator<Cartesian>)_parts.GetEnumerator();
+            return _parts.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
 
         private readonly CartographicExtent _extent;

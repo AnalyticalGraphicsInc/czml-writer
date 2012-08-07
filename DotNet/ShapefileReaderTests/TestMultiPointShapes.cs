@@ -62,8 +62,8 @@ namespace ShapefileReaderTests
         {
             double[] measures = new double[] { 0.0, 1.0 };
             MultiPointMShape points = new MultiPointMShape(m_recordNumber, m_metadata, m_extent, m_positions, 0.0, 1.0, measures);
-            Assert.That(points.Measures[0].Equals(measures[0]));
-            Assert.That(points.Measures[1].Equals(measures[1]));
+            Assert.That(points.GetMeasure(0).Equals(measures[0]));
+            Assert.That(points.GetMeasure(1).Equals(measures[1]));
         }
 
         [Test]

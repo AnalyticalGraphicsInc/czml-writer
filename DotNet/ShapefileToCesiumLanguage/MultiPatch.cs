@@ -7,14 +7,26 @@ using CesiumLanguageWriter;
 
 namespace ShapefileToCesiumLanguage
 {
+    /// <summary>
+    /// A MultiPatch <see cref="CzmlShape"/>. 
+    /// </summary>
     public class MultiPatch : CzmlShape
     {
+        /// <summary>
+        /// Constructs a new multipatch <see cref="CzmlShape"/> from a <see cref="MultiPatchShape"/>.
+        /// </summary>
+        /// <param name="multiPatch">The shapefile multipatch shape</param>.
+        /// <param name="document">The <see cref="CzmlDocument"/> to which the shape's CZML is written.</param>
+        /// <param name="color">A color for the shape's visualization.</param>
         public MultiPatch(MultiPatchShape multiPatch, CzmlDocument document, Color color)
             : base(document, color)
         {
             m_shape = multiPatch;
         }
 
+        /// <summary>
+        /// Writes the MultiPatch shape to its <see cref="CzmlDocument"/> as a series of polygon packets.
+        /// </summary>
         public override void Write()
         {
             MultiPatchShape multipatch = (MultiPatchShape)m_shape;

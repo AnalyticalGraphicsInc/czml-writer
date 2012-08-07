@@ -4,7 +4,7 @@ using CesiumLanguageWriter;
 
 namespace Shapefile
 {
-    public class PolylineShape : Shape
+    public class PolylineShape : Shape, IEnumerable
     {
         public PolylineShape(
             int recordNumber,
@@ -54,6 +54,11 @@ namespace Shapefile
         public IEnumerator GetEnumerator()
         {
             return _parts.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
 
         private readonly CartographicExtent _extent;
