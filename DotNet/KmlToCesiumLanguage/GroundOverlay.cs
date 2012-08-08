@@ -81,6 +81,10 @@ namespace KmlToCesiumLanguage
                             using (var image = material.OpenImageProperty())
                             {
                                 string href = iconElement.Element(m_document.Namespace + "href").Value;
+                                if (m_document.ParentUri != null)
+                                {
+                                    href = new Uri(m_document.ParentUri, href).AbsoluteUri;
+                                }
                                 image.WriteImageProperty(href, m_document.ImageResolver);
                             }
                         }

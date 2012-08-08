@@ -47,6 +47,9 @@ namespace KmlToCesiumLanguage
             get { return m_writer; }
         }
 
+        /// <summary>
+        /// Gets the parent URI. Used in resolving networklinks.
+        /// </summary>
         public Uri ParentUri
         {
             get { return m_parentUri; }

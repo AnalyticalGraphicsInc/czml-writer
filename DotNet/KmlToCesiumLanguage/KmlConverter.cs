@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Drawing;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using Ionic.Zip;
-using System.Collections.Generic;
 
 namespace KmlToCesiumLanguage
 {
@@ -21,6 +20,7 @@ namespace KmlToCesiumLanguage
         /// <param name="inputReader">A reader for a KML document.</param>
         /// <param name="outputWriter">A writer that will receive the converted CZML document.</param>
         /// <param name="prettyFormatting">If true, produces larger, more readable.  False by default.</param>
+        /// <param name="parentUri">The parent URI.</param>
         public static void KmlToCesiumLanguage(TextReader inputReader,
                                                TextWriter outputWriter,
                                                bool prettyFormatting = false,
@@ -46,6 +46,7 @@ namespace KmlToCesiumLanguage
         /// <param name="inputStream">A stream for a KMZ file.</param>
         /// <param name="outputWriter">A writer that will receive the converted CZML document.</param>
         /// <param name="prettyFormatting">If true, produces larger, more readable.  False by default.</param>
+        /// <param name="parentUri">The parent URI.</param>
         public static void KmzToCesiumLanguage(Stream inputStream,
                                                TextWriter outputWriter,
                                                bool prettyFormatting = false,
