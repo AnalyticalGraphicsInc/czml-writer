@@ -14,6 +14,8 @@ namespace KmlToCesiumLanguage
                 return new Placemark(feature, document);
             if (feature.Name == document.Namespace + "GroundOverlay")
                 return new GroundOverlay(feature, document);
+            if (feature.Name == document.Namespace + "NetworkLink")
+                return new NetworkLink(feature, document);
             throw new NotImplementedException();
         }
     }

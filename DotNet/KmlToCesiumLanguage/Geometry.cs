@@ -26,9 +26,9 @@ namespace KmlToCesiumLanguage
         /// <summary>
         /// Writes the czml packet of the Kml geometry.
         /// </summary>
-        public void WritePacket()
+        public void WritePacket(CesiumOutputStream stream)
         {
-            using (this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
+            using (this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(stream))
             {
                 this.PacketWriter.WriteId(Guid.NewGuid().ToString());
                 Utility.WriteAvailability(m_placemark, this.PacketWriter, m_document.Namespace);

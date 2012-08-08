@@ -22,9 +22,9 @@ namespace KmlToCesiumLanguage
         }
 
         /// <inheritdoc />
-        public override void WritePacket()
+        public override void WritePacket(CesiumOutputStream stream)
         {
-            using (var packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
+            using (var packetWriter = m_document.CesiumStreamWriter.OpenPacket(stream))
             {
                 packetWriter.WriteId(Guid.NewGuid().ToString());
                 Utility.WriteAvailability(m_element, packetWriter, m_document.Namespace);

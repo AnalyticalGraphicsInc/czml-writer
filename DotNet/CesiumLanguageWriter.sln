@@ -37,6 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\Label.jsonschema = ..\Schema\Label.jsonschema
 		..\Schema\LabelStyle.jsonschema = ..\Schema\LabelStyle.jsonschema
 		..\Schema\LabelStyleValue.jsonschema = ..\Schema\LabelStyleValue.jsonschema
+		..\Schema\Layer.jsonschema = ..\Schema\Layer.jsonschema
 		..\Schema\Material.jsonschema = ..\Schema\Material.jsonschema
 		..\Schema\Orientation.jsonschema = ..\Schema\Orientation.jsonschema
 		..\Schema\Packet.jsonschema = ..\Schema\Packet.jsonschema

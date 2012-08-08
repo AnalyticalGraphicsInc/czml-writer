@@ -83,6 +83,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string CameraPropertyName = "camera";
 
+        /// <summary>
+        /// The name of the <code>layer</code> property.
+        /// </summary>
+        public const string LayerPropertyName = "layer";
+
         private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter(BillboardPropertyName), false);
         private readonly Lazy<PositionListCesiumWriter> m_vertexPositions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(VertexPositionsPropertyName), false);
@@ -95,6 +100,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<ConeCesiumWriter> m_cone = new Lazy<ConeCesiumWriter>(() => new ConeCesiumWriter(ConePropertyName), false);
         private readonly Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<PyramidCesiumWriter>(() => new PyramidCesiumWriter(PyramidPropertyName), false);
         private readonly Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(() => new CameraCesiumWriter(CameraPropertyName), false);
+        private readonly Lazy<LayerCesiumWriter> m_layer = new Lazy<LayerCesiumWriter>(() => new LayerCesiumWriter(LayerPropertyName), false);
 
         /// <summary>
         /// Writes the start of a new JSON object representing the packet.
@@ -553,6 +559,22 @@ namespace CesiumLanguageWriter
         public CameraCesiumWriter OpenCameraProperty()
         {
             return OpenAndReturn(CameraWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>layer</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>layer</code> property defines a layer.
+        /// </summary>
+        public LayerCesiumWriter LayerWriter
+        {
+            get { return m_layer.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>layer</code> property.  The <code>layer</code> property defines a layer.
+        /// </summary>
+        public LayerCesiumWriter OpenLayerProperty()
+        {
+            return OpenAndReturn(LayerWriter);
         }
 
     }

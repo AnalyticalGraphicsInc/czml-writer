@@ -64,6 +64,10 @@
         "camera": {
             "$ref": "Camera.jsonschema",
             "description": "A camera."
-        }
+        },
+		"layer": {
+		    "$ref": "Layer.jsonschema",
+			"description": "A layer."
+		}
     }
 }

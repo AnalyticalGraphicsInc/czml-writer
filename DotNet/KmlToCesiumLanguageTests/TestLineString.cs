@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using KmlToCesiumLanguage;
 using System.Xml.Linq;
+using CesiumLanguageWriter;
 
 namespace KmlToCesiumLanguageTests
 {
@@ -15,7 +16,7 @@ namespace KmlToCesiumLanguageTests
         public void SetUp()
         {
             m_stringWriter = new StringWriter();
-            m_document = new CzmlDocument(m_stringWriter);
+            m_document = new CzmlDocument();
         }
 
         [Test]
@@ -31,7 +32,8 @@ namespace KmlToCesiumLanguageTests
                                                       new XElement("coordinates", "-68.736144,37.34996200000001,105045.668999999 -68.73866678120611,37.3482063896964,105041.867978398")));
 
             var lineString = new LineString(placemark.Element("LineString"), m_document, placemark);
-            lineString.WritePacket();
+            using (var outputstream = new CesiumOutputStream(m_stringWriter))
+                lineString.WritePacket(outputstream);
 
             string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"availability\":\"20071206T1631Z/20071206T164018.0400000000009Z\""));
@@ -46,7 +48,8 @@ namespace KmlToCesiumLanguageTests
                                                       new XElement("coordinates", "-68.736144,37.34996200000001,105045.668999999 -68.73866678120611,37.3482063896964,105041.867978398")));
 
             var lineString = new LineString(placemark.Element("LineString"), m_document, placemark);
-            lineString.WritePacket();
+            using (var outputstream = new CesiumOutputStream(m_stringWriter))
+                lineString.WritePacket(outputstream);
 
             string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.199672027924945,0.6518798123947666,105045.668999999,-1.1997160587632991,0.6518491712145866,105041.867978398]}"));
@@ -65,7 +68,8 @@ namespace KmlToCesiumLanguageTests
                                                       new XElement("coordinates", "-68.736144,37.34996200000001,105045.668999999 -68.73866678120611,37.3482063896964,105041.867978398")));
 
             var lineString = new LineString(placemark.Element("LineString"), m_document, placemark);
-            lineString.WritePacket();
+            using (var outputstream = new CesiumOutputStream(m_stringWriter))
+                lineString.WritePacket(outputstream);
 
             string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"polyline\":{\"color\":{\"rgba\":[255,255,255,255]},\"width\":2.0,\"outlineWidth\":0.0}"));
@@ -80,7 +84,8 @@ namespace KmlToCesiumLanguageTests
                                                       new XElement("coordinates", "-68.736144,37.34996200000001 -68.73866678120611,37.3482063896964")));
 
             var lineString = new LineString(placemark.Element("LineString"), m_document, placemark);
-            lineString.WritePacket();
+            using (var outputstream = new CesiumOutputStream(m_stringWriter))
+                lineString.WritePacket(outputstream);
 
             string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.199672027924945,0.6518798123947666,0.0,-1.1997160587632991,0.6518491712145866,0.0]}"));
@@ -96,7 +101,8 @@ namespace KmlToCesiumLanguageTests
                                                       new XElement("coordinates", "-68.736144,37.34996200000001,105045.668999999 -68.73866678120611,37.3482063896964,105045.668999999")));
 
             var lineString = new LineString(placemark.Element("LineString"), m_document, placemark);
-            lineString.WritePacket();
+            using (var outputstream = new CesiumOutputStream(m_stringWriter))
+                lineString.WritePacket(outputstream);
 
             string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.199672027924945,0.6518798123947666,0.0,-1.1997160587632991,0.6518491712145866,0.0]}"));

@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using System;
 
 namespace KmlToCesiumLanguage
 {
@@ -13,11 +14,11 @@ namespace KmlToCesiumLanguage
         /// <summary>
         /// Initializes a new instance of the <see cref="CzmlDocument"/> class.
         /// </summary>
-        public CzmlDocument(TextWriter outputWriter)
+        public CzmlDocument(Uri parentUri = null)
         {
-            m_output = new CesiumOutputStream(outputWriter);
             m_writer = new CesiumStreamWriter();
             m_imageResolver = new CachingCesiumUrlResolver(int.MaxValue);
+            m_parentUri = parentUri;
             Namespace = "";
         }
 
@@ -37,13 +38,6 @@ namespace KmlToCesiumLanguage
         /// </value>
         public XNamespace Namespace { get; set; }
 
-        /// <summary>
-        /// Gets the cesium output stream.
-        /// </summary>
-        public CesiumOutputStream CesiumOutputStream
-        {
-            get { return m_output; }
-        }
 
         /// <summary>
         /// Gets the cesium stream writer.
@@ -53,8 +47,13 @@ namespace KmlToCesiumLanguage
             get { return m_writer; }
         }
 
-        private readonly CesiumOutputStream m_output;
+        public Uri ParentUri
+        {
+            get { return m_parentUri; }
+        }
+
         private readonly CesiumStreamWriter m_writer;
         private readonly CachingCesiumUrlResolver m_imageResolver;
+        private readonly Uri m_parentUri;
     }
 }
