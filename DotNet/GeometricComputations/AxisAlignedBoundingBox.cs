@@ -64,7 +64,7 @@ namespace GeometricComputations
             Cartesian minimum = new Cartesian(minimumX, minimumY, minimumZ);
             Cartesian maximum = new Cartesian(maximumX, maximumY, maximumZ);
 
-            if (minimum.IsGreaterThan(maximum))
+            if (minimum.AllComponentsAreGreaterThan(maximum))
             {
                 Cartesian temp = minimum;
                 minimum = maximum;
@@ -76,7 +76,7 @@ namespace GeometricComputations
         }
 
         /// <summary>
-        /// The minimum point defining the bounding box.
+        /// Gets the minimum point defining the bounding box.
         /// </summary>
         public Cartesian Minimum
         {
@@ -84,7 +84,7 @@ namespace GeometricComputations
         }
 
         /// <summary>
-        /// The maximum point defining the bounding box.
+        /// Gets the maximum point defining the bounding box.
         /// </summary>
         public Cartesian Maximum
         {
@@ -92,7 +92,7 @@ namespace GeometricComputations
         }
 
         /// <summary>
-        /// The center point of the bounding box.
+        /// Gets the center point of the bounding box.
         /// </summary>
         public Cartesian Center
         {

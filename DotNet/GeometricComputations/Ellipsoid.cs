@@ -22,7 +22,7 @@ namespace GeometricComputations
         public static readonly Ellipsoid UnitSphere = new Ellipsoid(new Cartesian(1.0, 1.0, 1.0));
         
         /// <summary>
-        /// Constructs a new instance of an Ellipsoid with specific radii.
+        /// Initializes a new instance with specific radii.
         /// </summary>
         /// <param name="radii">The ellipsoid's radius in the x, y, and z directions</param>
         public Ellipsoid(Cartesian radii)

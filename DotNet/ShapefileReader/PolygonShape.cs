@@ -7,7 +7,7 @@ using CesiumLanguageWriter;
 
 namespace Shapefile
 {
-    public class PolygonShape : Shape, IEnumerable
+    public class PolygonShape : Shape, IEnumerable<ShapePart>
     {
         public PolygonShape(
             int recordNumber,
@@ -29,13 +29,13 @@ namespace Shapefile
                 positions[i] = new Rectangular(positions[i].X * Constants.RadiansPerDegree, positions[i].Y * Constants.RadiansPerDegree);
             }
 
-            _parts = new ShapePart[parts.Length];
+            _parts = new List<ShapePart>(parts.Length);
             for (int i = 0; i < parts.Length; ++i)
             {
                 int count = ((i == parts.Length - 1) ?
                     positions.Length : parts[i + 1]) - parts[i];
 
-                _parts[i] = new ShapePart(positions, parts[i], count);
+                _parts.Add(new ShapePart(positions, parts[i], count));
             }
         }
 
@@ -48,7 +48,7 @@ namespace Shapefile
             : base(recordNumber, metadata, shapeType)
         {
             _extent = extent;
-            _parts = parts;
+            _parts = new List<ShapePart>(parts);
         }
 
         public CartographicExtent Extent
@@ -63,10 +63,10 @@ namespace Shapefile
 
         public int Count
         {
-            get { return _parts.Length; }
+            get { return _parts.Count; }
         }
 
-        public IEnumerator GetEnumerator()
+        public IEnumerator<ShapePart> GetEnumerator()
         {
             return _parts.GetEnumerator();
         }
@@ -77,6 +77,6 @@ namespace Shapefile
         }
 
         private readonly CartographicExtent _extent;
-        protected ShapePart[] _parts;
+        protected List<ShapePart> _parts;
     }
 }

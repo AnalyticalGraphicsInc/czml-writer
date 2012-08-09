@@ -30,7 +30,7 @@ namespace ShapefileReaderTests
                                                "name_sort", "pop_est", "postal", "scalerank", "sov_a3", "sovereignt",
                                                "su_a3", "su_dif", "subunit", "terr_", "type"
             };
-            CollectionAssert.AreEqual(keys, expected);
+            CollectionAssert.AreEqual(expected, keys);
         }
 
         [Test]
@@ -41,7 +41,7 @@ namespace ShapefileReaderTests
             Assert.That(value.Equals("Afg."));
 
             value = shape.GetMetadataValue("pop_est");
-            Assert.That(value.Equals("28400000.00"));
+            Assert.AreEqual("28400000.00", value, "Metadata does not equal expected value.");
         }
 
         [Test]

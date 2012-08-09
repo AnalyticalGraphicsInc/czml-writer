@@ -29,15 +29,15 @@ namespace ShapefileReaderTests
         public void TestMultiPointShapeType()
         {
             MultiPointShape points = new MultiPointShape(m_recordNumber, m_metadata, m_extent, m_positions);
-            Assert.That(points.ShapeType == ShapeType.MultiPoint);
+            Assert.AreEqual(ShapeType.MultiPoint, points.ShapeType);
         }
 
         [Test]
         public void TestMultiPointShapePosition()
         {
             MultiPointShape points = new MultiPointShape(m_recordNumber, m_metadata, m_extent, m_positions);
-            Assert.That(points[0].Equals(m_positions[0]));
-            Assert.That(points[1].Equals(new Cartographic(Constants.RadiansPerDegree, Constants.RadiansPerDegree, 1.0)));
+            Assert.AreEqual(m_positions[0], points[0]);
+            Assert.AreEqual(new Cartographic(Constants.RadiansPerDegree, Constants.RadiansPerDegree, 1.0), points[1]);
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace ShapefileReaderTests
         {
             double[] measures = new double[] { 0.0, 1.0};
             MultiPointMShape point = new MultiPointMShape(m_recordNumber, m_metadata, m_extent, m_positions, 0.0, 1.0, measures);
-            Assert.That(point.ShapeType == ShapeType.MultiPointM);
+            Assert.AreEqual(ShapeType.MultiPointM, point.ShapeType);
         }
 
         [Test]
@@ -53,8 +53,8 @@ namespace ShapefileReaderTests
         {
             double[] measures = new double[] { 0.0, 1.0 };
             MultiPointMShape points = new MultiPointMShape(m_recordNumber, m_metadata, m_extent, m_positions, 0.0, 1.0, measures);
-            Assert.That(points[0].Equals(m_positions[0]));
-            Assert.That(points[1].Equals(new Cartographic(Constants.RadiansPerDegree, Constants.RadiansPerDegree, 1.0)));
+            Assert.AreEqual(m_positions[0], points[0]);
+            Assert.AreEqual(new Cartographic(Constants.RadiansPerDegree, Constants.RadiansPerDegree, 1.0), points[1]);
         }
 
         [Test]
@@ -62,8 +62,8 @@ namespace ShapefileReaderTests
         {
             double[] measures = new double[] { 0.0, 1.0 };
             MultiPointMShape points = new MultiPointMShape(m_recordNumber, m_metadata, m_extent, m_positions, 0.0, 1.0, measures);
-            Assert.That(points.GetMeasure(0).Equals(measures[0]));
-            Assert.That(points.GetMeasure(1).Equals(measures[1]));
+            Assert.AreEqual(measures[0], points.GetMeasure(0));
+            Assert.AreEqual(measures[1], points.GetMeasure(1));
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace ShapefileReaderTests
         {
             double[] measures = new double[] { 0.0, 1.0 };
             MultiPointZShape points = new MultiPointZShape(m_recordNumber, m_metadata, m_extent, m_positions,0.0, 1.0, 0.0, 1.0, measures);
-            Assert.That(points.ShapeType == ShapeType.MultiPointZ);
+            Assert.AreEqual(ShapeType.MultiPointZ, points.ShapeType);
         }
 
         [Test]
@@ -79,8 +79,8 @@ namespace ShapefileReaderTests
         {
             double[] measures = new double[] { 0.0, 1.0 };
             MultiPointZShape points = new MultiPointZShape(m_recordNumber, m_metadata, m_extent, m_positions, 0.0, 1.0, 0.0, 1.0, measures);
-            Assert.That(points[0].Equals(m_positions[0]));
-            Assert.That(points[1].Equals(new Cartographic(Constants.RadiansPerDegree, Constants.RadiansPerDegree, 1.0)));
+            Assert.AreEqual(m_positions[0], points[0]);
+            Assert.AreEqual(new Cartographic(Constants.RadiansPerDegree, Constants.RadiansPerDegree, 1.0), points[1]);
         }
     }
 }

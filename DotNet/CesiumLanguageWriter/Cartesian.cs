@@ -290,7 +290,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
         /// <returns><see langword="true"/> if all components of this Cartesian are greater than all components of <paramref name="other"/></returns>
-        public bool IsGreaterThan(Cartesian other)
+        public bool AllComponentsAreGreaterThan(Cartesian other)
         {
             return (m_x > other.X) && (m_y > other.Y) && (m_z > other.Z);
         }
@@ -300,7 +300,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
         /// <returns><see langword="true"/> if all components of this <see cref="Cartesian"/> are greater than or equal to all components of <paramref name="other"/></returns>
-        public bool IsGreaterThanOrEqualTo(Cartesian other)
+        public bool AllComponentsAreGreaterThanOrEqualTo(Cartesian other)
         {
             return (m_x >= other.X) && (m_y >= other.Y) && (m_z >= other.Z);
         }
@@ -310,7 +310,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
         /// <returns><see langword="true"/> if all components of this <see cref="Cartesian"/> are less than all components of <paramref name="other"/></returns>
-        public bool IsLessThan(Cartesian other)
+        public bool AllComponentsAreLessThan(Cartesian other)
         {
             return (m_x < other.X) && (m_y < other.Y) && (m_z < other.Z);
         }
@@ -320,7 +320,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
         /// <returns><see langword="true"/> if all components of this <see cref="Cartesian"/> are less than or equal to all components of <paramref name="other"/></returns>
-        public bool IsLessThanOrEqualTo(Cartesian other)
+        public bool AllComponentsAreLessThanOrEqualTo(Cartesian other)
         {
             return (m_x <= other.X) && (m_y <= other.Y) && (m_z <= other.Z);
         }

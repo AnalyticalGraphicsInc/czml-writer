@@ -10,7 +10,7 @@ namespace GeometricComputations
     public class EllipsoidTangentPlane
     {
         /// <summary>
-        /// Constructs a new EllipsoidTangentPlane tangent to <paramref name="ellipsoid"/> at 
+        /// Initializes a new instance tangent to <paramref name="ellipsoid"/> at 
         /// the center of a bounded set of <paramref name="positions"/>.
         /// </summary>
         /// <param name="ellipsoid">The ellipsoid .</param>

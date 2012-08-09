@@ -42,7 +42,7 @@ namespace ShapefileToCesiumLanguageTests
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
             Regex pointPattern = new Regex(m_pointPattern);
             string result = m_stringWriter.ToString();
-            Assert.That(pointPattern.Matches(result).Count == 37);
+            Assert.AreEqual(37, pointPattern.Matches(result).Count);
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace ShapefileToCesiumLanguageTests
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
             string result = m_stringWriter.ToString();
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, m_pointPattern));
+            Assert.IsTrue(System.Text.RegularExpressions.Regex.IsMatch(result, m_pointPattern));
         }
 
         [Test]
@@ -64,7 +64,7 @@ namespace ShapefileToCesiumLanguageTests
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
             Regex polylinePattern = new Regex(m_polylinePattern);
             string result = m_stringWriter.ToString();
-            Assert.That(polylinePattern.Matches(result).Count == 11);
+            Assert.AreEqual(11, polylinePattern.Matches(result).Count);
         }
 
         [Test]
@@ -86,7 +86,7 @@ namespace ShapefileToCesiumLanguageTests
             Polyline polyline = new Polyline(polylineZShape, m_document, Color.Blue);
             polyline.Write();
             string result = m_stringWriter.ToString();
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, m_polylinePattern));
+            Assert.IsTrue(System.Text.RegularExpressions.Regex.IsMatch(result, m_polylinePattern));
         }
 
         [Test]
@@ -96,7 +96,7 @@ namespace ShapefileToCesiumLanguageTests
             ShapefileReader reader = new ShapefileReader(shapefileName);
             ShapefileConverter.ShapefileToCesiumLanguage(reader, m_document, Color.Blue);
             string result = m_stringWriter.ToString();
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, m_polygonPattern));
+            Assert.IsTrue(System.Text.RegularExpressions.Regex.IsMatch(result, m_polygonPattern));
         }
 
         [Test]
@@ -129,7 +129,7 @@ namespace ShapefileToCesiumLanguageTests
             Polygon polygon = new Polygon(polygonZShape, m_document, Color.Blue);
             polygon.Write();
             string result = m_stringWriter.ToString();
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, m_polygonPattern));
+            Assert.IsTrue(System.Text.RegularExpressions.Regex.IsMatch(result, m_polygonPattern));
         }
 
         [Test]
@@ -173,7 +173,7 @@ namespace ShapefileToCesiumLanguageTests
             polygon.Write();
             string result = m_stringWriter.ToString();
             Regex polygonPattern = new Regex(m_polygonPattern);
-            Assert.That(polygonPattern.Matches(result).Count == 1);
+            Assert.AreEqual(1, polygonPattern.Matches(result).Count);
         }
 
         [Test]
@@ -211,7 +211,7 @@ namespace ShapefileToCesiumLanguageTests
             polygon.Write();
             string result = m_stringWriter.ToString();
             Regex polygonPattern = new Regex(m_polygonPattern);
-            Assert.That(polygonPattern.Matches(result).Count == 2);
+            Assert.AreEqual(2, polygonPattern.Matches(result).Count);
         }
 
         [Test]
@@ -242,7 +242,7 @@ namespace ShapefileToCesiumLanguageTests
             MultiPatch patch = new MultiPatch(multipatch, m_document, Color.Blue);
             patch.Write();
             string result = m_stringWriter.ToString();
-            Assert.That(System.Text.RegularExpressions.Regex.IsMatch(result, m_polygonPattern));
+            Assert.IsTrue(System.Text.RegularExpressions.Regex.IsMatch(result, m_polygonPattern));
         }
 
         [Test]
@@ -274,7 +274,7 @@ namespace ShapefileToCesiumLanguageTests
             patch.Write();
             string result = m_stringWriter.ToString();
             Regex polygonPattern = new Regex(m_polygonPattern);
-            Assert.That(polygonPattern.Matches(result).Count == 2);
+            Assert.AreEqual(2, polygonPattern.Matches(result).Count);
         }
 
         [Test]
@@ -302,7 +302,7 @@ namespace ShapefileToCesiumLanguageTests
             patch.Write();
             string result = m_stringWriter.ToString();
             Regex trianglePattern = new Regex(m_trianglePattern);
-            Assert.That(trianglePattern.Matches(result).Count == 5);
+            Assert.AreEqual(5, trianglePattern.Matches(result).Count);
         }
 
         [Test]
@@ -330,7 +330,7 @@ namespace ShapefileToCesiumLanguageTests
             patch.Write();
             string result = m_stringWriter.ToString();
             Regex trianglePattern = new Regex(m_trianglePattern);
-            Assert.That(trianglePattern.Matches(result).Count == 5);
+            Assert.AreEqual(5, trianglePattern.Matches(result).Count);
         }
 
         [Test]
@@ -347,7 +347,7 @@ namespace ShapefileToCesiumLanguageTests
             mp.Write();
             string result = m_stringWriter.ToString();
             Regex pointPattern = new Regex(m_pointPattern);
-            Assert.That(pointPattern.Matches(result).Count == 3);
+            Assert.AreEqual(3, pointPattern.Matches(result).Count);
         }
     }
 }
