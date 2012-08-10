@@ -3,7 +3,6 @@ package cesiumlanguagewriter.advanced;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentException;
-import agi.foundation.compatibility.ConvertHelper;
 import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.HttpWebRequest;
 import agi.foundation.compatibility.ImageFormat;
@@ -193,7 +192,7 @@ public final class CesiumFormattingHelper {
 				int bytesRead;
 				while ((bytesRead = StreamHelper.read(dataStream, buffer, 0, buffer.length)) > 0)
 					memoryStream.write(buffer, 0, bytesRead);
-				builder.append(ConvertHelper.toBase64String(memoryStream.getBuffer(), 0, (int) memoryStream.getLength()));
+				builder.append(Convert.toBase64String(memoryStream.getBuffer(), 0, (int) memoryStream.getLength()));
 			} finally {
 				DisposeHelper.dispose(memoryStream);
 			}

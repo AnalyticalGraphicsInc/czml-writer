@@ -6,7 +6,6 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.ImageCesiumWriter;
 import java.awt.image.RenderedImage;
 
 /**
@@ -23,8 +22,8 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	 */
 	public static final String ImagePropertyName = "image";
-	private Lazy<ImageCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.ImageCesiumWriter>(new Func1<cesiumlanguagewriter.ImageCesiumWriter>() {
-		public cesiumlanguagewriter.ImageCesiumWriter invoke() {
+	private Lazy<ImageCesiumWriter> m_image = new Lazy<ImageCesiumWriter>(new Func1<ImageCesiumWriter>() {
+		public ImageCesiumWriter invoke() {
 			return new ImageCesiumWriter(ImagePropertyName);
 		}
 	}, false);

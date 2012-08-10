@@ -6,7 +6,6 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.BooleanCesiumWriter;
 
 /**
  *  
@@ -22,8 +21,8 @@ public class CameraCesiumWriter extends CesiumPropertyWriter<CameraCesiumWriter>
 
 	 */
 	public static final String EnablePropertyName = "enable";
-	private Lazy<BooleanCesiumWriter> m_enable = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
-		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+	private Lazy<BooleanCesiumWriter> m_enable = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
+		public BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(EnablePropertyName);
 		}
 	}, false);

@@ -31,6 +31,11 @@
         "trailTime": {
             "$ref": "Double.jsonschema",
             "description": "The time behind the animation time, in seconds, to show the path."
+        },
+        "segments": {
+            "$ref": "TimeIntervalCollectionValue.jsonschema",
+             "description": "A list of intervals for which partial path segments will be displayed.",
+            "czmlValue": true
         }
-    }
+	}
 }

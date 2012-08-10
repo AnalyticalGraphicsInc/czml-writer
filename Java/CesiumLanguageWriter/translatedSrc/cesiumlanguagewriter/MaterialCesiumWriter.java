@@ -5,8 +5,6 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.ImageMaterialCesiumWriter;
-import cesiumlanguagewriter.SolidColorMaterialCesiumWriter;
 
 /**
  *  
@@ -29,13 +27,13 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
 
 	 */
 	public static final String ImagePropertyName = "image";
-	private Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>() {
-		public cesiumlanguagewriter.SolidColorMaterialCesiumWriter invoke() {
+	private Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<SolidColorMaterialCesiumWriter>(new Func1<SolidColorMaterialCesiumWriter>() {
+		public SolidColorMaterialCesiumWriter invoke() {
 			return new SolidColorMaterialCesiumWriter(SolidColorPropertyName);
 		}
 	}, false);
-	private Lazy<ImageMaterialCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.ImageMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.ImageMaterialCesiumWriter>() {
-		public cesiumlanguagewriter.ImageMaterialCesiumWriter invoke() {
+	private Lazy<ImageMaterialCesiumWriter> m_image = new Lazy<ImageMaterialCesiumWriter>(new Func1<ImageMaterialCesiumWriter>() {
+		public ImageMaterialCesiumWriter invoke() {
 			return new ImageMaterialCesiumWriter(ImagePropertyName);
 		}
 	}, false);
