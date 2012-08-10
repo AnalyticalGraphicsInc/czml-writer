@@ -6,6 +6,7 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.ColorCesiumWriter;
 import java.awt.Color;
 import java.util.List;
 
@@ -23,8 +24,8 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
 	 */
 	public static final String ColorPropertyName = "color";
-	private Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-		public ColorCesiumWriter invoke() {
+	private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+		public cesiumlanguagewriter.ColorCesiumWriter invoke() {
 			return new ColorCesiumWriter(ColorPropertyName);
 		}
 	}, false);

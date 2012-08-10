@@ -492,43 +492,6 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>path</code> property as a <code>segments</code> value.  The <code>path</code> property specifies a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
-        /// </summary>
-        /// <param name="value">The interval.</param>
-        public void WritePathProperty(TimeInterval value)
-        {
-            using (var writer = OpenPathProperty())
-            {
-                writer.WriteSegments(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>path</code> property as a <code>segments</code> value.  The <code>path</code> property specifies a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
-        /// </summary>
-        /// <param name="start">The earliest date of the interval.</param>
-        /// <param name="stop">The latest date of the interval.</param>
-        public void WritePathProperty(JulianDate start, JulianDate stop)
-        {
-            using (var writer = OpenPathProperty())
-            {
-                writer.WriteSegments(start, stop);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>path</code> property as a <code>segments</code> value.  The <code>path</code> property specifies a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
-        /// </summary>
-        /// <param name="value">The intervals.</param>
-        public void WritePathProperty(IList<TimeInterval> value)
-        {
-            using (var writer = OpenPathProperty())
-            {
-                writer.WriteSegments(value);
-            }
-        }
-
-        /// <summary>
         /// Gets the writer for the <code>polygon</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>polygon</code> property defines a polygon, which is a closed figure on the surface of the Earth.  The vertices of the polygon are specified by the `vertexPositions` property.
         /// </summary>
         public PolygonCesiumWriter PolygonWriter

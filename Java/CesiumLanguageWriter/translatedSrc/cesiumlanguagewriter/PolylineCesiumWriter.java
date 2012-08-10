@@ -6,6 +6,9 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.BooleanCesiumWriter;
+import cesiumlanguagewriter.ColorCesiumWriter;
+import cesiumlanguagewriter.DoubleCesiumWriter;
 import java.awt.Color;
 import java.util.List;
 
@@ -51,28 +54,28 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
 	 */
 	public static final String OutlineWidthPropertyName = "outlineWidth";
-	private Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
-		public BooleanCesiumWriter invoke() {
+	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
 		}
 	}, false);
-	private Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-		public ColorCesiumWriter invoke() {
+	private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+		public cesiumlanguagewriter.ColorCesiumWriter invoke() {
 			return new ColorCesiumWriter(ColorPropertyName);
 		}
 	}, false);
-	private Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-		public DoubleCesiumWriter invoke() {
+	private Lazy<DoubleCesiumWriter> m_width = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(WidthPropertyName);
 		}
 	}, false);
-	private Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-		public ColorCesiumWriter invoke() {
+	private Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+		public cesiumlanguagewriter.ColorCesiumWriter invoke() {
 			return new ColorCesiumWriter(OutlineColorPropertyName);
 		}
 	}, false);
-	private Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-		public DoubleCesiumWriter invoke() {
+	private Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(OutlineWidthPropertyName);
 		}
 	}, false);

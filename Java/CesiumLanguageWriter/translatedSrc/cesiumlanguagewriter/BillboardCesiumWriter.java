@@ -6,6 +6,14 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.BooleanCesiumWriter;
+import cesiumlanguagewriter.ColorCesiumWriter;
+import cesiumlanguagewriter.DoubleCesiumWriter;
+import cesiumlanguagewriter.EyeOffsetCesiumWriter;
+import cesiumlanguagewriter.HorizontalOriginCesiumWriter;
+import cesiumlanguagewriter.ImageCesiumWriter;
+import cesiumlanguagewriter.PixelOffsetCesiumWriter;
+import cesiumlanguagewriter.VerticalOriginCesiumWriter;
 import java.awt.Color;
 import java.awt.image.RenderedImage;
 import java.util.List;
@@ -73,43 +81,43 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	 */
 	public static final String VerticalOriginPropertyName = "verticalOrigin";
-	private Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-		public ColorCesiumWriter invoke() {
+	private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+		public cesiumlanguagewriter.ColorCesiumWriter invoke() {
 			return new ColorCesiumWriter(ColorPropertyName);
 		}
 	}, false);
-	private Lazy<EyeOffsetCesiumWriter> m_eyeOffset = new Lazy<EyeOffsetCesiumWriter>(new Func1<EyeOffsetCesiumWriter>() {
-		public EyeOffsetCesiumWriter invoke() {
+	private Lazy<EyeOffsetCesiumWriter> m_eyeOffset = new Lazy<cesiumlanguagewriter.EyeOffsetCesiumWriter>(new Func1<cesiumlanguagewriter.EyeOffsetCesiumWriter>() {
+		public cesiumlanguagewriter.EyeOffsetCesiumWriter invoke() {
 			return new EyeOffsetCesiumWriter(EyeOffsetPropertyName);
 		}
 	}, false);
-	private Lazy<HorizontalOriginCesiumWriter> m_horizontalOrigin = new Lazy<HorizontalOriginCesiumWriter>(new Func1<HorizontalOriginCesiumWriter>() {
-		public HorizontalOriginCesiumWriter invoke() {
+	private Lazy<HorizontalOriginCesiumWriter> m_horizontalOrigin = new Lazy<cesiumlanguagewriter.HorizontalOriginCesiumWriter>(new Func1<cesiumlanguagewriter.HorizontalOriginCesiumWriter>() {
+		public cesiumlanguagewriter.HorizontalOriginCesiumWriter invoke() {
 			return new HorizontalOriginCesiumWriter(HorizontalOriginPropertyName);
 		}
 	}, false);
-	private Lazy<ImageCesiumWriter> m_image = new Lazy<ImageCesiumWriter>(new Func1<ImageCesiumWriter>() {
-		public ImageCesiumWriter invoke() {
+	private Lazy<ImageCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.ImageCesiumWriter>(new Func1<cesiumlanguagewriter.ImageCesiumWriter>() {
+		public cesiumlanguagewriter.ImageCesiumWriter invoke() {
 			return new ImageCesiumWriter(ImagePropertyName);
 		}
 	}, false);
-	private Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<PixelOffsetCesiumWriter>(new Func1<PixelOffsetCesiumWriter>() {
-		public PixelOffsetCesiumWriter invoke() {
+	private Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<cesiumlanguagewriter.PixelOffsetCesiumWriter>(new Func1<cesiumlanguagewriter.PixelOffsetCesiumWriter>() {
+		public cesiumlanguagewriter.PixelOffsetCesiumWriter invoke() {
 			return new PixelOffsetCesiumWriter(PixelOffsetPropertyName);
 		}
 	}, false);
-	private Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-		public DoubleCesiumWriter invoke() {
+	private Lazy<DoubleCesiumWriter> m_scale = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(ScalePropertyName);
 		}
 	}, false);
-	private Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
-		public BooleanCesiumWriter invoke() {
+	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
 		}
 	}, false);
-	private Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<VerticalOriginCesiumWriter>(new Func1<VerticalOriginCesiumWriter>() {
-		public VerticalOriginCesiumWriter invoke() {
+	private Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<cesiumlanguagewriter.VerticalOriginCesiumWriter>(new Func1<cesiumlanguagewriter.VerticalOriginCesiumWriter>() {
+		public cesiumlanguagewriter.VerticalOriginCesiumWriter invoke() {
 			return new VerticalOriginCesiumWriter(VerticalOriginPropertyName);
 		}
 	}, false);

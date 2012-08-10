@@ -2,11 +2,12 @@ package cesiumlanguagewriter.advanced;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.LinkedList;
+import agi.foundation.compatibility.LinkedListNode;
 import agi.foundation.compatibility.MapHelper;
 import cesiumlanguagewriter.*;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
 /**
@@ -58,7 +59,7 @@ public class CachingCesiumUrlResolver implements ICesiumUrlResolver {
 	 */
 	public final String resolveUrl(String url) {
 		LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUrlResolver.CacheItem> node = null;
-		System.Collections.Generic.LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUrlResolver.CacheItem>[] out$node_1 = new System.Collections.Generic.LinkedListNode[] {
+		LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUrlResolver.CacheItem>[] out$node_1 = new LinkedListNode[] {
 			null
 		};
 		boolean temp_0 = MapHelper.tryGetValue(m_dictionary, url, out$node_1);
@@ -86,7 +87,7 @@ public class CachingCesiumUrlResolver implements ICesiumUrlResolver {
 	 * @param resolvedUrl The resolved URL.
 	 */
 	public final void addUrl(String sourceUrl, String resolvedUrl) {
-		System.Collections.Generic.LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUrlResolver.CacheItem> newNode = m_lruList.addFirst(new CacheItem(sourceUrl, resolvedUrl));
+		LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUrlResolver.CacheItem> newNode = m_lruList.addFirst(new CacheItem(sourceUrl, resolvedUrl));
 		MapHelper.add(m_dictionary, sourceUrl, newNode);
 		if (m_lruList.size() > m_max) {
 			//trim least recently used

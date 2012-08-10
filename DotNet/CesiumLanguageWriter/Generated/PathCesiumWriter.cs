@@ -60,7 +60,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_leadTime = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(LeadTimePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_trailTime = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(TrailTimePropertyName), false);
-        private readonly Lazy<ICesiumValuePropertyWriter<TimeInterval>> m_asSegments;
+        private readonly Lazy<TimeIntervalCollectionCesiumWriter> m_segments = new Lazy<TimeIntervalCollectionCesiumWriter>(() => new TimeIntervalCollectionCesiumWriter(SegmentsPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -68,7 +68,6 @@ namespace CesiumLanguageWriter
         public PathCesiumWriter(string propertyName)
             : base(propertyName)
         {
-            m_asSegments = new Lazy<ICesiumValuePropertyWriter<TimeInterval>>(CreateSegmentsAdaptor, false);
         }
 
         /// <summary>
@@ -78,7 +77,6 @@ namespace CesiumLanguageWriter
         protected PathCesiumWriter(PathCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asSegments = new Lazy<ICesiumValuePropertyWriter<TimeInterval>>(CreateSegmentsAdaptor, false);
         }
 
         /// <inheritdoc />
@@ -441,52 +439,82 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>segments</code> property.  The <code>segments</code> property specifies a list of intervals for which partial path segments will be displayed.
+        /// Gets the writer for the <code>segments</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>segments</code> property defines a list of intervals for which partial path segments will be displayed.
         /// </summary>
-        /// <param name="value">The interval.</param>
-        public void WriteSegments(TimeInterval value)
+        public TimeIntervalCollectionCesiumWriter SegmentsWriter
         {
-            const string PropertyName = SegmentsPropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteTimeInterval(Output, value);
+            get { return m_segments.Value; }
         }
 
         /// <summary>
-        /// Writes the <code>segments</code> property.  The <code>segments</code> property specifies a list of intervals for which partial path segments will be displayed.
+        /// Opens and returns the writer for the <code>segments</code> property.  The <code>segments</code> property defines a list of intervals for which partial path segments will be displayed.
+        /// </summary>
+        public TimeIntervalCollectionCesiumWriter OpenSegmentsProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(SegmentsWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>segments</code> property as a <code>segmentInterval</code> value.  The <code>segments</code> property specifies a list of intervals for which partial path segments will be displayed.
+        /// </summary>
+        /// <param name="value">The interval.</param>
+        public void WriteSegmentsProperty(TimeInterval value)
+        {
+            using (var writer = OpenSegmentsProperty())
+            {
+                writer.WriteSegmentInterval(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>segments</code> property as a <code>segmentInterval</code> value.  The <code>segments</code> property specifies a list of intervals for which partial path segments will be displayed.
         /// </summary>
         /// <param name="start">The earliest date of the interval.</param>
         /// <param name="stop">The latest date of the interval.</param>
-        public void WriteSegments(JulianDate start, JulianDate stop)
+        public void WriteSegmentsProperty(JulianDate start, JulianDate stop)
         {
-            WriteSegments(new TimeInterval(start, stop));
+            using (var writer = OpenSegmentsProperty())
+            {
+                writer.WriteSegmentInterval(start, stop);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>segments</code> property.  The <code>segments</code> property specifies a list of intervals for which partial path segments will be displayed.
+        /// Writes a value for the <code>segments</code> property as a <code>segmentIntervals</code> value.  The <code>segments</code> property specifies a list of intervals for which partial path segments will be displayed.
+        /// </summary>
+        /// <param name="value">The interval.</param>
+        public void WriteSegmentsPropertySegmentIntervals(TimeInterval value)
+        {
+            using (var writer = OpenSegmentsProperty())
+            {
+                writer.WriteSegmentIntervals(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>segments</code> property as a <code>segmentIntervals</code> value.  The <code>segments</code> property specifies a list of intervals for which partial path segments will be displayed.
+        /// </summary>
+        /// <param name="start">The earliest date of the interval.</param>
+        /// <param name="stop">The latest date of the interval.</param>
+        public void WriteSegmentsPropertySegmentIntervals(JulianDate start, JulianDate stop)
+        {
+            using (var writer = OpenSegmentsProperty())
+            {
+                writer.WriteSegmentIntervals(start, stop);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>segments</code> property as a <code>segmentIntervals</code> value.  The <code>segments</code> property specifies a list of intervals for which partial path segments will be displayed.
         /// </summary>
         /// <param name="value">The intervals.</param>
-        public void WriteSegments(IList<TimeInterval> value)
+        public void WriteSegmentsPropertySegmentIntervals(IList<TimeInterval> value)
         {
-            const string PropertyName = SegmentsPropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteTimeIntervalCollection(Output, value);
-        }
-
-        /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Segments</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
-        /// </summary>
-        /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<TimeInterval> AsSegments()
-        {
-            return m_asSegments.Value;
-        }
-
-        private ICesiumValuePropertyWriter<TimeInterval> CreateSegmentsAdaptor()
-        {
-            return new CesiumWriterAdaptor<PathCesiumWriter, TimeInterval>(
-                this, (me, value) => me.WriteSegments(value));
+            using (var writer = OpenSegmentsProperty())
+            {
+                writer.WriteSegmentIntervals(value);
+            }
         }
 
     }
