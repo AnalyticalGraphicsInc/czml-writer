@@ -151,6 +151,22 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	}
 
 	/**
+	 *  Gets the  {@link UnitCartesian} of the axis most orthogonal to this Cartesian.
+	
+
+	 */
+	public final UnitCartesian getMostOrthogonalAxis() {
+		double x = Math.abs(m_x);
+		double y = Math.abs(m_y);
+		double z = Math.abs(m_z);
+		if (x <= y) {
+			return ((x <= z) ? UnitCartesian.getUnitX() : UnitCartesian.getUnitZ());
+		} else {
+			return ((y <= z) ? UnitCartesian.getUnitY() : UnitCartesian.getUnitZ());
+		}
+	}
+
+	/**
 	 *  
 	Inverts this instance.
 	
@@ -344,6 +360,62 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	@CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(Cartesian)'")
 	public static Cartesian negate(Cartesian coordinates) {
 		return new Cartesian(-coordinates.m_x, -coordinates.m_y, -coordinates.m_z);
+	}
+
+	/**
+	 *  
+	Performs a component-wise greater than check.
+	
+	
+	
+
+	 * @param other The  {@link Cartesian} to compare against.
+	 * @return <see langword="true" /> if all components of this Cartesian are greater than all components of <code>other</code>
+	 */
+	public final boolean allComponentsAreGreaterThan(Cartesian other) {
+		return (m_x > other.getX()) && (m_y > other.getY()) && (m_z > other.getZ());
+	}
+
+	/**
+	 *  
+	Performs a component-wise greater than or equal to check.
+	
+	
+	
+
+	 * @param other The  {@link Cartesian} to compare against.
+	 * @return <see langword="true" /> if all components of this  {@link Cartesian} are greater than or equal to all components of <code>other</code>
+	 */
+	public final boolean allComponentsAreGreaterThanOrEqualTo(Cartesian other) {
+		return (m_x >= other.getX()) && (m_y >= other.getY()) && (m_z >= other.getZ());
+	}
+
+	/**
+	 *  
+	Performs a component-wise less than check.
+	
+	
+	
+
+	 * @param other The  {@link Cartesian} to compare against.
+	 * @return <see langword="true" /> if all components of this  {@link Cartesian} are less than all components of <code>other</code>
+	 */
+	public final boolean allComponentsAreLessThan(Cartesian other) {
+		return (m_x < other.getX()) && (m_y < other.getY()) && (m_z < other.getZ());
+	}
+
+	/**
+	 *  
+	Performs a component-wise less than or equal to check.
+	
+	
+	
+
+	 * @param other The  {@link Cartesian} to compare against.
+	 * @return <see langword="true" /> if all components of this  {@link Cartesian} are less than or equal to all components of <code>other</code>
+	 */
+	public final boolean allComponentsAreLessThanOrEqualTo(Cartesian other) {
+		return (m_x <= other.getX()) && (m_y <= other.getY()) && (m_z <= other.getZ());
 	}
 
 	/**

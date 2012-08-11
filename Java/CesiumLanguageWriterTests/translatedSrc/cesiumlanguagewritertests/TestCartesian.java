@@ -213,6 +213,22 @@ public class TestCartesian {
 
 	/**
 	 *  
+	Tests the <code>MostOrthogonalAxis</code> ({@link Cartesian#getMostOrthogonalAxis get}) method.
+	
+
+	 */
+	@Test
+	public final void mostOrthogonalAxis() {
+		Cartesian v = Cartesian.toCartesian(new UnitCartesian(1.0, 2.0, 3.0));
+		Assert.assertEquals(UnitCartesian.getUnitX(), v.getMostOrthogonalAxis());
+		v = Cartesian.toCartesian(new UnitCartesian(2.0, 3.0, 1.0));
+		Assert.assertEquals(UnitCartesian.getUnitZ(), v.getMostOrthogonalAxis());
+		v = Cartesian.toCartesian(new UnitCartesian(3.0, 1.0, 2.0));
+		Assert.assertEquals(UnitCartesian.getUnitY(), v.getMostOrthogonalAxis());
+	}
+
+	/**
+	 *  
 	Tests the  {@link Cartesian#invert} method.
 	
 
