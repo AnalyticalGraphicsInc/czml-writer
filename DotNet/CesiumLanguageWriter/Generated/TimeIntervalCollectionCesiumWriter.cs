@@ -13,17 +13,17 @@ namespace CesiumLanguageWriter
     public class TimeIntervalCollectionCesiumWriter : CesiumPropertyWriter<TimeIntervalCollectionCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>segmentInterval</code> property.
+        /// The name of the <code>value</code> property.
         /// </summary>
-        public const string SegmentIntervalPropertyName = "segmentInterval";
+        public const string ValuePropertyName = "value";
 
         /// <summary>
-        /// The name of the <code>segmentIntervals</code> property.
+        /// The name of the <code>values</code> property.
         /// </summary>
-        public const string SegmentIntervalsPropertyName = "segmentIntervals";
+        public const string ValuesPropertyName = "values";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<TimeInterval>> m_asSegmentInterval;
-        private readonly Lazy<ICesiumValuePropertyWriter<TimeInterval>> m_asSegmentIntervals;
+        private readonly Lazy<ICesiumValuePropertyWriter<TimeInterval>> m_asValue;
+        private readonly Lazy<ICesiumValuePropertyWriter<TimeInterval>> m_asValues;
 
         /// <summary>
         /// Initializes a new instance.
@@ -31,8 +31,8 @@ namespace CesiumLanguageWriter
         public TimeIntervalCollectionCesiumWriter(string propertyName)
             : base(propertyName)
         {
-            m_asSegmentInterval = new Lazy<ICesiumValuePropertyWriter<TimeInterval>>(CreateSegmentIntervalAdaptor, false);
-            m_asSegmentIntervals = new Lazy<ICesiumValuePropertyWriter<TimeInterval>>(CreateSegmentIntervalsAdaptor, false);
+            m_asValue = new Lazy<ICesiumValuePropertyWriter<TimeInterval>>(CreateValueAdaptor, false);
+            m_asValues = new Lazy<ICesiumValuePropertyWriter<TimeInterval>>(CreateValuesAdaptor, false);
         }
 
         /// <summary>
@@ -42,8 +42,8 @@ namespace CesiumLanguageWriter
         protected TimeIntervalCollectionCesiumWriter(TimeIntervalCollectionCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asSegmentInterval = new Lazy<ICesiumValuePropertyWriter<TimeInterval>>(CreateSegmentIntervalAdaptor, false);
-            m_asSegmentIntervals = new Lazy<ICesiumValuePropertyWriter<TimeInterval>>(CreateSegmentIntervalsAdaptor, false);
+            m_asValue = new Lazy<ICesiumValuePropertyWriter<TimeInterval>>(CreateValueAdaptor, false);
+            m_asValues = new Lazy<ICesiumValuePropertyWriter<TimeInterval>>(CreateValuesAdaptor, false);
         }
 
         /// <inheritdoc />
@@ -53,89 +53,89 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>segmentInterval</code> property.  The <code>segmentInterval</code> property specifies the interval value.
+        /// Writes the <code>value</code> property.  The <code>value</code> property specifies a single time interval.
         /// </summary>
         /// <param name="value">The interval.</param>
-        public void WriteSegmentInterval(TimeInterval value)
+        public void WriteValue(TimeInterval value)
         {
-            const string PropertyName = SegmentIntervalPropertyName;
+            const string PropertyName = ValuePropertyName;
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteTimeInterval(Output, value);
         }
 
         /// <summary>
-        /// Writes the <code>segmentInterval</code> property.  The <code>segmentInterval</code> property specifies the interval value.
+        /// Writes the <code>value</code> property.  The <code>value</code> property specifies a single time interval.
         /// </summary>
         /// <param name="start">The earliest date of the interval.</param>
         /// <param name="stop">The latest date of the interval.</param>
-        public void WriteSegmentInterval(JulianDate start, JulianDate stop)
+        public void WriteValue(JulianDate start, JulianDate stop)
         {
-            WriteSegmentInterval(new TimeInterval(start, stop));
+            WriteValue(new TimeInterval(start, stop));
         }
 
         /// <summary>
-        /// Writes the <code>segmentIntervals</code> property.  The <code>segmentIntervals</code> property specifies the intervals value.
+        /// Writes the <code>values</code> property.  The <code>values</code> property specifies an array of time intervals.
         /// </summary>
         /// <param name="value">The interval.</param>
-        public void WriteSegmentIntervals(TimeInterval value)
+        public void WriteValues(TimeInterval value)
         {
-            const string PropertyName = SegmentIntervalsPropertyName;
+            const string PropertyName = ValuesPropertyName;
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteTimeInterval(Output, value);
         }
 
         /// <summary>
-        /// Writes the <code>segmentIntervals</code> property.  The <code>segmentIntervals</code> property specifies the intervals value.
+        /// Writes the <code>values</code> property.  The <code>values</code> property specifies an array of time intervals.
         /// </summary>
         /// <param name="start">The earliest date of the interval.</param>
         /// <param name="stop">The latest date of the interval.</param>
-        public void WriteSegmentIntervals(JulianDate start, JulianDate stop)
+        public void WriteValues(JulianDate start, JulianDate stop)
         {
-            WriteSegmentIntervals(new TimeInterval(start, stop));
+            WriteValues(new TimeInterval(start, stop));
         }
 
         /// <summary>
-        /// Writes the <code>segmentIntervals</code> property.  The <code>segmentIntervals</code> property specifies the intervals value.
+        /// Writes the <code>values</code> property.  The <code>values</code> property specifies an array of time intervals.
         /// </summary>
         /// <param name="value">The intervals.</param>
-        public void WriteSegmentIntervals(IList<TimeInterval> value)
+        public void WriteValues(IList<TimeInterval> value)
         {
-            const string PropertyName = SegmentIntervalsPropertyName;
+            const string PropertyName = ValuesPropertyName;
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteTimeIntervalCollection(Output, value);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>SegmentInterval</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Value</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<TimeInterval> AsSegmentInterval()
+        public ICesiumValuePropertyWriter<TimeInterval> AsValue()
         {
-            return m_asSegmentInterval.Value;
+            return m_asValue.Value;
         }
 
-        private ICesiumValuePropertyWriter<TimeInterval> CreateSegmentIntervalAdaptor()
+        private ICesiumValuePropertyWriter<TimeInterval> CreateValueAdaptor()
         {
             return new CesiumWriterAdaptor<TimeIntervalCollectionCesiumWriter, TimeInterval>(
-                this, (me, value) => me.WriteSegmentInterval(value));
+                this, (me, value) => me.WriteValue(value));
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>SegmentIntervals</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Values</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<TimeInterval> AsSegmentIntervals()
+        public ICesiumValuePropertyWriter<TimeInterval> AsValues()
         {
-            return m_asSegmentIntervals.Value;
+            return m_asValues.Value;
         }
 
-        private ICesiumValuePropertyWriter<TimeInterval> CreateSegmentIntervalsAdaptor()
+        private ICesiumValuePropertyWriter<TimeInterval> CreateValuesAdaptor()
         {
             return new CesiumWriterAdaptor<TimeIntervalCollectionCesiumWriter, TimeInterval>(
-                this, (me, value) => me.WriteSegmentIntervals(value));
+                this, (me, value) => me.WriteValues(value));
         }
 
     }

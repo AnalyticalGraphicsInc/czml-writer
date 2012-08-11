@@ -4,14 +4,14 @@
     "type": ["array", "object", "string"],
     "items": { "$ref": "#" },
     "properties": {
-        "segmentInterval": {
+        "value": {
             "$ref": "TimeIntervalValue.jsonschema",
-            "description": "The interval value.",
+            "description": "A single time interval.",
 			"czmlValue": true
         },
-        "segmentIntervals": {
+        "values": {
             "$ref": "TimeIntervalCollectionValue.jsonschema",
-            "description": "The intervals value.",
+            "description": "An array of time intervals.",
 			"czmlValue": true
         }
     }

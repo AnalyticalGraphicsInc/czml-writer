@@ -36,5 +36,5 @@
             "$ref": "TimeIntervalCollection.jsonschema",
              "description": "A list of intervals for which partial path segments will be displayed."
         }
-	}
+    }
 }

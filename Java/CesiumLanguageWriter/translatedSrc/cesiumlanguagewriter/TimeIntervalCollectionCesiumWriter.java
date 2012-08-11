@@ -16,20 +16,20 @@ import java.util.List;
 public class TimeIntervalCollectionCesiumWriter extends CesiumPropertyWriter<TimeIntervalCollectionCesiumWriter> {
 	/**
 	 *  
-	The name of the <code>segmentInterval</code> property.
+	The name of the <code>value</code> property.
 	
 
 	 */
-	public static final String SegmentIntervalPropertyName = "segmentInterval";
+	public static final String ValuePropertyName = "value";
 	/**
 	 *  
-	The name of the <code>segmentIntervals</code> property.
+	The name of the <code>values</code> property.
 	
 
 	 */
-	public static final String SegmentIntervalsPropertyName = "segmentIntervals";
-	private Lazy<ICesiumValuePropertyWriter<TimeInterval>> m_asSegmentInterval;
-	private Lazy<ICesiumValuePropertyWriter<TimeInterval>> m_asSegmentIntervals;
+	public static final String ValuesPropertyName = "values";
+	private Lazy<ICesiumValuePropertyWriter<TimeInterval>> m_asValue;
+	private Lazy<ICesiumValuePropertyWriter<TimeInterval>> m_asValues;
 
 	/**
 	 *  
@@ -39,16 +39,16 @@ public class TimeIntervalCollectionCesiumWriter extends CesiumPropertyWriter<Tim
 	 */
 	public TimeIntervalCollectionCesiumWriter(String propertyName) {
 		super(propertyName);
-		m_asSegmentInterval = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(this,
-				"createSegmentIntervalAdaptor", new Class[] {}) {
+		m_asValue = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(this,
+				"createValueAdaptor", new Class[] {}) {
 			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval> invoke() {
-				return createSegmentIntervalAdaptor();
+				return createValueAdaptor();
 			}
 		}, false);
-		m_asSegmentIntervals = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(this,
-				"createSegmentIntervalsAdaptor", new Class[] {}) {
+		m_asValues = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(this,
+				"createValuesAdaptor", new Class[] {}) {
 			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval> invoke() {
-				return createSegmentIntervalsAdaptor();
+				return createValuesAdaptor();
 			}
 		}, false);
 	}
@@ -63,16 +63,16 @@ public class TimeIntervalCollectionCesiumWriter extends CesiumPropertyWriter<Tim
 	 */
 	protected TimeIntervalCollectionCesiumWriter(TimeIntervalCollectionCesiumWriter existingInstance) {
 		super(existingInstance);
-		m_asSegmentInterval = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(this,
-				"createSegmentIntervalAdaptor", new Class[] {}) {
+		m_asValue = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(this,
+				"createValueAdaptor", new Class[] {}) {
 			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval> invoke() {
-				return createSegmentIntervalAdaptor();
+				return createValueAdaptor();
 			}
 		}, false);
-		m_asSegmentIntervals = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(this,
-				"createSegmentIntervalsAdaptor", new Class[] {}) {
+		m_asValues = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval>>(this,
+				"createValuesAdaptor", new Class[] {}) {
 			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<TimeInterval> invoke() {
-				return createSegmentIntervalsAdaptor();
+				return createValuesAdaptor();
 			}
 		}, false);
 	}
@@ -84,14 +84,14 @@ public class TimeIntervalCollectionCesiumWriter extends CesiumPropertyWriter<Tim
 
 	/**
 	 *  
-	Writes the <code>segmentInterval</code> property.  The <code>segmentInterval</code> property specifies the interval value.
+	Writes the <code>value</code> property.  The <code>value</code> property specifies a single time interval.
 	
 	
 
 	 * @param value The interval.
 	 */
-	public final void writeSegmentInterval(TimeInterval value) {
-		String PropertyName = SegmentIntervalPropertyName;
+	public final void writeValue(TimeInterval value) {
+		String PropertyName = ValuePropertyName;
 		openIntervalIfNecessary();
 		getOutput().writePropertyName(PropertyName);
 		CesiumWritingHelper.writeTimeInterval(getOutput(), value);
@@ -99,7 +99,7 @@ public class TimeIntervalCollectionCesiumWriter extends CesiumPropertyWriter<Tim
 
 	/**
 	 *  
-	Writes the <code>segmentInterval</code> property.  The <code>segmentInterval</code> property specifies the interval value.
+	Writes the <code>value</code> property.  The <code>value</code> property specifies a single time interval.
 	
 	
 	
@@ -107,20 +107,20 @@ public class TimeIntervalCollectionCesiumWriter extends CesiumPropertyWriter<Tim
 	 * @param start The earliest date of the interval.
 	 * @param stop The latest date of the interval.
 	 */
-	public final void writeSegmentInterval(JulianDate start, JulianDate stop) {
-		writeSegmentInterval(new TimeInterval(start, stop));
+	public final void writeValue(JulianDate start, JulianDate stop) {
+		writeValue(new TimeInterval(start, stop));
 	}
 
 	/**
 	 *  
-	Writes the <code>segmentIntervals</code> property.  The <code>segmentIntervals</code> property specifies the intervals value.
+	Writes the <code>values</code> property.  The <code>values</code> property specifies an array of time intervals.
 	
 	
 
 	 * @param value The interval.
 	 */
-	public final void writeSegmentIntervals(TimeInterval value) {
-		String PropertyName = SegmentIntervalsPropertyName;
+	public final void writeValues(TimeInterval value) {
+		String PropertyName = ValuesPropertyName;
 		openIntervalIfNecessary();
 		getOutput().writePropertyName(PropertyName);
 		CesiumWritingHelper.writeTimeInterval(getOutput(), value);
@@ -128,7 +128,7 @@ public class TimeIntervalCollectionCesiumWriter extends CesiumPropertyWriter<Tim
 
 	/**
 	 *  
-	Writes the <code>segmentIntervals</code> property.  The <code>segmentIntervals</code> property specifies the intervals value.
+	Writes the <code>values</code> property.  The <code>values</code> property specifies an array of time intervals.
 	
 	
 	
@@ -136,20 +136,20 @@ public class TimeIntervalCollectionCesiumWriter extends CesiumPropertyWriter<Tim
 	 * @param start The earliest date of the interval.
 	 * @param stop The latest date of the interval.
 	 */
-	public final void writeSegmentIntervals(JulianDate start, JulianDate stop) {
-		writeSegmentIntervals(new TimeInterval(start, stop));
+	public final void writeValues(JulianDate start, JulianDate stop) {
+		writeValues(new TimeInterval(start, stop));
 	}
 
 	/**
 	 *  
-	Writes the <code>segmentIntervals</code> property.  The <code>segmentIntervals</code> property specifies the intervals value.
+	Writes the <code>values</code> property.  The <code>values</code> property specifies an array of time intervals.
 	
 	
 
 	 * @param value The intervals.
 	 */
-	public final void writeSegmentIntervals(List<TimeInterval> value) {
-		String PropertyName = SegmentIntervalsPropertyName;
+	public final void writeValues(List<TimeInterval> value) {
+		String PropertyName = ValuesPropertyName;
 		openIntervalIfNecessary();
 		getOutput().writePropertyName(PropertyName);
 		CesiumWritingHelper.writeTimeIntervalCollection(getOutput(), value);
@@ -157,40 +157,40 @@ public class TimeIntervalCollectionCesiumWriter extends CesiumPropertyWriter<Tim
 
 	/**
 	 *  
-	Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in <code>SegmentInterval</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in <code>Value</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
 	
 	
 
 	 * @return The wrapper.
 	 */
-	public final ICesiumValuePropertyWriter<TimeInterval> asSegmentInterval() {
-		return m_asSegmentInterval.getValue();
+	public final ICesiumValuePropertyWriter<TimeInterval> asValue() {
+		return m_asValue.getValue();
 	}
 
-	final private ICesiumValuePropertyWriter<TimeInterval> createSegmentIntervalAdaptor() {
+	final private ICesiumValuePropertyWriter<TimeInterval> createValueAdaptor() {
 		return new CesiumWriterAdaptor<TimeIntervalCollectionCesiumWriter, TimeInterval>(this, new CesiumWriterAdaptorWriteCallback<TimeIntervalCollectionCesiumWriter, TimeInterval>() {
 			public void invoke(TimeIntervalCollectionCesiumWriter me, TimeInterval value) {
-				me.writeSegmentInterval(value);
+				me.writeValue(value);
 			}
 		});
 	}
 
 	/**
 	 *  
-	Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in <code>SegmentIntervals</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in <code>Values</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
 	
 	
 
 	 * @return The wrapper.
 	 */
-	public final ICesiumValuePropertyWriter<TimeInterval> asSegmentIntervals() {
-		return m_asSegmentIntervals.getValue();
+	public final ICesiumValuePropertyWriter<TimeInterval> asValues() {
+		return m_asValues.getValue();
 	}
 
-	final private ICesiumValuePropertyWriter<TimeInterval> createSegmentIntervalsAdaptor() {
+	final private ICesiumValuePropertyWriter<TimeInterval> createValuesAdaptor() {
 		return new CesiumWriterAdaptor<TimeIntervalCollectionCesiumWriter, TimeInterval>(this, new CesiumWriterAdaptorWriteCallback<TimeIntervalCollectionCesiumWriter, TimeInterval>() {
 			public void invoke(TimeIntervalCollectionCesiumWriter me, TimeInterval value) {
-				me.writeSegmentIntervals(value);
+				me.writeValues(value);
 			}
 		});
 	}
