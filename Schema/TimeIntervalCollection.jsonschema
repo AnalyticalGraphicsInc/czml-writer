@@ -1,0 +1,18 @@
+{
+    "title": "TimeIntervalCollection",
+    "description": "A collection of intervals of time.",
+    "type": ["array", "object", "string"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "value": {
+            "$ref": "TimeIntervalValue.jsonschema",
+            "description": "A single time interval.",
+			"czmlValue": true
+        },
+        "values": {
+            "$ref": "TimeIntervalCollectionValue.jsonschema",
+            "description": "An array of time intervals.",
+			"czmlValue": true
+        }
+    }
+}
