@@ -57,23 +57,6 @@ namespace GeometricComputations
             return rightmostVertexIndex;
         }
 
-        public static double ComputeArea2D(List<Cartesian> positions)
-        {
-            if (positions == null)
-                throw new ArgumentNullException("positions");
-            var length = positions.Count;
-            if (length < 3)
-                throw new ArgumentException("At least three positions are required.");
-            var area = 0.0;
-            for (int i0 = length - 1, i1 = 0; i1 < length; i0 = i1++)
-            {
-                var v0 = positions[i0];
-                var v1 = positions[i1];
-                area += (v0.X * v1.Y) - (v1.X * v0.Y);
-            }
-            return area * 0.5;
-        }
-
         /// <summary>
         /// Returns the index of the inner ring that contains the rightmost vertex.
         /// </summary>
@@ -368,6 +351,23 @@ namespace GeometricComputations
             innerRings.RemoveAt(innerRingIndex);
 
             return newPolygonVertices;
+        }
+
+        private static double ComputeArea2D(List<Cartesian> positions)
+        {
+            if (positions == null)
+                throw new ArgumentNullException("positions");
+            var length = positions.Count;
+            if (length < 3)
+                throw new ArgumentException("At least three positions are required.");
+            var area = 0.0;
+            for (int i0 = length - 1, i1 = 0; i1 < length; i0 = i1++)
+            {
+                var v0 = positions[i0];
+                var v1 = positions[i1];
+                area += (v0.X * v1.Y) - (v1.X * v0.Y);
+            }
+            return area * 0.5;
         }
     }
 }
