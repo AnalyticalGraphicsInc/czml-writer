@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Text.RegularExpressions;
@@ -65,7 +66,7 @@ namespace KmlToCesiumLanguage
                     billboard.WriteScaleProperty(double.Parse(scaleElement.Value));
 
                 string href = iconElement.Element(Document.Namespace + "Icon").Element(Document.Namespace + "href").Value;
-                if (Document.ParentUri != null)
+                if(!Document.ImageResolver.ContainsUrl(href) && Document.ParentUri != null)
                 {
                     href = new Uri(Document.ParentUri, href).AbsoluteUri;
                 }

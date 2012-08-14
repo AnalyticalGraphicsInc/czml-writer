@@ -21,6 +21,23 @@ namespace KmlToCesiumLanguage
         {
             m_document = document;
             m_placemark = placemark;
+            var idAttr = placemark.Attribute("id");
+            if (idAttr != null)
+            {
+                m_id = idAttr.Value;
+            }
+            else
+            {
+                idAttr = placemark.Attribute("targetId");
+                if (idAttr != null)
+                {
+                    m_id = idAttr.Value;
+                }
+                else
+                {
+                    m_id = Guid.NewGuid().ToString();
+                }
+            }
         }
 
         /// <summary>
@@ -30,7 +47,7 @@ namespace KmlToCesiumLanguage
         {
             using (this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(stream))
             {
-                this.PacketWriter.WriteId(Guid.NewGuid().ToString());
+                this.PacketWriter.WriteId(m_id);
                 Utility.WriteAvailability(m_placemark, this.PacketWriter, m_document.Namespace);
                 this.AddStyleInformation();
                 this.Write();
@@ -147,5 +164,6 @@ namespace KmlToCesiumLanguage
 
         private XElement m_placemark;
         private CzmlDocument m_document;
+        string m_id;
     }
 }

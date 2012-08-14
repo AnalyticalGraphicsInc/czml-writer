@@ -53,12 +53,46 @@ namespace KmlToCesiumLanguage
                                                Uri parentUri = null)
         {
             CzmlDocument document = new CzmlDocument(parentUri);
-
+            var features = CreateFeatureWrappers(inputStream, document);
             using (var outputstream = new CesiumOutputStream(outputWriter))
             {
                 outputstream.PrettyFormatting = prettyFormatting;
                 outputstream.WriteStartSequence();
+                foreach (var feature in features)
+                {
+                    feature.WritePacket(outputstream);
+                }
+                outputstream.WriteEndSequence();
+            }
+        }
 
+        /// <summary>
+        /// A helper function that creates wrappers around kml feature elements. Use this function if you want more control of the czml output.
+        /// </summary>
+        /// <param name="inputReader">The text reader to the kml document.</param>
+        /// <param name="document">Stores needed data about the kml document.</param>
+        /// <returns>List of Feature wrapper classes.</returns>
+        public static IEnumerable<Feature> CreateFeatureWrappers(TextReader inputReader, CzmlDocument document)
+        {
+            XDocument kmlDocument = XDocument.Load(inputReader);
+            document.Namespace = kmlDocument.Root.GetDefaultNamespace();
+            return kmlDocument.Descendants()
+                .Where(o => o.Name == document.Namespace + "Placemark" || o.Name == document.Namespace + "GroundOverlay" || o.Name == document.Namespace + "NetworkLink")
+                .Select(o => FeatureFactory.Create(o, document));
+        }
+
+
+        /// <summary>
+        /// A helper function that reads in a kmz file and creates wrappers around kml feature elements. Use this function if you want more control of the czml output.
+        /// </summary>
+        /// <param name="inputStream">The kmz input stream.</param>
+        /// <param name="document">Stores needed data about the kml document.</param>
+        /// <returns>
+        /// List of Feature wrapper classes.
+        /// </returns>
+        public static IEnumerable<Feature> CreateFeatureWrappers(Stream inputStream, CzmlDocument document)
+        {
+            var features = new List<Feature>();
                 using (ZipFile zipFile = ZipFile.Read(inputStream))
                 {
                     foreach (ZipEntry entry in zipFile)
@@ -84,33 +118,12 @@ namespace KmlToCesiumLanguage
                             using (Stream stream = entry.OpenReader())
                             using (StreamReader streamReader = new StreamReader(stream))
                             {
-                                var features = CreateFeatureWrappers(streamReader, document);
-                                foreach (var feature in features)
-                                {
-                                    feature.WritePacket(outputstream);
+                            features.AddRange(CreateFeatureWrappers(streamReader, document));
                                 }
                             }
                         }
                     }
-                }
-
-                outputstream.WriteEndSequence();
-            }
-        }
-
-        /// <summary>
-        /// A helper function that creates wrappers around kml feature elements. Use this function if you want more control of the czml output.
-        /// </summary>
-        /// <param name="inputReader">The text reader to the kml document.</param>
-        /// <param name="document">Stores needed data about the kml document.</param>
-        /// <returns>List of Feature wrapper classes.</returns>
-        public static IEnumerable<Feature> CreateFeatureWrappers(TextReader inputReader, CzmlDocument document)
-        {
-            XDocument kmlDocument = XDocument.Load(inputReader);
-            document.Namespace = kmlDocument.Root.GetDefaultNamespace();
-            return kmlDocument.Descendants()
-                .Where(o => o.Name == document.Namespace + "Placemark" || o.Name == document.Namespace + "GroundOverlay" || o.Name == document.Namespace + "NetworkLink")
-                .Select(o => FeatureFactory.Create(o, document));
+            return features;
         }
 
         private static CesiumImageFormat? InferImageFormat(string fileName)
