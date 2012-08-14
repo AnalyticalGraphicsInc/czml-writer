@@ -4,8 +4,15 @@ using CesiumLanguageWriter;
 
 namespace GeometricComputations
 {
+    /// <summary>
+    /// Describes a bounding volume determined by finding the points spaced the farthest apart on the x-, y-, and z-axes.
+    /// </summary>
     public struct AxisAlignedBoundingBox
     {
+        /// <summary>
+        /// Creates an instance of an AxisAlignedBoundingBox.
+        /// </summary>
+        /// <param name="positions">The <see cref="Cartesian"/> points to be contained within the bounding box.</param>
         public AxisAlignedBoundingBox(IEnumerable<Cartesian> positions)
         {
             if (positions == null)
@@ -57,25 +64,36 @@ namespace GeometricComputations
             Cartesian minimum = new Cartesian(minimumX, minimumY, minimumZ);
             Cartesian maximum = new Cartesian(maximumX, maximumY, maximumZ);
 
-            if (minimum > maximum)
+            if (minimum.AllComponentsAreGreaterThan(maximum))
             {
-                Utility.Swap(ref minimum, ref maximum);
+                Cartesian temp = minimum;
+                minimum = maximum;
+                maximum = temp;
             }
 
             _minimum = minimum;
             _maximum = maximum;
         }
 
+        /// <summary>
+        /// Gets the minimum point defining the bounding box.
+        /// </summary>
         public Cartesian Minimum
         {
             get { return _minimum; }
         }
 
+        /// <summary>
+        /// Gets the maximum point defining the bounding box.
+        /// </summary>
         public Cartesian Maximum
         {
             get { return _maximum; }
         }
 
+        /// <summary>
+        /// Gets the center point of the bounding box.
+        /// </summary>
         public Cartesian Center
         {
             get { return (Minimum + Maximum) * 0.5; }

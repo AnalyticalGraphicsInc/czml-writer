@@ -184,6 +184,22 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
+        /// Tests the <see cref="Cartesian.MostOrthogonalAxis"/> method.
+        /// </summary>
+        [Test]
+        public void MostOrthogonalAxis()
+        {
+            Cartesian v = new UnitCartesian(1.0, 2.0, 3.0);
+            Assert.AreEqual(UnitCartesian.UnitX, v.MostOrthogonalAxis);
+
+            v = new UnitCartesian(2.0, 3.0, 1.0);
+            Assert.AreEqual(UnitCartesian.UnitZ, v.MostOrthogonalAxis);
+
+            v = new UnitCartesian(3.0, 1.0, 2.0);
+            Assert.AreEqual(UnitCartesian.UnitY, v.MostOrthogonalAxis);
+        }
+
+        /// <summary>
         /// Tests the <see cref="Cartesian.Invert"/> method.
         /// </summary>
         [Test]

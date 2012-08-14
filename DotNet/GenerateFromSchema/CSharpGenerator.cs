@@ -1,10 +1,8 @@
 ﻿using System;
-using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Schema;
-using System.Text;
-using System.Collections.Generic;
 
 namespace GenerateFromSchema
 {
@@ -97,7 +95,7 @@ namespace GenerateFromSchema
                 WriteProperties(writer, packetSchema);
 
                 writer.CloseScope();
-                
+
                 writer.CloseScope();
             }
         }
@@ -167,10 +165,10 @@ namespace GenerateFromSchema
         private void WriteDescriptionAsClassSummary(CodeWriter writer, Schema packetSchema)
         {
             WriteSummaryText(
-                writer, 
+                writer,
                 string.Format("Writes a <code>{0}</code> to a <see cref=\"CesiumOutputStream\" />.  A <code>{0}</code> {1}",
-                    packetSchema.Name,
-                    StringHelper.UncapitalizeFirstLetter(packetSchema.Description)));
+                              packetSchema.Name,
+                              StringHelper.UncapitalizeFirstLetter(packetSchema.Description)));
         }
 
         private void WritePropertyNameConstants(CodeWriter writer, Schema schema)
@@ -196,9 +194,9 @@ namespace GenerateFromSchema
                 if (PropertyValueIsIntervals(property))
                 {
                     writer.WriteLine("private readonly Lazy<{0}CesiumWriter> m_{1} = new Lazy<{0}CesiumWriter>(() => new {0}CesiumWriter({2}PropertyName), false);",
-                        property.ValueType.NameWithPascalCase,
-                        property.Name,
-                        property.NameWithPascalCase);
+                                     property.ValueType.NameWithPascalCase,
+                                     property.Name,
+                                     property.NameWithPascalCase);
                 }
                 else if (property.IsValue)
                 {
@@ -212,9 +210,9 @@ namespace GenerateFromSchema
                             interfaceName = "ICesiumInterpolatableValuePropertyWriter";
 
                         writer.WriteLine("private readonly Lazy<{0}<{1}>> m_as{2};",
-                            interfaceName,
-                            overloads[0].Parameters[0].Type,
-                            property.NameWithPascalCase);
+                                         interfaceName,
+                                         overloads[0].Parameters[0].Type,
+                                         property.NameWithPascalCase);
                     }
                 }
             }
@@ -229,7 +227,7 @@ namespace GenerateFromSchema
             writer.OpenScope();
             writer.WriteLine("Output.WriteStartObject();");
             writer.CloseScope();
-            
+
             writer.WriteLine();
 
             WriteSummaryText(writer, "Writes the end of the JSON object representing the packet.");
@@ -244,7 +242,7 @@ namespace GenerateFromSchema
         private bool PropertyValueIsIntervals(Property property)
         {
             return ((property.ValueType.JsonTypes & (JsonSchemaType.Object | JsonSchemaType.Array)) == (JsonSchemaType.Object | JsonSchemaType.Array)) &&
-                    (property.ValueType.JsonTypes & JsonSchemaType.Null) != JsonSchemaType.Null;
+                   (property.ValueType.JsonTypes & JsonSchemaType.Null) != JsonSchemaType.Null;
         }
 
         private void WriteProperties(CodeWriter writer, Schema schema)
@@ -271,7 +269,7 @@ namespace GenerateFromSchema
             GenerateWriterClass(property.ValueType);
 
             WriteSummaryText(writer, string.Format("Gets the writer for the <code>{0}</code> property.  The returned instance must be opened by calling the <see cref=\"CesiumElementWriter.Open\"/> method before it can be used for writing.  The <code>{0}</code> property defines {1}",
-                property.Name, StringHelper.UncapitalizeFirstLetter(property.Description)));
+                                                   property.Name, StringHelper.UncapitalizeFirstLetter(property.Description)));
             writer.WriteLine("public {0}CesiumWriter {1}Writer", property.ValueType.NameWithPascalCase, property.NameWithPascalCase);
             writer.OpenScope();
             writer.WriteLine("get {{ return m_{0}.Value; }}", property.Name);
@@ -279,7 +277,7 @@ namespace GenerateFromSchema
             writer.WriteLine();
 
             WriteSummaryText(writer, string.Format("Opens and returns the writer for the <code>{0}</code> property.  The <code>{0}</code> property defines {1}",
-                property.Name, StringHelper.UncapitalizeFirstLetter(property.Description)));
+                                                   property.Name, StringHelper.UncapitalizeFirstLetter(property.Description)));
             writer.WriteLine("public {0}CesiumWriter Open{1}Property()", property.ValueType.NameWithPascalCase, property.NameWithPascalCase);
             writer.OpenScope();
             if (schema.Name != "Packet")
@@ -353,20 +351,16 @@ namespace GenerateFromSchema
                 {
                     writer.WriteLine("const string PropertyName = {0}PropertyName;", property.NameWithPascalCase);
 
-                    // For the first value property only, if an overload has one parameter and that
-                    // parameter is a simple JSON type (string, number, boolean), we can skip opening an
-                    // interval and just write the property value directly.
                     if (schema.Name == "Packet")
                     {
                         writer.WriteLine("Output.WritePropertyName(PropertyName);");
                     }
-                    else if (isFirstValueProperty && overload.Parameters.Length == 1 &&
-                             (overload.Parameters[0].Type == "string" ||
-                              overload.Parameters[0].Type == "double" || overload.Parameters[0].Type == "float" ||
-                              overload.Parameters[0].Type == "int" || overload.Parameters[0].Type == "long" ||
-                              overload.Parameters[0].Type == "bool" ||
-                              property.ValueType.JsonTypes == JsonSchemaType.String))
+                    else if (isFirstValueProperty && !overload.NeedsInterval)
                     {
+                        // For the first value property only, if an overload is marked 
+                        // as not needing an interval, because it writes a simple JSON 
+                        // type (string, number, boolean), we can skip opening an interval 
+                        // and just write the property value directly.
                         writer.WriteLine("if (IsInterval)");
                         writer.WriteLine("    Output.WritePropertyName(PropertyName);");
                     }
@@ -440,9 +434,9 @@ namespace GenerateFromSchema
                     interfaceName = "ICesiumInterpolatableValuePropertyWriter";
 
                 writer.WriteLine("m_as{0} = new Lazy<{1}<{2}>>(Create{0}Adaptor, false);",
-                    property.NameWithPascalCase,
-                    interfaceName,
-                    overloads[0].Parameters[0].Type);
+                                 property.NameWithPascalCase,
+                                 interfaceName,
+                                 overloads[0].Parameters[0].Type);
             }
         }
 
@@ -472,9 +466,9 @@ namespace GenerateFromSchema
                 WriteSummaryText(writer, string.Format("Returns a wrapper for this instance that implements <see cref=\"{0}{{T}}\" /> to write a value in <code>{1}</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref=\"ICesiumElementWriter.Close\" /> on either this instance or the wrapper, but you must not call it on both.", interfaceName, property.NameWithPascalCase));
                 writer.WriteLine("/// <returns>The wrapper.</returns>");
                 writer.WriteLine("public {0}<{1}> As{2}()",
-                    interfaceName,
-                    overloads[0].Parameters[0].Type,
-                    property.NameWithPascalCase);
+                                 interfaceName,
+                                 overloads[0].Parameters[0].Type,
+                                 property.NameWithPascalCase);
                 writer.OpenScope();
                 writer.WriteLine("return m_as{0}.Value;", property.NameWithPascalCase);
                 writer.CloseScope();
@@ -485,25 +479,25 @@ namespace GenerateFromSchema
                     adaptorName = "CesiumInterpolatableWriterAdaptor";
 
                 writer.WriteLine("private {0}<{1}> Create{2}Adaptor()",
-                    interfaceName,
-                    overloads[0].Parameters[0].Type,
-                    property.NameWithPascalCase);
+                                 interfaceName,
+                                 overloads[0].Parameters[0].Type,
+                                 property.NameWithPascalCase);
                 writer.OpenScope();
                 writer.WriteLine("return new {0}<{1}CesiumWriter, {2}>(",
-                    adaptorName,
-                    schema.NameWithPascalCase,
-                    overloads[0].Parameters[0].Type);
+                                 adaptorName,
+                                 schema.NameWithPascalCase,
+                                 overloads[0].Parameters[0].Type);
                 if (sampleOverload != null)
                 {
                     writer.WriteLine("    this, (me, value) => me.Write{0}(value), ({1}CesiumWriter me, IList<JulianDate> dates, IList<{2}> values, int startIndex, int length) => me.Write{0}(dates, values, startIndex, length));",
-                        property.NameWithPascalCase,
-                        schema.NameWithPascalCase,
-                        overloads[0].Parameters[0].Type);
+                                     property.NameWithPascalCase,
+                                     schema.NameWithPascalCase,
+                                     overloads[0].Parameters[0].Type);
                 }
                 else
                 {
                     writer.WriteLine("    this, (me, value) => me.Write{0}(value));",
-                        property.NameWithPascalCase);
+                                     property.NameWithPascalCase);
                 }
                 writer.CloseScope();
                 writer.WriteLine();
@@ -589,19 +583,21 @@ namespace GenerateFromSchema
         {
             [JsonProperty("type")]
             public string Type = null;
+
             [JsonProperty("name")]
             public string Name = null;
+
             [JsonProperty("description")]
             public string Description = null;
 
             public static ParameterInfo SimpleValue(string type)
             {
-                return new ParameterInfo()
-                {
-                    Type = type,
-                    Name = "value",
-                    Description = "The value."
-                };
+                return new ParameterInfo
+                           {
+                               Type = type,
+                               Name = "value",
+                               Description = "The value."
+                           };
             }
         }
 
@@ -609,30 +605,42 @@ namespace GenerateFromSchema
         {
             [JsonProperty("namespaces")]
             public string[] Namespaces = null;
+
             [JsonProperty("parameters")]
             public ParameterInfo[] Parameters = null;
+
             [JsonProperty("writeValue")]
             public string WriteValue = null;
+
             [JsonProperty("callOverload")]
             public string CallOverload = null;
+
             [JsonProperty("writePropertyName")]
             public bool WritePropertyName = true;
 
+            [JsonProperty("needsInterval")]
+            public bool NeedsInterval = true;
+
             public string FormattedParameters
             {
-                get
-                {
-                    return string.Join(", ", Array.ConvertAll(Parameters, parameter => parameter.Type + ' ' + parameter.Name));
-                }
+                get { return string.Join(", ", Array.ConvertAll(Parameters, parameter => parameter.Type + ' ' + parameter.Name)); }
             }
 
             public static OverloadInfo CreateDefault(string typeName)
             {
-                return new OverloadInfo()
-                {
-                    Parameters = new[] { new ParameterInfo() { Type = typeName, Name = "value", Description = "The value." } },
-                    WriteValue = "Output.WriteValue(value);"
-                };
+                return new OverloadInfo
+                           {
+                               Parameters = new[]
+                                                {
+                                                    new ParameterInfo
+                                                        {
+                                                            Type = typeName,
+                                                            Name = "value",
+                                                            Description = "The value."
+                                                        }
+                                                },
+                               WriteValue = "Output.WriteValue(value);",
+                           };
             }
         }
 
@@ -640,8 +648,10 @@ namespace GenerateFromSchema
         {
             [JsonProperty("namespace")]
             public string Namespace = null;
+
             [JsonProperty("lazyNamespace")]
             public string LazyNamespace = null;
+
             [JsonProperty("types")]
             public Dictionary<string, OverloadInfo[]> Types = null;
         }

@@ -6,6 +6,13 @@ namespace ShapefileToCesiumLanguage
 {
     public class ShapeFactory
     {
+        /// <summary>
+        /// Given a shapefile <see cref="Shape"/> object, return a <see cref="CzmlShape"/> that can be written to CZML.
+        /// </summary>
+        /// <param name="shape">Te shapefile <see cref="Shape"/>.</param>
+        /// <param name="document">The <see cref="CzmlDocument"/> to which the shape will be written when its Write() method is called.</param>
+        /// <param name="color">A color for the shape's visualization.</param>
+        /// <returns>A new <see cref="CzmlShape"/>.</returns>
         static public CzmlShape Create(Shape shape, CzmlDocument document, Color color)
         {
             switch (shape.ShapeType)

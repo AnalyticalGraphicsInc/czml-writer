@@ -6,6 +6,11 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.BooleanCesiumWriter;
+import cesiumlanguagewriter.ColorCesiumWriter;
+import cesiumlanguagewriter.DirectionListCesiumWriter;
+import cesiumlanguagewriter.DoubleCesiumWriter;
+import cesiumlanguagewriter.MaterialCesiumWriter;
 import java.awt.Color;
 import java.util.List;
 
@@ -58,33 +63,33 @@ public class PyramidCesiumWriter extends CesiumPropertyWriter<PyramidCesiumWrite
 
 	 */
 	public static final String MaterialPropertyName = "material";
-	private Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
-		public BooleanCesiumWriter invoke() {
+	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
 		}
 	}, false);
-	private Lazy<DirectionListCesiumWriter> m_directions = new Lazy<DirectionListCesiumWriter>(new Func1<DirectionListCesiumWriter>() {
-		public DirectionListCesiumWriter invoke() {
+	private Lazy<DirectionListCesiumWriter> m_directions = new Lazy<cesiumlanguagewriter.DirectionListCesiumWriter>(new Func1<cesiumlanguagewriter.DirectionListCesiumWriter>() {
+		public cesiumlanguagewriter.DirectionListCesiumWriter invoke() {
 			return new DirectionListCesiumWriter(DirectionsPropertyName);
 		}
 	}, false);
-	private Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-		public DoubleCesiumWriter invoke() {
+	private Lazy<DoubleCesiumWriter> m_radius = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(RadiusPropertyName);
 		}
 	}, false);
-	private Lazy<BooleanCesiumWriter> m_showIntersection = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
-		public BooleanCesiumWriter invoke() {
+	private Lazy<BooleanCesiumWriter> m_showIntersection = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowIntersectionPropertyName);
 		}
 	}, false);
-	private Lazy<ColorCesiumWriter> m_intersectionColor = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-		public ColorCesiumWriter invoke() {
+	private Lazy<ColorCesiumWriter> m_intersectionColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+		public cesiumlanguagewriter.ColorCesiumWriter invoke() {
 			return new ColorCesiumWriter(IntersectionColorPropertyName);
 		}
 	}, false);
-	private Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(new Func1<MaterialCesiumWriter>() {
-		public MaterialCesiumWriter invoke() {
+	private Lazy<MaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
+		public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
 			return new MaterialCesiumWriter(MaterialPropertyName);
 		}
 	}, false);

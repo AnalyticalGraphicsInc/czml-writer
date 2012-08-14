@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using NUnit.Framework;
 using Shapefile;
 
@@ -29,7 +30,7 @@ namespace ShapefileReaderTests
                                                "name_sort", "pop_est", "postal", "scalerank", "sov_a3", "sovereignt",
                                                "su_a3", "su_dif", "subunit", "terr_", "type"
             };
-            CollectionAssert.AreEqual(keys, expected);
+            CollectionAssert.AreEqual(expected, keys);
         }
 
         [Test]
@@ -40,14 +41,29 @@ namespace ShapefileReaderTests
             Assert.That(value.Equals("Afg."));
 
             value = shape.GetMetadataValue("pop_est");
-            Assert.That(value.Equals("28400000.00"));
+            Assert.AreEqual("28400000.00", value, "Metadata does not equal expected value.");
         }
 
         [Test]
         public void TestGetRecordNumber()
         {
             Shape shape = m_reader[0];
-            Assert.That(shape.RecordNumber == 1);
+            Assert.AreEqual(1, shape.RecordNumber);
+        }
+
+        [Test]
+        public void ConvertsUnsupportedProjection()
+        {
+            shapefileName = "SampleShapefiles/test.shp";
+            Assert.Throws(typeof(InvalidDataException), () => m_reader = new ShapefileReader(shapefileName));
+        }
+
+        [Test]
+        public void ReadPointShapes()
+        {
+            shapefileName = "SampleShapefiles/Cities.shp";
+            m_reader = new ShapefileReader(shapefileName);
+            Assert.AreEqual(87, m_reader.Count);
         }
     }
 }

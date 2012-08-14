@@ -153,7 +153,7 @@ namespace ShapefileToCesiumLanguage
 
                     while (innerRings.Count > 0)
                     {
-                        outerRing = PolygonAlgorithms.EliminateHole(outerRing, ref innerRings);
+                        outerRing = PolygonAlgorithms.EliminateHole(outerRing, innerRings);
                     }
 
                     simplifiedRings.Add(new ShapePart(outerRing.ToArray(), 0, outerRing.Count));

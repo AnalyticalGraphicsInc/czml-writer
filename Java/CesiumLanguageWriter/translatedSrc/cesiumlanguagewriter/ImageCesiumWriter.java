@@ -68,14 +68,28 @@ public class ImageCesiumWriter extends CesiumPropertyWriter<ImageCesiumWriter> {
 	
 	
 
-	 * @param url The URL of the image.
+	 * @param url The URL of the image.  If this URL is not a data URI, it will be downloaded and embedded in the document, using a thread-local cache to avoid downloading the same image multiple times.  For more control over how the image is referenced in the document, use the overload that takes a ICesiumUrlResolver.
 	 */
 	public final void writeImage(String url) {
+		writeImage(url, CachingCesiumUrlResolver.getThreadLocalInstance());
+	}
+
+	/**
+	 *  
+	Writes the <code>image</code> property.  The <code>image</code> property specifies the URL of the image.
+	
+	
+	
+
+	 * @param url The URL of the image.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.
+	 * @param resolver An ICesiumUrlResolver used to build the final URL that will be embedded in the document.
+	 */
+	public final void writeImage(String url, ICesiumUrlResolver resolver) {
 		String PropertyName = ImagePropertyName;
 		if (getIsInterval()) {
 			getOutput().writePropertyName(PropertyName);
 		}
-		getOutput().writeValue(url);
+		getOutput().writeValue(resolver.resolveUrl(url));
 	}
 
 	/**
@@ -84,10 +98,28 @@ public class ImageCesiumWriter extends CesiumPropertyWriter<ImageCesiumWriter> {
 	
 	
 
-	 * @param image The image for which to create a data URL.
+	 * @param image The image.  A data URI will be created for this image, using PNG encoding.
 	 */
 	public final void writeImage(RenderedImage image) {
-		writeImage(CesiumFormattingHelper.imageToDataUrl(image));
+		writeImage(image, CesiumImageFormat.PNG);
+	}
+
+	/**
+	 *  
+	Writes the <code>image</code> property.  The <code>image</code> property specifies the URL of the image.
+	
+	
+	
+
+	 * @param image The image.  A data URI will be created for this image.
+	 * @param imageFormat The image format to use to encode the image in the data URI.
+	 */
+	public final void writeImage(RenderedImage image, CesiumImageFormat imageFormat) {
+		String PropertyName = ImagePropertyName;
+		if (getIsInterval()) {
+			getOutput().writePropertyName(PropertyName);
+		}
+		getOutput().writeValue(CesiumFormattingHelper.imageToDataUri(image, imageFormat));
 	}
 
 	/**

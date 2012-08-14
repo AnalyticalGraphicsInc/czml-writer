@@ -32,9 +32,9 @@ namespace Shapefile
             get { return _maximumMeasure; }
         }
 
-        public double[] Measures
+        public double GetMeasure(int index)
         {
-            get { return _measures; }
+            return _measures[index];
         }
 
         private readonly double _minimumMeasure;

@@ -67,7 +67,7 @@ namespace Shapefile
 
         public IEnumerator<Cartographic> GetEnumerator()
         {
-            return (IEnumerator<Cartographic>)_positions.GetEnumerator();
+            return _positions.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

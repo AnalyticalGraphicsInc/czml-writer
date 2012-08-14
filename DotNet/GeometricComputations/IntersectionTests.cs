@@ -5,7 +5,7 @@ namespace GeometricComputations
 {
     public static class IntersectionTests
     {
-        public static bool TryRayPlane(
+        public static bool TryIntersectRayPlane(
             Cartesian rayOrigin,
             Cartesian rayDirection,
             Cartesian planeNormal,
@@ -16,9 +16,7 @@ namespace GeometricComputations
 
             if (Math.Abs(denominator) < 0.00000000000000000001)
             {
-                //
                 // Ray is parallel to plane.  The ray may be in the polygon's plane.
-                //
                 intersectionPoint = Cartesian.Zero;
                 return false;
             }

@@ -23,7 +23,19 @@ public enum CesiumImageFormat implements Enumeration {
 			
 
 			 */
-	JPEG(1);
+	JPEG(1), /**
+				 *  
+				The image is in Graphics Interchange Format (GIF) format.
+				
+
+				 */
+	GIF(2), /**
+			 *  
+			The image is in bitmap (BMP) format.
+			
+
+			 */
+	BMP(3);
 	private final int value;
 
 	CesiumImageFormat(int value) {
@@ -49,6 +61,10 @@ public enum CesiumImageFormat implements Enumeration {
 			return PNG;
 		case 1:
 			return JPEG;
+		case 2:
+			return GIF;
+		case 3:
+			return BMP;
 		default:
 			throw new IllegalArgumentException("Undefined enum value.");
 		}

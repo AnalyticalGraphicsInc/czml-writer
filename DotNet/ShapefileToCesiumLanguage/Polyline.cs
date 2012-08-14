@@ -28,15 +28,15 @@ namespace ShapefileToCesiumLanguage
             PolylineShape polyline = (PolylineShape)m_shape;
             for (int part = 0; part < polyline.Count; part++)
             {
-                this.WritePacket(part);
+                this.WritePacket(polyline[part]);
             }
         }
 
         /// <summary>
         /// Writes a new polyline packet for each part of the shape.
         /// </summary>
-        /// <param name="part">The index of the part to write</param>
-        private void WritePacket(int part)
+        /// <param name="part">The <see cref="ShapePart"/> of the <see cref="PolylineShape"/> to write</param>
+        private void WritePacket(ShapePart part)
         {
             using (PacketCesiumWriter packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
             {
@@ -45,9 +45,9 @@ namespace ShapefileToCesiumLanguage
                 {
                     PolylineShape polyline = (PolylineShape)m_shape;
                     List<Cartographic> positions = new List<Cartographic>();
-                    for (int i = 0; i < polyline[part].Count; i++)
+                    for (int i = 0; i < part.Count; i++)
                     {
-                        positions.Add(polyline[part][i]);
+                        positions.Add(part[i]);
                     }
                     position.WriteCartographicRadians(positions);
                 }

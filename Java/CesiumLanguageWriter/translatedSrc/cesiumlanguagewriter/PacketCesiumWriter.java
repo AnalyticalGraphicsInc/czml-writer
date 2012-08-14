@@ -6,6 +6,18 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.BillboardCesiumWriter;
+import cesiumlanguagewriter.CameraCesiumWriter;
+import cesiumlanguagewriter.ConeCesiumWriter;
+import cesiumlanguagewriter.LabelCesiumWriter;
+import cesiumlanguagewriter.OrientationCesiumWriter;
+import cesiumlanguagewriter.PathCesiumWriter;
+import cesiumlanguagewriter.PointCesiumWriter;
+import cesiumlanguagewriter.PolygonCesiumWriter;
+import cesiumlanguagewriter.PolylineCesiumWriter;
+import cesiumlanguagewriter.PositionCesiumWriter;
+import cesiumlanguagewriter.PositionListCesiumWriter;
+import cesiumlanguagewriter.PyramidCesiumWriter;
 import java.util.List;
 
 /**
@@ -113,63 +125,63 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	 */
 	public static final String CameraPropertyName = "camera";
-	private Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(new Func1<PositionCesiumWriter>() {
-		public PositionCesiumWriter invoke() {
+	private Lazy<PositionCesiumWriter> m_position = new Lazy<cesiumlanguagewriter.PositionCesiumWriter>(new Func1<cesiumlanguagewriter.PositionCesiumWriter>() {
+		public cesiumlanguagewriter.PositionCesiumWriter invoke() {
 			return new PositionCesiumWriter(PositionPropertyName);
 		}
 	}, false);
-	private Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(new Func1<BillboardCesiumWriter>() {
-		public BillboardCesiumWriter invoke() {
+	private Lazy<BillboardCesiumWriter> m_billboard = new Lazy<cesiumlanguagewriter.BillboardCesiumWriter>(new Func1<cesiumlanguagewriter.BillboardCesiumWriter>() {
+		public cesiumlanguagewriter.BillboardCesiumWriter invoke() {
 			return new BillboardCesiumWriter(BillboardPropertyName);
 		}
 	}, false);
-	private Lazy<PositionListCesiumWriter> m_vertexPositions = new Lazy<PositionListCesiumWriter>(new Func1<PositionListCesiumWriter>() {
-		public PositionListCesiumWriter invoke() {
+	private Lazy<PositionListCesiumWriter> m_vertexPositions = new Lazy<cesiumlanguagewriter.PositionListCesiumWriter>(new Func1<cesiumlanguagewriter.PositionListCesiumWriter>() {
+		public cesiumlanguagewriter.PositionListCesiumWriter invoke() {
 			return new PositionListCesiumWriter(VertexPositionsPropertyName);
 		}
 	}, false);
-	private Lazy<OrientationCesiumWriter> m_orientation = new Lazy<OrientationCesiumWriter>(new Func1<OrientationCesiumWriter>() {
-		public OrientationCesiumWriter invoke() {
+	private Lazy<OrientationCesiumWriter> m_orientation = new Lazy<cesiumlanguagewriter.OrientationCesiumWriter>(new Func1<cesiumlanguagewriter.OrientationCesiumWriter>() {
+		public cesiumlanguagewriter.OrientationCesiumWriter invoke() {
 			return new OrientationCesiumWriter(OrientationPropertyName);
 		}
 	}, false);
-	private Lazy<PointCesiumWriter> m_point = new Lazy<PointCesiumWriter>(new Func1<PointCesiumWriter>() {
-		public PointCesiumWriter invoke() {
+	private Lazy<PointCesiumWriter> m_point = new Lazy<cesiumlanguagewriter.PointCesiumWriter>(new Func1<cesiumlanguagewriter.PointCesiumWriter>() {
+		public cesiumlanguagewriter.PointCesiumWriter invoke() {
 			return new PointCesiumWriter(PointPropertyName);
 		}
 	}, false);
-	private Lazy<LabelCesiumWriter> m_label = new Lazy<LabelCesiumWriter>(new Func1<LabelCesiumWriter>() {
-		public LabelCesiumWriter invoke() {
+	private Lazy<LabelCesiumWriter> m_label = new Lazy<cesiumlanguagewriter.LabelCesiumWriter>(new Func1<cesiumlanguagewriter.LabelCesiumWriter>() {
+		public cesiumlanguagewriter.LabelCesiumWriter invoke() {
 			return new LabelCesiumWriter(LabelPropertyName);
 		}
 	}, false);
-	private Lazy<PolylineCesiumWriter> m_polyline = new Lazy<PolylineCesiumWriter>(new Func1<PolylineCesiumWriter>() {
-		public PolylineCesiumWriter invoke() {
+	private Lazy<PolylineCesiumWriter> m_polyline = new Lazy<cesiumlanguagewriter.PolylineCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineCesiumWriter>() {
+		public cesiumlanguagewriter.PolylineCesiumWriter invoke() {
 			return new PolylineCesiumWriter(PolylinePropertyName);
 		}
 	}, false);
-	private Lazy<PathCesiumWriter> m_path = new Lazy<PathCesiumWriter>(new Func1<PathCesiumWriter>() {
-		public PathCesiumWriter invoke() {
+	private Lazy<PathCesiumWriter> m_path = new Lazy<cesiumlanguagewriter.PathCesiumWriter>(new Func1<cesiumlanguagewriter.PathCesiumWriter>() {
+		public cesiumlanguagewriter.PathCesiumWriter invoke() {
 			return new PathCesiumWriter(PathPropertyName);
 		}
 	}, false);
-	private Lazy<PolygonCesiumWriter> m_polygon = new Lazy<PolygonCesiumWriter>(new Func1<PolygonCesiumWriter>() {
-		public PolygonCesiumWriter invoke() {
+	private Lazy<PolygonCesiumWriter> m_polygon = new Lazy<cesiumlanguagewriter.PolygonCesiumWriter>(new Func1<cesiumlanguagewriter.PolygonCesiumWriter>() {
+		public cesiumlanguagewriter.PolygonCesiumWriter invoke() {
 			return new PolygonCesiumWriter(PolygonPropertyName);
 		}
 	}, false);
-	private Lazy<ConeCesiumWriter> m_cone = new Lazy<ConeCesiumWriter>(new Func1<ConeCesiumWriter>() {
-		public ConeCesiumWriter invoke() {
+	private Lazy<ConeCesiumWriter> m_cone = new Lazy<cesiumlanguagewriter.ConeCesiumWriter>(new Func1<cesiumlanguagewriter.ConeCesiumWriter>() {
+		public cesiumlanguagewriter.ConeCesiumWriter invoke() {
 			return new ConeCesiumWriter(ConePropertyName);
 		}
 	}, false);
-	private Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<PyramidCesiumWriter>(new Func1<PyramidCesiumWriter>() {
-		public PyramidCesiumWriter invoke() {
+	private Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<cesiumlanguagewriter.PyramidCesiumWriter>(new Func1<cesiumlanguagewriter.PyramidCesiumWriter>() {
+		public cesiumlanguagewriter.PyramidCesiumWriter invoke() {
 			return new PyramidCesiumWriter(PyramidPropertyName);
 		}
 	}, false);
-	private Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(new Func1<CameraCesiumWriter>() {
-		public CameraCesiumWriter invoke() {
+	private Lazy<CameraCesiumWriter> m_camera = new Lazy<cesiumlanguagewriter.CameraCesiumWriter>(new Func1<cesiumlanguagewriter.CameraCesiumWriter>() {
+		public cesiumlanguagewriter.CameraCesiumWriter invoke() {
 			return new CameraCesiumWriter(CameraPropertyName);
 		}
 	}, false);

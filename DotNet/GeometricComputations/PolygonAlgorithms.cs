@@ -5,6 +5,9 @@ using CesiumLanguageWriter;
 
 namespace GeometricComputations
 {
+    /// <summary>
+    /// A class containing methods for manipulating polygons, including simplifying polygons with holes.
+    /// </summary>
     public static class PolygonAlgorithms
     {
         /// <summary>
@@ -216,15 +219,15 @@ namespace GeometricComputations
         /// Given an outer ring and multiple inner rings, determine the point on the outer ring that is visible
         /// to the rightmost vertex of the rightmost inner ring.
         /// </summary>
-        /// <param name="outerRing"></param>
-        /// <param name="innerRings"></param>
+        /// <param name="outerRing">A list of Cartesian points defining the outer polygon.</param>
+        /// <param name="innerRings">A list of lists of Cartesian points, each list defining a "hole" in the outer polygon.</param>
         /// <returns>The index of the vertex in <paramref name="outerRing"/> that is mutually visible to the rightmost vertex in <paramref name="innerRings"/></returns>
         public static int GetMutuallyVisibleVertexIndex(List<Cartesian> outerRing, List<List<Cartesian>> innerRings)
         {
             int innerRingIndex = GetRightmostRingIndex(innerRings);
             List<Cartesian> innerRing = innerRings[innerRingIndex];
-            int innerRingVertexIndex = GetRightmostVertexIndex(innerRings[innerRingIndex]);
-            Cartesian innerRingVertex = innerRings[innerRingIndex][innerRingVertexIndex];
+            int innerRingVertexIndex = GetRightmostVertexIndex(innerRing);
+            Cartesian innerRingVertex = innerRing[innerRingVertexIndex];
             Cartesian[] edge = new Cartesian[2];
             Cartesian intersection = IntersectPointWithRing(innerRingVertex, outerRing, out edge);
 
@@ -279,7 +282,14 @@ namespace GeometricComputations
             });
         }
 
-        public static List<Cartographic> EliminateHole(List<Cartographic> outerRing, ref List<List<Cartographic>> innerRings)
+        /// <summary>
+        /// Given a polygon defined by an outer ring with one or more inner rings (holes), return a single list of points representing
+        /// a polygon with a hole added to it. The added hole is removed from <paramref name="innerRings"/>.
+        /// </summary>
+        /// <param name="outerRing">A list of Cartographic points defining the outer polygon.</param>
+        /// <param name="innerRings">A list of lists of Cartographic points, each list defining a "hole" in the outer polygon.</param>
+        /// <returns>A single list of Cartographic points defining the polygon, including the eliminated inner ring.</returns>
+        public static List<Cartographic> EliminateHole(List<Cartographic> outerRing, List<List<Cartographic>> innerRings)
         {
             // Convert from LLA -> XYZ and project points onto a tangent plane to find the mutually visible vertex.
             List<Cartesian> cartesianOuterRing = new List<Cartesian>();
@@ -319,8 +329,6 @@ namespace GeometricComputations
 
             List<Cartographic> innerRing = innerRings[innerRingIndex];
             List<Cartographic> newPolygonVertices = new List<Cartographic>();
-
-            Cartographic innerRingVertex = innerRings[innerRingIndex][innerRingVertexIndex];
 
             for (int i = 0; i < outerRing.Count; i++)
             {

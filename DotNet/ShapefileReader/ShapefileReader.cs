@@ -3,25 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Data;
-using System.Data.OleDb;
 using System.IO;
-using System.Text;
 using System.Text.RegularExpressions;
 using CesiumLanguageWriter;
 
 namespace Shapefile
 {
-    public class ShapefileReader
+    public class ShapefileReader : IEnumerable<Shape>
     {
         public ShapefileReader(string filename)
         {
-            //
             // ESRI Shapefile Technical Description:
             //    http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf
-            //
             using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
             {
-                //
                 // File Header:
                 //
                 // Position  Field         Value        Type     Byte Order
@@ -45,29 +40,21 @@ namespace Shapefile
                 // Byte 92*  Bounding Box  Mmax         Double   Little
                 //
                 // * Unused, with value 0.0, if not Measured or Z type
-                //
+
                 byte[] fileHeader = Read(fs, _fileHeaderLength);
                 if (fileHeader == null)
                 {
                     throw new InvalidDataException("Could not read shapefile header.");
                 }
 
-                int fileCode = ToInteger(fileHeader, 0, ByteOrder.BigEndian);
+                _byteOrder = BitConverter.IsLittleEndian ? ByteOrder.LittleEndian : ByteOrder.BigEndian;
+                int fileCode = ToInteger(fileHeader, 0, ByteOrder.BigEndian);;
+                
                 if (fileCode != _fileCode)
                 {
-                    //
-                    // Swap byte order and try again.
-                    //
-                    _byteOrder = ByteOrder.BigEndian;
-
-                    fileCode = ToInteger(fileHeader, 0, ByteOrder.BigEndian);
-
-                    if (fileCode != _fileCode)
-                    {
-                        throw new InvalidDataException("Could not read shapefile file code.  Is this a valid shapefile?");
-                    }
+                    throw new InvalidDataException("Could not read shapefile file code.  Is this a valid shapefile?");
                 }
-
+                
                 int fileLengthInBytes = ToInteger(fileHeader, 24, ByteOrder.BigEndian) * 2;
 
                 int version = ToInteger(fileHeader, 28, ByteOrder.LittleEndian);
@@ -81,11 +68,15 @@ namespace Shapefile
                 if (File.Exists(prjFilepath))
                 {
                     string prj = System.IO.File.ReadAllText(prjFilepath);
-                    string projection = @"GCS_WGS_1984";
+                    string projection = @"PROJECTION";
                     string unit = @"Degree";
-                    if (! (Regex.IsMatch(prj, projection) && Regex.IsMatch(prj, unit)))
+                    if (Regex.IsMatch(prj, projection))
                     {
-                        throw new InvalidDataException("Shapefile projection not supported. Only GCS_WGS_1984 in degrees is supported.");
+                        throw new InvalidDataException("Shapefile projection not supported.");
+                    }
+                    else if (!(Regex.IsMatch(prj, unit)))
+                    {
+                        throw new InvalidDataException("Shapefile units not supported. Only degrees is supported.");
                     }
                 }
 
@@ -98,12 +89,11 @@ namespace Shapefile
                 
                 if (fileLengthInBytes == _fileHeaderLength)
                 {
-                    //
                     // If the shapefile is empty (that is, has no records), 
                     // the values for xMin, yMin, xMax, and yMax are unspecified.
                     //
                     // I like zero better.
-                    //
+
                     xMin = 0.0;
                     yMin = 0.0;
                     xMax = 0.0;
@@ -112,18 +102,15 @@ namespace Shapefile
 
                 _extent = new CartographicExtent(xMin, yMin, xMax, yMax);
 
-                //
                 // Read each header...
-                //
 
-                //
                 // Record Header:
                 //
                 // Position  Field           Value           Type     Byte Order
                 // --------  -----           -----           ----     ----------
                 // Byte 0    Record Number   Record Number   Integer  Big
                 // Byte 4    Content Length  Content Length  Integer  Big
-                //
+
                 _shapes = new List<Shape>();
                 byte[] recordHeader;
 
@@ -147,10 +134,8 @@ namespace Shapefile
                     switch (recordShapeType)
                     {
                         case ShapeType.NullShape:
-                            //
                             // Filter out null shapes.  Otherwise, every client
                             // would have to deal with them.
-                            //
                             break;
 
                         case ShapeType.Point:
@@ -257,9 +242,7 @@ namespace Shapefile
                             int[] parts = new int[numberOfParts];
                             Rectangular[] positions = new Rectangular[numberOfPoints];
 
-                            //
                             // These two loops can be optimized if the machine is little endian.
-                            //
                             for (int i = 0; i < numberOfParts; ++i)
                             {
                                 parts[i] = ToInteger(record, 44 + (4 * i), ByteOrder.LittleEndian);
@@ -429,9 +412,14 @@ namespace Shapefile
             get { return _shapes.Count; }
         }
 
-        public IEnumerator GetEnumerator()
+        public IEnumerator<Shape> GetEnumerator()
         {
             return _shapes.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
 
         private enum ByteOrder
