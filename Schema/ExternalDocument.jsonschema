@@ -1,0 +1,24 @@
+{
+    "title": "ExternalDocument",
+    "description": "Defines a reference to an external CZML source.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "eventSource": {
+            "$ref": "String.jsonschema",
+            "description": "The Uri of the external document. Uses EventSource to push data from the server."
+        },
+        "parameters": {
+            "type": ["string"],
+            "description": "Client supplied parameters to the external document Uri."
+        },
+		"polling":{
+		    "$ref": "String.jsonschema",
+			"description": "The Uri of the external document. Uses traditional polling. Specify the refreshInterval property to poll the server at a given interval."
+		},
+		"refreshInterval":{
+		    "$ref": "Double.jsonschema",
+			"description": ""
+		}
+    }
+}
