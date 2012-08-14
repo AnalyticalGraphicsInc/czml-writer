@@ -71,7 +71,7 @@ namespace KmlToCesiumLanguage
 
             while (innerRings.Count > 0)
             {
-                outerPositions = PolygonAlgorithms.EliminateHole(outerPositions, ref innerRings);
+                outerPositions = PolygonAlgorithms.EliminateHole(outerPositions, innerRings);
             }
             using (var positions = this.PacketWriter.OpenVertexPositionsProperty())
             {
