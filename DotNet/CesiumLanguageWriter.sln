@@ -54,7 +54,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\SolidColorMaterial.jsonschema = ..\Schema\SolidColorMaterial.jsonschema
 		..\Schema\String.jsonschema = ..\Schema\String.jsonschema
 		..\Schema\StringValue.jsonschema = ..\Schema\StringValue.jsonschema
-		..\Schema\TimeIntervalCollection.jsonschema = ..\Schema\TimeIntervalCollection.jsonschema
 		..\Schema\TimeIntervalCollectionValue.jsonschema = ..\Schema\TimeIntervalCollectionValue.jsonschema
 		..\Schema\TimeIntervalValue.jsonschema = ..\Schema\TimeIntervalValue.jsonschema
 		..\Schema\UnitCartesian3ListValue.jsonschema = ..\Schema\UnitCartesian3ListValue.jsonschema
