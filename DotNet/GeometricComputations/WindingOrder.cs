@@ -15,7 +15,7 @@ namespace GeometricComputations
         /// </summary>
         ClockWise = 0,
         /// <summary>
-        /// Positions or triangles are defined in counter-clockwise order. 
+        /// Positions are defined in counter-clockwise order. 
         /// </summary>
         CounterClockWise = 1
     }
