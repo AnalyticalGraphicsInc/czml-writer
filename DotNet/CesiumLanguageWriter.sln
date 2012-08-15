@@ -55,6 +55,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\SolidColorMaterial.jsonschema = ..\Schema\SolidColorMaterial.jsonschema
 		..\Schema\String.jsonschema = ..\Schema\String.jsonschema
 		..\Schema\StringValue.jsonschema = ..\Schema\StringValue.jsonschema
+		..\Schema\TimeIntervalCollection.jsonschema = ..\Schema\TimeIntervalCollection.jsonschema
 		..\Schema\TimeIntervalCollectionValue.jsonschema = ..\Schema\TimeIntervalCollectionValue.jsonschema
 		..\Schema\TimeIntervalValue.jsonschema = ..\Schema\TimeIntervalValue.jsonschema
 		..\Schema\UnitCartesian3ListValue.jsonschema = ..\Schema\UnitCartesian3ListValue.jsonschema
@@ -80,6 +81,20 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGLGlobeJsonToCesiumLanguageTests", "WebGlGlobeJsonToCesiumLanguageTests\WebGLGlobeJsonToCesiumLanguageTests.csproj", "{D8E5C88F-7FCB-4298-83FD-75B71BCDF781}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CesiumLanguageConverter", "CesiumLanguageConverter\CesiumLanguageConverter.csproj", "{D990C47B-0205-4ACC-A7EC-1FB4A9070840}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapefileReader", "ShapefileReader\ShapefileReader.csproj", "{205A9004-A4A0-44E6-B068-4EAD140748AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapefileReaderTests", "ShapefileReaderTests\ShapefileReaderTests.csproj", "{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapefileToCesiumLanguage", "ShapefileToCesiumLanguage\ShapefileToCesiumLanguage.csproj", "{D681B024-F872-415D-80F6-2E7ABDAACD85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapefileToCesiumLanguageTests", "ShapefileToCesiumLanguageTests\ShapefileToCesiumLanguageTests.csproj", "{84365C93-672B-4A5C-9034-473BE9D65AA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometricComputations", "GeometricComputations\GeometricComputations.csproj", "{1051D815-56BC-4021-AFA1-AC94CA18EBFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometricComputationsTests", "TestGeometricComputations\GeometricComputationsTests.csproj", "{A9F2ADF7-4447-40B2-8975-9FCB72C6694F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadDBF", "ThirdParty\LoadDBF\LoadDBF.csproj", "{2FB1AEFA-3B28-42D0-9520-3F100E297601}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,6 +134,34 @@ Global
 		{D990C47B-0205-4ACC-A7EC-1FB4A9070840}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D990C47B-0205-4ACC-A7EC-1FB4A9070840}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D990C47B-0205-4ACC-A7EC-1FB4A9070840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{205A9004-A4A0-44E6-B068-4EAD140748AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{205A9004-A4A0-44E6-B068-4EAD140748AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{205A9004-A4A0-44E6-B068-4EAD140748AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{205A9004-A4A0-44E6-B068-4EAD140748AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1B0B7B3-E687-457B-BCEF-C7ACB4D33C15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D681B024-F872-415D-80F6-2E7ABDAACD85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D681B024-F872-415D-80F6-2E7ABDAACD85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D681B024-F872-415D-80F6-2E7ABDAACD85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D681B024-F872-415D-80F6-2E7ABDAACD85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84365C93-672B-4A5C-9034-473BE9D65AA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84365C93-672B-4A5C-9034-473BE9D65AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84365C93-672B-4A5C-9034-473BE9D65AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84365C93-672B-4A5C-9034-473BE9D65AA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1051D815-56BC-4021-AFA1-AC94CA18EBFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1051D815-56BC-4021-AFA1-AC94CA18EBFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1051D815-56BC-4021-AFA1-AC94CA18EBFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1051D815-56BC-4021-AFA1-AC94CA18EBFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9F2ADF7-4447-40B2-8975-9FCB72C6694F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9F2ADF7-4447-40B2-8975-9FCB72C6694F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9F2ADF7-4447-40B2-8975-9FCB72C6694F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9F2ADF7-4447-40B2-8975-9FCB72C6694F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FB1AEFA-3B28-42D0-9520-3F100E297601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FB1AEFA-3B28-42D0-9520-3F100E297601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FB1AEFA-3B28-42D0-9520-3F100E297601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FB1AEFA-3B28-42D0-9520-3F100E297601}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

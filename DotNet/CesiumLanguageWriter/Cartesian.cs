@@ -130,6 +130,28 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Gets the <see cref="UnitCartesian"/> of the axis most orthogonal to this Cartesian.
+        /// </summary>
+        public UnitCartesian MostOrthogonalAxis
+        {
+            get
+            {
+                double x = Math.Abs(m_x);
+                double y = Math.Abs(m_y);
+                double z = Math.Abs(m_z);
+
+                if (x <= y)
+                {
+                    return ((x <= z) ? UnitCartesian.UnitX : UnitCartesian.UnitZ);
+                }
+                else
+                {
+                    return ((y <= z) ? UnitCartesian.UnitY : UnitCartesian.UnitZ);
+                }
+            }
+        }
+
+        /// <summary>
         /// Inverts this instance.
         /// </summary>
         /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the inverse of this instance.</returns>
@@ -261,6 +283,46 @@ namespace CesiumLanguageWriter
         public static Cartesian operator -(Cartesian coordinates)
         {
             return new Cartesian(-coordinates.m_x, -coordinates.m_y, -coordinates.m_z);
+        }
+
+        /// <summary>
+        /// Performs a component-wise greater than check.
+        /// </summary>
+        /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
+        /// <returns><see langword="true"/> if all components of this Cartesian are greater than all components of <paramref name="other"/></returns>
+        public bool AllComponentsAreGreaterThan(Cartesian other)
+        {
+            return (m_x > other.X) && (m_y > other.Y) && (m_z > other.Z);
+        }
+
+        /// <summary>
+        /// Performs a component-wise greater than or equal to check.
+        /// </summary>
+        /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
+        /// <returns><see langword="true"/> if all components of this <see cref="Cartesian"/> are greater than or equal to all components of <paramref name="other"/></returns>
+        public bool AllComponentsAreGreaterThanOrEqualTo(Cartesian other)
+        {
+            return (m_x >= other.X) && (m_y >= other.Y) && (m_z >= other.Z);
+        }
+
+        /// <summary>
+        /// Performs a component-wise less than check.
+        /// </summary>
+        /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
+        /// <returns><see langword="true"/> if all components of this <see cref="Cartesian"/> are less than all components of <paramref name="other"/></returns>
+        public bool AllComponentsAreLessThan(Cartesian other)
+        {
+            return (m_x < other.X) && (m_y < other.Y) && (m_z < other.Z);
+        }
+
+        /// <summary>
+        /// Performs a component-wise less than or equal to check.
+        /// </summary>
+        /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
+        /// <returns><see langword="true"/> if all components of this <see cref="Cartesian"/> are less than or equal to all components of <paramref name="other"/></returns>
+        public bool AllComponentsAreLessThanOrEqualTo(Cartesian other)
+        {
+            return (m_x <= other.X) && (m_y <= other.Y) && (m_z <= other.Z);
         }
 
         /// <summary>
