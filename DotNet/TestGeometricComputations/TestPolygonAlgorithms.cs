@@ -192,9 +192,9 @@ namespace TestGeometricComputations
                 new Cartesian(0.0, 5.0, 0.0)
             };
 
-            var result = PolygonAlgorithms.ComputeArea2D(outerRing);
+            var result = PolygonAlgorithms.GetWindingOrder(outerRing);
 
-            Assert.That(result < 0 );
+            Assert.That(result == WindingOrder.ClockWise );
         }
 
         [Test]
@@ -208,9 +208,9 @@ namespace TestGeometricComputations
                 new Cartesian(0.0, 5.0, 0.0)
             };
 
-            var result = PolygonAlgorithms.ComputeArea2D(outerRing);
+            var result = PolygonAlgorithms.GetWindingOrder(outerRing);
 
-            Assert.That(result >= 0);
+            Assert.That(result == WindingOrder.CounterClockWise);
         }
     }
 }

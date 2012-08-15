@@ -280,7 +280,7 @@ namespace GeometricComputations
             {
                 cartesianOuterRing.Add(Ellipsoid.Wgs84.ToCartesian(point));
             }
-            var windingOrder = ComputeArea2D(cartesianOuterRing) >= 0.0 ? 0 : 1;
+            var windingOrder = GetWindingOrder(cartesianOuterRing);
             List<List<Cartesian>> cartesianInnerRings = new List<List<Cartesian>>();
             for(int i = 0; i < innerRings.Count; ++i)
             {
@@ -290,7 +290,7 @@ namespace GeometricComputations
                 {
                     cartesianInnerRing.Add(Ellipsoid.Wgs84.ToCartesian(point));
                 }
-                var innerWindingOrder = ComputeArea2D(cartesianInnerRing) >= 0.0 ? 0 : 1;
+                var innerWindingOrder = GetWindingOrder(cartesianInnerRing);
                 if (innerWindingOrder == windingOrder)
                 {
                     ring.Reverse();
@@ -351,6 +351,17 @@ namespace GeometricComputations
             innerRings.RemoveAt(innerRingIndex);
 
             return newPolygonVertices;
+        }
+
+        /// <summary>
+        /// Gets the winding order.
+        /// </summary>
+        /// <param name="positions">The positions.</param>
+        /// <returns></returns>
+        public static WindingOrder GetWindingOrder(List<Cartesian> positions)
+        {
+            var area = ComputeArea2D(positions);
+            return area >= 0.0 ? WindingOrder.CounterClockWise : WindingOrder.ClockWise;
         }
 
         private static double ComputeArea2D(List<Cartesian> positions)
