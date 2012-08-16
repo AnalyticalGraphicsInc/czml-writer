@@ -82,6 +82,10 @@
       <Project>{085359F8-CC1D-4561-94C7-0BF067B8E370}</Project>
       <Name>CesiumLanguageWriter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GeometricComputations\GeometricComputations.csproj">
+      <Project>{1051D815-56BC-4021-AFA1-AC94CA18EBFE}</Project>
+      <Name>GeometricComputations</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

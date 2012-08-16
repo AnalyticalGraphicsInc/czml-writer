@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using CesiumLanguageWriter;
 using System;
+using GeometricComputations;
 
 namespace KmlToCesiumLanguage
 {
@@ -22,6 +23,12 @@ namespace KmlToCesiumLanguage
             : base(document, placemark)
         {
             m_element = element;
+            XElement altitudeMode = m_element.Element(Document.Namespace + "altitudeMode");
+            if (altitudeMode != null)
+            {
+                m_altitudeMode = altitudeMode.Value;
+            }
+            
         }
 
         /// <inheritdoc />
@@ -47,11 +54,34 @@ namespace KmlToCesiumLanguage
         /// <inheritdoc />
         protected override void Write()
         {
-            List<Cartographic> points = new List<Cartographic>();
             XElement coordinatesElement = m_element.Element(Document.Namespace + "outerBoundaryIs").Element(Document.Namespace + "LinearRing").Element(Document.Namespace + "coordinates");
+            IEnumerable<XElement> innerElements = m_element.Elements(Document.Namespace + "innerBoundaryIs");
+            List<List<Cartographic>> innerRings = new List<List<Cartographic>>();
+            foreach (XElement innerElement in innerElements)
+            {
+                string innerCoords = innerElement.Element(Document.Namespace + "LinearRing").Element(Document.Namespace + "coordinates").Value.Trim();
+                List<Cartographic> innerCoordinates = ParseCoordinates(innerCoords);
+                innerRings.Add(innerCoordinates);
+            }
             //outerboundary/linearRing
-            XElement altitudeMode = m_element.Element(Document.Namespace + "altitudeMode");
+            
             string coordinates = coordinatesElement.Value.Trim();
+            var outerRing = ParseCoordinates(coordinates);
+            List<Cartographic> outerPositions = outerRing;
+
+            while (innerRings.Count > 0)
+            {
+                outerPositions = PolygonAlgorithms.EliminateHole(outerPositions, innerRings);
+            }
+            using (var positions = this.PacketWriter.OpenVertexPositionsProperty())
+            {
+                positions.WriteCartographicRadians(outerPositions);
+            }
+        }
+
+        private List<Cartographic> ParseCoordinates(string coordinates)
+        {
+            List<Cartographic> points = new List<Cartographic>();
             Regex coordinateExpression = new Regex(@"(?<longitude>-?\d+\.?\d*)          # capture longitude value
                                                      \s*,\s*                            # capture separator 
                                                      (?<latitude>-?\d+\.?\d*)           # capture latitude value
@@ -65,7 +95,7 @@ namespace KmlToCesiumLanguage
                     string longitude = match.Groups["longitude"].Value;
                     string latitude = match.Groups["latitude"].Value;
                     string altitude = match.Groups["altitude"].Value;
-                    if (altitudeMode == null || (altitudeMode != null && altitudeMode.Value == "clampToGround"))
+                    if (m_altitudeMode == "" || (m_altitudeMode == "clampToGround"))
                     {
                         altitude = "0";
                     }
@@ -92,13 +122,10 @@ namespace KmlToCesiumLanguage
                     throw new NotSupportedException("The coordinates value describing the Polygon is improperly formatted.");
                 }
             }
-
-            using (var positions = this.PacketWriter.OpenVertexPositionsProperty())
-            {
-                positions.WriteCartographicRadians(points);
-            }
+            return points;
         }
 
         private XElement m_element;
+        private string m_altitudeMode;
     }
 }

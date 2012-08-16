@@ -280,14 +280,21 @@ namespace GeometricComputations
             {
                 cartesianOuterRing.Add(Ellipsoid.Wgs84.ToCartesian(point));
             }
-
+            var windingOrder = GetWindingOrder(cartesianOuterRing);
             List<List<Cartesian>> cartesianInnerRings = new List<List<Cartesian>>();
-            foreach (IList<Cartographic> ring in innerRings)
+            for(int i = 0; i < innerRings.Count; ++i)
             {
+                var ring = innerRings[i];
                 List<Cartesian> cartesianInnerRing = new List<Cartesian>();
                 foreach (Cartographic point in ring)
                 {
                     cartesianInnerRing.Add(Ellipsoid.Wgs84.ToCartesian(point));
+                }
+                var innerWindingOrder = GetWindingOrder(cartesianInnerRing);
+                if (innerWindingOrder == windingOrder)
+                {
+                    ring.Reverse();
+                    cartesianInnerRing.Reverse();
                 }
                 cartesianInnerRings.Add(cartesianInnerRing);
             }
@@ -344,6 +351,34 @@ namespace GeometricComputations
             innerRings.RemoveAt(innerRingIndex);
 
             return newPolygonVertices;
+        }
+
+        /// <summary>
+        /// Gets the winding order.
+        /// </summary>
+        /// <param name="positions">The positions.</param>
+        /// <returns></returns>
+        public static WindingOrder GetWindingOrder(List<Cartesian> positions)
+        {
+            var area = ComputeArea2D(positions);
+            return area >= 0.0 ? WindingOrder.CounterClockWise : WindingOrder.ClockWise;
+        }
+
+        private static double ComputeArea2D(List<Cartesian> positions)
+        {
+            if (positions == null)
+                throw new ArgumentNullException("positions");
+            var length = positions.Count;
+            if (length < 3)
+                throw new ArgumentException("At least three positions are required.");
+            var area = 0.0;
+            for (int i0 = length - 1, i1 = 0; i1 < length; i0 = i1++)
+            {
+                var v0 = positions[i0];
+                var v1 = positions[i1];
+                area += (v0.X * v1.Y) - (v1.X * v0.Y);
+            }
+            return area * 0.5;
         }
     }
 }
