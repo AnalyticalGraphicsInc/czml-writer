@@ -79,7 +79,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <returns>A data URI containing the content of the resource.</returns>
         public static string DownloadUrlIntoDataUri(string url)
         {
-            if (url.StartsWith("data:"))
+            if (url.StartsWith("data:") || !new Uri(url, UriKind.RelativeOrAbsolute).IsAbsoluteUri)
                 return url;
 
             WebRequest request = WebRequest.Create(url);
