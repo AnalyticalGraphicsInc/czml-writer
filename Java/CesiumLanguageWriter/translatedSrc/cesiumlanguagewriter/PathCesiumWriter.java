@@ -9,7 +9,6 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
-import cesiumlanguagewriter.TimeIntervalCollectionCesiumWriter;
 import java.awt.Color;
 import java.util.List;
 
@@ -69,13 +68,6 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	 */
 	public static final String TrailTimePropertyName = "trailTime";
-	/**
-	 *  
-	The name of the <code>segments</code> property.
-	
-
-	 */
-	public static final String SegmentsPropertyName = "segments";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
@@ -111,12 +103,6 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 			return new DoubleCesiumWriter(TrailTimePropertyName);
 		}
 	}, false);
-	private Lazy<TimeIntervalCollectionCesiumWriter> m_segments = new Lazy<cesiumlanguagewriter.TimeIntervalCollectionCesiumWriter>(
-			new Func1<cesiumlanguagewriter.TimeIntervalCollectionCesiumWriter>() {
-				public cesiumlanguagewriter.TimeIntervalCollectionCesiumWriter invoke() {
-					return new TimeIntervalCollectionCesiumWriter(SegmentsPropertyName);
-				}
-			}, false);
 
 	/**
 	 *  
@@ -662,125 +648,6 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openTrailTimeProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>segments</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>segments</code> property defines a list of intervals for which partial path segments will be displayed.
-	
-
-	 */
-	public final TimeIntervalCollectionCesiumWriter getSegmentsWriter() {
-		return m_segments.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>segments</code> property.  The <code>segments</code> property defines a list of intervals for which partial path segments will be displayed.
-	
-
-	 */
-	public final TimeIntervalCollectionCesiumWriter openSegmentsProperty() {
-		openIntervalIfNecessary();
-		return this.<TimeIntervalCollectionCesiumWriter> openAndReturn(getSegmentsWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>segments</code> property as a <code>value</code> value.  The <code>segments</code> property specifies a list of intervals for which partial path segments will be displayed.
-	
-	
-
-	 * @param value The interval.
-	 */
-	public final void writeSegmentsProperty(TimeInterval value) {
-		{
-			cesiumlanguagewriter.TimeIntervalCollectionCesiumWriter writer = openSegmentsProperty();
-			try {
-				writer.writeValue(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>segments</code> property as a <code>value</code> value.  The <code>segments</code> property specifies a list of intervals for which partial path segments will be displayed.
-	
-	
-	
-
-	 * @param start The earliest date of the interval.
-	 * @param stop The latest date of the interval.
-	 */
-	public final void writeSegmentsProperty(JulianDate start, JulianDate stop) {
-		{
-			cesiumlanguagewriter.TimeIntervalCollectionCesiumWriter writer = openSegmentsProperty();
-			try {
-				writer.writeValue(start, stop);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>segments</code> property as a <code>values</code> value.  The <code>segments</code> property specifies a list of intervals for which partial path segments will be displayed.
-	
-	
-
-	 * @param value The interval.
-	 */
-	public final void writeSegmentsPropertyValues(TimeInterval value) {
-		{
-			cesiumlanguagewriter.TimeIntervalCollectionCesiumWriter writer = openSegmentsProperty();
-			try {
-				writer.writeValues(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>segments</code> property as a <code>values</code> value.  The <code>segments</code> property specifies a list of intervals for which partial path segments will be displayed.
-	
-	
-	
-
-	 * @param start The earliest date of the interval.
-	 * @param stop The latest date of the interval.
-	 */
-	public final void writeSegmentsPropertyValues(JulianDate start, JulianDate stop) {
-		{
-			cesiumlanguagewriter.TimeIntervalCollectionCesiumWriter writer = openSegmentsProperty();
-			try {
-				writer.writeValues(start, stop);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>segments</code> property as a <code>values</code> value.  The <code>segments</code> property specifies a list of intervals for which partial path segments will be displayed.
-	
-	
-
-	 * @param value The intervals.
-	 */
-	public final void writeSegmentsPropertyValues(List<TimeInterval> value) {
-		{
-			cesiumlanguagewriter.TimeIntervalCollectionCesiumWriter writer = openSegmentsProperty();
-			try {
-				writer.writeValues(value);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
