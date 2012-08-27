@@ -64,6 +64,10 @@
         "camera": {
             "$ref": "Camera.jsonschema",
             "description": "A camera."
-        }
+        },
+        "viewFrom": {
+            "$ref": "Cartesian3Value.jsonschema",
+            "description": "A suggested Cartesian camera position, when viewing this object in the East (X), North(Y), Up(Z) reference frame relative to the objects location."
+        },
     }
 }

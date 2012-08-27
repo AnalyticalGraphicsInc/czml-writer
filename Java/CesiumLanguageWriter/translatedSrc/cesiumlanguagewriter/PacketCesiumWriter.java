@@ -125,6 +125,13 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	 */
 	public static final String CameraPropertyName = "camera";
+	/**
+	 *  
+	The name of the <code>viewFrom</code> property.
+	
+
+	 */
+	public static final String ViewFromPropertyName = "viewFrom";
 	private Lazy<PositionCesiumWriter> m_position = new Lazy<cesiumlanguagewriter.PositionCesiumWriter>(new Func1<cesiumlanguagewriter.PositionCesiumWriter>() {
 		public cesiumlanguagewriter.PositionCesiumWriter invoke() {
 			return new PositionCesiumWriter(PositionPropertyName);
@@ -826,5 +833,53 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	 */
 	public final CameraCesiumWriter openCameraProperty() {
 		return this.<CameraCesiumWriter> openAndReturn(getCameraWriter());
+	}
+
+	/**
+	 *  
+	Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested Cartesian camera position, when viewing this object in the East (X), North(Y), Up(Z) reference frame relative to the objects location.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeViewFrom(Cartesian value) {
+		String PropertyName = ViewFromPropertyName;
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeCartesian3(getOutput(), value);
+	}
+
+	/**
+	 *  
+	Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested Cartesian camera position, when viewing this object in the East (X), North(Y), Up(Z) reference frame relative to the objects location.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeViewFrom(List<JulianDate> dates, List<Cartesian> values) {
+		writeViewFrom(dates, values, 0, dates.size());
+	}
+
+	/**
+	 *  
+	Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested Cartesian camera position, when viewing this object in the East (X), North(Y), Up(Z) reference frame relative to the objects location.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeViewFrom(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+		String PropertyName = ViewFromPropertyName;
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
 	}
 }
