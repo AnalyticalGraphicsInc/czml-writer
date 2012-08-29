@@ -43,11 +43,7 @@ namespace CesiumLanguageWriter
         /// Gets or sets a value indicating whether or not the written data should be formatted for easy human readability.
         /// When this property is <see langword="false"/> (the default), more compact Cesium is generated.
         /// </summary>
-        public bool PrettyFormatting
-        {
-            get;
-            set;
-        }
+        public bool PrettyFormatting { get; set; }
 
         /// <summary>
         /// Writes the start of an object.
@@ -90,7 +86,7 @@ namespace CesiumLanguageWriter
             m_inProperty = false;
             m_indent += IndentLevel;
         }
-        
+
         /// <summary>
         /// Writes the end of a sequence.
         /// </summary>

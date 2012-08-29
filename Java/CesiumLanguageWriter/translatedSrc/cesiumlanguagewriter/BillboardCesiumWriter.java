@@ -413,13 +413,34 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 	
 
-	 * @param url The URL of the image.  If this URL is not a data URI, it will be downloaded and embedded in the document, using a thread-local cache to avoid downloading the same image multiple times.  For more control over how the image is referenced in the document, use the overload that takes a ICesiumUrlResolver.
+	 * @param resource A resource object describing the image.
 	 */
-	public final void writeImageProperty(String url) {
+	public final void writeImageProperty(CesiumResource resource) {
 		{
 			cesiumlanguagewriter.ImageCesiumWriter writer = openImageProperty();
 			try {
-				writer.writeImage(url);
+				writer.writeImage(resource);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>image</code> property as a <code>image</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+	
+	
+
+	 * @param url The URL of the image.
+	 * @param resourceBehavior An enumeration describing how to include the image in the document. For even more control, use the overload that takes a ICesiumUrlResolver.
+	 */
+	public final void writeImageProperty(String url, CesiumResourceBehavior resourceBehavior) {
+		{
+			cesiumlanguagewriter.ImageCesiumWriter writer = openImageProperty();
+			try {
+				writer.writeImage(url, resourceBehavior);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

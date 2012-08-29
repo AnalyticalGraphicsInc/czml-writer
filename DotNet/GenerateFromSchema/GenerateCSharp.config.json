@@ -303,12 +303,28 @@
             {
                 "parameters": [
                     {
-                        "type": "string",
-                        "name": "url",
-                        "description": "The URL of the image.  If this URL is not a data URI, it will be downloaded and embedded in the document, using a thread-local cache to avoid downloading the same image multiple times.  For more control over how the image is referenced in the document, use the overload that takes a ICesiumUrlResolver."
+                        "type": "CesiumResource",
+                        "name": "resource",
+                        "description": "A resource object describing the image."
                     }
                 ],
-                "callOverload": "url, CachingCesiumUrlResolver.ThreadLocalInstance"
+				"callOverload": "resource.Url, resource.Behavior"
+            },
+			{
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "url",
+                        "description": "The URL of the image."
+                    },
+                    {
+                        "type": "CesiumResourceBehavior",
+                        "name": "resourceBehavior",
+                        "description": "An enumeration describing how to include the image in the document. For even more control, use the overload that takes a ICesiumUrlResolver."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.GetResourceUrl(url, resourceBehavior));",
+				"needsInterval": false
             },
             {
                 "parameters": [
