@@ -1,4 +1,9 @@
-﻿namespace CesiumLanguageWriter
+﻿
+#if StkComponents
+namespace AGI.Foundation.Cesium
+#else
+namespace CesiumLanguageWriter
+#endif
 {
     /// <summary>
     /// Specifies whether to embed resources into a CZML document, or simply link to them.

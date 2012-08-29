@@ -1,4 +1,9 @@
-﻿namespace CesiumLanguageWriter.Advanced
+﻿
+#if StkComponents
+namespace AGI.Foundation.Cesium.Advanced
+#else
+namespace CesiumLanguageWriter.Advanced
+#endif
 {
     /// <summary>
     /// A URL resolver that leaves URLs unchanged.

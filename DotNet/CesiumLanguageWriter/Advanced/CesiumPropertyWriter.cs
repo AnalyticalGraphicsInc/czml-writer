@@ -1,4 +1,5 @@
 ﻿using System;
+
 #if StkComponents
 using AGI.Foundation.Time;
 #endif
@@ -141,7 +142,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <inheritdoc />
-        protected sealed override void OnOpen()
+        protected override sealed void OnOpen()
         {
             if (m_elementType == ElementType.Interval || m_elementType == ElementType.PropertyConvertedToInterval)
                 Output.WriteStartObject();
@@ -150,7 +151,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <inheritdoc />
-        protected sealed override void OnClose()
+        protected override sealed void OnClose()
         {
             if (m_elementType == ElementType.Interval || m_elementType == ElementType.PropertyConvertedToInterval)
             {

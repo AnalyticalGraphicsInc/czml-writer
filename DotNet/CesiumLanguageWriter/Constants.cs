@@ -6,8 +6,8 @@ namespace CesiumLanguageWriter
     /// <summary>
     /// A collection of constants.
     /// </summary>
-	public static class Constants
-	{
+    public static class Constants
+    {
         /// <summary>
         /// Half of <see cref="Math.PI" />.
         /// </summary>
