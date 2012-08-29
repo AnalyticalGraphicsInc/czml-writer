@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 
 #if StkComponents
+using AGI.Foundation.Time;
+#endif
+
+#if StkComponents
 namespace AGI.Foundation.Cesium.Advanced
 #else
 namespace CesiumLanguageWriter.Advanced
@@ -28,7 +32,7 @@ namespace CesiumLanguageWriter.Advanced
     /// </summary>
     /// <typeparam name="TFrom">The class derived from <see cref="CesiumInterpolatablePropertyWriter{TDerived}"/> to adapt.</typeparam>
     /// <typeparam name="TValue">The type of value to which to adapt the class to write.</typeparam>
-    public class CesiumInterpolatableWriterAdaptor<TFrom, TValue> : ICesiumValuePropertyWriter<TValue>, ICesiumInterpolatableValuePropertyWriter<TValue>
+    public class CesiumInterpolatableWriterAdaptor<TFrom, TValue> : ICesiumInterpolatableValuePropertyWriter<TValue>
         where TFrom : ICesiumPropertyWriter, ICesiumInterpolationInformationWriter
     {
         private readonly TFrom m_parent;
