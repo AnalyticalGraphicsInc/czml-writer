@@ -62,12 +62,25 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>image</code> property as a <code>image</code> value.  The <code>image</code> property specifies the image to display on the surface.
         /// </summary>
-        /// <param name="url">The URL of the image.  If this URL is not a data URI, it will be downloaded and embedded in the document, using a thread-local cache to avoid downloading the same image multiple times.  For more control over how the image is referenced in the document, use the overload that takes a ICesiumUrlResolver.</param>
-        public void WriteImageProperty(string url)
+        /// <param name="resource">A resource object describing the image.</param>
+        public void WriteImageProperty(CesiumResource resource)
         {
             using (var writer = OpenImageProperty())
             {
-                writer.WriteImage(url);
+                writer.WriteImage(resource);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>image</code> property as a <code>image</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// </summary>
+        /// <param name="url">The URL of the image.</param>
+        /// <param name="resourceBehavior">An enumeration describing how to include the image in the document. For even more control, use the overload that takes a ICesiumUrlResolver.</param>
+        public void WriteImageProperty(string url, CesiumResourceBehavior resourceBehavior)
+        {
+            using (var writer = OpenImageProperty())
+            {
+                writer.WriteImage(url, resourceBehavior);
             }
         }
 

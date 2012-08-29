@@ -17,7 +17,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string ImagePropertyName = "image";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<string>> m_asImage;
+        private readonly Lazy<ICesiumValuePropertyWriter<CesiumResource>> m_asImage;
 
         /// <summary>
         /// Initializes a new instance.
@@ -25,7 +25,7 @@ namespace CesiumLanguageWriter
         public ImageCesiumWriter(string propertyName)
             : base(propertyName)
         {
-            m_asImage = new Lazy<ICesiumValuePropertyWriter<string>>(CreateImageAdaptor, false);
+            m_asImage = new Lazy<ICesiumValuePropertyWriter<CesiumResource>>(CreateImageAdaptor, false);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace CesiumLanguageWriter
         protected ImageCesiumWriter(ImageCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asImage = new Lazy<ICesiumValuePropertyWriter<string>>(CreateImageAdaptor, false);
+            m_asImage = new Lazy<ICesiumValuePropertyWriter<CesiumResource>>(CreateImageAdaptor, false);
         }
 
         /// <inheritdoc />
@@ -47,10 +47,23 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the <code>image</code> property.  The <code>image</code> property specifies the URL of the image.
         /// </summary>
-        /// <param name="url">The URL of the image.  If this URL is not a data URI, it will be downloaded and embedded in the document, using a thread-local cache to avoid downloading the same image multiple times.  For more control over how the image is referenced in the document, use the overload that takes a ICesiumUrlResolver.</param>
-        public void WriteImage(string url)
+        /// <param name="resource">A resource object describing the image.</param>
+        public void WriteImage(CesiumResource resource)
         {
-            WriteImage(url, CachingCesiumUrlResolver.ThreadLocalInstance);
+            WriteImage(resource.Url, resource.Behavior);
+        }
+
+        /// <summary>
+        /// Writes the <code>image</code> property.  The <code>image</code> property specifies the URL of the image.
+        /// </summary>
+        /// <param name="url">The URL of the image.</param>
+        /// <param name="resourceBehavior">An enumeration describing how to include the image in the document. For even more control, use the overload that takes a ICesiumUrlResolver.</param>
+        public void WriteImage(string url, CesiumResourceBehavior resourceBehavior)
+        {
+            const string PropertyName = ImagePropertyName;
+            if (IsInterval)
+                Output.WritePropertyName(PropertyName);
+            Output.WriteValue(CesiumFormattingHelper.GetResourceUrl(url, resourceBehavior));
         }
 
         /// <summary>
@@ -92,14 +105,14 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Image</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<string> AsImage()
+        public ICesiumValuePropertyWriter<CesiumResource> AsImage()
         {
             return m_asImage.Value;
         }
 
-        private ICesiumValuePropertyWriter<string> CreateImageAdaptor()
+        private ICesiumValuePropertyWriter<CesiumResource> CreateImageAdaptor()
         {
-            return new CesiumWriterAdaptor<ImageCesiumWriter, string>(
+            return new CesiumWriterAdaptor<ImageCesiumWriter, CesiumResource>(
                 this, (me, value) => me.WriteImage(value));
         }
 

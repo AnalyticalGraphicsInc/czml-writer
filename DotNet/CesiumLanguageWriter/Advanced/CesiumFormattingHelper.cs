@@ -79,7 +79,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <returns>A data URI containing the content of the resource.</returns>
         public static string DownloadUrlIntoDataUri(string url)
         {
-            if (url.StartsWith("data:") || !new Uri(url, UriKind.RelativeOrAbsolute).IsAbsoluteUri)
+            if (url.StartsWith("data:"))
                 return url;
 
             WebRequest request = WebRequest.Create(url);
@@ -269,6 +269,20 @@ namespace CesiumLanguageWriter.Advanced
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "labelStyle");
             }
+        }
+
+        /// <summary>
+        /// Returns a resolved url, using the given <see cref="CesiumResourceBehavior"/>.
+        /// </summary>
+        /// <param name="url">The url of the resource.</param>
+        /// <param name="resourceBehavior">A <see cref="CesiumResourceBehavior"/> specifying how include the resource into a CZML document.</param>
+        /// <returns>The resolved url.</returns>
+        public static string GetResourceUrl(string url, CesiumResourceBehavior resourceBehavior)
+        {
+            if (resourceBehavior == CesiumResourceBehavior.Embed)
+                return CachingCesiumUrlResolver.ThreadLocalInstance.ResolveUrl(url);
+
+            return url;
         }
     }
 }

@@ -11,7 +11,6 @@ import agi.foundation.compatibility.ImageHelper;
 import agi.foundation.compatibility.MemoryStream;
 import agi.foundation.compatibility.StreamHelper;
 import agi.foundation.compatibility.StringHelper;
-import agi.foundation.compatibility.UriHelper;
 import agi.foundation.compatibility.WebRequest;
 import agi.foundation.compatibility.WebResponse;
 import cesiumlanguagewriter.*;
@@ -91,7 +90,7 @@ public final class CesiumFormattingHelper {
 	 * @return A data URI containing the content of the resource.
 	 */
 	public static String downloadUrlIntoDataUri(String url) {
-		if (StringHelper.startsWith(url, "data:") || !UriHelper.create(url, UriKind.RELATIVE_OR_ABSOLUTE).getIsAbsoluteUri()) {
+		if (StringHelper.startsWith(url, "data:")) {
 			return url;
 		}
 		WebRequest request = WebRequest.create(url);
@@ -311,5 +310,24 @@ public final class CesiumFormattingHelper {
 		default:
 			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "labelStyle");
 		}
+	}
+
+	/**
+	 *  
+	Returns a resolved url, using the given  {@link CesiumResourceBehavior}.
+	
+	
+	
+	
+
+	 * @param url The url of the resource.
+	 * @param resourceBehavior A  {@link CesiumResourceBehavior} specifying how include the resource into a CZML document.
+	 * @return The resolved url.
+	 */
+	public static String getResourceUrl(String url, CesiumResourceBehavior resourceBehavior) {
+		if (resourceBehavior == CesiumResourceBehavior.EMBED) {
+			return CachingCesiumUrlResolver.getThreadLocalInstance().resolveUrl(url);
+		}
+		return url;
 	}
 }
