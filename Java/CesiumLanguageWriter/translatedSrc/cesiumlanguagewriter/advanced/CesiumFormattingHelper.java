@@ -91,7 +91,7 @@ public final class CesiumFormattingHelper {
 	 * @return A data URI containing the content of the resource.
 	 */
 	public static String downloadUrlIntoDataUri(String url) {
-		if (StringHelper.startsWith(url, "data:") || !UriHelper.create(url, UriKind.RELATIVE_OR_ABSOLUTE).getIsAbsoluteUri()) {
+		if (StringHelper.startsWith(url, "data:") || !UriHelper.create(url).isAbsolute()) {
 			return url;
 		}
 		WebRequest request = WebRequest.create(url);
