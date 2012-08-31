@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#if StkComponents
+namespace AGI.Foundation.Cesium.Advanced
+#else
 namespace CesiumLanguageWriter.Advanced
+#endif
 {
     /// <summary>
     /// A URL resolver that downloads files and converts them to data URIs.  Downloaded files are cached

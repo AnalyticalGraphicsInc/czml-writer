@@ -1,5 +1,9 @@
 ﻿
+#if StkComponents
+namespace AGI.Foundation.Cesium.Advanced
+#else
 namespace CesiumLanguageWriter.Advanced
+#endif
 {
     /// <summary>
     /// A <topic name="Cesium">Cesium</topic> writer for a property that represents a value that may be sampled

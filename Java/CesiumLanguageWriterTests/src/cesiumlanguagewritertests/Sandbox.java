@@ -8,6 +8,7 @@ import org.junit.Test;
 import cesiumlanguagewriter.BillboardCesiumWriter;
 import cesiumlanguagewriter.Cartographic;
 import cesiumlanguagewriter.CesiumOutputStream;
+import cesiumlanguagewriter.CesiumResourceBehavior;
 import cesiumlanguagewriter.CesiumStreamWriter;
 import cesiumlanguagewriter.PacketCesiumWriter;
 import cesiumlanguagewriter.PositionCesiumWriter;
@@ -27,7 +28,7 @@ public class Sandbox {
 
 		BillboardCesiumWriter billboard = packet.openBillboardProperty();
 		billboard.writeColorProperty(123, 67, 0, 255);
-		billboard.writeImageProperty("http://cesium.agi.com/Cesium-Logo-onBlack.jpg");
+		billboard.writeImageProperty("http://cesium.agi.com/Cesium-Logo-onBlack.jpg", CesiumResourceBehavior.EMBED);
 		billboard.close();
 
 		PositionCesiumWriter position = packet.openPositionProperty();
