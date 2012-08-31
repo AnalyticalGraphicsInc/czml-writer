@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using CesiumLanguageWriter;
 using GeometricComputations;
 
-namespace TestGeometricComputations
+namespace GeometricComputationsTests
 {
     [TestFixture]
     public class EllipsoidTests

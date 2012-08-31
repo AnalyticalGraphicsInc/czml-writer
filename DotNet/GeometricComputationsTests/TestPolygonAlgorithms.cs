@@ -3,7 +3,7 @@ using CesiumLanguageWriter;
 using GeometricComputations;
 using NUnit.Framework;
 
-namespace TestGeometricComputations
+namespace GeometricComputationsTests
 {
     [TestFixture]
     public class TestPolygonAlgorithms

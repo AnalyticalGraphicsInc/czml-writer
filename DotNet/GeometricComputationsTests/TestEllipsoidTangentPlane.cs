@@ -4,7 +4,7 @@ using NUnit.Framework;
 using CesiumLanguageWriter;
 using GeometricComputations;
 
-namespace TestGeometricComputations
+namespace GeometricComputationsTests
 {
     [TestFixture]
     public class EllipsoidTangentPlaneTests
