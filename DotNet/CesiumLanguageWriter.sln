@@ -90,7 +90,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapefileToCesiumLanguageTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometricComputations", "GeometricComputations\GeometricComputations.csproj", "{1051D815-56BC-4021-AFA1-AC94CA18EBFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometricComputationsTests", "TestGeometricComputations\GeometricComputationsTests.csproj", "{A9F2ADF7-4447-40B2-8975-9FCB72C6694F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometricComputationsTests", "GeometricComputationsTests\GeometricComputationsTests.csproj", "{A9F2ADF7-4447-40B2-8975-9FCB72C6694F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadDBF", "ThirdParty\LoadDBF\LoadDBF.csproj", "{2FB1AEFA-3B28-42D0-9520-3F100E297601}"
 EndProject
