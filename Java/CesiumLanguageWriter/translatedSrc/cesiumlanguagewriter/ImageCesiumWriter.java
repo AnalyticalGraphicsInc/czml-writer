@@ -21,7 +21,7 @@ public class ImageCesiumWriter extends CesiumPropertyWriter<ImageCesiumWriter> {
 
 	 */
 	public static final String ImagePropertyName = "image";
-	private Lazy<ICesiumValuePropertyWriter<String>> m_asImage;
+	private Lazy<ICesiumValuePropertyWriter<CesiumResource>> m_asImage;
 
 	/**
 	 *  
@@ -31,9 +31,9 @@ public class ImageCesiumWriter extends CesiumPropertyWriter<ImageCesiumWriter> {
 	 */
 	public ImageCesiumWriter(String propertyName) {
 		super(propertyName);
-		m_asImage = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this, "createImageAdaptor",
-				new Class[] {}) {
-			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
+		m_asImage = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(this,
+				"createImageAdaptor", new Class[] {}) {
+			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource> invoke() {
 				return createImageAdaptor();
 			}
 		}, false);
@@ -49,9 +49,9 @@ public class ImageCesiumWriter extends CesiumPropertyWriter<ImageCesiumWriter> {
 	 */
 	protected ImageCesiumWriter(ImageCesiumWriter existingInstance) {
 		super(existingInstance);
-		m_asImage = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this, "createImageAdaptor",
-				new Class[] {}) {
-			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
+		m_asImage = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(this,
+				"createImageAdaptor", new Class[] {}) {
+			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource> invoke() {
 				return createImageAdaptor();
 			}
 		}, false);
@@ -68,10 +68,28 @@ public class ImageCesiumWriter extends CesiumPropertyWriter<ImageCesiumWriter> {
 	
 	
 
-	 * @param url The URL of the image.  If this URL is not a data URI, it will be downloaded and embedded in the document, using a thread-local cache to avoid downloading the same image multiple times.  For more control over how the image is referenced in the document, use the overload that takes a ICesiumUrlResolver.
+	 * @param resource A resource object describing the image.
 	 */
-	public final void writeImage(String url) {
-		writeImage(url, CachingCesiumUrlResolver.getThreadLocalInstance());
+	public final void writeImage(CesiumResource resource) {
+		writeImage(resource.getUrl(), resource.getBehavior());
+	}
+
+	/**
+	 *  
+	Writes the <code>image</code> property.  The <code>image</code> property specifies the URL of the image.
+	
+	
+	
+
+	 * @param url The URL of the image.
+	 * @param resourceBehavior An enumeration describing how to include the image in the document. For even more control, use the overload that takes a ICesiumUrlResolver.
+	 */
+	public final void writeImage(String url, CesiumResourceBehavior resourceBehavior) {
+		String PropertyName = ImagePropertyName;
+		if (getIsInterval()) {
+			getOutput().writePropertyName(PropertyName);
+		}
+		getOutput().writeValue(CesiumFormattingHelper.getResourceUrl(url, resourceBehavior));
 	}
 
 	/**
@@ -130,13 +148,13 @@ public class ImageCesiumWriter extends CesiumPropertyWriter<ImageCesiumWriter> {
 
 	 * @return The wrapper.
 	 */
-	public final ICesiumValuePropertyWriter<String> asImage() {
+	public final ICesiumValuePropertyWriter<CesiumResource> asImage() {
 		return m_asImage.getValue();
 	}
 
-	final private ICesiumValuePropertyWriter<String> createImageAdaptor() {
-		return new CesiumWriterAdaptor<ImageCesiumWriter, String>(this, new CesiumWriterAdaptorWriteCallback<ImageCesiumWriter, String>() {
-			public void invoke(ImageCesiumWriter me, String value) {
+	final private ICesiumValuePropertyWriter<CesiumResource> createImageAdaptor() {
+		return new CesiumWriterAdaptor<ImageCesiumWriter, CesiumResource>(this, new CesiumWriterAdaptorWriteCallback<ImageCesiumWriter, CesiumResource>() {
+			public void invoke(ImageCesiumWriter me, CesiumResource value) {
 				me.writeImage(value);
 			}
 		});

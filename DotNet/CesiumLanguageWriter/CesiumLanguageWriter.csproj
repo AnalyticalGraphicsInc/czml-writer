@@ -12,6 +12,7 @@
     <AssemblyName>CesiumLanguageWriter</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,6 +63,8 @@
     <Compile Include="Cartesian.cs" />
     <Compile Include="Cartographic.cs" />
     <Compile Include="CartographicExtent.cs" />
+    <Compile Include="CesiumResource.cs" />
+    <Compile Include="CesiumResourceBehavior.cs" />
     <Compile Include="CesiumHorizontalOrigin.cs" />
     <Compile Include="CesiumImageFormat.cs" />
     <Compile Include="CesiumInterpolationAlgorithm.cs" />
