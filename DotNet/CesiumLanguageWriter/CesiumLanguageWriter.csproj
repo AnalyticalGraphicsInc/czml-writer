@@ -62,6 +62,7 @@
     <Compile Include="Cartesian.cs" />
     <Compile Include="Cartographic.cs" />
     <Compile Include="CartographicExtent.cs" />
+    <Compile Include="CesiumExternalDocumentScope.cs" />
     <Compile Include="CesiumHorizontalOrigin.cs" />
     <Compile Include="CesiumImageFormat.cs" />
     <Compile Include="CesiumInterpolationAlgorithm.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Generated\DirectionListCesiumWriter.cs" />
     <Compile Include="Generated\DoubleCesiumWriter.cs" />
     <Compile Include="Generated\ExternalDocumentCesiumWriter.cs" />
+    <Compile Include="Generated\ExternalDocumentScopeCesiumWriter.cs" />
     <Compile Include="Generated\EyeOffsetCesiumWriter.cs" />
     <Compile Include="Generated\FontCesiumWriter.cs" />
     <Compile Include="Generated\HorizontalOriginCesiumWriter.cs" />

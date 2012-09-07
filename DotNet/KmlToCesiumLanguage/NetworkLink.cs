@@ -72,6 +72,7 @@ namespace KmlToCesiumLanguage
                         if (double.TryParse(refreshIntervalElement.Value, out value))
                             externalWriter.WriteRefreshIntervalProperty(value);
                     }
+                    externalWriter.WriteScopeProperty(CesiumExternalDocumentScope.Shared);
                 }
             }
         }

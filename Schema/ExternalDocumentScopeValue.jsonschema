@@ -1,0 +1,6 @@
+{
+    "title": "ExternalDocumentScope",
+    "description": "Defines the scope of the document.  It controls whether the document is shared or private. Valid values are \"SHARED\" and \"PRIVATE\".",
+    "type": "string",
+    "enum": ["SHARED", "PRIVATE"]
+}

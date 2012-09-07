@@ -230,6 +230,25 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Converts a <see cref="CesiumExternalDocumentScope"/> to the corresponding string in a
+        /// <topic name="Cesium">Cesium</topic> stream.
+        /// </summary>
+        /// <param name="externalDocumentScope">The external document scope to convert.</param>
+        /// <returns>The string representation of the specified <see cref="CesiumExternalDocumentScope"/>.</returns>
+        public static string ExternalDocumentScopeToString(CesiumExternalDocumentScope externalDocumentScope)
+        {
+            switch (externalDocumentScope)
+            {
+                case CesiumExternalDocumentScope.Shared:
+                    return "SHARED";
+                case CesiumExternalDocumentScope.Private:
+                    return "PRIVATE";
+                default:
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "externalDocumentScope");
+            }
+        }
+
+        /// <summary>
         /// Converts a <see cref="CesiumInterpolationAlgorithm"/> to the corresponding string in a
         /// <topic name="Cesium">Cesium</topic> stream.
         /// </summary>

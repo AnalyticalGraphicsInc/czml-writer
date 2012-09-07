@@ -384,6 +384,19 @@
 				"needsInterval": false
             }
         ],
+		"ExternalDocumentScope": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumExternalDocumentScope",
+                        "name": "value",
+                        "description": "The scope of the document."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.ExternalDocumentScopeToString(value));",
+				"needsInterval": false
+            }
+        ],
         "LabelStyle": [
             {
                 "parameters": [
