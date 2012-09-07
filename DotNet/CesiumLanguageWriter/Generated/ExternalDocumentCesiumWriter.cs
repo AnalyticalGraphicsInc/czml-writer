@@ -18,6 +18,11 @@ namespace CesiumLanguageWriter
         public const string EventSourcePropertyName = "eventSource";
 
         /// <summary>
+        /// The name of the <code>eventname</code> property.
+        /// </summary>
+        public const string EventnamePropertyName = "eventname";
+
+        /// <summary>
         /// The name of the <code>parameters</code> property.
         /// </summary>
         public const string ParametersPropertyName = "parameters";
@@ -43,6 +48,7 @@ namespace CesiumLanguageWriter
         public const string MaxSessionLengthPropertyName = "maxSessionLength";
 
         private readonly Lazy<StringCesiumWriter> m_eventSource = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(EventSourcePropertyName), false);
+        private readonly Lazy<StringCesiumWriter> m_eventname = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(EventnamePropertyName), false);
         private readonly Lazy<StringCesiumWriter> m_polling = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(PollingPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_refreshInterval = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RefreshIntervalPropertyName), false);
         private readonly Lazy<ExternalDocumentScopeCesiumWriter> m_scope = new Lazy<ExternalDocumentScopeCesiumWriter>(() => new ExternalDocumentScopeCesiumWriter(ScopePropertyName), false);
@@ -95,6 +101,35 @@ namespace CesiumLanguageWriter
         public void WriteEventSourceProperty(string value)
         {
             using (var writer = OpenEventSourceProperty())
+            {
+                writer.WriteString(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>eventname</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>eventname</code> property defines the event type to listen to.
+        /// </summary>
+        public StringCesiumWriter EventnameWriter
+        {
+            get { return m_eventname.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>eventname</code> property.  The <code>eventname</code> property defines the event type to listen to.
+        /// </summary>
+        public StringCesiumWriter OpenEventnameProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(EventnameWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>eventname</code> property as a <code>string</code> value.  The <code>eventname</code> property specifies the event type to listen to.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteEventnameProperty(string value)
+        {
+            using (var writer = OpenEventnameProperty())
             {
                 writer.WriteString(value);
             }
