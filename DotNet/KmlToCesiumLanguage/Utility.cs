@@ -22,7 +22,7 @@ namespace KmlToCesiumLanguage
         /// <returns></returns>
         public static Color HexStringToColor(string hex)
         {
-            hex = hex.ToLowerInvariant();
+            hex = hex.ToLowerInvariant().Trim();
             if (hex.Length == 6)
             {
                 hex = "ff" + hex;

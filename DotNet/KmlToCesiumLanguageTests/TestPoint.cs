@@ -81,7 +81,7 @@ namespace KmlToCesiumLanguageTests
             string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"billboard\":{"));
             Assert.That(result.Contains("\"scale\":2.0"));
-            Assert.That(result.Contains("\"image\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QAAAAAAAD5Q7t/AAAACW9GRnMAAACgAAAA4ACdSFTMAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVRYw+2WIQ6EMBREMdhVtVVLuAQSLMla7MpaFKfAcguOwNFgSMaR/JC0S1fMJM/N/51fQtuikCRJuqcSOOBBbeDpK1Mu/gIVaEAHeoOOvop1SSY/m7VgAAGMBoG+lnXRO+E40dl0AjNYDGb6Bta52ACe2xrYfAWbwUpfYJ2PDVDz246ccNsNMcRCf8/69AHen+8FBVCARwM8+RdkPweyn4TZ74Lst+FfvAckSfqpDm/T4z3U/oIsAAAAAElFTkSuQmCC\"}"));
+            Assert.That(result.Contains("\"image\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUg"));
         }
 
         [Test]

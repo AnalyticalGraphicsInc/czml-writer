@@ -3,7 +3,7 @@ using CesiumLanguageWriter;
 using GeometricComputations;
 using NUnit.Framework;
 
-namespace TestGeometricComputations
+namespace GeometricComputationsTests
 {
     [TestFixture]
     public class TestPolygonAlgorithms
@@ -179,6 +179,38 @@ namespace TestGeometricComputations
             List<Cartographic> result = PolygonAlgorithms.EliminateHole(outerRing, innerRings);
 
             Assert.AreEqual(0, innerRings.Count);
+        }
+
+        [Test]
+        public void TestComputeArea2DClockWise()
+        {
+            List<Cartesian> outerRing = new List<Cartesian> {
+                new Cartesian(0.0, 5.0, 0.0),
+                new Cartesian(5.0, 10.0, 0.0),
+                new Cartesian(10.0, 5.0, 0.0),
+                new Cartesian(5.0, 0.0, 0.0),
+                new Cartesian(0.0, 5.0, 0.0)
+            };
+
+            var result = PolygonAlgorithms.GetWindingOrder(outerRing);
+
+            Assert.That(result == WindingOrder.ClockWise );
+        }
+
+        [Test]
+        public void TestComputeArea2DCounterClockWise()
+        {
+            List<Cartesian> outerRing = new List<Cartesian> {
+                new Cartesian(0.0, 5.0, 0.0),
+                new Cartesian(5.0, 0.0, 0.0),
+                new Cartesian(10.0, 5.0, 0.0),
+                new Cartesian(5.0, 10.0, 0.0),
+                new Cartesian(0.0, 5.0, 0.0)
+            };
+
+            var result = PolygonAlgorithms.GetWindingOrder(outerRing);
+
+            Assert.That(result == WindingOrder.CounterClockWise);
         }
     }
 }

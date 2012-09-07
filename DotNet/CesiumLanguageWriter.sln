@@ -57,7 +57,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\SolidColorMaterial.jsonschema = ..\Schema\SolidColorMaterial.jsonschema
 		..\Schema\String.jsonschema = ..\Schema\String.jsonschema
 		..\Schema\StringValue.jsonschema = ..\Schema\StringValue.jsonschema
-		..\Schema\TimeIntervalCollection.jsonschema = ..\Schema\TimeIntervalCollection.jsonschema
 		..\Schema\TimeIntervalCollectionValue.jsonschema = ..\Schema\TimeIntervalCollectionValue.jsonschema
 		..\Schema\TimeIntervalValue.jsonschema = ..\Schema\TimeIntervalValue.jsonschema
 		..\Schema\UnitCartesian3ListValue.jsonschema = ..\Schema\UnitCartesian3ListValue.jsonschema
@@ -94,7 +93,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapefileToCesiumLanguageTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometricComputations", "GeometricComputations\GeometricComputations.csproj", "{1051D815-56BC-4021-AFA1-AC94CA18EBFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometricComputationsTests", "TestGeometricComputations\GeometricComputationsTests.csproj", "{A9F2ADF7-4447-40B2-8975-9FCB72C6694F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometricComputationsTests", "GeometricComputationsTests\GeometricComputationsTests.csproj", "{A9F2ADF7-4447-40B2-8975-9FCB72C6694F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadDBF", "ThirdParty\LoadDBF\LoadDBF.csproj", "{2FB1AEFA-3B28-42D0-9520-3F100E297601}"
 EndProject

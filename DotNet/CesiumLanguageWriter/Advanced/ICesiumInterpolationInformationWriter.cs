@@ -1,5 +1,9 @@
 ﻿
+#if StkComponents
+namespace AGI.Foundation.Cesium.Advanced
+#else
 namespace CesiumLanguageWriter.Advanced
+#endif
 {
     /// <summary>
     /// An interface to a writer that writes information about how to interpolate sampled values.

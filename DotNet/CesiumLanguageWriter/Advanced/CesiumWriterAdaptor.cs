@@ -1,4 +1,5 @@
 ﻿using System;
+
 #if StkComponents
 using AGI.Foundation.Cesium;
 using AGI.Foundation.Cesium.Advanced;
@@ -30,7 +31,7 @@ namespace CesiumLanguageWriter.Advanced
     /// <typeparam name="TFrom">The class derived from <see cref="CesiumPropertyWriter{TDerived}"/> to adapt.</typeparam>
     /// <typeparam name="TValue">The type of value to which to adapt the class to write.</typeparam>
     public class CesiumWriterAdaptor<TFrom, TValue> : ICesiumValuePropertyWriter<TValue>
-        where TFrom: ICesiumPropertyWriter
+        where TFrom : ICesiumPropertyWriter
     {
         private readonly TFrom m_parent;
         private readonly CesiumWriterAdaptorWriteCallback<TFrom, TValue> m_writeValueCallback;

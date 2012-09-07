@@ -311,4 +311,23 @@ public final class CesiumFormattingHelper {
 			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "labelStyle");
 		}
 	}
+
+	/**
+	 *  
+	Returns a resolved url, using the given  {@link CesiumResourceBehavior}.
+	
+	
+	
+	
+
+	 * @param url The url of the resource.
+	 * @param resourceBehavior A  {@link CesiumResourceBehavior} specifying how include the resource into a CZML document.
+	 * @return The resolved url.
+	 */
+	public static String getResourceUrl(String url, CesiumResourceBehavior resourceBehavior) {
+		if (resourceBehavior == CesiumResourceBehavior.EMBED) {
+			return CachingCesiumUrlResolver.getThreadLocalInstance().resolveUrl(url);
+		}
+		return url;
+	}
 }

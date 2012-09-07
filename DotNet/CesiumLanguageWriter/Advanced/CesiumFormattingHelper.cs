@@ -12,7 +12,6 @@ using AGI.Foundation.Time;
 #if StkComponents
 namespace AGI.Foundation.Cesium.Advanced
 #else
-
 namespace CesiumLanguageWriter.Advanced
 #endif
 {
@@ -34,13 +33,13 @@ namespace CesiumLanguageWriter.Advanced
         }
 
 #if StkComponents
-        /// <summary>
-        /// Converts a <see cref="TimeInterval"/> as an ISO8601 interval string.  The <see cref="TimeInterval.IsStartIncluded"/>
-        /// and <see cref="TimeInterval.IsStopIncluded"/> properties of the interval are ignored.
-        /// </summary>
-        /// <param name="interval">The interval to convert.</param>
-        /// <param name="format">The format to use.</param>
-        /// <returns>The interval represented as an ISO8601 interval string.</returns>
+    /// <summary>
+    /// Converts a <see cref="TimeInterval"/> as an ISO8601 interval string.  The <see cref="TimeInterval.IsStartIncluded"/>
+    /// and <see cref="TimeInterval.IsStopIncluded"/> properties of the interval are ignored.
+    /// </summary>
+    /// <param name="interval">The interval to convert.</param>
+    /// <param name="format">The format to use.</param>
+    /// <returns>The interval represented as an ISO8601 interval string.</returns>
         public static string ToIso8601Interval(TimeInterval interval, Iso8601Format format)
         {
             return ToIso8601Interval(interval.Start, interval.Stop, format);
@@ -288,6 +287,20 @@ namespace CesiumLanguageWriter.Advanced
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "labelStyle");
             }
+        }
+
+        /// <summary>
+        /// Returns a resolved url, using the given <see cref="CesiumResourceBehavior"/>.
+        /// </summary>
+        /// <param name="url">The url of the resource.</param>
+        /// <param name="resourceBehavior">A <see cref="CesiumResourceBehavior"/> specifying how include the resource into a CZML document.</param>
+        /// <returns>The resolved url.</returns>
+        public static string GetResourceUrl(string url, CesiumResourceBehavior resourceBehavior)
+        {
+            if (resourceBehavior == CesiumResourceBehavior.Embed)
+                return CachingCesiumUrlResolver.ThreadLocalInstance.ResolveUrl(url);
+
+            return url;
         }
     }
 }

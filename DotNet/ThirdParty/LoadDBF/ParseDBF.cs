@@ -4,7 +4,6 @@ using System.Data;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Windows.Forms;
 
 // Read an entire standard DBF file into a DataTable
 public class ParseDBF
