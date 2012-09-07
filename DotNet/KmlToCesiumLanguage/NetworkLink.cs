@@ -69,8 +69,41 @@ namespace KmlToCesiumLanguage
                     if (refreshIntervalElement != null)
                     {
                         double value;
-                        if (double.TryParse(refreshIntervalElement.Value, out value))
-                            externalWriter.WriteRefreshIntervalProperty(value);
+                        var refreshIntervalParsed = double.TryParse(refreshIntervalElement.Value, out value);
+
+                        if (m_networkLinkControl != null)
+                        {
+                            XElement minRefreshPeriod = m_networkLinkControl.Element(m_document.Namespace + "minRefreshPeriod");
+                            if (minRefreshPeriod != null)
+                            {
+                                double minRefresh;
+                                bool minRefreshParsed = double.TryParse(minRefreshPeriod.Value, out minRefresh);
+                                if (minRefreshParsed && refreshIntervalParsed && minRefresh > value)
+                                {
+                                    externalWriter.WriteRefreshIntervalProperty(minRefresh);
+                                }
+                                else if (refreshIntervalParsed)
+                                {
+                                    externalWriter.WriteRefreshIntervalProperty(value);
+                                }
+                            }
+                            XElement maxSessionLength = m_networkLinkControl.Element(m_document.Namespace + "maxSessionLength");
+                            if (maxSessionLength != null)
+                            {
+                                double sessionLength;
+                                if (double.TryParse(maxSessionLength.Value, out sessionLength))
+                                {
+                                    externalWriter.WriteMaxSessionLengthProperty(sessionLength);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (refreshIntervalParsed)
+                            {
+                                externalWriter.WriteRefreshIntervalProperty(value);
+                            }
+                        }
                     }
                     externalWriter.WriteScopeProperty(CesiumExternalDocumentScope.Shared);
                 }

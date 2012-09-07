@@ -45,6 +45,7 @@
     <Compile Include="TestGroundOverlay.cs" />
     <Compile Include="TestKmlConverter.cs" />
     <Compile Include="TestLineString.cs" />
+    <Compile Include="TestNetworkLink.cs" />
     <Compile Include="TestPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestPolygon.cs" />
