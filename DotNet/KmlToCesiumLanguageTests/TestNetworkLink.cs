@@ -160,5 +160,30 @@ namespace KmlToCesiumLanguageTests
             string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"maxSessionLength\":2e2"));
         }
+
+        [Test]
+        public void NetworkLinkWithDeprecatedUrlWorks()
+        {
+            var kml = @"
+                <NetworkLink>
+                  <name>Random Placemark</name>
+                  <visibility>0</visibility>
+                  <open>0</open>
+                  <description>A simple server-side script that generates a new random
+                    placemark on each call</description>
+                  <refreshVisibility>0</refreshVisibility>
+                  <flyToView>0</flyToView>
+                  <Url>
+                    <href>http://yourserver.com/cgi-bin/randomPlacemark.py</href>
+                  </Url>
+                </NetworkLink>";
+            var doc = XDocument.Parse(kml);
+            var networkLink = new NetworkLink(doc.Root, m_document);
+            using (var outputstream = new CesiumOutputStream(m_stringWriter))
+                networkLink.WritePacket(outputstream);
+
+            string result = m_stringWriter.ToString();
+            Assert.That(result.Contains("\"external\":{\"polling\":\"http://localhost/conversions/kml?kmlUrl=http%3A%2F%2Fyourserver.com%2Fcgi-bin%2FrandomPlacemark.py\",\"scope\":\"SHARED\"}}"));
+        }
     }
 }
