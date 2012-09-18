@@ -10,19 +10,15 @@
         },
 		"eventname":{
 		    "$ref": "String.jsonschema",
-			"description": "The event type to listen to."
+			"description": "The event type to listen to. Can be used in conjunction with the eventSource property. Ignored otherwise."
 		},
-        "parameters": {
-            "type": ["string"],
-            "description": "Client supplied parameters to the external document Uri."
-        },
 		"polling":{
 		    "$ref": "String.jsonschema",
-			"description": "The Uri of the external document. Uses traditional polling. Specify the refreshInterval property to poll the server at a given interval."
+			"description": "The Uri of the external document. Specify the refreshInterval property to poll the server at a given interval."
 		},
 		"refreshInterval":{
 		    "$ref": "Double.jsonschema",
-			"description": "Specifies in seconds how often to refresh to document."
+			"description": "Specifies in seconds how often to refresh to document. This is ignored unless the polling property is used. When the polling property is specified, this value defaults to 60 seconds, unless configured otherwise."
 		},
 		"scope":{
 			"$ref": "ExternalDocumentScope.jsonschema",
