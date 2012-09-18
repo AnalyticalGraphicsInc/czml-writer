@@ -64,7 +64,7 @@ namespace KmlToCesiumLanguage
                     {
                         href = new Uri(m_document.ParentUri, href);
                     }
-                    externalWriter.WritePollingProperty(m_uri + Uri.EscapeDataString(href.AbsoluteUri));
+                    externalWriter.WriteUrlProperty(m_uri + Uri.EscapeDataString(href.AbsoluteUri));
                     XElement refreshIntervalElement = element.Element(m_document.Namespace + "refreshInterval");
                     if (refreshIntervalElement != null)
                     {
@@ -76,15 +76,18 @@ namespace KmlToCesiumLanguage
                             XElement minRefreshPeriod = m_networkLinkControl.Element(m_document.Namespace + "minRefreshPeriod");
                             if (minRefreshPeriod != null)
                             {
-                                double minRefresh;
-                                bool minRefreshParsed = double.TryParse(minRefreshPeriod.Value, out minRefresh);
-                                if (minRefreshParsed && refreshIntervalParsed && minRefresh > value)
+                                using (var pollUpdateWriter = externalWriter.OpenPollingUpdateProperty())
                                 {
-                                    externalWriter.WriteRefreshIntervalProperty(minRefresh);
-                                }
-                                else if (refreshIntervalParsed)
-                                {
-                                    externalWriter.WriteRefreshIntervalProperty(value);
+                                    double minRefresh;
+                                    bool minRefreshParsed = double.TryParse(minRefreshPeriod.Value, out minRefresh);
+                                    if (minRefreshParsed && refreshIntervalParsed && minRefresh > value)
+                                    {
+                                        pollUpdateWriter.WriteRefreshIntervalProperty(minRefresh);
+                                    }
+                                    else if (refreshIntervalParsed)
+                                    {
+                                        pollUpdateWriter.WriteRefreshIntervalProperty(value);
+                                    }
                                 }
                             }
                             XElement maxSessionLength = m_networkLinkControl.Element(m_document.Namespace + "maxSessionLength");
@@ -101,7 +104,8 @@ namespace KmlToCesiumLanguage
                         {
                             if (refreshIntervalParsed)
                             {
-                                externalWriter.WriteRefreshIntervalProperty(value);
+                                using (var pollUpdateWriter = externalWriter.OpenPollingUpdateProperty())
+                                    pollUpdateWriter.WriteRefreshIntervalProperty(value);
                             }
                         }
                     }
