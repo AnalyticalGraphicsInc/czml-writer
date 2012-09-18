@@ -561,7 +561,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested Cartesian camera position, when viewing this object in the East (X), North(Y), Up(Z) reference frame relative to the objects location.
+        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteViewFrom(Cartesian value)
@@ -572,7 +572,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested Cartesian camera position, when viewing this object in the East (X), North(Y), Up(Z) reference frame relative to the objects location.
+        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -582,7 +582,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested Cartesian camera position, when viewing this object in the East (X), North(Y), Up(Z) reference frame relative to the objects location.
+        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
