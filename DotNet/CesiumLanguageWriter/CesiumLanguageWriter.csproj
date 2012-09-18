@@ -83,6 +83,7 @@
     <Compile Include="Generated\ConeCesiumWriter.cs" />
     <Compile Include="Generated\DirectionListCesiumWriter.cs" />
     <Compile Include="Generated\DoubleCesiumWriter.cs" />
+    <Compile Include="Generated\EllipsoidCesiumWriter.cs" />
     <Compile Include="Generated\EyeOffsetCesiumWriter.cs" />
     <Compile Include="Generated\FontCesiumWriter.cs" />
     <Compile Include="Generated\HorizontalOriginCesiumWriter.cs" />

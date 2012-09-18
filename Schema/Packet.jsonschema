@@ -64,6 +64,10 @@
         "camera": {
             "$ref": "Camera.jsonschema",
             "description": "A camera."
-        }
+        },
+        "ellipsoid": {
+            "$ref": "Ellipsoid.jsonschema",
+            "description": "An ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties."
+        },
     }
 }

@@ -83,6 +83,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string CameraPropertyName = "camera";
 
+        /// <summary>
+        /// The name of the <code>ellipsoid</code> property.
+        /// </summary>
+        public const string EllipsoidPropertyName = "ellipsoid";
+
         private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter(BillboardPropertyName), false);
         private readonly Lazy<PositionListCesiumWriter> m_vertexPositions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(VertexPositionsPropertyName), false);
@@ -95,6 +100,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<ConeCesiumWriter> m_cone = new Lazy<ConeCesiumWriter>(() => new ConeCesiumWriter(ConePropertyName), false);
         private readonly Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<PyramidCesiumWriter>(() => new PyramidCesiumWriter(PyramidPropertyName), false);
         private readonly Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(() => new CameraCesiumWriter(CameraPropertyName), false);
+        private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
 
         /// <summary>
         /// Writes the start of a new JSON object representing the packet.
@@ -553,6 +559,62 @@ namespace CesiumLanguageWriter
         public CameraCesiumWriter OpenCameraProperty()
         {
             return OpenAndReturn(CameraWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>ellipsoid</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public EllipsoidCesiumWriter EllipsoidWriter
+        {
+            get { return m_ellipsoid.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>ellipsoid</code> property.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public EllipsoidCesiumWriter OpenEllipsoidProperty()
+        {
+            return OpenAndReturn(EllipsoidWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>ellipsoid</code> property as a <code>radii</code> value.  The <code>ellipsoid</code> property specifies an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteEllipsoidProperty(Cartesian value)
+        {
+            using (var writer = OpenEllipsoidProperty())
+            {
+                writer.WriteRadii(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>ellipsoid</code> property as a <code>radii</code> value.  The <code>ellipsoid</code> property specifies an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteEllipsoidProperty(IList<JulianDate> dates, IList<Cartesian> values)
+        {
+            using (var writer = OpenEllipsoidProperty())
+            {
+                writer.WriteRadii(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>ellipsoid</code> property as a <code>radii</code> value.  The <code>ellipsoid</code> property specifies an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteEllipsoidProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        {
+            using (var writer = OpenEllipsoidProperty())
+            {
+                writer.WriteRadii(dates, values, startIndex, length);
+            }
         }
 
     }
