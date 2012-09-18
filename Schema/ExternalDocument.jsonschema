@@ -4,19 +4,23 @@
     "type": ["array", "object"],
     "items": { "$ref": "#" },
     "properties": {
-        "eventSource": {
+        "url": {
             "$ref": "String.jsonschema",
-            "description": "The Uri of the external document. Uses EventSource to push data from the server."
+            "description": "The URL of the external document. Required."
         },
+		"sourceType":{
+		    "$ref": "ExternalDocumentSourceType.jsonschema",
+			"description": "The data transport type to use."
+		},
 		"eventname":{
 		    "$ref": "String.jsonschema",
 			"description": "The event type to listen to. Can be used in conjunction with the eventSource property. Ignored otherwise."
 		},
-		"polling":{
-		    "$ref": "String.jsonschema",
-			"description": "The Uri of the external document. Specify the refreshInterval property to poll the server at a given interval."
+		"reconnectOnError":{
+		    "$ref": "Boolean.jsonschema",
+			"description": "Tells the client to try to reconnect if there is an error during the retrieval of the data."
 		},
-		"refreshInterval":{
+		"reconnectRetries":{
 		    "$ref": "Double.jsonschema",
 			"description": "Specifies in seconds how often to refresh to document. This is ignored unless the polling property is used. When the polling property is specified, this value defaults to 60 seconds, unless configured otherwise."
 		},
@@ -27,6 +31,15 @@
 		"maxSessionLength":{
 		    "$ref": "Double.jsonschema",
 			"description": "Specifies in seconds how long the connection can stay connected."
+		},
+		"pollingUpdate":{
+		    "$ref": "PollingUpdate.jsonschema",
+			"description": "Use this updater when you want to poll the given url at a constant update rate based on the system's clock."
+		},
+		"simulationDrivenUpdate":{
+		    "$ref": "simulationDrivenUpdate.jsonschema",
+			"description": "Use this updater when you want to retrieve data for a specified duration."
 		}
+
     }
 }

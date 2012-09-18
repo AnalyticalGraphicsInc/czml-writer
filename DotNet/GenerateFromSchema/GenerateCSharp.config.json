@@ -413,6 +413,19 @@
 				"needsInterval": false
             }
         ],
+		"ExternalDocumentSourceType": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumExternalDocumentSourceType",
+                        "name": "value",
+                        "description": "The data transport type to use."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.ExternalDocumentSourceTypeToString(value));",
+				"needsInterval": false
+            }
+        ],
         "LabelStyle": [
             {
                 "parameters": [

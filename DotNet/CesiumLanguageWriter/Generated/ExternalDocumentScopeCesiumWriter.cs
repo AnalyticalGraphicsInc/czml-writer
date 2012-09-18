@@ -7,7 +7,7 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>ExternalDocumentScope</code> to a <see cref="CesiumOutputStream" />.  A <code>ExternalDocumentScope</code> defines the scope of the document.  It controls whether the document is shared or private.
+    /// Writes a <code>ExternalDocumentScope</code> to a <see cref="CesiumOutputStream" />.  A <code>ExternalDocumentScope</code> defines the scope of the document.  It controls whether the document is shared or private. A shared scope merges all objects with the same id into the parent document. A private scope creates a separate document.
     /// </summary>
     public class ExternalDocumentScopeCesiumWriter : CesiumPropertyWriter<ExternalDocumentScopeCesiumWriter>
     {

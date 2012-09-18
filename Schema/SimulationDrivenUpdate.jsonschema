@@ -1,0 +1,12 @@
+{
+    "title": "SimulationDrivenUpdate",
+    "description": "Use this updater when you want to retrieve data for a specified duration.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "refreshInterval": {
+            "$ref": "Double.jsonschema",
+            "description": "The duration of time to request data."
+        }
+    }
+}

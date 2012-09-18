@@ -13,9 +13,14 @@ namespace CesiumLanguageWriter
     public class ExternalDocumentCesiumWriter : CesiumPropertyWriter<ExternalDocumentCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>eventSource</code> property.
+        /// The name of the <code>url</code> property.
         /// </summary>
-        public const string EventSourcePropertyName = "eventSource";
+        public const string UrlPropertyName = "url";
+
+        /// <summary>
+        /// The name of the <code>sourceType</code> property.
+        /// </summary>
+        public const string SourceTypePropertyName = "sourceType";
 
         /// <summary>
         /// The name of the <code>eventname</code> property.
@@ -23,19 +28,14 @@ namespace CesiumLanguageWriter
         public const string EventnamePropertyName = "eventname";
 
         /// <summary>
-        /// The name of the <code>parameters</code> property.
+        /// The name of the <code>reconnectOnError</code> property.
         /// </summary>
-        public const string ParametersPropertyName = "parameters";
+        public const string ReconnectOnErrorPropertyName = "reconnectOnError";
 
         /// <summary>
-        /// The name of the <code>polling</code> property.
+        /// The name of the <code>reconnectRetries</code> property.
         /// </summary>
-        public const string PollingPropertyName = "polling";
-
-        /// <summary>
-        /// The name of the <code>refreshInterval</code> property.
-        /// </summary>
-        public const string RefreshIntervalPropertyName = "refreshInterval";
+        public const string ReconnectRetriesPropertyName = "reconnectRetries";
 
         /// <summary>
         /// The name of the <code>scope</code> property.
@@ -47,12 +47,25 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string MaxSessionLengthPropertyName = "maxSessionLength";
 
-        private readonly Lazy<StringCesiumWriter> m_eventSource = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(EventSourcePropertyName), false);
+        /// <summary>
+        /// The name of the <code>pollingUpdate</code> property.
+        /// </summary>
+        public const string PollingUpdatePropertyName = "pollingUpdate";
+
+        /// <summary>
+        /// The name of the <code>simulationDrivenUpdate</code> property.
+        /// </summary>
+        public const string SimulationDrivenUpdatePropertyName = "simulationDrivenUpdate";
+
+        private readonly Lazy<StringCesiumWriter> m_url = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(UrlPropertyName), false);
+        private readonly Lazy<ExternalDocumentSourceTypeCesiumWriter> m_sourceType = new Lazy<ExternalDocumentSourceTypeCesiumWriter>(() => new ExternalDocumentSourceTypeCesiumWriter(SourceTypePropertyName), false);
         private readonly Lazy<StringCesiumWriter> m_eventname = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(EventnamePropertyName), false);
-        private readonly Lazy<StringCesiumWriter> m_polling = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(PollingPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_refreshInterval = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RefreshIntervalPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_reconnectOnError = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ReconnectOnErrorPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_reconnectRetries = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ReconnectRetriesPropertyName), false);
         private readonly Lazy<ExternalDocumentScopeCesiumWriter> m_scope = new Lazy<ExternalDocumentScopeCesiumWriter>(() => new ExternalDocumentScopeCesiumWriter(ScopePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_maxSessionLength = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MaxSessionLengthPropertyName), false);
+        private readonly Lazy<PollingUpdateCesiumWriter> m_pollingUpdate = new Lazy<PollingUpdateCesiumWriter>(() => new PollingUpdateCesiumWriter(PollingUpdatePropertyName), false);
+        private readonly Lazy<SimulationDrivenUpdateCesiumWriter> m_simulationDrivenUpdate = new Lazy<SimulationDrivenUpdateCesiumWriter>(() => new SimulationDrivenUpdateCesiumWriter(SimulationDrivenUpdatePropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -78,36 +91,65 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>eventSource</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>eventSource</code> property defines the Uri of the external document. Uses EventSource to push data from the server.
+        /// Gets the writer for the <code>url</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>url</code> property defines the URL of the external document. Required.
         /// </summary>
-        public StringCesiumWriter EventSourceWriter
+        public StringCesiumWriter UrlWriter
         {
-            get { return m_eventSource.Value; }
+            get { return m_url.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>eventSource</code> property.  The <code>eventSource</code> property defines the Uri of the external document. Uses EventSource to push data from the server.
+        /// Opens and returns the writer for the <code>url</code> property.  The <code>url</code> property defines the URL of the external document. Required.
         /// </summary>
-        public StringCesiumWriter OpenEventSourceProperty()
+        public StringCesiumWriter OpenUrlProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(EventSourceWriter);
+            return OpenAndReturn(UrlWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>eventSource</code> property as a <code>string</code> value.  The <code>eventSource</code> property specifies the Uri of the external document. Uses EventSource to push data from the server.
+        /// Writes a value for the <code>url</code> property as a <code>string</code> value.  The <code>url</code> property specifies the URL of the external document. Required.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteEventSourceProperty(string value)
+        public void WriteUrlProperty(string value)
         {
-            using (var writer = OpenEventSourceProperty())
+            using (var writer = OpenUrlProperty())
             {
                 writer.WriteString(value);
             }
         }
 
         /// <summary>
-        /// Gets the writer for the <code>eventname</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>eventname</code> property defines the event type to listen to.
+        /// Gets the writer for the <code>sourceType</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>sourceType</code> property defines the data transport type to use.
+        /// </summary>
+        public ExternalDocumentSourceTypeCesiumWriter SourceTypeWriter
+        {
+            get { return m_sourceType.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>sourceType</code> property.  The <code>sourceType</code> property defines the data transport type to use.
+        /// </summary>
+        public ExternalDocumentSourceTypeCesiumWriter OpenSourceTypeProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(SourceTypeWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>sourceType</code> property as a <code>sourceType</code> value.  The <code>sourceType</code> property specifies the data transport type to use.
+        /// </summary>
+        /// <param name="value">The data transport type to use.</param>
+        public void WriteSourceTypeProperty(CesiumExternalDocumentSourceType value)
+        {
+            using (var writer = OpenSourceTypeProperty())
+            {
+                writer.WriteSourceType(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>eventname</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>eventname</code> property defines the event type to listen to. Can be used in conjunction with the eventSource property. Ignored otherwise.
         /// </summary>
         public StringCesiumWriter EventnameWriter
         {
@@ -115,7 +157,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>eventname</code> property.  The <code>eventname</code> property defines the event type to listen to.
+        /// Opens and returns the writer for the <code>eventname</code> property.  The <code>eventname</code> property defines the event type to listen to. Can be used in conjunction with the eventSource property. Ignored otherwise.
         /// </summary>
         public StringCesiumWriter OpenEventnameProperty()
         {
@@ -124,7 +166,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>eventname</code> property as a <code>string</code> value.  The <code>eventname</code> property specifies the event type to listen to.
+        /// Writes a value for the <code>eventname</code> property as a <code>string</code> value.  The <code>eventname</code> property specifies the event type to listen to. Can be used in conjunction with the eventSource property. Ignored otherwise.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteEventnameProperty(string value)
@@ -136,85 +178,73 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>parameters</code> property.  The <code>parameters</code> property specifies client supplied parameters to the external document Uri.
+        /// Gets the writer for the <code>reconnectOnError</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>reconnectOnError</code> property defines tells the client to try to reconnect if there is an error during the retrieval of the data.
         /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteParameters(string value)
+        public BooleanCesiumWriter ReconnectOnErrorWriter
         {
-            const string PropertyName = ParametersPropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            Output.WriteValue(value);
+            get { return m_reconnectOnError.Value; }
         }
 
         /// <summary>
-        /// Gets the writer for the <code>polling</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>polling</code> property defines the Uri of the external document. Uses traditional polling. Specify the refreshInterval property to poll the server at a given interval.
+        /// Opens and returns the writer for the <code>reconnectOnError</code> property.  The <code>reconnectOnError</code> property defines tells the client to try to reconnect if there is an error during the retrieval of the data.
         /// </summary>
-        public StringCesiumWriter PollingWriter
-        {
-            get { return m_polling.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>polling</code> property.  The <code>polling</code> property defines the Uri of the external document. Uses traditional polling. Specify the refreshInterval property to poll the server at a given interval.
-        /// </summary>
-        public StringCesiumWriter OpenPollingProperty()
+        public BooleanCesiumWriter OpenReconnectOnErrorProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(PollingWriter);
+            return OpenAndReturn(ReconnectOnErrorWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>polling</code> property as a <code>string</code> value.  The <code>polling</code> property specifies the Uri of the external document. Uses traditional polling. Specify the refreshInterval property to poll the server at a given interval.
+        /// Writes a value for the <code>reconnectOnError</code> property as a <code>boolean</code> value.  The <code>reconnectOnError</code> property specifies tells the client to try to reconnect if there is an error during the retrieval of the data.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WritePollingProperty(string value)
+        public void WriteReconnectOnErrorProperty(bool value)
         {
-            using (var writer = OpenPollingProperty())
+            using (var writer = OpenReconnectOnErrorProperty())
             {
-                writer.WriteString(value);
+                writer.WriteBoolean(value);
             }
         }
 
         /// <summary>
-        /// Gets the writer for the <code>refreshInterval</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>refreshInterval</code> property defines specifies in seconds how often to refresh to document.
+        /// Gets the writer for the <code>reconnectRetries</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>reconnectRetries</code> property defines specifies in seconds how often to refresh to document. This is ignored unless the polling property is used. When the polling property is specified, this value defaults to 60 seconds, unless configured otherwise.
         /// </summary>
-        public DoubleCesiumWriter RefreshIntervalWriter
+        public DoubleCesiumWriter ReconnectRetriesWriter
         {
-            get { return m_refreshInterval.Value; }
+            get { return m_reconnectRetries.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>refreshInterval</code> property.  The <code>refreshInterval</code> property defines specifies in seconds how often to refresh to document.
+        /// Opens and returns the writer for the <code>reconnectRetries</code> property.  The <code>reconnectRetries</code> property defines specifies in seconds how often to refresh to document. This is ignored unless the polling property is used. When the polling property is specified, this value defaults to 60 seconds, unless configured otherwise.
         /// </summary>
-        public DoubleCesiumWriter OpenRefreshIntervalProperty()
+        public DoubleCesiumWriter OpenReconnectRetriesProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(RefreshIntervalWriter);
+            return OpenAndReturn(ReconnectRetriesWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>refreshInterval</code> property as a <code>number</code> value.  The <code>refreshInterval</code> property specifies specifies in seconds how often to refresh to document.
+        /// Writes a value for the <code>reconnectRetries</code> property as a <code>number</code> value.  The <code>reconnectRetries</code> property specifies specifies in seconds how often to refresh to document. This is ignored unless the polling property is used. When the polling property is specified, this value defaults to 60 seconds, unless configured otherwise.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteRefreshIntervalProperty(double value)
+        public void WriteReconnectRetriesProperty(double value)
         {
-            using (var writer = OpenRefreshIntervalProperty())
+            using (var writer = OpenReconnectRetriesProperty())
             {
                 writer.WriteNumber(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>refreshInterval</code> property as a <code>number</code> value.  The <code>refreshInterval</code> property specifies specifies in seconds how often to refresh to document.
+        /// Writes a value for the <code>reconnectRetries</code> property as a <code>number</code> value.  The <code>reconnectRetries</code> property specifies specifies in seconds how often to refresh to document. This is ignored unless the polling property is used. When the polling property is specified, this value defaults to 60 seconds, unless configured otherwise.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteRefreshIntervalProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        public void WriteReconnectRetriesProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
-            using (var writer = OpenRefreshIntervalProperty())
+            using (var writer = OpenReconnectRetriesProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
             }
@@ -291,6 +321,40 @@ namespace CesiumLanguageWriter
             {
                 writer.WriteNumber(dates, values, startIndex, length);
             }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>pollingUpdate</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>pollingUpdate</code> property defines use this updater when you want to poll the given url at a constant update rate based on the system's clock.
+        /// </summary>
+        public PollingUpdateCesiumWriter PollingUpdateWriter
+        {
+            get { return m_pollingUpdate.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>pollingUpdate</code> property.  The <code>pollingUpdate</code> property defines use this updater when you want to poll the given url at a constant update rate based on the system's clock.
+        /// </summary>
+        public PollingUpdateCesiumWriter OpenPollingUpdateProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(PollingUpdateWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>simulationDrivenUpdate</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>simulationDrivenUpdate</code> property defines use this updater when you want to retrieve data for a specified duration.
+        /// </summary>
+        public SimulationDrivenUpdateCesiumWriter SimulationDrivenUpdateWriter
+        {
+            get { return m_simulationDrivenUpdate.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>simulationDrivenUpdate</code> property.  The <code>simulationDrivenUpdate</code> property defines use this updater when you want to retrieve data for a specified duration.
+        /// </summary>
+        public SimulationDrivenUpdateCesiumWriter OpenSimulationDrivenUpdateProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(SimulationDrivenUpdateWriter);
         }
 
     }
