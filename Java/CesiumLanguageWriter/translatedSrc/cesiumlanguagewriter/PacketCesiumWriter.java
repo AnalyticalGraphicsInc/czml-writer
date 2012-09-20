@@ -9,6 +9,7 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BillboardCesiumWriter;
 import cesiumlanguagewriter.CameraCesiumWriter;
 import cesiumlanguagewriter.ConeCesiumWriter;
+import cesiumlanguagewriter.EllipsoidCesiumWriter;
 import cesiumlanguagewriter.LabelCesiumWriter;
 import cesiumlanguagewriter.OrientationCesiumWriter;
 import cesiumlanguagewriter.PathCesiumWriter;
@@ -127,6 +128,13 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	public static final String CameraPropertyName = "camera";
 	/**
 	 *  
+	The name of the <code>ellipsoid</code> property.
+	
+
+	 */
+	public static final String EllipsoidPropertyName = "ellipsoid";
+	/**
+	 *  
 	The name of the <code>viewFrom</code> property.
 	
 
@@ -190,6 +198,11 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	private Lazy<CameraCesiumWriter> m_camera = new Lazy<cesiumlanguagewriter.CameraCesiumWriter>(new Func1<cesiumlanguagewriter.CameraCesiumWriter>() {
 		public cesiumlanguagewriter.CameraCesiumWriter invoke() {
 			return new CameraCesiumWriter(CameraPropertyName);
+		}
+	}, false);
+	private Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<cesiumlanguagewriter.EllipsoidCesiumWriter>(new Func1<cesiumlanguagewriter.EllipsoidCesiumWriter>() {
+		public cesiumlanguagewriter.EllipsoidCesiumWriter invoke() {
+			return new EllipsoidCesiumWriter(EllipsoidPropertyName);
 		}
 	}, false);
 
@@ -833,6 +846,25 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	 */
 	public final CameraCesiumWriter openCameraProperty() {
 		return this.<CameraCesiumWriter> openAndReturn(getCameraWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>ellipsoid</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+	
+
+	 */
+	public final EllipsoidCesiumWriter getEllipsoidWriter() {
+		return m_ellipsoid.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>ellipsoid</code> property.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+	
+
+	 */
+	public final EllipsoidCesiumWriter openEllipsoidProperty() {
+		return this.<EllipsoidCesiumWriter> openAndReturn(getEllipsoidWriter());
 	}
 
 	/**
