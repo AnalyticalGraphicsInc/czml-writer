@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Ellipsoid</code> to a <see cref="CesiumOutputStream" />.  A <code>Ellipsoid</code> an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.
+    /// Writes a <code>Ellipsoid</code> to a <see cref="CesiumOutputStream" />.  A <code>Ellipsoid</code> defines a closed quadric surface that is a three dimensional analogue of an ellipse.
     /// </summary>
     public class EllipsoidCesiumWriter : CesiumPropertyWriter<EllipsoidCesiumWriter>
     {
@@ -28,7 +28,7 @@ namespace CesiumLanguageWriter
         public const string MaterialPropertyName = "material";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asRadii;
+        private readonly Lazy<EllipsoidRadiiCesiumWriter> m_radii = new Lazy<EllipsoidRadiiCesiumWriter>(() => new EllipsoidRadiiCesiumWriter(RadiiPropertyName), false);
         private readonly Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(MaterialPropertyName), false);
 
         /// <summary>
@@ -37,7 +37,6 @@ namespace CesiumLanguageWriter
         public EllipsoidCesiumWriter(string propertyName)
             : base(propertyName)
         {
-            m_asRadii = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>>(CreateRadiiAdaptor, false);
         }
 
         /// <summary>
@@ -47,7 +46,6 @@ namespace CesiumLanguageWriter
         protected EllipsoidCesiumWriter(EllipsoidCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asRadii = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>>(CreateRadiiAdaptor, false);
         }
 
         /// <inheritdoc />
@@ -86,39 +84,60 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>radii</code> property.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
+        /// Gets the writer for the <code>radii</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>radii</code> property defines the dimensions of the ellipsoid.
         /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteRadii(Cartesian value)
+        public EllipsoidRadiiCesiumWriter RadiiWriter
         {
-            const string PropertyName = RadiiPropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteCartesian3(Output, value);
+            get { return m_radii.Value; }
         }
 
         /// <summary>
-        /// Writes the <code>radii</code> property.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
+        /// Opens and returns the writer for the <code>radii</code> property.  The <code>radii</code> property defines the dimensions of the ellipsoid.
+        /// </summary>
+        public EllipsoidRadiiCesiumWriter OpenRadiiProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(RadiiWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radii</code> property as a <code>cartesian</code> value.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteRadiiProperty(Cartesian value)
+        {
+            using (var writer = OpenRadiiProperty())
+            {
+                writer.WriteCartesian(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radii</code> property as a <code>cartesian</code> value.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteRadii(IList<JulianDate> dates, IList<Cartesian> values)
+        public void WriteRadiiProperty(IList<JulianDate> dates, IList<Cartesian> values)
         {
-            WriteRadii(dates, values, 0, dates.Count);
+            using (var writer = OpenRadiiProperty())
+            {
+                writer.WriteCartesian(dates, values);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>radii</code> property.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
+        /// Writes a value for the <code>radii</code> property as a <code>cartesian</code> value.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteRadii(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        public void WriteRadiiProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
         {
-            const string PropertyName = RadiiPropertyName;
-            OpenIntervalIfNecessary();
-            CesiumWritingHelper.WriteCartesian3(Output, PropertyName, dates, values, startIndex, length);
+            using (var writer = OpenRadiiProperty())
+            {
+                writer.WriteCartesian(dates, values, startIndex, length);
+            }
         }
 
         /// <summary>
@@ -136,21 +155,6 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(MaterialWriter);
-        }
-
-        /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>Radii</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
-        /// </summary>
-        /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<Cartesian> AsRadii()
-        {
-            return m_asRadii.Value;
-        }
-
-        private ICesiumInterpolatableValuePropertyWriter<Cartesian> CreateRadiiAdaptor()
-        {
-            return new CesiumInterpolatableWriterAdaptor<EllipsoidCesiumWriter, Cartesian>(
-                this, (me, value) => me.WriteRadii(value), (EllipsoidCesiumWriter me, IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length) => me.WriteRadii(dates, values, startIndex, length));
         }
 
     }

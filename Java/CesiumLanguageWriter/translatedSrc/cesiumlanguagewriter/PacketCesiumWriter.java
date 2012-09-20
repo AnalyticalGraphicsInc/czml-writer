@@ -133,6 +133,13 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	 */
 	public static final String EllipsoidPropertyName = "ellipsoid";
+	/**
+	 *  
+	The name of the <code>viewFrom</code> property.
+	
+
+	 */
+	public static final String ViewFromPropertyName = "viewFrom";
 	private Lazy<PositionCesiumWriter> m_position = new Lazy<cesiumlanguagewriter.PositionCesiumWriter>(new Func1<cesiumlanguagewriter.PositionCesiumWriter>() {
 		public cesiumlanguagewriter.PositionCesiumWriter invoke() {
 			return new PositionCesiumWriter(PositionPropertyName);
@@ -862,26 +869,21 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	/**
 	 *  
-	Writes a value for the <code>ellipsoid</code> property as a <code>radii</code> value.  The <code>ellipsoid</code> property specifies an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+	Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeEllipsoidProperty(Cartesian value) {
-		{
-			cesiumlanguagewriter.EllipsoidCesiumWriter writer = openEllipsoidProperty();
-			try {
-				writer.writeRadii(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
+	public final void writeViewFrom(Cartesian value) {
+		String PropertyName = ViewFromPropertyName;
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeCartesian3(getOutput(), value);
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>ellipsoid</code> property as a <code>radii</code> value.  The <code>ellipsoid</code> property specifies an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+	Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
 	
 	
 	
@@ -889,20 +891,13 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	 * @param dates The dates at which the vector is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeEllipsoidProperty(List<JulianDate> dates, List<Cartesian> values) {
-		{
-			cesiumlanguagewriter.EllipsoidCesiumWriter writer = openEllipsoidProperty();
-			try {
-				writer.writeRadii(dates, values);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
+	public final void writeViewFrom(List<JulianDate> dates, List<Cartesian> values) {
+		writeViewFrom(dates, values, 0, dates.size());
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>ellipsoid</code> property as a <code>radii</code> value.  The <code>ellipsoid</code> property specifies an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+	Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
 	
 	
 	
@@ -914,14 +909,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeEllipsoidProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.EllipsoidCesiumWriter writer = openEllipsoidProperty();
-			try {
-				writer.writeRadii(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
+	public final void writeViewFrom(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+		String PropertyName = ViewFromPropertyName;
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
 	}
 }

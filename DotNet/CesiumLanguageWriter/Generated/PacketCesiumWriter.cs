@@ -567,6 +567,22 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Gets the writer for the <code>ellipsoid</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public EllipsoidCesiumWriter EllipsoidWriter
+        {
+            get { return m_ellipsoid.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>ellipsoid</code> property.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public EllipsoidCesiumWriter OpenEllipsoidProperty()
+        {
+            return OpenAndReturn(EllipsoidWriter);
+        }
+
+        /// <summary>
         /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
         /// </summary>
         /// <param name="value">The value.</param>

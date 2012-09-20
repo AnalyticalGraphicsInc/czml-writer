@@ -7,12 +7,13 @@ import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
+import cesiumlanguagewriter.EllipsoidRadiiCesiumWriter;
 import cesiumlanguagewriter.MaterialCesiumWriter;
 import java.util.List;
 
 /**
  *  
- Writes a <code>Ellipsoid</code> to a  {@link CesiumOutputStream}.  A <code>Ellipsoid</code> an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.
+ Writes a <code>Ellipsoid</code> to a  {@link CesiumOutputStream}.  A <code>Ellipsoid</code> defines a closed quadric surface that is a three dimensional analogue of an ellipse.
  
 
  */
@@ -43,7 +44,11 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 			return new BooleanCesiumWriter(ShowPropertyName);
 		}
 	}, false);
-	private Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asRadii;
+	private Lazy<EllipsoidRadiiCesiumWriter> m_radii = new Lazy<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter>(new Func1<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter>() {
+		public cesiumlanguagewriter.EllipsoidRadiiCesiumWriter invoke() {
+			return new EllipsoidRadiiCesiumWriter(RadiiPropertyName);
+		}
+	}, false);
 	private Lazy<MaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
 		public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
 			return new MaterialCesiumWriter(MaterialPropertyName);
@@ -58,12 +63,6 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	 */
 	public EllipsoidCesiumWriter(String propertyName) {
 		super(propertyName);
-		m_asRadii = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
-				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createRadiiAdaptor", new Class[] {}) {
-					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
-						return createRadiiAdaptor();
-					}
-				}, false);
 	}
 
 	/**
@@ -76,12 +75,6 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	 */
 	protected EllipsoidCesiumWriter(EllipsoidCesiumWriter existingInstance) {
 		super(existingInstance);
-		m_asRadii = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
-				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createRadiiAdaptor", new Class[] {}) {
-					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
-						return createRadiiAdaptor();
-					}
-				}, false);
 	}
 
 	@Override
@@ -129,23 +122,47 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	}
 
 	/**
+	 *  Gets the writer for the <code>radii</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>radii</code> property defines the dimensions of the ellipsoid.
+	
+
+	 */
+	public final EllipsoidRadiiCesiumWriter getRadiiWriter() {
+		return m_radii.getValue();
+	}
+
+	/**
 	 *  
-	Writes the <code>radii</code> property.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
+	Opens and returns the writer for the <code>radii</code> property.  The <code>radii</code> property defines the dimensions of the ellipsoid.
+	
+
+	 */
+	public final EllipsoidRadiiCesiumWriter openRadiiProperty() {
+		openIntervalIfNecessary();
+		return this.<EllipsoidRadiiCesiumWriter> openAndReturn(getRadiiWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radii</code> property as a <code>cartesian</code> value.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeRadii(Cartesian value) {
-		String PropertyName = RadiiPropertyName;
-		openIntervalIfNecessary();
-		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeCartesian3(getOutput(), value);
+	public final void writeRadiiProperty(Cartesian value) {
+		{
+			cesiumlanguagewriter.EllipsoidRadiiCesiumWriter writer = openRadiiProperty();
+			try {
+				writer.writeCartesian(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>radii</code> property.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
+	Writes a value for the <code>radii</code> property as a <code>cartesian</code> value.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
 	
 	
 	
@@ -153,13 +170,20 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	 * @param dates The dates at which the vector is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeRadii(List<JulianDate> dates, List<Cartesian> values) {
-		writeRadii(dates, values, 0, dates.size());
+	public final void writeRadiiProperty(List<JulianDate> dates, List<Cartesian> values) {
+		{
+			cesiumlanguagewriter.EllipsoidRadiiCesiumWriter writer = openRadiiProperty();
+			try {
+				writer.writeCartesian(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>radii</code> property.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
+	Writes a value for the <code>radii</code> property as a <code>cartesian</code> value.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
 	
 	
 	
@@ -171,10 +195,15 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeRadii(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-		String PropertyName = RadiiPropertyName;
-		openIntervalIfNecessary();
-		CesiumWritingHelper.writeCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
+	public final void writeRadiiProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.EllipsoidRadiiCesiumWriter writer = openRadiiProperty();
+			try {
+				writer.writeCartesian(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
@@ -195,30 +224,5 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	public final MaterialCesiumWriter openMaterialProperty() {
 		openIntervalIfNecessary();
 		return this.<MaterialCesiumWriter> openAndReturn(getMaterialWriter());
-	}
-
-	/**
-	 *  
-	Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in <code>Radii</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-	
-	
-
-	 * @return The wrapper.
-	 */
-	public final ICesiumInterpolatableValuePropertyWriter<Cartesian> asRadii() {
-		return m_asRadii.getValue();
-	}
-
-	final private ICesiumInterpolatableValuePropertyWriter<Cartesian> createRadiiAdaptor() {
-		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.EllipsoidCesiumWriter, cesiumlanguagewriter.Cartesian>(this,
-				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.EllipsoidCesiumWriter, cesiumlanguagewriter.Cartesian>() {
-					public void invoke(EllipsoidCesiumWriter me, Cartesian value) {
-						me.writeRadii(value);
-					}
-				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.EllipsoidCesiumWriter, cesiumlanguagewriter.Cartesian>() {
-					public void invoke(EllipsoidCesiumWriter me, List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-						me.writeRadii(dates, values, startIndex, length);
-					}
-				});
 	}
 }
