@@ -69,5 +69,9 @@
             "$ref": "Ellipsoid.jsonschema",
             "description": "An ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties."
         },
+        "viewFrom": {
+            "$ref": "Cartesian3Value.jsonschema",
+            "description": "A suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property."
+        },
     }
 }
