@@ -1,0 +1,20 @@
+{
+    "title": "Ellipsoid",
+    "description": "Defines a closed quadric surface that is a three dimensional analogue of an ellipse.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the ellipsoid is shown."
+        },
+        "radii": {
+            "$ref": "EllipsoidRadii.jsonschema",
+            "description": "The dimensions of the ellipsoid."
+        },
+        "material": {
+            "$ref": "Material.jsonschema",
+            "description": "The material to display on the surface of the ellipsoid."
+        }
+    }
+}
