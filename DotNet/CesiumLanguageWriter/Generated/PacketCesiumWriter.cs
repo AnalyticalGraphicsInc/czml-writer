@@ -84,6 +84,16 @@ namespace CesiumLanguageWriter
         public const string CameraPropertyName = "camera";
 
         /// <summary>
+        /// The name of the <code>ellipsoid</code> property.
+        /// </summary>
+        public const string EllipsoidPropertyName = "ellipsoid";
+
+        /// <summary>
+        /// The name of the <code>viewFrom</code> property.
+        /// </summary>
+        public const string ViewFromPropertyName = "viewFrom";
+
+        /// <summary>
         /// The name of the <code>external</code> property.
         /// </summary>
         public const string ExternalPropertyName = "external";
@@ -100,6 +110,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<ConeCesiumWriter> m_cone = new Lazy<ConeCesiumWriter>(() => new ConeCesiumWriter(ConePropertyName), false);
         private readonly Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<PyramidCesiumWriter>(() => new PyramidCesiumWriter(PyramidPropertyName), false);
         private readonly Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(() => new CameraCesiumWriter(CameraPropertyName), false);
+        private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
         private readonly Lazy<ExternalDocumentCesiumWriter> m_external = new Lazy<ExternalDocumentCesiumWriter>(() => new ExternalDocumentCesiumWriter(ExternalPropertyName), false);
 
         /// <summary>
@@ -559,6 +570,57 @@ namespace CesiumLanguageWriter
         public CameraCesiumWriter OpenCameraProperty()
         {
             return OpenAndReturn(CameraWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>ellipsoid</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public EllipsoidCesiumWriter EllipsoidWriter
+        {
+            get { return m_ellipsoid.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>ellipsoid</code> property.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public EllipsoidCesiumWriter OpenEllipsoidProperty()
+        {
+            return OpenAndReturn(EllipsoidWriter);
+        }
+
+        /// <summary>
+        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteViewFrom(Cartesian value)
+        {
+            const string PropertyName = ViewFromPropertyName;
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteCartesian3(Output, value);
+        }
+
+        /// <summary>
+        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteViewFrom(IList<JulianDate> dates, IList<Cartesian> values)
+        {
+            WriteViewFrom(dates, values, 0, dates.Count);
+        }
+
+        /// <summary>
+        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteViewFrom(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        {
+            const string PropertyName = ViewFromPropertyName;
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteCartesian3(Output, PropertyName, dates, values, startIndex, length);
         }
 
         /// <summary>

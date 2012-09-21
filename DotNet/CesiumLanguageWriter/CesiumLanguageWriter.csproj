@@ -85,6 +85,8 @@
     <Compile Include="Generated\ConeCesiumWriter.cs" />
     <Compile Include="Generated\DirectionListCesiumWriter.cs" />
     <Compile Include="Generated\DoubleCesiumWriter.cs" />
+    <Compile Include="Generated\EllipsoidCesiumWriter.cs" />
+    <Compile Include="Generated\EllipsoidRadiiCesiumWriter.cs" />
     <Compile Include="Generated\ExternalDocumentCesiumWriter.cs" />
     <Compile Include="Generated\ExternalDocumentScopeCesiumWriter.cs" />
     <Compile Include="Generated\ExternalDocumentSourceTypeCesiumWriter.cs" />
