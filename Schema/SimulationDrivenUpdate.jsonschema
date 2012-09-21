@@ -4,9 +4,13 @@
     "type": ["array", "object"],
     "items": { "$ref": "#" },
     "properties": {
-        "refreshInterval": {
+        "duration": {
             "$ref": "Double.jsonschema",
-            "description": "The duration of time to request data."
+            "description": "The duration of time in seconds to request data."
+        },
+		"stepsize": {
+            "$ref": "Double.jsonschema",
+            "description": "The sampling stepsize."
         }
     }
 }

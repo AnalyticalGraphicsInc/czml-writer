@@ -13,11 +13,17 @@ namespace CesiumLanguageWriter
     public class SimulationDrivenUpdateCesiumWriter : CesiumPropertyWriter<SimulationDrivenUpdateCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>refreshInterval</code> property.
+        /// The name of the <code>duration</code> property.
         /// </summary>
-        public const string RefreshIntervalPropertyName = "refreshInterval";
+        public const string DurationPropertyName = "duration";
 
-        private readonly Lazy<DoubleCesiumWriter> m_refreshInterval = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RefreshIntervalPropertyName), false);
+        /// <summary>
+        /// The name of the <code>stepsize</code> property.
+        /// </summary>
+        public const string StepsizePropertyName = "stepsize";
+
+        private readonly Lazy<DoubleCesiumWriter> m_duration = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(DurationPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_stepsize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(StepsizePropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -43,44 +49,88 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>refreshInterval</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>refreshInterval</code> property defines the duration of time to request data.
+        /// Gets the writer for the <code>duration</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>duration</code> property defines the duration of time in seconds to request data.
         /// </summary>
-        public DoubleCesiumWriter RefreshIntervalWriter
+        public DoubleCesiumWriter DurationWriter
         {
-            get { return m_refreshInterval.Value; }
+            get { return m_duration.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>refreshInterval</code> property.  The <code>refreshInterval</code> property defines the duration of time to request data.
+        /// Opens and returns the writer for the <code>duration</code> property.  The <code>duration</code> property defines the duration of time in seconds to request data.
         /// </summary>
-        public DoubleCesiumWriter OpenRefreshIntervalProperty()
+        public DoubleCesiumWriter OpenDurationProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(RefreshIntervalWriter);
+            return OpenAndReturn(DurationWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>refreshInterval</code> property as a <code>number</code> value.  The <code>refreshInterval</code> property specifies the duration of time to request data.
+        /// Writes a value for the <code>duration</code> property as a <code>number</code> value.  The <code>duration</code> property specifies the duration of time in seconds to request data.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteRefreshIntervalProperty(double value)
+        public void WriteDurationProperty(double value)
         {
-            using (var writer = OpenRefreshIntervalProperty())
+            using (var writer = OpenDurationProperty())
             {
                 writer.WriteNumber(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>refreshInterval</code> property as a <code>number</code> value.  The <code>refreshInterval</code> property specifies the duration of time to request data.
+        /// Writes a value for the <code>duration</code> property as a <code>number</code> value.  The <code>duration</code> property specifies the duration of time in seconds to request data.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteRefreshIntervalProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        public void WriteDurationProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
-            using (var writer = OpenRefreshIntervalProperty())
+            using (var writer = OpenDurationProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>stepsize</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>stepsize</code> property defines the sampling stepsize.
+        /// </summary>
+        public DoubleCesiumWriter StepsizeWriter
+        {
+            get { return m_stepsize.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>stepsize</code> property.  The <code>stepsize</code> property defines the sampling stepsize.
+        /// </summary>
+        public DoubleCesiumWriter OpenStepsizeProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(StepsizeWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>stepsize</code> property as a <code>number</code> value.  The <code>stepsize</code> property specifies the sampling stepsize.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteStepsizeProperty(double value)
+        {
+            using (var writer = OpenStepsizeProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>stepsize</code> property as a <code>number</code> value.  The <code>stepsize</code> property specifies the sampling stepsize.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteStepsizeProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenStepsizeProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
             }
