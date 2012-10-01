@@ -66,6 +66,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\Validator.html = ..\Schema\Validator.html
 		..\Schema\VerticalOrigin.jsonschema = ..\Schema\VerticalOrigin.jsonschema
 		..\Schema\VerticalOriginValue.jsonschema = ..\Schema\VerticalOriginValue.jsonschema
+		..\Schema\VideoMaterial.jsonschema = ..\Schema\VideoMaterial.jsonschema
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateFromSchema", "GenerateFromSchema\GenerateFromSchema.csproj", "{6D67C4D1-C88F-440A-9820-580D030EAB4B}"
