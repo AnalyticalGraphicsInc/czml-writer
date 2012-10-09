@@ -10,6 +10,7 @@ import cesiumlanguagewriter.BillboardCesiumWriter;
 import cesiumlanguagewriter.CameraCesiumWriter;
 import cesiumlanguagewriter.ConeCesiumWriter;
 import cesiumlanguagewriter.EllipsoidCesiumWriter;
+import cesiumlanguagewriter.ExternalDocumentCesiumWriter;
 import cesiumlanguagewriter.LabelCesiumWriter;
 import cesiumlanguagewriter.OrientationCesiumWriter;
 import cesiumlanguagewriter.PathCesiumWriter;
@@ -140,6 +141,13 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	 */
 	public static final String ViewFromPropertyName = "viewFrom";
+	/**
+	 *  
+	The name of the <code>external</code> property.
+	
+
+	 */
+	public static final String ExternalPropertyName = "external";
 	private Lazy<PositionCesiumWriter> m_position = new Lazy<cesiumlanguagewriter.PositionCesiumWriter>(new Func1<cesiumlanguagewriter.PositionCesiumWriter>() {
 		public cesiumlanguagewriter.PositionCesiumWriter invoke() {
 			return new PositionCesiumWriter(PositionPropertyName);
@@ -203,6 +211,11 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	private Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<cesiumlanguagewriter.EllipsoidCesiumWriter>(new Func1<cesiumlanguagewriter.EllipsoidCesiumWriter>() {
 		public cesiumlanguagewriter.EllipsoidCesiumWriter invoke() {
 			return new EllipsoidCesiumWriter(EllipsoidPropertyName);
+		}
+	}, false);
+	private Lazy<ExternalDocumentCesiumWriter> m_external = new Lazy<cesiumlanguagewriter.ExternalDocumentCesiumWriter>(new Func1<cesiumlanguagewriter.ExternalDocumentCesiumWriter>() {
+		public cesiumlanguagewriter.ExternalDocumentCesiumWriter invoke() {
+			return new ExternalDocumentCesiumWriter(ExternalPropertyName);
 		}
 	}, false);
 
@@ -913,5 +926,24 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 		String PropertyName = ViewFromPropertyName;
 		getOutput().writePropertyName(PropertyName);
 		CesiumWritingHelper.writeCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
+	}
+
+	/**
+	 *  Gets the writer for the <code>external</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>external</code> property defines a link to an external document.
+	
+
+	 */
+	public final ExternalDocumentCesiumWriter getExternalWriter() {
+		return m_external.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>external</code> property.  The <code>external</code> property defines a link to an external document.
+	
+
+	 */
+	public final ExternalDocumentCesiumWriter openExternalProperty() {
+		return this.<ExternalDocumentCesiumWriter> openAndReturn(getExternalWriter());
 	}
 }
