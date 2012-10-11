@@ -1,10 +1,10 @@
-package cesiumlanguagewriter;
+package cesiumlanguagewriter.advanced;
 
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.Internal;
 import agi.foundation.compatibility.ArgumentException;
-import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.*;
 import java.awt.Color;
 import java.util.List;
 
@@ -17,6 +17,14 @@ import java.util.List;
 @Internal
 public final class CesiumWritingHelper {
 	private CesiumWritingHelper() {}
+
+	/**
+	 *  
+	The maximum interval of time that can be specified.
+	
+
+	 */
+	public static final TimeInterval MaximumInterval = new TimeInterval(GregorianDate.MinValue.toJulianDate(), GregorianDate.MaxValue.toJulianDate());
 
 	/**
 	 *  

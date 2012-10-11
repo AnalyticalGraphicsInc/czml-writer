@@ -47,6 +47,7 @@
     <Compile Include="Advanced\CesiumInterpolatableWriterAdaptor.cs" />
     <Compile Include="Advanced\CesiumPropertyWriter.cs" />
     <Compile Include="Advanced\CesiumWriterAdaptor.cs" />
+    <Compile Include="Advanced\CesiumWritingHelper.cs" />
     <Compile Include="Advanced\ICesiumElementWriter.cs" />
     <Compile Include="Advanced\ICesiumUrlResolver.cs" />
     <Compile Include="Advanced\ICesiumInterpolatableValuePropertyWriter.cs" />
@@ -74,7 +75,6 @@
     <Compile Include="CesiumOutputStream.cs" />
     <Compile Include="CesiumStreamWriter.cs" />
     <Compile Include="CesiumVerticalOrigin.cs" />
-    <Compile Include="CesiumWritingHelper.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CustomCesiumWriter.cs" />
     <Compile Include="CesiumExternalDocumentSourceType.cs" />
