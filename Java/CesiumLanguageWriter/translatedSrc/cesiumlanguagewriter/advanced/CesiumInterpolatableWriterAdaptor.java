@@ -62,6 +62,10 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
 		}, false);
 	}
 
+	public final boolean getIsOpen() {
+		return m_parent.getIsOpen();
+	}
+
 	public final CesiumOutputStream getOutput() {
 		return m_parent.getOutput();
 	}

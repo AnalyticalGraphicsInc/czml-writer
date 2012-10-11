@@ -1,10 +1,8 @@
 ﻿#if StkComponents
 using AGI.Foundation.Cesium.Advanced;
 using AGI.Foundation.Time;
-
 #else
 using CesiumLanguageWriter.Advanced;
-
 #endif
 
 #if StkComponents
