@@ -12,6 +12,11 @@ namespace CesiumLanguageWriter.Advanced
     public interface ICesiumElementWriter : IDisposable
     {
         /// <summary>
+        /// Gets <see langword="true" /> if the writer is open; otherwise, <see langword="false" />.
+        /// </summary>
+        bool IsOpen { get; }
+
+        /// <summary>
         /// Gets the <see cref="CesiumOutputStream"/> on which this writer is currently open.  If the writer is
         /// not open, accessing this property will throw an exception.
         /// </summary>

@@ -1,5 +1,4 @@
-﻿
-#if StkComponents
+﻿#if StkComponents
 namespace AGI.Foundation.Cesium.Advanced
 #else
 namespace CesiumLanguageWriter.Advanced

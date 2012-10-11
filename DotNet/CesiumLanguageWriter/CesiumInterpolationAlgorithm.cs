@@ -1,5 +1,4 @@
-﻿
-#if StkComponents
+﻿#if StkComponents
 namespace AGI.Foundation.Cesium
 #else
 namespace CesiumLanguageWriter
@@ -23,6 +22,6 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Hermite polynomial approximation.
         /// </summary>
-        Hermite
+        Hermite,
     }
 }

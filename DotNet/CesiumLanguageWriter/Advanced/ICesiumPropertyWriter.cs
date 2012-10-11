@@ -1,5 +1,4 @@
-﻿
-#if StkComponents
+﻿#if StkComponents
 using AGI.Foundation.Time;
 #endif
 
