@@ -65,6 +65,12 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <inheritdoc />
+        public bool IsOpen
+        {
+            get { return m_parent.IsOpen; }
+        }
+
+        /// <inheritdoc />
         public CesiumOutputStream Output
         {
             get { return m_parent.Output; }

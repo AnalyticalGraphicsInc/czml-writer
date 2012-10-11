@@ -46,6 +46,14 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Gets <see langword="true" /> if the writer is open; otherwise, <see langword="false" />.
+        /// </summary>
+        public bool IsOpen
+        {
+            get { return OutputOrNull != null; }
+        }
+
+        /// <summary>
         /// Gets the <see cref="CesiumOutputStream"/> on which this writer is currently open.  If the writer is
         /// not open, accessing this property will throw an exception.
         /// </summary>

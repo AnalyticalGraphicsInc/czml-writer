@@ -13,6 +13,13 @@ import cesiumlanguagewriter.*;
  */
 public interface ICesiumElementWriter extends IDisposable {
 	/**
+	 *  Gets <see langword="true" /> if the writer is open; otherwise, <see langword="false" />.
+	
+
+	 */
+	boolean getIsOpen();
+
+	/**
 	 *  Gets the  {@link CesiumOutputStream} on which this writer is currently open.  If the writer is
 	not open, accessing this property will throw an exception.
 	

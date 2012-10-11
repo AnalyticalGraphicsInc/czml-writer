@@ -1,5 +1,4 @@
-﻿
-#if StkComponents
+﻿#if StkComponents
 namespace AGI.Foundation.Cesium
 #else
 namespace CesiumLanguageWriter
@@ -24,6 +23,6 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The top of the billboard or label is located at the position.
         /// </summary>
-        Top
+        Top,
     }
 }
