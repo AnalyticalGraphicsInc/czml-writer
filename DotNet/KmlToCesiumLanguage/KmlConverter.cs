@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
-using Ionic.Zip;
+using ICSharpCode.SharpZipLib.Zip;
 
 namespace KmlToCesiumLanguage
 {
@@ -25,9 +24,7 @@ namespace KmlToCesiumLanguage
                                                bool prettyFormatting = false)
         {
             CzmlDocument document = new CzmlDocument(outputWriter);
-
             document.CesiumOutputStream.PrettyFormatting = prettyFormatting;
-
             document.CesiumOutputStream.WriteStartSequence();
             Convert(inputReader, document);
             document.CesiumOutputStream.WriteEndSequence();
@@ -45,37 +42,46 @@ namespace KmlToCesiumLanguage
         {
             CzmlDocument document = new CzmlDocument(outputWriter);
 
-            document.CesiumOutputStream.PrettyFormatting = prettyFormatting;
-
-            document.CesiumOutputStream.WriteStartSequence();
-
-            using (ZipFile zipFile = ZipFile.Read(inputStream))
+            byte[] kmlData = null;
+            using (ZipInputStream s = new ZipInputStream(inputStream))
             {
-                foreach (ZipEntry entry in zipFile)
+                ZipEntry theEntry;
+                while ((theEntry = s.GetNextEntry()) != null)
                 {
-                    string fileName = entry.FileName;
-                    CesiumImageFormat? imageFormat = InferImageFormat(fileName);
-
-                    if (imageFormat != null && !document.ImageResolver.ContainsUrl(fileName))
+                    if (theEntry.IsFile)
                     {
-                        using (Stream stream = entry.OpenReader())
+                        string fileName = theEntry.Name;
+
+                        string extension = Path.GetExtension(fileName);
+                        if (".kml".Equals(extension, StringComparison.OrdinalIgnoreCase))
                         {
-                            string dataUrl = CesiumFormattingHelper.ImageToDataUri(stream, imageFormat.Value);
-                            document.ImageResolver.AddUrl(fileName, dataUrl);
+                            kmlData = new byte[theEntry.Size];
+                            s.Read(kmlData, (int)theEntry.Offset, (int)theEntry.Size);
+                            continue;
+                        }
+
+                        CesiumImageFormat? imageFormat = InferImageFormat(fileName);
+                        if (imageFormat != null && !document.ImageResolver.ContainsUrl(fileName))
+                        {
+                            byte[] date = new byte[theEntry.Size];
+                            s.Read(date, (int)theEntry.Offset, (int)theEntry.Size);
+                            using (Stream stream = new MemoryStream(date))
+                            {
+                                string dataUrl = CesiumFormattingHelper.ImageToDataUri(stream, imageFormat.Value);
+                                document.ImageResolver.AddUrl(fileName, dataUrl);
+                            }
                         }
                     }
                 }
+            }
 
-                foreach (ZipEntry entry in zipFile)
-                {
-                    string extension = Path.GetExtension(entry.FileName);
-                    if (".kml".Equals(extension, StringComparison.OrdinalIgnoreCase))
-                    {
-                        using (Stream stream = entry.OpenReader())
-                        using (StreamReader streamReader = new StreamReader(stream))
-                            Convert(streamReader, document);
-                    }
-                }
+            document.CesiumOutputStream.PrettyFormatting = prettyFormatting;
+            document.CesiumOutputStream.WriteStartSequence();
+
+            using (Stream stream = new MemoryStream(kmlData))
+            using (StreamReader streamReader = new StreamReader(stream))
+            {
+                Convert(streamReader, document);
             }
 
             document.CesiumOutputStream.WriteEndSequence();
