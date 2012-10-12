@@ -43,31 +43,30 @@ namespace KmlToCesiumLanguage
             CzmlDocument document = new CzmlDocument(outputWriter);
 
             byte[] kmlData = null;
-            using (ZipInputStream s = new ZipInputStream(inputStream))
+            using (ZipInputStream zipStream = new ZipInputStream(inputStream))
             {
-                ZipEntry theEntry;
-                while ((theEntry = s.GetNextEntry()) != null)
+                ZipEntry zipEntry;
+                while ((zipEntry = zipStream.GetNextEntry()) != null)
                 {
-                    if (theEntry.IsFile)
+                    if (zipEntry.IsFile)
                     {
-                        string fileName = theEntry.Name;
-
+                        string fileName = zipEntry.Name;
                         string extension = Path.GetExtension(fileName);
                         if (".kml".Equals(extension, StringComparison.OrdinalIgnoreCase))
                         {
-                            kmlData = new byte[theEntry.Size];
-                            s.Read(kmlData, (int)theEntry.Offset, (int)theEntry.Size);
+                            kmlData = new byte[zipEntry.Size];
+                            zipStream.Read(kmlData, (int)zipEntry.Offset, (int)zipEntry.Size);
                             continue;
                         }
 
                         CesiumImageFormat? imageFormat = InferImageFormat(fileName);
                         if (imageFormat != null && !document.ImageResolver.ContainsUrl(fileName))
                         {
-                            byte[] date = new byte[theEntry.Size];
-                            s.Read(date, (int)theEntry.Offset, (int)theEntry.Size);
-                            using (Stream stream = new MemoryStream(date))
+                            byte[] imageData = new byte[zipEntry.Size];
+                            zipStream.Read(imageData, (int)zipEntry.Offset, (int)zipEntry.Size);
+                            using (Stream imageStream = new MemoryStream(imageData))
                             {
-                                string dataUrl = CesiumFormattingHelper.ImageToDataUri(stream, imageFormat.Value);
+                                string dataUrl = CesiumFormattingHelper.ImageToDataUri(imageStream, imageFormat.Value);
                                 document.ImageResolver.AddUrl(fileName, dataUrl);
                             }
                         }
@@ -78,10 +77,10 @@ namespace KmlToCesiumLanguage
             document.CesiumOutputStream.PrettyFormatting = prettyFormatting;
             document.CesiumOutputStream.WriteStartSequence();
 
-            using (Stream stream = new MemoryStream(kmlData))
-            using (StreamReader streamReader = new StreamReader(stream))
+            using (Stream kmlStream = new MemoryStream(kmlData))
+            using (StreamReader kmlStreamReader = new StreamReader(kmlStream))
             {
-                Convert(streamReader, document);
+                Convert(kmlStreamReader, document);
             }
 
             document.CesiumOutputStream.WriteEndSequence();
