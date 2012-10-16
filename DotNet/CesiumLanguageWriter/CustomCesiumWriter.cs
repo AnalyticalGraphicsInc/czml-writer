@@ -1,16 +1,6 @@
-﻿#if StkComponents
-using AGI.Foundation.Cesium.Advanced;
+﻿using CesiumLanguageWriter.Advanced;
 
-#else
-using CesiumLanguageWriter.Advanced;
-
-#endif
-
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
     /// A <see cref="CesiumPropertyWriter{T}"/> used to write custom properties.  To write custom

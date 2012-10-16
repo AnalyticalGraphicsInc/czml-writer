@@ -1,23 +1,11 @@
 ﻿using System;
-#if StkComponents
-using AGI.Foundation.Coordinates;
-using AGI.Foundation.Cesium;
-using AGI.Foundation.Cesium.Advanced;
-using AGI.Foundation.Time;
-using AGI.Foundation;
-#else
+using System.Collections.Generic;
+using System.IO;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
-#endif
 using NUnit.Framework;
-using System.IO;
-using System.Collections.Generic;
 
-#if StkComponents
-namespace Cesium.Tests.Cesium
-#else
 namespace CesiumLanguageWriterTests
-#endif
 {
     [TestFixture]
     class TestOrientationCesiumWriter : TestCesiumInterpolatablePropertyWriter<OrientationCesiumWriter>
@@ -100,13 +88,13 @@ namespace CesiumLanguageWriterTests
                         }
                     }
 
-                    
-                    
+
+
                 }
 
                 Console.WriteLine(sw.ToString());
             }
-            
+
         }
 
     }
