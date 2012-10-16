@@ -1,10 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
     /// Contains time-related constants.
