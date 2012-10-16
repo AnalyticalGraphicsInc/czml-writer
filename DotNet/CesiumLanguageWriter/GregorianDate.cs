@@ -1977,7 +1977,7 @@ namespace CesiumLanguageWriter
         /// corresponding to year month day hours minutes and seconds with seconds
         /// represented to machine precision.
         /// </summary>
-        /// <param name="format">The type of ISO9601 string to create.</param>
+        /// <param name="format">The type of ISO8601 string to create.</param>
         /// <returns>A string representing this date and time in ISO8601 format.</returns>
         public string ToIso8601String(Iso8601Format format)
         {

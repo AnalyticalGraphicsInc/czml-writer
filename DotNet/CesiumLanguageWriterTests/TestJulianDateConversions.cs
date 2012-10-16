@@ -136,11 +136,7 @@ namespace CesiumLanguageWriterTests
         /// from a JulianDate prior to the earliest possible DateTime.
         /// </summary>
         [Test]
-#if CSToJava
-        [ExpectedException(typeof (org.joda.time.IllegalFieldValueException))]
-#else
         [ExpectedException(typeof (ArgumentOutOfRangeException))]
-#endif
         public void TestJulianDateMinimumToDateTime()
         {
             JulianDate date = JulianDate.MinValue;
