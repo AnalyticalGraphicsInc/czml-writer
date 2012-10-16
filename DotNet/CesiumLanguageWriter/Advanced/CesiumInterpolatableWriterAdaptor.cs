@@ -1,15 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#if StkComponents
-using AGI.Foundation.Time;
-#endif
-
-#if StkComponents
-namespace AGI.Foundation.Cesium.Advanced
-#else
 namespace CesiumLanguageWriter.Advanced
-#endif
 {
     /// <summary>
     /// A callback to write a value to a <see cref="CesiumOutputStream"/> using a given

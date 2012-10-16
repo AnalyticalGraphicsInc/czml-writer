@@ -1,22 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-#if StkComponents
-using AGI.Foundation;
-using AGI.Foundation.Cesium;
-using AGI.Foundation.Cesium.Advanced;
-using AGI.Foundation.Coordinates;
-using AGI.Foundation.Time;
-#else
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
-#endif
 using NUnit.Framework;
 
-#if StkComponents
-namespace Cesium.Tests.Cesium
-#else
 namespace CesiumLanguageWriterTests
-#endif
 {
     [TestFixture]
     public class TestPositionCesiumWriter : TestCesiumInterpolatablePropertyWriter<PositionCesiumWriter>

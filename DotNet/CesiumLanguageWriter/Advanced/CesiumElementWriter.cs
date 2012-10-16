@@ -1,10 +1,6 @@
 ﻿using System;
 
-#if StkComponents
-namespace AGI.Foundation.Cesium.Advanced
-#else
 namespace CesiumLanguageWriter.Advanced
-#endif
 {
     /// <summary>
     /// The base class for types that write <topic name="Cesium">Cesium</topic> data to a stream.

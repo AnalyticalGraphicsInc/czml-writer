@@ -1,14 +1,6 @@
 ﻿using System;
 
-#if StkComponents
-using AGI.Foundation.Time;
-#endif
-
-#if StkComponents
-namespace AGI.Foundation.Cesium.Advanced
-#else
 namespace CesiumLanguageWriter.Advanced
-#endif
 {
     /// <summary>
     /// A <topic name="Cesium">Cesium</topic> writer for a property.  The property may be defined over a

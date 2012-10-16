@@ -1,10 +1,6 @@
 ﻿using System;
 
-#if StkComponents
-namespace AGI.Foundation.Cesium.Advanced
-#else
 namespace CesiumLanguageWriter.Advanced
-#endif
 {
     /// <summary>
     /// An interface to an instance that can write elements of <topic name="Cesium">Cesium</topic>.
