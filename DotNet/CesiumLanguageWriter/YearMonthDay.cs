@@ -62,6 +62,11 @@ namespace CesiumLanguageWriter
 
                 //day is stored zero-indexed
                 m_day = dayOfYear - cumulativeDays[m_month] - 1;
+
+                if (!IsValidDate(m_year + 1, m_month + 1, m_day + 1))
+                {
+                    throw new ArgumentException(CesiumLocalization.YearMonthDayInvalidArgument);
+                }
             }
             else
             {
@@ -100,13 +105,19 @@ namespace CesiumLanguageWriter
             m_year--;
             m_month--;
             m_day--;
+
+            if (!IsValidDate(m_year + 1, m_month + 1, m_day + 1))
+            {
+                throw new ArgumentOutOfRangeException(CesiumLocalization.YearMonthDayInvalidArgument);
+            }
         }
 
         /// <summary>
         /// Initializes a new instance from a <see cref="JulianDate"/>.
         /// </summary>
         /// <param name="date">The date.</param>
-        public YearMonthDay(JulianDate date) : this(GetAdjustedJulianDayNumber(date))
+        public YearMonthDay(JulianDate date)
+            : this(GetAdjustedJulianDayNumber(date))
         {
         }
 
@@ -311,7 +322,7 @@ namespace CesiumLanguageWriter
         {
             if (obj is YearMonthDay)
             {
-                return Equals((YearMonthDay) obj);
+                return Equals((YearMonthDay)obj);
             }
             return false;
         }
@@ -415,7 +426,7 @@ namespace CesiumLanguageWriter
                 throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "obj");
             }
 
-            return CompareTo((YearMonthDay) obj);
+            return CompareTo((YearMonthDay)obj);
         }
 
         /// <summary>
@@ -501,7 +512,7 @@ namespace CesiumLanguageWriter
         private readonly int m_month;
         private readonly int m_day;
 
-        private static readonly int[] s_commonYearCumulativeMonthTable = {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334};
-        private static readonly int[] s_leapYearCumulativeMonthTable = {0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335};
+        private static readonly int[] s_commonYearCumulativeMonthTable = { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334 };
+        private static readonly int[] s_leapYearCumulativeMonthTable = { 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335 };
     }
 }
