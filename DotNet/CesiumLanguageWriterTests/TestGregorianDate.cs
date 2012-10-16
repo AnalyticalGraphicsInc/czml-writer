@@ -395,7 +395,7 @@ namespace CesiumLanguageWriterTests
         public void TestJulianSecondsOfDay()
         {
             const double julianSecondsOfDay = 0.05486;
-            GregorianDate gd = new GregorianDate(new JulianDate(0, julianSecondsOfDay, TimeStandard.CoordinatedUniversalTime));
+            GregorianDate gd = new GregorianDate(new JulianDate(2046050, julianSecondsOfDay, TimeStandard.CoordinatedUniversalTime));
             Assert.AreEqual(julianSecondsOfDay, gd.JulianSecondsOfDay, Constants.Epsilon11);
         }
 

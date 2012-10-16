@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArgumentException;
+import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DateTimeHelper;
 import agi.foundation.compatibility.DayOfWeek;
@@ -77,6 +78,9 @@ public class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<YearMo
 			}
 			//day is stored zero-indexed
 			m_day = dayOfYear - cumulativeDays[m_month] - 1;
+			if (!isValidDate(m_year + 1, m_month + 1, m_day + 1)) {
+				throw new ArgumentException(CesiumLocalization.getYearMonthDayInvalidArgument());
+			}
 		} else {
 			throw new ArgumentException(CesiumLocalization.getYearMonthDayInvalidArgument());
 		}
@@ -110,6 +114,9 @@ public class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<YearMo
 		m_year--;
 		m_month--;
 		m_day--;
+		if (!isValidDate(m_year + 1, m_month + 1, m_day + 1)) {
+			throw new ArgumentOutOfRangeException(CesiumLocalization.getYearMonthDayInvalidArgument());
+		}
 	}
 
 	/**
