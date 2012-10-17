@@ -1,8 +1,4 @@
-﻿#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
-namespace CesiumLanguageWriter
-#endif
+﻿namespace CesiumLanguageWriter
 {
     /// <summary>
     /// The algorithm to use to interpolation sampled data.

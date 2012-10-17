@@ -5,21 +5,16 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-#if StkComponents
-using AGI.Foundation.Time;
-#endif
-
-#if StkComponents
-namespace AGI.Foundation.Cesium.Advanced
-#else
 namespace CesiumLanguageWriter.Advanced
-#endif
 {
     /// <summary>
     /// Contains static methods for formatting data for writing to a <topic name="Cesium">Cesium</topic> stream.
     /// </summary>
     public static class CesiumFormattingHelper
     {
+        static private JulianDate s_minimumGregorianDate = GregorianDate.MinValue.ToJulianDate();
+        static private JulianDate s_maximumGregorianDate = GregorianDate.MaxValue.ToJulianDate();
+
         /// <summary>
         /// Converts a <see cref="TimeInterval"/> as an ISO8601 interval string.
         /// </summary>
@@ -32,19 +27,6 @@ namespace CesiumLanguageWriter.Advanced
             return ToIso8601(start, format) + "/" + ToIso8601(stop, format);
         }
 
-#if StkComponents
-    /// <summary>
-    /// Converts a <see cref="TimeInterval"/> as an ISO8601 interval string.  The <see cref="TimeInterval.IsStartIncluded"/>
-    /// and <see cref="TimeInterval.IsStopIncluded"/> properties of the interval are ignored.
-    /// </summary>
-    /// <param name="interval">The interval to convert.</param>
-    /// <param name="format">The format to use.</param>
-    /// <returns>The interval represented as an ISO8601 interval string.</returns>
-        public static string ToIso8601Interval(TimeInterval interval, Iso8601Format format)
-        {
-            return ToIso8601Interval(interval.Start, interval.Stop, format);
-        }
-#else
         /// <summary>
         /// Converts a <see cref="TimeInterval"/> as an ISO8601 interval string.
         /// </summary>
@@ -55,7 +37,6 @@ namespace CesiumLanguageWriter.Advanced
         {
             return ToIso8601Interval(interval.Start, interval.Stop, format);
         }
-#endif
 
         /// <summary>
         /// Converts a <see cref="JulianDate"/> to an ISO8601 date string.
@@ -65,6 +46,32 @@ namespace CesiumLanguageWriter.Advanced
         /// <returns>The date represented as an ISO8601 date string.</returns>
         public static string ToIso8601(JulianDate date, Iso8601Format format)
         {
+            //If the JulianDate is outside the range of supported CZML values,
+            //clamp it to the minimum/maximum CZML ISO8601 value.
+            if (date <= s_minimumGregorianDate)
+            {
+                switch (format)
+                {
+                    case Iso8601Format.Basic:
+                        return "00000101T000000Z";
+                    case Iso8601Format.Compact:
+                        return "00000101T00Z";
+                    case Iso8601Format.Extended:
+                        return "0000-01-01T00:00:00Z";
+                }
+            }
+            if (date >= s_maximumGregorianDate)
+            {
+                switch (format)
+                {
+                    case Iso8601Format.Basic:
+                        return "99991231T240000Z";
+                    case Iso8601Format.Compact:
+                        return "99991231T24Z";
+                    case Iso8601Format.Extended:
+                        return "9999-12-31T24:00:00Z";
+                }
+            }
             return date.ToGregorianDate().ToIso8601String(format);
         }
 

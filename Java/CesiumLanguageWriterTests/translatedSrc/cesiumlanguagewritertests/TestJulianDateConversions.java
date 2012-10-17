@@ -2,6 +2,7 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.DateTimeHelper;
 import cesiumlanguagewriter.*;
@@ -101,7 +102,7 @@ public class TestJulianDateConversions {
 	
 
 	 */
-	@Test(expected = org.joda.time.IllegalFieldValueException.class)
+	@Test(expected = ArgumentOutOfRangeException.class)
 	public final void testJulianDateMinimumToDateTime() {
 		JulianDate date = JulianDate.getMinValue();
 		DateTime dt = date.toDateTime();

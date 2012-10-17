@@ -1,28 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-#if StkComponents
-using AGI.Foundation;
-using AGI.Foundation.Cesium;
-using AGI.Foundation.Cesium.Advanced;
-using AGI.Foundation.Coordinates;
-using AGI.Foundation.Time;
-using AGI.Test;
-#else
 using CesiumLanguageWriter;
-#endif
 using NUnit.Framework;
 
-#if StkComponents
-namespace Cesium.Tests.Cesium
-#else
 namespace CesiumLanguageWriterTests
-#endif
 {
     [TestFixture]
     public class TestCesiumPacketWriter
-#if StkComponents
-        : ComponentsTestBase
-#endif
     {
         private StringWriter m_sw;
         private CesiumOutputStream m_output;

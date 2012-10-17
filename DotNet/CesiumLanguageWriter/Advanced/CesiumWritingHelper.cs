@@ -2,16 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-#if StkComponents
-using AGI.Foundation.Coordinates;
-using AGI.Foundation.Time;
-#endif
-
-#if StkComponents
-namespace AGI.Foundation.Cesium.Advanced
-#else
 namespace CesiumLanguageWriter.Advanced
-#endif
 {
     /// <summary>
     /// Contains helper methods for writing CZML values.
