@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using CesiumLanguageWriter.Advanced;
 
-namespace CesiumLanguageWriter
+namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
     /// Contains helper methods for writing CZML values.
     /// </summary>
     internal static class CesiumWritingHelper
     {
+        /// <summary>
+        /// The maximum interval of time that can be specified.
+        /// </summary>
+        public static readonly TimeInterval MaximumInterval = new TimeInterval(GregorianDate.MinValue.ToJulianDate(), GregorianDate.MaxValue.ToJulianDate());
+
         /// <summary>
         /// Writes a <see cref="TimeInterval"/> as an ISO 8601 interval string.
         /// </summary>

@@ -1,16 +1,6 @@
 ﻿using System;
 
-#if StkComponents
-using AGI.Foundation.Cesium;
-using AGI.Foundation.Cesium.Advanced;
-using AGI.Foundation.Time;
-#endif
-
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
 namespace CesiumLanguageWriter.Advanced
-#endif
 {
     /// <summary>
     /// A callback to write a value to a <see cref="CesiumOutputStream"/> using a given
@@ -52,6 +42,12 @@ namespace CesiumLanguageWriter.Advanced
             m_parent = parent;
             m_writeValueCallback = writeValueCallback;
             m_interval = new Lazy<CesiumWriterAdaptor<TFrom, TValue>>(() => new CesiumWriterAdaptor<TFrom, TValue>((TFrom)m_parent.IntervalWriter, m_writeValueCallback), false);
+        }
+
+        /// <inheritdoc />
+        public bool IsOpen
+        {
+            get { return m_parent.IsOpen; }
         }
 
         /// <inheritdoc />

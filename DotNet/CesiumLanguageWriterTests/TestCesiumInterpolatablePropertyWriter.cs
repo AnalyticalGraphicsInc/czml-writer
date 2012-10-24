@@ -1,17 +1,8 @@
-﻿#if StkComponents
-using AGI.Foundation.Cesium;
-using AGI.Foundation.Cesium.Advanced;
-#else
-using CesiumLanguageWriter;
+﻿using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
-#endif
 using NUnit.Framework;
 
-#if StkComponents
-namespace Cesium.Tests.Cesium
-#else
 namespace CesiumLanguageWriterTests
-#endif
 {
     public abstract class TestCesiumInterpolatablePropertyWriter<TDerived> : TestCesiumPropertyWriter<TDerived>
         where TDerived : CesiumInterpolatablePropertyWriter<TDerived>

@@ -284,7 +284,7 @@ public class TestGregorianDate {
 	@Test
 	public final void testJulianSecondsOfDay() {
 		double julianSecondsOfDay = 0.05486;
-		GregorianDate gd = new GregorianDate(new JulianDate(0, julianSecondsOfDay, TimeStandard.COORDINATED_UNIVERSAL_TIME));
+		GregorianDate gd = new GregorianDate(new JulianDate(2046050, julianSecondsOfDay, TimeStandard.COORDINATED_UNIVERSAL_TIME));
 		Assert.assertEquals(julianSecondsOfDay, gd.getJulianSecondsOfDay(), Constants.Epsilon11);
 	}
 

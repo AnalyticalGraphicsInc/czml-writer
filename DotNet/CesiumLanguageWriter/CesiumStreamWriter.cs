@@ -1,17 +1,7 @@
 ﻿using System;
-#if StkComponents
-using AGI.Foundation.Cesium.Advanced;
-
-#else
 using CesiumLanguageWriter.Advanced;
 
-#endif
-
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
     /// Writes <topic name="Cesium">Cesium</topic> data to a <see cref="CesiumOutputStream"/>.
