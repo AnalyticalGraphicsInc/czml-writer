@@ -299,6 +299,50 @@
                 "writeValue": "CesiumWritingHelper.WriteCartographicList(Output, values);"
             }
         ],
+        "Video": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumResource",
+                        "name": "resource",
+                        "description": "A resource object describing the video."
+                    }
+                ],
+				"callOverload": "resource.Url, resource.Behavior"
+            },
+			{
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "url",
+                        "description": "The URL of the video."
+                    },
+                    {
+                        "type": "CesiumResourceBehavior",
+                        "name": "resourceBehavior",
+                        "description": "An enumeration describing how to include the video in the document. For even more control, use the overload that takes a ICesiumUrlResolver."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.GetResourceUrl(url, resourceBehavior));",
+				"needsInterval": false
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "url",
+                        "description": "The URL of the video.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document."
+                    },
+                    {
+                        "type": "ICesiumUrlResolver",
+                        "name": "resolver",
+                        "description": "An ICesiumUrlResolver used to build the final URL that will be embedded in the document."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(resolver.ResolveUrl(url));",
+				"needsInterval": false
+            },
+		],
         "Image": [
             {
                 "parameters": [

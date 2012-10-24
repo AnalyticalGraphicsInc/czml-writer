@@ -1,0 +1,6 @@
+{
+    "title": "Video",
+    "description": "The URI of the video.",
+    "type": "string",
+    "format": "uri"
+}

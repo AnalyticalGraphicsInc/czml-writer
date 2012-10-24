@@ -106,6 +106,8 @@
     <Compile Include="Generated\SolidColorMaterialCesiumWriter.cs" />
     <Compile Include="Generated\StringCesiumWriter.cs" />
     <Compile Include="Generated\VerticalOriginCesiumWriter.cs" />
+    <Compile Include="Generated\VideoCesiumWriter.cs" />
+    <Compile Include="Generated\VideoMaterialCesiumWriter.cs" />
     <Compile Include="grisu\DiyFp.cs" />
     <Compile Include="grisu\Grisu.cs" />
     <Compile Include="grisu\GrisuDouble.cs" />

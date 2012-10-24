@@ -4,6 +4,7 @@
 using CesiumLanguageWriter.Advanced;
 using System;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace CesiumLanguageWriter
 {
@@ -22,8 +23,14 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string ImagePropertyName = "image";
 
+        /// <summary>
+        /// The name of the <code>video</code> property.
+        /// </summary>
+        public const string VideoPropertyName = "video";
+
         private readonly Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<SolidColorMaterialCesiumWriter>(() => new SolidColorMaterialCesiumWriter(SolidColorPropertyName), false);
         private readonly Lazy<ImageMaterialCesiumWriter> m_image = new Lazy<ImageMaterialCesiumWriter>(() => new ImageMaterialCesiumWriter(ImagePropertyName), false);
+        private readonly Lazy<VideoMaterialCesiumWriter> m_video = new Lazy<VideoMaterialCesiumWriter>(() => new VideoMaterialCesiumWriter(VideoPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -80,6 +87,23 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(ImageWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>video</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>video</code> property defines fills the surface with a video.
+        /// </summary>
+        public VideoMaterialCesiumWriter VideoWriter
+        {
+            get { return m_video.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>video</code> property.  The <code>video</code> property defines fills the surface with a video.
+        /// </summary>
+        public VideoMaterialCesiumWriter OpenVideoProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(VideoWriter);
         }
 
     }

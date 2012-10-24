@@ -4,6 +4,7 @@
 using CesiumLanguageWriter.Advanced;
 using System;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace CesiumLanguageWriter
 {
@@ -17,7 +18,19 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string ImagePropertyName = "image";
 
+        /// <summary>
+        /// The name of the <code>horizontalRepeat</code> property.
+        /// </summary>
+        public const string HorizontalRepeatPropertyName = "horizontalRepeat";
+
+        /// <summary>
+        /// The name of the <code>verticalRepeat</code> property.
+        /// </summary>
+        public const string VerticalRepeatPropertyName = "verticalRepeat";
+
         private readonly Lazy<ImageCesiumWriter> m_image = new Lazy<ImageCesiumWriter>(() => new ImageCesiumWriter(ImagePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_horizontalRepeat = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(HorizontalRepeatPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_verticalRepeat = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(VerticalRepeatPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -119,6 +132,94 @@ namespace CesiumLanguageWriter
             using (var writer = OpenImageProperty())
             {
                 writer.WriteImage(image, imageFormat);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>horizontalRepeat</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>horizontalRepeat</code> property defines the number of times the image is repeated horizontally.
+        /// </summary>
+        public DoubleCesiumWriter HorizontalRepeatWriter
+        {
+            get { return m_horizontalRepeat.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>horizontalRepeat</code> property.  The <code>horizontalRepeat</code> property defines the number of times the image is repeated horizontally.
+        /// </summary>
+        public DoubleCesiumWriter OpenHorizontalRepeatProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(HorizontalRepeatWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>horizontalRepeat</code> property as a <code>number</code> value.  The <code>horizontalRepeat</code> property specifies the number of times the image is repeated horizontally.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteHorizontalRepeatProperty(double value)
+        {
+            using (var writer = OpenHorizontalRepeatProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>horizontalRepeat</code> property as a <code>number</code> value.  The <code>horizontalRepeat</code> property specifies the number of times the image is repeated horizontally.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteHorizontalRepeatProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenHorizontalRepeatProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>verticalRepeat</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>verticalRepeat</code> property defines the number of times the image is repeated vertically.
+        /// </summary>
+        public DoubleCesiumWriter VerticalRepeatWriter
+        {
+            get { return m_verticalRepeat.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>verticalRepeat</code> property.  The <code>verticalRepeat</code> property defines the number of times the image is repeated vertically.
+        /// </summary>
+        public DoubleCesiumWriter OpenVerticalRepeatProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(VerticalRepeatWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>verticalRepeat</code> property as a <code>number</code> value.  The <code>verticalRepeat</code> property specifies the number of times the image is repeated vertically.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteVerticalRepeatProperty(double value)
+        {
+            using (var writer = OpenVerticalRepeatProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>verticalRepeat</code> property as a <code>number</code> value.  The <code>verticalRepeat</code> property specifies the number of times the image is repeated vertically.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteVerticalRepeatProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenVerticalRepeatProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 

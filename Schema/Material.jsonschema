@@ -11,6 +11,10 @@
         "image": {
             "$ref": "ImageMaterial.jsonschema",
             "description": "Fills the surface with an image."
+        },
+        "video": {
+            "$ref": "VideoMaterial.jsonschema",
+            "description": "Fills the surface with a video."
         }
     }
 }
