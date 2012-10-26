@@ -67,6 +67,18 @@
                 "callOverload": "new TimeInterval(start, stop)"
             }
         ],
+        "Time": [
+            {
+                "parameters": [
+                    {
+                        "type": "JulianDate",
+                        "name": "value",
+                        "description": "The time."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteDate(Output, value);"
+            }
+        ],
         "Cartesian2": [
             {
                 "parameters": [

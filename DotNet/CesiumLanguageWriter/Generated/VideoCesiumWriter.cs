@@ -7,7 +7,7 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Video</code> to a <see cref="CesiumOutputStream" />.  A <code>Video</code> defines an video associated with an element, which can optionally vary over time.  The video is specified as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+    /// Writes a <code>Video</code> to a <see cref="CesiumOutputStream" />.  A <code>Video</code> defines a video associated with an element, which can optionally vary over time.  The video is specified as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
     /// </summary>
     public class VideoCesiumWriter : CesiumPropertyWriter<VideoCesiumWriter>
     {

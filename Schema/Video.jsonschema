@@ -1,6 +1,6 @@
 {
     "title": "Video",
-    "description": "Defines an video associated with an element, which can optionally vary over time.  The video is specified as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>.",
+    "description": "Defines a video associated with an element, which can optionally vary over time.  The video is specified as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>.",
     "type": ["array", "object"],
     "items": { "$ref": "#" },
     "properties": {

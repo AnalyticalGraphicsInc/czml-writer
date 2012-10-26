@@ -45,6 +45,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<VideoCesiumWriter> m_video = new Lazy<VideoCesiumWriter>(() => new VideoCesiumWriter(VideoPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_horizontalRepeat = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(HorizontalRepeatPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_verticalRepeat = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(VerticalRepeatPropertyName), false);
+        private readonly Lazy<TimeCesiumWriter> m_startTime = new Lazy<TimeCesiumWriter>(() => new TimeCesiumWriter(StartTimePropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_loop = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(LoopPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_speed = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SpeedPropertyName), false);
 
@@ -215,15 +216,32 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>startTime</code> property.  The <code>startTime</code> property specifies the number of seconds .
+        /// Gets the writer for the <code>startTime</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>startTime</code> property defines the start time of the video.
         /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteStartTime(string value)
+        public TimeCesiumWriter StartTimeWriter
         {
-            const string PropertyName = StartTimePropertyName;
+            get { return m_startTime.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>startTime</code> property.  The <code>startTime</code> property defines the start time of the video.
+        /// </summary>
+        public TimeCesiumWriter OpenStartTimeProperty()
+        {
             OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            Output.WriteValue(value);
+            return OpenAndReturn(StartTimeWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>startTime</code> property as a <code>time</code> value.  The <code>startTime</code> property specifies the start time of the video.
+        /// </summary>
+        /// <param name="value">The time.</param>
+        public void WriteStartTimeProperty(JulianDate value)
+        {
+            using (var writer = OpenStartTimeProperty())
+            {
+                writer.WriteTime(value);
+            }
         }
 
         /// <summary>

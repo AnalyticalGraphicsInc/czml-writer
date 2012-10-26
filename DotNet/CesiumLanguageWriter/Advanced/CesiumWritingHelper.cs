@@ -25,6 +25,16 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Writes a <see cref="JulianDate"/> as an ISO 8601 interval string.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="date">The date to write.</param>
+        public static void WriteDate(CesiumOutputStream output, JulianDate date)
+        {
+            output.WriteValue(CesiumFormattingHelper.ToIso8601(date, output.PrettyFormatting ? Iso8601Format.Extended : Iso8601Format.Compact));
+        }
+
+        /// <summary>
         /// Writes a list of <see cref="TimeInterval">TimeIntervals</see>.  If the collection has a single
         /// interval, the interval is written as an ISO 8601 interval string.  If it has multiple intervals,
         /// it is written as an array of ISO 8601 interval strings.

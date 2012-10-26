@@ -16,18 +16,17 @@
             "$ref": "Double.jsonschema",
             "description": "The number of times the video is repeated vertically."
         },
-		"startTime": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The number of seconds ."
-		},
-		"loop": {
+        "startTime": {
+            "$ref": "Time.jsonschema",
+            "description": "The start time of the video."
+        },
+        "loop": {
             "$ref": "Boolean.jsonschema",
             "description": "If true, the video will loop, if false the first or last frame will be displayed when outside the bounds of the video."
-		},
-		"speed": {
+        },
+        "speed": {
             "$ref": "Double.jsonschema",
             "description": "The speed at which the video should play."
-		}
+        }
     }
 }

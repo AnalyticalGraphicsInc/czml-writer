@@ -1,0 +1,13 @@
+{
+    "title": "Time",
+    "description": "Defines a date and time as an ISO8601 string.",
+    "type": ["array", "object", "string"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "time": {
+            "$ref": "TimeValue.jsonschema",
+            "description": "The value.",
+            "czmlValue": true
+        }
+    }
+}
