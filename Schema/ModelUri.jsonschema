@@ -1,0 +1,18 @@
+{
+    "title": "ModelUri",
+    "description": "Defines a model associated with an element, which can optionally vary over time.  The model is specified as multiple URLs where each property maps to a different format.  The client can choose its best supported format from those provided.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "webgltf": {
+            "$ref": "ModelUriValue.jsonschema",
+            "description": "The URL of a WebGLTF model.",
+            "czmlValue": true
+        },
+        "dae": {
+            "$ref": "ModelUriValue.jsonschema",
+            "description": "The URL of a Collada model.",
+            "czmlValue": true
+        }
+    }
+}
