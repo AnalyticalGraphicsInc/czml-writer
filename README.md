@@ -5,7 +5,7 @@
 czml-writer
 ===========
 
-This is a library for writing [CZML](http://cesium.agi.com/czml.html) content for use with [Cesium](http://cesium.agi.com/).
+This is a library for writing CZML content for use with [Cesium](http://cesium.agi.com/).
 
 See the [CZML specification](http://git.io/czml).
 
@@ -15,9 +15,4 @@ See the [CZML specification](http://git.io/czml).
 
 ### Get Started ###
 
-Check out the [wiki](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki), including the [quick start](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/Quick-Start) and [contributor's guide](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/Contributor's-Guide).
-
-
-Join our mailing lists:
-* [Development](https://groups.google.com/d/forum/cesium-dev)
-* [Announcements](https://groups.google.com/d/forum/cesium-announce)
+Check out the [wiki](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki), including the [quick start](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/Quick-Start) and [contributor's guide](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/Contributor's-Guide).  Also browse the [forum](https://groups.google.com/d/forum/cesium-dev).
