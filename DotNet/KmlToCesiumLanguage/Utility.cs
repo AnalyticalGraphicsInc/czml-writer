@@ -90,6 +90,11 @@ namespace KmlToCesiumLanguage
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly string GxPrefix = "gx";
+
         private static TimeInterval GetInterval(XElement placemark, XNamespace docNamespace)
         {
             XElement timespan = placemark.Element(docNamespace + "TimeSpan");

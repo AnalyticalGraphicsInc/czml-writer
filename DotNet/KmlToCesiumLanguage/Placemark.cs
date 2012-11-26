@@ -16,7 +16,11 @@ namespace KmlToCesiumLanguage
         /// <param name="document">The document.</param>
         public Placemark(XElement placemark, CzmlDocument document)
         {
-            m_geometries = placemark.Descendants().Where(o => o.Name == document.Namespace + "Point" || o.Name == document.Namespace + "Polygon" || o.Name == document.Namespace + "LineString").Select(o => GeometryFactory.Create(o, document, placemark));
+            m_geometries = placemark.Descendants().Where(
+                o => o.Name == document.Namespace + "Point" 
+                || o.Name == document.Namespace + "Polygon" 
+                || o.Name == document.Namespace + "LineString"
+                || o.Name == o.GetNamespaceOfPrefix("gx") + "MultiTrack").Select(o => GeometryFactory.Create(o, document, placemark));
         }
 
         /// <summary>

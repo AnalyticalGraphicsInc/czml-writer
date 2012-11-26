@@ -13,6 +13,8 @@ namespace KmlToCesiumLanguage
                 return new Polygon(element, document, placemark);
             if (element.Name == document.Namespace + "LineString")
                 return new LineString(element, document, placemark);
+            if (element.Name == element.GetNamespaceOfPrefix("gx") + "MultiTrack")
+                return new GxMultiTrack(element, document, placemark);
             throw new NotImplementedException();
         }
     }
