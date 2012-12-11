@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestGroundOverlay.cs" />
+    <Compile Include="TestGxMultiTrack.cs" />
+    <Compile Include="TestGxTrack.cs" />
     <Compile Include="TestKmlConverter.cs" />
     <Compile Include="TestLineString.cs" />
     <Compile Include="TestPoint.cs" />

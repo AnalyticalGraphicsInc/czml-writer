@@ -10,7 +10,7 @@ using System.Drawing;
 namespace KmlToCesiumLanguage
 {
     /// <summary>
-    /// 
+    /// Used to combine multiple track elements into a single conceptual unit.
     /// </summary>
     public class GxMultiTrack : Geometry
     {
@@ -24,14 +24,21 @@ namespace KmlToCesiumLanguage
             : base(document, placemark)
         {
             m_element = element;
-            m_gxTracks = m_element.Descendants().Where(o => o.GetNamespaceOfPrefix(Utility.GxPrefix) + "Track" == o.Name);
+            m_gxTracks = m_element.Elements(document.NamespaceDeclarations[Utility.GxPrefix] +  "Track").Select(o=> new GxTrack(o, document, placemark));
             m_document = document;
-            //TODO. support altitudeMode, interpolate. also add GxTrack class and use it in this class.
-            //GxTrack needs to support altitudeMode, when, coord, possibly gx:altitudeMode
-            //move s_validIso8601Formats out of this class and use it from Utility class.
-            //can't do anything with angles yet
-            //or model
-            //or extended data. will be useful when we have popup support in czml.
+            XElement gxInterpolate = m_element.Element( document.NamespaceDeclarations[Utility.GxPrefix] +  "interpolate");
+            m_interpolate = false;
+            if (gxInterpolate != null)
+            {
+                m_interpolate = int.Parse(gxInterpolate.Value)==1;
+            }
+            m_altitudeMode = "clampToGround";
+            XElement altitudeMode = m_element.Element(m_document.Namespace + "altitudeMode");
+            if (altitudeMode != null)
+            {
+                m_altitudeMode = altitudeMode.Value;
+            }
+
         }
 
         /// <summary>
@@ -39,20 +46,20 @@ namespace KmlToCesiumLanguage
         /// </summary>
         protected override void Write()
         {
-            
-            foreach (var gxTrack in m_gxTracks)
+            var timeInterval = GetAvailability(m_gxTracks);
+            PacketWriter.WriteAvailability(timeInterval);
+            foreach (var track in m_gxTracks)
             {
-                var gxPositions = gxTrack.Descendants().Where(o => o.GetNamespaceOfPrefix(Utility.GxPrefix) + "coord" == o.Name).Select(o => ToCartographicRadians(o.Value)).ToList();
-                var when = gxTrack.Descendants().Where(o => o.Name == m_document.Namespace + "when").Select(o => ToJulianDate(o.Value)).ToList();
-                PacketWriter.WriteAvailability(new TimeInterval(when[0], when[when.Count - 1]));
-                using (PositionCesiumWriter position = PacketWriter.OpenPositionProperty())
+                var when = track.GetWhen().ToList(); ;
+                var positions = track.GetPositions().Select(o =>
                 {
-                    position.WriteCartographicRadians(when, gxPositions);
-                }
-                using (PointCesiumWriter point = PacketWriter.OpenPointProperty())
+                    if (m_altitudeMode == "clampToGround")
+                        return new Cartographic(o.Longitude, o.Latitude, 0.0);
+                    return o;
+                }).ToList();
+                using (var position = PacketWriter.OpenPositionProperty())
                 {
-                    point.WritePixelSizeProperty(5);
-                    point.WriteColorProperty(Color.Yellow);
+                    position.WriteCartographicRadians(when, positions);
                 }
             }
         }
@@ -89,35 +96,22 @@ namespace KmlToCesiumLanguage
                 }
                 pathWriter.WriteLeadTimeProperty(0);
             }
-            
         }
 
-        private Cartographic ToCartographicRadians(string coord)
+        private TimeInterval GetAvailability(IEnumerable<GxTrack> tracks)
         {
-            char[] separator = { ' ' };
-            var coords = coord.Split(separator);
-            return new Cartographic(double.Parse(coords[0]) * Constants.RadiansPerDegree, double.Parse(coords[1]) * Constants.RadiansPerDegree, double.Parse(coords[2]));
-        }
-
-        private JulianDate ToJulianDate(string when)
-        {
-            GregorianDate whenDate;
-            if (!GregorianDate.TryParse(when, out whenDate))
+            var list = new List<JulianDate>();
+            foreach (var gxTrack in tracks)
             {
-                whenDate = GregorianDate.ParseExact(when, s_validIso8601Formats, CultureInfo.CurrentCulture);
+                list = list.Concat(gxTrack.GetWhen()).ToList();
             }
-            return new JulianDate(whenDate);
+            return new TimeInterval(list[0], list[list.Count - 1]);
         }
 
         private readonly XElement m_element;
         private readonly CzmlDocument m_document;
-        private IEnumerable<XElement> m_gxTracks;
-        private static readonly string[] s_validIso8601Formats =
-        new[]
-                    {
-                        "yyyy", 
-                        "yyyy-MM", 
-                        "yyyy-MM-dd"
-                    };
+        private IEnumerable<GxTrack> m_gxTracks;
+        private readonly bool m_interpolate;
+        private string m_altitudeMode;
     }
 }

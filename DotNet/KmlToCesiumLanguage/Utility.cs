@@ -123,7 +123,7 @@ namespace KmlToCesiumLanguage
                 GregorianDate beginDate;
                 if (!GregorianDate.TryParse(beginElement.Value, out beginDate))
                 {
-                    beginDate = GregorianDate.ParseExact(beginElement.Value, s_validIso8601Formats, CultureInfo.CurrentCulture);
+                    beginDate = GregorianDate.ParseExact(beginElement.Value, ValidIso8601Formats, CultureInfo.CurrentCulture);
                 }
                 begin = new JulianDate(beginDate);
             }
@@ -133,7 +133,7 @@ namespace KmlToCesiumLanguage
                 GregorianDate endDate;
                 if (!GregorianDate.TryParse(endElement.Value, out endDate))
                 {
-                    endDate = GregorianDate.ParseExact(endElement.Value, s_validIso8601Formats, CultureInfo.CurrentCulture);
+                    endDate = GregorianDate.ParseExact(endElement.Value, ValidIso8601Formats, CultureInfo.CurrentCulture);
                 }
                 end = new JulianDate(endDate);
             }
@@ -148,14 +148,17 @@ namespace KmlToCesiumLanguage
                 GregorianDate whenDate;
                 if (!GregorianDate.TryParse(whenElement.Value, out whenDate))
                 {
-                    whenDate = GregorianDate.ParseExact(whenElement.Value, s_validIso8601Formats, CultureInfo.CurrentCulture);
+                    whenDate = GregorianDate.ParseExact(whenElement.Value, ValidIso8601Formats, CultureInfo.CurrentCulture);
                 }
                 return new TimeInterval(new JulianDate(whenDate), new JulianDate(GregorianDate.MaxValue));
             }
             return null;
         }
 
-        private static readonly string[] s_validIso8601Formats =
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly string[] ValidIso8601Formats =
         new[]
                     {
                         "yyyy", 

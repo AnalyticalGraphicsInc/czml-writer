@@ -17,10 +17,27 @@ namespace KmlToCesiumLanguage
         public Placemark(XElement placemark, CzmlDocument document)
         {
             m_geometries = placemark.Descendants().Where(
-                o => o.Name == document.Namespace + "Point" 
-                || o.Name == document.Namespace + "Polygon" 
-                || o.Name == document.Namespace + "LineString"
-                || o.Name == o.GetNamespaceOfPrefix("gx") + "MultiTrack").Select(o => GeometryFactory.Create(o, document, placemark));
+                o =>
+                {
+                    if (o.Name == document.Namespace + "Point")
+                        return true;
+                    if (o.Name == document.Namespace + "Polygon")
+                        return true;
+                    if (o.Name == document.Namespace + "LineString")
+                        return true;
+                    if (document.NamespaceDeclarations.ContainsKey(Utility.GxPrefix))
+                    {
+                        var gxNs = document.NamespaceDeclarations[Utility.GxPrefix];
+                        if (o.Name == gxNs + "Track" && gxNs + "MultiTrack" != o.Parent.Name)
+                            return true;
+                        if (o.Name == gxNs + "Track" && gxNs + "MultiTrack" == o.Parent.Name && (o.Parent.Element(gxNs + "interpolate") == null || o.Parent.Element(gxNs + "interpolate").Value == "0"))
+                            return true;
+                        if (o.Name == gxNs + "MultiTrack" && (o.Element(gxNs + "interpolate") != null && o.Element(gxNs + "interpolate").Value == "1"))
+                            return true;
+                    }
+                    return false;
+                }
+                ).Select(o => GeometryFactory.Create(o, document, placemark));
         }
 
         /// <summary>
