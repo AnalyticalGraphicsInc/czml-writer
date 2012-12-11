@@ -47,7 +47,7 @@ namespace KmlToCesiumLanguageTests
         }
 
         [Test]
-        public void GxTrackProducesAvailability()
+        public void GxMultiTrackProducesAvailability()
         {
             XElement element = new XElement("Placemark", new XAttribute(XNamespace.Xmlns + "gx", "http://www.google.com/kml/ext/2.2"),
                                 new XElement("name", "STS-122"),
@@ -69,7 +69,7 @@ namespace KmlToCesiumLanguageTests
         }
 
         [Test]
-        public void MultiTrackWithInterpolateTrueGeneratesOneTrack()
+        public void GxMultiTrackWithInterpolateTrueGeneratesOneTrack()
         {
             XElement element = new XElement("Placemark", new XAttribute(XNamespace.Xmlns + "gx", "http://www.google.com/kml/ext/2.2"),
                                 new XElement("name", "STS-122"),
@@ -108,7 +108,7 @@ namespace KmlToCesiumLanguageTests
         }
 
         [Test]
-        public void MultiTrackAltitudeModeAbsolutePreservesHeight()
+        public void GxMultiTrackAltitudeModeAbsolutePreservesHeight()
         {
             XElement element = new XElement("Placemark", new XAttribute(XNamespace.Xmlns + "gx", "http://www.google.com/kml/ext/2.2"),
                                 new XElement("name", "STS-122"),
@@ -142,7 +142,7 @@ namespace KmlToCesiumLanguageTests
         }
 
         [Test]
-        public void MultiTrackAltitudeModeClampToGroundSetsHeightToZero()
+        public void GxMultiTrackAltitudeModeClampToGroundSetsHeightToZero()
         {
             XElement element = new XElement("Placemark", new XAttribute(XNamespace.Xmlns + "gx", "http://www.google.com/kml/ext/2.2"),
                                 new XElement("name", "STS-122"),
