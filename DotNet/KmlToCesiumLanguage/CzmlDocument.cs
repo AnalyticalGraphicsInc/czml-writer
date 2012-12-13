@@ -45,7 +45,7 @@ namespace KmlToCesiumLanguage
         /// <value>
         /// The namespace declarations.
         /// </value>
-        public Dictionary<string, XNamespace> NamespaceDeclarations { get; set; }
+        public Dictionary<string, XNamespace> NamespaceDeclarations { get; private set; }
 
         /// <summary>
         /// Gets the cesium output stream.

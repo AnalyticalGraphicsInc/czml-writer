@@ -91,7 +91,23 @@ namespace KmlToCesiumLanguage
         }
 
         /// <summary>
-        /// 
+        /// Parses an element to a boolean value
+        /// </summary>
+        /// <param name="booleanElement">The boolean element.</param>
+        /// <returns></returns>
+        public static bool ParseBoolean(XElement booleanElement)
+        {
+            if (booleanElement != null)
+            {
+                int result = 0;
+                if (int.TryParse(booleanElement.Value, out result))
+                    return result == 1;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Google's KML extensions for elements that use the gx prefix.
         /// </summary>
         public static readonly string GxPrefix = "gx";
 

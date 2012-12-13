@@ -70,19 +70,34 @@ namespace KmlToCesiumLanguage
         /// <inheritdoc/>
         protected override void AddIconStyle(XElement iconElement)
         {
-            using (var point = PacketWriter.OpenPointProperty())
+            using (var billboard = PacketWriter.OpenBillboardProperty())
             {
-                point.WritePixelSizeProperty(5.0);
-                XElement colorElement = iconElement.Element(Document.Namespace + "color");
+                XElement scaleElement = iconElement.Element(Document.Namespace + "scale");
+                if (scaleElement != null)
+                    billboard.WriteScaleProperty(double.Parse(scaleElement.Value));
+
+                string href = iconElement.Element(Document.Namespace + "Icon").Element(Document.Namespace + "href").Value;
+                billboard.WriteImageProperty(href, Document.ImageResolver);
+            }
+        }
+
+        /// <inheritdoc/>
+        protected override void AddLineStyle(XElement lineElement)
+        {
+            using (var pathWriter = PacketWriter.OpenPathProperty())
+            {
+                XElement colorElement = lineElement.Element(Document.Namespace + "color");
                 if (colorElement != null)
                 {
                     Color color = Utility.HexStringToColor(colorElement.Value);
-                    point.WriteColorProperty(color);
+                    pathWriter.WriteColorProperty(color);
                 }
-                else
+                XElement widthElement = lineElement.Element(Document.Namespace + "width");
+                if (widthElement != null)
                 {
-                    point.WriteColorProperty(Color.Red);
+                    pathWriter.WriteWidthProperty(double.Parse(widthElement.Value));
                 }
+                pathWriter.WriteLeadTimeProperty(0);
             }
         }
 
@@ -91,9 +106,13 @@ namespace KmlToCesiumLanguage
             char[] separator = { ' ' };
             var coords = coord.Split(separator);
             var altitude = 0.0;
+            var longitude = 0.0;
+            var latitude = 0.0;
+            double.TryParse(coords[0], out longitude);
+            double.TryParse(coords[1], out latitude);
             if (m_altitudeMode == "absolute")
-                altitude = double.Parse(coords[2]);
-            return new Cartographic(double.Parse(coords[0]) * Constants.RadiansPerDegree, double.Parse(coords[1]) * Constants.RadiansPerDegree, altitude);
+                double.TryParse(coords[2], out altitude);
+            return new Cartographic(longitude * Constants.RadiansPerDegree, latitude * Constants.RadiansPerDegree, altitude);
         }
 
         private JulianDate ToJulianDate(string when)

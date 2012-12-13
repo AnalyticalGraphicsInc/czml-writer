@@ -99,7 +99,14 @@ namespace KmlToCesiumLanguage
         {
             XDocument kmlDocument = XDocument.Load(inputReader);
             document.Namespace = kmlDocument.Root.GetDefaultNamespace();
-            document.NamespaceDeclarations = kmlDocument.Root.Attributes().Where(a => a.IsNamespaceDeclaration).GroupBy(a => a.Name.Namespace == XNamespace.None ? String.Empty : a.Name.LocalName, a => XNamespace.Get(a.Value)).ToDictionary(g => g.Key, g => g.First());
+
+            var namespaceDeclarations = kmlDocument.Root.Attributes()
+                .Where(a => a.IsNamespaceDeclaration)
+                .GroupBy(a => a.Name.Namespace == XNamespace.None ? String.Empty : a.Name.LocalName, a => XNamespace.Get(a.Value))
+                .ToDictionary(g => g.Key, g => g.First());
+            foreach (var ns in namespaceDeclarations)
+                document.NamespaceDeclarations.Add(ns.Key, ns.Value);
+
             var features = kmlDocument.Descendants()
                 .Where(o => o.Name == document.Namespace + "Placemark" || o.Name == document.Namespace + "GroundOverlay")
                 .Select(o => FeatureFactory.Create(o, document));

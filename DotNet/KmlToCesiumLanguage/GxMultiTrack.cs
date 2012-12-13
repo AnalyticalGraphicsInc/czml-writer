@@ -30,7 +30,7 @@ namespace KmlToCesiumLanguage
             m_interpolate = false;
             if (gxInterpolate != null)
             {
-                m_interpolate = int.Parse(gxInterpolate.Value)==1;
+                m_interpolate = Utility.ParseBoolean(gxInterpolate);
             }
             m_altitudeMode = "clampToGround";
             XElement altitudeMode = m_element.Element(m_document.Namespace + "altitudeMode");
