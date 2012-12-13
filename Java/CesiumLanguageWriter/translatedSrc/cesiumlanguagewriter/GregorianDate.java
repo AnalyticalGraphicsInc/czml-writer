@@ -2062,7 +2062,7 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 	
 	
 
-	 * @param format The type of ISO9601 string to create.
+	 * @param format The type of ISO8601 string to create.
 	 * @return A string representing this date and time in ISO8601 format.
 	 */
 	public final String toIso8601String(Iso8601Format format) {

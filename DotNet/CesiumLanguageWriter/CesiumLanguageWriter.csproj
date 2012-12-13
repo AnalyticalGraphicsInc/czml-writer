@@ -93,6 +93,8 @@
     <Compile Include="Generated\LabelCesiumWriter.cs" />
     <Compile Include="Generated\LabelStyleCesiumWriter.cs" />
     <Compile Include="Generated\MaterialCesiumWriter.cs" />
+    <Compile Include="Generated\ModelCesiumWriter.cs" />
+    <Compile Include="Generated\ModelUriCesiumWriter.cs" />
     <Compile Include="Generated\OrientationCesiumWriter.cs" />
     <Compile Include="Generated\PacketCesiumWriter.cs" />
     <Compile Include="Generated\PathCesiumWriter.cs" />

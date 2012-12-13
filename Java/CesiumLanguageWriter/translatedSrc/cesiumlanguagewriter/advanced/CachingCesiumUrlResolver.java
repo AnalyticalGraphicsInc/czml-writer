@@ -125,7 +125,7 @@ public class CachingCesiumUrlResolver implements ICesiumUrlResolver {
 
 	static private class ThreadLocal_0 extends ThreadLocal<CachingCesiumUrlResolver> {
 		final protected CachingCesiumUrlResolver initialValue() {
-			return null;
+			return (CachingCesiumUrlResolver) null;
 		}
 	}
 }

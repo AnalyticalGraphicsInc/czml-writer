@@ -1,0 +1,20 @@
+{
+    "title": "Model",
+    "description": "Defines a 3D model.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the model is shown."
+        },
+        "scale": {
+            "$ref": "Double.jsonschema",
+            "description": "The scale of the model."
+        },
+        "uri": {
+            "$ref": "ModelUri.jsonschema",
+            "description": "The uri to the model."
+        }
+    }
+}
