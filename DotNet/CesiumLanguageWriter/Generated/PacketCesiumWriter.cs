@@ -89,6 +89,11 @@ namespace CesiumLanguageWriter
         public const string EllipsoidPropertyName = "ellipsoid";
 
         /// <summary>
+        /// The name of the <code>screenOverlay</code> property.
+        /// </summary>
+        public const string ScreenOverlayPropertyName = "screenOverlay";
+
+        /// <summary>
         /// The name of the <code>viewFrom</code> property.
         /// </summary>
         public const string ViewFromPropertyName = "viewFrom";
@@ -106,6 +111,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<PyramidCesiumWriter>(() => new PyramidCesiumWriter(PyramidPropertyName), false);
         private readonly Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(() => new CameraCesiumWriter(CameraPropertyName), false);
         private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
+        private readonly Lazy<ScreenOverlayCesiumWriter> m_screenOverlay = new Lazy<ScreenOverlayCesiumWriter>(() => new ScreenOverlayCesiumWriter(ScreenOverlayPropertyName), false);
 
         /// <summary>
         /// Writes the start of a new JSON object representing the packet.
@@ -580,6 +586,22 @@ namespace CesiumLanguageWriter
         public EllipsoidCesiumWriter OpenEllipsoidProperty()
         {
             return OpenAndReturn(EllipsoidWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>screenOverlay</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>screenOverlay</code> property defines a rectangular shaped screen overlay.  The screen overlay is positioned and sized using the `position`, `width`, and `height` properties.
+        /// </summary>
+        public ScreenOverlayCesiumWriter ScreenOverlayWriter
+        {
+            get { return m_screenOverlay.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>screenOverlay</code> property.  The <code>screenOverlay</code> property defines a rectangular shaped screen overlay.  The screen overlay is positioned and sized using the `position`, `width`, and `height` properties.
+        /// </summary>
+        public ScreenOverlayCesiumWriter OpenScreenOverlayProperty()
+        {
+            return OpenAndReturn(ScreenOverlayWriter);
         }
 
         /// <summary>

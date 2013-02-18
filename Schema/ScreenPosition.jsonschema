@@ -1,0 +1,14 @@
+{
+    "title": "ScreenPosition",
+    "description": "Defines a screen position in viewport coordinates.  A screen position is the number of pixels up and to the right from the bottom left corner of the screen.",
+    "extends": { "$ref": "InterpolatableProperty.jsonschema" },
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "cartesian2": {
+            "$ref": "Cartesian2Value.jsonschema",
+            "description": "The screen position specified as a Cartesian `[X, Y]` in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.  If the array has two elements, the screen position is constant.  If it has three or more elements, they are time-tagged samples arranged as `[Time, X, Y, Time, X, Y, Time, X, Y, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.",
+            "czmlValue": true
+        }
+    }
+}

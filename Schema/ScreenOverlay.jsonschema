@@ -1,0 +1,28 @@
+{
+    "title": "ScreenOverlay",
+    "description": "Defines a rectangular screen overlay.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the screen overlay is shown."
+        },
+        "position": {
+			"$ref": "ScreenPosition.jsonschema",
+			"description": "The position, in viewport pixels, of bottom left corner of the screen overlay."
+        },
+        "width": {
+			"$ref": "Double.jsonschema",
+			"description": "The width in pixels of the screen overlay."
+        },
+        "height": {
+			"$ref": "Double.jsonschema",
+			"description": "The height in pixels of the screen overlay."
+        },
+        "material": {
+            "$ref": "Material.jsonschema",
+            "description": "The material to display on the screen overlay."
+        }
+    }
+}
