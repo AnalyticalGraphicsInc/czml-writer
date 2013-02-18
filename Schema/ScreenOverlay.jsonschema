@@ -9,7 +9,7 @@
             "description": "Whether or not the screen overlay is shown."
         },
         "position": {
-			"$ref": "ScreenPosition.jsonschema",
+			"$ref": "PixelOffset.jsonschema",
 			"description": "The position, in viewport pixels, of bottom left corner of the screen overlay."
         },
         "width": {

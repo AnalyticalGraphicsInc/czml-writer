@@ -38,7 +38,7 @@ namespace CesiumLanguageWriter
         public const string MaterialPropertyName = "material";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
-        private readonly Lazy<ScreenPositionCesiumWriter> m_position = new Lazy<ScreenPositionCesiumWriter>(() => new ScreenPositionCesiumWriter(PositionPropertyName), false);
+        private readonly Lazy<PixelOffsetCesiumWriter> m_position = new Lazy<PixelOffsetCesiumWriter>(() => new PixelOffsetCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_height = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(HeightPropertyName), false);
         private readonly Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(MaterialPropertyName), false);
@@ -98,7 +98,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <code>position</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>position</code> property defines the position, in viewport pixels, of bottom left corner of the screen overlay.
         /// </summary>
-        public ScreenPositionCesiumWriter PositionWriter
+        public PixelOffsetCesiumWriter PositionWriter
         {
             get { return m_position.Value; }
         }
@@ -106,7 +106,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <code>position</code> property.  The <code>position</code> property defines the position, in viewport pixels, of bottom left corner of the screen overlay.
         /// </summary>
-        public ScreenPositionCesiumWriter OpenPositionProperty()
+        public PixelOffsetCesiumWriter OpenPositionProperty()
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(PositionWriter);
