@@ -24,21 +24,21 @@ namespace KmlToCesiumLanguage
             : base(document, placemark)
         {
             m_element = element;
-            m_gxTracks = m_element.Elements(document.NamespaceDeclarations[Utility.GxPrefix] +  "Track").Select(o=> new GxTrack(o, document, placemark));
+            m_altitudeMode = "clampToGround";
             m_document = document;
+            XElement altitudeMode = m_element.Element(m_document.Namespace + "altitudeMode");
+            if (altitudeMode != null)
+            {
+                m_altitudeMode = altitudeMode.Value;
+            }
+            m_gxTracks = m_element.Elements(document.NamespaceDeclarations[Utility.GxPrefix] +  "Track").Select(o=> new GxTrack(o, document, placemark, m_altitudeMode));
+            
             XElement gxInterpolate = m_element.Element( document.NamespaceDeclarations[Utility.GxPrefix] +  "interpolate");
             m_interpolate = false;
             if (gxInterpolate != null)
             {
                 m_interpolate = Utility.ParseBoolean(gxInterpolate);
             }
-            m_altitudeMode = "clampToGround";
-            XElement altitudeMode = m_element.Element(m_document.Namespace + "altitudeMode");
-            if (altitudeMode != null)
-            {
-                m_altitudeMode = altitudeMode.Value;
-            }
-
         }
 
         /// <summary>
@@ -51,12 +51,7 @@ namespace KmlToCesiumLanguage
             foreach (var track in m_gxTracks)
             {
                 var when = track.GetWhen().ToList(); ;
-                var positions = track.GetPositions().Select(o =>
-                {
-                    if (m_altitudeMode == "clampToGround")
-                        return new Cartographic(o.Longitude, o.Latitude, 0.0);
-                    return o;
-                }).ToList();
+                var positions = track.GetPositions().ToList();
                 using (var position = PacketWriter.OpenPositionProperty())
                 {
                     position.WriteCartographicRadians(when, positions);
