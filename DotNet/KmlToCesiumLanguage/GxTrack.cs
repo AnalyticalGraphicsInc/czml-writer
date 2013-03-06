@@ -39,6 +39,21 @@ namespace KmlToCesiumLanguage
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="GxTrack"/> class.
+        /// </summary>
+        /// <param name="element">The element.</param>
+        /// <param name="document">The document.</param>
+        /// <param name="placemark">The placemark.</param>
+        /// <param name="altitudeMode">The altitude mode.</param>
+        public GxTrack(XElement element, CzmlDocument document, XElement placemark, string altitudeMode):this(element, document, placemark)
+        {
+            if (altitudeMode != string.Empty)
+            {
+                m_altitudeMode = altitudeMode;
+            }
+        }
+
+        /// <summary>
         /// Gets the position.
         /// </summary>
         /// <returns></returns>
