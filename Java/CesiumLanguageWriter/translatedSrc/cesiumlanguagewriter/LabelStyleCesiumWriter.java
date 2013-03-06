@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.CesiumLabelStyle;
 
 /**
  *  
@@ -90,10 +91,11 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 	}
 
 	final private ICesiumValuePropertyWriter<CesiumLabelStyle> createLabelStyleAdaptor() {
-		return new CesiumWriterAdaptor<LabelStyleCesiumWriter, CesiumLabelStyle>(this, new CesiumWriterAdaptorWriteCallback<LabelStyleCesiumWriter, CesiumLabelStyle>() {
-			public void invoke(LabelStyleCesiumWriter me, CesiumLabelStyle value) {
-				me.writeLabelStyle(value);
-			}
-		});
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.LabelStyleCesiumWriter, cesiumlanguagewriter.CesiumLabelStyle>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.LabelStyleCesiumWriter, cesiumlanguagewriter.CesiumLabelStyle>() {
+					public void invoke(LabelStyleCesiumWriter me, CesiumLabelStyle value) {
+						me.writeLabelStyle(value);
+					}
+				});
 	}
 }

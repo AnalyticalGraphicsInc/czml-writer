@@ -90,7 +90,7 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 	}
 
 	final private ICesiumValuePropertyWriter<Boolean> createBooleanAdaptor() {
-		return new CesiumWriterAdaptor<BooleanCesiumWriter, Boolean>(this, new CesiumWriterAdaptorWriteCallback<BooleanCesiumWriter, Boolean>() {
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.BooleanCesiumWriter, Boolean>(this, new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.BooleanCesiumWriter, Boolean>() {
 			public void invoke(BooleanCesiumWriter me, Boolean value) {
 				me.writeBoolean(value);
 			}
