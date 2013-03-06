@@ -111,11 +111,11 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 	}
 
 	final private ICesiumInterpolatableValuePropertyWriter<Double> createNumberAdaptor() {
-		return new CesiumInterpolatableWriterAdaptor<DoubleCesiumWriter, Double>(this, new CesiumWriterAdaptorWriteCallback<DoubleCesiumWriter, Double>() {
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.DoubleCesiumWriter, Double>(this, new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DoubleCesiumWriter, Double>() {
 			public void invoke(DoubleCesiumWriter me, Double value) {
 				me.writeNumber(value);
 			}
-		}, new CesiumWriterAdaptorWriteSamplesCallback<DoubleCesiumWriter, Double>() {
+		}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.DoubleCesiumWriter, Double>() {
 			public void invoke(DoubleCesiumWriter me, List<JulianDate> dates, List<Double> values, int startIndex, int length) {
 				me.writeNumber(dates, values, startIndex, length);
 			}

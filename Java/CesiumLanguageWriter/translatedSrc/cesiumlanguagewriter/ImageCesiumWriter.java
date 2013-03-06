@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.CesiumResource;
 import java.awt.image.RenderedImage;
 
 /**
@@ -153,10 +154,11 @@ public class ImageCesiumWriter extends CesiumPropertyWriter<ImageCesiumWriter> {
 	}
 
 	final private ICesiumValuePropertyWriter<CesiumResource> createImageAdaptor() {
-		return new CesiumWriterAdaptor<ImageCesiumWriter, CesiumResource>(this, new CesiumWriterAdaptorWriteCallback<ImageCesiumWriter, CesiumResource>() {
-			public void invoke(ImageCesiumWriter me, CesiumResource value) {
-				me.writeImage(value);
-			}
-		});
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.ImageCesiumWriter, cesiumlanguagewriter.CesiumResource>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.ImageCesiumWriter, cesiumlanguagewriter.CesiumResource>() {
+					public void invoke(ImageCesiumWriter me, CesiumResource value) {
+						me.writeImage(value);
+					}
+				});
 	}
 }
