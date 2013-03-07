@@ -5,6 +5,8 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.Cartesian;
+import cesiumlanguagewriter.Cartographic;
 import java.util.List;
 
 /**
@@ -284,15 +286,16 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 	}
 
 	final private ICesiumInterpolatableValuePropertyWriter<Cartesian> createCartesianAdaptor() {
-		return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Cartesian>(this, new CesiumWriterAdaptorWriteCallback<PositionCesiumWriter, Cartesian>() {
-			public void invoke(PositionCesiumWriter me, Cartesian value) {
-				me.writeCartesian(value);
-			}
-		}, new CesiumWriterAdaptorWriteSamplesCallback<PositionCesiumWriter, Cartesian>() {
-			public void invoke(PositionCesiumWriter me, List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-				me.writeCartesian(dates, values, startIndex, length);
-			}
-		});
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.PositionCesiumWriter, cesiumlanguagewriter.Cartesian>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.PositionCesiumWriter, cesiumlanguagewriter.Cartesian>() {
+					public void invoke(PositionCesiumWriter me, Cartesian value) {
+						me.writeCartesian(value);
+					}
+				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.PositionCesiumWriter, cesiumlanguagewriter.Cartesian>() {
+					public void invoke(PositionCesiumWriter me, List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+						me.writeCartesian(dates, values, startIndex, length);
+					}
+				});
 	}
 
 	/**
@@ -308,15 +311,16 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 	}
 
 	final private ICesiumInterpolatableValuePropertyWriter<Cartographic> createCartographicRadiansAdaptor() {
-		return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Cartographic>(this, new CesiumWriterAdaptorWriteCallback<PositionCesiumWriter, Cartographic>() {
-			public void invoke(PositionCesiumWriter me, Cartographic value) {
-				me.writeCartographicRadians(value);
-			}
-		}, new CesiumWriterAdaptorWriteSamplesCallback<PositionCesiumWriter, Cartographic>() {
-			public void invoke(PositionCesiumWriter me, List<JulianDate> dates, List<Cartographic> values, int startIndex, int length) {
-				me.writeCartographicRadians(dates, values, startIndex, length);
-			}
-		});
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.PositionCesiumWriter, cesiumlanguagewriter.Cartographic>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.PositionCesiumWriter, cesiumlanguagewriter.Cartographic>() {
+					public void invoke(PositionCesiumWriter me, Cartographic value) {
+						me.writeCartographicRadians(value);
+					}
+				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.PositionCesiumWriter, cesiumlanguagewriter.Cartographic>() {
+					public void invoke(PositionCesiumWriter me, List<JulianDate> dates, List<Cartographic> values, int startIndex, int length) {
+						me.writeCartographicRadians(dates, values, startIndex, length);
+					}
+				});
 	}
 
 	/**
@@ -332,14 +336,15 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 	}
 
 	final private ICesiumInterpolatableValuePropertyWriter<Cartographic> createCartographicDegreesAdaptor() {
-		return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Cartographic>(this, new CesiumWriterAdaptorWriteCallback<PositionCesiumWriter, Cartographic>() {
-			public void invoke(PositionCesiumWriter me, Cartographic value) {
-				me.writeCartographicDegrees(value);
-			}
-		}, new CesiumWriterAdaptorWriteSamplesCallback<PositionCesiumWriter, Cartographic>() {
-			public void invoke(PositionCesiumWriter me, List<JulianDate> dates, List<Cartographic> values, int startIndex, int length) {
-				me.writeCartographicDegrees(dates, values, startIndex, length);
-			}
-		});
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.PositionCesiumWriter, cesiumlanguagewriter.Cartographic>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.PositionCesiumWriter, cesiumlanguagewriter.Cartographic>() {
+					public void invoke(PositionCesiumWriter me, Cartographic value) {
+						me.writeCartographicDegrees(value);
+					}
+				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.PositionCesiumWriter, cesiumlanguagewriter.Cartographic>() {
+					public void invoke(PositionCesiumWriter me, List<JulianDate> dates, List<Cartographic> values, int startIndex, int length) {
+						me.writeCartographicDegrees(dates, values, startIndex, length);
+					}
+				});
 	}
 }

@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.UnitQuaternion;
 import java.util.List;
 
 /**
@@ -146,14 +147,15 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 	}
 
 	final private ICesiumInterpolatableValuePropertyWriter<UnitQuaternion> createUnitQuaternionAdaptor() {
-		return new CesiumInterpolatableWriterAdaptor<OrientationCesiumWriter, UnitQuaternion>(this, new CesiumWriterAdaptorWriteCallback<OrientationCesiumWriter, UnitQuaternion>() {
-			public void invoke(OrientationCesiumWriter me, UnitQuaternion value) {
-				me.writeUnitQuaternion(value);
-			}
-		}, new CesiumWriterAdaptorWriteSamplesCallback<OrientationCesiumWriter, UnitQuaternion>() {
-			public void invoke(OrientationCesiumWriter me, List<JulianDate> dates, List<UnitQuaternion> values, int startIndex, int length) {
-				me.writeUnitQuaternion(dates, values, startIndex, length);
-			}
-		});
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.OrientationCesiumWriter, cesiumlanguagewriter.UnitQuaternion>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.OrientationCesiumWriter, cesiumlanguagewriter.UnitQuaternion>() {
+					public void invoke(OrientationCesiumWriter me, UnitQuaternion value) {
+						me.writeUnitQuaternion(value);
+					}
+				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.OrientationCesiumWriter, cesiumlanguagewriter.UnitQuaternion>() {
+					public void invoke(OrientationCesiumWriter me, List<JulianDate> dates, List<UnitQuaternion> values, int startIndex, int length) {
+						me.writeUnitQuaternion(dates, values, startIndex, length);
+					}
+				});
 	}
 }

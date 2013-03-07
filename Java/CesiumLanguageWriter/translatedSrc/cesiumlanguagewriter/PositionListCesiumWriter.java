@@ -216,11 +216,12 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 	}
 
 	final private ICesiumValuePropertyWriter<Iterable<Cartesian>> createCartesianAdaptor() {
-		return new CesiumWriterAdaptor<PositionListCesiumWriter, Iterable<Cartesian>>(this, new CesiumWriterAdaptorWriteCallback<PositionListCesiumWriter, Iterable<Cartesian>>() {
-			public void invoke(PositionListCesiumWriter me, Iterable<Cartesian> value) {
-				me.writeCartesian(value);
-			}
-		});
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.PositionListCesiumWriter, Iterable<Cartesian>>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.PositionListCesiumWriter, Iterable<Cartesian>>() {
+					public void invoke(PositionListCesiumWriter me, Iterable<Cartesian> value) {
+						me.writeCartesian(value);
+					}
+				});
 	}
 
 	/**
@@ -236,11 +237,12 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 	}
 
 	final private ICesiumValuePropertyWriter<Iterable<Cartographic>> createCartographicRadiansAdaptor() {
-		return new CesiumWriterAdaptor<PositionListCesiumWriter, Iterable<Cartographic>>(this, new CesiumWriterAdaptorWriteCallback<PositionListCesiumWriter, Iterable<Cartographic>>() {
-			public void invoke(PositionListCesiumWriter me, Iterable<Cartographic> value) {
-				me.writeCartographicRadians(value);
-			}
-		});
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.PositionListCesiumWriter, Iterable<Cartographic>>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.PositionListCesiumWriter, Iterable<Cartographic>>() {
+					public void invoke(PositionListCesiumWriter me, Iterable<Cartographic> value) {
+						me.writeCartographicRadians(value);
+					}
+				});
 	}
 
 	/**
@@ -256,11 +258,12 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 	}
 
 	final private ICesiumValuePropertyWriter<Iterable<Cartographic>> createCartographicDegreesAdaptor() {
-		return new CesiumWriterAdaptor<PositionListCesiumWriter, Iterable<Cartographic>>(this, new CesiumWriterAdaptorWriteCallback<PositionListCesiumWriter, Iterable<Cartographic>>() {
-			public void invoke(PositionListCesiumWriter me, Iterable<Cartographic> value) {
-				me.writeCartographicDegrees(value);
-			}
-		});
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.PositionListCesiumWriter, Iterable<Cartographic>>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.PositionListCesiumWriter, Iterable<Cartographic>>() {
+					public void invoke(PositionListCesiumWriter me, Iterable<Cartographic> value) {
+						me.writeCartographicDegrees(value);
+					}
+				});
 	}
 
 	/**
@@ -276,10 +279,11 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 	}
 
 	final private ICesiumValuePropertyWriter<Iterable<String>> createReferencesAdaptor() {
-		return new CesiumWriterAdaptor<PositionListCesiumWriter, Iterable<String>>(this, new CesiumWriterAdaptorWriteCallback<PositionListCesiumWriter, Iterable<String>>() {
-			public void invoke(PositionListCesiumWriter me, Iterable<String> value) {
-				me.writeReferences(value);
-			}
-		});
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.PositionListCesiumWriter, Iterable<String>>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.PositionListCesiumWriter, Iterable<String>>() {
+					public void invoke(PositionListCesiumWriter me, Iterable<String> value) {
+						me.writeReferences(value);
+					}
+				});
 	}
 }

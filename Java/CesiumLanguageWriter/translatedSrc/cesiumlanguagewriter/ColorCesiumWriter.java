@@ -160,11 +160,11 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 	}
 
 	final private ICesiumInterpolatableValuePropertyWriter<Color> createRgbaAdaptor() {
-		return new CesiumInterpolatableWriterAdaptor<ColorCesiumWriter, Color>(this, new CesiumWriterAdaptorWriteCallback<ColorCesiumWriter, Color>() {
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.ColorCesiumWriter, Color>(this, new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.ColorCesiumWriter, Color>() {
 			public void invoke(ColorCesiumWriter me, Color value) {
 				me.writeRgba(value);
 			}
-		}, new CesiumWriterAdaptorWriteSamplesCallback<ColorCesiumWriter, Color>() {
+		}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.ColorCesiumWriter, Color>() {
 			public void invoke(ColorCesiumWriter me, List<JulianDate> dates, List<Color> values, int startIndex, int length) {
 				me.writeRgba(dates, values, startIndex, length);
 			}

@@ -90,7 +90,7 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
 	}
 
 	final private ICesiumValuePropertyWriter<String> createFontAdaptor() {
-		return new CesiumWriterAdaptor<FontCesiumWriter, String>(this, new CesiumWriterAdaptorWriteCallback<FontCesiumWriter, String>() {
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.FontCesiumWriter, String>(this, new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.FontCesiumWriter, String>() {
 			public void invoke(FontCesiumWriter me, String value) {
 				me.writeFont(value);
 			}

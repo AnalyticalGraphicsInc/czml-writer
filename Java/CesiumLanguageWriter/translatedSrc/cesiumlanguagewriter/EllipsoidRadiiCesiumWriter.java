@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.Cartesian;
 import java.util.List;
 
 /**
@@ -124,14 +125,15 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 	}
 
 	final private ICesiumInterpolatableValuePropertyWriter<Cartesian> createCartesianAdaptor() {
-		return new CesiumInterpolatableWriterAdaptor<EllipsoidRadiiCesiumWriter, Cartesian>(this, new CesiumWriterAdaptorWriteCallback<EllipsoidRadiiCesiumWriter, Cartesian>() {
-			public void invoke(EllipsoidRadiiCesiumWriter me, Cartesian value) {
-				me.writeCartesian(value);
-			}
-		}, new CesiumWriterAdaptorWriteSamplesCallback<EllipsoidRadiiCesiumWriter, Cartesian>() {
-			public void invoke(EllipsoidRadiiCesiumWriter me, List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-				me.writeCartesian(dates, values, startIndex, length);
-			}
-		});
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter, cesiumlanguagewriter.Cartesian>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter, cesiumlanguagewriter.Cartesian>() {
+					public void invoke(EllipsoidRadiiCesiumWriter me, Cartesian value) {
+						me.writeCartesian(value);
+					}
+				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter, cesiumlanguagewriter.Cartesian>() {
+					public void invoke(EllipsoidRadiiCesiumWriter me, List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+						me.writeCartesian(dates, values, startIndex, length);
+					}
+				});
 	}
 }
