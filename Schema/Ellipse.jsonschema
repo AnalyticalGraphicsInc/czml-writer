@@ -4,10 +4,6 @@
     "type": ["array", "object"],
     "items": { "$ref": "#" },
     "properties": {
-        "show": {
-            "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the ellipse is shown."
-        },
         "semiMajorAxis": {
             "$ref": "Double.jsonschema",
             "description": "The length of the ellipse's semi-major axis in meters."
@@ -19,14 +15,6 @@
 		"bearing":{
 		    "$ref": "Double.jsonschema",
             "description": "The angle from north (clockwise) in radians."
-		},
-		"color": {
-            "$ref": "Color.jsonschema",
-            "description": "The color of the outer line of the ellipse."
-        },
-        "material": {
-            "$ref": "Material.jsonschema",
-            "description": "The material to display in the ellipse."
-        }
+		}
     }
 }
