@@ -25,6 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\DirectionList.jsonschema = ..\Schema\DirectionList.jsonschema
 		..\Schema\Double.jsonschema = ..\Schema\Double.jsonschema
 		..\Schema\DoubleValue.jsonschema = ..\Schema\DoubleValue.jsonschema
+		..\Schema\Ellipse.jsonschema = ..\Schema\Ellipse.jsonschema
 		..\Schema\Ellipsoid.jsonschema = ..\Schema\Ellipsoid.jsonschema
 		..\Schema\EllipsoidRadii.jsonschema = ..\Schema\EllipsoidRadii.jsonschema
 		..\Schema\EyeOffset.jsonschema = ..\Schema\EyeOffset.jsonschema
