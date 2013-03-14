@@ -1,0 +1,20 @@
+{
+    "title": "Ellipse",
+    "description": "Defines an ellipse, which is a closed curve on the surface of the Earth",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "semiMajorAxis": {
+            "$ref": "Double.jsonschema",
+            "description": "The length of the ellipse's semi-major axis in meters."
+        },
+		"semiMinorAxis":{
+		    "$ref": "Double.jsonschema",
+            "description": "The length of the ellipse's semi-minor axis in meters."
+		},
+		"bearing":{
+		    "$ref": "Double.jsonschema",
+            "description": "The angle from north (clockwise) in radians."
+		}
+    }
+}
