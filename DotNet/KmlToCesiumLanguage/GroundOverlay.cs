@@ -26,7 +26,7 @@ namespace KmlToCesiumLanguage
         {
             using (var packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
             {
-                packetWriter.WriteId(Guid.NewGuid().ToString());
+                packetWriter.WriteId(Utility.GetId(m_element));
                 Utility.WriteAvailability(m_element, packetWriter, m_document.Namespace);
                 XElement latLon = m_element.Element(m_document.Namespace + "LatLonBox");
                 if (latLon != null)

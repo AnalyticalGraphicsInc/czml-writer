@@ -55,6 +55,23 @@ namespace KmlToCesiumLanguage
             }
         }
 
+		/// <summary>
+        /// Gets the id from the kml document element, or generates one if it does not exist
+        /// </summary>
+        /// <param name="element">The element that has the id.</param>
+        public static string GetId(XElement element)
+        {
+            XAttribute element_guid = element.Attribute("id");
+            if (element_guid != null)
+            {
+                return element_guid.Value;
+            }
+            else
+            {
+                return Guid.NewGuid().ToString();
+            }
+        }
+		
         /// <summary>
         /// Retrieves the Style element. This can either be the Style element contained in <paramref name="element"/> or a styleUrl element contained in <paramref name="element"/>.
         /// </summary>
