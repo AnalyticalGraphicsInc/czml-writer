@@ -30,7 +30,7 @@ namespace KmlToCesiumLanguage
         {
             using (this.PacketWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
             {
-                this.packetWriter.WriteId(Utility.GetId(m_element));
+                this.PacketWriter.WriteId(Utility.GetId(m_placemark));
                 Utility.WriteAvailability(m_placemark, this.PacketWriter, m_document.Namespace);
                 this.AddStyleInformation();
                 this.Write();
