@@ -257,6 +257,48 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Converts a <see cref="ClockRange"/> to the corresponding string in a
+        /// <topic name="Cesium">Cesium</topic> stream.
+        /// </summary>
+        /// <param name="clockRange">The label style to convert.</param>
+        /// <returns>The string representing the specified <see cref="CesiumLabelStyle"/>.</returns>
+        public static string ClockRangeToString(ClockRange clockRange)
+        {
+            switch (clockRange)
+            {
+                case ClockRange.Clamped:
+                    return "CLAMPED";
+                case ClockRange.Unbounded:
+                    return "UNBOUNDED";
+                case ClockRange.LoopStop:
+                    return "LOOP_STOP";
+                default:
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "clockRange");
+            }
+        }
+
+        /// <summary>
+        /// Converts a <see cref="ClockStep"/> to the corresponding string in a
+        /// <topic name="Cesium">Cesium</topic> stream.
+        /// </summary>
+        /// <param name="clockStep">The label style to convert.</param>
+        /// <returns>The string representing the specified <see cref="CesiumLabelStyle"/>.</returns>
+        public static string ClockStepToString(ClockStep clockStep)
+        {
+            switch (clockStep)
+            {
+                case ClockStep.SystemClock:
+                    return "SYSTEMCLOCK";
+                case ClockStep.SystemClockMultiplier:
+                    return "SYSTEM_CLOCK_MULTIPLIER";
+                case ClockStep.TickDependant:
+                    return "TICK_DEPENDANT";
+                default:
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "clockStep");
+            }
+        }
+
+        /// <summary>
         /// Converts a <see cref="CesiumLabelStyle"/> to the corresponding string in a
         /// <topic name="Cesium">Cesium</topic> stream.
         /// </summary>

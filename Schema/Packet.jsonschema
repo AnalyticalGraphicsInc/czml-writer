@@ -76,6 +76,10 @@
 		"ellipse": {
             "$ref": "Ellipse.jsonschema",
             "description": "An ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property."
+        },
+		"clock": {
+            "$ref": "Clock.jsonschema",
+            "description": "A simulated clock."
         }
     }
 }

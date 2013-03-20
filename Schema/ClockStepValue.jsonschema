@@ -1,0 +1,6 @@
+{
+    "title": "ClockStep",
+    "description": "Defines how a clock steps in time.  Valid values are 'SYSTEM_CLOCK', 'SYSTEM_CLOCK_MULTIPLIER', and 'TICK_DEPENDENT'.",
+    "type": "string",
+    "enum": ["SYSTEM_CLOCK", "SYSTEM_CLOCK_MULTIPLIER", "TICK_DEPENDENT"]
+}
