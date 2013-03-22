@@ -1,0 +1,24 @@
+{
+    "title": "Clock",
+    "description": "Defines a simulated clock.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "currentTime": {
+            "$ref": "TimeValue.jsonschema",
+            "description": "The current time."
+        },
+        "multiplier": {
+            "description": "The multiplier, which in TICK_DEPENDENT mode is the number of seconds to advance each tick.  In SYSTEM_CLOCK_DEPENDENT mode, it is the multiplier applied to the amount of time elapsed between ticks.  This value is ignored in SYSTEM_CLOCK mode.",
+            "type": "number"
+        },
+        "range": {
+            "$ref": "ClockRangeValue.jsonschema",
+            "description": "The behavior of a clock when its current time reaches its start or end points.  Valid values are 'UNBOUNDED', 'CLAMPED', and 'LOOP_STOP'."
+        },
+        "step": {
+            "$ref": "ClockStepValue.jsonschema",
+            "description": "Defines how a clock steps in time.  Valid values are 'SYSTEM_CLOCK', 'SYSTEM_CLOCK_MULTIPLIER', and 'TICK_DEPENDENT'."
+        }
+    }
+}

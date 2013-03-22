@@ -98,6 +98,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string EllipsePropertyName = "ellipse";
 
+        /// <summary>
+        /// The name of the <code>clock</code> property.
+        /// </summary>
+        public const string ClockPropertyName = "clock";
+
         private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter(BillboardPropertyName), false);
         private readonly Lazy<PositionListCesiumWriter> m_vertexPositions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(VertexPositionsPropertyName), false);
@@ -112,6 +117,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(() => new CameraCesiumWriter(CameraPropertyName), false);
         private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
         private readonly Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(() => new EllipseCesiumWriter(EllipsePropertyName), false);
+        private readonly Lazy<ClockCesiumWriter> m_clock = new Lazy<ClockCesiumWriter>(() => new ClockCesiumWriter(ClockPropertyName), false);
 
         /// <summary>
         /// Writes the start of a new JSON object representing the packet.
@@ -637,6 +643,22 @@ namespace CesiumLanguageWriter
         public EllipseCesiumWriter OpenEllipseProperty()
         {
             return OpenAndReturn(EllipseWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>clock</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>clock</code> property defines a simulated clock.
+        /// </summary>
+        public ClockCesiumWriter ClockWriter
+        {
+            get { return m_clock.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>clock</code> property.  The <code>clock</code> property defines a simulated clock.
+        /// </summary>
+        public ClockCesiumWriter OpenClockProperty()
+        {
+            return OpenAndReturn(ClockWriter);
         }
 
     }

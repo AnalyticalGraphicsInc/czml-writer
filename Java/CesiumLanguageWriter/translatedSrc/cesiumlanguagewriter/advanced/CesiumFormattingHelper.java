@@ -315,6 +315,54 @@ public final class CesiumFormattingHelper {
 
 	/**
 	 *  
+	Converts a  {@link ClockRange} to the corresponding string in a
+	<topic name="Cesium">Cesium</topic> stream.
+	
+	
+	
+
+	 * @param clockRange The label style to convert.
+	 * @return The string representing the specified  {@link CesiumLabelStyle}.
+	 */
+	public static String clockRangeToString(ClockRange clockRange) {
+		switch (clockRange) {
+		case CLAMPED:
+			return "CLAMPED";
+		case UNBOUNDED:
+			return "UNBOUNDED";
+		case LOOP_STOP:
+			return "LOOP_STOP";
+		default:
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "clockRange");
+		}
+	}
+
+	/**
+	 *  
+	Converts a  {@link ClockStep} to the corresponding string in a
+	<topic name="Cesium">Cesium</topic> stream.
+	
+	
+	
+
+	 * @param clockStep The label style to convert.
+	 * @return The string representing the specified  {@link CesiumLabelStyle}.
+	 */
+	public static String clockStepToString(ClockStep clockStep) {
+		switch (clockStep) {
+		case SYSTEM_CLOCK:
+			return "SYSTEM_CLOCK";
+		case SYSTEM_CLOCK_MULTIPLIER:
+			return "SYSTEM_CLOCK_MULTIPLIER";
+		case TICK_DEPENDENT:
+			return "TICK_DEPENDENT";
+		default:
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "clockStep");
+		}
+	}
+
+	/**
+	 *  
 	Converts a  {@link CesiumLabelStyle} to the corresponding string in a
 	<topic name="Cesium">Cesium</topic> stream.
 	
