@@ -28,6 +28,20 @@ public final class CesiumWritingHelper {
 
 	/**
 	 *  
+	Writes a  {@link JulianDate} as an ISO 8601 interval string.
+	
+	
+	
+
+	 * @param output The stream to which to write the value.
+	 * @param date The date to write.
+	 */
+	public static void writeDate(CesiumOutputStream output, JulianDate date) {
+		output.writeValue(CesiumFormattingHelper.toIso8601(date, output.getPrettyFormatting() ? Iso8601Format.EXTENDED : Iso8601Format.COMPACT));
+	}
+
+	/**
+	 *  
 	Writes a  {@link TimeInterval} as an ISO 8601 interval string.
 	
 	
