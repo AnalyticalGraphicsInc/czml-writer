@@ -75,10 +75,13 @@
     <Compile Include="CesiumStreamWriter.cs" />
     <Compile Include="CesiumVerticalOrigin.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="ClockRange.cs" />
+    <Compile Include="ClockStep.cs" />
     <Compile Include="CustomCesiumWriter.cs" />
     <Compile Include="Generated\BillboardCesiumWriter.cs" />
     <Compile Include="Generated\BooleanCesiumWriter.cs" />
     <Compile Include="Generated\CameraCesiumWriter.cs" />
+    <Compile Include="Generated\ClockCesiumWriter.cs" />
     <Compile Include="Generated\ColorCesiumWriter.cs" />
     <Compile Include="Generated\ConeCesiumWriter.cs" />
     <Compile Include="Generated\DirectionListCesiumWriter.cs" />

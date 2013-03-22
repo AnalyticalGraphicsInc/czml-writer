@@ -67,6 +67,18 @@
                 "callOverload": "new TimeInterval(start, stop)"
             }
         ],
+        "Time": [
+            {
+                "parameters": [
+                    {
+                        "type": "JulianDate",
+                        "name": "value",
+                        "description": "The time."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteDate(Output, value);"
+            }
+        ],
         "Cartesian2": [
             {
                 "parameters": [
@@ -308,9 +320,9 @@
                         "description": "A resource object describing the image."
                     }
                 ],
-				"callOverload": "resource.Url, resource.Behavior"
+                "callOverload": "resource.Url, resource.Behavior"
             },
-			{
+            {
                 "parameters": [
                     {
                         "type": "string",
@@ -324,7 +336,7 @@
                     }
                 ],
                 "writeValue": "Output.WriteValue(CesiumFormattingHelper.GetResourceUrl(url, resourceBehavior));",
-				"needsInterval": false
+                "needsInterval": false
             },
             {
                 "parameters": [
@@ -340,7 +352,7 @@
                     }
                 ],
                 "writeValue": "Output.WriteValue(resolver.ResolveUrl(url));",
-				"needsInterval": false
+                "needsInterval": false
             },
             {
                 "namespaces": ["System.Drawing"],
@@ -363,15 +375,15 @@
                         "name": "image",
                         "description": "The image.  A data URI will be created for this image."
                     },
-					{
+                    {
                         
                         "type": "CesiumImageFormat",
                         "name": "imageFormat",
                         "description": "The image format to use to encode the image in the data URI."
                     }
                 ],
-				"writeValue": "Output.WriteValue(CesiumFormattingHelper.ImageToDataUri(image, imageFormat));",
-				"needsInterval": false
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.ImageToDataUri(image, imageFormat));",
+                "needsInterval": false
             },
         ],
         "HorizontalOrigin": [
@@ -384,7 +396,7 @@
                     }
                 ],
                 "writeValue": "Output.WriteValue(CesiumFormattingHelper.HorizontalOriginToString(value));",
-				"needsInterval": false
+                "needsInterval": false
             }
         ],
         "VerticalOrigin": [
@@ -397,7 +409,33 @@
                     }
                 ],
                 "writeValue": "Output.WriteValue(CesiumFormattingHelper.VerticalOriginToString(value));",
-				"needsInterval": false
+                "needsInterval": false
+            }
+        ],
+        "ClockRange": [
+            {
+                "parameters": [
+                    {
+                        "type": "ClockRange",
+                        "name": "value",
+                        "description": "The clock range."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.ClockRangeToString(value));",
+                "needsInterval": false
+            }
+        ],
+        "ClockStep": [
+            {
+                "parameters": [
+                    {
+                        "type": "ClockStep",
+                        "name": "value",
+                        "description": "The clock step."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.ClockStepToString(value));",
+                "needsInterval": false
             }
         ],
         "LabelStyle": [
@@ -410,7 +448,7 @@
                     }
                 ],
                 "writeValue": "Output.WriteValue(CesiumFormattingHelper.LabelStyleToString(value));",
-				"needsInterval": false
+                "needsInterval": false
             }
         ],
         "Double": [
@@ -423,7 +461,7 @@
                     }
                 ],
                 "writeValue": "Output.WriteValue(value);",
-				"needsInterval": false
+                "needsInterval": false
             },
             {
                 "namespaces": ["System.Collections.Generic"],
@@ -463,7 +501,7 @@
                     }
                 ],
                 "writeValue": "Output.WriteValue(value);",
-				"needsInterval": false
+                "needsInterval": false
             }
         ],
         "Rgba": [
@@ -636,7 +674,7 @@
                     }
                 ],
                 "writeValue": "Output.WriteValue(value);",
-				"needsInterval": false
+                "needsInterval": false
             }
         ],
         "Font": [
@@ -649,7 +687,7 @@
                     }
                 ],
                 "writeValue": "Output.WriteValue(font);",
-				"needsInterval": false
+                "needsInterval": false
             }
         ]
     }
