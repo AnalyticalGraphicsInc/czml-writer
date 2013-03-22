@@ -68,7 +68,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>multiplier</code> property.  The <code>multiplier</code> property specifies the multiplier, which in TICK_DEPENDENT mode is the number of seconds to advance each tick.  In SYSTEM_CLOCK_DEPENDANT mode, it is the multiplier applied to the amount of time elapsed between ticks.  This value is ignored in SYSTEM_CLOCK mode.
+        /// Writes the <code>multiplier</code> property.  The <code>multiplier</code> property specifies the multiplier, which in TICK_DEPENDENT mode is the number of seconds to advance each tick.  In SYSTEM_CLOCK_DEPENDENT mode, it is the multiplier applied to the amount of time elapsed between ticks.  This value is ignored in SYSTEM_CLOCK mode.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteMultiplier(double value)

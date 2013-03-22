@@ -288,11 +288,11 @@ namespace CesiumLanguageWriter.Advanced
             switch (clockStep)
             {
                 case ClockStep.SystemClock:
-                    return "SYSTEMCLOCK";
+                    return "SYSTEM_CLOCK";
                 case ClockStep.SystemClockMultiplier:
                     return "SYSTEM_CLOCK_MULTIPLIER";
-                case ClockStep.TickDependant:
-                    return "TICK_DEPENDANT";
+                case ClockStep.TickDependent:
+                    return "TICK_DEPENDENT";
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "clockStep");
             }

@@ -1,6 +1,6 @@
 {
     "title": "ClockRange",
-    "description": "The behavior of a clock when its current time reaches its start or end points.  Valid values are 'UNBOUNDED', 'CLAMPED', and 'LOOP_STOP'.",
+    "description": "The behavior of a clock when its current time reaches its start or end point.  Valid values are 'UNBOUNDED', 'CLAMPED', and 'LOOP_STOP'.",
     "type": "string",
     "enum": ["UNBOUNDED", "CLAMPED", "LOOP_STOP"]
 }

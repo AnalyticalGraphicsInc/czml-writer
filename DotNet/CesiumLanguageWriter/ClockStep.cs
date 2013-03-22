@@ -1,24 +1,23 @@
 ﻿namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// The horizontal origin of a billboard or label in a <topic name="Cesium">Cesium</topic> stream
-    /// relative to an associated position.
+    /// Defines how a simulated clock advances in time.
     /// </summary>
     public enum ClockStep
     {
         /// <summary>
-        /// The left side of the billboard or label is located at the position.
+        /// The clock always matches the system clock.
         /// </summary>
         SystemClock,
 
         /// <summary>
-        /// The billboard or label is horizontally centered on the position.
+        /// The clock advances by the elapsed system time between ticks, multipled by a user specified value.
         /// </summary>
         SystemClockMultiplier,
 
         /// <summary>
-        /// The right side of the billboard or label is located at the position.
+        /// The clock advances by a fixed step each tick.
         /// </summary>
-        TickDependant,
+        TickDependent,
     }
 }
