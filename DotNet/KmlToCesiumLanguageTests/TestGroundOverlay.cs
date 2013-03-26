@@ -38,6 +38,21 @@ namespace KmlToCesiumLanguageTests
         }
 
         [Test]
+        public void GroundOverlayProducesId()
+        {
+            XElement element = new XElement("GroundOverlay",
+                                            new XAttribute("id", "STS-122"),
+                                            new XElement("TimeSpan",
+                                                         new XElement("begin", "2007-12-06T16:31")));
+
+            var groundOverlay = new GroundOverlay(element, m_document);
+            groundOverlay.WritePacket();
+
+            string result = m_stringWriter.ToString();
+            Assert.That(result.Contains("\"id\":\"STS-122\""));
+        }
+
+        [Test]
         public void LatLonBoxProducesVertexPositions()
         {
             XElement element = new XElement("GroundOverlay",
