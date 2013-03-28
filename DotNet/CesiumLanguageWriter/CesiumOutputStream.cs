@@ -2,11 +2,7 @@
 using System.Globalization;
 using System.IO;
 
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
     /// A stream to which raw <topic name="Cesium">Cesium</topic> data can be written.  This is a low-level class that

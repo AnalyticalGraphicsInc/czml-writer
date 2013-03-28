@@ -41,7 +41,7 @@ namespace KmlToCesiumLanguageTests
                 networkLink.WritePacket(outputstream);
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"external\":{\"polling\":\"http://localhost/conversions/kml?kmlUrl=http%3A%2F%2Fyourserver.com%2Fcgi-bin%2FrandomPlacemark.py\",\"scope\":\"SHARED\"}}"));
+            Assert.That(result.Contains("\"external\":{\"url\":\"http://localhost/conversions/kml?kmlUrl=http%3A%2F%2Fyourserver.com%2Fcgi-bin%2FrandomPlacemark.py\",\"scope\":\"SHARED\"}}"));
         }
 
         [Test]
@@ -183,7 +183,7 @@ namespace KmlToCesiumLanguageTests
                 networkLink.WritePacket(outputstream);
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"external\":{\"polling\":\"http://localhost/conversions/kml?kmlUrl=http%3A%2F%2Fyourserver.com%2Fcgi-bin%2FrandomPlacemark.py\",\"scope\":\"SHARED\"}}"));
+            Assert.That(result.Contains("\"external\":{\"url\":\"http://localhost/conversions/kml?kmlUrl=http%3A%2F%2Fyourserver.com%2Fcgi-bin%2FrandomPlacemark.py\",\"scope\":\"SHARED\"}}"));
         }
     }
 }

@@ -26,6 +26,9 @@ import java.io.InputStream;
 public final class CesiumFormattingHelper {
 	private CesiumFormattingHelper() {}
 
+	private static JulianDate s_minimumGregorianDate = GregorianDate.MinValue.toJulianDate();
+	private static JulianDate s_maximumGregorianDate = GregorianDate.MaxValue.toJulianDate();
+
 	/**
 	 *  
 	Converts a  {@link TimeInterval} as an ISO8601 interval string.
@@ -73,6 +76,28 @@ public final class CesiumFormattingHelper {
 	 * @return The date represented as an ISO8601 date string.
 	 */
 	public static String toIso8601(JulianDate date, Iso8601Format format) {
+		//If the JulianDate is outside the range of supported CZML values,
+		//clamp it to the minimum/maximum CZML ISO8601 value.
+		if (JulianDate.lessThanOrEqual(date, s_minimumGregorianDate)) {
+			switch (format) {
+			case BASIC:
+				return "00000101T000000Z";
+			case COMPACT:
+				return "00000101T00Z";
+			case EXTENDED:
+				return "0000-01-01T00:00:00Z";
+			}
+		}
+		if (JulianDate.greaterThanOrEqual(date, s_maximumGregorianDate)) {
+			switch (format) {
+			case BASIC:
+				return "99991231T240000Z";
+			case COMPACT:
+				return "99991231T24Z";
+			case EXTENDED:
+				return "9999-12-31T24:00:00Z";
+			}
+		}
 		return date.toGregorianDate().toIso8601String(format);
 	}
 
@@ -285,6 +310,54 @@ public final class CesiumFormattingHelper {
 			return "HERMITE";
 		default:
 			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "interpolationAlgorithm");
+		}
+	}
+
+	/**
+	 *  
+	Converts a  {@link ClockRange} to the corresponding string in a
+	<topic name="Cesium">Cesium</topic> stream.
+	
+	
+	
+
+	 * @param clockRange The label style to convert.
+	 * @return The string representing the specified  {@link CesiumLabelStyle}.
+	 */
+	public static String clockRangeToString(ClockRange clockRange) {
+		switch (clockRange) {
+		case CLAMPED:
+			return "CLAMPED";
+		case UNBOUNDED:
+			return "UNBOUNDED";
+		case LOOP_STOP:
+			return "LOOP_STOP";
+		default:
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "clockRange");
+		}
+	}
+
+	/**
+	 *  
+	Converts a  {@link ClockStep} to the corresponding string in a
+	<topic name="Cesium">Cesium</topic> stream.
+	
+	
+	
+
+	 * @param clockStep The label style to convert.
+	 * @return The string representing the specified  {@link CesiumLabelStyle}.
+	 */
+	public static String clockStepToString(ClockStep clockStep) {
+		switch (clockStep) {
+		case SYSTEM_CLOCK:
+			return "SYSTEM_CLOCK";
+		case SYSTEM_CLOCK_MULTIPLIER:
+			return "SYSTEM_CLOCK_MULTIPLIER";
+		case TICK_DEPENDENT:
+			return "TICK_DEPENDENT";
+		default:
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "clockStep");
 		}
 	}
 

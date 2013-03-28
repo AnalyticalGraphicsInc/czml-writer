@@ -1,13 +1,4 @@
-﻿
-#if StkComponents
-using AGI.Foundation.Time;
-#endif
-
-#if StkComponents
-namespace AGI.Foundation.Cesium.Advanced
-#else
-namespace CesiumLanguageWriter.Advanced
-#endif
+﻿namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
     /// An interface to an object that writes the values of a <topic name="Cesium">Cesium</topic>

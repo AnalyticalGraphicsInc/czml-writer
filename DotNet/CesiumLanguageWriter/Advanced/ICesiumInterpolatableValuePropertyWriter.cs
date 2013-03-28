@@ -1,14 +1,6 @@
 ﻿using System.Collections.Generic;
 
-#if StkComponents
-using AGI.Foundation.Time;
-#endif
-
-#if StkComponents
-namespace AGI.Foundation.Cesium.Advanced
-#else
 namespace CesiumLanguageWriter.Advanced
-#endif
 {
     /// <summary>
     /// An interface to a property that writes a sampled, interpolatable value.

@@ -1,25 +1,12 @@
 ﻿using System;
 using System.IO;
-#if StkComponents
-using AGI.Foundation.Cesium;
-using AGI.Foundation.Cesium.Advanced;
-using AGI.Test;
-#else
 using CesiumLanguageWriter;
-#endif
 using NUnit.Framework;
 
-#if StkComponents
-namespace Cesium.Tests.Cesium
-#else
 namespace CesiumLanguageWriterTests
-#endif
 {
     [TestFixture]
     public class TestCesiumStreamWriter
-#if StkComponents
-        : ComponentsTestBase
-#endif
     {
         private StringWriter m_sw;
         private CesiumOutputStream m_output;
@@ -55,7 +42,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        [ExpectedException(typeof(InvalidOperationException), ExpectedMessage="already opened", MatchType=MessageMatch.Contains)]
+        [ExpectedException(typeof(InvalidOperationException), ExpectedMessage = "already opened", MatchType = MessageMatch.Contains)]
         public void MultipleCallsToNewPacketWithoutCloseThrowInvalidOperationException()
         {
             PacketCesiumWriter packet = m_writer.OpenPacket(m_output);

@@ -24,6 +24,10 @@
             "$ref": "Color.jsonschema",
             "description": "The outline color of the label."
         },
+        "outlineWidth": {
+            "$ref": "Double.jsonschema",
+            "description": "The outline width of the label."
+        },
         "pixelOffset": {
             "$ref": "PixelOffset.jsonschema",
             "description": "The offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`."

@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CesiumLanguageWriter", "CesiumLanguageWriter\CesiumLanguageWriter.csproj", "{085359F8-CC1D-4561-94C7-0BF067B8E370}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CesiumLanguageWriterTests", "CesiumLanguageWriterTests\CesiumLanguageWriterTests.csproj", "{1D5CE515-81E3-47AE-8D02-3767DD8CB07E}"
@@ -20,11 +20,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\Cartesian3Value.jsonschema = ..\Schema\Cartesian3Value.jsonschema
 		..\Schema\CartographicListValue.jsonschema = ..\Schema\CartographicListValue.jsonschema
 		..\Schema\CartographicValue.jsonschema = ..\Schema\CartographicValue.jsonschema
+		..\Schema\Clock.jsonschema = ..\Schema\Clock.jsonschema
+		..\Schema\ClockRangeValue.jsonschema = ..\Schema\ClockRangeValue.jsonschema
+		..\Schema\ClockStepValue.jsonschema = ..\Schema\ClockStepValue.jsonschema
 		..\Schema\Color.jsonschema = ..\Schema\Color.jsonschema
 		..\Schema\Cone.jsonschema = ..\Schema\Cone.jsonschema
 		..\Schema\DirectionList.jsonschema = ..\Schema\DirectionList.jsonschema
 		..\Schema\Double.jsonschema = ..\Schema\Double.jsonschema
 		..\Schema\DoubleValue.jsonschema = ..\Schema\DoubleValue.jsonschema
+		..\Schema\Ellipse.jsonschema = ..\Schema\Ellipse.jsonschema
 		..\Schema\Ellipsoid.jsonschema = ..\Schema\Ellipsoid.jsonschema
 		..\Schema\EllipsoidRadii.jsonschema = ..\Schema\EllipsoidRadii.jsonschema
 		..\Schema\ExternalDocument.jsonschema = ..\Schema\ExternalDocument.jsonschema
@@ -65,6 +69,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\StringValue.jsonschema = ..\Schema\StringValue.jsonschema
 		..\Schema\TimeIntervalCollectionValue.jsonschema = ..\Schema\TimeIntervalCollectionValue.jsonschema
 		..\Schema\TimeIntervalValue.jsonschema = ..\Schema\TimeIntervalValue.jsonschema
+		..\Schema\TimeValue.jsonschema = ..\Schema\TimeValue.jsonschema
 		..\Schema\UnitCartesian3ListValue.jsonschema = ..\Schema\UnitCartesian3ListValue.jsonschema
 		..\Schema\UnitCartesian3Value.jsonschema = ..\Schema\UnitCartesian3Value.jsonschema
 		..\Schema\UnitQuaternionValue.jsonschema = ..\Schema\UnitQuaternionValue.jsonschema

@@ -1,10 +1,6 @@
 ﻿using System;
 
-#if StkComponents
-namespace AGI.Foundation.Cesium.Advanced
-#else
 namespace CesiumLanguageWriter.Advanced
-#endif
 {
     /// <summary>
     /// The base class for types that write <topic name="Cesium">Cesium</topic> data to a stream.
@@ -43,6 +39,14 @@ namespace CesiumLanguageWriter.Advanced
         void IDisposable.Dispose()
         {
             Close();
+        }
+
+        /// <summary>
+        /// Gets <see langword="true" /> if the writer is open; otherwise, <see langword="false" />.
+        /// </summary>
+        public bool IsOpen
+        {
+            get { return OutputOrNull != null; }
         }
 
         /// <summary>

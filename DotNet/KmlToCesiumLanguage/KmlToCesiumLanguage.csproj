@@ -69,6 +69,8 @@
     <Compile Include="Geometry.cs" />
     <Compile Include="GeometryFactory.cs" />
     <Compile Include="GroundOverlay.cs" />
+    <Compile Include="GxMultiTrack.cs" />
+    <Compile Include="GxTrack.cs" />
     <Compile Include="KmlConverter.cs" />
     <Compile Include="LineString.cs" />
     <Compile Include="NetworkLink.cs" />

@@ -94,6 +94,16 @@ namespace CesiumLanguageWriter
         public const string ViewFromPropertyName = "viewFrom";
 
         /// <summary>
+        /// The name of the <code>ellipse</code> property.
+        /// </summary>
+        public const string EllipsePropertyName = "ellipse";
+
+        /// <summary>
+        /// The name of the <code>clock</code> property.
+        /// </summary>
+        public const string ClockPropertyName = "clock";
+
+        /// <summary>
         /// The name of the <code>external</code> property.
         /// </summary>
         public const string ExternalPropertyName = "external";
@@ -111,6 +121,8 @@ namespace CesiumLanguageWriter
         private readonly Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<PyramidCesiumWriter>(() => new PyramidCesiumWriter(PyramidPropertyName), false);
         private readonly Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(() => new CameraCesiumWriter(CameraPropertyName), false);
         private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
+        private readonly Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(() => new EllipseCesiumWriter(EllipsePropertyName), false);
+        private readonly Lazy<ClockCesiumWriter> m_clock = new Lazy<ClockCesiumWriter>(() => new ClockCesiumWriter(ClockPropertyName), false);
         private readonly Lazy<ExternalDocumentCesiumWriter> m_external = new Lazy<ExternalDocumentCesiumWriter>(() => new ExternalDocumentCesiumWriter(ExternalPropertyName), false);
 
         /// <summary>
@@ -621,6 +633,38 @@ namespace CesiumLanguageWriter
             const string PropertyName = ViewFromPropertyName;
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteCartesian3(Output, PropertyName, dates, values, startIndex, length);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>ellipse</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipse</code> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
+        /// </summary>
+        public EllipseCesiumWriter EllipseWriter
+        {
+            get { return m_ellipse.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>ellipse</code> property.  The <code>ellipse</code> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
+        /// </summary>
+        public EllipseCesiumWriter OpenEllipseProperty()
+        {
+            return OpenAndReturn(EllipseWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>clock</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>clock</code> property defines a simulated clock.
+        /// </summary>
+        public ClockCesiumWriter ClockWriter
+        {
+            get { return m_clock.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>clock</code> property.  The <code>clock</code> property defines a simulated clock.
+        /// </summary>
+        public ClockCesiumWriter OpenClockProperty()
+        {
+            return OpenAndReturn(ClockWriter);
         }
 
         /// <summary>

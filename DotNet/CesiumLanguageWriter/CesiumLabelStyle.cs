@@ -1,9 +1,4 @@
-﻿
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
-namespace CesiumLanguageWriter
-#endif
+﻿namespace CesiumLanguageWriter
 {
     /// <summary>
     /// Specifies the style of <topic name="Cesium">Cesium</topic> label.

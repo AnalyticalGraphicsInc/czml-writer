@@ -1,9 +1,4 @@
-﻿
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
-namespace CesiumLanguageWriter
-#endif
+﻿namespace CesiumLanguageWriter
 {
     /// <summary>
     /// The format of an image embedded in a <topic name="Cesium">Cesium</topic> stream.

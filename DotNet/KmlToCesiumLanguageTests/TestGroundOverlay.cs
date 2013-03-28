@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Xml.Linq;
+using CesiumLanguageWriter;
 using KmlToCesiumLanguage;
 using NUnit.Framework;
-using CesiumLanguageWriter;
 
 namespace KmlToCesiumLanguageTests
 {
@@ -36,7 +36,23 @@ namespace KmlToCesiumLanguageTests
                 groundOverlay.WritePacket(outputstream);
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"availability\":\"20071206T1631Z/99991231T235959.9999998999992Z\""));
+            Assert.That(result.Contains("\"availability\":\"20071206T1631Z/99991231T24Z\""));
+        }
+
+        [Test]
+        public void GroundOverlayProducesId()
+        {
+            XElement element = new XElement("GroundOverlay",
+                                            new XAttribute("id", "STS-122"),
+                                            new XElement("TimeSpan",
+                                                         new XElement("begin", "2007-12-06T16:31")));
+
+            var groundOverlay = new GroundOverlay(element, m_document);
+            using (var outputstream = new CesiumOutputStream(m_stringWriter))
+                groundOverlay.WritePacket(outputstream);
+
+            string result = m_stringWriter.ToString();
+            Assert.That(result.Contains("\"id\":\"STS-122\""));
         }
 
         [Test]

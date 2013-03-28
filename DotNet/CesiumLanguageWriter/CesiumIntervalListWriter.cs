@@ -1,17 +1,6 @@
-﻿#if StkComponents
-using AGI.Foundation.Cesium.Advanced;
-using AGI.Foundation.Time;
+﻿using CesiumLanguageWriter.Advanced;
 
-#else
-using CesiumLanguageWriter.Advanced;
-
-#endif
-
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
 namespace CesiumLanguageWriter
-#endif
 {
     /// <summary>
     /// Writes a list of intervals for which a <topic name="Cesium">Cesium</topic> property is defined.

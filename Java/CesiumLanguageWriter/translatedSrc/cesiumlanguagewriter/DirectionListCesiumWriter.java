@@ -124,11 +124,12 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 	}
 
 	final private ICesiumValuePropertyWriter<Iterable<UnitSpherical>> createUnitSphericalAdaptor() {
-		return new CesiumWriterAdaptor<DirectionListCesiumWriter, Iterable<UnitSpherical>>(this, new CesiumWriterAdaptorWriteCallback<DirectionListCesiumWriter, Iterable<UnitSpherical>>() {
-			public void invoke(DirectionListCesiumWriter me, Iterable<UnitSpherical> value) {
-				me.writeUnitSpherical(value);
-			}
-		});
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<UnitSpherical>>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<UnitSpherical>>() {
+					public void invoke(DirectionListCesiumWriter me, Iterable<UnitSpherical> value) {
+						me.writeUnitSpherical(value);
+					}
+				});
 	}
 
 	/**
@@ -144,10 +145,11 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 	}
 
 	final private ICesiumValuePropertyWriter<Iterable<UnitCartesian>> createUnitCartesianAdaptor() {
-		return new CesiumWriterAdaptor<DirectionListCesiumWriter, Iterable<UnitCartesian>>(this, new CesiumWriterAdaptorWriteCallback<DirectionListCesiumWriter, Iterable<UnitCartesian>>() {
-			public void invoke(DirectionListCesiumWriter me, Iterable<UnitCartesian> value) {
-				me.writeUnitCartesian(value);
-			}
-		});
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<UnitCartesian>>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<UnitCartesian>>() {
+					public void invoke(DirectionListCesiumWriter me, Iterable<UnitCartesian> value) {
+						me.writeUnitCartesian(value);
+					}
+				});
 	}
 }

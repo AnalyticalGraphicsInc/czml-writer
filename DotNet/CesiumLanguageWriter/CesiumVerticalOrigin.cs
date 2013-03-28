@@ -1,9 +1,4 @@
-﻿
-#if StkComponents
-namespace AGI.Foundation.Cesium
-#else
-namespace CesiumLanguageWriter
-#endif
+﻿namespace CesiumLanguageWriter
 {
     /// <summary>
     /// The vertical origin of a billboard or label in a <topic name="Cesium">Cesium</topic> stream
@@ -24,6 +19,6 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The top of the billboard or label is located at the position.
         /// </summary>
-        Top
+        Top,
     }
 }

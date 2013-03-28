@@ -90,7 +90,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 	}
 
 	final private ICesiumValuePropertyWriter<String> createStringAdaptor() {
-		return new CesiumWriterAdaptor<StringCesiumWriter, String>(this, new CesiumWriterAdaptorWriteCallback<StringCesiumWriter, String>() {
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.StringCesiumWriter, String>(this, new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.StringCesiumWriter, String>() {
 			public void invoke(StringCesiumWriter me, String value) {
 				me.writeString(value);
 			}

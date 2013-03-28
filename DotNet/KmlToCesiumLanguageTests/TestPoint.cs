@@ -37,7 +37,7 @@ namespace KmlToCesiumLanguageTests
                 point.WritePacket(outputstream);
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"availability\":\"20071206T1631Z/99991231T235959.9999998999992Z\""));
+            Assert.That(result.Contains("\"availability\":\"20071206T1631Z/99991231T24Z\""));
         }
 
         [Test]

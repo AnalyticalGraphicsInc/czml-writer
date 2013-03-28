@@ -1,9 +1,4 @@
-﻿
-#if StkComponents
-namespace AGI.Foundation.Cesium.Advanced
-#else
-namespace CesiumLanguageWriter.Advanced
-#endif
+﻿namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
     /// A URL resolver transforms URLs into another form for inclusion in a CZML document.
