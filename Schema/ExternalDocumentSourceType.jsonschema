@@ -1,0 +1,13 @@
+{
+    "title": "ExternalDocumentSourceType",
+    "description": "Defines the type of data to retrieve.",
+    "type": ["array", "object", "string"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "sourceType": {
+            "$ref": "ExternalDocumentSourceTypeValue.jsonschema",
+            "description": "Defines the type of data to retrieve. Valid values are \"json\" and \"eventstream\".",
+            "czmlValue": true
+        }
+    }
+}

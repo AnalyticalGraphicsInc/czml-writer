@@ -1,0 +1,12 @@
+{
+    "title": "PollingUpdate",
+    "description": "Use this updater when you want to poll the given url at a constant update rate based on the system's clock.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "refreshInterval": {
+            "$ref": "Double.jsonschema",
+            "description": "Specifies in seconds how often to refresh to document. The default is 60 seconds."
+        }
+    }
+}

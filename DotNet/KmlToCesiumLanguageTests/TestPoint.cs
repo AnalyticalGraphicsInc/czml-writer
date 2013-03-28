@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using KmlToCesiumLanguage;
 using NUnit.Framework;
+using CesiumLanguageWriter;
 
 namespace KmlToCesiumLanguageTests
 {
@@ -15,7 +16,7 @@ namespace KmlToCesiumLanguageTests
         public void SetUp()
         {
             m_stringWriter = new StringWriter();
-            m_document = new CzmlDocument(m_stringWriter);
+            m_document = new CzmlDocument();
         }
 
         [Test]
@@ -32,7 +33,8 @@ namespace KmlToCesiumLanguageTests
                                                          new XElement("coordinates", "-80.604015,28.608305,48.5300000004579")));
 
             var point = new Point(element.Element("Point"), m_document, element);
-            point.WritePacket();
+            using (var outputstream = new CesiumOutputStream(m_stringWriter))
+                point.WritePacket(outputstream);
 
             string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"availability\":\"20071206T1631Z/99991231T24Z\""));
@@ -48,7 +50,8 @@ namespace KmlToCesiumLanguageTests
                                                          new XElement("coordinates", "-80.604015,28.608305,48.5300000004579")));
 
             var point = new Point(element.Element("Point"), m_document, element);
-            point.WritePacket();
+            using (var outputstream = new CesiumOutputStream(m_stringWriter))
+                point.WritePacket(outputstream);
 
             string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"position\":{\"cartographicRadians\":[-1.4068054520768973,0.4993091156647564,48.5300000004579]}"));
@@ -72,7 +75,8 @@ namespace KmlToCesiumLanguageTests
                                                          new XElement("coordinates", "-80.604015,28.608305,48.5300000004579")));
 
             var point = new Point(element.Element("Point"), m_document, element);
-            point.WritePacket();
+            using (var outputstream = new CesiumOutputStream(m_stringWriter))
+                point.WritePacket(outputstream);
 
             string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"billboard\":{"));
@@ -91,7 +95,8 @@ namespace KmlToCesiumLanguageTests
                                                          new XElement("coordinates", "-80.604015,28.608305,48.5300000004579")));
 
             var point = new Point(element.Element("Point"), m_document, element);
-            point.WritePacket();
+            using (var outputstream = new CesiumOutputStream(m_stringWriter))
+                point.WritePacket(outputstream);
 
             string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.4068054520768973,0.4993091156647564,48.5300000004579,-1.4068054520768973,0.4993091156647564,0.0]}}"));
@@ -111,7 +116,8 @@ namespace KmlToCesiumLanguageTests
                                                          new XElement("coordinates", "-80.604015,28.608305,48.5300000004579")));
 
             var point = new Point(element.Element("Point"), m_document, element);
-            point.WritePacket();
+            using (var outputstream = new CesiumOutputStream(m_stringWriter))
+                point.WritePacket(outputstream);
 
             string result = m_stringWriter.ToString();
             Assert.That(result.Contains("\"polyline\":{\"color\":{\"rgba\":[255,0,255,161]}}"));

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CesiumLanguageWriter;
 
 namespace KmlToCesiumLanguage
 {
@@ -13,6 +14,7 @@ namespace KmlToCesiumLanguage
         /// <summary>
         /// Writes this instance as a Cesium Language Packet.
         /// </summary>
-        public abstract void WritePacket();
+        /// <param name="stream">The stream.</param>
+        public abstract void WritePacket(CesiumOutputStream stream);
     }
 }

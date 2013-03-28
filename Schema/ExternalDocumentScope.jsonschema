@@ -1,0 +1,13 @@
+{
+    "title": "ExternalDocumentScope",
+    "description": "Defines the scope of the document.  It controls whether the document is shared or private. A shared scope merges all objects with the same id into the parent document. A private scope creates a separate document.",
+    "type": ["array", "object", "string"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "scope": {
+            "$ref": "ExternalDocumentScopeValue.jsonschema",
+            "description": "The document's scope.  Valid values are \"SHARED\" and \"PRIVATE\".",
+            "czmlValue": true
+        }
+    }
+}

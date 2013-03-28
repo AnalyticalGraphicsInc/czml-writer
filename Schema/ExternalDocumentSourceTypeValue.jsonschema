@@ -1,0 +1,6 @@
+{
+    "title": "ExternalDocumentSourceType",
+    "description": "Defines the type of data to retrieve.  Valid values are \"json\" and \"eventstream\".",
+    "type": "string",
+    "enum": ["json", "eventstream"]
+}

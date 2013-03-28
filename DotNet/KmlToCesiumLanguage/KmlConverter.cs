@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Drawing;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -20,17 +20,24 @@ namespace KmlToCesiumLanguage
         /// <param name="inputReader">A reader for a KML document.</param>
         /// <param name="outputWriter">A writer that will receive the converted CZML document.</param>
         /// <param name="prettyFormatting">If true, produces larger, more readable.  False by default.</param>
+        /// <param name="parentUri">The parent URI.</param>
         public static void KmlToCesiumLanguage(TextReader inputReader,
                                                TextWriter outputWriter,
-                                               bool prettyFormatting = false)
+                                               bool prettyFormatting = false,
+                                               Uri parentUri = null)
         {
-            CzmlDocument document = new CzmlDocument(outputWriter);
-
-            document.CesiumOutputStream.PrettyFormatting = prettyFormatting;
-
-            document.CesiumOutputStream.WriteStartSequence();
-            Convert(inputReader, document);
-            document.CesiumOutputStream.WriteEndSequence();
+            CzmlDocument document = new CzmlDocument(parentUri);
+            var features = CreateFeatureWrappers(inputReader, document);
+            using (var outputstream = new CesiumOutputStream(outputWriter))
+            {
+                outputstream.PrettyFormatting = prettyFormatting;
+                outputstream.WriteStartSequence();
+                foreach(var feature in features)
+                {
+                    feature.WritePacket(outputstream);
+                }
+                outputstream.WriteEndSequence();
+            }
         }
 
         /// <summary>
@@ -39,46 +46,90 @@ namespace KmlToCesiumLanguage
         /// <param name="inputStream">A stream for a KMZ file.</param>
         /// <param name="outputWriter">A writer that will receive the converted CZML document.</param>
         /// <param name="prettyFormatting">If true, produces larger, more readable.  False by default.</param>
+        /// <param name="parentUri">The parent URI.</param>
         public static void KmzToCesiumLanguage(Stream inputStream,
                                                TextWriter outputWriter,
-                                               bool prettyFormatting = false)
+                                               bool prettyFormatting = false,
+                                               Uri parentUri = null)
         {
-            CzmlDocument document = new CzmlDocument(outputWriter);
-
-            document.CesiumOutputStream.PrettyFormatting = prettyFormatting;
-
-            document.CesiumOutputStream.WriteStartSequence();
-
-            using (ZipFile zipFile = ZipFile.Read(inputStream))
+            CzmlDocument document = new CzmlDocument(parentUri);
+            var features = CreateFeatureWrappers(inputStream, document);
+            using (var outputstream = new CesiumOutputStream(outputWriter))
             {
-                foreach (ZipEntry entry in zipFile)
+                outputstream.PrettyFormatting = prettyFormatting;
+                outputstream.WriteStartSequence();
+                foreach (var feature in features)
                 {
-                    string fileName = entry.FileName;
-                    CesiumImageFormat? imageFormat = InferImageFormat(fileName);
+                    feature.WritePacket(outputstream);
+                }
+                outputstream.WriteEndSequence();
+            }
+        }
 
-                    if (imageFormat != null && !document.ImageResolver.ContainsUrl(fileName))
+        /// <summary>
+        /// A helper function that creates wrappers around kml feature elements. Use this function if you want more control of the czml output.
+        /// </summary>
+        /// <param name="inputReader">The text reader to the kml document.</param>
+        /// <param name="document">Stores needed data about the kml document.</param>
+        /// <returns>List of Feature wrapper classes.</returns>
+        public static IEnumerable<Feature> CreateFeatureWrappers(TextReader inputReader, CzmlDocument document)
+        {
+            XDocument kmlDocument = XDocument.Load(inputReader);
+            document.Namespace = kmlDocument.Root.GetDefaultNamespace();
+            var namespaceDeclarations = kmlDocument.Root.Attributes()
+                .Where(a => a.IsNamespaceDeclaration)
+                .GroupBy(a => a.Name.Namespace == XNamespace.None ? String.Empty : a.Name.LocalName, a => XNamespace.Get(a.Value))
+                .ToDictionary(g => g.Key, g => g.First());
+            foreach (var ns in namespaceDeclarations)
+                document.NamespaceDeclarations.Add(ns.Key, ns.Value);
+            return kmlDocument.Descendants()
+                .Where(o => o.Name == document.Namespace + "Placemark" || o.Name == document.Namespace + "GroundOverlay" || o.Name == document.Namespace + "NetworkLink")
+                .Select(o => FeatureFactory.Create(o, document));
+        }
+
+
+        /// <summary>
+        /// A helper function that reads in a kmz file and creates wrappers around kml feature elements. Use this function if you want more control of the czml output.
+        /// </summary>
+        /// <param name="inputStream">The kmz input stream.</param>
+        /// <param name="document">Stores needed data about the kml document.</param>
+        /// <returns>
+        /// List of Feature wrapper classes.
+        /// </returns>
+        public static IEnumerable<Feature> CreateFeatureWrappers(Stream inputStream, CzmlDocument document)
+        {
+            var features = new List<Feature>();
+                using (ZipFile zipFile = ZipFile.Read(inputStream))
+                {
+                    foreach (ZipEntry entry in zipFile)
                     {
-                        using (Stream stream = entry.OpenReader())
+                        string fileName = entry.FileName;
+                        CesiumImageFormat? imageFormat = InferImageFormat(fileName);
+
+                        if (imageFormat != null && !document.ImageResolver.ContainsUrl(fileName))
                         {
-                            string dataUrl = CesiumFormattingHelper.ImageToDataUri(stream, imageFormat.Value);
-                            document.ImageResolver.AddUrl(fileName, dataUrl);
+                            using (Stream stream = entry.OpenReader())
+                            {
+                                string dataUrl = CesiumFormattingHelper.ImageToDataUri(stream, imageFormat.Value);
+                                document.ImageResolver.AddUrl(fileName, dataUrl);
+                            }
                         }
                     }
-                }
 
-                foreach (ZipEntry entry in zipFile)
-                {
-                    string extension = Path.GetExtension(entry.FileName);
-                    if (".kml".Equals(extension, StringComparison.OrdinalIgnoreCase))
+                    foreach (ZipEntry entry in zipFile)
                     {
-                        using (Stream stream = entry.OpenReader())
-                        using (StreamReader streamReader = new StreamReader(stream))
-                            Convert(streamReader, document);
+                        string extension = Path.GetExtension(entry.FileName);
+                        if (".kml".Equals(extension, StringComparison.OrdinalIgnoreCase))
+                        {
+                            using (Stream stream = entry.OpenReader())
+                            using (StreamReader streamReader = new StreamReader(stream))
+                            {
+                            features.AddRange(CreateFeatureWrappers(streamReader, document));
+                                }
+                            }
+                        }
                     }
-                }
-            }
-
-            document.CesiumOutputStream.WriteEndSequence();
+            return features;
         }
 
         private static CesiumImageFormat? InferImageFormat(string fileName)
@@ -93,27 +144,6 @@ namespace KmlToCesiumLanguage
             if (".bmp".Equals(extension, StringComparison.OrdinalIgnoreCase))
                 return CesiumImageFormat.Bmp;
             return null;
-        }
-
-        private static void Convert(TextReader inputReader, CzmlDocument document)
-        {
-            XDocument kmlDocument = XDocument.Load(inputReader);
-            document.Namespace = kmlDocument.Root.GetDefaultNamespace();
-
-            var namespaceDeclarations = kmlDocument.Root.Attributes()
-                .Where(a => a.IsNamespaceDeclaration)
-                .GroupBy(a => a.Name.Namespace == XNamespace.None ? String.Empty : a.Name.LocalName, a => XNamespace.Get(a.Value))
-                .ToDictionary(g => g.Key, g => g.First());
-            foreach (var ns in namespaceDeclarations)
-                document.NamespaceDeclarations.Add(ns.Key, ns.Value);
-
-            var features = kmlDocument.Descendants()
-                .Where(o => o.Name == document.Namespace + "Placemark" || o.Name == document.Namespace + "GroundOverlay")
-                .Select(o => FeatureFactory.Create(o, document));
-            foreach (var feature in features)
-            {
-                feature.WritePacket();
-            }
         }
     }
 }

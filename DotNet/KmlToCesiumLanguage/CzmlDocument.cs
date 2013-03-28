@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using System.Collections.Generic;
+using System;
 
 namespace KmlToCesiumLanguage
 {
@@ -14,12 +15,12 @@ namespace KmlToCesiumLanguage
         /// <summary>
         /// Initializes a new instance of the <see cref="CzmlDocument"/> class.
         /// </summary>
-        public CzmlDocument(TextWriter outputWriter)
+        public CzmlDocument(Uri parentUri = null)
         {
-            m_output = new CesiumOutputStream(outputWriter);
             m_writer = new CesiumStreamWriter();
             m_imageResolver = new CachingCesiumUrlResolver(int.MaxValue);
             NamespaceDeclarations = new Dictionary<string, XNamespace>();
+            m_parentUri = parentUri;
             Namespace = "";
         }
 
@@ -48,14 +49,6 @@ namespace KmlToCesiumLanguage
         public Dictionary<string, XNamespace> NamespaceDeclarations { get; private set; }
 
         /// <summary>
-        /// Gets the cesium output stream.
-        /// </summary>
-        public CesiumOutputStream CesiumOutputStream
-        {
-            get { return m_output; }
-        }
-
-        /// <summary>
         /// Gets the cesium stream writer.
         /// </summary>
         public CesiumStreamWriter CesiumStreamWriter
@@ -63,8 +56,16 @@ namespace KmlToCesiumLanguage
             get { return m_writer; }
         }
 
-        private readonly CesiumOutputStream m_output;
+        /// <summary>
+        /// Gets the parent URI. Used in resolving networklinks.
+        /// </summary>
+        public Uri ParentUri
+        {
+            get { return m_parentUri; }
+        }
+
         private readonly CesiumStreamWriter m_writer;
         private readonly CachingCesiumUrlResolver m_imageResolver;
+        private readonly Uri m_parentUri;
     }
 }

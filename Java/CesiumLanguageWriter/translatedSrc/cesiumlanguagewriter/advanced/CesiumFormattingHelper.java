@@ -291,6 +291,50 @@ public final class CesiumFormattingHelper {
 
 	/**
 	 *  
+	Converts a  {@link CesiumExternalDocumentScope} to the corresponding string in a
+	<topic name="Cesium">Cesium</topic> stream.
+	
+	
+	
+
+	 * @param externalDocumentScope The external document scope to convert.
+	 * @return The string representation of the specified  {@link CesiumExternalDocumentScope}.
+	 */
+	public static String externalDocumentScopeToString(CesiumExternalDocumentScope externalDocumentScope) {
+		switch (externalDocumentScope) {
+		case SHARED:
+			return "SHARED";
+		case PRIVATE:
+			return "PRIVATE";
+		default:
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "externalDocumentScope");
+		}
+	}
+
+	/**
+	 *  
+	Converts a  {@link CesiumExternalDocumentSourceType} to the corresponding string in a
+	<topic name="Cesium">Cesium</topic> stream.
+	
+	
+	
+
+	 * @param externalDocumentSourceType The external document source type to convert.
+	 * @return The string representation of the specified  {@link CesiumExternalDocumentSourceType}.
+	 */
+	public static String externalDocumentSourceTypeToString(CesiumExternalDocumentSourceType externalDocumentSourceType) {
+		switch (externalDocumentSourceType) {
+		case JSON:
+			return "json";
+		case EVENT_STREAM:
+			return "eventstream";
+		default:
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "externalDocumentSourceType");
+		}
+	}
+
+	/**
+	 *  
 	Converts a  {@link CesiumInterpolationAlgorithm} to the corresponding string in a
 	<topic name="Cesium">Cesium</topic> stream.
 	

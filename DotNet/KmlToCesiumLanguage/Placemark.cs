@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using CesiumLanguageWriter;
 
 namespace KmlToCesiumLanguage
 {
@@ -47,11 +48,11 @@ namespace KmlToCesiumLanguage
         /// <summary>
         /// Writes this instance.
         /// </summary>
-        public override void WritePacket()
+        public override void WritePacket(CesiumOutputStream stream)
         {
             foreach (var geometry in m_geometries)
             {
-                geometry.WritePacket();
+                geometry.WritePacket(stream);
             }
         }
 

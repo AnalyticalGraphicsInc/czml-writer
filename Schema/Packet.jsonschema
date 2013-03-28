@@ -80,6 +80,10 @@
 		"clock": {
             "$ref": "Clock.jsonschema",
             "description": "A simulated clock."
-        }
+        },
+        "external": {
+		    "$ref": "ExternalDocument.jsonschema",
+			"description": "A link to an external document."
+		}
     }
 }

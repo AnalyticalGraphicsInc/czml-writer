@@ -22,9 +22,9 @@ namespace KmlToCesiumLanguage
         }
 
         /// <inheritdoc />
-        public override void WritePacket()
+        public override void WritePacket(CesiumOutputStream stream)
         {
-            using (var packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
+            using (var packetWriter = m_document.CesiumStreamWriter.OpenPacket(stream))
             {
                 packetWriter.WriteId(Utility.GetId(m_element));
                 Utility.WriteAvailability(m_element, packetWriter, m_document.Namespace);
@@ -81,6 +81,10 @@ namespace KmlToCesiumLanguage
                             using (var image = material.OpenImageProperty())
                             {
                                 string href = iconElement.Element(m_document.Namespace + "href").Value;
+                                if (m_document.ParentUri != null)
+                                {
+                                    href = new Uri(m_document.ParentUri, href).AbsoluteUri;
+                                }
                                 image.WriteImageProperty(href, m_document.ImageResolver);
                             }
                         }

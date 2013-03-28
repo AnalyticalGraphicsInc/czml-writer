@@ -66,6 +66,7 @@
     <Compile Include="CartographicExtent.cs" />
     <Compile Include="CesiumResource.cs" />
     <Compile Include="CesiumResourceBehavior.cs" />
+    <Compile Include="CesiumExternalDocumentScope.cs" />
     <Compile Include="CesiumHorizontalOrigin.cs" />
     <Compile Include="CesiumImageFormat.cs" />
     <Compile Include="CesiumInterpolationAlgorithm.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="ClockRange.cs" />
     <Compile Include="ClockStep.cs" />
     <Compile Include="CustomCesiumWriter.cs" />
+    <Compile Include="CesiumExternalDocumentSourceType.cs" />
     <Compile Include="Generated\BillboardCesiumWriter.cs" />
     <Compile Include="Generated\BooleanCesiumWriter.cs" />
     <Compile Include="Generated\CameraCesiumWriter.cs" />
@@ -89,6 +91,9 @@
     <Compile Include="Generated\EllipseCesiumWriter.cs" />
     <Compile Include="Generated\EllipsoidCesiumWriter.cs" />
     <Compile Include="Generated\EllipsoidRadiiCesiumWriter.cs" />
+    <Compile Include="Generated\ExternalDocumentCesiumWriter.cs" />
+    <Compile Include="Generated\ExternalDocumentScopeCesiumWriter.cs" />
+    <Compile Include="Generated\ExternalDocumentSourceTypeCesiumWriter.cs" />
     <Compile Include="Generated\EyeOffsetCesiumWriter.cs" />
     <Compile Include="Generated\FontCesiumWriter.cs" />
     <Compile Include="Generated\HorizontalOriginCesiumWriter.cs" />
@@ -102,11 +107,13 @@
     <Compile Include="Generated\PathCesiumWriter.cs" />
     <Compile Include="Generated\PixelOffsetCesiumWriter.cs" />
     <Compile Include="Generated\PointCesiumWriter.cs" />
+    <Compile Include="Generated\PollingUpdateCesiumWriter.cs" />
     <Compile Include="Generated\PolygonCesiumWriter.cs" />
     <Compile Include="Generated\PolylineCesiumWriter.cs" />
     <Compile Include="Generated\PositionCesiumWriter.cs" />
     <Compile Include="Generated\PositionListCesiumWriter.cs" />
     <Compile Include="Generated\PyramidCesiumWriter.cs" />
+    <Compile Include="Generated\SimulationDrivenUpdateCesiumWriter.cs" />
     <Compile Include="Generated\SolidColorMaterialCesiumWriter.cs" />
     <Compile Include="Generated\StringCesiumWriter.cs" />
     <Compile Include="Generated\VerticalOriginCesiumWriter.cs" />
