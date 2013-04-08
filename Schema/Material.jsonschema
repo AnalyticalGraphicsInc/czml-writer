@@ -11,6 +11,10 @@
         "image": {
             "$ref": "ImageMaterial.jsonschema",
             "description": "Fills the surface with an image."
+        },
+        "grid": {
+            "$ref": "GridMaterial.jsonschema",
+            "description": "Fills the surface with a grid."
         }
     }
 }
