@@ -4,6 +4,7 @@
 using CesiumLanguageWriter.Advanced;
 using System;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace CesiumLanguageWriter
 {
@@ -22,8 +23,14 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string ImagePropertyName = "image";
 
+        /// <summary>
+        /// The name of the <code>grid</code> property.
+        /// </summary>
+        public const string GridPropertyName = "grid";
+
         private readonly Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<SolidColorMaterialCesiumWriter>(() => new SolidColorMaterialCesiumWriter(SolidColorPropertyName), false);
         private readonly Lazy<ImageMaterialCesiumWriter> m_image = new Lazy<ImageMaterialCesiumWriter>(() => new ImageMaterialCesiumWriter(ImagePropertyName), false);
+        private readonly Lazy<GridMaterialCesiumWriter> m_grid = new Lazy<GridMaterialCesiumWriter>(() => new GridMaterialCesiumWriter(GridPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -80,6 +87,23 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(ImageWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>grid</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>grid</code> property defines fills the surface with a grid.
+        /// </summary>
+        public GridMaterialCesiumWriter GridWriter
+        {
+            get { return m_grid.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>grid</code> property.  The <code>grid</code> property defines fills the surface with a grid.
+        /// </summary>
+        public GridMaterialCesiumWriter OpenGridProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(GridWriter);
         }
 
     }
