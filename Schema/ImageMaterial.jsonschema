@@ -1,6 +1,6 @@
 {
     "title": "ImageMaterial",
-    "description": "A material that fills the surface with an image.",
+    "description": "Fills the surface with an image.",
     "type": ["array", "object"],
     "items": { "$ref": "#" },
     "properties": {

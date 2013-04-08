@@ -34,6 +34,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\EyeOffset.jsonschema = ..\Schema\EyeOffset.jsonschema
 		..\Schema\Font.jsonschema = ..\Schema\Font.jsonschema
 		..\Schema\FontValue.jsonschema = ..\Schema\FontValue.jsonschema
+		..\Schema\GridMaterial.jsonschema = ..\Schema\GridMaterial.jsonschema
 		..\Schema\HorizontalOrigin.jsonschema = ..\Schema\HorizontalOrigin.jsonschema
 		..\Schema\HorizontalOriginValue.jsonschema = ..\Schema\HorizontalOriginValue.jsonschema
 		..\Schema\Image.jsonschema = ..\Schema\Image.jsonschema

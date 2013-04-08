@@ -1,0 +1,32 @@
+{
+    "title": "GridMaterial",
+    "description": "Fills the surface with a two dimensional grid.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "color": {
+            "$ref": "Color.jsonschema",
+            "description": "The color of the surface."
+        },
+        "cellAlpha": {
+            "$ref": "Double.jsonschema",
+            "description": "Alpha value for the space between grid lines.  This will be combined with the color alpha."
+        },
+        "rowCount": {
+            "$ref": "Double.jsonschema",
+            "description": "The number of horizontal grid lines."
+        },
+        "columnCount": {
+            "$ref": "Double.jsonschema",
+            "description": "The number of vertical grid lines."
+        },
+        "rowThickness": {
+            "$ref": "Double.jsonschema",
+            "description": "The thickness of horizontal grid lines, in pixels."
+        },
+        "columnThickness": {
+            "$ref": "Double.jsonschema",
+            "description": "The thickness of vertical grid lines, in pixels."
+        }
+    }
+}
