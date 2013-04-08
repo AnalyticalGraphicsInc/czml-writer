@@ -11,7 +11,7 @@ import java.awt.image.RenderedImage;
 
 /**
  *  
- Writes a <code>ImageMaterial</code> to a  {@link CesiumOutputStream}.  A <code>ImageMaterial</code> a material that fills the surface with an image.
+ Writes a <code>ImageMaterial</code> to a  {@link CesiumOutputStream}.  A <code>ImageMaterial</code> fills the surface with an image.
  
 
  */
