@@ -42,7 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestGeometry.cs" />
     <Compile Include="TestGroundOverlay.cs" />
+    <Compile Include="TestGxMultiTrack.cs" />
+    <Compile Include="TestGxTrack.cs" />
     <Compile Include="TestKmlConverter.cs" />
     <Compile Include="TestLineString.cs" />
     <Compile Include="TestPoint.cs" />

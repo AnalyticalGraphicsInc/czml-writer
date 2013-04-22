@@ -24,13 +24,13 @@ namespace CesiumLanguageWriter
         public const string ImagePropertyName = "image";
 
         /// <summary>
-        /// The name of the <code>video</code> property.
+        /// The name of the <code>grid</code> property.
         /// </summary>
-        public const string VideoPropertyName = "video";
+        public const string GridPropertyName = "grid";
 
         private readonly Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<SolidColorMaterialCesiumWriter>(() => new SolidColorMaterialCesiumWriter(SolidColorPropertyName), false);
         private readonly Lazy<ImageMaterialCesiumWriter> m_image = new Lazy<ImageMaterialCesiumWriter>(() => new ImageMaterialCesiumWriter(ImagePropertyName), false);
-        private readonly Lazy<VideoMaterialCesiumWriter> m_video = new Lazy<VideoMaterialCesiumWriter>(() => new VideoMaterialCesiumWriter(VideoPropertyName), false);
+        private readonly Lazy<GridMaterialCesiumWriter> m_grid = new Lazy<GridMaterialCesiumWriter>(() => new GridMaterialCesiumWriter(GridPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -90,20 +90,20 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>video</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>video</code> property defines fills the surface with a video.
+        /// Gets the writer for the <code>grid</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>grid</code> property defines fills the surface with a grid.
         /// </summary>
-        public VideoMaterialCesiumWriter VideoWriter
+        public GridMaterialCesiumWriter GridWriter
         {
-            get { return m_video.Value; }
+            get { return m_grid.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>video</code> property.  The <code>video</code> property defines fills the surface with a video.
+        /// Opens and returns the writer for the <code>grid</code> property.  The <code>grid</code> property defines fills the surface with a grid.
         /// </summary>
-        public VideoMaterialCesiumWriter OpenVideoProperty()
+        public GridMaterialCesiumWriter OpenGridProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(VideoWriter);
+            return OpenAndReturn(GridWriter);
         }
 
     }

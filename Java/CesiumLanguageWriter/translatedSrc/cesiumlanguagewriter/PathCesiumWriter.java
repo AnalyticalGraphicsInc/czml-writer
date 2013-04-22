@@ -42,6 +42,13 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	public static final String WidthPropertyName = "width";
 	/**
 	 *  
+	The name of the <code>resolution</code> property.
+	
+
+	 */
+	public static final String ResolutionPropertyName = "resolution";
+	/**
+	 *  
 	The name of the <code>outlineColor</code> property.
 	
 
@@ -81,6 +88,11 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	private Lazy<DoubleCesiumWriter> m_width = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(WidthPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_resolution = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(ResolutionPropertyName);
 		}
 	}, false);
 	private Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
@@ -340,6 +352,70 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	public final void writeWidthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
 		{
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>resolution</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>resolution</code> property defines the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path.
+	
+
+	 */
+	public final DoubleCesiumWriter getResolutionWriter() {
+		return m_resolution.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>resolution</code> property.  The <code>resolution</code> property defines the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path.
+	
+
+	 */
+	public final DoubleCesiumWriter openResolutionProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getResolutionWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>resolution</code> property as a <code>number</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeResolutionProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>resolution</code> property as a <code>number</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeResolutionProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
 			} finally {

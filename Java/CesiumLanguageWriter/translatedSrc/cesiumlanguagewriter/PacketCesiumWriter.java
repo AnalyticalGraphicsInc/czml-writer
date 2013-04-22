@@ -8,7 +8,9 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BillboardCesiumWriter;
 import cesiumlanguagewriter.CameraCesiumWriter;
+import cesiumlanguagewriter.ClockCesiumWriter;
 import cesiumlanguagewriter.ConeCesiumWriter;
+import cesiumlanguagewriter.EllipseCesiumWriter;
 import cesiumlanguagewriter.EllipsoidCesiumWriter;
 import cesiumlanguagewriter.LabelCesiumWriter;
 import cesiumlanguagewriter.OrientationCesiumWriter;
@@ -140,6 +142,20 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	 */
 	public static final String ViewFromPropertyName = "viewFrom";
+	/**
+	 *  
+	The name of the <code>ellipse</code> property.
+	
+
+	 */
+	public static final String EllipsePropertyName = "ellipse";
+	/**
+	 *  
+	The name of the <code>clock</code> property.
+	
+
+	 */
+	public static final String ClockPropertyName = "clock";
 	private Lazy<PositionCesiumWriter> m_position = new Lazy<cesiumlanguagewriter.PositionCesiumWriter>(new Func1<cesiumlanguagewriter.PositionCesiumWriter>() {
 		public cesiumlanguagewriter.PositionCesiumWriter invoke() {
 			return new PositionCesiumWriter(PositionPropertyName);
@@ -203,6 +219,16 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	private Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<cesiumlanguagewriter.EllipsoidCesiumWriter>(new Func1<cesiumlanguagewriter.EllipsoidCesiumWriter>() {
 		public cesiumlanguagewriter.EllipsoidCesiumWriter invoke() {
 			return new EllipsoidCesiumWriter(EllipsoidPropertyName);
+		}
+	}, false);
+	private Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<cesiumlanguagewriter.EllipseCesiumWriter>(new Func1<cesiumlanguagewriter.EllipseCesiumWriter>() {
+		public cesiumlanguagewriter.EllipseCesiumWriter invoke() {
+			return new EllipseCesiumWriter(EllipsePropertyName);
+		}
+	}, false);
+	private Lazy<ClockCesiumWriter> m_clock = new Lazy<cesiumlanguagewriter.ClockCesiumWriter>(new Func1<cesiumlanguagewriter.ClockCesiumWriter>() {
+		public cesiumlanguagewriter.ClockCesiumWriter invoke() {
+			return new ClockCesiumWriter(ClockPropertyName);
 		}
 	}, false);
 
@@ -913,5 +939,43 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 		String PropertyName = ViewFromPropertyName;
 		getOutput().writePropertyName(PropertyName);
 		CesiumWritingHelper.writeCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
+	}
+
+	/**
+	 *  Gets the writer for the <code>ellipse</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipse</code> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
+	
+
+	 */
+	public final EllipseCesiumWriter getEllipseWriter() {
+		return m_ellipse.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>ellipse</code> property.  The <code>ellipse</code> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
+	
+
+	 */
+	public final EllipseCesiumWriter openEllipseProperty() {
+		return this.<EllipseCesiumWriter> openAndReturn(getEllipseWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>clock</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>clock</code> property defines a simulated clock.
+	
+
+	 */
+	public final ClockCesiumWriter getClockWriter() {
+		return m_clock.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>clock</code> property.  The <code>clock</code> property defines a simulated clock.
+	
+
+	 */
+	public final ClockCesiumWriter openClockProperty() {
+		return this.<ClockCesiumWriter> openAndReturn(getClockWriter());
 	}
 }
