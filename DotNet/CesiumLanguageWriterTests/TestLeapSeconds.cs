@@ -114,7 +114,7 @@ namespace CesiumLanguageWriterTests
         /// represent a day containing a leap second.
         /// </summary>
         [Test]
-        [ExpectedException(typeof (ArgumentOutOfRangeException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestJulianDateCannotRepresentMomentOfLeapSecond()
         {
             JulianDate momentOfLeapSecond = new JulianDate(2453736, 43232.0, TimeStandard.InternationalAtomicTime);

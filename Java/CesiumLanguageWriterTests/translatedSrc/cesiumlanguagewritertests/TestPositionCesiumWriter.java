@@ -68,7 +68,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 				DisposeHelper.dispose(disposable_1);
 			}
 		}
-		Assert.assertEquals("{\"position\":{\"cartesian\":[1.0,2.0,3.0]}}", getStringWriter().toString());
+		Assert.assertEquals("{\"position\":{\"cartesian\":[1,2,3]}}", getStringWriter().toString());
 	}
 
 	@Test
@@ -95,7 +95,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 				DisposeHelper.dispose(disposable_2);
 			}
 		}
-		Assert.assertEquals("{\"position\":{\"cartographicRadians\":[1.0,2.0,3.0]}}", getStringWriter().toString());
+		Assert.assertEquals("{\"position\":{\"cartographicRadians\":[1,2,3]}}", getStringWriter().toString());
 	}
 
 	@Test
@@ -113,9 +113,9 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 								ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
 								ArrayList<cesiumlanguagewriter.Cartesian> positions = new ArrayList<cesiumlanguagewriter.Cartesian>();
 								dates.add(startDate);
-								positions.add(new Cartesian(1.0, 2.0, 3.0));
+								positions.add(new Cartesian(1.1, 2.2, 3.3));
 								dates.add(startDate.addSeconds(60.0));
-								positions.add(new Cartesian(4.0, 5.0, 6.0));
+								positions.add(new Cartesian(4.4, 5.5, 6.6));
 								interval.writeCartesian(dates, positions);
 							} finally {
 								DisposeHelper.dispose(interval);
@@ -129,7 +129,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 				DisposeHelper.dispose(disposable_3);
 			}
 		}
-		Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartesian\":[0.0,1.0,2.0,3.0,60.0,4.0,5.0,6.0]}}", getStringWriter().toString());
+		Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartesian\":[0,1.1,2.2,3.3,60,4.4,5.5,6.6]}}", getStringWriter().toString());
 	}
 
 	@Test
@@ -165,7 +165,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 				DisposeHelper.dispose(disposable_4);
 			}
 		}
-		Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartesian\":[0.0,4.0,5.0,6.0]}}", getStringWriter().toString());
+		Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartesian\":[0,4,5,6]}}", getStringWriter().toString());
 	}
 
 	@Test
@@ -183,9 +183,9 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 								ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
 								ArrayList<cesiumlanguagewriter.Cartographic> positions = new ArrayList<cesiumlanguagewriter.Cartographic>();
 								dates.add(startDate);
-								positions.add(new Cartographic(1.0, 2.0, 3.0));
+								positions.add(new Cartographic(1.1, 2.2, 3.3));
 								dates.add(startDate.addSeconds(60.0));
-								positions.add(new Cartographic(4.0, 5.0, 6.0));
+								positions.add(new Cartographic(4.4, 5.5, 6.6));
 								interval.writeCartographicRadians(dates, positions);
 							} finally {
 								DisposeHelper.dispose(interval);
@@ -199,7 +199,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 				DisposeHelper.dispose(disposable_5);
 			}
 		}
-		Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartographicRadians\":[0.0,1.0,2.0,3.0,60.0,4.0,5.0,6.0]}}", getStringWriter().toString());
+		Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartographicRadians\":[0,1.1,2.2,3.3,60,4.4,5.5,6.6]}}", getStringWriter().toString());
 	}
 
 	@Test
@@ -235,12 +235,11 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 				DisposeHelper.dispose(disposable_6);
 			}
 		}
-		Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartographicRadians\":[0.0,4.0,5.0,6.0]}}", getStringWriter().toString());
+		Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartographicRadians\":[0,4,5,6]}}", getStringWriter().toString());
 	}
 
 	@Test
 	public final void cartesianValueWritesEmptyArrayAndDoesNotWriteEpochWhenGivenAnEmptyCollection() {
-		JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
 		{
 			PacketCesiumWriter disposable_7 = (getPacket());
 			try {
@@ -270,7 +269,6 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 
 	@Test
 	public final void cartographicRadiansValueWritesEmptyArrayAndDoesNotWriteEpochWhenGivenAnEmptyCollection() {
-		JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
 		{
 			PacketCesiumWriter disposable_8 = (getPacket());
 			try {

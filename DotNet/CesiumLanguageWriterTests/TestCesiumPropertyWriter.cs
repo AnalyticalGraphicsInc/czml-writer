@@ -9,29 +9,13 @@ namespace CesiumLanguageWriterTests
     public abstract class TestCesiumPropertyWriter<TDerived>
         where TDerived : CesiumPropertyWriter<TDerived>
     {
-        public StringWriter StringWriter
-        {
-            get;
-            private set;
-        }
+        public StringWriter StringWriter { get; private set; }
 
-        public CesiumOutputStream OutputStream
-        {
-            get;
-            private set;
-        }
+        public CesiumOutputStream OutputStream { get; private set; }
 
-        public CesiumStreamWriter Writer
-        {
-            get;
-            private set;
-        }
+        public CesiumStreamWriter Writer { get; private set; }
 
-        public PacketCesiumWriter Packet
-        {
-            get;
-            private set;
-        }
+        public PacketCesiumWriter Packet { get; private set; }
 
         [SetUp]
         public void SetUp()
