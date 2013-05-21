@@ -413,7 +413,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestRotateByQuaternion()
         {
-            double angle = Math.PI / 3.0;  // half angle of 120 degree rotation
+            double angle = Math.PI / 3.0; // half angle of 120 degree rotation
             double cos = Math.Cos(angle);
             double sin = Math.Sin(angle);
 
@@ -440,7 +440,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestRotateByMatrix3By3()
         {
-            double angle = Math.PI / 3.0;  // half angle of 120 degree rotation
+            double angle = Math.PI / 3.0; // half angle of 120 degree rotation
             double cos = Math.Cos(angle);
             double sin = Math.Sin(angle);
 

@@ -38,7 +38,7 @@ namespace ShapefileReaderTests
         {
             Shape shape = m_reader[0];
             string value = shape.GetMetadataValue("abbrev");
-            Assert.That(value.Equals("Afg."));
+            Assert.AreEqual("Afg.", value);
 
             value = shape.GetMetadataValue("pop_est");
             Assert.AreEqual("28400000.00", value, "Metadata does not equal expected value.");

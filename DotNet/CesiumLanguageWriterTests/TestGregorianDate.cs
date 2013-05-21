@@ -30,14 +30,14 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         public void CannotConstructWithInvalidTime()
         {
             new GregorianDate(2000, 1, 2, 24, 0, 0);
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         public void CannotConstructWithInvalidDate()
         {
             new GregorianDate(2006, 2, 29, 0, 0, 0);
@@ -228,7 +228,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         [CSToJavaExclude]
         public void CompareToWithWrongTypeThrows()
         {
@@ -403,7 +403,7 @@ namespace CesiumLanguageWriterTests
         public void TestYearDayConstructor()
         {
             DateTime aTime = new DateTime(2000, 2, 28, 1, 3, 4);
-            Assert.AreEqual(31 + 28, aTime.DayOfYear);//* January has 31 days, so add 28 to that...
+            Assert.AreEqual(31 + 28, aTime.DayOfYear); //* January has 31 days, so add 28 to that...
             GregorianDate sameDate = new GregorianDate(aTime.Year, aTime.DayOfYear);
             Assert.AreEqual(2000, sameDate.Year);
             Assert.AreEqual(59, sameDate.DayOfYear);
@@ -465,7 +465,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         public void CannotConstructGregorianDateRepresentingInvalidLeapSecond()
         {
             new GregorianDate(2008, 12, 30, 23, 59, 60);

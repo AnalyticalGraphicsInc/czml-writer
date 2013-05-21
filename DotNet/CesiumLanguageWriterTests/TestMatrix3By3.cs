@@ -188,9 +188,9 @@ namespace CesiumLanguageWriterTests
                 }
                 values[i] = double.NaN;
                 Assert.IsTrue(new Matrix3By3(
-                    values[0], values[1],values[2],
-                    values[3],values[4],values[5],
-                    values[6],values[7],values[8]).IsUndefined);
+                                  values[0], values[1], values[2],
+                                  values[3], values[4], values[5],
+                                  values[6], values[7], values[8]).IsUndefined);
             }
         }
 
@@ -425,7 +425,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(mat4.M11, 1);
             Assert.AreEqual(mat4.M22, 0);
             Assert.AreEqual(mat4.M33, 0);
-
         }
 
         /// <summary>
@@ -439,7 +438,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(Matrix3By3.Zero.Equals(test1.Subtract(test2)));
             Assert.IsTrue(Matrix3By3.Zero.Equals(test1 - test2));
             Assert.IsTrue((test2 * 2.0).Equals(test1.Add(test2)));
-            Assert.IsTrue((test2 * 2.0).Equals(test1+test2));
+            Assert.IsTrue((test2 * 2.0).Equals(test1 + test2));
             Assert.IsTrue((new Matrix3By3(30, 36, 42, 66, 81, 96, 102, 126, 150).Equals(test1.Multiply(test2))));
             Assert.IsTrue((new Matrix3By3(30, 36, 42, 66, 81, 96, 102, 126, 150).Equals(test1 * test2)));
         }
@@ -479,7 +478,7 @@ namespace CesiumLanguageWriterTests
         /// Test zero invert exception
         /// </summary>
         [Test]
-        [ExpectedException (typeof(ArithmeticException))]
+        [ExpectedException(typeof(ArithmeticException))]
         public void TestZeroInvertException()
         {
             Matrix3By3 mat = Matrix3By3.Zero.Invert();

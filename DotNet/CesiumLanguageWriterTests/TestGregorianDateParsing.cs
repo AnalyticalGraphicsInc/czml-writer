@@ -205,21 +205,21 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        [ExpectedException(typeof (FormatException))]
+        [ExpectedException(typeof(FormatException))]
         public void ParseExactThrowsOnInvalidFormat()
         {
             GregorianDate.ParseExact("1/1/2009", "dddd, dd MMMM yyyy HH:mm:ss", m_cultureInfo);
         }
 
         [Test]
-        [ExpectedException(typeof (FormatException))]
+        [ExpectedException(typeof(FormatException))]
         public void ParseExactThrowsOnNullFormat()
         {
             GregorianDate.ParseExact("1/1/2009", (string)null, m_cultureInfo);
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ParseExactThrowsOnNullInput()
         {
             GregorianDate.ParseExact(null, "dddd, dd MMMM yyyy HH:mm:ss", m_cultureInfo);
@@ -315,21 +315,21 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ParseThrowsOnNullInput()
         {
             GregorianDate.Parse(null, m_cultureInfo);
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void ParseThrowsOnNullInputWithoutCultureInfo()
         {
             GregorianDate.Parse(null);
         }
 
         [Test]
-        [ExpectedException(typeof (FormatException))]
+        [ExpectedException(typeof(FormatException))]
         public void ParseThrowsFormatExceptionWhenNoMatch()
         {
             GregorianDate.Parse("February Q, 2009", m_cultureInfo);

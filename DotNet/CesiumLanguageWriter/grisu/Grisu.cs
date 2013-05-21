@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 
 namespace grisu.net
 {
@@ -606,11 +605,6 @@ namespace grisu.net
                                              length - decimal_point);
                 int remaining_digits = digits_after_point - (length - decimal_point);
                 result_builder.Write(new string('0', remaining_digits));
-            }
-            if (digits_after_point == 0)
-            {
-                result_builder.Write('.');
-                result_builder.Write('0');
             }
         }
 

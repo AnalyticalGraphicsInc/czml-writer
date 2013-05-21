@@ -1,5 +1,4 @@
-﻿using System.IO;
-using CesiumLanguageWriter;
+﻿using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
 

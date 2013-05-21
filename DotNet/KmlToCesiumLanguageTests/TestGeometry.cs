@@ -32,7 +32,7 @@ namespace KmlToCesiumLanguageTests
             geometry.WritePacket();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"id\":\"STS-122\""));
+            StringAssert.Contains("\"id\":\"STS-122\"", result);
         }
     }
 }

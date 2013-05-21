@@ -81,7 +81,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsFalse(second.EqualsEpsilon(first, 1e-4));
             Assert.IsFalse(second.EqualsEpsilon(first, 1e-5));
         }
-        
+
         /// <summary>
         /// Tests to ensure the equality fails when comparing incorrect type.
         /// </summary>

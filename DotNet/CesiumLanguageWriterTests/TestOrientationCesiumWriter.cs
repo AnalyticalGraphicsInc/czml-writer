@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace CesiumLanguageWriterTests
 {
     [TestFixture]
-    class TestOrientationCesiumWriter : TestCesiumInterpolatablePropertyWriter<OrientationCesiumWriter>
+    public class TestOrientationCesiumWriter : TestCesiumInterpolatablePropertyWriter<OrientationCesiumWriter>
     {
         protected override CesiumPropertyWriter<OrientationCesiumWriter> CreatePropertyWriter(string propertyName)
         {
@@ -87,15 +87,10 @@ namespace CesiumLanguageWriterTests
                             interval.WriteUnitQuaternion(dates, orientations);
                         }
                     }
-
-
-
                 }
 
                 Console.WriteLine(sw.ToString());
             }
-
         }
-
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
@@ -35,7 +34,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteCartesian(new Cartesian(1.0, 2.0, 3.0));
             }
-            Assert.AreEqual("{\"position\":{\"cartesian\":[1.0,2.0,3.0]}}", StringWriter.ToString());
+            Assert.AreEqual("{\"position\":{\"cartesian\":[1,2,3]}}", StringWriter.ToString());
         }
 
         [Test]
@@ -47,7 +46,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteCartographicRadians(new Cartographic(1.0, 2.0, 3.0));
             }
-            Assert.AreEqual("{\"position\":{\"cartographicRadians\":[1.0,2.0,3.0]}}", StringWriter.ToString());
+            Assert.AreEqual("{\"position\":{\"cartographicRadians\":[1,2,3]}}", StringWriter.ToString());
         }
 
         [Test]
@@ -63,14 +62,14 @@ namespace CesiumLanguageWriterTests
                 var positions = new List<Cartesian>();
 
                 dates.Add(startDate);
-                positions.Add(new Cartesian(1.0, 2.0, 3.0));
+                positions.Add(new Cartesian(1.1, 2.2, 3.3));
 
                 dates.Add(startDate.AddSeconds(60.0));
-                positions.Add(new Cartesian(4.0, 5.0, 6.0));
+                positions.Add(new Cartesian(4.4, 5.5, 6.6));
 
                 interval.WriteCartesian(dates, positions);
             }
-            Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartesian\":[0.0,1.0,2.0,3.0,60.0,4.0,5.0,6.0]}}", StringWriter.ToString());
+            Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartesian\":[0,1.1,2.2,3.3,60,4.4,5.5,6.6]}}", StringWriter.ToString());
         }
 
         [Test]
@@ -96,7 +95,7 @@ namespace CesiumLanguageWriterTests
 
                 interval.WriteCartesian(dates, positions, 1, 1);
             }
-            Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartesian\":[0.0,4.0,5.0,6.0]}}", StringWriter.ToString());
+            Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartesian\":[0,4,5,6]}}", StringWriter.ToString());
         }
 
         [Test]
@@ -112,14 +111,14 @@ namespace CesiumLanguageWriterTests
                 var positions = new List<Cartographic>();
 
                 dates.Add(startDate);
-                positions.Add(new Cartographic(1.0, 2.0, 3.0));
+                positions.Add(new Cartographic(1.1, 2.2, 3.3));
 
                 dates.Add(startDate.AddSeconds(60.0));
-                positions.Add(new Cartographic(4.0, 5.0, 6.0));
+                positions.Add(new Cartographic(4.4, 5.5, 6.6));
 
                 interval.WriteCartographicRadians(dates, positions);
             }
-            Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartographicRadians\":[0.0,1.0,2.0,3.0,60.0,4.0,5.0,6.0]}}", StringWriter.ToString());
+            Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartographicRadians\":[0,1.1,2.2,3.3,60,4.4,5.5,6.6]}}", StringWriter.ToString());
         }
 
         [Test]
@@ -145,14 +144,12 @@ namespace CesiumLanguageWriterTests
 
                 interval.WriteCartographicRadians(dates, positions, 1, 1);
             }
-            Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartographicRadians\":[0.0,4.0,5.0,6.0]}}", StringWriter.ToString());
+            Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartographicRadians\":[0,4,5,6]}}", StringWriter.ToString());
         }
 
         [Test]
         public void CartesianValueWritesEmptyArrayAndDoesNotWriteEpochWhenGivenAnEmptyCollection()
         {
-            JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
-
             using (Packet)
             using (PositionCesiumWriter position = Packet.OpenPositionProperty())
             using (PositionCesiumWriter interval = position.OpenInterval())
@@ -167,8 +164,6 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CartographicRadiansValueWritesEmptyArrayAndDoesNotWriteEpochWhenGivenAnEmptyCollection()
         {
-            JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
-
             using (Packet)
             using (PositionCesiumWriter position = Packet.OpenPositionProperty())
             using (PositionCesiumWriter interval = position.OpenInterval())

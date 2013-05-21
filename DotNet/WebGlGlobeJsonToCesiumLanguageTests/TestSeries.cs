@@ -21,33 +21,33 @@ namespace WebGLGlobeJsonToCesiumLanguageTests
         [Test]
         public void UsesCartographicDegrees()
         {
-            Series series = new Series("test", new[] { new Cartographic(90.0, 45.0, 3.0) }, m_document);
+            Series series = new Series("test", new[] { new Cartographic(90, 45, 3) }, m_document);
             series.Write();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"cartographicDegrees\":"));
-            Assert.That(result.Contains("[90.0,45.0,0.0,90.0,45.0,3.0]"));
+            StringAssert.Contains("\"cartographicDegrees\":", result);
+            StringAssert.Contains("[90,45,0,90,45,3]", result);
         }
 
         [Test]
         public void GeneratesIndexedIds()
         {
-            Series series = new Series("test", new[] { new Cartographic(1.0, 2.0, 3.0), new Cartographic(4.0, 5.0, 6.0) }, m_document);
+            Series series = new Series("test", new[] { new Cartographic(1, 2, 3), new Cartographic(4, 5, 6) }, m_document);
             series.Write();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"id\":\"test0\""));
-            Assert.That(result.Contains("\"id\":\"test1\""));
+            StringAssert.Contains("\"id\":\"test0\"", result);
+            StringAssert.Contains("\"id\":\"test1\"", result);
         }
 
         [Test]
         public void ListsVertexPositionsForBothEndPoints()
         {
-            Series series = new Series("test", new[] { new Cartographic(1.0, 2.0, 3.0) }, m_document);
+            Series series = new Series("test", new[] { new Cartographic(1, 2, 3) }, m_document);
             series.Write();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"vertexPositions\":{\"cartographicDegrees\":[1.0,2.0,0.0,1.0,2.0,3.0]}"));
+            StringAssert.Contains("\"vertexPositions\":{\"cartographicDegrees\":[1,2,0,1,2,3]}", result);
         }
     }
 }
