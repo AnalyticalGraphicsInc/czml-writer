@@ -3,6 +3,7 @@ package cesiumlanguagewriter;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.CultureInfoHelper;
+import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IDisposable;
 import agi.foundation.compatibility.IntHelper;
 import agi.foundation.compatibility.LongHelper;
@@ -181,7 +182,7 @@ public class CesiumOutputStream implements IDisposable {
 		startNewValue();
 		m_firstInContainer = false;
 		m_inProperty = false;
-		TextWriterHelper.print(m_writer, value);
+		TextWriterHelper.print(m_writer, DoubleHelper.toString(value, "R", CultureInfoHelper.getInvariantCulture()));
 	}
 
 	/**

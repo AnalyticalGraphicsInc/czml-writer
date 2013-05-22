@@ -238,7 +238,7 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(-12 * 3600, result.Seconds);
             Assert.AreEqual(-1, result.Days);
 
-            duration = new Duration(1, 4*3600);
+            duration = new Duration(1, 4 * 3600);
             result = duration * -0.5;
             Assert.AreEqual(-14 * 3600, result.Seconds);
             Assert.AreEqual(0, result.Days);
@@ -269,7 +269,7 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(48, six / five);
 
             Duration seven = new Duration(0, -0.5);
-            Assert.AreEqual(-48*3600, four / seven);
+            Assert.AreEqual(-48 * 3600, four / seven);
         }
 
         /// <sumary>
@@ -316,7 +316,7 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(-14 * 3600, result.Seconds);
             Assert.AreEqual(0, result.Days);
         }
-        
+
         /// <summary>
         /// Tests the Duration.AddSeconds method.
         /// </summary>

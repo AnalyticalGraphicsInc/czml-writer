@@ -136,7 +136,7 @@ namespace CesiumLanguageWriterTests
         /// from a JulianDate prior to the earliest possible DateTime.
         /// </summary>
         [Test]
-        [ExpectedException(typeof (ArgumentOutOfRangeException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestJulianDateMinimumToDateTime()
         {
             JulianDate date = JulianDate.MinValue;

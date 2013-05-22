@@ -150,7 +150,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(85000.0, subtracted.SecondsOfDay);
         }
 
-
         /// <summary>
         /// Tests the function that determines the number of seconds between two Julian Dates
         /// </summary>
@@ -240,7 +239,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(-500.0, difference.Seconds);
         }
 
-
         /// <summary>
         /// Tests the JulianDate.AddSeconds method.
         /// </summary>
@@ -287,7 +285,7 @@ namespace CesiumLanguageWriterTests
         /// to a type that is not a JulianDate.
         /// </summary>
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         [CSToJavaExclude]
         public void TestCompareToWrongType()
         {
@@ -356,7 +354,7 @@ namespace CesiumLanguageWriterTests
         /// Tests the <see cref="IConvertible.ToSByte(System.IFormatProvider)"/> method.
         /// </summary>
         [Test]
-        [ExpectedException(typeof (InvalidCastException))]
+        [ExpectedException(typeof(InvalidCastException))]
         [CSToJavaExclude]
         public void TestToSByte()
         {
@@ -369,7 +367,7 @@ namespace CesiumLanguageWriterTests
         /// Tests the <see cref="IConvertible.ToChar(System.IFormatProvider)"/> method.
         /// </summary>
         [Test]
-        [ExpectedException(typeof (InvalidCastException))]
+        [ExpectedException(typeof(InvalidCastException))]
         [CSToJavaExclude]
         public void TestToChar()
         {
@@ -382,7 +380,7 @@ namespace CesiumLanguageWriterTests
         /// Tests the <see cref="IConvertible.ToUInt16(System.IFormatProvider)"/> method.
         /// </summary>
         [Test]
-        [ExpectedException(typeof (InvalidCastException))]
+        [ExpectedException(typeof(InvalidCastException))]
         [CSToJavaExclude]
         public void TestToUInt16()
         {
@@ -414,9 +412,9 @@ namespace CesiumLanguageWriterTests
             IConvertible convertible = date as IConvertible;
             DateTimeFormatInfo info = new DateTimeFormatInfo();
 
-            Assert.AreEqual(date.ToString(), convertible.ToType(typeof (string), info));
-            Assert.AreEqual(date.ToDateTime(), convertible.ToType(typeof (DateTime), info));
-            Assert.AreEqual(date.TotalDays, convertible.ToType(typeof (double), info));
+            Assert.AreEqual(date.ToString(), convertible.ToType(typeof(string), info));
+            Assert.AreEqual(date.ToDateTime(), convertible.ToType(typeof(DateTime), info));
+            Assert.AreEqual(date.TotalDays, convertible.ToType(typeof(double), info));
         }
 
         /// <summary>

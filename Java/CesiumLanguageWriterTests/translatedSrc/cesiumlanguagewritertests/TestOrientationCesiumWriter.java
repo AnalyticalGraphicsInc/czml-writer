@@ -2,7 +2,6 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.annotations.Internal;
 import agi.foundation.compatibility.ConsoleHelper;
 import agi.foundation.compatibility.DisposeHelper;
 import cesiumlanguagewriter.*;
@@ -13,7 +12,6 @@ import java.util.Collection;
 import org.junit.Ignore;
 import org.junit.Test;
 
-@Internal
 public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropertyWriter<OrientationCesiumWriter> {
 	@Override
 	protected CesiumPropertyWriter<OrientationCesiumWriter> createPropertyWriter(String propertyName) {

@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using NUnit.Framework;
-using KmlToCesiumLanguage;
 using System.Xml.Linq;
+using KmlToCesiumLanguage;
+using NUnit.Framework;
 
 namespace KmlToCesiumLanguageTests
 {
@@ -34,7 +34,7 @@ namespace KmlToCesiumLanguageTests
             lineString.WritePacket();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"availability\":\"20071206T1631Z/20071206T164018.0400000000009Z\""));
+            StringAssert.Contains("\"availability\":\"20071206T1631Z/20071206T164018.0400000000009Z\"", result);
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace KmlToCesiumLanguageTests
             lineString.WritePacket();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.199672027924945,0.6518798123947666,105045.668999999,-1.1997160587632991,0.6518491712145866,105041.867978398]}"));
+            StringAssert.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.199672027924945,0.6518798123947666,105045.668999999,-1.1997160587632991,0.6518491712145866,105041.867978398]}", result);
         }
 
         [Test]
@@ -68,7 +68,7 @@ namespace KmlToCesiumLanguageTests
             lineString.WritePacket();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"polyline\":{\"color\":{\"rgba\":[255,255,255,255]},\"width\":2.0,\"outlineWidth\":0.0}"));
+            StringAssert.Contains("\"polyline\":{\"color\":{\"rgba\":[255,255,255,255]},\"width\":2,\"outlineWidth\":0}", result);
         }
 
         [Test]
@@ -83,7 +83,7 @@ namespace KmlToCesiumLanguageTests
             lineString.WritePacket();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.199672027924945,0.6518798123947666,0.0,-1.1997160587632991,0.6518491712145866,0.0]}"));
+            StringAssert.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.199672027924945,0.6518798123947666,0,-1.1997160587632991,0.6518491712145866,0]}", result);
         }
 
         [Test]
@@ -99,7 +99,7 @@ namespace KmlToCesiumLanguageTests
             lineString.WritePacket();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.199672027924945,0.6518798123947666,0.0,-1.1997160587632991,0.6518491712145866,0.0]}"));
+            StringAssert.Contains("\"vertexPositions\":{\"cartographicRadians\":[-1.199672027924945,0.6518798123947666,0,-1.1997160587632991,0.6518491712145866,0]}", result);
         }
     }
 }
