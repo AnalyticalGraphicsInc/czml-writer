@@ -21,6 +21,7 @@ import cesiumlanguagewriter.PolylineCesiumWriter;
 import cesiumlanguagewriter.PositionCesiumWriter;
 import cesiumlanguagewriter.PositionListCesiumWriter;
 import cesiumlanguagewriter.PyramidCesiumWriter;
+import cesiumlanguagewriter.VectorCesiumWriter;
 import java.util.List;
 
 /**
@@ -156,6 +157,13 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	 */
 	public static final String ClockPropertyName = "clock";
+	/**
+	 *  
+	The name of the <code>vector</code> property.
+	
+
+	 */
+	public static final String VectorPropertyName = "vector";
 	private Lazy<PositionCesiumWriter> m_position = new Lazy<cesiumlanguagewriter.PositionCesiumWriter>(new Func1<cesiumlanguagewriter.PositionCesiumWriter>() {
 		public cesiumlanguagewriter.PositionCesiumWriter invoke() {
 			return new PositionCesiumWriter(PositionPropertyName);
@@ -229,6 +237,11 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	private Lazy<ClockCesiumWriter> m_clock = new Lazy<cesiumlanguagewriter.ClockCesiumWriter>(new Func1<cesiumlanguagewriter.ClockCesiumWriter>() {
 		public cesiumlanguagewriter.ClockCesiumWriter invoke() {
 			return new ClockCesiumWriter(ClockPropertyName);
+		}
+	}, false);
+	private Lazy<VectorCesiumWriter> m_vector = new Lazy<cesiumlanguagewriter.VectorCesiumWriter>(new Func1<cesiumlanguagewriter.VectorCesiumWriter>() {
+		public cesiumlanguagewriter.VectorCesiumWriter invoke() {
+			return new VectorCesiumWriter(VectorPropertyName);
 		}
 	}, false);
 
@@ -977,5 +990,24 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	 */
 	public final ClockCesiumWriter openClockProperty() {
 		return this.<ClockCesiumWriter> openAndReturn(getClockWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>vector</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends for the magnitude of the provided direction.
+	
+
+	 */
+	public final VectorCesiumWriter getVectorWriter() {
+		return m_vector.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>vector</code> property.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends for the magnitude of the provided direction.
+	
+
+	 */
+	public final VectorCesiumWriter openVectorProperty() {
+		return this.<VectorCesiumWriter> openAndReturn(getVectorWriter());
 	}
 }
