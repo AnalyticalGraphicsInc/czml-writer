@@ -5,18 +5,18 @@
     "type": ["array", "object"],
     "items": { "$ref": "#" },
     "properties": {
-        "referenceFrame": {
-            "description": "The reference frame in which cartesian positions are specified. Possible values are \"FIXED\" and \"INERTIAL\". In addition, the value of this property can be a hash (#) symbol followed by the ID of another object in the same scope whose \"position\" and \"orientation\" properties define the reference frame in which this position is defined.  This property is ignored when specifying position with any type other than cartesian. If this property is not specified, the default reference frame is \"FIXED\".",
+        "axes": {
+            "description": "TODO",
             "type": "string"
         },
-        "cartesian": {
-            "$ref": "Cartesian3Value.jsonschema",
-            "description": "The direction represented as a Cartesian `[X, Y, Z]` in the meters relative to the `referenceFrame`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.",
+        "unitCartesian": {
+            "$ref": "UnitCartesian3Value.jsonschema",
+            "description": "The direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.",
             "czmlValue": true
         },
-        "spherical": {
-            "$ref": "SphericalValue.jsonschema",
-            "description": "A direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, magnitude in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
+        "unitSpherical": {
+            "$ref": "UnitSphericalValue.jsonschema",
+            "description": "A direction specified as a unit spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
             "czmlValue": true
         }
     }

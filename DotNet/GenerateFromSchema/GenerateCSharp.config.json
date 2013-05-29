@@ -204,6 +204,116 @@
                 "writeValue": "CesiumWritingHelper.WriteCartesian3(Output, PropertyName, dates, values, startIndex, length);"
             }
         ],
+        "UnitCartesian3": [
+            {
+                "parameters": [
+                    {
+                        "type": "UnitCartesian",
+                        "name": "value",
+                        "description": "The value."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteUnitCartesian3(Output, value);"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the vector is specified."
+                    },
+                    {
+                        "type": "IList<UnitCartesian>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the vector is specified."
+                    },
+                    {
+                        "type": "IList<UnitCartesian>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to use in the `values` collection."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to use from the `values` collection."
+                    }
+                ],
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteUnitCartesian3(Output, PropertyName, dates, values, startIndex, length);"
+            }
+        ],
+        "UnitSpherical": [
+            {
+                "parameters": [
+                    {
+                        "type": "UnitSpherical",
+                        "name": "value",
+                        "description": "The value."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteUnitSpherical(Output, value);"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the vector is specified."
+                    },
+                    {
+                        "type": "IList<UnitSpherical>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the vector is specified."
+                    },
+                    {
+                        "type": "IList<UnitSpherical>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to use in the `values` collection."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to use from the `values` collection."
+                    }
+                ],
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteUnitSpherical(Output, PropertyName, dates, values, startIndex, length);"
+            }
+        ],
         "Cartesian3List": [
             {
                 "namespaces": ["System.Collections.Generic"],

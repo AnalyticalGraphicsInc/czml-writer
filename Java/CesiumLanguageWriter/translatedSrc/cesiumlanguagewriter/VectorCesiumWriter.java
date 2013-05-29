@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Vector</code> to a  {@link CesiumOutputStream}.  A <code>Vector</code> defines a graphical vector that originates at the `position` property and extends for the magnitude of the provided direction.
+ Writes a <code>Vector</code> to a  {@link CesiumOutputStream}.  A <code>Vector</code> defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
  
 
  */
@@ -48,6 +48,13 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
 	 */
 	public static final String DirectionPropertyName = "direction";
+	/**
+	 *  
+	The name of the <code>length</code> property.
+	
+
+	 */
+	public static final String LengthPropertyName = "length";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
@@ -66,6 +73,11 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 	private Lazy<DirectionCesiumWriter> m_direction = new Lazy<cesiumlanguagewriter.DirectionCesiumWriter>(new Func1<cesiumlanguagewriter.DirectionCesiumWriter>() {
 		public cesiumlanguagewriter.DirectionCesiumWriter invoke() {
 			return new DirectionCesiumWriter(DirectionPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_length = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(LengthPropertyName);
 		}
 	}, false);
 
@@ -314,7 +326,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 	}
 
 	/**
-	 *  Gets the writer for the <code>direction</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>direction</code> property defines the direction and magnitude of the vector.
+	 *  Gets the writer for the <code>direction</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>direction</code> property defines the direction of the vector.
 	
 
 	 */
@@ -324,7 +336,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>direction</code> property.  The <code>direction</code> property defines the direction and magnitude of the vector.
+	Opens and returns the writer for the <code>direction</code> property.  The <code>direction</code> property defines the direction of the vector.
 	
 
 	 */
@@ -335,17 +347,17 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
 	/**
 	 *  
-	Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction and magnitude of the vector.
+	Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeDirectionProperty(Cartesian value) {
+	public final void writeDirectionProperty(UnitCartesian value) {
 		{
 			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
 			try {
-				writer.writeCartesian(value);
+				writer.writeUnitCartesian(value);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -354,7 +366,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
 	/**
 	 *  
-	Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction and magnitude of the vector.
+	Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
 	
 	
 	
@@ -362,11 +374,11 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 	 * @param dates The dates at which the vector is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeDirectionProperty(List<JulianDate> dates, List<Cartesian> values) {
+	public final void writeDirectionProperty(List<JulianDate> dates, List<UnitCartesian> values) {
 		{
 			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
 			try {
-				writer.writeCartesian(dates, values);
+				writer.writeUnitCartesian(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -375,7 +387,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
 	/**
 	 *  
-	Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction and magnitude of the vector.
+	Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
 	
 	
 	
@@ -387,11 +399,11 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeDirectionProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+	public final void writeDirectionProperty(List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
 		{
 			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
 			try {
-				writer.writeCartesian(dates, values, startIndex, length);
+				writer.writeUnitCartesian(dates, values, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -400,17 +412,17 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
 	/**
 	 *  
-	Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction and magnitude of the vector.
+	Writes a value for the <code>direction</code> property as a <code>unitSpherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeDirectionPropertySpherical(Spherical value) {
+	public final void writeDirectionPropertyUnitSpherical(UnitSpherical value) {
 		{
 			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
 			try {
-				writer.writeSpherical(value);
+				writer.writeUnitSpherical(value);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -419,7 +431,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
 	/**
 	 *  
-	Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction and magnitude of the vector.
+	Writes a value for the <code>direction</code> property as a <code>unitSpherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
 	
 	
 	
@@ -427,11 +439,11 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 	 * @param dates The dates at which the vector is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeDirectionPropertySpherical(List<JulianDate> dates, List<Spherical> values) {
+	public final void writeDirectionPropertyUnitSpherical(List<JulianDate> dates, List<UnitSpherical> values) {
 		{
 			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
 			try {
-				writer.writeSpherical(dates, values);
+				writer.writeUnitSpherical(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -440,7 +452,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
 	/**
 	 *  
-	Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction and magnitude of the vector.
+	Writes a value for the <code>direction</code> property as a <code>unitSpherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
 	
 	
 	
@@ -452,11 +464,75 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeDirectionPropertySpherical(List<JulianDate> dates, List<Spherical> values, int startIndex, int length) {
+	public final void writeDirectionPropertyUnitSpherical(List<JulianDate> dates, List<UnitSpherical> values, int startIndex, int length) {
 		{
 			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
 			try {
-				writer.writeSpherical(dates, values, startIndex, length);
+				writer.writeUnitSpherical(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>length</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>length</code> property defines the graphical length of the vector.
+	
+
+	 */
+	public final DoubleCesiumWriter getLengthWriter() {
+		return m_length.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>length</code> property.  The <code>length</code> property defines the graphical length of the vector.
+	
+
+	 */
+	public final DoubleCesiumWriter openLengthProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getLengthWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>length</code> property as a <code>number</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeLengthProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>length</code> property as a <code>number</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeLengthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

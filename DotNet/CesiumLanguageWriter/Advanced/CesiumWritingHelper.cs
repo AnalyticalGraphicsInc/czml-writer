@@ -154,6 +154,100 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Writes a <see cref="UnitCartesian"/> value as an array in X, Y, Z order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="value">The value to write.</param>
+        public static void WriteUnitCartesian3(CesiumOutputStream output, UnitCartesian value)
+        {
+            output.WriteStartSequence();
+            output.WriteValue(value.X);
+            output.WriteValue(value.Y);
+            output.WriteValue(value.Z);
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes time-tagged <see cref="UnitCartesian"/> values as an array in [Time, X, Y, Z] order.
+        /// Times are epoch seconds since an epoch that is determined from the first date to be written.
+        /// The epoch property is written as well.
+        /// </summary>
+        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="propertyName">The name of the property to write.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The corresponding value for each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
+        /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
+        public static void WriteUnitCartesian3(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<UnitCartesian> values, int startIndex, int length)
+        {
+            if (dates.Count != values.Count)
+                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
+
+            JulianDate epoch = GetAndWriteEpoch(output, dates, startIndex, length);
+
+            output.WritePropertyName(propertyName);
+            output.WriteStartSequence();
+            int last = startIndex + length;
+            for (int i = startIndex; i < last; ++i)
+            {
+                output.WriteValue(epoch.SecondsDifference(dates[i]));
+                UnitCartesian value = values[i];
+                output.WriteValue(value.X);
+                output.WriteValue(value.Y);
+                output.WriteValue(value.Z);
+                output.WriteLineBreak();
+            }
+
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes a <see cref="UnitSpherical"/> value as an array in Clock, Cone order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="value">The value to write.</param>
+        public static void WriteUnitSpherical(CesiumOutputStream output, UnitSpherical value)
+        {
+            output.WriteStartSequence();
+            output.WriteValue(value.Clock);
+            output.WriteValue(value.Cone);
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes time-tagged <see cref="UnitSpherical"/> values as an array in [Time, Clock, Cone] order.
+        /// Times are epoch seconds since an epoch that is determined from the first date to be written.
+        /// The epoch property is written as well.
+        /// </summary>
+        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="propertyName">The name of the property to write.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The corresponding value for each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
+        /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
+        public static void WriteUnitSpherical(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<UnitSpherical> values, int startIndex, int length)
+        {
+            if (dates.Count != values.Count)
+                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
+
+            JulianDate epoch = GetAndWriteEpoch(output, dates, startIndex, length);
+
+            output.WritePropertyName(propertyName);
+            output.WriteStartSequence();
+            int last = startIndex + length;
+            for (int i = startIndex; i < last; ++i)
+            {
+                output.WriteValue(epoch.SecondsDifference(dates[i]));
+                UnitSpherical value = values[i];
+                output.WriteValue(value.Clock);
+                output.WriteValue(value.Cone);
+                output.WriteLineBreak();
+            }
+
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
         /// Writes a list of <see cref="Cartesian"/> values as an array in X, Y, Z order.
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
@@ -443,71 +537,6 @@ namespace CesiumLanguageWriter.Advanced
             {
                 output.WriteValue(value.Clock);
                 output.WriteValue(value.Cone);
-            }
-            output.WriteEndSequence();
-        }
-
-        /// <summary>
-        /// Writes a <see cref="Spherical"/> value as an array in Clock, Cone, Magnitude order.
-        /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
-        /// <param name="value">The value to write.</param>
-        public static void WriteSpherical(CesiumOutputStream output, Spherical value)
-        {
-            output.WriteStartSequence();
-            output.WriteValue(value.Clock);
-            output.WriteValue(value.Cone);
-            output.WriteValue(value.Magnitude);
-            output.WriteEndSequence();
-        }
-
-        /// <summary>
-        /// Writes time-tagged <see cref="Spherical"/> values as an array in [Time, Clock, Cone, Magnitude] order.
-        /// Times are epoch seconds since an epoch that is determined from the first date to be written.
-        /// The epoch property is written as well.
-        /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
-        /// <param name="propertyName">The name of the property to write.</param>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The corresponding value for each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
-        /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteSpherical(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Spherical> values, int startIndex, int length)
-        {
-            if (dates.Count != values.Count)
-                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
-
-            JulianDate epoch = GetAndWriteEpoch(output, dates, startIndex, length);
-
-            output.WritePropertyName(propertyName);
-            output.WriteStartSequence();
-            int last = startIndex + length;
-            for (int i = startIndex; i < last; ++i)
-            {
-                output.WriteValue(epoch.SecondsDifference(dates[i]));
-                Spherical value = values[i];
-                output.WriteValue(value.Clock);
-                output.WriteValue(value.Cone);
-                output.WriteValue(value.Magnitude);
-                output.WriteLineBreak();
-            }
-
-            output.WriteEndSequence();
-        }
-
-        /// <summary>
-        /// Writes a list of <see cref="Spherical"/> values as an array in Clock, Cone, Magnitude order.
-        /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
-        /// <param name="values">The values to write.</param>
-        public static void WriteSphericalList(CesiumOutputStream output, IEnumerable<Spherical> values)
-        {
-            output.WriteStartSequence();
-            foreach (Spherical value in values)
-            {
-                output.WriteValue(value.Clock);
-                output.WriteValue(value.Cone);
-                output.WriteValue(value.Magnitude);
             }
             output.WriteEndSequence();
         }

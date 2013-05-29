@@ -668,7 +668,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>vector</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends for the magnitude of the provided direction.
+        /// Gets the writer for the <code>vector</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
         /// </summary>
         public VectorCesiumWriter VectorWriter
         {
@@ -676,7 +676,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>vector</code> property.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends for the magnitude of the provided direction.
+        /// Opens and returns the writer for the <code>vector</code> property.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
         /// </summary>
         public VectorCesiumWriter OpenVectorProperty()
         {

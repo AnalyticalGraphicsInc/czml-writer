@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Vector</code> to a <see cref="CesiumOutputStream" />.  A <code>Vector</code> defines a graphical vector that originates at the `position` property and extends for the magnitude of the provided direction.
+    /// Writes a <code>Vector</code> to a <see cref="CesiumOutputStream" />.  A <code>Vector</code> defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
     /// </summary>
     public class VectorCesiumWriter : CesiumPropertyWriter<VectorCesiumWriter>
     {
@@ -33,10 +33,16 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DirectionPropertyName = "direction";
 
+        /// <summary>
+        /// The name of the <code>length</code> property.
+        /// </summary>
+        public const string LengthPropertyName = "length";
+
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
         private readonly Lazy<DirectionCesiumWriter> m_direction = new Lazy<DirectionCesiumWriter>(() => new DirectionCesiumWriter(DirectionPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_length = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(LengthPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -209,7 +215,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>direction</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>direction</code> property defines the direction and magnitude of the vector.
+        /// Gets the writer for the <code>direction</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>direction</code> property defines the direction of the vector.
         /// </summary>
         public DirectionCesiumWriter DirectionWriter
         {
@@ -217,7 +223,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>direction</code> property.  The <code>direction</code> property defines the direction and magnitude of the vector.
+        /// Opens and returns the writer for the <code>direction</code> property.  The <code>direction</code> property defines the direction of the vector.
         /// </summary>
         public DirectionCesiumWriter OpenDirectionProperty()
         {
@@ -226,82 +232,126 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction and magnitude of the vector.
+        /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteDirectionProperty(Cartesian value)
+        public void WriteDirectionProperty(UnitCartesian value)
         {
             using (var writer = OpenDirectionProperty())
             {
-                writer.WriteCartesian(value);
+                writer.WriteUnitCartesian(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction and magnitude of the vector.
+        /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteDirectionProperty(IList<JulianDate> dates, IList<Cartesian> values)
+        public void WriteDirectionProperty(IList<JulianDate> dates, IList<UnitCartesian> values)
         {
             using (var writer = OpenDirectionProperty())
             {
-                writer.WriteCartesian(dates, values);
+                writer.WriteUnitCartesian(dates, values);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction and magnitude of the vector.
+        /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteDirectionProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        public void WriteDirectionProperty(IList<JulianDate> dates, IList<UnitCartesian> values, int startIndex, int length)
         {
             using (var writer = OpenDirectionProperty())
             {
-                writer.WriteCartesian(dates, values, startIndex, length);
+                writer.WriteUnitCartesian(dates, values, startIndex, length);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction and magnitude of the vector.
+        /// Writes a value for the <code>direction</code> property as a <code>unitSpherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteDirectionPropertySpherical(Spherical value)
+        public void WriteDirectionPropertyUnitSpherical(UnitSpherical value)
         {
             using (var writer = OpenDirectionProperty())
             {
-                writer.WriteSpherical(value);
+                writer.WriteUnitSpherical(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction and magnitude of the vector.
+        /// Writes a value for the <code>direction</code> property as a <code>unitSpherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteDirectionPropertySpherical(IList<JulianDate> dates, IList<Spherical> values)
+        public void WriteDirectionPropertyUnitSpherical(IList<JulianDate> dates, IList<UnitSpherical> values)
         {
             using (var writer = OpenDirectionProperty())
             {
-                writer.WriteSpherical(dates, values);
+                writer.WriteUnitSpherical(dates, values);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction and magnitude of the vector.
+        /// Writes a value for the <code>direction</code> property as a <code>unitSpherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteDirectionPropertySpherical(IList<JulianDate> dates, IList<Spherical> values, int startIndex, int length)
+        public void WriteDirectionPropertyUnitSpherical(IList<JulianDate> dates, IList<UnitSpherical> values, int startIndex, int length)
         {
             using (var writer = OpenDirectionProperty())
             {
-                writer.WriteSpherical(dates, values, startIndex, length);
+                writer.WriteUnitSpherical(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>length</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>length</code> property defines the graphical length of the vector.
+        /// </summary>
+        public DoubleCesiumWriter LengthWriter
+        {
+            get { return m_length.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>length</code> property.  The <code>length</code> property defines the graphical length of the vector.
+        /// </summary>
+        public DoubleCesiumWriter OpenLengthProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(LengthWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>length</code> property as a <code>number</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteLengthProperty(double value)
+        {
+            using (var writer = OpenLengthProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>length</code> property as a <code>number</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteLengthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenLengthProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 

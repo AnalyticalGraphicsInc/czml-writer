@@ -77,7 +77,6 @@
     <Compile Include="Constants.cs" />
     <Compile Include="ClockRange.cs" />
     <Compile Include="ClockStep.cs" />
-    <Compile Include="Spherical.cs" />
     <Compile Include="CustomCesiumWriter.cs" />
     <Compile Include="Generated\BillboardCesiumWriter.cs" />
     <Compile Include="Generated\BooleanCesiumWriter.cs" />

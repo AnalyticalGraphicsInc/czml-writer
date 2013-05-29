@@ -993,7 +993,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	}
 
 	/**
-	 *  Gets the writer for the <code>vector</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends for the magnitude of the provided direction.
+	 *  Gets the writer for the <code>vector</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
 	
 
 	 */
@@ -1003,7 +1003,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>vector</code> property.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends for the magnitude of the provided direction.
+	Opens and returns the writer for the <code>vector</code> property.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
 	
 
 	 */
