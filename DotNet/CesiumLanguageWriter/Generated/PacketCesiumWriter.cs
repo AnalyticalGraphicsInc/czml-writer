@@ -103,6 +103,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string ClockPropertyName = "clock";
 
+        /// <summary>
+        /// The name of the <code>vector</code> property.
+        /// </summary>
+        public const string VectorPropertyName = "vector";
+
         private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter(BillboardPropertyName), false);
         private readonly Lazy<PositionListCesiumWriter> m_vertexPositions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(VertexPositionsPropertyName), false);
@@ -118,6 +123,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
         private readonly Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(() => new EllipseCesiumWriter(EllipsePropertyName), false);
         private readonly Lazy<ClockCesiumWriter> m_clock = new Lazy<ClockCesiumWriter>(() => new ClockCesiumWriter(ClockPropertyName), false);
+        private readonly Lazy<VectorCesiumWriter> m_vector = new Lazy<VectorCesiumWriter>(() => new VectorCesiumWriter(VectorPropertyName), false);
 
         /// <summary>
         /// Writes the start of a new JSON object representing the packet.
@@ -659,6 +665,22 @@ namespace CesiumLanguageWriter
         public ClockCesiumWriter OpenClockProperty()
         {
             return OpenAndReturn(ClockWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>vector</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+        /// </summary>
+        public VectorCesiumWriter VectorWriter
+        {
+            get { return m_vector.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>vector</code> property.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+        /// </summary>
+        public VectorCesiumWriter OpenVectorProperty()
+        {
+            return OpenAndReturn(VectorWriter);
         }
 
     }

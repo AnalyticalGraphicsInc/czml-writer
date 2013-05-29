@@ -193,6 +193,118 @@ public final class CesiumWritingHelper {
 
 	/**
 	 *  
+	Writes a  {@link UnitCartesian} value as an array in X, Y, Z order.
+	
+	
+	
+
+	 * @param output The stream to which to write the value.
+	 * @param value The value to write.
+	 */
+	public static void writeUnitCartesian3(CesiumOutputStream output, UnitCartesian value) {
+		output.writeStartSequence();
+		output.writeValue(value.getX());
+		output.writeValue(value.getY());
+		output.writeValue(value.getZ());
+		output.writeEndSequence();
+	}
+
+	/**
+	 *  
+	Writes time-tagged  {@link UnitCartesian} values as an array in [Time, X, Y, Z] order.
+	Times are epoch seconds since an epoch that is determined from the first date to be written.
+	The epoch property is written as well.
+	
+	
+	
+	
+	
+	
+	
+
+	 * @param output The stream to which to write the array.
+	 * @param propertyName The name of the property to write.
+	 * @param dates The dates at which the value is specified.
+	 * @param values The corresponding value for each date.
+	 * @param startIndex The index of the first element to use in the <code>values</code> collection.
+	 * @param length The number of elements to use from the <code>values</code> collection.
+	 */
+	public static void writeUnitCartesian3(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
+		if (dates.size() != values.size()) {
+			throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
+		}
+		JulianDate epoch = getAndWriteEpoch(output, dates, startIndex, length);
+		output.writePropertyName(propertyName);
+		output.writeStartSequence();
+		int last = startIndex + length;
+		for (int i = startIndex; i < last; ++i) {
+			output.writeValue(epoch.secondsDifference(dates.get(i)));
+			UnitCartesian value = values.get(i);
+			output.writeValue(value.getX());
+			output.writeValue(value.getY());
+			output.writeValue(value.getZ());
+			output.writeLineBreak();
+		}
+		output.writeEndSequence();
+	}
+
+	/**
+	 *  
+	Writes a  {@link UnitSpherical} value as an array in Clock, Cone order.
+	
+	
+	
+
+	 * @param output The stream to which to write the value.
+	 * @param value The value to write.
+	 */
+	public static void writeUnitSpherical(CesiumOutputStream output, UnitSpherical value) {
+		output.writeStartSequence();
+		output.writeValue(value.getClock());
+		output.writeValue(value.getCone());
+		output.writeEndSequence();
+	}
+
+	/**
+	 *  
+	Writes time-tagged  {@link UnitSpherical} values as an array in [Time, Clock, Cone] order.
+	Times are epoch seconds since an epoch that is determined from the first date to be written.
+	The epoch property is written as well.
+	
+	
+	
+	
+	
+	
+	
+
+	 * @param output The stream to which to write the array.
+	 * @param propertyName The name of the property to write.
+	 * @param dates The dates at which the value is specified.
+	 * @param values The corresponding value for each date.
+	 * @param startIndex The index of the first element to use in the <code>values</code> collection.
+	 * @param length The number of elements to use from the <code>values</code> collection.
+	 */
+	public static void writeUnitSpherical(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<UnitSpherical> values, int startIndex, int length) {
+		if (dates.size() != values.size()) {
+			throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
+		}
+		JulianDate epoch = getAndWriteEpoch(output, dates, startIndex, length);
+		output.writePropertyName(propertyName);
+		output.writeStartSequence();
+		int last = startIndex + length;
+		for (int i = startIndex; i < last; ++i) {
+			output.writeValue(epoch.secondsDifference(dates.get(i)));
+			UnitSpherical value = values.get(i);
+			output.writeValue(value.getClock());
+			output.writeValue(value.getCone());
+			output.writeLineBreak();
+		}
+		output.writeEndSequence();
+	}
+
+	/**
+	 *  
 	Writes a list of  {@link Cartesian} values as an array in X, Y, Z order.
 	
 	
