@@ -689,6 +689,61 @@
                 "writeValue": "Output.WriteValue(font);",
                 "needsInterval": false
             }
+        ],
+        "Spherical": [
+            {
+                "parameters": [
+                    {
+                        "type": "Spherical",
+                        "name": "value",
+                        "description": "The value."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteSpherical(Output, value);"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the vector is specified."
+                    },
+                    {
+                        "type": "IList<Spherical>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the vector is specified."
+                    },
+                    {
+                        "type": "IList<Spherical>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to use in the `values` collection."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to use from the `values` collection."
+                    }
+                ],
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteSpherical(Output, PropertyName, dates, values, startIndex, length);"
+            }
         ]
     }
 }
