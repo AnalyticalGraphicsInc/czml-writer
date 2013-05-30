@@ -149,7 +149,7 @@ namespace CesiumLanguageWriter
 #if CSToJava
             m_writer.Write(value.ToString("R", CultureInfo.InvariantCulture));
 #else
-            grisu.net.Grisu.DoubleToString(value, m_writer);
+            GrisuDotNet.Grisu.DoubleToString(value, m_writer);
 #endif
         }
 
