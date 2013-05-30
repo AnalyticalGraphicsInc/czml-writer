@@ -82,7 +82,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 						{
 							PositionCesiumWriter interval = position.openInterval();
 							try {
-								interval.writeCartographicRadians(new Cartographic(1.0, 2.0, 3.0));
+								interval.writeCartographicRadians(new Cartographic(1100.0, 2200.0, 3.0));
 							} finally {
 								DisposeHelper.dispose(interval);
 							}
@@ -95,7 +95,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 				DisposeHelper.dispose(disposable_2);
 			}
 		}
-		Assert.assertEquals("{\"position\":{\"cartographicRadians\":[1,2,3]}}", getStringWriter().toString());
+		Assert.assertEquals("{\"position\":{\"cartographicRadians\":[1100,2200,3]}}", getStringWriter().toString());
 	}
 
 	@Test

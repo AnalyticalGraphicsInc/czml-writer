@@ -44,9 +44,9 @@ namespace CesiumLanguageWriterTests
             using (PositionCesiumWriter position = Packet.OpenPositionProperty())
             using (PositionCesiumWriter interval = position.OpenInterval())
             {
-                interval.WriteCartographicRadians(new Cartographic(1.0, 2.0, 3.0));
+                interval.WriteCartographicRadians(new Cartographic(1100.0, 2200.0, 3.0));
             }
-            Assert.AreEqual("{\"position\":{\"cartographicRadians\":[1,2,3]}}", StringWriter.ToString());
+            Assert.AreEqual("{\"position\":{\"cartographicRadians\":[1100,2200,3]}}", StringWriter.ToString());
         }
 
         [Test]
