@@ -96,7 +96,7 @@ namespace KmlToCesiumLanguageTests
             point.WritePacket();
 
             string result = m_stringWriter.ToString();
-            StringAssert.Contains("\"cartographicRadians\":[0,0,0.017453292519943295,0,3.6e3,0,0.03490658503988659,0,7.2e3,0,0.05235987755982989,0]", result);
+            StringAssert.Contains("\"cartographicRadians\":[0,0,0.017453292519943295,0,3600,0,0.03490658503988659,0,7200,0,0.05235987755982989,0]", result);
         }
 
         [Test]
@@ -118,7 +118,7 @@ namespace KmlToCesiumLanguageTests
             point.WritePacket();
 
             string result = m_stringWriter.ToString();
-            StringAssert.Contains("\"cartographicRadians\":[0,0,0.017453292519943295,0,3.6e3,0,0.03490658503988659,0,7.2e3,0,0.05235987755982989,0]", result);
+            StringAssert.Contains("\"cartographicRadians\":[0,0,0.017453292519943295,0,3600,0,0.03490658503988659,0,7200,0,0.05235987755982989,0]", result);
         }
 
         [Test]
@@ -141,7 +141,7 @@ namespace KmlToCesiumLanguageTests
             point.WritePacket();
 
             string result = m_stringWriter.ToString();
-            StringAssert.Contains("\"cartographicRadians\":[0,0,0.017453292519943295,0,3.6e3,0,0.03490658503988659,0,7.2e3,0,0.05235987755982989,0]", result);
+            StringAssert.Contains("\"cartographicRadians\":[0,0,0.017453292519943295,0,3600,0,0.03490658503988659,0,7200,0,0.05235987755982989,0]", result);
         }
 
         [Test]
@@ -164,7 +164,7 @@ namespace KmlToCesiumLanguageTests
             point.WritePacket();
 
             string result = m_stringWriter.ToString();
-            StringAssert.Contains("\"cartographicRadians\":[0,0,0.017453292519943295,5,3.6e3,0,0.03490658503988659,6,7.2e3,0,0.05235987755982989,7]", result);
+            StringAssert.Contains("\"cartographicRadians\":[0,0,0.017453292519943295,5,3600,0,0.03490658503988659,6,7200,0,0.05235987755982989,7]", result);
         }
 
         [Test]
