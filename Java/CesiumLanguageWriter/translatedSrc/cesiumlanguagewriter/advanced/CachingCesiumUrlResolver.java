@@ -65,9 +65,11 @@ public class CachingCesiumUrlResolver implements ICesiumUrlResolver {
 		boolean temp_0 = MapHelper.tryGetValue(m_dictionary, url, out$node_1);
 		node = out$node_1[0];
 		if (temp_0) {
-			//move to front
-			m_lruList.remove(node);
-			m_lruList.addFirst(node);
+			if (m_lruList.getFirst() != node) {
+				//move to front
+				m_lruList.remove(node);
+				m_lruList.addFirst(node);
+			}
 			return node.getValue().ResolvedUrl;
 		}
 		//load image into data URI
