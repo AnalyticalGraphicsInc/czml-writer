@@ -6,6 +6,7 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.AlignedAxisCesiumWriter;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
@@ -69,6 +70,20 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	public static final String ScalePropertyName = "scale";
 	/**
 	 *  
+	The name of the <code>rotation</code> property.
+	
+
+	 */
+	public static final String RotationPropertyName = "rotation";
+	/**
+	 *  
+	The name of the <code>alignedAxis</code> property.
+	
+
+	 */
+	public static final String AlignedAxisPropertyName = "alignedAxis";
+	/**
+	 *  
 	The name of the <code>show</code> property.
 	
 
@@ -109,6 +124,16 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	private Lazy<DoubleCesiumWriter> m_scale = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(ScalePropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_rotation = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(RotationPropertyName);
+		}
+	}, false);
+	private Lazy<AlignedAxisCesiumWriter> m_alignedAxis = new Lazy<cesiumlanguagewriter.AlignedAxisCesiumWriter>(new Func1<cesiumlanguagewriter.AlignedAxisCesiumWriter>() {
+		public cesiumlanguagewriter.AlignedAxisCesiumWriter invoke() {
+			return new AlignedAxisCesiumWriter(AlignedAxisPropertyName);
 		}
 	}, false);
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
@@ -672,6 +697,155 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the billboard offset from the alignedAxes.
+	
+
+	 */
+	public final DoubleCesiumWriter getRotationWriter() {
+		return m_rotation.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the billboard offset from the alignedAxes.
+	
+
+	 */
+	public final DoubleCesiumWriter openRotationProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getRotationWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard offset from the alignedAxes.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeRotationProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard offset from the alignedAxes.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeRotationProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>alignedAxis</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>alignedAxis</code> property defines the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	
+
+	 */
+	public final AlignedAxisCesiumWriter getAlignedAxisWriter() {
+		return m_alignedAxis.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>alignedAxis</code> property.  The <code>alignedAxis</code> property defines the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	
+
+	 */
+	public final AlignedAxisCesiumWriter openAlignedAxisProperty() {
+		openIntervalIfNecessary();
+		return this.<AlignedAxisCesiumWriter> openAndReturn(getAlignedAxisWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeAlignedAxisProperty(Cartesian value) {
+		{
+			cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+			try {
+				writer.writeCartesian(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeAlignedAxisProperty(List<JulianDate> dates, List<Cartesian> values) {
+		{
+			cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+			try {
+				writer.writeCartesian(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeAlignedAxisProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+			try {
+				writer.writeCartesian(dates, values, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

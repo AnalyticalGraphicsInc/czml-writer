@@ -58,6 +58,13 @@ public class PyramidCesiumWriter extends CesiumPropertyWriter<PyramidCesiumWrite
 	public static final String IntersectionColorPropertyName = "intersectionColor";
 	/**
 	 *  
+	The name of the <code>intersectionWidth</code> property.
+	
+
+	 */
+	public static final String IntersectionWidthPropertyName = "intersectionWidth";
+	/**
+	 *  
 	The name of the <code>material</code> property.
 	
 
@@ -86,6 +93,11 @@ public class PyramidCesiumWriter extends CesiumPropertyWriter<PyramidCesiumWrite
 	private Lazy<ColorCesiumWriter> m_intersectionColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
 		public cesiumlanguagewriter.ColorCesiumWriter invoke() {
 			return new ColorCesiumWriter(IntersectionColorPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_intersectionWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(IntersectionWidthPropertyName);
 		}
 	}, false);
 	private Lazy<MaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
@@ -429,6 +441,70 @@ public class PyramidCesiumWriter extends CesiumPropertyWriter<PyramidCesiumWrite
 			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
 			try {
 				writer.writeRgbaf(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>intersectionWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>intersectionWidth</code> property defines the width of the intersection in pixels.
+	
+
+	 */
+	public final DoubleCesiumWriter getIntersectionWidthWriter() {
+		return m_intersectionWidth.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>intersectionWidth</code> property.  The <code>intersectionWidth</code> property defines the width of the intersection in pixels.
+	
+
+	 */
+	public final DoubleCesiumWriter openIntersectionWidthProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getIntersectionWidthWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionWidth</code> property as a <code>number</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeIntersectionWidthProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionWidth</code> property as a <code>number</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeIntersectionWidthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

@@ -726,14 +726,18 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	 */
 	public final double get(int index) {
 		switch (index) {
-		case 0:
+		case 0: {
 			return getX();
-		case 1:
+		}
+		case 1: {
 			return getY();
-		case 2:
+		}
+		case 2: {
 			return getZ();
-		default:
+		}
+		default: {
 			throw new ArgumentOutOfRangeException("index");
+		}
 		}
 	}
 }
