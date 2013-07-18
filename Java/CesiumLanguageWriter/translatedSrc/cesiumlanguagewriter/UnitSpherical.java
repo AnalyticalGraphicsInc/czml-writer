@@ -286,12 +286,15 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	 */
 	public final double get(int index) {
 		switch (index) {
-		case 0:
+		case 0: {
 			return getClock();
-		case 1:
+		}
+		case 1: {
 			return getCone();
-		default:
+		}
+		default: {
 			throw new ArgumentOutOfRangeException("index");
+		}
 		}
 	}
 }

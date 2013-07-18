@@ -24,6 +24,10 @@
             "$ref": "Color.jsonschema",
             "description": "The color of the intersection of the pyramid with the Earth."
         },
+        "intersectionWidth": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the intersection in pixels."
+        },
         "material": {
             "$ref": "Material.jsonschema",
             "description": "The material to display on the surface of the pyramid."

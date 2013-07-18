@@ -250,39 +250,50 @@ public class CesiumOutputStream implements IDisposable {
 			String escapedValue;
 			// Paragraph Separator
 			switch (c) {
-			case '\t':
+			case '\t': {
 				escapedValue = "\\t";
 				break;
-			case '\n':
+			}
+			case '\n': {
 				escapedValue = "\\n";
 				break;
-			case '\r':
+			}
+			case '\r': {
 				escapedValue = "\\r";
 				break;
-			case '\f':
+			}
+			case '\f': {
 				escapedValue = "\\f";
 				break;
-			case '\b':
+			}
+			case '\b': {
 				escapedValue = "\\b";
 				break;
-			case '\\':
+			}
+			case '\\': {
 				escapedValue = "\\\\";
 				break;
-			case '\u0085':
+			}
+			case '\u0085': {
 				escapedValue = "\\u0085";
 				break;
-			case '\u2028':
+			}
+			case '\u2028': {
 				escapedValue = "\\u2028";
 				break;
-			case '\u2029':
+			}
+			case '\u2029': {
 				escapedValue = "\\u2029";
 				break;
-			case '"':
+			}
+			case '"': {
 				escapedValue = "\\\"";
 				break;
-			default:
+			}
+			default: {
 				escapedValue = (c <= '\u001f') ? toCharAsUnicode(c) : null;
 				break;
+			}
 			}
 			if (escapedValue != null) {
 				if (chars == null) {
