@@ -568,16 +568,21 @@ public class UnitQuaternion implements IEquatable<UnitQuaternion>, ImmutableValu
 	 */
 	public final double get(int index) {
 		switch (index) {
-		case 0:
+		case 0: {
 			return getW();
-		case 1:
+		}
+		case 1: {
 			return getX();
-		case 2:
+		}
+		case 2: {
 			return getY();
-		case 3:
+		}
+		case 3: {
 			return getZ();
-		default:
+		}
+		default: {
 			throw new ArgumentOutOfRangeException("index");
+		}
 		}
 	}
 }

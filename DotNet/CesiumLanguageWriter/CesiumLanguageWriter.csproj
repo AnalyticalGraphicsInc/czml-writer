@@ -78,6 +78,7 @@
     <Compile Include="ClockRange.cs" />
     <Compile Include="ClockStep.cs" />
     <Compile Include="CustomCesiumWriter.cs" />
+    <Compile Include="Generated\AlignedAxisCesiumWriter.cs" />
     <Compile Include="Generated\BillboardCesiumWriter.cs" />
     <Compile Include="Generated\BooleanCesiumWriter.cs" />
     <Compile Include="Generated\CameraCesiumWriter.cs" />

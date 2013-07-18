@@ -225,41 +225,57 @@ public class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
 	 */
 	public final double get(int row, int column) {
 		switch (row) {
-		case 0:
+		case 0: {
 			switch (column) {
-			case 0:
+			case 0: {
 				return m_m11;
-			case 1:
+			}
+			case 1: {
 				return m_m12;
-			case 2:
+			}
+			case 2: {
 				return m_m13;
-			default:
+			}
+			default: {
 				throw new ArgumentOutOfRangeException("column");
 			}
-		case 1:
+			}
+		}
+		case 1: {
 			switch (column) {
-			case 0:
+			case 0: {
 				return m_m21;
-			case 1:
+			}
+			case 1: {
 				return m_m22;
-			case 2:
+			}
+			case 2: {
 				return m_m23;
-			default:
+			}
+			default: {
 				throw new ArgumentOutOfRangeException("column");
 			}
-		case 2:
+			}
+		}
+		case 2: {
 			switch (column) {
-			case 0:
+			case 0: {
 				return m_m31;
-			case 1:
+			}
+			case 1: {
 				return m_m32;
-			case 2:
+			}
+			case 2: {
 				return m_m33;
-			default:
+			}
+			default: {
 				throw new ArgumentOutOfRangeException("column");
 			}
-		default:
+			}
+		}
+		default: {
 			throw new ArgumentOutOfRangeException("row");
+		}
 		}
 	}
 
