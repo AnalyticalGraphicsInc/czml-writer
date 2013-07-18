@@ -44,6 +44,16 @@ namespace CesiumLanguageWriter
         public const string ScalePropertyName = "scale";
 
         /// <summary>
+        /// The name of the <code>rotation</code> property.
+        /// </summary>
+        public const string RotationPropertyName = "rotation";
+
+        /// <summary>
+        /// The name of the <code>alignedAxis</code> property.
+        /// </summary>
+        public const string AlignedAxisPropertyName = "alignedAxis";
+
+        /// <summary>
         /// The name of the <code>show</code> property.
         /// </summary>
         public const string ShowPropertyName = "show";
@@ -59,6 +69,8 @@ namespace CesiumLanguageWriter
         private readonly Lazy<ImageCesiumWriter> m_image = new Lazy<ImageCesiumWriter>(() => new ImageCesiumWriter(ImagePropertyName), false);
         private readonly Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<PixelOffsetCesiumWriter>(() => new PixelOffsetCesiumWriter(PixelOffsetPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_rotation = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RotationPropertyName), false);
+        private readonly Lazy<AlignedAxisCesiumWriter> m_alignedAxis = new Lazy<AlignedAxisCesiumWriter>(() => new AlignedAxisCesiumWriter(AlignedAxisPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<VerticalOriginCesiumWriter>(() => new VerticalOriginCesiumWriter(VerticalOriginPropertyName), false);
 
@@ -436,6 +448,107 @@ namespace CesiumLanguageWriter
             using (var writer = OpenScaleProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the billboard offset from the alignedAxes.
+        /// </summary>
+        public DoubleCesiumWriter RotationWriter
+        {
+            get { return m_rotation.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the billboard offset from the alignedAxes.
+        /// </summary>
+        public DoubleCesiumWriter OpenRotationProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(RotationWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard offset from the alignedAxes.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteRotationProperty(double value)
+        {
+            using (var writer = OpenRotationProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard offset from the alignedAxes.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteRotationProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenRotationProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>alignedAxis</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>alignedAxis</code> property defines the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// </summary>
+        public AlignedAxisCesiumWriter AlignedAxisWriter
+        {
+            get { return m_alignedAxis.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>alignedAxis</code> property.  The <code>alignedAxis</code> property defines the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// </summary>
+        public AlignedAxisCesiumWriter OpenAlignedAxisProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(AlignedAxisWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteAlignedAxisProperty(Cartesian value)
+        {
+            using (var writer = OpenAlignedAxisProperty())
+            {
+                writer.WriteCartesian(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteAlignedAxisProperty(IList<JulianDate> dates, IList<Cartesian> values)
+        {
+            using (var writer = OpenAlignedAxisProperty())
+            {
+                writer.WriteCartesian(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteAlignedAxisProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        {
+            using (var writer = OpenAlignedAxisProperty())
+            {
+                writer.WriteCartesian(dates, values, startIndex, length);
             }
         }
 

@@ -28,6 +28,14 @@
             "$ref": "Double.jsonschema",
             "description": "The scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`."
         },
+        "rotation": {
+            "$ref": "Double.jsonschema",
+            "description": "The rotation of the billboard offset from the alignedAxes."
+        },
+        "alignedAxis": {
+            "$ref": "AlignedAxis.jsonschema",
+            "description": "The aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector."
+        },
         "show": {
             "$ref": "Boolean.jsonschema",
             "description": "Whether or not the billboard is shown."
