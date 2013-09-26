@@ -1505,8 +1505,8 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 					tokLen = countRepeat(format, i, ch);
 					String desig = dt.getHour() < 12 ? dfi.getAMDesignator() : dfi.getPMDesignator();
 					if (tokLen == 1) {
-						if (desig.length() >= 1) {
-							result.append(desig.charAt(0));
+						if (desig.Length >= 1) {
+							result.append(desig[0]);
 						}
 					} else {
 						result.append(desig);

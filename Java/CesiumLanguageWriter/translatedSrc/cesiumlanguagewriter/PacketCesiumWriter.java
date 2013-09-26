@@ -40,6 +40,13 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	public static final String IdPropertyName = "id";
 	/**
 	 *  
+	The name of the <code>name</code> property.
+	
+
+	 */
+	public static final String NamePropertyName = "name";
+	/**
+	 *  
 	The name of the <code>availability</code> property.
 	
 
@@ -277,6 +284,20 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	 */
 	public final void writeId(String value) {
 		String PropertyName = IdPropertyName;
+		getOutput().writePropertyName(PropertyName);
+		getOutput().writeValue(value);
+	}
+
+	/**
+	 *  
+	Writes the <code>name</code> property.  The <code>name</code> property specifies the name of the object.  It does not have to be unique and is intended for user consumption.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeName(String value) {
+		String PropertyName = NamePropertyName;
 		getOutput().writePropertyName(PropertyName);
 		getOutput().writeValue(value);
 	}
