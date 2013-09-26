@@ -19,6 +19,11 @@ namespace CesiumLanguageWriter
         public const string IdPropertyName = "id";
 
         /// <summary>
+        /// The name of the <code>name</code> property.
+        /// </summary>
+        public const string NamePropertyName = "name";
+
+        /// <summary>
         /// The name of the <code>availability</code> property.
         /// </summary>
         public const string AvailabilityPropertyName = "availability";
@@ -148,6 +153,17 @@ namespace CesiumLanguageWriter
         public void WriteId(string value)
         {
             const string PropertyName = IdPropertyName;
+            Output.WritePropertyName(PropertyName);
+            Output.WriteValue(value);
+        }
+
+        /// <summary>
+        /// Writes the <code>name</code> property.  The <code>name</code> property specifies the name of the object.  It does not have to be unique and is intended for user consumption.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteName(string value)
+        {
+            const string PropertyName = NamePropertyName;
             Output.WritePropertyName(PropertyName);
             Output.WriteValue(value);
         }
