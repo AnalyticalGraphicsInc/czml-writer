@@ -393,4 +393,7 @@ public class TestGregorianDate {
 		GregorianDate gd2 = new GregorianDate(gd.toJulianDate());
 		Assert.assertEquals(gd, gd2);
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

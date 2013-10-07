@@ -54,4 +54,7 @@ public class TestCesiumFormattingHelper {
 		String maxStringCompact = CesiumFormattingHelper.toIso8601(JulianDate.getMaxValue(), Iso8601Format.COMPACT);
 		Assert.assertEquals(expectedMaximumCompact, maxStringCompact);
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

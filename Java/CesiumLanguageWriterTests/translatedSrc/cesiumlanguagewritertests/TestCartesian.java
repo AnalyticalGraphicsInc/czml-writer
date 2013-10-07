@@ -500,4 +500,7 @@ public class TestCartesian {
 		Cartesian test = new Cartesian(val1, val2, val3);
 		Assert.assertEquals(result, test.toString());
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

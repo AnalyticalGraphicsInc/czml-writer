@@ -109,4 +109,7 @@ public class TestCesiumPacketWriter {
 		}
 		Assert.assertEquals("{\"billboard\":", m_sw.toString());
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

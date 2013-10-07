@@ -21,6 +21,7 @@ import cesiumlanguagewriter.PolylineCesiumWriter;
 import cesiumlanguagewriter.PositionCesiumWriter;
 import cesiumlanguagewriter.PositionListCesiumWriter;
 import cesiumlanguagewriter.PyramidCesiumWriter;
+import cesiumlanguagewriter.StringCesiumWriter;
 import cesiumlanguagewriter.VectorCesiumWriter;
 import java.util.List;
 
@@ -45,6 +46,20 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	 */
 	public static final String NamePropertyName = "name";
+	/**
+	 *  
+	The name of the <code>parent</code> property.
+	
+
+	 */
+	public static final String ParentPropertyName = "parent";
+	/**
+	 *  
+	The name of the <code>description</code> property.
+	
+
+	 */
+	public static final String DescriptionPropertyName = "description";
 	/**
 	 *  
 	The name of the <code>availability</code> property.
@@ -171,6 +186,11 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	 */
 	public static final String VectorPropertyName = "vector";
+	private Lazy<StringCesiumWriter> m_description = new Lazy<cesiumlanguagewriter.StringCesiumWriter>(new Func1<cesiumlanguagewriter.StringCesiumWriter>() {
+		public cesiumlanguagewriter.StringCesiumWriter invoke() {
+			return new StringCesiumWriter(DescriptionPropertyName);
+		}
+	}, false);
 	private Lazy<PositionCesiumWriter> m_position = new Lazy<cesiumlanguagewriter.PositionCesiumWriter>(new Func1<cesiumlanguagewriter.PositionCesiumWriter>() {
 		public cesiumlanguagewriter.PositionCesiumWriter invoke() {
 			return new PositionCesiumWriter(PositionPropertyName);
@@ -300,6 +320,58 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 		String PropertyName = NamePropertyName;
 		getOutput().writePropertyName(PropertyName);
 		getOutput().writeValue(value);
+	}
+
+	/**
+	 *  
+	Writes the <code>parent</code> property.  The <code>parent</code> property specifies the ID of the parent object or folder.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeParent(String value) {
+		String PropertyName = ParentPropertyName;
+		getOutput().writePropertyName(PropertyName);
+		getOutput().writeValue(value);
+	}
+
+	/**
+	 *  Gets the writer for the <code>description</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>description</code> property defines an HTML description of the object.
+	
+
+	 */
+	public final StringCesiumWriter getDescriptionWriter() {
+		return m_description.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>description</code> property.  The <code>description</code> property defines an HTML description of the object.
+	
+
+	 */
+	public final StringCesiumWriter openDescriptionProperty() {
+		return this.<StringCesiumWriter> openAndReturn(getDescriptionWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>description</code> property as a <code>string</code> value.  The <code>description</code> property specifies an HTML description of the object.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeDescriptionProperty(String value) {
+		{
+			cesiumlanguagewriter.StringCesiumWriter writer = openDescriptionProperty();
+			try {
+				writer.writeString(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**

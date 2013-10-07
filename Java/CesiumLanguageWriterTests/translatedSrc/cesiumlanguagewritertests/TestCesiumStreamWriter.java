@@ -43,4 +43,7 @@ public class TestCesiumStreamWriter {
 		PacketCesiumWriter packet = m_writer.openPacket(m_output);
 		packet = m_writer.openPacket(m_output);
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

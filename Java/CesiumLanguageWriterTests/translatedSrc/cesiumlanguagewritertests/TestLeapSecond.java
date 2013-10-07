@@ -60,4 +60,7 @@ public class TestLeapSecond {
 		LeapSecond ls1 = new LeapSecond(2451545.0, 100.0);
 		Assert.assertEquals("2451545:0 (UTC), 100", ls1.toString());
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }
