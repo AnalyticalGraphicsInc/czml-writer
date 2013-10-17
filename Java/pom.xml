@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>agi.foundation</groupId>
+  <artifactId>czml-writer</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>czml-writer</name>
+  <url>https://github.com/AnalyticalGraphicsInc/czml-writer</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.sourceEncoding>UTF-8</project.reporting.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.2</version>
+      <scope>compile</scope>
+    </dependency>
+    <!-- custom deployed to nexus -->
+    <dependency>
+      <groupId>agi.foundation</groupId>
+      <artifactId>compatibility</artifactId>
+      <version>0.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <!-- test -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.7</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-all</artifactId>
+      <version>1.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+   <build>
+     <sourceDirectory>${basedir}/CesiumLanguageWriter/translatedSrc/</sourceDirectory>
+     <testSourceDirectory>${basedir}/CesiumLanguageWriterTests/translatedSrc</testSourceDirectory>
+     <!-- explicitly copy *.properties since they are not in src/main/resources -->
+     <resources>
+       <resource>
+         <directory>${project.build.sourceDirectory}</directory>
+         <includes>
+           <include>**/*.properties</include>
+         </includes>
+       </resource>
+     </resources>
+
+     <plugins>
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-compiler-plugin</artifactId>
+         <version>3.1</version>
+         <!-- compile for Java 1.6 -->
+         <configuration>
+           <source>1.6</source>
+           <target>1.6</target>
+           <encoding>UTF-8</encoding>
+         </configuration>
+       </plugin>
+     </plugins>
+   </build>
+
+</project>
