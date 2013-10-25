@@ -456,4 +456,7 @@ public class TestDuration {
 		Assert.assertEquals((int) duration.getDays(), (int) -10);
 		Assert.assertEquals(0.0, duration.getSeconds(), 0d);
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

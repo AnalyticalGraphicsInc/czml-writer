@@ -203,4 +203,7 @@ public class TestJulianDateConversions {
 		Assert.assertEquals((int) gregorianDate.getMinute(), (int) roundTrip.getMinute());
 		Assert.assertEquals(gregorianDate.getSecond(), roundTrip.getSecond(), Constants.Epsilon13);
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

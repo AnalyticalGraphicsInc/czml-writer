@@ -202,4 +202,7 @@ public class TestUnitSpherical {
 		UnitSpherical test = new UnitSpherical(-Math.PI, Math.PI);
 		Assert.assertEquals(s.toString(), test.toString());
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

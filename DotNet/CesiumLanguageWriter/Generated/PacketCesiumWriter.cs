@@ -19,6 +19,21 @@ namespace CesiumLanguageWriter
         public const string IdPropertyName = "id";
 
         /// <summary>
+        /// The name of the <code>name</code> property.
+        /// </summary>
+        public const string NamePropertyName = "name";
+
+        /// <summary>
+        /// The name of the <code>parent</code> property.
+        /// </summary>
+        public const string ParentPropertyName = "parent";
+
+        /// <summary>
+        /// The name of the <code>description</code> property.
+        /// </summary>
+        public const string DescriptionPropertyName = "description";
+
+        /// <summary>
         /// The name of the <code>availability</code> property.
         /// </summary>
         public const string AvailabilityPropertyName = "availability";
@@ -108,6 +123,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string VectorPropertyName = "vector";
 
+        private readonly Lazy<StringCesiumWriter> m_description = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(DescriptionPropertyName), false);
         private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter(BillboardPropertyName), false);
         private readonly Lazy<PositionListCesiumWriter> m_vertexPositions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(VertexPositionsPropertyName), false);
@@ -150,6 +166,56 @@ namespace CesiumLanguageWriter
             const string PropertyName = IdPropertyName;
             Output.WritePropertyName(PropertyName);
             Output.WriteValue(value);
+        }
+
+        /// <summary>
+        /// Writes the <code>name</code> property.  The <code>name</code> property specifies the name of the object.  It does not have to be unique and is intended for user consumption.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteName(string value)
+        {
+            const string PropertyName = NamePropertyName;
+            Output.WritePropertyName(PropertyName);
+            Output.WriteValue(value);
+        }
+
+        /// <summary>
+        /// Writes the <code>parent</code> property.  The <code>parent</code> property specifies the ID of the parent object or folder.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteParent(string value)
+        {
+            const string PropertyName = ParentPropertyName;
+            Output.WritePropertyName(PropertyName);
+            Output.WriteValue(value);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>description</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>description</code> property defines an HTML description of the object.
+        /// </summary>
+        public StringCesiumWriter DescriptionWriter
+        {
+            get { return m_description.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>description</code> property.  The <code>description</code> property defines an HTML description of the object.
+        /// </summary>
+        public StringCesiumWriter OpenDescriptionProperty()
+        {
+            return OpenAndReturn(DescriptionWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>description</code> property as a <code>string</code> value.  The <code>description</code> property specifies an HTML description of the object.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteDescriptionProperty(string value)
+        {
+            using (var writer = OpenDescriptionProperty())
+            {
+                writer.WriteString(value);
+            }
         }
 
         /// <summary>

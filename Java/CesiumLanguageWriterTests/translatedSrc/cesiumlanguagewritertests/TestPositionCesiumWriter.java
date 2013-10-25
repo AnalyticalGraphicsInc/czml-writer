@@ -295,4 +295,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 		}
 		Assert.assertEquals("{\"position\":{\"cartographicRadians\":[]}}", getStringWriter().toString());
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

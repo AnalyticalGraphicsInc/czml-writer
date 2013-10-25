@@ -360,4 +360,7 @@ public class TestGregorianDateParsing {
 		Assert.assertEquals(false, GregorianDate.tryParse("13/01/2002", m_cultureInfo, out$result_16));
 		result = out$result_16[0];
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

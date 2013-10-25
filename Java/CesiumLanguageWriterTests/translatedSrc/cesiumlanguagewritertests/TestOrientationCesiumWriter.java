@@ -124,4 +124,7 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
 			}
 		}
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }
