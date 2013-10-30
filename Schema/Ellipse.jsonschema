@@ -12,7 +12,7 @@
 		    "$ref": "Double.jsonschema",
             "description": "The length of the ellipse's semi-minor axis in meters."
 		},
-		"bearing":{
+		"rotation":{
 		    "$ref": "Double.jsonschema",
             "description": "The angle from north (clockwise) in radians."
 		}

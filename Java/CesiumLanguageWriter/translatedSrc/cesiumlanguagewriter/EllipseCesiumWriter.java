@@ -32,11 +32,11 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	public static final String SemiMinorAxisPropertyName = "semiMinorAxis";
 	/**
 	 *  
-	The name of the <code>bearing</code> property.
+	The name of the <code>rotation</code> property.
 	
 
 	 */
-	public static final String BearingPropertyName = "bearing";
+	public static final String RotationPropertyName = "rotation";
 	private Lazy<DoubleCesiumWriter> m_semiMajorAxis = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(SemiMajorAxisPropertyName);
@@ -47,9 +47,9 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 			return new DoubleCesiumWriter(SemiMinorAxisPropertyName);
 		}
 	}, false);
-	private Lazy<DoubleCesiumWriter> m_bearing = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+	private Lazy<DoubleCesiumWriter> m_rotation = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(BearingPropertyName);
+			return new DoubleCesiumWriter(RotationPropertyName);
 		}
 	}, false);
 
@@ -209,36 +209,36 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>bearing</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>bearing</code> property defines the angle from north (clockwise) in radians.
+	 *  Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rotation</code> property defines the angle from north (clockwise) in radians.
 	
 
 	 */
-	public final DoubleCesiumWriter getBearingWriter() {
-		return m_bearing.getValue();
+	public final DoubleCesiumWriter getRotationWriter() {
+		return m_rotation.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>bearing</code> property.  The <code>bearing</code> property defines the angle from north (clockwise) in radians.
+	Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the angle from north (clockwise) in radians.
 	
 
 	 */
-	public final DoubleCesiumWriter openBearingProperty() {
+	public final DoubleCesiumWriter openRotationProperty() {
 		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getBearingWriter());
+		return this.<DoubleCesiumWriter> openAndReturn(getRotationWriter());
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>bearing</code> property as a <code>number</code> value.  The <code>bearing</code> property specifies the angle from north (clockwise) in radians.
+	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the angle from north (clockwise) in radians.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeBearingProperty(double value) {
+	public final void writeRotationProperty(double value) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openBearingProperty();
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
 			try {
 				writer.writeNumber(value);
 			} finally {
@@ -249,7 +249,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>bearing</code> property as a <code>number</code> value.  The <code>bearing</code> property specifies the angle from north (clockwise) in radians.
+	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the angle from north (clockwise) in radians.
 	
 	
 	
@@ -261,9 +261,9 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeBearingProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+	public final void writeRotationProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openBearingProperty();
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
 			} finally {
