@@ -24,6 +24,11 @@ namespace CesiumLanguageWriter
         public const string NamePropertyName = "name";
 
         /// <summary>
+        /// The name of the <code>uiShow</code> property.
+        /// </summary>
+        public const string UiShowPropertyName = "uiShow";
+
+        /// <summary>
         /// The name of the <code>parent</code> property.
         /// </summary>
         public const string ParentPropertyName = "parent";
@@ -175,6 +180,17 @@ namespace CesiumLanguageWriter
         public void WriteName(string value)
         {
             const string PropertyName = NamePropertyName;
+            Output.WritePropertyName(PropertyName);
+            Output.WriteValue(value);
+        }
+
+        /// <summary>
+        /// Writes the <code>uiShow</code> property.  The <code>uiShow</code> property specifies a boolean value indicating if the object should be displayed.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteUiShow(bool value)
+        {
+            const string PropertyName = UiShowPropertyName;
             Output.WritePropertyName(PropertyName);
             Output.WriteValue(value);
         }

@@ -12,6 +12,10 @@
             "description": "The name of the object.  It does not have to be unique and is intended for user consumption.",
             "type": "string"
         },
+        "uiShow": {
+            "description": "A boolean value indicating if the object should be displayed.",
+            "type": "boolean"
+        },
         "parent": {
             "description": "The ID of the parent object or folder.",
             "type": "string"
