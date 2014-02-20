@@ -26,7 +26,7 @@
         },
         "stRotation": {
             "$ref": "Double.jsonschema",
-            "description": "The rotation of any applied texture coordinates."
+            "description": "The rotation of any applied texture."
         },
         "fill": {
             "$ref": "Boolean.jsonschema",
@@ -42,7 +42,7 @@
         },
         "perPositionHeight": {
             "$ref": "Boolean.jsonschema",
-            "description": "When true, uses the height of each position to define the polygon, rather than using a constant height."
+            "description": "Whether to use the height of each position to define the polygon or a constant height above the surface."
         }
     }
 }
