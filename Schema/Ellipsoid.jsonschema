@@ -12,9 +12,33 @@
             "$ref": "EllipsoidRadii.jsonschema",
             "description": "The dimensions of the ellipsoid."
         },
+        "fill": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the ellipsoid is filled."
+        },
         "material": {
             "$ref": "Material.jsonschema",
             "description": "The material to display on the surface of the ellipsoid."
+        },
+        "outline": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the ellipsoid is outlined."
+        },
+        "outlineColor": {
+            "$ref": "Color.jsonschema",
+            "description": "The color of the ellipsoid outline."
+        },
+        "stackPartitions": {
+            "$ref": "Double.jsonschema",
+            "description": "The number of times to partition the ellipsoid into stacks."
+        },
+        "slicePartitions": {
+            "$ref": "Double.jsonschema",
+            "description": "The number of times to partition the ellipsoid into radial slices."
+        },
+        "subdivisions": {
+            "$ref": "Double.jsonschema",
+            "description": "The number of points per outline line, determining the granularity of the curvature."
         }
     }
 }
