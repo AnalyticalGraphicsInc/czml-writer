@@ -34,7 +34,22 @@ namespace KmlToCesiumLanguageTests
             groundOverlay.WritePacket();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"availability\":\"20071206T1631Z/99991231T235959.9999998999992Z\""));
+            StringAssert.Contains("\"availability\":\"20071206T1631Z/99991231T24Z\"", result);
+        }
+
+        [Test]
+        public void GroundOverlayProducesId()
+        {
+            XElement element = new XElement("GroundOverlay",
+                                            new XAttribute("id", "STS-122"),
+                                            new XElement("TimeSpan",
+                                                         new XElement("begin", "2007-12-06T16:31")));
+
+            var groundOverlay = new GroundOverlay(element, m_document);
+            groundOverlay.WritePacket();
+
+            string result = m_stringWriter.ToString();
+            StringAssert.Contains("\"id\":\"STS-122\"", result);
         }
 
         [Test]
@@ -51,7 +66,7 @@ namespace KmlToCesiumLanguageTests
             groundOverlay.WritePacket();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-3.141592653589793,1.5707963267948966,0.0,3.141592653589793,1.5707963267948966,0.0,3.141592653589793,-1.5707963267948966,0.0,-3.141592653589793,-1.5707963267948966,0.0]}"));
+            StringAssert.Contains("\"vertexPositions\":{\"cartographicRadians\":[-3.141592653589793,1.5707963267948966,0,3.141592653589793,1.5707963267948966,0,3.141592653589793,-1.5707963267948966,0,-3.141592653589793,-1.5707963267948966,0]}", result);
         }
 
         [Test]
@@ -70,7 +85,7 @@ namespace KmlToCesiumLanguageTests
             groundOverlay.WritePacket();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"vertexPositions\":{\"cartographicRadians\":[-3.141592653589793,1.5707963267948966,1e3,3.141592653589793,1.5707963267948966,1e3,3.141592653589793,-1.5707963267948966,1e3,-3.141592653589793,-1.5707963267948966,1e3]}"));
+            StringAssert.Contains("\"vertexPositions\":{\"cartographicRadians\":[-3.141592653589793,1.5707963267948966,1e3,3.141592653589793,1.5707963267948966,1e3,3.141592653589793,-1.5707963267948966,1e3,-3.141592653589793,-1.5707963267948966,1e3]}", result);
         }
 
         [Test]
@@ -82,7 +97,7 @@ namespace KmlToCesiumLanguageTests
             groundOverlay.WritePacket();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"polygon\":{\"show\":true"));
+            StringAssert.Contains("\"polygon\":{\"show\":true", result);
         }
 
         [Test]
@@ -94,7 +109,7 @@ namespace KmlToCesiumLanguageTests
             groundOverlay.WritePacket();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"polygon\":{\"show\":false"));
+            StringAssert.Contains("\"polygon\":{\"show\":false", result);
         }
 
         [Test]
@@ -106,7 +121,7 @@ namespace KmlToCesiumLanguageTests
             groundOverlay.WritePacket();
 
             string result = m_stringWriter.ToString();
-            Assert.That(result.Contains("\"polygon\":{\"material\":{\"solidColor\":{\"color\":{\"rgba\":[255,255,255,150]}}}}"));
+            StringAssert.Contains("\"polygon\":{\"material\":{\"solidColor\":{\"color\":{\"rgba\":[255,255,255,150]}}}}", result);
         }
     }
 }

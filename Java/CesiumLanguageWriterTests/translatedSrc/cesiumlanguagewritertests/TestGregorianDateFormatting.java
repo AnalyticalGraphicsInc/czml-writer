@@ -128,4 +128,7 @@ public class TestGregorianDateFormatting {
 		iso = new GregorianDate(2012, 6, 30, 23, 59, 60.123).toIso8601String();
 		Assert.assertEquals("2012-06-30T23:59:60.123Z", iso);
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

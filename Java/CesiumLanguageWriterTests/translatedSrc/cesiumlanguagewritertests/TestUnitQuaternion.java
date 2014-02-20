@@ -335,4 +335,7 @@ public class TestUnitQuaternion {
 		Assert.assertEquals("0, 0, 1, 0", test3.toString());
 		Assert.assertEquals("0, 0, 0, 1", test4.toString());
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

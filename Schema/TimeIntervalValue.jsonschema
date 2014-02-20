@@ -1,5 +1,5 @@
 {
     "title": "TimeInterval",
-    "description": "An interval of time.",
+    "description": "An ISO8601 interval of time.",
     "type": "string"
 }

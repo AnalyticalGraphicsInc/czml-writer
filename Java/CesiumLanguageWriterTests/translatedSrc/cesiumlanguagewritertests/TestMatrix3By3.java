@@ -523,4 +523,7 @@ public class TestMatrix3By3 {
 	public final void testZeroInvertException() {
 		Matrix3By3 mat = Matrix3By3.getZero().invert();
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

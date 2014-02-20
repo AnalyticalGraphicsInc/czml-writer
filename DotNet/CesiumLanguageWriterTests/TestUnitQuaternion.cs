@@ -98,7 +98,6 @@ namespace CesiumLanguageWriterTests
             Assert.IsFalse(first.Equals(second));
             Assert.IsFalse(second.Equals(first));
 
-
             second = new UnitQuaternion(1.0, 2.0, 3.3, 4.0);
             Assert.AreNotEqual(first, second);
             Assert.AreNotEqual(second, first);

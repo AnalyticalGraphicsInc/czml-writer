@@ -91,35 +91,35 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        [ExpectedException(typeof (FormatException))]
+        [ExpectedException(typeof(FormatException))]
         public void ToStringThrowsOnInvalidFormatSpecifier()
         {
             new GregorianDate(2009, 06, 10).ToString("X");
         }
 
         [Test]
-        [ExpectedException(typeof (FormatException))]
+        [ExpectedException(typeof(FormatException))]
         public void CantFormatMoreThan15FractionalSeconds()
         {
             new GregorianDate(2009, 06, 10).ToString("ffffffffffffffff");
         }
 
         [Test]
-        [ExpectedException(typeof (FormatException))]
+        [ExpectedException(typeof(FormatException))]
         public void CantEndWithAPercent()
         {
             new GregorianDate(2009, 06, 10).ToString("f%");
         }
 
         [Test]
-        [ExpectedException(typeof (FormatException))]
+        [ExpectedException(typeof(FormatException))]
         public void CantEndWithABackslash()
         {
             new GregorianDate(2009, 06, 10).ToString("f\\");
         }
 
         [Test]
-        [ExpectedException(typeof (FormatException))]
+        [ExpectedException(typeof(FormatException))]
         public void CantHaveADoublePercent()
         {
             new GregorianDate(2009, 06, 10).ToString("%%");

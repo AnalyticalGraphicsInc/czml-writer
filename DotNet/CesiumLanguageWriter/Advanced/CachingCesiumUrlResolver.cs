@@ -49,10 +49,12 @@ namespace CesiumLanguageWriter.Advanced
             LinkedListNode<CacheItem> node;
             if (m_dictionary.TryGetValue(url, out node))
             {
-                //move to front
-                m_lruList.Remove(node);
-                m_lruList.AddFirst(node);
-
+                if (m_lruList.First != node)
+                {
+                    //move to front
+                    m_lruList.Remove(node);
+                    m_lruList.AddFirst(node);
+                }
                 return node.Value.ResolvedUrl;
             }
 

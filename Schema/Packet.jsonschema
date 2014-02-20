@@ -8,6 +8,18 @@
             "type": "string",
             "default": "unique"
         },
+        "name": {
+            "description": "The name of the object.  It does not have to be unique and is intended for user consumption.",
+            "type": "string"
+        },
+        "parent": {
+            "description": "The ID of the parent object or folder.",
+            "type": "string"
+        },
+        "description": {
+            "$ref": "String.jsonschema",
+            "description": "An HTML description of the object."
+        },
         "availability": {
             "$ref": "TimeIntervalCollectionValue.jsonschema",
             "description": "When data for an object is available. If data for an object is known to be available at the current animation time, but the client does not yet have that data (presumably because it will arrive in a later packet), the client will pause with a message like \"Buffering...\" while it waits to receive the data. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may report availability for all time, but then later the propagator throws an exception and the availability needs to be adjusted. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is available at a time, the client expects the object to have at least one property, and it expects all properties that it needs to be defined at that time. If the object doesn't have any properties, or a needed property is defined but not at the animation time, the client will pause animation and wait for more data.",
@@ -77,5 +89,18 @@
             "$ref": "Model.jsonschema",
             "description": "A 3D model.  The model is positioned and oriented using the `position` and `orientation` properties."
         },
+        "ellipse": {
+            "$ref": "Ellipse.jsonschema",
+            "description": "An ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property."
+        },
+        "clock": {
+            "$ref": "Clock.jsonschema",
+            "description": "A simulated clock."
+        },
+        "vector": {
+            "$ref": "Vector.jsonschema",
+            "description": "Defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length."
+        }
+
     }
 }

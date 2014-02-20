@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.CesiumHorizontalOrigin;
 
 /**
  *  
@@ -90,10 +91,11 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 	}
 
 	final private ICesiumValuePropertyWriter<CesiumHorizontalOrigin> createHorizontalOriginAdaptor() {
-		return new CesiumWriterAdaptor<HorizontalOriginCesiumWriter, CesiumHorizontalOrigin>(this, new CesiumWriterAdaptorWriteCallback<HorizontalOriginCesiumWriter, CesiumHorizontalOrigin>() {
-			public void invoke(HorizontalOriginCesiumWriter me, CesiumHorizontalOrigin value) {
-				me.writeHorizontalOrigin(value);
-			}
-		});
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.HorizontalOriginCesiumWriter, cesiumlanguagewriter.CesiumHorizontalOrigin>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.HorizontalOriginCesiumWriter, cesiumlanguagewriter.CesiumHorizontalOrigin>() {
+					public void invoke(HorizontalOriginCesiumWriter me, CesiumHorizontalOrigin value) {
+						me.writeHorizontalOrigin(value);
+					}
+				});
 	}
 }

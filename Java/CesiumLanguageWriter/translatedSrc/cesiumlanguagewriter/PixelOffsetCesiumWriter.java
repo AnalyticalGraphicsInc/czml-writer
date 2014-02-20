@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.Rectangular;
 import java.util.List;
 
 /**
@@ -138,14 +139,15 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 	}
 
 	final private ICesiumInterpolatableValuePropertyWriter<Rectangular> createCartesian2Adaptor() {
-		return new CesiumInterpolatableWriterAdaptor<PixelOffsetCesiumWriter, Rectangular>(this, new CesiumWriterAdaptorWriteCallback<PixelOffsetCesiumWriter, Rectangular>() {
-			public void invoke(PixelOffsetCesiumWriter me, Rectangular value) {
-				me.writeCartesian2(value);
-			}
-		}, new CesiumWriterAdaptorWriteSamplesCallback<PixelOffsetCesiumWriter, Rectangular>() {
-			public void invoke(PixelOffsetCesiumWriter me, List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
-				me.writeCartesian2(dates, values, startIndex, length);
-			}
-		});
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.PixelOffsetCesiumWriter, cesiumlanguagewriter.Rectangular>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.PixelOffsetCesiumWriter, cesiumlanguagewriter.Rectangular>() {
+					public void invoke(PixelOffsetCesiumWriter me, Rectangular value) {
+						me.writeCartesian2(value);
+					}
+				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.PixelOffsetCesiumWriter, cesiumlanguagewriter.Rectangular>() {
+					public void invoke(PixelOffsetCesiumWriter me, List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
+						me.writeCartesian2(dates, values, startIndex, length);
+					}
+				});
 	}
 }

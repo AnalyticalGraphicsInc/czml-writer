@@ -391,4 +391,7 @@ public class TestJulianDate {
 		Assert.assertEquals(2, secondBeforeLeapSecondUTC.secondsDifference(secondAfterLeapSecondUTC), 0d);
 		Assert.assertEquals(2, secondAfterLeapSecondUTC.subtract(secondBeforeLeapSecondUTC).getSeconds(), 0d);
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

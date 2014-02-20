@@ -55,6 +55,23 @@ namespace KmlToCesiumLanguage
             }
         }
 
+		/// <summary>
+        /// Gets the id from the kml document element, or generates one if it does not exist
+        /// </summary>
+        /// <param name="element">The element that has the id.</param>
+        public static string GetId(XElement element)
+        {
+            XAttribute element_guid = element.Attribute("id");
+            if (element_guid != null)
+            {
+                return element_guid.Value;
+            }
+            else
+            {
+                return Guid.NewGuid().ToString();
+            }
+        }
+		
         /// <summary>
         /// Retrieves the Style element. This can either be the Style element contained in <paramref name="element"/> or a styleUrl element contained in <paramref name="element"/>.
         /// </summary>
@@ -90,6 +107,27 @@ namespace KmlToCesiumLanguage
             return null;
         }
 
+        /// <summary>
+        /// Parses an element to a boolean value
+        /// </summary>
+        /// <param name="booleanElement">The boolean element.</param>
+        /// <returns></returns>
+        public static bool ParseBoolean(XElement booleanElement)
+        {
+            if (booleanElement != null)
+            {
+                int result = 0;
+                if (int.TryParse(booleanElement.Value, out result))
+                    return result == 1;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Google's KML extensions for elements that use the gx prefix.
+        /// </summary>
+        public static readonly string GxPrefix = "gx";
+
         private static TimeInterval GetInterval(XElement placemark, XNamespace docNamespace)
         {
             XElement timespan = placemark.Element(docNamespace + "TimeSpan");
@@ -118,7 +156,7 @@ namespace KmlToCesiumLanguage
                 GregorianDate beginDate;
                 if (!GregorianDate.TryParse(beginElement.Value, out beginDate))
                 {
-                    beginDate = GregorianDate.ParseExact(beginElement.Value, s_validIso8601Formats, CultureInfo.CurrentCulture);
+                    beginDate = GregorianDate.ParseExact(beginElement.Value, ValidIso8601Formats, CultureInfo.CurrentCulture);
                 }
                 begin = new JulianDate(beginDate);
             }
@@ -128,7 +166,7 @@ namespace KmlToCesiumLanguage
                 GregorianDate endDate;
                 if (!GregorianDate.TryParse(endElement.Value, out endDate))
                 {
-                    endDate = GregorianDate.ParseExact(endElement.Value, s_validIso8601Formats, CultureInfo.CurrentCulture);
+                    endDate = GregorianDate.ParseExact(endElement.Value, ValidIso8601Formats, CultureInfo.CurrentCulture);
                 }
                 end = new JulianDate(endDate);
             }
@@ -143,14 +181,17 @@ namespace KmlToCesiumLanguage
                 GregorianDate whenDate;
                 if (!GregorianDate.TryParse(whenElement.Value, out whenDate))
                 {
-                    whenDate = GregorianDate.ParseExact(whenElement.Value, s_validIso8601Formats, CultureInfo.CurrentCulture);
+                    whenDate = GregorianDate.ParseExact(whenElement.Value, ValidIso8601Formats, CultureInfo.CurrentCulture);
                 }
                 return new TimeInterval(new JulianDate(whenDate), new JulianDate(GregorianDate.MaxValue));
             }
             return null;
         }
 
-        private static readonly string[] s_validIso8601Formats =
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly string[] ValidIso8601Formats =
         new[]
                     {
                         "yyyy", 

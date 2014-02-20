@@ -39,6 +39,11 @@ namespace CesiumLanguageWriter
         public const string OutlineColorPropertyName = "outlineColor";
 
         /// <summary>
+        /// The name of the <code>outlineWidth</code> property.
+        /// </summary>
+        public const string OutlineWidthPropertyName = "outlineWidth";
+
+        /// <summary>
         /// The name of the <code>pixelOffset</code> property.
         /// </summary>
         public const string PixelOffsetPropertyName = "pixelOffset";
@@ -73,6 +78,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<FontCesiumWriter> m_font = new Lazy<FontCesiumWriter>(() => new FontCesiumWriter(FontPropertyName), false);
         private readonly Lazy<HorizontalOriginCesiumWriter> m_horizontalOrigin = new Lazy<HorizontalOriginCesiumWriter>(() => new HorizontalOriginCesiumWriter(HorizontalOriginPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
         private readonly Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<PixelOffsetCesiumWriter>(() => new PixelOffsetCesiumWriter(PixelOffsetPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
@@ -363,6 +369,50 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOutlineColorProperty())
             {
                 writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineWidth</code> property defines the outline width of the label.
+        /// </summary>
+        public DoubleCesiumWriter OutlineWidthWriter
+        {
+            get { return m_outlineWidth.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the outline width of the label.
+        /// </summary>
+        public DoubleCesiumWriter OpenOutlineWidthProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(OutlineWidthWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the outline width of the label.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteOutlineWidthProperty(double value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the outline width of the label.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteOutlineWidthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 

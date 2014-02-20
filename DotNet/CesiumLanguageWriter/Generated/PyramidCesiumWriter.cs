@@ -39,6 +39,11 @@ namespace CesiumLanguageWriter
         public const string IntersectionColorPropertyName = "intersectionColor";
 
         /// <summary>
+        /// The name of the <code>intersectionWidth</code> property.
+        /// </summary>
+        public const string IntersectionWidthPropertyName = "intersectionWidth";
+
+        /// <summary>
         /// The name of the <code>material</code> property.
         /// </summary>
         public const string MaterialPropertyName = "material";
@@ -48,6 +53,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RadiusPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_showIntersection = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowIntersectionPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_intersectionColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(IntersectionColorPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_intersectionWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(IntersectionWidthPropertyName), false);
         private readonly Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(MaterialPropertyName), false);
 
         /// <summary>
@@ -287,6 +293,50 @@ namespace CesiumLanguageWriter
             using (var writer = OpenIntersectionColorProperty())
             {
                 writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>intersectionWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>intersectionWidth</code> property defines the width of the intersection in pixels.
+        /// </summary>
+        public DoubleCesiumWriter IntersectionWidthWriter
+        {
+            get { return m_intersectionWidth.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>intersectionWidth</code> property.  The <code>intersectionWidth</code> property defines the width of the intersection in pixels.
+        /// </summary>
+        public DoubleCesiumWriter OpenIntersectionWidthProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(IntersectionWidthWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionWidth</code> property as a <code>number</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteIntersectionWidthProperty(double value)
+        {
+            using (var writer = OpenIntersectionWidthProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionWidth</code> property as a <code>number</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteIntersectionWidthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenIntersectionWidthProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 

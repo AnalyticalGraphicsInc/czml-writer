@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using System.Collections.Generic;
 
 namespace KmlToCesiumLanguage
 {
@@ -18,6 +19,7 @@ namespace KmlToCesiumLanguage
             m_output = new CesiumOutputStream(outputWriter);
             m_writer = new CesiumStreamWriter();
             m_imageResolver = new CachingCesiumUrlResolver(int.MaxValue);
+            NamespaceDeclarations = new Dictionary<string, XNamespace>();
             Namespace = "";
         }
 
@@ -36,6 +38,14 @@ namespace KmlToCesiumLanguage
         /// The namespace.
         /// </value>
         public XNamespace Namespace { get; set; }
+
+        /// <summary>
+        /// Gets or sets the namespace declarations.
+        /// </summary>
+        /// <value>
+        /// The namespace declarations.
+        /// </value>
+        public Dictionary<string, XNamespace> NamespaceDeclarations { get; private set; }
 
         /// <summary>
         /// Gets the cesium output stream.

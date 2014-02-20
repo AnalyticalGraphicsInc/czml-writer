@@ -29,6 +29,11 @@ namespace CesiumLanguageWriter
         public const string WidthPropertyName = "width";
 
         /// <summary>
+        /// The name of the <code>resolution</code> property.
+        /// </summary>
+        public const string ResolutionPropertyName = "resolution";
+
+        /// <summary>
         /// The name of the <code>outlineColor</code> property.
         /// </summary>
         public const string OutlineColorPropertyName = "outlineColor";
@@ -51,6 +56,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_resolution = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ResolutionPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_leadTime = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(LeadTimePropertyName), false);
@@ -221,6 +227,50 @@ namespace CesiumLanguageWriter
         public void WriteWidthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenWidthProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>resolution</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>resolution</code> property defines the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path.
+        /// </summary>
+        public DoubleCesiumWriter ResolutionWriter
+        {
+            get { return m_resolution.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>resolution</code> property.  The <code>resolution</code> property defines the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path.
+        /// </summary>
+        public DoubleCesiumWriter OpenResolutionProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ResolutionWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>resolution</code> property as a <code>number</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteResolutionProperty(double value)
+        {
+            using (var writer = OpenResolutionProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>resolution</code> property as a <code>number</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteResolutionProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenResolutionProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
             }

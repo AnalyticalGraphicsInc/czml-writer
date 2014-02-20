@@ -16,7 +16,32 @@ namespace KmlToCesiumLanguage
         /// <param name="document">The document.</param>
         public Placemark(XElement placemark, CzmlDocument document)
         {
-            m_geometries = placemark.Descendants().Where(o => o.Name == document.Namespace + "Point" || o.Name == document.Namespace + "Polygon" || o.Name == document.Namespace + "LineString").Select(o => GeometryFactory.Create(o, document, placemark));
+            XNamespace gxNs = null;
+            XName gxNsTrack = null;
+            XName gxNsMultiTrack = null;
+            XName gxNsInterpolate = null;
+            if (document.NamespaceDeclarations.TryGetValue(Utility.GxPrefix, out gxNs))
+            {
+                gxNsTrack = gxNs + "Track";
+                gxNsMultiTrack = gxNs + "MultiTrack";
+                gxNsInterpolate = gxNs + "interpolate";
+            }
+            m_geometries = placemark.Descendants().Where(
+                o =>
+                {
+                    if ((o.Name == document.Namespace + "Point") || 
+                        (o.Name == document.Namespace + "Polygon") || 
+                        (o.Name == document.Namespace + "LineString") ||
+                        (gxNs != null && ((o.Name == gxNsTrack && gxNsMultiTrack != o.Parent.Name) ||
+                            (o.Name == gxNsTrack && gxNsMultiTrack == o.Parent.Name && (o.Parent.Element(gxNsInterpolate) == null || o.Parent.Element(gxNsInterpolate).Value == "0")) ||
+                            (o.Name == gxNsTrack && gxNsMultiTrack == o.Parent.Name && (o.Parent.Element(gxNsInterpolate) == null || o.Parent.Element(gxNsInterpolate).Value == "0")) ||
+                            (o.Name == gxNsMultiTrack && (o.Element(gxNsInterpolate) != null && Utility.ParseBoolean(o.Element(gxNsInterpolate)))))))
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                ).Select(o => GeometryFactory.Create(o, document, placemark));
         }
 
         /// <summary>

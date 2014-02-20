@@ -193,4 +193,7 @@ public class TestTimeInterval {
 		TimeInterval interval = new TimeInterval(new JulianDate(2451545, 0.00), new JulianDate(2451546, 0.00));
 		Assert.assertEquals("[2451545:0 (TAI), 2451546:0 (TAI)]", interval.toString());
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

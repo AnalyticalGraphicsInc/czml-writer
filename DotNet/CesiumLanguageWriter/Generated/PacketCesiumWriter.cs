@@ -19,6 +19,21 @@ namespace CesiumLanguageWriter
         public const string IdPropertyName = "id";
 
         /// <summary>
+        /// The name of the <code>name</code> property.
+        /// </summary>
+        public const string NamePropertyName = "name";
+
+        /// <summary>
+        /// The name of the <code>parent</code> property.
+        /// </summary>
+        public const string ParentPropertyName = "parent";
+
+        /// <summary>
+        /// The name of the <code>description</code> property.
+        /// </summary>
+        public const string DescriptionPropertyName = "description";
+
+        /// <summary>
         /// The name of the <code>availability</code> property.
         /// </summary>
         public const string AvailabilityPropertyName = "availability";
@@ -94,10 +109,21 @@ namespace CesiumLanguageWriter
         public const string ViewFromPropertyName = "viewFrom";
 
         /// <summary>
-        /// The name of the <code>model</code> property.
+        /// The name of the <code>ellipse</code> property.
         /// </summary>
-        public const string ModelPropertyName = "model";
+        public const string EllipsePropertyName = "ellipse";
 
+        /// <summary>
+        /// The name of the <code>clock</code> property.
+        /// </summary>
+        public const string ClockPropertyName = "clock";
+
+        /// <summary>
+        /// The name of the <code>vector</code> property.
+        /// </summary>
+        public const string VectorPropertyName = "vector";
+
+        private readonly Lazy<StringCesiumWriter> m_description = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(DescriptionPropertyName), false);
         private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter(BillboardPropertyName), false);
         private readonly Lazy<PositionListCesiumWriter> m_vertexPositions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(VertexPositionsPropertyName), false);
@@ -111,7 +137,9 @@ namespace CesiumLanguageWriter
         private readonly Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<PyramidCesiumWriter>(() => new PyramidCesiumWriter(PyramidPropertyName), false);
         private readonly Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(() => new CameraCesiumWriter(CameraPropertyName), false);
         private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
-        private readonly Lazy<ModelCesiumWriter> m_model = new Lazy<ModelCesiumWriter>(() => new ModelCesiumWriter(ModelPropertyName), false);
+        private readonly Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(() => new EllipseCesiumWriter(EllipsePropertyName), false);
+        private readonly Lazy<ClockCesiumWriter> m_clock = new Lazy<ClockCesiumWriter>(() => new ClockCesiumWriter(ClockPropertyName), false);
+        private readonly Lazy<VectorCesiumWriter> m_vector = new Lazy<VectorCesiumWriter>(() => new VectorCesiumWriter(VectorPropertyName), false);
 
         /// <summary>
         /// Writes the start of a new JSON object representing the packet.
@@ -138,6 +166,56 @@ namespace CesiumLanguageWriter
             const string PropertyName = IdPropertyName;
             Output.WritePropertyName(PropertyName);
             Output.WriteValue(value);
+        }
+
+        /// <summary>
+        /// Writes the <code>name</code> property.  The <code>name</code> property specifies the name of the object.  It does not have to be unique and is intended for user consumption.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteName(string value)
+        {
+            const string PropertyName = NamePropertyName;
+            Output.WritePropertyName(PropertyName);
+            Output.WriteValue(value);
+        }
+
+        /// <summary>
+        /// Writes the <code>parent</code> property.  The <code>parent</code> property specifies the ID of the parent object or folder.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteParent(string value)
+        {
+            const string PropertyName = ParentPropertyName;
+            Output.WritePropertyName(PropertyName);
+            Output.WriteValue(value);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>description</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>description</code> property defines an HTML description of the object.
+        /// </summary>
+        public StringCesiumWriter DescriptionWriter
+        {
+            get { return m_description.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>description</code> property.  The <code>description</code> property defines an HTML description of the object.
+        /// </summary>
+        public StringCesiumWriter OpenDescriptionProperty()
+        {
+            return OpenAndReturn(DescriptionWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>description</code> property as a <code>string</code> value.  The <code>description</code> property specifies an HTML description of the object.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteDescriptionProperty(string value)
+        {
+            using (var writer = OpenDescriptionProperty())
+            {
+                writer.WriteString(value);
+            }
         }
 
         /// <summary>
@@ -624,19 +702,51 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>model</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+        /// Gets the writer for the <code>ellipse</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipse</code> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
         /// </summary>
-        public ModelCesiumWriter ModelWriter
+        public EllipseCesiumWriter EllipseWriter
         {
-            get { return m_model.Value; }
+            get { return m_ellipse.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>model</code> property.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+        /// Opens and returns the writer for the <code>ellipse</code> property.  The <code>ellipse</code> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
         /// </summary>
-        public ModelCesiumWriter OpenModelProperty()
+        public EllipseCesiumWriter OpenEllipseProperty()
         {
-            return OpenAndReturn(ModelWriter);
+            return OpenAndReturn(EllipseWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>clock</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>clock</code> property defines a simulated clock.
+        /// </summary>
+        public ClockCesiumWriter ClockWriter
+        {
+            get { return m_clock.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>clock</code> property.  The <code>clock</code> property defines a simulated clock.
+        /// </summary>
+        public ClockCesiumWriter OpenClockProperty()
+        {
+            return OpenAndReturn(ClockWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>vector</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+        /// </summary>
+        public VectorCesiumWriter VectorWriter
+        {
+            get { return m_vector.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>vector</code> property.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+        /// </summary>
+        public VectorCesiumWriter OpenVectorProperty()
+        {
+            return OpenAndReturn(VectorWriter);
         }
 
     }

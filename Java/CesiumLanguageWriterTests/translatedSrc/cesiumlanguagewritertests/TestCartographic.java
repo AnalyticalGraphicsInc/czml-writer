@@ -193,4 +193,7 @@ public class TestCartographic {
 		Cartographic test = new Cartographic(Math.PI, Constants.HalfPi, val);
 		Assert.assertEquals(s.toString(), test.toString());
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

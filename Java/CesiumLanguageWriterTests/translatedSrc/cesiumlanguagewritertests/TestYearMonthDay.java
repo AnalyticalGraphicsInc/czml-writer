@@ -349,4 +349,7 @@ public class TestYearMonthDay {
 		Assert.assertEquals(ymd.getDayOfWeek(), ymd2.getDayOfWeek());
 		Assert.assertEquals((int) ymd.getDayOfYear(), (int) ymd2.getDayOfYear());
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

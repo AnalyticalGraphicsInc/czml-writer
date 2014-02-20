@@ -174,4 +174,7 @@ public class TestLeapSeconds {
 		//5 second difference, so 50 additions of a tenth of a second each
 		Assert.assertEquals((int) 50, (int) i);
 	}
+
+	@org.junit.Rule
+	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

@@ -279,14 +279,18 @@ public class Cartographic implements IEquatable<Cartographic>, ImmutableValueTyp
 	 */
 	public final double get(int index) {
 		switch (index) {
-		case 0:
+		case 0: {
 			return getLongitude();
-		case 1:
+		}
+		case 1: {
 			return getLatitude();
-		case 2:
+		}
+		case 2: {
 			return getHeight();
-		default:
+		}
+		default: {
 			throw new ArgumentOutOfRangeException("index");
+		}
 		}
 	}
 

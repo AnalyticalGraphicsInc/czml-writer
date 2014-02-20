@@ -8,7 +8,9 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BillboardCesiumWriter;
 import cesiumlanguagewriter.CameraCesiumWriter;
+import cesiumlanguagewriter.ClockCesiumWriter;
 import cesiumlanguagewriter.ConeCesiumWriter;
+import cesiumlanguagewriter.EllipseCesiumWriter;
 import cesiumlanguagewriter.EllipsoidCesiumWriter;
 import cesiumlanguagewriter.LabelCesiumWriter;
 import cesiumlanguagewriter.ModelCesiumWriter;
@@ -20,6 +22,8 @@ import cesiumlanguagewriter.PolylineCesiumWriter;
 import cesiumlanguagewriter.PositionCesiumWriter;
 import cesiumlanguagewriter.PositionListCesiumWriter;
 import cesiumlanguagewriter.PyramidCesiumWriter;
+import cesiumlanguagewriter.StringCesiumWriter;
+import cesiumlanguagewriter.VectorCesiumWriter;
 import java.util.List;
 
 /**
@@ -36,6 +40,27 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	 */
 	public static final String IdPropertyName = "id";
+	/**
+	 *  
+	The name of the <code>name</code> property.
+	
+
+	 */
+	public static final String NamePropertyName = "name";
+	/**
+	 *  
+	The name of the <code>parent</code> property.
+	
+
+	 */
+	public static final String ParentPropertyName = "parent";
+	/**
+	 *  
+	The name of the <code>description</code> property.
+	
+
+	 */
+	public static final String DescriptionPropertyName = "description";
 	/**
 	 *  
 	The name of the <code>availability</code> property.
@@ -143,11 +168,30 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	public static final String ViewFromPropertyName = "viewFrom";
 	/**
 	 *  
-	The name of the <code>model</code> property.
+	The name of the <code>ellipse</code> property.
 	
 
 	 */
-	public static final String ModelPropertyName = "model";
+	public static final String EllipsePropertyName = "ellipse";
+	/**
+	 *  
+	The name of the <code>clock</code> property.
+	
+
+	 */
+	public static final String ClockPropertyName = "clock";
+	/**
+	 *  
+	The name of the <code>vector</code> property.
+	
+
+	 */
+	public static final String VectorPropertyName = "vector";
+	private Lazy<StringCesiumWriter> m_description = new Lazy<cesiumlanguagewriter.StringCesiumWriter>(new Func1<cesiumlanguagewriter.StringCesiumWriter>() {
+		public cesiumlanguagewriter.StringCesiumWriter invoke() {
+			return new StringCesiumWriter(DescriptionPropertyName);
+		}
+	}, false);
 	private Lazy<PositionCesiumWriter> m_position = new Lazy<cesiumlanguagewriter.PositionCesiumWriter>(new Func1<cesiumlanguagewriter.PositionCesiumWriter>() {
 		public cesiumlanguagewriter.PositionCesiumWriter invoke() {
 			return new PositionCesiumWriter(PositionPropertyName);
@@ -213,9 +257,19 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 			return new EllipsoidCesiumWriter(EllipsoidPropertyName);
 		}
 	}, false);
-	private Lazy<ModelCesiumWriter> m_model = new Lazy<cesiumlanguagewriter.ModelCesiumWriter>(new Func1<cesiumlanguagewriter.ModelCesiumWriter>() {
-		public cesiumlanguagewriter.ModelCesiumWriter invoke() {
-			return new ModelCesiumWriter(ModelPropertyName);
+	private Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<cesiumlanguagewriter.EllipseCesiumWriter>(new Func1<cesiumlanguagewriter.EllipseCesiumWriter>() {
+		public cesiumlanguagewriter.EllipseCesiumWriter invoke() {
+			return new EllipseCesiumWriter(EllipsePropertyName);
+		}
+	}, false);
+	private Lazy<ClockCesiumWriter> m_clock = new Lazy<cesiumlanguagewriter.ClockCesiumWriter>(new Func1<cesiumlanguagewriter.ClockCesiumWriter>() {
+		public cesiumlanguagewriter.ClockCesiumWriter invoke() {
+			return new ClockCesiumWriter(ClockPropertyName);
+		}
+	}, false);
+	private Lazy<VectorCesiumWriter> m_vector = new Lazy<cesiumlanguagewriter.VectorCesiumWriter>(new Func1<cesiumlanguagewriter.VectorCesiumWriter>() {
+		public cesiumlanguagewriter.VectorCesiumWriter invoke() {
+			return new VectorCesiumWriter(VectorPropertyName);
 		}
 	}, false);
 
@@ -253,6 +307,72 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 		String PropertyName = IdPropertyName;
 		getOutput().writePropertyName(PropertyName);
 		getOutput().writeValue(value);
+	}
+
+	/**
+	 *  
+	Writes the <code>name</code> property.  The <code>name</code> property specifies the name of the object.  It does not have to be unique and is intended for user consumption.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeName(String value) {
+		String PropertyName = NamePropertyName;
+		getOutput().writePropertyName(PropertyName);
+		getOutput().writeValue(value);
+	}
+
+	/**
+	 *  
+	Writes the <code>parent</code> property.  The <code>parent</code> property specifies the ID of the parent object or folder.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeParent(String value) {
+		String PropertyName = ParentPropertyName;
+		getOutput().writePropertyName(PropertyName);
+		getOutput().writeValue(value);
+	}
+
+	/**
+	 *  Gets the writer for the <code>description</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>description</code> property defines an HTML description of the object.
+	
+
+	 */
+	public final StringCesiumWriter getDescriptionWriter() {
+		return m_description.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>description</code> property.  The <code>description</code> property defines an HTML description of the object.
+	
+
+	 */
+	public final StringCesiumWriter openDescriptionProperty() {
+		return this.<StringCesiumWriter> openAndReturn(getDescriptionWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>description</code> property as a <code>string</code> value.  The <code>description</code> property specifies an HTML description of the object.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeDescriptionProperty(String value) {
+		{
+			cesiumlanguagewriter.StringCesiumWriter writer = openDescriptionProperty();
+			try {
+				writer.writeString(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
@@ -929,21 +1049,59 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	}
 
 	/**
-	 *  Gets the writer for the <code>model</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+	 *  Gets the writer for the <code>ellipse</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipse</code> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
 	
 
 	 */
-	public final ModelCesiumWriter getModelWriter() {
-		return m_model.getValue();
+	public final EllipseCesiumWriter getEllipseWriter() {
+		return m_ellipse.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>model</code> property.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+	Opens and returns the writer for the <code>ellipse</code> property.  The <code>ellipse</code> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
 	
 
 	 */
-	public final ModelCesiumWriter openModelProperty() {
-		return this.<ModelCesiumWriter> openAndReturn(getModelWriter());
+	public final EllipseCesiumWriter openEllipseProperty() {
+		return this.<EllipseCesiumWriter> openAndReturn(getEllipseWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>clock</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>clock</code> property defines a simulated clock.
+	
+
+	 */
+	public final ClockCesiumWriter getClockWriter() {
+		return m_clock.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>clock</code> property.  The <code>clock</code> property defines a simulated clock.
+	
+
+	 */
+	public final ClockCesiumWriter openClockProperty() {
+		return this.<ClockCesiumWriter> openAndReturn(getClockWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>vector</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+	
+
+	 */
+	public final VectorCesiumWriter getVectorWriter() {
+		return m_vector.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>vector</code> property.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+	
+
+	 */
+	public final VectorCesiumWriter openVectorProperty() {
+		return this.<VectorCesiumWriter> openAndReturn(getVectorWriter());
 	}
 }

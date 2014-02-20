@@ -15,7 +15,7 @@ namespace CesiumLanguageWriterTests
         /// YearMonthDay with an invalid date.
         /// </summary>
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         public void TestConstructWithInvalidDate()
         {
             YearMonthDay ymd = new YearMonthDay(2006, 2, 29);
@@ -231,7 +231,7 @@ namespace CesiumLanguageWriterTests
         /// invoked on a type that is not a YearMonthDay.
         /// </summary>
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof(ArgumentException))]
         [CSToJavaExclude]
         public void TestCompareToWrongType()
         {

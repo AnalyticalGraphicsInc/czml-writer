@@ -1,0 +1,23 @@
+{
+    "title": "Direction",
+    "description": "Defines a direction.  The direction can optionally vary over time.",
+    "extends": { "$ref": "InterpolatableProperty.jsonschema" },
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "axes": {
+            "description": "TODO",
+            "type": "string"
+        },
+        "unitCartesian": {
+            "$ref": "UnitCartesian3Value.jsonschema",
+            "description": "The direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.",
+            "czmlValue": true
+        },
+        "unitSpherical": {
+            "$ref": "UnitSphericalValue.jsonschema",
+            "description": "A direction specified as a unit spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
+            "czmlValue": true
+        }
+    }
+}
