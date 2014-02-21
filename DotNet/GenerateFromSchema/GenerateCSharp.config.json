@@ -421,33 +421,7 @@
                 "writeValue": "CesiumWritingHelper.WriteCartographicList(Output, values);"
             }
         ],
-        "ModelUri": [
-            {
-                "parameters": [
-                    {
-                        "type": "CesiumResource",
-                        "name": "resource",
-                        "description": "A resource object describing the model."
-                    }
-                ],
-				"callOverload": "resource.Url, resource.Behavior"
-            },
-			{
-                "parameters": [
-                    {
-                        "type": "string",
-                        "name": "url",
-                        "description": "The URL of the model."
-                    },
-                    {
-                        "type": "CesiumResourceBehavior",
-                        "name": "resourceBehavior",
-                        "description": "An enumeration describing how to include the model in the document. For even more control, use the overload that takes a ICesiumUrlResolver."
-                    }
-                ],
-                "writeValue": "Output.WriteValue(CesiumFormattingHelper.GetResourceUrl(url, resourceBehavior));",
-				"needsInterval": false
-            },
+		"GltfUrl": [
             {
                 "parameters": [
                     {
@@ -462,9 +436,24 @@
                     }
                 ],
                 "writeValue": "Output.WriteValue(resolver.ResolveUrl(url));",
-				"needsInterval": false
+                "needsInterval": false
             },
-        ],
+            {
+                "parameters": [
+                    {
+                        "type": "Uri",
+                        "name": "url",
+                        "description": "The uri.  A data URI will be created for this image, using PNG encoding."
+                    },
+                    {
+                        "type": "ICesiumUrlResolver",
+                        "name": "resolver",
+                        "description": "An ICesiumUrlResolver used to build the final URL that will be embedded in the document."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(resolver.ResolveUrl(url.ToString()));",
+            },
+		],
         "Image": [
             {
                 "parameters": [

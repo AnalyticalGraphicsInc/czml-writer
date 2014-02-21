@@ -93,6 +93,7 @@
     <Compile Include="Generated\EllipsoidRadiiCesiumWriter.cs" />
     <Compile Include="Generated\EyeOffsetCesiumWriter.cs" />
     <Compile Include="Generated\FontCesiumWriter.cs" />
+    <Compile Include="Generated\GltfUrlCesiumWriter.cs" />
     <Compile Include="Generated\GridMaterialCesiumWriter.cs" />
     <Compile Include="Generated\HorizontalOriginCesiumWriter.cs" />
     <Compile Include="Generated\ImageCesiumWriter.cs" />
@@ -101,7 +102,6 @@
     <Compile Include="Generated\LabelStyleCesiumWriter.cs" />
     <Compile Include="Generated\MaterialCesiumWriter.cs" />
     <Compile Include="Generated\ModelCesiumWriter.cs" />
-    <Compile Include="Generated\ModelUriCesiumWriter.cs" />
     <Compile Include="Generated\OrientationCesiumWriter.cs" />
     <Compile Include="Generated\PacketCesiumWriter.cs" />
     <Compile Include="Generated\PathCesiumWriter.cs" />

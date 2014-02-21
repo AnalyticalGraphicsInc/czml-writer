@@ -1,6 +1,0 @@
-{
-    "title": "ModelUri",
-    "description": "The URI of the model.",
-    "type": "string",
-    "format": "uri"
-}

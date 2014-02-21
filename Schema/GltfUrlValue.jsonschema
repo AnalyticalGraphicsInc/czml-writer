@@ -1,0 +1,6 @@
+{
+    "title": "GltfUrl",
+    "description": "The URL of the glTF model.",
+    "type": "string",
+    "format": "uri"
+}

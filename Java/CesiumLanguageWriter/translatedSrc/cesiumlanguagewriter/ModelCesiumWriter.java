@@ -8,7 +8,8 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
-import cesiumlanguagewriter.ModelUriCesiumWriter;
+import cesiumlanguagewriter.GltfUrlCesiumWriter;
+import java.net.URI;
 import java.util.List;
 
 /**
@@ -34,11 +35,11 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	public static final String ScalePropertyName = "scale";
 	/**
 	 *  
-	The name of the <code>uri</code> property.
+	The name of the <code>gltf</code> property.
 	
 
 	 */
-	public static final String UriPropertyName = "uri";
+	public static final String GltfPropertyName = "gltf";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
@@ -49,9 +50,9 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 			return new DoubleCesiumWriter(ScalePropertyName);
 		}
 	}, false);
-	private Lazy<ModelUriCesiumWriter> m_uri = new Lazy<cesiumlanguagewriter.ModelUriCesiumWriter>(new Func1<cesiumlanguagewriter.ModelUriCesiumWriter>() {
-		public cesiumlanguagewriter.ModelUriCesiumWriter invoke() {
-			return new ModelUriCesiumWriter(UriPropertyName);
+	private Lazy<GltfUrlCesiumWriter> m_gltf = new Lazy<cesiumlanguagewriter.GltfUrlCesiumWriter>(new Func1<cesiumlanguagewriter.GltfUrlCesiumWriter>() {
+		public cesiumlanguagewriter.GltfUrlCesiumWriter invoke() {
+			return new GltfUrlCesiumWriter(GltfPropertyName);
 		}
 	}, false);
 
@@ -186,68 +187,28 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>uri</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>uri</code> property defines the uri to the model.
+	 *  Gets the writer for the <code>gltf</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>gltf</code> property defines the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
 	
 
 	 */
-	public final ModelUriCesiumWriter getUriWriter() {
-		return m_uri.getValue();
+	public final GltfUrlCesiumWriter getGltfWriter() {
+		return m_gltf.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>uri</code> property.  The <code>uri</code> property defines the uri to the model.
+	Opens and returns the writer for the <code>gltf</code> property.  The <code>gltf</code> property defines the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
 	
 
 	 */
-	public final ModelUriCesiumWriter openUriProperty() {
+	public final GltfUrlCesiumWriter openGltfProperty() {
 		openIntervalIfNecessary();
-		return this.<ModelUriCesiumWriter> openAndReturn(getUriWriter());
+		return this.<GltfUrlCesiumWriter> openAndReturn(getGltfWriter());
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>uri</code> property as a <code>webgltf</code> value.  The <code>uri</code> property specifies the uri to the model.
-	
-	
-
-	 * @param resource A resource object describing the model.
-	 */
-	public final void writeUriProperty(CesiumResource resource) {
-		{
-			cesiumlanguagewriter.ModelUriCesiumWriter writer = openUriProperty();
-			try {
-				writer.writeWebgltf(resource);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>uri</code> property as a <code>webgltf</code> value.  The <code>uri</code> property specifies the uri to the model.
-	
-	
-	
-
-	 * @param url The URL of the model.
-	 * @param resourceBehavior An enumeration describing how to include the model in the document. For even more control, use the overload that takes a ICesiumUrlResolver.
-	 */
-	public final void writeUriProperty(String url, CesiumResourceBehavior resourceBehavior) {
-		{
-			cesiumlanguagewriter.ModelUriCesiumWriter writer = openUriProperty();
-			try {
-				writer.writeWebgltf(url, resourceBehavior);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>uri</code> property as a <code>webgltf</code> value.  The <code>uri</code> property specifies the uri to the model.
+	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
 	
 	
 	
@@ -255,11 +216,11 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	 * @param url The URL of the model.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.
 	 * @param resolver An ICesiumUrlResolver used to build the final URL that will be embedded in the document.
 	 */
-	public final void writeUriProperty(String url, ICesiumUrlResolver resolver) {
+	public final void writeGltfProperty(String url, ICesiumUrlResolver resolver) {
 		{
-			cesiumlanguagewriter.ModelUriCesiumWriter writer = openUriProperty();
+			cesiumlanguagewriter.GltfUrlCesiumWriter writer = openGltfProperty();
 			try {
-				writer.writeWebgltf(url, resolver);
+				writer.writeUri(url, resolver);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -268,59 +229,19 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>uri</code> property as a <code>dae</code> value.  The <code>uri</code> property specifies the uri to the model.
-	
-	
-
-	 * @param resource A resource object describing the model.
-	 */
-	public final void writeUriPropertyDae(CesiumResource resource) {
-		{
-			cesiumlanguagewriter.ModelUriCesiumWriter writer = openUriProperty();
-			try {
-				writer.writeDae(resource);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>uri</code> property as a <code>dae</code> value.  The <code>uri</code> property specifies the uri to the model.
+	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
 	
 	
 	
 
-	 * @param url The URL of the model.
-	 * @param resourceBehavior An enumeration describing how to include the model in the document. For even more control, use the overload that takes a ICesiumUrlResolver.
-	 */
-	public final void writeUriPropertyDae(String url, CesiumResourceBehavior resourceBehavior) {
-		{
-			cesiumlanguagewriter.ModelUriCesiumWriter writer = openUriProperty();
-			try {
-				writer.writeDae(url, resourceBehavior);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>uri</code> property as a <code>dae</code> value.  The <code>uri</code> property specifies the uri to the model.
-	
-	
-	
-
-	 * @param url The URL of the model.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.
+	 * @param url The uri.  A data URI will be created for this image, using PNG encoding.
 	 * @param resolver An ICesiumUrlResolver used to build the final URL that will be embedded in the document.
 	 */
-	public final void writeUriPropertyDae(String url, ICesiumUrlResolver resolver) {
+	public final void writeGltfProperty(URI url, ICesiumUrlResolver resolver) {
 		{
-			cesiumlanguagewriter.ModelUriCesiumWriter writer = openUriProperty();
+			cesiumlanguagewriter.GltfUrlCesiumWriter writer = openGltfProperty();
 			try {
-				writer.writeDae(url, resolver);
+				writer.writeUri(url, resolver);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
