@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Model</code> to a  {@link CesiumOutputStream}.  A <code>Model</code> defines a 3D model.
+ Writes a <code>Model</code> to a  {@link CesiumOutputStream}.  A <code>Model</code> a 3D model.
  
 
  */
@@ -234,7 +234,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	
 	
 
-	 * @param url The uri.  A data URI will be created for this image, using PNG encoding.
+	 * @param url The URL of the model.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.
 	 * @param resolver An ICesiumUrlResolver used to build the final URL that will be embedded in the document.
 	 */
 	public final void writeGltfProperty(URI url, ICesiumUrlResolver resolver) {

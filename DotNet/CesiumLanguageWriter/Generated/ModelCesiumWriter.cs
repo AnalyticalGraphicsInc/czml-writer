@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Model</code> to a <see cref="CesiumOutputStream" />.  A <code>Model</code> defines a 3D model.
+    /// Writes a <code>Model</code> to a <see cref="CesiumOutputStream" />.  A <code>Model</code> a 3D model.
     /// </summary>
     public class ModelCesiumWriter : CesiumPropertyWriter<ModelCesiumWriter>
     {
@@ -160,7 +160,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
         /// </summary>
-        /// <param name="url">The uri.  A data URI will be created for this image, using PNG encoding.</param>
+        /// <param name="url">The URL of the model.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.</param>
         /// <param name="resolver">An ICesiumUrlResolver used to build the final URL that will be embedded in the document.</param>
         public void WriteGltfProperty(Uri url, ICesiumUrlResolver resolver)
         {

@@ -41,7 +41,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URL of the glTF model.
+        /// Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
         /// </summary>
         /// <param name="url">The URL of the model.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.</param>
         /// <param name="resolver">An ICesiumUrlResolver used to build the final URL that will be embedded in the document.</param>
@@ -54,9 +54,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URL of the glTF model.
+        /// Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
         /// </summary>
-        /// <param name="url">The uri.  A data URI will be created for this image, using PNG encoding.</param>
+        /// <param name="url">The URL of the model.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.</param>
         /// <param name="resolver">An ICesiumUrlResolver used to build the final URL that will be embedded in the document.</param>
         public void WriteUri(Uri url, ICesiumUrlResolver resolver)
         {

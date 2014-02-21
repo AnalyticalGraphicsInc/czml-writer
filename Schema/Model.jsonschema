@@ -1,6 +1,6 @@
 {
     "title": "Model",
-    "description": "Defines a 3D model.",
+    "description": "A 3D model.",
     "type": ["array", "object"],
     "items": { "$ref": "#" },
     "properties": {

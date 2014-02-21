@@ -49,7 +49,7 @@ public class GltfUrlCesiumWriter extends CesiumPropertyWriter<GltfUrlCesiumWrite
 
 	/**
 	 *  
-	Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URL of the glTF model.
+	Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
 	
 	
 	
@@ -67,12 +67,12 @@ public class GltfUrlCesiumWriter extends CesiumPropertyWriter<GltfUrlCesiumWrite
 
 	/**
 	 *  
-	Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URL of the glTF model.
+	Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
 	
 	
 	
 
-	 * @param url The uri.  A data URI will be created for this image, using PNG encoding.
+	 * @param url The URL of the model.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.
 	 * @param resolver An ICesiumUrlResolver used to build the final URL that will be embedded in the document.
 	 */
 	public final void writeUri(URI url, ICesiumUrlResolver resolver) {

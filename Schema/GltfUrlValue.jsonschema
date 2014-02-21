@@ -1,6 +1,6 @@
 {
     "title": "GltfUrl",
-    "description": "The URL of the glTF model.",
+    "description": "The URL of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model.",
     "type": "string",
     "format": "uri"
 }
