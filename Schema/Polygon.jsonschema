@@ -6,11 +6,43 @@
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the billboard is shown."
+            "description": "Whether or not the polygon is shown."
         },
         "material": {
             "$ref": "Material.jsonschema",
             "description": "The material to use to fill the polygon."
+        },
+        "height": {
+            "$ref": "Double.jsonschema",
+            "description": "The height of the polygon when perPositionHeight is false."
+        },
+        "extrudedHeight": {
+            "$ref": "Double.jsonschema",
+            "description": "The extruded height of the polygon."
+        },
+        "granularity": {
+            "$ref": "Double.jsonschema",
+            "description": "The sampling distance, in radians."
+        },
+        "stRotation": {
+            "$ref": "Double.jsonschema",
+            "description": "The rotation of any applied texture."
+        },
+        "fill": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the polygon is filled."
+        },
+        "outline": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the polygon is outlined."
+        },
+        "outlineColor": {
+            "$ref": "Color.jsonschema",
+            "description": "The color of the polygon outline."
+        },
+        "perPositionHeight": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether to use the height of each position to define the polygon or a constant height above the surface."
         }
     }
 }
