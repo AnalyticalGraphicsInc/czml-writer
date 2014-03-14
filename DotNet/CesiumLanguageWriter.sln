@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CesiumLanguageWriter", "CesiumLanguageWriter\CesiumLanguageWriter.csproj", "{085359F8-CC1D-4561-94C7-0BF067B8E370}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CesiumLanguageWriterTests", "CesiumLanguageWriterTests\CesiumLanguageWriterTests.csproj", "{1D5CE515-81E3-47AE-8D02-3767DD8CB07E}"
@@ -63,6 +65,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\SolidColorMaterial.jsonschema = ..\Schema\SolidColorMaterial.jsonschema
 		..\Schema\String.jsonschema = ..\Schema\String.jsonschema
 		..\Schema\StringValue.jsonschema = ..\Schema\StringValue.jsonschema
+		..\Schema\StripeMaterial.jsonschema = ..\Schema\StripeMaterial.jsonschema
 		..\Schema\TimeIntervalCollectionValue.jsonschema = ..\Schema\TimeIntervalCollectionValue.jsonschema
 		..\Schema\TimeIntervalValue.jsonschema = ..\Schema\TimeIntervalValue.jsonschema
 		..\Schema\TimeValue.jsonschema = ..\Schema\TimeValue.jsonschema
