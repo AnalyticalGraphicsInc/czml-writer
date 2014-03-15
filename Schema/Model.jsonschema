@@ -13,7 +13,7 @@
             "description": "The scale of the model."
         },
         "gltf": {
-            "$ref": "GltfUrl.jsonschema",
+            "$ref": "Uri.jsonschema",
             "description": "The URL of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model."
         }
     }
