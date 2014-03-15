@@ -29,9 +29,9 @@ namespace CesiumLanguageWriter
         public const string HorizontalOriginPropertyName = "horizontalOrigin";
 
         /// <summary>
-        /// The name of the <code>image</code> property.
+        /// The name of the <code>uri</code> property.
         /// </summary>
-        public const string ImagePropertyName = "image";
+        public const string UriPropertyName = "uri";
 
         /// <summary>
         /// The name of the <code>pixelOffset</code> property.
@@ -66,7 +66,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
         private readonly Lazy<EyeOffsetCesiumWriter> m_eyeOffset = new Lazy<EyeOffsetCesiumWriter>(() => new EyeOffsetCesiumWriter(EyeOffsetPropertyName), false);
         private readonly Lazy<HorizontalOriginCesiumWriter> m_horizontalOrigin = new Lazy<HorizontalOriginCesiumWriter>(() => new HorizontalOriginCesiumWriter(HorizontalOriginPropertyName), false);
-        private readonly Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(ImagePropertyName), false);
+        private readonly Lazy<UriCesiumWriter> m_uri = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(UriPropertyName), false);
         private readonly Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<PixelOffsetCesiumWriter>(() => new PixelOffsetCesiumWriter(PixelOffsetPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_rotation = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RotationPropertyName), false);
@@ -258,80 +258,80 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>image</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>image</code> property defines the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Gets the writer for the <code>uri</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>uri</code> property defines the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
-        public UriCesiumWriter ImageWriter
+        public UriCesiumWriter UriWriter
         {
-            get { return m_image.Value; }
+            get { return m_uri.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>image</code> property.  The <code>image</code> property defines the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Opens and returns the writer for the <code>uri</code> property.  The <code>uri</code> property defines the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
-        public UriCesiumWriter OpenImageProperty()
+        public UriCesiumWriter OpenUriProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(ImageWriter);
+            return OpenAndReturn(UriWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="resource">A resource object describing external data.</param>
-        public void WriteImageProperty(CesiumResource resource)
+        public void WriteUriProperty(CesiumResource resource)
         {
-            using (var writer = OpenImageProperty())
+            using (var writer = OpenUriProperty())
             {
                 writer.WriteUri(resource);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="url">The URL of the data.</param>
         /// <param name="resourceBehavior">An enumeration describing how to include the URL in the document. For even more control, use the overload that takes a ICesiumUrlResolver.</param>
-        public void WriteImageProperty(string url, CesiumResourceBehavior resourceBehavior)
+        public void WriteUriProperty(string url, CesiumResourceBehavior resourceBehavior)
         {
-            using (var writer = OpenImageProperty())
+            using (var writer = OpenUriProperty())
             {
                 writer.WriteUri(url, resourceBehavior);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="url">The URL of the data.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.</param>
         /// <param name="resolver">An ICesiumUrlResolver used to build the final URL that will be embedded in the document.</param>
-        public void WriteImageProperty(string url, ICesiumUrlResolver resolver)
+        public void WriteUriProperty(string url, ICesiumUrlResolver resolver)
         {
-            using (var writer = OpenImageProperty())
+            using (var writer = OpenUriProperty())
             {
                 writer.WriteUri(url, resolver);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="image">The image.  A data URI will be created for this image, using PNG encoding.</param>
-        public void WriteImageProperty(Image image)
+        public void WriteUriProperty(Image image)
         {
-            using (var writer = OpenImageProperty())
+            using (var writer = OpenUriProperty())
             {
                 writer.WriteUri(image);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="image">The image.  A data URI will be created for this image.</param>
         /// <param name="imageFormat">The image format to use to encode the image in the data URI.</param>
-        public void WriteImageProperty(Image image, CesiumImageFormat imageFormat)
+        public void WriteUriProperty(Image image, CesiumImageFormat imageFormat)
         {
-            using (var writer = OpenImageProperty())
+            using (var writer = OpenUriProperty())
             {
                 writer.WriteUri(image, imageFormat);
             }
