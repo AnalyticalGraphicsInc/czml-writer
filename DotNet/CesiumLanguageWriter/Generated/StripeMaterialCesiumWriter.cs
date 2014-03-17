@@ -14,19 +14,19 @@ namespace CesiumLanguageWriter
     public class StripeMaterialCesiumWriter : CesiumPropertyWriter<StripeMaterialCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>horizontal</code> property.
+        /// The name of the <code>orientation</code> property.
         /// </summary>
-        public const string HorizontalPropertyName = "horizontal";
+        public const string OrientationPropertyName = "orientation";
 
         /// <summary>
-        /// The name of the <code>lightColor</code> property.
+        /// The name of the <code>evenColor</code> property.
         /// </summary>
-        public const string LightColorPropertyName = "lightColor";
+        public const string EvenColorPropertyName = "evenColor";
 
         /// <summary>
-        /// The name of the <code>darkColor</code> property.
+        /// The name of the <code>oddColor</code> property.
         /// </summary>
-        public const string DarkColorPropertyName = "darkColor";
+        public const string OddColorPropertyName = "oddColor";
 
         /// <summary>
         /// The name of the <code>offset</code> property.
@@ -38,9 +38,9 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string RepeatPropertyName = "repeat";
 
-        private readonly Lazy<BooleanCesiumWriter> m_horizontal = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(HorizontalPropertyName), false);
-        private readonly Lazy<ColorCesiumWriter> m_lightColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(LightColorPropertyName), false);
-        private readonly Lazy<ColorCesiumWriter> m_darkColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(DarkColorPropertyName), false);
+        private readonly Lazy<StripeOrientationCesiumWriter> m_orientation = new Lazy<StripeOrientationCesiumWriter>(() => new StripeOrientationCesiumWriter(OrientationPropertyName), false);
+        private readonly Lazy<ColorCesiumWriter> m_evenColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(EvenColorPropertyName), false);
+        private readonly Lazy<ColorCesiumWriter> m_oddColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OddColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_offset = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OffsetPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_repeat = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RepeatPropertyName), false);
 
@@ -68,177 +68,177 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>horizontal</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>horizontal</code> property defines the value indicating if the stripes are horizontal or vertical.
+        /// Gets the writer for the <code>orientation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>orientation</code> property defines the value indicating if the stripes are horizontal or vertical.
         /// </summary>
-        public BooleanCesiumWriter HorizontalWriter
+        public StripeOrientationCesiumWriter OrientationWriter
         {
-            get { return m_horizontal.Value; }
+            get { return m_orientation.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>horizontal</code> property.  The <code>horizontal</code> property defines the value indicating if the stripes are horizontal or vertical.
+        /// Opens and returns the writer for the <code>orientation</code> property.  The <code>orientation</code> property defines the value indicating if the stripes are horizontal or vertical.
         /// </summary>
-        public BooleanCesiumWriter OpenHorizontalProperty()
+        public StripeOrientationCesiumWriter OpenOrientationProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(HorizontalWriter);
+            return OpenAndReturn(OrientationWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>horizontal</code> property as a <code>boolean</code> value.  The <code>horizontal</code> property specifies the value indicating if the stripes are horizontal or vertical.
+        /// Writes a value for the <code>orientation</code> property as a <code>StripeOrientation</code> value.  The <code>orientation</code> property specifies the value indicating if the stripes are horizontal or vertical.
         /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteHorizontalProperty(bool value)
+        /// <param name="value">The orientation.</param>
+        public void WriteOrientationProperty(CesiumStripeOrientation value)
         {
-            using (var writer = OpenHorizontalProperty())
+            using (var writer = OpenOrientationProperty())
             {
-                writer.WriteBoolean(value);
+                writer.WriteStripeOrientation(value);
             }
         }
 
         /// <summary>
-        /// Gets the writer for the <code>lightColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>lightColor</code> property defines the first color.
+        /// Gets the writer for the <code>evenColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>evenColor</code> property defines the first color.
         /// </summary>
-        public ColorCesiumWriter LightColorWriter
+        public ColorCesiumWriter EvenColorWriter
         {
-            get { return m_lightColor.Value; }
+            get { return m_evenColor.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>lightColor</code> property.  The <code>lightColor</code> property defines the first color.
+        /// Opens and returns the writer for the <code>evenColor</code> property.  The <code>evenColor</code> property defines the first color.
         /// </summary>
-        public ColorCesiumWriter OpenLightColorProperty()
+        public ColorCesiumWriter OpenEvenColorProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(LightColorWriter);
+            return OpenAndReturn(EvenColorWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>lightColor</code> property as a <code>rgba</code> value.  The <code>lightColor</code> property specifies the first color.
+        /// Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the first color.
         /// </summary>
         /// <param name="color">The color.</param>
-        public void WriteLightColorProperty(Color color)
+        public void WriteEvenColorProperty(Color color)
         {
-            using (var writer = OpenLightColorProperty())
+            using (var writer = OpenEvenColorProperty())
             {
                 writer.WriteRgba(color);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>lightColor</code> property as a <code>rgba</code> value.  The <code>lightColor</code> property specifies the first color.
+        /// Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the first color.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
         /// <param name="blue">The blue component in the range 0 to 255.</param>
         /// <param name="alpha">The alpha component in the range 0 to 255.</param>
-        public void WriteLightColorProperty(int red, int green, int blue, int alpha)
+        public void WriteEvenColorProperty(int red, int green, int blue, int alpha)
         {
-            using (var writer = OpenLightColorProperty())
+            using (var writer = OpenEvenColorProperty())
             {
                 writer.WriteRgba(red, green, blue, alpha);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>lightColor</code> property as a <code>rgba</code> value.  The <code>lightColor</code> property specifies the first color.
+        /// Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the first color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
         /// <param name="length">The number of elements to use from the `colors` collection.</param>
-        public void WriteLightColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        public void WriteEvenColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
-            using (var writer = OpenLightColorProperty())
+            using (var writer = OpenEvenColorProperty())
             {
                 writer.WriteRgba(dates, colors, startIndex, length);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>lightColor</code> property as a <code>rgbaf</code> value.  The <code>lightColor</code> property specifies the first color.
+        /// Writes a value for the <code>evenColor</code> property as a <code>rgbaf</code> value.  The <code>evenColor</code> property specifies the first color.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
         /// <param name="blue">The blue component in the range 0 to 1.0.</param>
         /// <param name="alpha">The alpha component in the range 0 to 1.0.</param>
-        public void WriteLightColorPropertyRgbaf(float red, float green, float blue, float alpha)
+        public void WriteEvenColorPropertyRgbaf(float red, float green, float blue, float alpha)
         {
-            using (var writer = OpenLightColorProperty())
+            using (var writer = OpenEvenColorProperty())
             {
                 writer.WriteRgbaf(red, green, blue, alpha);
             }
         }
 
         /// <summary>
-        /// Gets the writer for the <code>darkColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>darkColor</code> property defines the second color.
+        /// Gets the writer for the <code>oddColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>oddColor</code> property defines the second color.
         /// </summary>
-        public ColorCesiumWriter DarkColorWriter
+        public ColorCesiumWriter OddColorWriter
         {
-            get { return m_darkColor.Value; }
+            get { return m_oddColor.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>darkColor</code> property.  The <code>darkColor</code> property defines the second color.
+        /// Opens and returns the writer for the <code>oddColor</code> property.  The <code>oddColor</code> property defines the second color.
         /// </summary>
-        public ColorCesiumWriter OpenDarkColorProperty()
+        public ColorCesiumWriter OpenOddColorProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(DarkColorWriter);
+            return OpenAndReturn(OddColorWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>darkColor</code> property as a <code>rgba</code> value.  The <code>darkColor</code> property specifies the second color.
+        /// Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the second color.
         /// </summary>
         /// <param name="color">The color.</param>
-        public void WriteDarkColorProperty(Color color)
+        public void WriteOddColorProperty(Color color)
         {
-            using (var writer = OpenDarkColorProperty())
+            using (var writer = OpenOddColorProperty())
             {
                 writer.WriteRgba(color);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>darkColor</code> property as a <code>rgba</code> value.  The <code>darkColor</code> property specifies the second color.
+        /// Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the second color.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
         /// <param name="blue">The blue component in the range 0 to 255.</param>
         /// <param name="alpha">The alpha component in the range 0 to 255.</param>
-        public void WriteDarkColorProperty(int red, int green, int blue, int alpha)
+        public void WriteOddColorProperty(int red, int green, int blue, int alpha)
         {
-            using (var writer = OpenDarkColorProperty())
+            using (var writer = OpenOddColorProperty())
             {
                 writer.WriteRgba(red, green, blue, alpha);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>darkColor</code> property as a <code>rgba</code> value.  The <code>darkColor</code> property specifies the second color.
+        /// Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the second color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
         /// <param name="length">The number of elements to use from the `colors` collection.</param>
-        public void WriteDarkColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        public void WriteOddColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
-            using (var writer = OpenDarkColorProperty())
+            using (var writer = OpenOddColorProperty())
             {
                 writer.WriteRgba(dates, colors, startIndex, length);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>darkColor</code> property as a <code>rgbaf</code> value.  The <code>darkColor</code> property specifies the second color.
+        /// Writes a value for the <code>oddColor</code> property as a <code>rgbaf</code> value.  The <code>oddColor</code> property specifies the second color.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
         /// <param name="blue">The blue component in the range 0 to 1.0.</param>
         /// <param name="alpha">The alpha component in the range 0 to 1.0.</param>
-        public void WriteDarkColorPropertyRgbaf(float red, float green, float blue, float alpha)
+        public void WriteOddColorPropertyRgbaf(float red, float green, float blue, float alpha)
         {
-            using (var writer = OpenDarkColorProperty())
+            using (var writer = OpenOddColorProperty())
             {
                 writer.WriteRgbaf(red, green, blue, alpha);
             }

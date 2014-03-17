@@ -4,15 +4,15 @@
     "type": ["array", "object"],
     "items": { "$ref": "#" },
     "properties": {
-        "horizontal": {
-            "$ref": "Boolean.jsonschema",
+        "orientation": {
+            "$ref": "StripeOrientation.jsonschema",
             "description": "The value indicating if the stripes are horizontal or vertical."
         },
-        "lightColor": {
+        "evenColor": {
             "$ref": "Color.jsonschema",
             "description": "The first color."
         },
-        "darkColor": {
+        "oddColor": {
             "$ref": "Color.jsonschema",
             "description": "The second color."
         },

@@ -8,6 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.GridMaterialCesiumWriter;
 import cesiumlanguagewriter.ImageMaterialCesiumWriter;
 import cesiumlanguagewriter.SolidColorMaterialCesiumWriter;
+import cesiumlanguagewriter.StripeMaterialCesiumWriter;
 
 /**
  *  
@@ -37,6 +38,13 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
 
 	 */
 	public static final String GridPropertyName = "grid";
+	/**
+	 *  
+	The name of the <code>stripe</code> property.
+	
+
+	 */
+	public static final String StripePropertyName = "stripe";
 	private Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>() {
 		public cesiumlanguagewriter.SolidColorMaterialCesiumWriter invoke() {
 			return new SolidColorMaterialCesiumWriter(SolidColorPropertyName);
@@ -50,6 +58,11 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
 	private Lazy<GridMaterialCesiumWriter> m_grid = new Lazy<cesiumlanguagewriter.GridMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.GridMaterialCesiumWriter>() {
 		public cesiumlanguagewriter.GridMaterialCesiumWriter invoke() {
 			return new GridMaterialCesiumWriter(GridPropertyName);
+		}
+	}, false);
+	private Lazy<StripeMaterialCesiumWriter> m_stripe = new Lazy<cesiumlanguagewriter.StripeMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.StripeMaterialCesiumWriter>() {
+		public cesiumlanguagewriter.StripeMaterialCesiumWriter invoke() {
+			return new StripeMaterialCesiumWriter(StripePropertyName);
 		}
 	}, false);
 
@@ -138,5 +151,25 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
 	public final GridMaterialCesiumWriter openGridProperty() {
 		openIntervalIfNecessary();
 		return this.<GridMaterialCesiumWriter> openAndReturn(getGridWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>stripe</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>stripe</code> property defines fills the surface with alternating colors.
+	
+
+	 */
+	public final StripeMaterialCesiumWriter getStripeWriter() {
+		return m_stripe.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>stripe</code> property.  The <code>stripe</code> property defines fills the surface with alternating colors.
+	
+
+	 */
+	public final StripeMaterialCesiumWriter openStripeProperty() {
+		openIntervalIfNecessary();
+		return this.<StripeMaterialCesiumWriter> openAndReturn(getStripeWriter());
 	}
 }

@@ -496,6 +496,19 @@
                 "needsInterval": false
             },
         ],
+        "StripeOrientation": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumStripeOrientation",
+                        "name": "value",
+                        "description": "The orientation."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.StripeOrientationToString(value));",
+                "needsInterval": false
+            }
+        ],
         "HorizontalOrigin": [
             {
                 "parameters": [
