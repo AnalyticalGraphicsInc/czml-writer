@@ -1,0 +1,5 @@
+{
+    "title": "Uri",
+    "description": "A URI value.",
+    "type": "string"
+}

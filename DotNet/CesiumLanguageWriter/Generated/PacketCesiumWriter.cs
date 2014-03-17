@@ -109,6 +109,11 @@ namespace CesiumLanguageWriter
         public const string ViewFromPropertyName = "viewFrom";
 
         /// <summary>
+        /// The name of the <code>model</code> property.
+        /// </summary>
+        public const string ModelPropertyName = "model";
+
+        /// <summary>
         /// The name of the <code>ellipse</code> property.
         /// </summary>
         public const string EllipsePropertyName = "ellipse";
@@ -137,6 +142,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<PyramidCesiumWriter>(() => new PyramidCesiumWriter(PyramidPropertyName), false);
         private readonly Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(() => new CameraCesiumWriter(CameraPropertyName), false);
         private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
+        private readonly Lazy<ModelCesiumWriter> m_model = new Lazy<ModelCesiumWriter>(() => new ModelCesiumWriter(ModelPropertyName), false);
         private readonly Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(() => new EllipseCesiumWriter(EllipsePropertyName), false);
         private readonly Lazy<ClockCesiumWriter> m_clock = new Lazy<ClockCesiumWriter>(() => new ClockCesiumWriter(ClockPropertyName), false);
         private readonly Lazy<VectorCesiumWriter> m_vector = new Lazy<VectorCesiumWriter>(() => new VectorCesiumWriter(VectorPropertyName), false);
@@ -699,6 +705,22 @@ namespace CesiumLanguageWriter
             const string PropertyName = ViewFromPropertyName;
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteCartesian3(Output, PropertyName, dates, values, startIndex, length);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>model</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public ModelCesiumWriter ModelWriter
+        {
+            get { return m_model.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>model</code> property.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public ModelCesiumWriter OpenModelProperty()
+        {
+            return OpenAndReturn(ModelWriter);
         }
 
         /// <summary>
