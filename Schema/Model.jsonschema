@@ -12,7 +12,7 @@
             "$ref": "Double.jsonschema",
             "description": "The scale of the model."
         },
-        "uri": {
+        "gltf": {
             "$ref": "Uri.jsonschema",
             "description": "The URL of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model."
         }

@@ -24,13 +24,13 @@ namespace CesiumLanguageWriter
         public const string ScalePropertyName = "scale";
 
         /// <summary>
-        /// The name of the <code>uri</code> property.
+        /// The name of the <code>gltf</code> property.
         /// </summary>
-        public const string UriPropertyName = "uri";
+        public const string GltfPropertyName = "gltf";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
-        private readonly Lazy<UriCesiumWriter> m_uri = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(UriPropertyName), false);
+        private readonly Lazy<UriCesiumWriter> m_gltf = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(GltfPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -129,80 +129,80 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>uri</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>uri</code> property defines the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
+        /// Gets the writer for the <code>gltf</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>gltf</code> property defines the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
         /// </summary>
-        public UriCesiumWriter UriWriter
+        public UriCesiumWriter GltfWriter
         {
-            get { return m_uri.Value; }
+            get { return m_gltf.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>uri</code> property.  The <code>uri</code> property defines the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
+        /// Opens and returns the writer for the <code>gltf</code> property.  The <code>gltf</code> property defines the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
         /// </summary>
-        public UriCesiumWriter OpenUriProperty()
+        public UriCesiumWriter OpenGltfProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(UriWriter);
+            return OpenAndReturn(GltfWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
+        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
         /// </summary>
         /// <param name="resource">A resource object describing external data.</param>
-        public void WriteUriProperty(CesiumResource resource)
+        public void WriteGltfProperty(CesiumResource resource)
         {
-            using (var writer = OpenUriProperty())
+            using (var writer = OpenGltfProperty())
             {
                 writer.WriteUri(resource);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
+        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
         /// </summary>
         /// <param name="url">The URL of the data.</param>
         /// <param name="resourceBehavior">An enumeration describing how to include the URL in the document. For even more control, use the overload that takes a ICesiumUrlResolver.</param>
-        public void WriteUriProperty(string url, CesiumResourceBehavior resourceBehavior)
+        public void WriteGltfProperty(string url, CesiumResourceBehavior resourceBehavior)
         {
-            using (var writer = OpenUriProperty())
+            using (var writer = OpenGltfProperty())
             {
                 writer.WriteUri(url, resourceBehavior);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
+        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
         /// </summary>
         /// <param name="url">The URL of the data.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.</param>
         /// <param name="resolver">An ICesiumUrlResolver used to build the final URL that will be embedded in the document.</param>
-        public void WriteUriProperty(string url, ICesiumUrlResolver resolver)
+        public void WriteGltfProperty(string url, ICesiumUrlResolver resolver)
         {
-            using (var writer = OpenUriProperty())
+            using (var writer = OpenGltfProperty())
             {
                 writer.WriteUri(url, resolver);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
+        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
         /// </summary>
         /// <param name="image">The image.  A data URI will be created for this image, using PNG encoding.</param>
-        public void WriteUriProperty(Image image)
+        public void WriteGltfProperty(Image image)
         {
-            using (var writer = OpenUriProperty())
+            using (var writer = OpenGltfProperty())
             {
                 writer.WriteUri(image);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
+        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
         /// </summary>
         /// <param name="image">The image.  A data URI will be created for this image.</param>
         /// <param name="imageFormat">The image format to use to encode the image in the data URI.</param>
-        public void WriteUriProperty(Image image, CesiumImageFormat imageFormat)
+        public void WriteGltfProperty(Image image, CesiumImageFormat imageFormat)
         {
-            using (var writer = OpenUriProperty())
+            using (var writer = OpenGltfProperty())
             {
                 writer.WriteUri(image, imageFormat);
             }

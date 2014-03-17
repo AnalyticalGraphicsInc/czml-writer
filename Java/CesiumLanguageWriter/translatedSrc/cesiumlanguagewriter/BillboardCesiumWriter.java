@@ -49,11 +49,11 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	public static final String HorizontalOriginPropertyName = "horizontalOrigin";
 	/**
 	 *  
-	The name of the <code>uri</code> property.
+	The name of the <code>image</code> property.
 	
 
 	 */
-	public static final String UriPropertyName = "uri";
+	public static final String ImagePropertyName = "image";
 	/**
 	 *  
 	The name of the <code>pixelOffset</code> property.
@@ -111,9 +111,9 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 			return new HorizontalOriginCesiumWriter(HorizontalOriginPropertyName);
 		}
 	}, false);
-	private Lazy<UriCesiumWriter> m_uri = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
+	private Lazy<UriCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
 		public cesiumlanguagewriter.UriCesiumWriter invoke() {
-			return new UriCesiumWriter(UriPropertyName);
+			return new UriCesiumWriter(ImagePropertyName);
 		}
 	}, false);
 	private Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<cesiumlanguagewriter.PixelOffsetCesiumWriter>(new Func1<cesiumlanguagewriter.PixelOffsetCesiumWriter>() {
@@ -413,36 +413,36 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	}
 
 	/**
-	 *  Gets the writer for the <code>uri</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>uri</code> property defines the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	 *  Gets the writer for the <code>image</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>image</code> property defines the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 
 	 */
-	public final UriCesiumWriter getUriWriter() {
-		return m_uri.getValue();
+	public final UriCesiumWriter getImageWriter() {
+		return m_image.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>uri</code> property.  The <code>uri</code> property defines the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Opens and returns the writer for the <code>image</code> property.  The <code>image</code> property defines the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 
 	 */
-	public final UriCesiumWriter openUriProperty() {
+	public final UriCesiumWriter openImageProperty() {
 		openIntervalIfNecessary();
-		return this.<UriCesiumWriter> openAndReturn(getUriWriter());
+		return this.<UriCesiumWriter> openAndReturn(getImageWriter());
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 
 	 * @param resource A resource object describing external data.
 	 */
-	public final void writeUriProperty(CesiumResource resource) {
+	public final void writeImageProperty(CesiumResource resource) {
 		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openUriProperty();
+			cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
 			try {
 				writer.writeUri(resource);
 			} finally {
@@ -453,7 +453,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 	
@@ -461,9 +461,9 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	 * @param url The URL of the data.
 	 * @param resourceBehavior An enumeration describing how to include the URL in the document. For even more control, use the overload that takes a ICesiumUrlResolver.
 	 */
-	public final void writeUriProperty(String url, CesiumResourceBehavior resourceBehavior) {
+	public final void writeImageProperty(String url, CesiumResourceBehavior resourceBehavior) {
 		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openUriProperty();
+			cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
 			try {
 				writer.writeUri(url, resourceBehavior);
 			} finally {
@@ -474,7 +474,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 	
@@ -482,9 +482,9 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	 * @param url The URL of the data.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.
 	 * @param resolver An ICesiumUrlResolver used to build the final URL that will be embedded in the document.
 	 */
-	public final void writeUriProperty(String url, ICesiumUrlResolver resolver) {
+	public final void writeImageProperty(String url, ICesiumUrlResolver resolver) {
 		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openUriProperty();
+			cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
 			try {
 				writer.writeUri(url, resolver);
 			} finally {
@@ -495,15 +495,15 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 
 	 * @param image The image.  A data URI will be created for this image, using PNG encoding.
 	 */
-	public final void writeUriProperty(RenderedImage image) {
+	public final void writeImageProperty(RenderedImage image) {
 		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openUriProperty();
+			cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
 			try {
 				writer.writeUri(image);
 			} finally {
@@ -514,7 +514,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>uri</code> property as a <code>uri</code> value.  The <code>uri</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 	
@@ -522,9 +522,9 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	 * @param image The image.  A data URI will be created for this image.
 	 * @param imageFormat The image format to use to encode the image in the data URI.
 	 */
-	public final void writeUriProperty(RenderedImage image, CesiumImageFormat imageFormat) {
+	public final void writeImageProperty(RenderedImage image, CesiumImageFormat imageFormat) {
 		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openUriProperty();
+			cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
 			try {
 				writer.writeUri(image, imageFormat);
 			} finally {

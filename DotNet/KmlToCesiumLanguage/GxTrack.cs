@@ -92,7 +92,7 @@ namespace KmlToCesiumLanguage
                     billboard.WriteScaleProperty(double.Parse(scaleElement.Value));
 
                 string href = iconElement.Element(Document.Namespace + "Icon").Element(Document.Namespace + "href").Value;
-                billboard.WriteUriProperty(href, Document.ImageResolver);
+                billboard.WriteImageProperty(href, Document.ImageResolver);
             }
         }
 
