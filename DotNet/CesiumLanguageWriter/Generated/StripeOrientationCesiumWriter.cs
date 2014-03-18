@@ -7,7 +7,7 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>StripeOrientation</code> to a <see cref="CesiumOutputStream" />.  A <code>StripeOrientation</code> defines the orientaiton of an element.
+    /// Writes a <code>StripeOrientation</code> to a <see cref="CesiumOutputStream" />.  A <code>StripeOrientation</code> defines the orientaiton of stripes in the stripe material.
     /// </summary>
     public class StripeOrientationCesiumWriter : CesiumPropertyWriter<StripeOrientationCesiumWriter>
     {
@@ -44,7 +44,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>StripeOrientation</code> property.  The <code>StripeOrientation</code> property specifies the orientation.  Valid values are "HORIZONTAL" or "VERTICAL".
+        /// Writes the <code>StripeOrientation</code> property.  The <code>StripeOrientation</code> property specifies the orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL".
         /// </summary>
         /// <param name="value">The orientation.</param>
         public void WriteStripeOrientation(CesiumStripeOrientation value)

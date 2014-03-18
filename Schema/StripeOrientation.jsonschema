@@ -1,12 +1,12 @@
 {
     "title": "StripeOrientation",
-    "description": "Defines the orientaiton of an element.",
+    "description": "Defines the orientaiton of stripes in the stripe material.",
     "type": ["array", "object", "string"],
     "items": { "$ref": "#" },
     "properties": {
         "StripeOrientation": {
             "$ref": "StripeOrientationValue.jsonschema",
-            "description": "The orientation.  Valid values are \"HORIZONTAL\" or \"VERTICAL\".",
+            "description": "The orientation of stripes in the stripe material. Valid values are \"HORIZONTAL\" or \"VERTICAL\".",
             "czmlValue": true
         }
     }

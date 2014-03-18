@@ -9,7 +9,7 @@ import cesiumlanguagewriter.CesiumStripeOrientation;
 
 /**
  *  
- Writes a <code>StripeOrientation</code> to a  {@link CesiumOutputStream}.  A <code>StripeOrientation</code> defines the orientaiton of an element.
+ Writes a <code>StripeOrientation</code> to a  {@link CesiumOutputStream}.  A <code>StripeOrientation</code> defines the orientaiton of stripes in the stripe material.
  
 
  */
@@ -64,7 +64,7 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
 	/**
 	 *  
-	Writes the <code>StripeOrientation</code> property.  The <code>StripeOrientation</code> property specifies the orientation.  Valid values are "HORIZONTAL" or "VERTICAL".
+	Writes the <code>StripeOrientation</code> property.  The <code>StripeOrientation</code> property specifies the orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL".
 	
 	
 
