@@ -375,7 +375,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 	}
 
 	/**
-	 *  Gets the writer for the <code>offset</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>offset</code> property defines the offset from the edge.
+	 *  Gets the writer for the <code>offset</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>offset</code> property defines the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
 	
 
 	 */
@@ -385,7 +385,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>offset</code> property.  The <code>offset</code> property defines the offset from the edge.
+	Opens and returns the writer for the <code>offset</code> property.  The <code>offset</code> property defines the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
 	
 
 	 */
@@ -396,7 +396,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>offset</code> property as a <code>number</code> value.  The <code>offset</code> property specifies the offset from the edge.
+	Writes a value for the <code>offset</code> property as a <code>number</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
 	
 	
 
@@ -415,7 +415,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>offset</code> property as a <code>number</code> value.  The <code>offset</code> property specifies the offset from the edge.
+	Writes a value for the <code>offset</code> property as a <code>number</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
 	
 	
 	

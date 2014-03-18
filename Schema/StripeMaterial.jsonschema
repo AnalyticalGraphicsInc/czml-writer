@@ -18,7 +18,7 @@
         },
         "offset": {
             "$ref": "Double.jsonschema",
-            "description": "The offset from the edge."
+            "description": "The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between."
         },
         "repeat": {
             "$ref": "Double.jsonschema",
