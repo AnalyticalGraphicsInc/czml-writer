@@ -17,7 +17,7 @@
             "description": "The horizontal origin of the billboard.  It controls whether the billboard image is left-, center-, or right-aligned with the `position`."
         },
         "image": {
-            "$ref": "Image.jsonschema",
+            "$ref": "Uri.jsonschema",
             "description": "The image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
         },
         "pixelOffset": {

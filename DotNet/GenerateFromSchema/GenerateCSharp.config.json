@@ -421,13 +421,13 @@
                 "writeValue": "CesiumWritingHelper.WriteCartographicList(Output, values);"
             }
         ],
-        "Image": [
+        "Uri": [
             {
                 "parameters": [
                     {
                         "type": "CesiumResource",
                         "name": "resource",
-                        "description": "A resource object describing the image."
+                        "description": "A resource object describing external data."
                     }
                 ],
                 "callOverload": "resource.Url, resource.Behavior"
@@ -437,12 +437,12 @@
                     {
                         "type": "string",
                         "name": "url",
-                        "description": "The URL of the image."
+                        "description": "The URL of the data."
                     },
                     {
                         "type": "CesiumResourceBehavior",
                         "name": "resourceBehavior",
-                        "description": "An enumeration describing how to include the image in the document. For even more control, use the overload that takes a ICesiumUrlResolver."
+                        "description": "An enumeration describing how to include the URL in the document. For even more control, use the overload that takes a ICesiumUrlResolver."
                     }
                 ],
                 "writeValue": "Output.WriteValue(CesiumFormattingHelper.GetResourceUrl(url, resourceBehavior));",
@@ -453,7 +453,7 @@
                     {
                         "type": "string",
                         "name": "url",
-                        "description": "The URL of the image.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document."
+                        "description": "The URL of the data.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document."
                     },
                     {
                         "type": "ICesiumUrlResolver",

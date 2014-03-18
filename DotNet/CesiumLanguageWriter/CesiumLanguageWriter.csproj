@@ -96,11 +96,11 @@
     <Compile Include="Generated\FontCesiumWriter.cs" />
     <Compile Include="Generated\GridMaterialCesiumWriter.cs" />
     <Compile Include="Generated\HorizontalOriginCesiumWriter.cs" />
-    <Compile Include="Generated\ImageCesiumWriter.cs" />
     <Compile Include="Generated\ImageMaterialCesiumWriter.cs" />
     <Compile Include="Generated\LabelCesiumWriter.cs" />
     <Compile Include="Generated\LabelStyleCesiumWriter.cs" />
     <Compile Include="Generated\MaterialCesiumWriter.cs" />
+    <Compile Include="Generated\ModelCesiumWriter.cs" />
     <Compile Include="Generated\OrientationCesiumWriter.cs" />
     <Compile Include="Generated\PacketCesiumWriter.cs" />
     <Compile Include="Generated\PathCesiumWriter.cs" />
@@ -113,6 +113,7 @@
     <Compile Include="Generated\PyramidCesiumWriter.cs" />
     <Compile Include="Generated\SolidColorMaterialCesiumWriter.cs" />
     <Compile Include="Generated\StringCesiumWriter.cs" />
+    <Compile Include="Generated\UriCesiumWriter.cs" />
     <Compile Include="Generated\StripeMaterialCesiumWriter.cs" />
     <Compile Include="Generated\StripeOrientationCesiumWriter.cs" />
     <Compile Include="Generated\VectorCesiumWriter.cs" />

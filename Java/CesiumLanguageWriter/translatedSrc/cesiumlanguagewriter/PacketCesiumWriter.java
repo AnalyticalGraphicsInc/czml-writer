@@ -13,6 +13,7 @@ import cesiumlanguagewriter.ConeCesiumWriter;
 import cesiumlanguagewriter.EllipseCesiumWriter;
 import cesiumlanguagewriter.EllipsoidCesiumWriter;
 import cesiumlanguagewriter.LabelCesiumWriter;
+import cesiumlanguagewriter.ModelCesiumWriter;
 import cesiumlanguagewriter.OrientationCesiumWriter;
 import cesiumlanguagewriter.PathCesiumWriter;
 import cesiumlanguagewriter.PointCesiumWriter;
@@ -167,6 +168,13 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	public static final String ViewFromPropertyName = "viewFrom";
 	/**
 	 *  
+	The name of the <code>model</code> property.
+	
+
+	 */
+	public static final String ModelPropertyName = "model";
+	/**
+	 *  
 	The name of the <code>ellipse</code> property.
 	
 
@@ -254,6 +262,11 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	private Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<cesiumlanguagewriter.EllipsoidCesiumWriter>(new Func1<cesiumlanguagewriter.EllipsoidCesiumWriter>() {
 		public cesiumlanguagewriter.EllipsoidCesiumWriter invoke() {
 			return new EllipsoidCesiumWriter(EllipsoidPropertyName);
+		}
+	}, false);
+	private Lazy<ModelCesiumWriter> m_model = new Lazy<cesiumlanguagewriter.ModelCesiumWriter>(new Func1<cesiumlanguagewriter.ModelCesiumWriter>() {
+		public cesiumlanguagewriter.ModelCesiumWriter invoke() {
+			return new ModelCesiumWriter(ModelPropertyName);
 		}
 	}, false);
 	private Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<cesiumlanguagewriter.EllipseCesiumWriter>(new Func1<cesiumlanguagewriter.EllipseCesiumWriter>() {
@@ -1045,6 +1058,25 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 		String PropertyName = ViewFromPropertyName;
 		getOutput().writePropertyName(PropertyName);
 		CesiumWritingHelper.writeCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
+	}
+
+	/**
+	 *  Gets the writer for the <code>model</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+	
+
+	 */
+	public final ModelCesiumWriter getModelWriter() {
+		return m_model.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>model</code> property.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+	
+
+	 */
+	public final ModelCesiumWriter openModelProperty() {
+		return this.<ModelCesiumWriter> openAndReturn(getModelWriter());
 	}
 
 	/**

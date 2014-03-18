@@ -1,0 +1,20 @@
+{
+    "title": "Model",
+    "description": "A 3D model.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the model is shown."
+        },
+        "scale": {
+            "$ref": "Double.jsonschema",
+            "description": "The scale of the model."
+        },
+        "gltf": {
+            "$ref": "Uri.jsonschema",
+            "description": "The URL of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model."
+        }
+    }
+}
