@@ -12,6 +12,7 @@ import cesiumlanguagewriter.ClockCesiumWriter;
 import cesiumlanguagewriter.ConeCesiumWriter;
 import cesiumlanguagewriter.EllipseCesiumWriter;
 import cesiumlanguagewriter.EllipsoidCesiumWriter;
+import cesiumlanguagewriter.FanCesiumWriter;
 import cesiumlanguagewriter.LabelCesiumWriter;
 import cesiumlanguagewriter.ModelCesiumWriter;
 import cesiumlanguagewriter.OrientationCesiumWriter;
@@ -194,6 +195,13 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	 */
 	public static final String VectorPropertyName = "vector";
+	/**
+	 *  
+	The name of the <code>fan</code> property.
+	
+
+	 */
+	public static final String FanPropertyName = "fan";
 	private Lazy<StringCesiumWriter> m_description = new Lazy<cesiumlanguagewriter.StringCesiumWriter>(new Func1<cesiumlanguagewriter.StringCesiumWriter>() {
 		public cesiumlanguagewriter.StringCesiumWriter invoke() {
 			return new StringCesiumWriter(DescriptionPropertyName);
@@ -282,6 +290,11 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	private Lazy<VectorCesiumWriter> m_vector = new Lazy<cesiumlanguagewriter.VectorCesiumWriter>(new Func1<cesiumlanguagewriter.VectorCesiumWriter>() {
 		public cesiumlanguagewriter.VectorCesiumWriter invoke() {
 			return new VectorCesiumWriter(VectorPropertyName);
+		}
+	}, false);
+	private Lazy<FanCesiumWriter> m_fan = new Lazy<cesiumlanguagewriter.FanCesiumWriter>(new Func1<cesiumlanguagewriter.FanCesiumWriter>() {
+		public cesiumlanguagewriter.FanCesiumWriter invoke() {
+			return new FanCesiumWriter(FanPropertyName);
 		}
 	}, false);
 
@@ -1134,5 +1147,24 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	 */
 	public final VectorCesiumWriter openVectorProperty() {
 		return this.<VectorCesiumWriter> openAndReturn(getVectorWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>fan</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>fan</code> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
+	
+
+	 */
+	public final FanCesiumWriter getFanWriter() {
+		return m_fan.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>fan</code> property.  The <code>fan</code> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
+	
+
+	 */
+	public final FanCesiumWriter openFanProperty() {
+		return this.<FanCesiumWriter> openAndReturn(getFanWriter());
 	}
 }

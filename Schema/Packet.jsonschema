@@ -100,7 +100,10 @@
         "vector": {
             "$ref": "Vector.jsonschema",
             "description": "Defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length."
+        },
+        "fan": {
+            "$ref": "Fan.jsonschema",
+            "description": "Defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius."
         }
-
     }
 }
