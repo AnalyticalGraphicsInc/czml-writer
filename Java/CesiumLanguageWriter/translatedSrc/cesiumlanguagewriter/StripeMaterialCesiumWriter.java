@@ -147,7 +147,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 	}
 
 	/**
-	 *  Gets the writer for the <code>evenColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>evenColor</code> property defines the first color.
+	 *  Gets the writer for the <code>evenColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>evenColor</code> property defines the even color.
 	
 
 	 */
@@ -157,7 +157,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>evenColor</code> property.  The <code>evenColor</code> property defines the first color.
+	Opens and returns the writer for the <code>evenColor</code> property.  The <code>evenColor</code> property defines the even color.
 	
 
 	 */
@@ -168,7 +168,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the first color.
+	Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the even color.
 	
 	
 
@@ -187,7 +187,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the first color.
+	Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the even color.
 	
 	
 	
@@ -212,7 +212,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the first color.
+	Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the even color.
 	
 	
 	
@@ -237,7 +237,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>evenColor</code> property as a <code>rgbaf</code> value.  The <code>evenColor</code> property specifies the first color.
+	Writes a value for the <code>evenColor</code> property as a <code>rgbaf</code> value.  The <code>evenColor</code> property specifies the even color.
 	
 	
 	
@@ -261,7 +261,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 	}
 
 	/**
-	 *  Gets the writer for the <code>oddColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>oddColor</code> property defines the second color.
+	 *  Gets the writer for the <code>oddColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>oddColor</code> property defines the odd color.
 	
 
 	 */
@@ -271,7 +271,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>oddColor</code> property.  The <code>oddColor</code> property defines the second color.
+	Opens and returns the writer for the <code>oddColor</code> property.  The <code>oddColor</code> property defines the odd color.
 	
 
 	 */
@@ -282,7 +282,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the second color.
+	Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the odd color.
 	
 	
 
@@ -301,7 +301,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the second color.
+	Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the odd color.
 	
 	
 	
@@ -326,7 +326,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the second color.
+	Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the odd color.
 	
 	
 	
@@ -351,7 +351,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>oddColor</code> property as a <code>rgbaf</code> value.  The <code>oddColor</code> property specifies the second color.
+	Writes a value for the <code>oddColor</code> property as a <code>rgbaf</code> value.  The <code>oddColor</code> property specifies the odd color.
 	
 	
 	

@@ -10,11 +10,11 @@
         },
         "evenColor": {
             "$ref": "Color.jsonschema",
-            "description": "The first color."
+            "description": "The even color."
         },
         "oddColor": {
             "$ref": "Color.jsonschema",
-            "description": "The second color."
+            "description": "The odd color."
         },
         "offset": {
             "$ref": "Double.jsonschema",

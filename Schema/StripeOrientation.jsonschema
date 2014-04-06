@@ -1,6 +1,6 @@
 {
     "title": "StripeOrientation",
-    "description": "Defines the orientaiton of stripes in the stripe material.",
+    "description": "Defines the orientation of stripes in the stripe material.",
     "type": ["array", "object", "string"],
     "items": { "$ref": "#" },
     "properties": {

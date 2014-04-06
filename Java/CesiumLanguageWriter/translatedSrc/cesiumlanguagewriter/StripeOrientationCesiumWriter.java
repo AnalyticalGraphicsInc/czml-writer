@@ -9,7 +9,7 @@ import cesiumlanguagewriter.CesiumStripeOrientation;
 
 /**
  *  
- Writes a <code>StripeOrientation</code> to a  {@link CesiumOutputStream}.  A <code>StripeOrientation</code> defines the orientaiton of stripes in the stripe material.
+ Writes a <code>StripeOrientation</code> to a  {@link CesiumOutputStream}.  A <code>StripeOrientation</code> defines the orientation of stripes in the stripe material.
  
 
  */
