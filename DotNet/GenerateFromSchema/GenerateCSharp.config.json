@@ -340,6 +340,19 @@
                 "writeValue": "CesiumWritingHelper.WriteUnitCartesian3List(Output, values);"
             }
         ],
+        "SphericalList": [
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<Spherical>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteSphericalList(Output, values);"
+            }
+        ],
         "UnitSphericalList": [
             {
                 "namespaces": ["System.Collections.Generic"],

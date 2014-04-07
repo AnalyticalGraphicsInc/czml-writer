@@ -134,6 +134,7 @@
     <Compile Include="Matrix3By3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangular.cs" />
+    <Compile Include="Spherical.cs" />
     <Compile Include="TimeConstants.cs" />
     <Compile Include="TimeInterval.cs" />
     <Compile Include="TimeStandard.cs" />

@@ -29,6 +29,11 @@ namespace CesiumLanguageWriter
         public const string RadiusPropertyName = "radius";
 
         /// <summary>
+        /// The name of the <code>perDirectionRadius</code> property.
+        /// </summary>
+        public const string PerDirectionRadiusPropertyName = "perDirectionRadius";
+
+        /// <summary>
         /// The name of the <code>material</code> property.
         /// </summary>
         public const string MaterialPropertyName = "material";
@@ -44,6 +49,11 @@ namespace CesiumLanguageWriter
         public const string OutlinePropertyName = "outline";
 
         /// <summary>
+        /// The name of the <code>numberOfRings</code> property.
+        /// </summary>
+        public const string NumberOfRingsPropertyName = "numberOfRings";
+
+        /// <summary>
         /// The name of the <code>outlineColor</code> property.
         /// </summary>
         public const string OutlineColorPropertyName = "outlineColor";
@@ -51,9 +61,11 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<DirectionListCesiumWriter> m_directions = new Lazy<DirectionListCesiumWriter>(() => new DirectionListCesiumWriter(DirectionsPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RadiusPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_perDirectionRadius = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(PerDirectionRadiusPropertyName), false);
         private readonly Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(MaterialPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_fill = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(FillPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(OutlinePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_numberOfRings = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(NumberOfRingsPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
 
         /// <summary>
@@ -138,6 +150,18 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>directions</code> property as a <code>spherical</code> value.  The <code>directions</code> property specifies the list of directions defining the fan.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public void WriteDirectionsPropertySpherical(IEnumerable<Spherical> values)
+        {
+            using (var writer = OpenDirectionsProperty())
+            {
+                writer.WriteSpherical(values);
+            }
+        }
+
+        /// <summary>
         /// Writes a value for the <code>directions</code> property as a <code>unitCartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the fan.
         /// </summary>
         /// <param name="values">The values.</param>
@@ -190,6 +214,35 @@ namespace CesiumLanguageWriter
             using (var writer = OpenRadiusProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>perDirectionRadius</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>perDirectionRadius</code> property defines when true, the magnitude of each direciton is used instead of a constant radius.
+        /// </summary>
+        public BooleanCesiumWriter PerDirectionRadiusWriter
+        {
+            get { return m_perDirectionRadius.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>perDirectionRadius</code> property.  The <code>perDirectionRadius</code> property defines when true, the magnitude of each direciton is used instead of a constant radius.
+        /// </summary>
+        public BooleanCesiumWriter OpenPerDirectionRadiusProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(PerDirectionRadiusWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>boolean</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direciton is used instead of a constant radius.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WritePerDirectionRadiusProperty(bool value)
+        {
+            using (var writer = OpenPerDirectionRadiusProperty())
+            {
+                writer.WriteBoolean(value);
             }
         }
 
@@ -265,6 +318,50 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOutlineProperty())
             {
                 writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>numberOfRings</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>numberOfRings</code> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// </summary>
+        public DoubleCesiumWriter NumberOfRingsWriter
+        {
+            get { return m_numberOfRings.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>numberOfRings</code> property.  The <code>numberOfRings</code> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// </summary>
+        public DoubleCesiumWriter OpenNumberOfRingsProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(NumberOfRingsWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfRings</code> property as a <code>number</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteNumberOfRingsProperty(double value)
+        {
+            using (var writer = OpenNumberOfRingsProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfRings</code> property as a <code>number</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteNumberOfRingsProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenNumberOfRingsProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 

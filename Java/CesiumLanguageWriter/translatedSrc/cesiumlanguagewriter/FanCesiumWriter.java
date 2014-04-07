@@ -44,6 +44,13 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 	public static final String RadiusPropertyName = "radius";
 	/**
 	 *  
+	The name of the <code>perDirectionRadius</code> property.
+	
+
+	 */
+	public static final String PerDirectionRadiusPropertyName = "perDirectionRadius";
+	/**
+	 *  
 	The name of the <code>material</code> property.
 	
 
@@ -63,6 +70,13 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
 	 */
 	public static final String OutlinePropertyName = "outline";
+	/**
+	 *  
+	The name of the <code>numberOfRings</code> property.
+	
+
+	 */
+	public static final String NumberOfRingsPropertyName = "numberOfRings";
 	/**
 	 *  
 	The name of the <code>outlineColor</code> property.
@@ -85,6 +99,11 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 			return new DoubleCesiumWriter(RadiusPropertyName);
 		}
 	}, false);
+	private Lazy<BooleanCesiumWriter> m_perDirectionRadius = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(PerDirectionRadiusPropertyName);
+		}
+	}, false);
 	private Lazy<MaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
 		public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
 			return new MaterialCesiumWriter(MaterialPropertyName);
@@ -98,6 +117,11 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 	private Lazy<BooleanCesiumWriter> m_outline = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(OutlinePropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_numberOfRings = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(NumberOfRingsPropertyName);
 		}
 	}, false);
 	private Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
@@ -213,6 +237,25 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
 	/**
 	 *  
+	Writes a value for the <code>directions</code> property as a <code>spherical</code> value.  The <code>directions</code> property specifies the list of directions defining the fan.
+	
+	
+
+	 * @param values The values.
+	 */
+	public final void writeDirectionsPropertySpherical(Iterable<Spherical> values) {
+		{
+			cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
+			try {
+				writer.writeSpherical(values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
 	Writes a value for the <code>directions</code> property as a <code>unitCartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the fan.
 	
 	
@@ -288,6 +331,45 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>perDirectionRadius</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>perDirectionRadius</code> property defines when true, the magnitude of each direciton is used instead of a constant radius.
+	
+
+	 */
+	public final BooleanCesiumWriter getPerDirectionRadiusWriter() {
+		return m_perDirectionRadius.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>perDirectionRadius</code> property.  The <code>perDirectionRadius</code> property defines when true, the magnitude of each direciton is used instead of a constant radius.
+	
+
+	 */
+	public final BooleanCesiumWriter openPerDirectionRadiusProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getPerDirectionRadiusWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>perDirectionRadius</code> property as a <code>boolean</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direciton is used instead of a constant radius.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writePerDirectionRadiusProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openPerDirectionRadiusProperty();
+			try {
+				writer.writeBoolean(value);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -386,6 +468,70 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
 			try {
 				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>numberOfRings</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>numberOfRings</code> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+	
+
+	 */
+	public final DoubleCesiumWriter getNumberOfRingsWriter() {
+		return m_numberOfRings.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>numberOfRings</code> property.  The <code>numberOfRings</code> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+	
+
+	 */
+	public final DoubleCesiumWriter openNumberOfRingsProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getNumberOfRingsWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>numberOfRings</code> property as a <code>number</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeNumberOfRingsProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openNumberOfRingsProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>numberOfRings</code> property as a <code>number</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeNumberOfRingsProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openNumberOfRingsProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

@@ -250,6 +250,63 @@ public final class CesiumWritingHelper {
 
 	/**
 	 *  
+	Writes a  {@link Spherical} value as an array in Clock, Cone, Magnitude order.
+	
+	
+	
+
+	 * @param output The stream to which to write the value.
+	 * @param value The value to write.
+	 */
+	public static void writeSpherical(CesiumOutputStream output, Spherical value) {
+		output.writeStartSequence();
+		output.writeValue(value.getClock());
+		output.writeValue(value.getCone());
+		output.writeValue(value.getMagnitude());
+		output.writeEndSequence();
+	}
+
+	/**
+	 *  
+	Writes time-tagged  {@link Spherical} values as an array in [Time, Clock, Cone, Magnitude] order.
+	Times are epoch seconds since an epoch that is determined from the first date to be written.
+	The epoch property is written as well.
+	
+	
+	
+	
+	
+	
+	
+
+	 * @param output The stream to which to write the array.
+	 * @param propertyName The name of the property to write.
+	 * @param dates The dates at which the value is specified.
+	 * @param values The corresponding value for each date.
+	 * @param startIndex The index of the first element to use in the <code>values</code> collection.
+	 * @param length The number of elements to use from the <code>values</code> collection.
+	 */
+	public static void writeSpherical(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<Spherical> values, int startIndex, int length) {
+		if (dates.size() != values.size()) {
+			throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
+		}
+		JulianDate epoch = getAndWriteEpoch(output, dates, startIndex, length);
+		output.writePropertyName(propertyName);
+		output.writeStartSequence();
+		int last = startIndex + length;
+		for (int i = startIndex; i < last; ++i) {
+			output.writeValue(epoch.secondsDifference(dates.get(i)));
+			Spherical value = values.get(i);
+			output.writeValue(value.getClock());
+			output.writeValue(value.getCone());
+			output.writeValue(value.getMagnitude());
+			output.writeLineBreak();
+		}
+		output.writeEndSequence();
+	}
+
+	/**
+	 *  
 	Writes a  {@link UnitSpherical} value as an array in Clock, Cone order.
 	
 	
@@ -635,6 +692,26 @@ public final class CesiumWritingHelper {
 			output.writeValue(value.getX());
 			output.writeValue(value.getY());
 			output.writeValue(value.getZ());
+		}
+		output.writeEndSequence();
+	}
+
+	/**
+	 *  
+	Writes a list of  {@link Spherical} values as an array in Clock, Cone, Magnitude order.
+	
+	
+	
+
+	 * @param output The stream to which to write the value.
+	 * @param values The values to write.
+	 */
+	public static void writeSphericalList(CesiumOutputStream output, Iterable<Spherical> values) {
+		output.writeStartSequence();
+		for (Spherical value : values) {
+			output.writeValue(value.getClock());
+			output.writeValue(value.getCone());
+			output.writeValue(value.getMagnitude());
 		}
 		output.writeEndSequence();
 	}

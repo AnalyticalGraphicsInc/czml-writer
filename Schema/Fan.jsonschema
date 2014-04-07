@@ -16,6 +16,10 @@
             "$ref": "Double.jsonschema",
             "description": "The radial limit of the fan."
         },
+        "perDirectionRadius": {
+            "$ref": "Boolean.jsonschema",
+            "description": "When true, the magnitude of each direciton is used instead of a constant radius."
+        },
         "material": {
             "$ref": "Material.jsonschema",
             "description": "The material to display on the surface of the fan."
@@ -27,6 +31,10 @@
         "outline": {
             "$ref": "Boolean.jsonschema",
             "description": "Whether or not the fan is outlined."
+        },
+        "numberOfRings": {
+            "$ref": "Double.jsonschema",
+            "description": "The number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center."
         },
         "outlineColor": {
             "$ref": "Color.jsonschema",
