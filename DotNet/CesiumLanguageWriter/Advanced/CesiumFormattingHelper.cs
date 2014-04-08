@@ -194,6 +194,25 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Converts a <see cref="CesiumStripeOrientation"/> to the corresponding string in a
+        /// <topic name="Cesium">Cesium</topic> stream.
+        /// </summary>
+        /// <param name="orientation">The orientation to convert.</param>
+        /// <returns>The string representation of the specified <see cref="CesiumStripeOrientation"/>.</returns>
+        public static string StripeOrientationToString(CesiumStripeOrientation orientation)
+        {
+            switch (orientation)
+            {
+                case CesiumStripeOrientation.Horizontal:
+                    return "HORIZONTAL";
+                case CesiumStripeOrientation.Vertical:
+                    return "VERTICAL";
+                default:
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "orientation");
+            }
+        }
+
+        /// <summary>
         /// Converts a <see cref="CesiumHorizontalOrigin"/> to the corresponding string in a
         /// <topic name="Cesium">Cesium</topic> stream.
         /// </summary>

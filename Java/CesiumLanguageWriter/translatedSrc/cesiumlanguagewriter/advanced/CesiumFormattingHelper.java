@@ -259,6 +259,31 @@ public final class CesiumFormattingHelper {
 
 	/**
 	 *  
+	Converts a  {@link CesiumStripeOrientation} to the corresponding string in a
+	<topic name="Cesium">Cesium</topic> stream.
+	
+	
+	
+
+	 * @param orientation The orientation to convert.
+	 * @return The string representation of the specified  {@link CesiumStripeOrientation}.
+	 */
+	public static String stripeOrientationToString(CesiumStripeOrientation orientation) {
+		switch (orientation) {
+		case HORIZONTAL: {
+			return "HORIZONTAL";
+		}
+		case VERTICAL: {
+			return "VERTICAL";
+		}
+		default: {
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "orientation");
+		}
+		}
+	}
+
+	/**
+	 *  
 	Converts a  {@link CesiumHorizontalOrigin} to the corresponding string in a
 	<topic name="Cesium">Cesium</topic> stream.
 	
