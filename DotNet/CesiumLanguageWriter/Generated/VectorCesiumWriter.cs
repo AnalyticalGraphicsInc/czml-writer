@@ -232,10 +232,50 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteDirectionProperty(Spherical value)
+        {
+            using (var writer = OpenDirectionProperty())
+            {
+                writer.WriteSpherical(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteDirectionProperty(IList<JulianDate> dates, IList<Spherical> values)
+        {
+            using (var writer = OpenDirectionProperty())
+            {
+                writer.WriteSpherical(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteDirectionProperty(IList<JulianDate> dates, IList<Spherical> values, int startIndex, int length)
+        {
+            using (var writer = OpenDirectionProperty())
+            {
+                writer.WriteSpherical(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
         /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteDirectionProperty(UnitCartesian value)
+        public void WriteDirectionPropertyUnitCartesian(UnitCartesian value)
         {
             using (var writer = OpenDirectionProperty())
             {
@@ -248,7 +288,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteDirectionProperty(IList<JulianDate> dates, IList<UnitCartesian> values)
+        public void WriteDirectionPropertyUnitCartesian(IList<JulianDate> dates, IList<UnitCartesian> values)
         {
             using (var writer = OpenDirectionProperty())
             {
@@ -263,7 +303,7 @@ namespace CesiumLanguageWriter
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteDirectionProperty(IList<JulianDate> dates, IList<UnitCartesian> values, int startIndex, int length)
+        public void WriteDirectionPropertyUnitCartesian(IList<JulianDate> dates, IList<UnitCartesian> values, int startIndex, int length)
         {
             using (var writer = OpenDirectionProperty())
             {

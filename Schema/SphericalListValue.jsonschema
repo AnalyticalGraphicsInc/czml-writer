@@ -1,0 +1,5 @@
+{
+    "title": "SphericalList",
+    "description": "A list of directions specified as spherical [Clock, Cone, Magnitude, Clock, Cone, Magnitude, ...].",
+    "type": "array"
+}

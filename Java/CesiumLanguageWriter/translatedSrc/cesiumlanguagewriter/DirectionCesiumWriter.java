@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.Spherical;
 import cesiumlanguagewriter.UnitCartesian;
 import cesiumlanguagewriter.UnitSpherical;
 import java.util.List;
@@ -25,6 +26,13 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 	public static final String AxesPropertyName = "axes";
 	/**
 	 *  
+	The name of the <code>spherical</code> property.
+	
+
+	 */
+	public static final String SphericalPropertyName = "spherical";
+	/**
+	 *  
 	The name of the <code>unitCartesian</code> property.
 	
 
@@ -37,6 +45,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	 */
 	public static final String UnitSphericalPropertyName = "unitSpherical";
+	private Lazy<ICesiumInterpolatableValuePropertyWriter<Spherical>> m_asSpherical;
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>> m_asUnitCartesian;
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>> m_asUnitSpherical;
 
@@ -48,6 +57,12 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 	 */
 	public DirectionCesiumWriter(String propertyName) {
 		super(propertyName);
+		m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(this, "createSphericalAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical> invoke() {
+						return createSphericalAdaptor();
+					}
+				}, false);
 		m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(
 				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor", new Class[] {}) {
 					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian> invoke() {
@@ -72,6 +87,12 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 	 */
 	protected DirectionCesiumWriter(DirectionCesiumWriter existingInstance) {
 		super(existingInstance);
+		m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(this, "createSphericalAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical> invoke() {
+						return createSphericalAdaptor();
+					}
+				}, false);
 		m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(
 				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor", new Class[] {}) {
 					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian> invoke() {
@@ -104,6 +125,55 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 		openIntervalIfNecessary();
 		getOutput().writePropertyName(PropertyName);
 		getOutput().writeValue(value);
+	}
+
+	/**
+	 *  
+	Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies a direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeSpherical(Spherical value) {
+		String PropertyName = SphericalPropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeSpherical(getOutput(), value);
+	}
+
+	/**
+	 *  
+	Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies a direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeSpherical(List<JulianDate> dates, List<Spherical> values) {
+		writeSpherical(dates, values, 0, dates.size());
+	}
+
+	/**
+	 *  
+	Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies a direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeSpherical(List<JulianDate> dates, List<Spherical> values, int startIndex, int length) {
+		String PropertyName = SphericalPropertyName;
+		openIntervalIfNecessary();
+		CesiumWritingHelper.writeSpherical(getOutput(), PropertyName, dates, values, startIndex, length);
 	}
 
 	/**
@@ -202,6 +272,31 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 		String PropertyName = UnitSphericalPropertyName;
 		openIntervalIfNecessary();
 		CesiumWritingHelper.writeUnitSpherical(getOutput(), PropertyName, dates, values, startIndex, length);
+	}
+
+	/**
+	 *  
+	Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in <code>Spherical</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	
+	
+
+	 * @return The wrapper.
+	 */
+	public final ICesiumInterpolatableValuePropertyWriter<Spherical> asSpherical() {
+		return m_asSpherical.getValue();
+	}
+
+	final private ICesiumInterpolatableValuePropertyWriter<Spherical> createSphericalAdaptor() {
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.DirectionCesiumWriter, cesiumlanguagewriter.Spherical>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DirectionCesiumWriter, cesiumlanguagewriter.Spherical>() {
+					public void invoke(DirectionCesiumWriter me, Spherical value) {
+						me.writeSpherical(value);
+					}
+				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.DirectionCesiumWriter, cesiumlanguagewriter.Spherical>() {
+					public void invoke(DirectionCesiumWriter me, List<JulianDate> dates, List<Spherical> values, int startIndex, int length) {
+						me.writeSpherical(dates, values, startIndex, length);
+					}
+				});
 	}
 
 	/**

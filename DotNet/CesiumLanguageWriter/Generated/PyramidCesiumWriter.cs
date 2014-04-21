@@ -138,6 +138,18 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>directions</code> property as a <code>spherical</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public void WriteDirectionsPropertySpherical(IEnumerable<Spherical> values)
+        {
+            using (var writer = OpenDirectionsProperty())
+            {
+                writer.WriteSpherical(values);
+            }
+        }
+
+        /// <summary>
         /// Writes a value for the <code>directions</code> property as a <code>unitCartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
         /// </summary>
         /// <param name="values">The values.</param>

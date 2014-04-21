@@ -128,6 +128,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string VectorPropertyName = "vector";
 
+        /// <summary>
+        /// The name of the <code>fan</code> property.
+        /// </summary>
+        public const string FanPropertyName = "fan";
+
         private readonly Lazy<StringCesiumWriter> m_description = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(DescriptionPropertyName), false);
         private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter(BillboardPropertyName), false);
@@ -146,6 +151,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(() => new EllipseCesiumWriter(EllipsePropertyName), false);
         private readonly Lazy<ClockCesiumWriter> m_clock = new Lazy<ClockCesiumWriter>(() => new ClockCesiumWriter(ClockPropertyName), false);
         private readonly Lazy<VectorCesiumWriter> m_vector = new Lazy<VectorCesiumWriter>(() => new VectorCesiumWriter(VectorPropertyName), false);
+        private readonly Lazy<FanCesiumWriter> m_fan = new Lazy<FanCesiumWriter>(() => new FanCesiumWriter(FanPropertyName), false);
 
         /// <summary>
         /// Writes the start of a new JSON object representing the packet.
@@ -769,6 +775,22 @@ namespace CesiumLanguageWriter
         public VectorCesiumWriter OpenVectorProperty()
         {
             return OpenAndReturn(VectorWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>fan</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>fan</code> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
+        /// </summary>
+        public FanCesiumWriter FanWriter
+        {
+            get { return m_fan.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>fan</code> property.  The <code>fan</code> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
+        /// </summary>
+        public FanCesiumWriter OpenFanProperty()
+        {
+            return OpenAndReturn(FanWriter);
         }
 
     }

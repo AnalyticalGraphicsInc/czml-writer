@@ -213,6 +213,25 @@ public class PyramidCesiumWriter extends CesiumPropertyWriter<PyramidCesiumWrite
 
 	/**
 	 *  
+	Writes a value for the <code>directions</code> property as a <code>spherical</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+	
+	
+
+	 * @param values The values.
+	 */
+	public final void writeDirectionsPropertySpherical(Iterable<Spherical> values) {
+		{
+			cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
+			try {
+				writer.writeSpherical(values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
 	Writes a value for the <code>directions</code> property as a <code>unitCartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
 	
 	

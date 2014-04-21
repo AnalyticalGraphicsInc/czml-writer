@@ -93,6 +93,7 @@
     <Compile Include="Generated\EllipsoidCesiumWriter.cs" />
     <Compile Include="Generated\EllipsoidRadiiCesiumWriter.cs" />
     <Compile Include="Generated\EyeOffsetCesiumWriter.cs" />
+    <Compile Include="Generated\FanCesiumWriter.cs" />
     <Compile Include="Generated\FontCesiumWriter.cs" />
     <Compile Include="Generated\GridMaterialCesiumWriter.cs" />
     <Compile Include="Generated\HorizontalOriginCesiumWriter.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Matrix3By3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangular.cs" />
+    <Compile Include="Spherical.cs" />
     <Compile Include="TimeConstants.cs" />
     <Compile Include="TimeInterval.cs" />
     <Compile Include="TimeStandard.cs" />
