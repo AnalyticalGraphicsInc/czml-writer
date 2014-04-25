@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
+@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumPacketWriter {
 	private StringWriter m_sw;
 	private CesiumOutputStream m_output;

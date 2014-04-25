@@ -6,8 +6,10 @@ import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewritertests.*;
 import org.junit.Assert;
+import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
+@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumFormattingHelper {
 	@Test
 	public final void passToIso8601Interval() {

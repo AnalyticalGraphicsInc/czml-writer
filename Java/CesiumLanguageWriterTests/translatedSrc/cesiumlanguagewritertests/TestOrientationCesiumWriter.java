@@ -10,8 +10,10 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.junit.Ignore;
+import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
+@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropertyWriter<OrientationCesiumWriter> {
 	@Override
 	protected CesiumPropertyWriter<OrientationCesiumWriter> createPropertyWriter(String propertyName) {

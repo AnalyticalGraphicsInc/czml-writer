@@ -9,6 +9,7 @@ import agi.foundation.compatibility.IEquatable;
 import cesiumlanguagewriter.*;
 import org.joda.time.DateTime;
 import org.junit.Assert;
+import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
@@ -17,6 +18,7 @@ import org.junit.Test;
  
 
  */
+@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestYearMonthDay {
 	/**
 	 *  

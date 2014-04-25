@@ -43,12 +43,24 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string ColumnThicknessPropertyName = "columnThickness";
 
+        /// <summary>
+        /// The name of the <code>rowOffset</code> property.
+        /// </summary>
+        public const string RowOffsetPropertyName = "rowOffset";
+
+        /// <summary>
+        /// The name of the <code>columnOffset</code> property.
+        /// </summary>
+        public const string ColumnOffsetPropertyName = "columnOffset";
+
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_cellAlpha = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(CellAlphaPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_rowCount = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RowCountPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_columnCount = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ColumnCountPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_rowThickness = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RowThicknessPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_columnThickness = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ColumnThicknessPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_rowOffset = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RowOffsetPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_columnOffset = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ColumnOffsetPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -362,6 +374,94 @@ namespace CesiumLanguageWriter
         public void WriteColumnThicknessProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenColumnThicknessProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>rowOffset</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>rowOffset</code> property defines the offset of horizontal grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        public DoubleCesiumWriter RowOffsetWriter
+        {
+            get { return m_rowOffset.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>rowOffset</code> property.  The <code>rowOffset</code> property defines the offset of horizontal grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        public DoubleCesiumWriter OpenRowOffsetProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(RowOffsetWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rowOffset</code> property as a <code>number</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteRowOffsetProperty(double value)
+        {
+            using (var writer = OpenRowOffsetProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rowOffset</code> property as a <code>number</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteRowOffsetProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenRowOffsetProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>columnOffset</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>columnOffset</code> property defines the offset of vertical grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        public DoubleCesiumWriter ColumnOffsetWriter
+        {
+            get { return m_columnOffset.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>columnOffset</code> property.  The <code>columnOffset</code> property defines the offset of vertical grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        public DoubleCesiumWriter OpenColumnOffsetProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ColumnOffsetWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>columnOffset</code> property as a <code>number</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteColumnOffsetProperty(double value)
+        {
+            using (var writer = OpenColumnOffsetProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>columnOffset</code> property as a <code>number</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteColumnOffsetProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenColumnOffsetProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
             }

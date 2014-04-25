@@ -7,8 +7,10 @@ import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
 import org.junit.Assert;
+import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
+@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPropertiesOfSimpleJsonTypes extends TestCesiumPropertyWriter<BillboardCesiumWriter> {
 	@Override
 	protected CesiumPropertyWriter<BillboardCesiumWriter> createPropertyWriter(String propertyName) {
