@@ -60,6 +60,20 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
 	 */
 	public static final String ColumnThicknessPropertyName = "columnThickness";
+	/**
+	 *  
+	The name of the <code>rowOffset</code> property.
+	
+
+	 */
+	public static final String RowOffsetPropertyName = "rowOffset";
+	/**
+	 *  
+	The name of the <code>columnOffset</code> property.
+	
+
+	 */
+	public static final String ColumnOffsetPropertyName = "columnOffset";
 	private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
 		public cesiumlanguagewriter.ColorCesiumWriter invoke() {
 			return new ColorCesiumWriter(ColorPropertyName);
@@ -88,6 +102,16 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	private Lazy<DoubleCesiumWriter> m_columnThickness = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(ColumnThicknessPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_rowOffset = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(RowOffsetPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_columnOffset = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(ColumnOffsetPropertyName);
 		}
 	}, false);
 
@@ -544,6 +568,134 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	public final void writeColumnThicknessProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
 		{
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnThicknessProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>rowOffset</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rowOffset</code> property defines the offset of horizontal grid lines, as a percentage from 0 to 1.
+	
+
+	 */
+	public final DoubleCesiumWriter getRowOffsetWriter() {
+		return m_rowOffset.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>rowOffset</code> property.  The <code>rowOffset</code> property defines the offset of horizontal grid lines, as a percentage from 0 to 1.
+	
+
+	 */
+	public final DoubleCesiumWriter openRowOffsetProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getRowOffsetWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rowOffset</code> property as a <code>number</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeRowOffsetProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowOffsetProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rowOffset</code> property as a <code>number</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeRowOffsetProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowOffsetProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>columnOffset</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>columnOffset</code> property defines the offset of vertical grid lines, as a percentage from 0 to 1.
+	
+
+	 */
+	public final DoubleCesiumWriter getColumnOffsetWriter() {
+		return m_columnOffset.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>columnOffset</code> property.  The <code>columnOffset</code> property defines the offset of vertical grid lines, as a percentage from 0 to 1.
+	
+
+	 */
+	public final DoubleCesiumWriter openColumnOffsetProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getColumnOffsetWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>columnOffset</code> property as a <code>number</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeColumnOffsetProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnOffsetProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>columnOffset</code> property as a <code>number</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeColumnOffsetProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnOffsetProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
 			} finally {

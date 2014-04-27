@@ -7,6 +7,7 @@ import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.IEquatable;
 import cesiumlanguagewriter.*;
 import org.junit.Assert;
+import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
@@ -15,6 +16,7 @@ import org.junit.Test;
  
 
  */
+@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestJulianDate {
 	/**
 	 *  

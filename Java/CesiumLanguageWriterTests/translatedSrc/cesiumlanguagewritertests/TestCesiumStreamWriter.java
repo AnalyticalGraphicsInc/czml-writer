@@ -6,8 +6,10 @@ import cesiumlanguagewriter.*;
 import java.io.StringWriter;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
+@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumStreamWriter {
 	private StringWriter m_sw;
 	private CesiumOutputStream m_output;

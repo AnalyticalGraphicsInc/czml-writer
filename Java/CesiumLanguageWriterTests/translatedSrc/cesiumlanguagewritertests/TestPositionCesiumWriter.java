@@ -9,8 +9,10 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.junit.Assert;
+import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
+@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWriter<PositionCesiumWriter> {
 	@Override
 	protected CesiumPropertyWriter<PositionCesiumWriter> createPropertyWriter(String propertyName) {

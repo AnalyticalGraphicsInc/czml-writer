@@ -27,6 +27,14 @@
         "columnThickness": {
             "$ref": "Double.jsonschema",
             "description": "The thickness of vertical grid lines, in pixels."
+        },
+        "rowOffset": {
+            "$ref": "Double.jsonschema",
+            "description": "The offset of horizontal grid lines, as a percentage from 0 to 1."
+        },
+        "columnOffset": {
+            "$ref": "Double.jsonschema",
+            "description": "The offset of vertical grid lines, as a percentage from 0 to 1."
         }
     }
 }
