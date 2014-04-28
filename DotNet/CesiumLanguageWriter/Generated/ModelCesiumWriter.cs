@@ -24,12 +24,18 @@ namespace CesiumLanguageWriter
         public const string ScalePropertyName = "scale";
 
         /// <summary>
+        /// The name of the <code>minimumPixelSize</code> property.
+        /// </summary>
+        public const string MinimumPixelSizePropertyName = "minimumPixelSize";
+
+        /// <summary>
         /// The name of the <code>gltf</code> property.
         /// </summary>
         public const string GltfPropertyName = "gltf";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_minimumPixelSize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MinimumPixelSizePropertyName), false);
         private readonly Lazy<UriCesiumWriter> m_gltf = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(GltfPropertyName), false);
 
         /// <summary>
@@ -123,6 +129,50 @@ namespace CesiumLanguageWriter
         public void WriteScaleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenScaleProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>minimumPixelSize</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>minimumPixelSize</code> property defines the approximate minimum pixel size of the model regardless of zoom.
+        /// </summary>
+        public DoubleCesiumWriter MinimumPixelSizeWriter
+        {
+            get { return m_minimumPixelSize.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>minimumPixelSize</code> property.  The <code>minimumPixelSize</code> property defines the approximate minimum pixel size of the model regardless of zoom.
+        /// </summary>
+        public DoubleCesiumWriter OpenMinimumPixelSizeProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(MinimumPixelSizeWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>minimumPixelSize</code> property as a <code>number</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteMinimumPixelSizeProperty(double value)
+        {
+            using (var writer = OpenMinimumPixelSizeProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>minimumPixelSize</code> property as a <code>number</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteMinimumPixelSizeProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenMinimumPixelSizeProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
             }

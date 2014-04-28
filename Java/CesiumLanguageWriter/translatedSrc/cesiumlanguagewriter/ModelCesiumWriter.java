@@ -35,6 +35,13 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	public static final String ScalePropertyName = "scale";
 	/**
 	 *  
+	The name of the <code>minimumPixelSize</code> property.
+	
+
+	 */
+	public static final String MinimumPixelSizePropertyName = "minimumPixelSize";
+	/**
+	 *  
 	The name of the <code>gltf</code> property.
 	
 
@@ -48,6 +55,11 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	private Lazy<DoubleCesiumWriter> m_scale = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(ScalePropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_minimumPixelSize = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(MinimumPixelSizePropertyName);
 		}
 	}, false);
 	private Lazy<UriCesiumWriter> m_gltf = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
@@ -178,6 +190,70 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	public final void writeScaleProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
 		{
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>minimumPixelSize</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>minimumPixelSize</code> property defines the approximate minimum pixel size of the model regardless of zoom.
+	
+
+	 */
+	public final DoubleCesiumWriter getMinimumPixelSizeWriter() {
+		return m_minimumPixelSize.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>minimumPixelSize</code> property.  The <code>minimumPixelSize</code> property defines the approximate minimum pixel size of the model regardless of zoom.
+	
+
+	 */
+	public final DoubleCesiumWriter openMinimumPixelSizeProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getMinimumPixelSizeWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>minimumPixelSize</code> property as a <code>number</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeMinimumPixelSizeProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>minimumPixelSize</code> property as a <code>number</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeMinimumPixelSizeProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
 			} finally {
