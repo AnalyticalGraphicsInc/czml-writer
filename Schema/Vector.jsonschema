@@ -19,7 +19,7 @@
         "length": {
             "$ref": "Double.jsonschema",
             "description": "The graphical length of the vector."
-        }
+        },
         "minimumLengthInPixels": {
             "$ref": "Double.jsonschema",
             "description": "The minimum graphical length of the vector in pixels."
