@@ -165,6 +165,9 @@
   <data name="MismatchedNumberOfDatesAndValues" xml:space="preserve">
     <value>This collection must have the same number of elements as the "dates" collection.</value>
   </data>
+  <data name="MotionMustContainValue" xml:space="preserve">
+    <value>A Motion instance must be constructed with at least one value.</value>
+  </data>
   <data name="MustBeConstructedFromSpecificNumberOfElements" xml:space="preserve">
     <value>An object of the type {0} must be constructed from an array with at least {1} elements.</value>
   </data>

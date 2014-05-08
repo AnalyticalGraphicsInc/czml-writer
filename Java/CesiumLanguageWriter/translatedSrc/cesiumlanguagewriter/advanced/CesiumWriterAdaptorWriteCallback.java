@@ -107,6 +107,17 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
 		return this;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) {
+			return true;
+		}
+		if (!(obj instanceof CesiumWriterAdaptorWriteCallback)) {
+			return false;
+		}
+		return super.equals(obj);
+	}
+
 	final static private class MulticastCesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> extends CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> implements
 			MulticastDelegate<CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue>> {
 		private MulticastList<CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue>> delegates;

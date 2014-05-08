@@ -248,6 +248,17 @@ public class CesiumLocalization {
 
 	/**
 	 *  
+	Looks up a localized string similar to A Motion instance must be constructed with at least one value..
+	
+
+	 */
+	@Internal
+	public static String getMotionMustContainValue() {
+		return getResourceManager().getString("MotionMustContainValue");
+	}
+
+	/**
+	 *  
 	Looks up a localized string similar to An object of the type {0} must be constructed from an array with at least {1} elements..
 	
 
