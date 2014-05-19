@@ -21,6 +21,13 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 
 	 */
 	public static final String LabelStylePropertyName = "labelStyle";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumValuePropertyWriter<CesiumLabelStyle>> m_asLabelStyle;
 
 	/**
@@ -76,6 +83,21 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 			getOutput().writePropertyName(PropertyName);
 		}
 		getOutput().writeValue(CesiumFormattingHelper.labelStyleToString(value));
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 
 	/**

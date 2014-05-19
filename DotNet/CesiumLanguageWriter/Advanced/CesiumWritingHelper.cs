@@ -7,7 +7,7 @@ namespace CesiumLanguageWriter.Advanced
     /// <summary>
     /// Contains helper methods for writing CZML values.
     /// </summary>
-    internal static class CesiumWritingHelper
+    public static class CesiumWritingHelper
     {
         /// <summary>
         /// The maximum interval of time that can be specified.
@@ -539,6 +539,24 @@ namespace CesiumLanguageWriter.Advanced
                 output.WriteValue(value.Cone);
             }
             output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="value"></param>
+        public static void WriteReference(CesiumOutputStream output, Reference value)
+        {
+            output.WriteStartObject();
+
+            output.WritePropertyName("id");
+            output.WriteValue(value.Identifier);
+
+            output.WritePropertyName("path");
+            output.WriteValue(value.Path);
+
+            output.WriteEndObject();
         }
 
         /// <summary>

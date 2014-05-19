@@ -8,6 +8,10 @@
             "$ref": "StringValue.jsonschema",
             "description": "The string value.",
             "czmlValue": true
+        },
+        "reference": {
+            "$ref": "Reference.jsonschema",
+            "description": "A reference."
         }
     }
 }

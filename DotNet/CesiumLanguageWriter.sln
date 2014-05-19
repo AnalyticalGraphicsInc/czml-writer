@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CesiumLanguageWriter", "CesiumLanguageWriter\CesiumLanguageWriter.csproj", "{085359F8-CC1D-4561-94C7-0BF067B8E370}"
 EndProject
@@ -17,7 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\Billboard.jsonschema = ..\Schema\Billboard.jsonschema
 		..\Schema\Boolean.jsonschema = ..\Schema\Boolean.jsonschema
 		..\Schema\BooleanValue.jsonschema = ..\Schema\BooleanValue.jsonschema
-		..\Schema\Camera.jsonschema = ..\Schema\Camera.jsonschema
 		..\Schema\Cartesian2Value.jsonschema = ..\Schema\Cartesian2Value.jsonschema
 		..\Schema\Cartesian3ListValue.jsonschema = ..\Schema\Cartesian3ListValue.jsonschema
 		..\Schema\Cartesian3Value.jsonschema = ..\Schema\Cartesian3Value.jsonschema
@@ -58,6 +57,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\Position.jsonschema = ..\Schema\Position.jsonschema
 		..\Schema\PositionList.jsonschema = ..\Schema\PositionList.jsonschema
 		..\Schema\Pyramid.jsonschema = ..\Schema\Pyramid.jsonschema
+		..\Schema\Reference.jsonschema = ..\Schema\Reference.jsonschema
 		..\Schema\ReferenceListValue.jsonschema = ..\Schema\ReferenceListValue.jsonschema
 		..\Schema\RgbafValue.jsonschema = ..\Schema\RgbafValue.jsonschema
 		..\Schema\RgbaValue.jsonschema = ..\Schema\RgbaValue.jsonschema

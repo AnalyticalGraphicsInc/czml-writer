@@ -37,6 +37,13 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	 */
 	public static final String UnitSphericalPropertyName = "unitSpherical";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>> m_asUnitCartesian;
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>> m_asUnitSpherical;
 
@@ -202,6 +209,21 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 		String PropertyName = UnitSphericalPropertyName;
 		openIntervalIfNecessary();
 		CesiumWritingHelper.writeUnitSpherical(getOutput(), PropertyName, dates, values, startIndex, length);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 
 	/**

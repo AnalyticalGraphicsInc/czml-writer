@@ -20,6 +20,13 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
 
 	 */
 	public static final String FontPropertyName = "font";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumValuePropertyWriter<String>> m_asFont;
 
 	/**
@@ -75,6 +82,21 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
 			getOutput().writePropertyName(PropertyName);
 		}
 		getOutput().writeValue(font);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 
 	/**

@@ -33,6 +33,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string StripePropertyName = "stripe";
 
+        /// <summary>
+        /// The name of the <code>reference</code> property.
+        /// </summary>
+        public const string ReferencePropertyName = "reference";
+
         private readonly Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<SolidColorMaterialCesiumWriter>(() => new SolidColorMaterialCesiumWriter(SolidColorPropertyName), false);
         private readonly Lazy<ImageMaterialCesiumWriter> m_image = new Lazy<ImageMaterialCesiumWriter>(() => new ImageMaterialCesiumWriter(ImagePropertyName), false);
         private readonly Lazy<GridMaterialCesiumWriter> m_grid = new Lazy<GridMaterialCesiumWriter>(() => new GridMaterialCesiumWriter(GridPropertyName), false);
@@ -127,6 +132,18 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(StripeWriter);
+        }
+
+        /// <summary>
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteReference(Reference value)
+        {
+            const string PropertyName = ReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, value);
         }
 
     }

@@ -7,7 +7,6 @@ import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BillboardCesiumWriter;
-import cesiumlanguagewriter.CameraCesiumWriter;
 import cesiumlanguagewriter.ClockCesiumWriter;
 import cesiumlanguagewriter.ConeCesiumWriter;
 import cesiumlanguagewriter.EllipseCesiumWriter;
@@ -147,13 +146,6 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	public static final String PyramidPropertyName = "pyramid";
 	/**
 	 *  
-	The name of the <code>camera</code> property.
-	
-
-	 */
-	public static final String CameraPropertyName = "camera";
-	/**
-	 *  
 	The name of the <code>ellipsoid</code> property.
 	
 
@@ -252,11 +244,6 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	private Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<cesiumlanguagewriter.PyramidCesiumWriter>(new Func1<cesiumlanguagewriter.PyramidCesiumWriter>() {
 		public cesiumlanguagewriter.PyramidCesiumWriter invoke() {
 			return new PyramidCesiumWriter(PyramidPropertyName);
-		}
-	}, false);
-	private Lazy<CameraCesiumWriter> m_camera = new Lazy<cesiumlanguagewriter.CameraCesiumWriter>(new Func1<cesiumlanguagewriter.CameraCesiumWriter>() {
-		public cesiumlanguagewriter.CameraCesiumWriter invoke() {
-			return new CameraCesiumWriter(CameraPropertyName);
 		}
 	}, false);
 	private Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<cesiumlanguagewriter.EllipsoidCesiumWriter>(new Func1<cesiumlanguagewriter.EllipsoidCesiumWriter>() {
@@ -972,25 +959,6 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	 */
 	public final PyramidCesiumWriter openPyramidProperty() {
 		return this.<PyramidCesiumWriter> openAndReturn(getPyramidWriter());
-	}
-
-	/**
-	 *  Gets the writer for the <code>camera</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>camera</code> property defines a camera.
-	
-
-	 */
-	public final CameraCesiumWriter getCameraWriter() {
-		return m_camera.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>camera</code> property.  The <code>camera</code> property defines a camera.
-	
-
-	 */
-	public final CameraCesiumWriter openCameraProperty() {
-		return this.<CameraCesiumWriter> openAndReturn(getCameraWriter());
 	}
 
 	/**

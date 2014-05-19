@@ -22,6 +22,13 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	 */
 	public static final String Cartesian2PropertyName = "cartesian2";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<Rectangular>> m_asCartesian2;
 
 	/**
@@ -124,6 +131,21 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 		String PropertyName = Cartesian2PropertyName;
 		openIntervalIfNecessary();
 		CesiumWritingHelper.writeCartesian2(getOutput(), PropertyName, dates, values, startIndex, length);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 
 	/**

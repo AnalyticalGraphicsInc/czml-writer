@@ -94,11 +94,6 @@ namespace CesiumLanguageWriter
         public const string PyramidPropertyName = "pyramid";
 
         /// <summary>
-        /// The name of the <code>camera</code> property.
-        /// </summary>
-        public const string CameraPropertyName = "camera";
-
-        /// <summary>
         /// The name of the <code>ellipsoid</code> property.
         /// </summary>
         public const string EllipsoidPropertyName = "ellipsoid";
@@ -140,7 +135,6 @@ namespace CesiumLanguageWriter
         private readonly Lazy<PolygonCesiumWriter> m_polygon = new Lazy<PolygonCesiumWriter>(() => new PolygonCesiumWriter(PolygonPropertyName), false);
         private readonly Lazy<ConeCesiumWriter> m_cone = new Lazy<ConeCesiumWriter>(() => new ConeCesiumWriter(ConePropertyName), false);
         private readonly Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<PyramidCesiumWriter>(() => new PyramidCesiumWriter(PyramidPropertyName), false);
-        private readonly Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(() => new CameraCesiumWriter(CameraPropertyName), false);
         private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
         private readonly Lazy<ModelCesiumWriter> m_model = new Lazy<ModelCesiumWriter>(() => new ModelCesiumWriter(ModelPropertyName), false);
         private readonly Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(() => new EllipseCesiumWriter(EllipsePropertyName), false);
@@ -638,22 +632,6 @@ namespace CesiumLanguageWriter
         public PyramidCesiumWriter OpenPyramidProperty()
         {
             return OpenAndReturn(PyramidWriter);
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>camera</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>camera</code> property defines a camera.
-        /// </summary>
-        public CameraCesiumWriter CameraWriter
-        {
-            get { return m_camera.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>camera</code> property.  The <code>camera</code> property defines a camera.
-        /// </summary>
-        public CameraCesiumWriter OpenCameraProperty()
-        {
-            return OpenAndReturn(CameraWriter);
         }
 
         /// <summary>

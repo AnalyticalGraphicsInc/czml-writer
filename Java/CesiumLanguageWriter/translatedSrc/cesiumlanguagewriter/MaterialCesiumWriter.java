@@ -45,6 +45,13 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
 
 	 */
 	public static final String StripePropertyName = "stripe";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>() {
 		public cesiumlanguagewriter.SolidColorMaterialCesiumWriter invoke() {
 			return new SolidColorMaterialCesiumWriter(SolidColorPropertyName);
@@ -171,5 +178,20 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
 	public final StripeMaterialCesiumWriter openStripeProperty() {
 		openIntervalIfNecessary();
 		return this.<StripeMaterialCesiumWriter> openAndReturn(getStripeWriter());
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 }

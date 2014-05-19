@@ -23,6 +23,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string RgbafPropertyName = "rgbaf";
 
+        /// <summary>
+        /// The name of the <code>reference</code> property.
+        /// </summary>
+        public const string ReferencePropertyName = "reference";
+
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Color>> m_asRgba;
 
         /// <summary>
@@ -104,6 +109,18 @@ namespace CesiumLanguageWriter
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteRgbaf(Output, red, green, blue, alpha);
+        }
+
+        /// <summary>
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteReference(Reference value)
+        {
+            const string PropertyName = ReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, value);
         }
 
         /// <summary>

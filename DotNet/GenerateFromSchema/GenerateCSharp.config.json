@@ -2,6 +2,18 @@
     "namespace": "CesiumLanguageWriter",
     "lazyNamespace": "System",
     "types": {
+        "Reference": [
+            {
+                "parameters": [
+                    {
+                        "type": "Reference",
+                        "name": "value",
+                        "description": "The reference."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, value);"
+            }
+        ],
         "TimeIntervalCollection": [
             {
                 "parameters": [
@@ -494,7 +506,7 @@
                 ],
                 "writeValue": "Output.WriteValue(CesiumFormattingHelper.ImageToDataUri(image, imageFormat));",
                 "needsInterval": false
-            },
+            }
         ],
         "StripeOrientation": [
             {

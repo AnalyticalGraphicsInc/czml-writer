@@ -32,6 +32,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string CartographicDegreesPropertyName = "cartographicDegrees";
 
+        /// <summary>
+        /// The name of the <code>reference</code> property.
+        /// </summary>
+        public const string ReferencePropertyName = "reference";
+
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asCartesian;
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>> m_asCartographicRadians;
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>> m_asCartographicDegrees;
@@ -183,6 +188,18 @@ namespace CesiumLanguageWriter
             const string PropertyName = CartographicDegreesPropertyName;
             OpenIntervalIfNecessary();
             CesiumWritingHelper.WriteCartographic(Output, PropertyName, dates, values, startIndex, length);
+        }
+
+        /// <summary>
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteReference(Reference value)
+        {
+            const string PropertyName = ReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, value);
         }
 
         /// <summary>

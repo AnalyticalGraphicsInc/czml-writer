@@ -8,6 +8,10 @@
             "$ref": "HorizontalOriginValue.jsonschema",
             "description": "The horizontal origin.  Valid values are \"LEFT\", \"CENTER\", and \"RIGHT\".",
             "czmlValue": true
+        },
+        "reference": {
+            "$ref": "Reference.jsonschema",
+            "description": "A reference."
         }
     }
 }

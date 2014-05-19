@@ -21,6 +21,13 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 
 	 */
 	public static final String NumberPropertyName = "number";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<Double>> m_asNumber;
 
 	/**
@@ -96,6 +103,21 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 		String PropertyName = NumberPropertyName;
 		openIntervalIfNecessary();
 		CesiumWritingHelper.writeDouble(getOutput(), PropertyName, dates, values, startIndex, length);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 
 	/**

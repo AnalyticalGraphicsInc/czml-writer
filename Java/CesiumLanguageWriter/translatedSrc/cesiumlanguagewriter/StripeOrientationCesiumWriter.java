@@ -21,6 +21,13 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
 	 */
 	public static final String StripeOrientationPropertyName = "StripeOrientation";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumValuePropertyWriter<CesiumStripeOrientation>> m_asStripeOrientation;
 
 	/**
@@ -76,6 +83,21 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 			getOutput().writePropertyName(PropertyName);
 		}
 		getOutput().writeValue(CesiumFormattingHelper.stripeOrientationToString(value));
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 
 	/**

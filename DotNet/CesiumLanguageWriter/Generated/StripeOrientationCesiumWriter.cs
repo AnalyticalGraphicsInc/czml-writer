@@ -16,6 +16,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string StripeOrientationPropertyName = "StripeOrientation";
 
+        /// <summary>
+        /// The name of the <code>reference</code> property.
+        /// </summary>
+        public const string ReferencePropertyName = "reference";
+
         private readonly Lazy<ICesiumValuePropertyWriter<CesiumStripeOrientation>> m_asStripeOrientation;
 
         /// <summary>
@@ -53,6 +58,18 @@ namespace CesiumLanguageWriter
             if (IsInterval)
                 Output.WritePropertyName(PropertyName);
             Output.WriteValue(CesiumFormattingHelper.StripeOrientationToString(value));
+        }
+
+        /// <summary>
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteReference(Reference value)
+        {
+            const string PropertyName = ReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, value);
         }
 
         /// <summary>

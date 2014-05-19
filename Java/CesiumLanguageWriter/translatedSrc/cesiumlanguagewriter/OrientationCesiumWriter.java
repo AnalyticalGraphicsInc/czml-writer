@@ -29,6 +29,13 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	 */
 	public static final String UnitQuaternionPropertyName = "unitQuaternion";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>> m_asUnitQuaternion;
 
 	/**
@@ -132,6 +139,21 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 		String PropertyName = UnitQuaternionPropertyName;
 		openIntervalIfNecessary();
 		CesiumWritingHelper.writeUnitQuaternion(getOutput(), PropertyName, dates, values, startIndex, length);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 
 	/**

@@ -8,6 +8,10 @@
             "$ref": "StripeOrientationValue.jsonschema",
             "description": "The orientation of stripes in the stripe material. Valid values are \"HORIZONTAL\" or \"VERTICAL\".",
             "czmlValue": true
+        },
+        "reference": {
+            "$ref": "Reference.jsonschema",
+            "description": "A reference."
         }
     }
 }

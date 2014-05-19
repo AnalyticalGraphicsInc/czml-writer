@@ -19,6 +19,10 @@
 		"stripe":{
             "$ref": "StripeMaterial.jsonschema",
             "description": "Fills the surface with alternating colors."		
-		}
+		},
+        "reference": {
+            "$ref": "Reference.jsonschema",
+            "description": "A reference."
+        }
     }
 }

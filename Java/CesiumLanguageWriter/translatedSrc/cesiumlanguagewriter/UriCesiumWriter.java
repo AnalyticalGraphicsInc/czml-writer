@@ -22,6 +22,13 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
 	 */
 	public static final String UriPropertyName = "uri";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumValuePropertyWriter<CesiumResource>> m_asUri;
 
 	/**
@@ -139,6 +146,21 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 			getOutput().writePropertyName(PropertyName);
 		}
 		getOutput().writeValue(CesiumFormattingHelper.imageToDataUri(image, imageFormat));
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 
 	/**

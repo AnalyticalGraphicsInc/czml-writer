@@ -17,6 +17,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string Cartesian2PropertyName = "cartesian2";
 
+        /// <summary>
+        /// The name of the <code>reference</code> property.
+        /// </summary>
+        public const string ReferencePropertyName = "reference";
+
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Rectangular>> m_asCartesian2;
 
         /// <summary>
@@ -88,6 +93,18 @@ namespace CesiumLanguageWriter
             const string PropertyName = Cartesian2PropertyName;
             OpenIntervalIfNecessary();
             CesiumWritingHelper.WriteCartesian2(Output, PropertyName, dates, values, startIndex, length);
+        }
+
+        /// <summary>
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteReference(Reference value)
+        {
+            const string PropertyName = ReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, value);
         }
 
         /// <summary>

@@ -20,6 +20,13 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 
 	 */
 	public static final String StringPropertyName = "string";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumValuePropertyWriter<String>> m_asString;
 
 	/**
@@ -75,6 +82,21 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 			getOutput().writePropertyName(PropertyName);
 		}
 		getOutput().writeValue(value);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 
 	/**

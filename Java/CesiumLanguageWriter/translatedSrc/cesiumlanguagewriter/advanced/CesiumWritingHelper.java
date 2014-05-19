@@ -2,7 +2,6 @@ package cesiumlanguagewriter.advanced;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.annotations.Internal;
 import agi.foundation.compatibility.ArgumentException;
 import cesiumlanguagewriter.*;
 import java.awt.Color;
@@ -14,7 +13,6 @@ import java.util.List;
  
 
  */
-@Internal
 public final class CesiumWritingHelper {
 	private CesiumWritingHelper() {}
 
@@ -656,6 +654,25 @@ public final class CesiumWritingHelper {
 			output.writeValue(value.getCone());
 		}
 		output.writeEndSequence();
+	}
+
+	/**
+	 *  
+	
+	
+	
+	
+
+	 * @param output 
+	 * @param value 
+	 */
+	public static void writeReference(CesiumOutputStream output, Reference value) {
+		output.writeStartObject();
+		output.writePropertyName("id");
+		output.writeValue(value.getIdentifier());
+		output.writePropertyName("path");
+		output.writeValue(value.getPath());
+		output.writeEndObject();
 	}
 
 	/**

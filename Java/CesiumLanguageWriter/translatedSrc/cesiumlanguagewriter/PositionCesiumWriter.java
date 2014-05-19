@@ -44,6 +44,13 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	 */
 	public static final String CartographicDegreesPropertyName = "cartographicDegrees";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asCartesian;
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>> m_asCartographicRadians;
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>> m_asCartographicDegrees;
@@ -271,6 +278,21 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 		String PropertyName = CartographicDegreesPropertyName;
 		openIntervalIfNecessary();
 		CesiumWritingHelper.writeCartographic(getOutput(), PropertyName, dates, values, startIndex, length);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 
 	/**

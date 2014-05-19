@@ -29,6 +29,13 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
 	 */
 	public static final String RgbafPropertyName = "rgbaf";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<Color>> m_asRgba;
 
 	/**
@@ -145,6 +152,21 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 		openIntervalIfNecessary();
 		getOutput().writePropertyName(PropertyName);
 		CesiumWritingHelper.writeRgbaf(getOutput(), red, green, blue, alpha);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 
 	/**

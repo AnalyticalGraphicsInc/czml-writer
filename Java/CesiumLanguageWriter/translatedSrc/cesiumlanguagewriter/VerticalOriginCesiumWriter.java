@@ -21,6 +21,13 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 
 	 */
 	public static final String VerticalOriginPropertyName = "verticalOrigin";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumValuePropertyWriter<CesiumVerticalOrigin>> m_asVerticalOrigin;
 
 	/**
@@ -76,6 +83,21 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 			getOutput().writePropertyName(PropertyName);
 		}
 		getOutput().writeValue(CesiumFormattingHelper.verticalOriginToString(value));
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 
 	/**

@@ -13,6 +13,10 @@
             "$ref": "UnitQuaternionValue.jsonschema",
             "description": "TODO",
             "czmlValue": true
+        },
+        "reference": {
+            "$ref": "Reference.jsonschema",
+            "description": "A reference."
         }
     }
 }

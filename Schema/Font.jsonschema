@@ -8,6 +8,10 @@
             "$ref": "FontValue.jsonschema",
             "description": "The font.",
             "czmlValue": true
+        },
+        "reference": {
+            "$ref": "Reference.jsonschema",
+            "description": "A reference."
         }
     }
 }

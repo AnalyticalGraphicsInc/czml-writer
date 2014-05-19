@@ -21,6 +21,13 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 
 	 */
 	public static final String HorizontalOriginPropertyName = "horizontalOrigin";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumValuePropertyWriter<CesiumHorizontalOrigin>> m_asHorizontalOrigin;
 
 	/**
@@ -76,6 +83,21 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 			getOutput().writePropertyName(PropertyName);
 		}
 		getOutput().writeValue(CesiumFormattingHelper.horizontalOriginToString(value));
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 
 	/**

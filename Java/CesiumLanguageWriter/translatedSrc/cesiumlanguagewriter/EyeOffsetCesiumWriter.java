@@ -22,6 +22,13 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
 
 	 */
 	public static final String CartesianPropertyName = "cartesian";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asCartesian;
 
 	/**
@@ -110,6 +117,21 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
 		String PropertyName = CartesianPropertyName;
 		openIntervalIfNecessary();
 		CesiumWritingHelper.writeCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
 	}
 
 	/**
