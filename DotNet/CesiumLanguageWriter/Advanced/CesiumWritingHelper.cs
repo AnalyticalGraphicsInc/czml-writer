@@ -542,10 +542,10 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// 
+        /// Writes a reference.
         /// </summary>
-        /// <param name="output"></param>
-        /// <param name="value"></param>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="value">The value to write.</param>
         public static void WriteReference(CesiumOutputStream output, Reference value)
         {
             output.WriteStartObject();
