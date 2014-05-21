@@ -82,7 +82,6 @@
     <Compile Include="Generated\AlignedAxisCesiumWriter.cs" />
     <Compile Include="Generated\BillboardCesiumWriter.cs" />
     <Compile Include="Generated\BooleanCesiumWriter.cs" />
-    <Compile Include="Generated\CameraCesiumWriter.cs" />
     <Compile Include="Generated\ClockCesiumWriter.cs" />
     <Compile Include="Generated\ColorCesiumWriter.cs" />
     <Compile Include="Generated\ConeCesiumWriter.cs" />

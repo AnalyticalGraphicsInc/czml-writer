@@ -1,5 +1,18 @@
 {
     "title": "Reference",
-    "description": "A reference.",
-    "type": "array"
+    "description": "Represents a link to another property.  References can be used to specify that two properties on different objects are in fact, the same property.  This also has the added benefit of cutting down on CZML file size.",
+    "type": [ "object" ],
+    "items": { "$ref": "#" },
+    "properties": {
+        "id": {
+            "$ref": "StringValue.jsonschema",
+            "description": "The id of the object which contains the referenced property.",
+            "czmlValue": true
+        },
+        "path": {
+            "$ref": "StringValue.jsonschema",
+            "description": "The path to the property in the referenced object.",
+            "czmlValue": true
+        }
+    }
 }
