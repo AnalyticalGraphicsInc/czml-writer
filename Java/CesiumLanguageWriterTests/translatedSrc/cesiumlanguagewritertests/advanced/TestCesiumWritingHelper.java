@@ -41,6 +41,15 @@ public class TestCesiumWritingHelper {
 		Assert.assertEquals("{\"id\":\"bar\",\"path\":\"color\"}", getStringWriter().toString());
 	}
 
+	@Test
+	public final void canWriteReferences() {
+		CesiumWritingHelper.writeReferences(getOutputStream(), agi.foundation.compatibility.ArrayHelper.arrayAsList(new cesiumlanguagewriter.Reference[] {
+				new Reference("bar", "color"),
+				new Reference("foo", "color2")
+		}));
+		Assert.assertEquals("[{\"id\":\"bar\",\"path\":\"color\"},{\"id\":\"foo\",\"path\":\"color2\"}]", getStringWriter().toString());
+	}
+
 	private StringWriter backingField$StringWriter;
 	private CesiumOutputStream backingField$OutputStream;
 	@org.junit.Rule

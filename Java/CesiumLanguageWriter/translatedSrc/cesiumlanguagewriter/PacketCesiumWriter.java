@@ -733,7 +733,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	 * @param references The list of references.
 	 */
-	public final void writeVertexPositionsPropertyReferences(Iterable<String> references) {
+	public final void writeVertexPositionsPropertyReferences(Iterable<Reference> references) {
 		{
 			cesiumlanguagewriter.PositionListCesiumWriter writer = openVertexPositionsProperty();
 			try {

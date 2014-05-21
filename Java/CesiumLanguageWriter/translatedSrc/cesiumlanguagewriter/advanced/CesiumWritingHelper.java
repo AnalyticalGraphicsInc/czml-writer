@@ -608,11 +608,10 @@ public final class CesiumWritingHelper {
 	 * @param output The stream to which to write.
 	 * @param references The list of references to write.
 	 */
-	public static void writeReferences(CesiumOutputStream output, Iterable<String> references) {
+	public static void writeReferences(CesiumOutputStream output, Iterable<Reference> references) {
 		output.writeStartSequence();
-		for (String reference : references) {
-			output.writeValue(reference);
-			output.writeLineBreak();
+		for (Reference reference : references) {
+			CesiumWritingHelper.writeReference(output, reference);
 		}
 		output.writeEndSequence();
 	}
@@ -658,13 +657,13 @@ public final class CesiumWritingHelper {
 
 	/**
 	 *  
-	
+	Writes a reference.
 	
 	
 	
 
-	 * @param output 
-	 * @param value 
+	 * @param output The stream to which to write the value.
+	 * @param value The value to write.
 	 */
 	public static void writeReference(CesiumOutputStream output, Reference value) {
 		output.writeStartObject();

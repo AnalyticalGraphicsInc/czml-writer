@@ -791,7 +791,7 @@
                 "namespaces": ["System.Collections.Generic"],
                 "parameters": [
                     {
-                        "type": "IEnumerable<string>",
+                        "type": "IEnumerable<Reference>",
                         "name": "references",
                         "description": "The list of references."
                     }

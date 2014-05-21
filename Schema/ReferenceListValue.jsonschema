@@ -2,5 +2,5 @@
     "title": "References",
     "description": "A list of references.",
     "type": "array",
-    "items": "string"
+    "items": "object"
 }

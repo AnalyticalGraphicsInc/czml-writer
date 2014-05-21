@@ -51,7 +51,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 	private Lazy<ICesiumValuePropertyWriter<Iterable<Cartesian>>> m_asCartesian;
 	private Lazy<ICesiumValuePropertyWriter<Iterable<Cartographic>>> m_asCartographicRadians;
 	private Lazy<ICesiumValuePropertyWriter<Iterable<Cartographic>>> m_asCartographicDegrees;
-	private Lazy<ICesiumValuePropertyWriter<Iterable<String>>> m_asReferences;
+	private Lazy<ICesiumValuePropertyWriter<Iterable<Reference>>> m_asReferences;
 
 	/**
 	 *  
@@ -79,12 +79,12 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 						return createCartographicDegreesAdaptor();
 					}
 				}, false);
-		m_asReferences = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<String>>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<String>>>(
-				this, "createReferencesAdaptor", new Class[] {}) {
-			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<String>> invoke() {
-				return createReferencesAdaptor();
-			}
-		}, false);
+		m_asReferences = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(this, "createReferencesAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>> invoke() {
+						return createReferencesAdaptor();
+					}
+				}, false);
 	}
 
 	/**
@@ -115,12 +115,12 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 						return createCartographicDegreesAdaptor();
 					}
 				}, false);
-		m_asReferences = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<String>>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<String>>>(
-				this, "createReferencesAdaptor", new Class[] {}) {
-			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<String>> invoke() {
-				return createReferencesAdaptor();
-			}
-		}, false);
+		m_asReferences = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(this, "createReferencesAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>> invoke() {
+						return createReferencesAdaptor();
+					}
+				}, false);
 	}
 
 	@Override
@@ -196,7 +196,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 
 	 * @param references The list of references.
 	 */
-	public final void writeReferences(Iterable<String> references) {
+	public final void writeReferences(Iterable<Reference> references) {
 		String PropertyName = ReferencesPropertyName;
 		openIntervalIfNecessary();
 		getOutput().writePropertyName(PropertyName);
@@ -274,14 +274,14 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 
 	 * @return The wrapper.
 	 */
-	public final ICesiumValuePropertyWriter<Iterable<String>> asReferences() {
+	public final ICesiumValuePropertyWriter<Iterable<Reference>> asReferences() {
 		return m_asReferences.getValue();
 	}
 
-	final private ICesiumValuePropertyWriter<Iterable<String>> createReferencesAdaptor() {
-		return new CesiumWriterAdaptor<cesiumlanguagewriter.PositionListCesiumWriter, Iterable<String>>(this,
-				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.PositionListCesiumWriter, Iterable<String>>() {
-					public void invoke(PositionListCesiumWriter me, Iterable<String> value) {
+	final private ICesiumValuePropertyWriter<Iterable<Reference>> createReferencesAdaptor() {
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.PositionListCesiumWriter, Iterable<Reference>>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.PositionListCesiumWriter, Iterable<Reference>>() {
+					public void invoke(PositionListCesiumWriter me, Iterable<Reference> value) {
 						me.writeReferences(value);
 					}
 				});

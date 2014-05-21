@@ -497,13 +497,12 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which to write.</param>
         /// <param name="references">The list of references to write.</param>
-        public static void WriteReferences(CesiumOutputStream output, IEnumerable<string> references)
+        public static void WriteReferences(CesiumOutputStream output, IEnumerable<Reference> references)
         {
             output.WriteStartSequence();
-            foreach (string reference in references)
+            foreach (Reference reference in references)
             {
-                output.WriteValue(reference);
-                output.WriteLineBreak();
+                CesiumWritingHelper.WriteReference(output, reference);
             }
             output.WriteEndSequence();
         }
