@@ -2,18 +2,6 @@
     "namespace": "CesiumLanguageWriter",
     "lazyNamespace": "System",
     "types": {
-        "Reference": [
-            {
-                "parameters": [
-                    {
-                        "type": "Reference",
-                        "name": "value",
-                        "description": "The reference."
-                    }
-                ],
-                "writeValue": "CesiumWritingHelper.WriteReference(Output, value);"
-            }
-        ],
         "TimeIntervalCollection": [
             {
                 "parameters": [
@@ -786,7 +774,55 @@
                 "writeValue": "CesiumWritingHelper.WriteUnitQuaternion(Output, PropertyName, dates, values, startIndex, length);"
             }
         ],
+        "Reference": [
+            {
+                "parameters": [
+                    {
+                        "type": "Reference",
+                        "name": "value",
+                        "description": "The reference."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, value);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "value",
+                        "description": "The earliest date of the interval."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, value);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "description": "The earliest date of the interval."
+                    },
+                    {
+                        "type": "string",
+                        "name": "path",
+                        "description": "The latest date of the interval."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, id, path);"
+            }
+        ],
         "References": [
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<string>",
+                        "name": "references",
+                        "description": "The list of references."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReferences(Output, references);"
+            },
             {
                 "namespaces": ["System.Collections.Generic"],
                 "parameters": [

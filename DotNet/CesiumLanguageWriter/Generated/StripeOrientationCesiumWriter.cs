@@ -73,6 +73,31 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteReference(string value)
+        {
+            const string PropertyName = ReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, value);
+        }
+
+        /// <summary>
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+        /// </summary>
+        /// <param name="id">The earliest date of the interval.</param>
+        /// <param name="path">The latest date of the interval.</param>
+        public void WriteReference(string id, string path)
+        {
+            const string PropertyName = ReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, id, path);
+        }
+
+        /// <summary>
         /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>StripeOrientation</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>

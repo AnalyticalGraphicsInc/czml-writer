@@ -4,14 +4,9 @@
     "type": [ "object" ],
     "items": { "$ref": "#" },
     "properties": {
-        "id": {
+        "reference": {
             "$ref": "StringValue.jsonschema",
             "description": "The id of the object which contains the referenced property.",
-            "czmlValue": true
-        },
-        "path": {
-            "$ref": "StringValue.jsonschema",
-            "description": "The path to the property in the referenced object.",
             "czmlValue": true
         }
     }

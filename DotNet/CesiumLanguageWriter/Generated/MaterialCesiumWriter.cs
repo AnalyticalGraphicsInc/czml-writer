@@ -146,5 +146,30 @@ namespace CesiumLanguageWriter
             CesiumWritingHelper.WriteReference(Output, value);
         }
 
+        /// <summary>
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteReference(string value)
+        {
+            const string PropertyName = ReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, value);
+        }
+
+        /// <summary>
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+        /// </summary>
+        /// <param name="id">The earliest date of the interval.</param>
+        /// <param name="path">The latest date of the interval.</param>
+        public void WriteReference(string id, string path)
+        {
+            const string PropertyName = ReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, id, path);
+        }
+
     }
 }

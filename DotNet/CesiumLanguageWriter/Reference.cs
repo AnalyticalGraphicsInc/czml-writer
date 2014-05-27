@@ -16,9 +16,24 @@ namespace CesiumLanguageWriter
         /// <param name="id">The id of the object which contains the referenced property.</param>
         /// <param name="path">The path to the property in the referenced object.</param>
         public Reference(string id, string path)
+            : this(id, path, Escape(id, path))
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        public Reference(string value)
+            : this(GetId(value), GetPath(value), value)
+        {
+        }
+
+        private Reference(string id, string path, string value)
         {
             m_identifier = id;
             m_path = path;
+            m_value = value;
         }
 
         /// <summary>
@@ -35,6 +50,14 @@ namespace CesiumLanguageWriter
         public string Path
         {
             get { return m_path; }
+        }
+
+        /// <summary>
+        /// Gets the escaped CZML value of the reference.
+        /// </summary>
+        public string Value
+        {
+            get { return m_value; }
         }
 
         /// <summary>
@@ -61,7 +84,7 @@ namespace CesiumLanguageWriter
         /// <returns><see langword="true"/> if <paramref name="other"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public bool Equals(Reference other)
         {
-            return this.m_identifier == other.m_identifier && this.m_path == other.m_path;
+            return this.m_value == other.m_value;
         }
 
         /// <summary>
@@ -70,10 +93,26 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return m_identifier.GetHashCode() ^ m_path.GetHashCode();
+            return m_identifier.GetHashCode() ^ m_path.GetHashCode() ^ m_value.GetHashCode();
+        }
+
+        static private string Escape(string id, string path)
+        {
+            return id + "#" + path;
+        }
+
+        private static string GetPath(string value)
+        {
+            return value.Split(new[] { '#' })[0];
+        }
+
+        private static string GetId(string value)
+        {
+            return value.Split(new[] { '#' })[1];
         }
 
         private readonly string m_identifier;
         private readonly string m_path;
+        private readonly string m_value;
     }
 }

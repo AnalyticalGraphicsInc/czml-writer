@@ -493,16 +493,68 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Writes a reference.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="value">The value to write.</param>
+        public static void WriteReference(CesiumOutputStream output, Reference value)
+        {
+            output.WriteStartObject();
+            output.WritePropertyName("reference");
+            output.WriteValue(value.Value);
+            output.WriteEndObject();
+        }
+
+        /// <summary>
+        /// Writes a reference.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="value">The value to write.</param>
+        public static void WriteReference(CesiumOutputStream output, string value)
+        {
+            output.WriteStartObject();
+            output.WritePropertyName("reference");
+            output.WriteValue(value);
+            output.WriteEndObject();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="identifier"></param>
+        /// <param name="path"></param>
+        public static void WriteReference(CesiumOutputStream output, string identifier, string path)
+        {
+            CesiumWritingHelper.WriteReference(output, new Reference(identifier, path));
+        }
+
+        /// <summary>
         /// Writes a list of references.
         /// </summary>
         /// <param name="output">The stream to which to write.</param>
         /// <param name="references">The list of references to write.</param>
+        public static void WriteReferences(CesiumOutputStream output, IEnumerable<string> references)
+        {
+            output.WriteStartSequence();
+            foreach (string reference in references)
+            {
+                output.WriteValue(reference);
+            }
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="references"></param>
         public static void WriteReferences(CesiumOutputStream output, IEnumerable<Reference> references)
         {
             output.WriteStartSequence();
-            foreach (Reference reference in references)
+            foreach (var reference in references)
             {
-                CesiumWritingHelper.WriteReference(output, reference);
+                output.WriteValue(reference.Value);
             }
             output.WriteEndSequence();
         }
@@ -538,24 +590,6 @@ namespace CesiumLanguageWriter.Advanced
                 output.WriteValue(value.Cone);
             }
             output.WriteEndSequence();
-        }
-
-        /// <summary>
-        /// Writes a reference.
-        /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
-        /// <param name="value">The value to write.</param>
-        public static void WriteReference(CesiumOutputStream output, Reference value)
-        {
-            output.WriteStartObject();
-
-            output.WritePropertyName("id");
-            output.WriteValue(value.Identifier);
-
-            output.WritePropertyName("path");
-            output.WriteValue(value.Path);
-
-            output.WriteEndObject();
         }
 
         /// <summary>

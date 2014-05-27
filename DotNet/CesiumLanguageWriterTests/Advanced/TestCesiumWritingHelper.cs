@@ -23,14 +23,14 @@ namespace CesiumLanguageWriterTests.Advanced
         public void CanWriteReference()
         {
             CesiumWritingHelper.WriteReference(OutputStream, new Reference("bar", "color"));
-            Assert.AreEqual("{\"id\":\"bar\",\"path\":\"color\"}", StringWriter.ToString());
+            Assert.AreEqual("{\"reference\":\"bar#color\"}", StringWriter.ToString());
         }
 
         [Test]
         public void CanWriteReferences()
         {
             CesiumWritingHelper.WriteReferences(OutputStream, new[] { new Reference("bar", "color"), new Reference("foo", "color2") });
-            Assert.AreEqual("[{\"id\":\"bar\",\"path\":\"color\"},{\"id\":\"foo\",\"path\":\"color2\"}]", StringWriter.ToString());
+            Assert.AreEqual("[\"bar#color\",\"foo#color2\"]", StringWriter.ToString());
         }
     }
 }
