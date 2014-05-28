@@ -631,13 +631,13 @@ public final class CesiumWritingHelper {
 
 	/**
 	 *  
-	
+	Writes a reference and an identifier and property name.
 	
 	
 	
 	
 
-	 * @param output 
+	 * @param output The stream to which to write the value.
 	 * @param identifier 
 	 * @param propertyName 
 	 */
@@ -647,15 +647,15 @@ public final class CesiumWritingHelper {
 
 	/**
 	 *  
-	
+	Writes a reference from an identifier and heirarchy of property names.
 	
 	
 	
 	
 
-	 * @param output 
-	 * @param identifier 
-	 * @param propertyNames 
+	 * @param output The stream to which to write the value.
+	 * @param identifier The identifier of the referenced object.
+	 * @param propertyNames The heirarchy of property names, where each name is a subproperty of the previous item.
 	 */
 	public static void writeReference(CesiumOutputStream output, String identifier, String[] propertyNames) {
 		CesiumWritingHelper.writeReference(output, new Reference(identifier, propertyNames));
@@ -663,13 +663,13 @@ public final class CesiumWritingHelper {
 
 	/**
 	 *  
-	
+	Writes a list of references.
 	
 	
 	
 
-	 * @param output 
-	 * @param references 
+	 * @param output The stream to which to write the value.
+	 * @param references The list of references.
 	 */
 	public static void writeReferences(CesiumOutputStream output, Iterable<Reference> references) {
 		output.writeStartSequence();

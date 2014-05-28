@@ -516,9 +516,9 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// 
+        /// Writes a reference and an identifier and property name.
         /// </summary>
-        /// <param name="output"></param>
+        /// <param name="output">The stream to which to write the value.</param>
         /// <param name="identifier"></param>
         /// <param name="propertyName"></param>
         public static void WriteReference(CesiumOutputStream output, string identifier, string propertyName)
@@ -527,21 +527,21 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// 
+        /// Writes a reference from an identifier and heirarchy of property names.
         /// </summary>
-        /// <param name="output"></param>
-        /// <param name="identifier"></param>
-        /// <param name="propertyNames"></param>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="identifier">The identifier of the referenced object.</param>
+        /// <param name="propertyNames">The heirarchy of property names, where each name is a subproperty of the previous item.</param>
         public static void WriteReference(CesiumOutputStream output, string identifier, string[] propertyNames)
         {
             CesiumWritingHelper.WriteReference(output, new Reference(identifier, propertyNames));
         }
 
         /// <summary>
-        /// 
+        /// Writes a list of references.
         /// </summary>
-        /// <param name="output"></param>
-        /// <param name="references"></param>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="references">The list of references.</param>
         public static void WriteReferences(CesiumOutputStream output, IEnumerable<Reference> references)
         {
             output.WriteStartSequence();

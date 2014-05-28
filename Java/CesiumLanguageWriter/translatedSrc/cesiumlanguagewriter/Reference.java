@@ -17,6 +17,11 @@ import java.util.List;
  two properties on different objects are in fact, the same property.  This also
  has the added benefit of cutting down on CZML file size.
  
+ The formatted reference string contains the identifier of the target object followed
+ by a hashtag (#) and one or more property names, each separated by a period (.).
+ Any hash symbols or periods that exist in the reference identifier or property must
+ be properly escaped with a backslash (\\) in order for the reference to be valid.
+ 
 
  */
 public class Reference implements IEquatable<Reference>, ImmutableValueType {
@@ -221,21 +226,21 @@ public class Reference implements IEquatable<Reference>, ImmutableValueType {
 
 	static private String getIdentifier(String value) {
 		String[] result = trySplit(value, '#');
-		if (result.length == 2) {
-			return result[0];
+		if (result.length != 2) {
+			throw new ArgumentException(CesiumLocalization.getInvalidReferenceString(), "value");
 		}
-		throw new ArgumentException("Reference string was not in the correct format.", "value");
+		return result[0];
 	}
 
 	static private String[] getProperties(String value) {
 		int index = findUnescaped(value, 0, '#') + 1;
 		String[] values = trySplit(StringHelper.substring(value, index, value.length() - index), '.');
 		if (values.length == 0) {
-			throw new ArgumentException("Reference string was not in the correct format.", "value");
+			throw new ArgumentException(CesiumLocalization.getInvalidReferenceString(), "value");
 		}
 		for (String item : values) {
 			if (StringHelper.isNullOrEmpty(item)) {
-				throw new ArgumentException("Reference string was not in the correct format.", "value");
+				throw new ArgumentException(CesiumLocalization.getInvalidReferenceString(), "value");
 			}
 		}
 		return values;

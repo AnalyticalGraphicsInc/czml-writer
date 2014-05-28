@@ -8,6 +8,11 @@ namespace CesiumLanguageWriter
     /// Represents a link to another property.  References can be used to specify that
     /// two properties on different objects are in fact, the same property.  This also
     /// has the added benefit of cutting down on CZML file size.
+    /// 
+    /// The formatted reference string contains the identifier of the target object followed
+    /// by a hashtag (#) and one or more property names, each separated by a period (.).
+    /// Any hash symbols or periods that exist in the reference identifier or property must
+    /// be properly escaped with a backslash (\\) in order for the reference to be valid.
     /// </summary>
     [CSToJavaImmutableValueType]
     public struct Reference : IEquatable<Reference>
@@ -193,11 +198,11 @@ namespace CesiumLanguageWriter
         static private string GetIdentifier(string value)
         {
             string[] result = TrySplit(value, '#');
-            if (result.Length == 2)
+            if (result.Length != 2)
             {
-                return result[0];
+                throw new ArgumentException(CesiumLocalization.InvalidReferenceString, "value");
             }
-            throw new ArgumentException("Reference string was not in the correct format.", "value");
+            return result[0];
         }
 
         static private string[] GetProperties(string value)
@@ -207,14 +212,14 @@ namespace CesiumLanguageWriter
 
             if (values.Length == 0)
             {
-                throw new ArgumentException("Reference string was not in the correct format.", "value");
+                throw new ArgumentException(CesiumLocalization.InvalidReferenceString, "value");
             }
 
             foreach (var item in values)
             {
                 if (string.IsNullOrEmpty(item))
                 {
-                    throw new ArgumentException("Reference string was not in the correct format.", "value");
+                    throw new ArgumentException(CesiumLocalization.InvalidReferenceString, "value");
                 }
             }
 
