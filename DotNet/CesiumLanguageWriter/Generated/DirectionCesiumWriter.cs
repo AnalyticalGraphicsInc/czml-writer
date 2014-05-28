@@ -173,27 +173,27 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
         /// </summary>
-        /// <param name="id">The earliest date of the interval.</param>
-        /// <param name="propertyName">The latest date of the interval.</param>
-        public void WriteReference(string id, string propertyName)
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteReference(string identifier, string propertyName)
         {
             const string PropertyName = ReferencePropertyName;
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteReference(Output, id, propertyName);
+            CesiumWritingHelper.WriteReference(Output, identifier, propertyName);
         }
 
         /// <summary>
         /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
         /// </summary>
-        /// <param name="id">The earliest date of the interval.</param>
-        /// <param name="propertyNames">The latest date of the interval.</param>
-        public void WriteReference(string id, string[] propertyNames)
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteReference(string identifier, string[] propertyNames)
         {
             const string PropertyName = ReferencePropertyName;
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteReference(Output, id, propertyNames);
+            CesiumWritingHelper.WriteReference(Output, identifier, propertyNames);
         }
 
         /// <summary>

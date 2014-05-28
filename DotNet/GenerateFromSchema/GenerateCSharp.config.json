@@ -799,31 +799,31 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "id",
-                        "description": "The earliest date of the interval."
+                        "name": "identifier",
+                        "description": "The identifier of the object which contains the referenced property."
                     },
                     {
                         "type": "string",
                         "name": "propertyName",
-                        "description": "The latest date of the interval."
+                        "description": "The property on the referenced object."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteReference(Output, id, propertyName);"
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, identifier, propertyName);"
             },
             {
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "id",
-                        "description": "The earliest date of the interval."
+                        "name": "identifier",
+                        "description": "The identifier of the object which contains the referenced property."
                     },
                     {
                         "type": "string[]",
                         "name": "propertyNames",
-                        "description": "The latest date of the interval."
+                        "description": "The heirarchy of properties to be indexed on the referenced object."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteReference(Output, id, propertyNames);"
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, identifier, propertyNames);"
             }
         ],
         "References": [

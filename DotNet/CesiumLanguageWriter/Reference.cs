@@ -25,7 +25,7 @@ namespace CesiumLanguageWriter
         /// Creates a new instance from an id and property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property in the referenced object.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
         public Reference(string identifier, string propertyName)
             : this(identifier, new[] { propertyName }, Escape(identifier, new[] { propertyName }))
         {
