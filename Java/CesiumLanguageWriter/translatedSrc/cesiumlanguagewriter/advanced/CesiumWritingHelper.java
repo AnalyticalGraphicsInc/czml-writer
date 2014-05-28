@@ -600,18 +600,81 @@ public final class CesiumWritingHelper {
 
 	/**
 	 *  
-	Writes a list of references.
+	Writes a reference.
 	
 	
 	
 
-	 * @param output The stream to which to write.
-	 * @param references The list of references to write.
+	 * @param output The stream to which to write the value.
+	 * @param value The value to write.
+	 */
+	public static void writeReference(CesiumOutputStream output, String value) {
+		output.writeStartObject();
+		output.writePropertyName("reference");
+		output.writeValue(value);
+		output.writeEndObject();
+	}
+
+	/**
+	 *  
+	Writes a reference.
+	
+	
+	
+
+	 * @param output The stream to which to write the value.
+	 * @param value The value to write.
+	 */
+	public static void writeReference(CesiumOutputStream output, Reference value) {
+		writeReference(output, value.getValue());
+	}
+
+	/**
+	 *  
+	
+	
+	
+	
+	
+
+	 * @param output 
+	 * @param identifier 
+	 * @param propertyName 
+	 */
+	public static void writeReference(CesiumOutputStream output, String identifier, String propertyName) {
+		CesiumWritingHelper.writeReference(output, new Reference(identifier, propertyName));
+	}
+
+	/**
+	 *  
+	
+	
+	
+	
+	
+
+	 * @param output 
+	 * @param identifier 
+	 * @param propertyNames 
+	 */
+	public static void writeReference(CesiumOutputStream output, String identifier, String[] propertyNames) {
+		CesiumWritingHelper.writeReference(output, new Reference(identifier, propertyNames));
+	}
+
+	/**
+	 *  
+	
+	
+	
+	
+
+	 * @param output 
+	 * @param references 
 	 */
 	public static void writeReferences(CesiumOutputStream output, Iterable<Reference> references) {
 		output.writeStartSequence();
-		for (Reference reference : references) {
-			CesiumWritingHelper.writeReference(output, reference);
+		for (cesiumlanguagewriter.Reference reference : references) {
+			output.writeValue(reference.getValue());
 		}
 		output.writeEndSequence();
 	}
@@ -653,25 +716,6 @@ public final class CesiumWritingHelper {
 			output.writeValue(value.getCone());
 		}
 		output.writeEndSequence();
-	}
-
-	/**
-	 *  
-	Writes a reference.
-	
-	
-	
-
-	 * @param output The stream to which to write the value.
-	 * @param value The value to write.
-	 */
-	public static void writeReference(CesiumOutputStream output, Reference value) {
-		output.writeStartObject();
-		output.writePropertyName("id");
-		output.writeValue(value.getIdentifier());
-		output.writePropertyName("path");
-		output.writeValue(value.getPath());
-		output.writeEndObject();
 	}
 
 	/**

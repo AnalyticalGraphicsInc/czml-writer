@@ -38,7 +38,7 @@ public class TestCesiumWritingHelper {
 	@Test
 	public final void canWriteReference() {
 		CesiumWritingHelper.writeReference(getOutputStream(), new Reference("bar", "color"));
-		Assert.assertEquals("{\"id\":\"bar\",\"path\":\"color\"}", getStringWriter().toString());
+		Assert.assertEquals("{\"reference\":\"bar#color\"}", getStringWriter().toString());
 	}
 
 	@Test
@@ -47,7 +47,7 @@ public class TestCesiumWritingHelper {
 				new Reference("bar", "color"),
 				new Reference("foo", "color2")
 		}));
-		Assert.assertEquals("[{\"id\":\"bar\",\"path\":\"color\"},{\"id\":\"foo\",\"path\":\"color2\"}]", getStringWriter().toString());
+		Assert.assertEquals("[\"bar#color\",\"foo#color2\"]", getStringWriter().toString());
 	}
 
 	private StringWriter backingField$StringWriter;

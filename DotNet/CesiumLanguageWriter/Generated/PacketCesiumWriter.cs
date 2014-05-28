@@ -458,18 +458,6 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>vertexPositions</code> property as a <code>references</code> value.  The <code>vertexPositions</code> property specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
         /// </summary>
         /// <param name="references">The list of references.</param>
-        public void WriteVertexPositionsPropertyReferences(IEnumerable<string> references)
-        {
-            using (var writer = OpenVertexPositionsProperty())
-            {
-                writer.WriteReferences(references);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>vertexPositions</code> property as a <code>references</code> value.  The <code>vertexPositions</code> property specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
-        /// </summary>
-        /// <param name="references">The list of references.</param>
         public void WriteVertexPositionsPropertyReferences(IEnumerable<Reference> references)
         {
             using (var writer = OpenVertexPositionsProperty())

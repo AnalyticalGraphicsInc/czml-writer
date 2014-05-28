@@ -121,7 +121,7 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
 	
 	
 
@@ -132,6 +132,55 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
 		openIntervalIfNecessary();
 		getOutput().writePropertyName(PropertyName);
 		CesiumWritingHelper.writeReference(getOutput(), value);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeReference(String value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeReference(String identifier, String propertyName) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), identifier, propertyName);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeReference(String identifier, String[] propertyNames) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), identifier, propertyNames);
 	}
 
 	/**

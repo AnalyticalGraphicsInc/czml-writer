@@ -831,17 +831,6 @@
                 "namespaces": ["System.Collections.Generic"],
                 "parameters": [
                     {
-                        "type": "IEnumerable<string>",
-                        "name": "references",
-                        "description": "The list of references."
-                    }
-                ],
-                "writeValue": "CesiumWritingHelper.WriteReferences(Output, references);"
-            },
-            {
-                "namespaces": ["System.Collections.Generic"],
-                "parameters": [
-                    {
                         "type": "IEnumerable<Reference>",
                         "name": "references",
                         "description": "The list of references."
