@@ -804,11 +804,26 @@
                     },
                     {
                         "type": "string",
-                        "name": "path",
+                        "name": "propertyName",
                         "description": "The latest date of the interval."
                     }
                 ],
-                "writeValue": "CesiumWritingHelper.WriteReference(Output, id, path);"
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, id, propertyName);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "description": "The earliest date of the interval."
+                    },
+                    {
+                        "type": "string[]",
+                        "name": "propertyNames",
+                        "description": "The latest date of the interval."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, id, propertyNames);"
             }
         ],
         "References": [

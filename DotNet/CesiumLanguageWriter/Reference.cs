@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace CesiumLanguageWriter
 {
@@ -11,33 +13,44 @@ namespace CesiumLanguageWriter
     public struct Reference : IEquatable<Reference>
     {
         /// <summary>
-        /// Creates a new instance.
+        /// Creates a new instances from an escaped reference string.
         /// </summary>
-        /// <param name="id">The id of the object which contains the referenced property.</param>
-        /// <param name="path">The path to the property in the referenced object.</param>
-        public Reference(string id, string path)
-            : this(id, path, Escape(id, path))
+        /// <param name="value">The </param>
+        public Reference(string value)
+            : this(GetIdentifier(value), GetProperties(value), value)
         {
         }
 
         /// <summary>
-        /// 
+        /// Creates a new instance from an id and property.
         /// </summary>
-        /// <param name="value"></param>
-        public Reference(string value)
-            : this(GetId(value), GetPath(value), value)
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property in the referenced object.</param>
+        public Reference(string identifier, string propertyName)
+            : this(identifier, new[] { propertyName }, Escape(identifier, new[] { propertyName }))
         {
         }
 
-        private Reference(string id, string path, string value)
+        /// <summary>
+        /// Creates a new instace from an id and a heirarchy of properties.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">An heirarchy of property names with each property being a sub-property of the previous one.</param>
+        public Reference(string identifier, string[] propertyNames)
+            : this(identifier, propertyNames, Escape(identifier, propertyNames))
         {
-            m_identifier = id;
-            m_path = path;
+
+        }
+
+        private Reference(string identfier, string[] propertyNames, string value)
+        {
+            m_identifier = identfier;
+            m_properties = propertyNames;
             m_value = value;
         }
 
         /// <summary>
-        /// Gets the id of the object which contains the referenced property.
+        /// Gets the identifier of the object which contains the referenced property.
         /// </summary>
         public string Identifier
         {
@@ -45,11 +58,11 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the path to the property in the referenced object.
+        /// Gets the heirarchy of properties to be indexed on the referenced object.
         /// </summary>
-        public string Path
+        public string[] PropertyNames
         {
-            get { return m_path; }
+            get { return m_properties; }
         }
 
         /// <summary>
@@ -58,6 +71,15 @@ namespace CesiumLanguageWriter
         public string Value
         {
             get { return m_value; }
+        }
+
+        /// <summary>
+        /// Gets the escaped CZML value of the reference.
+        /// </summary>
+        /// <returns>The escaped CZML value of the reference.</returns>
+        public override string ToString()
+        {
+            return m_value;
         }
 
         /// <summary>
@@ -93,26 +115,114 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return m_identifier.GetHashCode() ^ m_path.GetHashCode() ^ m_value.GetHashCode();
+            return m_identifier.GetHashCode() ^ m_properties.GetHashCode() ^ m_value.GetHashCode();
         }
 
-        static private string Escape(string id, string path)
+        static private string Escape(string identfier, string[] propertyNames)
         {
-            return id + "#" + path;
+            StringBuilder value = new StringBuilder();
+
+            identfier = identfier.Replace(@"\", @"\\").Replace("#", @"\#").Replace(".", @"\.");
+            value.Append(identfier);
+            value.Append("#");
+            for (var i = 0; i < propertyNames.Length; i++)
+            {
+                string property = propertyNames[i].Replace(@"\", @"\\").Replace("#", @"\#").Replace(".", @"\.");
+                value.Append(property);
+                if (i != propertyNames.Length - 1)
+                {
+                    value.Append(".");
+                }
+            }
+            return value.ToString();
         }
 
-        private static string GetPath(string value)
+        static int FindUnescaped(string value, int start, char delimiter)
         {
-            return value.Split(new[] { '#' })[0];
+            int index;
+            do
+            {
+                index = value.IndexOf(delimiter, start);
+                if (index == -1)
+                {
+                    break;
+                }
+
+                var count = 0;
+                int place = index - 1;
+                while (place != -1 && value[place--] == '\\')
+                {
+                    count++;
+                }
+                if (count % 2 == 0)
+                {
+                    return index;
+                }
+                start = index + 1;
+            } while (index != -1);
+            return -1;
         }
 
-        private static string GetId(string value)
+        static private string[] TrySplit(string value, char delimiter)
         {
-            return value.Split(new[] { '#' })[1];
+            var indices = new List<int>();
+            var start = 0;
+            int index;
+            do
+            {
+                index = FindUnescaped(value, start, delimiter);
+                if (index != -1)
+                {
+                    indices.Add(index);
+                    start = index + 1;
+                }
+            } while (index != -1);
+
+            var lastIndex = 0;
+            var result = new string[indices.Count + 1];
+            for (var i = 0; i < indices.Count; i++)
+            {
+                index = indices[i];
+                result[i] = value.Substring(lastIndex, index - lastIndex).Replace(@"\#", "#").Replace(@"\\", @"\").Replace(@"\.", ".");
+                lastIndex = index + 1;
+            }
+            result[indices.Count] = value.Substring(lastIndex, value.Length - lastIndex).Replace(@"\#", "#").Replace(@"\\", @"\").Replace(@"\.", ".");
+            return result;
         }
 
-        private readonly string m_identifier;
-        private readonly string m_path;
+        static private string GetIdentifier(string value)
+        {
+            string[] result = TrySplit(value, '#');
+            if (result.Length == 2)
+            {
+                return result[0];
+            }
+            throw new ArgumentException("Reference string was not in the correct format.", "value");
+        }
+
+        static private string[] GetProperties(string value)
+        {
+            var index = FindUnescaped(value, 0, '#') + 1;
+            var values = TrySplit(value.Substring(index, value.Length - index), '.');
+
+            if (values.Length == 0)
+            {
+                throw new ArgumentException("Reference string was not in the correct format.", "value");
+            }
+
+            foreach (var item in values)
+            {
+                if (string.IsNullOrEmpty(item))
+                {
+                    throw new ArgumentException("Reference string was not in the correct format.", "value");
+                }
+            }
+
+            return values;
+        }
+
         private readonly string m_value;
+        private readonly string m_identifier;
+        private readonly string[] m_properties;
     }
 }

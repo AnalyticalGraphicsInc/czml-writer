@@ -191,7 +191,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -203,7 +203,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -215,16 +215,29 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference.
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
         /// </summary>
         /// <param name="id">The earliest date of the interval.</param>
-        /// <param name="path">The latest date of the interval.</param>
-        public void WriteReference(string id, string path)
+        /// <param name="propertyName">The latest date of the interval.</param>
+        public void WriteReference(string id, string propertyName)
         {
             const string PropertyName = ReferencePropertyName;
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteReference(Output, id, path);
+            CesiumWritingHelper.WriteReference(Output, id, propertyName);
+        }
+
+        /// <summary>
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// </summary>
+        /// <param name="id">The earliest date of the interval.</param>
+        /// <param name="propertyNames">The latest date of the interval.</param>
+        public void WriteReference(string id, string[] propertyNames)
+        {
+            const string PropertyName = ReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, id, propertyNames);
         }
 
         /// <summary>

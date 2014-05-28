@@ -12,7 +12,7 @@
         },
         "reference": {
             "$ref": "Reference.jsonschema",
-            "description": "A reference."
+            "description": "A reference property."
         }
     }
 }

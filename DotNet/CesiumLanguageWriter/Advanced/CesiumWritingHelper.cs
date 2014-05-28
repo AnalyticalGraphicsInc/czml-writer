@@ -497,19 +497,6 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteReference(CesiumOutputStream output, Reference value)
-        {
-            output.WriteStartObject();
-            output.WritePropertyName("reference");
-            output.WriteValue(value.Value);
-            output.WriteEndObject();
-        }
-
-        /// <summary>
-        /// Writes a reference.
-        /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
-        /// <param name="value">The value to write.</param>
         public static void WriteReference(CesiumOutputStream output, string value)
         {
             output.WriteStartObject();
@@ -519,14 +506,35 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Writes a reference.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="value">The value to write.</param>
+        public static void WriteReference(CesiumOutputStream output, Reference value)
+        {
+            WriteReference(output, value.Value);
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="output"></param>
         /// <param name="identifier"></param>
-        /// <param name="path"></param>
-        public static void WriteReference(CesiumOutputStream output, string identifier, string path)
+        /// <param name="propertyName"></param>
+        public static void WriteReference(CesiumOutputStream output, string identifier, string propertyName)
         {
-            CesiumWritingHelper.WriteReference(output, new Reference(identifier, path));
+            CesiumWritingHelper.WriteReference(output, new Reference(identifier, propertyName));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="identifier"></param>
+        /// <param name="propertyNames"></param>
+        public static void WriteReference(CesiumOutputStream output, string identifier, string[] propertyNames)
+        {
+            CesiumWritingHelper.WriteReference(output, new Reference(identifier, propertyNames));
         }
 
         /// <summary>
