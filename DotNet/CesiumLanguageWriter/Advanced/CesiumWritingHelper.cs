@@ -499,10 +499,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="value">The value to write.</param>
         public static void WriteReference(CesiumOutputStream output, string value)
         {
-            output.WriteStartObject();
-            output.WritePropertyName("reference");
             output.WriteValue(value);
-            output.WriteEndObject();
         }
 
         /// <summary>
@@ -523,7 +520,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="propertyName"></param>
         public static void WriteReference(CesiumOutputStream output, string identifier, string propertyName)
         {
-            CesiumWritingHelper.WriteReference(output, new Reference(identifier, propertyName));
+            WriteReference(output, new Reference(identifier, propertyName));
         }
 
         /// <summary>
@@ -534,7 +531,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="propertyNames">The heirarchy of property names, where each name is a subproperty of the previous item.</param>
         public static void WriteReference(CesiumOutputStream output, string identifier, string[] propertyNames)
         {
-            CesiumWritingHelper.WriteReference(output, new Reference(identifier, propertyNames));
+            WriteReference(output, new Reference(identifier, propertyNames));
         }
 
         /// <summary>

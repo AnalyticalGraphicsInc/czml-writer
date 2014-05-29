@@ -308,6 +308,86 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeInnerHalfAnglePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openInnerHalfAngleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeInnerHalfAnglePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openInnerHalfAngleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeInnerHalfAnglePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openInnerHalfAngleProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeInnerHalfAnglePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openInnerHalfAngleProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>outerHalfAngle</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outerHalfAngle</code> property defines the outer half angle of the cone.
 	
 
@@ -365,6 +445,86 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openOuterHalfAngleProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeOuterHalfAnglePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openOuterHalfAngleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeOuterHalfAnglePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openOuterHalfAngleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeOuterHalfAnglePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openOuterHalfAngleProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeOuterHalfAnglePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openOuterHalfAngleProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -436,6 +596,86 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeRadiusPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeRadiusPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeRadiusPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeRadiusPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>minimumClockAngle</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>minimumClockAngle</code> property defines the minimum clock angle limit of the cone.
 	
 
@@ -500,6 +740,86 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeMinimumClockAnglePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumClockAngleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeMinimumClockAnglePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumClockAngleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeMinimumClockAnglePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumClockAngleProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeMinimumClockAnglePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumClockAngleProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>maximumClockAngle</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>maximumClockAngle</code> property defines the maximum clock angle limit of the cone.
 	
 
@@ -557,6 +877,86 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumClockAngleProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeMaximumClockAnglePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumClockAngleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeMaximumClockAnglePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumClockAngleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeMaximumClockAnglePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumClockAngleProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeMaximumClockAnglePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumClockAngleProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -717,6 +1117,86 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeIntersectionColorPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeIntersectionColorPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeIntersectionColorPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeIntersectionColorPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>intersectionWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>intersectionWidth</code> property defines the width of the intersection in pixels.
 	
 
@@ -781,6 +1261,86 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeIntersectionWidthPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeIntersectionWidthPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeIntersectionWidthPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeIntersectionWidthPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>capMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>capMaterial</code> property defines the material to use to cap the cone at its radial limit.
 	
 
@@ -798,6 +1358,86 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	public final MaterialCesiumWriter openCapMaterialProperty() {
 		openIntervalIfNecessary();
 		return this.<MaterialCesiumWriter> openAndReturn(getCapMaterialWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>capMaterial</code> property as a <code>reference</code> value.  The <code>capMaterial</code> property specifies the material to use to cap the cone at its radial limit.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeCapMaterialProperty(Reference value) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openCapMaterialProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>capMaterial</code> property as a <code>reference</code> value.  The <code>capMaterial</code> property specifies the material to use to cap the cone at its radial limit.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeCapMaterialProperty(String value) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openCapMaterialProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>capMaterial</code> property as a <code>reference</code> value.  The <code>capMaterial</code> property specifies the material to use to cap the cone at its radial limit.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeCapMaterialProperty(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openCapMaterialProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>capMaterial</code> property as a <code>reference</code> value.  The <code>capMaterial</code> property specifies the material to use to cap the cone at its radial limit.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeCapMaterialProperty(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openCapMaterialProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
@@ -821,6 +1461,86 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>innerMaterial</code> property as a <code>reference</code> value.  The <code>innerMaterial</code> property specifies the material to use for the inner cone.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeInnerMaterialProperty(Reference value) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openInnerMaterialProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>innerMaterial</code> property as a <code>reference</code> value.  The <code>innerMaterial</code> property specifies the material to use for the inner cone.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeInnerMaterialProperty(String value) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openInnerMaterialProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>innerMaterial</code> property as a <code>reference</code> value.  The <code>innerMaterial</code> property specifies the material to use for the inner cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeInnerMaterialProperty(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openInnerMaterialProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>innerMaterial</code> property as a <code>reference</code> value.  The <code>innerMaterial</code> property specifies the material to use for the inner cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeInnerMaterialProperty(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openInnerMaterialProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>outerMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outerMaterial</code> property defines the material to use for the outer cone.
 	
 
@@ -841,6 +1561,86 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>outerMaterial</code> property as a <code>reference</code> value.  The <code>outerMaterial</code> property specifies the material to use for the outer cone.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeOuterMaterialProperty(Reference value) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openOuterMaterialProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outerMaterial</code> property as a <code>reference</code> value.  The <code>outerMaterial</code> property specifies the material to use for the outer cone.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeOuterMaterialProperty(String value) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openOuterMaterialProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outerMaterial</code> property as a <code>reference</code> value.  The <code>outerMaterial</code> property specifies the material to use for the outer cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeOuterMaterialProperty(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openOuterMaterialProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outerMaterial</code> property as a <code>reference</code> value.  The <code>outerMaterial</code> property specifies the material to use for the outer cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeOuterMaterialProperty(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openOuterMaterialProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>silhouetteMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>silhouetteMaterial</code> property defines the material to use for the cone's silhouette.
 	
 
@@ -858,5 +1658,85 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	public final MaterialCesiumWriter openSilhouetteMaterialProperty() {
 		openIntervalIfNecessary();
 		return this.<MaterialCesiumWriter> openAndReturn(getSilhouetteMaterialWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>silhouetteMaterial</code> property as a <code>reference</code> value.  The <code>silhouetteMaterial</code> property specifies the material to use for the cone's silhouette.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeSilhouetteMaterialProperty(Reference value) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openSilhouetteMaterialProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>silhouetteMaterial</code> property as a <code>reference</code> value.  The <code>silhouetteMaterial</code> property specifies the material to use for the cone's silhouette.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeSilhouetteMaterialProperty(String value) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openSilhouetteMaterialProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>silhouetteMaterial</code> property as a <code>reference</code> value.  The <code>silhouetteMaterial</code> property specifies the material to use for the cone's silhouette.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeSilhouetteMaterialProperty(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openSilhouetteMaterialProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>silhouetteMaterial</code> property as a <code>reference</code> value.  The <code>silhouetteMaterial</code> property specifies the material to use for the cone's silhouette.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeSilhouetteMaterialProperty(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.MaterialCesiumWriter writer = openSilhouetteMaterialProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 }

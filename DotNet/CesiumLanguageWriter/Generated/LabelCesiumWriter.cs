@@ -167,6 +167,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteEyeOffsetPropertyReference(Reference value)
+        {
+            using (var writer = OpenEyeOffsetProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteEyeOffsetPropertyReference(string value)
+        {
+            using (var writer = OpenEyeOffsetProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteEyeOffsetPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenEyeOffsetProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteEyeOffsetPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenEyeOffsetProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>fillColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>fillColor</code> property defines the fill color of the label.
         /// </summary>
         public ColorCesiumWriter FillColorWriter
@@ -241,6 +291,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>fillColor</code> property as a <code>reference</code> value.  The <code>fillColor</code> property specifies the fill color of the label.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteFillColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenFillColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fillColor</code> property as a <code>reference</code> value.  The <code>fillColor</code> property specifies the fill color of the label.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteFillColorPropertyReference(string value)
+        {
+            using (var writer = OpenFillColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fillColor</code> property as a <code>reference</code> value.  The <code>fillColor</code> property specifies the fill color of the label.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteFillColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenFillColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fillColor</code> property as a <code>reference</code> value.  The <code>fillColor</code> property specifies the fill color of the label.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteFillColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenFillColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>font</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>font</code> property defines the font to use for the label.
         /// </summary>
         public FontCesiumWriter FontWriter
@@ -270,6 +370,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>font</code> property as a <code>reference</code> value.  The <code>font</code> property specifies the font to use for the label.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteFontPropertyReference(Reference value)
+        {
+            using (var writer = OpenFontProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>font</code> property as a <code>reference</code> value.  The <code>font</code> property specifies the font to use for the label.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteFontPropertyReference(string value)
+        {
+            using (var writer = OpenFontProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>font</code> property as a <code>reference</code> value.  The <code>font</code> property specifies the font to use for the label.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteFontPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenFontProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>font</code> property as a <code>reference</code> value.  The <code>font</code> property specifies the font to use for the label.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteFontPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenFontProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>horizontalOrigin</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>horizontalOrigin</code> property defines the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`.
         /// </summary>
         public HorizontalOriginCesiumWriter HorizontalOriginWriter
@@ -295,6 +445,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenHorizontalOriginProperty())
             {
                 writer.WriteHorizontalOrigin(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteHorizontalOriginPropertyReference(Reference value)
+        {
+            using (var writer = OpenHorizontalOriginProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteHorizontalOriginPropertyReference(string value)
+        {
+            using (var writer = OpenHorizontalOriginProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteHorizontalOriginPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenHorizontalOriginProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteHorizontalOriginPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenHorizontalOriginProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -373,6 +573,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the outline color of the label.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOutlineColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the outline color of the label.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOutlineColorPropertyReference(string value)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the outline color of the label.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOutlineColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the outline color of the label.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOutlineColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineWidth</code> property defines the outline width of the label.
         /// </summary>
         public DoubleCesiumWriter OutlineWidthWriter
@@ -413,6 +663,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOutlineWidthProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the outline width of the label.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOutlineWidthPropertyReference(Reference value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the outline width of the label.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOutlineWidthPropertyReference(string value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the outline width of the label.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOutlineWidthPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the outline width of the label.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOutlineWidthPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -487,6 +787,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>pixelOffset</code> property as a <code>reference</code> value.  The <code>pixelOffset</code> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WritePixelOffsetPropertyReference(Reference value)
+        {
+            using (var writer = OpenPixelOffsetProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffset</code> property as a <code>reference</code> value.  The <code>pixelOffset</code> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WritePixelOffsetPropertyReference(string value)
+        {
+            using (var writer = OpenPixelOffsetProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffset</code> property as a <code>reference</code> value.  The <code>pixelOffset</code> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WritePixelOffsetPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenPixelOffsetProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffset</code> property as a <code>reference</code> value.  The <code>pixelOffset</code> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WritePixelOffsetPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenPixelOffsetProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scale</code> property defines the scale of the label.  The scale is multiplied with the pixel size of the label's text.  For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text.
         /// </summary>
         public DoubleCesiumWriter ScaleWriter
@@ -527,6 +877,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenScaleProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the label.  The scale is multiplied with the pixel size of the label's text.  For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteScalePropertyReference(Reference value)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the label.  The scale is multiplied with the pixel size of the label's text.  For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteScalePropertyReference(string value)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the label.  The scale is multiplied with the pixel size of the label's text.  For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteScalePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the label.  The scale is multiplied with the pixel size of the label's text.  For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteScalePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -589,6 +989,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>style</code> property as a <code>reference</code> value.  The <code>style</code> property specifies the style of the label.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteStylePropertyReference(Reference value)
+        {
+            using (var writer = OpenStyleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>style</code> property as a <code>reference</code> value.  The <code>style</code> property specifies the style of the label.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteStylePropertyReference(string value)
+        {
+            using (var writer = OpenStyleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>style</code> property as a <code>reference</code> value.  The <code>style</code> property specifies the style of the label.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteStylePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenStyleProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>style</code> property as a <code>reference</code> value.  The <code>style</code> property specifies the style of the label.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteStylePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenStyleProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>text</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>text</code> property defines the text displayed by the label.
         /// </summary>
         public StringCesiumWriter TextWriter
@@ -618,6 +1068,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>text</code> property as a <code>reference</code> value.  The <code>text</code> property specifies the text displayed by the label.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteTextPropertyReference(Reference value)
+        {
+            using (var writer = OpenTextProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>text</code> property as a <code>reference</code> value.  The <code>text</code> property specifies the text displayed by the label.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteTextPropertyReference(string value)
+        {
+            using (var writer = OpenTextProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>text</code> property as a <code>reference</code> value.  The <code>text</code> property specifies the text displayed by the label.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteTextPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenTextProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>text</code> property as a <code>reference</code> value.  The <code>text</code> property specifies the text displayed by the label.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteTextPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenTextProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>verticalOrigin</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>verticalOrigin</code> property defines the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`.
         /// </summary>
         public VerticalOriginCesiumWriter VerticalOriginWriter
@@ -643,6 +1143,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenVerticalOriginProperty())
             {
                 writer.WriteVerticalOrigin(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteVerticalOriginPropertyReference(Reference value)
+        {
+            using (var writer = OpenVerticalOriginProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteVerticalOriginPropertyReference(string value)
+        {
+            using (var writer = OpenVerticalOriginProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteVerticalOriginPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenVerticalOriginProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteVerticalOriginPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenVerticalOriginProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 

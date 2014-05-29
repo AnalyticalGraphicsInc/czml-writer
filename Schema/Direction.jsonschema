@@ -20,8 +20,9 @@
             "czmlValue": true
         },
         "reference": {
-            "$ref": "Reference.jsonschema",
-            "description": "A reference property."
+            "$ref": "ReferenceValue.jsonschema",
+            "description": "A reference property.",
+            "czmlValue": true
         }
     }
 }

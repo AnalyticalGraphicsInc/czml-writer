@@ -194,6 +194,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteRadiusPropertyReference(Reference value)
+        {
+            using (var writer = OpenRadiusProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteRadiusPropertyReference(string value)
+        {
+            using (var writer = OpenRadiusProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteRadiusPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenRadiusProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteRadiusPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenRadiusProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>showIntersection</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showIntersection</code> property defines whether or not the intersection of the pyramid with the Earth is shown.
         /// </summary>
         public BooleanCesiumWriter ShowIntersectionWriter
@@ -297,6 +347,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteIntersectionColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenIntersectionColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteIntersectionColorPropertyReference(string value)
+        {
+            using (var writer = OpenIntersectionColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteIntersectionColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenIntersectionColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteIntersectionColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenIntersectionColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>intersectionWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>intersectionWidth</code> property defines the width of the intersection in pixels.
         /// </summary>
         public DoubleCesiumWriter IntersectionWidthWriter
@@ -341,6 +441,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteIntersectionWidthPropertyReference(Reference value)
+        {
+            using (var writer = OpenIntersectionWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteIntersectionWidthPropertyReference(string value)
+        {
+            using (var writer = OpenIntersectionWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteIntersectionWidthPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenIntersectionWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteIntersectionWidthPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenIntersectionWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>material</code> property defines the material to display on the surface of the pyramid.
         /// </summary>
         public MaterialCesiumWriter MaterialWriter
@@ -355,6 +505,56 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(MaterialWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to display on the surface of the pyramid.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteMaterialProperty(Reference value)
+        {
+            using (var writer = OpenMaterialProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to display on the surface of the pyramid.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteMaterialProperty(string value)
+        {
+            using (var writer = OpenMaterialProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to display on the surface of the pyramid.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteMaterialProperty(string identifier, string propertyName)
+        {
+            using (var writer = OpenMaterialProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to display on the surface of the pyramid.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteMaterialProperty(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenMaterialProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
         }
 
     }

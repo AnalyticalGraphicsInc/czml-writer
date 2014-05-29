@@ -21,8 +21,9 @@
             "description": "Fills the surface with alternating colors."		
 		},
         "reference": {
-            "$ref": "Reference.jsonschema",
-            "description": "A reference property."
+            "$ref": "ReferenceValue.jsonschema",
+            "description": "A reference property.",
+            "czmlValue": true
         }
     }
 }

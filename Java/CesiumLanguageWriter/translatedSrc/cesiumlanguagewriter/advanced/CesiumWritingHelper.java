@@ -609,10 +609,7 @@ public final class CesiumWritingHelper {
 	 * @param value The value to write.
 	 */
 	public static void writeReference(CesiumOutputStream output, String value) {
-		output.writeStartObject();
-		output.writePropertyName("reference");
 		output.writeValue(value);
-		output.writeEndObject();
 	}
 
 	/**
@@ -642,7 +639,7 @@ public final class CesiumWritingHelper {
 	 * @param propertyName 
 	 */
 	public static void writeReference(CesiumOutputStream output, String identifier, String propertyName) {
-		CesiumWritingHelper.writeReference(output, new Reference(identifier, propertyName));
+		writeReference(output, new Reference(identifier, propertyName));
 	}
 
 	/**
@@ -658,7 +655,7 @@ public final class CesiumWritingHelper {
 	 * @param propertyNames The heirarchy of property names, where each name is a subproperty of the previous item.
 	 */
 	public static void writeReference(CesiumOutputStream output, String identifier, String[] propertyNames) {
-		CesiumWritingHelper.writeReference(output, new Reference(identifier, propertyNames));
+		writeReference(output, new Reference(identifier, propertyNames));
 	}
 
 	/**

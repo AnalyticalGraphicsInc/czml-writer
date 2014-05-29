@@ -189,6 +189,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>semiMajorAxis</code> property as a <code>reference</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteSemiMajorAxisPropertyReference(Reference value)
+        {
+            using (var writer = OpenSemiMajorAxisProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>semiMajorAxis</code> property as a <code>reference</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteSemiMajorAxisPropertyReference(string value)
+        {
+            using (var writer = OpenSemiMajorAxisProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>semiMajorAxis</code> property as a <code>reference</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteSemiMajorAxisPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenSemiMajorAxisProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>semiMajorAxis</code> property as a <code>reference</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteSemiMajorAxisPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenSemiMajorAxisProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>semiMinorAxis</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>semiMinorAxis</code> property defines the length of the ellipse's semi-minor axis in meters.
         /// </summary>
         public DoubleCesiumWriter SemiMinorAxisWriter
@@ -229,6 +279,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenSemiMinorAxisProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>semiMinorAxis</code> property as a <code>reference</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteSemiMinorAxisPropertyReference(Reference value)
+        {
+            using (var writer = OpenSemiMinorAxisProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>semiMinorAxis</code> property as a <code>reference</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteSemiMinorAxisPropertyReference(string value)
+        {
+            using (var writer = OpenSemiMinorAxisProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>semiMinorAxis</code> property as a <code>reference</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteSemiMinorAxisPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenSemiMinorAxisProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>semiMinorAxis</code> property as a <code>reference</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteSemiMinorAxisPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenSemiMinorAxisProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -277,6 +377,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (clockwise) in radians.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteRotationPropertyReference(Reference value)
+        {
+            using (var writer = OpenRotationProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (clockwise) in radians.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteRotationPropertyReference(string value)
+        {
+            using (var writer = OpenRotationProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (clockwise) in radians.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteRotationPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenRotationProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (clockwise) in radians.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteRotationPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenRotationProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>material</code> property defines the material to use to fill the ellipse.
         /// </summary>
         public MaterialCesiumWriter MaterialWriter
@@ -291,6 +441,56 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(MaterialWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to use to fill the ellipse.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteMaterialProperty(Reference value)
+        {
+            using (var writer = OpenMaterialProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to use to fill the ellipse.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteMaterialProperty(string value)
+        {
+            using (var writer = OpenMaterialProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to use to fill the ellipse.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteMaterialProperty(string identifier, string propertyName)
+        {
+            using (var writer = OpenMaterialProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to use to fill the ellipse.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteMaterialProperty(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenMaterialProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
         }
 
         /// <summary>
@@ -334,6 +534,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenHeightProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the ellipse when perPositionHeight is false.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteHeightPropertyReference(Reference value)
+        {
+            using (var writer = OpenHeightProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the ellipse when perPositionHeight is false.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteHeightPropertyReference(string value)
+        {
+            using (var writer = OpenHeightProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the ellipse when perPositionHeight is false.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteHeightPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenHeightProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the ellipse when perPositionHeight is false.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteHeightPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenHeightProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -382,6 +632,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the ellipse.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteExtrudedHeightPropertyReference(Reference value)
+        {
+            using (var writer = OpenExtrudedHeightProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the ellipse.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteExtrudedHeightPropertyReference(string value)
+        {
+            using (var writer = OpenExtrudedHeightProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the ellipse.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteExtrudedHeightPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenExtrudedHeightProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the ellipse.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteExtrudedHeightPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenExtrudedHeightProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>granularity</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>granularity</code> property defines the sampling distance, in radians.
         /// </summary>
         public DoubleCesiumWriter GranularityWriter
@@ -426,6 +726,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteGranularityPropertyReference(Reference value)
+        {
+            using (var writer = OpenGranularityProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteGranularityPropertyReference(string value)
+        {
+            using (var writer = OpenGranularityProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteGranularityPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenGranularityProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteGranularityPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenGranularityProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>stRotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>stRotation</code> property defines the rotation of any applied texture coordinates.
         /// </summary>
         public DoubleCesiumWriter StRotationWriter
@@ -466,6 +816,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenStRotationProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteStRotationPropertyReference(Reference value)
+        {
+            using (var writer = OpenStRotationProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteStRotationPropertyReference(string value)
+        {
+            using (var writer = OpenStRotationProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteStRotationPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenStRotationProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteStRotationPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenStRotationProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -602,6 +1002,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOutlineColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOutlineColorPropertyReference(string value)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOutlineColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOutlineColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>numberOfVerticalLines</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>numberOfVerticalLines</code> property defines the number of vertical lines to use when outlining an extruded ellipse.
         /// </summary>
         public DoubleCesiumWriter NumberOfVerticalLinesWriter
@@ -642,6 +1092,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenNumberOfVerticalLinesProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteNumberOfVerticalLinesPropertyReference(Reference value)
+        {
+            using (var writer = OpenNumberOfVerticalLinesProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteNumberOfVerticalLinesPropertyReference(string value)
+        {
+            using (var writer = OpenNumberOfVerticalLinesProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteNumberOfVerticalLinesPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenNumberOfVerticalLinesProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        public void WriteNumberOfVerticalLinesPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenNumberOfVerticalLinesProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 

@@ -110,7 +110,6 @@
     <Compile Include="Generated\PositionCesiumWriter.cs" />
     <Compile Include="Generated\PositionListCesiumWriter.cs" />
     <Compile Include="Generated\PyramidCesiumWriter.cs" />
-    <Compile Include="Generated\ReferenceCesiumWriter.cs" />
     <Compile Include="Generated\SolidColorMaterialCesiumWriter.cs" />
     <Compile Include="Generated\StringCesiumWriter.cs" />
     <Compile Include="Generated\StripeMaterialCesiumWriter.cs" />
