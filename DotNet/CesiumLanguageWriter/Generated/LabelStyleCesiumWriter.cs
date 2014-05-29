@@ -22,6 +22,7 @@ namespace CesiumLanguageWriter
         public const string ReferencePropertyName = "reference";
 
         private readonly Lazy<ICesiumValuePropertyWriter<CesiumLabelStyle>> m_asLabelStyle;
+        private readonly Lazy<ReferenceCesiumWriter> m_reference = new Lazy<ReferenceCesiumWriter>(() => new ReferenceCesiumWriter(ReferencePropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -61,53 +62,70 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Gets the writer for the <code>reference</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>reference</code> property defines a reference property.
+        /// </summary>
+        public ReferenceCesiumWriter ReferenceWriter
+        {
+            get { return m_reference.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>reference</code> property.  The <code>reference</code> property defines a reference property.
+        /// </summary>
+        public ReferenceCesiumWriter OpenReferenceProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ReferenceWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>reference</code> property as a <code>reference</code> value.  The <code>reference</code> property specifies a reference property.
         /// </summary>
         /// <param name="value">The reference.</param>
-        public void WriteReference(Reference value)
+        public void WriteReferenceProperty(Reference value)
         {
-            const string PropertyName = ReferencePropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteReference(Output, value);
+            using (var writer = OpenReferenceProperty())
+            {
+                writer.WriteReference(value);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes a value for the <code>reference</code> property as a <code>reference</code> value.  The <code>reference</code> property specifies a reference property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
-        public void WriteReference(string value)
+        public void WriteReferenceProperty(string value)
         {
-            const string PropertyName = ReferencePropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteReference(Output, value);
+            using (var writer = OpenReferenceProperty())
+            {
+                writer.WriteReference(value);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes a value for the <code>reference</code> property as a <code>reference</code> value.  The <code>reference</code> property specifies a reference property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteReference(string identifier, string propertyName)
+        public void WriteReferenceProperty(string identifier, string propertyName)
         {
-            const string PropertyName = ReferencePropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteReference(Output, identifier, propertyName);
+            using (var writer = OpenReferenceProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes a value for the <code>reference</code> property as a <code>reference</code> value.  The <code>reference</code> property specifies a reference property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
-        public void WriteReference(string identifier, string[] propertyNames)
+        public void WriteReferenceProperty(string identifier, string[] propertyNames)
         {
-            const string PropertyName = ReferencePropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteReference(Output, identifier, propertyNames);
+            using (var writer = OpenReferenceProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
         }
 
         /// <summary>
