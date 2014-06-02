@@ -879,56 +879,6 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>capMaterial</code> property as a <code>reference</code> value.  The <code>capMaterial</code> property specifies the material to use to cap the cone at its radial limit.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteCapMaterialProperty(Reference value)
-        {
-            using (var writer = OpenCapMaterialProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>capMaterial</code> property as a <code>reference</code> value.  The <code>capMaterial</code> property specifies the material to use to cap the cone at its radial limit.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteCapMaterialProperty(string value)
-        {
-            using (var writer = OpenCapMaterialProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>capMaterial</code> property as a <code>reference</code> value.  The <code>capMaterial</code> property specifies the material to use to cap the cone at its radial limit.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteCapMaterialProperty(string identifier, string propertyName)
-        {
-            using (var writer = OpenCapMaterialProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>capMaterial</code> property as a <code>reference</code> value.  The <code>capMaterial</code> property specifies the material to use to cap the cone at its radial limit.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
-        public void WriteCapMaterialProperty(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenCapMaterialProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
         /// Gets the writer for the <code>innerMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>innerMaterial</code> property defines the material to use for the inner cone.
         /// </summary>
         public MaterialCesiumWriter InnerMaterialWriter
@@ -943,56 +893,6 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(InnerMaterialWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>innerMaterial</code> property as a <code>reference</code> value.  The <code>innerMaterial</code> property specifies the material to use for the inner cone.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteInnerMaterialProperty(Reference value)
-        {
-            using (var writer = OpenInnerMaterialProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>innerMaterial</code> property as a <code>reference</code> value.  The <code>innerMaterial</code> property specifies the material to use for the inner cone.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteInnerMaterialProperty(string value)
-        {
-            using (var writer = OpenInnerMaterialProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>innerMaterial</code> property as a <code>reference</code> value.  The <code>innerMaterial</code> property specifies the material to use for the inner cone.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteInnerMaterialProperty(string identifier, string propertyName)
-        {
-            using (var writer = OpenInnerMaterialProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>innerMaterial</code> property as a <code>reference</code> value.  The <code>innerMaterial</code> property specifies the material to use for the inner cone.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
-        public void WriteInnerMaterialProperty(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenInnerMaterialProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
         }
 
         /// <summary>
@@ -1013,56 +913,6 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outerMaterial</code> property as a <code>reference</code> value.  The <code>outerMaterial</code> property specifies the material to use for the outer cone.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteOuterMaterialProperty(Reference value)
-        {
-            using (var writer = OpenOuterMaterialProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outerMaterial</code> property as a <code>reference</code> value.  The <code>outerMaterial</code> property specifies the material to use for the outer cone.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteOuterMaterialProperty(string value)
-        {
-            using (var writer = OpenOuterMaterialProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outerMaterial</code> property as a <code>reference</code> value.  The <code>outerMaterial</code> property specifies the material to use for the outer cone.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteOuterMaterialProperty(string identifier, string propertyName)
-        {
-            using (var writer = OpenOuterMaterialProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outerMaterial</code> property as a <code>reference</code> value.  The <code>outerMaterial</code> property specifies the material to use for the outer cone.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
-        public void WriteOuterMaterialProperty(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenOuterMaterialProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
         /// Gets the writer for the <code>silhouetteMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>silhouetteMaterial</code> property defines the material to use for the cone's silhouette.
         /// </summary>
         public MaterialCesiumWriter SilhouetteMaterialWriter
@@ -1077,56 +927,6 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(SilhouetteMaterialWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>silhouetteMaterial</code> property as a <code>reference</code> value.  The <code>silhouetteMaterial</code> property specifies the material to use for the cone's silhouette.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteSilhouetteMaterialProperty(Reference value)
-        {
-            using (var writer = OpenSilhouetteMaterialProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>silhouetteMaterial</code> property as a <code>reference</code> value.  The <code>silhouetteMaterial</code> property specifies the material to use for the cone's silhouette.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteSilhouetteMaterialProperty(string value)
-        {
-            using (var writer = OpenSilhouetteMaterialProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>silhouetteMaterial</code> property as a <code>reference</code> value.  The <code>silhouetteMaterial</code> property specifies the material to use for the cone's silhouette.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteSilhouetteMaterialProperty(string identifier, string propertyName)
-        {
-            using (var writer = OpenSilhouetteMaterialProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>silhouetteMaterial</code> property as a <code>reference</code> value.  The <code>silhouetteMaterial</code> property specifies the material to use for the cone's silhouette.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
-        public void WriteSilhouetteMaterialProperty(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenSilhouetteMaterialProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
         }
 
     }

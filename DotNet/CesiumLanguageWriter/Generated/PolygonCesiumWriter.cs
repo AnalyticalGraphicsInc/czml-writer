@@ -144,56 +144,6 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to use to fill the polygon.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteMaterialProperty(Reference value)
-        {
-            using (var writer = OpenMaterialProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to use to fill the polygon.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteMaterialProperty(string value)
-        {
-            using (var writer = OpenMaterialProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to use to fill the polygon.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteMaterialProperty(string identifier, string propertyName)
-        {
-            using (var writer = OpenMaterialProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to use to fill the polygon.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
-        public void WriteMaterialProperty(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenMaterialProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
         /// Gets the writer for the <code>height</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>height</code> property defines the height of the polygon when perPositionHeight is false.
         /// </summary>
         public DoubleCesiumWriter HeightWriter

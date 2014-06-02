@@ -7,7 +7,6 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.GridMaterialCesiumWriter;
 import cesiumlanguagewriter.ImageMaterialCesiumWriter;
-import cesiumlanguagewriter.Reference;
 import cesiumlanguagewriter.SolidColorMaterialCesiumWriter;
 import cesiumlanguagewriter.StripeMaterialCesiumWriter;
 
@@ -46,13 +45,6 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
 
 	 */
 	public static final String StripePropertyName = "stripe";
-	/**
-	 *  
-	The name of the <code>reference</code> property.
-	
-
-	 */
-	public static final String ReferencePropertyName = "reference";
 	private Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>() {
 		public cesiumlanguagewriter.SolidColorMaterialCesiumWriter invoke() {
 			return new SolidColorMaterialCesiumWriter(SolidColorPropertyName);
@@ -73,7 +65,6 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
 			return new StripeMaterialCesiumWriter(StripePropertyName);
 		}
 	}, false);
-	private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
 	/**
 	 *  
@@ -83,12 +74,6 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
 	 */
 	public MaterialCesiumWriter(String propertyName) {
 		super(propertyName);
-		m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-				"createReferenceAdaptor", new Class[] {}) {
-			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-				return createReferenceAdaptor();
-			}
-		}, false);
 	}
 
 	/**
@@ -101,12 +86,6 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
 	 */
 	protected MaterialCesiumWriter(MaterialCesiumWriter existingInstance) {
 		super(existingInstance);
-		m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-				"createReferenceAdaptor", new Class[] {}) {
-			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-				return createReferenceAdaptor();
-			}
-		}, false);
 	}
 
 	@Override
@@ -192,90 +171,5 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
 	public final StripeMaterialCesiumWriter openStripeProperty() {
 		openIntervalIfNecessary();
 		return this.<StripeMaterialCesiumWriter> openAndReturn(getStripeWriter());
-	}
-
-	/**
-	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeReference(Reference value) {
-		String PropertyName = ReferencePropertyName;
-		openIntervalIfNecessary();
-		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeReference(getOutput(), value);
-	}
-
-	/**
-	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeReference(String value) {
-		String PropertyName = ReferencePropertyName;
-		openIntervalIfNecessary();
-		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeReference(getOutput(), value);
-	}
-
-	/**
-	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeReference(String identifier, String propertyName) {
-		String PropertyName = ReferencePropertyName;
-		openIntervalIfNecessary();
-		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeReference(getOutput(), identifier, propertyName);
-	}
-
-	/**
-	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeReference(String identifier, String[] propertyNames) {
-		String PropertyName = ReferencePropertyName;
-		openIntervalIfNecessary();
-		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeReference(getOutput(), identifier, propertyNames);
-	}
-
-	/**
-	 *  
-	Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in <code>Reference</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-	
-	
-
-	 * @return The wrapper.
-	 */
-	public final ICesiumValuePropertyWriter<Reference> asReference() {
-		return m_asReference.getValue();
-	}
-
-	final private ICesiumValuePropertyWriter<Reference> createReferenceAdaptor() {
-		return new CesiumWriterAdaptor<cesiumlanguagewriter.MaterialCesiumWriter, cesiumlanguagewriter.Reference>(this,
-				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.MaterialCesiumWriter, cesiumlanguagewriter.Reference>() {
-					public void invoke(MaterialCesiumWriter me, Reference value) {
-						me.writeReference(value);
-					}
-				});
 	}
 }

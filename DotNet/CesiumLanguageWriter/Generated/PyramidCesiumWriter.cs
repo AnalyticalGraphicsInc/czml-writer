@@ -507,55 +507,5 @@ namespace CesiumLanguageWriter
             return OpenAndReturn(MaterialWriter);
         }
 
-        /// <summary>
-        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to display on the surface of the pyramid.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteMaterialProperty(Reference value)
-        {
-            using (var writer = OpenMaterialProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to display on the surface of the pyramid.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteMaterialProperty(string value)
-        {
-            using (var writer = OpenMaterialProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to display on the surface of the pyramid.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteMaterialProperty(string identifier, string propertyName)
-        {
-            using (var writer = OpenMaterialProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>material</code> property as a <code>reference</code> value.  The <code>material</code> property specifies the material to display on the surface of the pyramid.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
-        public void WriteMaterialProperty(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenMaterialProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
     }
 }
