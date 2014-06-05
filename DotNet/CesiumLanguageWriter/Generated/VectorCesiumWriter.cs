@@ -211,7 +211,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the vector.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteColorPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenColorProperty())
@@ -305,7 +305,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the vector.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteWidthPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenWidthProperty())
@@ -452,7 +452,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>direction</code> property as a <code>reference</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteDirectionPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenDirectionProperty())
@@ -546,7 +546,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the graphical length of the vector.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteLengthPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenLengthProperty())

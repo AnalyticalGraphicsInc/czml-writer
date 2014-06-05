@@ -265,7 +265,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeScalePropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -409,7 +409,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeMinimumPixelSizePropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -610,7 +610,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeGltfPropertyReference(String identifier, String[] propertyNames) {
 		{

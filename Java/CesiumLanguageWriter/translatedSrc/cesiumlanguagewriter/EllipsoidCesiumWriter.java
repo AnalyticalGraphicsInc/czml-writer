@@ -348,7 +348,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeRadiiPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -640,7 +640,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeOutlineColorPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -784,7 +784,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeStackPartitionsPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -928,7 +928,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeSlicePartitionsPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1072,7 +1072,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeSubdivisionsPropertyReference(String identifier, String[] propertyNames) {
 		{

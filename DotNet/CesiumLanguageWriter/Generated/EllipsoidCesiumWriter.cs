@@ -218,7 +218,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>radii</code> property as a <code>reference</code> value.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteRadiiPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenRadiiProperty())
@@ -417,7 +417,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteOutlineColorPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -511,7 +511,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>stackPartitions</code> property as a <code>reference</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteStackPartitionsPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenStackPartitionsProperty())
@@ -605,7 +605,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>slicePartitions</code> property as a <code>reference</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteSlicePartitionsPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenSlicePartitionsProperty())
@@ -699,7 +699,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteSubdivisionsPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenSubdivisionsProperty())

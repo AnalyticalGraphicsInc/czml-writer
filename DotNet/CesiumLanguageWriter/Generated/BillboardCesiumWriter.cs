@@ -212,7 +212,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteColorPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenColorProperty())
@@ -319,7 +319,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteEyeOffsetPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenEyeOffsetProperty())
@@ -398,7 +398,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard.  It controls whether the billboard image is left-, center-, or right-aligned with the `position`.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteHorizontalOriginPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenHorizontalOriginProperty())
@@ -528,7 +528,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URL.  For broadest client compatibility, the URL should be accessible via Cross-Origin Resource Sharing (CORS).  The URL may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteImagePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenImageProperty())
@@ -648,7 +648,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>pixelOffset</code> property as a <code>reference</code> value.  The <code>pixelOffset</code> property specifies the offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WritePixelOffsetPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenPixelOffsetProperty())
@@ -742,7 +742,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteScalePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenScaleProperty())
@@ -836,7 +836,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard offset from the alignedAxes.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteRotationPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenRotationProperty())
@@ -943,7 +943,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>alignedAxis</code> property as a <code>reference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteAlignedAxisPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenAlignedAxisProperty())
@@ -1051,7 +1051,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard.  It controls whether the billboard image is bottom-, center-, or top-aligned with the `position`.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteVerticalOriginPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenVerticalOriginProperty())

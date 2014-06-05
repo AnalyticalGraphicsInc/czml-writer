@@ -361,7 +361,7 @@ public class PyramidCesiumWriter extends CesiumPropertyWriter<PyramidCesiumWrite
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeRadiusPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -594,7 +594,7 @@ public class PyramidCesiumWriter extends CesiumPropertyWriter<PyramidCesiumWrite
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeIntersectionColorPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -738,7 +738,7 @@ public class PyramidCesiumWriter extends CesiumPropertyWriter<PyramidCesiumWrite
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeIntersectionWidthPropertyReference(String identifier, String[] propertyNames) {
 		{

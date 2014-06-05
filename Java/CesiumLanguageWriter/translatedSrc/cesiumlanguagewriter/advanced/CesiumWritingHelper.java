@@ -644,7 +644,7 @@ public final class CesiumWritingHelper {
 
 	/**
 	 *  
-	Writes a reference from an identifier and heirarchy of property names.
+	Writes a reference from an identifier and hierarchy of property names.
 	
 	
 	
@@ -652,7 +652,7 @@ public final class CesiumWritingHelper {
 
 	 * @param output The stream to which to write the value.
 	 * @param identifier The identifier of the referenced object.
-	 * @param propertyNames The heirarchy of property names, where each name is a subproperty of the previous item.
+	 * @param propertyNames The hierarchy of property names, where each name is a subproperty of the previous item.
 	 */
 	public static void writeReference(CesiumOutputStream output, String identifier, String[] propertyNames) {
 		writeReference(output, new Reference(identifier, agi.foundation.compatibility.ArrayHelper.arrayAsList(propertyNames)));

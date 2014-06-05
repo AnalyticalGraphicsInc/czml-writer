@@ -244,7 +244,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeImagePropertyReference(String identifier, String[] propertyNames) {
 		{

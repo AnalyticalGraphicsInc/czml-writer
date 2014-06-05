@@ -228,7 +228,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the polygon when perPositionHeight is false.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteHeightPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenHeightProperty())
@@ -322,7 +322,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the polygon.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteExtrudedHeightPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenExtrudedHeightProperty())
@@ -416,7 +416,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteGranularityPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenGranularityProperty())
@@ -510,7 +510,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteStRotationPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenStRotationProperty())
@@ -692,7 +692,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteOutlineColorPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOutlineColorProperty())

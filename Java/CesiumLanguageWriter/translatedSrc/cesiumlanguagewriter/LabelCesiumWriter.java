@@ -350,7 +350,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeEyeOffsetPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -544,7 +544,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeFillColorPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -663,7 +663,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeFontPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -782,7 +782,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeHorizontalOriginPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -976,7 +976,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeOutlineColorPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1120,7 +1120,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeOutlineWidthPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1306,7 +1306,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writePixelOffsetPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1450,7 +1450,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeScalePropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1608,7 +1608,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeStylePropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1727,7 +1727,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeTextPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1846,7 +1846,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeVerticalOriginPropertyReference(String identifier, String[] propertyNames) {
 		{

@@ -524,11 +524,11 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Writes a reference from an identifier and heirarchy of property names.
+        /// Writes a reference from an identifier and hierarchy of property names.
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
         /// <param name="identifier">The identifier of the referenced object.</param>
-        /// <param name="propertyNames">The heirarchy of property names, where each name is a subproperty of the previous item.</param>
+        /// <param name="propertyNames">The hierarchy of property names, where each name is a subproperty of the previous item.</param>
         public static void WriteReference(CesiumOutputStream output, string identifier, string[] propertyNames)
         {
             WriteReference(output, new Reference(identifier, propertyNames));

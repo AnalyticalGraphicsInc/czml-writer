@@ -182,7 +182,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the point.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteColorPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenColorProperty())
@@ -306,7 +306,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteOutlineColorPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -400,7 +400,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteOutlineWidthPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOutlineWidthProperty())
@@ -494,7 +494,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WritePixelSizePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenPixelSizeProperty())

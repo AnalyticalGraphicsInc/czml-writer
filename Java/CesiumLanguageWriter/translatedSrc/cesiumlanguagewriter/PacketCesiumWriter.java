@@ -441,7 +441,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeDescriptionPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -777,7 +777,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writePositionPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1055,7 +1055,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeOrientationPropertyReference(String identifier, String[] propertyNames) {
 		{

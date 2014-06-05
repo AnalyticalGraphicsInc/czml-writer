@@ -69,13 +69,13 @@ public class Reference implements IEquatable<Reference>, ImmutableValueType {
 
 	/**
 	 *  
-	Creates a new instace from an id and a heirarchy of properties.
+	Creates a new instace from an id and a hierarchy of properties.
 	
 	
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames An heirarchy of property names with each property being a sub-property of the previous one.
+	 * @param propertyNames An hierarchy of property names with each property being a sub-property of the previous one.
 	 */
 	public Reference(String identifier, Iterable<String> propertyNames) {
 		m_identifier = identifier;
@@ -93,7 +93,7 @@ public class Reference implements IEquatable<Reference>, ImmutableValueType {
 	}
 
 	/**
-	 *  Gets the heirarchy of properties to be indexed on the referenced object.
+	 *  Gets the hierarchy of properties to be indexed on the referenced object.
 	
 
 	 */
@@ -169,10 +169,10 @@ public class Reference implements IEquatable<Reference>, ImmutableValueType {
 		return m_identifier.hashCode() ^ m_properties.hashCode() ^ m_value.hashCode();
 	}
 
-	static private String formatReference(String identfier, Iterable<String> propertyNames) {
+	static private String formatReference(String identifier, Iterable<String> propertyNames) {
 		StringBuilder value = new StringBuilder();
-		identfier = StringHelper.replace(StringHelper.replace(StringHelper.replace(identfier, "\\", "\\\\"), "#", "\\#"), ".", "\\.");
-		value.append(identfier);
+		identifier = StringHelper.replace(StringHelper.replace(StringHelper.replace(identifier, "\\", "\\\\"), "#", "\\#"), ".", "\\.");
+		value.append(identifier);
 		value.append("#");
 		for (String propertyName : propertyNames) {
 			String property = StringHelper.replace(StringHelper.replace(StringHelper.replace(propertyName, "\\", "\\\\"), "#", "\\#"), ".", "\\.");

@@ -363,7 +363,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -507,7 +507,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeWidthPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -651,7 +651,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeResolutionPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -845,7 +845,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeOutlineColorPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -989,7 +989,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeOutlineWidthPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1133,7 +1133,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeLeadTimePropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1277,7 +1277,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeTrailTimePropertyReference(String identifier, String[] propertyNames) {
 		{

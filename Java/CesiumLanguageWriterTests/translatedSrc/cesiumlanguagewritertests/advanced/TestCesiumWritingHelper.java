@@ -13,45 +13,29 @@ import org.junit.Test;
 
 @org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumWritingHelper {
-	public final StringWriter getStringWriter() {
-		return backingField$StringWriter;
-	}
-
-	final private void setStringWriter(StringWriter value) {
-		backingField$StringWriter = value;
-	}
-
-	public final CesiumOutputStream getOutputStream() {
-		return backingField$OutputStream;
-	}
-
-	final private void setOutputStream(CesiumOutputStream value) {
-		backingField$OutputStream = value;
-	}
-
 	@Before
 	public final void setUp() {
-		setStringWriter(new StringWriter());
-		setOutputStream(new CesiumOutputStream(getStringWriter()));
+		m_stringWriter = new StringWriter();
+		m_outputStream = new CesiumOutputStream(m_stringWriter);
 	}
 
 	@Test
 	public final void canWriteReference() {
-		CesiumWritingHelper.writeReference(getOutputStream(), new Reference("bar", "color"));
-		Assert.assertEquals("\"bar#color\"", getStringWriter().toString());
+		CesiumWritingHelper.writeReference(m_outputStream, new Reference("bar", "color"));
+		Assert.assertEquals("\"bar#color\"", m_stringWriter.toString());
 	}
 
 	@Test
 	public final void canWriteReferences() {
-		CesiumWritingHelper.writeReferences(getOutputStream(), agi.foundation.compatibility.ArrayHelper.arrayAsList(new cesiumlanguagewriter.Reference[] {
+		CesiumWritingHelper.writeReferences(m_outputStream, agi.foundation.compatibility.ArrayHelper.arrayAsList(new cesiumlanguagewriter.Reference[] {
 				new Reference("bar", "color"),
 				new Reference("foo", "color2")
 		}));
-		Assert.assertEquals("[\"bar#color\",\"foo#color2\"]", getStringWriter().toString());
+		Assert.assertEquals("[\"bar#color\",\"foo#color2\"]", m_stringWriter.toString());
 	}
 
-	private StringWriter backingField$StringWriter;
-	private CesiumOutputStream backingField$OutputStream;
+	private StringWriter m_stringWriter;
+	private CesiumOutputStream m_outputStream;
 	@org.junit.Rule
 	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
 }

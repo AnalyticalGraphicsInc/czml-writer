@@ -200,7 +200,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteColorPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenColorProperty())
@@ -294,7 +294,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteCellAlphaPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenCellAlphaProperty())
@@ -388,7 +388,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>rowCount</code> property as a <code>reference</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteRowCountPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenRowCountProperty())
@@ -482,7 +482,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>columnCount</code> property as a <code>reference</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteColumnCountPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenColumnCountProperty())
@@ -576,7 +576,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>rowThickness</code> property as a <code>reference</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteRowThicknessPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenRowThicknessProperty())
@@ -670,7 +670,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>columnThickness</code> property as a <code>reference</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteColumnThicknessPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenColumnThicknessProperty())
@@ -764,7 +764,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>rowOffset</code> property as a <code>reference</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteRowOffsetPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenRowOffsetProperty())
@@ -858,7 +858,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>columnOffset</code> property as a <code>reference</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteColumnOffsetPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenColumnOffsetProperty())

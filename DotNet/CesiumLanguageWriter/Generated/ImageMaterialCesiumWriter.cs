@@ -163,7 +163,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the image to display on the surface.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteImagePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenImageProperty())

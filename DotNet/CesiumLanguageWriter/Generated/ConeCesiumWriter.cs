@@ -229,7 +229,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteInnerHalfAnglePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenInnerHalfAngleProperty())
@@ -323,7 +323,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteOuterHalfAnglePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOuterHalfAngleProperty())
@@ -417,7 +417,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteRadiusPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenRadiusProperty())
@@ -511,7 +511,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteMinimumClockAnglePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenMinimumClockAngleProperty())
@@ -605,7 +605,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteMaximumClockAnglePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenMaximumClockAngleProperty())
@@ -758,7 +758,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteIntersectionColorPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenIntersectionColorProperty())
@@ -852,7 +852,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteIntersectionWidthPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenIntersectionWidthProperty())

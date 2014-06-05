@@ -38,10 +38,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Creates a new instace from an id and a heirarchy of properties.
+        /// Creates a new instace from an id and a hierarchy of properties.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">An heirarchy of property names with each property being a sub-property of the previous one.</param>
+        /// <param name="propertyNames">An hierarchy of property names with each property being a sub-property of the previous one.</param>
         public Reference(string identifier, IEnumerable<string> propertyNames)
         {
             m_identifier = identifier;
@@ -58,7 +58,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the heirarchy of properties to be indexed on the referenced object.
+        /// Gets the hierarchy of properties to be indexed on the referenced object.
         /// </summary>
         public IEnumerable<string> PropertyNames
         {
@@ -118,12 +118,12 @@ namespace CesiumLanguageWriter
             return m_identifier.GetHashCode() ^ m_properties.GetHashCode() ^ m_value.GetHashCode();
         }
 
-        static private string FormatReference(string identfier, IEnumerable<string> propertyNames)
+        static private string FormatReference(string identifier, IEnumerable<string> propertyNames)
         {
             StringBuilder value = new StringBuilder();
 
-            identfier = identfier.Replace(@"\", @"\\").Replace("#", @"\#").Replace(".", @"\.");
-            value.Append(identfier);
+            identifier = identifier.Replace(@"\", @"\\").Replace("#", @"\#").Replace(".", @"\.");
+            value.Append(identifier);
             value.Append("#");
             foreach (var propertyName in propertyNames)
             {

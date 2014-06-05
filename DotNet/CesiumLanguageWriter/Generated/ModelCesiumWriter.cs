@@ -175,7 +175,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the model.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteScalePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenScaleProperty())
@@ -269,7 +269,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>minimumPixelSize</code> property as a <code>reference</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteMinimumPixelSizePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenMinimumPixelSizeProperty())
@@ -399,7 +399,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteGltfPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenGltfProperty())

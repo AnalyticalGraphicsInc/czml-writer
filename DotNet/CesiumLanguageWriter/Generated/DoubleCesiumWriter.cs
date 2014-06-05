@@ -119,7 +119,7 @@ namespace CesiumLanguageWriter
         /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteReference(string identifier, string[] propertyNames)
         {
             const string PropertyName = ReferencePropertyName;

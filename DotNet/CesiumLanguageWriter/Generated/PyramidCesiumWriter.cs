@@ -234,7 +234,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteRadiusPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenRadiusProperty())
@@ -387,7 +387,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteIntersectionColorPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenIntersectionColorProperty())
@@ -481,7 +481,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteIntersectionWidthPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenIntersectionWidthProperty())

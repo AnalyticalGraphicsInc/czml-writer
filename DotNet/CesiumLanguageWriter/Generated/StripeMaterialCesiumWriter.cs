@@ -137,7 +137,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the value indicating if the stripes are horizontal or vertical.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteOrientationPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOrientationProperty())
@@ -261,7 +261,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>evenColor</code> property as a <code>reference</code> value.  The <code>evenColor</code> property specifies the even color.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteEvenColorPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenEvenColorProperty())
@@ -385,7 +385,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>oddColor</code> property as a <code>reference</code> value.  The <code>oddColor</code> property specifies the odd color.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteOddColorPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOddColorProperty())
@@ -479,7 +479,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteOffsetPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOffsetProperty())
@@ -573,7 +573,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of time the stripes repeat.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The heirarchy of properties to be indexed on the referenced object.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteRepeatPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenRepeatProperty())

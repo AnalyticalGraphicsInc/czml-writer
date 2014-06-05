@@ -355,7 +355,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -520,7 +520,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeEyeOffsetPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -639,7 +639,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeHorizontalOriginPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -840,7 +840,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeImagePropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1026,7 +1026,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writePixelOffsetPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1170,7 +1170,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeScalePropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1314,7 +1314,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeRotationPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1479,7 +1479,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeAlignedAxisPropertyReference(String identifier, String[] propertyNames) {
 		{
@@ -1637,7 +1637,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The heirarchy of properties to be indexed on the referenced object.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
 	public final void writeVerticalOriginPropertyReference(String identifier, String[] propertyNames) {
 		{
