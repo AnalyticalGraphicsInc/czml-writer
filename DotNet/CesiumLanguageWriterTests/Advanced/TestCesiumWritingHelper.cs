@@ -23,7 +23,7 @@ namespace CesiumLanguageWriterTests.Advanced
         public void CanWriteReference()
         {
             CesiumWritingHelper.WriteReference(OutputStream, new Reference("bar", "color"));
-            Assert.AreEqual("{\"reference\":\"bar#color\"}", StringWriter.ToString());
+            Assert.AreEqual("\"bar#color\"", StringWriter.ToString());
         }
 
         [Test]

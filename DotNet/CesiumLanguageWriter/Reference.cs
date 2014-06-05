@@ -22,8 +22,9 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="value">The </param>
         public Reference(string value)
-            : this(GetIdentifier(value), GetProperties(value), value)
         {
+            m_value = value;
+            Parse(value, out m_identifier, out m_properties);
         }
 
         /// <summary>
@@ -32,7 +33,7 @@ namespace CesiumLanguageWriter
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
         public Reference(string identifier, string propertyName)
-            : this(identifier, new[] { propertyName }, Escape(identifier, new[] { propertyName }))
+            : this(identifier, new[] { propertyName })
         {
         }
 
@@ -41,17 +42,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">An heirarchy of property names with each property being a sub-property of the previous one.</param>
-        public Reference(string identifier, string[] propertyNames)
-            : this(identifier, propertyNames, Escape(identifier, propertyNames))
+        public Reference(string identifier, IEnumerable<string> propertyNames)
         {
-
-        }
-
-        private Reference(string identfier, string[] propertyNames, string value)
-        {
-            m_identifier = identfier;
-            m_properties = propertyNames;
-            m_value = value;
+            m_identifier = identifier;
+            m_properties = new List<string>(propertyNames);
+            m_value = FormatReference(m_identifier, m_properties);
         }
 
         /// <summary>
@@ -65,7 +60,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the heirarchy of properties to be indexed on the referenced object.
         /// </summary>
-        public string[] PropertyNames
+        public IEnumerable<string> PropertyNames
         {
             get { return m_properties; }
         }
@@ -123,111 +118,74 @@ namespace CesiumLanguageWriter
             return m_identifier.GetHashCode() ^ m_properties.GetHashCode() ^ m_value.GetHashCode();
         }
 
-        static private string Escape(string identfier, string[] propertyNames)
+        static private string FormatReference(string identfier, IEnumerable<string> propertyNames)
         {
             StringBuilder value = new StringBuilder();
 
             identfier = identfier.Replace(@"\", @"\\").Replace("#", @"\#").Replace(".", @"\.");
             value.Append(identfier);
             value.Append("#");
-            for (var i = 0; i < propertyNames.Length; i++)
+            foreach (var propertyName in propertyNames)
             {
-                string property = propertyNames[i].Replace(@"\", @"\\").Replace("#", @"\#").Replace(".", @"\.");
+                string property = propertyName.Replace(@"\", @"\\").Replace("#", @"\#").Replace(".", @"\.");
                 value.Append(property);
-                if (i != propertyNames.Length - 1)
-                {
-                    value.Append(".");
-                }
+                value.Append(".");
             }
+            value.Remove(value.Length - 1, 1);
             return value.ToString();
         }
 
-        static int FindUnescaped(string value, int start, char delimiter)
+        static private void Parse(string value, out string identifier, out List<string> values)
         {
-            int index;
-            do
+            identifier = string.Empty;
+            values = new List<string>();
+
+            var inIdentifier = true;
+            var isEscaped = false;
+            var token = string.Empty;
+            for (var i = 0; i < value.Length; ++i)
             {
-                index = value.IndexOf(delimiter, start);
-                if (index == -1)
+                var c = value[i];
+
+                if (isEscaped)
                 {
-                    break;
+                    token += c;
+                    isEscaped = false;
                 }
-
-                var count = 0;
-                int place = index - 1;
-                while (place != -1 && value[place--] == '\\')
+                else if (c == '\\')
                 {
-                    count++;
+                    isEscaped = true;
                 }
-                if (count % 2 == 0)
+                else if (inIdentifier && c == '#')
                 {
-                    return index;
+                    identifier = token;
+                    inIdentifier = false;
+                    token = string.Empty;
                 }
-                start = index + 1;
-            } while (index != -1);
-            return -1;
-        }
-
-        static private string[] TrySplit(string value, char delimiter)
-        {
-            var indices = new List<int>();
-            var start = 0;
-            int index;
-            do
-            {
-                index = FindUnescaped(value, start, delimiter);
-                if (index != -1)
+                else if (!inIdentifier && c == '.')
                 {
-                    indices.Add(index);
-                    start = index + 1;
+                    if (string.IsNullOrEmpty(token))
+                        throw new ArgumentException(CesiumLocalization.InvalidReferenceString);
+
+                    values.Add(token);
+                    token = string.Empty;
                 }
-            } while (index != -1);
-
-            var lastIndex = 0;
-            var result = new string[indices.Count + 1];
-            for (var i = 0; i < indices.Count; i++)
-            {
-                index = indices[i];
-                result[i] = value.Substring(lastIndex, index - lastIndex).Replace(@"\#", "#").Replace(@"\\", @"\").Replace(@"\.", ".");
-                lastIndex = index + 1;
-            }
-            result[indices.Count] = value.Substring(lastIndex, value.Length - lastIndex).Replace(@"\#", "#").Replace(@"\\", @"\").Replace(@"\.", ".");
-            return result;
-        }
-
-        static private string GetIdentifier(string value)
-        {
-            string[] result = TrySplit(value, '#');
-            if (result.Length != 2)
-            {
-                throw new ArgumentException(CesiumLocalization.InvalidReferenceString, "value");
-            }
-            return result[0];
-        }
-
-        static private string[] GetProperties(string value)
-        {
-            var index = FindUnescaped(value, 0, '#') + 1;
-            var values = TrySplit(value.Substring(index, value.Length - index), '.');
-
-            if (values.Length == 0)
-            {
-                throw new ArgumentException(CesiumLocalization.InvalidReferenceString, "value");
-            }
-
-            foreach (var item in values)
-            {
-                if (string.IsNullOrEmpty(item))
+                else
                 {
-                    throw new ArgumentException(CesiumLocalization.InvalidReferenceString, "value");
+                    token += c;
                 }
             }
+            values.Add(token);
 
-            return values;
+            if (string.IsNullOrEmpty(token))
+                throw new ArgumentException(CesiumLocalization.InvalidReferenceString);
+
+            if (inIdentifier)
+                throw new ArgumentException(CesiumLocalization.InvalidReferenceString);
         }
 
         private readonly string m_value;
         private readonly string m_identifier;
-        private readonly string[] m_properties;
+        private readonly List<string> m_properties;
     }
 }
