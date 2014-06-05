@@ -12,6 +12,10 @@
             "$ref": "Double.jsonschema",
             "description": "The scale of the model."
         },
+        "minimumPixelSize": {
+            "$ref": "Double.jsonschema",
+            "description": "The approximate minimum pixel size of the model regardless of zoom."
+        },
         "gltf": {
             "$ref": "Uri.jsonschema",
             "description": "The URL of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model."
