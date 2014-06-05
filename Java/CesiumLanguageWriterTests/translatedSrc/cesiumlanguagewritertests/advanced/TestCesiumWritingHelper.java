@@ -38,7 +38,7 @@ public class TestCesiumWritingHelper {
 	@Test
 	public final void canWriteReference() {
 		CesiumWritingHelper.writeReference(getOutputStream(), new Reference("bar", "color"));
-		Assert.assertEquals("{\"reference\":\"bar#color\"}", getStringWriter().toString());
+		Assert.assertEquals("\"bar#color\"", getStringWriter().toString());
 	}
 
 	@Test

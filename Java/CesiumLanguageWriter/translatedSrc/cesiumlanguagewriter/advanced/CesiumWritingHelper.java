@@ -655,7 +655,7 @@ public final class CesiumWritingHelper {
 	 * @param propertyNames The heirarchy of property names, where each name is a subproperty of the previous item.
 	 */
 	public static void writeReference(CesiumOutputStream output, String identifier, String[] propertyNames) {
-		writeReference(output, new Reference(identifier, propertyNames));
+		writeReference(output, new Reference(identifier, agi.foundation.compatibility.ArrayHelper.arrayAsList(propertyNames)));
 	}
 
 	/**

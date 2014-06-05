@@ -16,14 +16,14 @@ public class TestReference {
 		String value = "identifier#property";
 		cesiumlanguagewriter.Reference reference = new Reference(value);
 		Assert.assertEquals(reference.getIdentifier(), "identifier");
-		Assert.assertArrayEquals(reference.getPropertyNames(), new String[] {
+		Assert.assertEquals(reference.getPropertyNames(), new String[] {
 			"property"
 		});
 		Assert.assertEquals(value, reference.getValue());
 		value = ("identifier#property.subProperty");
 		reference = new Reference(value);
 		Assert.assertEquals(reference.getIdentifier(), "identifier");
-		Assert.assertArrayEquals(reference.getPropertyNames(), new String[] {
+		Assert.assertEquals(reference.getPropertyNames(), new String[] {
 				"property",
 				"subProperty"
 		});
@@ -31,7 +31,7 @@ public class TestReference {
 		value = "\\#identif\\\\\\\\\\#ier\\.\\\\#propertyName.\\.abc\\\\.def";
 		reference = new Reference(value);
 		Assert.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
-		Assert.assertArrayEquals(reference.getPropertyNames(), new String[] {
+		Assert.assertEquals(reference.getPropertyNames(), new String[] {
 				"propertyName",
 				".abc\\",
 				"def"
@@ -40,7 +40,7 @@ public class TestReference {
 		value = "#propertyName.\\.abc\\\\.def";
 		reference = new Reference(value);
 		AssertHelper.assertIsEmpty(reference.getIdentifier());
-		Assert.assertArrayEquals(reference.getPropertyNames(), new String[] {
+		Assert.assertEquals(reference.getPropertyNames(), new String[] {
 				"propertyName",
 				".abc\\",
 				"def"
@@ -52,13 +52,13 @@ public class TestReference {
 	public final void canContructFromIdentifierAndProperty() {
 		cesiumlanguagewriter.Reference reference = new Reference("identifier", "property");
 		Assert.assertEquals(reference.getIdentifier(), "identifier");
-		Assert.assertArrayEquals(reference.getPropertyNames(), new String[] {
+		Assert.assertEquals(reference.getPropertyNames(), new String[] {
 			"property"
 		});
 		Assert.assertEquals(reference.getValue(), "identifier#property");
 		reference = new Reference("#identif\\\\#ier.\\", "property.Name");
 		Assert.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
-		Assert.assertArrayEquals(reference.getPropertyNames(), new String[] {
+		Assert.assertEquals(reference.getPropertyNames(), new String[] {
 			"property.Name"
 		});
 		Assert.assertEquals(reference.getValue(), "\\#identif\\\\\\\\\\#ier\\.\\\\#property\\.Name");
@@ -66,22 +66,22 @@ public class TestReference {
 
 	@Test
 	public final void canContructFromIdentifierAndProperties() {
-		cesiumlanguagewriter.Reference reference = new Reference("identifier", new String[] {
+		cesiumlanguagewriter.Reference reference = new Reference("identifier", agi.foundation.compatibility.ArrayHelper.arrayAsList(new String[] {
 				"property",
 				"subProperty"
-		});
+		}));
 		Assert.assertEquals(reference.getIdentifier(), "identifier");
-		Assert.assertArrayEquals(reference.getPropertyNames(), new String[] {
+		Assert.assertEquals(reference.getPropertyNames(), new String[] {
 				"property",
 				"subProperty"
 		});
 		Assert.assertEquals(reference.getValue(), "identifier#property.subProperty");
-		reference = new Reference("#identif\\\\#ier.\\", new String[] {
+		reference = new Reference("#identif\\\\#ier.\\", agi.foundation.compatibility.ArrayHelper.arrayAsList(new String[] {
 				"property.Name",
 				"subProperty"
-		});
+		}));
 		Assert.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
-		Assert.assertArrayEquals(reference.getPropertyNames(), new String[] {
+		Assert.assertEquals(reference.getPropertyNames(), new String[] {
 				"property.Name",
 				"subProperty"
 		});
