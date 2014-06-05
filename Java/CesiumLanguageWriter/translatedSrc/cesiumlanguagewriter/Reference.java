@@ -62,9 +62,10 @@ public class Reference implements IEquatable<Reference>, ImmutableValueType {
 	 * @param propertyName The property on the referenced object.
 	 */
 	public Reference(String identifier, String propertyName) {
-		this(identifier, new String[] {
-			propertyName
-		});
+		m_identifier = identifier;
+		m_properties = new ArrayList<String>();
+		m_properties.add(propertyName);
+		m_value = formatReference(m_identifier, m_properties);
 	}
 
 	/**

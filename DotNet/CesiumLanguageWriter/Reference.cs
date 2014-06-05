@@ -33,8 +33,11 @@ namespace CesiumLanguageWriter
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
         public Reference(string identifier, string propertyName)
-            : this(identifier, new[] { propertyName })
         {
+            m_identifier = identifier;
+            m_properties = new List<string>();
+            m_properties.Add(propertyName);
+            m_value = FormatReference(m_identifier, m_properties);
         }
 
         /// <summary>
