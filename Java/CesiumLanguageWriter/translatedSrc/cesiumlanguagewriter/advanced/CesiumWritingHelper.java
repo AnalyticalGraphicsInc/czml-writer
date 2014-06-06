@@ -2,7 +2,6 @@ package cesiumlanguagewriter.advanced;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.annotations.Internal;
 import agi.foundation.compatibility.ArgumentException;
 import cesiumlanguagewriter.*;
 import java.awt.Color;
@@ -14,7 +13,6 @@ import java.util.List;
  
 
  */
-@Internal
 public final class CesiumWritingHelper {
 	private CesiumWritingHelper() {}
 
@@ -666,19 +664,78 @@ public final class CesiumWritingHelper {
 
 	/**
 	 *  
+	Writes a reference.
+	
+	
+	
+
+	 * @param output The stream to which to write the value.
+	 * @param value The value to write.
+	 */
+	public static void writeReference(CesiumOutputStream output, String value) {
+		output.writeValue(value);
+	}
+
+	/**
+	 *  
+	Writes a reference.
+	
+	
+	
+
+	 * @param output The stream to which to write the value.
+	 * @param value The value to write.
+	 */
+	public static void writeReference(CesiumOutputStream output, Reference value) {
+		writeReference(output, value.getValue());
+	}
+
+	/**
+	 *  
+	Writes a reference and an identifier and property name.
+	
+	
+	
+	
+
+	 * @param output The stream to which to write the value.
+	 * @param identifier 
+	 * @param propertyName 
+	 */
+	public static void writeReference(CesiumOutputStream output, String identifier, String propertyName) {
+		writeReference(output, new Reference(identifier, propertyName));
+	}
+
+	/**
+	 *  
+	Writes a reference from an identifier and hierarchy of property names.
+	
+	
+	
+	
+
+	 * @param output The stream to which to write the value.
+	 * @param identifier The identifier of the referenced object.
+	 * @param propertyNames The hierarchy of property names, where each name is a subproperty of the previous item.
+	 */
+	public static void writeReference(CesiumOutputStream output, String identifier, String[] propertyNames) {
+		writeReference(output, new Reference(identifier, agi.foundation.compatibility.ArrayHelper.arrayAsList(propertyNames)));
+	}
+
+	/**
+	 *  
 	Writes a list of references.
 	
 	
 	
 
-	 * @param output The stream to which to write.
-	 * @param references The list of references to write.
+	 * @param output The stream to which to write the value.
+	 * @param references The list of references.
 	 */
-	public static void writeReferences(CesiumOutputStream output, Iterable<String> references) {
+	public static void writeReferences(CesiumOutputStream output, Iterable<Reference> references) {
 		output.writeStartSequence();
-		for (String reference : references) {
-			output.writeValue(reference);
-			output.writeLineBreak();
+		for (cesiumlanguagewriter.Reference reference : references) {
+			output.writeValue(reference.getValue());
 		}
 		output.writeEndSequence();
 	}

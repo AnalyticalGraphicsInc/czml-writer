@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.Reference;
 
 /**
  *  
@@ -20,7 +21,15 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 
 	 */
 	public static final String StringPropertyName = "string";
+	/**
+	 *  
+	The name of the <code>reference</code> property.
+	
+
+	 */
+	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumValuePropertyWriter<String>> m_asString;
+	private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
 	/**
 	 *  
@@ -34,6 +43,12 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 				"createStringAdaptor", new Class[] {}) {
 			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
 				return createStringAdaptor();
+			}
+		}, false);
+		m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
+				"createReferenceAdaptor", new Class[] {}) {
+			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
+				return createReferenceAdaptor();
 			}
 		}, false);
 	}
@@ -52,6 +67,12 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 				"createStringAdaptor", new Class[] {}) {
 			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
 				return createStringAdaptor();
+			}
+		}, false);
+		m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
+				"createReferenceAdaptor", new Class[] {}) {
+			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
+				return createReferenceAdaptor();
 			}
 		}, false);
 	}
@@ -79,6 +100,70 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 
 	/**
 	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeReference(Reference value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeReference(String value) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeReference(String identifier, String propertyName) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), identifier, propertyName);
+	}
+
+	/**
+	 *  
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeReference(String identifier, String[] propertyNames) {
+		String PropertyName = ReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), identifier, propertyNames);
+	}
+
+	/**
+	 *  
 	Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in <code>String</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
 	
 	
@@ -95,5 +180,26 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 				me.writeString(value);
 			}
 		});
+	}
+
+	/**
+	 *  
+	Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in <code>Reference</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	
+	
+
+	 * @return The wrapper.
+	 */
+	public final ICesiumValuePropertyWriter<Reference> asReference() {
+		return m_asReference.getValue();
+	}
+
+	final private ICesiumValuePropertyWriter<Reference> createReferenceAdaptor() {
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.StringCesiumWriter, cesiumlanguagewriter.Reference>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.StringCesiumWriter, cesiumlanguagewriter.Reference>() {
+					public void invoke(StringCesiumWriter me, Reference value) {
+						me.writeReference(value);
+					}
+				});
 	}
 }

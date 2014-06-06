@@ -160,6 +160,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteColorPropertyReference(string value)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>cellAlpha</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>cellAlpha</code> property defines alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         public DoubleCesiumWriter CellAlphaWriter
@@ -200,6 +250,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenCellAlphaProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteCellAlphaPropertyReference(Reference value)
+        {
+            using (var writer = OpenCellAlphaProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteCellAlphaPropertyReference(string value)
+        {
+            using (var writer = OpenCellAlphaProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteCellAlphaPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenCellAlphaProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteCellAlphaPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenCellAlphaProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -248,6 +348,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>rowCount</code> property as a <code>reference</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteRowCountPropertyReference(Reference value)
+        {
+            using (var writer = OpenRowCountProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rowCount</code> property as a <code>reference</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteRowCountPropertyReference(string value)
+        {
+            using (var writer = OpenRowCountProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rowCount</code> property as a <code>reference</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteRowCountPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenRowCountProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rowCount</code> property as a <code>reference</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteRowCountPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenRowCountProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>columnCount</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>columnCount</code> property defines the number of vertical grid lines.
         /// </summary>
         public DoubleCesiumWriter ColumnCountWriter
@@ -288,6 +438,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenColumnCountProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>columnCount</code> property as a <code>reference</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteColumnCountPropertyReference(Reference value)
+        {
+            using (var writer = OpenColumnCountProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>columnCount</code> property as a <code>reference</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteColumnCountPropertyReference(string value)
+        {
+            using (var writer = OpenColumnCountProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>columnCount</code> property as a <code>reference</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteColumnCountPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenColumnCountProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>columnCount</code> property as a <code>reference</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteColumnCountPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenColumnCountProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -336,6 +536,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>rowThickness</code> property as a <code>reference</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteRowThicknessPropertyReference(Reference value)
+        {
+            using (var writer = OpenRowThicknessProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rowThickness</code> property as a <code>reference</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteRowThicknessPropertyReference(string value)
+        {
+            using (var writer = OpenRowThicknessProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rowThickness</code> property as a <code>reference</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteRowThicknessPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenRowThicknessProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rowThickness</code> property as a <code>reference</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteRowThicknessPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenRowThicknessProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>columnThickness</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>columnThickness</code> property defines the thickness of vertical grid lines, in pixels.
         /// </summary>
         public DoubleCesiumWriter ColumnThicknessWriter
@@ -376,6 +626,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenColumnThicknessProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>columnThickness</code> property as a <code>reference</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteColumnThicknessPropertyReference(Reference value)
+        {
+            using (var writer = OpenColumnThicknessProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>columnThickness</code> property as a <code>reference</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteColumnThicknessPropertyReference(string value)
+        {
+            using (var writer = OpenColumnThicknessProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>columnThickness</code> property as a <code>reference</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteColumnThicknessPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenColumnThicknessProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>columnThickness</code> property as a <code>reference</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteColumnThicknessPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenColumnThicknessProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -424,6 +724,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>rowOffset</code> property as a <code>reference</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteRowOffsetPropertyReference(Reference value)
+        {
+            using (var writer = OpenRowOffsetProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rowOffset</code> property as a <code>reference</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteRowOffsetPropertyReference(string value)
+        {
+            using (var writer = OpenRowOffsetProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rowOffset</code> property as a <code>reference</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteRowOffsetPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenRowOffsetProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rowOffset</code> property as a <code>reference</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteRowOffsetPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenRowOffsetProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>columnOffset</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>columnOffset</code> property defines the offset of vertical grid lines, as a percentage from 0 to 1.
         /// </summary>
         public DoubleCesiumWriter ColumnOffsetWriter
@@ -464,6 +814,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenColumnOffsetProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>columnOffset</code> property as a <code>reference</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteColumnOffsetPropertyReference(Reference value)
+        {
+            using (var writer = OpenColumnOffsetProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>columnOffset</code> property as a <code>reference</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteColumnOffsetPropertyReference(string value)
+        {
+            using (var writer = OpenColumnOffsetProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>columnOffset</code> property as a <code>reference</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteColumnOffsetPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenColumnOffsetProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>columnOffset</code> property as a <code>reference</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteColumnOffsetPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenColumnOffsetProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 

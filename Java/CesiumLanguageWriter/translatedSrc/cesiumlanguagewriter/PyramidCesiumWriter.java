@@ -295,6 +295,86 @@ public class PyramidCesiumWriter extends CesiumPropertyWriter<PyramidCesiumWrite
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeRadiusPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeRadiusPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeRadiusPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeRadiusPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>showIntersection</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>showIntersection</code> property defines whether or not the intersection of the pyramid with the Earth is shown.
 	
 
@@ -448,6 +528,86 @@ public class PyramidCesiumWriter extends CesiumPropertyWriter<PyramidCesiumWrite
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeIntersectionColorPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeIntersectionColorPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeIntersectionColorPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeIntersectionColorPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>intersectionWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>intersectionWidth</code> property defines the width of the intersection in pixels.
 	
 
@@ -505,6 +665,86 @@ public class PyramidCesiumWriter extends CesiumPropertyWriter<PyramidCesiumWrite
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeIntersectionWidthPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeIntersectionWidthPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeIntersectionWidthPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeIntersectionWidthPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

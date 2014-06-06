@@ -7,7 +7,6 @@ import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BillboardCesiumWriter;
-import cesiumlanguagewriter.CameraCesiumWriter;
 import cesiumlanguagewriter.ClockCesiumWriter;
 import cesiumlanguagewriter.ConeCesiumWriter;
 import cesiumlanguagewriter.EllipseCesiumWriter;
@@ -147,13 +146,6 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	public static final String PyramidPropertyName = "pyramid";
 	/**
 	 *  
-	The name of the <code>camera</code> property.
-	
-
-	 */
-	public static final String CameraPropertyName = "camera";
-	/**
-	 *  
 	The name of the <code>ellipsoid</code> property.
 	
 
@@ -252,11 +244,6 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	private Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<cesiumlanguagewriter.PyramidCesiumWriter>(new Func1<cesiumlanguagewriter.PyramidCesiumWriter>() {
 		public cesiumlanguagewriter.PyramidCesiumWriter invoke() {
 			return new PyramidCesiumWriter(PyramidPropertyName);
-		}
-	}, false);
-	private Lazy<CameraCesiumWriter> m_camera = new Lazy<cesiumlanguagewriter.CameraCesiumWriter>(new Func1<cesiumlanguagewriter.CameraCesiumWriter>() {
-		public cesiumlanguagewriter.CameraCesiumWriter invoke() {
-			return new CameraCesiumWriter(CameraPropertyName);
 		}
 	}, false);
 	private Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<cesiumlanguagewriter.EllipsoidCesiumWriter>(new Func1<cesiumlanguagewriter.EllipsoidCesiumWriter>() {
@@ -381,6 +368,86 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 			cesiumlanguagewriter.StringCesiumWriter writer = openDescriptionProperty();
 			try {
 				writer.writeString(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>description</code> property as a <code>reference</code> value.  The <code>description</code> property specifies an HTML description of the object.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeDescriptionPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.StringCesiumWriter writer = openDescriptionProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>description</code> property as a <code>reference</code> value.  The <code>description</code> property specifies an HTML description of the object.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeDescriptionPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.StringCesiumWriter writer = openDescriptionProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>description</code> property as a <code>reference</code> value.  The <code>description</code> property specifies an HTML description of the object.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeDescriptionPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.StringCesiumWriter writer = openDescriptionProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>description</code> property as a <code>reference</code> value.  The <code>description</code> property specifies an HTML description of the object.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeDescriptionPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.StringCesiumWriter writer = openDescriptionProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -709,6 +776,86 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>position</code> property as a <code>reference</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writePositionPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>position</code> property as a <code>reference</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writePositionPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>position</code> property as a <code>reference</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writePositionPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>position</code> property as a <code>reference</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writePositionPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>billboard</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>billboard</code> property defines a billboard, or viewport-aligned image. The billboard is positioned in the scene by the position property. A billboard is sometimes called a marker.
 	
 
@@ -811,7 +958,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	 * @param references The list of references.
 	 */
-	public final void writeVertexPositionsPropertyReferences(Iterable<String> references) {
+	public final void writeVertexPositionsPropertyReferences(Iterable<Reference> references) {
 		{
 			cesiumlanguagewriter.PositionListCesiumWriter writer = openVertexPositionsProperty();
 			try {
@@ -900,6 +1047,86 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 			cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
 			try {
 				writer.writeUnitQuaternion(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeOrientationPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeOrientationPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeOrientationPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeOrientationPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1037,25 +1264,6 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	 */
 	public final PyramidCesiumWriter openPyramidProperty() {
 		return this.<PyramidCesiumWriter> openAndReturn(getPyramidWriter());
-	}
-
-	/**
-	 *  Gets the writer for the <code>camera</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>camera</code> property defines a camera.
-	
-
-	 */
-	public final CameraCesiumWriter getCameraWriter() {
-		return m_camera.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>camera</code> property.  The <code>camera</code> property defines a camera.
-	
-
-	 */
-	public final CameraCesiumWriter openCameraProperty() {
-		return this.<CameraCesiumWriter> openAndReturn(getCameraWriter());
 	}
 
 	/**

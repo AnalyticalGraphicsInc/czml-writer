@@ -262,6 +262,86 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the vector.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeColorPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the vector.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeColorPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the vector.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeColorPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the vector.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>width</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>width</code> property defines the width of the vector.
 	
 
@@ -319,6 +399,86 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the vector.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeWidthPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the vector.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeWidthPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the vector.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeWidthPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the vector.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeWidthPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -476,6 +636,86 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>direction</code> property as a <code>reference</code> value.  The <code>direction</code> property specifies the direction of the vector.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeDirectionPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>direction</code> property as a <code>reference</code> value.  The <code>direction</code> property specifies the direction of the vector.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeDirectionPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>direction</code> property as a <code>reference</code> value.  The <code>direction</code> property specifies the direction of the vector.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeDirectionPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>direction</code> property as a <code>reference</code> value.  The <code>direction</code> property specifies the direction of the vector.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeDirectionPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>length</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>length</code> property defines the graphical length of the vector.
 	
 
@@ -533,6 +773,86 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeLengthPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeLengthPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeLengthPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeLengthPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

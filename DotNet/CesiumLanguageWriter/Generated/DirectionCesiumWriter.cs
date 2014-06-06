@@ -27,8 +27,14 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string UnitSphericalPropertyName = "unitSpherical";
 
+        /// <summary>
+        /// The name of the <code>reference</code> property.
+        /// </summary>
+        public const string ReferencePropertyName = "reference";
+
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>> m_asUnitCartesian;
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>> m_asUnitSpherical;
+        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -38,6 +44,7 @@ namespace CesiumLanguageWriter
         {
             m_asUnitCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(CreateUnitCartesianAdaptor, false);
             m_asUnitSpherical = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(CreateUnitSphericalAdaptor, false);
+            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
         }
 
         /// <summary>
@@ -49,6 +56,7 @@ namespace CesiumLanguageWriter
         {
             m_asUnitCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(CreateUnitCartesianAdaptor, false);
             m_asUnitSpherical = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(CreateUnitSphericalAdaptor, false);
+            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
         }
 
         /// <inheritdoc />
@@ -142,6 +150,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteReference(Reference value)
+        {
+            const string PropertyName = ReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, value);
+        }
+
+        /// <summary>
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteReference(string value)
+        {
+            const string PropertyName = ReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, value);
+        }
+
+        /// <summary>
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteReference(string identifier, string propertyName)
+        {
+            const string PropertyName = ReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, identifier, propertyName);
+        }
+
+        /// <summary>
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteReference(string identifier, string[] propertyNames)
+        {
+            const string PropertyName = ReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, identifier, propertyNames);
+        }
+
+        /// <summary>
         /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>UnitCartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
@@ -169,6 +227,21 @@ namespace CesiumLanguageWriter
         {
             return new CesiumInterpolatableWriterAdaptor<DirectionCesiumWriter, UnitSpherical>(
                 this, (me, value) => me.WriteUnitSpherical(value), (DirectionCesiumWriter me, IList<JulianDate> dates, IList<UnitSpherical> values, int startIndex, int length) => me.WriteUnitSpherical(dates, values, startIndex, length));
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Reference</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumValuePropertyWriter<Reference> AsReference()
+        {
+            return m_asReference.Value;
+        }
+
+        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        {
+            return new CesiumWriterAdaptor<DirectionCesiumWriter, Reference>(
+                this, (me, value) => me.WriteReference(value));
         }
 
     }

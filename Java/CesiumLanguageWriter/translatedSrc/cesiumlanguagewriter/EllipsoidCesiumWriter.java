@@ -282,6 +282,86 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>radii</code> property as a <code>reference</code> value.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeRadiiPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.EllipsoidRadiiCesiumWriter writer = openRadiiProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radii</code> property as a <code>reference</code> value.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeRadiiPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.EllipsoidRadiiCesiumWriter writer = openRadiiProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radii</code> property as a <code>reference</code> value.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeRadiiPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.EllipsoidRadiiCesiumWriter writer = openRadiiProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radii</code> property as a <code>reference</code> value.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeRadiiPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.EllipsoidRadiiCesiumWriter writer = openRadiiProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>fill</code> property defines whether or not the ellipsoid is filled.
 	
 
@@ -494,6 +574,86 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeOutlineColorPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeOutlineColorPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeOutlineColorPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeOutlineColorPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>stackPartitions</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>stackPartitions</code> property defines the number of times to partition the ellipsoid into stacks.
 	
 
@@ -551,6 +711,86 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openStackPartitionsProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>stackPartitions</code> property as a <code>reference</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeStackPartitionsPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openStackPartitionsProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>stackPartitions</code> property as a <code>reference</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeStackPartitionsPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openStackPartitionsProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>stackPartitions</code> property as a <code>reference</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeStackPartitionsPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openStackPartitionsProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>stackPartitions</code> property as a <code>reference</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeStackPartitionsPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openStackPartitionsProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -622,6 +862,86 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>slicePartitions</code> property as a <code>reference</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeSlicePartitionsPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicePartitionsProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>slicePartitions</code> property as a <code>reference</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeSlicePartitionsPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicePartitionsProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>slicePartitions</code> property as a <code>reference</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeSlicePartitionsPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicePartitionsProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>slicePartitions</code> property as a <code>reference</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeSlicePartitionsPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicePartitionsProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>subdivisions</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>subdivisions</code> property defines the number of points per outline line, determining the granularity of the curvature.
 	
 
@@ -679,6 +999,86 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openSubdivisionsProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeSubdivisionsPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openSubdivisionsProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeSubdivisionsPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openSubdivisionsProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeSubdivisionsPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openSubdivisionsProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeSubdivisionsPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openSubdivisionsProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

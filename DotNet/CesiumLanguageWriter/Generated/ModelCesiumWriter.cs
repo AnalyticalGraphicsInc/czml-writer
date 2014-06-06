@@ -135,6 +135,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the model.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteScalePropertyReference(Reference value)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the model.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteScalePropertyReference(string value)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the model.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteScalePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the model.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteScalePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>minimumPixelSize</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>minimumPixelSize</code> property defines the approximate minimum pixel size of the model regardless of zoom.
         /// </summary>
         public DoubleCesiumWriter MinimumPixelSizeWriter
@@ -175,6 +225,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenMinimumPixelSizeProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>minimumPixelSize</code> property as a <code>reference</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteMinimumPixelSizePropertyReference(Reference value)
+        {
+            using (var writer = OpenMinimumPixelSizeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>minimumPixelSize</code> property as a <code>reference</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteMinimumPixelSizePropertyReference(string value)
+        {
+            using (var writer = OpenMinimumPixelSizeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>minimumPixelSize</code> property as a <code>reference</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteMinimumPixelSizePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenMinimumPixelSizeProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>minimumPixelSize</code> property as a <code>reference</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteMinimumPixelSizePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenMinimumPixelSizeProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -255,6 +355,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenGltfProperty())
             {
                 writer.WriteUri(image, imageFormat);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteGltfPropertyReference(Reference value)
+        {
+            using (var writer = OpenGltfProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteGltfPropertyReference(string value)
+        {
+            using (var writer = OpenGltfProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteGltfPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenGltfProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URL of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteGltfPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenGltfProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 

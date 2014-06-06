@@ -97,6 +97,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the value indicating if the stripes are horizontal or vertical.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOrientationPropertyReference(Reference value)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the value indicating if the stripes are horizontal or vertical.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOrientationPropertyReference(string value)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the value indicating if the stripes are horizontal or vertical.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOrientationPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the value indicating if the stripes are horizontal or vertical.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOrientationPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>evenColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>evenColor</code> property defines the even color.
         /// </summary>
         public ColorCesiumWriter EvenColorWriter
@@ -167,6 +217,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenEvenColorProperty())
             {
                 writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>evenColor</code> property as a <code>reference</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteEvenColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenEvenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>evenColor</code> property as a <code>reference</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteEvenColorPropertyReference(string value)
+        {
+            using (var writer = OpenEvenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>evenColor</code> property as a <code>reference</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteEvenColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenEvenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>evenColor</code> property as a <code>reference</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteEvenColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenEvenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -245,6 +345,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>oddColor</code> property as a <code>reference</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOddColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenOddColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>oddColor</code> property as a <code>reference</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOddColorPropertyReference(string value)
+        {
+            using (var writer = OpenOddColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>oddColor</code> property as a <code>reference</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOddColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOddColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>oddColor</code> property as a <code>reference</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOddColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOddColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>offset</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>offset</code> property defines the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
         /// </summary>
         public DoubleCesiumWriter OffsetWriter
@@ -289,6 +439,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOffsetPropertyReference(Reference value)
+        {
+            using (var writer = OpenOffsetProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOffsetPropertyReference(string value)
+        {
+            using (var writer = OpenOffsetProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOffsetPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOffsetProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOffsetPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOffsetProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>repeat</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>repeat</code> property defines the number of time the stripes repeat.
         /// </summary>
         public DoubleCesiumWriter RepeatWriter
@@ -329,6 +529,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenRepeatProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of time the stripes repeat.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteRepeatPropertyReference(Reference value)
+        {
+            using (var writer = OpenRepeatProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of time the stripes repeat.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteRepeatPropertyReference(string value)
+        {
+            using (var writer = OpenRepeatProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of time the stripes repeat.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteRepeatPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenRepeatProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of time the stripes repeat.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteRepeatPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenRepeatProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 

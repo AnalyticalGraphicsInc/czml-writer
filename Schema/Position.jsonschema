@@ -28,6 +28,11 @@
             "$ref": "Cartesian3VelocityValue.jsonschema",
             "description": "The position and velocity represented as two Cartesians `[X, Y, Z, vX, vY, vZ]` in the meters relative to the `referenceFrame`. If the array has six elements, the position is constant. If it has seven or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, vX, vY, vZ, Time, X, Y, Z, vX, vY, vZ, Time, X, Y, Z, vX, vY, vZ, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.",
             "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.jsonschema",
+            "description": "A reference property.",
+            "czmlValue": true
         }
     }
 }

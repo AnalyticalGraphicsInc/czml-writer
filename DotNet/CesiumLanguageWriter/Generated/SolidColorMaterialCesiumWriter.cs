@@ -117,5 +117,55 @@ namespace CesiumLanguageWriter
             }
         }
 
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteColorPropertyReference(string value)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
     }
 }

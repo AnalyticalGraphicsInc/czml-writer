@@ -178,6 +178,15 @@ namespace CesiumLanguageWriter {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided reference string is not in the correct format..
+        /// </summary>
+        internal static string InvalidReferenceString {
+            get {
+                return ResourceManager.GetString("InvalidReferenceString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The magnitude of the provided coordinates must not be infinite..
         /// </summary>
         internal static string MagnitudeMustNotBeInfinite {

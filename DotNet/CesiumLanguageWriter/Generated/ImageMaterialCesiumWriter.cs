@@ -122,5 +122,55 @@ namespace CesiumLanguageWriter
             }
         }
 
+        /// <summary>
+        /// Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteImagePropertyReference(Reference value)
+        {
+            using (var writer = OpenImageProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteImagePropertyReference(string value)
+        {
+            using (var writer = OpenImageProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteImagePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenImageProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteImagePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenImageProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
     }
 }

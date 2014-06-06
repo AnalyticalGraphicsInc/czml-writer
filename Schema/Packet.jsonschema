@@ -73,10 +73,6 @@
             "$ref": "Pyramid.jsonschema",
             "description": "A pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit."
         },
-        "camera": {
-            "$ref": "Camera.jsonschema",
-            "description": "A camera."
-        },
         "ellipsoid": {
             "$ref": "Ellipsoid.jsonschema",
             "description": "An ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties."
@@ -101,6 +97,5 @@
             "$ref": "Vector.jsonschema",
             "description": "Defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length."
         }
-
     }
 }

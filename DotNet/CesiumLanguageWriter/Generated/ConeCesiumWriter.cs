@@ -189,6 +189,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteInnerHalfAnglePropertyReference(Reference value)
+        {
+            using (var writer = OpenInnerHalfAngleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteInnerHalfAnglePropertyReference(string value)
+        {
+            using (var writer = OpenInnerHalfAngleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteInnerHalfAnglePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenInnerHalfAngleProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteInnerHalfAnglePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenInnerHalfAngleProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>outerHalfAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outerHalfAngle</code> property defines the outer half angle of the cone.
         /// </summary>
         public DoubleCesiumWriter OuterHalfAngleWriter
@@ -229,6 +279,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOuterHalfAngleProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOuterHalfAnglePropertyReference(Reference value)
+        {
+            using (var writer = OpenOuterHalfAngleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOuterHalfAnglePropertyReference(string value)
+        {
+            using (var writer = OpenOuterHalfAngleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOuterHalfAnglePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOuterHalfAngleProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOuterHalfAnglePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOuterHalfAngleProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -277,6 +377,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteRadiusPropertyReference(Reference value)
+        {
+            using (var writer = OpenRadiusProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteRadiusPropertyReference(string value)
+        {
+            using (var writer = OpenRadiusProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteRadiusPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenRadiusProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteRadiusPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenRadiusProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>minimumClockAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>minimumClockAngle</code> property defines the minimum clock angle limit of the cone.
         /// </summary>
         public DoubleCesiumWriter MinimumClockAngleWriter
@@ -321,6 +471,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteMinimumClockAnglePropertyReference(Reference value)
+        {
+            using (var writer = OpenMinimumClockAngleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteMinimumClockAnglePropertyReference(string value)
+        {
+            using (var writer = OpenMinimumClockAngleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteMinimumClockAnglePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenMinimumClockAngleProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteMinimumClockAnglePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenMinimumClockAngleProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>maximumClockAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>maximumClockAngle</code> property defines the maximum clock angle limit of the cone.
         /// </summary>
         public DoubleCesiumWriter MaximumClockAngleWriter
@@ -361,6 +561,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenMaximumClockAngleProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteMaximumClockAnglePropertyReference(Reference value)
+        {
+            using (var writer = OpenMaximumClockAngleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteMaximumClockAnglePropertyReference(string value)
+        {
+            using (var writer = OpenMaximumClockAngleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteMaximumClockAnglePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenMaximumClockAngleProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteMaximumClockAnglePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenMaximumClockAngleProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -468,6 +718,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteIntersectionColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenIntersectionColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteIntersectionColorPropertyReference(string value)
+        {
+            using (var writer = OpenIntersectionColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteIntersectionColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenIntersectionColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteIntersectionColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenIntersectionColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>intersectionWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>intersectionWidth</code> property defines the width of the intersection in pixels.
         /// </summary>
         public DoubleCesiumWriter IntersectionWidthWriter
@@ -508,6 +808,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenIntersectionWidthProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteIntersectionWidthPropertyReference(Reference value)
+        {
+            using (var writer = OpenIntersectionWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteIntersectionWidthPropertyReference(string value)
+        {
+            using (var writer = OpenIntersectionWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteIntersectionWidthPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenIntersectionWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteIntersectionWidthPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenIntersectionWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 

@@ -189,6 +189,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the path line.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the path line.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteColorPropertyReference(string value)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the path line.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the path line.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>width</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>width</code> property defines the width of the path line.
         /// </summary>
         public DoubleCesiumWriter WidthWriter
@@ -233,6 +283,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the path line.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteWidthPropertyReference(Reference value)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the path line.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteWidthPropertyReference(string value)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the path line.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteWidthPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the path line.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteWidthPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>resolution</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>resolution</code> property defines the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path.
         /// </summary>
         public DoubleCesiumWriter ResolutionWriter
@@ -273,6 +373,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenResolutionProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>resolution</code> property as a <code>reference</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteResolutionPropertyReference(Reference value)
+        {
+            using (var writer = OpenResolutionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>resolution</code> property as a <code>reference</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteResolutionPropertyReference(string value)
+        {
+            using (var writer = OpenResolutionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>resolution</code> property as a <code>reference</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteResolutionPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenResolutionProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>resolution</code> property as a <code>reference</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteResolutionPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenResolutionProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -351,6 +501,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the path.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOutlineColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the path.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOutlineColorPropertyReference(string value)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the path.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOutlineColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the path.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOutlineColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the outline of the path.
         /// </summary>
         public DoubleCesiumWriter OutlineWidthWriter
@@ -391,6 +591,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOutlineWidthProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the path.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOutlineWidthPropertyReference(Reference value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the path.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOutlineWidthPropertyReference(string value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the path.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOutlineWidthPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the path.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOutlineWidthPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -439,6 +689,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>leadTime</code> property as a <code>reference</code> value.  The <code>leadTime</code> property specifies the time ahead of the animation time, in seconds, to show the path.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteLeadTimePropertyReference(Reference value)
+        {
+            using (var writer = OpenLeadTimeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>leadTime</code> property as a <code>reference</code> value.  The <code>leadTime</code> property specifies the time ahead of the animation time, in seconds, to show the path.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteLeadTimePropertyReference(string value)
+        {
+            using (var writer = OpenLeadTimeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>leadTime</code> property as a <code>reference</code> value.  The <code>leadTime</code> property specifies the time ahead of the animation time, in seconds, to show the path.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteLeadTimePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenLeadTimeProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>leadTime</code> property as a <code>reference</code> value.  The <code>leadTime</code> property specifies the time ahead of the animation time, in seconds, to show the path.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteLeadTimePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenLeadTimeProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>trailTime</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>trailTime</code> property defines the time behind the animation time, in seconds, to show the path.
         /// </summary>
         public DoubleCesiumWriter TrailTimeWriter
@@ -479,6 +779,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenTrailTimeProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>trailTime</code> property as a <code>reference</code> value.  The <code>trailTime</code> property specifies the time behind the animation time, in seconds, to show the path.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteTrailTimePropertyReference(Reference value)
+        {
+            using (var writer = OpenTrailTimeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>trailTime</code> property as a <code>reference</code> value.  The <code>trailTime</code> property specifies the time behind the animation time, in seconds, to show the path.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteTrailTimePropertyReference(string value)
+        {
+            using (var writer = OpenTrailTimeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>trailTime</code> property as a <code>reference</code> value.  The <code>trailTime</code> property specifies the time behind the animation time, in seconds, to show the path.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteTrailTimePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenTrailTimeProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>trailTime</code> property as a <code>reference</code> value.  The <code>trailTime</code> property specifies the time behind the animation time, in seconds, to show the path.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteTrailTimePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenTrailTimeProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 

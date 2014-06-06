@@ -8,6 +8,11 @@
             "$ref": "LabelStyleValue.jsonschema",
             "description": "The label style.  Valid values are \"FILL\", \"OUTLINE\", and \"FILL_AND_OUTLINE\".",
             "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.jsonschema",
+            "description": "A reference property.",
+            "czmlValue": true
         }
     }
 }

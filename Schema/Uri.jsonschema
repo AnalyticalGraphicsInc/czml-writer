@@ -8,6 +8,11 @@
             "$ref": "UriValue.jsonschema",
             "description": "The URI value.",
             "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.jsonschema",
+            "description": "A reference property.",
+            "czmlValue": true
         }
     }
 }
