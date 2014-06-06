@@ -156,6 +156,9 @@
   <data name="HourMinuteSecondInvalidArgument" xml:space="preserve">
     <value>One or more of the hour, minute, and second arguments is outside of the acceptable range.</value>
   </data>
+  <data name="InvalidReferenceString" xml:space="preserve">
+    <value>The provided reference string is not in the correct format.</value>
+  </data>
   <data name="MagnitudeMustNotBeInfinite" xml:space="preserve">
     <value>The magnitude of the provided coordinates must not be infinite.</value>
   </data>

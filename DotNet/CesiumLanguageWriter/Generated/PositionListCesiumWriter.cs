@@ -40,7 +40,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartesian>>> m_asCartesian;
         private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>> m_asCartographicRadians;
         private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>> m_asCartographicDegrees;
-        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<string>>> m_asReferences;
+        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Reference>>> m_asReferences;
 
         /// <summary>
         /// Initializes a new instance.
@@ -51,7 +51,7 @@ namespace CesiumLanguageWriter
             m_asCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartesian>>>(CreateCartesianAdaptor, false);
             m_asCartographicRadians = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>>(CreateCartographicRadiansAdaptor, false);
             m_asCartographicDegrees = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>>(CreateCartographicDegreesAdaptor, false);
-            m_asReferences = new Lazy<ICesiumValuePropertyWriter<IEnumerable<string>>>(CreateReferencesAdaptor, false);
+            m_asReferences = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Reference>>>(CreateReferencesAdaptor, false);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace CesiumLanguageWriter
             m_asCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartesian>>>(CreateCartesianAdaptor, false);
             m_asCartographicRadians = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>>(CreateCartographicRadiansAdaptor, false);
             m_asCartographicDegrees = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartographic>>>(CreateCartographicDegreesAdaptor, false);
-            m_asReferences = new Lazy<ICesiumValuePropertyWriter<IEnumerable<string>>>(CreateReferencesAdaptor, false);
+            m_asReferences = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Reference>>>(CreateReferencesAdaptor, false);
         }
 
         /// <inheritdoc />
@@ -125,7 +125,7 @@ namespace CesiumLanguageWriter
         /// Writes the <code>references</code> property.  The <code>references</code> property specifies the list of positions specified as references.  Each reference is to a property that defines a single position, possible as it changes with time.
         /// </summary>
         /// <param name="references">The list of references.</param>
-        public void WriteReferences(IEnumerable<string> references)
+        public void WriteReferences(IEnumerable<Reference> references)
         {
             const string PropertyName = ReferencesPropertyName;
             OpenIntervalIfNecessary();
@@ -182,14 +182,14 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>References</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<IEnumerable<string>> AsReferences()
+        public ICesiumValuePropertyWriter<IEnumerable<Reference>> AsReferences()
         {
             return m_asReferences.Value;
         }
 
-        private ICesiumValuePropertyWriter<IEnumerable<string>> CreateReferencesAdaptor()
+        private ICesiumValuePropertyWriter<IEnumerable<Reference>> CreateReferencesAdaptor()
         {
-            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<string>>(
+            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<Reference>>(
                 this, (me, value) => me.WriteReferences(value));
         }
 

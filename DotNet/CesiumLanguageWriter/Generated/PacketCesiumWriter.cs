@@ -94,11 +94,6 @@ namespace CesiumLanguageWriter
         public const string PyramidPropertyName = "pyramid";
 
         /// <summary>
-        /// The name of the <code>camera</code> property.
-        /// </summary>
-        public const string CameraPropertyName = "camera";
-
-        /// <summary>
         /// The name of the <code>ellipsoid</code> property.
         /// </summary>
         public const string EllipsoidPropertyName = "ellipsoid";
@@ -140,7 +135,6 @@ namespace CesiumLanguageWriter
         private readonly Lazy<PolygonCesiumWriter> m_polygon = new Lazy<PolygonCesiumWriter>(() => new PolygonCesiumWriter(PolygonPropertyName), false);
         private readonly Lazy<ConeCesiumWriter> m_cone = new Lazy<ConeCesiumWriter>(() => new ConeCesiumWriter(ConePropertyName), false);
         private readonly Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<PyramidCesiumWriter>(() => new PyramidCesiumWriter(PyramidPropertyName), false);
-        private readonly Lazy<CameraCesiumWriter> m_camera = new Lazy<CameraCesiumWriter>(() => new CameraCesiumWriter(CameraPropertyName), false);
         private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
         private readonly Lazy<ModelCesiumWriter> m_model = new Lazy<ModelCesiumWriter>(() => new ModelCesiumWriter(ModelPropertyName), false);
         private readonly Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(() => new EllipseCesiumWriter(EllipsePropertyName), false);
@@ -221,6 +215,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenDescriptionProperty())
             {
                 writer.WriteString(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>description</code> property as a <code>reference</code> value.  The <code>description</code> property specifies an HTML description of the object.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteDescriptionPropertyReference(Reference value)
+        {
+            using (var writer = OpenDescriptionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>description</code> property as a <code>reference</code> value.  The <code>description</code> property specifies an HTML description of the object.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteDescriptionPropertyReference(string value)
+        {
+            using (var writer = OpenDescriptionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>description</code> property as a <code>reference</code> value.  The <code>description</code> property specifies an HTML description of the object.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteDescriptionPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenDescriptionProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>description</code> property as a <code>reference</code> value.  The <code>description</code> property specifies an HTML description of the object.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteDescriptionPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenDescriptionProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -393,6 +437,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>position</code> property as a <code>reference</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WritePositionPropertyReference(Reference value)
+        {
+            using (var writer = OpenPositionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>position</code> property as a <code>reference</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WritePositionPropertyReference(string value)
+        {
+            using (var writer = OpenPositionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>position</code> property as a <code>reference</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WritePositionPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenPositionProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>position</code> property as a <code>reference</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WritePositionPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenPositionProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>billboard</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>billboard</code> property defines a billboard, or viewport-aligned image. The billboard is positioned in the scene by the position property. A billboard is sometimes called a marker.
         /// </summary>
         public BillboardCesiumWriter BillboardWriter
@@ -464,7 +558,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>vertexPositions</code> property as a <code>references</code> value.  The <code>vertexPositions</code> property specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
         /// </summary>
         /// <param name="references">The list of references.</param>
-        public void WriteVertexPositionsPropertyReferences(IEnumerable<string> references)
+        public void WriteVertexPositionsPropertyReferences(IEnumerable<Reference> references)
         {
             using (var writer = OpenVertexPositionsProperty())
             {
@@ -525,6 +619,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOrientationProperty())
             {
                 writer.WriteUnitQuaternion(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOrientationPropertyReference(Reference value)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOrientationPropertyReference(string value)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOrientationPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOrientationPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -638,22 +782,6 @@ namespace CesiumLanguageWriter
         public PyramidCesiumWriter OpenPyramidProperty()
         {
             return OpenAndReturn(PyramidWriter);
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>camera</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>camera</code> property defines a camera.
-        /// </summary>
-        public CameraCesiumWriter CameraWriter
-        {
-            get { return m_camera.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>camera</code> property.  The <code>camera</code> property defines a camera.
-        /// </summary>
-        public CameraCesiumWriter OpenCameraProperty()
-        {
-            return OpenAndReturn(CameraWriter);
         }
 
         /// <summary>

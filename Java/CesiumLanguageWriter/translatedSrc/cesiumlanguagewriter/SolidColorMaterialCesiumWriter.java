@@ -170,4 +170,84 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 			}
 		}
 	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeColorPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeColorPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeColorPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
 }

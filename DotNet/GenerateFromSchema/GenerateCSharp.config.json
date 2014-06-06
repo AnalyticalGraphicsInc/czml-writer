@@ -494,7 +494,7 @@
                 ],
                 "writeValue": "Output.WriteValue(CesiumFormattingHelper.ImageToDataUri(image, imageFormat));",
                 "needsInterval": false
-            },
+            }
         ],
         "StripeOrientation": [
             {
@@ -774,12 +774,64 @@
                 "writeValue": "CesiumWritingHelper.WriteUnitQuaternion(Output, PropertyName, dates, values, startIndex, length);"
             }
         ],
+        "Reference": [
+            {
+                "parameters": [
+                    {
+                        "type": "Reference",
+                        "name": "value",
+                        "description": "The reference."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, value);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "value",
+                        "description": "The earliest date of the interval."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, value);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "identifier",
+                        "description": "The identifier of the object which contains the referenced property."
+                    },
+                    {
+                        "type": "string",
+                        "name": "propertyName",
+                        "description": "The property on the referenced object."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, identifier, propertyName);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "identifier",
+                        "description": "The identifier of the object which contains the referenced property."
+                    },
+                    {
+                        "type": "string[]",
+                        "name": "propertyNames",
+                        "description": "The hierarchy of properties to be indexed on the referenced object."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, identifier, propertyNames);"
+            }
+        ],
         "References": [
             {
                 "namespaces": ["System.Collections.Generic"],
                 "parameters": [
                     {
-                        "type": "IEnumerable<string>",
+                        "type": "IEnumerable<Reference>",
                         "name": "references",
                         "description": "The list of references."
                     }

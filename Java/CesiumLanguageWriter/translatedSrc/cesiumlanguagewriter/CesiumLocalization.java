@@ -215,6 +215,17 @@ public class CesiumLocalization {
 
 	/**
 	 *  
+	Looks up a localized string similar to The provided reference string is not in the correct format..
+	
+
+	 */
+	@Internal
+	public static String getInvalidReferenceString() {
+		return getResourceManager().getString("InvalidReferenceString");
+	}
+
+	/**
+	 *  
 	Looks up a localized string similar to The magnitude of the provided coordinates must not be infinite..
 	
 

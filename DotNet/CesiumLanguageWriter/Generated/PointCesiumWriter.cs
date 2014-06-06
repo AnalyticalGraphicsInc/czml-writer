@@ -142,6 +142,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the point.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the point.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteColorPropertyReference(string value)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the point.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the point.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>outlineColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineColor</code> property defines the color of the outline of the point.
         /// </summary>
         public ColorCesiumWriter OutlineColorWriter
@@ -216,6 +266,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOutlineColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOutlineColorPropertyReference(string value)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOutlineColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOutlineColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the outline of the point.
         /// </summary>
         public DoubleCesiumWriter OutlineWidthWriter
@@ -260,6 +360,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOutlineWidthPropertyReference(Reference value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOutlineWidthPropertyReference(string value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOutlineWidthPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOutlineWidthPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>pixelSize</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>pixelSize</code> property defines the size of the point, in pixels.
         /// </summary>
         public DoubleCesiumWriter PixelSizeWriter
@@ -300,6 +450,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenPixelSizeProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WritePixelSizePropertyReference(Reference value)
+        {
+            using (var writer = OpenPixelSizeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WritePixelSizePropertyReference(string value)
+        {
+            using (var writer = OpenPixelSizeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WritePixelSizePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenPixelSizeProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WritePixelSizePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenPixelSizeProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 

@@ -9,6 +9,11 @@
             "$ref": "Cartesian2Value.jsonschema",
             "description": "The pixel offset specified as a Cartesian `[X, Y]` in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.  If the array has two elements, the pixel offset is constant.  If it has three or more elements, they are time-tagged samples arranged as `[Time, X, Y, Time, X, Y, Time, X, Y, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.",
             "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.jsonschema",
+            "description": "A reference property.",
+            "czmlValue": true
         }
     }
 }

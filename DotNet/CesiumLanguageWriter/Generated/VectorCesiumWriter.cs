@@ -171,6 +171,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteColorPropertyReference(string value)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>width</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>width</code> property defines the width of the vector.
         /// </summary>
         public DoubleCesiumWriter WidthWriter
@@ -211,6 +261,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenWidthProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the vector.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteWidthPropertyReference(Reference value)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the vector.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteWidthPropertyReference(string value)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the vector.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteWidthPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the vector.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteWidthPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -312,6 +412,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>direction</code> property as a <code>reference</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteDirectionPropertyReference(Reference value)
+        {
+            using (var writer = OpenDirectionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>direction</code> property as a <code>reference</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteDirectionPropertyReference(string value)
+        {
+            using (var writer = OpenDirectionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>direction</code> property as a <code>reference</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteDirectionPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenDirectionProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>direction</code> property as a <code>reference</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteDirectionPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenDirectionProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>length</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>length</code> property defines the graphical length of the vector.
         /// </summary>
         public DoubleCesiumWriter LengthWriter
@@ -352,6 +502,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenLengthProperty())
             {
                 writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteLengthPropertyReference(Reference value)
+        {
+            using (var writer = OpenLengthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteLengthPropertyReference(string value)
+        {
+            using (var writer = OpenLengthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteLengthPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenLengthProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteLengthPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenLengthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 

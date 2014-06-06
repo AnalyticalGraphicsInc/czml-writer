@@ -257,6 +257,86 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeColorPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeColorPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeColorPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>cellAlpha</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>cellAlpha</code> property defines alpha value for the space between grid lines.  This will be combined with the color alpha.
 	
 
@@ -314,6 +394,86 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openCellAlphaProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeCellAlphaPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openCellAlphaProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeCellAlphaPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openCellAlphaProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeCellAlphaPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openCellAlphaProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeCellAlphaPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openCellAlphaProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -385,6 +545,86 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>rowCount</code> property as a <code>reference</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeRowCountPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowCountProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rowCount</code> property as a <code>reference</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeRowCountPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowCountProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rowCount</code> property as a <code>reference</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeRowCountPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowCountProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rowCount</code> property as a <code>reference</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeRowCountPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowCountProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>columnCount</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>columnCount</code> property defines the number of vertical grid lines.
 	
 
@@ -442,6 +682,86 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnCountProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>columnCount</code> property as a <code>reference</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeColumnCountPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnCountProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>columnCount</code> property as a <code>reference</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeColumnCountPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnCountProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>columnCount</code> property as a <code>reference</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeColumnCountPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnCountProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>columnCount</code> property as a <code>reference</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeColumnCountPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnCountProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -513,6 +833,86 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>rowThickness</code> property as a <code>reference</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeRowThicknessPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowThicknessProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rowThickness</code> property as a <code>reference</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeRowThicknessPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowThicknessProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rowThickness</code> property as a <code>reference</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeRowThicknessPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowThicknessProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rowThickness</code> property as a <code>reference</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeRowThicknessPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowThicknessProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>columnThickness</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>columnThickness</code> property defines the thickness of vertical grid lines, in pixels.
 	
 
@@ -570,6 +970,86 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnThicknessProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>columnThickness</code> property as a <code>reference</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeColumnThicknessPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnThicknessProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>columnThickness</code> property as a <code>reference</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeColumnThicknessPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnThicknessProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>columnThickness</code> property as a <code>reference</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeColumnThicknessPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnThicknessProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>columnThickness</code> property as a <code>reference</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeColumnThicknessPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnThicknessProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -641,6 +1121,86 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>rowOffset</code> property as a <code>reference</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeRowOffsetPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowOffsetProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rowOffset</code> property as a <code>reference</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeRowOffsetPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowOffsetProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rowOffset</code> property as a <code>reference</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeRowOffsetPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowOffsetProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rowOffset</code> property as a <code>reference</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeRowOffsetPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowOffsetProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>columnOffset</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>columnOffset</code> property defines the offset of vertical grid lines, as a percentage from 0 to 1.
 	
 
@@ -698,6 +1258,86 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnOffsetProperty();
 			try {
 				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>columnOffset</code> property as a <code>reference</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeColumnOffsetPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnOffsetProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>columnOffset</code> property as a <code>reference</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeColumnOffsetPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnOffsetProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>columnOffset</code> property as a <code>reference</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeColumnOffsetPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnOffsetProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>columnOffset</code> property as a <code>reference</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeColumnOffsetPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnOffsetProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
