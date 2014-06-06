@@ -10,6 +10,7 @@ import agi.foundation.compatibility.ObjectHelper;
 import agi.foundation.compatibility.StringHelper;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  *  
@@ -170,17 +171,18 @@ public class Reference implements IEquatable<Reference>, ImmutableValueType {
 		return m_identifier.hashCode() ^ m_properties.hashCode() ^ m_value.hashCode();
 	}
 
-	static private String formatReference(String identifier, Iterable<String> propertyNames) {
+	static private String formatReference(String identifier, ArrayList<String> propertyNames) {
 		StringBuilder value = new StringBuilder();
 		identifier = StringHelper.replace(StringHelper.replace(StringHelper.replace(identifier, "\\", "\\\\"), "#", "\\#"), ".", "\\.");
 		value.append(identifier);
 		value.append("#");
-		for (String propertyName : propertyNames) {
-			String property = StringHelper.replace(StringHelper.replace(StringHelper.replace(propertyName, "\\", "\\\\"), "#", "\\#"), ".", "\\.");
+		for (int i = 0; i < propertyNames.size(); i++) {
+			String property = StringHelper.replace(StringHelper.replace(StringHelper.replace(propertyNames.get(i), "\\", "\\\\"), "#", "\\#"), ".", "\\.");
 			value.append(property);
-			value.append(".");
+			if (i != propertyNames.size() - 1) {
+				value.append(".");
+			}
 		}
-		value.delete(value.length() - 1, 1);
 		return value.toString();
 	}
 

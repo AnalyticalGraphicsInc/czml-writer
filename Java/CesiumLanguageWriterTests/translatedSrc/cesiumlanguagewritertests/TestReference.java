@@ -5,6 +5,8 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
 import cesiumlanguagewriter.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import org.junit.Assert;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
@@ -16,35 +18,35 @@ public class TestReference {
 		String value = "identifier#property";
 		cesiumlanguagewriter.Reference reference = new Reference(value);
 		Assert.assertEquals(reference.getIdentifier(), "identifier");
-		Assert.assertEquals(reference.getPropertyNames(), new String[] {
-			"property"
-		});
+		ArrayList<String> tempCollection_0 = new ArrayList<String>();
+		tempCollection_0.add("property");
+		Assert.assertEquals(reference.getPropertyNames(), tempCollection_0);
 		Assert.assertEquals(value, reference.getValue());
 		value = ("identifier#property.subProperty");
 		reference = new Reference(value);
 		Assert.assertEquals(reference.getIdentifier(), "identifier");
-		Assert.assertEquals(reference.getPropertyNames(), new String[] {
-				"property",
-				"subProperty"
-		});
+		ArrayList<String> tempCollection_1 = new ArrayList<String>();
+		tempCollection_1.add("property");
+		tempCollection_1.add("subProperty");
+		Assert.assertEquals(reference.getPropertyNames(), tempCollection_1);
 		Assert.assertEquals(value, reference.getValue());
 		value = "\\#identif\\\\\\\\\\#ier\\.\\\\#propertyName.\\.abc\\\\.def";
 		reference = new Reference(value);
 		Assert.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
-		Assert.assertEquals(reference.getPropertyNames(), new String[] {
-				"propertyName",
-				".abc\\",
-				"def"
-		});
+		ArrayList<String> tempCollection_2 = new ArrayList<String>();
+		tempCollection_2.add("propertyName");
+		tempCollection_2.add(".abc\\");
+		tempCollection_2.add("def");
+		Assert.assertEquals(reference.getPropertyNames(), tempCollection_2);
 		Assert.assertEquals(value, reference.getValue());
 		value = "#propertyName.\\.abc\\\\.def";
 		reference = new Reference(value);
 		AssertHelper.assertIsEmpty(reference.getIdentifier());
-		Assert.assertEquals(reference.getPropertyNames(), new String[] {
-				"propertyName",
-				".abc\\",
-				"def"
-		});
+		ArrayList<String> tempCollection_3 = new ArrayList<String>();
+		tempCollection_3.add("propertyName");
+		tempCollection_3.add(".abc\\");
+		tempCollection_3.add("def");
+		Assert.assertEquals(reference.getPropertyNames(), tempCollection_3);
 		Assert.assertEquals(value, reference.getValue());
 	}
 
@@ -52,39 +54,39 @@ public class TestReference {
 	public final void canContructFromIdentifierAndProperty() {
 		cesiumlanguagewriter.Reference reference = new Reference("identifier", "property");
 		Assert.assertEquals(reference.getIdentifier(), "identifier");
-		Assert.assertEquals(reference.getPropertyNames(), new String[] {
-			"property"
-		});
+		ArrayList<String> tempCollection_4 = new ArrayList<String>();
+		tempCollection_4.add("property");
+		Assert.assertEquals(reference.getPropertyNames(), tempCollection_4);
 		Assert.assertEquals(reference.getValue(), "identifier#property");
 		reference = new Reference("#identif\\\\#ier.\\", "property.Name");
 		Assert.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
-		Assert.assertEquals(reference.getPropertyNames(), new String[] {
-			"property.Name"
-		});
+		ArrayList<String> tempCollection_5 = new ArrayList<String>();
+		tempCollection_5.add("property.Name");
+		Assert.assertEquals(reference.getPropertyNames(), tempCollection_5);
 		Assert.assertEquals(reference.getValue(), "\\#identif\\\\\\\\\\#ier\\.\\\\#property\\.Name");
 	}
 
 	@Test
 	public final void canContructFromIdentifierAndProperties() {
-		cesiumlanguagewriter.Reference reference = new Reference("identifier", agi.foundation.compatibility.ArrayHelper.arrayAsList(new String[] {
-				"property",
-				"subProperty"
-		}));
+		ArrayList<String> tempCollection_6 = new ArrayList<String>();
+		tempCollection_6.add("property");
+		tempCollection_6.add("subProperty");
+		cesiumlanguagewriter.Reference reference = new Reference("identifier", tempCollection_6);
 		Assert.assertEquals(reference.getIdentifier(), "identifier");
-		Assert.assertEquals(reference.getPropertyNames(), new String[] {
-				"property",
-				"subProperty"
-		});
+		ArrayList<String> tempCollection_7 = new ArrayList<String>();
+		tempCollection_7.add("property");
+		tempCollection_7.add("subProperty");
+		Assert.assertEquals(reference.getPropertyNames(), tempCollection_7);
 		Assert.assertEquals(reference.getValue(), "identifier#property.subProperty");
-		reference = new Reference("#identif\\\\#ier.\\", agi.foundation.compatibility.ArrayHelper.arrayAsList(new String[] {
-				"property.Name",
-				"subProperty"
-		}));
+		ArrayList<String> tempCollection_8 = new ArrayList<String>();
+		tempCollection_8.add("property.Name");
+		tempCollection_8.add("subProperty");
+		reference = new Reference("#identif\\\\#ier.\\", tempCollection_8);
 		Assert.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
-		Assert.assertEquals(reference.getPropertyNames(), new String[] {
-				"property.Name",
-				"subProperty"
-		});
+		ArrayList<String> tempCollection_9 = new ArrayList<String>();
+		tempCollection_9.add("property.Name");
+		tempCollection_9.add("subProperty");
+		Assert.assertEquals(reference.getPropertyNames(), tempCollection_9);
 		Assert.assertEquals(reference.getValue(), "\\#identif\\\\\\\\\\#ier\\.\\\\#property\\.Name.subProperty");
 	}
 

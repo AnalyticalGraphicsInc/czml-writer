@@ -121,20 +121,22 @@ namespace CesiumLanguageWriter
             return m_identifier.GetHashCode() ^ m_properties.GetHashCode() ^ m_value.GetHashCode();
         }
 
-        static private string FormatReference(string identifier, IEnumerable<string> propertyNames)
+        static private string FormatReference(string identifier, List<string> propertyNames)
         {
             StringBuilder value = new StringBuilder();
 
             identifier = identifier.Replace(@"\", @"\\").Replace("#", @"\#").Replace(".", @"\.");
             value.Append(identifier);
             value.Append("#");
-            foreach (var propertyName in propertyNames)
+            for (var i = 0; i < propertyNames.Count; i++)
             {
-                string property = propertyName.Replace(@"\", @"\\").Replace("#", @"\#").Replace(".", @"\.");
+                string property = propertyNames[i].Replace(@"\", @"\\").Replace("#", @"\#").Replace(".", @"\.");
                 value.Append(property);
-                value.Append(".");
+                if (i != propertyNames.Count - 1)
+                {
+                    value.Append(".");
+                }
             }
-            value.Remove(value.Length - 1, 1);
             return value.ToString();
         }
 
