@@ -437,6 +437,46 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>position</code> property as a <code>cartesianVelocity</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WritePositionPropertyCartesianVelocity(Motion<Cartesian> value)
+        {
+            using (var writer = OpenPositionProperty())
+            {
+                writer.WriteCartesianVelocity(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>position</code> property as a <code>cartesianVelocity</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WritePositionPropertyCartesianVelocity(IList<JulianDate> dates, IList<Motion<Cartesian>> values)
+        {
+            using (var writer = OpenPositionProperty())
+            {
+                writer.WriteCartesianVelocity(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>position</code> property as a <code>cartesianVelocity</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WritePositionPropertyCartesianVelocity(IList<JulianDate> dates, IList<Motion<Cartesian>> values, int startIndex, int length)
+        {
+            using (var writer = OpenPositionProperty())
+            {
+                writer.WriteCartesianVelocity(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
         /// Writes a value for the <code>position</code> property as a <code>reference</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.
         /// </summary>
         /// <param name="value">The reference.</param>

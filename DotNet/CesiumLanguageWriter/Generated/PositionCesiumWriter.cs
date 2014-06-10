@@ -33,6 +33,11 @@ namespace CesiumLanguageWriter
         public const string CartographicDegreesPropertyName = "cartographicDegrees";
 
         /// <summary>
+        /// The name of the <code>cartesianVelocity</code> property.
+        /// </summary>
+        public const string CartesianVelocityPropertyName = "cartesianVelocity";
+
+        /// <summary>
         /// The name of the <code>reference</code> property.
         /// </summary>
         public const string ReferencePropertyName = "reference";
@@ -40,6 +45,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asCartesian;
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>> m_asCartographicRadians;
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>> m_asCartographicDegrees;
+        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Motion<Cartesian>>> m_asCartesianVelocity;
         private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
         /// <summary>
@@ -51,6 +57,7 @@ namespace CesiumLanguageWriter
             m_asCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>>(CreateCartesianAdaptor, false);
             m_asCartographicRadians = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>>(CreateCartographicRadiansAdaptor, false);
             m_asCartographicDegrees = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>>(CreateCartographicDegreesAdaptor, false);
+            m_asCartesianVelocity = new Lazy<ICesiumInterpolatableValuePropertyWriter<Motion<Cartesian>>>(CreateCartesianVelocityAdaptor, false);
             m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
         }
 
@@ -64,6 +71,7 @@ namespace CesiumLanguageWriter
             m_asCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>>(CreateCartesianAdaptor, false);
             m_asCartographicRadians = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>>(CreateCartographicRadiansAdaptor, false);
             m_asCartographicDegrees = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>>(CreateCartographicDegreesAdaptor, false);
+            m_asCartesianVelocity = new Lazy<ICesiumInterpolatableValuePropertyWriter<Motion<Cartesian>>>(CreateCartesianVelocityAdaptor, false);
             m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
         }
 
@@ -194,6 +202,42 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes the <code>cartesianVelocity</code> property.  The <code>cartesianVelocity</code> property specifies the position and velocity represented as two Cartesians `[X, Y, Z, vX, vY, vZ]` in the meters relative to the `referenceFrame`. If the array has six elements, the position is constant. If it has seven or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, vX, vY, vZ, Time, X, Y, Z, vX, vY, vZ, Time, X, Y, Z, vX, vY, vZ, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteCartesianVelocity(Motion<Cartesian> value)
+        {
+            const string PropertyName = CartesianVelocityPropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteCartesian3Velocity(Output, value);
+        }
+
+        /// <summary>
+        /// Writes the <code>cartesianVelocity</code> property.  The <code>cartesianVelocity</code> property specifies the position and velocity represented as two Cartesians `[X, Y, Z, vX, vY, vZ]` in the meters relative to the `referenceFrame`. If the array has six elements, the position is constant. If it has seven or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, vX, vY, vZ, Time, X, Y, Z, vX, vY, vZ, Time, X, Y, Z, vX, vY, vZ, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteCartesianVelocity(IList<JulianDate> dates, IList<Motion<Cartesian>> values)
+        {
+            WriteCartesianVelocity(dates, values, 0, dates.Count);
+        }
+
+        /// <summary>
+        /// Writes the <code>cartesianVelocity</code> property.  The <code>cartesianVelocity</code> property specifies the position and velocity represented as two Cartesians `[X, Y, Z, vX, vY, vZ]` in the meters relative to the `referenceFrame`. If the array has six elements, the position is constant. If it has seven or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, vX, vY, vZ, Time, X, Y, Z, vX, vY, vZ, Time, X, Y, Z, vX, vY, vZ, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteCartesianVelocity(IList<JulianDate> dates, IList<Motion<Cartesian>> values, int startIndex, int length)
+        {
+            const string PropertyName = CartesianVelocityPropertyName;
+            OpenIntervalIfNecessary();
+            CesiumWritingHelper.WriteCartesian3Velocity(Output, PropertyName, dates, values, startIndex, length);
+        }
+
+        /// <summary>
         /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
         /// </summary>
         /// <param name="value">The reference.</param>
@@ -286,6 +330,21 @@ namespace CesiumLanguageWriter
         {
             return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Cartographic>(
                 this, (me, value) => me.WriteCartographicDegrees(value), (PositionCesiumWriter me, IList<JulianDate> dates, IList<Cartographic> values, int startIndex, int length) => me.WriteCartographicDegrees(dates, values, startIndex, length));
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>CartesianVelocity</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumInterpolatableValuePropertyWriter<Motion<Cartesian>> AsCartesianVelocity()
+        {
+            return m_asCartesianVelocity.Value;
+        }
+
+        private ICesiumInterpolatableValuePropertyWriter<Motion<Cartesian>> CreateCartesianVelocityAdaptor()
+        {
+            return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Motion<Cartesian>>(
+                this, (me, value) => me.WriteCartesianVelocity(value), (PositionCesiumWriter me, IList<JulianDate> dates, IList<Motion<Cartesian>> values, int startIndex, int length) => me.WriteCartesianVelocity(dates, values, startIndex, length));
         }
 
         /// <summary>

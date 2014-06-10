@@ -61,6 +61,7 @@
     <Compile Include="Attributes\CSToJavaExcludeBaseAttribute.cs" />
     <Compile Include="Attributes\CSToJavaImmutableValueType.cs" />
     <Compile Include="Attributes\CSToJavaRenameAttribute.cs" />
+    <Compile Include="Attributes\CSToJavaUseNullForDefaultGenericTypeValueAttribute.cs" />
     <Compile Include="Cartesian.cs" />
     <Compile Include="Cartographic.cs" />
     <Compile Include="CartographicExtent.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="LeapSecond.cs" />
     <Compile Include="LeapSeconds.cs" />
     <Compile Include="Matrix3By3.cs" />
+    <Compile Include="Motion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangular.cs" />
     <Compile Include="Reference.cs" />

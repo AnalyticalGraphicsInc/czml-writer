@@ -214,6 +214,15 @@ namespace CesiumLanguageWriter {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A Motion instance must be constructed with at least one value..
+        /// </summary>
+        internal static string MotionMustContainValue {
+            get {
+                return ResourceManager.GetString("MotionMustContainValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An object of the type {0} must be constructed from an array with at least {1} elements..
         /// </summary>
         internal static string MustBeConstructedFromSpecificNumberOfElements {

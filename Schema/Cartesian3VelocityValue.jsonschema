@@ -1,0 +1,5 @@
+{
+    "title": "Cartesian3Velocity",
+    "description": "A three dimensional Cartesian coordinate and it's derivative specified as [X, Y, Z, vX, vY, vZ]. If the array has six elements, the position is constant. If it has seven or more elements, they are time-tagged samples arranged as [Time, X, Y, Z, vX, vY, vZ, Time, X, Y, Z, vX, vY, vZ, Time, X, Y, Z, vX, vY, vZ, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
+    "type": "array"
+}
