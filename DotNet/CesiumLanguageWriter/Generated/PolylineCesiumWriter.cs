@@ -3,8 +3,8 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
-using System.Drawing;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace CesiumLanguageWriter
 {
@@ -13,6 +13,11 @@ namespace CesiumLanguageWriter
     /// </summary>
     public class PolylineCesiumWriter : CesiumPropertyWriter<PolylineCesiumWriter>
     {
+        /// <summary>
+        /// The name of the <code>positions</code> property.
+        /// </summary>
+        public const string PositionsPropertyName = "positions";
+
         /// <summary>
         /// The name of the <code>show</code> property.
         /// </summary>
@@ -38,6 +43,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string OutlineWidthPropertyName = "outlineWidth";
 
+        private readonly Lazy<PositionListCesiumWriter> m_positions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(PositionsPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
@@ -65,6 +71,71 @@ namespace CesiumLanguageWriter
         public override PolylineCesiumWriter Clone()
         {
             return new PolylineCesiumWriter(this);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>positions</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>positions</code> property defines the array of positions defining the polyline as a line strip.
+        /// </summary>
+        public PositionListCesiumWriter PositionsWriter
+        {
+            get { return m_positions.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>positions</code> property.  The <code>positions</code> property defines the array of positions defining the polyline as a line strip.
+        /// </summary>
+        public PositionListCesiumWriter OpenPositionsProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(PositionsWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>positions</code> property as a <code>cartesian</code> value.  The <code>positions</code> property specifies the array of positions defining the polyline as a line strip.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public void WritePositionsProperty(IEnumerable<Cartesian> values)
+        {
+            using (var writer = OpenPositionsProperty())
+            {
+                writer.WriteCartesian(values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>positions</code> property as a <code>cartographicRadians</code> value.  The <code>positions</code> property specifies the array of positions defining the polyline as a line strip.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public void WritePositionsPropertyCartographicRadians(IEnumerable<Cartographic> values)
+        {
+            using (var writer = OpenPositionsProperty())
+            {
+                writer.WriteCartographicRadians(values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>positions</code> property as a <code>cartographicDegrees</code> value.  The <code>positions</code> property specifies the array of positions defining the polyline as a line strip.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public void WritePositionsPropertyCartographicDegrees(IEnumerable<Cartographic> values)
+        {
+            using (var writer = OpenPositionsProperty())
+            {
+                writer.WriteCartographicDegrees(values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>positions</code> property as a <code>references</code> value.  The <code>positions</code> property specifies the array of positions defining the polyline as a line strip.
+        /// </summary>
+        /// <param name="references">The list of references.</param>
+        public void WritePositionsPropertyReferences(IEnumerable<Reference> references)
+        {
+            using (var writer = OpenPositionsProperty())
+            {
+                writer.WriteReferences(references);
+            }
         }
 
         /// <summary>

@@ -10,6 +10,7 @@ import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.MaterialCesiumWriter;
+import cesiumlanguagewriter.PositionListCesiumWriter;
 import java.awt.Color;
 import java.util.List;
 
@@ -20,6 +21,13 @@ import java.util.List;
 
  */
 public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWriter> {
+	/**
+	 *  
+	The name of the <code>positions</code> property.
+	
+
+	 */
+	public static final String PositionsPropertyName = "positions";
 	/**
 	 *  
 	The name of the <code>show</code> property.
@@ -90,6 +98,11 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	 */
 	public static final String PerPositionHeightPropertyName = "perPositionHeight";
+	private Lazy<PositionListCesiumWriter> m_positions = new Lazy<cesiumlanguagewriter.PositionListCesiumWriter>(new Func1<cesiumlanguagewriter.PositionListCesiumWriter>() {
+		public cesiumlanguagewriter.PositionListCesiumWriter invoke() {
+			return new PositionListCesiumWriter(PositionsPropertyName);
+		}
+	}, false);
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
@@ -166,6 +179,102 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	@Override
 	public PolygonCesiumWriter clone() {
 		return new PolygonCesiumWriter(this);
+	}
+
+	/**
+	 *  Gets the writer for the <code>positions</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>positions</code> property defines the array of positions defining a simple polygon.
+	
+
+	 */
+	public final PositionListCesiumWriter getPositionsWriter() {
+		return m_positions.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>positions</code> property.  The <code>positions</code> property defines the array of positions defining a simple polygon.
+	
+
+	 */
+	public final PositionListCesiumWriter openPositionsProperty() {
+		openIntervalIfNecessary();
+		return this.<PositionListCesiumWriter> openAndReturn(getPositionsWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>positions</code> property as a <code>cartesian</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
+	
+	
+
+	 * @param values The values.
+	 */
+	public final void writePositionsProperty(Iterable<Cartesian> values) {
+		{
+			cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
+			try {
+				writer.writeCartesian(values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>positions</code> property as a <code>cartographicRadians</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
+	
+	
+
+	 * @param values The values.
+	 */
+	public final void writePositionsPropertyCartographicRadians(Iterable<Cartographic> values) {
+		{
+			cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
+			try {
+				writer.writeCartographicRadians(values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>positions</code> property as a <code>cartographicDegrees</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
+	
+	
+
+	 * @param values The values.
+	 */
+	public final void writePositionsPropertyCartographicDegrees(Iterable<Cartographic> values) {
+		{
+			cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
+			try {
+				writer.writeCartographicDegrees(values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>positions</code> property as a <code>references</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
+	
+	
+
+	 * @param references The list of references.
+	 */
+	public final void writePositionsPropertyReferences(Iterable<Reference> references) {
+		{
+			cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
+			try {
+				writer.writeReferences(references);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**

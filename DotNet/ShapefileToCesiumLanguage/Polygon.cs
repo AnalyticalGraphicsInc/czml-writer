@@ -56,19 +56,15 @@ namespace ShapefileToCesiumLanguage
                             colorWriter.WriteColorProperty(m_color);
                         }
                     }
-                }
 
-                using (PositionListCesiumWriter positionWriter = packetWriter.OpenVertexPositionsProperty())
-                {
                     PolygonShape polygon = (PolygonShape)m_shape;
                     List<Cartographic> positions = new List<Cartographic>();
                     for (int i = 0; i < part.Count; i++)
                     {
                         positions.Add(part[i]);
                     }
-                    positionWriter.WriteCartographicRadians(positions);
+                    polygonWriter.WritePositionsPropertyCartographicRadians(positions);
                 }
-
             }
         }
 
