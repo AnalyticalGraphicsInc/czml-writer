@@ -41,13 +41,13 @@ namespace WebGLGlobeJsonToCesiumLanguageTests
         }
 
         [Test]
-        public void ListsVertexPositionsForBothEndPoints()
+        public void ListsPositionsForBothEndPoints()
         {
             Series series = new Series("test", new[] { new Cartographic(1, 2, 3) }, m_document);
             series.Write();
 
             string result = m_stringWriter.ToString();
-            StringAssert.Contains("\"vertexPositions\":{\"cartographicDegrees\":[1,2,0,1,2,3]}", result);
+            StringAssert.Contains("\"positions\":{\"cartographicDegrees\":[1,2,0,1,2,3]}", result);
         }
     }
 }

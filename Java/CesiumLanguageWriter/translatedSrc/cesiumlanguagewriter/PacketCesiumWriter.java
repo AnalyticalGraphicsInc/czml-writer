@@ -19,7 +19,6 @@ import cesiumlanguagewriter.PointCesiumWriter;
 import cesiumlanguagewriter.PolygonCesiumWriter;
 import cesiumlanguagewriter.PolylineCesiumWriter;
 import cesiumlanguagewriter.PositionCesiumWriter;
-import cesiumlanguagewriter.PositionListCesiumWriter;
 import cesiumlanguagewriter.PyramidCesiumWriter;
 import cesiumlanguagewriter.StringCesiumWriter;
 import cesiumlanguagewriter.VectorCesiumWriter;
@@ -81,13 +80,6 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	 */
 	public static final String BillboardPropertyName = "billboard";
-	/**
-	 *  
-	The name of the <code>vertexPositions</code> property.
-	
-
-	 */
-	public static final String VertexPositionsPropertyName = "vertexPositions";
 	/**
 	 *  
 	The name of the <code>orientation</code> property.
@@ -199,11 +191,6 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	private Lazy<BillboardCesiumWriter> m_billboard = new Lazy<cesiumlanguagewriter.BillboardCesiumWriter>(new Func1<cesiumlanguagewriter.BillboardCesiumWriter>() {
 		public cesiumlanguagewriter.BillboardCesiumWriter invoke() {
 			return new BillboardCesiumWriter(BillboardPropertyName);
-		}
-	}, false);
-	private Lazy<PositionListCesiumWriter> m_vertexPositions = new Lazy<cesiumlanguagewriter.PositionListCesiumWriter>(new Func1<cesiumlanguagewriter.PositionListCesiumWriter>() {
-		public cesiumlanguagewriter.PositionListCesiumWriter invoke() {
-			return new PositionListCesiumWriter(VertexPositionsPropertyName);
 		}
 	}, false);
 	private Lazy<OrientationCesiumWriter> m_orientation = new Lazy<cesiumlanguagewriter.OrientationCesiumWriter>(new Func1<cesiumlanguagewriter.OrientationCesiumWriter>() {
@@ -875,101 +862,6 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	}
 
 	/**
-	 *  Gets the writer for the <code>vertexPositions</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>vertexPositions</code> property defines the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
-	
-
-	 */
-	public final PositionListCesiumWriter getVertexPositionsWriter() {
-		return m_vertexPositions.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>vertexPositions</code> property.  The <code>vertexPositions</code> property defines the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
-	
-
-	 */
-	public final PositionListCesiumWriter openVertexPositionsProperty() {
-		return this.<PositionListCesiumWriter> openAndReturn(getVertexPositionsWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>vertexPositions</code> property as a <code>cartesian</code> value.  The <code>vertexPositions</code> property specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
-	
-	
-
-	 * @param values The values.
-	 */
-	public final void writeVertexPositionsProperty(Iterable<Cartesian> values) {
-		{
-			cesiumlanguagewriter.PositionListCesiumWriter writer = openVertexPositionsProperty();
-			try {
-				writer.writeCartesian(values);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>vertexPositions</code> property as a <code>cartographicRadians</code> value.  The <code>vertexPositions</code> property specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
-	
-	
-
-	 * @param values The values.
-	 */
-	public final void writeVertexPositionsPropertyCartographicRadians(Iterable<Cartographic> values) {
-		{
-			cesiumlanguagewriter.PositionListCesiumWriter writer = openVertexPositionsProperty();
-			try {
-				writer.writeCartographicRadians(values);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>vertexPositions</code> property as a <code>cartographicDegrees</code> value.  The <code>vertexPositions</code> property specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
-	
-	
-
-	 * @param values The values.
-	 */
-	public final void writeVertexPositionsPropertyCartographicDegrees(Iterable<Cartographic> values) {
-		{
-			cesiumlanguagewriter.PositionListCesiumWriter writer = openVertexPositionsProperty();
-			try {
-				writer.writeCartographicDegrees(values);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>vertexPositions</code> property as a <code>references</code> value.  The <code>vertexPositions</code> property specifies the world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object.
-	
-	
-
-	 * @param references The list of references.
-	 */
-	public final void writeVertexPositionsPropertyReferences(Iterable<Reference> references) {
-		{
-			cesiumlanguagewriter.PositionListCesiumWriter writer = openVertexPositionsProperty();
-			try {
-				writer.writeReferences(references);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
 	 *  Gets the writer for the <code>orientation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>orientation</code> property defines the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object.
 	
 
@@ -1172,7 +1064,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	}
 
 	/**
-	 *  Gets the writer for the <code>polyline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>polyline</code> property defines a polyline, which is a line in the scene composed of multiple segments.  The vertices of the polyline are specified by the `vertexPositions` property.
+	 *  Gets the writer for the <code>polyline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>polyline</code> property defines a polyline, which is a line in the scene composed of multiple segments.
 	
 
 	 */
@@ -1182,7 +1074,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>polyline</code> property.  The <code>polyline</code> property defines a polyline, which is a line in the scene composed of multiple segments.  The vertices of the polyline are specified by the `vertexPositions` property.
+	Opens and returns the writer for the <code>polyline</code> property.  The <code>polyline</code> property defines a polyline, which is a line in the scene composed of multiple segments.
 	
 
 	 */
@@ -1210,7 +1102,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	}
 
 	/**
-	 *  Gets the writer for the <code>polygon</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>polygon</code> property defines a polygon, which is a closed figure on the surface of the Earth.  The vertices of the polygon are specified by the `vertexPositions` property.
+	 *  Gets the writer for the <code>polygon</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>polygon</code> property defines a polygon, which is a closed figure on the surface of the Earth.
 	
 
 	 */
@@ -1220,7 +1112,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>polygon</code> property.  The <code>polygon</code> property defines a polygon, which is a closed figure on the surface of the Earth.  The vertices of the polygon are specified by the `vertexPositions` property.
+	Opens and returns the writer for the <code>polygon</code> property.  The <code>polygon</code> property defines a polygon, which is a closed figure on the surface of the Earth.
 	
 
 	 */

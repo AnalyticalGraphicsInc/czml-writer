@@ -26,34 +26,23 @@ namespace ShapefileToCesiumLanguage
         public override void Write()
         {
             PolylineShape polyline = (PolylineShape)m_shape;
-            for (int part = 0; part < polyline.Count; part++)
+            for (int i = 0; i < polyline.Count; i++)
             {
-                this.WritePacket(polyline[part]);
-            }
-        }
-
-        /// <summary>
-        /// Writes a new polyline packet for each part of the shape.
-        /// </summary>
-        /// <param name="part">The <see cref="ShapePart"/> of the <see cref="PolylineShape"/> to write</param>
-        private void WritePacket(ShapePart part)
-        {
-            using (PacketCesiumWriter packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
-            {
-                packetWriter.WriteId(Guid.NewGuid().ToString());
-                using (PositionListCesiumWriter position = packetWriter.OpenVertexPositionsProperty())
+                ShapePart part = polyline[i];
+                using (PacketCesiumWriter packetWriter = m_document.CesiumStreamWriter.OpenPacket(m_document.CesiumOutputStream))
                 {
-                    PolylineShape polyline = (PolylineShape)m_shape;
-                    List<Cartographic> positions = new List<Cartographic>();
-                    for (int i = 0; i < part.Count; i++)
+                    packetWriter.WriteId(Guid.NewGuid().ToString());
+                    using (PolylineCesiumWriter polylineWriter = packetWriter.OpenPolylineProperty())
                     {
-                        positions.Add(part[i]);
+                        polylineWriter.WriteColorProperty(m_color);
+
+                        List<Cartographic> positions = new List<Cartographic>();
+                        for (int x = 0; x < part.Count; x++)
+                        {
+                            positions.Add(part[x]);
+                        }
+                        polylineWriter.WritePositionsPropertyCartographicRadians(positions);
                     }
-                    position.WriteCartographicRadians(positions);
-                }
-                using (PolylineCesiumWriter polylineWriter = packetWriter.OpenPolylineProperty())
-                {
-                    polylineWriter.WriteColorProperty(m_color);
                 }
             }
         }

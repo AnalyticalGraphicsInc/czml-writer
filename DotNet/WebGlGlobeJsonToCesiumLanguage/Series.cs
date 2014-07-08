@@ -19,7 +19,7 @@ namespace WebGLGlobeJsonToCesiumLanguage
         /// Series series = new Series("test", positions, document);
         /// </example>
         public Series(string id, Cartographic[] coordinatesDegrees, CzmlDocument document, double heightScalar = 1.0)
-        {        
+        {
             m_id = id;
             m_document = document;
             m_coordinates = (Cartographic[])coordinatesDegrees.Clone();
@@ -29,17 +29,17 @@ namespace WebGLGlobeJsonToCesiumLanguage
         /// <summary>
         /// Gets the ID.
         /// </summary>
-        public string ID 
+        public string ID
         {
-            get { return m_id; } 
+            get { return m_id; }
         }
 
         /// <summary>
         /// Gets the <see cref="Cartographic"/> array of coordinates in degrees.
         /// </summary>
-        public Cartographic[] CoordinatesDegrees 
+        public Cartographic[] CoordinatesDegrees
         {
-            get { return m_coordinates; } 
+            get { return m_coordinates; }
         }
 
         /// <summary>
@@ -76,13 +76,10 @@ namespace WebGLGlobeJsonToCesiumLanguage
                     using (PolylineCesiumWriter polyline = packetWriter.OpenPolylineProperty())
                     {
                         polyline.WriteColorProperty(ColorFromHSV(0.6 - (m_coordinates[index].Height * 0.5), 1.0, 1.0));
-                    }
-                    using (PositionListCesiumWriter vertexPositions = packetWriter.OpenVertexPositionsProperty())
-                    {
                         Cartographic[] positions = new Cartographic[] {
-                            new Cartographic(m_coordinates[index].Longitude, m_coordinates[index].Latitude, 0.0),
-                            new Cartographic(m_coordinates[index].Longitude, m_coordinates[index].Latitude, m_coordinates[index].Height * m_scalar)};
-                        vertexPositions.WriteCartographicDegrees(positions);
+                        new Cartographic(m_coordinates[index].Longitude, m_coordinates[index].Latitude, 0.0),
+                        new Cartographic(m_coordinates[index].Longitude, m_coordinates[index].Latitude, m_coordinates[index].Height * m_scalar)};
+                        polyline.WritePositionsPropertyCartographicDegrees(positions);
                     }
                 }
             }

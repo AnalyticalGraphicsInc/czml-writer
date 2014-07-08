@@ -37,10 +37,6 @@
             "$ref": "Billboard.jsonschema",
             "description": "A billboard, or viewport-aligned image. The billboard is positioned in the scene by the position property. A billboard is sometimes called a marker."
         },
-        "vertexPositions": {
-            "$ref": "PositionList.jsonschema",
-            "description": "The world-space positions of vertices.  The vertex positions have no direct visual representation, but they are used to define polygons, polylines, and other objects attached to the object."
-        },
         "orientation": {
             "$ref": "Orientation.jsonschema",
             "description": "The orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, and pyramids attached to the object."
@@ -55,7 +51,7 @@
         },
         "polyline": {
             "$ref": "Polyline.jsonschema",
-            "description": "A polyline, which is a line in the scene composed of multiple segments.  The vertices of the polyline are specified by the `vertexPositions` property."
+            "description": "A polyline, which is a line in the scene composed of multiple segments."
         },
         "path": {
             "$ref": "Path.jsonschema",
@@ -63,7 +59,7 @@
         },
         "polygon": {
             "$ref": "Polygon.jsonschema",
-            "description": "A polygon, which is a closed figure on the surface of the Earth.  The vertices of the polygon are specified by the `vertexPositions` property."
+            "description": "A polygon, which is a closed figure on the surface of the Earth."
         },
         "cone": {
             "$ref": "Cone.jsonschema",
