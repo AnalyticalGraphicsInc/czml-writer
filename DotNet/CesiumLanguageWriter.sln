@@ -50,7 +50,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\PixelOffset.jsonschema = ..\Schema\PixelOffset.jsonschema
 		..\Schema\Point.jsonschema = ..\Schema\Point.jsonschema
 		..\Schema\Polygon.jsonschema = ..\Schema\Polygon.jsonschema
-		..\Schema\PolygonHeirarchy.jsonschema = ..\Schema\PolygonHeirarchy.jsonschema
 		..\Schema\Polyline.jsonschema = ..\Schema\Polyline.jsonschema
 		..\Schema\Position.jsonschema = ..\Schema\Position.jsonschema
 		..\Schema\PositionList.jsonschema = ..\Schema\PositionList.jsonschema
