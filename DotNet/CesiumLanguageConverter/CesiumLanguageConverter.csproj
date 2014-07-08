@@ -45,10 +45,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KmlToCesiumLanguage\KmlToCesiumLanguage.csproj">
-      <Project>{A3F1CB98-2E69-4CDE-9A9F-8B93719F5621}</Project>
-      <Name>KmlToCesiumLanguage</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WebGlGlobeJsonToCesiumLanguage\WebGLGlobeJsonToCesiumLanguage.csproj">
       <Project>{4F0AC6EB-6E10-4CA8-870D-B6B2C9C969E3}</Project>
       <Name>WebGLGlobeJsonToCesiumLanguage</Name>
