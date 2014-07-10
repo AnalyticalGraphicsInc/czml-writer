@@ -27,6 +27,10 @@
         "outlineWidth": {
             "$ref": "Double.jsonschema",
             "description": "The width of the outline of the polyline."
+        },
+        "followSurface": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the positions are connected as great arcs (the default) or as straight lines."
         }
     }
 }
