@@ -13,7 +13,7 @@
             "description": "Whether or not the polyline is shown."
         },
         "material": {
-            "$ref": "Material.jsonschema",
+            "$ref": "PolylineMaterial.jsonschema",
             "description": "The material to use to draw the polyline."
         },
         "width": {

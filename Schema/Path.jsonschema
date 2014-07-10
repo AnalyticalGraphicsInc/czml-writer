@@ -9,7 +9,7 @@
             "description": "Whether or not the path is shown."
         },
         "material": {
-            "$ref": "Material.jsonschema",
+            "$ref": "PolylineMaterial.jsonschema",
             "description": "The material to use to draw the path."
         },
         "width": {

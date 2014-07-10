@@ -19,14 +19,6 @@
 		"stripe":{
 		    "$ref": "StripeMaterial.jsonschema",
             "description": "Fills the surface with alternating colors."		
-		},
-		"polylineOutline":{
-		    "$ref": "PolylineOutlineMaterial.jsonschema",
-            "description": "Fills the surface of a line with an outlined color."
-		},
-		"polylineGlow":{
-		    "$ref": "PolylineGlowMaterial.jsonschema",
-            "description": "Fills the surface of a line with a glowing color."
 		}
     }
 }

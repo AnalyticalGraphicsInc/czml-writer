@@ -8,7 +8,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
-import cesiumlanguagewriter.MaterialCesiumWriter;
+import cesiumlanguagewriter.PolylineMaterialCesiumWriter;
 import cesiumlanguagewriter.PositionListCesiumWriter;
 import java.util.List;
 
@@ -57,9 +57,9 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 			return new BooleanCesiumWriter(ShowPropertyName);
 		}
 	}, false);
-	private Lazy<MaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
-		public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
-			return new MaterialCesiumWriter(MaterialPropertyName);
+	private Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.PolylineMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineMaterialCesiumWriter>() {
+		public cesiumlanguagewriter.PolylineMaterialCesiumWriter invoke() {
+			return new PolylineMaterialCesiumWriter(MaterialPropertyName);
 		}
 	}, false);
 	private Lazy<DoubleCesiumWriter> m_width = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
@@ -235,7 +235,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 	
 
 	 */
-	public final MaterialCesiumWriter getMaterialWriter() {
+	public final PolylineMaterialCesiumWriter getMaterialWriter() {
 		return m_material.getValue();
 	}
 
@@ -245,9 +245,9 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 	
 
 	 */
-	public final MaterialCesiumWriter openMaterialProperty() {
+	public final PolylineMaterialCesiumWriter openMaterialProperty() {
 		openIntervalIfNecessary();
-		return this.<MaterialCesiumWriter> openAndReturn(getMaterialWriter());
+		return this.<PolylineMaterialCesiumWriter> openAndReturn(getMaterialWriter());
 	}
 
 	/**

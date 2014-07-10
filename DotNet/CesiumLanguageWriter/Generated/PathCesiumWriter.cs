@@ -43,7 +43,7 @@ namespace CesiumLanguageWriter
         public const string TrailTimePropertyName = "trailTime";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
-        private readonly Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(MaterialPropertyName), false);
+        private readonly Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<PolylineMaterialCesiumWriter>(() => new PolylineMaterialCesiumWriter(MaterialPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_resolution = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ResolutionPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_leadTime = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(LeadTimePropertyName), false);
@@ -104,7 +104,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>material</code> property defines the material to use to draw the path.
         /// </summary>
-        public MaterialCesiumWriter MaterialWriter
+        public PolylineMaterialCesiumWriter MaterialWriter
         {
             get { return m_material.Value; }
         }
@@ -112,7 +112,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to use to draw the path.
         /// </summary>
-        public MaterialCesiumWriter OpenMaterialProperty()
+        public PolylineMaterialCesiumWriter OpenMaterialProperty()
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(MaterialWriter);
