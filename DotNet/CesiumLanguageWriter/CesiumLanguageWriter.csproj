@@ -108,6 +108,8 @@
     <Compile Include="Generated\PointCesiumWriter.cs" />
     <Compile Include="Generated\PolygonCesiumWriter.cs" />
     <Compile Include="Generated\PolylineCesiumWriter.cs" />
+    <Compile Include="Generated\PolylineGlowMaterialCesiumWriter.cs" />
+    <Compile Include="Generated\PolylineOutlineMaterialCesiumWriter.cs" />
     <Compile Include="Generated\PositionCesiumWriter.cs" />
     <Compile Include="Generated\PositionListCesiumWriter.cs" />
     <Compile Include="Generated\PyramidCesiumWriter.cs" />

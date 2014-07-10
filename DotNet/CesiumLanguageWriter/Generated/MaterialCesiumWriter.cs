@@ -33,10 +33,22 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string StripePropertyName = "stripe";
 
+        /// <summary>
+        /// The name of the <code>polylineOutline</code> property.
+        /// </summary>
+        public const string PolylineOutlinePropertyName = "polylineOutline";
+
+        /// <summary>
+        /// The name of the <code>polylineGlow</code> property.
+        /// </summary>
+        public const string PolylineGlowPropertyName = "polylineGlow";
+
         private readonly Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<SolidColorMaterialCesiumWriter>(() => new SolidColorMaterialCesiumWriter(SolidColorPropertyName), false);
         private readonly Lazy<ImageMaterialCesiumWriter> m_image = new Lazy<ImageMaterialCesiumWriter>(() => new ImageMaterialCesiumWriter(ImagePropertyName), false);
         private readonly Lazy<GridMaterialCesiumWriter> m_grid = new Lazy<GridMaterialCesiumWriter>(() => new GridMaterialCesiumWriter(GridPropertyName), false);
         private readonly Lazy<StripeMaterialCesiumWriter> m_stripe = new Lazy<StripeMaterialCesiumWriter>(() => new StripeMaterialCesiumWriter(StripePropertyName), false);
+        private readonly Lazy<PolylineOutlineMaterialCesiumWriter> m_polylineOutline = new Lazy<PolylineOutlineMaterialCesiumWriter>(() => new PolylineOutlineMaterialCesiumWriter(PolylineOutlinePropertyName), false);
+        private readonly Lazy<PolylineGlowMaterialCesiumWriter> m_polylineGlow = new Lazy<PolylineGlowMaterialCesiumWriter>(() => new PolylineGlowMaterialCesiumWriter(PolylineGlowPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -127,6 +139,40 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(StripeWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>polylineOutline</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>polylineOutline</code> property defines fills the surface of a line with an outlined color.
+        /// </summary>
+        public PolylineOutlineMaterialCesiumWriter PolylineOutlineWriter
+        {
+            get { return m_polylineOutline.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>polylineOutline</code> property.  The <code>polylineOutline</code> property defines fills the surface of a line with an outlined color.
+        /// </summary>
+        public PolylineOutlineMaterialCesiumWriter OpenPolylineOutlineProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(PolylineOutlineWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>polylineGlow</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>polylineGlow</code> property defines fills the surface of a line with a glowing color.
+        /// </summary>
+        public PolylineGlowMaterialCesiumWriter PolylineGlowWriter
+        {
+            get { return m_polylineGlow.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>polylineGlow</code> property.  The <code>polylineGlow</code> property defines fills the surface of a line with a glowing color.
+        /// </summary>
+        public PolylineGlowMaterialCesiumWriter OpenPolylineGlowProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(PolylineGlowWriter);
         }
 
     }
