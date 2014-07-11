@@ -8,9 +8,9 @@
             "$ref": "Boolean.jsonschema",
             "description": "Whether or not the path is shown."
         },
-        "color": {
-            "$ref": "Color.jsonschema",
-            "description": "The color of the path line."
+        "material": {
+            "$ref": "PolylineMaterial.jsonschema",
+            "description": "The material to use to draw the path."
         },
         "width": {
             "$ref": "Double.jsonschema",
@@ -20,14 +20,6 @@
             "$ref": "Double.jsonschema",
             "description": "The maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specfies, additional steps will be taken, creating a smoother path."
 		},
-        "outlineColor": {
-            "$ref": "Color.jsonschema",
-            "description": "The color of the outline of the path."
-        },
-        "outlineWidth": {
-            "$ref": "Double.jsonschema",
-            "description": "The width of the outline of the path."
-        },
         "leadTime": {
             "$ref": "Double.jsonschema",
             "description": "The time ahead of the animation time, in seconds, to show the path."

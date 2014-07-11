@@ -34,7 +34,11 @@ namespace ShapefileToCesiumLanguage
                     packetWriter.WriteId(Guid.NewGuid().ToString());
                     using (PolylineCesiumWriter polylineWriter = packetWriter.OpenPolylineProperty())
                     {
-                        polylineWriter.WriteColorProperty(m_color);
+                        using (var materialWriter = polylineWriter.OpenMaterialProperty())
+                        using (var colorWriter = materialWriter.OpenSolidColorProperty())
+                        {
+                            colorWriter.WriteColorProperty(m_color);
+                        }
 
                         List<Cartographic> positions = new List<Cartographic>();
                         for (int x = 0; x < part.Count; x++)

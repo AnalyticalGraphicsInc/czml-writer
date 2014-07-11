@@ -17,7 +17,7 @@
             "description": "Fills the surface with a grid."
         },
 		"stripe":{
-            "$ref": "StripeMaterial.jsonschema",
+		    "$ref": "StripeMaterial.jsonschema",
             "description": "Fills the surface with alternating colors."		
 		}
     }

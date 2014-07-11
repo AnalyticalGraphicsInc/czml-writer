@@ -29,7 +29,7 @@ namespace ShapefileToCesiumLanguageTests
             m_metadata = new StringDictionary();
             m_pointPattern = @"{""id"":""[0-9a-zA-Z-]+"",""position"":{""cartographicRadians"":\[-?(\d)*(\.([\de-])*)?,-?(\d)*(\.([\de-])*)?,-?(\d)*(\.([\de-])*)?\]},""point"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}}";
             m_polygonPattern = @"{""id"":""[0-9a-zA-Z-]+"",""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}},""positions"":{""cartographicRadians"":\[(-?(\d)*(\.([\de-])*)?,-?(\d)*(\.([\de-])*)?,-?(\d)*(\.([\de-])*)?,?)+\]}}}";
-            m_polylinePattern = @"{""id"":""[0-9a-zA-Z-]+"",""polyline"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]},""positions"":{""cartographicRadians"":\[(-?(\d)*(\.([\de-])*)?,-?(\d)*(\.([\de-])*)?,-?(\d)*(\.([\de-])*)?,?)+\]}}}";
+            m_polylinePattern = @"{""id"":""[0-9a-zA-Z-]+"",""polyline"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}},""positions"":{""cartographicRadians"":\[(-?(\d)*(\.([\de-])*)?,-?(\d)*(\.([\de-])*)?,-?(\d)*(\.([\de-])*)?,?)+\]}}}";
             m_trianglePattern = @"{""id"":""[0-9a-zA-Z-]+"",""polygon"":{""material"":{""solidColor"":{""color"":{""rgba"":\[\d{1,3},\d{1,3},\d{1,3},\d{1,3}\]}}},""positions"":{""cartographicRadians"":\[(-?(\d)*(\.([\de-])*)?,?){9}\]}}}";
         }
 
