@@ -12,29 +12,17 @@
             "$ref": "Double.jsonschema",
             "description": "Alpha value for the space between grid lines.  This will be combined with the color alpha."
         },
-        "rowCount": {
-            "$ref": "Double.jsonschema",
-            "description": "The number of horizontal grid lines."
+        "lineCount": {
+            "$ref": "Cartesian2Value.jsonschema",
+            "description": "The number of grid lines along each axis."
         },
-        "columnCount": {
-            "$ref": "Double.jsonschema",
-            "description": "The number of vertical grid lines."
+        "lineThickness": {
+            "$ref": "Cartesian2Value.jsonschema",
+            "description": "The thickness of grid lines along each axis, in pixels."
         },
-        "rowThickness": {
-            "$ref": "Double.jsonschema",
-            "description": "The thickness of horizontal grid lines, in pixels."
-        },
-        "columnThickness": {
-            "$ref": "Double.jsonschema",
-            "description": "The thickness of vertical grid lines, in pixels."
-        },
-        "rowOffset": {
-            "$ref": "Double.jsonschema",
-            "description": "The offset of horizontal grid lines, as a percentage from 0 to 1."
-        },
-        "columnOffset": {
-            "$ref": "Double.jsonschema",
-            "description": "The offset of vertical grid lines, as a percentage from 0 to 1."
+        "lineOffset": {
+            "$ref": "Cartesian2Value.jsonschema",
+            "description": "The offset of grid lines along each axis, as a percentage from 0 to 1."
         }
     }
 }

@@ -4,6 +4,7 @@
 using CesiumLanguageWriter.Advanced;
 using System;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace CesiumLanguageWriter
 {
@@ -16,6 +17,11 @@ namespace CesiumLanguageWriter
         /// The name of the <code>image</code> property.
         /// </summary>
         public const string ImagePropertyName = "image";
+
+        /// <summary>
+        /// The name of the <code>repeat</code> property.
+        /// </summary>
+        public const string RepeatPropertyName = "repeat";
 
         private readonly Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(ImagePropertyName), false);
 
@@ -170,6 +176,52 @@ namespace CesiumLanguageWriter
             {
                 writer.WriteReference(identifier, propertyNames);
             }
+        }
+
+        /// <summary>
+        /// Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteRepeat(Rectangular value)
+        {
+            const string PropertyName = RepeatPropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteCartesian2(Output, value);
+        }
+
+        /// <summary>
+        /// Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+        /// </summary>
+        /// <param name="x">The X component.</param>
+        /// <param name="y">The Y component.</param>
+        public void WriteRepeat(double x, double y)
+        {
+            WriteRepeat(new Rectangular(x, y));
+        }
+
+        /// <summary>
+        /// Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteRepeat(IList<JulianDate> dates, IList<Rectangular> values)
+        {
+            WriteRepeat(dates, values, 0, dates.Count);
+        }
+
+        /// <summary>
+        /// Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteRepeat(IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
+        {
+            const string PropertyName = RepeatPropertyName;
+            OpenIntervalIfNecessary();
+            CesiumWritingHelper.WriteCartesian2(Output, PropertyName, dates, values, startIndex, length);
         }
 
     }

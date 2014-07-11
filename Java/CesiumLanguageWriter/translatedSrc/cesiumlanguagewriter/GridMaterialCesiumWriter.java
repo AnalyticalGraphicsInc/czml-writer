@@ -34,46 +34,25 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	public static final String CellAlphaPropertyName = "cellAlpha";
 	/**
 	 *  
-	The name of the <code>rowCount</code> property.
+	The name of the <code>lineCount</code> property.
 	
 
 	 */
-	public static final String RowCountPropertyName = "rowCount";
+	public static final String LineCountPropertyName = "lineCount";
 	/**
 	 *  
-	The name of the <code>columnCount</code> property.
+	The name of the <code>lineThickness</code> property.
 	
 
 	 */
-	public static final String ColumnCountPropertyName = "columnCount";
+	public static final String LineThicknessPropertyName = "lineThickness";
 	/**
 	 *  
-	The name of the <code>rowThickness</code> property.
+	The name of the <code>lineOffset</code> property.
 	
 
 	 */
-	public static final String RowThicknessPropertyName = "rowThickness";
-	/**
-	 *  
-	The name of the <code>columnThickness</code> property.
-	
-
-	 */
-	public static final String ColumnThicknessPropertyName = "columnThickness";
-	/**
-	 *  
-	The name of the <code>rowOffset</code> property.
-	
-
-	 */
-	public static final String RowOffsetPropertyName = "rowOffset";
-	/**
-	 *  
-	The name of the <code>columnOffset</code> property.
-	
-
-	 */
-	public static final String ColumnOffsetPropertyName = "columnOffset";
+	public static final String LineOffsetPropertyName = "lineOffset";
 	private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
 		public cesiumlanguagewriter.ColorCesiumWriter invoke() {
 			return new ColorCesiumWriter(ColorPropertyName);
@@ -82,36 +61,6 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	private Lazy<DoubleCesiumWriter> m_cellAlpha = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(CellAlphaPropertyName);
-		}
-	}, false);
-	private Lazy<DoubleCesiumWriter> m_rowCount = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(RowCountPropertyName);
-		}
-	}, false);
-	private Lazy<DoubleCesiumWriter> m_columnCount = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(ColumnCountPropertyName);
-		}
-	}, false);
-	private Lazy<DoubleCesiumWriter> m_rowThickness = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(RowThicknessPropertyName);
-		}
-	}, false);
-	private Lazy<DoubleCesiumWriter> m_columnThickness = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(ColumnThicknessPropertyName);
-		}
-	}, false);
-	private Lazy<DoubleCesiumWriter> m_rowOffset = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(RowOffsetPropertyName);
-		}
-	}, false);
-	private Lazy<DoubleCesiumWriter> m_columnOffset = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(ColumnOffsetPropertyName);
 		}
 	}, false);
 
@@ -481,866 +430,191 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	}
 
 	/**
-	 *  Gets the writer for the <code>rowCount</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rowCount</code> property defines the number of horizontal grid lines.
-	
-
-	 */
-	public final DoubleCesiumWriter getRowCountWriter() {
-		return m_rowCount.getValue();
-	}
-
-	/**
 	 *  
-	Opens and returns the writer for the <code>rowCount</code> property.  The <code>rowCount</code> property defines the number of horizontal grid lines.
-	
-
-	 */
-	public final DoubleCesiumWriter openRowCountProperty() {
-		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getRowCountWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowCount</code> property as a <code>number</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
+	Writes the <code>lineCount</code> property.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeRowCountProperty(double value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowCountProperty();
-			try {
-				writer.writeNumber(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
+	public final void writeLineCount(Rectangular value) {
+		String PropertyName = LineCountPropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeCartesian2(getOutput(), value);
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>rowCount</code> property as a <code>number</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
+	Writes the <code>lineCount</code> property.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+	
+	
+	
+
+	 * @param x The X component.
+	 * @param y The Y component.
+	 */
+	public final void writeLineCount(double x, double y) {
+		writeLineCount(new Rectangular(x, y));
+	}
+
+	/**
+	 *  
+	Writes the <code>lineCount</code> property.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeLineCount(List<JulianDate> dates, List<Rectangular> values) {
+		writeLineCount(dates, values, 0, dates.size());
+	}
+
+	/**
+	 *  
+	Writes the <code>lineCount</code> property.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
 	
 	
 	
 	
 	
 
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeRowCountProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowCountProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowCount</code> property as a <code>reference</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeRowCountPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowCountProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowCount</code> property as a <code>reference</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeRowCountPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowCountProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowCount</code> property as a <code>reference</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeRowCountPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowCountProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowCount</code> property as a <code>reference</code> value.  The <code>rowCount</code> property specifies the number of horizontal grid lines.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeRowCountPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowCountProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>columnCount</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>columnCount</code> property defines the number of vertical grid lines.
-	
-
-	 */
-	public final DoubleCesiumWriter getColumnCountWriter() {
-		return m_columnCount.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>columnCount</code> property.  The <code>columnCount</code> property defines the number of vertical grid lines.
-	
-
-	 */
-	public final DoubleCesiumWriter openColumnCountProperty() {
+	public final void writeLineCount(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
+		String PropertyName = LineCountPropertyName;
 		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getColumnCountWriter());
+		CesiumWritingHelper.writeCartesian2(getOutput(), PropertyName, dates, values, startIndex, length);
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>columnCount</code> property as a <code>number</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
+	Writes the <code>lineThickness</code> property.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeColumnCountProperty(double value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnCountProperty();
-			try {
-				writer.writeNumber(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
+	public final void writeLineThickness(Rectangular value) {
+		String PropertyName = LineThicknessPropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeCartesian2(getOutput(), value);
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>columnCount</code> property as a <code>number</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
+	Writes the <code>lineThickness</code> property.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+	
+	
+	
+
+	 * @param x The X component.
+	 * @param y The Y component.
+	 */
+	public final void writeLineThickness(double x, double y) {
+		writeLineThickness(new Rectangular(x, y));
+	}
+
+	/**
+	 *  
+	Writes the <code>lineThickness</code> property.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeLineThickness(List<JulianDate> dates, List<Rectangular> values) {
+		writeLineThickness(dates, values, 0, dates.size());
+	}
+
+	/**
+	 *  
+	Writes the <code>lineThickness</code> property.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
 	
 	
 	
 	
 	
 
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeColumnCountProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnCountProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>columnCount</code> property as a <code>reference</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeColumnCountPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnCountProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>columnCount</code> property as a <code>reference</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeColumnCountPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnCountProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>columnCount</code> property as a <code>reference</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeColumnCountPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnCountProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>columnCount</code> property as a <code>reference</code> value.  The <code>columnCount</code> property specifies the number of vertical grid lines.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeColumnCountPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnCountProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>rowThickness</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rowThickness</code> property defines the thickness of horizontal grid lines, in pixels.
-	
-
-	 */
-	public final DoubleCesiumWriter getRowThicknessWriter() {
-		return m_rowThickness.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>rowThickness</code> property.  The <code>rowThickness</code> property defines the thickness of horizontal grid lines, in pixels.
-	
-
-	 */
-	public final DoubleCesiumWriter openRowThicknessProperty() {
+	public final void writeLineThickness(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
+		String PropertyName = LineThicknessPropertyName;
 		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getRowThicknessWriter());
+		CesiumWritingHelper.writeCartesian2(getOutput(), PropertyName, dates, values, startIndex, length);
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>rowThickness</code> property as a <code>number</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
+	Writes the <code>lineOffset</code> property.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeRowThicknessProperty(double value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowThicknessProperty();
-			try {
-				writer.writeNumber(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowThickness</code> property as a <code>number</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeRowThicknessProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowThicknessProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowThickness</code> property as a <code>reference</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeRowThicknessPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowThicknessProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowThickness</code> property as a <code>reference</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeRowThicknessPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowThicknessProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowThickness</code> property as a <code>reference</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeRowThicknessPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowThicknessProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowThickness</code> property as a <code>reference</code> value.  The <code>rowThickness</code> property specifies the thickness of horizontal grid lines, in pixels.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeRowThicknessPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowThicknessProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>columnThickness</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>columnThickness</code> property defines the thickness of vertical grid lines, in pixels.
-	
-
-	 */
-	public final DoubleCesiumWriter getColumnThicknessWriter() {
-		return m_columnThickness.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>columnThickness</code> property.  The <code>columnThickness</code> property defines the thickness of vertical grid lines, in pixels.
-	
-
-	 */
-	public final DoubleCesiumWriter openColumnThicknessProperty() {
+	public final void writeLineOffset(Rectangular value) {
+		String PropertyName = LineOffsetPropertyName;
 		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getColumnThicknessWriter());
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeCartesian2(getOutput(), value);
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>columnThickness</code> property as a <code>number</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
+	Writes the <code>lineOffset</code> property.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+	
 	
 	
 
-	 * @param value The value.
+	 * @param x The X component.
+	 * @param y The Y component.
 	 */
-	public final void writeColumnThicknessProperty(double value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnThicknessProperty();
-			try {
-				writer.writeNumber(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
+	public final void writeLineOffset(double x, double y) {
+		writeLineOffset(new Rectangular(x, y));
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>columnThickness</code> property as a <code>number</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
+	Writes the <code>lineOffset</code> property.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeLineOffset(List<JulianDate> dates, List<Rectangular> values) {
+		writeLineOffset(dates, values, 0, dates.size());
+	}
+
+	/**
+	 *  
+	Writes the <code>lineOffset</code> property.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
 	
 	
 	
 	
 	
 
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeColumnThicknessProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnThicknessProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>columnThickness</code> property as a <code>reference</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeColumnThicknessPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnThicknessProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>columnThickness</code> property as a <code>reference</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeColumnThicknessPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnThicknessProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>columnThickness</code> property as a <code>reference</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeColumnThicknessPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnThicknessProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>columnThickness</code> property as a <code>reference</code> value.  The <code>columnThickness</code> property specifies the thickness of vertical grid lines, in pixels.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeColumnThicknessPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnThicknessProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>rowOffset</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rowOffset</code> property defines the offset of horizontal grid lines, as a percentage from 0 to 1.
-	
-
-	 */
-	public final DoubleCesiumWriter getRowOffsetWriter() {
-		return m_rowOffset.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>rowOffset</code> property.  The <code>rowOffset</code> property defines the offset of horizontal grid lines, as a percentage from 0 to 1.
-	
-
-	 */
-	public final DoubleCesiumWriter openRowOffsetProperty() {
+	public final void writeLineOffset(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
+		String PropertyName = LineOffsetPropertyName;
 		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getRowOffsetWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowOffset</code> property as a <code>number</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeRowOffsetProperty(double value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowOffsetProperty();
-			try {
-				writer.writeNumber(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowOffset</code> property as a <code>number</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeRowOffsetProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowOffsetProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowOffset</code> property as a <code>reference</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeRowOffsetPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowOffsetProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowOffset</code> property as a <code>reference</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeRowOffsetPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowOffsetProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowOffset</code> property as a <code>reference</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeRowOffsetPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowOffsetProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>rowOffset</code> property as a <code>reference</code> value.  The <code>rowOffset</code> property specifies the offset of horizontal grid lines, as a percentage from 0 to 1.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeRowOffsetPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRowOffsetProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>columnOffset</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>columnOffset</code> property defines the offset of vertical grid lines, as a percentage from 0 to 1.
-	
-
-	 */
-	public final DoubleCesiumWriter getColumnOffsetWriter() {
-		return m_columnOffset.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>columnOffset</code> property.  The <code>columnOffset</code> property defines the offset of vertical grid lines, as a percentage from 0 to 1.
-	
-
-	 */
-	public final DoubleCesiumWriter openColumnOffsetProperty() {
-		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getColumnOffsetWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>columnOffset</code> property as a <code>number</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeColumnOffsetProperty(double value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnOffsetProperty();
-			try {
-				writer.writeNumber(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>columnOffset</code> property as a <code>number</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeColumnOffsetProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnOffsetProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>columnOffset</code> property as a <code>reference</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeColumnOffsetPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnOffsetProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>columnOffset</code> property as a <code>reference</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeColumnOffsetPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnOffsetProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>columnOffset</code> property as a <code>reference</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeColumnOffsetPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnOffsetProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>columnOffset</code> property as a <code>reference</code> value.  The <code>columnOffset</code> property specifies the offset of vertical grid lines, as a percentage from 0 to 1.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeColumnOffsetPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openColumnOffsetProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
+		CesiumWritingHelper.writeCartesian2(getOutput(), PropertyName, dates, values, startIndex, length);
 	}
 }

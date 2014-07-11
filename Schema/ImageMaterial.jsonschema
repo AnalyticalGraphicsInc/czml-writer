@@ -7,6 +7,10 @@
         "image": {
             "$ref": "Uri.jsonschema",
             "description": "The image to display on the surface."
+        },
+        "repeat": {
+            "$ref": "Cartesian2Value.jsonschema",
+            "description": "The numger of times the image repeats along each axis."
         }
     }
 }
