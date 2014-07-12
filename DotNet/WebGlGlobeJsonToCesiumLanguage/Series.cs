@@ -75,7 +75,12 @@ namespace WebGLGlobeJsonToCesiumLanguage
                     packetWriter.WriteId(m_id + index);
                     using (PolylineCesiumWriter polyline = packetWriter.OpenPolylineProperty())
                     {
-                        polyline.WriteColorProperty(ColorFromHSV(0.6 - (m_coordinates[index].Height * 0.5), 1.0, 1.0));
+                        using (var materialWriter = polyline.OpenMaterialProperty())
+                        using (var colorWriter = materialWriter.OpenSolidColorProperty())
+                        {
+                            colorWriter.WriteColorProperty(ColorFromHSV(0.6 - (m_coordinates[index].Height * 0.5), 1.0, 1.0));
+                        }
+
                         Cartographic[] positions = new Cartographic[] {
                         new Cartographic(m_coordinates[index].Longitude, m_coordinates[index].Latitude, 0.0),
                         new Cartographic(m_coordinates[index].Longitude, m_coordinates[index].Latitude, m_coordinates[index].Height * m_scalar)};

@@ -12,21 +12,13 @@
             "$ref": "Boolean.jsonschema",
             "description": "Whether or not the polyline is shown."
         },
-        "color": {
-            "$ref": "Color.jsonschema",
-            "description": "The color of the polyline."
+        "material": {
+            "$ref": "PolylineMaterial.jsonschema",
+            "description": "The material to use to draw the polyline."
         },
         "width": {
             "$ref": "Double.jsonschema",
             "description": "The width of the polyline."
-        },
-        "outlineColor": {
-            "$ref": "Color.jsonschema",
-            "description": "The color of the outline of the polyline."
-        },
-        "outlineWidth": {
-            "$ref": "Double.jsonschema",
-            "description": "The width of the outline of the polyline."
         },
         "followSurface": {
             "$ref": "Boolean.jsonschema",

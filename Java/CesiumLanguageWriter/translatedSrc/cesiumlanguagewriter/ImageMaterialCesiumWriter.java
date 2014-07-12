@@ -8,6 +8,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.UriCesiumWriter;
 import java.awt.image.RenderedImage;
+import java.util.List;
 
 /**
  *  
@@ -23,6 +24,13 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	 */
 	public static final String ImagePropertyName = "image";
+	/**
+	 *  
+	The name of the <code>repeat</code> property.
+	
+
+	 */
+	public static final String RepeatPropertyName = "repeat";
 	private Lazy<UriCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
 		public cesiumlanguagewriter.UriCesiumWriter invoke() {
 			return new UriCesiumWriter(ImagePropertyName);
@@ -255,5 +263,68 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 				DisposeHelper.dispose(writer);
 			}
 		}
+	}
+
+	/**
+	 *  
+	Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeRepeat(Rectangular value) {
+		String PropertyName = RepeatPropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeCartesian2(getOutput(), value);
+	}
+
+	/**
+	 *  
+	Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	
+	
+	
+
+	 * @param x The X component.
+	 * @param y The Y component.
+	 */
+	public final void writeRepeat(double x, double y) {
+		writeRepeat(new Rectangular(x, y));
+	}
+
+	/**
+	 *  
+	Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeRepeat(List<JulianDate> dates, List<Rectangular> values) {
+		writeRepeat(dates, values, 0, dates.size());
+	}
+
+	/**
+	 *  
+	Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeRepeat(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
+		String PropertyName = RepeatPropertyName;
+		openIntervalIfNecessary();
+		CesiumWritingHelper.writeCartesian2(getOutput(), PropertyName, dates, values, startIndex, length);
 	}
 }
