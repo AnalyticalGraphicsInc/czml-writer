@@ -32,10 +32,16 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string WidthPropertyName = "width";
 
+        /// <summary>
+        /// The name of the <code>followSurface</code> property.
+        /// </summary>
+        public const string FollowSurfacePropertyName = "followSurface";
+
         private readonly Lazy<PositionListCesiumWriter> m_positions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(PositionsPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<PolylineMaterialCesiumWriter>(() => new PolylineMaterialCesiumWriter(MaterialPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_followSurface = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(FollowSurfacePropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -262,6 +268,35 @@ namespace CesiumLanguageWriter
             using (var writer = OpenWidthProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>followSurface</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>followSurface</code> property defines whether or not the positions are connected as great arcs (the default) or as straight lines.
+        /// </summary>
+        public BooleanCesiumWriter FollowSurfaceWriter
+        {
+            get { return m_followSurface.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>followSurface</code> property.  The <code>followSurface</code> property defines whether or not the positions are connected as great arcs (the default) or as straight lines.
+        /// </summary>
+        public BooleanCesiumWriter OpenFollowSurfaceProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(FollowSurfaceWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>followSurface</code> property as a <code>boolean</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteFollowSurfaceProperty(bool value)
+        {
+            using (var writer = OpenFollowSurfaceProperty())
+            {
+                writer.WriteBoolean(value);
             }
         }
 

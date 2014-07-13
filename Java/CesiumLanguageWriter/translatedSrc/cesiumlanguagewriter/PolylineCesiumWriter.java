@@ -47,6 +47,13 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
 	 */
 	public static final String WidthPropertyName = "width";
+	/**
+	 *  
+	The name of the <code>followSurface</code> property.
+	
+
+	 */
+	public static final String FollowSurfacePropertyName = "followSurface";
 	private Lazy<PositionListCesiumWriter> m_positions = new Lazy<cesiumlanguagewriter.PositionListCesiumWriter>(new Func1<cesiumlanguagewriter.PositionListCesiumWriter>() {
 		public cesiumlanguagewriter.PositionListCesiumWriter invoke() {
 			return new PositionListCesiumWriter(PositionsPropertyName);
@@ -65,6 +72,11 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 	private Lazy<DoubleCesiumWriter> m_width = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(WidthPropertyName);
+		}
+	}, false);
+	private Lazy<BooleanCesiumWriter> m_followSurface = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(FollowSurfacePropertyName);
 		}
 	}, false);
 
@@ -388,6 +400,45 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>followSurface</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>followSurface</code> property defines whether or not the positions are connected as great arcs (the default) or as straight lines.
+	
+
+	 */
+	public final BooleanCesiumWriter getFollowSurfaceWriter() {
+		return m_followSurface.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>followSurface</code> property.  The <code>followSurface</code> property defines whether or not the positions are connected as great arcs (the default) or as straight lines.
+	
+
+	 */
+	public final BooleanCesiumWriter openFollowSurfaceProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getFollowSurfaceWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>followSurface</code> property as a <code>boolean</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeFollowSurfaceProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openFollowSurfaceProperty();
+			try {
+				writer.writeBoolean(value);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
