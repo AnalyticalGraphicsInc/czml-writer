@@ -24,6 +24,7 @@ namespace CesiumLanguageWriter
         public const string RepeatPropertyName = "repeat";
 
         private readonly Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(ImagePropertyName), false);
+        private readonly Lazy<RepeatCesiumWriter> m_repeat = new Lazy<RepeatCesiumWriter>(() => new RepeatCesiumWriter(RepeatPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -179,49 +180,123 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+        /// Gets the writer for the <code>repeat</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>repeat</code> property defines the numger of times the image repeats along each axis.
         /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteRepeat(Rectangular value)
+        public RepeatCesiumWriter RepeatWriter
         {
-            const string PropertyName = RepeatPropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteCartesian2(Output, value);
+            get { return m_repeat.Value; }
         }
 
         /// <summary>
-        /// Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+        /// Opens and returns the writer for the <code>repeat</code> property.  The <code>repeat</code> property defines the numger of times the image repeats along each axis.
+        /// </summary>
+        public RepeatCesiumWriter OpenRepeatProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(RepeatWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteRepeatProperty(Rectangular value)
+        {
+            using (var writer = OpenRepeatProperty())
+            {
+                writer.WriteCartesian2(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
         /// </summary>
         /// <param name="x">The X component.</param>
         /// <param name="y">The Y component.</param>
-        public void WriteRepeat(double x, double y)
+        public void WriteRepeatProperty(double x, double y)
         {
-            WriteRepeat(new Rectangular(x, y));
+            using (var writer = OpenRepeatProperty())
+            {
+                writer.WriteCartesian2(x, y);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+        /// Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteRepeat(IList<JulianDate> dates, IList<Rectangular> values)
+        public void WriteRepeatProperty(IList<JulianDate> dates, IList<Rectangular> values)
         {
-            WriteRepeat(dates, values, 0, dates.Count);
+            using (var writer = OpenRepeatProperty())
+            {
+                writer.WriteCartesian2(dates, values);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+        /// Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteRepeat(IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
+        public void WriteRepeatProperty(IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
         {
-            const string PropertyName = RepeatPropertyName;
-            OpenIntervalIfNecessary();
-            CesiumWritingHelper.WriteCartesian2(Output, PropertyName, dates, values, startIndex, length);
+            using (var writer = OpenRepeatProperty())
+            {
+                writer.WriteCartesian2(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteRepeatPropertyReference(Reference value)
+        {
+            using (var writer = OpenRepeatProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteRepeatPropertyReference(string value)
+        {
+            using (var writer = OpenRepeatProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteRepeatPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenRepeatProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteRepeatPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenRepeatProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
         }
 
     }

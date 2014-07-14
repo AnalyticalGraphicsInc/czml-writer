@@ -1,0 +1,19 @@
+{
+    "title": "Repeat",
+    "description": "The numger of times the image repeats along each axis.",
+    "extends": { "$ref": "InterpolatableProperty.jsonschema" },
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "cartesian2": {
+            "$ref": "Cartesian2Value.jsonschema",
+            "description": "The numger of times the image repeats along each axis.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.jsonschema",
+            "description": "A reference property.",
+            "czmlValue": true
+        }
+    }
+}
