@@ -8,6 +8,9 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
+import cesiumlanguagewriter.LineCountCesiumWriter;
+import cesiumlanguagewriter.LineOffsetCesiumWriter;
+import cesiumlanguagewriter.LineThicknessCesiumWriter;
 import java.awt.Color;
 import java.util.List;
 
@@ -61,6 +64,21 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	private Lazy<DoubleCesiumWriter> m_cellAlpha = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(CellAlphaPropertyName);
+		}
+	}, false);
+	private Lazy<LineCountCesiumWriter> m_lineCount = new Lazy<cesiumlanguagewriter.LineCountCesiumWriter>(new Func1<cesiumlanguagewriter.LineCountCesiumWriter>() {
+		public cesiumlanguagewriter.LineCountCesiumWriter invoke() {
+			return new LineCountCesiumWriter(LineCountPropertyName);
+		}
+	}, false);
+	private Lazy<LineThicknessCesiumWriter> m_lineThickness = new Lazy<cesiumlanguagewriter.LineThicknessCesiumWriter>(new Func1<cesiumlanguagewriter.LineThicknessCesiumWriter>() {
+		public cesiumlanguagewriter.LineThicknessCesiumWriter invoke() {
+			return new LineThicknessCesiumWriter(LineThicknessPropertyName);
+		}
+	}, false);
+	private Lazy<LineOffsetCesiumWriter> m_lineOffset = new Lazy<cesiumlanguagewriter.LineOffsetCesiumWriter>(new Func1<cesiumlanguagewriter.LineOffsetCesiumWriter>() {
+		public cesiumlanguagewriter.LineOffsetCesiumWriter invoke() {
+			return new LineOffsetCesiumWriter(LineOffsetPropertyName);
 		}
 	}, false);
 
@@ -430,23 +448,47 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	}
 
 	/**
+	 *  Gets the writer for the <code>lineCount</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>lineCount</code> property defines the number of grid lines along each axis.
+	
+
+	 */
+	public final LineCountCesiumWriter getLineCountWriter() {
+		return m_lineCount.getValue();
+	}
+
+	/**
 	 *  
-	Writes the <code>lineCount</code> property.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+	Opens and returns the writer for the <code>lineCount</code> property.  The <code>lineCount</code> property defines the number of grid lines along each axis.
+	
+
+	 */
+	public final LineCountCesiumWriter openLineCountProperty() {
+		openIntervalIfNecessary();
+		return this.<LineCountCesiumWriter> openAndReturn(getLineCountWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>lineCount</code> property as a <code>cartesian2</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeLineCount(Rectangular value) {
-		String PropertyName = LineCountPropertyName;
-		openIntervalIfNecessary();
-		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeCartesian2(getOutput(), value);
+	public final void writeLineCountProperty(Rectangular value) {
+		{
+			cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+			try {
+				writer.writeCartesian2(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>lineCount</code> property.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+	Writes a value for the <code>lineCount</code> property as a <code>cartesian2</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
 	
 	
 	
@@ -454,13 +496,20 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	 * @param x The X component.
 	 * @param y The Y component.
 	 */
-	public final void writeLineCount(double x, double y) {
-		writeLineCount(new Rectangular(x, y));
+	public final void writeLineCountProperty(double x, double y) {
+		{
+			cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+			try {
+				writer.writeCartesian2(x, y);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>lineCount</code> property.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+	Writes a value for the <code>lineCount</code> property as a <code>cartesian2</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
 	
 	
 	
@@ -468,13 +517,20 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	 * @param dates The dates at which the vector is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeLineCount(List<JulianDate> dates, List<Rectangular> values) {
-		writeLineCount(dates, values, 0, dates.size());
+	public final void writeLineCountProperty(List<JulianDate> dates, List<Rectangular> values) {
+		{
+			cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+			try {
+				writer.writeCartesian2(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>lineCount</code> property.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+	Writes a value for the <code>lineCount</code> property as a <code>cartesian2</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
 	
 	
 	
@@ -486,30 +542,139 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeLineCount(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
-		String PropertyName = LineCountPropertyName;
-		openIntervalIfNecessary();
-		CesiumWritingHelper.writeCartesian2(getOutput(), PropertyName, dates, values, startIndex, length);
+	public final void writeLineCountProperty(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+			try {
+				writer.writeCartesian2(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>lineThickness</code> property.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+	Writes a value for the <code>lineCount</code> property as a <code>reference</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeLineCountPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>lineCount</code> property as a <code>reference</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeLineCountPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>lineCount</code> property as a <code>reference</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeLineCountPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>lineCount</code> property as a <code>reference</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeLineCountPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>lineThickness</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>lineThickness</code> property defines the thickness of grid lines along each axis, in pixels.
+	
+
+	 */
+	public final LineThicknessCesiumWriter getLineThicknessWriter() {
+		return m_lineThickness.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>lineThickness</code> property.  The <code>lineThickness</code> property defines the thickness of grid lines along each axis, in pixels.
+	
+
+	 */
+	public final LineThicknessCesiumWriter openLineThicknessProperty() {
+		openIntervalIfNecessary();
+		return this.<LineThicknessCesiumWriter> openAndReturn(getLineThicknessWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>lineThickness</code> property as a <code>cartesian2</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeLineThickness(Rectangular value) {
-		String PropertyName = LineThicknessPropertyName;
-		openIntervalIfNecessary();
-		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeCartesian2(getOutput(), value);
+	public final void writeLineThicknessProperty(Rectangular value) {
+		{
+			cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+			try {
+				writer.writeCartesian2(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>lineThickness</code> property.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+	Writes a value for the <code>lineThickness</code> property as a <code>cartesian2</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
 	
 	
 	
@@ -517,13 +682,20 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	 * @param x The X component.
 	 * @param y The Y component.
 	 */
-	public final void writeLineThickness(double x, double y) {
-		writeLineThickness(new Rectangular(x, y));
+	public final void writeLineThicknessProperty(double x, double y) {
+		{
+			cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+			try {
+				writer.writeCartesian2(x, y);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>lineThickness</code> property.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+	Writes a value for the <code>lineThickness</code> property as a <code>cartesian2</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
 	
 	
 	
@@ -531,13 +703,20 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	 * @param dates The dates at which the vector is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeLineThickness(List<JulianDate> dates, List<Rectangular> values) {
-		writeLineThickness(dates, values, 0, dates.size());
+	public final void writeLineThicknessProperty(List<JulianDate> dates, List<Rectangular> values) {
+		{
+			cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+			try {
+				writer.writeCartesian2(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>lineThickness</code> property.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+	Writes a value for the <code>lineThickness</code> property as a <code>cartesian2</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
 	
 	
 	
@@ -549,30 +728,139 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeLineThickness(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
-		String PropertyName = LineThicknessPropertyName;
-		openIntervalIfNecessary();
-		CesiumWritingHelper.writeCartesian2(getOutput(), PropertyName, dates, values, startIndex, length);
+	public final void writeLineThicknessProperty(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+			try {
+				writer.writeCartesian2(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>lineOffset</code> property.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+	Writes a value for the <code>lineThickness</code> property as a <code>reference</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeLineThicknessPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>lineThickness</code> property as a <code>reference</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeLineThicknessPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>lineThickness</code> property as a <code>reference</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeLineThicknessPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>lineThickness</code> property as a <code>reference</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeLineThicknessPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>lineOffset</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>lineOffset</code> property defines the offset of grid lines along each axis, as a percentage from 0 to 1.
+	
+
+	 */
+	public final LineOffsetCesiumWriter getLineOffsetWriter() {
+		return m_lineOffset.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>lineOffset</code> property.  The <code>lineOffset</code> property defines the offset of grid lines along each axis, as a percentage from 0 to 1.
+	
+
+	 */
+	public final LineOffsetCesiumWriter openLineOffsetProperty() {
+		openIntervalIfNecessary();
+		return this.<LineOffsetCesiumWriter> openAndReturn(getLineOffsetWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>lineOffset</code> property as a <code>cartesian2</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeLineOffset(Rectangular value) {
-		String PropertyName = LineOffsetPropertyName;
-		openIntervalIfNecessary();
-		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeCartesian2(getOutput(), value);
+	public final void writeLineOffsetProperty(Rectangular value) {
+		{
+			cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+			try {
+				writer.writeCartesian2(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>lineOffset</code> property.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+	Writes a value for the <code>lineOffset</code> property as a <code>cartesian2</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
 	
 	
 	
@@ -580,13 +868,20 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	 * @param x The X component.
 	 * @param y The Y component.
 	 */
-	public final void writeLineOffset(double x, double y) {
-		writeLineOffset(new Rectangular(x, y));
+	public final void writeLineOffsetProperty(double x, double y) {
+		{
+			cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+			try {
+				writer.writeCartesian2(x, y);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>lineOffset</code> property.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+	Writes a value for the <code>lineOffset</code> property as a <code>cartesian2</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
 	
 	
 	
@@ -594,13 +889,20 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	 * @param dates The dates at which the vector is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeLineOffset(List<JulianDate> dates, List<Rectangular> values) {
-		writeLineOffset(dates, values, 0, dates.size());
+	public final void writeLineOffsetProperty(List<JulianDate> dates, List<Rectangular> values) {
+		{
+			cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+			try {
+				writer.writeCartesian2(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>lineOffset</code> property.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+	Writes a value for the <code>lineOffset</code> property as a <code>cartesian2</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
 	
 	
 	
@@ -612,9 +914,94 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeLineOffset(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
-		String PropertyName = LineOffsetPropertyName;
-		openIntervalIfNecessary();
-		CesiumWritingHelper.writeCartesian2(getOutput(), PropertyName, dates, values, startIndex, length);
+	public final void writeLineOffsetProperty(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+			try {
+				writer.writeCartesian2(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>lineOffset</code> property as a <code>reference</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeLineOffsetPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>lineOffset</code> property as a <code>reference</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeLineOffsetPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>lineOffset</code> property as a <code>reference</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeLineOffsetPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>lineOffset</code> property as a <code>reference</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeLineOffsetPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 }

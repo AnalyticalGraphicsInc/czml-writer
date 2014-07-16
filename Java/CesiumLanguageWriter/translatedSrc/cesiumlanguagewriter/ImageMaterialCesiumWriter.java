@@ -6,6 +6,7 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.RepeatCesiumWriter;
 import cesiumlanguagewriter.UriCesiumWriter;
 import java.awt.image.RenderedImage;
 import java.util.List;
@@ -34,6 +35,11 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	private Lazy<UriCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
 		public cesiumlanguagewriter.UriCesiumWriter invoke() {
 			return new UriCesiumWriter(ImagePropertyName);
+		}
+	}, false);
+	private Lazy<RepeatCesiumWriter> m_repeat = new Lazy<cesiumlanguagewriter.RepeatCesiumWriter>(new Func1<cesiumlanguagewriter.RepeatCesiumWriter>() {
+		public cesiumlanguagewriter.RepeatCesiumWriter invoke() {
+			return new RepeatCesiumWriter(RepeatPropertyName);
 		}
 	}, false);
 
@@ -266,23 +272,47 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	}
 
 	/**
+	 *  Gets the writer for the <code>repeat</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>repeat</code> property defines the number of times the image repeats along each axis.
+	
+
+	 */
+	public final RepeatCesiumWriter getRepeatWriter() {
+		return m_repeat.getValue();
+	}
+
+	/**
 	 *  
-	Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	Opens and returns the writer for the <code>repeat</code> property.  The <code>repeat</code> property defines the number of times the image repeats along each axis.
+	
+
+	 */
+	public final RepeatCesiumWriter openRepeatProperty() {
+		openIntervalIfNecessary();
+		return this.<RepeatCesiumWriter> openAndReturn(getRepeatWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeRepeat(Rectangular value) {
-		String PropertyName = RepeatPropertyName;
-		openIntervalIfNecessary();
-		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeCartesian2(getOutput(), value);
+	public final void writeRepeatProperty(Rectangular value) {
+		{
+			cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+			try {
+				writer.writeCartesian2(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
 	
 	
 	
@@ -290,13 +320,20 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	 * @param x The X component.
 	 * @param y The Y component.
 	 */
-	public final void writeRepeat(double x, double y) {
-		writeRepeat(new Rectangular(x, y));
+	public final void writeRepeatProperty(double x, double y) {
+		{
+			cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+			try {
+				writer.writeCartesian2(x, y);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
 	
 	
 	
@@ -304,13 +341,20 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	 * @param dates The dates at which the vector is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeRepeat(List<JulianDate> dates, List<Rectangular> values) {
-		writeRepeat(dates, values, 0, dates.size());
+	public final void writeRepeatProperty(List<JulianDate> dates, List<Rectangular> values) {
+		{
+			cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+			try {
+				writer.writeCartesian2(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the <code>repeat</code> property.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
 	
 	
 	
@@ -322,9 +366,94 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeRepeat(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
-		String PropertyName = RepeatPropertyName;
-		openIntervalIfNecessary();
-		CesiumWritingHelper.writeCartesian2(getOutput(), PropertyName, dates, values, startIndex, length);
+	public final void writeRepeatProperty(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+			try {
+				writer.writeCartesian2(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeRepeatPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeRepeatPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeRepeatPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeRepeatPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 }

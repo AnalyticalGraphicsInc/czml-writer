@@ -40,6 +40,9 @@ namespace CesiumLanguageWriter
 
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_cellAlpha = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(CellAlphaPropertyName), false);
+        private readonly Lazy<LineCountCesiumWriter> m_lineCount = new Lazy<LineCountCesiumWriter>(() => new LineCountCesiumWriter(LineCountPropertyName), false);
+        private readonly Lazy<LineThicknessCesiumWriter> m_lineThickness = new Lazy<LineThicknessCesiumWriter>(() => new LineThicknessCesiumWriter(LineThicknessPropertyName), false);
+        private readonly Lazy<LineOffsetCesiumWriter> m_lineOffset = new Lazy<LineOffsetCesiumWriter>(() => new LineOffsetCesiumWriter(LineOffsetPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -283,141 +286,363 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>lineCount</code> property.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// Gets the writer for the <code>lineCount</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>lineCount</code> property defines the number of grid lines along each axis.
         /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteLineCount(Rectangular value)
+        public LineCountCesiumWriter LineCountWriter
         {
-            const string PropertyName = LineCountPropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteCartesian2(Output, value);
+            get { return m_lineCount.Value; }
         }
 
         /// <summary>
-        /// Writes the <code>lineCount</code> property.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// Opens and returns the writer for the <code>lineCount</code> property.  The <code>lineCount</code> property defines the number of grid lines along each axis.
+        /// </summary>
+        public LineCountCesiumWriter OpenLineCountProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(LineCountWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>lineCount</code> property as a <code>cartesian2</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteLineCountProperty(Rectangular value)
+        {
+            using (var writer = OpenLineCountProperty())
+            {
+                writer.WriteCartesian2(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>lineCount</code> property as a <code>cartesian2</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
         /// </summary>
         /// <param name="x">The X component.</param>
         /// <param name="y">The Y component.</param>
-        public void WriteLineCount(double x, double y)
+        public void WriteLineCountProperty(double x, double y)
         {
-            WriteLineCount(new Rectangular(x, y));
+            using (var writer = OpenLineCountProperty())
+            {
+                writer.WriteCartesian2(x, y);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>lineCount</code> property.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// Writes a value for the <code>lineCount</code> property as a <code>cartesian2</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteLineCount(IList<JulianDate> dates, IList<Rectangular> values)
+        public void WriteLineCountProperty(IList<JulianDate> dates, IList<Rectangular> values)
         {
-            WriteLineCount(dates, values, 0, dates.Count);
+            using (var writer = OpenLineCountProperty())
+            {
+                writer.WriteCartesian2(dates, values);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>lineCount</code> property.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// Writes a value for the <code>lineCount</code> property as a <code>cartesian2</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteLineCount(IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
+        public void WriteLineCountProperty(IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
         {
-            const string PropertyName = LineCountPropertyName;
-            OpenIntervalIfNecessary();
-            CesiumWritingHelper.WriteCartesian2(Output, PropertyName, dates, values, startIndex, length);
+            using (var writer = OpenLineCountProperty())
+            {
+                writer.WriteCartesian2(dates, values, startIndex, length);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>lineThickness</code> property.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes a value for the <code>lineCount</code> property as a <code>reference</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteLineCountPropertyReference(Reference value)
+        {
+            using (var writer = OpenLineCountProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>lineCount</code> property as a <code>reference</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteLineCountPropertyReference(string value)
+        {
+            using (var writer = OpenLineCountProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>lineCount</code> property as a <code>reference</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteLineCountPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenLineCountProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>lineCount</code> property as a <code>reference</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteLineCountPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenLineCountProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>lineThickness</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>lineThickness</code> property defines the thickness of grid lines along each axis, in pixels.
+        /// </summary>
+        public LineThicknessCesiumWriter LineThicknessWriter
+        {
+            get { return m_lineThickness.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>lineThickness</code> property.  The <code>lineThickness</code> property defines the thickness of grid lines along each axis, in pixels.
+        /// </summary>
+        public LineThicknessCesiumWriter OpenLineThicknessProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(LineThicknessWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>lineThickness</code> property as a <code>cartesian2</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteLineThickness(Rectangular value)
+        public void WriteLineThicknessProperty(Rectangular value)
         {
-            const string PropertyName = LineThicknessPropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteCartesian2(Output, value);
+            using (var writer = OpenLineThicknessProperty())
+            {
+                writer.WriteCartesian2(value);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>lineThickness</code> property.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes a value for the <code>lineThickness</code> property as a <code>cartesian2</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
         /// </summary>
         /// <param name="x">The X component.</param>
         /// <param name="y">The Y component.</param>
-        public void WriteLineThickness(double x, double y)
+        public void WriteLineThicknessProperty(double x, double y)
         {
-            WriteLineThickness(new Rectangular(x, y));
+            using (var writer = OpenLineThicknessProperty())
+            {
+                writer.WriteCartesian2(x, y);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>lineThickness</code> property.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes a value for the <code>lineThickness</code> property as a <code>cartesian2</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteLineThickness(IList<JulianDate> dates, IList<Rectangular> values)
+        public void WriteLineThicknessProperty(IList<JulianDate> dates, IList<Rectangular> values)
         {
-            WriteLineThickness(dates, values, 0, dates.Count);
+            using (var writer = OpenLineThicknessProperty())
+            {
+                writer.WriteCartesian2(dates, values);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>lineThickness</code> property.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes a value for the <code>lineThickness</code> property as a <code>cartesian2</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteLineThickness(IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
+        public void WriteLineThicknessProperty(IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
         {
-            const string PropertyName = LineThicknessPropertyName;
-            OpenIntervalIfNecessary();
-            CesiumWritingHelper.WriteCartesian2(Output, PropertyName, dates, values, startIndex, length);
+            using (var writer = OpenLineThicknessProperty())
+            {
+                writer.WriteCartesian2(dates, values, startIndex, length);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>lineOffset</code> property.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// Writes a value for the <code>lineThickness</code> property as a <code>reference</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteLineThicknessPropertyReference(Reference value)
+        {
+            using (var writer = OpenLineThicknessProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>lineThickness</code> property as a <code>reference</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteLineThicknessPropertyReference(string value)
+        {
+            using (var writer = OpenLineThicknessProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>lineThickness</code> property as a <code>reference</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteLineThicknessPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenLineThicknessProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>lineThickness</code> property as a <code>reference</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteLineThicknessPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenLineThicknessProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>lineOffset</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>lineOffset</code> property defines the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// </summary>
+        public LineOffsetCesiumWriter LineOffsetWriter
+        {
+            get { return m_lineOffset.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>lineOffset</code> property.  The <code>lineOffset</code> property defines the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// </summary>
+        public LineOffsetCesiumWriter OpenLineOffsetProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(LineOffsetWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>lineOffset</code> property as a <code>cartesian2</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteLineOffset(Rectangular value)
+        public void WriteLineOffsetProperty(Rectangular value)
         {
-            const string PropertyName = LineOffsetPropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteCartesian2(Output, value);
+            using (var writer = OpenLineOffsetProperty())
+            {
+                writer.WriteCartesian2(value);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>lineOffset</code> property.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// Writes a value for the <code>lineOffset</code> property as a <code>cartesian2</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
         /// <param name="x">The X component.</param>
         /// <param name="y">The Y component.</param>
-        public void WriteLineOffset(double x, double y)
+        public void WriteLineOffsetProperty(double x, double y)
         {
-            WriteLineOffset(new Rectangular(x, y));
+            using (var writer = OpenLineOffsetProperty())
+            {
+                writer.WriteCartesian2(x, y);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>lineOffset</code> property.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// Writes a value for the <code>lineOffset</code> property as a <code>cartesian2</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteLineOffset(IList<JulianDate> dates, IList<Rectangular> values)
+        public void WriteLineOffsetProperty(IList<JulianDate> dates, IList<Rectangular> values)
         {
-            WriteLineOffset(dates, values, 0, dates.Count);
+            using (var writer = OpenLineOffsetProperty())
+            {
+                writer.WriteCartesian2(dates, values);
+            }
         }
 
         /// <summary>
-        /// Writes the <code>lineOffset</code> property.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// Writes a value for the <code>lineOffset</code> property as a <code>cartesian2</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteLineOffset(IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
+        public void WriteLineOffsetProperty(IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
         {
-            const string PropertyName = LineOffsetPropertyName;
-            OpenIntervalIfNecessary();
-            CesiumWritingHelper.WriteCartesian2(Output, PropertyName, dates, values, startIndex, length);
+            using (var writer = OpenLineOffsetProperty())
+            {
+                writer.WriteCartesian2(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>lineOffset</code> property as a <code>reference</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteLineOffsetPropertyReference(Reference value)
+        {
+            using (var writer = OpenLineOffsetProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>lineOffset</code> property as a <code>reference</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteLineOffsetPropertyReference(string value)
+        {
+            using (var writer = OpenLineOffsetProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>lineOffset</code> property as a <code>reference</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteLineOffsetPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenLineOffsetProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>lineOffset</code> property as a <code>reference</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteLineOffsetPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenLineOffsetProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
         }
 
     }

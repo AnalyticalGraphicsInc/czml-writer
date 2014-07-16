@@ -1,0 +1,19 @@
+{
+    "title": "LineThickness",
+    "description": "The thickness of grid lines along each axis, in pixels.",
+    "extends": { "$ref": "InterpolatableProperty.jsonschema" },
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "cartesian2": {
+            "$ref": "Cartesian2Value.jsonschema",
+            "description": "The thickness of grid lines along each axis, in pixels.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.jsonschema",
+            "description": "A reference property.",
+            "czmlValue": true
+        }
+    }
+}
