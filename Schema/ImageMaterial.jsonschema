@@ -10,7 +10,7 @@
         },
         "repeat": {
             "$ref": "Repeat.jsonschema",
-            "description": "The numger of times the image repeats along each axis."
+            "description": "The number of times the image repeats along each axis."
         }
     }
 }

@@ -272,7 +272,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	}
 
 	/**
-	 *  Gets the writer for the <code>repeat</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>repeat</code> property defines the numger of times the image repeats along each axis.
+	 *  Gets the writer for the <code>repeat</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>repeat</code> property defines the number of times the image repeats along each axis.
 	
 
 	 */
@@ -282,7 +282,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>repeat</code> property.  The <code>repeat</code> property defines the numger of times the image repeats along each axis.
+	Opens and returns the writer for the <code>repeat</code> property.  The <code>repeat</code> property defines the number of times the image repeats along each axis.
 	
 
 	 */
@@ -293,7 +293,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	/**
 	 *  
-	Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
 	
 	
 
@@ -312,7 +312,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	/**
 	 *  
-	Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
 	
 	
 	
@@ -333,7 +333,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	/**
 	 *  
-	Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
 	
 	
 	
@@ -354,7 +354,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	/**
 	 *  
-	Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
 	
 	
 	
@@ -379,7 +379,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	/**
 	 *  
-	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
 	
 	
 
@@ -398,7 +398,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	/**
 	 *  
-	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
 	
 	
 
@@ -417,7 +417,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	/**
 	 *  
-	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
 	
 	
 	
@@ -438,7 +438,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	/**
 	 *  
-	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the numger of times the image repeats along each axis.
+	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
 	
 	
 	
