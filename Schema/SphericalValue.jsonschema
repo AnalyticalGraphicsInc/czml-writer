@@ -1,5 +1,0 @@
-{
-    "title": "Spherical",
-    "description": "A position specified as a spherical [Clock, Cone, Magnitude] angles in radians, magnitude in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
-    "type": "array"
-}

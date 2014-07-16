@@ -1,5 +1,0 @@
-{
-    "title": "TimeInterval",
-    "description": "An ISO8601 interval of time.",
-    "type": "string"
-}
