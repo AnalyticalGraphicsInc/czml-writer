@@ -30,4 +30,44 @@ public interface ICesiumInterpolationInformationWriter {
 	 * @param degree The degree.
 	 */
 	void writeInterpolationDegree(int degree);
+
+	/**
+	 *  
+	Writes the type of extrapolation to perform when a value is requested at a time after any available samples.
+	
+	
+
+	 * @param extrapolationType The extrapolation type.
+	 */
+	void writeForwardExtrapolationType(CesiumExtrapolationType extrapolationType);
+
+	/**
+	 *  
+	Writes the amount of time to extrapolate forward before the property becomes undefined.  A value of 0 will extrapolate forever.
+	
+	
+
+	 * @param duration The duration.
+	 */
+	void writeForwardExtrapolationDuration(Duration duration);
+
+	/**
+	 *  
+	Writes the type of extrapolation to perform when a value is requested at a time before any available samples.
+	
+	
+
+	 * @param extrapolationType The extrapolation type.
+	 */
+	void writeBackwardExtrapolationType(CesiumExtrapolationType extrapolationType);
+
+	/**
+	 *  
+	Writes the amount of time to extrapolate backward before the property becomes undefined.  A value of 0 will extrapolate forever.
+	
+	
+
+	 * @param duration The duration.
+	 */
+	void writeBackwardExtrapolationDuration(Duration duration);
 }

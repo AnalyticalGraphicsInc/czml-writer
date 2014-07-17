@@ -86,6 +86,22 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
 		m_parent.writeInterpolationDegree(degree);
 	}
 
+	public final void writeForwardExtrapolationType(CesiumExtrapolationType extrapolationType) {
+		m_parent.writeForwardExtrapolationType(extrapolationType);
+	}
+
+	public final void writeForwardExtrapolationDuration(Duration duration) {
+		m_parent.writeForwardExtrapolationDuration(duration);
+	}
+
+	public final void writeBackwardExtrapolationType(CesiumExtrapolationType extrapolationType) {
+		m_parent.writeBackwardExtrapolationType(extrapolationType);
+	}
+
+	public final void writeBackwardExtrapolationDuration(Duration duration) {
+		m_parent.writeBackwardExtrapolationDuration(duration);
+	}
+
 	public final void writeInterval(JulianDate start, JulianDate stop) {
 		m_parent.writeInterval(start, stop);
 	}
