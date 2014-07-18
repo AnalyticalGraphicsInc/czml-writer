@@ -66,4 +66,60 @@ public abstract class CesiumInterpolatablePropertyWriter<TDerived extends Cesium
 		getOutput().writePropertyName("interpolationDegree");
 		getOutput().writeValue(degree);
 	}
+
+	/**
+	 *  
+	Writes the type of extrapolation to perform when a value is requested at a time after any available samples.
+	
+	
+
+	 * @param extrapolationType The extrapolation type.
+	 */
+	public final void writeForwardExtrapolationType(CesiumExtrapolationType extrapolationType) {
+		openIntervalIfNecessary();
+		getOutput().writePropertyName("forwardExtrapolationType");
+		getOutput().writeValue(CesiumFormattingHelper.extrapolationTypeToString(extrapolationType));
+	}
+
+	/**
+	 *  
+	Writes the amount of time to extrapolate forward before the property becomes undefined.  A value of 0 will extrapolate forever.
+	
+	
+
+	 * @param duration The duration.
+	 */
+	public final void writeForwardExtrapolationDuration(Duration duration) {
+		openIntervalIfNecessary();
+		getOutput().writePropertyName("forwardExtrapolationDuration");
+		getOutput().writeValue(duration.getTotalSeconds());
+	}
+
+	/**
+	 *  
+	Writes the type of extrapolation to perform when a value is requested at a time before any available samples.
+	
+	
+
+	 * @param extrapolationType The extrapolation type.
+	 */
+	public final void writeBackwardExtrapolationType(CesiumExtrapolationType extrapolationType) {
+		openIntervalIfNecessary();
+		getOutput().writePropertyName("backwardExtrapolationType");
+		getOutput().writeValue(CesiumFormattingHelper.extrapolationTypeToString(extrapolationType));
+	}
+
+	/**
+	 *  
+	Writes the amount of time to extrapolate backward before the property becomes undefined.  A value of 0 will extrapolate forever.
+	
+	
+
+	 * @param duration The duration.
+	 */
+	public final void writeBackwardExtrapolationDuration(Duration duration) {
+		openIntervalIfNecessary();
+		getOutput().writePropertyName("backwardExtrapolationDuration");
+		getOutput().writeValue(duration.getTotalSeconds());
+	}
 }

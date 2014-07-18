@@ -276,6 +276,27 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Converts a <see cref="CesiumExtrapolationType"/> to the corresponding string in a
+        /// <topic name="Cesium">Cesium</topic> stream.
+        /// </summary>
+        /// <param name="extrapolationType">The value to convert.</param>
+        /// <returns>The string representing the specified <see cref="CesiumExtrapolationType"/>.</returns>
+        public static string ExtrapolationTypeToString(CesiumExtrapolationType extrapolationType)
+        {
+            switch (extrapolationType)
+            {
+                case CesiumExtrapolationType.None:
+                    return "NONE";
+                case CesiumExtrapolationType.Hold:
+                    return "HOLD";
+                case CesiumExtrapolationType.Extrapolate:
+                    return "EXTRAPOLATE";
+                default:
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "extrapolationType");
+            }
+        }
+
+        /// <summary>
         /// Converts a <see cref="ClockRange"/> to the corresponding string in a
         /// <topic name="Cesium">Cesium</topic> stream.
         /// </summary>

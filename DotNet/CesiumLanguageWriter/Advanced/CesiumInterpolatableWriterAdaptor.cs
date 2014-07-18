@@ -93,6 +93,30 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <inheritdoc />
+        public void WriteForwardExtrapolationType(CesiumExtrapolationType extrapolationType)
+        {
+            m_parent.WriteForwardExtrapolationType(extrapolationType);
+        }
+
+        /// <inheritdoc />
+        public void WriteForwardExtrapolationDuration(Duration duration)
+        {
+            m_parent.WriteForwardExtrapolationDuration(duration);
+        }
+
+        /// <inheritdoc />
+        public void WriteBackwardExtrapolationType(CesiumExtrapolationType extrapolationType)
+        {
+            m_parent.WriteBackwardExtrapolationType(extrapolationType);
+        }
+
+        /// <inheritdoc />
+        public void WriteBackwardExtrapolationDuration(Duration duration)
+        {
+            m_parent.WriteBackwardExtrapolationDuration(duration);
+        }
+
+        /// <inheritdoc />
         public void WriteInterval(JulianDate start, JulianDate stop)
         {
             m_parent.WriteInterval(start, stop);

@@ -76,6 +76,7 @@
     <Compile Include="CesiumOutputStream.cs" />
     <Compile Include="CesiumStreamWriter.cs" />
     <Compile Include="CesiumVerticalOrigin.cs" />
+    <Compile Include="CesiumExtrapolationType.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ClockRange.cs" />
     <Compile Include="ClockStep.cs" />

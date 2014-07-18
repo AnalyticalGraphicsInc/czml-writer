@@ -368,6 +368,34 @@ public final class CesiumFormattingHelper {
 
 	/**
 	 *  
+	Converts a  {@link CesiumExtrapolationType} to the corresponding string in a
+	<topic name="Cesium">Cesium</topic> stream.
+	
+	
+	
+
+	 * @param extrapolationType The value to convert.
+	 * @return The string representing the specified  {@link CesiumExtrapolationType}.
+	 */
+	public static String extrapolationTypeToString(CesiumExtrapolationType extrapolationType) {
+		switch (extrapolationType) {
+		case NONE: {
+			return "NONE";
+		}
+		case HOLD: {
+			return "HOLD";
+		}
+		case EXTRAPOLATE: {
+			return "EXTRAPOLATE";
+		}
+		default: {
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "extrapolationType");
+		}
+		}
+	}
+
+	/**
+	 *  
 	Converts a  {@link ClockRange} to the corresponding string in a
 	<topic name="Cesium">Cesium</topic> stream.
 	
