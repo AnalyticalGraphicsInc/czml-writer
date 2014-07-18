@@ -41,7 +41,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
 	}
 
 	@Test
-	public final void writesForwardExtrpolationType() {
+	public final void writesForwardExtrapolationType() {
 		CesiumPropertyWriter<TDerived> property = createPropertyWriter("foo");
 		property.open(getOutputStream());
 		{
@@ -56,7 +56,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
 	}
 
 	@Test
-	public final void writesBackwardExtrpolationType() {
+	public final void writesBackwardExtrapolationType() {
 		CesiumPropertyWriter<TDerived> property = createPropertyWriter("foo");
 		property.open(getOutputStream());
 		{
@@ -71,7 +71,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
 	}
 
 	@Test
-	public final void writesForwardExtrpolationDuration() {
+	public final void writesForwardExtrapolationDuration() {
 		CesiumPropertyWriter<TDerived> property = createPropertyWriter("foo");
 		property.open(getOutputStream());
 		{
@@ -86,7 +86,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
 	}
 
 	@Test
-	public final void writesBackwardExtrpolationDuration() {
+	public final void writesBackwardExtrapolationDuration() {
 		CesiumPropertyWriter<TDerived> property = createPropertyWriter("foo");
 		property.open(getOutputStream());
 		{

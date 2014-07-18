@@ -13,7 +13,7 @@ import agi.foundation.compatibility.Enumeration;
 public enum CesiumExtrapolationType implements Enumeration {
 	/**
 	 *  
-	No extrpolation is performed; the property is undefined.
+	No extrapolation is performed; the property is undefined.
 	
 
 	 */

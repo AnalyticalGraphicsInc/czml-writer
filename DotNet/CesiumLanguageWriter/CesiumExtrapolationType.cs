@@ -6,7 +6,7 @@
     public enum CesiumExtrapolationType
     {
         /// <summary>
-        /// No extrpolation is performed; the property is undefined.
+        /// No extrapolation is performed; the property is undefined.
         /// </summary>
         None,
 

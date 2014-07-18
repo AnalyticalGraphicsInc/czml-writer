@@ -32,7 +32,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        public void WritesForwardExtrpolationType()
+        public void WritesForwardExtrapolationType()
         {
             CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("foo");
             property.Open(OutputStream);
@@ -44,7 +44,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        public void WritesBackwardExtrpolationType()
+        public void WritesBackwardExtrapolationType()
         {
             CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("foo");
             property.Open(OutputStream);
@@ -56,7 +56,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        public void WritesForwardExtrpolationDuration()
+        public void WritesForwardExtrapolationDuration()
         {
             CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("foo");
             property.Open(OutputStream);
@@ -68,7 +68,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        public void WritesBackwardExtrpolationDuration()
+        public void WritesBackwardExtrapolationDuration()
         {
             CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("foo");
             property.Open(OutputStream);
