@@ -1,18 +1,29 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+using System;
 using System.Globalization;
 using System.Text;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// A set of curvilinear 3-dimensional coordinates with unit magnitude.
+    /// A set of curvilinear 3-dimensional coordinates.
     /// </summary>
     [CSToJavaImmutableValueType]
-    public struct UnitSpherical : IEquatable<UnitSpherical>
+    public struct Spherical : IEquatable<Spherical>
     {
         /// <summary>
-        /// Initializes a set of <see cref="UnitSpherical"/> coordinates from the provided array.
+        /// Gets a set of <see cref="Spherical"/> coordinates with values of zero.
+        /// </summary>
+        public static Spherical Zero
+        {
+            get
+            {
+                return s_zero;
+            }
+        }
+
+        /// <summary>
+        /// Initializes a set of <see cref="Spherical"/> coordinates from the provided array.
         /// </summary>
         /// <param name="elements">The array of coordinate values.</param>
         /// <param name="startIndex">The index of the first element in the array to use.</param>
@@ -20,9 +31,9 @@ namespace CesiumLanguageWriter
         /// Thrown when the array of <paramref name="elements"/> is null.
         /// </exception>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when an object of this type is constructed from an array with less than 2 <paramref name="elements"/>.
+        /// Thrown when an object of this type is constructed from an array with less than 3 <paramref name="elements"/>.
         /// </exception>
-        public UnitSpherical(double[] elements, int startIndex)
+        public Spherical(double[] elements, int startIndex)
         {
             if (elements == null)
             {
@@ -31,55 +42,49 @@ namespace CesiumLanguageWriter
             else if (startIndex >= elements.Length ||
                      elements.Length - startIndex < s_length)
             {
-                throw new ArgumentOutOfRangeException("elements", String.Format(CultureInfo.CurrentCulture, CesiumLocalization.MustBeConstructedFromSpecificNumberOfElements, typeof(UnitSpherical), 2));
+                throw new ArgumentOutOfRangeException("elements", String.Format(CultureInfo.CurrentCulture, CesiumLocalization.MustBeConstructedFromSpecificNumberOfElements, typeof(Spherical), 3));
             }
             else
             {
                 m_clock = elements[startIndex + 0];
                 m_cone = elements[startIndex + 1];
+                m_magnitude = elements[startIndex + 2];
             }
         }
 
         /// <summary>
-        /// Initializes a set of <see cref="UnitSpherical"/> coordinates from the first 2 consecutive elements in the provided array.
+        /// Initializes a set of <see cref="Spherical"/> coordinates from the first 3 consecutive elements in the provided array.
         /// </summary>
         /// <param name="elements">The array of coordinate values.</param>
         /// <exception cref="ArgumentNullException">
         /// The array of <paramref name="elements"/> cannot be null.
         /// </exception>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// An object of this type must be constructed from an array with at least 2 <paramref name="elements"/>.
+        /// An object of this type must be constructed from an array with at least 3 <paramref name="elements"/>.
         /// </exception>
-        public UnitSpherical(double[] elements)
+        public Spherical(double[] elements)
             : this(elements, 0)
         {
         }
 
         /// <summary>
-        /// Initializes a set of <see cref="UnitSpherical"/> coordinates from the provided clock angle and cone angle.
+        /// Initializes a set of <see cref="Spherical"/> coordinates from the provided clock angle, cone angle, and magnitude.
         /// </summary>
         /// <param name="clock">The angular coordinate lying in the xy-plane measured from the positive x-axis and toward the positive y-axis.</param>
         /// <param name="cone">The angular coordinate measured from the positive z-axis and toward the negative z-axis.</param>
-        public UnitSpherical(double clock, double cone)
+        /// <param name="magnitude">The linear coordinate measured from the origin.</param>
+        public Spherical(double clock, double cone, double magnitude)
         {
             m_clock = clock;
             m_cone = cone;
+            m_magnitude = magnitude;
         }
 
         /// <summary>
-        /// Initializes a set of <see cref="UnitSpherical"/> coordinates from a <see cref="Spherical"/> instance.
-        /// <param name="spherical">An existing Spherical instance.</param>
+        /// Initializes a set of <see cref="Spherical"/> coordinates from the provided set of <see cref="Cartesian"/> coordinates.
         /// </summary>
-        public UnitSpherical(Spherical spherical) :
-            this(spherical.Clock, spherical.Cone)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a set of <see cref="UnitSpherical"/> coordinates from the provided set of <see cref="UnitCartesian"/> coordinates.
-        /// </summary>
-        /// <param name="coordinates">The set of UnitCartesian3 coordinates.</param>
-        public UnitSpherical(UnitCartesian coordinates)
+        /// <param name="coordinates">The set of Cartesian coordinates.</param>
+        public Spherical(Cartesian coordinates)
         {
             double x = coordinates.X;
             double y = coordinates.Y;
@@ -87,6 +92,7 @@ namespace CesiumLanguageWriter
             double radialSquared = x * x + y * y;
             m_clock = Math.Atan2(y, x);
             m_cone = Math.Atan2(Math.Sqrt(radialSquared), z);
+            m_magnitude = Math.Sqrt(radialSquared + z * z);
         }
 
         /// <summary>
@@ -106,11 +112,20 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the linear coordinate measured from the origin.  The value of this property is always 1.0.
+        /// Gets the linear coordinate measured from the origin.
         /// </summary>
         public double Magnitude
         {
-            get { return 1.0; }
+            get { return m_magnitude; }
+        }
+
+        /// <summary>
+        /// Forms a set of <see cref="UnitSpherical"/> coordinates from this instance.
+        /// </summary>
+        /// <returns>The resulting set of <see cref="UnitSpherical"/> coordinates.</returns>
+        public UnitSpherical Normalize()
+        {
+            return new UnitSpherical(this);
         }
 
         /// <summary>
@@ -120,9 +135,9 @@ namespace CesiumLanguageWriter
         /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
-            if (obj is UnitSpherical)
+            if (obj is Spherical)
             {
-                return Equals((UnitSpherical)obj);
+                return Equals((Spherical)obj);
             }
             else
             {
@@ -134,15 +149,16 @@ namespace CesiumLanguageWriter
         /// Indicates whether each coordinate value of another instance of this type
         /// is within the required tolerance of the corresponding coordinate value of this instance.
         /// </summary>
-        /// <param name="other">The set of <see cref="UnitSpherical"/> coordinates to compare to this instance.</param>
+        /// <param name="other">The set of <see cref="Spherical"/> coordinates to compare to this instance.</param>
         /// <param name="epsilon">The limit at which the absolute differences between the coordinate values will not be considered equal.</param>
         /// <returns>
         /// <see langword="true"/> if the absolute differences are less than <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
         /// </returns>
-        public bool EqualsEpsilon(UnitSpherical other, double epsilon)
+        public bool EqualsEpsilon(Spherical other, double epsilon)
         {
             return Math.Abs(Clock - other.Clock) < epsilon &&
-                   Math.Abs(Cone - other.Cone) < epsilon;
+                   Math.Abs(Cone - other.Cone) < epsilon &&
+                   Math.Abs(Magnitude - other.Magnitude) < epsilon;
         }
 
         /// <summary>
@@ -151,7 +167,7 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return m_clock.GetHashCode() ^ m_cone.GetHashCode();
+            return m_clock.GetHashCode() ^ m_cone.GetHashCode() ^ m_magnitude.GetHashCode();
         }
 
         /// <summary>
@@ -167,6 +183,8 @@ namespace CesiumLanguageWriter
             build.Append(m_clock.ToString(CultureInfo.CurrentCulture));
             build.Append(", ");
             build.Append(m_cone.ToString(CultureInfo.CurrentCulture));
+            build.Append(", ");
+            build.Append(m_magnitude.ToString(CultureInfo.CurrentCulture));
             return build.ToString();
         }
 
@@ -178,7 +196,7 @@ namespace CesiumLanguageWriter
         /// <returns>
         /// <see langword="true"/> if <paramref name="left"/> represents the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
         /// </returns>
-        public static bool operator ==(UnitSpherical left, UnitSpherical right)
+        public static bool operator ==(Spherical left, Spherical right)
         {
             return left.Equals(right);
         }
@@ -191,27 +209,30 @@ namespace CesiumLanguageWriter
         /// <returns>
         /// <see langword="true"/> if <paramref name="left"/> does not represent the same value as <paramref name="right"/>; otherwise, <see langword="false"/>.
         /// </returns>
-        public static bool operator !=(UnitSpherical left, UnitSpherical right)
+        public static bool operator !=(Spherical left, Spherical right)
         {
             return !left.Equals(right);
         }
 
         private readonly double m_clock;
         private readonly double m_cone;
+        private readonly double m_magnitude;
 
         [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        private static readonly int s_length = 2;
+        private static readonly int s_length = 3;
 
-        #region IEquatable<UnitSpherical> Members
+        private static readonly Spherical s_zero = new Spherical(0.0, 0.0, 0.0);
+
+        #region IEquatable<Spherical> Members
 
         /// <summary>
         /// Indicates whether another instance of this type is exactly equal to this instance.
         /// </summary>
         /// <param name="other">The instance to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
-        public bool Equals(UnitSpherical other)
+        public bool Equals(Spherical other)
         {
-            return Clock == other.Clock && Cone == other.Cone;
+            return Clock == other.Clock && Cone == other.Cone && Magnitude == other.Magnitude;
         }
 
         #endregion
@@ -228,10 +249,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the value of the specified element with <paramref name="index"/> of 0 and 1 corresponding to the coordinates
-        /// Clock and Cone.
+        /// Gets the value of the specified element with <paramref name="index"/> of 0, 1, and 2 corresponding to the coordinates
+        /// Clock, Cone, and Magnitude.
         /// </summary>
-        /// <param name="index">Either 0 or 1 corresponding to the coordinates Clock or Cone.</param>
+        /// <param name="index">Either 0, 1, or 2 corresponding to the coordinates Clock, Cone, or Magnitude.</param>
         /// <returns>The coordinate associated with the specified <paramref name="index"/>.</returns>
         /// <exception cref="ArgumentOutOfRangeException">
         /// Thrown when the <paramref name="index"/> is less than 0 or is equal to or greater than <see cref="Length"/>.
@@ -246,6 +267,8 @@ namespace CesiumLanguageWriter
                         return Clock;
                     case 1:
                         return Cone;
+                    case 2:
+                        return Magnitude;
                     default:
                         throw new ArgumentOutOfRangeException("index");
                 }

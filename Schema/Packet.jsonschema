@@ -61,14 +61,6 @@
             "$ref": "Polygon.jsonschema",
             "description": "A polygon, which is a closed figure on the surface of the Earth."
         },
-        "cone": {
-            "$ref": "Cone.jsonschema",
-            "description": "A cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.  The apex point of the cone is defined by the `position` property and extends in the direction of the Z-axis as defined by the `orientation` property."
-        },
-        "pyramid": {
-            "$ref": "Pyramid.jsonschema",
-            "description": "A pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit."
-        },
         "ellipsoid": {
             "$ref": "Ellipsoid.jsonschema",
             "description": "An ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties."
@@ -89,8 +81,20 @@
             "$ref": "Clock.jsonschema",
             "description": "A simulated clock."
         },
-        "vector": {
-            "$ref": "Vector.jsonschema",
+        "agi_cone": {
+            "$ref": "Extensions/AGI/Cone.jsonschema",
+            "description": "A cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.  The apex point of the cone is defined by the `position` property and extends in the direction of the Z-axis as defined by the `orientation` property."
+        },
+        "agi_fan": {
+            "$ref": "Extensions/AGI/Fan.jsonschema",
+            "description": "Defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius."
+        },
+        "agi_pyramid": {
+            "$ref": "Extensions/AGI/Pyramid.jsonschema",
+            "description": "A pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit."
+        },
+        "agi_vector": {
+            "$ref": "Extensions/AGI/Vector.jsonschema",
             "description": "Defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length."
         }
     }

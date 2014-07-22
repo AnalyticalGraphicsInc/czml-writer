@@ -16,10 +16,6 @@
             "$ref": "Double.jsonschema",
             "description": "The outer half angle of the cone."
         },
-        "radius": {
-            "$ref": "Double.jsonschema",
-            "description": "The radial limit of the cone."
-        },
         "minimumClockAngle": {
             "$ref": "Double.jsonschema",
             "description": "The minimum clock angle limit of the cone."
@@ -27,6 +23,10 @@
         "maximumClockAngle": {
             "$ref": "Double.jsonschema",
             "description": "The maximum clock angle limit of the cone."
+        },
+        "radius": {
+            "$ref": "Double.jsonschema",
+            "description": "The radial limit of the cone."
         },
         "showIntersection": {
             "$ref": "Boolean.jsonschema",
@@ -40,21 +40,41 @@
             "$ref": "Double.jsonschema",
             "description": "The width of the intersection in pixels."
         },
-        "capMaterial": {
-            "$ref": "Material.jsonschema",
-            "description": "The material to use to cap the cone at its radial limit."
+        "showLateralSurfaces": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the intersections of the cone with the earth are shown."
         },
-        "innerMaterial": {
+        "lateralSurfaceMaterial": {
             "$ref": "Material.jsonschema",
-            "description": "The material to use for the inner cone."
+            "description": "Whether or not lateral surfaces are shown."
         },
-        "outerMaterial": {
-            "$ref": "Material.jsonschema",
-            "description": "The material to use for the outer cone."
+        "showEllipsoidSurfaces": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not ellipsoid surfaces are shown."
         },
-        "silhouetteMaterial": {
+        "ellipsoidSurfaceMaterial": {
             "$ref": "Material.jsonschema",
-            "description": "The material to use for the cone's silhouette."
+            "description": "The material to use for the cone's ellipsoid surface."
+        },
+        "showEllipsoidHorizonSurfaces": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not ellipsoid horizon surfaces are shown."
+        },
+        "ellipsoidHorizonSurfaceMaterial": {
+            "$ref": "Material.jsonschema",
+            "description": "The material to use for the cone's ellipsoid horizon surface."
+        },
+        "showDomeSurfaces": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not dome surfaces are shown."
+        },
+        "domeSurfaceMaterial": {
+            "$ref": "Material.jsonschema",
+            "description": "The material to use for the cone's dome."
+        },
+        "portionToDisplay": {
+            "$ref": "Extensions/AGI/SensorVolumePortionToDisplay.jsonschema",
+            "description": "Indicates what part of a sensor should be displayed."
         }
     }
 }

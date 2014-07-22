@@ -79,16 +79,6 @@ namespace CesiumLanguageWriter
         public const string PolygonPropertyName = "polygon";
 
         /// <summary>
-        /// The name of the <code>cone</code> property.
-        /// </summary>
-        public const string ConePropertyName = "cone";
-
-        /// <summary>
-        /// The name of the <code>pyramid</code> property.
-        /// </summary>
-        public const string PyramidPropertyName = "pyramid";
-
-        /// <summary>
         /// The name of the <code>ellipsoid</code> property.
         /// </summary>
         public const string EllipsoidPropertyName = "ellipsoid";
@@ -114,9 +104,24 @@ namespace CesiumLanguageWriter
         public const string ClockPropertyName = "clock";
 
         /// <summary>
-        /// The name of the <code>vector</code> property.
+        /// The name of the <code>agi_cone</code> property.
         /// </summary>
-        public const string VectorPropertyName = "vector";
+        public const string Agi_conePropertyName = "agi_cone";
+
+        /// <summary>
+        /// The name of the <code>agi_fan</code> property.
+        /// </summary>
+        public const string Agi_fanPropertyName = "agi_fan";
+
+        /// <summary>
+        /// The name of the <code>agi_pyramid</code> property.
+        /// </summary>
+        public const string Agi_pyramidPropertyName = "agi_pyramid";
+
+        /// <summary>
+        /// The name of the <code>agi_vector</code> property.
+        /// </summary>
+        public const string Agi_vectorPropertyName = "agi_vector";
 
         private readonly Lazy<StringCesiumWriter> m_description = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(DescriptionPropertyName), false);
         private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
@@ -127,13 +132,14 @@ namespace CesiumLanguageWriter
         private readonly Lazy<PolylineCesiumWriter> m_polyline = new Lazy<PolylineCesiumWriter>(() => new PolylineCesiumWriter(PolylinePropertyName), false);
         private readonly Lazy<PathCesiumWriter> m_path = new Lazy<PathCesiumWriter>(() => new PathCesiumWriter(PathPropertyName), false);
         private readonly Lazy<PolygonCesiumWriter> m_polygon = new Lazy<PolygonCesiumWriter>(() => new PolygonCesiumWriter(PolygonPropertyName), false);
-        private readonly Lazy<ConeCesiumWriter> m_cone = new Lazy<ConeCesiumWriter>(() => new ConeCesiumWriter(ConePropertyName), false);
-        private readonly Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<PyramidCesiumWriter>(() => new PyramidCesiumWriter(PyramidPropertyName), false);
         private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
         private readonly Lazy<ModelCesiumWriter> m_model = new Lazy<ModelCesiumWriter>(() => new ModelCesiumWriter(ModelPropertyName), false);
         private readonly Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(() => new EllipseCesiumWriter(EllipsePropertyName), false);
         private readonly Lazy<ClockCesiumWriter> m_clock = new Lazy<ClockCesiumWriter>(() => new ClockCesiumWriter(ClockPropertyName), false);
-        private readonly Lazy<VectorCesiumWriter> m_vector = new Lazy<VectorCesiumWriter>(() => new VectorCesiumWriter(VectorPropertyName), false);
+        private readonly Lazy<ConeCesiumWriter> m_agi_cone = new Lazy<ConeCesiumWriter>(() => new ConeCesiumWriter(Agi_conePropertyName), false);
+        private readonly Lazy<FanCesiumWriter> m_agi_fan = new Lazy<FanCesiumWriter>(() => new FanCesiumWriter(Agi_fanPropertyName), false);
+        private readonly Lazy<PyramidCesiumWriter> m_agi_pyramid = new Lazy<PyramidCesiumWriter>(() => new PyramidCesiumWriter(Agi_pyramidPropertyName), false);
+        private readonly Lazy<VectorCesiumWriter> m_agi_vector = new Lazy<VectorCesiumWriter>(() => new VectorCesiumWriter(Agi_vectorPropertyName), false);
 
         /// <summary>
         /// Writes the start of a new JSON object representing the packet.
@@ -723,38 +729,6 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>cone</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>cone</code> property defines a cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.  The apex point of the cone is defined by the `position` property and extends in the direction of the Z-axis as defined by the `orientation` property.
-        /// </summary>
-        public ConeCesiumWriter ConeWriter
-        {
-            get { return m_cone.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>cone</code> property.  The <code>cone</code> property defines a cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.  The apex point of the cone is defined by the `position` property and extends in the direction of the Z-axis as defined by the `orientation` property.
-        /// </summary>
-        public ConeCesiumWriter OpenConeProperty()
-        {
-            return OpenAndReturn(ConeWriter);
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>pyramid</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>pyramid</code> property defines a pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit.
-        /// </summary>
-        public PyramidCesiumWriter PyramidWriter
-        {
-            get { return m_pyramid.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>pyramid</code> property.  The <code>pyramid</code> property defines a pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit.
-        /// </summary>
-        public PyramidCesiumWriter OpenPyramidProperty()
-        {
-            return OpenAndReturn(PyramidWriter);
-        }
-
-        /// <summary>
         /// Gets the writer for the <code>ellipsoid</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
         /// </summary>
         public EllipsoidCesiumWriter EllipsoidWriter
@@ -854,19 +828,67 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>vector</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+        /// Gets the writer for the <code>agi_cone</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>agi_cone</code> property defines a cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.  The apex point of the cone is defined by the `position` property and extends in the direction of the Z-axis as defined by the `orientation` property.
         /// </summary>
-        public VectorCesiumWriter VectorWriter
+        public ConeCesiumWriter Agi_coneWriter
         {
-            get { return m_vector.Value; }
+            get { return m_agi_cone.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>vector</code> property.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+        /// Opens and returns the writer for the <code>agi_cone</code> property.  The <code>agi_cone</code> property defines a cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.  The apex point of the cone is defined by the `position` property and extends in the direction of the Z-axis as defined by the `orientation` property.
         /// </summary>
-        public VectorCesiumWriter OpenVectorProperty()
+        public ConeCesiumWriter OpenAgi_coneProperty()
         {
-            return OpenAndReturn(VectorWriter);
+            return OpenAndReturn(Agi_coneWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>agi_fan</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>agi_fan</code> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
+        /// </summary>
+        public FanCesiumWriter Agi_fanWriter
+        {
+            get { return m_agi_fan.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>agi_fan</code> property.  The <code>agi_fan</code> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
+        /// </summary>
+        public FanCesiumWriter OpenAgi_fanProperty()
+        {
+            return OpenAndReturn(Agi_fanWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>agi_pyramid</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>agi_pyramid</code> property defines a pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit.
+        /// </summary>
+        public PyramidCesiumWriter Agi_pyramidWriter
+        {
+            get { return m_agi_pyramid.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>agi_pyramid</code> property.  The <code>agi_pyramid</code> property defines a pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit.
+        /// </summary>
+        public PyramidCesiumWriter OpenAgi_pyramidProperty()
+        {
+            return OpenAndReturn(Agi_pyramidWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>agi_vector</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>agi_vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+        /// </summary>
+        public VectorCesiumWriter Agi_vectorWriter
+        {
+            get { return m_agi_vector.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>agi_vector</code> property.  The <code>agi_vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+        /// </summary>
+        public VectorCesiumWriter OpenAgi_vectorProperty()
+        {
+            return OpenAndReturn(Agi_vectorWriter);
         }
 
     }

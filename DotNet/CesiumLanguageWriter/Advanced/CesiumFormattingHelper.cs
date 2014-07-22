@@ -360,6 +360,27 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Converts a <see cref="CesiumLabelStyle"/> to the corresponding string in a
+        /// <topic name="Cesium">Cesium</topic> stream.
+        /// </summary>
+        /// <param name="portionToDisplay">The value to convert.</param>
+        /// <returns>The string representing the specified <see cref="CesiumSensorVolumePortionToDisplay"/>.</returns>
+        public static string SensorVolumePortionToDisplayToString(CesiumSensorVolumePortionToDisplay portionToDisplay)
+        {
+            switch (portionToDisplay)
+            {
+                case CesiumSensorVolumePortionToDisplay.Complete:
+                    return "COMPLETE";
+                case CesiumSensorVolumePortionToDisplay.AboveEllipsoidHorizon:
+                    return "ABOVE_ELLIPSOID_HORIZON";
+                case CesiumSensorVolumePortionToDisplay.BelowEllipsoidHorizon:
+                    return "BELOW_ELLIPSOID_HORIZON";
+                default:
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "portionToDisplay");
+            }
+        }
+
+        /// <summary>
         /// Returns a resolved url, using the given <see cref="CesiumResourceBehavior"/>.
         /// </summary>
         /// <param name="url">The url of the resource.</param>

@@ -59,13 +59,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\PolylineOutlineMaterial.jsonschema = ..\Schema\PolylineOutlineMaterial.jsonschema
 		..\Schema\Position.jsonschema = ..\Schema\Position.jsonschema
 		..\Schema\PositionList.jsonschema = ..\Schema\PositionList.jsonschema
-		..\Schema\Pyramid.jsonschema = ..\Schema\Pyramid.jsonschema
 		..\Schema\ReferenceListValue.jsonschema = ..\Schema\ReferenceListValue.jsonschema
 		..\Schema\ReferenceValue.jsonschema = ..\Schema\ReferenceValue.jsonschema
 		..\Schema\Repeat.jsonschema = ..\Schema\Repeat.jsonschema
 		..\Schema\RgbafValue.jsonschema = ..\Schema\RgbafValue.jsonschema
 		..\Schema\RgbaValue.jsonschema = ..\Schema\RgbaValue.jsonschema
 		..\Schema\SolidColorMaterial.jsonschema = ..\Schema\SolidColorMaterial.jsonschema
+		..\Schema\SphericalListValue.jsonschema = ..\Schema\SphericalListValue.jsonschema
+		..\Schema\SphericalValue.jsonschema = ..\Schema\SphericalValue.jsonschema
 		..\Schema\String.jsonschema = ..\Schema\String.jsonschema
 		..\Schema\StringValue.jsonschema = ..\Schema\StringValue.jsonschema
 		..\Schema\StripeMaterial.jsonschema = ..\Schema\StripeMaterial.jsonschema
@@ -81,7 +82,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\Uri.jsonschema = ..\Schema\Uri.jsonschema
 		..\Schema\UriValue.jsonschema = ..\Schema\UriValue.jsonschema
 		..\Schema\Validator.html = ..\Schema\Validator.html
-		..\Schema\Vector.jsonschema = ..\Schema\Vector.jsonschema
 		..\Schema\VerticalOrigin.jsonschema = ..\Schema\VerticalOrigin.jsonschema
 		..\Schema\VerticalOriginValue.jsonschema = ..\Schema\VerticalOriginValue.jsonschema
 	EndProjectSection
@@ -113,6 +113,18 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometricComputationsTests", "GeometricComputationsTests\GeometricComputationsTests.csproj", "{A9F2ADF7-4447-40B2-8975-9FCB72C6694F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadDBF", "ThirdParty\LoadDBF\LoadDBF.csproj", "{2FB1AEFA-3B28-42D0-9520-3F100E297601}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{F5502A67-ADA3-48EA-8DF8-19D7456AA44C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AGI", "AGI", "{CF5572F1-2FF5-4169-AAAC-DE87E5C7F4B1}"
+	ProjectSection(SolutionItems) = preProject
+		..\Schema\Extensions\AGI\Cone.jsonschema = ..\Schema\Extensions\AGI\Cone.jsonschema
+		..\Schema\Extensions\AGI\Fan.jsonschema = ..\Schema\Extensions\AGI\Fan.jsonschema
+		..\Schema\Extensions\AGI\Pyramid.jsonschema = ..\Schema\Extensions\AGI\Pyramid.jsonschema
+		..\Schema\Extensions\AGI\SensorVolumePortionToDisplay.jsonschema = ..\Schema\Extensions\AGI\SensorVolumePortionToDisplay.jsonschema
+		..\Schema\Extensions\AGI\SensorVolumePortionToDisplayValue.jsonschema = ..\Schema\Extensions\AGI\SensorVolumePortionToDisplayValue.jsonschema
+		..\Schema\Extensions\AGI\Vector.jsonschema = ..\Schema\Extensions\AGI\Vector.jsonschema
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -178,5 +190,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5E4C0F36-35DC-4ED8-91EC-EAAC109836A0} = {04E49F4E-CD74-44F3-9A80-604BCA10FB67}
+		{F5502A67-ADA3-48EA-8DF8-19D7456AA44C} = {04E49F4E-CD74-44F3-9A80-604BCA10FB67}
+		{CF5572F1-2FF5-4169-AAAC-DE87E5C7F4B1} = {F5502A67-ADA3-48EA-8DF8-19D7456AA44C}
 	EndGlobalSection
 EndGlobal

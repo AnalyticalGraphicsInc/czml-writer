@@ -18,6 +18,11 @@ namespace CesiumLanguageWriter
         public const string AxesPropertyName = "axes";
 
         /// <summary>
+        /// The name of the <code>spherical</code> property.
+        /// </summary>
+        public const string SphericalPropertyName = "spherical";
+
+        /// <summary>
         /// The name of the <code>unitCartesian</code> property.
         /// </summary>
         public const string UnitCartesianPropertyName = "unitCartesian";
@@ -32,6 +37,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string ReferencePropertyName = "reference";
 
+        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Spherical>> m_asSpherical;
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>> m_asUnitCartesian;
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>> m_asUnitSpherical;
         private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
@@ -42,6 +48,7 @@ namespace CesiumLanguageWriter
         public DirectionCesiumWriter(string propertyName)
             : base(propertyName)
         {
+            m_asSpherical = new Lazy<ICesiumInterpolatableValuePropertyWriter<Spherical>>(CreateSphericalAdaptor, false);
             m_asUnitCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(CreateUnitCartesianAdaptor, false);
             m_asUnitSpherical = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(CreateUnitSphericalAdaptor, false);
             m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
@@ -54,6 +61,7 @@ namespace CesiumLanguageWriter
         protected DirectionCesiumWriter(DirectionCesiumWriter existingInstance)
             : base(existingInstance)
         {
+            m_asSpherical = new Lazy<ICesiumInterpolatableValuePropertyWriter<Spherical>>(CreateSphericalAdaptor, false);
             m_asUnitCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(CreateUnitCartesianAdaptor, false);
             m_asUnitSpherical = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(CreateUnitSphericalAdaptor, false);
             m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
@@ -75,6 +83,42 @@ namespace CesiumLanguageWriter
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             Output.WriteValue(value);
+        }
+
+        /// <summary>
+        /// Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies a direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteSpherical(Spherical value)
+        {
+            const string PropertyName = SphericalPropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteSpherical(Output, value);
+        }
+
+        /// <summary>
+        /// Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies a direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteSpherical(IList<JulianDate> dates, IList<Spherical> values)
+        {
+            WriteSpherical(dates, values, 0, dates.Count);
+        }
+
+        /// <summary>
+        /// Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies a direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteSpherical(IList<JulianDate> dates, IList<Spherical> values, int startIndex, int length)
+        {
+            const string PropertyName = SphericalPropertyName;
+            OpenIntervalIfNecessary();
+            CesiumWritingHelper.WriteSpherical(Output, PropertyName, dates, values, startIndex, length);
         }
 
         /// <summary>
@@ -197,6 +241,21 @@ namespace CesiumLanguageWriter
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteReference(Output, identifier, propertyNames);
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>Spherical</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumInterpolatableValuePropertyWriter<Spherical> AsSpherical()
+        {
+            return m_asSpherical.Value;
+        }
+
+        private ICesiumInterpolatableValuePropertyWriter<Spherical> CreateSphericalAdaptor()
+        {
+            return new CesiumInterpolatableWriterAdaptor<DirectionCesiumWriter, Spherical>(
+                this, (me, value) => me.WriteSpherical(value), (DirectionCesiumWriter me, IList<JulianDate> dates, IList<Spherical> values, int startIndex, int length) => me.WriteSpherical(dates, values, startIndex, length));
         }
 
         /// <summary>
