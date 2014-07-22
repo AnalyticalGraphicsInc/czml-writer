@@ -10,6 +10,8 @@ namespace GenerateFromSchema
 
         public string Description { get; set; }
 
+        public string ExtensionPrefix { get; set; }
+
         public Schema Extends { get; set; }
 
         public JsonSchemaType JsonTypes { get; set; }

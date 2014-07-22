@@ -3,6 +3,7 @@
     "description": "A cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.",
     "type": ["array", "object"],
     "items": { "$ref": "#" },
+    "extensionPrefix": "agi",
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",

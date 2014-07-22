@@ -3,6 +3,7 @@
     "description": "A pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit.",
     "type": ["array", "object"],
     "items": { "$ref": "#" },
+    "extensionPrefix": "agi",
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
