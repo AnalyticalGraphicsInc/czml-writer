@@ -82,15 +82,12 @@
     <Compile Include="ClockRange.cs" />
     <Compile Include="ClockStep.cs" />
     <Compile Include="CustomCesiumWriter.cs" />
-    <Compile Include="Generated\Agi_ConeCesiumWriter.cs" />
-    <Compile Include="Generated\Agi_FanCesiumWriter.cs" />
-    <Compile Include="Generated\Agi_PyramidCesiumWriter.cs" />
-    <Compile Include="Generated\Agi_VectorCesiumWriter.cs" />
     <Compile Include="Generated\AlignedAxisCesiumWriter.cs" />
     <Compile Include="Generated\BillboardCesiumWriter.cs" />
     <Compile Include="Generated\BooleanCesiumWriter.cs" />
     <Compile Include="Generated\ClockCesiumWriter.cs" />
     <Compile Include="Generated\ColorCesiumWriter.cs" />
+    <Compile Include="Generated\ConeCesiumWriter.cs" />
     <Compile Include="Generated\DirectionCesiumWriter.cs" />
     <Compile Include="Generated\DirectionListCesiumWriter.cs" />
     <Compile Include="Generated\DoubleCesiumWriter.cs" />
@@ -98,6 +95,7 @@
     <Compile Include="Generated\EllipsoidCesiumWriter.cs" />
     <Compile Include="Generated\EllipsoidRadiiCesiumWriter.cs" />
     <Compile Include="Generated\EyeOffsetCesiumWriter.cs" />
+    <Compile Include="Generated\FanCesiumWriter.cs" />
     <Compile Include="Generated\FontCesiumWriter.cs" />
     <Compile Include="Generated\GridMaterialCesiumWriter.cs" />
     <Compile Include="Generated\HorizontalOriginCesiumWriter.cs" />
@@ -121,6 +119,7 @@
     <Compile Include="Generated\PolylineOutlineMaterialCesiumWriter.cs" />
     <Compile Include="Generated\PositionCesiumWriter.cs" />
     <Compile Include="Generated\PositionListCesiumWriter.cs" />
+    <Compile Include="Generated\PyramidCesiumWriter.cs" />
     <Compile Include="Generated\RepeatCesiumWriter.cs" />
     <Compile Include="Generated\SensorVolumePortionToDisplayCesiumWriter.cs" />
     <Compile Include="Generated\SolidColorMaterialCesiumWriter.cs" />
@@ -128,6 +127,7 @@
     <Compile Include="Generated\StripeMaterialCesiumWriter.cs" />
     <Compile Include="Generated\StripeOrientationCesiumWriter.cs" />
     <Compile Include="Generated\UriCesiumWriter.cs" />
+    <Compile Include="Generated\VectorCesiumWriter.cs" />
     <Compile Include="Generated\VerticalOriginCesiumWriter.cs" />
     <Compile Include="grisu\DiyFp.cs" />
     <Compile Include="grisu\Grisu.cs" />
