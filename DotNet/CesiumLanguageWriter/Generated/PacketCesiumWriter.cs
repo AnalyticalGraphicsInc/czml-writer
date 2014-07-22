@@ -104,6 +104,11 @@ namespace CesiumLanguageWriter
         public const string ClockPropertyName = "clock";
 
         /// <summary>
+        /// The name of the <code>version</code> property.
+        /// </summary>
+        public const string VersionPropertyName = "version";
+
+        /// <summary>
         /// The name of the <code>agi_cone</code> property.
         /// </summary>
         public const string Agi_conePropertyName = "agi_cone";
@@ -812,7 +817,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>clock</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>clock</code> property defines a simulated clock.
+        /// Gets the writer for the <code>clock</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>clock</code> property defines the clock settings for the entire data set. Only valid on the document object.
         /// </summary>
         public ClockCesiumWriter ClockWriter
         {
@@ -820,11 +825,22 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>clock</code> property.  The <code>clock</code> property defines a simulated clock.
+        /// Opens and returns the writer for the <code>clock</code> property.  The <code>clock</code> property defines the clock settings for the entire data set. Only valid on the document object.
         /// </summary>
         public ClockCesiumWriter OpenClockProperty()
         {
             return OpenAndReturn(ClockWriter);
+        }
+
+        /// <summary>
+        /// Writes the <code>version</code> property.  The <code>version</code> property specifies the CZML version being written. Only valid on the document object.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteVersion(string value)
+        {
+            const string PropertyName = VersionPropertyName;
+            Output.WritePropertyName(PropertyName);
+            Output.WriteValue(value);
         }
 
         /// <summary>
