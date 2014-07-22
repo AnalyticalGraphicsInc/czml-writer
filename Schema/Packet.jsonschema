@@ -87,7 +87,11 @@
         },
         "clock": {
             "$ref": "Clock.jsonschema",
-            "description": "A simulated clock."
+            "description": "The clock settings for the entire data set. Only valid on the document object."
+        },
+        "version": {
+            "$ref": "StringValue.jsonschema",
+            "description": "The CZML version being written. Only valid on the document object."
         },
         "vector": {
             "$ref": "Vector.jsonschema",

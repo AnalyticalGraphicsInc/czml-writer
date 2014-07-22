@@ -173,6 +173,13 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	public static final String ClockPropertyName = "clock";
 	/**
 	 *  
+	The name of the <code>version</code> property.
+	
+
+	 */
+	public static final String VersionPropertyName = "version";
+	/**
+	 *  
 	The name of the <code>vector</code> property.
 	
 
@@ -1264,7 +1271,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	}
 
 	/**
-	 *  Gets the writer for the <code>clock</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>clock</code> property defines a simulated clock.
+	 *  Gets the writer for the <code>clock</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>clock</code> property defines the clock settings for the entire data set. Only valid on the document object.
 	
 
 	 */
@@ -1274,12 +1281,26 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>clock</code> property.  The <code>clock</code> property defines a simulated clock.
+	Opens and returns the writer for the <code>clock</code> property.  The <code>clock</code> property defines the clock settings for the entire data set. Only valid on the document object.
 	
 
 	 */
 	public final ClockCesiumWriter openClockProperty() {
 		return this.<ClockCesiumWriter> openAndReturn(getClockWriter());
+	}
+
+	/**
+	 *  
+	Writes the <code>version</code> property.  The <code>version</code> property specifies the CZML version being written. Only valid on the document object.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeVersion(String value) {
+		String PropertyName = VersionPropertyName;
+		getOutput().writePropertyName(PropertyName);
+		getOutput().writeValue(value);
 	}
 
 	/**
