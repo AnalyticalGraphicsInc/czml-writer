@@ -112,9 +112,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AGI", "AGI", "{CF5572F1-2FF5-4169-AAAC-DE87E5C7F4B1}"
 	ProjectSection(SolutionItems) = preProject
-		..\Schema\Extensions\AGI\Cone.jsonschema = ..\Schema\Extensions\AGI\Cone.jsonschema
+		..\Schema\Extensions\AGI\ConicSensor.jsonschema = ..\Schema\Extensions\AGI\ConicSensor.jsonschema
+		..\Schema\Extensions\AGI\CustomPatternSensor.jsonschema = ..\Schema\Extensions\AGI\CustomPatternSensor.jsonschema
 		..\Schema\Extensions\AGI\Fan.jsonschema = ..\Schema\Extensions\AGI\Fan.jsonschema
-		..\Schema\Extensions\AGI\Pyramid.jsonschema = ..\Schema\Extensions\AGI\Pyramid.jsonschema
+		..\Schema\Extensions\AGI\RectangularSensor.jsonschema = ..\Schema\Extensions\AGI\RectangularSensor.jsonschema
 		..\Schema\Extensions\AGI\SensorVolumePortionToDisplay.jsonschema = ..\Schema\Extensions\AGI\SensorVolumePortionToDisplay.jsonschema
 		..\Schema\Extensions\AGI\SensorVolumePortionToDisplayValue.jsonschema = ..\Schema\Extensions\AGI\SensorVolumePortionToDisplayValue.jsonschema
 		..\Schema\Extensions\AGI\Vector.jsonschema = ..\Schema\Extensions\AGI\Vector.jsonschema

@@ -27,7 +27,8 @@ namespace GenerateFromSchema
                 if (Name.Length == 0)
                     return Name;
 
-                return Char.ToUpperInvariant(Name[0]) + Name.Substring(1);
+                var tmp = string.IsNullOrEmpty(ValueType.ExtensionPrefix) ? Name : Name.Substring(ValueType.ExtensionPrefix.Length + 1);
+                return Char.ToUpperInvariant(tmp[0]) + tmp.Substring(1);
             }
         }
 

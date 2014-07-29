@@ -9,9 +9,9 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Pyramid</code> to a <see cref="CesiumOutputStream" />.  A <code>Pyramid</code> a pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit.
+    /// Writes a <code>CustomPatternSensor</code> to a <see cref="CesiumOutputStream" />.  A <code>CustomPatternSensor</code> a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
     /// </summary>
-    public class PyramidCesiumWriter : CesiumPropertyWriter<PyramidCesiumWriter>
+    public class CustomPatternSensorCesiumWriter : CesiumPropertyWriter<CustomPatternSensorCesiumWriter>
     {
         /// <summary>
         /// The name of the <code>show</code> property.
@@ -107,7 +107,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public PyramidCesiumWriter(string propertyName)
+        public CustomPatternSensorCesiumWriter(string propertyName)
             : base(propertyName)
         {
         }
@@ -116,15 +116,15 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param> 
-        protected PyramidCesiumWriter(PyramidCesiumWriter existingInstance)
+        protected CustomPatternSensorCesiumWriter(CustomPatternSensorCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
 
         /// <inheritdoc />
-        public override PyramidCesiumWriter Clone()
+        public override CustomPatternSensorCesiumWriter Clone()
         {
-            return new PyramidCesiumWriter(this);
+            return new CustomPatternSensorCesiumWriter(this);
         }
 
         /// <summary>

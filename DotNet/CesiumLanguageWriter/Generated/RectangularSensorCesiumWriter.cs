@@ -9,9 +9,9 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Cone</code> to a <see cref="CesiumOutputStream" />.  A <code>Cone</code> a cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.
+    /// Writes a <code>RectangularSensor</code> to a <see cref="CesiumOutputStream" />.  A <code>RectangularSensor</code> a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
     /// </summary>
-    public class ConeCesiumWriter : CesiumPropertyWriter<ConeCesiumWriter>
+    public class RectangularSensorCesiumWriter : CesiumPropertyWriter<RectangularSensorCesiumWriter>
     {
         /// <summary>
         /// The name of the <code>show</code> property.
@@ -19,24 +19,9 @@ namespace CesiumLanguageWriter
         public const string ShowPropertyName = "show";
 
         /// <summary>
-        /// The name of the <code>innerHalfAngle</code> property.
+        /// The name of the <code>directions</code> property.
         /// </summary>
-        public const string InnerHalfAnglePropertyName = "innerHalfAngle";
-
-        /// <summary>
-        /// The name of the <code>outerHalfAngle</code> property.
-        /// </summary>
-        public const string OuterHalfAnglePropertyName = "outerHalfAngle";
-
-        /// <summary>
-        /// The name of the <code>minimumClockAngle</code> property.
-        /// </summary>
-        public const string MinimumClockAnglePropertyName = "minimumClockAngle";
-
-        /// <summary>
-        /// The name of the <code>maximumClockAngle</code> property.
-        /// </summary>
-        public const string MaximumClockAnglePropertyName = "maximumClockAngle";
+        public const string DirectionsPropertyName = "directions";
 
         /// <summary>
         /// The name of the <code>radius</code> property.
@@ -104,10 +89,7 @@ namespace CesiumLanguageWriter
         public const string PortionToDisplayPropertyName = "portionToDisplay";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_innerHalfAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(InnerHalfAnglePropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_outerHalfAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OuterHalfAnglePropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_minimumClockAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MinimumClockAnglePropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_maximumClockAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MaximumClockAnglePropertyName), false);
+        private readonly Lazy<DirectionListCesiumWriter> m_directions = new Lazy<DirectionListCesiumWriter>(() => new DirectionListCesiumWriter(DirectionsPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RadiusPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_showIntersection = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowIntersectionPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_intersectionColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(IntersectionColorPropertyName), false);
@@ -125,7 +107,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public ConeCesiumWriter(string propertyName)
+        public RectangularSensorCesiumWriter(string propertyName)
             : base(propertyName)
         {
         }
@@ -134,19 +116,19 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param> 
-        protected ConeCesiumWriter(ConeCesiumWriter existingInstance)
+        protected RectangularSensorCesiumWriter(RectangularSensorCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
 
         /// <inheritdoc />
-        public override ConeCesiumWriter Clone()
+        public override RectangularSensorCesiumWriter Clone()
         {
-            return new ConeCesiumWriter(this);
+            return new RectangularSensorCesiumWriter(this);
         }
 
         /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the cone is shown.
+        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the pyramid is shown.
         /// </summary>
         public BooleanCesiumWriter ShowWriter
         {
@@ -154,7 +136,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the cone is shown.
+        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the pyramid is shown.
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
@@ -163,7 +145,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the cone is shown.
+        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -175,383 +157,60 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>innerHalfAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>innerHalfAngle</code> property defines the inner half angle of the cone.
+        /// Gets the writer for the <code>directions</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>directions</code> property defines the list of directions defining the pyramid.
         /// </summary>
-        public DoubleCesiumWriter InnerHalfAngleWriter
+        public DirectionListCesiumWriter DirectionsWriter
         {
-            get { return m_innerHalfAngle.Value; }
+            get { return m_directions.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>innerHalfAngle</code> property.  The <code>innerHalfAngle</code> property defines the inner half angle of the cone.
+        /// Opens and returns the writer for the <code>directions</code> property.  The <code>directions</code> property defines the list of directions defining the pyramid.
         /// </summary>
-        public DoubleCesiumWriter OpenInnerHalfAngleProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(InnerHalfAngleWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>number</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteInnerHalfAngleProperty(double value)
-        {
-            using (var writer = OpenInnerHalfAngleProperty())
-            {
-                writer.WriteNumber(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>number</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteInnerHalfAngleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenInnerHalfAngleProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteInnerHalfAnglePropertyReference(Reference value)
-        {
-            using (var writer = OpenInnerHalfAngleProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteInnerHalfAnglePropertyReference(string value)
-        {
-            using (var writer = OpenInnerHalfAngleProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteInnerHalfAnglePropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenInnerHalfAngleProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteInnerHalfAnglePropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenInnerHalfAngleProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>outerHalfAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outerHalfAngle</code> property defines the outer half angle of the cone.
-        /// </summary>
-        public DoubleCesiumWriter OuterHalfAngleWriter
-        {
-            get { return m_outerHalfAngle.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>outerHalfAngle</code> property.  The <code>outerHalfAngle</code> property defines the outer half angle of the cone.
-        /// </summary>
-        public DoubleCesiumWriter OpenOuterHalfAngleProperty()
+        public DirectionListCesiumWriter OpenDirectionsProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(OuterHalfAngleWriter);
+            return OpenAndReturn(DirectionsWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>number</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// Writes a value for the <code>directions</code> property as a <code>unitSpherical</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
         /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteOuterHalfAngleProperty(double value)
+        /// <param name="values">The values.</param>
+        public void WriteDirectionsProperty(IEnumerable<UnitSpherical> values)
         {
-            using (var writer = OpenOuterHalfAngleProperty())
+            using (var writer = OpenDirectionsProperty())
             {
-                writer.WriteNumber(value);
+                writer.WriteUnitSpherical(values);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>number</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// Writes a value for the <code>directions</code> property as a <code>spherical</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
         /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteOuterHalfAngleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        /// <param name="values">The values.</param>
+        public void WriteDirectionsPropertySpherical(IEnumerable<Spherical> values)
         {
-            using (var writer = OpenOuterHalfAngleProperty())
+            using (var writer = OpenDirectionsProperty())
             {
-                writer.WriteNumber(dates, values, startIndex, length);
+                writer.WriteSpherical(values);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// Writes a value for the <code>directions</code> property as a <code>unitCartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
         /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteOuterHalfAnglePropertyReference(Reference value)
+        /// <param name="values">The values.</param>
+        public void WriteDirectionsPropertyUnitCartesian(IEnumerable<UnitCartesian> values)
         {
-            using (var writer = OpenOuterHalfAngleProperty())
+            using (var writer = OpenDirectionsProperty())
             {
-                writer.WriteReference(value);
+                writer.WriteUnitCartesian(values);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteOuterHalfAnglePropertyReference(string value)
-        {
-            using (var writer = OpenOuterHalfAngleProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteOuterHalfAnglePropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenOuterHalfAngleProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteOuterHalfAnglePropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenOuterHalfAngleProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>minimumClockAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>minimumClockAngle</code> property defines the minimum clock angle limit of the cone.
-        /// </summary>
-        public DoubleCesiumWriter MinimumClockAngleWriter
-        {
-            get { return m_minimumClockAngle.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>minimumClockAngle</code> property.  The <code>minimumClockAngle</code> property defines the minimum clock angle limit of the cone.
-        /// </summary>
-        public DoubleCesiumWriter OpenMinimumClockAngleProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(MinimumClockAngleWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>number</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteMinimumClockAngleProperty(double value)
-        {
-            using (var writer = OpenMinimumClockAngleProperty())
-            {
-                writer.WriteNumber(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>number</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteMinimumClockAngleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenMinimumClockAngleProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteMinimumClockAnglePropertyReference(Reference value)
-        {
-            using (var writer = OpenMinimumClockAngleProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteMinimumClockAnglePropertyReference(string value)
-        {
-            using (var writer = OpenMinimumClockAngleProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteMinimumClockAnglePropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenMinimumClockAngleProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteMinimumClockAnglePropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenMinimumClockAngleProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>maximumClockAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>maximumClockAngle</code> property defines the maximum clock angle limit of the cone.
-        /// </summary>
-        public DoubleCesiumWriter MaximumClockAngleWriter
-        {
-            get { return m_maximumClockAngle.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>maximumClockAngle</code> property.  The <code>maximumClockAngle</code> property defines the maximum clock angle limit of the cone.
-        /// </summary>
-        public DoubleCesiumWriter OpenMaximumClockAngleProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(MaximumClockAngleWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>number</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteMaximumClockAngleProperty(double value)
-        {
-            using (var writer = OpenMaximumClockAngleProperty())
-            {
-                writer.WriteNumber(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>number</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteMaximumClockAngleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenMaximumClockAngleProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteMaximumClockAnglePropertyReference(Reference value)
-        {
-            using (var writer = OpenMaximumClockAngleProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteMaximumClockAnglePropertyReference(string value)
-        {
-            using (var writer = OpenMaximumClockAngleProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteMaximumClockAnglePropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenMaximumClockAngleProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteMaximumClockAnglePropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenMaximumClockAngleProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>radius</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>radius</code> property defines the radial limit of the cone.
+        /// Gets the writer for the <code>radius</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>radius</code> property defines the radial limit of the pyramid.
         /// </summary>
         public DoubleCesiumWriter RadiusWriter
         {
@@ -559,7 +218,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>radius</code> property.  The <code>radius</code> property defines the radial limit of the cone.
+        /// Opens and returns the writer for the <code>radius</code> property.  The <code>radius</code> property defines the radial limit of the pyramid.
         /// </summary>
         public DoubleCesiumWriter OpenRadiusProperty()
         {
@@ -568,7 +227,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteRadiusProperty(double value)
@@ -580,7 +239,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -595,7 +254,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteRadiusPropertyReference(Reference value)
@@ -607,7 +266,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteRadiusPropertyReference(string value)
@@ -619,7 +278,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -632,7 +291,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -645,7 +304,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>showIntersection</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showIntersection</code> property defines whether or not the intersection of the cone with the Earth is shown.
+        /// Gets the writer for the <code>showIntersection</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showIntersection</code> property defines whether or not the intersection of the pyramid with the Earth is shown.
         /// </summary>
         public BooleanCesiumWriter ShowIntersectionWriter
         {
@@ -653,7 +312,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>showIntersection</code> property.  The <code>showIntersection</code> property defines whether or not the intersection of the cone with the Earth is shown.
+        /// Opens and returns the writer for the <code>showIntersection</code> property.  The <code>showIntersection</code> property defines whether or not the intersection of the pyramid with the Earth is shown.
         /// </summary>
         public BooleanCesiumWriter OpenShowIntersectionProperty()
         {
@@ -662,7 +321,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showIntersection</code> property as a <code>boolean</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the cone with the Earth is shown.
+        /// Writes a value for the <code>showIntersection</code> property as a <code>boolean</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the pyramid with the Earth is shown.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowIntersectionProperty(bool value)
@@ -674,7 +333,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>intersectionColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>intersectionColor</code> property defines the color of the intersection of the cone with the Earth.
+        /// Gets the writer for the <code>intersectionColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>intersectionColor</code> property defines the color of the intersection of the pyramid with the Earth.
         /// </summary>
         public ColorCesiumWriter IntersectionColorWriter
         {
@@ -682,7 +341,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>intersectionColor</code> property.  The <code>intersectionColor</code> property defines the color of the intersection of the cone with the Earth.
+        /// Opens and returns the writer for the <code>intersectionColor</code> property.  The <code>intersectionColor</code> property defines the color of the intersection of the pyramid with the Earth.
         /// </summary>
         public ColorCesiumWriter OpenIntersectionColorProperty()
         {
@@ -691,7 +350,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteIntersectionColorProperty(Color color)
@@ -703,7 +362,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -718,7 +377,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -733,7 +392,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgbaf</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgbaf</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -748,7 +407,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteIntersectionColorPropertyReference(Reference value)
@@ -760,7 +419,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteIntersectionColorPropertyReference(string value)
@@ -772,7 +431,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -785,7 +444,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -892,7 +551,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>showLateralSurfaces</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showLateralSurfaces</code> property defines whether or not the intersections of the cone with the earth are shown.
+        /// Gets the writer for the <code>showLateralSurfaces</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showLateralSurfaces</code> property defines whether or not the intersections of the pyramid with the earth are shown.
         /// </summary>
         public BooleanCesiumWriter ShowLateralSurfacesWriter
         {
@@ -900,7 +559,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>showLateralSurfaces</code> property.  The <code>showLateralSurfaces</code> property defines whether or not the intersections of the cone with the earth are shown.
+        /// Opens and returns the writer for the <code>showLateralSurfaces</code> property.  The <code>showLateralSurfaces</code> property defines whether or not the intersections of the pyramid with the earth are shown.
         /// </summary>
         public BooleanCesiumWriter OpenShowLateralSurfacesProperty()
         {
@@ -909,7 +568,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showLateralSurfaces</code> property as a <code>boolean</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the cone with the earth are shown.
+        /// Writes a value for the <code>showLateralSurfaces</code> property as a <code>boolean</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowLateralSurfacesProperty(bool value)
@@ -967,7 +626,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid surface.
+        /// Gets the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid surface.
         /// </summary>
         public MaterialCesiumWriter EllipsoidSurfaceMaterialWriter
         {
@@ -975,7 +634,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid surface.
+        /// Opens and returns the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid surface.
         /// </summary>
         public MaterialCesiumWriter OpenEllipsoidSurfaceMaterialProperty()
         {
@@ -1013,7 +672,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid horizon surface.
+        /// Gets the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid horizon surface.
         /// </summary>
         public MaterialCesiumWriter EllipsoidHorizonSurfaceMaterialWriter
         {
@@ -1021,7 +680,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid horizon surface.
+        /// Opens and returns the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid horizon surface.
         /// </summary>
         public MaterialCesiumWriter OpenEllipsoidHorizonSurfaceMaterialProperty()
         {
@@ -1059,7 +718,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>domeSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>domeSurfaceMaterial</code> property defines the material to use for the cone's dome.
+        /// Gets the writer for the <code>domeSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>domeSurfaceMaterial</code> property defines the material to use for the pyramid's dome.
         /// </summary>
         public MaterialCesiumWriter DomeSurfaceMaterialWriter
         {
@@ -1067,7 +726,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>domeSurfaceMaterial</code> property.  The <code>domeSurfaceMaterial</code> property defines the material to use for the cone's dome.
+        /// Opens and returns the writer for the <code>domeSurfaceMaterial</code> property.  The <code>domeSurfaceMaterial</code> property defines the material to use for the pyramid's dome.
         /// </summary>
         public MaterialCesiumWriter OpenDomeSurfaceMaterialProperty()
         {

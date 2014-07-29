@@ -8,9 +8,11 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BillboardCesiumWriter;
 import cesiumlanguagewriter.ClockCesiumWriter;
-import cesiumlanguagewriter.ConeCesiumWriter;
+import cesiumlanguagewriter.ConicSensorCesiumWriter;
+import cesiumlanguagewriter.CustomPatternSensorCesiumWriter;
 import cesiumlanguagewriter.EllipseCesiumWriter;
 import cesiumlanguagewriter.EllipsoidCesiumWriter;
+import cesiumlanguagewriter.FanCesiumWriter;
 import cesiumlanguagewriter.LabelCesiumWriter;
 import cesiumlanguagewriter.ModelCesiumWriter;
 import cesiumlanguagewriter.OrientationCesiumWriter;
@@ -19,7 +21,7 @@ import cesiumlanguagewriter.PointCesiumWriter;
 import cesiumlanguagewriter.PolygonCesiumWriter;
 import cesiumlanguagewriter.PolylineCesiumWriter;
 import cesiumlanguagewriter.PositionCesiumWriter;
-import cesiumlanguagewriter.PyramidCesiumWriter;
+import cesiumlanguagewriter.RectangularSensorCesiumWriter;
 import cesiumlanguagewriter.StringCesiumWriter;
 import cesiumlanguagewriter.VectorCesiumWriter;
 import java.util.List;
@@ -124,20 +126,6 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	public static final String PolygonPropertyName = "polygon";
 	/**
 	 *  
-	The name of the <code>cone</code> property.
-	
-
-	 */
-	public static final String ConePropertyName = "cone";
-	/**
-	 *  
-	The name of the <code>pyramid</code> property.
-	
-
-	 */
-	public static final String PyramidPropertyName = "pyramid";
-	/**
-	 *  
 	The name of the <code>ellipsoid</code> property.
 	
 
@@ -180,11 +168,39 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	public static final String VersionPropertyName = "version";
 	/**
 	 *  
-	The name of the <code>vector</code> property.
+	The name of the <code>agi_conicSensor</code> property.
 	
 
 	 */
-	public static final String VectorPropertyName = "vector";
+	public static final String ConicSensorPropertyName = "agi_conicSensor";
+	/**
+	 *  
+	The name of the <code>agi_customPatternSensor</code> property.
+	
+
+	 */
+	public static final String CustomPatternSensorPropertyName = "agi_customPatternSensor";
+	/**
+	 *  
+	The name of the <code>agi_fan</code> property.
+	
+
+	 */
+	public static final String FanPropertyName = "agi_fan";
+	/**
+	 *  
+	The name of the <code>agi_rectangularSensor</code> property.
+	
+
+	 */
+	public static final String RectangularSensorPropertyName = "agi_rectangularSensor";
+	/**
+	 *  
+	The name of the <code>agi_vector</code> property.
+	
+
+	 */
+	public static final String VectorPropertyName = "agi_vector";
 	private Lazy<StringCesiumWriter> m_description = new Lazy<cesiumlanguagewriter.StringCesiumWriter>(new Func1<cesiumlanguagewriter.StringCesiumWriter>() {
 		public cesiumlanguagewriter.StringCesiumWriter invoke() {
 			return new StringCesiumWriter(DescriptionPropertyName);
@@ -230,16 +246,6 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 			return new PolygonCesiumWriter(PolygonPropertyName);
 		}
 	}, false);
-	private Lazy<ConeCesiumWriter> m_cone = new Lazy<cesiumlanguagewriter.ConeCesiumWriter>(new Func1<cesiumlanguagewriter.ConeCesiumWriter>() {
-		public cesiumlanguagewriter.ConeCesiumWriter invoke() {
-			return new ConeCesiumWriter(ConePropertyName);
-		}
-	}, false);
-	private Lazy<PyramidCesiumWriter> m_pyramid = new Lazy<cesiumlanguagewriter.PyramidCesiumWriter>(new Func1<cesiumlanguagewriter.PyramidCesiumWriter>() {
-		public cesiumlanguagewriter.PyramidCesiumWriter invoke() {
-			return new PyramidCesiumWriter(PyramidPropertyName);
-		}
-	}, false);
 	private Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<cesiumlanguagewriter.EllipsoidCesiumWriter>(new Func1<cesiumlanguagewriter.EllipsoidCesiumWriter>() {
 		public cesiumlanguagewriter.EllipsoidCesiumWriter invoke() {
 			return new EllipsoidCesiumWriter(EllipsoidPropertyName);
@@ -260,7 +266,28 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 			return new ClockCesiumWriter(ClockPropertyName);
 		}
 	}, false);
-	private Lazy<VectorCesiumWriter> m_vector = new Lazy<cesiumlanguagewriter.VectorCesiumWriter>(new Func1<cesiumlanguagewriter.VectorCesiumWriter>() {
+	private Lazy<ConicSensorCesiumWriter> m_agi_conicSensor = new Lazy<cesiumlanguagewriter.ConicSensorCesiumWriter>(new Func1<cesiumlanguagewriter.ConicSensorCesiumWriter>() {
+		public cesiumlanguagewriter.ConicSensorCesiumWriter invoke() {
+			return new ConicSensorCesiumWriter(ConicSensorPropertyName);
+		}
+	}, false);
+	private Lazy<CustomPatternSensorCesiumWriter> m_agi_customPatternSensor = new Lazy<cesiumlanguagewriter.CustomPatternSensorCesiumWriter>(
+			new Func1<cesiumlanguagewriter.CustomPatternSensorCesiumWriter>() {
+				public cesiumlanguagewriter.CustomPatternSensorCesiumWriter invoke() {
+					return new CustomPatternSensorCesiumWriter(CustomPatternSensorPropertyName);
+				}
+			}, false);
+	private Lazy<FanCesiumWriter> m_agi_fan = new Lazy<cesiumlanguagewriter.FanCesiumWriter>(new Func1<cesiumlanguagewriter.FanCesiumWriter>() {
+		public cesiumlanguagewriter.FanCesiumWriter invoke() {
+			return new FanCesiumWriter(FanPropertyName);
+		}
+	}, false);
+	private Lazy<RectangularSensorCesiumWriter> m_agi_rectangularSensor = new Lazy<cesiumlanguagewriter.RectangularSensorCesiumWriter>(new Func1<cesiumlanguagewriter.RectangularSensorCesiumWriter>() {
+		public cesiumlanguagewriter.RectangularSensorCesiumWriter invoke() {
+			return new RectangularSensorCesiumWriter(RectangularSensorPropertyName);
+		}
+	}, false);
+	private Lazy<VectorCesiumWriter> m_agi_vector = new Lazy<cesiumlanguagewriter.VectorCesiumWriter>(new Func1<cesiumlanguagewriter.VectorCesiumWriter>() {
 		public cesiumlanguagewriter.VectorCesiumWriter invoke() {
 			return new VectorCesiumWriter(VectorPropertyName);
 		}
@@ -1128,44 +1155,6 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	}
 
 	/**
-	 *  Gets the writer for the <code>cone</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>cone</code> property defines a cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.  The apex point of the cone is defined by the `position` property and extends in the direction of the Z-axis as defined by the `orientation` property.
-	
-
-	 */
-	public final ConeCesiumWriter getConeWriter() {
-		return m_cone.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>cone</code> property.  The <code>cone</code> property defines a cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.  The apex point of the cone is defined by the `position` property and extends in the direction of the Z-axis as defined by the `orientation` property.
-	
-
-	 */
-	public final ConeCesiumWriter openConeProperty() {
-		return this.<ConeCesiumWriter> openAndReturn(getConeWriter());
-	}
-
-	/**
-	 *  Gets the writer for the <code>pyramid</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>pyramid</code> property defines a pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit.
-	
-
-	 */
-	public final PyramidCesiumWriter getPyramidWriter() {
-		return m_pyramid.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>pyramid</code> property.  The <code>pyramid</code> property defines a pyramid.  A pyramid starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the pyramid.  The pyramid may be capped at a radial limit.
-	
-
-	 */
-	public final PyramidCesiumWriter openPyramidProperty() {
-		return this.<PyramidCesiumWriter> openAndReturn(getPyramidWriter());
-	}
-
-	/**
 	 *  Gets the writer for the <code>ellipsoid</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
 	
 
@@ -1304,17 +1293,93 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	}
 
 	/**
-	 *  Gets the writer for the <code>vector</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+	 *  Gets the writer for the <code>agi_conicSensor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>agi_conicSensor</code> property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
 	
 
 	 */
-	public final VectorCesiumWriter getVectorWriter() {
-		return m_vector.getValue();
+	public final ConicSensorCesiumWriter getConicSensorWriter() {
+		return m_agi_conicSensor.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>vector</code> property.  The <code>vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+	Opens and returns the writer for the <code>agi_conicSensor</code> property.  The <code>agi_conicSensor</code> property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
+	
+
+	 */
+	public final ConicSensorCesiumWriter openConicSensorProperty() {
+		return this.<ConicSensorCesiumWriter> openAndReturn(getConicSensorWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>agi_customPatternSensor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>agi_customPatternSensor</code> property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
+	
+
+	 */
+	public final CustomPatternSensorCesiumWriter getCustomPatternSensorWriter() {
+		return m_agi_customPatternSensor.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>agi_customPatternSensor</code> property.  The <code>agi_customPatternSensor</code> property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
+	
+
+	 */
+	public final CustomPatternSensorCesiumWriter openCustomPatternSensorProperty() {
+		return this.<CustomPatternSensorCesiumWriter> openAndReturn(getCustomPatternSensorWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>agi_fan</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>agi_fan</code> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
+	
+
+	 */
+	public final FanCesiumWriter getFanWriter() {
+		return m_agi_fan.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>agi_fan</code> property.  The <code>agi_fan</code> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
+	
+
+	 */
+	public final FanCesiumWriter openFanProperty() {
+		return this.<FanCesiumWriter> openAndReturn(getFanWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>agi_rectangularSensor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>agi_rectangularSensor</code> property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
+	
+
+	 */
+	public final RectangularSensorCesiumWriter getRectangularSensorWriter() {
+		return m_agi_rectangularSensor.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>agi_rectangularSensor</code> property.  The <code>agi_rectangularSensor</code> property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
+	
+
+	 */
+	public final RectangularSensorCesiumWriter openRectangularSensorProperty() {
+		return this.<RectangularSensorCesiumWriter> openAndReturn(getRectangularSensorWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>agi_vector</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>agi_vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+	
+
+	 */
+	public final VectorCesiumWriter getVectorWriter() {
+		return m_agi_vector.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>agi_vector</code> property.  The <code>agi_vector</code> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
 	
 
 	 */

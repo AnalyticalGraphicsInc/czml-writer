@@ -1,41 +1,29 @@
 {
-    "title": "Cone",
-    "description": "A cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.",
+    "title": "CustomPatternSensor",
+    "description": "A custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.",
     "type": ["array", "object"],
     "items": { "$ref": "#" },
     "extensionPrefix": "agi",
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the cone is shown."
+            "description": "Whether or not the pyramid is shown."
         },
-        "innerHalfAngle": {
-            "$ref": "Double.jsonschema",
-            "description": "The inner half angle of the cone."
-        },
-        "outerHalfAngle": {
-            "$ref": "Double.jsonschema",
-            "description": "The outer half angle of the cone."
-        },
-        "minimumClockAngle": {
-            "$ref": "Double.jsonschema",
-            "description": "The minimum clock angle limit of the cone."
-        },
-        "maximumClockAngle": {
-            "$ref": "Double.jsonschema",
-            "description": "The maximum clock angle limit of the cone."
+        "directions": {
+            "$ref": "DirectionList.jsonschema",
+            "description": "The list of directions defining the pyramid."
         },
         "radius": {
             "$ref": "Double.jsonschema",
-            "description": "The radial limit of the cone."
+            "description": "The radial limit of the pyramid."
         },
         "showIntersection": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the intersection of the cone with the Earth is shown."
+            "description": "Whether or not the intersection of the pyramid with the Earth is shown."
         },
         "intersectionColor": {
             "$ref": "Color.jsonschema",
-            "description": "The color of the intersection of the cone with the Earth."
+            "description": "The color of the intersection of the pyramid with the Earth."
         },
         "intersectionWidth": {
             "$ref": "Double.jsonschema",
@@ -43,7 +31,7 @@
         },
         "showLateralSurfaces": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the intersections of the cone with the earth are shown."
+            "description": "Whether or not the intersections of the pyramid with the earth are shown."
         },
         "lateralSurfaceMaterial": {
             "$ref": "Material.jsonschema",
@@ -55,7 +43,7 @@
         },
         "ellipsoidSurfaceMaterial": {
             "$ref": "Material.jsonschema",
-            "description": "The material to use for the cone's ellipsoid surface."
+            "description": "The material to use for the pyramid's ellipsoid surface."
         },
         "showEllipsoidHorizonSurfaces": {
             "$ref": "Boolean.jsonschema",
@@ -63,7 +51,7 @@
         },
         "ellipsoidHorizonSurfaceMaterial": {
             "$ref": "Material.jsonschema",
-            "description": "The material to use for the cone's ellipsoid horizon surface."
+            "description": "The material to use for the pyramid's ellipsoid horizon surface."
         },
         "showDomeSurfaces": {
             "$ref": "Boolean.jsonschema",
@@ -71,7 +59,7 @@
         },
         "domeSurfaceMaterial": {
             "$ref": "Material.jsonschema",
-            "description": "The material to use for the cone's dome."
+            "description": "The material to use for the pyramid's dome."
         },
         "portionToDisplay": {
             "$ref": "Extensions/AGI/SensorVolumePortionToDisplay.jsonschema",

@@ -22,12 +22,20 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 	public static final String UnitSphericalPropertyName = "unitSpherical";
 	/**
 	 *  
+	The name of the <code>spherical</code> property.
+	
+
+	 */
+	public static final String SphericalPropertyName = "spherical";
+	/**
+	 *  
 	The name of the <code>unitCartesian</code> property.
 	
 
 	 */
 	public static final String UnitCartesianPropertyName = "unitCartesian";
 	private Lazy<ICesiumValuePropertyWriter<Iterable<UnitSpherical>>> m_asUnitSpherical;
+	private Lazy<ICesiumValuePropertyWriter<Iterable<Spherical>>> m_asSpherical;
 	private Lazy<ICesiumValuePropertyWriter<Iterable<UnitCartesian>>> m_asUnitCartesian;
 
 	/**
@@ -42,6 +50,12 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 				new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>>>(this, "createUnitSphericalAdaptor", new Class[] {}) {
 					public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>> invoke() {
 						return createUnitSphericalAdaptor();
+					}
+				}, false);
+		m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(this, "createSphericalAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>> invoke() {
+						return createSphericalAdaptor();
 					}
 				}, false);
 		m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>>>(
@@ -66,6 +80,12 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 				new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>>>(this, "createUnitSphericalAdaptor", new Class[] {}) {
 					public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>> invoke() {
 						return createUnitSphericalAdaptor();
+					}
+				}, false);
+		m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(this, "createSphericalAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>> invoke() {
+						return createSphericalAdaptor();
 					}
 				}, false);
 		m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>>>(
@@ -94,6 +114,21 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 		openIntervalIfNecessary();
 		getOutput().writePropertyName(PropertyName);
 		CesiumWritingHelper.writeUnitSphericalList(getOutput(), values);
+	}
+
+	/**
+	 *  
+	Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies the list of directions represented as a clock angle, a cone angle, both in radians, and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+	
+	
+
+	 * @param values The values.
+	 */
+	public final void writeSpherical(Iterable<Spherical> values) {
+		String PropertyName = SphericalPropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeSphericalList(getOutput(), values);
 	}
 
 	/**
@@ -128,6 +163,27 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<UnitSpherical>>() {
 					public void invoke(DirectionListCesiumWriter me, Iterable<UnitSpherical> value) {
 						me.writeUnitSpherical(value);
+					}
+				});
+	}
+
+	/**
+	 *  
+	Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in <code>Spherical</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	
+	
+
+	 * @return The wrapper.
+	 */
+	public final ICesiumValuePropertyWriter<Iterable<Spherical>> asSpherical() {
+		return m_asSpherical.getValue();
+	}
+
+	final private ICesiumValuePropertyWriter<Iterable<Spherical>> createSphericalAdaptor() {
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<Spherical>>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<Spherical>>() {
+					public void invoke(DirectionListCesiumWriter me, Iterable<Spherical> value) {
+						me.writeSpherical(value);
 					}
 				});
 	}
