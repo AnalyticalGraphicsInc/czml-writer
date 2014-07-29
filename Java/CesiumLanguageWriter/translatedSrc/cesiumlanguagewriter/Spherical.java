@@ -14,19 +14,28 @@ import agi.foundation.compatibility.StringHelper;
 
 /**
  *  
- A set of curvilinear 3-dimensional coordinates with unit magnitude.
+ A set of curvilinear 3-dimensional coordinates.
  
 
  */
-public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueType {
+public class Spherical implements IEquatable<Spherical>, ImmutableValueType {
 	/**
 	 * Initializes a new instance.
 	 */
-	public UnitSpherical() {}
+	public Spherical() {}
+
+	/**
+	 *  Gets a set of  {@link Spherical} coordinates with values of zero.
+	
+
+	 */
+	public static Spherical getZero() {
+		return s_zero;
+	}
 
 	/**
 	 *  
-	Initializes a set of  {@link UnitSpherical} coordinates from the provided array.
+	Initializes a set of  {@link Spherical} coordinates from the provided array.
 	
 	
 	
@@ -39,24 +48,25 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	Thrown when the array of <code>elements</code> is null.
 	
 	 * @exception ArgumentOutOfRangeException 
-	Thrown when an object of this type is constructed from an array with less than 2 <code>elements</code>.
+	Thrown when an object of this type is constructed from an array with less than 3 <code>elements</code>.
 	
 	 */
-	public UnitSpherical(double[] elements, int startIndex) {
+	public Spherical(double[] elements, int startIndex) {
 		if (elements == null) {
 			throw new ArgumentNullException("elements");
 		} else if (startIndex >= elements.length || elements.length - startIndex < s_length) {
 			throw new ArgumentOutOfRangeException("elements", StringHelper.format(CultureInfoHelper.getCurrentCulture(), CesiumLocalization.getMustBeConstructedFromSpecificNumberOfElements(),
-					UnitSpherical.class, 2));
+					Spherical.class, 3));
 		} else {
 			m_clock = elements[startIndex + 0];
 			m_cone = elements[startIndex + 1];
+			m_magnitude = elements[startIndex + 2];
 		}
 	}
 
 	/**
 	 *  
-	Initializes a set of  {@link UnitSpherical} coordinates from the first 2 consecutive elements in the provided array.
+	Initializes a set of  {@link Spherical} coordinates from the first 3 consecutive elements in the provided array.
 	
 	
 	
@@ -67,54 +77,47 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	The array of <code>elements</code> cannot be null.
 	
 	 * @exception ArgumentOutOfRangeException 
-	An object of this type must be constructed from an array with at least 2 <code>elements</code>.
+	An object of this type must be constructed from an array with at least 3 <code>elements</code>.
 	
 	 */
-	public UnitSpherical(double[] elements) {
+	public Spherical(double[] elements) {
 		this(elements, 0);
 	}
 
 	/**
 	 *  
-	Initializes a set of  {@link UnitSpherical} coordinates from the provided clock angle and cone angle.
+	Initializes a set of  {@link Spherical} coordinates from the provided clock angle, cone angle, and magnitude.
+	
 	
 	
 	
 
 	 * @param clock The angular coordinate lying in the xy-plane measured from the positive x-axis and toward the positive y-axis.
 	 * @param cone The angular coordinate measured from the positive z-axis and toward the negative z-axis.
+	 * @param magnitude The linear coordinate measured from the origin.
 	 */
-	public UnitSpherical(double clock, double cone) {
+	public Spherical(double clock, double cone, double magnitude) {
 		m_clock = clock;
 		m_cone = cone;
+		m_magnitude = magnitude;
 	}
 
 	/**
 	 *  
-	Initializes a set of  {@link UnitSpherical} coordinates from a  {@link Spherical} instance.
-	<param name="spherical">An existing Spherical instance.</param>
+	Initializes a set of  {@link Spherical} coordinates from the provided set of  {@link Cartesian} coordinates.
+	
 	
 
+	 * @param coordinates The set of Cartesian coordinates.
 	 */
-	public UnitSpherical(Spherical spherical) {
-		this(spherical.getClock(), spherical.getCone());
-	}
-
-	/**
-	 *  
-	Initializes a set of  {@link UnitSpherical} coordinates from the provided set of  {@link UnitCartesian} coordinates.
-	
-	
-
-	 * @param coordinates The set of UnitCartesian3 coordinates.
-	 */
-	public UnitSpherical(UnitCartesian coordinates) {
+	public Spherical(Cartesian coordinates) {
 		double x = coordinates.getX();
 		double y = coordinates.getY();
 		double z = coordinates.getZ();
 		double radialSquared = x * x + y * y;
 		m_clock = Math.atan2(y, x);
 		m_cone = Math.atan2(Math.sqrt(radialSquared), z);
+		m_magnitude = Math.sqrt(radialSquared + z * z);
 	}
 
 	/**
@@ -136,12 +139,24 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	}
 
 	/**
-	 *  Gets the linear coordinate measured from the origin.  The value of this property is always 1.0.
+	 *  Gets the linear coordinate measured from the origin.
 	
 
 	 */
 	public final double getMagnitude() {
-		return 1.0;
+		return m_magnitude;
+	}
+
+	/**
+	 *  
+	Forms a set of  {@link UnitSpherical} coordinates from this instance.
+	
+	
+
+	 * @return The resulting set of  {@link UnitSpherical} coordinates.
+	 */
+	public final UnitSpherical normalize() {
+		return new UnitSpherical(this);
 	}
 
 	/**
@@ -156,8 +171,8 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof UnitSpherical) {
-			return equalsType((UnitSpherical) obj);
+		if (obj instanceof Spherical) {
+			return equalsType((Spherical) obj);
 		} else {
 			return false;
 		}
@@ -172,14 +187,14 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	
 	
 
-	 * @param other The set of  {@link UnitSpherical} coordinates to compare to this instance.
+	 * @param other The set of  {@link Spherical} coordinates to compare to this instance.
 	 * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
 	 * @return 
 	<see langword="true" /> if the absolute differences are less than <code>epsilon</code>; otherwise, <see langword="false" />.
 	
 	 */
-	public final boolean equalsEpsilon(UnitSpherical other, double epsilon) {
-		return Math.abs(getClock() - other.getClock()) < epsilon && Math.abs(getCone() - other.getCone()) < epsilon;
+	public final boolean equalsEpsilon(Spherical other, double epsilon) {
+		return Math.abs(getClock() - other.getClock()) < epsilon && Math.abs(getCone() - other.getCone()) < epsilon && Math.abs(getMagnitude() - other.getMagnitude()) < epsilon;
 	}
 
 	/**
@@ -192,7 +207,7 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	 */
 	@Override
 	public int hashCode() {
-		return DoubleHelper.hashCode(m_clock) ^ DoubleHelper.hashCode(m_cone);
+		return DoubleHelper.hashCode(m_clock) ^ DoubleHelper.hashCode(m_cone) ^ DoubleHelper.hashCode(m_magnitude);
 	}
 
 	/**
@@ -212,6 +227,8 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 		build.append(DoubleHelper.toString(m_clock, CultureInfoHelper.getCurrentCulture()));
 		build.append(", ");
 		build.append(DoubleHelper.toString(m_cone, CultureInfoHelper.getCurrentCulture()));
+		build.append(", ");
+		build.append(DoubleHelper.toString(m_magnitude, CultureInfoHelper.getCurrentCulture()));
 		return build.toString();
 	}
 
@@ -229,8 +246,8 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	<see langword="true" /> if <code>left</code> represents the same value as <code>right</code>; otherwise, <see langword="false" />.
 	
 	 */
-	@CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(UnitSpherical,UnitSpherical)'")
-	public static boolean equals(UnitSpherical left, UnitSpherical right) {
+	@CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Spherical,Spherical)'")
+	public static boolean equals(Spherical left, Spherical right) {
 		return left.equalsType(right);
 	}
 
@@ -248,15 +265,17 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	<see langword="true" /> if <code>left</code> does not represent the same value as <code>right</code>; otherwise, <see langword="false" />.
 	
 	 */
-	@CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(UnitSpherical,UnitSpherical)'")
-	public static boolean notEquals(UnitSpherical left, UnitSpherical right) {
+	@CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Spherical,Spherical)'")
+	public static boolean notEquals(Spherical left, Spherical right) {
 		return !left.equalsType(right);
 	}
 
 	private double m_clock;
 	private double m_cone;
+	private double m_magnitude;
 	@CS2JWarning("Unhandled attribute removed: SuppressMessage")
-	private static int s_length = 2;
+	private static int s_length = 3;
+	private static Spherical s_zero = new Spherical(0.0, 0.0, 0.0);
 
 	/**
 	 *  
@@ -268,8 +287,8 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	 * @param other The instance to compare to this instance.
 	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
 	 */
-	public final boolean equalsType(UnitSpherical other) {
-		return getClock() == other.getClock() && getCone() == other.getCone();
+	public final boolean equalsType(Spherical other) {
+		return getClock() == other.getClock() && getCone() == other.getCone() && getMagnitude() == other.getMagnitude();
 	}
 
 	/**
@@ -282,14 +301,14 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	}
 
 	/**
-	 *  Gets the value of the specified element with <code>index</code> of 0 and 1 corresponding to the coordinates
-	Clock and Cone.
+	 *  Gets the value of the specified element with <code>index</code> of 0, 1, and 2 corresponding to the coordinates
+	Clock, Cone, and Magnitude.
 	
 	
 	
 	
 
-	 * @param index Either 0 or 1 corresponding to the coordinates Clock or Cone.
+	 * @param index Either 0, 1, or 2 corresponding to the coordinates Clock, Cone, or Magnitude.
 	 * @return The coordinate associated with the specified <code>index</code>.
 	 * @exception ArgumentOutOfRangeException 
 	Thrown when the <code>index</code> is less than 0 or is equal to or greater than <code>Length</code> ({@link #getLength get}).
@@ -302,6 +321,9 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 		}
 		case 1: {
 			return getCone();
+		}
+		case 2: {
+			return getMagnitude();
 		}
 		default: {
 			throw new ArgumentOutOfRangeException("index");

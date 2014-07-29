@@ -395,6 +395,19 @@
                 "writeValue": "CesiumWritingHelper.WriteUnitCartesian3List(Output, values);"
             }
         ],
+        "SphericalList": [
+            {
+                "namespaces": ["System.Collections.Generic"],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<Spherical>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteSphericalList(Output, values);"
+            }
+        ],
         "UnitSphericalList": [
             {
                 "namespaces": ["System.Collections.Generic"],
@@ -626,6 +639,19 @@
                     }
                 ],
                 "writeValue": "Output.WriteValue(CesiumFormattingHelper.LabelStyleToString(value));",
+                "needsInterval": false
+            }
+        ],
+        "SensorVolumePortionToDisplay": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumSensorVolumePortionToDisplay",
+                        "name": "value",
+                        "description": "The portion of the sensor to display."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.SensorVolumePortionToDisplayToString(value));",
                 "needsInterval": false
             }
         ],

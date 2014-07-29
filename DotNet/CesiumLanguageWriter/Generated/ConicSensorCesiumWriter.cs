@@ -9,9 +9,9 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Cone</code> to a <see cref="CesiumOutputStream" />.  A <code>Cone</code> a cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.
+    /// Writes a <code>ConicSensor</code> to a <see cref="CesiumOutputStream" />.  A <code>ConicSensor</code> a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
     /// </summary>
-    public class ConeCesiumWriter : CesiumPropertyWriter<ConeCesiumWriter>
+    public class ConicSensorCesiumWriter : CesiumPropertyWriter<ConicSensorCesiumWriter>
     {
         /// <summary>
         /// The name of the <code>show</code> property.
@@ -29,11 +29,6 @@ namespace CesiumLanguageWriter
         public const string OuterHalfAnglePropertyName = "outerHalfAngle";
 
         /// <summary>
-        /// The name of the <code>radius</code> property.
-        /// </summary>
-        public const string RadiusPropertyName = "radius";
-
-        /// <summary>
         /// The name of the <code>minimumClockAngle</code> property.
         /// </summary>
         public const string MinimumClockAnglePropertyName = "minimumClockAngle";
@@ -42,6 +37,11 @@ namespace CesiumLanguageWriter
         /// The name of the <code>maximumClockAngle</code> property.
         /// </summary>
         public const string MaximumClockAnglePropertyName = "maximumClockAngle";
+
+        /// <summary>
+        /// The name of the <code>radius</code> property.
+        /// </summary>
+        public const string RadiusPropertyName = "radius";
 
         /// <summary>
         /// The name of the <code>showIntersection</code> property.
@@ -59,43 +59,73 @@ namespace CesiumLanguageWriter
         public const string IntersectionWidthPropertyName = "intersectionWidth";
 
         /// <summary>
-        /// The name of the <code>capMaterial</code> property.
+        /// The name of the <code>showLateralSurfaces</code> property.
         /// </summary>
-        public const string CapMaterialPropertyName = "capMaterial";
+        public const string ShowLateralSurfacesPropertyName = "showLateralSurfaces";
 
         /// <summary>
-        /// The name of the <code>innerMaterial</code> property.
+        /// The name of the <code>lateralSurfaceMaterial</code> property.
         /// </summary>
-        public const string InnerMaterialPropertyName = "innerMaterial";
+        public const string LateralSurfaceMaterialPropertyName = "lateralSurfaceMaterial";
 
         /// <summary>
-        /// The name of the <code>outerMaterial</code> property.
+        /// The name of the <code>showEllipsoidSurfaces</code> property.
         /// </summary>
-        public const string OuterMaterialPropertyName = "outerMaterial";
+        public const string ShowEllipsoidSurfacesPropertyName = "showEllipsoidSurfaces";
 
         /// <summary>
-        /// The name of the <code>silhouetteMaterial</code> property.
+        /// The name of the <code>ellipsoidSurfaceMaterial</code> property.
         /// </summary>
-        public const string SilhouetteMaterialPropertyName = "silhouetteMaterial";
+        public const string EllipsoidSurfaceMaterialPropertyName = "ellipsoidSurfaceMaterial";
+
+        /// <summary>
+        /// The name of the <code>showEllipsoidHorizonSurfaces</code> property.
+        /// </summary>
+        public const string ShowEllipsoidHorizonSurfacesPropertyName = "showEllipsoidHorizonSurfaces";
+
+        /// <summary>
+        /// The name of the <code>ellipsoidHorizonSurfaceMaterial</code> property.
+        /// </summary>
+        public const string EllipsoidHorizonSurfaceMaterialPropertyName = "ellipsoidHorizonSurfaceMaterial";
+
+        /// <summary>
+        /// The name of the <code>showDomeSurfaces</code> property.
+        /// </summary>
+        public const string ShowDomeSurfacesPropertyName = "showDomeSurfaces";
+
+        /// <summary>
+        /// The name of the <code>domeSurfaceMaterial</code> property.
+        /// </summary>
+        public const string DomeSurfaceMaterialPropertyName = "domeSurfaceMaterial";
+
+        /// <summary>
+        /// The name of the <code>portionToDisplay</code> property.
+        /// </summary>
+        public const string PortionToDisplayPropertyName = "portionToDisplay";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_innerHalfAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(InnerHalfAnglePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_outerHalfAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OuterHalfAnglePropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RadiusPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_minimumClockAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MinimumClockAnglePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_maximumClockAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MaximumClockAnglePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RadiusPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_showIntersection = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowIntersectionPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_intersectionColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(IntersectionColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_intersectionWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(IntersectionWidthPropertyName), false);
-        private readonly Lazy<MaterialCesiumWriter> m_capMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(CapMaterialPropertyName), false);
-        private readonly Lazy<MaterialCesiumWriter> m_innerMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(InnerMaterialPropertyName), false);
-        private readonly Lazy<MaterialCesiumWriter> m_outerMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(OuterMaterialPropertyName), false);
-        private readonly Lazy<MaterialCesiumWriter> m_silhouetteMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(SilhouetteMaterialPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_showLateralSurfaces = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowLateralSurfacesPropertyName), false);
+        private readonly Lazy<MaterialCesiumWriter> m_lateralSurfaceMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(LateralSurfaceMaterialPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_showEllipsoidSurfaces = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowEllipsoidSurfacesPropertyName), false);
+        private readonly Lazy<MaterialCesiumWriter> m_ellipsoidSurfaceMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(EllipsoidSurfaceMaterialPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_showEllipsoidHorizonSurfaces = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowEllipsoidHorizonSurfacesPropertyName), false);
+        private readonly Lazy<MaterialCesiumWriter> m_ellipsoidHorizonSurfaceMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(EllipsoidHorizonSurfaceMaterialPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_showDomeSurfaces = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowDomeSurfacesPropertyName), false);
+        private readonly Lazy<MaterialCesiumWriter> m_domeSurfaceMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(DomeSurfaceMaterialPropertyName), false);
+        private readonly Lazy<SensorVolumePortionToDisplayCesiumWriter> m_portionToDisplay = new Lazy<SensorVolumePortionToDisplayCesiumWriter>(() => new SensorVolumePortionToDisplayCesiumWriter(PortionToDisplayPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public ConeCesiumWriter(string propertyName)
+        public ConicSensorCesiumWriter(string propertyName)
             : base(propertyName)
         {
         }
@@ -104,15 +134,15 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param> 
-        protected ConeCesiumWriter(ConeCesiumWriter existingInstance)
+        protected ConicSensorCesiumWriter(ConicSensorCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
 
         /// <inheritdoc />
-        public override ConeCesiumWriter Clone()
+        public override ConicSensorCesiumWriter Clone()
         {
-            return new ConeCesiumWriter(this);
+            return new ConicSensorCesiumWriter(this);
         }
 
         /// <summary>
@@ -333,100 +363,6 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>radius</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>radius</code> property defines the radial limit of the cone.
-        /// </summary>
-        public DoubleCesiumWriter RadiusWriter
-        {
-            get { return m_radius.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>radius</code> property.  The <code>radius</code> property defines the radial limit of the cone.
-        /// </summary>
-        public DoubleCesiumWriter OpenRadiusProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(RadiusWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteRadiusProperty(double value)
-        {
-            using (var writer = OpenRadiusProperty())
-            {
-                writer.WriteNumber(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteRadiusProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenRadiusProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteRadiusPropertyReference(Reference value)
-        {
-            using (var writer = OpenRadiusProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteRadiusPropertyReference(string value)
-        {
-            using (var writer = OpenRadiusProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteRadiusPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenRadiusProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteRadiusPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenRadiusProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
         /// Gets the writer for the <code>minimumClockAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>minimumClockAngle</code> property defines the minimum clock angle limit of the cone.
         /// </summary>
         public DoubleCesiumWriter MinimumClockAngleWriter
@@ -609,6 +545,100 @@ namespace CesiumLanguageWriter
         public void WriteMaximumClockAnglePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenMaximumClockAngleProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>radius</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>radius</code> property defines the radial limit of the cone.
+        /// </summary>
+        public DoubleCesiumWriter RadiusWriter
+        {
+            get { return m_radius.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>radius</code> property.  The <code>radius</code> property defines the radial limit of the cone.
+        /// </summary>
+        public DoubleCesiumWriter OpenRadiusProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(RadiusWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteRadiusProperty(double value)
+        {
+            using (var writer = OpenRadiusProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteRadiusProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenRadiusProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteRadiusPropertyReference(Reference value)
+        {
+            using (var writer = OpenRadiusProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteRadiusPropertyReference(string value)
+        {
+            using (var writer = OpenRadiusProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteRadiusPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenRadiusProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteRadiusPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenRadiusProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
@@ -862,71 +892,266 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>capMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>capMaterial</code> property defines the material to use to cap the cone at its radial limit.
+        /// Gets the writer for the <code>showLateralSurfaces</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showLateralSurfaces</code> property defines whether or not the intersections of the cone with the earth are shown.
         /// </summary>
-        public MaterialCesiumWriter CapMaterialWriter
+        public BooleanCesiumWriter ShowLateralSurfacesWriter
         {
-            get { return m_capMaterial.Value; }
+            get { return m_showLateralSurfaces.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>capMaterial</code> property.  The <code>capMaterial</code> property defines the material to use to cap the cone at its radial limit.
+        /// Opens and returns the writer for the <code>showLateralSurfaces</code> property.  The <code>showLateralSurfaces</code> property defines whether or not the intersections of the cone with the earth are shown.
         /// </summary>
-        public MaterialCesiumWriter OpenCapMaterialProperty()
+        public BooleanCesiumWriter OpenShowLateralSurfacesProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(CapMaterialWriter);
+            return OpenAndReturn(ShowLateralSurfacesWriter);
         }
 
         /// <summary>
-        /// Gets the writer for the <code>innerMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>innerMaterial</code> property defines the material to use for the inner cone.
+        /// Writes a value for the <code>showLateralSurfaces</code> property as a <code>boolean</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the cone with the earth are shown.
         /// </summary>
-        public MaterialCesiumWriter InnerMaterialWriter
+        /// <param name="value">The value.</param>
+        public void WriteShowLateralSurfacesProperty(bool value)
         {
-            get { return m_innerMaterial.Value; }
+            using (var writer = OpenShowLateralSurfacesProperty())
+            {
+                writer.WriteBoolean(value);
+            }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>innerMaterial</code> property.  The <code>innerMaterial</code> property defines the material to use for the inner cone.
+        /// Gets the writer for the <code>lateralSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>lateralSurfaceMaterial</code> property defines whether or not lateral surfaces are shown.
         /// </summary>
-        public MaterialCesiumWriter OpenInnerMaterialProperty()
+        public MaterialCesiumWriter LateralSurfaceMaterialWriter
         {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(InnerMaterialWriter);
+            get { return m_lateralSurfaceMaterial.Value; }
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outerMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outerMaterial</code> property defines the material to use for the outer cone.
+        /// Opens and returns the writer for the <code>lateralSurfaceMaterial</code> property.  The <code>lateralSurfaceMaterial</code> property defines whether or not lateral surfaces are shown.
         /// </summary>
-        public MaterialCesiumWriter OuterMaterialWriter
-        {
-            get { return m_outerMaterial.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>outerMaterial</code> property.  The <code>outerMaterial</code> property defines the material to use for the outer cone.
-        /// </summary>
-        public MaterialCesiumWriter OpenOuterMaterialProperty()
+        public MaterialCesiumWriter OpenLateralSurfaceMaterialProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(OuterMaterialWriter);
+            return OpenAndReturn(LateralSurfaceMaterialWriter);
         }
 
         /// <summary>
-        /// Gets the writer for the <code>silhouetteMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>silhouetteMaterial</code> property defines the material to use for the cone's silhouette.
+        /// Gets the writer for the <code>showEllipsoidSurfaces</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showEllipsoidSurfaces</code> property defines whether or not ellipsoid surfaces are shown.
         /// </summary>
-        public MaterialCesiumWriter SilhouetteMaterialWriter
+        public BooleanCesiumWriter ShowEllipsoidSurfacesWriter
         {
-            get { return m_silhouetteMaterial.Value; }
+            get { return m_showEllipsoidSurfaces.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>silhouetteMaterial</code> property.  The <code>silhouetteMaterial</code> property defines the material to use for the cone's silhouette.
+        /// Opens and returns the writer for the <code>showEllipsoidSurfaces</code> property.  The <code>showEllipsoidSurfaces</code> property defines whether or not ellipsoid surfaces are shown.
         /// </summary>
-        public MaterialCesiumWriter OpenSilhouetteMaterialProperty()
+        public BooleanCesiumWriter OpenShowEllipsoidSurfacesProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(SilhouetteMaterialWriter);
+            return OpenAndReturn(ShowEllipsoidSurfacesWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEllipsoidSurfaces</code> property as a <code>boolean</code> value.  The <code>showEllipsoidSurfaces</code> property specifies whether or not ellipsoid surfaces are shown.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteShowEllipsoidSurfacesProperty(bool value)
+        {
+            using (var writer = OpenShowEllipsoidSurfacesProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid surface.
+        /// </summary>
+        public MaterialCesiumWriter EllipsoidSurfaceMaterialWriter
+        {
+            get { return m_ellipsoidSurfaceMaterial.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid surface.
+        /// </summary>
+        public MaterialCesiumWriter OpenEllipsoidSurfaceMaterialProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(EllipsoidSurfaceMaterialWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>showEllipsoidHorizonSurfaces</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showEllipsoidHorizonSurfaces</code> property defines whether or not ellipsoid horizon surfaces are shown.
+        /// </summary>
+        public BooleanCesiumWriter ShowEllipsoidHorizonSurfacesWriter
+        {
+            get { return m_showEllipsoidHorizonSurfaces.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>showEllipsoidHorizonSurfaces</code> property.  The <code>showEllipsoidHorizonSurfaces</code> property defines whether or not ellipsoid horizon surfaces are shown.
+        /// </summary>
+        public BooleanCesiumWriter OpenShowEllipsoidHorizonSurfacesProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ShowEllipsoidHorizonSurfacesWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEllipsoidHorizonSurfaces</code> property as a <code>boolean</code> value.  The <code>showEllipsoidHorizonSurfaces</code> property specifies whether or not ellipsoid horizon surfaces are shown.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteShowEllipsoidHorizonSurfacesProperty(bool value)
+        {
+            using (var writer = OpenShowEllipsoidHorizonSurfacesProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid horizon surface.
+        /// </summary>
+        public MaterialCesiumWriter EllipsoidHorizonSurfaceMaterialWriter
+        {
+            get { return m_ellipsoidHorizonSurfaceMaterial.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid horizon surface.
+        /// </summary>
+        public MaterialCesiumWriter OpenEllipsoidHorizonSurfaceMaterialProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(EllipsoidHorizonSurfaceMaterialWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>showDomeSurfaces</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showDomeSurfaces</code> property defines whether or not dome surfaces are shown.
+        /// </summary>
+        public BooleanCesiumWriter ShowDomeSurfacesWriter
+        {
+            get { return m_showDomeSurfaces.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>showDomeSurfaces</code> property.  The <code>showDomeSurfaces</code> property defines whether or not dome surfaces are shown.
+        /// </summary>
+        public BooleanCesiumWriter OpenShowDomeSurfacesProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ShowDomeSurfacesWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showDomeSurfaces</code> property as a <code>boolean</code> value.  The <code>showDomeSurfaces</code> property specifies whether or not dome surfaces are shown.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteShowDomeSurfacesProperty(bool value)
+        {
+            using (var writer = OpenShowDomeSurfacesProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>domeSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>domeSurfaceMaterial</code> property defines the material to use for the cone's dome.
+        /// </summary>
+        public MaterialCesiumWriter DomeSurfaceMaterialWriter
+        {
+            get { return m_domeSurfaceMaterial.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>domeSurfaceMaterial</code> property.  The <code>domeSurfaceMaterial</code> property defines the material to use for the cone's dome.
+        /// </summary>
+        public MaterialCesiumWriter OpenDomeSurfaceMaterialProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(DomeSurfaceMaterialWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>portionToDisplay</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>portionToDisplay</code> property defines indicates what part of a sensor should be displayed.
+        /// </summary>
+        public SensorVolumePortionToDisplayCesiumWriter PortionToDisplayWriter
+        {
+            get { return m_portionToDisplay.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>portionToDisplay</code> property.  The <code>portionToDisplay</code> property defines indicates what part of a sensor should be displayed.
+        /// </summary>
+        public SensorVolumePortionToDisplayCesiumWriter OpenPortionToDisplayProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(PortionToDisplayWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>portionToDisplay</code> property as a <code>portionToDisplay</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+        /// </summary>
+        /// <param name="value">The portion of the sensor to display.</param>
+        public void WritePortionToDisplayProperty(CesiumSensorVolumePortionToDisplay value)
+        {
+            using (var writer = OpenPortionToDisplayProperty())
+            {
+                writer.WritePortionToDisplay(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WritePortionToDisplayPropertyReference(Reference value)
+        {
+            using (var writer = OpenPortionToDisplayProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WritePortionToDisplayPropertyReference(string value)
+        {
+            using (var writer = OpenPortionToDisplayProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WritePortionToDisplayPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenPortionToDisplayProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WritePortionToDisplayPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenPortionToDisplayProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
         }
 
     }

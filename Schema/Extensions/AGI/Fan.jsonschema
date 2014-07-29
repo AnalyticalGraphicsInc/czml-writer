@@ -1,0 +1,45 @@
+{
+    "title": "Fan",
+    "description": "A fan.  A fan starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "extensionPrefix": "agi",
+    "properties": {
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the fan is shown."
+        },
+        "directions": {
+            "$ref": "DirectionList.jsonschema",
+            "description": "The list of directions defining the fan."
+        },
+        "radius": {
+            "$ref": "Double.jsonschema",
+            "description": "The radial limit of the fan."
+        },
+        "perDirectionRadius": {
+            "$ref": "Boolean.jsonschema",
+            "description": "When true, the magnitude of each direction is used instead of a constant radius."
+        },
+        "material": {
+            "$ref": "Material.jsonschema",
+            "description": "The material to display on the surface of the fan."
+        },
+        "fill": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the fan is filled."
+        },
+        "outline": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the fan is outlined."
+        },
+        "numberOfRings": {
+            "$ref": "Double.jsonschema",
+            "description": "The number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center."
+        },
+        "outlineColor": {
+            "$ref": "Color.jsonschema",
+            "description": "The color of the fan outline."
+        }
+    }
+}

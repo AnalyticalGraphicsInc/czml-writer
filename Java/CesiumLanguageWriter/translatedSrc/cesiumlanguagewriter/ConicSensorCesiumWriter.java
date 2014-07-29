@@ -10,16 +10,17 @@ import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.MaterialCesiumWriter;
+import cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter;
 import java.awt.Color;
 import java.util.List;
 
 /**
  *  
- Writes a <code>Cone</code> to a  {@link CesiumOutputStream}.  A <code>Cone</code> a cone.  A cone starts at a point or apex and extends in a circle of directions which all have the same angular separation from the Z-axis of the object to which the cone is attached.  The cone may be capped at a radial limit, it may have an inner hole, and it may be only a part of a complete cone defined by clock angle limits.
+ Writes a <code>ConicSensor</code> to a  {@link CesiumOutputStream}.  A <code>ConicSensor</code> a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
  
 
  */
-public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
+public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCesiumWriter> {
 	/**
 	 *  
 	The name of the <code>show</code> property.
@@ -43,13 +44,6 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	public static final String OuterHalfAnglePropertyName = "outerHalfAngle";
 	/**
 	 *  
-	The name of the <code>radius</code> property.
-	
-
-	 */
-	public static final String RadiusPropertyName = "radius";
-	/**
-	 *  
 	The name of the <code>minimumClockAngle</code> property.
 	
 
@@ -62,6 +56,13 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 
 	 */
 	public static final String MaximumClockAnglePropertyName = "maximumClockAngle";
+	/**
+	 *  
+	The name of the <code>radius</code> property.
+	
+
+	 */
+	public static final String RadiusPropertyName = "radius";
 	/**
 	 *  
 	The name of the <code>showIntersection</code> property.
@@ -85,32 +86,67 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	public static final String IntersectionWidthPropertyName = "intersectionWidth";
 	/**
 	 *  
-	The name of the <code>capMaterial</code> property.
+	The name of the <code>showLateralSurfaces</code> property.
 	
 
 	 */
-	public static final String CapMaterialPropertyName = "capMaterial";
+	public static final String ShowLateralSurfacesPropertyName = "showLateralSurfaces";
 	/**
 	 *  
-	The name of the <code>innerMaterial</code> property.
+	The name of the <code>lateralSurfaceMaterial</code> property.
 	
 
 	 */
-	public static final String InnerMaterialPropertyName = "innerMaterial";
+	public static final String LateralSurfaceMaterialPropertyName = "lateralSurfaceMaterial";
 	/**
 	 *  
-	The name of the <code>outerMaterial</code> property.
+	The name of the <code>showEllipsoidSurfaces</code> property.
 	
 
 	 */
-	public static final String OuterMaterialPropertyName = "outerMaterial";
+	public static final String ShowEllipsoidSurfacesPropertyName = "showEllipsoidSurfaces";
 	/**
 	 *  
-	The name of the <code>silhouetteMaterial</code> property.
+	The name of the <code>ellipsoidSurfaceMaterial</code> property.
 	
 
 	 */
-	public static final String SilhouetteMaterialPropertyName = "silhouetteMaterial";
+	public static final String EllipsoidSurfaceMaterialPropertyName = "ellipsoidSurfaceMaterial";
+	/**
+	 *  
+	The name of the <code>showEllipsoidHorizonSurfaces</code> property.
+	
+
+	 */
+	public static final String ShowEllipsoidHorizonSurfacesPropertyName = "showEllipsoidHorizonSurfaces";
+	/**
+	 *  
+	The name of the <code>ellipsoidHorizonSurfaceMaterial</code> property.
+	
+
+	 */
+	public static final String EllipsoidHorizonSurfaceMaterialPropertyName = "ellipsoidHorizonSurfaceMaterial";
+	/**
+	 *  
+	The name of the <code>showDomeSurfaces</code> property.
+	
+
+	 */
+	public static final String ShowDomeSurfacesPropertyName = "showDomeSurfaces";
+	/**
+	 *  
+	The name of the <code>domeSurfaceMaterial</code> property.
+	
+
+	 */
+	public static final String DomeSurfaceMaterialPropertyName = "domeSurfaceMaterial";
+	/**
+	 *  
+	The name of the <code>portionToDisplay</code> property.
+	
+
+	 */
+	public static final String PortionToDisplayPropertyName = "portionToDisplay";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
@@ -126,11 +162,6 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 			return new DoubleCesiumWriter(OuterHalfAnglePropertyName);
 		}
 	}, false);
-	private Lazy<DoubleCesiumWriter> m_radius = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(RadiusPropertyName);
-		}
-	}, false);
 	private Lazy<DoubleCesiumWriter> m_minimumClockAngle = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(MinimumClockAnglePropertyName);
@@ -139,6 +170,11 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	private Lazy<DoubleCesiumWriter> m_maximumClockAngle = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(MaximumClockAnglePropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_radius = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(RadiusPropertyName);
 		}
 	}, false);
 	private Lazy<BooleanCesiumWriter> m_showIntersection = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
@@ -156,26 +192,52 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 			return new DoubleCesiumWriter(IntersectionWidthPropertyName);
 		}
 	}, false);
-	private Lazy<MaterialCesiumWriter> m_capMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
-		public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
-			return new MaterialCesiumWriter(CapMaterialPropertyName);
+	private Lazy<BooleanCesiumWriter> m_showLateralSurfaces = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(ShowLateralSurfacesPropertyName);
 		}
 	}, false);
-	private Lazy<MaterialCesiumWriter> m_innerMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
+	private Lazy<MaterialCesiumWriter> m_lateralSurfaceMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
 		public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
-			return new MaterialCesiumWriter(InnerMaterialPropertyName);
+			return new MaterialCesiumWriter(LateralSurfaceMaterialPropertyName);
 		}
 	}, false);
-	private Lazy<MaterialCesiumWriter> m_outerMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
-		public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
-			return new MaterialCesiumWriter(OuterMaterialPropertyName);
+	private Lazy<BooleanCesiumWriter> m_showEllipsoidSurfaces = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(ShowEllipsoidSurfacesPropertyName);
 		}
 	}, false);
-	private Lazy<MaterialCesiumWriter> m_silhouetteMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
+	private Lazy<MaterialCesiumWriter> m_ellipsoidSurfaceMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
 		public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
-			return new MaterialCesiumWriter(SilhouetteMaterialPropertyName);
+			return new MaterialCesiumWriter(EllipsoidSurfaceMaterialPropertyName);
 		}
 	}, false);
+	private Lazy<BooleanCesiumWriter> m_showEllipsoidHorizonSurfaces = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(ShowEllipsoidHorizonSurfacesPropertyName);
+		}
+	}, false);
+	private Lazy<MaterialCesiumWriter> m_ellipsoidHorizonSurfaceMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
+		public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
+			return new MaterialCesiumWriter(EllipsoidHorizonSurfaceMaterialPropertyName);
+		}
+	}, false);
+	private Lazy<BooleanCesiumWriter> m_showDomeSurfaces = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(ShowDomeSurfacesPropertyName);
+		}
+	}, false);
+	private Lazy<MaterialCesiumWriter> m_domeSurfaceMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
+		public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
+			return new MaterialCesiumWriter(DomeSurfaceMaterialPropertyName);
+		}
+	}, false);
+	private Lazy<SensorVolumePortionToDisplayCesiumWriter> m_portionToDisplay = new Lazy<cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter>(
+			new Func1<cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter>() {
+				public cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter invoke() {
+					return new SensorVolumePortionToDisplayCesiumWriter(PortionToDisplayPropertyName);
+				}
+			}, false);
 
 	/**
 	 *  
@@ -183,7 +245,7 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	
 
 	 */
-	public ConeCesiumWriter(String propertyName) {
+	public ConicSensorCesiumWriter(String propertyName) {
 		super(propertyName);
 	}
 
@@ -195,13 +257,13 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 
 	 * @param existingInstance The existing instance to copy.
 	 */
-	protected ConeCesiumWriter(ConeCesiumWriter existingInstance) {
+	protected ConicSensorCesiumWriter(ConicSensorCesiumWriter existingInstance) {
 		super(existingInstance);
 	}
 
 	@Override
-	public ConeCesiumWriter clone() {
-		return new ConeCesiumWriter(this);
+	public ConicSensorCesiumWriter clone() {
+		return new ConicSensorCesiumWriter(this);
 	}
 
 	/**
@@ -532,150 +594,6 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>radius</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>radius</code> property defines the radial limit of the cone.
-	
-
-	 */
-	public final DoubleCesiumWriter getRadiusWriter() {
-		return m_radius.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>radius</code> property.  The <code>radius</code> property defines the radial limit of the cone.
-	
-
-	 */
-	public final DoubleCesiumWriter openRadiusProperty() {
-		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getRadiusWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeRadiusProperty(double value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
-			try {
-				writer.writeNumber(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeRadiusProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeRadiusPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeRadiusPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeRadiusPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeRadiusPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
 	 *  Gets the writer for the <code>minimumClockAngle</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>minimumClockAngle</code> property defines the minimum clock angle limit of the cone.
 	
 
@@ -955,6 +873,150 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	public final void writeMaximumClockAnglePropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumClockAngleProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>radius</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>radius</code> property defines the radial limit of the cone.
+	
+
+	 */
+	public final DoubleCesiumWriter getRadiusWriter() {
+		return m_radius.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>radius</code> property.  The <code>radius</code> property defines the radial limit of the cone.
+	
+
+	 */
+	public final DoubleCesiumWriter openRadiusProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getRadiusWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeRadiusProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeRadiusProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeRadiusPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeRadiusPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeRadiusPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeRadiusPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {
@@ -1341,82 +1403,357 @@ public class ConeCesiumWriter extends CesiumPropertyWriter<ConeCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>capMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>capMaterial</code> property defines the material to use to cap the cone at its radial limit.
+	 *  Gets the writer for the <code>showLateralSurfaces</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>showLateralSurfaces</code> property defines whether or not the intersections of the cone with the earth are shown.
 	
 
 	 */
-	public final MaterialCesiumWriter getCapMaterialWriter() {
-		return m_capMaterial.getValue();
+	public final BooleanCesiumWriter getShowLateralSurfacesWriter() {
+		return m_showLateralSurfaces.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>capMaterial</code> property.  The <code>capMaterial</code> property defines the material to use to cap the cone at its radial limit.
+	Opens and returns the writer for the <code>showLateralSurfaces</code> property.  The <code>showLateralSurfaces</code> property defines whether or not the intersections of the cone with the earth are shown.
 	
 
 	 */
-	public final MaterialCesiumWriter openCapMaterialProperty() {
+	public final BooleanCesiumWriter openShowLateralSurfacesProperty() {
 		openIntervalIfNecessary();
-		return this.<MaterialCesiumWriter> openAndReturn(getCapMaterialWriter());
-	}
-
-	/**
-	 *  Gets the writer for the <code>innerMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>innerMaterial</code> property defines the material to use for the inner cone.
-	
-
-	 */
-	public final MaterialCesiumWriter getInnerMaterialWriter() {
-		return m_innerMaterial.getValue();
+		return this.<BooleanCesiumWriter> openAndReturn(getShowLateralSurfacesWriter());
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>innerMaterial</code> property.  The <code>innerMaterial</code> property defines the material to use for the inner cone.
+	Writes a value for the <code>showLateralSurfaces</code> property as a <code>boolean</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the cone with the earth are shown.
+	
 	
 
+	 * @param value The value.
 	 */
-	public final MaterialCesiumWriter openInnerMaterialProperty() {
-		openIntervalIfNecessary();
-		return this.<MaterialCesiumWriter> openAndReturn(getInnerMaterialWriter());
+	public final void writeShowLateralSurfacesProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowLateralSurfacesProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
-	 *  Gets the writer for the <code>outerMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outerMaterial</code> property defines the material to use for the outer cone.
+	 *  Gets the writer for the <code>lateralSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>lateralSurfaceMaterial</code> property defines whether or not lateral surfaces are shown.
 	
 
 	 */
-	public final MaterialCesiumWriter getOuterMaterialWriter() {
-		return m_outerMaterial.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>outerMaterial</code> property.  The <code>outerMaterial</code> property defines the material to use for the outer cone.
-	
-
-	 */
-	public final MaterialCesiumWriter openOuterMaterialProperty() {
-		openIntervalIfNecessary();
-		return this.<MaterialCesiumWriter> openAndReturn(getOuterMaterialWriter());
-	}
-
-	/**
-	 *  Gets the writer for the <code>silhouetteMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>silhouetteMaterial</code> property defines the material to use for the cone's silhouette.
-	
-
-	 */
-	public final MaterialCesiumWriter getSilhouetteMaterialWriter() {
-		return m_silhouetteMaterial.getValue();
+	public final MaterialCesiumWriter getLateralSurfaceMaterialWriter() {
+		return m_lateralSurfaceMaterial.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>silhouetteMaterial</code> property.  The <code>silhouetteMaterial</code> property defines the material to use for the cone's silhouette.
+	Opens and returns the writer for the <code>lateralSurfaceMaterial</code> property.  The <code>lateralSurfaceMaterial</code> property defines whether or not lateral surfaces are shown.
 	
 
 	 */
-	public final MaterialCesiumWriter openSilhouetteMaterialProperty() {
+	public final MaterialCesiumWriter openLateralSurfaceMaterialProperty() {
 		openIntervalIfNecessary();
-		return this.<MaterialCesiumWriter> openAndReturn(getSilhouetteMaterialWriter());
+		return this.<MaterialCesiumWriter> openAndReturn(getLateralSurfaceMaterialWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>showEllipsoidSurfaces</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>showEllipsoidSurfaces</code> property defines whether or not ellipsoid surfaces are shown.
+	
+
+	 */
+	public final BooleanCesiumWriter getShowEllipsoidSurfacesWriter() {
+		return m_showEllipsoidSurfaces.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>showEllipsoidSurfaces</code> property.  The <code>showEllipsoidSurfaces</code> property defines whether or not ellipsoid surfaces are shown.
+	
+
+	 */
+	public final BooleanCesiumWriter openShowEllipsoidSurfacesProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getShowEllipsoidSurfacesWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>showEllipsoidSurfaces</code> property as a <code>boolean</code> value.  The <code>showEllipsoidSurfaces</code> property specifies whether or not ellipsoid surfaces are shown.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeShowEllipsoidSurfacesProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEllipsoidSurfacesProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid surface.
+	
+
+	 */
+	public final MaterialCesiumWriter getEllipsoidSurfaceMaterialWriter() {
+		return m_ellipsoidSurfaceMaterial.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid surface.
+	
+
+	 */
+	public final MaterialCesiumWriter openEllipsoidSurfaceMaterialProperty() {
+		openIntervalIfNecessary();
+		return this.<MaterialCesiumWriter> openAndReturn(getEllipsoidSurfaceMaterialWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>showEllipsoidHorizonSurfaces</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>showEllipsoidHorizonSurfaces</code> property defines whether or not ellipsoid horizon surfaces are shown.
+	
+
+	 */
+	public final BooleanCesiumWriter getShowEllipsoidHorizonSurfacesWriter() {
+		return m_showEllipsoidHorizonSurfaces.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>showEllipsoidHorizonSurfaces</code> property.  The <code>showEllipsoidHorizonSurfaces</code> property defines whether or not ellipsoid horizon surfaces are shown.
+	
+
+	 */
+	public final BooleanCesiumWriter openShowEllipsoidHorizonSurfacesProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getShowEllipsoidHorizonSurfacesWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>showEllipsoidHorizonSurfaces</code> property as a <code>boolean</code> value.  The <code>showEllipsoidHorizonSurfaces</code> property specifies whether or not ellipsoid horizon surfaces are shown.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeShowEllipsoidHorizonSurfacesProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEllipsoidHorizonSurfacesProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid horizon surface.
+	
+
+	 */
+	public final MaterialCesiumWriter getEllipsoidHorizonSurfaceMaterialWriter() {
+		return m_ellipsoidHorizonSurfaceMaterial.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid horizon surface.
+	
+
+	 */
+	public final MaterialCesiumWriter openEllipsoidHorizonSurfaceMaterialProperty() {
+		openIntervalIfNecessary();
+		return this.<MaterialCesiumWriter> openAndReturn(getEllipsoidHorizonSurfaceMaterialWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>showDomeSurfaces</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>showDomeSurfaces</code> property defines whether or not dome surfaces are shown.
+	
+
+	 */
+	public final BooleanCesiumWriter getShowDomeSurfacesWriter() {
+		return m_showDomeSurfaces.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>showDomeSurfaces</code> property.  The <code>showDomeSurfaces</code> property defines whether or not dome surfaces are shown.
+	
+
+	 */
+	public final BooleanCesiumWriter openShowDomeSurfacesProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getShowDomeSurfacesWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>showDomeSurfaces</code> property as a <code>boolean</code> value.  The <code>showDomeSurfaces</code> property specifies whether or not dome surfaces are shown.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeShowDomeSurfacesProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowDomeSurfacesProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>domeSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>domeSurfaceMaterial</code> property defines the material to use for the cone's dome.
+	
+
+	 */
+	public final MaterialCesiumWriter getDomeSurfaceMaterialWriter() {
+		return m_domeSurfaceMaterial.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>domeSurfaceMaterial</code> property.  The <code>domeSurfaceMaterial</code> property defines the material to use for the cone's dome.
+	
+
+	 */
+	public final MaterialCesiumWriter openDomeSurfaceMaterialProperty() {
+		openIntervalIfNecessary();
+		return this.<MaterialCesiumWriter> openAndReturn(getDomeSurfaceMaterialWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>portionToDisplay</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>portionToDisplay</code> property defines indicates what part of a sensor should be displayed.
+	
+
+	 */
+	public final SensorVolumePortionToDisplayCesiumWriter getPortionToDisplayWriter() {
+		return m_portionToDisplay.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>portionToDisplay</code> property.  The <code>portionToDisplay</code> property defines indicates what part of a sensor should be displayed.
+	
+
+	 */
+	public final SensorVolumePortionToDisplayCesiumWriter openPortionToDisplayProperty() {
+		openIntervalIfNecessary();
+		return this.<SensorVolumePortionToDisplayCesiumWriter> openAndReturn(getPortionToDisplayWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>portionToDisplay</code> property as a <code>portionToDisplay</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	
+	
+
+	 * @param value The portion of the sensor to display.
+	 */
+	public final void writePortionToDisplayProperty(CesiumSensorVolumePortionToDisplay value) {
+		{
+			cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
+			try {
+				writer.writePortionToDisplay(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writePortionToDisplayPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writePortionToDisplayPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writePortionToDisplayPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writePortionToDisplayPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 }

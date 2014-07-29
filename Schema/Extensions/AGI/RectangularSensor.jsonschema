@@ -1,0 +1,69 @@
+{
+    "title": "RectangularSensor",
+    "description": "A rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "extensionPrefix": "agi",
+    "properties": {
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the pyramid is shown."
+        },
+        "directions": {
+            "$ref": "DirectionList.jsonschema",
+            "description": "The list of directions defining the pyramid."
+        },
+        "radius": {
+            "$ref": "Double.jsonschema",
+            "description": "The radial limit of the pyramid."
+        },
+        "showIntersection": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the intersection of the pyramid with the Earth is shown."
+        },
+        "intersectionColor": {
+            "$ref": "Color.jsonschema",
+            "description": "The color of the intersection of the pyramid with the Earth."
+        },
+        "intersectionWidth": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the intersection in pixels."
+        },
+        "showLateralSurfaces": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the intersections of the pyramid with the earth are shown."
+        },
+        "lateralSurfaceMaterial": {
+            "$ref": "Material.jsonschema",
+            "description": "Whether or not lateral surfaces are shown."
+        },
+        "showEllipsoidSurfaces": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not ellipsoid surfaces are shown."
+        },
+        "ellipsoidSurfaceMaterial": {
+            "$ref": "Material.jsonschema",
+            "description": "The material to use for the pyramid's ellipsoid surface."
+        },
+        "showEllipsoidHorizonSurfaces": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not ellipsoid horizon surfaces are shown."
+        },
+        "ellipsoidHorizonSurfaceMaterial": {
+            "$ref": "Material.jsonschema",
+            "description": "The material to use for the pyramid's ellipsoid horizon surface."
+        },
+        "showDomeSurfaces": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not dome surfaces are shown."
+        },
+        "domeSurfaceMaterial": {
+            "$ref": "Material.jsonschema",
+            "description": "The material to use for the pyramid's dome."
+        },
+        "portionToDisplay": {
+            "$ref": "Extensions/AGI/SensorVolumePortionToDisplay.jsonschema",
+            "description": "Indicates what part of a sensor should be displayed."
+        }
+    }
+}

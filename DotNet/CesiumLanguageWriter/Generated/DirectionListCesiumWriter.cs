@@ -18,11 +18,17 @@ namespace CesiumLanguageWriter
         public const string UnitSphericalPropertyName = "unitSpherical";
 
         /// <summary>
+        /// The name of the <code>spherical</code> property.
+        /// </summary>
+        public const string SphericalPropertyName = "spherical";
+
+        /// <summary>
         /// The name of the <code>unitCartesian</code> property.
         /// </summary>
         public const string UnitCartesianPropertyName = "unitCartesian";
 
         private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>> m_asUnitSpherical;
+        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Spherical>>> m_asSpherical;
         private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>> m_asUnitCartesian;
 
         /// <summary>
@@ -32,6 +38,7 @@ namespace CesiumLanguageWriter
             : base(propertyName)
         {
             m_asUnitSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>>(CreateUnitSphericalAdaptor, false);
+            m_asSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Spherical>>>(CreateSphericalAdaptor, false);
             m_asUnitCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>>(CreateUnitCartesianAdaptor, false);
         }
 
@@ -43,6 +50,7 @@ namespace CesiumLanguageWriter
             : base(existingInstance)
         {
             m_asUnitSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>>(CreateUnitSphericalAdaptor, false);
+            m_asSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Spherical>>>(CreateSphericalAdaptor, false);
             m_asUnitCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>>(CreateUnitCartesianAdaptor, false);
         }
 
@@ -62,6 +70,18 @@ namespace CesiumLanguageWriter
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteUnitSphericalList(Output, values);
+        }
+
+        /// <summary>
+        /// Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies the list of directions represented as a clock angle, a cone angle, both in radians, and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public void WriteSpherical(IEnumerable<Spherical> values)
+        {
+            const string PropertyName = SphericalPropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteSphericalList(Output, values);
         }
 
         /// <summary>
@@ -89,6 +109,21 @@ namespace CesiumLanguageWriter
         {
             return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<UnitSpherical>>(
                 this, (me, value) => me.WriteUnitSpherical(value));
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Spherical</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumValuePropertyWriter<IEnumerable<Spherical>> AsSpherical()
+        {
+            return m_asSpherical.Value;
+        }
+
+        private ICesiumValuePropertyWriter<IEnumerable<Spherical>> CreateSphericalAdaptor()
+        {
+            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<Spherical>>(
+                this, (me, value) => me.WriteSpherical(value));
         }
 
         /// <summary>

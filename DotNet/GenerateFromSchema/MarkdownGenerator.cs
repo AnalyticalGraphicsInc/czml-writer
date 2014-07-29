@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json.Schema;
 
@@ -32,11 +31,17 @@ namespace GenerateFromSchema
 
         private void GenerateProperty(int level, string prefix, Property property, TextWriter output)
         {
-            output.WriteLine("{0} {1}{2}", new string('#', level), prefix, property.NameWithPascalCase);
+            output.WriteLine("{0} {1}{2}", new string('#', level), prefix, property.Name);
             output.WriteLine();
 
             output.WriteLine(property.Description);
             output.WriteLine();
+
+            if (!string.IsNullOrWhiteSpace(property.ValueType.ExtensionPrefix))
+            {
+                output.WriteLine("_Note: This type is an extension and may not be implemented by all CZML clients._");
+                output.WriteLine();
+            }
 
             output.WriteLine("**Property Name**: `{0}`", property.Name);
             output.WriteLine();
@@ -53,7 +58,7 @@ namespace GenerateFromSchema
                 {
                     foreach (Property nestedProperty in property.ValueType.Properties)
                     {
-                        string newPrefix = property.NameWithPascalCase + ".";
+                        string newPrefix = property.Name + ".";
                         if (prefix.Length != 0)
                             newPrefix = prefix + newPrefix;
                         GenerateProperty(level + 1, newPrefix, nestedProperty, output);

@@ -480,6 +480,34 @@ public final class CesiumFormattingHelper {
 
 	/**
 	 *  
+	Converts a  {@link CesiumLabelStyle} to the corresponding string in a
+	<topic name="Cesium">Cesium</topic> stream.
+	
+	
+	
+
+	 * @param portionToDisplay The value to convert.
+	 * @return The string representing the specified  {@link CesiumSensorVolumePortionToDisplay}.
+	 */
+	public static String sensorVolumePortionToDisplayToString(CesiumSensorVolumePortionToDisplay portionToDisplay) {
+		switch (portionToDisplay) {
+		case COMPLETE: {
+			return "COMPLETE";
+		}
+		case ABOVE_ELLIPSOID_HORIZON: {
+			return "ABOVE_ELLIPSOID_HORIZON";
+		}
+		case BELOW_ELLIPSOID_HORIZON: {
+			return "BELOW_ELLIPSOID_HORIZON";
+		}
+		default: {
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "portionToDisplay");
+		}
+		}
+	}
+
+	/**
+	 *  
 	Returns a resolved url, using the given  {@link CesiumResourceBehavior}.
 	
 	

@@ -36,13 +36,6 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 	public static final String ColorPropertyName = "color";
 	/**
 	 *  
-	The name of the <code>width</code> property.
-	
-
-	 */
-	public static final String WidthPropertyName = "width";
-	/**
-	 *  
 	The name of the <code>direction</code> property.
 	
 
@@ -55,6 +48,13 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
 	 */
 	public static final String LengthPropertyName = "length";
+	/**
+	 *  
+	The name of the <code>minimumLengthInPixels</code> property.
+	
+
+	 */
+	public static final String MinimumLengthInPixelsPropertyName = "minimumLengthInPixels";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
@@ -65,11 +65,6 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 			return new ColorCesiumWriter(ColorPropertyName);
 		}
 	}, false);
-	private Lazy<DoubleCesiumWriter> m_width = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(WidthPropertyName);
-		}
-	}, false);
 	private Lazy<DirectionCesiumWriter> m_direction = new Lazy<cesiumlanguagewriter.DirectionCesiumWriter>(new Func1<cesiumlanguagewriter.DirectionCesiumWriter>() {
 		public cesiumlanguagewriter.DirectionCesiumWriter invoke() {
 			return new DirectionCesiumWriter(DirectionPropertyName);
@@ -78,6 +73,11 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 	private Lazy<DoubleCesiumWriter> m_length = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(LengthPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_minimumLengthInPixels = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(MinimumLengthInPixelsPropertyName);
 		}
 	}, false);
 
@@ -342,150 +342,6 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 	}
 
 	/**
-	 *  Gets the writer for the <code>width</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>width</code> property defines the width of the vector.
-	
-
-	 */
-	public final DoubleCesiumWriter getWidthWriter() {
-		return m_width.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>width</code> property.  The <code>width</code> property defines the width of the vector.
-	
-
-	 */
-	public final DoubleCesiumWriter openWidthProperty() {
-		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getWidthWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the vector.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeWidthProperty(double value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
-			try {
-				writer.writeNumber(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the vector.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeWidthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the vector.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeWidthPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the vector.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeWidthPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the vector.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeWidthPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the vector.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeWidthPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
 	 *  Gets the writer for the <code>direction</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>direction</code> property defines the direction of the vector.
 	
 
@@ -507,13 +363,78 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
 	/**
 	 *  
+	Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeDirectionProperty(Spherical value) {
+		{
+			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+			try {
+				writer.writeSpherical(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeDirectionProperty(List<JulianDate> dates, List<Spherical> values) {
+		{
+			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+			try {
+				writer.writeSpherical(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeDirectionProperty(List<JulianDate> dates, List<Spherical> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+			try {
+				writer.writeSpherical(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
 	Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeDirectionProperty(UnitCartesian value) {
+	public final void writeDirectionPropertyUnitCartesian(UnitCartesian value) {
 		{
 			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
 			try {
@@ -534,7 +455,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 	 * @param dates The dates at which the vector is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeDirectionProperty(List<JulianDate> dates, List<UnitCartesian> values) {
+	public final void writeDirectionPropertyUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values) {
 		{
 			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
 			try {
@@ -559,7 +480,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeDirectionProperty(List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
+	public final void writeDirectionPropertyUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
 		{
 			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
 			try {
@@ -851,6 +772,150 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 	public final void writeLengthPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>minimumLengthInPixels</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>minimumLengthInPixels</code> property defines the minimum graphical length of the vector in pixels.
+	
+
+	 */
+	public final DoubleCesiumWriter getMinimumLengthInPixelsWriter() {
+		return m_minimumLengthInPixels.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>minimumLengthInPixels</code> property.  The <code>minimumLengthInPixels</code> property defines the minimum graphical length of the vector in pixels.
+	
+
+	 */
+	public final DoubleCesiumWriter openMinimumLengthInPixelsProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getMinimumLengthInPixelsWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>minimumLengthInPixels</code> property as a <code>number</code> value.  The <code>minimumLengthInPixels</code> property specifies the minimum graphical length of the vector in pixels.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeMinimumLengthInPixelsProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>minimumLengthInPixels</code> property as a <code>number</code> value.  The <code>minimumLengthInPixels</code> property specifies the minimum graphical length of the vector in pixels.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeMinimumLengthInPixelsProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>minimumLengthInPixels</code> property as a <code>reference</code> value.  The <code>minimumLengthInPixels</code> property specifies the minimum graphical length of the vector in pixels.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeMinimumLengthInPixelsPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>minimumLengthInPixels</code> property as a <code>reference</code> value.  The <code>minimumLengthInPixels</code> property specifies the minimum graphical length of the vector in pixels.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeMinimumLengthInPixelsPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>minimumLengthInPixels</code> property as a <code>reference</code> value.  The <code>minimumLengthInPixels</code> property specifies the minimum graphical length of the vector in pixels.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeMinimumLengthInPixelsPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>minimumLengthInPixels</code> property as a <code>reference</code> value.  The <code>minimumLengthInPixels</code> property specifies the minimum graphical length of the vector in pixels.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeMinimumLengthInPixelsPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {

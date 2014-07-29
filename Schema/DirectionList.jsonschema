@@ -9,6 +9,11 @@
             "description": "The list of directions represented as a clock angle and a cone angle, both in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.",
             "czmlValue": true
         },
+        "spherical": {
+            "$ref": "SphericalListValue.jsonschema",
+            "description": "The list of directions represented as a clock angle, a cone angle, both in radians, and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.",
+            "czmlValue": true
+        },
         "unitCartesian": {
             "$ref": "UnitCartesian3ListValue.jsonschema",
             "description": "The list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`.",

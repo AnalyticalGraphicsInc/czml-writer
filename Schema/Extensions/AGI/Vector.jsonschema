@@ -3,6 +3,7 @@
     "description": "Defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.",
     "type": ["array", "object"],
     "items": { "$ref": "#" },
+    "extensionPrefix": "agi",
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
@@ -12,10 +13,6 @@
             "$ref": "Color.jsonschema",
             "description": "The color of the vector."
         },
-        "width": {
-            "$ref": "Double.jsonschema",
-            "description": "The width of the vector."
-        },
         "direction": {
             "$ref": "Direction.jsonschema",
             "description": "The direction of the vector."
@@ -23,6 +20,10 @@
         "length": {
             "$ref": "Double.jsonschema",
             "description": "The graphical length of the vector."
+        },
+        "minimumLengthInPixels": {
+            "$ref": "Double.jsonschema",
+            "description": "The minimum graphical length of the vector in pixels."
         }
     }
 }
