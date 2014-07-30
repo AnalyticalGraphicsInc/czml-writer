@@ -1,5 +1,6 @@
 ﻿{
     "namespace": "CesiumLanguageWriter",
+    "access": "public",
     "lazyNamespace": "System",
     "types": {
         "TimeIntervalCollection": [

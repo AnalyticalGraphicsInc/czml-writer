@@ -19,9 +19,14 @@ namespace CesiumLanguageWriter
         public const string ShowPropertyName = "show";
 
         /// <summary>
-        /// The name of the <code>directions</code> property.
+        /// The name of the <code>xHalfAngle</code> property.
         /// </summary>
-        public const string DirectionsPropertyName = "directions";
+        public const string XHalfAnglePropertyName = "xHalfAngle";
+
+        /// <summary>
+        /// The name of the <code>yHalfAngle</code> property.
+        /// </summary>
+        public const string YHalfAnglePropertyName = "yHalfAngle";
 
         /// <summary>
         /// The name of the <code>radius</code> property.
@@ -89,7 +94,8 @@ namespace CesiumLanguageWriter
         public const string PortionToDisplayPropertyName = "portionToDisplay";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
-        private readonly Lazy<DirectionListCesiumWriter> m_directions = new Lazy<DirectionListCesiumWriter>(() => new DirectionListCesiumWriter(DirectionsPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_xHalfAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(XHalfAnglePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_yHalfAngle = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(YHalfAnglePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RadiusPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_showIntersection = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowIntersectionPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_intersectionColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(IntersectionColorPropertyName), false);
@@ -157,55 +163,190 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>directions</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>directions</code> property defines the list of directions defining the pyramid.
+        /// Gets the writer for the <code>xHalfAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>xHalfAngle</code> property defines the X half angle.
         /// </summary>
-        public DirectionListCesiumWriter DirectionsWriter
+        public DoubleCesiumWriter XHalfAngleWriter
         {
-            get { return m_directions.Value; }
+            get { return m_xHalfAngle.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>directions</code> property.  The <code>directions</code> property defines the list of directions defining the pyramid.
+        /// Opens and returns the writer for the <code>xHalfAngle</code> property.  The <code>xHalfAngle</code> property defines the X half angle.
         /// </summary>
-        public DirectionListCesiumWriter OpenDirectionsProperty()
+        public DoubleCesiumWriter OpenXHalfAngleProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(DirectionsWriter);
+            return OpenAndReturn(XHalfAngleWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>directions</code> property as a <code>unitSpherical</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+        /// Writes a value for the <code>xHalfAngle</code> property as a <code>number</code> value.  The <code>xHalfAngle</code> property specifies the X half angle.
         /// </summary>
-        /// <param name="values">The values.</param>
-        public void WriteDirectionsProperty(IEnumerable<UnitSpherical> values)
+        /// <param name="value">The value.</param>
+        public void WriteXHalfAngleProperty(double value)
         {
-            using (var writer = OpenDirectionsProperty())
+            using (var writer = OpenXHalfAngleProperty())
             {
-                writer.WriteUnitSpherical(values);
+                writer.WriteNumber(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>directions</code> property as a <code>spherical</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+        /// Writes a value for the <code>xHalfAngle</code> property as a <code>number</code> value.  The <code>xHalfAngle</code> property specifies the X half angle.
         /// </summary>
-        /// <param name="values">The values.</param>
-        public void WriteDirectionsPropertySpherical(IEnumerable<Spherical> values)
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteXHalfAngleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
-            using (var writer = OpenDirectionsProperty())
+            using (var writer = OpenXHalfAngleProperty())
             {
-                writer.WriteSpherical(values);
+                writer.WriteNumber(dates, values, startIndex, length);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>directions</code> property as a <code>unitCartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+        /// Writes a value for the <code>xHalfAngle</code> property as a <code>reference</code> value.  The <code>xHalfAngle</code> property specifies the X half angle.
         /// </summary>
-        /// <param name="values">The values.</param>
-        public void WriteDirectionsPropertyUnitCartesian(IEnumerable<UnitCartesian> values)
+        /// <param name="value">The reference.</param>
+        public void WriteXHalfAnglePropertyReference(Reference value)
         {
-            using (var writer = OpenDirectionsProperty())
+            using (var writer = OpenXHalfAngleProperty())
             {
-                writer.WriteUnitCartesian(values);
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>xHalfAngle</code> property as a <code>reference</code> value.  The <code>xHalfAngle</code> property specifies the X half angle.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteXHalfAnglePropertyReference(string value)
+        {
+            using (var writer = OpenXHalfAngleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>xHalfAngle</code> property as a <code>reference</code> value.  The <code>xHalfAngle</code> property specifies the X half angle.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteXHalfAnglePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenXHalfAngleProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>xHalfAngle</code> property as a <code>reference</code> value.  The <code>xHalfAngle</code> property specifies the X half angle.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteXHalfAnglePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenXHalfAngleProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>yHalfAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>yHalfAngle</code> property defines the Y half angle.
+        /// </summary>
+        public DoubleCesiumWriter YHalfAngleWriter
+        {
+            get { return m_yHalfAngle.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>yHalfAngle</code> property.  The <code>yHalfAngle</code> property defines the Y half angle.
+        /// </summary>
+        public DoubleCesiumWriter OpenYHalfAngleProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(YHalfAngleWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>yHalfAngle</code> property as a <code>number</code> value.  The <code>yHalfAngle</code> property specifies the Y half angle.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteYHalfAngleProperty(double value)
+        {
+            using (var writer = OpenYHalfAngleProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>yHalfAngle</code> property as a <code>number</code> value.  The <code>yHalfAngle</code> property specifies the Y half angle.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteYHalfAngleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenYHalfAngleProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>yHalfAngle</code> property as a <code>reference</code> value.  The <code>yHalfAngle</code> property specifies the Y half angle.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteYHalfAnglePropertyReference(Reference value)
+        {
+            using (var writer = OpenYHalfAngleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>yHalfAngle</code> property as a <code>reference</code> value.  The <code>yHalfAngle</code> property specifies the Y half angle.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteYHalfAnglePropertyReference(string value)
+        {
+            using (var writer = OpenYHalfAngleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>yHalfAngle</code> property as a <code>reference</code> value.  The <code>yHalfAngle</code> property specifies the Y half angle.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteYHalfAnglePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenYHalfAngleProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>yHalfAngle</code> property as a <code>reference</code> value.  The <code>yHalfAngle</code> property specifies the Y half angle.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteYHalfAnglePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenYHalfAngleProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 

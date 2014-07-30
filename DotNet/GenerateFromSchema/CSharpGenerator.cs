@@ -54,9 +54,9 @@ namespace GenerateFromSchema
 
                 bool isInterpolatable = schema.Extends != null && schema.Extends.Name == "InterpolatableProperty";
                 if (isInterpolatable)
-                    writer.WriteLine("public class {0}CesiumWriter : CesiumInterpolatablePropertyWriter<{0}CesiumWriter>", schema.NameWithPascalCase);
+                    writer.WriteLine(m_configuration.Access + " class {0}CesiumWriter : CesiumInterpolatablePropertyWriter<{0}CesiumWriter>", schema.NameWithPascalCase);
                 else
-                    writer.WriteLine("public class {0}CesiumWriter : CesiumPropertyWriter<{0}CesiumWriter>", schema.NameWithPascalCase);
+                    writer.WriteLine(m_configuration.Access + " class {0}CesiumWriter : CesiumPropertyWriter<{0}CesiumWriter>", schema.NameWithPascalCase);
 
                 writer.OpenScope();
 
@@ -86,7 +86,7 @@ namespace GenerateFromSchema
                 writer.OpenScope();
 
                 WriteDescriptionAsClassSummary(writer, packetSchema);
-                writer.WriteLine("public class PacketCesiumWriter : CesiumElementWriter");
+                writer.WriteLine(m_configuration.Access + " class PacketCesiumWriter : CesiumElementWriter");
                 writer.OpenScope();
 
                 WritePropertyNameConstants(writer, packetSchema);
@@ -648,6 +648,9 @@ namespace GenerateFromSchema
         {
             [JsonProperty("namespace")]
             public string Namespace = null;
+
+            [JsonProperty("access")]
+            public string Access = null;
 
             [JsonProperty("lazyNamespace")]
             public string LazyNamespace = null;

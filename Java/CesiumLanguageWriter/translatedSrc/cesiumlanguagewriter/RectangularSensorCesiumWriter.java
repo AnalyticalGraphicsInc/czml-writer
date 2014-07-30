@@ -8,7 +8,6 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
-import cesiumlanguagewriter.DirectionListCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.MaterialCesiumWriter;
 import cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter;
@@ -31,11 +30,18 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 	public static final String ShowPropertyName = "show";
 	/**
 	 *  
-	The name of the <code>directions</code> property.
+	The name of the <code>xHalfAngle</code> property.
 	
 
 	 */
-	public static final String DirectionsPropertyName = "directions";
+	public static final String XHalfAnglePropertyName = "xHalfAngle";
+	/**
+	 *  
+	The name of the <code>yHalfAngle</code> property.
+	
+
+	 */
+	public static final String YHalfAnglePropertyName = "yHalfAngle";
 	/**
 	 *  
 	The name of the <code>radius</code> property.
@@ -132,9 +138,14 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 			return new BooleanCesiumWriter(ShowPropertyName);
 		}
 	}, false);
-	private Lazy<DirectionListCesiumWriter> m_directions = new Lazy<cesiumlanguagewriter.DirectionListCesiumWriter>(new Func1<cesiumlanguagewriter.DirectionListCesiumWriter>() {
-		public cesiumlanguagewriter.DirectionListCesiumWriter invoke() {
-			return new DirectionListCesiumWriter(DirectionsPropertyName);
+	private Lazy<DoubleCesiumWriter> m_xHalfAngle = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(XHalfAnglePropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_yHalfAngle = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(YHalfAnglePropertyName);
 		}
 	}, false);
 	private Lazy<DoubleCesiumWriter> m_radius = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
@@ -271,38 +282,38 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 	}
 
 	/**
-	 *  Gets the writer for the <code>directions</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>directions</code> property defines the list of directions defining the pyramid.
+	 *  Gets the writer for the <code>xHalfAngle</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>xHalfAngle</code> property defines the X half angle.
 	
 
 	 */
-	public final DirectionListCesiumWriter getDirectionsWriter() {
-		return m_directions.getValue();
+	public final DoubleCesiumWriter getXHalfAngleWriter() {
+		return m_xHalfAngle.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>directions</code> property.  The <code>directions</code> property defines the list of directions defining the pyramid.
+	Opens and returns the writer for the <code>xHalfAngle</code> property.  The <code>xHalfAngle</code> property defines the X half angle.
 	
 
 	 */
-	public final DirectionListCesiumWriter openDirectionsProperty() {
+	public final DoubleCesiumWriter openXHalfAngleProperty() {
 		openIntervalIfNecessary();
-		return this.<DirectionListCesiumWriter> openAndReturn(getDirectionsWriter());
+		return this.<DoubleCesiumWriter> openAndReturn(getXHalfAngleWriter());
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>directions</code> property as a <code>unitSpherical</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+	Writes a value for the <code>xHalfAngle</code> property as a <code>number</code> value.  The <code>xHalfAngle</code> property specifies the X half angle.
 	
 	
 
-	 * @param values The values.
+	 * @param value The value.
 	 */
-	public final void writeDirectionsProperty(Iterable<UnitSpherical> values) {
+	public final void writeXHalfAngleProperty(double value) {
 		{
-			cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openXHalfAngleProperty();
 			try {
-				writer.writeUnitSpherical(values);
+				writer.writeNumber(value);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -311,17 +322,23 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>directions</code> property as a <code>spherical</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+	Writes a value for the <code>xHalfAngle</code> property as a <code>number</code> value.  The <code>xHalfAngle</code> property specifies the X half angle.
+	
+	
+	
 	
 	
 
-	 * @param values The values.
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeDirectionsPropertySpherical(Iterable<Spherical> values) {
+	public final void writeXHalfAngleProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
 		{
-			cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openXHalfAngleProperty();
 			try {
-				writer.writeSpherical(values);
+				writer.writeNumber(dates, values, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -330,17 +347,222 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>directions</code> property as a <code>unitCartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+	Writes a value for the <code>xHalfAngle</code> property as a <code>reference</code> value.  The <code>xHalfAngle</code> property specifies the X half angle.
 	
 	
 
-	 * @param values The values.
+	 * @param value The reference.
 	 */
-	public final void writeDirectionsPropertyUnitCartesian(Iterable<UnitCartesian> values) {
+	public final void writeXHalfAnglePropertyReference(Reference value) {
 		{
-			cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openXHalfAngleProperty();
 			try {
-				writer.writeUnitCartesian(values);
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>xHalfAngle</code> property as a <code>reference</code> value.  The <code>xHalfAngle</code> property specifies the X half angle.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeXHalfAnglePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openXHalfAngleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>xHalfAngle</code> property as a <code>reference</code> value.  The <code>xHalfAngle</code> property specifies the X half angle.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeXHalfAnglePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openXHalfAngleProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>xHalfAngle</code> property as a <code>reference</code> value.  The <code>xHalfAngle</code> property specifies the X half angle.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeXHalfAnglePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openXHalfAngleProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>yHalfAngle</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>yHalfAngle</code> property defines the Y half angle.
+	
+
+	 */
+	public final DoubleCesiumWriter getYHalfAngleWriter() {
+		return m_yHalfAngle.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>yHalfAngle</code> property.  The <code>yHalfAngle</code> property defines the Y half angle.
+	
+
+	 */
+	public final DoubleCesiumWriter openYHalfAngleProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getYHalfAngleWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>yHalfAngle</code> property as a <code>number</code> value.  The <code>yHalfAngle</code> property specifies the Y half angle.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeYHalfAngleProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openYHalfAngleProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>yHalfAngle</code> property as a <code>number</code> value.  The <code>yHalfAngle</code> property specifies the Y half angle.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeYHalfAngleProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openYHalfAngleProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>yHalfAngle</code> property as a <code>reference</code> value.  The <code>yHalfAngle</code> property specifies the Y half angle.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeYHalfAnglePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openYHalfAngleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>yHalfAngle</code> property as a <code>reference</code> value.  The <code>yHalfAngle</code> property specifies the Y half angle.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeYHalfAnglePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openYHalfAngleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>yHalfAngle</code> property as a <code>reference</code> value.  The <code>yHalfAngle</code> property specifies the Y half angle.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeYHalfAnglePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openYHalfAngleProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>yHalfAngle</code> property as a <code>reference</code> value.  The <code>yHalfAngle</code> property specifies the Y half angle.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeYHalfAnglePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openYHalfAngleProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

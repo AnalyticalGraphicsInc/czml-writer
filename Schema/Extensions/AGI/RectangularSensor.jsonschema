@@ -9,9 +9,13 @@
             "$ref": "Boolean.jsonschema",
             "description": "Whether or not the pyramid is shown."
         },
-        "directions": {
-            "$ref": "DirectionList.jsonschema",
-            "description": "The list of directions defining the pyramid."
+        "xHalfAngle": {
+            "$ref": "Double.jsonschema",
+            "description": "The X half angle."
+        },
+        "yHalfAngle": {
+            "$ref": "Double.jsonschema",
+            "description": "The Y half angle."
         },
         "radius": {
             "$ref": "Double.jsonschema",
