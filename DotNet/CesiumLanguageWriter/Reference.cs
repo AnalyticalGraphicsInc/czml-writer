@@ -42,7 +42,7 @@ namespace CesiumLanguageWriter
         /// Creates a new instance from an identifier and a list of properties.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">An list of property names with each property being a sub-property of the previous one.</param>
+        /// <param name="propertyNames">A list of property names with each property being a sub-property of the previous one.</param>
         public Reference(string identifier, IEnumerable<string> propertyNames)
         {
             m_identifier = identifier;
