@@ -14,13 +14,12 @@ namespace CesiumLanguageWriter
     /// Any hash symbols or periods that exist in the reference identifier or property must
     /// be properly escaped with a backslash (\\) in order for the reference to be valid.
     /// </summary>
-    [CSToJavaImmutableValueType]
-    public struct Reference : IEquatable<Reference>
+    public class Reference : IEquatable<Reference>
     {
         /// <summary>
-        /// Creates a new instances from an escaped reference string.
+        /// Creates a new instance from an escaped reference string.
         /// </summary>
-        /// <param name="value">The </param>
+        /// <param name="value">The reference string.</param>
         public Reference(string value)
         {
             m_value = value;
@@ -28,23 +27,22 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Creates a new instance from an id and property.
+        /// Creates a new instance from an identifier and property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
         public Reference(string identifier, string propertyName)
         {
             m_identifier = identifier;
-            m_properties = new List<string>();
-            m_properties.Add(propertyName);
+            m_properties = new List<string> { propertyName };
             m_value = FormatReference(m_identifier, m_properties);
         }
 
         /// <summary>
-        /// Creates a new instace from an id and a hierarchy of properties.
+        /// Creates a new instance from an identifier and a list of properties.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">An hierarchy of property names with each property being a sub-property of the previous one.</param>
+        /// <param name="propertyNames">An list of property names with each property being a sub-property of the previous one.</param>
         public Reference(string identifier, IEnumerable<string> propertyNames)
         {
             m_identifier = identifier;
@@ -61,7 +59,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the hierarchy of properties to be indexed on the referenced object.
+        /// Gets the list of properties to be indexed on the referenced object.
         /// </summary>
         public IEnumerable<string> PropertyNames
         {
@@ -92,14 +90,8 @@ namespace CesiumLanguageWriter
         /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
-            if (obj is Reference)
-            {
-                return Equals((Reference)obj);
-            }
-            else
-            {
-                return false;
-            }
+            var reference = obj as Reference;
+            return reference != null && Equals(reference);
         }
 
         /// <summary>
@@ -109,7 +101,7 @@ namespace CesiumLanguageWriter
         /// <returns><see langword="true"/> if <paramref name="other"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public bool Equals(Reference other)
         {
-            return this.m_value == other.m_value;
+            return m_value == other.m_value;
         }
 
         /// <summary>
@@ -118,40 +110,56 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return m_identifier.GetHashCode() ^ m_properties.GetHashCode() ^ m_value.GetHashCode();
+            return m_value.GetHashCode();
         }
 
-        static private string FormatReference(string identifier, List<string> propertyNames)
+        private static string FormatReference(string identifier, List<string> propertyNames)
         {
-            StringBuilder value = new StringBuilder();
+            StringBuilder builder = new StringBuilder();
 
-            identifier = identifier.Replace(@"\", @"\\").Replace("#", @"\#").Replace(".", @"\.");
-            value.Append(identifier);
-            value.Append("#");
-            for (var i = 0; i < propertyNames.Count; i++)
+            AppendAndEscape(builder, identifier);
+
+            builder.Append('#');
+
+            for (int i = 0; i < propertyNames.Count; i++)
             {
-                string property = propertyNames[i].Replace(@"\", @"\\").Replace("#", @"\#").Replace(".", @"\.");
-                value.Append(property);
+                string propertyName = propertyNames[i];
+
+                AppendAndEscape(builder, propertyName);
+
                 if (i != propertyNames.Count - 1)
-                {
-                    value.Append(".");
-                }
+                    builder.Append('.');
             }
-            return value.ToString();
+
+            return builder.ToString();
         }
 
-        static private void Parse(string value, out string identifier, out List<string> values)
+        /// <summary>
+        /// Escape \ # . characters with a \
+        /// </summary>
+        private static void AppendAndEscape(StringBuilder builder, string str)
+        {
+            for (int i = 0; i < str.Length; i++)
+            {
+                char c = str[i];
+                if (c == '\\' || c == '#' || c == '.')
+                    builder.Append('\\');
+                builder.Append(c);
+            }
+        }
+
+        private static void Parse(string value, out string identifier, out List<string> values)
         {
             identifier = string.Empty;
             values = new List<string>();
 
-            var inIdentifier = true;
-            var isEscaped = false;
-            var token = string.Empty;
-            for (var i = 0; i < value.Length; ++i)
-            {
-                var c = value[i];
+            bool inIdentifier = true;
+            bool isEscaped = false;
+            string token = string.Empty;
 
+            for (int i = 0; i < value.Length; i++)
+            {
+                char c = value[i];
                 if (isEscaped)
                 {
                     token += c;
