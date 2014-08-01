@@ -278,46 +278,6 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteDirectionPropertyUnitCartesian(UnitCartesian value)
-        {
-            using (var writer = OpenDirectionProperty())
-            {
-                writer.WriteUnitCartesian(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
-        /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        public void WriteDirectionPropertyUnitCartesian(IList<JulianDate> dates, IList<UnitCartesian> values)
-        {
-            using (var writer = OpenDirectionProperty())
-            {
-                writer.WriteUnitCartesian(dates, values);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
-        /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteDirectionPropertyUnitCartesian(IList<JulianDate> dates, IList<UnitCartesian> values, int startIndex, int length)
-        {
-            using (var writer = OpenDirectionProperty())
-            {
-                writer.WriteUnitCartesian(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
         /// Writes a value for the <code>direction</code> property as a <code>unitSpherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
         /// <param name="value">The value.</param>
@@ -354,6 +314,86 @@ namespace CesiumLanguageWriter
             using (var writer = OpenDirectionProperty())
             {
                 writer.WriteUnitSpherical(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteDirectionPropertyCartesian(Cartesian value)
+        {
+            using (var writer = OpenDirectionProperty())
+            {
+                writer.WriteCartesian(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteDirectionPropertyCartesian(IList<JulianDate> dates, IList<Cartesian> values)
+        {
+            using (var writer = OpenDirectionProperty())
+            {
+                writer.WriteCartesian(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteDirectionPropertyCartesian(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        {
+            using (var writer = OpenDirectionProperty())
+            {
+                writer.WriteCartesian(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteDirectionPropertyUnitCartesian(UnitCartesian value)
+        {
+            using (var writer = OpenDirectionProperty())
+            {
+                writer.WriteUnitCartesian(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteDirectionPropertyUnitCartesian(IList<JulianDate> dates, IList<UnitCartesian> values)
+        {
+            using (var writer = OpenDirectionProperty())
+            {
+                writer.WriteUnitCartesian(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteDirectionPropertyUnitCartesian(IList<JulianDate> dates, IList<UnitCartesian> values, int startIndex, int length)
+        {
+            using (var writer = OpenDirectionProperty())
+            {
+                writer.WriteUnitCartesian(dates, values, startIndex, length);
             }
         }
 

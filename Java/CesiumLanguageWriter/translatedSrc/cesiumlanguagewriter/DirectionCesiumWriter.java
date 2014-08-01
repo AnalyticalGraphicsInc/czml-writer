@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.Cartesian;
 import cesiumlanguagewriter.Reference;
 import cesiumlanguagewriter.Spherical;
 import cesiumlanguagewriter.UnitCartesian;
@@ -34,18 +35,25 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 	public static final String SphericalPropertyName = "spherical";
 	/**
 	 *  
-	The name of the <code>unitCartesian</code> property.
-	
-
-	 */
-	public static final String UnitCartesianPropertyName = "unitCartesian";
-	/**
-	 *  
 	The name of the <code>unitSpherical</code> property.
 	
 
 	 */
 	public static final String UnitSphericalPropertyName = "unitSpherical";
+	/**
+	 *  
+	The name of the <code>cartesian</code> property.
+	
+
+	 */
+	public static final String CartesianPropertyName = "cartesian";
+	/**
+	 *  
+	The name of the <code>unitCartesian</code> property.
+	
+
+	 */
+	public static final String UnitCartesianPropertyName = "unitCartesian";
 	/**
 	 *  
 	The name of the <code>reference</code> property.
@@ -54,8 +62,9 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 	 */
 	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<Spherical>> m_asSpherical;
-	private Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>> m_asUnitCartesian;
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>> m_asUnitSpherical;
+	private Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asCartesian;
+	private Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>> m_asUnitCartesian;
 	private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
 	/**
@@ -72,16 +81,22 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 						return createSphericalAdaptor();
 					}
 				}, false);
-		m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(
-				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor", new Class[] {}) {
-					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian> invoke() {
-						return createUnitCartesianAdaptor();
-					}
-				}, false);
 		m_asUnitSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(
 				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(this, "createUnitSphericalAdaptor", new Class[] {}) {
 					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical> invoke() {
 						return createUnitSphericalAdaptor();
+					}
+				}, false);
+		m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
+						return createCartesianAdaptor();
+					}
+				}, false);
+		m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian> invoke() {
+						return createUnitCartesianAdaptor();
 					}
 				}, false);
 		m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
@@ -108,16 +123,22 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 						return createSphericalAdaptor();
 					}
 				}, false);
-		m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(
-				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor", new Class[] {}) {
-					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian> invoke() {
-						return createUnitCartesianAdaptor();
-					}
-				}, false);
 		m_asUnitSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(
 				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(this, "createUnitSphericalAdaptor", new Class[] {}) {
 					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical> invoke() {
 						return createUnitSphericalAdaptor();
+					}
+				}, false);
+		m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
+						return createCartesianAdaptor();
+					}
+				}, false);
+		m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian> invoke() {
+						return createUnitCartesianAdaptor();
 					}
 				}, false);
 		m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
@@ -199,55 +220,6 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeUnitCartesian(UnitCartesian value) {
-		String PropertyName = UnitCartesianPropertyName;
-		openIntervalIfNecessary();
-		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeUnitCartesian3(getOutput(), value);
-	}
-
-	/**
-	 *  
-	Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
-	
-	
-	
-
-	 * @param dates The dates at which the vector is specified.
-	 * @param values The values corresponding to each date.
-	 */
-	public final void writeUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values) {
-		writeUnitCartesian(dates, values, 0, dates.size());
-	}
-
-	/**
-	 *  
-	Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the vector is specified.
-	 * @param values The values corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
-		String PropertyName = UnitCartesianPropertyName;
-		openIntervalIfNecessary();
-		CesiumWritingHelper.writeUnitCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
-	}
-
-	/**
-	 *  
 	Writes the <code>unitSpherical</code> property.  The <code>unitSpherical</code> property specifies a direction specified as a unit spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
 	
 	
@@ -293,6 +265,104 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 		String PropertyName = UnitSphericalPropertyName;
 		openIntervalIfNecessary();
 		CesiumWritingHelper.writeUnitSpherical(getOutput(), PropertyName, dates, values, startIndex, length);
+	}
+
+	/**
+	 *  
+	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeCartesian(Cartesian value) {
+		String PropertyName = CartesianPropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeCartesian3(getOutput(), value);
+	}
+
+	/**
+	 *  
+	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeCartesian(List<JulianDate> dates, List<Cartesian> values) {
+		writeCartesian(dates, values, 0, dates.size());
+	}
+
+	/**
+	 *  
+	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeCartesian(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+		String PropertyName = CartesianPropertyName;
+		openIntervalIfNecessary();
+		CesiumWritingHelper.writeCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
+	}
+
+	/**
+	 *  
+	Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeUnitCartesian(UnitCartesian value) {
+		String PropertyName = UnitCartesianPropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeUnitCartesian3(getOutput(), value);
+	}
+
+	/**
+	 *  
+	Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values) {
+		writeUnitCartesian(dates, values, 0, dates.size());
+	}
+
+	/**
+	 *  
+	Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
+		String PropertyName = UnitCartesianPropertyName;
+		openIntervalIfNecessary();
+		CesiumWritingHelper.writeUnitCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
 	}
 
 	/**
@@ -386,31 +456,6 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in <code>UnitCartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-	
-	
-
-	 * @return The wrapper.
-	 */
-	public final ICesiumInterpolatableValuePropertyWriter<UnitCartesian> asUnitCartesian() {
-		return m_asUnitCartesian.getValue();
-	}
-
-	final private ICesiumInterpolatableValuePropertyWriter<UnitCartesian> createUnitCartesianAdaptor() {
-		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.DirectionCesiumWriter, cesiumlanguagewriter.UnitCartesian>(this,
-				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DirectionCesiumWriter, cesiumlanguagewriter.UnitCartesian>() {
-					public void invoke(DirectionCesiumWriter me, UnitCartesian value) {
-						me.writeUnitCartesian(value);
-					}
-				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.DirectionCesiumWriter, cesiumlanguagewriter.UnitCartesian>() {
-					public void invoke(DirectionCesiumWriter me, List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
-						me.writeUnitCartesian(dates, values, startIndex, length);
-					}
-				});
-	}
-
-	/**
-	 *  
 	Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in <code>UnitSpherical</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
 	
 	
@@ -430,6 +475,56 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.DirectionCesiumWriter, cesiumlanguagewriter.UnitSpherical>() {
 					public void invoke(DirectionCesiumWriter me, List<JulianDate> dates, List<UnitSpherical> values, int startIndex, int length) {
 						me.writeUnitSpherical(dates, values, startIndex, length);
+					}
+				});
+	}
+
+	/**
+	 *  
+	Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in <code>Cartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	
+	
+
+	 * @return The wrapper.
+	 */
+	public final ICesiumInterpolatableValuePropertyWriter<Cartesian> asCartesian() {
+		return m_asCartesian.getValue();
+	}
+
+	final private ICesiumInterpolatableValuePropertyWriter<Cartesian> createCartesianAdaptor() {
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.DirectionCesiumWriter, cesiumlanguagewriter.Cartesian>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DirectionCesiumWriter, cesiumlanguagewriter.Cartesian>() {
+					public void invoke(DirectionCesiumWriter me, Cartesian value) {
+						me.writeCartesian(value);
+					}
+				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.DirectionCesiumWriter, cesiumlanguagewriter.Cartesian>() {
+					public void invoke(DirectionCesiumWriter me, List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+						me.writeCartesian(dates, values, startIndex, length);
+					}
+				});
+	}
+
+	/**
+	 *  
+	Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in <code>UnitCartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	
+	
+
+	 * @return The wrapper.
+	 */
+	public final ICesiumInterpolatableValuePropertyWriter<UnitCartesian> asUnitCartesian() {
+		return m_asUnitCartesian.getValue();
+	}
+
+	final private ICesiumInterpolatableValuePropertyWriter<UnitCartesian> createUnitCartesianAdaptor() {
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.DirectionCesiumWriter, cesiumlanguagewriter.UnitCartesian>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DirectionCesiumWriter, cesiumlanguagewriter.UnitCartesian>() {
+					public void invoke(DirectionCesiumWriter me, UnitCartesian value) {
+						me.writeUnitCartesian(value);
+					}
+				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.DirectionCesiumWriter, cesiumlanguagewriter.UnitCartesian>() {
+					public void invoke(DirectionCesiumWriter me, List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
+						me.writeUnitCartesian(dates, values, startIndex, length);
 					}
 				});
 	}
