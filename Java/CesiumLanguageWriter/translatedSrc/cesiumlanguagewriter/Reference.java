@@ -4,7 +4,6 @@ package cesiumlanguagewriter;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.IEquatable;
-import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.ListHelper;
 import agi.foundation.compatibility.ObjectHelper;
 import agi.foundation.compatibility.StringHelper;
@@ -25,19 +24,14 @@ import java.util.List;
  
 
  */
-public class Reference implements IEquatable<Reference>, ImmutableValueType {
-	/**
-	 * Initializes a new instance.
-	 */
-	public Reference() {}
-
+public class Reference implements IEquatable<Reference> {
 	/**
 	 *  
-	Creates a new instances from an escaped reference string.
+	Creates a new instance from an escaped reference string.
 	
 	
 
-	 * @param value The 
+	 * @param value The reference string.
 	 */
 	public Reference(String value) {
 		m_value = value;
@@ -54,7 +48,7 @@ public class Reference implements IEquatable<Reference>, ImmutableValueType {
 
 	/**
 	 *  
-	Creates a new instance from an id and property.
+	Creates a new instance from an identifier and property.
 	
 	
 	
@@ -64,20 +58,21 @@ public class Reference implements IEquatable<Reference>, ImmutableValueType {
 	 */
 	public Reference(String identifier, String propertyName) {
 		m_identifier = identifier;
-		m_properties = new ArrayList<String>();
-		m_properties.add(propertyName);
+		ArrayList<String> tempCollection_0 = new ArrayList<String>();
+		tempCollection_0.add(propertyName);
+		m_properties = tempCollection_0;
 		m_value = formatReference(m_identifier, m_properties);
 	}
 
 	/**
 	 *  
-	Creates a new instace from an id and a hierarchy of properties.
+	Creates a new instance from an identifier and a list of properties.
 	
 	
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames An hierarchy of property names with each property being a sub-property of the previous one.
+	 * @param propertyNames A list of property names with each property being a sub-property of the previous one.
 	 */
 	public Reference(String identifier, Iterable<String> propertyNames) {
 		m_identifier = identifier;
@@ -95,7 +90,7 @@ public class Reference implements IEquatable<Reference>, ImmutableValueType {
 	}
 
 	/**
-	 *  Gets the hierarchy of properties to be indexed on the referenced object.
+	 *  Gets the list of properties to be indexed on the referenced object.
 	
 
 	 */
@@ -137,11 +132,8 @@ public class Reference implements IEquatable<Reference>, ImmutableValueType {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof Reference) {
-			return equalsType((Reference) obj);
-		} else {
-			return false;
-		}
+		cesiumlanguagewriter.Reference reference = (obj instanceof Reference) ? (Reference) obj : null;
+		return reference != null && equalsType(reference);
 	}
 
 	/**
@@ -155,7 +147,7 @@ public class Reference implements IEquatable<Reference>, ImmutableValueType {
 	 * @return <see langword="true" /> if <code>other</code> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false" />.
 	 */
 	public final boolean equalsType(Reference other) {
-		return ObjectHelper.equals(this.m_value, other.m_value);
+		return ObjectHelper.equals(m_value, other.m_value);
 	}
 
 	/**
@@ -168,22 +160,37 @@ public class Reference implements IEquatable<Reference>, ImmutableValueType {
 	 */
 	@Override
 	public int hashCode() {
-		return m_identifier.hashCode() ^ m_properties.hashCode() ^ m_value.hashCode();
+		return m_value.hashCode();
 	}
 
 	static private String formatReference(String identifier, ArrayList<String> propertyNames) {
-		StringBuilder value = new StringBuilder();
-		identifier = StringHelper.replace(StringHelper.replace(StringHelper.replace(identifier, "\\", "\\\\"), "#", "\\#"), ".", "\\.");
-		value.append(identifier);
-		value.append("#");
+		StringBuilder builder = new StringBuilder();
+		appendAndEscape(builder, identifier);
+		builder.append('#');
 		for (int i = 0; i < propertyNames.size(); i++) {
-			String property = StringHelper.replace(StringHelper.replace(StringHelper.replace(propertyNames.get(i), "\\", "\\\\"), "#", "\\#"), ".", "\\.");
-			value.append(property);
+			String propertyName = propertyNames.get(i);
+			appendAndEscape(builder, propertyName);
 			if (i != propertyNames.size() - 1) {
-				value.append(".");
+				builder.append('.');
 			}
 		}
-		return value.toString();
+		return builder.toString();
+	}
+
+	/**
+	 *  
+	Escape \ # . characters with a \
+	
+
+	 */
+	static private void appendAndEscape(StringBuilder builder, String str) {
+		for (int i = 0; i < str.length(); i++) {
+			char c = str.charAt(i);
+			if (c == '\\' || c == '#' || c == '.') {
+				builder.append('\\');
+			}
+			builder.append(c);
+		}
 	}
 
 	static private void parse(String value, String[] identifier, ArrayList<String>[] values) {
@@ -192,7 +199,7 @@ public class Reference implements IEquatable<Reference>, ImmutableValueType {
 		boolean inIdentifier = true;
 		boolean isEscaped = false;
 		String token = StringHelper.empty;
-		for (int i = 0; i < value.length(); ++i) {
+		for (int i = 0; i < value.length(); i++) {
 			char c = value.charAt(i);
 			if (isEscaped) {
 				token += c;
