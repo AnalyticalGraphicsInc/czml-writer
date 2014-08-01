@@ -72,7 +72,7 @@ public class Reference implements IEquatable<Reference> {
 	
 
 	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames An list of property names with each property being a sub-property of the previous one.
+	 * @param propertyNames A list of property names with each property being a sub-property of the previous one.
 	 */
 	public Reference(String identifier, Iterable<String> propertyNames) {
 		m_identifier = identifier;
