@@ -13,22 +13,28 @@ namespace CesiumLanguageWriter
     public class DirectionListCesiumWriter : CesiumPropertyWriter<DirectionListCesiumWriter>
     {
         /// <summary>
+        /// The name of the <code>spherical</code> property.
+        /// </summary>
+        public const string SphericalPropertyName = "spherical";
+
+        /// <summary>
         /// The name of the <code>unitSpherical</code> property.
         /// </summary>
         public const string UnitSphericalPropertyName = "unitSpherical";
 
         /// <summary>
-        /// The name of the <code>spherical</code> property.
+        /// The name of the <code>cartesian</code> property.
         /// </summary>
-        public const string SphericalPropertyName = "spherical";
+        public const string CartesianPropertyName = "cartesian";
 
         /// <summary>
         /// The name of the <code>unitCartesian</code> property.
         /// </summary>
         public const string UnitCartesianPropertyName = "unitCartesian";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>> m_asUnitSpherical;
         private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Spherical>>> m_asSpherical;
+        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>> m_asUnitSpherical;
+        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asCartesian;
         private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>> m_asUnitCartesian;
 
         /// <summary>
@@ -37,8 +43,9 @@ namespace CesiumLanguageWriter
         public DirectionListCesiumWriter(string propertyName)
             : base(propertyName)
         {
-            m_asUnitSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>>(CreateUnitSphericalAdaptor, false);
             m_asSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Spherical>>>(CreateSphericalAdaptor, false);
+            m_asUnitSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>>(CreateUnitSphericalAdaptor, false);
+            m_asCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>>(CreateCartesianAdaptor, false);
             m_asUnitCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>>(CreateUnitCartesianAdaptor, false);
         }
 
@@ -49,8 +56,9 @@ namespace CesiumLanguageWriter
         protected DirectionListCesiumWriter(DirectionListCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asUnitSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>>(CreateUnitSphericalAdaptor, false);
             m_asSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Spherical>>>(CreateSphericalAdaptor, false);
+            m_asUnitSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>>(CreateUnitSphericalAdaptor, false);
+            m_asCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>>(CreateCartesianAdaptor, false);
             m_asUnitCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>>(CreateUnitCartesianAdaptor, false);
         }
 
@@ -58,18 +66,6 @@ namespace CesiumLanguageWriter
         public override DirectionListCesiumWriter Clone()
         {
             return new DirectionListCesiumWriter(this);
-        }
-
-        /// <summary>
-        /// Writes the <code>unitSpherical</code> property.  The <code>unitSpherical</code> property specifies the list of directions represented as a clock angle and a cone angle, both in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
-        /// </summary>
-        /// <param name="values">The values.</param>
-        public void WriteUnitSpherical(IEnumerable<UnitSpherical> values)
-        {
-            const string PropertyName = UnitSphericalPropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteUnitSphericalList(Output, values);
         }
 
         /// <summary>
@@ -85,6 +81,54 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes the <code>unitSpherical</code> property.  The <code>unitSpherical</code> property specifies the list of directions represented as a clock angle and a cone angle, both in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public void WriteUnitSpherical(IEnumerable<UnitSpherical> values)
+        {
+            const string PropertyName = UnitSphericalPropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteUnitSphericalList(Output, values);
+        }
+
+        /// <summary>
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteCartesian(Cartesian value)
+        {
+            const string PropertyName = CartesianPropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteCartesian3(Output, value);
+        }
+
+        /// <summary>
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteCartesian(IList<JulianDate> dates, IList<Cartesian> values)
+        {
+            WriteCartesian(dates, values, 0, dates.Count);
+        }
+
+        /// <summary>
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteCartesian(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        {
+            const string PropertyName = CartesianPropertyName;
+            OpenIntervalIfNecessary();
+            CesiumWritingHelper.WriteCartesian3(Output, PropertyName, dates, values, startIndex, length);
+        }
+
+        /// <summary>
         /// Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`.
         /// </summary>
         /// <param name="values">The values.</param>
@@ -94,6 +138,21 @@ namespace CesiumLanguageWriter
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteUnitCartesian3List(Output, values);
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Spherical</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumValuePropertyWriter<IEnumerable<Spherical>> AsSpherical()
+        {
+            return m_asSpherical.Value;
+        }
+
+        private ICesiumValuePropertyWriter<IEnumerable<Spherical>> CreateSphericalAdaptor()
+        {
+            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<Spherical>>(
+                this, (me, value) => me.WriteSpherical(value));
         }
 
         /// <summary>
@@ -112,18 +171,18 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Spherical</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>Cartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<IEnumerable<Spherical>> AsSpherical()
+        public ICesiumInterpolatableValuePropertyWriter<Cartesian> AsCartesian()
         {
-            return m_asSpherical.Value;
+            return m_asCartesian.Value;
         }
 
-        private ICesiumValuePropertyWriter<IEnumerable<Spherical>> CreateSphericalAdaptor()
+        private ICesiumInterpolatableValuePropertyWriter<Cartesian> CreateCartesianAdaptor()
         {
-            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<Spherical>>(
-                this, (me, value) => me.WriteSpherical(value));
+            return new CesiumInterpolatableWriterAdaptor<DirectionListCesiumWriter, Cartesian>(
+                this, (me, value) => me.WriteCartesian(value), (DirectionListCesiumWriter me, IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length) => me.WriteCartesian(dates, values, startIndex, length));
         }
 
         /// <summary>

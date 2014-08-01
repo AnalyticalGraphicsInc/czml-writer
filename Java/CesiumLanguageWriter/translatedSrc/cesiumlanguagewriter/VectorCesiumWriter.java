@@ -428,71 +428,6 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
 	/**
 	 *  
-	Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeDirectionPropertyUnitCartesian(UnitCartesian value) {
-		{
-			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
-			try {
-				writer.writeUnitCartesian(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
-	
-	
-	
-
-	 * @param dates The dates at which the vector is specified.
-	 * @param values The values corresponding to each date.
-	 */
-	public final void writeDirectionPropertyUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values) {
-		{
-			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
-			try {
-				writer.writeUnitCartesian(dates, values);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the vector is specified.
-	 * @param values The values corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeDirectionPropertyUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
-			try {
-				writer.writeUnitCartesian(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
 	Writes a value for the <code>direction</code> property as a <code>unitSpherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
 	
 	
@@ -550,6 +485,136 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
 			try {
 				writer.writeUnitSpherical(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeDirectionPropertyCartesian(Cartesian value) {
+		{
+			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+			try {
+				writer.writeCartesian(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeDirectionPropertyCartesian(List<JulianDate> dates, List<Cartesian> values) {
+		{
+			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+			try {
+				writer.writeCartesian(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeDirectionPropertyCartesian(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+			try {
+				writer.writeCartesian(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeDirectionPropertyUnitCartesian(UnitCartesian value) {
+		{
+			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+			try {
+				writer.writeUnitCartesian(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeDirectionPropertyUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values) {
+		{
+			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+			try {
+				writer.writeUnitCartesian(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeDirectionPropertyUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+			try {
+				writer.writeUnitCartesian(dates, values, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

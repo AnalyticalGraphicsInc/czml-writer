@@ -292,13 +292,32 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
+	Writes a value for the <code>directions</code> property as a <code>spherical</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+	
+	
+
+	 * @param values The values.
+	 */
+	public final void writeDirectionsProperty(Iterable<Spherical> values) {
+		{
+			cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
+			try {
+				writer.writeSpherical(values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
 	Writes a value for the <code>directions</code> property as a <code>unitSpherical</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
 	
 	
 
 	 * @param values The values.
 	 */
-	public final void writeDirectionsProperty(Iterable<UnitSpherical> values) {
+	public final void writeDirectionsPropertyUnitSpherical(Iterable<UnitSpherical> values) {
 		{
 			cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
 			try {
@@ -311,17 +330,63 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>directions</code> property as a <code>spherical</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+	Writes a value for the <code>directions</code> property as a <code>cartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
 	
 	
 
-	 * @param values The values.
+	 * @param value The value.
 	 */
-	public final void writeDirectionsPropertySpherical(Iterable<Spherical> values) {
+	public final void writeDirectionsPropertyCartesian(Cartesian value) {
 		{
 			cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
 			try {
-				writer.writeSpherical(values);
+				writer.writeCartesian(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>directions</code> property as a <code>cartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeDirectionsPropertyCartesian(List<JulianDate> dates, List<Cartesian> values) {
+		{
+			cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
+			try {
+				writer.writeCartesian(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>directions</code> property as a <code>cartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeDirectionsPropertyCartesian(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
+			try {
+				writer.writeCartesian(dates, values, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
