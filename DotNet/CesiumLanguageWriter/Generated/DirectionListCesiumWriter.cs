@@ -34,7 +34,7 @@ namespace CesiumLanguageWriter
 
         private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Spherical>>> m_asSpherical;
         private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>> m_asUnitSpherical;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asCartesian;
+        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartesian>>> m_asCartesian;
         private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>> m_asUnitCartesian;
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace CesiumLanguageWriter
         {
             m_asSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Spherical>>>(CreateSphericalAdaptor, false);
             m_asUnitSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>>(CreateUnitSphericalAdaptor, false);
-            m_asCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>>(CreateCartesianAdaptor, false);
+            m_asCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartesian>>>(CreateCartesianAdaptor, false);
             m_asUnitCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>>(CreateUnitCartesianAdaptor, false);
         }
 
@@ -58,7 +58,7 @@ namespace CesiumLanguageWriter
         {
             m_asSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Spherical>>>(CreateSphericalAdaptor, false);
             m_asUnitSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>>(CreateUnitSphericalAdaptor, false);
-            m_asCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>>(CreateCartesianAdaptor, false);
+            m_asCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartesian>>>(CreateCartesianAdaptor, false);
             m_asUnitCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>>(CreateUnitCartesianAdaptor, false);
         }
 
@@ -95,37 +95,13 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`
         /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteCartesian(Cartesian value)
+        /// <param name="values">The values.</param>
+        public void WriteCartesian(IEnumerable<Cartesian> values)
         {
             const string PropertyName = CartesianPropertyName;
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteCartesian3(Output, value);
-        }
-
-        /// <summary>
-        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`
-        /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        public void WriteCartesian(IList<JulianDate> dates, IList<Cartesian> values)
-        {
-            WriteCartesian(dates, values, 0, dates.Count);
-        }
-
-        /// <summary>
-        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`
-        /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteCartesian(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
-        {
-            const string PropertyName = CartesianPropertyName;
-            OpenIntervalIfNecessary();
-            CesiumWritingHelper.WriteCartesian3(Output, PropertyName, dates, values, startIndex, length);
+            CesiumWritingHelper.WriteCartesian3List(Output, values);
         }
 
         /// <summary>
@@ -171,18 +147,18 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>Cartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Cartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<Cartesian> AsCartesian()
+        public ICesiumValuePropertyWriter<IEnumerable<Cartesian>> AsCartesian()
         {
             return m_asCartesian.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<Cartesian> CreateCartesianAdaptor()
+        private ICesiumValuePropertyWriter<IEnumerable<Cartesian>> CreateCartesianAdaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<DirectionListCesiumWriter, Cartesian>(
-                this, (me, value) => me.WriteCartesian(value), (DirectionListCesiumWriter me, IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length) => me.WriteCartesian(dates, values, startIndex, length));
+            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<Cartesian>>(
+                this, (me, value) => me.WriteCartesian(value));
         }
 
         /// <summary>

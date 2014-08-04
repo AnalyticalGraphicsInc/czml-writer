@@ -260,59 +260,13 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 	
 	
 
-	 * @param value The value.
+	 * @param values The values.
 	 */
-	public final void writeDirectionsPropertyCartesian(Cartesian value) {
+	public final void writeDirectionsPropertyCartesian(Iterable<Cartesian> values) {
 		{
 			cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
 			try {
-				writer.writeCartesian(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>directions</code> property as a <code>cartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the fan.
-	
-	
-	
-
-	 * @param dates The dates at which the vector is specified.
-	 * @param values The values corresponding to each date.
-	 */
-	public final void writeDirectionsPropertyCartesian(List<JulianDate> dates, List<Cartesian> values) {
-		{
-			cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
-			try {
-				writer.writeCartesian(dates, values);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>directions</code> property as a <code>cartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the fan.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the vector is specified.
-	 * @param values The values corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeDirectionsPropertyCartesian(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
-			try {
-				writer.writeCartesian(dates, values, startIndex, length);
+				writer.writeCartesian(values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

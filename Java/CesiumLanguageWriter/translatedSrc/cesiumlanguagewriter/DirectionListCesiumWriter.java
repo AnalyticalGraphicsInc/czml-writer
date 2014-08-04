@@ -5,8 +5,6 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.Cartesian;
-import java.util.List;
 
 /**
  *  
@@ -45,7 +43,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 	public static final String UnitCartesianPropertyName = "unitCartesian";
 	private Lazy<ICesiumValuePropertyWriter<Iterable<Spherical>>> m_asSpherical;
 	private Lazy<ICesiumValuePropertyWriter<Iterable<UnitSpherical>>> m_asUnitSpherical;
-	private Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asCartesian;
+	private Lazy<ICesiumValuePropertyWriter<Iterable<Cartesian>>> m_asCartesian;
 	private Lazy<ICesiumValuePropertyWriter<Iterable<UnitCartesian>>> m_asUnitCartesian;
 
 	/**
@@ -68,9 +66,9 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 						return createUnitSphericalAdaptor();
 					}
 				}, false);
-		m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
-				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor", new Class[] {}) {
-					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
+		m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(this, "createCartesianAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>> invoke() {
 						return createCartesianAdaptor();
 					}
 				}, false);
@@ -104,9 +102,9 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 						return createUnitSphericalAdaptor();
 					}
 				}, false);
-		m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
-				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor", new Class[] {}) {
-					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
+		m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(this, "createCartesianAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>> invoke() {
 						return createCartesianAdaptor();
 					}
 				}, false);
@@ -159,47 +157,13 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 	
 	
 
-	 * @param value The value.
+	 * @param values The values.
 	 */
-	public final void writeCartesian(Cartesian value) {
+	public final void writeCartesian(Iterable<Cartesian> values) {
 		String PropertyName = CartesianPropertyName;
 		openIntervalIfNecessary();
 		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeCartesian3(getOutput(), value);
-	}
-
-	/**
-	 *  
-	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`
-	
-	
-	
-
-	 * @param dates The dates at which the vector is specified.
-	 * @param values The values corresponding to each date.
-	 */
-	public final void writeCartesian(List<JulianDate> dates, List<Cartesian> values) {
-		writeCartesian(dates, values, 0, dates.size());
-	}
-
-	/**
-	 *  
-	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the vector is specified.
-	 * @param values The values corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeCartesian(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-		String PropertyName = CartesianPropertyName;
-		openIntervalIfNecessary();
-		CesiumWritingHelper.writeCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
+		CesiumWritingHelper.writeCartesian3List(getOutput(), values);
 	}
 
 	/**
@@ -261,25 +225,21 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
 	/**
 	 *  
-	Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in <code>Cartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in <code>Cartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
 	
 	
 
 	 * @return The wrapper.
 	 */
-	public final ICesiumInterpolatableValuePropertyWriter<Cartesian> asCartesian() {
+	public final ICesiumValuePropertyWriter<Iterable<Cartesian>> asCartesian() {
 		return m_asCartesian.getValue();
 	}
 
-	final private ICesiumInterpolatableValuePropertyWriter<Cartesian> createCartesianAdaptor() {
-		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.DirectionListCesiumWriter, cesiumlanguagewriter.Cartesian>(this,
-				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DirectionListCesiumWriter, cesiumlanguagewriter.Cartesian>() {
-					public void invoke(DirectionListCesiumWriter me, Cartesian value) {
+	final private ICesiumValuePropertyWriter<Iterable<Cartesian>> createCartesianAdaptor() {
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<Cartesian>>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<Cartesian>>() {
+					public void invoke(DirectionListCesiumWriter me, Iterable<Cartesian> value) {
 						me.writeCartesian(value);
-					}
-				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.DirectionListCesiumWriter, cesiumlanguagewriter.Cartesian>() {
-					public void invoke(DirectionListCesiumWriter me, List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-						me.writeCartesian(dates, values, startIndex, length);
 					}
 				});
 	}

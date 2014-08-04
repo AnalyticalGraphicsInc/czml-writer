@@ -164,40 +164,12 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>directions</code> property as a <code>cartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the fan.
         /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteDirectionsPropertyCartesian(Cartesian value)
+        /// <param name="values">The values.</param>
+        public void WriteDirectionsPropertyCartesian(IEnumerable<Cartesian> values)
         {
             using (var writer = OpenDirectionsProperty())
             {
-                writer.WriteCartesian(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>directions</code> property as a <code>cartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the fan.
-        /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        public void WriteDirectionsPropertyCartesian(IList<JulianDate> dates, IList<Cartesian> values)
-        {
-            using (var writer = OpenDirectionsProperty())
-            {
-                writer.WriteCartesian(dates, values);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>directions</code> property as a <code>cartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the fan.
-        /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteDirectionsPropertyCartesian(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
-        {
-            using (var writer = OpenDirectionsProperty())
-            {
-                writer.WriteCartesian(dates, values, startIndex, length);
+                writer.WriteCartesian(values);
             }
         }
 

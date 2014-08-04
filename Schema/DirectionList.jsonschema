@@ -15,7 +15,7 @@
             "czmlValue": true
         },
         "cartesian": {
-            "$ref": "Cartesian3Value.jsonschema",
+            "$ref": "Cartesian3ListValue.jsonschema",
             "description": "The list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`",
             "czmlValue": true
         },
