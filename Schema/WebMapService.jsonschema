@@ -1,0 +1,20 @@
+{
+    "title": "WebMapService",
+    "description": "A Web Map Service (WMS) server.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "url": {
+            "$ref": "String.jsonschema",
+            "description": "The base URL of the WMS server"
+        },
+        "layers":  {
+            "$ref": "String.jsonschema",
+            "description": "The WMS layers to use.  To specify multiple layers, separate them with commas."
+        },
+        "parameters": {
+            "$ref": "PropertyBag.jsonschema",
+            "description": "Specifies additional parameters to pass to the WMS server in the GetMap request."
+        }
+    }
+}

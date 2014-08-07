@@ -1,0 +1,10 @@
+{
+    "title": "PropertyBag",
+    "description": "A bag of arbitrary properties.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "additionalProperties": {
+        "$ref": "PropertyBagOrValue.jsonschema"
+    },
+    "czmlSkipWriterGeneration": true
+}

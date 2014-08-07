@@ -77,6 +77,10 @@
             "$ref": "Ellipse.jsonschema",
             "description": "An ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property."
         },
+        "imageryLayer": {
+            "$ref": "ImageryLayer.jsonschema",
+            "description": "An imagery layer drawn on the terrain surface."
+        },
         "clock": {
             "$ref": "Clock.jsonschema",
             "description": "The clock settings for the entire data set. Only valid on the document object."

@@ -38,6 +38,7 @@ namespace GenerateFromSchema
             schema.Name = GetValue<string>(schemaJson, "title", null);
             schema.Description = GetValue<string>(schemaJson, "description", null);
             schema.ExtensionPrefix = GetValue<string>(schemaJson, "extensionPrefix", null);
+            schema.SkipWriterGeneration = GetValue<bool>(schemaJson, "czmlSkipWriterGeneration", false);
 
             string extends = GetValue<string>(schemaJson, "extends.$ref", null);
             if (extends != null)
