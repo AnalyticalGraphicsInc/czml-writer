@@ -18,6 +18,8 @@ namespace GenerateFromSchema
 
         public List<Property> Properties { get; set; }
 
+        public bool SkipWriterGeneration { get; set; }
+
         public bool IsSchemaFromType
         {
             get { return Name == SchemaFromTypeName; }

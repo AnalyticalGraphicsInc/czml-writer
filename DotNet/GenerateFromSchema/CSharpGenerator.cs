@@ -34,7 +34,7 @@ namespace GenerateFromSchema
 
         private void GenerateWriterClass(Schema schema)
         {
-            if (m_writtenSchemas.Contains(schema))
+            if (schema.SkipWriterGeneration || m_writtenSchemas.Contains(schema))
                 return;
 
             m_writtenSchemas.Add(schema);

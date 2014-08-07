@@ -1,0 +1,9 @@
+{
+    "title": "PropertyBagOrValue",
+    "description": "A value in a property bag, or a sub-property bag.",
+    "type": ["string", "number", "boolean", "array", "object"],
+    "items": { "$ref": "#" },
+    "additionalProperties": {
+        "$ref": "PropertyBagOrValue.jsonschema"
+    }
+}

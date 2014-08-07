@@ -99,6 +99,11 @@ namespace CesiumLanguageWriter
         public const string EllipsePropertyName = "ellipse";
 
         /// <summary>
+        /// The name of the <code>imageryLayer</code> property.
+        /// </summary>
+        public const string ImageryLayerPropertyName = "imageryLayer";
+
+        /// <summary>
         /// The name of the <code>clock</code> property.
         /// </summary>
         public const string ClockPropertyName = "clock";
@@ -145,6 +150,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
         private readonly Lazy<ModelCesiumWriter> m_model = new Lazy<ModelCesiumWriter>(() => new ModelCesiumWriter(ModelPropertyName), false);
         private readonly Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(() => new EllipseCesiumWriter(EllipsePropertyName), false);
+        private readonly Lazy<ImageryLayerCesiumWriter> m_imageryLayer = new Lazy<ImageryLayerCesiumWriter>(() => new ImageryLayerCesiumWriter(ImageryLayerPropertyName), false);
         private readonly Lazy<ClockCesiumWriter> m_clock = new Lazy<ClockCesiumWriter>(() => new ClockCesiumWriter(ClockPropertyName), false);
         private readonly Lazy<ConicSensorCesiumWriter> m_agi_conicSensor = new Lazy<ConicSensorCesiumWriter>(() => new ConicSensorCesiumWriter(ConicSensorPropertyName), false);
         private readonly Lazy<CustomPatternSensorCesiumWriter> m_agi_customPatternSensor = new Lazy<CustomPatternSensorCesiumWriter>(() => new CustomPatternSensorCesiumWriter(CustomPatternSensorPropertyName), false);
@@ -820,6 +826,22 @@ namespace CesiumLanguageWriter
         public EllipseCesiumWriter OpenEllipseProperty()
         {
             return OpenAndReturn(EllipseWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>imageryLayer</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>imageryLayer</code> property defines an imagery layer drawn on the terrain surface.
+        /// </summary>
+        public ImageryLayerCesiumWriter ImageryLayerWriter
+        {
+            get { return m_imageryLayer.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>imageryLayer</code> property.  The <code>imageryLayer</code> property defines an imagery layer drawn on the terrain surface.
+        /// </summary>
+        public ImageryLayerCesiumWriter OpenImageryLayerProperty()
+        {
+            return OpenAndReturn(ImageryLayerWriter);
         }
 
         /// <summary>

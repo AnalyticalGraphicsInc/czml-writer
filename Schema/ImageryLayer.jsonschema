@@ -1,0 +1,40 @@
+{
+    "title": "ImageryLayer",
+    "description": "An imagery layer drawn on the terrain surface.",
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the imagery layer is shown.  Tiles are not downloaded for imagery layers that are not shown, so it may take a moment for the imagery layer's tiles to appear once it is shown.  To download tiles but not show them, set the alpha property to 0.0 instead of setting show to false."
+        },
+        "alpha":  {
+            "$ref": "Double.jsonschema",
+            "description": "The alpha blending value of this layer, from 0.0 to 1.0.  0.0 is fully transparent and 1.0 is fully opaque.  The default is 1.0.  A layer with an alpha of 0.0 will not be shown and will not impact rendering performance, but its tiles will still be downloaded."
+        },
+        "brightness": {
+            "$ref": "Double.jsonschema",
+            "description": "The brightness of the layer.  1.0, the default, uses the unmodified imagery color.  Values less than 1.0 make the imagery darker while values greater than 1.0 make it brighter."
+        },
+        "contrast": {
+            "$ref": "Double.jsonschema",
+            "description": "The contrast of the layer.  1.0, the default, uses the unmodified imagery color.  Values less than 1.0 reduce the contrast while values greater than 1.0 increase it."
+        },
+        "hue": {
+            "$ref": "Double.jsonschema",
+            "description": "The hue of the layer.  0.0, the default, uses the unmodified imagery color."
+        },
+        "saturation": {
+            "$ref": "Double.jsonschema",
+            "description": "The saturation of the layer.  1.0, the default, uses the unmodified imagery color.  Values less than 1.0 reduce the saturation while values greater than 1.0 increase it."
+        },
+        "gamma": {
+            "$ref": "Double.jsonschema",
+            "description": "The gamma of the layer.  1.0, the default, uses the unmodified imagery color."
+        },
+        "webMapService": {
+            "$ref": "WebMapService.jsonschema",
+            "description": "Specifies how the imagery for this layer is obtained from a Web Map Service (WMS) server.  This property may not be combined with any other imagery provider type property."
+        }
+    }
+}
