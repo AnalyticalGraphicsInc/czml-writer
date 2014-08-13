@@ -6,7 +6,7 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- The vertical origin of a billboard or label in a <topic name="Cesium">Cesium</topic> stream
+ The vertical origin of a billboard or label in a CZML stream
  relative to an associated position.
  
 

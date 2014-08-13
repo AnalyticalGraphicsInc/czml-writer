@@ -2,6 +2,7 @@ package cesiumlanguagewriter;
 
 
 import agi.foundation.compatibility.*;
+import java.net.URI;
 
 /**
  *  
@@ -10,7 +11,7 @@ import agi.foundation.compatibility.*;
 
  */
 public class CesiumResource {
-	private String m_url;
+	private URI m_url;
 	private CesiumResourceBehavior m_behavior = CesiumResourceBehavior.getDefault();
 
 	/**
@@ -20,21 +21,21 @@ public class CesiumResource {
 	
 	
 
-	 * @param url The URL of the resource.
+	 * @param uri The URI of the resource.
 	 * @param behavior An enumeration describing how to include the resource in the document.
 	 */
-	public CesiumResource(String url, CesiumResourceBehavior behavior) {
-		m_url = url;
+	public CesiumResource(URI uri, CesiumResourceBehavior behavior) {
+		m_url = uri;
 		m_behavior = behavior;
 	}
 
 	/**
 	 *  
-	The URL of the resource.
+	The URI of the resource.
 	
 
 	 */
-	public final String getUrl() {
+	public final URI getUri() {
 		return m_url;
 	}
 

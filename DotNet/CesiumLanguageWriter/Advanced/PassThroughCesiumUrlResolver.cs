@@ -1,26 +1,28 @@
-﻿namespace CesiumLanguageWriter.Advanced
+﻿using System;
+
+namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
-    /// A URL resolver that leaves URLs unchanged.
+    /// A URI resolver that leaves URIs unchanged.
     /// </summary>
-    public class PassThroughCesiumUrlResolver : ICesiumUrlResolver
+    public class PassThroughCesiumUriResolver : ICesiumUriResolver
     {
-        private static readonly PassThroughCesiumUrlResolver s_instance = new PassThroughCesiumUrlResolver();
+        private static readonly PassThroughCesiumUriResolver s_instance = new PassThroughCesiumUriResolver();
 
         /// <summary>
-        /// Resolves a URL, leaving it unchanged.
+        /// Resolves a URI, leaving it unchanged.
         /// </summary>
-        /// <param name="url">The source URL.</param>
-        /// <returns>The same URL.</returns>
-        public string ResolveUrl(string url)
+        /// <param name="uri">The source URI.</param>
+        /// <returns>The same URI.</returns>
+        public Uri ResolveUri(Uri uri)
         {
-            return url;
+            return uri;
         }
 
         /// <summary>
-        /// A static instance of <see cref="PassThroughCesiumUrlResolver"/> usable from any thread.
+        /// A static instance of <see cref="PassThroughCesiumUriResolver"/> usable from any thread.
         /// </summary>
-        public static PassThroughCesiumUrlResolver Instance
+        public static PassThroughCesiumUriResolver Instance
         {
             get { return s_instance; }
         }

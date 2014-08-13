@@ -190,6 +190,18 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes the value of a property or element in a sequence.
+        /// </summary>
+        /// <param name="value">The value to write.</param>
+        public void WriteValue(Uri value)
+        {
+            StartNewValue();
+            m_firstInContainer = false;
+            m_inProperty = false;
+            m_writer.Write(value.ToString());
+        }
+
+        /// <summary>
         /// When <see cref="PrettyFormatting"/> is <see langword="true"/>, adds a line break in a sequence of simple values.
         /// When <see cref="PrettyFormatting"/> is <see langword="false"/>, this method does nothing.
         /// </summary>
@@ -214,33 +226,43 @@ namespace CesiumLanguageWriter
                     case '\t':
                         escapedValue = @"\t";
                         break;
+
                     case '\n':
                         escapedValue = @"\n";
                         break;
+
                     case '\r':
                         escapedValue = @"\r";
                         break;
+
                     case '\f':
                         escapedValue = @"\f";
                         break;
+
                     case '\b':
                         escapedValue = @"\b";
                         break;
+
                     case '\\':
                         escapedValue = @"\\";
                         break;
+
                     case '\u0085': // Next Line
                         escapedValue = @"\u0085";
                         break;
+
                     case '\u2028': // Line Separator
                         escapedValue = @"\u2028";
                         break;
+
                     case '\u2029': // Paragraph Separator
                         escapedValue = @"\u2029";
                         break;
+
                     case '"':
                         escapedValue = "\\\"";
                         break;
+
                     default:
                         escapedValue = (c <= '\u001f') ? ToCharAsUnicode(c) : null;
                         break;

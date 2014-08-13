@@ -9,10 +9,11 @@ import agi.foundation.compatibility.IntHelper;
 import agi.foundation.compatibility.LongHelper;
 import agi.foundation.compatibility.TextWriterHelper;
 import java.io.Writer;
+import java.net.URI;
 
 /**
  *  
- A stream to which raw <topic name="Cesium">Cesium</topic> data can be written.  This is a low-level class that
+ A stream to which raw CZML data can be written.  This is a low-level class that
  does not extensively validate that methods are called in a valid order, so it can be used to generated invalid
  Cesium and JSON.
  
@@ -228,6 +229,21 @@ public class CesiumOutputStream implements IDisposable {
 		m_firstInContainer = false;
 		m_inProperty = false;
 		TextWriterHelper.print(m_writer, value ? "true" : "false");
+	}
+
+	/**
+	 *  
+	Writes the value of a property or element in a sequence.
+	
+	
+
+	 * @param value The value to write.
+	 */
+	public final void writeValue(URI value) {
+		startNewValue();
+		m_firstInContainer = false;
+		m_inProperty = false;
+		TextWriterHelper.print(m_writer, value.toString());
 	}
 
 	/**

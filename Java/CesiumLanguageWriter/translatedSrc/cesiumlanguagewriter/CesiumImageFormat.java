@@ -6,7 +6,7 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- The format of an image embedded in a <topic name="Cesium">Cesium</topic> stream.
+ The format of an image embedded in a CZML stream.
  
 
  */

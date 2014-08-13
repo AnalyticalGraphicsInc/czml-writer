@@ -6,7 +6,7 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- Specifies the style of <topic name="Cesium">Cesium</topic> label.
+ Specifies the style of CZML label.
  
 
  */

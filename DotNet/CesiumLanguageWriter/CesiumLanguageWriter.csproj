@@ -40,7 +40,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Advanced\CachingCesiumUrlResolver.cs" />
+    <Compile Include="Advanced\CachingCesiumUriResolver.cs" />
     <Compile Include="Advanced\CesiumElementWriter.cs" />
     <Compile Include="Advanced\CesiumFormattingHelper.cs" />
     <Compile Include="Advanced\CesiumInterpolatablePropertyWriter.cs" />
@@ -49,7 +49,7 @@
     <Compile Include="Advanced\CesiumWriterAdaptor.cs" />
     <Compile Include="Advanced\CesiumWritingHelper.cs" />
     <Compile Include="Advanced\ICesiumElementWriter.cs" />
-    <Compile Include="Advanced\ICesiumUrlResolver.cs" />
+    <Compile Include="Advanced\ICesiumUriResolver.cs" />
     <Compile Include="Advanced\ICesiumInterpolatableValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumInterpolationInformationWriter.cs" />
     <Compile Include="Advanced\ICesiumIntervalListWriter.cs" />

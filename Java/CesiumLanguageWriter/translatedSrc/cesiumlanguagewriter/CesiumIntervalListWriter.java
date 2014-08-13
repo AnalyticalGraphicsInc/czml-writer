@@ -6,7 +6,7 @@ import cesiumlanguagewriter.advanced.*;
 
 /**
  *  
- Writes a list of intervals for which a <topic name="Cesium">Cesium</topic> property is defined.
+ Writes a list of intervals for which a CZML property is defined.
  
  
 
