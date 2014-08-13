@@ -55,7 +55,7 @@
     <Compile Include="Advanced\ICesiumIntervalListWriter.cs" />
     <Compile Include="Advanced\ICesiumPropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumValuePropertyWriter.cs" />
-    <Compile Include="Advanced\PassThroughCesiumUrlResolver.cs" />
+    <Compile Include="Advanced\PassThroughCesiumUriResolver.cs" />
     <Compile Include="Attributes\CoverageExcludeAttribute.cs" />
     <Compile Include="Attributes\CSToJavaExcludeAttribute.cs" />
     <Compile Include="Attributes\CSToJavaExcludeBaseAttribute.cs" />
