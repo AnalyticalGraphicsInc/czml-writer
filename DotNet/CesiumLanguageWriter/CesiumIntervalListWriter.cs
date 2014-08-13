@@ -3,7 +3,7 @@
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a list of intervals for which a <topic name="Cesium">Cesium</topic> property is defined.
+    /// Writes a list of intervals for which a CZML property is defined.
     /// </summary>
     /// <typeparam name="TPropertyWriter">The type used to represent the value of this property for a single interval.</typeparam>
     public class CesiumIntervalListWriter<TPropertyWriter> : CesiumElementWriter, ICesiumIntervalListWriter

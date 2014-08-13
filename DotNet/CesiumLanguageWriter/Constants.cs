@@ -75,7 +75,7 @@ namespace CesiumLanguageWriter
         public static readonly double RadiansPerArcSecond = RadiansPerDegree / 3600.0;
 
         /// <summary>
-        /// The number of arc secons in one radian.
+        /// The number of arc seconds in one radian.
         /// </summary>
         [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
         public static readonly double ArcSecondsPerRadian = 3600.0 / RadiansPerDegree;

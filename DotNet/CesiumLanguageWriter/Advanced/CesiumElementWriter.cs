@@ -3,7 +3,7 @@
 namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
-    /// The base class for types that write <topic name="Cesium">Cesium</topic> data to a stream.
+    /// The base class for types that write CZML data to a stream.
     /// </summary>
     public abstract class CesiumElementWriter : ICesiumElementWriter, IDisposable
     {

@@ -5,7 +5,7 @@ using System.IO;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// A stream to which raw <topic name="Cesium">Cesium</topic> data can be written.  This is a low-level class that
+    /// A stream to which raw CZML data can be written.  This is a low-level class that
     /// does not extensively validate that methods are called in a valid order, so it can be used to generated invalid
     /// Cesium and JSON.
     /// </summary>

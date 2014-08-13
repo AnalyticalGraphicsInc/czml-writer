@@ -1,7 +1,7 @@
 ﻿namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// The format of an image embedded in a <topic name="Cesium">Cesium</topic> stream.
+    /// The format of an image embedded in a CZML stream.
     /// </summary>
     public enum CesiumImageFormat
     {

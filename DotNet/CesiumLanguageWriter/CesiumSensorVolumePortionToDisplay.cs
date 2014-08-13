@@ -1,7 +1,7 @@
 ﻿namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Specifies what part of a <topic name="Cesium">Cesium</topic> sensor should be displayed.
+    /// Specifies what part of a CZML sensor should be displayed.
     /// </summary>
     public enum CesiumSensorVolumePortionToDisplay
     {

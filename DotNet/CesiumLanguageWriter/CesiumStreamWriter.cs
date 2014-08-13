@@ -4,14 +4,14 @@ using CesiumLanguageWriter.Advanced;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes <topic name="Cesium">Cesium</topic> data to a <see cref="CesiumOutputStream"/>.
+    /// Writes CZML data to a <see cref="CesiumOutputStream"/>.
     /// </summary>
     public class CesiumStreamWriter
     {
         private readonly Lazy<PacketCesiumWriter> m_packetWriter = new Lazy<PacketCesiumWriter>(() => new PacketCesiumWriter(), false);
 
         /// <summary>
-        /// Starts a new <topic name="Cesium">Cesium</topic> packet on the given stream.
+        /// Starts a new CZML packet on the given stream.
         /// </summary>
         /// <param name="output">The stream to which to write the packet.</param>
         /// <returns>The packet writer.</returns>

@@ -215,7 +215,7 @@ namespace CesiumLanguageWriter
         /// <returns>An equivalent <see cref="JulianDate"/> using the requested time
         /// standard.</returns>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown if the specified <see cref="TimeStandard"/> is is not capable of
+        /// Thrown if the specified <see cref="TimeStandard"/> is not capable of
         /// representing this <see cref="JulianDate"/>.
         /// </exception>
         public JulianDate ToTimeStandard(TimeStandard timeStandard)

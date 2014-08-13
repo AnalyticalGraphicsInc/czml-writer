@@ -8,7 +8,7 @@ using System.Text;
 namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
-    /// Contains static methods for formatting data for writing to a <topic name="Cesium">Cesium</topic> stream.
+    /// Contains static methods for formatting data for writing to a CZML stream.
     /// </summary>
     public static class CesiumFormattingHelper
     {
@@ -195,7 +195,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="CesiumStripeOrientation"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="orientation">The orientation to convert.</param>
         /// <returns>The string representation of the specified <see cref="CesiumStripeOrientation"/>.</returns>
@@ -214,7 +214,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="CesiumHorizontalOrigin"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="horizontalOrigin">The horizontal origin to convert.</param>
         /// <returns>The string representation of the specified <see cref="CesiumHorizontalOrigin"/>.</returns>
@@ -235,7 +235,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="CesiumVerticalOrigin"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="verticalOrigin">The vertical origin to convert.</param>
         /// <returns>The string representation of the specified <see cref="CesiumVerticalOrigin"/>.</returns>
@@ -256,7 +256,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="CesiumInterpolationAlgorithm"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="interpolationAlgorithm">The interpolation algorithm to convert.</param>
         /// <returns>The string representing the specified <see cref="CesiumInterpolationAlgorithm"/>.</returns>
@@ -277,7 +277,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="CesiumExtrapolationType"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="extrapolationType">The value to convert.</param>
         /// <returns>The string representing the specified <see cref="CesiumExtrapolationType"/>.</returns>
@@ -298,7 +298,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="ClockRange"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="clockRange">The label style to convert.</param>
         /// <returns>The string representing the specified <see cref="CesiumLabelStyle"/>.</returns>
@@ -319,7 +319,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="ClockStep"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="clockStep">The label style to convert.</param>
         /// <returns>The string representing the specified <see cref="CesiumLabelStyle"/>.</returns>
@@ -340,7 +340,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="CesiumLabelStyle"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="labelStyle">The label style to convert.</param>
         /// <returns>The string representing the specified <see cref="CesiumLabelStyle"/>.</returns>
@@ -361,7 +361,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="CesiumLabelStyle"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="portionToDisplay">The value to convert.</param>
         /// <returns>The string representing the specified <see cref="CesiumSensorVolumePortionToDisplay"/>.</returns>
