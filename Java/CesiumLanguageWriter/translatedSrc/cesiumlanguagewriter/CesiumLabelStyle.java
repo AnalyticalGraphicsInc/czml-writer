@@ -6,7 +6,7 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- Specifies the style of CZML label.
+ Specifies the style of label.
  
 
  */

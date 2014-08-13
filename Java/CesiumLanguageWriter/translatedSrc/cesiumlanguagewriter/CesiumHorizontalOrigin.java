@@ -6,8 +6,7 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- The horizontal origin of a billboard or label in a CZML stream
- relative to an associated position.
+ The horizontal origin of a billboard or label relative to its position.
  
 
  */

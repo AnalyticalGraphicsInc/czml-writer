@@ -6,8 +6,7 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- The vertical origin of a billboard or label in a CZML stream
- relative to an associated position.
+ The vertical origin of a billboard or label relative to its position.
  
 
  */
@@ -20,7 +19,7 @@ public enum CesiumVerticalOrigin implements Enumeration {
 	 */
 	BOTTOM(0), /**
 				 *  
-				The billboard or label is vertically centered on the position.
+				The billboard or label is vertically centered at the position.
 				
 
 				 */

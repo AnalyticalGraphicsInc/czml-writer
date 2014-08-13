@@ -6,7 +6,7 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- The algorithm to use to interpolation sampled data.
+ The algorithm to use for interpolation of sampled data.
  
 
  */

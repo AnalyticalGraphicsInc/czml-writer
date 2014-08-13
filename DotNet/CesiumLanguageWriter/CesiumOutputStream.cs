@@ -6,10 +6,10 @@ namespace CesiumLanguageWriter
 {
     /// <summary>
     /// A stream to which raw CZML data can be written.  This is a low-level class that
-    /// does not extensively validate that methods are called in a valid order, so it can be used to generated invalid
-    /// Cesium and JSON.
+    /// does not extensively validate that methods are called in a valid order,
+    /// so it can be used to generated invalid JSON.
     /// </summary>
-    public class CesiumOutputStream : IDisposable
+    public class CesiumOutputStream
     {
         private readonly TextWriter m_writer;
         private bool m_firstInContainer = true;
@@ -28,15 +28,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Flushes data to the underlying text writer, but does not close it.
-        /// </summary>
-        public void Dispose()
-        {
-            // No need to do anything, because we're not doing any buffering.
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether or not the written data should be formatted for easy human readability.
+        /// Gets or sets whether or not the written data should be formatted for easy human readability.
         /// When this property is <see langword="false"/> (the default), more compact Cesium is generated.
         /// </summary>
         public bool PrettyFormatting { get; set; }

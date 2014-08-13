@@ -1,8 +1,7 @@
 ﻿namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// The vertical origin of a billboard or label in a CZML stream
-    /// relative to an associated position.
+    /// The vertical origin of a billboard or label relative to its position.
     /// </summary>
     public enum CesiumVerticalOrigin
     {
@@ -12,7 +11,7 @@
         Bottom,
 
         /// <summary>
-        /// The billboard or label is vertically centered on the position.
+        /// The billboard or label is vertically centered at the position.
         /// </summary>
         Center,
 

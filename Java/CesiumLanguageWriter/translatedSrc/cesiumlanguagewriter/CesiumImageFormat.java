@@ -6,7 +6,7 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- The format of an image embedded in a CZML stream.
+ The format of an image to be embedded in a CZML stream.
  
 
  */

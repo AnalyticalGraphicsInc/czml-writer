@@ -8,7 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 
 /**
  *  
- Writes CZML data to a  {@link CesiumOutputStream}.
+ Writes data to a  {@link CesiumOutputStream}.
  
 
  */

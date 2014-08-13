@@ -4,7 +4,7 @@ using CesiumLanguageWriter.Advanced;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes CZML data to a <see cref="CesiumOutputStream"/>.
+    /// Writes data to a <see cref="CesiumOutputStream"/>.
     /// </summary>
     public class CesiumStreamWriter
     {

@@ -6,7 +6,7 @@ import java.net.URI;
 
 /**
  *  
- A resource to include in a CZML document, whether embedded or linked to.
+ A resource to be linked from or embedded into a CZML document.
  
 
  */
@@ -22,7 +22,7 @@ public class CesiumResource {
 	
 
 	 * @param uri The URI of the resource.
-	 * @param behavior An enumeration describing how to include the resource in the document.
+	 * @param behavior The enumeration describing how the resource is to be included in the document.
 	 */
 	public CesiumResource(URI uri, CesiumResourceBehavior behavior) {
 		m_url = uri;
@@ -30,8 +30,7 @@ public class CesiumResource {
 	}
 
 	/**
-	 *  
-	The URI of the resource.
+	 *  Gets the URI of the resource.
 	
 
 	 */
@@ -40,8 +39,7 @@ public class CesiumResource {
 	}
 
 	/**
-	 *  
-	An enumeration describing how to include the resource in the document.
+	 *  Gets how the resource is to be included in the document.
 	
 
 	 */

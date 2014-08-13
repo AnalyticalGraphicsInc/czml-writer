@@ -3,7 +3,7 @@
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// A resource to include in a CZML document, whether embedded or linked to.
+    /// A resource to be linked from or embedded into a CZML document.
     /// </summary>
     public class CesiumResource
     {
@@ -14,7 +14,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance.
         /// </summary>
         /// <param name="uri">The URI of the resource.</param>
-        /// <param name="behavior">An enumeration describing how to include the resource in the document.</param>
+        /// <param name="behavior">The enumeration describing how the resource is to be included in the document.</param>
         public CesiumResource(Uri uri, CesiumResourceBehavior behavior)
         {
             m_url = uri;
@@ -22,7 +22,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// The URI of the resource.
+        /// Gets the URI of the resource.
         /// </summary>
         public Uri Uri
         {
@@ -30,7 +30,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// An enumeration describing how to include the resource in the document.
+        /// Gets how the resource is to be included in the document.
         /// </summary>
         public CesiumResourceBehavior Behavior
         {

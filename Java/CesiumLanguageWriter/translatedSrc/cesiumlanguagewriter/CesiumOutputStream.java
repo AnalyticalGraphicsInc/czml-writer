@@ -4,7 +4,6 @@ package cesiumlanguagewriter;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
-import agi.foundation.compatibility.IDisposable;
 import agi.foundation.compatibility.IntHelper;
 import agi.foundation.compatibility.LongHelper;
 import agi.foundation.compatibility.TextWriterHelper;
@@ -14,12 +13,12 @@ import java.net.URI;
 /**
  *  
  A stream to which raw CZML data can be written.  This is a low-level class that
- does not extensively validate that methods are called in a valid order, so it can be used to generated invalid
- Cesium and JSON.
+ does not extensively validate that methods are called in a valid order,
+ so it can be used to generated invalid JSON.
  
 
  */
-public class CesiumOutputStream implements IDisposable {
+public class CesiumOutputStream {
 	private Writer m_writer;
 	private boolean m_firstInContainer = true;
 	private boolean m_inProperty;
@@ -40,17 +39,7 @@ public class CesiumOutputStream implements IDisposable {
 	}
 
 	/**
-	 *  
-	Flushes data to the underlying text writer, but does not close it.
-	
-
-	 */
-	public final void dispose() {
-		// No need to do anything, because we're not doing any buffering.
-	}
-
-	/**
-	 *  Gets a value indicating whether or not the written data should be formatted for easy human readability.
+	 *  Gets whether or not the written data should be formatted for easy human readability.
 	When this property is <see langword="false" /> (the default), more compact Cesium is generated.
 	
 
@@ -60,7 +49,7 @@ public class CesiumOutputStream implements IDisposable {
 	}
 
 	/**
-	 *  Sets a value indicating whether or not the written data should be formatted for easy human readability.
+	 *  Sets whether or not the written data should be formatted for easy human readability.
 	When this property is <see langword="false" /> (the default), more compact Cesium is generated.
 	
 
