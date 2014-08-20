@@ -187,10 +187,7 @@ namespace CesiumLanguageWriter
         /// <param name="value">The value to write.</param>
         public void WriteValue(Uri value)
         {
-            StartNewValue();
-            m_firstInContainer = false;
-            m_inProperty = false;
-            m_writer.Write(value.ToString());
+            WriteValue(value.ToString());
         }
 
         /// <summary>
