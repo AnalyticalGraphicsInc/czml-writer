@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CesiumLanguageWriter", "CesiumLanguageWriter\CesiumLanguageWriter.csproj", "{085359F8-CC1D-4561-94C7-0BF067B8E370}"
 EndProject
@@ -120,6 +120,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AGI", "AGI", "{CF5572F1-2FF
 		..\Schema\Extensions\AGI\Vector.jsonschema = ..\Schema\Extensions\AGI\Vector.jsonschema
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleCesiumLanguageServer", "ExampleCesiumLanguageServer\ExampleCesiumLanguageServer.csproj", "{1F1824FB-14DA-4666-BF30-5E9593D0DECD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{085359F8-CC1D-4561-94C7-0BF067B8E370} = {085359F8-CC1D-4561-94C7-0BF067B8E370}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -166,6 +171,10 @@ Global
 		{2FB1AEFA-3B28-42D0-9520-3F100E297601}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FB1AEFA-3B28-42D0-9520-3F100E297601}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FB1AEFA-3B28-42D0-9520-3F100E297601}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F1824FB-14DA-4666-BF30-5E9593D0DECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F1824FB-14DA-4666-BF30-5E9593D0DECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F1824FB-14DA-4666-BF30-5E9593D0DECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F1824FB-14DA-4666-BF30-5E9593D0DECD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
