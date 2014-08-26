@@ -229,10 +229,7 @@ public class CesiumOutputStream {
 	 * @param value The value to write.
 	 */
 	public final void writeValue(URI value) {
-		startNewValue();
-		m_firstInContainer = false;
-		m_inProperty = false;
-		TextWriterHelper.print(m_writer, value.toString());
+		writeValue(value.toString());
 	}
 
 	/**
