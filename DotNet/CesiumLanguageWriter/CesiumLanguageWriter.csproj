@@ -49,6 +49,7 @@
     <Compile Include="Advanced\CesiumWriterAdaptor.cs" />
     <Compile Include="Advanced\CesiumWritingHelper.cs" />
     <Compile Include="Advanced\ICesiumElementWriter.cs" />
+    <Compile Include="Advanced\ICesiumInterpolatableIntervalListWriter.cs" />
     <Compile Include="Advanced\ICesiumUriResolver.cs" />
     <Compile Include="Advanced\ICesiumInterpolatableValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumInterpolationInformationWriter.cs" />

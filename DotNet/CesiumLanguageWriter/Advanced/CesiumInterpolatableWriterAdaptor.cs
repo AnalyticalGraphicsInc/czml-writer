@@ -56,6 +56,14 @@ namespace CesiumLanguageWriter.Advanced
             m_interval = new Lazy<CesiumInterpolatableWriterAdaptor<TFrom, TValue>>(() => new CesiumInterpolatableWriterAdaptor<TFrom, TValue>((TFrom)m_parent.IntervalWriter, m_writeValueCallback, m_writeSamplesCallback), false);
         }
 
+        /// <summary>
+        /// Gets the parent being adapted.
+        /// </summary>
+        public TFrom Parent
+        {
+            get { return m_parent; }
+        }
+
         /// <inheritdoc />
         public bool IsOpen
         {
@@ -123,16 +131,26 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <inheritdoc />
-        public ICesiumPropertyWriter OpenInterval()
+        public ICesiumInterpolatableValuePropertyWriter<TValue> OpenInterval()
         {
             m_interval.Value.Open(m_parent.Output);
             return m_interval.Value;
         }
 
-        /// <inheritdoc />
-        public ICesiumIntervalListWriter OpenMultipleIntervals()
+        ICesiumPropertyWriter ICesiumPropertyWriter.OpenInterval()
         {
-            return m_parent.OpenMultipleIntervals();
+            return OpenInterval();
+        }
+
+        /// <inheritdoc />
+        public ICesiumInterpolatableIntervalListWriter<TValue> OpenMultipleIntervals()
+        {
+            return new MultipleIntervalsAdaptor(this, m_parent.OpenMultipleIntervals());
+        }
+
+        ICesiumIntervalListWriter ICesiumPropertyWriter.OpenMultipleIntervals()
+        {
+            return OpenMultipleIntervals();
         }
 
         /// <inheritdoc />
@@ -157,6 +175,65 @@ namespace CesiumLanguageWriter.Advanced
         public void Dispose()
         {
             m_parent.Close();
+        }
+
+        private class MultipleIntervalsAdaptor : ICesiumInterpolatableIntervalListWriter<TValue>
+        {
+            private readonly CesiumInterpolatableWriterAdaptor<TFrom, TValue> m_intervalAdaptor;
+            private readonly ICesiumIntervalListWriter m_parent;
+
+            public MultipleIntervalsAdaptor(CesiumInterpolatableWriterAdaptor<TFrom, TValue> intervalAdaptor, ICesiumIntervalListWriter parent)
+            {
+                m_intervalAdaptor = intervalAdaptor;
+                m_parent = parent;
+            }
+
+            public ICesiumInterpolatableValuePropertyWriter<TValue> OpenInterval()
+            {
+                return m_intervalAdaptor.OpenInterval();
+            }
+
+            ICesiumPropertyWriter ICesiumIntervalListWriter.OpenInterval()
+            {
+                return OpenInterval();
+            }
+
+            public ICesiumInterpolatableValuePropertyWriter<TValue> OpenInterval(JulianDate start, JulianDate stop)
+            {
+                ICesiumInterpolatableValuePropertyWriter<TValue> intervalWriter = m_intervalAdaptor.OpenInterval();
+                intervalWriter.WriteInterval(start, stop);
+                return intervalWriter;
+            }
+
+            ICesiumPropertyWriter ICesiumIntervalListWriter.OpenInterval(JulianDate start, JulianDate stop)
+            {
+                return OpenInterval(start, stop);
+            }
+
+            public bool IsOpen
+            {
+                get { return m_parent.IsOpen; }
+            }
+
+            public CesiumOutputStream Output
+            {
+                get { return m_parent.Output; }
+            }
+
+            public void Open(CesiumOutputStream output)
+            {
+                m_parent.Open(output);
+            }
+
+            public void Close()
+            {
+                m_parent.Close();
+            }
+
+            public void Dispose()
+            {
+                m_parent.Dispose();
+            }
         }
     }
 }
