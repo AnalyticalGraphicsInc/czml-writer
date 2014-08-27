@@ -53,6 +53,15 @@ public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> im
 		}, false);
 	}
 
+	/**
+	 *  Gets the parent being adapted.
+	
+
+	 */
+	public final TFrom getParent() {
+		return m_parent;
+	}
+
 	public final boolean getIsOpen() {
 		return m_parent.getIsOpen();
 	}
