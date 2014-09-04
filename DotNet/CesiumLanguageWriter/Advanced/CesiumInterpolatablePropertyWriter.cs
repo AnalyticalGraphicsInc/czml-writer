@@ -1,7 +1,7 @@
 ﻿namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
-    /// A <topic name="Cesium">Cesium</topic> writer for a property that represents a value that may be sampled
+    /// A CZML writer for a property that represents a value that may be sampled
     /// and interpolated.  The property may be defined over a single interval or over multiple intervals.
     /// </summary>
     /// <typeparam name="TDerived">The type of the class derived from this one.</typeparam>

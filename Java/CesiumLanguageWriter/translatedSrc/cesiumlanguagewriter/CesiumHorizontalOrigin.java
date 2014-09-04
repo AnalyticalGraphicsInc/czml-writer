@@ -6,8 +6,7 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- The horizontal origin of a billboard or label in a <topic name="Cesium">Cesium</topic> stream
- relative to an associated position.
+ The horizontal origin of a billboard or label relative to its position.
  
 
  */

@@ -103,7 +103,7 @@ public final class Constants {
 	public static final double RadiansPerArcSecond = RadiansPerDegree / 3600.0;
 	/**
 	 *  
-	The number of arc secons in one radian.
+	The number of arc seconds in one radian.
 	
 
 	 */

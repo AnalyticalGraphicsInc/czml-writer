@@ -250,7 +250,7 @@ public class JulianDate implements Comparable<JulianDate>, IEquatable<JulianDate
 	 * @return An equivalent  {@link JulianDate} using the requested time
 	standard.
 	 * @exception ArgumentOutOfRangeException 
-	Thrown if the specified  {@link TimeStandard} is is not capable of
+	Thrown if the specified  {@link TimeStandard} is not capable of
 	representing this  {@link JulianDate}.
 	
 	 */

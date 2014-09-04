@@ -9,7 +9,7 @@ import cesiumlanguagewriter.*;
 
 /**
  *  
- A <topic name="Cesium">Cesium</topic> writer for a property.  The property may be defined over a
+ A CZML writer for a property.  The property may be defined over a
  single interval or over multiple intervals.
  
  
@@ -189,7 +189,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
 
 	/**
 	 *  
-	Writes the actual interval of time covered by this <topic name="Cesium">Cesium</topic> interval.
+	Writes the actual interval of time covered by this CZML interval.
 	
 	
 	
@@ -203,7 +203,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
 
 	/**
 	 *  
-	Writes the actual interval of time covered by this <topic name="Cesium">Cesium</topic> interval.
+	Writes the actual interval of time covered by this CZML interval.
 	
 	
 

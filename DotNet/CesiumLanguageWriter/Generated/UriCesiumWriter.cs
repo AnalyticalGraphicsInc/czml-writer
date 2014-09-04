@@ -58,33 +58,33 @@ namespace CesiumLanguageWriter
         /// <param name="resource">A resource object describing external data.</param>
         public void WriteUri(CesiumResource resource)
         {
-            WriteUri(resource.Url, resource.Behavior);
+            WriteUri(resource.Uri, resource.Behavior);
         }
 
         /// <summary>
         /// Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URI value.
         /// </summary>
-        /// <param name="url">The URL of the data.</param>
-        /// <param name="resourceBehavior">An enumeration describing how to include the URL in the document. For even more control, use the overload that takes a ICesiumUrlResolver.</param>
-        public void WriteUri(string url, CesiumResourceBehavior resourceBehavior)
+        /// <param name="uri">The URI of the data.</param>
+        /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
+        public void WriteUri(Uri uri, CesiumResourceBehavior resourceBehavior)
         {
             const string PropertyName = UriPropertyName;
             if (IsInterval)
                 Output.WritePropertyName(PropertyName);
-            Output.WriteValue(CesiumFormattingHelper.GetResourceUrl(url, resourceBehavior));
+            Output.WriteValue(CesiumFormattingHelper.GetResourceUri(uri, resourceBehavior));
         }
 
         /// <summary>
         /// Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URI value.
         /// </summary>
-        /// <param name="url">The URL of the data.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.</param>
-        /// <param name="resolver">An ICesiumUrlResolver used to build the final URL that will be embedded in the document.</param>
-        public void WriteUri(string url, ICesiumUrlResolver resolver)
+        /// <param name="uri">The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
+        /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
+        public void WriteUri(Uri uri, ICesiumUriResolver resolver)
         {
             const string PropertyName = UriPropertyName;
             if (IsInterval)
                 Output.WritePropertyName(PropertyName);
-            Output.WriteValue(resolver.ResolveUrl(url));
+            Output.WriteValue(resolver.ResolveUri(uri));
         }
 
         /// <summary>

@@ -1,7 +1,7 @@
 ﻿namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Specifies the style of <topic name="Cesium">Cesium</topic> label.
+    /// Specifies the style of label.
     /// </summary>
     public enum CesiumLabelStyle
     {

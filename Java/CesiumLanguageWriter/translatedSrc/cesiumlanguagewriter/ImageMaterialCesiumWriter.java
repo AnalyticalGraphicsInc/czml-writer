@@ -9,6 +9,7 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.RepeatCesiumWriter;
 import cesiumlanguagewriter.UriCesiumWriter;
 import java.awt.image.RenderedImage;
+import java.net.URI;
 import java.util.List;
 
 /**
@@ -116,14 +117,14 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	
 	
 
-	 * @param url The URL of the data.
-	 * @param resourceBehavior An enumeration describing how to include the URL in the document. For even more control, use the overload that takes a ICesiumUrlResolver.
+	 * @param uri The URI of the data.
+	 * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
 	 */
-	public final void writeImageProperty(String url, CesiumResourceBehavior resourceBehavior) {
+	public final void writeImageProperty(URI uri, CesiumResourceBehavior resourceBehavior) {
 		{
 			cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
 			try {
-				writer.writeUri(url, resourceBehavior);
+				writer.writeUri(uri, resourceBehavior);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -137,14 +138,14 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	
 	
 
-	 * @param url The URL of the data.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.
-	 * @param resolver An ICesiumUrlResolver used to build the final URL that will be embedded in the document.
+	 * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
+	 * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
 	 */
-	public final void writeImageProperty(String url, ICesiumUrlResolver resolver) {
+	public final void writeImageProperty(URI uri, ICesiumUriResolver resolver) {
 		{
 			cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
 			try {
-				writer.writeUri(url, resolver);
+				writer.writeUri(uri, resolver);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

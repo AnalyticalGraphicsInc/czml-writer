@@ -3,7 +3,7 @@
 namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
-    /// A <topic name="Cesium">Cesium</topic> writer for a property.  The property may be defined over a
+    /// A CZML writer for a property.  The property may be defined over a
     /// single interval or over multiple intervals.
     /// </summary>
     /// <typeparam name="TDerived">The type of the class derived from this one.</typeparam>
@@ -113,7 +113,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Writes the actual interval of time covered by this <topic name="Cesium">Cesium</topic> interval.
+        /// Writes the actual interval of time covered by this CZML interval.
         /// </summary>
         /// <param name="start">The first date of the interval.</param>
         /// <param name="stop">The last date of the interval.</param>
@@ -123,7 +123,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Writes the actual interval of time covered by this <topic name="Cesium">Cesium</topic> interval.
+        /// Writes the actual interval of time covered by this CZML interval.
         /// </summary>
         /// <param name="interval">The interval.</param>
         public void WriteInterval(TimeInterval interval)

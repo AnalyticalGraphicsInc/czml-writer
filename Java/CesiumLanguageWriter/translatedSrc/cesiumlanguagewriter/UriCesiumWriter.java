@@ -8,6 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.CesiumResource;
 import cesiumlanguagewriter.Reference;
 import java.awt.image.RenderedImage;
+import java.net.URI;
 
 /**
  *  
@@ -93,7 +94,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 	 * @param resource A resource object describing external data.
 	 */
 	public final void writeUri(CesiumResource resource) {
-		writeUri(resource.getUrl(), resource.getBehavior());
+		writeUri(resource.getUri(), resource.getBehavior());
 	}
 
 	/**
@@ -103,15 +104,15 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 	
 	
 
-	 * @param url The URL of the data.
-	 * @param resourceBehavior An enumeration describing how to include the URL in the document. For even more control, use the overload that takes a ICesiumUrlResolver.
+	 * @param uri The URI of the data.
+	 * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
 	 */
-	public final void writeUri(String url, CesiumResourceBehavior resourceBehavior) {
+	public final void writeUri(URI uri, CesiumResourceBehavior resourceBehavior) {
 		String PropertyName = UriPropertyName;
 		if (getIsInterval()) {
 			getOutput().writePropertyName(PropertyName);
 		}
-		getOutput().writeValue(CesiumFormattingHelper.getResourceUrl(url, resourceBehavior));
+		getOutput().writeValue(CesiumFormattingHelper.getResourceUri(uri, resourceBehavior));
 	}
 
 	/**
@@ -121,15 +122,15 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 	
 	
 
-	 * @param url The URL of the data.  The provided ICesiumUrlResolver will be used to build the final URL embedded in the document.
-	 * @param resolver An ICesiumUrlResolver used to build the final URL that will be embedded in the document.
+	 * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
+	 * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
 	 */
-	public final void writeUri(String url, ICesiumUrlResolver resolver) {
+	public final void writeUri(URI uri, ICesiumUriResolver resolver) {
 		String PropertyName = UriPropertyName;
 		if (getIsInterval()) {
 			getOutput().writePropertyName(PropertyName);
 		}
-		getOutput().writeValue(resolver.resolveUrl(url));
+		getOutput().writeValue(resolver.resolveUri(uri));
 	}
 
 	/**

@@ -1,7 +1,7 @@
 ﻿namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
-    /// An interface to an object that writes the values of a <topic name="Cesium">Cesium</topic>
+    /// An interface to an object that writes the values of a CZML
     /// property with values over one or more intervals.
     /// </summary>
     /// <typeparam name="T">The type written by the property writer.</typeparam>

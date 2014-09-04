@@ -1,13 +1,13 @@
 ﻿namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
-    /// An interface to an object that writes the values of a <topic name="Cesium">Cesium</topic>
+    /// An interface to an object that writes the values of a CZML
     /// property over one or more intervals.
     /// </summary>
     public interface ICesiumPropertyWriter : ICesiumElementWriter
     {
         /// <summary>
-        /// Writes the actual interval of time covered by this <topic name="Cesium">Cesium</topic> interval.
+        /// Writes the actual interval of time covered by this CZML interval.
         /// </summary>
         /// <param name="start">The start of the interval.</param>
         /// <param name="stop">The end of the interval.</param>

@@ -19,7 +19,7 @@ public enum ClockStep implements Enumeration {
 	 */
 	SYSTEM_CLOCK(0), /**
 						 *  
-						The clock advances by the elapsed system time between ticks, multipled by a user specified value.
+						The clock advances by the elapsed system time between ticks, multiplied by a user specified value.
 						
 
 						 */

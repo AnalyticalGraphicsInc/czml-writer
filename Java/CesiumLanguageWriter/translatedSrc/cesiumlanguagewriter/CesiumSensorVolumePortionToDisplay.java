@@ -6,7 +6,7 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- Specifies what part of a <topic name="Cesium">Cesium</topic> sensor should be displayed.
+ Specifies which parts of a sensor are to be displayed.
  
 
  */

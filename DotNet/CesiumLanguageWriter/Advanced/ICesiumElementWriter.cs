@@ -3,7 +3,7 @@
 namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
-    /// An interface to an instance that can write elements of <topic name="Cesium">Cesium</topic>.
+    /// An interface to an instance that can write elements of CZML.
     /// </summary>
     public interface ICesiumElementWriter : IDisposable
     {

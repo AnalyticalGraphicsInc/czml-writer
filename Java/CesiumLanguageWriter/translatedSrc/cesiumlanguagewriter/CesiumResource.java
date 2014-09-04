@@ -2,15 +2,16 @@ package cesiumlanguagewriter;
 
 
 import agi.foundation.compatibility.*;
+import java.net.URI;
 
 /**
  *  
- A resource to include in a CZML document, whether embedded or linked to.
+ A resource to be linked from or embedded into a CZML document.
  
 
  */
 public class CesiumResource {
-	private String m_url;
+	private URI m_url;
 	private CesiumResourceBehavior m_behavior = CesiumResourceBehavior.getDefault();
 
 	/**
@@ -20,27 +21,25 @@ public class CesiumResource {
 	
 	
 
-	 * @param url The URL of the resource.
-	 * @param behavior An enumeration describing how to include the resource in the document.
+	 * @param uri The URI of the resource.
+	 * @param behavior The enumeration describing how the resource is to be included in the document.
 	 */
-	public CesiumResource(String url, CesiumResourceBehavior behavior) {
-		m_url = url;
+	public CesiumResource(URI uri, CesiumResourceBehavior behavior) {
+		m_url = uri;
 		m_behavior = behavior;
 	}
 
 	/**
-	 *  
-	The URL of the resource.
+	 *  Gets the URI of the resource.
 	
 
 	 */
-	public final String getUrl() {
+	public final URI getUri() {
 		return m_url;
 	}
 
 	/**
-	 *  
-	An enumeration describing how to include the resource in the document.
+	 *  Gets how the resource is to be included in the document.
 	
 
 	 */

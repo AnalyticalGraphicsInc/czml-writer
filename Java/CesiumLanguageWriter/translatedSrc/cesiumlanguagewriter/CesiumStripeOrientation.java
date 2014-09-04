@@ -6,20 +6,20 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- The orientation of an element.
+ The orientation of the stripes in a stripe material.
  
 
  */
 public enum CesiumStripeOrientation implements Enumeration {
 	/**
 	 *  
-	The element is oriented horizontally.
+	The stripes are oriented horizontally along the X axis.
 	
 
 	 */
 	HORIZONTAL(0), /**
 					 *  
-					The element is oriented vertically.
+					The stripes are oriented vertically along the Y axis.
 					
 
 					 */
