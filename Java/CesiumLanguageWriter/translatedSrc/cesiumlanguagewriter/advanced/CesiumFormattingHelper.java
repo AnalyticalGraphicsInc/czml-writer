@@ -126,8 +126,7 @@ public final class CesiumFormattingHelper {
 		if (ObjectHelper.equals(uri.getScheme(), "data")) {
 			return uri;
 		}
-		WebRequest request = WebRequest.create(uri.toString());
-		//Java translator workaround.
+		WebRequest request = WebRequest.create(uri);
 		HttpWebRequest httpWebRequest = (request instanceof HttpWebRequest) ? (HttpWebRequest) request : null;
 		if (httpWebRequest != null) {
 			httpWebRequest.setUserAgent("CesiumWriter");

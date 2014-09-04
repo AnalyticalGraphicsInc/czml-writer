@@ -92,7 +92,7 @@ namespace CesiumLanguageWriter.Advanced
             if (uri.Scheme == "data")
                 return uri;
 
-            WebRequest request = WebRequest.Create(uri.ToString()); //Java translator workaround.
+            WebRequest request = WebRequest.Create(uri);
             HttpWebRequest httpWebRequest = request as HttpWebRequest;
             if (httpWebRequest != null)
             {
