@@ -14,7 +14,7 @@ import java.net.URI;
  *  
  A stream to which raw CZML data can be written.  This is a low-level class that
  does not extensively validate that methods are called in a valid order,
- so it can be used to generated invalid JSON.
+ so it can be used to generate invalid JSON.
  
 
  */
