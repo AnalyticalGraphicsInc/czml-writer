@@ -6,7 +6,7 @@ import cesiumlanguagewriter.advanced.*;
 
 /**
  *  
- Writes a list of intervals for which a <topic name="Cesium">Cesium</topic> property is defined.
+ Writes a list of intervals for which a property is defined.
  
  
 
@@ -40,7 +40,7 @@ public class CesiumIntervalListWriter<TPropertyWriter extends CesiumPropertyWrit
 
 	/**
 	 *  
-	Writes the end of a JSON array representing the interval list. 
+	Writes the end of a JSON array representing the interval list.
 	
 
 	 */

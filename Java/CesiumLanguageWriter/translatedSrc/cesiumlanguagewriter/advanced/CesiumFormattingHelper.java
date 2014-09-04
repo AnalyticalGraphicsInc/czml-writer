@@ -9,17 +9,19 @@ import agi.foundation.compatibility.HttpWebRequest;
 import agi.foundation.compatibility.ImageFormat;
 import agi.foundation.compatibility.ImageHelper;
 import agi.foundation.compatibility.MemoryStream;
+import agi.foundation.compatibility.ObjectHelper;
 import agi.foundation.compatibility.StreamHelper;
-import agi.foundation.compatibility.StringHelper;
+import agi.foundation.compatibility.UriHelper;
 import agi.foundation.compatibility.WebRequest;
 import agi.foundation.compatibility.WebResponse;
 import cesiumlanguagewriter.*;
 import java.awt.image.RenderedImage;
 import java.io.InputStream;
+import java.net.URI;
 
 /**
  *  
- Contains static methods for formatting data for writing to a <topic name="Cesium">Cesium</topic> stream.
+ Contains static methods for formatting data for writing to a CZML stream.
  
 
  */
@@ -109,7 +111,7 @@ public final class CesiumFormattingHelper {
 
 	/**
 	 *  
-	Downloads and converts a remote resource URL into a data URI in the form
+	Downloads and converts a remote resource URI into a data URI in the form
 	<code>data:<MimeType>;base64,<ImageData></code>, where
 	<code><MimeType></code> is the MIME type of the specified resource, and
 	<code><ImageData></code> is the data encoded as a Base 64 string.
@@ -117,14 +119,14 @@ public final class CesiumFormattingHelper {
 	
 	
 
-	 * @param url The URL of the resource to convert.
+	 * @param uri The URI of the resource to convert.
 	 * @return A data URI containing the content of the resource.
 	 */
-	public static String downloadUrlIntoDataUri(String url) {
-		if (StringHelper.startsWith(url, "data:")) {
-			return url;
+	public static URI downloadUriIntoDataUri(URI uri) {
+		if (ObjectHelper.equals(uri.getScheme(), "data")) {
+			return uri;
 		}
-		WebRequest request = WebRequest.create(url);
+		WebRequest request = WebRequest.create(uri);
 		HttpWebRequest httpWebRequest = (request instanceof HttpWebRequest) ? (HttpWebRequest) request : null;
 		if (httpWebRequest != null) {
 			httpWebRequest.setUserAgent("CesiumWriter");
@@ -163,7 +165,7 @@ public final class CesiumFormattingHelper {
 	 * @param imageFormat The format of the image, which controls the mime type.
 	 * @return A data URI containing the content of the image.
 	 */
-	public static String imageToDataUri(InputStream stream, CesiumImageFormat imageFormat) {
+	public static URI imageToDataUri(InputStream stream, CesiumImageFormat imageFormat) {
 		String mimeType = getMimeTypeFromCesiumImageFormat(imageFormat);
 		return buildDataUri(mimeType, stream);
 	}
@@ -183,7 +185,7 @@ public final class CesiumFormattingHelper {
 	 * @param imageFormat The format of the image, which controls the mime type.
 	 * @return A data URI containing the content of the image.
 	 */
-	public static String imageToDataUri(RenderedImage image, CesiumImageFormat imageFormat) {
+	public static URI imageToDataUri(RenderedImage image, CesiumImageFormat imageFormat) {
 		String mimeType = getMimeTypeFromCesiumImageFormat(imageFormat);
 		{
 			MemoryStream stream = new MemoryStream();
@@ -217,7 +219,7 @@ public final class CesiumFormattingHelper {
 		}
 	}
 
-	static private String buildDataUri(String mimeType, InputStream dataStream) {
+	static private URI buildDataUri(String mimeType, InputStream dataStream) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("data:");
 		builder.append(mimeType);
@@ -234,7 +236,7 @@ public final class CesiumFormattingHelper {
 				DisposeHelper.dispose(memoryStream);
 			}
 		}
-		return builder.toString();
+		return UriHelper.create(builder.toString());
 	}
 
 	static private String getMimeTypeFromCesiumImageFormat(CesiumImageFormat imageFormat) {
@@ -260,7 +262,7 @@ public final class CesiumFormattingHelper {
 	/**
 	 *  
 	Converts a  {@link CesiumStripeOrientation} to the corresponding string in a
-	<topic name="Cesium">Cesium</topic> stream.
+	CZML stream.
 	
 	
 	
@@ -285,7 +287,7 @@ public final class CesiumFormattingHelper {
 	/**
 	 *  
 	Converts a  {@link CesiumHorizontalOrigin} to the corresponding string in a
-	<topic name="Cesium">Cesium</topic> stream.
+	CZML stream.
 	
 	
 	
@@ -313,7 +315,7 @@ public final class CesiumFormattingHelper {
 	/**
 	 *  
 	Converts a  {@link CesiumVerticalOrigin} to the corresponding string in a
-	<topic name="Cesium">Cesium</topic> stream.
+	CZML stream.
 	
 	
 	
@@ -341,7 +343,7 @@ public final class CesiumFormattingHelper {
 	/**
 	 *  
 	Converts a  {@link CesiumInterpolationAlgorithm} to the corresponding string in a
-	<topic name="Cesium">Cesium</topic> stream.
+	CZML stream.
 	
 	
 	
@@ -369,7 +371,7 @@ public final class CesiumFormattingHelper {
 	/**
 	 *  
 	Converts a  {@link CesiumExtrapolationType} to the corresponding string in a
-	<topic name="Cesium">Cesium</topic> stream.
+	CZML stream.
 	
 	
 	
@@ -397,7 +399,7 @@ public final class CesiumFormattingHelper {
 	/**
 	 *  
 	Converts a  {@link ClockRange} to the corresponding string in a
-	<topic name="Cesium">Cesium</topic> stream.
+	CZML stream.
 	
 	
 	
@@ -425,7 +427,7 @@ public final class CesiumFormattingHelper {
 	/**
 	 *  
 	Converts a  {@link ClockStep} to the corresponding string in a
-	<topic name="Cesium">Cesium</topic> stream.
+	CZML stream.
 	
 	
 	
@@ -453,7 +455,7 @@ public final class CesiumFormattingHelper {
 	/**
 	 *  
 	Converts a  {@link CesiumLabelStyle} to the corresponding string in a
-	<topic name="Cesium">Cesium</topic> stream.
+	CZML stream.
 	
 	
 	
@@ -481,7 +483,7 @@ public final class CesiumFormattingHelper {
 	/**
 	 *  
 	Converts a  {@link CesiumLabelStyle} to the corresponding string in a
-	<topic name="Cesium">Cesium</topic> stream.
+	CZML stream.
 	
 	
 	
@@ -514,14 +516,14 @@ public final class CesiumFormattingHelper {
 	
 	
 
-	 * @param url The url of the resource.
+	 * @param uri The url of the resource.
 	 * @param resourceBehavior A  {@link CesiumResourceBehavior} specifying how include the resource into a CZML document.
 	 * @return The resolved url.
 	 */
-	public static String getResourceUrl(String url, CesiumResourceBehavior resourceBehavior) {
+	public static URI getResourceUri(URI uri, CesiumResourceBehavior resourceBehavior) {
 		if (resourceBehavior == CesiumResourceBehavior.EMBED) {
-			return CachingCesiumUrlResolver.getThreadLocalInstance().resolveUrl(url);
+			return CachingCesiumUriResolver.getThreadLocalInstance().resolveUri(uri);
 		}
-		return url;
+		return uri;
 	}
 }

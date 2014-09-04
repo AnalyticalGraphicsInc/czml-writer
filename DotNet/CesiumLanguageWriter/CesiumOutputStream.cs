@@ -5,11 +5,11 @@ using System.IO;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// A stream to which raw <topic name="Cesium">Cesium</topic> data can be written.  This is a low-level class that
-    /// does not extensively validate that methods are called in a valid order, so it can be used to generated invalid
-    /// Cesium and JSON.
+    /// A stream to which raw CZML data can be written.  This is a low-level class that
+    /// does not extensively validate that methods are called in a valid order,
+    /// so it can be used to generate invalid JSON.
     /// </summary>
-    public class CesiumOutputStream : IDisposable
+    public class CesiumOutputStream
     {
         private readonly TextWriter m_writer;
         private bool m_firstInContainer = true;
@@ -28,15 +28,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Flushes data to the underlying text writer, but does not close it.
-        /// </summary>
-        public void Dispose()
-        {
-            // No need to do anything, because we're not doing any buffering.
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether or not the written data should be formatted for easy human readability.
+        /// Gets or sets whether or not the written data should be formatted for easy human readability.
         /// When this property is <see langword="false"/> (the default), more compact Cesium is generated.
         /// </summary>
         public bool PrettyFormatting { get; set; }
@@ -190,6 +182,15 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes the value of a property or element in a sequence.
+        /// </summary>
+        /// <param name="value">The value to write.</param>
+        public void WriteValue(Uri value)
+        {
+            WriteValue(value.ToString());
+        }
+
+        /// <summary>
         /// When <see cref="PrettyFormatting"/> is <see langword="true"/>, adds a line break in a sequence of simple values.
         /// When <see cref="PrettyFormatting"/> is <see langword="false"/>, this method does nothing.
         /// </summary>
@@ -214,33 +215,43 @@ namespace CesiumLanguageWriter
                     case '\t':
                         escapedValue = @"\t";
                         break;
+
                     case '\n':
                         escapedValue = @"\n";
                         break;
+
                     case '\r':
                         escapedValue = @"\r";
                         break;
+
                     case '\f':
                         escapedValue = @"\f";
                         break;
+
                     case '\b':
                         escapedValue = @"\b";
                         break;
+
                     case '\\':
                         escapedValue = @"\\";
                         break;
+
                     case '\u0085': // Next Line
                         escapedValue = @"\u0085";
                         break;
+
                     case '\u2028': // Line Separator
                         escapedValue = @"\u2028";
                         break;
+
                     case '\u2029': // Paragraph Separator
                         escapedValue = @"\u2029";
                         break;
+
                     case '"':
                         escapedValue = "\\\"";
                         break;
+
                     default:
                         escapedValue = (c <= '\u001f') ? ToCharAsUnicode(c) : null;
                         break;

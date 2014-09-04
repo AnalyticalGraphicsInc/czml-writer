@@ -1,7 +1,7 @@
 ﻿namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// The algorithm to use to interpolation sampled data.
+    /// The algorithm to use for interpolation of sampled data.
     /// </summary>
     public enum CesiumInterpolationAlgorithm
     {

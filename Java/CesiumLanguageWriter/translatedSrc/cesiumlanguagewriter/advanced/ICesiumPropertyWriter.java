@@ -6,7 +6,7 @@ import cesiumlanguagewriter.*;
 
 /**
  *  
- An interface to an object that writes the values of a <topic name="Cesium">Cesium</topic>
+ An interface to an object that writes the values of a CZML
  property over one or more intervals.
  
 
@@ -14,7 +14,7 @@ import cesiumlanguagewriter.*;
 public interface ICesiumPropertyWriter extends ICesiumElementWriter {
 	/**
 	 *  
-	Writes the actual interval of time covered by this <topic name="Cesium">Cesium</topic> interval.
+	Writes the actual interval of time covered by this CZML interval.
 	
 	
 	

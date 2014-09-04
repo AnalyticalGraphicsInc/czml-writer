@@ -18,7 +18,7 @@
         },
         "gltf": {
             "$ref": "Uri.jsonschema",
-            "description": "The URL of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model."
+            "description": "The URI of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model."
         }
     }
 }

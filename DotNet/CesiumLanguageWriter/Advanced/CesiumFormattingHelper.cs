@@ -8,7 +8,7 @@ using System.Text;
 namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
-    /// Contains static methods for formatting data for writing to a <topic name="Cesium">Cesium</topic> stream.
+    /// Contains static methods for formatting data for writing to a CZML stream.
     /// </summary>
     public static class CesiumFormattingHelper
     {
@@ -54,8 +54,10 @@ namespace CesiumLanguageWriter.Advanced
                 {
                     case Iso8601Format.Basic:
                         return "00000101T000000Z";
+
                     case Iso8601Format.Compact:
                         return "00000101T00Z";
+
                     case Iso8601Format.Extended:
                         return "0000-01-01T00:00:00Z";
                 }
@@ -66,8 +68,10 @@ namespace CesiumLanguageWriter.Advanced
                 {
                     case Iso8601Format.Basic:
                         return "99991231T240000Z";
+
                     case Iso8601Format.Compact:
                         return "99991231T24Z";
+
                     case Iso8601Format.Extended:
                         return "9999-12-31T24:00:00Z";
                 }
@@ -76,19 +80,19 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Downloads and converts a remote resource URL into a data URI in the form
+        /// Downloads and converts a remote resource URI into a data URI in the form
         /// <code>data:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>, where
         /// <code>&lt;MimeType&gt;</code> is the MIME type of the specified resource, and
         /// <code>&lt;ImageData&gt;</code> is the data encoded as a Base 64 string.
         /// </summary>
-        /// <param name="url">The URL of the resource to convert.</param>
+        /// <param name="uri">The URI of the resource to convert.</param>
         /// <returns>A data URI containing the content of the resource.</returns>
-        public static string DownloadUrlIntoDataUri(string url)
+        public static Uri DownloadUriIntoDataUri(Uri uri)
         {
-            if (url.StartsWith("data:"))
-                return url;
+            if (uri.Scheme == "data")
+                return uri;
 
-            WebRequest request = WebRequest.Create(url);
+            WebRequest request = WebRequest.Create(uri);
             HttpWebRequest httpWebRequest = request as HttpWebRequest;
             if (httpWebRequest != null)
             {
@@ -113,7 +117,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="stream">The stream containing the image to encode into a data URI.</param>
         /// <param name="imageFormat">The format of the image, which controls the mime type.</param>
         /// <returns>A data URI containing the content of the image.</returns>
-        public static string ImageToDataUri(Stream stream, CesiumImageFormat imageFormat)
+        public static Uri ImageToDataUri(Stream stream, CesiumImageFormat imageFormat)
         {
             string mimeType = GetMimeTypeFromCesiumImageFormat(imageFormat);
             return BuildDataUri(mimeType, stream);
@@ -128,7 +132,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="image">The image to convert.</param>
         /// <param name="imageFormat">The format of the image, which controls the mime type.</param>
         /// <returns>A data URI containing the content of the image.</returns>
-        public static string ImageToDataUri(Image image, CesiumImageFormat imageFormat)
+        public static Uri ImageToDataUri(Image image, CesiumImageFormat imageFormat)
         {
             string mimeType = GetMimeTypeFromCesiumImageFormat(imageFormat);
             using (MemoryStream stream = new MemoryStream())
@@ -145,18 +149,22 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumImageFormat.Jpeg:
                     return ImageFormat.Jpeg;
+
                 case CesiumImageFormat.Png:
                     return ImageFormat.Png;
+
                 case CesiumImageFormat.Bmp:
                     return ImageFormat.Bmp;
+
                 case CesiumImageFormat.Gif:
                     return ImageFormat.Gif;
+
                 default:
                     throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "imageFormat");
             }
         }
 
-        private static string BuildDataUri(string mimeType, Stream dataStream)
+        private static Uri BuildDataUri(string mimeType, Stream dataStream)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append("data:");
@@ -173,7 +181,7 @@ namespace CesiumLanguageWriter.Advanced
                 builder.Append(Convert.ToBase64String(memoryStream.GetBuffer(), 0, (int)memoryStream.Length));
             }
 
-            return builder.ToString();
+            return new Uri(builder.ToString());
         }
 
         private static string GetMimeTypeFromCesiumImageFormat(CesiumImageFormat imageFormat)
@@ -182,12 +190,16 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumImageFormat.Jpeg:
                     return "image/jpeg";
+
                 case CesiumImageFormat.Png:
                     return "image/png";
+
                 case CesiumImageFormat.Bmp:
                     return "image/bmp";
+
                 case CesiumImageFormat.Gif:
                     return "image/gif";
+
                 default:
                     throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "imageFormat");
             }
@@ -195,7 +207,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="CesiumStripeOrientation"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="orientation">The orientation to convert.</param>
         /// <returns>The string representation of the specified <see cref="CesiumStripeOrientation"/>.</returns>
@@ -205,8 +217,10 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumStripeOrientation.Horizontal:
                     return "HORIZONTAL";
+
                 case CesiumStripeOrientation.Vertical:
                     return "VERTICAL";
+
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "orientation");
             }
@@ -214,7 +228,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="CesiumHorizontalOrigin"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="horizontalOrigin">The horizontal origin to convert.</param>
         /// <returns>The string representation of the specified <see cref="CesiumHorizontalOrigin"/>.</returns>
@@ -224,10 +238,13 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumHorizontalOrigin.Left:
                     return "LEFT";
+
                 case CesiumHorizontalOrigin.Center:
                     return "CENTER";
+
                 case CesiumHorizontalOrigin.Right:
                     return "RIGHT";
+
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "horizontalOrigin");
             }
@@ -235,7 +252,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="CesiumVerticalOrigin"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="verticalOrigin">The vertical origin to convert.</param>
         /// <returns>The string representation of the specified <see cref="CesiumVerticalOrigin"/>.</returns>
@@ -245,10 +262,13 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumVerticalOrigin.Bottom:
                     return "BOTTOM";
+
                 case CesiumVerticalOrigin.Center:
                     return "CENTER";
+
                 case CesiumVerticalOrigin.Top:
                     return "TOP";
+
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "verticalOrigin");
             }
@@ -256,7 +276,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="CesiumInterpolationAlgorithm"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="interpolationAlgorithm">The interpolation algorithm to convert.</param>
         /// <returns>The string representing the specified <see cref="CesiumInterpolationAlgorithm"/>.</returns>
@@ -266,10 +286,13 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumInterpolationAlgorithm.Linear:
                     return "LINEAR";
+
                 case CesiumInterpolationAlgorithm.Lagrange:
                     return "LAGRANGE";
+
                 case CesiumInterpolationAlgorithm.Hermite:
                     return "HERMITE";
+
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "interpolationAlgorithm");
             }
@@ -277,7 +300,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="CesiumExtrapolationType"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="extrapolationType">The value to convert.</param>
         /// <returns>The string representing the specified <see cref="CesiumExtrapolationType"/>.</returns>
@@ -287,10 +310,13 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumExtrapolationType.None:
                     return "NONE";
+
                 case CesiumExtrapolationType.Hold:
                     return "HOLD";
+
                 case CesiumExtrapolationType.Extrapolate:
                     return "EXTRAPOLATE";
+
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "extrapolationType");
             }
@@ -298,7 +324,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="ClockRange"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="clockRange">The label style to convert.</param>
         /// <returns>The string representing the specified <see cref="CesiumLabelStyle"/>.</returns>
@@ -308,10 +334,13 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case ClockRange.Clamped:
                     return "CLAMPED";
+
                 case ClockRange.Unbounded:
                     return "UNBOUNDED";
+
                 case ClockRange.LoopStop:
                     return "LOOP_STOP";
+
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "clockRange");
             }
@@ -319,7 +348,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="ClockStep"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="clockStep">The label style to convert.</param>
         /// <returns>The string representing the specified <see cref="CesiumLabelStyle"/>.</returns>
@@ -329,10 +358,13 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case ClockStep.SystemClock:
                     return "SYSTEM_CLOCK";
+
                 case ClockStep.SystemClockMultiplier:
                     return "SYSTEM_CLOCK_MULTIPLIER";
+
                 case ClockStep.TickDependent:
                     return "TICK_DEPENDENT";
+
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "clockStep");
             }
@@ -340,7 +372,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="CesiumLabelStyle"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="labelStyle">The label style to convert.</param>
         /// <returns>The string representing the specified <see cref="CesiumLabelStyle"/>.</returns>
@@ -350,10 +382,13 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumLabelStyle.Fill:
                     return "FILL";
+
                 case CesiumLabelStyle.Outline:
                     return "OUTLINE";
+
                 case CesiumLabelStyle.FillAndOutline:
                     return "FILL_AND_OUTLINE";
+
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "labelStyle");
             }
@@ -361,7 +396,7 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts a <see cref="CesiumLabelStyle"/> to the corresponding string in a
-        /// <topic name="Cesium">Cesium</topic> stream.
+        /// CZML stream.
         /// </summary>
         /// <param name="portionToDisplay">The value to convert.</param>
         /// <returns>The string representing the specified <see cref="CesiumSensorVolumePortionToDisplay"/>.</returns>
@@ -371,10 +406,13 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumSensorVolumePortionToDisplay.Complete:
                     return "COMPLETE";
+
                 case CesiumSensorVolumePortionToDisplay.AboveEllipsoidHorizon:
                     return "ABOVE_ELLIPSOID_HORIZON";
+
                 case CesiumSensorVolumePortionToDisplay.BelowEllipsoidHorizon:
                     return "BELOW_ELLIPSOID_HORIZON";
+
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "portionToDisplay");
             }
@@ -383,15 +421,15 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Returns a resolved url, using the given <see cref="CesiumResourceBehavior"/>.
         /// </summary>
-        /// <param name="url">The url of the resource.</param>
+        /// <param name="uri">The url of the resource.</param>
         /// <param name="resourceBehavior">A <see cref="CesiumResourceBehavior"/> specifying how include the resource into a CZML document.</param>
         /// <returns>The resolved url.</returns>
-        public static string GetResourceUrl(string url, CesiumResourceBehavior resourceBehavior)
+        public static Uri GetResourceUri(Uri uri, CesiumResourceBehavior resourceBehavior)
         {
             if (resourceBehavior == CesiumResourceBehavior.Embed)
-                return CachingCesiumUrlResolver.ThreadLocalInstance.ResolveUrl(url);
+                return CachingCesiumUriResolver.ThreadLocalInstance.ResolveUri(uri);
 
-            return url;
+            return uri;
         }
     }
 }

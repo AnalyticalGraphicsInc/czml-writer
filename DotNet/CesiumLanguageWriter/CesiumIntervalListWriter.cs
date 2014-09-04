@@ -3,7 +3,7 @@
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a list of intervals for which a <topic name="Cesium">Cesium</topic> property is defined.
+    /// Writes a list of intervals for which a property is defined.
     /// </summary>
     /// <typeparam name="TPropertyWriter">The type used to represent the value of this property for a single interval.</typeparam>
     public class CesiumIntervalListWriter<TPropertyWriter> : CesiumElementWriter, ICesiumIntervalListWriter
@@ -29,7 +29,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the end of a JSON array representing the interval list. 
+        /// Writes the end of a JSON array representing the interval list.
         /// </summary>
         protected override void OnClose()
         {
@@ -54,6 +54,16 @@ namespace CesiumLanguageWriter
         public TPropertyWriter OpenInterval(JulianDate start, JulianDate stop)
         {
             return m_propertyWriter.OpenInterval(start, stop);
+        }
+
+        ICesiumPropertyWriter ICesiumIntervalListWriter.OpenInterval()
+        {
+            return OpenInterval();
+        }
+
+        ICesiumPropertyWriter ICesiumIntervalListWriter.OpenInterval(JulianDate start, JulianDate stop)
+        {
+            return OpenInterval(start, stop);
         }
     }
 }

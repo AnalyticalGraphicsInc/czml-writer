@@ -6,6 +6,7 @@ import agi.foundation.compatibility.annotations.Internal;
 import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.Delegate;
 import agi.foundation.compatibility.Func1;
+import agi.foundation.compatibility.IDisposable;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.*;
 import java.util.List;
@@ -62,6 +63,15 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
 		}, false);
 	}
 
+	/**
+	 *  Gets the parent being adapted.
+	
+
+	 */
+	public final TFrom getParent() {
+		return m_parent;
+	}
+
 	public final boolean getIsOpen() {
 		return m_parent.getIsOpen();
 	}
@@ -106,13 +116,13 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
 		m_parent.writeInterval(start, stop);
 	}
 
-	public final ICesiumPropertyWriter openInterval() {
+	public final ICesiumInterpolatableValuePropertyWriter<TValue> openInterval() {
 		m_interval.getValue().open(m_parent.getOutput());
 		return m_interval.getValue();
 	}
 
-	public final ICesiumIntervalListWriter openMultipleIntervals() {
-		return m_parent.openMultipleIntervals();
+	public final ICesiumInterpolatableIntervalListWriter<TValue> openMultipleIntervals() {
+		return new MultipleIntervalsAdaptor<TFrom, TValue>(this, m_parent.openMultipleIntervals());
 	}
 
 	public final ICesiumPropertyWriter getIntervalWriter() {
@@ -129,5 +139,45 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
 
 	public final void dispose() {
 		m_parent.close();
+	}
+
+	static private class MultipleIntervalsAdaptor<TFrom extends ICesiumPropertyWriter & ICesiumInterpolationInformationWriter, TValue> implements ICesiumInterpolatableIntervalListWriter<TValue> {
+		private CesiumInterpolatableWriterAdaptor<TFrom, TValue> m_intervalAdaptor;
+		private ICesiumIntervalListWriter m_parent;
+
+		public MultipleIntervalsAdaptor(CesiumInterpolatableWriterAdaptor<TFrom, TValue> intervalAdaptor, ICesiumIntervalListWriter parent) {
+			m_intervalAdaptor = intervalAdaptor;
+			m_parent = parent;
+		}
+
+		public final ICesiumInterpolatableValuePropertyWriter<TValue> openInterval() {
+			return m_intervalAdaptor.openInterval();
+		}
+
+		public final ICesiumInterpolatableValuePropertyWriter<TValue> openInterval(JulianDate start, JulianDate stop) {
+			ICesiumInterpolatableValuePropertyWriter<TValue> intervalWriter = m_intervalAdaptor.openInterval();
+			intervalWriter.writeInterval(start, stop);
+			return intervalWriter;
+		}
+
+		public final boolean getIsOpen() {
+			return m_parent.getIsOpen();
+		}
+
+		public final CesiumOutputStream getOutput() {
+			return m_parent.getOutput();
+		}
+
+		public final void open(CesiumOutputStream output) {
+			m_parent.open(output);
+		}
+
+		public final void close() {
+			m_parent.close();
+		}
+
+		public final void dispose() {
+			m_parent.dispose();
+		}
 	}
 }

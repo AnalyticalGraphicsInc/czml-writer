@@ -8,7 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 
 /**
  *  
- Writes <topic name="Cesium">Cesium</topic> data to a  {@link CesiumOutputStream}.
+ Writes data to a  {@link CesiumOutputStream}.
  
 
  */
@@ -21,7 +21,7 @@ public class CesiumStreamWriter {
 
 	/**
 	 *  
-	Starts a new <topic name="Cesium">Cesium</topic> packet on the given stream.
+	Starts a new CZML packet on the given stream.
 	
 	
 	

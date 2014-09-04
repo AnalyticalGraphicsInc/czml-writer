@@ -1,5 +1,6 @@
 bin
 obj
+packages
 !ThirdParty/**/bin/
 ThirdParty/LoadDBF/bin/
 _ReSharper.*
