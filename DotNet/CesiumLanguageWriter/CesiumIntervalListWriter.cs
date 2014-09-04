@@ -55,5 +55,15 @@ namespace CesiumLanguageWriter
         {
             return m_propertyWriter.OpenInterval(start, stop);
         }
+
+        ICesiumPropertyWriter ICesiumIntervalListWriter.OpenInterval()
+        {
+            return OpenInterval();
+        }
+
+        ICesiumPropertyWriter ICesiumIntervalListWriter.OpenInterval(JulianDate start, JulianDate stop)
+        {
+            return OpenInterval(start, stop);
+        }
     }
 }

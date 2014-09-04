@@ -44,6 +44,14 @@ namespace CesiumLanguageWriter.Advanced
             m_interval = new Lazy<CesiumWriterAdaptor<TFrom, TValue>>(() => new CesiumWriterAdaptor<TFrom, TValue>((TFrom)m_parent.IntervalWriter, m_writeValueCallback), false);
         }
 
+        /// <summary>
+        /// Gets the parent being adapted.
+        /// </summary>
+        public TFrom Parent
+        {
+            get { return m_parent; }
+        }
+
         /// <inheritdoc />
         public bool IsOpen
         {
