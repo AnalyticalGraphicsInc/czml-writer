@@ -30,12 +30,12 @@ namespace CesiumLanguageWriter.Advanced
         {
             m_propertyName = propertyName;
             m_multipleIntervals = new Lazy<CesiumIntervalListWriter<TDerived>>(CreateIntervalListWriter, false);
-            m_interval = new Lazy<TDerived>(() => CopyForInterval(), false);
+            m_interval = new Lazy<TDerived>(CopyForInterval, false);
         }
 
         private CesiumIntervalListWriter<TDerived> CreateIntervalListWriter()
         {
-            return new CesiumIntervalListWriter<TDerived>((TDerived)(object)this);
+            return new CesiumIntervalListWriter<TDerived>((TDerived)this);
         }
 
         /// <summary>
