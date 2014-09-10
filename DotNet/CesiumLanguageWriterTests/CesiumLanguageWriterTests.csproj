@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="Advanced\TestCesiumFormattingHelper.cs" />
     <Compile Include="Advanced\TestCesiumWritingHelper.cs" />
+    <Compile Include="grisu\TestGrisu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCartesian3.cs" />
     <Compile Include="TestCartographic.cs" />
