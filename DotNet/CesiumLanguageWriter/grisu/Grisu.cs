@@ -28,6 +28,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 
 namespace GrisuDotNet
@@ -62,7 +63,7 @@ namespace GrisuDotNet
 
             if (!DoubleToShortestAscii(ref grisuDouble, decimal_rep, out decimal_rep_length, out decimal_point))
             {
-                writer.Write("{0:R}", value);
+                writer.Write(string.Format(CultureInfo.InvariantCulture, "{0:R}", value));
                 return;
             }
 
