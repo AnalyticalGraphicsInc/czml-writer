@@ -64,14 +64,13 @@
 
         // Create an empty CzmlDataSource (with an ID of 'info') that will hold CZML data once returned from the server.
         var dataSource = new Cesium.CzmlDataSource('info');
+        // Add the empty dataSource to the viewer.
+        viewer.dataSources.add(dataSource);
 
         // Request that the dataSource populate itself asynchronously with data from URL path 'info'.
         // This requires that our server will be able to handle HTTP requests such as 'GET /info', which
         // is a route that we register in Global.asax.cs.
-        dataSource.loadUrl('info').then(function () {
-            // Once the dataSource is finished populating, add it to the viewer's dataSources, and we're done.
-            viewer.dataSources.add(dataSource);
-        });
+        dataSource.loadUrl('info');
 
     </script>
 </body>
