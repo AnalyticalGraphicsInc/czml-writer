@@ -93,6 +93,9 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 	 */
 	public final void writeVerticalOrigin(CesiumVerticalOrigin value) {
 		String PropertyName = VerticalOriginPropertyName;
+		if (getForceInterval()) {
+			openIntervalIfNecessary();
+		}
 		if (getIsInterval()) {
 			getOutput().writePropertyName(PropertyName);
 		}

@@ -93,6 +93,9 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 	 */
 	public final void writeNumber(double value) {
 		String PropertyName = NumberPropertyName;
+		if (getForceInterval()) {
+			openIntervalIfNecessary();
+		}
 		if (getIsInterval()) {
 			getOutput().writePropertyName(PropertyName);
 		}

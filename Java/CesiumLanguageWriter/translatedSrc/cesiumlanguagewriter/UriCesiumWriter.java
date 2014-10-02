@@ -109,6 +109,9 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 	 */
 	public final void writeUri(URI uri, CesiumResourceBehavior resourceBehavior) {
 		String PropertyName = UriPropertyName;
+		if (getForceInterval()) {
+			openIntervalIfNecessary();
+		}
 		if (getIsInterval()) {
 			getOutput().writePropertyName(PropertyName);
 		}
@@ -127,6 +130,9 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 	 */
 	public final void writeUri(URI uri, ICesiumUriResolver resolver) {
 		String PropertyName = UriPropertyName;
+		if (getForceInterval()) {
+			openIntervalIfNecessary();
+		}
 		if (getIsInterval()) {
 			getOutput().writePropertyName(PropertyName);
 		}
@@ -157,6 +163,9 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 	 */
 	public final void writeUri(RenderedImage image, CesiumImageFormat imageFormat) {
 		String PropertyName = UriPropertyName;
+		if (getForceInterval()) {
+			openIntervalIfNecessary();
+		}
 		if (getIsInterval()) {
 			getOutput().writePropertyName(PropertyName);
 		}

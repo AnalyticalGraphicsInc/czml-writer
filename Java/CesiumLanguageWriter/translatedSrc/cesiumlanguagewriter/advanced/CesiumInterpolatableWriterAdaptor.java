@@ -129,6 +129,14 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
 		return m_interval.getValue();
 	}
 
+	public final boolean getForceInterval() {
+		return m_parent.getForceInterval();
+	}
+
+	public final void setForceInterval(boolean value) {
+		m_parent.setForceInterval(value);
+	}
+
 	public final void open(CesiumOutputStream output) {
 		m_parent.open(output);
 	}

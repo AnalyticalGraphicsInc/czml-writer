@@ -135,6 +135,24 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
 	}
 
 	/**
+	 *  Gets a value indicating whether this instance should always open an interval.
+	
+
+	 */
+	public final boolean getForceInterval() {
+		return backingField$ForceInterval;
+	}
+
+	/**
+	 *  Sets a value indicating whether this instance should always open an interval.
+	
+
+	 */
+	public final void setForceInterval(boolean value) {
+		backingField$ForceInterval = value;
+	}
+
+	/**
 	 *  
 	Copies this instance and returns the copy.
 	
@@ -254,4 +272,6 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
 		result.m_elementType = ElementType.INTERVAL;
 		return result;
 	}
+
+	private boolean backingField$ForceInterval;
 }

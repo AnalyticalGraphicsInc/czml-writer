@@ -92,6 +92,9 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
 	 */
 	public final void writeFont(String font) {
 		String PropertyName = FontPropertyName;
+		if (getForceInterval()) {
+			openIntervalIfNecessary();
+		}
 		if (getIsInterval()) {
 			getOutput().writePropertyName(PropertyName);
 		}

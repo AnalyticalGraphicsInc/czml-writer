@@ -38,7 +38,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
-        /// <param name="existingInstance">The existing instance to copy.</param> 
+        /// <param name="existingInstance">The existing instance to copy.</param>
         protected PixelOffsetCesiumWriter(PixelOffsetCesiumWriter existingInstance)
             : base(existingInstance)
         {

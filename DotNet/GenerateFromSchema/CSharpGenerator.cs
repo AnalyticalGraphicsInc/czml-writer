@@ -10,11 +10,9 @@ namespace GenerateFromSchema
     {
         private readonly string m_outputDirectory;
         private readonly Configuration m_configuration;
-        private HashSet<Schema> m_writtenSchemas = new HashSet<Schema>();
+        private readonly HashSet<Schema> m_writtenSchemas = new HashSet<Schema>();
 
-        public CSharpGenerator(
-            string outputDirectory,
-            string configurationFileName)
+        public CSharpGenerator(string outputDirectory, string configurationFileName)
         {
             if (outputDirectory == null)
                 throw new ArgumentNullException("outputDirectory");
@@ -100,7 +98,7 @@ namespace GenerateFromSchema
             }
         }
 
-        private void WriteGeneratedWarning(CodeWriter writer)
+        private static void WriteGeneratedWarning(CodeWriter writer)
         {
             writer.WriteLine("// This file was generated automatically by GenerateFromSchema.  Do NOT edit it.");
             writer.WriteLine("// https://github.com/AnalyticalGraphicsInc/czml-writer");
@@ -155,23 +153,41 @@ namespace GenerateFromSchema
             }
         }
 
-        private void WriteSummaryText(CodeWriter writer, string text)
+        private static void WriteSummaryText(CodeWriter writer, string text)
         {
             writer.WriteLine("/// <summary>");
             writer.WriteLine("/// {0}", text);
             writer.WriteLine("/// </summary>");
         }
 
-        private void WriteDescriptionAsClassSummary(CodeWriter writer, Schema packetSchema)
+        private static void WriteInheritDoc(CodeWriter writer)
         {
-            WriteSummaryText(
-                writer,
-                string.Format("Writes a <code>{0}</code> to a <see cref=\"CesiumOutputStream\" />.  A <code>{0}</code> {1}",
+            writer.WriteLine("/// <inheritdoc />");
+        }
+
+        private static void WriteParameterText(CodeWriter writer, string parameterName, string description)
+        {
+            writer.WriteLine("/// <param name=\"{0}\">{1}</param>", parameterName, description);
+        }
+
+        private static void WriteTypeParameterText(CodeWriter writer, string typeName, string description)
+        {
+            writer.WriteLine("/// <typeparam name=\"{0}\">{1}</typeparam>", typeName, description);
+        }
+
+        private static void WriteReturnsText(CodeWriter writer, string description)
+        {
+            writer.WriteLine(string.Format("/// <returns>{0}</returns>", description));
+        }
+
+        private static void WriteDescriptionAsClassSummary(CodeWriter writer, Schema packetSchema)
+        {
+            WriteSummaryText(writer, string.Format("Writes a <code>{0}</code> to a <see cref=\"CesiumOutputStream\" />.  A <code>{0}</code> {1}",
                               packetSchema.Name,
                               StringHelper.UncapitalizeFirstLetter(packetSchema.Description)));
         }
 
-        private void WritePropertyNameConstants(CodeWriter writer, Schema schema)
+        private static void WritePropertyNameConstants(CodeWriter writer, Schema schema)
         {
             if (schema.Properties == null)
                 return;
@@ -220,7 +236,7 @@ namespace GenerateFromSchema
             writer.WriteLine();
         }
 
-        private void WritePacketOpenClose(CodeWriter writer)
+        private static void WritePacketOpenClose(CodeWriter writer)
         {
             WriteSummaryText(writer, "Writes the start of a new JSON object representing the packet.");
             writer.WriteLine("protected override void OnOpen()");
@@ -239,7 +255,7 @@ namespace GenerateFromSchema
             writer.WriteLine();
         }
 
-        private bool PropertyValueIsIntervals(Property property)
+        private static bool PropertyValueIsIntervals(Property property)
         {
             return ((property.ValueType.JsonTypes & (JsonSchemaType.Object | JsonSchemaType.Array)) == (JsonSchemaType.Object | JsonSchemaType.Array)) &&
                    (property.ValueType.JsonTypes & JsonSchemaType.Null) != JsonSchemaType.Null;
@@ -361,8 +377,14 @@ namespace GenerateFromSchema
                         // as not needing an interval, because it writes a simple JSON 
                         // type (string, number, boolean), we can skip opening an interval 
                         // and just write the property value directly.
+                        // Unless ForceInterval has been set to true.
+                        writer.WriteLine("if (ForceInterval)");
+                        writer.WriteLine("    OpenIntervalIfNecessary();");
+                        if (overload.WritePropertyName)
+                        {
                         writer.WriteLine("if (IsInterval)");
                         writer.WriteLine("    Output.WritePropertyName(PropertyName);");
+                    }
                     }
                     else
                     {
@@ -379,11 +401,6 @@ namespace GenerateFromSchema
             }
         }
 
-        private void WriteParameterText(CodeWriter writer, string name, string description)
-        {
-            writer.WriteLine("/// <param name=\"{0}\">{1}</param>", name, description);
-        }
-
         private void WriteConstructorsAndCloneMethod(CodeWriter writer, Schema schema)
         {
             WriteSummaryText(writer, "Initializes a new instance.");
@@ -395,7 +412,7 @@ namespace GenerateFromSchema
             writer.WriteLine();
 
             WriteSummaryText(writer, "Initializes a new instance as a copy of an existing instance.");
-            writer.WriteLine("/// <param name=\"existingInstance\">The existing instance to copy.</param> ");
+            WriteParameterText(writer, "existingInstance", "The existing instance to copy.");
             writer.WriteLine("protected {0}CesiumWriter({0}CesiumWriter existingInstance)", schema.NameWithPascalCase);
             writer.WriteLine("    : base(existingInstance)");
             writer.OpenScope();
@@ -403,7 +420,7 @@ namespace GenerateFromSchema
             writer.CloseScope();
             writer.WriteLine();
 
-            writer.WriteLine("/// <inheritdoc />");
+            WriteInheritDoc(writer);
             writer.WriteLine("public override {0}CesiumWriter Clone()", schema.NameWithPascalCase);
             writer.OpenScope();
             writer.WriteLine("return new {0}CesiumWriter(this);", schema.NameWithPascalCase);
@@ -464,7 +481,7 @@ namespace GenerateFromSchema
                     interfaceName = "ICesiumInterpolatableValuePropertyWriter";
 
                 WriteSummaryText(writer, string.Format("Returns a wrapper for this instance that implements <see cref=\"{0}{{T}}\" /> to write a value in <code>{1}</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref=\"ICesiumElementWriter.Close\" /> on either this instance or the wrapper, but you must not call it on both.", interfaceName, property.NameWithPascalCase));
-                writer.WriteLine("/// <returns>The wrapper.</returns>");
+                WriteReturnsText(writer, "The wrapper.");
                 writer.WriteLine("public {0}<{1}> As{2}()",
                                  interfaceName,
                                  overloads[0].Parameters[0].Type,
@@ -543,23 +560,6 @@ namespace GenerateFromSchema
                 }
             }
             return overloads;
-        }
-
-        private string GetDefaultValueType(Schema schema)
-        {
-            Property firstValueProperty = schema.FindFirstValueProperty();
-
-            if (firstValueProperty != null)
-            {
-                OverloadInfo[] overloads = GetOverloadsForProperty(firstValueProperty);
-                OverloadInfo firstOverloadWithOneParameter = Array.Find(overloads, overload => overload.Parameters.Length == 1);
-                if (firstOverloadWithOneParameter != null)
-                {
-                    return firstOverloadWithOneParameter.Parameters[0].Type;
-                }
-            }
-
-            return null;
         }
 
         private OverloadInfo FindSampledDataOverload(OverloadInfo[] overloads)

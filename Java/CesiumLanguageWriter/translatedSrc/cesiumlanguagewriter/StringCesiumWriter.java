@@ -92,6 +92,9 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 	 */
 	public final void writeString(String value) {
 		String PropertyName = StringPropertyName;
+		if (getForceInterval()) {
+			openIntervalIfNecessary();
+		}
 		if (getIsInterval()) {
 			getOutput().writePropertyName(PropertyName);
 		}

@@ -71,6 +71,9 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 	 */
 	public final void writeBoolean(boolean value) {
 		String PropertyName = BooleanPropertyName;
+		if (getForceInterval()) {
+			openIntervalIfNecessary();
+		}
 		if (getIsInterval()) {
 			getOutput().writePropertyName(PropertyName);
 		}

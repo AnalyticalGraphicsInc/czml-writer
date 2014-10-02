@@ -37,7 +37,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
-        /// <param name="existingInstance">The existing instance to copy.</param> 
+        /// <param name="existingInstance">The existing instance to copy.</param>
         protected VerticalOriginCesiumWriter(VerticalOriginCesiumWriter existingInstance)
             : base(existingInstance)
         {
@@ -58,6 +58,8 @@ namespace CesiumLanguageWriter
         public void WriteVerticalOrigin(CesiumVerticalOrigin value)
         {
             const string PropertyName = VerticalOriginPropertyName;
+            if (ForceInterval)
+                OpenIntervalIfNecessary();
             if (IsInterval)
                 Output.WritePropertyName(PropertyName);
             Output.WriteValue(CesiumFormattingHelper.VerticalOriginToString(value));
