@@ -30,7 +30,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
-        /// <param name="existingInstance">The existing instance to copy.</param> 
+        /// <param name="existingInstance">The existing instance to copy.</param>
         protected BooleanCesiumWriter(BooleanCesiumWriter existingInstance)
             : base(existingInstance)
         {
@@ -50,6 +50,8 @@ namespace CesiumLanguageWriter
         public void WriteBoolean(bool value)
         {
             const string PropertyName = BooleanPropertyName;
+            if (ForceInterval)
+                OpenIntervalIfNecessary();
             if (IsInterval)
                 Output.WritePropertyName(PropertyName);
             Output.WriteValue(value);

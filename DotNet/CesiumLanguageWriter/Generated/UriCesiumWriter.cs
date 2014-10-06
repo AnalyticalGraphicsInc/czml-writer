@@ -38,7 +38,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
-        /// <param name="existingInstance">The existing instance to copy.</param> 
+        /// <param name="existingInstance">The existing instance to copy.</param>
         protected UriCesiumWriter(UriCesiumWriter existingInstance)
             : base(existingInstance)
         {
@@ -69,6 +69,8 @@ namespace CesiumLanguageWriter
         public void WriteUri(Uri uri, CesiumResourceBehavior resourceBehavior)
         {
             const string PropertyName = UriPropertyName;
+            if (ForceInterval)
+                OpenIntervalIfNecessary();
             if (IsInterval)
                 Output.WritePropertyName(PropertyName);
             Output.WriteValue(CesiumFormattingHelper.GetResourceUri(uri, resourceBehavior));
@@ -82,6 +84,8 @@ namespace CesiumLanguageWriter
         public void WriteUri(Uri uri, ICesiumUriResolver resolver)
         {
             const string PropertyName = UriPropertyName;
+            if (ForceInterval)
+                OpenIntervalIfNecessary();
             if (IsInterval)
                 Output.WritePropertyName(PropertyName);
             Output.WriteValue(resolver.ResolveUri(uri));
@@ -104,6 +108,8 @@ namespace CesiumLanguageWriter
         public void WriteUri(Image image, CesiumImageFormat imageFormat)
         {
             const string PropertyName = UriPropertyName;
+            if (ForceInterval)
+                OpenIntervalIfNecessary();
             if (IsInterval)
                 Output.WritePropertyName(PropertyName);
             Output.WriteValue(CesiumFormattingHelper.ImageToDataUri(image, imageFormat));

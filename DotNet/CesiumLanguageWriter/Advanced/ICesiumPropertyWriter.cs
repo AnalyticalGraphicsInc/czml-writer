@@ -32,5 +32,10 @@
         /// open the writer, instead of accessing this property directly.
         /// </summary>
         ICesiumPropertyWriter IntervalWriter { get; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance should always open an interval.
+        /// </summary>
+        bool ForceInterval { get; set; }
     }
 }

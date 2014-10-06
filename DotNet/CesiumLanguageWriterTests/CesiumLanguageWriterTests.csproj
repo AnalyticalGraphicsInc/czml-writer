@@ -41,21 +41,6 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\CesiumLanguageWriter\Attributes\CoverageExcludeAttribute.cs">
-      <Link>Attributes\CoverageExcludeAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\CesiumLanguageWriter\Attributes\CSToJavaExcludeAttribute.cs">
-      <Link>Attributes\CSToJavaExcludeAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\CesiumLanguageWriter\Attributes\CSToJavaExcludeBaseAttribute.cs">
-      <Link>Attributes\CSToJavaExcludeBaseAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\CesiumLanguageWriter\Attributes\CSToJavaImmutableValueType.cs">
-      <Link>Attributes\CSToJavaImmutableValueType.cs</Link>
-    </Compile>
-    <Compile Include="..\CesiumLanguageWriter\Attributes\CSToJavaRenameAttribute.cs">
-      <Link>Attributes\CSToJavaRenameAttribute.cs</Link>
-    </Compile>
     <Compile Include="Advanced\TestCesiumFormattingHelper.cs" />
     <Compile Include="Advanced\TestCesiumWritingHelper.cs" />
     <Compile Include="grisu\TestGrisu.cs" />

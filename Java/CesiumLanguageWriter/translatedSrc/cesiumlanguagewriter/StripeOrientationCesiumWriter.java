@@ -93,6 +93,9 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 	 */
 	public final void writeStripeOrientation(CesiumStripeOrientation value) {
 		String PropertyName = StripeOrientationPropertyName;
+		if (getForceInterval()) {
+			openIntervalIfNecessary();
+		}
 		if (getIsInterval()) {
 			getOutput().writePropertyName(PropertyName);
 		}

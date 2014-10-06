@@ -93,6 +93,9 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
 	 */
 	public final void writePortionToDisplay(CesiumSensorVolumePortionToDisplay value) {
 		String PropertyName = PortionToDisplayPropertyName;
+		if (getForceInterval()) {
+			openIntervalIfNecessary();
+		}
 		if (getIsInterval()) {
 			getOutput().writePropertyName(PropertyName);
 		}

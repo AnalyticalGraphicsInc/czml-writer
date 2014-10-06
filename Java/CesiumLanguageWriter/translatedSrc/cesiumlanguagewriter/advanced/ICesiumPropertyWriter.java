@@ -53,4 +53,18 @@ public interface ICesiumPropertyWriter extends ICesiumElementWriter {
 
 	 */
 	ICesiumPropertyWriter getIntervalWriter();
+
+	/**
+	 *  Gets a value indicating whether this instance should always open an interval.
+	
+
+	 */
+	boolean getForceInterval();
+
+	/**
+	 *  Sets a value indicating whether this instance should always open an interval.
+	
+
+	 */
+	void setForceInterval(boolean value);
 }

@@ -25,7 +25,7 @@ namespace CesiumLanguageWriter.Advanced
     /// <typeparam name="TFrom">The class derived from <see cref="CesiumInterpolatablePropertyWriter{TDerived}"/> to adapt.</typeparam>
     /// <typeparam name="TValue">The type of value to which to adapt the class to write.</typeparam>
     public class CesiumInterpolatableWriterAdaptor<TFrom, TValue> : ICesiumInterpolatableValuePropertyWriter<TValue>
-        where TFrom : ICesiumPropertyWriter, ICesiumInterpolationInformationWriter
+        where TFrom : class, ICesiumPropertyWriter, ICesiumInterpolationInformationWriter
     {
         private readonly TFrom m_parent;
         private readonly CesiumWriterAdaptorWriteCallback<TFrom, TValue> m_writeValueCallback;
@@ -157,6 +157,13 @@ namespace CesiumLanguageWriter.Advanced
         public ICesiumPropertyWriter IntervalWriter
         {
             get { return m_interval.Value; }
+        }
+
+        /// <inheritdoc />
+        public bool ForceInterval
+        {
+            get { return m_parent.ForceInterval; }
+            set { m_parent.ForceInterval = value; }
         }
 
         /// <inheritdoc />

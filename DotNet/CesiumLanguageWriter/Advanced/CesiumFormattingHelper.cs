@@ -12,8 +12,8 @@ namespace CesiumLanguageWriter.Advanced
     /// </summary>
     public static class CesiumFormattingHelper
     {
-        static private JulianDate s_minimumGregorianDate = GregorianDate.MinValue.ToJulianDate();
-        static private JulianDate s_maximumGregorianDate = GregorianDate.MaxValue.ToJulianDate();
+        private static readonly JulianDate s_minimumGregorianDate = GregorianDate.MinValue.ToJulianDate();
+        private static readonly JulianDate s_maximumGregorianDate = GregorianDate.MaxValue.ToJulianDate();
 
         /// <summary>
         /// Converts a <see cref="TimeInterval"/> as an ISO8601 interval string.

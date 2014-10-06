@@ -75,6 +75,11 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Gets or sets a value indicating whether this instance should always open an interval.
+        /// </summary>
+        public bool ForceInterval { get; set; }
+
+        /// <summary>
         /// Copies this instance and returns the copy.
         /// </summary>
         /// <returns>The copy.</returns>
