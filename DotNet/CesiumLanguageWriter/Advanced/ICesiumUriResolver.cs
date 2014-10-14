@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CesiumLanguageWriter.Advanced
+﻿namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
     /// A URI resolver transforms URIs into another form for inclusion in a CZML document.
@@ -14,6 +12,6 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="uri">The source URI.</param>
         /// <returns>A URI suitable for CZML.</returns>
-        Uri ResolveUri(Uri uri);
+        string ResolveUri(string uri);
     }
 }

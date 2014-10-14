@@ -9,7 +9,6 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.RepeatCesiumWriter;
 import cesiumlanguagewriter.UriCesiumWriter;
 import java.awt.image.RenderedImage;
-import java.net.URI;
 import java.util.List;
 
 /**
@@ -120,7 +119,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	 * @param uri The URI of the data.
 	 * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
 	 */
-	public final void writeImageProperty(URI uri, CesiumResourceBehavior resourceBehavior) {
+	public final void writeImageProperty(String uri, CesiumResourceBehavior resourceBehavior) {
 		{
 			cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
 			try {
@@ -141,7 +140,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	 * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
 	 * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
 	 */
-	public final void writeImageProperty(URI uri, ICesiumUriResolver resolver) {
+	public final void writeImageProperty(String uri, ICesiumUriResolver resolver) {
 		{
 			cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
 			try {

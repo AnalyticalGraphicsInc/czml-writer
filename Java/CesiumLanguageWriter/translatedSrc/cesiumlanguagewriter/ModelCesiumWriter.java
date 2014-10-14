@@ -10,7 +10,6 @@ import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.UriCesiumWriter;
 import java.awt.image.RenderedImage;
-import java.net.URI;
 import java.util.List;
 
 /**
@@ -472,7 +471,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	 * @param uri The URI of the data.
 	 * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
 	 */
-	public final void writeGltfProperty(URI uri, CesiumResourceBehavior resourceBehavior) {
+	public final void writeGltfProperty(String uri, CesiumResourceBehavior resourceBehavior) {
 		{
 			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
 			try {
@@ -493,7 +492,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	 * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
 	 * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
 	 */
-	public final void writeGltfProperty(URI uri, ICesiumUriResolver resolver) {
+	public final void writeGltfProperty(String uri, ICesiumUriResolver resolver) {
 		{
 			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
 			try {

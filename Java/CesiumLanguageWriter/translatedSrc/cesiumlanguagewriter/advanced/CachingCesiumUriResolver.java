@@ -6,7 +6,6 @@ import agi.foundation.compatibility.LinkedList;
 import agi.foundation.compatibility.LinkedListNode;
 import agi.foundation.compatibility.MapHelper;
 import cesiumlanguagewriter.*;
-import java.net.URI;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,10 +19,10 @@ import java.util.Map;
  */
 public class CachingCesiumUriResolver implements ICesiumUriResolver {
 	static private class CacheItem {
-		public final URI SourceUri;
-		public final URI ResolvedUri;
+		public final String SourceUri;
+		public final String ResolvedUri;
 
-		public CacheItem(URI sourceUri, URI resolvedUri) {
+		public CacheItem(String sourceUri, String resolvedUri) {
 			SourceUri = sourceUri;
 			ResolvedUri = resolvedUri;
 		}
@@ -31,7 +30,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
 
 	private static ThreadLocal_0 s_threadLocalInstance = new ThreadLocal_0();
 	private int m_max;
-	private Map<URI, LinkedListNode<CacheItem>> m_dictionary;
+	private Map<String, LinkedListNode<CacheItem>> m_dictionary;
 	private LinkedList<CacheItem> m_lruList;
 
 	/**
@@ -44,7 +43,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
 	 */
 	public CachingCesiumUriResolver(int max) {
 		m_max = max;
-		m_dictionary = new HashMap<URI, LinkedListNode<CacheItem>>();
+		m_dictionary = new HashMap<String, LinkedListNode<CacheItem>>();
 		m_lruList = new LinkedList<CacheItem>();
 	}
 
@@ -58,7 +57,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
 	 * @param uri The source URI.
 	 * @return A URI suitable for CZML.
 	 */
-	public final URI resolveUri(URI uri) {
+	public final String resolveUri(String uri) {
 		LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUriResolver.CacheItem> node = null;
 		LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUriResolver.CacheItem>[] out$node_1 = new LinkedListNode[] {
 			null
@@ -74,7 +73,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
 			return node.getValue().ResolvedUri;
 		}
 		//load image into data URI
-		URI resolvedUri = CesiumFormattingHelper.downloadUriIntoDataUri(uri);
+		String resolvedUri = CesiumFormattingHelper.downloadUriIntoDataUri(uri);
 		addUri(uri, resolvedUri);
 		return resolvedUri;
 	}
@@ -89,7 +88,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
 	 * @param sourceUri The source URI.
 	 * @param resolvedUri The resolved URI.
 	 */
-	public final void addUri(URI sourceUri, URI resolvedUri) {
+	public final void addUri(String sourceUri, String resolvedUri) {
 		LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUriResolver.CacheItem> newNode = m_lruList.addFirst(new CacheItem(sourceUri, resolvedUri));
 		MapHelper.add(m_dictionary, sourceUri, newNode);
 		if (m_lruList.size() > m_max) {
@@ -109,7 +108,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
 	 * @param sourceUri The source URI.
 	 * @return True if the cache already has a resolved URI for that URI, false otherwise.
 	 */
-	public final boolean containsUri(URI sourceUri) {
+	public final boolean containsUri(String sourceUri) {
 		return m_dictionary.containsKey(sourceUri);
 	}
 

@@ -83,7 +83,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="uri">The URI of the data.</param>
         /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
-        public void WriteImageProperty(Uri uri, CesiumResourceBehavior resourceBehavior)
+        public void WriteImageProperty(string uri, CesiumResourceBehavior resourceBehavior)
         {
             using (var writer = OpenImageProperty())
             {
@@ -96,7 +96,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="uri">The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
         /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
-        public void WriteImageProperty(Uri uri, ICesiumUriResolver resolver)
+        public void WriteImageProperty(string uri, ICesiumUriResolver resolver)
         {
             using (var writer = OpenImageProperty())
             {

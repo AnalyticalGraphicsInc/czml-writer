@@ -3,7 +3,6 @@ package cesiumlanguagewriter.advanced;
 
 import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.*;
-import java.net.URI;
 
 /**
  *  
@@ -24,7 +23,7 @@ public class PassThroughCesiumUriResolver implements ICesiumUriResolver {
 	 * @param uri The source URI.
 	 * @return The same URI.
 	 */
-	public final URI resolveUri(URI uri) {
+	public final String resolveUri(String uri) {
 		return uri;
 	}
 

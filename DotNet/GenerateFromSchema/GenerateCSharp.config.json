@@ -505,7 +505,7 @@
                 "namespaces": ["System"],
                 "parameters": [
                     {
-                        "type": "Uri",
+                        "type": "string",
                         "name": "uri",
                         "description": "The URI of the data."
                     },
@@ -522,7 +522,7 @@
                 "namespaces": ["System"],
                 "parameters": [
                     {
-                        "type": "Uri",
+                        "type": "string",
                         "name": "uri",
                         "description": "The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document."
                     },
