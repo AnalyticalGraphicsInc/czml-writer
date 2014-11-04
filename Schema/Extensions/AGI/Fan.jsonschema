@@ -33,13 +33,17 @@
             "$ref": "Boolean.jsonschema",
             "description": "Whether or not the fan is outlined."
         },
-        "numberOfRings": {
-            "$ref": "Double.jsonschema",
-            "description": "The number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center."
-        },
         "outlineColor": {
             "$ref": "Color.jsonschema",
             "description": "The color of the fan outline."
+        },
+        "outlineWidth": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the fan outline."
+        },
+        "numberOfRings": {
+            "$ref": "Double.jsonschema",
+            "description": "The number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center."
         }
     }
 }

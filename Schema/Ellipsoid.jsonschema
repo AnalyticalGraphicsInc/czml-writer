@@ -28,6 +28,10 @@
             "$ref": "Color.jsonschema",
             "description": "The color of the ellipsoid outline."
         },
+        "outlineWidth": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the ellipsoid outline."
+        },
         "stackPartitions": {
             "$ref": "Double.jsonschema",
             "description": "The number of times to partition the ellipsoid into stacks."
