@@ -44,6 +44,10 @@
             "$ref": "Color.jsonschema",
             "description": "The color of the polygon outline."
         },
+        "outlineWidth": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the polygon outline."
+        },
         "perPositionHeight": {
             "$ref": "Boolean.jsonschema",
             "description": "Whether to use the height of each position to define the polygon or a constant height above the surface."

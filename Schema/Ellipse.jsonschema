@@ -52,6 +52,10 @@
             "$ref": "Color.jsonschema",
             "description": "The color of the ellipse outline."
         },
+        "outlineWidth": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the ellipse outline."
+        },
         "numberOfVerticalLines": {
             "$ref": "Double.jsonschema",
             "description": "The number of vertical lines to use when outlining an extruded ellipse."
