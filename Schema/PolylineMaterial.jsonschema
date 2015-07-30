@@ -8,13 +8,25 @@
             "$ref": "SolidColorMaterial.jsonschema",
             "description": "Colors the line with a solid color, which may be translucent."
         },
-        "polylineOutline":{
+        "polylineOutline": {
             "$ref": "PolylineOutlineMaterial.jsonschema",
             "description": "Colors the line with a color and outline."
         },
-        "polylineGlow":{
+        "polylineGlow": {
             "$ref": "PolylineGlowMaterial.jsonschema",
             "description": "Colors the line with a glowing color."
+        },
+        "image": {
+            "$ref": "ImageMaterial.jsonschema",
+            "description": "Fills the line with an image."
+        },
+        "grid": {
+            "$ref": "GridMaterial.jsonschema",
+            "description": "Fills the line with a grid."
+        },
+        "stripe": {
+            "$ref": "StripeMaterial.jsonschema",
+            "description": "Fills the line with alternating colors."
         }
     }
 }
