@@ -1,7 +1,7 @@
 {
     "title": "Model",
     "description": "A 3D model.",
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
         "show": {
@@ -19,6 +19,10 @@
         "gltf": {
             "$ref": "Uri.jsonschema",
             "description": "The URI of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model."
+        },
+        "nodeTransformations": {
+            "$ref": "ModelNodeTransforms.jsonschema",
+            "description": "The transformations to apply to the specified model nodes."
         }
     }
 }

@@ -1,0 +1,24 @@
+{
+    "title": "ModelNodeTransformation",
+    "description": "Direct manipulaton of a particular node in a 3D model.",
+    "extends": { "$ref": "InterpolatableProperty.jsonschema" },
+    "type": [ "array", "object" ],
+    "items": { "$ref": "#" },
+    "properties": {
+        "scale": {
+            "$ref": "Cartesian3Value.jsonschema",
+            "description": "The scaling applied to the model node.",
+            "czmlValue": true
+        },
+        "translation": {
+            "$ref": "Cartesian3Value.jsonschema",
+            "description": "The translation applied to the model node.",
+            "czmlValue": true
+        },
+        "rotation": {
+            "$ref": "UnitQuaternionValue.jsonschema",
+            "description": "The rotation to apply to the model node.",
+            "czmlValue": true
+        }
+    }
+}

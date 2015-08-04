@@ -33,10 +33,16 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string GltfPropertyName = "gltf";
 
+        /// <summary>
+        /// The name of the <code>nodeTransformations</code> property.
+        /// </summary>
+        public const string NodeTransformationsPropertyName = "nodeTransformations";
+
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_minimumPixelSize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MinimumPixelSizePropertyName), false);
         private readonly Lazy<UriCesiumWriter> m_gltf = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(GltfPropertyName), false);
+        private readonly Lazy<ModelNodeTransformsCesiumWriter> m_nodeTransformations = new Lazy<ModelNodeTransformsCesiumWriter>(() => new ModelNodeTransformsCesiumWriter(NodeTransformationsPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -406,6 +412,23 @@ namespace CesiumLanguageWriter
             {
                 writer.WriteReference(identifier, propertyNames);
             }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>nodeTransformations</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>nodeTransformations</code> property defines the transformations to apply to the specified model nodes.
+        /// </summary>
+        public ModelNodeTransformsCesiumWriter NodeTransformationsWriter
+        {
+            get { return m_nodeTransformations.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>nodeTransformations</code> property.  The <code>nodeTransformations</code> property defines the transformations to apply to the specified model nodes.
+        /// </summary>
+        public ModelNodeTransformsCesiumWriter OpenNodeTransformationsProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(NodeTransformationsWriter);
         }
 
     }
