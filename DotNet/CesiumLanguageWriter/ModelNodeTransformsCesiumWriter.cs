@@ -36,6 +36,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for an individual node transformation.
         /// </summary>
+        /// <param name="nodeName">The name of the model node to apply transformations to.</param>
         public ModelNodeTransformationCesiumWriter OpenNewNodeTransformation(string nodeName)
         {
             OpenIntervalIfNecessary();
