@@ -133,11 +133,6 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string VectorPropertyName = "agi_vector";
 
-        /// <summary>
-        /// The name of the <code>deleteMe</code> property.
-        /// </summary>
-        public const string DeleteMePropertyName = "deleteMe";
-
         private readonly Lazy<StringCesiumWriter> m_description = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(DescriptionPropertyName), false);
         private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter(BillboardPropertyName), false);
@@ -156,7 +151,6 @@ namespace CesiumLanguageWriter
         private readonly Lazy<FanCesiumWriter> m_agi_fan = new Lazy<FanCesiumWriter>(() => new FanCesiumWriter(FanPropertyName), false);
         private readonly Lazy<RectangularSensorCesiumWriter> m_agi_rectangularSensor = new Lazy<RectangularSensorCesiumWriter>(() => new RectangularSensorCesiumWriter(RectangularSensorPropertyName), false);
         private readonly Lazy<VectorCesiumWriter> m_agi_vector = new Lazy<VectorCesiumWriter>(() => new VectorCesiumWriter(VectorPropertyName), false);
-        private readonly Lazy<ModelNodeTransformationCesiumWriter> m_deleteMe = new Lazy<ModelNodeTransformationCesiumWriter>(() => new ModelNodeTransformationCesiumWriter(DeleteMePropertyName), false);
 
         /// <summary>
         /// Writes the start of a new JSON object representing the packet.
@@ -933,142 +927,6 @@ namespace CesiumLanguageWriter
         public VectorCesiumWriter OpenVectorProperty()
         {
             return OpenAndReturn(VectorWriter);
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>deleteMe</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>deleteMe</code> property defines 
-        /// </summary>
-        public ModelNodeTransformationCesiumWriter DeleteMeWriter
-        {
-            get { return m_deleteMe.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>deleteMe</code> property.  The <code>deleteMe</code> property defines 
-        /// </summary>
-        public ModelNodeTransformationCesiumWriter OpenDeleteMeProperty()
-        {
-            return OpenAndReturn(DeleteMeWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>deleteMe</code> property as a <code>scale</code> value.  The <code>deleteMe</code> property specifies 
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteDeleteMeProperty(Cartesian value)
-        {
-            using (var writer = OpenDeleteMeProperty())
-            {
-                writer.WriteScale(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>deleteMe</code> property as a <code>scale</code> value.  The <code>deleteMe</code> property specifies 
-        /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        public void WriteDeleteMeProperty(IList<JulianDate> dates, IList<Cartesian> values)
-        {
-            using (var writer = OpenDeleteMeProperty())
-            {
-                writer.WriteScale(dates, values);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>deleteMe</code> property as a <code>scale</code> value.  The <code>deleteMe</code> property specifies 
-        /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteDeleteMeProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
-        {
-            using (var writer = OpenDeleteMeProperty())
-            {
-                writer.WriteScale(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>deleteMe</code> property as a <code>translation</code> value.  The <code>deleteMe</code> property specifies 
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteDeleteMePropertyTranslation(Cartesian value)
-        {
-            using (var writer = OpenDeleteMeProperty())
-            {
-                writer.WriteTranslation(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>deleteMe</code> property as a <code>translation</code> value.  The <code>deleteMe</code> property specifies 
-        /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        public void WriteDeleteMePropertyTranslation(IList<JulianDate> dates, IList<Cartesian> values)
-        {
-            using (var writer = OpenDeleteMeProperty())
-            {
-                writer.WriteTranslation(dates, values);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>deleteMe</code> property as a <code>translation</code> value.  The <code>deleteMe</code> property specifies 
-        /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteDeleteMePropertyTranslation(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
-        {
-            using (var writer = OpenDeleteMeProperty())
-            {
-                writer.WriteTranslation(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>deleteMe</code> property as a <code>rotation</code> value.  The <code>deleteMe</code> property specifies 
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteDeleteMePropertyRotation(UnitQuaternion value)
-        {
-            using (var writer = OpenDeleteMeProperty())
-            {
-                writer.WriteRotation(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>deleteMe</code> property as a <code>rotation</code> value.  The <code>deleteMe</code> property specifies 
-        /// </summary>
-        /// <param name="dates">The dates at which the rotation is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        public void WriteDeleteMePropertyRotation(IList<JulianDate> dates, IList<UnitQuaternion> values)
-        {
-            using (var writer = OpenDeleteMeProperty())
-            {
-                writer.WriteRotation(dates, values);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>deleteMe</code> property as a <code>rotation</code> value.  The <code>deleteMe</code> property specifies 
-        /// </summary>
-        /// <param name="dates">The dates at which the rotation is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteDeleteMePropertyRotation(IList<JulianDate> dates, IList<UnitQuaternion> values, int startIndex, int length)
-        {
-            using (var writer = OpenDeleteMeProperty())
-            {
-                writer.WriteRotation(dates, values, startIndex, length);
-            }
         }
 
     }

@@ -1,0 +1,19 @@
+{
+    "title": "Translate",
+    "description": "Defines an translational offset which can optionally vary over time.",
+    "extends": { "$ref": "InterpolatableProperty.jsonschema" },
+    "type": ["array", "object"],
+    "items": { "$ref": "#" },
+    "properties": {
+        "cartesian": {
+            "$ref": "Cartesian3Value.jsonschema",
+            "description": "The translation specified as a Cartesian `[X, Y, Z]` position in  meters.  If the array has three elements, the translation is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.jsonschema",
+            "description": "A reference property.",
+            "czmlValue": true
+        }
+    }
+}

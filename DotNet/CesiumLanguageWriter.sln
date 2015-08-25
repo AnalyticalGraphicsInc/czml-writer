@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CesiumLanguageWriter", "CesiumLanguageWriter\CesiumLanguageWriter.csproj", "{085359F8-CC1D-4561-94C7-0BF067B8E370}"
 EndProject
@@ -65,6 +65,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\Repeat.jsonschema = ..\Schema\Repeat.jsonschema
 		..\Schema\RgbafValue.jsonschema = ..\Schema\RgbafValue.jsonschema
 		..\Schema\RgbaValue.jsonschema = ..\Schema\RgbaValue.jsonschema
+		..\Schema\Scale.jsonschema = ..\Schema\Scale.jsonschema
 		..\Schema\SolidColorMaterial.jsonschema = ..\Schema\SolidColorMaterial.jsonschema
 		..\Schema\SphericalListValue.jsonschema = ..\Schema\SphericalListValue.jsonschema
 		..\Schema\SphericalValue.jsonschema = ..\Schema\SphericalValue.jsonschema
@@ -75,6 +76,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\StripeOrientationValue.jsonschema = ..\Schema\StripeOrientationValue.jsonschema
 		..\Schema\TimeIntervalCollectionValue.jsonschema = ..\Schema\TimeIntervalCollectionValue.jsonschema
 		..\Schema\TimeValue.jsonschema = ..\Schema\TimeValue.jsonschema
+		..\Schema\Translate.jsonschema = ..\Schema\Translate.jsonschema
 		..\Schema\UnitCartesian3ListValue.jsonschema = ..\Schema\UnitCartesian3ListValue.jsonschema
 		..\Schema\UnitCartesian3Value.jsonschema = ..\Schema\UnitCartesian3Value.jsonschema
 		..\Schema\UnitQuaternionValue.jsonschema = ..\Schema\UnitQuaternionValue.jsonschema
