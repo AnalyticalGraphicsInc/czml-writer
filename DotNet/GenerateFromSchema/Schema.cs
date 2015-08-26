@@ -18,6 +18,10 @@ namespace GenerateFromSchema
 
         public List<Property> Properties { get; set; }
 
+        public bool GenerateWriter { get; set; }
+
+        public List<Schema> CustomReferences { get; set; } 
+
         public bool IsSchemaFromType
         {
             get { return Name == SchemaFromTypeName; }

@@ -37,36 +37,49 @@ namespace GenerateFromSchema
 
             m_writtenSchemas.Add(schema);
 
-            string writerFilename = Path.Combine(m_outputDirectory, schema.NameWithPascalCase + "CesiumWriter.cs");
-            using (CodeWriter writer = new CodeWriter(writerFilename))
+            if (schema.GenerateWriter)
             {
-                WriteGeneratedWarning(writer);
-                writer.WriteLine();
-                WriteNamespaces(writer, schema);
-                writer.WriteLine();
+                string writerFilename = Path.Combine(m_outputDirectory, schema.NameWithPascalCase + "CesiumWriter.cs");
+                using (CodeWriter writer = new CodeWriter(writerFilename))
+                {
+                    WriteGeneratedWarning(writer);
+                    writer.WriteLine();
+                    WriteNamespaces(writer, schema);
+                    writer.WriteLine();
 
-                writer.WriteLine("namespace {0}", m_configuration.Namespace);
-                writer.OpenScope();
+                    writer.WriteLine("namespace {0}", m_configuration.Namespace);
+                    writer.OpenScope();
 
-                WriteDescriptionAsClassSummary(writer, schema);
+                    WriteDescriptionAsClassSummary(writer, schema);
 
-                bool isInterpolatable = schema.Extends != null && schema.Extends.Name == "InterpolatableProperty";
-                if (isInterpolatable)
-                    writer.WriteLine(m_configuration.Access + " class {0}CesiumWriter : CesiumInterpolatablePropertyWriter<{0}CesiumWriter>", schema.NameWithPascalCase);
-                else
-                    writer.WriteLine(m_configuration.Access + " class {0}CesiumWriter : CesiumPropertyWriter<{0}CesiumWriter>", schema.NameWithPascalCase);
+                    bool isInterpolatable = schema.Extends != null && schema.Extends.Name == "InterpolatableProperty";
+                    if (isInterpolatable)
+                        writer.WriteLine(
+                            m_configuration.Access +
+                            " class {0}CesiumWriter : CesiumInterpolatablePropertyWriter<{0}CesiumWriter>",
+                            schema.NameWithPascalCase);
+                    else
+                        writer.WriteLine(
+                            m_configuration.Access + " class {0}CesiumWriter : CesiumPropertyWriter<{0}CesiumWriter>",
+                            schema.NameWithPascalCase);
 
-                writer.OpenScope();
+                    writer.OpenScope();
 
-                WritePropertyNameConstants(writer, schema);
-                WritePropertyLazyFields(writer, schema);
-                WriteConstructorsAndCloneMethod(writer, schema);
-                WriteProperties(writer, schema);
-                WriteAsTypeMethods(writer, schema);
+                    WritePropertyNameConstants(writer, schema);
+                    WritePropertyLazyFields(writer, schema);
+                    WriteConstructorsAndCloneMethod(writer, schema);
+                    WriteProperties(writer, schema);
+                    WriteAsTypeMethods(writer, schema);
 
-                writer.CloseScope();
+                    writer.CloseScope();
 
-                writer.CloseScope();
+                    writer.CloseScope();
+                }
+            }
+
+            foreach (var customReference in schema.CustomReferences)
+            {
+                GenerateWriterClass(customReference);
             }
         }
 

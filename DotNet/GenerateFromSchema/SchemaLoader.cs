@@ -38,12 +38,15 @@ namespace GenerateFromSchema
             schema.Name = GetValue<string>(schemaJson, "title", null);
             schema.Description = GetValue<string>(schemaJson, "description", null);
             schema.ExtensionPrefix = GetValue<string>(schemaJson, "extensionPrefix", null);
+            schema.GenerateWriter = GetValue<bool>(schemaJson, "generateWriter", true);
 
             string extends = GetValue<string>(schemaJson, "extends.$ref", null);
             if (extends != null)
                 schema.Extends = Load(Path.Combine(m_schemaDirectory, extends));
 
             schema.JsonTypes = LoadJsonSchemaType(schemaJson);
+
+            schema.CustomReferences = LoadCustomReferences(schemaJson);
 
             JProperty propertiesProperty = schemaJson.Property("properties");
             if (propertiesProperty != null)
@@ -118,6 +121,35 @@ namespace GenerateFromSchema
             }
 
             return result;
+        }
+
+        private List<Schema> LoadCustomReferences(JObject schema)
+        {
+            // Some czml writers cannot be auto-generated. Custom references
+            // force the generator to load additional references that will be
+            // used by custom, hand-generated writers.
+
+            List<Schema> customReferences = new List<Schema>();
+
+            JProperty references = schema.Property("customReferences");
+            if (references != null)
+            {
+                var arrayOfTypes = references.Value as JArray;
+                if (arrayOfTypes == null)
+                {
+                    string refString = references.Value.Value<string>();
+                    customReferences.Add(Load(Path.Combine(m_schemaDirectory, refString)));
+                }
+                else
+                {
+                    foreach (string reference in arrayOfTypes.Values<string>())
+                    {
+                        customReferences.Add(Load(Path.Combine(m_schemaDirectory, reference)));
+                    }
+                }
+            }
+
+            return customReferences;
         }
 
         private static T GetValue<T>(JObject obj, string path, T defaultValue)

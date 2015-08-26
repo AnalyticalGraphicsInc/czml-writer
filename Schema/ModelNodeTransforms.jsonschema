@@ -1,5 +1,7 @@
 {
     "title": "ModelNodeTransforms",
-    "description": "todo",
-    "type": ["array", "object" ]
+    "description": "Placeholder for the custom, hand-generated ModelNodeTransformsWriterCesiumWriter",
+    "type": [ "array", "object" ],
+    "generateWriter" : false,
+    "customReferences": ["ModelNodeTransformation.jsonschema"]
 }
