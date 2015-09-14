@@ -34,6 +34,11 @@ namespace CesiumLanguageWriter
         public const string GltfPropertyName = "gltf";
 
         /// <summary>
+        /// The name of the <code>runAnimations</code> property.
+        /// </summary>
+        public const string RunAnimationsPropertyName = "runAnimations";
+
+        /// <summary>
         /// The name of the <code>nodeTransformations</code> property.
         /// </summary>
         public const string NodeTransformationsPropertyName = "nodeTransformations";
@@ -42,6 +47,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_minimumPixelSize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MinimumPixelSizePropertyName), false);
         private readonly Lazy<UriCesiumWriter> m_gltf = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(GltfPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_runAnimations = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(RunAnimationsPropertyName), false);
         private readonly Lazy<ModelNodeTransformsCesiumWriter> m_nodeTransformations = new Lazy<ModelNodeTransformsCesiumWriter>(() => new ModelNodeTransformsCesiumWriter(NodeTransformationsPropertyName), false);
 
         /// <summary>
@@ -411,6 +417,35 @@ namespace CesiumLanguageWriter
             using (var writer = OpenGltfProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>runAnimations</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>runAnimations</code> property defines whether or not to run any animations defined in the glTF model.
+        /// </summary>
+        public BooleanCesiumWriter RunAnimationsWriter
+        {
+            get { return m_runAnimations.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>runAnimations</code> property.  The <code>runAnimations</code> property defines whether or not to run any animations defined in the glTF model.
+        /// </summary>
+        public BooleanCesiumWriter OpenRunAnimationsProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(RunAnimationsWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>runAnimations</code> property as a <code>boolean</code> value.  The <code>runAnimations</code> property specifies whether or not to run any animations defined in the glTF model.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteRunAnimationsProperty(bool value)
+        {
+            using (var writer = OpenRunAnimationsProperty())
+            {
+                writer.WriteBoolean(value);
             }
         }
 

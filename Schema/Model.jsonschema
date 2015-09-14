@@ -20,6 +20,10 @@
             "$ref": "Uri.jsonschema",
             "description": "The URI of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model."
         },
+        "runAnimations": { 
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not to run any animations defined in the glTF model."
+        },
         "nodeTransformations": {
             "$ref": "ModelNodeTransforms.jsonschema",
             "description": "The transformations to apply to the specified model nodes."
