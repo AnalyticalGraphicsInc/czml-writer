@@ -59,9 +59,13 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = FontPropertyName;
             if (ForceInterval)
+            {
                 OpenIntervalIfNecessary();
+            }
             if (IsInterval)
+            {
                 Output.WritePropertyName(PropertyName);
+            }
             Output.WriteValue(font);
         }
 
@@ -126,8 +130,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<string> CreateFontAdaptor()
         {
-            return new CesiumWriterAdaptor<FontCesiumWriter, string>(
-                this, (me, value) => me.WriteFont(value));
+            return new CesiumWriterAdaptor<FontCesiumWriter, string>(this, (me, value) => me.WriteFont(value));
         }
 
         /// <summary>
@@ -141,8 +144,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
-            return new CesiumWriterAdaptor<FontCesiumWriter, Reference>(
-                this, (me, value) => me.WriteReference(value));
+            return new CesiumWriterAdaptor<FontCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
         }
 
     }

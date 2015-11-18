@@ -18,7 +18,7 @@
 		},
 		"rotation":{
 		    "$ref": "Double.jsonschema",
-            "description": "The angle from north (clockwise) in radians."
+            "description": "The angle from north (counter-clockwise) in radians."
 		},
         "material": {
             "$ref": "Material.jsonschema",

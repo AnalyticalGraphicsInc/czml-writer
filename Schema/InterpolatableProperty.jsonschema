@@ -5,20 +5,7 @@
         "epoch": {
             "description": "Specifies the epoch to use for times specifies as seconds since an epoch.",
             "type": "string",
-            "format": "date-time",
-            "czmlScope": "PACKET"
-        },
-        "nextTime": {
-            "description": "The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets.",
-            "type": ["string", "number"],
-            "format": "date-time",
-            "czmlScope": "PACKET"
-        },
-        "previousTime": {
-            "description": "The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets.",
-            "type": ["string", "number"],
-            "format": "date-time",
-            "czmlScope": "PACKET"
+            "format": "date-time"
         }
     }
 }

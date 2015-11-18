@@ -7,7 +7,7 @@
     "properties": {
         "cartesian2": {
             "$ref": "Cartesian2Value.jsonschema",
-            "description": "The numger of times the image repeats along each axis.",
+            "description": "The number of times the image repeats along each axis.",
             "czmlValue": true
         },
         "reference": {

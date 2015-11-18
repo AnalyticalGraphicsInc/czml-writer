@@ -1,7 +1,0 @@
-{
-    "title": "ModelNodeTransforms",
-    "description": "Placeholder for the custom, hand-generated ModelNodeTransformsWriterCesiumWriter",
-    "type": [ "array", "object" ],
-    "generateWriter" : false,
-    "customReferences": ["ModelNodeTransformation.jsonschema"]
-}

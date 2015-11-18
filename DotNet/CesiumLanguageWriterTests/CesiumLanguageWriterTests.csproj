@@ -60,7 +60,7 @@
     <Compile Include="TestLeapSecond.cs" />
     <Compile Include="TestLeapSeconds.cs" />
     <Compile Include="TestMatrix3By3.cs" />
-    <Compile Include="TestModelNodeTransformationCesiumWriter.cs" />
+    <Compile Include="TestNodeTransformationsCesiumWriter.cs" />
     <Compile Include="TestOrientationCesiumWriter.cs" />
     <Compile Include="TestPositionCesiumWriter.cs" />
     <Compile Include="TestPropertiesOfSimpleJsonTypes.cs" />

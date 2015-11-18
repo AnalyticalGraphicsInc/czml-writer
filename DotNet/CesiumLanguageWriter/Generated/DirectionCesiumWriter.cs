@@ -298,8 +298,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumInterpolatableValuePropertyWriter<Spherical> CreateSphericalAdaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<DirectionCesiumWriter, Spherical>(
-                this, (me, value) => me.WriteSpherical(value), (DirectionCesiumWriter me, IList<JulianDate> dates, IList<Spherical> values, int startIndex, int length) => me.WriteSpherical(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<DirectionCesiumWriter, Spherical>(this, (me, value) => me.WriteSpherical(value), (me, dates, values, startIndex, length) => me.WriteSpherical(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -313,8 +312,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumInterpolatableValuePropertyWriter<UnitSpherical> CreateUnitSphericalAdaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<DirectionCesiumWriter, UnitSpherical>(
-                this, (me, value) => me.WriteUnitSpherical(value), (DirectionCesiumWriter me, IList<JulianDate> dates, IList<UnitSpherical> values, int startIndex, int length) => me.WriteUnitSpherical(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<DirectionCesiumWriter, UnitSpherical>(this, (me, value) => me.WriteUnitSpherical(value), (me, dates, values, startIndex, length) => me.WriteUnitSpherical(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -328,8 +326,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumInterpolatableValuePropertyWriter<Cartesian> CreateCartesianAdaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<DirectionCesiumWriter, Cartesian>(
-                this, (me, value) => me.WriteCartesian(value), (DirectionCesiumWriter me, IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length) => me.WriteCartesian(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<DirectionCesiumWriter, Cartesian>(this, (me, value) => me.WriteCartesian(value), (me, dates, values, startIndex, length) => me.WriteCartesian(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -343,8 +340,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumInterpolatableValuePropertyWriter<UnitCartesian> CreateUnitCartesianAdaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<DirectionCesiumWriter, UnitCartesian>(
-                this, (me, value) => me.WriteUnitCartesian(value), (DirectionCesiumWriter me, IList<JulianDate> dates, IList<UnitCartesian> values, int startIndex, int length) => me.WriteUnitCartesian(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<DirectionCesiumWriter, UnitCartesian>(this, (me, value) => me.WriteUnitCartesian(value), (me, dates, values, startIndex, length) => me.WriteUnitCartesian(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -358,8 +354,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
-            return new CesiumWriterAdaptor<DirectionCesiumWriter, Reference>(
-                this, (me, value) => me.WriteReference(value));
+            return new CesiumWriterAdaptor<DirectionCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
         }
 
     }

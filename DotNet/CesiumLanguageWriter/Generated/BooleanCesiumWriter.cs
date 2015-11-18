@@ -51,9 +51,13 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = BooleanPropertyName;
             if (ForceInterval)
+            {
                 OpenIntervalIfNecessary();
+            }
             if (IsInterval)
+            {
                 Output.WritePropertyName(PropertyName);
+            }
             Output.WriteValue(value);
         }
 
@@ -68,8 +72,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<bool> CreateBooleanAdaptor()
         {
-            return new CesiumWriterAdaptor<BooleanCesiumWriter, bool>(
-                this, (me, value) => me.WriteBoolean(value));
+            return new CesiumWriterAdaptor<BooleanCesiumWriter, bool>(this, (me, value) => me.WriteBoolean(value));
         }
 
     }

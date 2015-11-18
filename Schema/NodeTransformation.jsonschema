@@ -1,6 +1,6 @@
 {
-    "title": "ModelNodeTransformation",
-    "description": "Direct manipulaton of a particular node in a 3D model.",
+    "title": "NodeTransformation",
+    "description": "Transformations to apply to a particular node in a 3D model.",
     "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {

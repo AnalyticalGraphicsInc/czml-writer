@@ -47,8 +47,7 @@
     <Compile Include="Property.cs" />
     <Compile Include="Schema.cs" />
     <Compile Include="SchemaLoader.cs" />
-    <Compile Include="Scope.cs" />
-    <Compile Include="StringHelper.cs" />
+    <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GenerateCSharp.config.json">

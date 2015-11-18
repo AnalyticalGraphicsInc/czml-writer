@@ -1,9 +1,8 @@
-﻿
-namespace GenerateFromSchema
+﻿namespace GenerateFromSchema
 {
-    public static class StringHelper
+    public static class StringExtensions
     {
-        public static string CapitalizeFirstLetter(string s)
+        public static string CapitalizeFirstLetter(this string s)
         {
             if (s.Length == 0)
                 return s;
@@ -11,7 +10,7 @@ namespace GenerateFromSchema
             return char.ToUpperInvariant(s[0]) + s.Substring(1);
         }
 
-        public static string UncapitalizeFirstLetter(string s)
+        public static string UncapitalizeFirstLetter(this string s)
         {
             if (string.IsNullOrEmpty(s))
                 return s;

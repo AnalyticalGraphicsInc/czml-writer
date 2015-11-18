@@ -8,9 +8,9 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>ModelNodeTransformation</code> to a <see cref="CesiumOutputStream" />.  A <code>ModelNodeTransformation</code> direct manipulaton of a particular node in a 3D model.
+    /// Writes a <code>NodeTransformation</code> to a <see cref="CesiumOutputStream" />.  A <code>NodeTransformation</code> transformations to apply to a particular node in a 3D model.
     /// </summary>
-    public class ModelNodeTransformationCesiumWriter : CesiumPropertyWriter<ModelNodeTransformationCesiumWriter>
+    public class NodeTransformationCesiumWriter : CesiumPropertyWriter<NodeTransformationCesiumWriter>
     {
         /// <summary>
         /// The name of the <code>scale</code> property.
@@ -34,7 +34,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public ModelNodeTransformationCesiumWriter(string propertyName)
+        public NodeTransformationCesiumWriter(string propertyName)
             : base(propertyName)
         {
         }
@@ -43,15 +43,15 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected ModelNodeTransformationCesiumWriter(ModelNodeTransformationCesiumWriter existingInstance)
+        protected NodeTransformationCesiumWriter(NodeTransformationCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
 
         /// <inheritdoc />
-        public override ModelNodeTransformationCesiumWriter Clone()
+        public override NodeTransformationCesiumWriter Clone()
         {
-            return new ModelNodeTransformationCesiumWriter(this);
+            return new NodeTransformationCesiumWriter(this);
         }
 
         /// <summary>

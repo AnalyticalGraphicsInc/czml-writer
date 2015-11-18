@@ -70,9 +70,13 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = UriPropertyName;
             if (ForceInterval)
+            {
                 OpenIntervalIfNecessary();
+            }
             if (IsInterval)
+            {
                 Output.WritePropertyName(PropertyName);
+            }
             Output.WriteValue(CesiumFormattingHelper.GetResourceUri(uri, resourceBehavior));
         }
 
@@ -85,9 +89,13 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = UriPropertyName;
             if (ForceInterval)
+            {
                 OpenIntervalIfNecessary();
+            }
             if (IsInterval)
+            {
                 Output.WritePropertyName(PropertyName);
+            }
             Output.WriteValue(resolver.ResolveUri(uri));
         }
 
@@ -109,9 +117,13 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = UriPropertyName;
             if (ForceInterval)
+            {
                 OpenIntervalIfNecessary();
+            }
             if (IsInterval)
+            {
                 Output.WritePropertyName(PropertyName);
+            }
             Output.WriteValue(CesiumFormattingHelper.ImageToDataUri(image, imageFormat));
         }
 
@@ -176,8 +188,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<CesiumResource> CreateUriAdaptor()
         {
-            return new CesiumWriterAdaptor<UriCesiumWriter, CesiumResource>(
-                this, (me, value) => me.WriteUri(value));
+            return new CesiumWriterAdaptor<UriCesiumWriter, CesiumResource>(this, (me, value) => me.WriteUri(value));
         }
 
         /// <summary>
@@ -191,8 +202,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
-            return new CesiumWriterAdaptor<UriCesiumWriter, Reference>(
-                this, (me, value) => me.WriteReference(value));
+            return new CesiumWriterAdaptor<UriCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
         }
 
     }

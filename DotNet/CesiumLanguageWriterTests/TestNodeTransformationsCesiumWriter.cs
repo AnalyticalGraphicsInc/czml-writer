@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
@@ -8,11 +7,11 @@ using NUnit.Framework;
 namespace CesiumLanguageWriterTests
 {
     [TestFixture]
-    public class TestModelNodeTransformationCesiumWriter : TestCesiumPropertyWriter<ModelNodeTransformsCesiumWriter>
+    public class TestNodeTransformationsCesiumWriter : TestCesiumPropertyWriter<NodeTransformationsCesiumWriter>
     {
-        protected override CesiumPropertyWriter<ModelNodeTransformsCesiumWriter> CreatePropertyWriter(string propertyName)
+        protected override CesiumPropertyWriter<NodeTransformationsCesiumWriter> CreatePropertyWriter(string propertyName)
         {
-            return new ModelNodeTransformsCesiumWriter(propertyName);
+            return new NodeTransformationsCesiumWriter(propertyName);
         }
 
         [Test]
@@ -20,10 +19,9 @@ namespace CesiumLanguageWriterTests
         {
             using (Packet)
             using (ModelCesiumWriter model = Packet.OpenModelProperty())
-            using (ModelNodeTransformsCesiumWriter nodeTransformsWriter = model.OpenNodeTransformationsProperty())
+            using (NodeTransformationsCesiumWriter nodeTransformsWriter = model.OpenNodeTransformationsProperty())
             {
-                using (ModelNodeTransformationCesiumWriter nodeTransformWriter =
-                        nodeTransformsWriter.OpenNewNodeTransformation("node1"))
+                using (NodeTransformationCesiumWriter nodeTransformWriter = nodeTransformsWriter.OpenNodeTransformationProperty("node1"))
                 {
                     nodeTransformWriter.WriteScaleProperty(Cartesian.Zero);
                     nodeTransformWriter.WriteRotationProperty(UnitQuaternion.Identity);
@@ -32,8 +30,8 @@ namespace CesiumLanguageWriterTests
             }
 
             Assert.AreEqual("{\"model\":{\"nodeTransformations\":{" +
-                "\"node1\":{\"scale\":{\"cartesian\":[0,0,0]},\"rotation\":{\"unitQuaternion\":[0,0,0,1]},\"translation\":{\"cartesian\":[3,3,3]}" +
-                "}}}}", StringWriter.ToString());
+                            "\"node1\":{\"scale\":{\"cartesian\":[0,0,0]},\"rotation\":{\"unitQuaternion\":[0,0,0,1]},\"translation\":{\"cartesian\":[3,3,3]}}" +
+                            "}}}", StringWriter.ToString());
         }
 
         [Test]
@@ -41,29 +39,27 @@ namespace CesiumLanguageWriterTests
         {
             using (Packet)
             using (ModelCesiumWriter model = Packet.OpenModelProperty())
-            using (ModelNodeTransformsCesiumWriter nodeTransformsWriter = model.OpenNodeTransformationsProperty())
+            using (NodeTransformationsCesiumWriter nodeTransformsWriter = model.OpenNodeTransformationsProperty())
             {
-                using (ModelNodeTransformationCesiumWriter nodeTransformWriter =
-                        nodeTransformsWriter.OpenNewNodeTransformation("node1"))
+                using (NodeTransformationCesiumWriter nodeTransformWriter = nodeTransformsWriter.OpenNodeTransformationProperty("node1"))
                 {
-                    nodeTransformWriter.WriteScaleProperty(Cartesian.Zero);
-                    nodeTransformWriter.WriteRotationProperty(UnitQuaternion.Identity);
-                    nodeTransformWriter.WriteTranslationProperty(new Cartesian(3.0, 3.0, 3.0));
+                    nodeTransformWriter.WriteScaleProperty(new Cartesian(1.0, 2.0, 3.0));
+                    nodeTransformWriter.WriteRotationProperty(new UnitQuaternion(1.0, 0.0, 0.0, 0.0));
+                    nodeTransformWriter.WriteTranslationProperty(new Cartesian(4.0, 5.0, 6.0));
                 }
 
-                using (ModelNodeTransformationCesiumWriter nodeTransformWriter =
-                        nodeTransformsWriter.OpenNewNodeTransformation("node2"))
+                using (NodeTransformationCesiumWriter nodeTransformWriter = nodeTransformsWriter.OpenNodeTransformationProperty("node2"))
                 {
-                    nodeTransformWriter.WriteScaleProperty(Cartesian.Zero);
-                    nodeTransformWriter.WriteRotationProperty(UnitQuaternion.Identity);
-                    nodeTransformWriter.WriteTranslationProperty(new Cartesian(3.0, 3.0, 3.0));
+                    nodeTransformWriter.WriteScaleProperty(new Cartesian(4.0, 5.0, 6.0));
+                    nodeTransformWriter.WriteRotationProperty(new UnitQuaternion(0.0, 0.0, 0.0, 1.0));
+                    nodeTransformWriter.WriteTranslationProperty(new Cartesian(7.0, 8.0, 9.0));
                 }
             }
 
             string expectedValue =
                 "{\"model\":{\"nodeTransformations\":{" +
-                "\"node1\":{\"scale\":{\"cartesian\":[0,0,0]},\"rotation\":{\"unitQuaternion\":[0,0,0,1]},\"translation\":{\"cartesian\":[3,3,3]}}," +
-                "\"node2\":{\"scale\":{\"cartesian\":[0,0,0]},\"rotation\":{\"unitQuaternion\":[0,0,0,1]},\"translation\":{\"cartesian\":[3,3,3]}}" +
+                "\"node1\":{\"scale\":{\"cartesian\":[1,2,3]},\"rotation\":{\"unitQuaternion\":[0,0,0,1]},\"translation\":{\"cartesian\":[4,5,6]}}," +
+                "\"node2\":{\"scale\":{\"cartesian\":[4,5,6]},\"rotation\":{\"unitQuaternion\":[0,0,1,0]},\"translation\":{\"cartesian\":[7,8,9]}}" +
                 "}}}";
             Assert.AreEqual(expectedValue, StringWriter.ToString());
         }
@@ -86,22 +82,22 @@ namespace CesiumLanguageWriterTests
                     packet.WriteAvailability(date, date.AddDays(1.0));
 
                     using (ModelCesiumWriter model = packet.OpenModelProperty())
-                    using (ModelNodeTransformsCesiumWriter transforms = model.OpenNodeTransformationsProperty())
+                    using (NodeTransformationsCesiumWriter transforms = model.OpenNodeTransformationsProperty())
                     {
-                        using (ModelNodeTransformationCesiumWriter transform = transforms.OpenNewNodeTransformation("node1"))
+                        using (NodeTransformationCesiumWriter transform = transforms.OpenNodeTransformationProperty("node1"))
                         {
                             transform.WriteScaleProperty(Cartesian.Zero);
                             transform.WriteRotationProperty(UnitQuaternion.Identity);
                             transform.WriteTranslationProperty(new Cartesian(3.0, 3.0, 3.0));
                         }
 
-                        using (ModelNodeTransformationCesiumWriter transform = transforms.OpenNewNodeTransformation("node2"))
+                        using (NodeTransformationCesiumWriter transform = transforms.OpenNodeTransformationProperty("node2"))
                         {
                             transform.WriteScaleProperty(Cartesian.Zero);
                             transform.WriteRotationProperty(UnitQuaternion.Identity);
                             transform.WriteTranslationProperty(new Cartesian(3.0, 3.0, 3.0));
                         }
-                    }                  
+                    }
                 }
 
                 Console.WriteLine(sw.ToString());

@@ -60,9 +60,13 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = NumberPropertyName;
             if (ForceInterval)
+            {
                 OpenIntervalIfNecessary();
+            }
             if (IsInterval)
+            {
                 Output.WritePropertyName(PropertyName);
+            }
             Output.WriteValue(value);
         }
 
@@ -141,8 +145,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumInterpolatableValuePropertyWriter<double> CreateNumberAdaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<DoubleCesiumWriter, double>(
-                this, (me, value) => me.WriteNumber(value), (DoubleCesiumWriter me, IList<JulianDate> dates, IList<double> values, int startIndex, int length) => me.WriteNumber(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<DoubleCesiumWriter, double>(this, (me, value) => me.WriteNumber(value), (me, dates, values, startIndex, length) => me.WriteNumber(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -156,8 +159,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
-            return new CesiumWriterAdaptor<DoubleCesiumWriter, Reference>(
-                this, (me, value) => me.WriteReference(value));
+            return new CesiumWriterAdaptor<DoubleCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
         }
 
     }

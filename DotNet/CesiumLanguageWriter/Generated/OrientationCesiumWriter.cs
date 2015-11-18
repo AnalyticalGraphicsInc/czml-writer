@@ -166,8 +166,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumInterpolatableValuePropertyWriter<UnitQuaternion> CreateUnitQuaternionAdaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<OrientationCesiumWriter, UnitQuaternion>(
-                this, (me, value) => me.WriteUnitQuaternion(value), (OrientationCesiumWriter me, IList<JulianDate> dates, IList<UnitQuaternion> values, int startIndex, int length) => me.WriteUnitQuaternion(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<OrientationCesiumWriter, UnitQuaternion>(this, (me, value) => me.WriteUnitQuaternion(value), (me, dates, values, startIndex, length) => me.WriteUnitQuaternion(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -181,8 +180,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
-            return new CesiumWriterAdaptor<OrientationCesiumWriter, Reference>(
-                this, (me, value) => me.WriteReference(value));
+            return new CesiumWriterAdaptor<OrientationCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
         }
 
     }

@@ -166,7 +166,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the position reprsented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+        /// Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the position represented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
         /// </summary>
         /// <param name="value">The interval.</param>
         public void WriteCartographicDegrees(Cartographic value)
@@ -178,7 +178,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the position reprsented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+        /// Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the position represented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
         /// </summary>
         /// <param name="dates">The dates at which the position is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -188,7 +188,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the position reprsented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+        /// Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the position represented as a WGS 84 Cartographic `[Longitude, Latitude, Height]` where longitude and latitude are in degrees and height is in meters. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The position corresponding to each date.</param>
@@ -298,8 +298,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumInterpolatableValuePropertyWriter<Cartesian> CreateCartesianAdaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Cartesian>(
-                this, (me, value) => me.WriteCartesian(value), (PositionCesiumWriter me, IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length) => me.WriteCartesian(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Cartesian>(this, (me, value) => me.WriteCartesian(value), (me, dates, values, startIndex, length) => me.WriteCartesian(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -313,8 +312,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumInterpolatableValuePropertyWriter<Cartographic> CreateCartographicRadiansAdaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Cartographic>(
-                this, (me, value) => me.WriteCartographicRadians(value), (PositionCesiumWriter me, IList<JulianDate> dates, IList<Cartographic> values, int startIndex, int length) => me.WriteCartographicRadians(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Cartographic>(this, (me, value) => me.WriteCartographicRadians(value), (me, dates, values, startIndex, length) => me.WriteCartographicRadians(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -328,8 +326,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumInterpolatableValuePropertyWriter<Cartographic> CreateCartographicDegreesAdaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Cartographic>(
-                this, (me, value) => me.WriteCartographicDegrees(value), (PositionCesiumWriter me, IList<JulianDate> dates, IList<Cartographic> values, int startIndex, int length) => me.WriteCartographicDegrees(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Cartographic>(this, (me, value) => me.WriteCartographicDegrees(value), (me, dates, values, startIndex, length) => me.WriteCartographicDegrees(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -343,8 +340,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumInterpolatableValuePropertyWriter<Motion<Cartesian>> CreateCartesianVelocityAdaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Motion<Cartesian>>(
-                this, (me, value) => me.WriteCartesianVelocity(value), (PositionCesiumWriter me, IList<JulianDate> dates, IList<Motion<Cartesian>> values, int startIndex, int length) => me.WriteCartesianVelocity(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<PositionCesiumWriter, Motion<Cartesian>>(this, (me, value) => me.WriteCartesianVelocity(value), (me, dates, values, startIndex, length) => me.WriteCartesianVelocity(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -358,8 +354,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
-            return new CesiumWriterAdaptor<PositionCesiumWriter, Reference>(
-                this, (me, value) => me.WriteReference(value));
+            return new CesiumWriterAdaptor<PositionCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
         }
 
     }

@@ -109,7 +109,8 @@
     <Compile Include="Generated\LineThicknessCesiumWriter.cs" />
     <Compile Include="Generated\MaterialCesiumWriter.cs" />
     <Compile Include="Generated\ModelCesiumWriter.cs" />
-    <Compile Include="Generated\ModelNodeTransformationCesiumWriter.cs" />
+    <Compile Include="Generated\NodeTransformationCesiumWriter.cs" />
+    <Compile Include="Generated\NodeTransformationsCesiumWriter.cs" />
     <Compile Include="Generated\OrientationCesiumWriter.cs" />
     <Compile Include="Generated\PacketCesiumWriter.cs" />
     <Compile Include="Generated\PathCesiumWriter.cs" />
@@ -150,7 +151,6 @@
     <Compile Include="LeapSecond.cs" />
     <Compile Include="LeapSeconds.cs" />
     <Compile Include="Matrix3By3.cs" />
-    <Compile Include="ModelNodeTransformsCesiumWriter.cs" />
     <Compile Include="Motion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangular.cs" />

@@ -144,8 +144,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<IEnumerable<Cartesian>> CreateCartesianAdaptor()
         {
-            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<Cartesian>>(
-                this, (me, value) => me.WriteCartesian(value));
+            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<Cartesian>>(this, (me, value) => me.WriteCartesian(value));
         }
 
         /// <summary>
@@ -159,8 +158,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<IEnumerable<Cartographic>> CreateCartographicRadiansAdaptor()
         {
-            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<Cartographic>>(
-                this, (me, value) => me.WriteCartographicRadians(value));
+            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<Cartographic>>(this, (me, value) => me.WriteCartographicRadians(value));
         }
 
         /// <summary>
@@ -174,8 +172,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<IEnumerable<Cartographic>> CreateCartographicDegreesAdaptor()
         {
-            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<Cartographic>>(
-                this, (me, value) => me.WriteCartographicDegrees(value));
+            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<Cartographic>>(this, (me, value) => me.WriteCartographicDegrees(value));
         }
 
         /// <summary>
@@ -189,8 +186,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<IEnumerable<Reference>> CreateReferencesAdaptor()
         {
-            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<Reference>>(
-                this, (me, value) => me.WriteReferences(value));
+            return new CesiumWriterAdaptor<PositionListCesiumWriter, IEnumerable<Reference>>(this, (me, value) => me.WriteReferences(value));
         }
 
     }

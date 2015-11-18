@@ -48,7 +48,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<DoubleCesiumWriter> m_minimumPixelSize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MinimumPixelSizePropertyName), false);
         private readonly Lazy<UriCesiumWriter> m_gltf = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(GltfPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_runAnimations = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(RunAnimationsPropertyName), false);
-        private readonly Lazy<ModelNodeTransformsCesiumWriter> m_nodeTransformations = new Lazy<ModelNodeTransformsCesiumWriter>(() => new ModelNodeTransformsCesiumWriter(NodeTransformationsPropertyName), false);
+        private readonly Lazy<NodeTransformationsCesiumWriter> m_nodeTransformations = new Lazy<NodeTransformationsCesiumWriter>(() => new NodeTransformationsCesiumWriter(NodeTransformationsPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -421,7 +421,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>runAnimations</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>runAnimations</code> property defines whether or not to run any animations defined in the glTF model.
+        /// Gets the writer for the <code>runAnimations</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>runAnimations</code> property defines whether or not to run all animations defined in the glTF model.
         /// </summary>
         public BooleanCesiumWriter RunAnimationsWriter
         {
@@ -429,7 +429,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>runAnimations</code> property.  The <code>runAnimations</code> property defines whether or not to run any animations defined in the glTF model.
+        /// Opens and returns the writer for the <code>runAnimations</code> property.  The <code>runAnimations</code> property defines whether or not to run all animations defined in the glTF model.
         /// </summary>
         public BooleanCesiumWriter OpenRunAnimationsProperty()
         {
@@ -438,7 +438,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>runAnimations</code> property as a <code>boolean</code> value.  The <code>runAnimations</code> property specifies whether or not to run any animations defined in the glTF model.
+        /// Writes a value for the <code>runAnimations</code> property as a <code>boolean</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteRunAnimationsProperty(bool value)
@@ -450,17 +450,17 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>nodeTransformations</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>nodeTransformations</code> property defines the transformations to apply to the specified model nodes.
+        /// Gets the writer for the <code>nodeTransformations</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>nodeTransformations</code> property defines defines a mapping of node names to node transformations.
         /// </summary>
-        public ModelNodeTransformsCesiumWriter NodeTransformationsWriter
+        public NodeTransformationsCesiumWriter NodeTransformationsWriter
         {
             get { return m_nodeTransformations.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>nodeTransformations</code> property.  The <code>nodeTransformations</code> property defines the transformations to apply to the specified model nodes.
+        /// Opens and returns the writer for the <code>nodeTransformations</code> property.  The <code>nodeTransformations</code> property defines defines a mapping of node names to node transformations.
         /// </summary>
-        public ModelNodeTransformsCesiumWriter OpenNodeTransformationsProperty()
+        public NodeTransformationsCesiumWriter OpenNodeTransformationsProperty()
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(NodeTransformationsWriter);
