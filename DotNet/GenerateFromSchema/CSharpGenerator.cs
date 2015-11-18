@@ -277,7 +277,7 @@ namespace GenerateFromSchema
                 GenerateWriterClass(additionalPropertiesValueType);
 
                 WriteSummaryText(writer, string.Format("Opens and returns a new writer for a <code>{0}</code> property.  A <code>{0}</code> property defines {1}", additionalPropertiesValueType.Name, additionalProperties.Description.UncapitalizeFirstLetter()));
-                WriteParameterText(writer, "name", "The name of the new node.");
+                WriteParameterText(writer, "name", "The name of the new property writer.");
                 writer.WriteLine("public {0}CesiumWriter Open{0}Property(string name)", additionalPropertiesValueType.NameWithPascalCase);
                 using (writer.OpenScope())
                 {

@@ -37,7 +37,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns a new writer for a <code>NodeTransformation</code> property.  A <code>NodeTransformation</code> property defines transformations to apply to a particular node in a 3D model.
         /// </summary>
-        /// <param name="name">The name of the new node.</param>
+        /// <param name="name">The name of the new property writer.</param>
         public NodeTransformationCesiumWriter OpenNodeTransformationProperty(string name)
         {
             OpenIntervalIfNecessary();
