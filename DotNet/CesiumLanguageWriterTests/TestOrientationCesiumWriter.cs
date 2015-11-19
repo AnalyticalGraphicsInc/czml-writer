@@ -63,7 +63,6 @@ namespace CesiumLanguageWriterTests
                     {
                         using (OrientationCesiumWriter interval = intervalList.OpenInterval())
                         {
-                            interval.WriteAxes("MyMadeUpAxes");
                             interval.WriteInterval(new TimeInterval(date, date.AddDays(1.0)));
                             interval.WriteUnitQuaternion(new UnitQuaternion(1, 0, 0, 0));
                         }

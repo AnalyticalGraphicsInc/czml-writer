@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the scaling factor specified as `[X, Y, Z]` factors in  meters.  If the array has three elements, the scaling is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the scaling factor specified as `[X, Y, Z]` factors in meters.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCartesian(Cartesian value)
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the scaling factor specified as `[X, Y, Z]` factors in  meters.  If the array has three elements, the scaling is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the scaling factor specified as `[X, Y, Z]` factors in meters.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -75,7 +75,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the scaling factor specified as `[X, Y, Z]` factors in  meters.  If the array has three elements, the scaling is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the scaling factor specified as `[X, Y, Z]` factors in meters.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>

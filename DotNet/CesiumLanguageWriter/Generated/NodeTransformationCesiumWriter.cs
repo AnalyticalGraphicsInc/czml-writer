@@ -28,7 +28,7 @@ namespace CesiumLanguageWriter
         public const string RotationPropertyName = "rotation";
 
         private readonly Lazy<ScaleCesiumWriter> m_scale = new Lazy<ScaleCesiumWriter>(() => new ScaleCesiumWriter(ScalePropertyName), false);
-        private readonly Lazy<TranslateCesiumWriter> m_translation = new Lazy<TranslateCesiumWriter>(() => new TranslateCesiumWriter(TranslationPropertyName), false);
+        private readonly Lazy<TranslationCesiumWriter> m_translation = new Lazy<TranslationCesiumWriter>(() => new TranslationCesiumWriter(TranslationPropertyName), false);
         private readonly Lazy<OrientationCesiumWriter> m_rotation = new Lazy<OrientationCesiumWriter>(() => new OrientationCesiumWriter(RotationPropertyName), false);
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <code>translation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>translation</code> property defines the translation applied to the model node.
         /// </summary>
-        public TranslateCesiumWriter TranslationWriter
+        public TranslationCesiumWriter TranslationWriter
         {
             get { return m_translation.Value; }
         }
@@ -172,7 +172,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <code>translation</code> property.  The <code>translation</code> property defines the translation applied to the model node.
         /// </summary>
-        public TranslateCesiumWriter OpenTranslationProperty()
+        public TranslationCesiumWriter OpenTranslationProperty()
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(TranslationWriter);

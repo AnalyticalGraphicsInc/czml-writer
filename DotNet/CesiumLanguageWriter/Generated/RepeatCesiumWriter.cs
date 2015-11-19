@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Repeat</code> to a <see cref="CesiumOutputStream" />.  A <code>Repeat</code> the numger of times the image repeats along each axis.
+    /// Writes a <code>Repeat</code> to a <see cref="CesiumOutputStream" />.  A <code>Repeat</code> the number of times the image repeats along each axis.
     /// </summary>
     public class RepeatCesiumWriter : CesiumInterpolatablePropertyWriter<RepeatCesiumWriter>
     {

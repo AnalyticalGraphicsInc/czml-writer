@@ -7,7 +7,7 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Font</code> to a <see cref="CesiumOutputStream" />.  A <code>Font</code> tODO
+    /// Writes a <code>Font</code> to a <see cref="CesiumOutputStream" />.  A <code>Font</code> a font used to draw text. Fonts are specified using the same syntax as the CSS "font" property.
     /// </summary>
     public class FontCesiumWriter : CesiumPropertyWriter<FontCesiumWriter>
     {
@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>font</code> property.  The <code>font</code> property specifies the font.
+        /// Writes the <code>font</code> property.  The <code>font</code> property specifies the font, specified using the same syntax as the CSS "font" property.
         /// </summary>
         /// <param name="font">The font.</param>
         public void WriteFont(string font)

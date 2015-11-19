@@ -8,9 +8,9 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Translate</code> to a <see cref="CesiumOutputStream" />.  A <code>Translate</code> defines an translational offset which can optionally vary over time.
+    /// Writes a <code>Translation</code> to a <see cref="CesiumOutputStream" />.  A <code>Translation</code> defines an translational offset which can optionally vary over time.
     /// </summary>
-    public class TranslateCesiumWriter : CesiumInterpolatablePropertyWriter<TranslateCesiumWriter>
+    public class TranslationCesiumWriter : CesiumInterpolatablePropertyWriter<TranslationCesiumWriter>
     {
         /// <summary>
         /// The name of the <code>cartesian</code> property.
@@ -28,7 +28,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public TranslateCesiumWriter(string propertyName)
+        public TranslationCesiumWriter(string propertyName)
             : base(propertyName)
         {
             m_asCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>>(CreateCartesianAdaptor, false);
@@ -39,7 +39,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected TranslateCesiumWriter(TranslateCesiumWriter existingInstance)
+        protected TranslationCesiumWriter(TranslationCesiumWriter existingInstance)
             : base(existingInstance)
         {
             m_asCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>>(CreateCartesianAdaptor, false);
@@ -47,13 +47,13 @@ namespace CesiumLanguageWriter
         }
 
         /// <inheritdoc />
-        public override TranslateCesiumWriter Clone()
+        public override TranslationCesiumWriter Clone()
         {
-            return new TranslateCesiumWriter(this);
+            return new TranslationCesiumWriter(this);
         }
 
         /// <summary>
-        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the translation specified as a Cartesian `[X, Y, Z]` position in  meters.  If the array has three elements, the translation is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the translation specified as a Cartesian `[X, Y, Z]` position in meters.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCartesian(Cartesian value)
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the translation specified as a Cartesian `[X, Y, Z]` position in  meters.  If the array has three elements, the translation is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the translation specified as a Cartesian `[X, Y, Z]` position in meters.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -75,7 +75,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the translation specified as a Cartesian `[X, Y, Z]` position in  meters.  If the array has three elements, the translation is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the translation specified as a Cartesian `[X, Y, Z]` position in meters.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -149,7 +149,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumInterpolatableValuePropertyWriter<Cartesian> CreateCartesianAdaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<TranslateCesiumWriter, Cartesian>(this, (me, value) => me.WriteCartesian(value), (me, dates, values, startIndex, length) => me.WriteCartesian(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<TranslationCesiumWriter, Cartesian>(this, (me, value) => me.WriteCartesian(value), (me, dates, values, startIndex, length) => me.WriteCartesian(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
-            return new CesiumWriterAdaptor<TranslateCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new CesiumWriterAdaptor<TranslationCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
         }
 
     }

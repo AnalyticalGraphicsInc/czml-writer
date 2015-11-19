@@ -9,7 +9,7 @@
             "description": "The scaling applied to the model node."
         },
         "translation": {
-            "$ref": "Translate.jsonschema",
+            "$ref": "Translation.jsonschema",
             "description": "The translation applied to the model node."
         },
         "rotation": {

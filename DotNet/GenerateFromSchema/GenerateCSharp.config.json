@@ -30,7 +30,7 @@
                 "callOverload": "new TimeInterval(start, stop)"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<TimeInterval>",
@@ -107,7 +107,7 @@
                 "callOverload": "new Rectangular(x, y)"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -123,7 +123,7 @@
                 "callOverload": "dates, values, 0, dates.Count"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -162,7 +162,7 @@
                 "writeValue": "CesiumWritingHelper.WriteCartesian3(Output, value);"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -178,7 +178,7 @@
                 "callOverload": "dates, values, 0, dates.Count"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -217,7 +217,7 @@
                 "writeValue": "CesiumWritingHelper.WriteUnitCartesian3(Output, value);"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -233,7 +233,7 @@
                 "callOverload": "dates, values, 0, dates.Count"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -272,7 +272,7 @@
                 "writeValue": "CesiumWritingHelper.WriteCartesian3Velocity(Output, value);"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -288,7 +288,7 @@
                 "callOverload": "dates, values, 0, dates.Count"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -327,7 +327,7 @@
                 "writeValue": "CesiumWritingHelper.WriteUnitSpherical(Output, value);"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -343,7 +343,7 @@
                 "callOverload": "dates, values, 0, dates.Count"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -372,7 +372,7 @@
         ],
         "Cartesian3List": [
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IEnumerable<Cartesian>",
@@ -385,7 +385,7 @@
         ],
         "UnitCartesian3List": [
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IEnumerable<UnitCartesian>",
@@ -398,7 +398,7 @@
         ],
         "SphericalList": [
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IEnumerable<Spherical>",
@@ -411,7 +411,7 @@
         ],
         "UnitSphericalList": [
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IEnumerable<UnitSpherical>",
@@ -434,7 +434,7 @@
                 "writeValue": "CesiumWritingHelper.WriteCartographic(Output, value);"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -450,7 +450,7 @@
                 "callOverload": "dates, values, 0, dates.Count"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -479,7 +479,7 @@
         ],
         "CartographicList": [
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IEnumerable<Cartographic>",
@@ -502,7 +502,7 @@
                 "callOverload": "resource.Uri, resource.Behavior"
             },
             {
-                "namespaces": ["System"],
+                "namespaces": [ "System" ],
                 "parameters": [
                     {
                         "type": "Uri",
@@ -519,7 +519,7 @@
                 "needsInterval": false
             },
             {
-                "namespaces": ["System"],
+                "namespaces": [ "System" ],
                 "parameters": [
                     {
                         "type": "Uri",
@@ -536,10 +536,10 @@
                 "needsInterval": false
             },
             {
-                "namespaces": ["System.Drawing"],
+                "namespaces": [ "System.Drawing" ],
                 "parameters": [
                     {
-                        
+
                         "type": "Image",
                         "name": "image",
                         "description": "The image.  A data URI will be created for this image, using PNG encoding."
@@ -548,16 +548,16 @@
                 "callOverload": "image, CesiumImageFormat.Png"
             },
             {
-                "namespaces": ["System.Drawing"],
+                "namespaces": [ "System.Drawing" ],
                 "parameters": [
                     {
-                        
+
                         "type": "Image",
                         "name": "image",
                         "description": "The image.  A data URI will be created for this image."
                     },
                     {
-                        
+
                         "type": "CesiumImageFormat",
                         "name": "imageFormat",
                         "description": "The image format to use to encode the image in the data URI."
@@ -671,7 +671,7 @@
                 "needsInterval": false
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -713,7 +713,7 @@
         ],
         "Rgba": [
             {
-                "namespaces": ["System.Drawing"],
+                "namespaces": [ "System.Drawing" ],
                 "parameters": [
                     {
                         "type": "Color",
@@ -749,7 +749,7 @@
                 "writeValue": "CesiumWritingHelper.WriteRgba(Output, red, green, blue, alpha);"
             },
             {
-                "namespaces": ["System.Collections.Generic", "System.Drawing"],
+                "namespaces": [ "System.Collections.Generic", "System.Drawing" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -815,7 +815,7 @@
                 "writeValue": "CesiumWritingHelper.WriteUnitQuaternion(Output, value);"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -831,7 +831,7 @@
                 "callOverload": "dates, values, 0, dates.Count"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -910,9 +910,9 @@
                 "writeValue": "CesiumWritingHelper.WriteReference(Output, identifier, propertyNames);"
             }
         ],
-        "References": [
+        "ReferenceList": [
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IEnumerable<Reference>",
@@ -961,7 +961,7 @@
                 "writeValue": "CesiumWritingHelper.WriteSpherical(Output, value);"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",
@@ -977,7 +977,7 @@
                 "callOverload": "dates, values, 0, dates.Count"
             },
             {
-                "namespaces": ["System.Collections.Generic"],
+                "namespaces": [ "System.Collections.Generic" ],
                 "parameters": [
                     {
                         "type": "IList<JulianDate>",

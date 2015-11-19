@@ -1,7 +1,7 @@
 {
     "title": "PolylineGlowMaterial",
     "description": "Fills the surface of a line with a glowing color.",
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
         "color": {

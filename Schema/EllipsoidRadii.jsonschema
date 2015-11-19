@@ -2,7 +2,7 @@
     "title": "EllipsoidRadii",
     "description": "Defines the radii of an ellipsoid.",
     "extends": { "$ref": "InterpolatableProperty.jsonschema" },
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
         "cartesian": {

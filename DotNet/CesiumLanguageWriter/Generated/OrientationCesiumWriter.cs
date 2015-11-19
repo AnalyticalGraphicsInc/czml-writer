@@ -8,15 +8,10 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Orientation</code> to a <see cref="CesiumOutputStream" />.  A <code>Orientation</code> defines an orientation.  An orientation is a rotation that takes a vector expressed in the "body" axes of the object and transforms it to the set of axes identified by the `axes` property.
+    /// Writes a <code>Orientation</code> to a <see cref="CesiumOutputStream" />.  A <code>Orientation</code> defines an orientation.  An orientation is a rotation that takes a vector expressed in the "body" axes of the object and transforms it to the Earth fixed axes.
     /// </summary>
     public class OrientationCesiumWriter : CesiumInterpolatablePropertyWriter<OrientationCesiumWriter>
     {
-        /// <summary>
-        /// The name of the <code>axes</code> property.
-        /// </summary>
-        public const string AxesPropertyName = "axes";
-
         /// <summary>
         /// The name of the <code>unitQuaternion</code> property.
         /// </summary>
@@ -58,19 +53,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>axes</code> property.  The <code>axes</code> property specifies tODO
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteAxes(string value)
-        {
-            const string PropertyName = AxesPropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            Output.WriteValue(value);
-        }
-
-        /// <summary>
-        /// Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies tODO
+        /// Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies the orientation represented as a 4-dimensional quaternion, specified as `[X, Y, Z, W]`.  If the array has four elements, the value is constant.  If it has five or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, W, Time, X, Y, Z, W, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteUnitQuaternion(UnitQuaternion value)
@@ -82,7 +65,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies tODO
+        /// Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies the orientation represented as a 4-dimensional quaternion, specified as `[X, Y, Z, W]`.  If the array has four elements, the value is constant.  If it has five or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, W, Time, X, Y, Z, W, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
         /// </summary>
         /// <param name="dates">The dates at which the rotation is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -92,7 +75,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies tODO
+        /// Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies the orientation represented as a 4-dimensional quaternion, specified as `[X, Y, Z, W]`.  If the array has four elements, the value is constant.  If it has five or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, W, Time, X, Y, Z, W, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
         /// </summary>
         /// <param name="dates">The dates at which the rotation is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -106,7 +89,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the orientation specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -118,7 +101,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the orientation specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -130,7 +113,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the orientation specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -143,7 +126,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the orientation specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

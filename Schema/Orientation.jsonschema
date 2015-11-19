@@ -1,22 +1,18 @@
 {
     "title": "Orientation",
-    "description": "Defines an orientation.  An orientation is a rotation that takes a vector expressed in the \"body\" axes of the object and transforms it to the set of axes identified by the `axes` property.",
+    "description": "Defines an orientation.  An orientation is a rotation that takes a vector expressed in the \"body\" axes of the object and transforms it to the Earth fixed axes.",
     "extends": { "$ref": "InterpolatableProperty.jsonschema" },
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
-        "axes": {
-            "description": "TODO",
-            "type": "string"
-        },
         "unitQuaternion": {
             "$ref": "UnitQuaternionValue.jsonschema",
-            "description": "TODO",
+            "description": "The orientation represented as a 4-dimensional quaternion, specified as `[X, Y, Z, W]`.  If the array has four elements, the value is constant.  If it has five or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, W, Time, X, Y, Z, W, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.",
             "czmlValue": true
         },
         "reference": {
             "$ref": "ReferenceValue.jsonschema",
-            "description": "A reference property.",
+            "description": "The orientation specified as a reference to another property.",
             "czmlValue": true
         }
     }

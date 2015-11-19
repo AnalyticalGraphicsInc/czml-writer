@@ -105,7 +105,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`.
+        /// Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the list of directions represented as three-dimensional Cartesian coordinates with unit magnitude, `[X, Y, Z, X, Y, Z, ...]`.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteUnitCartesian(IEnumerable<UnitCartesian> values)

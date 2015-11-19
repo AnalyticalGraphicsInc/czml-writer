@@ -173,11 +173,11 @@ namespace GenerateFromSchema
             writer.WriteLine(string.Format("/// <returns>{0}</returns>", description));
         }
 
-        private static void WriteDescriptionAsClassSummary(CodeWriter writer, Schema packetSchema)
+        private static void WriteDescriptionAsClassSummary(CodeWriter writer, Schema schema)
         {
             WriteSummaryText(writer, string.Format("Writes a <code>{0}</code> to a <see cref=\"CesiumOutputStream\" />.  A <code>{0}</code> {1}",
-                packetSchema.Name,
-                packetSchema.Description.UncapitalizeFirstLetter()));
+                schema.Name,
+                schema.Description.UncapitalizeFirstLetter()));
         }
 
         private static void WritePropertyNameConstants(CodeWriter writer, Schema schema)

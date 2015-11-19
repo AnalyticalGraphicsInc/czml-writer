@@ -151,6 +151,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShowPropertyReference(string value)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>semiMajorAxis</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>semiMajorAxis</code> property defines the length of the ellipse's semi-major axis in meters.
         /// </summary>
         public DoubleCesiumWriter SemiMajorAxisWriter
@@ -855,6 +905,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteFillPropertyReference(Reference value)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteFillPropertyReference(string value)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteFillPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteFillPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outline</code> property defines whether or not the ellipse is outlined.
         /// </summary>
         public BooleanCesiumWriter OutlineWriter
@@ -880,6 +980,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOutlineProperty())
             {
                 writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOutlinePropertyReference(Reference value)
+        {
+            using (var writer = OpenOutlineProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOutlinePropertyReference(string value)
+        {
+            using (var writer = OpenOutlineProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOutlinePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOutlineProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOutlinePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOutlineProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 

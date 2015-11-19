@@ -1,7 +1,7 @@
 {
     "title": "Vector",
     "description": "Defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.",
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "extensionPrefix": "agi",
     "properties": {
