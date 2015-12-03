@@ -276,6 +276,14 @@ namespace GenerateFromSchema
                 Schema additionalPropertiesValueType = additionalProperties.ValueType;
                 GenerateWriterClass(additionalPropertiesValueType);
 
+                WriteSummaryText(writer, string.Format("Gets a new writer for a <code>{0}</code> property.  The returned instance must be opened by calling the <see cref=\"CesiumElementWriter.Open\"/> method before it can be used for writing.  A <code>{0}</code> property defines {1}", additionalPropertiesValueType.Name, additionalProperties.Description.UncapitalizeFirstLetter()));
+                writer.WriteLine("public {0}CesiumWriter Get{0}Writer(string name)", additionalPropertiesValueType.NameWithPascalCase);
+                using (writer.OpenScope())
+                {
+                    writer.WriteLine("return new {0}CesiumWriter(name);", additionalPropertiesValueType.NameWithPascalCase);
+                }
+                writer.WriteLine();
+
                 WriteSummaryText(writer, string.Format("Opens and returns a new writer for a <code>{0}</code> property.  A <code>{0}</code> property defines {1}", additionalPropertiesValueType.Name, additionalProperties.Description.UncapitalizeFirstLetter()));
                 WriteParameterText(writer, "name", "The name of the new property writer.");
                 writer.WriteLine("public {0}CesiumWriter Open{0}Property(string name)", additionalPropertiesValueType.NameWithPascalCase);

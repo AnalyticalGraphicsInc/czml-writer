@@ -35,6 +35,14 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Gets a new writer for a <code>NodeTransformation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  A <code>NodeTransformation</code> property defines transformations to apply to a particular node in a 3D model.
+        /// </summary>
+        public NodeTransformationCesiumWriter GetNodeTransformationWriter(string name)
+        {
+            return new NodeTransformationCesiumWriter(name);
+        }
+
+        /// <summary>
         /// Opens and returns a new writer for a <code>NodeTransformation</code> property.  A <code>NodeTransformation</code> property defines transformations to apply to a particular node in a 3D model.
         /// </summary>
         /// <param name="name">The name of the new property writer.</param>
