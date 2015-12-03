@@ -8,8 +8,11 @@ import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -19,7 +22,7 @@ import org.junit.Test;
  
 
  */
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCartesian {
 	/**
 	 *  
@@ -80,8 +83,8 @@ public class TestCartesian {
 	public final void testEquality() {
 		Cartesian first = new Cartesian(1.0, 2.0, 3.0);
 		Cartesian second = new Cartesian(1.0, 2.0, 3.0);
-		Assert.assertEquals(first, second);
-		Assert.assertEquals(second, first);
+		AssertHelper.assertEquals(first, second);
+		AssertHelper.assertEquals(second, first);
 		Assert.assertTrue(Cartesian.equals(first, second));
 		Assert.assertTrue(Cartesian.equals(second, first));
 		Assert.assertFalse(Cartesian.notEquals(first, second));
@@ -222,11 +225,11 @@ public class TestCartesian {
 	@Test
 	public final void mostOrthogonalAxis() {
 		Cartesian v = Cartesian.toCartesian(new UnitCartesian(1.0, 2.0, 3.0));
-		Assert.assertEquals(UnitCartesian.getUnitX(), v.getMostOrthogonalAxis());
+		AssertHelper.assertEquals(UnitCartesian.getUnitX(), v.getMostOrthogonalAxis());
 		v = Cartesian.toCartesian(new UnitCartesian(2.0, 3.0, 1.0));
-		Assert.assertEquals(UnitCartesian.getUnitZ(), v.getMostOrthogonalAxis());
+		AssertHelper.assertEquals(UnitCartesian.getUnitZ(), v.getMostOrthogonalAxis());
 		v = Cartesian.toCartesian(new UnitCartesian(3.0, 1.0, 2.0));
-		Assert.assertEquals(UnitCartesian.getUnitY(), v.getMostOrthogonalAxis());
+		AssertHelper.assertEquals(UnitCartesian.getUnitY(), v.getMostOrthogonalAxis());
 	}
 
 	/**
@@ -503,6 +506,6 @@ public class TestCartesian {
 		Assert.assertEquals(result, test.toString());
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

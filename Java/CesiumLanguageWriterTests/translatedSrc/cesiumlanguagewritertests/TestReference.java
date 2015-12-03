@@ -4,14 +4,17 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestReference {
 	@Test
 	public final void canContructEscapedReferences() {
@@ -20,7 +23,7 @@ public class TestReference {
 		Assert.assertEquals(reference.getIdentifier(), "identifier");
 		ArrayList<String> tempCollection_0 = new ArrayList<String>();
 		tempCollection_0.add("property");
-		Assert.assertEquals(reference.getPropertyNames(), tempCollection_0);
+		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_0);
 		Assert.assertEquals(value, reference.getValue());
 		value = ("identifier#property.subProperty");
 		reference = new Reference(value);
@@ -28,7 +31,7 @@ public class TestReference {
 		ArrayList<String> tempCollection_1 = new ArrayList<String>();
 		tempCollection_1.add("property");
 		tempCollection_1.add("subProperty");
-		Assert.assertEquals(reference.getPropertyNames(), tempCollection_1);
+		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_1);
 		Assert.assertEquals(value, reference.getValue());
 		value = "\\#identif\\\\\\\\\\#ier\\.\\\\#propertyName.\\.abc\\\\.def";
 		reference = new Reference(value);
@@ -37,7 +40,7 @@ public class TestReference {
 		tempCollection_2.add("propertyName");
 		tempCollection_2.add(".abc\\");
 		tempCollection_2.add("def");
-		Assert.assertEquals(reference.getPropertyNames(), tempCollection_2);
+		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_2);
 		Assert.assertEquals(value, reference.getValue());
 		value = "#propertyName.\\.abc\\\\.def";
 		reference = new Reference(value);
@@ -46,7 +49,7 @@ public class TestReference {
 		tempCollection_3.add("propertyName");
 		tempCollection_3.add(".abc\\");
 		tempCollection_3.add("def");
-		Assert.assertEquals(reference.getPropertyNames(), tempCollection_3);
+		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_3);
 		Assert.assertEquals(value, reference.getValue());
 	}
 
@@ -56,13 +59,13 @@ public class TestReference {
 		Assert.assertEquals(reference.getIdentifier(), "identifier");
 		ArrayList<String> tempCollection_4 = new ArrayList<String>();
 		tempCollection_4.add("property");
-		Assert.assertEquals(reference.getPropertyNames(), tempCollection_4);
+		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_4);
 		Assert.assertEquals(reference.getValue(), "identifier#property");
 		reference = new Reference("#identif\\\\#ier.\\", "property.Name");
 		Assert.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
 		ArrayList<String> tempCollection_5 = new ArrayList<String>();
 		tempCollection_5.add("property.Name");
-		Assert.assertEquals(reference.getPropertyNames(), tempCollection_5);
+		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_5);
 		Assert.assertEquals(reference.getValue(), "\\#identif\\\\\\\\\\#ier\\.\\\\#property\\.Name");
 	}
 
@@ -76,7 +79,7 @@ public class TestReference {
 		ArrayList<String> tempCollection_7 = new ArrayList<String>();
 		tempCollection_7.add("property");
 		tempCollection_7.add("subProperty");
-		Assert.assertEquals(reference.getPropertyNames(), tempCollection_7);
+		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_7);
 		Assert.assertEquals(reference.getValue(), "identifier#property.subProperty");
 		ArrayList<String> tempCollection_8 = new ArrayList<String>();
 		tempCollection_8.add("property.Name");
@@ -86,7 +89,7 @@ public class TestReference {
 		ArrayList<String> tempCollection_9 = new ArrayList<String>();
 		tempCollection_9.add("property.Name");
 		tempCollection_9.add("subProperty");
-		Assert.assertEquals(reference.getPropertyNames(), tempCollection_9);
+		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_9);
 		Assert.assertEquals(reference.getValue(), "\\#identif\\\\\\\\\\#ier\\.\\\\#property\\.Name.subProperty");
 	}
 
@@ -105,6 +108,6 @@ public class TestReference {
 		new Reference("MissingPropertyName#");
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

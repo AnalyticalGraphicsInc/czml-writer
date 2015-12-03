@@ -615,7 +615,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 	}
 
 	/**
-	 *  Gets the writer for the <code>offset</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>offset</code> property defines the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+	 *  Gets the writer for the <code>offset</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>offset</code> property defines the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
 	
 
 	 */
@@ -625,7 +625,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>offset</code> property.  The <code>offset</code> property defines the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+	Opens and returns the writer for the <code>offset</code> property.  The <code>offset</code> property defines the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
 	
 
 	 */
@@ -636,7 +636,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>offset</code> property as a <code>number</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+	Writes a value for the <code>offset</code> property as a <code>number</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
 	
 	
 
@@ -655,7 +655,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>offset</code> property as a <code>number</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+	Writes a value for the <code>offset</code> property as a <code>number</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
 	
 	
 	
@@ -680,7 +680,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+	Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
 	
 	
 
@@ -699,7 +699,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+	Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
 	
 	
 
@@ -718,7 +718,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+	Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
 	
 	
 	
@@ -739,7 +739,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+	Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
 	
 	
 	
@@ -759,7 +759,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 	}
 
 	/**
-	 *  Gets the writer for the <code>repeat</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>repeat</code> property defines the number of time the stripes repeat.
+	 *  Gets the writer for the <code>repeat</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>repeat</code> property defines the number of times the stripes repeat.
 	
 
 	 */
@@ -769,7 +769,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>repeat</code> property.  The <code>repeat</code> property defines the number of time the stripes repeat.
+	Opens and returns the writer for the <code>repeat</code> property.  The <code>repeat</code> property defines the number of times the stripes repeat.
 	
 
 	 */
@@ -780,7 +780,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>repeat</code> property as a <code>number</code> value.  The <code>repeat</code> property specifies the number of time the stripes repeat.
+	Writes a value for the <code>repeat</code> property as a <code>number</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
 	
 	
 
@@ -799,7 +799,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>repeat</code> property as a <code>number</code> value.  The <code>repeat</code> property specifies the number of time the stripes repeat.
+	Writes a value for the <code>repeat</code> property as a <code>number</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
 	
 	
 	
@@ -824,7 +824,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of time the stripes repeat.
+	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
 	
 	
 
@@ -843,7 +843,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of time the stripes repeat.
+	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
 	
 	
 
@@ -862,7 +862,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of time the stripes repeat.
+	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
 	
 	
 	
@@ -883,7 +883,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
 	/**
 	 *  
-	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of time the stripes repeat.
+	Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
 	
 	
 	

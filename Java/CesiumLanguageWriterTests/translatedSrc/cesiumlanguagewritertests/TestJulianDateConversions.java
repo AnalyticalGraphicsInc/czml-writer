@@ -5,10 +5,13 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.DateTimeHelper;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -18,7 +21,7 @@ import org.junit.Test;
  
 
  */
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestJulianDateConversions {
 	/**
 	 *  
@@ -37,7 +40,7 @@ public class TestJulianDateConversions {
 		Assert.assertEquals((int) 0, (int) dateTime.getMinuteOfHour());
 		Assert.assertEquals((int) 0, (int) dateTime.getSecondOfMinute());
 		Assert.assertEquals((int) 0, (int) dateTime.getMillisOfSecond());
-		Assert.assertEquals(DateTimeZone.UTC, dateTime.getZone());
+		AssertHelper.assertEquals(DateTimeZone.UTC, dateTime.getZone());
 		julianDate = new JulianDate(2453736.5, TimeStandard.COORDINATED_UNIVERSAL_TIME);
 		dateTime = julianDate.toDateTime();
 		Assert.assertEquals((int) 2006, (int) dateTime.getYear());
@@ -47,7 +50,7 @@ public class TestJulianDateConversions {
 		Assert.assertEquals((int) 0, (int) dateTime.getMinuteOfHour());
 		Assert.assertEquals((int) 0, (int) dateTime.getSecondOfMinute());
 		Assert.assertEquals((int) 0, (int) dateTime.getMillisOfSecond());
-		Assert.assertEquals(DateTimeZone.UTC, dateTime.getZone());
+		AssertHelper.assertEquals(DateTimeZone.UTC, dateTime.getZone());
 		julianDate = new JulianDate(2441683.5, TimeStandard.COORDINATED_UNIVERSAL_TIME);
 		dateTime = julianDate.toDateTime();
 		Assert.assertEquals((int) 1973, (int) dateTime.getYear());
@@ -57,13 +60,13 @@ public class TestJulianDateConversions {
 		Assert.assertEquals((int) 0, (int) dateTime.getMinuteOfHour());
 		Assert.assertEquals((int) 0, (int) dateTime.getSecondOfMinute());
 		Assert.assertEquals((int) 0, (int) dateTime.getMillisOfSecond());
-		Assert.assertEquals(DateTimeZone.UTC, dateTime.getZone());
+		AssertHelper.assertEquals(DateTimeZone.UTC, dateTime.getZone());
 		julianDate = new JulianDate(2441683.5, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
 		dateTime = julianDate.toDateTime(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-		Assert.assertEquals(DateTimeZone.UTC, dateTime.getZone());
+		AssertHelper.assertEquals(DateTimeZone.UTC, dateTime.getZone());
 		julianDate = new JulianDate(2441683.5, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
 		dateTime = julianDate.toDateTime(TimeStandard.COORDINATED_UNIVERSAL_TIME);
-		Assert.assertEquals(DateTimeZone.UTC, dateTime.getZone());
+		AssertHelper.assertEquals(DateTimeZone.UTC, dateTime.getZone());
 	}
 
 	@Test
@@ -131,7 +134,7 @@ public class TestJulianDateConversions {
 		DateTime utc = localDateTime.withZone(org.joda.time.DateTimeZone.UTC);
 		julianDate = new JulianDate(localDateTime);
 		dateTime = julianDate.toDateTime();
-		Assert.assertEquals(utc, dateTime);
+		AssertHelper.assertEquals(utc, dateTime);
 	}
 
 	@Test
@@ -149,7 +152,7 @@ public class TestJulianDateConversions {
 		DateTime utc = localDateTime.withZone(org.joda.time.DateTimeZone.UTC);
 		julianDate = new JulianDate(localDateTime);
 		gregorianDate = julianDate.toGregorianDate();
-		Assert.assertEquals(new GregorianDate(utc), gregorianDate);
+		AssertHelper.assertEquals(new GregorianDate(utc), gregorianDate);
 	}
 
 	/**
@@ -206,6 +209,6 @@ public class TestJulianDateConversions {
 		Assert.assertEquals(gregorianDate.getSecond(), roundTrip.getSecond(), Constants.Epsilon13);
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

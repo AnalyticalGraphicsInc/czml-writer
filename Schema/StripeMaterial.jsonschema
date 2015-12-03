@@ -1,7 +1,7 @@
 {
     "title": "StripeMaterial",
     "description": "Fills the surface with alternating colors.",
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
         "orientation": {
@@ -18,11 +18,11 @@
         },
         "offset": {
             "$ref": "Double.jsonschema",
-            "description": "The value indicating where in the pattern to begin drawing; with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between."
+            "description": "The value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between."
         },
         "repeat": {
             "$ref": "Double.jsonschema",
-            "description": "The number of time the stripes repeat."
+            "description": "The number of times the stripes repeat."
         }
     }
 }

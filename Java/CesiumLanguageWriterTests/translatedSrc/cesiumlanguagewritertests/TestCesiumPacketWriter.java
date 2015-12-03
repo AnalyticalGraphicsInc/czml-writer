@@ -3,16 +3,19 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumPacketWriter {
 	private StringWriter m_sw;
 	private CesiumOutputStream m_output;
@@ -112,6 +115,6 @@ public class TestCesiumPacketWriter {
 		Assert.assertEquals("{\"billboard\":", m_sw.toString());
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

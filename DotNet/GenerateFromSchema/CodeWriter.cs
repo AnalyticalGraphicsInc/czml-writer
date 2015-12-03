@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace GenerateFromSchema
@@ -32,24 +29,26 @@ namespace GenerateFromSchema
         public void IncreaseIndent()
         {
             ++m_indent;
-            m_indentString = new String(' ', m_indent * Indentation);
+            m_indentString = new string(' ', m_indent * Indentation);
         }
 
-        public void DecreateIndent()
+        public void DecreaseIndent()
         {
             --m_indent;
-            m_indentString = new String(' ', m_indent * Indentation);
+            m_indentString = new string(' ', m_indent * Indentation);
         }
 
-        public void OpenScope()
+        public CodeScope OpenScope()
         {
             WriteLine("{{");
             IncreaseIndent();
+
+            return new CodeScope(this);
         }
 
         public void CloseScope()
         {
-            DecreateIndent();
+            DecreaseIndent();
             WriteLine("}}");
         }
 
@@ -62,6 +61,21 @@ namespace GenerateFromSchema
         {
             m_writer.Write(m_indentString);
             m_writer.WriteLine(format, args);
+        }
+
+        public class CodeScope : IDisposable
+        {
+            private readonly CodeWriter m_codeWriter;
+
+            public CodeScope(CodeWriter codeWriter)
+            {
+                m_codeWriter = codeWriter;
+            }
+
+            public void Dispose()
+            {
+                m_codeWriter.CloseScope();
+            }
         }
     }
 }

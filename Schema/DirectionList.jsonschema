@@ -1,7 +1,7 @@
 {
     "title": "DirectionList",
     "description": "A list of directions.",
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
         "spherical": {
@@ -21,7 +21,7 @@
         },
         "unitCartesian": {
             "$ref": "UnitCartesian3ListValue.jsonschema",
-            "description": "The list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`.",
+            "description": "The list of directions represented as three-dimensional Cartesian coordinates with unit magnitude, `[X, Y, Z, X, Y, Z, ...]`.",
             "czmlValue": true
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json.Schema;
 
 namespace GenerateFromSchema
@@ -48,9 +49,9 @@ namespace GenerateFromSchema
             output.WriteLine("**Interpolatable**: {0}", property.IsInterpolatable ? "yes" : "no");
             output.WriteLine();
 
-            if (property.ValueType != null && property.ValueType.Properties != null)
+            if (property.ValueType != null && property.ValueType.Properties.Count > 0)
             {
-                bool propertiesAreLeaf = property.ValueType.Properties.Find(subProperty => subProperty.ValueType.Properties != null) == null;
+                bool propertiesAreLeaf = property.ValueType.Properties.All(subProperty => subProperty.ValueType.Properties.Count == 0);
 
                 if (propertiesAreLeaf)
                     GenerateLeafProperties(property.ValueType, output);
@@ -88,17 +89,16 @@ namespace GenerateFromSchema
             output.WriteLine("**Sub-properties**:");
             output.WriteLine();
 
-            output.WriteLine("| Name | Scope | Type | Description |");
-            output.WriteLine("|:-----|:------|:-----|:------------|");
+            output.WriteLine("| Name | Type | Description |");
+            output.WriteLine("|:-----|:-----|:------------|");
 
             Schema current = schema;
             do
             {
                 foreach (Property nestedProperty in current.Properties)
                 {
-                    output.WriteLine("| `{0}` | {1} | {2} | {3} |",
+                    output.WriteLine("| `{0}` | {1} | {2} |",
                                      nestedProperty.Name,
-                                     nestedProperty.Scope,
                                      JsonSchemaTypesToLabel(nestedProperty.ValueType.JsonTypes),
                                      nestedProperty.Description);
                 }

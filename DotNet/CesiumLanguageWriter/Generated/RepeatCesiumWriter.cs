@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Repeat</code> to a <see cref="CesiumOutputStream" />.  A <code>Repeat</code> the numger of times the image repeats along each axis.
+    /// Writes a <code>Repeat</code> to a <see cref="CesiumOutputStream" />.  A <code>Repeat</code> the number of times the image repeats along each axis.
     /// </summary>
     public class RepeatCesiumWriter : CesiumInterpolatablePropertyWriter<RepeatCesiumWriter>
     {
@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the numger of times the image repeats along each axis.
+        /// Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of times the image repeats along each axis.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCartesian2(Rectangular value)
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the numger of times the image repeats along each axis.
+        /// Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of times the image repeats along each axis.
         /// </summary>
         /// <param name="x">The X component.</param>
         /// <param name="y">The Y component.</param>
@@ -75,7 +75,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the numger of times the image repeats along each axis.
+        /// Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of times the image repeats along each axis.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -85,7 +85,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the numger of times the image repeats along each axis.
+        /// Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of times the image repeats along each axis.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -159,8 +159,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumInterpolatableValuePropertyWriter<Rectangular> CreateCartesian2Adaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<RepeatCesiumWriter, Rectangular>(
-                this, (me, value) => me.WriteCartesian2(value), (RepeatCesiumWriter me, IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length) => me.WriteCartesian2(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<RepeatCesiumWriter, Rectangular>(this, (me, value) => me.WriteCartesian2(value), (me, dates, values, startIndex, length) => me.WriteCartesian2(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -174,8 +173,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
-            return new CesiumWriterAdaptor<RepeatCesiumWriter, Reference>(
-                this, (me, value) => me.WriteReference(value));
+            return new CesiumWriterAdaptor<RepeatCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
         }
 
     }

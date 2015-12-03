@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
 namespace GenerateFromSchema
@@ -8,13 +7,22 @@ namespace GenerateFromSchema
     {
         public string Name { get; set; }
 
-        public string Description { get; set; }
+        public string Description
+        {
+            get
+            {
+                if (m_description != null)
+                    return m_description;
+                if (ValueType != null)
+                    return ValueType.Description;
+                return null;
+            }
+            set { m_description = value; }
+        }
 
         public Schema ValueType { get; set; }
 
         public JToken Default { get; set; }
-
-        public Scope Scope { get; set; }
 
         public List<string> Examples { get; set; }
 
@@ -27,8 +35,8 @@ namespace GenerateFromSchema
                 if (Name.Length == 0)
                     return Name;
 
-                var tmp = string.IsNullOrEmpty(ValueType.ExtensionPrefix) ? Name : Name.Substring(ValueType.ExtensionPrefix.Length + 1);
-                return Char.ToUpperInvariant(tmp[0]) + tmp.Substring(1);
+                string name = string.IsNullOrEmpty(ValueType.ExtensionPrefix) ? Name : Name.Substring(ValueType.ExtensionPrefix.Length + 1);
+                return name.CapitalizeFirstLetter();
             }
         }
 
@@ -40,5 +48,7 @@ namespace GenerateFromSchema
                        ValueType.Extends.Name == "InterpolatableProperty";
             }
         }
+
+        private string m_description;
     }
 }

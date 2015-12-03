@@ -91,8 +91,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <returns>The writer.</returns>
         public TDerived OpenInterval()
         {
-            TDerived result = OpenAndReturn(m_interval.Value);
-            return result;
+            return OpenAndReturn(m_interval.Value);
         }
 
         /// <summary>

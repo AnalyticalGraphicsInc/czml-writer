@@ -4,16 +4,19 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ConsoleHelper;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import org.junit.FixMethodOrder;
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropertyWriter<OrientationCesiumWriter> {
 	@Override
 	protected CesiumPropertyWriter<OrientationCesiumWriter> createPropertyWriter(String propertyName) {
@@ -83,7 +86,6 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
 										{
 											OrientationCesiumWriter interval = intervalList.openInterval();
 											try {
-												interval.writeAxes("MyMadeUpAxes");
 												interval.writeInterval(new TimeInterval(date, date.addDays(1.0)));
 												interval.writeUnitQuaternion(new UnitQuaternion(1D, 0D, 0D, 0D));
 											} finally {
@@ -127,6 +129,6 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
 		}
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

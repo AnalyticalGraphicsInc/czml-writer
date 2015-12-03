@@ -3,8 +3,11 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.AssertHelper;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -14,7 +17,7 @@ import org.junit.Test;
  
 
  */
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLeapSecond {
 	/**
 	 *  
@@ -28,7 +31,7 @@ public class TestLeapSecond {
 		LeapSecond ls2 = new LeapSecond(2451545.0, 100.0);
 		LeapSecond ls3 = new LeapSecond(2451545.0, 101.0);
 		LeapSecond ls4 = new LeapSecond(2451546.0, 101.0);
-		Assert.assertEquals(ls1, ls2);
+		AssertHelper.assertEquals(ls1, ls2);
 		Assert.assertTrue(LeapSecond.equals(ls1, ls2));
 		AssertHelper.assertNotEqual(ls1, ls3);
 		Assert.assertTrue(LeapSecond.notEquals(ls1, ls3));
@@ -63,6 +66,6 @@ public class TestLeapSecond {
 		Assert.assertEquals("2451545:0 (UTC), 100", ls1.toString());
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

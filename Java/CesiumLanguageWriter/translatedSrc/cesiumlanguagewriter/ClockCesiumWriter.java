@@ -6,7 +6,7 @@ import cesiumlanguagewriter.advanced.*;
 
 /**
  *  
- Writes a <code>Clock</code> to a  {@link CesiumOutputStream}.  A <code>Clock</code> defines a simulated clock.
+ Writes a <code>Clock</code> to a  {@link CesiumOutputStream}.  A <code>Clock</code> defines initial settings for a simulated clock when a document is loaded.
  
 
  */
@@ -69,7 +69,7 @@ public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>currentTime</code> property.  The <code>currentTime</code> property specifies the current time.
+	Writes the <code>currentTime</code> property.  The <code>currentTime</code> property specifies the current time, specified in ISO8601 format.
 	
 	
 
@@ -84,7 +84,7 @@ public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>multiplier</code> property.  The <code>multiplier</code> property specifies the multiplier, which in TICK_DEPENDENT mode is the number of seconds to advance each tick.  In SYSTEM_CLOCK_DEPENDENT mode, it is the multiplier applied to the amount of time elapsed between ticks.  This value is ignored in SYSTEM_CLOCK mode.
+	Writes the <code>multiplier</code> property.  The <code>multiplier</code> property specifies the multiplier.  When `step` is set to `TICK_DEPENDENT`, this is the number of seconds to advance each tick.  When `step` is set to `SYSTEM_CLOCK_DEPENDENT`, this is multiplied by the elapsed system time between ticks.  This value is ignored in `SYSTEM_CLOCK` mode.  The default value is 1.0.
 	
 	
 
@@ -99,7 +99,7 @@ public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>range</code> property.  The <code>range</code> property specifies the behavior of a clock when its current time reaches its start or end points.  Valid values are 'UNBOUNDED', 'CLAMPED', and 'LOOP_STOP'.
+	Writes the <code>range</code> property.  The <code>range</code> property specifies the behavior when the current time reaches its start or end times.  The default value is `LOOP_STOP`.
 	
 	
 
@@ -114,7 +114,7 @@ public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>step</code> property.  The <code>step</code> property specifies defines how a clock steps in time.  Valid values are 'SYSTEM_CLOCK', 'SYSTEM_CLOCK_MULTIPLIER', and 'TICK_DEPENDENT'.
+	Writes the <code>step</code> property.  The <code>step</code> property specifies how the current time advances each tick.  The default value is `SYSTEM_CLOCK_MULTIPLIER`.
 	
 	
 
