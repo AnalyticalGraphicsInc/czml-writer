@@ -29,8 +29,8 @@
             "$ref": "Position.jsonschema",
             "description": "The position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other primitives attached to the object.",
             "czmlExamples": [
-                "examples/SimplePosition.json",
-                "examples/TimeVaryingPosition.json"
+                "Examples/SimplePosition.json",
+                "Examples/TimeVaryingPosition.json"
             ]
         },
         "billboard": {

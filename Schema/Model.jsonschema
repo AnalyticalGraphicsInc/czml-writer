@@ -25,7 +25,10 @@
             "description": "Whether or not to run all animations defined in the glTF model."
         },
         "nodeTransformations": {
-            "$ref": "NodeTransformations.jsonschema"
+            "$ref": "NodeTransformations.jsonschema",
+            "czmlExamples": [
+                "Examples/NodeTransformations.json"
+            ]
         }
     }
 }

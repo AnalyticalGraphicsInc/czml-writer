@@ -94,6 +94,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateFromSchema", "Gener
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{5E4C0F36-35DC-4ED8-91EC-EAAC109836A0}"
 	ProjectSection(SolutionItems) = preProject
+		..\Schema\Examples\NodeTransformations.json = ..\Schema\Examples\NodeTransformations.json
 		..\Schema\Examples\SimplePosition.json = ..\Schema\Examples\SimplePosition.json
 		..\Schema\Examples\TimeVaryingPosition.json = ..\Schema\Examples\TimeVaryingPosition.json
 	EndProjectSection
