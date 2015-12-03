@@ -171,8 +171,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
 	 * @return The writer.
 	 */
 	public final TDerived openInterval() {
-		TDerived result = openAndReturn(m_interval.getValue());
-		return result;
+		return openAndReturn(m_interval.getValue());
 	}
 
 	/**

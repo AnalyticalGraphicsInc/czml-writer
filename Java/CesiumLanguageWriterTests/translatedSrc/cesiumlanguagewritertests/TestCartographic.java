@@ -8,8 +8,11 @@ import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -19,7 +22,7 @@ import org.junit.Test;
  
 
  */
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCartographic {
 	/**
 	 *  
@@ -65,8 +68,8 @@ public class TestCartographic {
 	public final void testEquality() {
 		Cartographic first = new Cartographic(1.0, 2.0, 3.0);
 		Cartographic second = new Cartographic(1.0, 2.0, 3.0);
-		Assert.assertEquals(first, second);
-		Assert.assertEquals(second, first);
+		AssertHelper.assertEquals(first, second);
+		AssertHelper.assertEquals(second, first);
 		Assert.assertTrue(Cartographic.equals(first, second));
 		Assert.assertTrue(Cartographic.equals(second, first));
 		Assert.assertFalse(Cartographic.notEquals(first, second));
@@ -196,6 +199,6 @@ public class TestCartographic {
 		Assert.assertEquals(s.toString(), test.toString());
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

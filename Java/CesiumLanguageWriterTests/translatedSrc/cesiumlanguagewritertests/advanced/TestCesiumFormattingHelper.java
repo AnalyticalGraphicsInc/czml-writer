@@ -2,14 +2,17 @@ package cesiumlanguagewritertests.advanced;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewritertests.*;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumFormattingHelper {
 	@Test
 	public final void passToIso8601Interval() {
@@ -57,6 +60,6 @@ public class TestCesiumFormattingHelper {
 		Assert.assertEquals(expectedMaximumCompact, maxStringCompact);
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

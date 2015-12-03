@@ -5,8 +5,11 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -16,7 +19,7 @@ import org.junit.Test;
  
 
  */
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestMatrix3By3 {
 	/**
 	 *  
@@ -69,8 +72,8 @@ public class TestMatrix3By3 {
 	public final void testEquality() {
 		Matrix3By3 first = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
 		Matrix3By3 second = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-		Assert.assertEquals(first, second);
-		Assert.assertEquals(second, first);
+		AssertHelper.assertEquals(first, second);
+		AssertHelper.assertEquals(second, first);
 		Assert.assertTrue(Matrix3By3.equals(first, second));
 		Assert.assertTrue(Matrix3By3.equals(second, first));
 		Assert.assertFalse(Matrix3By3.notEquals(first, second));
@@ -526,6 +529,6 @@ public class TestMatrix3By3 {
 		Matrix3By3 mat = Matrix3By3.getZero().invert();
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

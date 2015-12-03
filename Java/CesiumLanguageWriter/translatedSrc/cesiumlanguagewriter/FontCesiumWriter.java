@@ -9,7 +9,7 @@ import cesiumlanguagewriter.Reference;
 
 /**
  *  
- Writes a <code>Font</code> to a  {@link CesiumOutputStream}.  A <code>Font</code> tODO
+ Writes a <code>Font</code> to a  {@link CesiumOutputStream}.  A <code>Font</code> a font used to draw text. Fonts are specified using the same syntax as the CSS "font" property.
  
 
  */
@@ -84,7 +84,7 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>font</code> property.  The <code>font</code> property specifies the font.
+	Writes the <code>font</code> property.  The <code>font</code> property specifies the font, specified using the same syntax as the CSS "font" property.
 	
 	
 

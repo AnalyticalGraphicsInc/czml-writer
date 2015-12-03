@@ -2,16 +2,19 @@ package cesiumlanguagewritertests.advanced;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewritertests.*;
 import java.io.StringWriter;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumWritingHelper {
 	@Before
 	public final void setUp() {
@@ -36,6 +39,6 @@ public class TestCesiumWritingHelper {
 
 	private StringWriter m_stringWriter;
 	private CesiumOutputStream m_outputStream;
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

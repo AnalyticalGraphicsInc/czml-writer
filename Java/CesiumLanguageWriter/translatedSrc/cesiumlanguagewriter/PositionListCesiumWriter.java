@@ -130,7 +130,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 
 	/**
 	 *  
-	Writes the <code>referenceFrame</code> property.  The <code>referenceFrame</code> property specifies the reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". In addition, the value of this property can be a hash (#) symbol followed by the ID of another object in the same scope whose "position" and "orientation" properties define the reference frame in which this position is defined.  This property is ignored when specifying position with any type other than cartesian. If this property is not specified, the default reference frame is "FIXED".
+	Writes the <code>referenceFrame</code> property.  The <code>referenceFrame</code> property specifies the reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". If this property is not specified, the default reference frame is "FIXED".
 	
 	
 
@@ -145,7 +145,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 
 	/**
 	 *  
-	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the list of positions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]` in the meters relative to the `referenceFrame`.
+	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the list of positions represented as Cartesian coordinates, `[X, Y, Z, X, Y, Z, ...]`, in meters relative to the `referenceFrame`.
 	
 	
 
@@ -160,7 +160,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 
 	/**
 	 *  
-	Writes the <code>cartographicRadians</code> property.  The <code>cartographicRadians</code> property specifies the list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]` where longitude and latitude are in radians and height is in meters.
+	Writes the <code>cartographicRadians</code> property.  The <code>cartographicRadians</code> property specifies the list of positions represented as Cartographic WGS84 coordinates, `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in radians and Height is in meters.
 	
 	
 
@@ -175,7 +175,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 
 	/**
 	 *  
-	Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the list of positions represented as WGS 84 `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]` where longitude and latitude are in degrees and height is in meters.
+	Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the list of positions represented as Cartographic WGS84 coordinates, `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in degrees and Height is in meters.
 	
 	
 
@@ -190,7 +190,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 
 	/**
 	 *  
-	Writes the <code>references</code> property.  The <code>references</code> property specifies the list of positions specified as references.  Each reference is to a property that defines a single position, possible as it changes with time.
+	Writes the <code>references</code> property.  The <code>references</code> property specifies the list of positions specified as references.  Each reference is to a property that defines a single position, which may change with time.
 	
 	
 

@@ -170,7 +170,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
 	
 	
 
@@ -185,7 +185,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
 	
 	
 
@@ -200,7 +200,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
 	
 	
 	
@@ -217,7 +217,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
 	
 	
 	
