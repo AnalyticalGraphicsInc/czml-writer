@@ -105,7 +105,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`.
+        /// Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the list of directions represented as three-dimensional Cartesian coordinates with unit magnitude, `[X, Y, Z, X, Y, Z, ...]`.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteUnitCartesian(IEnumerable<UnitCartesian> values)
@@ -127,8 +127,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<IEnumerable<Spherical>> CreateSphericalAdaptor()
         {
-            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<Spherical>>(
-                this, (me, value) => me.WriteSpherical(value));
+            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<Spherical>>(this, (me, value) => me.WriteSpherical(value));
         }
 
         /// <summary>
@@ -142,8 +141,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>> CreateUnitSphericalAdaptor()
         {
-            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<UnitSpherical>>(
-                this, (me, value) => me.WriteUnitSpherical(value));
+            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<UnitSpherical>>(this, (me, value) => me.WriteUnitSpherical(value));
         }
 
         /// <summary>
@@ -157,8 +155,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<IEnumerable<Cartesian>> CreateCartesianAdaptor()
         {
-            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<Cartesian>>(
-                this, (me, value) => me.WriteCartesian(value));
+            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<Cartesian>>(this, (me, value) => me.WriteCartesian(value));
         }
 
         /// <summary>
@@ -172,8 +169,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>> CreateUnitCartesianAdaptor()
         {
-            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<UnitCartesian>>(
-                this, (me, value) => me.WriteUnitCartesian(value));
+            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<UnitCartesian>>(this, (me, value) => me.WriteUnitCartesian(value));
         }
 
     }

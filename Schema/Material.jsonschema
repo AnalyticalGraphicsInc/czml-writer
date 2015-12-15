@@ -1,7 +1,7 @@
 {
     "title": "Material",
     "description": "Defines how a surface is colored or shaded.",
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
         "solidColor": {
@@ -16,9 +16,9 @@
             "$ref": "GridMaterial.jsonschema",
             "description": "Fills the surface with a grid."
         },
-		"stripe":{
-		    "$ref": "StripeMaterial.jsonschema",
-            "description": "Fills the surface with alternating colors."		
-		}
+        "stripe": {
+            "$ref": "StripeMaterial.jsonschema",
+            "description": "Fills the surface with alternating colors."
+        }
     }
 }

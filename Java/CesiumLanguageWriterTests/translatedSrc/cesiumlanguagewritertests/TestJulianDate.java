@@ -5,8 +5,11 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -16,7 +19,7 @@ import org.junit.Test;
  
 
  */
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestJulianDate {
 	/**
 	 *  
@@ -43,11 +46,11 @@ public class TestJulianDate {
 	@Test
 	public final void testTimeStandard() {
 		JulianDate date = new JulianDate(0D);
-		Assert.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, date.getStandard());
+		AssertHelper.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, date.getStandard());
 		date = new JulianDate(100, 123.456789012);
-		Assert.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, date.getStandard());
+		AssertHelper.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, date.getStandard());
 		date = new JulianDate(100, 123.456789012, TimeStandard.COORDINATED_UNIVERSAL_TIME);
-		Assert.assertEquals(TimeStandard.COORDINATED_UNIVERSAL_TIME, date.getStandard());
+		AssertHelper.assertEquals(TimeStandard.COORDINATED_UNIVERSAL_TIME, date.getStandard());
 	}
 
 	/**
@@ -111,7 +114,7 @@ public class TestJulianDate {
 	public final void testEquality() {
 		JulianDate first = new JulianDate(2451545, 0.2);
 		JulianDate second = new JulianDate(2451545, 0.2);
-		Assert.assertEquals(first, second);
+		AssertHelper.assertEquals(first, second);
 		Assert.assertTrue(first.equalsType(second));
 		Assert.assertTrue(second.equalsType(first));
 		Assert.assertEquals((int) 0, (int) first.compareTo(second));
@@ -262,7 +265,7 @@ public class TestJulianDate {
 		// Make sure AddSeconds produces the correct answer in the correct time standard.
 		JulianDate test = new JulianDate(2451912, 43200.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
 		JulianDate result = test.addSeconds(45.123);
-		Assert.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, result.getStandard());
+		AssertHelper.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, result.getStandard());
 		Assert.assertEquals((int) 2451912, (int) result.getDay());
 		Assert.assertEquals(43245.123, result.getSecondsOfDay(), 0d);
 	}
@@ -278,7 +281,7 @@ public class TestJulianDate {
 		// Make sure AddDays produces the correct answer in the correct time standard.
 		JulianDate test = new JulianDate(2451912, 43200.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
 		JulianDate result = test.addDays(45.5);
-		Assert.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, result.getStandard());
+		AssertHelper.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, result.getStandard());
 		Assert.assertEquals((int) 2451958, (int) result.getDay());
 		Assert.assertEquals(0.0, result.getSecondsOfDay(), 0d);
 	}
@@ -370,8 +373,8 @@ public class TestJulianDate {
 		};
 		Assert.assertTrue(afterLeapSecond.tryConvertTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME, out$outDate_1));
 		outDate = out$outDate_1[0];
-		Assert.assertEquals(outDate.getStandard(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
-		Assert.assertEquals(outDate, afterLeapSecond);
+		AssertHelper.assertEquals(outDate.getStandard(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
+		AssertHelper.assertEquals(outDate, afterLeapSecond);
 	}
 
 	@Test
@@ -394,6 +397,6 @@ public class TestJulianDate {
 		Assert.assertEquals(2, secondAfterLeapSecondUTC.subtract(secondBeforeLeapSecondUTC).getSeconds(), 0d);
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

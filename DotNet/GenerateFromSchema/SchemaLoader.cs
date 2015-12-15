@@ -22,12 +22,12 @@ namespace GenerateFromSchema
             if (m_schemas.TryGetValue(schemaFileName, out result))
                 return result;
 
-            using (var packetStream = new StreamReader(schemaFileName))
-            using (var packetJsonReader = new JsonTextReader(packetStream))
+            using (var streamReader = new StreamReader(schemaFileName))
+            using (var jsonReader = new JsonTextReader(streamReader))
             {
-                JObject schemaJson = JObject.Load(packetJsonReader);
                 result = new Schema();
                 m_schemas[schemaFileName] = result;
+                JObject schemaJson = JObject.Load(jsonReader);
                 LoadSchema(schemaJson, result);
                 return result;
             }
@@ -48,76 +48,78 @@ namespace GenerateFromSchema
             JProperty propertiesProperty = schemaJson.Property("properties");
             if (propertiesProperty != null)
             {
-                schema.Properties = new List<Property>();
-                JObject propertiesJson = (JObject)propertiesProperty.Value;
-                foreach (JProperty propertyJson in propertiesJson.Properties())
+                JObject propertiesPropertyValue = (JObject)propertiesProperty.Value;
+                foreach (JProperty propertyProperty in propertiesPropertyValue.Properties())
                 {
-                    Property property = new Property();
-                    LoadProperty(propertyJson, property);
-                    schema.Properties.Add(property);
+                    schema.Properties.Add(LoadProperty(propertyProperty));
                 }
+            }
+
+            JProperty additionalPropertiesProperty = schemaJson.Property("additionalProperties");
+            if (additionalPropertiesProperty != null)
+            {
+                schema.AdditionalProperties = LoadProperty(additionalPropertiesProperty);
             }
         }
 
-        private void LoadProperty(JProperty propertyJson, Property property)
+        private Property LoadProperty(JProperty propertyProperty)
         {
-            var propertyObject = (JObject)propertyJson.Value;
-            property.Name = propertyJson.Name;
-            property.Description = GetValue<string>(propertyObject, "description", null);
-            property.Scope = GetValue<string>(propertyObject, "czmlScope", "INTERVAL") == "PACKET"
-                                 ? Scope.Packet
-                                 : Scope.Interval;
-            property.IsValue = GetValue<bool>(propertyObject, "czmlValue", false);
+            JObject propertySchema = (JObject)propertyProperty.Value;
 
-            string refString = GetValue<string>(propertyObject, "$ref", null);
+            Property result = new Property
+                              {
+                                  Name = propertyProperty.Name,
+                                  Description = GetValue<string>(propertySchema, "description", null),
+                                  IsValue = GetValue<bool>(propertySchema, "czmlValue", false)
+                              };
+
+            string refString = GetValue<string>(propertySchema, "$ref", null);
             if (refString != null)
             {
-                property.ValueType = Load(Path.Combine(m_schemaDirectory, refString));
+                result.ValueType = Load(Path.Combine(m_schemaDirectory, refString));
             }
             else
             {
-                var valueSchema = new Schema();
-                valueSchema.Name = Schema.SchemaFromTypeName;
-                valueSchema.JsonTypes = LoadJsonSchemaType(propertyObject);
-                property.ValueType = valueSchema;
+                result.ValueType = new Schema
+                                   {
+                                       Name = Schema.SchemaFromTypeName,
+                                       JsonTypes = LoadJsonSchemaType(propertySchema)
+                                   };
             }
 
-            JProperty examplesProperty = propertyObject.Property("czmlExamples");
+            JProperty examplesProperty = propertySchema.Property("czmlExamples");
             if (examplesProperty != null)
             {
-                var examplesJson = (JArray)examplesProperty.Value;
-                property.Examples = new List<string>();
-                
-                foreach (string filename in examplesJson.Values<string>())
-                {
-                    property.Examples.Add(File.ReadAllText(Path.Combine(m_schemaDirectory, filename)));
-                }
-            }
-        }
+                result.Examples = new List<string>();
 
-        private JsonSchemaType LoadJsonSchemaType(JObject schema)
-        {
-            JsonSchemaType result = JsonSchemaType.Any;
-
-            JProperty type = schema.Property("type");
-            if (type != null)
-            {
-                var arrayOfTypes = type.Value as JArray;
-                if (arrayOfTypes == null)
+                JArray examples = (JArray)examplesProperty.Value;
+                foreach (string filename in examples.Values<string>())
                 {
-                    result = JsonSchemaTypeMapping[type.Value.Value<string>()];
-                }
-                else
-                {
-                    result = 0;
-                    foreach (string typeName in arrayOfTypes.Values<string>())
-                    {
-                        result |= JsonSchemaTypeMapping[typeName];
-                    }
+                    result.Examples.Add(File.ReadAllText(Path.Combine(m_schemaDirectory, filename)));
                 }
             }
 
             return result;
+        }
+
+        private JsonSchemaType LoadJsonSchemaType(JObject schema)
+        {
+            JProperty type = schema.Property("type");
+            if (type == null)
+                return JsonSchemaType.Any;
+
+            var arrayOfTypes = type.Value as JArray;
+            if (arrayOfTypes != null)
+            {
+                JsonSchemaType result = JsonSchemaType.None;
+                foreach (string typeName in arrayOfTypes.Values<string>())
+                {
+                    result |= s_jsonSchemaTypeMapping[typeName];
+                }
+                return result;
+            }
+
+            return s_jsonSchemaTypeMapping[type.Value.Value<string>()];
         }
 
         private static T GetValue<T>(JObject obj, string path, T defaultValue)
@@ -125,20 +127,19 @@ namespace GenerateFromSchema
             JToken token = obj.SelectToken(path);
             if (token == null)
                 return defaultValue;
-            else
-                return token.Value<T>();
+            return token.Value<T>();
         }
 
-        private static readonly Dictionary<string, JsonSchemaType> JsonSchemaTypeMapping = new Dictionary<string, JsonSchemaType>
-            {
-                {"string", JsonSchemaType.String},
-                {"object", JsonSchemaType.Object},
-                {"integer", JsonSchemaType.Integer},
-                {"number", JsonSchemaType.Float},
-                {"null", JsonSchemaType.Null},
-                {"boolean", JsonSchemaType.Boolean},
-                {"array", JsonSchemaType.Array},
-                {"any", JsonSchemaType.Any}
-            };
+        private static readonly Dictionary<string, JsonSchemaType> s_jsonSchemaTypeMapping = new Dictionary<string, JsonSchemaType>
+                                                                                             {
+                                                                                                 { "string", JsonSchemaType.String },
+                                                                                                 { "object", JsonSchemaType.Object },
+                                                                                                 { "integer", JsonSchemaType.Integer },
+                                                                                                 { "number", JsonSchemaType.Float },
+                                                                                                 { "null", JsonSchemaType.Null },
+                                                                                                 { "boolean", JsonSchemaType.Boolean },
+                                                                                                 { "array", JsonSchemaType.Array },
+                                                                                                 { "any", JsonSchemaType.Any }
+                                                                                             };
     }
 }

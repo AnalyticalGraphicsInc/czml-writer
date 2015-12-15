@@ -1,7 +1,7 @@
 {
     "title": "Uri",
     "description": "A URI value.  The URI can optionally vary with time.",
-    "type": ["array", "object", "string"],
+    "type": [ "array", "object", "string" ],
     "items": { "$ref": "#" },
     "properties": {
         "uri": {

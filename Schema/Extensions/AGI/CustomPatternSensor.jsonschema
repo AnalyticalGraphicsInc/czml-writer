@@ -1,7 +1,7 @@
 {
     "title": "CustomPatternSensor",
     "description": "A custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.",
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "extensionPrefix": "agi",
     "properties": {

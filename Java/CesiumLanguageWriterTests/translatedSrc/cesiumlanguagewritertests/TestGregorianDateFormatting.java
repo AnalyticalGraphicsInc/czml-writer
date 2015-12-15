@@ -2,14 +2,17 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import java.util.Locale;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestGregorianDateFormatting {
 	private Locale m_cultureInfo;
 
@@ -131,6 +134,6 @@ public class TestGregorianDateFormatting {
 		Assert.assertEquals("2012-06-30T23:59:60.123Z", iso);
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

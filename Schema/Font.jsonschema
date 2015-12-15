@@ -1,12 +1,12 @@
 {
     "title": "Font",
-    "description": "TODO",
-    "type": ["array", "object", "string"],
+    "description": "A font used to draw text. Fonts are specified using the same syntax as the CSS \"font\" property.",
+    "type": [ "array", "object", "string" ],
     "items": { "$ref": "#" },
     "properties": {
         "font": {
             "$ref": "FontValue.jsonschema",
-            "description": "The font.",
+            "description": "The font, specified using the same syntax as the CSS \"font\" property.",
             "czmlValue": true
         },
         "reference": {

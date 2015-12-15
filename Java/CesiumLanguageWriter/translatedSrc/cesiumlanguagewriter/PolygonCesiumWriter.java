@@ -329,6 +329,86 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeShowPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeShowPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeShowPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>material</code> property defines the material to use to fill the polygon.
 	
 
@@ -781,7 +861,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>stRotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>stRotation</code> property defines the rotation of any applied texture.
+	 *  Gets the writer for the <code>stRotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>stRotation</code> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 
 	 */
@@ -791,7 +871,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>stRotation</code> property.  The <code>stRotation</code> property defines the rotation of any applied texture.
+	Opens and returns the writer for the <code>stRotation</code> property.  The <code>stRotation</code> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 
 	 */
@@ -802,7 +882,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture.
+	Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 	
 
@@ -821,7 +901,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture.
+	Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 	
 	
@@ -846,7 +926,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture.
+	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 	
 
@@ -865,7 +945,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture.
+	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 	
 
@@ -884,7 +964,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture.
+	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 	
 	
@@ -905,7 +985,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture.
+	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 	
 	
@@ -964,6 +1044,86 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeFillPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openFillProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeFillPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openFillProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeFillPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openFillProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeFillPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openFillProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outline</code> property defines whether or not the polygon is outlined.
 	
 
@@ -996,6 +1156,86 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
 			try {
 				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeOutlinePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeOutlinePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeOutlinePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeOutlinePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1373,6 +1613,86 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 			cesiumlanguagewriter.BooleanCesiumWriter writer = openPerPositionHeightProperty();
 			try {
 				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or a constant height above the surface.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writePerPositionHeightPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openPerPositionHeightProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or a constant height above the surface.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writePerPositionHeightPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openPerPositionHeightProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or a constant height above the surface.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writePerPositionHeightPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openPerPositionHeightProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or a constant height above the surface.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writePerPositionHeightPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openPerPositionHeightProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

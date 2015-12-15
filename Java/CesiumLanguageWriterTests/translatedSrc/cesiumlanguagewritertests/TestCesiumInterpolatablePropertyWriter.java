@@ -3,12 +3,17 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
+import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends CesiumInterpolatablePropertyWriter<TDerived>> extends TestCesiumPropertyWriter<TDerived> {
 	@Test
 	public final void interpolationAlgorithmValueWritesInterpolationAlgorithmProperty() {
@@ -99,4 +104,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
 		}
 		Assert.assertEquals("{\"foo\":{\"backwardExtrapolationDuration\":12}", getStringWriter().toString());
 	}
+
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

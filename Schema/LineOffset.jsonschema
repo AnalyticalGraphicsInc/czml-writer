@@ -2,7 +2,7 @@
     "title": "LineOffset",
     "description": "The offset of grid lines along each axis, as a percentage from 0 to 1.",
     "extends": { "$ref": "InterpolatableProperty.jsonschema" },
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
         "cartesian2": {

@@ -115,7 +115,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -127,7 +127,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -139,7 +139,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -152,7 +152,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -175,8 +175,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumInterpolatableValuePropertyWriter<Color> CreateRgbaAdaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<ColorCesiumWriter, Color>(
-                this, (me, value) => me.WriteRgba(value), (ColorCesiumWriter me, IList<JulianDate> dates, IList<Color> values, int startIndex, int length) => me.WriteRgba(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<ColorCesiumWriter, Color>(this, (me, value) => me.WriteRgba(value), (me, dates, values, startIndex, length) => me.WriteRgba(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -190,8 +189,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
-            return new CesiumWriterAdaptor<ColorCesiumWriter, Reference>(
-                this, (me, value) => me.WriteReference(value));
+            return new CesiumWriterAdaptor<ColorCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
         }
 
     }

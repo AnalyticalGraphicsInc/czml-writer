@@ -8,6 +8,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
+import cesiumlanguagewriter.NodeTransformationsCesiumWriter;
 import cesiumlanguagewriter.UriCesiumWriter;
 import java.awt.image.RenderedImage;
 import java.net.URI;
@@ -48,6 +49,20 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	 */
 	public static final String GltfPropertyName = "gltf";
+	/**
+	 *  
+	The name of the <code>runAnimations</code> property.
+	
+
+	 */
+	public static final String RunAnimationsPropertyName = "runAnimations";
+	/**
+	 *  
+	The name of the <code>nodeTransformations</code> property.
+	
+
+	 */
+	public static final String NodeTransformationsPropertyName = "nodeTransformations";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
@@ -68,6 +83,17 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 			return new UriCesiumWriter(GltfPropertyName);
 		}
 	}, false);
+	private Lazy<BooleanCesiumWriter> m_runAnimations = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(RunAnimationsPropertyName);
+		}
+	}, false);
+	private Lazy<NodeTransformationsCesiumWriter> m_nodeTransformations = new Lazy<cesiumlanguagewriter.NodeTransformationsCesiumWriter>(
+			new Func1<cesiumlanguagewriter.NodeTransformationsCesiumWriter>() {
+				public cesiumlanguagewriter.NodeTransformationsCesiumWriter invoke() {
+					return new NodeTransformationsCesiumWriter(NodeTransformationsPropertyName);
+				}
+			}, false);
 
 	/**
 	 *  
@@ -129,6 +155,86 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
 			try {
 				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeShowPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeShowPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeShowPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -622,5 +728,144 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 				DisposeHelper.dispose(writer);
 			}
 		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>runAnimations</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>runAnimations</code> property defines whether or not to run all animations defined in the glTF model.
+	
+
+	 */
+	public final BooleanCesiumWriter getRunAnimationsWriter() {
+		return m_runAnimations.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>runAnimations</code> property.  The <code>runAnimations</code> property defines whether or not to run all animations defined in the glTF model.
+	
+
+	 */
+	public final BooleanCesiumWriter openRunAnimationsProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getRunAnimationsWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>runAnimations</code> property as a <code>boolean</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeRunAnimationsProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openRunAnimationsProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeRunAnimationsPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openRunAnimationsProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeRunAnimationsPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openRunAnimationsProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeRunAnimationsPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openRunAnimationsProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeRunAnimationsPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openRunAnimationsProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>nodeTransformations</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>nodeTransformations</code> property defines defines a mapping of node names to node transformations.
+	
+
+	 */
+	public final NodeTransformationsCesiumWriter getNodeTransformationsWriter() {
+		return m_nodeTransformations.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>nodeTransformations</code> property.  The <code>nodeTransformations</code> property defines defines a mapping of node names to node transformations.
+	
+
+	 */
+	public final NodeTransformationsCesiumWriter openNodeTransformationsProperty() {
+		openIntervalIfNecessary();
+		return this.<NodeTransformationsCesiumWriter> openAndReturn(getNodeTransformationsWriter());
 	}
 }

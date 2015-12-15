@@ -21,13 +21,6 @@ import java.util.List;
 public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<DirectionCesiumWriter> {
 	/**
 	 *  
-	The name of the <code>axes</code> property.
-	
-
-	 */
-	public static final String AxesPropertyName = "axes";
-	/**
-	 *  
 	The name of the <code>spherical</code> property.
 	
 
@@ -156,22 +149,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>axes</code> property.  The <code>axes</code> property specifies tODO
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeAxes(String value) {
-		String PropertyName = AxesPropertyName;
-		openIntervalIfNecessary();
-		getOutput().writePropertyName(PropertyName);
-		getOutput().writeValue(value);
-	}
-
-	/**
-	 *  
-	Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies a direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies the direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
 	
 	
 
@@ -186,7 +164,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies a direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies the direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
 	
 	
 	
@@ -200,7 +178,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies a direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies the direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
 	
 	
 	
@@ -220,7 +198,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>unitSpherical</code> property.  The <code>unitSpherical</code> property specifies a direction specified as a unit spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the <code>unitSpherical</code> property.  The <code>unitSpherical</code> property specifies the direction specified as a unit spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
 	
 	
 
@@ -235,7 +213,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>unitSpherical</code> property.  The <code>unitSpherical</code> property specifies a direction specified as a unit spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the <code>unitSpherical</code> property.  The <code>unitSpherical</code> property specifies the direction specified as a unit spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
 	
 	
 	
@@ -249,7 +227,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>unitSpherical</code> property.  The <code>unitSpherical</code> property specifies a direction specified as a unit spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the <code>unitSpherical</code> property.  The <code>unitSpherical</code> property specifies the direction specified as a unit spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
 	
 	
 	
@@ -367,7 +345,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the direction specified as a reference to another property.
 	
 	
 
@@ -382,7 +360,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the direction specified as a reference to another property.
 	
 	
 
@@ -397,7 +375,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the direction specified as a reference to another property.
 	
 	
 	
@@ -414,7 +392,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the direction specified as a reference to another property.
 	
 	
 	

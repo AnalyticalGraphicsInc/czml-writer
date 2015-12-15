@@ -1,12 +1,17 @@
 {
     "title": "Boolean",
-    "description": "A boolean value.",
-    "type": ["array", "object", "boolean"],
+    "description": "Represents a boolean value.",
+    "type": [ "array", "object", "boolean" ],
     "items": { "$ref": "#" },
     "properties": {
         "boolean": {
             "$ref": "BooleanValue.jsonschema",
             "description": "The boolean value.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.jsonschema",
+            "description": "The boolean specified as a reference to another property.",
             "czmlValue": true
         }
     }

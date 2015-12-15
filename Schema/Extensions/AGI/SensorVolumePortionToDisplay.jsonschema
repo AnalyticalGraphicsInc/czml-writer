@@ -1,7 +1,7 @@
 {
     "title": "SensorVolumePortionToDisplay",
     "description": "Indicates what part of a sensor should be displayed.  Valid values are \"COMPLETE\", \"BELOW_ELLIPSOID_HORIZON\", \"ABOVE_ELLIPSOID_HORIZON\".",
-    "type": ["array", "object", "string"],
+    "type": [ "array", "object", "string" ],
     "items": { "$ref": "#" },
     "properties": {
         "portionToDisplay": {

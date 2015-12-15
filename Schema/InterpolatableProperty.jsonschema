@@ -3,22 +3,39 @@
     "description": "The base schema for a property whose value may be determined by interpolating over provided time-tagged samples.",
     "properties": {
         "epoch": {
-            "description": "Specifies the epoch to use for times specifies as seconds since an epoch.",
+            "description": "The epoch to use for times specified as seconds since an epoch.",
             "type": "string",
-            "format": "date-time",
-            "czmlScope": "PACKET"
+            "format": "date-time"
         },
-        "nextTime": {
-            "description": "The time of the next sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets.",
-            "type": ["string", "number"],
-            "format": "date-time",
-            "czmlScope": "PACKET"
+        "interpolationAlgorithm": {
+            "description": "The interpolation algorithm to use when interpolating. Valid values are \"LINEAR\", \"LAGRANGE\", and \"HERMITE\".",
+            "type": "string",
+            "default": "LINEAR"
         },
-        "previousTime": {
-            "description": "The time of the previous sample within this interval, specified as either an ISO 8601 date and time string or as seconds since epoch. This property is used to determine if there is a gap between samples specified in different packets.",
-            "type": ["string", "number"],
-            "format": "date-time",
-            "czmlScope": "PACKET"
+        "interpolationDegree": {
+            "description": "The degree of interpolation to use when interpolating.",
+            "type": "number",
+            "default": 1
+        },
+        "forwardExtrapolationType": {
+            "description": "The type of extrapolation to perform when a value is requested at a time after any available samples. Valid values are \"NONE\", \"HOLD\", and \"EXTRAPOLATE\".",
+            "type": "string",
+            "default": "NONE"
+        },
+        "forwardExtrapolationDuration": {
+            "description": "The amount of time to extrapolate forward before the property becomes undefined.  A value of 0 will extrapolate forever.",
+            "type": "number",
+            "default": 0
+        },
+        "backwardExtrapolationType": {
+            "description": "The the type of extrapolation to perform when a value is requested at a time before any available samples. Valid values are \"NONE\", \"HOLD\", and \"EXTRAPOLATE\".",
+            "type": "string",
+            "default": "NONE"
+        },
+        "backwardExtrapolationDuration": {
+            "description": "The amount of time to extrapolate backward before the property becomes undefined.  A value of 0 will extrapolate forever.",
+            "type": "number",
+            "default": 0
         }
     }
 }

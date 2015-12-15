@@ -5,8 +5,11 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.DateTimeHelper;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -16,7 +19,7 @@ import org.junit.Test;
  
 
  */
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestTimeInterval {
 	/**
 	 *  
@@ -29,8 +32,8 @@ public class TestTimeInterval {
 		JulianDate start = new JulianDate(DateTimeHelper.utcNow());
 		JulianDate stop = JulianDate.add(start, Duration.fromDays(1.5));
 		TimeInterval interval = new TimeInterval(start, stop);
-		Assert.assertEquals(start, interval.getStart());
-		Assert.assertEquals(stop, interval.getStop());
+		AssertHelper.assertEquals(start, interval.getStart());
+		AssertHelper.assertEquals(stop, interval.getStop());
 	}
 
 	/**
@@ -44,7 +47,7 @@ public class TestTimeInterval {
 		JulianDate start = new JulianDate(2451545.0);
 		JulianDate stop = JulianDate.add(start, Duration.fromDays(1.5));
 		TimeInterval interval = new TimeInterval(start, stop);
-		Assert.assertEquals(Duration.fromDays(1.5), interval.toDuration());
+		AssertHelper.assertEquals(Duration.fromDays(1.5), interval.toDuration());
 	}
 
 	/**
@@ -71,8 +74,8 @@ public class TestTimeInterval {
 	public final void testEquality() {
 		TimeInterval interval1 = new TimeInterval(new JulianDate(1.0), new JulianDate(2.0));
 		TimeInterval interval2 = new TimeInterval(new JulianDate(1.0), new JulianDate(2.0));
-		Assert.assertEquals(interval1, interval2);
-		Assert.assertEquals(interval2, interval1);
+		AssertHelper.assertEquals(interval1, interval2);
+		AssertHelper.assertEquals(interval2, interval1);
 		Assert.assertTrue(interval1.equalsType(interval2));
 		Assert.assertTrue(interval2.equalsType(interval1));
 		Assert.assertTrue(TimeInterval.equals(interval1, interval2));
@@ -121,7 +124,7 @@ public class TestTimeInterval {
 		TimeInterval interval3 = new TimeInterval(new JulianDate(1.0), new JulianDate(5.0));
 		AssertHelper.assertNotEqual(interval1.hashCode(), interval2.hashCode());
 		Assert.assertEquals((int) interval1.hashCode(), (int) interval3.hashCode());
-		Assert.assertEquals(interval1, interval3);
+		AssertHelper.assertEquals(interval1, interval3);
 		AssertHelper.assertNotEqual(interval1, interval2);
 	}
 
@@ -169,13 +172,13 @@ public class TestTimeInterval {
 		JulianDate stop = new JulianDate(2451546.0, TimeStandard.COORDINATED_UNIVERSAL_TIME);
 		TimeInterval interval = new TimeInterval(start, stop);
 		TimeInterval result = interval.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
-		Assert.assertEquals(result.getStart().getStandard(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
-		Assert.assertEquals(result.getStop().getStandard(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
+		AssertHelper.assertEquals(result.getStart().getStandard(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
+		AssertHelper.assertEquals(result.getStop().getStandard(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
 		Assert.assertEquals(result.getStart().getTotalDays(), 2451545.0, Constants.Epsilon15);
 		Assert.assertEquals(result.getStop().getTotalDays(), 2451546.0, Constants.Epsilon15);
 		result = interval.toTimeStandard(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-		Assert.assertEquals(result.getStart().getStandard(), TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-		Assert.assertEquals(result.getStop().getStandard(), TimeStandard.INTERNATIONAL_ATOMIC_TIME);
+		AssertHelper.assertEquals(result.getStart().getStandard(), TimeStandard.INTERNATIONAL_ATOMIC_TIME);
+		AssertHelper.assertEquals(result.getStop().getStandard(), TimeStandard.INTERNATIONAL_ATOMIC_TIME);
 		AssertHelper.assertNotEqual(result.getStart().getTotalDays(), 2451545.0);
 		AssertHelper.assertNotEqual(result.getStop().getTotalDays(), 2451546.0);
 		TimeInterval empty = new TimeInterval(new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME), new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME));
@@ -196,6 +199,6 @@ public class TestTimeInterval {
 		Assert.assertEquals("[2451545:0 (TAI), 2451546:0 (TAI)]", interval.toString());
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

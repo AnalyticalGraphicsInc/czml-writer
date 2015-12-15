@@ -1,7 +1,7 @@
 {
     "title": "PolylineMaterial",
     "description": "Defines how a polyline is colored or shaded.",
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
         "solidColor": {

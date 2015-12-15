@@ -2,7 +2,7 @@
     "title": "AlignedAxis",
     "description": "Defines an aligned axis which can optionally vary over time.",
     "extends": { "$ref": "InterpolatableProperty.jsonschema" },
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
         "cartesian": {

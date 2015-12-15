@@ -1,7 +1,7 @@
 {
     "title": "GridMaterial",
     "description": "Fills the surface with a two dimensional grid.",
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
         "color": {

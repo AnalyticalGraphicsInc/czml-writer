@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CesiumLanguageWriter", "CesiumLanguageWriter\CesiumLanguageWriter.csproj", "{085359F8-CC1D-4561-94C7-0BF067B8E370}"
 EndProject
@@ -46,6 +46,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\LineThickness.jsonschema = ..\Schema\LineThickness.jsonschema
 		..\Schema\Material.jsonschema = ..\Schema\Material.jsonschema
 		..\Schema\Model.jsonschema = ..\Schema\Model.jsonschema
+		..\Schema\NodeTransformation.jsonschema = ..\Schema\NodeTransformation.jsonschema
+		..\Schema\NodeTransformations.jsonschema = ..\Schema\NodeTransformations.jsonschema
 		..\Schema\Orientation.jsonschema = ..\Schema\Orientation.jsonschema
 		..\Schema\Packet.jsonschema = ..\Schema\Packet.jsonschema
 		..\Schema\Path.jsonschema = ..\Schema\Path.jsonschema
@@ -63,6 +65,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\Repeat.jsonschema = ..\Schema\Repeat.jsonschema
 		..\Schema\RgbafValue.jsonschema = ..\Schema\RgbafValue.jsonschema
 		..\Schema\RgbaValue.jsonschema = ..\Schema\RgbaValue.jsonschema
+		..\Schema\Scale.jsonschema = ..\Schema\Scale.jsonschema
 		..\Schema\SolidColorMaterial.jsonschema = ..\Schema\SolidColorMaterial.jsonschema
 		..\Schema\SphericalListValue.jsonschema = ..\Schema\SphericalListValue.jsonschema
 		..\Schema\SphericalValue.jsonschema = ..\Schema\SphericalValue.jsonschema
@@ -72,7 +75,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\StripeOrientation.jsonschema = ..\Schema\StripeOrientation.jsonschema
 		..\Schema\StripeOrientationValue.jsonschema = ..\Schema\StripeOrientationValue.jsonschema
 		..\Schema\TimeIntervalCollectionValue.jsonschema = ..\Schema\TimeIntervalCollectionValue.jsonschema
+		..\Schema\TimeIntervalValue.jsonschema = ..\Schema\TimeIntervalValue.jsonschema
 		..\Schema\TimeValue.jsonschema = ..\Schema\TimeValue.jsonschema
+		..\Schema\Translation.jsonschema = ..\Schema\Translation.jsonschema
 		..\Schema\UnitCartesian3ListValue.jsonschema = ..\Schema\UnitCartesian3ListValue.jsonschema
 		..\Schema\UnitCartesian3Value.jsonschema = ..\Schema\UnitCartesian3Value.jsonschema
 		..\Schema\UnitQuaternionValue.jsonschema = ..\Schema\UnitQuaternionValue.jsonschema
@@ -89,6 +94,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateFromSchema", "Gener
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{5E4C0F36-35DC-4ED8-91EC-EAAC109836A0}"
 	ProjectSection(SolutionItems) = preProject
+		..\Schema\Examples\NodeTransformations.json = ..\Schema\Examples\NodeTransformations.json
 		..\Schema\Examples\SimplePosition.json = ..\Schema\Examples\SimplePosition.json
 		..\Schema\Examples\TimeVaryingPosition.json = ..\Schema\Examples\TimeVaryingPosition.json
 	EndProjectSection

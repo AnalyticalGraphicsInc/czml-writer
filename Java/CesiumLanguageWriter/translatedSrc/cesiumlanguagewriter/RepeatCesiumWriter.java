@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Repeat</code> to a  {@link CesiumOutputStream}.  A <code>Repeat</code> the numger of times the image repeats along each axis.
+ Writes a <code>Repeat</code> to a  {@link CesiumOutputStream}.  A <code>Repeat</code> the number of times the image repeats along each axis.
  
 
  */
@@ -86,7 +86,7 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the numger of times the image repeats along each axis.
+	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of times the image repeats along each axis.
 	
 	
 
@@ -101,7 +101,7 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the numger of times the image repeats along each axis.
+	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of times the image repeats along each axis.
 	
 	
 	
@@ -115,7 +115,7 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the numger of times the image repeats along each axis.
+	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of times the image repeats along each axis.
 	
 	
 	
@@ -129,7 +129,7 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the numger of times the image repeats along each axis.
+	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of times the image repeats along each axis.
 	
 	
 	

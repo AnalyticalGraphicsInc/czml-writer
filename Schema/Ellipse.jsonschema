@@ -1,7 +1,7 @@
 {
     "title": "Ellipse",
     "description": "Defines an ellipse, which is a closed curve on or above the surface of the Earth",
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
         "show": {
@@ -12,14 +12,14 @@
             "$ref": "Double.jsonschema",
             "description": "The length of the ellipse's semi-major axis in meters."
         },
-		"semiMinorAxis":{
-		    "$ref": "Double.jsonschema",
+        "semiMinorAxis": {
+            "$ref": "Double.jsonschema",
             "description": "The length of the ellipse's semi-minor axis in meters."
-		},
-		"rotation":{
-		    "$ref": "Double.jsonschema",
-            "description": "The angle from north (clockwise) in radians."
-		},
+        },
+        "rotation": {
+            "$ref": "Double.jsonschema",
+            "description": "The angle from north (counter-clockwise) in radians."
+        },
         "material": {
             "$ref": "Material.jsonschema",
             "description": "The material to use to fill the ellipse."

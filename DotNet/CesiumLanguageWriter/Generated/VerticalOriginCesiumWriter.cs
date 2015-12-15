@@ -59,9 +59,13 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = VerticalOriginPropertyName;
             if (ForceInterval)
+            {
                 OpenIntervalIfNecessary();
+            }
             if (IsInterval)
+            {
                 Output.WritePropertyName(PropertyName);
+            }
             Output.WriteValue(CesiumFormattingHelper.VerticalOriginToString(value));
         }
 
@@ -126,8 +130,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<CesiumVerticalOrigin> CreateVerticalOriginAdaptor()
         {
-            return new CesiumWriterAdaptor<VerticalOriginCesiumWriter, CesiumVerticalOrigin>(
-                this, (me, value) => me.WriteVerticalOrigin(value));
+            return new CesiumWriterAdaptor<VerticalOriginCesiumWriter, CesiumVerticalOrigin>(this, (me, value) => me.WriteVerticalOrigin(value));
         }
 
         /// <summary>
@@ -141,8 +144,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
-            return new CesiumWriterAdaptor<VerticalOriginCesiumWriter, Reference>(
-                this, (me, value) => me.WriteReference(value));
+            return new CesiumWriterAdaptor<VerticalOriginCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
         }
 
     }
