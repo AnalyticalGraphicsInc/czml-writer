@@ -7,7 +7,7 @@ namespace CesiumLanguageWriter
     /// </summary>
     public class CesiumResource
     {
-        private readonly Uri m_url;
+        private readonly string m_url;
         private readonly CesiumResourceBehavior m_behavior;
 
         /// <summary>
@@ -16,6 +16,16 @@ namespace CesiumLanguageWriter
         /// <param name="uri">The URI of the resource.</param>
         /// <param name="behavior">The enumeration describing how the resource is to be included in the document.</param>
         public CesiumResource(Uri uri, CesiumResourceBehavior behavior)
+            : this(uri.ToString(), behavior)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance.
+        /// </summary>
+        /// <param name="uri">The URI of the resource.</param>
+        /// <param name="behavior">The enumeration describing how the resource is to be included in the document.</param>
+        public CesiumResource(string uri, CesiumResourceBehavior behavior)
         {
             m_url = uri;
             m_behavior = behavior;
@@ -24,7 +34,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the URI of the resource.
         /// </summary>
-        public Uri Uri
+        public string Uri
         {
             get { return m_url; }
         }

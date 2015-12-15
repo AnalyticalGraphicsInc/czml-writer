@@ -11,7 +11,7 @@ import java.net.URI;
 
  */
 public class CesiumResource {
-	private URI m_url;
+	private String m_url;
 	private CesiumResourceBehavior m_behavior = CesiumResourceBehavior.getDefault();
 
 	/**
@@ -25,6 +25,20 @@ public class CesiumResource {
 	 * @param behavior The enumeration describing how the resource is to be included in the document.
 	 */
 	public CesiumResource(URI uri, CesiumResourceBehavior behavior) {
+		this(uri.toString(), behavior);
+	}
+
+	/**
+	 *  
+	Initializes a new instance.
+	
+	
+	
+
+	 * @param uri The URI of the resource.
+	 * @param behavior The enumeration describing how the resource is to be included in the document.
+	 */
+	public CesiumResource(String uri, CesiumResourceBehavior behavior) {
 		m_url = uri;
 		m_behavior = behavior;
 	}
@@ -34,7 +48,7 @@ public class CesiumResource {
 	
 
 	 */
-	public final URI getUri() {
+	public final String getUri() {
 		return m_url;
 	}
 

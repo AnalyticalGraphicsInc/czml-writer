@@ -596,10 +596,52 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	
 	
 
+	 * @param uri The URI of the data.
+	 * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
+	 */
+	public final void writeGltfProperty(String uri, CesiumResourceBehavior resourceBehavior) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			try {
+				writer.writeUri(uri, resourceBehavior);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
+	
+	
+	
+
 	 * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
 	 * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
 	 */
 	public final void writeGltfProperty(URI uri, ICesiumUriResolver resolver) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			try {
+				writer.writeUri(uri, resolver);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.
+	
+	
+	
+
+	 * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
+	 * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
+	 */
+	public final void writeGltfProperty(String uri, ICesiumUriResolver resolver) {
 		{
 			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
 			try {

@@ -87,9 +87,9 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="uri">The URI of the resource to convert.</param>
         /// <returns>A data URI containing the content of the resource.</returns>
-        public static Uri DownloadUriIntoDataUri(Uri uri)
+        public static string DownloadUriIntoDataUri(string uri)
         {
-            if (uri.Scheme == "data")
+            if (uri.StartsWith("data:"))
                 return uri;
 
             WebRequest request = WebRequest.Create(uri);
@@ -117,7 +117,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="stream">The stream containing the image to encode into a data URI.</param>
         /// <param name="imageFormat">The format of the image, which controls the mime type.</param>
         /// <returns>A data URI containing the content of the image.</returns>
-        public static Uri ImageToDataUri(Stream stream, CesiumImageFormat imageFormat)
+        public static string ImageToDataUri(Stream stream, CesiumImageFormat imageFormat)
         {
             string mimeType = GetMimeTypeFromCesiumImageFormat(imageFormat);
             return BuildDataUri(mimeType, stream);
@@ -132,7 +132,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="image">The image to convert.</param>
         /// <param name="imageFormat">The format of the image, which controls the mime type.</param>
         /// <returns>A data URI containing the content of the image.</returns>
-        public static Uri ImageToDataUri(Image image, CesiumImageFormat imageFormat)
+        public static string ImageToDataUri(Image image, CesiumImageFormat imageFormat)
         {
             string mimeType = GetMimeTypeFromCesiumImageFormat(imageFormat);
             using (MemoryStream stream = new MemoryStream())
@@ -164,7 +164,7 @@ namespace CesiumLanguageWriter.Advanced
             }
         }
 
-        private static Uri BuildDataUri(string mimeType, Stream dataStream)
+        private static string BuildDataUri(string mimeType, Stream dataStream)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append("data:");
@@ -181,7 +181,7 @@ namespace CesiumLanguageWriter.Advanced
                 builder.Append(Convert.ToBase64String(memoryStream.GetBuffer(), 0, (int)memoryStream.Length));
             }
 
-            return new Uri(builder.ToString());
+            return builder.ToString();
         }
 
         private static string GetMimeTypeFromCesiumImageFormat(CesiumImageFormat imageFormat)
@@ -424,7 +424,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="uri">The url of the resource.</param>
         /// <param name="resourceBehavior">A <see cref="CesiumResourceBehavior"/> specifying how include the resource into a CZML document.</param>
         /// <returns>The resolved url.</returns>
-        public static Uri GetResourceUri(Uri uri, CesiumResourceBehavior resourceBehavior)
+        public static string GetResourceUri(string uri, CesiumResourceBehavior resourceBehavior)
         {
             if (resourceBehavior == CesiumResourceBehavior.Embed)
                 return CachingCesiumUriResolver.ThreadLocalInstance.ResolveUri(uri);

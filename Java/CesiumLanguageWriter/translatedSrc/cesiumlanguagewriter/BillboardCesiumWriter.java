@@ -839,10 +839,52 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 	
 
+	 * @param uri The URI of the data.
+	 * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
+	 */
+	public final void writeImageProperty(String uri, CesiumResourceBehavior resourceBehavior) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+			try {
+				writer.writeUri(uri, resourceBehavior);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+	
+	
+
 	 * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
 	 * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
 	 */
 	public final void writeImageProperty(URI uri, ICesiumUriResolver resolver) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+			try {
+				writer.writeUri(uri, resolver);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+	
+	
+
+	 * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
+	 * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
+	 */
+	public final void writeImageProperty(String uri, ICesiumUriResolver resolver) {
 		{
 			cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
 			try {

@@ -108,6 +108,20 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 	 * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
 	 */
 	public final void writeUri(URI uri, CesiumResourceBehavior resourceBehavior) {
+		writeUri(uri.toString(), resourceBehavior);
+	}
+
+	/**
+	 *  
+	Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URI value.
+	
+	
+	
+
+	 * @param uri The URI of the data.
+	 * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
+	 */
+	public final void writeUri(String uri, CesiumResourceBehavior resourceBehavior) {
 		String PropertyName = UriPropertyName;
 		if (getForceInterval()) {
 			openIntervalIfNecessary();
@@ -129,6 +143,20 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 	 * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
 	 */
 	public final void writeUri(URI uri, ICesiumUriResolver resolver) {
+		writeUri(uri.toString(), resolver);
+	}
+
+	/**
+	 *  
+	Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URI value.
+	
+	
+	
+
+	 * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
+	 * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
+	 */
+	public final void writeUri(String uri, ICesiumUriResolver resolver) {
 		String PropertyName = UriPropertyName;
 		if (getForceInterval()) {
 			openIntervalIfNecessary();

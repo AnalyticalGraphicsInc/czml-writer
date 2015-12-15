@@ -11,10 +11,10 @@ namespace CesiumLanguageWriter.Advanced
     {
         private class CacheItem
         {
-            public readonly Uri SourceUri;
-            public readonly Uri ResolvedUri;
+            public readonly string SourceUri;
+            public readonly string ResolvedUri;
 
-            public CacheItem(Uri sourceUri, Uri resolvedUri)
+            public CacheItem(string sourceUri, string resolvedUri)
             {
                 SourceUri = sourceUri;
                 ResolvedUri = resolvedUri;
@@ -25,7 +25,7 @@ namespace CesiumLanguageWriter.Advanced
         private static CachingCesiumUriResolver s_threadLocalInstance;
 
         private readonly int m_max;
-        private readonly Dictionary<Uri, LinkedListNode<CacheItem>> m_dictionary;
+        private readonly Dictionary<string, LinkedListNode<CacheItem>> m_dictionary;
         private readonly LinkedList<CacheItem> m_lruList;
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace CesiumLanguageWriter.Advanced
         public CachingCesiumUriResolver(int max)
         {
             m_max = max;
-            m_dictionary = new Dictionary<Uri, LinkedListNode<CacheItem>>();
+            m_dictionary = new Dictionary<string, LinkedListNode<CacheItem>>();
             m_lruList = new LinkedList<CacheItem>();
         }
 
@@ -44,7 +44,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="uri">The source URI.</param>
         /// <returns>A URI suitable for CZML.</returns>
-        public Uri ResolveUri(Uri uri)
+        public string ResolveUri(string uri)
         {
             LinkedListNode<CacheItem> node;
             if (m_dictionary.TryGetValue(uri, out node))
@@ -59,7 +59,7 @@ namespace CesiumLanguageWriter.Advanced
             }
 
             //load image into data URI
-            Uri resolvedUri = CesiumFormattingHelper.DownloadUriIntoDataUri(uri);
+            string resolvedUri = CesiumFormattingHelper.DownloadUriIntoDataUri(uri);
             AddUri(uri, resolvedUri);
             return resolvedUri;
         }
@@ -69,7 +69,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="sourceUri">The source URI.</param>
         /// <param name="resolvedUri">The resolved URI.</param>
-        public void AddUri(Uri sourceUri, Uri resolvedUri)
+        public void AddUri(string sourceUri, string resolvedUri)
         {
             var newNode = m_lruList.AddFirst(new CacheItem(sourceUri, resolvedUri));
             m_dictionary.Add(sourceUri, newNode);
@@ -87,7 +87,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="sourceUri">The source URI.</param>
         /// <returns>True if the cache already has a resolved URI for that URI, false otherwise.</returns>
-        public bool ContainsUri(Uri sourceUri)
+        public bool ContainsUri(string sourceUri)
         {
             return m_dictionary.ContainsKey(sourceUri);
         }
