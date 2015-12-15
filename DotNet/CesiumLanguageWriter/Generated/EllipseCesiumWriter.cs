@@ -74,6 +74,11 @@ namespace CesiumLanguageWriter
         public const string OutlineColorPropertyName = "outlineColor";
 
         /// <summary>
+        /// The name of the <code>outlineWidth</code> property.
+        /// </summary>
+        public const string OutlineWidthPropertyName = "outlineWidth";
+
+        /// <summary>
         /// The name of the <code>numberOfVerticalLines</code> property.
         /// </summary>
         public const string NumberOfVerticalLinesPropertyName = "numberOfVerticalLines";
@@ -90,6 +95,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BooleanCesiumWriter> m_fill = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(FillPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(OutlinePropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_numberOfVerticalLines = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(NumberOfVerticalLinesPropertyName), false);
 
         /// <summary>
@@ -141,6 +147,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenShowProperty())
             {
                 writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShowPropertyReference(string value)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -333,7 +389,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>rotation</code> property defines the angle from north (clockwise) in radians.
+        /// Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>rotation</code> property defines the angle from north (counter-clockwise) in radians.
         /// </summary>
         public DoubleCesiumWriter RotationWriter
         {
@@ -341,7 +397,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the angle from north (clockwise) in radians.
+        /// Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the angle from north (counter-clockwise) in radians.
         /// </summary>
         public DoubleCesiumWriter OpenRotationProperty()
         {
@@ -350,7 +406,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the angle from north (clockwise) in radians.
+        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteRotationProperty(double value)
@@ -362,7 +418,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the angle from north (clockwise) in radians.
+        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -377,7 +433,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (clockwise) in radians.
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteRotationPropertyReference(Reference value)
@@ -389,7 +445,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (clockwise) in radians.
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteRotationPropertyReference(string value)
@@ -401,7 +457,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (clockwise) in radians.
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -414,7 +470,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (clockwise) in radians.
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -849,6 +905,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteFillPropertyReference(Reference value)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteFillPropertyReference(string value)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteFillPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteFillPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outline</code> property defines whether or not the ellipse is outlined.
         /// </summary>
         public BooleanCesiumWriter OutlineWriter
@@ -874,6 +980,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOutlineProperty())
             {
                 writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOutlinePropertyReference(Reference value)
+        {
+            using (var writer = OpenOutlineProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOutlinePropertyReference(string value)
+        {
+            using (var writer = OpenOutlineProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOutlinePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOutlineProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOutlinePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOutlineProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -996,6 +1152,100 @@ namespace CesiumLanguageWriter
         public void WriteOutlineColorPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the ellipse outline.
+        /// </summary>
+        public DoubleCesiumWriter OutlineWidthWriter
+        {
+            get { return m_outlineWidth.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the ellipse outline.
+        /// </summary>
+        public DoubleCesiumWriter OpenOutlineWidthProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(OutlineWidthWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteOutlineWidthProperty(double value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteOutlineWidthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOutlineWidthPropertyReference(Reference value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOutlineWidthPropertyReference(string value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOutlineWidthPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOutlineWidthPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOutlineWidthProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

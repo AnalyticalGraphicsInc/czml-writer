@@ -1,5 +1,5 @@
 {
     "title": "Font",
-    "description": "A font.",
+    "description": "A font, specified using the same syntax as the CSS \"font\" property.",
     "type": "string"
 }

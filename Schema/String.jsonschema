@@ -1,7 +1,7 @@
 {
     "title": "String",
     "description": "A string value.  The string can optionally vary with time.",
-    "type": ["array", "object", "string"],
+    "type": [ "array", "object", "string" ],
     "items": { "$ref": "#" },
     "properties": {
         "string": {

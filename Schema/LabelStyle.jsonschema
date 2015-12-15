@@ -1,7 +1,7 @@
 {
     "title": "LabelStyle",
     "description": "The style of a label.",
-    "type": ["array", "object", "string"],
+    "type": [ "array", "object", "string" ],
     "items": { "$ref": "#" },
     "properties": {
         "labelStyle": {

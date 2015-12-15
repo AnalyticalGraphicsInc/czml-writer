@@ -157,6 +157,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShowPropertyReference(string value)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>directions</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>directions</code> property defines the list of directions defining the pyramid.
         /// </summary>
         public DirectionListCesiumWriter DirectionsWriter
@@ -341,6 +391,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenShowIntersectionProperty())
             {
                 writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the pyramid with the Earth is shown.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowIntersectionPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowIntersectionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the pyramid with the Earth is shown.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShowIntersectionPropertyReference(string value)
+        {
+            using (var writer = OpenShowIntersectionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the pyramid with the Earth is shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowIntersectionPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowIntersectionProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the pyramid with the Earth is shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowIntersectionPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowIntersectionProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -592,6 +692,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowLateralSurfacesPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowLateralSurfacesProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShowLateralSurfacesPropertyReference(string value)
+        {
+            using (var writer = OpenShowLateralSurfacesProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowLateralSurfacesPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowLateralSurfacesProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowLateralSurfacesPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowLateralSurfacesProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>lateralSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>lateralSurfaceMaterial</code> property defines whether or not lateral surfaces are shown.
         /// </summary>
         public MaterialCesiumWriter LateralSurfaceMaterialWriter
@@ -634,6 +784,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenShowEllipsoidSurfacesProperty())
             {
                 writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEllipsoidSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidSurfaces</code> property specifies whether or not ellipsoid surfaces are shown.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowEllipsoidSurfacesPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowEllipsoidSurfacesProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEllipsoidSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidSurfaces</code> property specifies whether or not ellipsoid surfaces are shown.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShowEllipsoidSurfacesPropertyReference(string value)
+        {
+            using (var writer = OpenShowEllipsoidSurfacesProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEllipsoidSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidSurfaces</code> property specifies whether or not ellipsoid surfaces are shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowEllipsoidSurfacesPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowEllipsoidSurfacesProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEllipsoidSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidSurfaces</code> property specifies whether or not ellipsoid surfaces are shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowEllipsoidSurfacesPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowEllipsoidSurfacesProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -684,6 +884,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>showEllipsoidHorizonSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidHorizonSurfaces</code> property specifies whether or not ellipsoid horizon surfaces are shown.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowEllipsoidHorizonSurfacesPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowEllipsoidHorizonSurfacesProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEllipsoidHorizonSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidHorizonSurfaces</code> property specifies whether or not ellipsoid horizon surfaces are shown.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShowEllipsoidHorizonSurfacesPropertyReference(string value)
+        {
+            using (var writer = OpenShowEllipsoidHorizonSurfacesProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEllipsoidHorizonSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidHorizonSurfaces</code> property specifies whether or not ellipsoid horizon surfaces are shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowEllipsoidHorizonSurfacesPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowEllipsoidHorizonSurfacesProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEllipsoidHorizonSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidHorizonSurfaces</code> property specifies whether or not ellipsoid horizon surfaces are shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowEllipsoidHorizonSurfacesPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowEllipsoidHorizonSurfacesProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid horizon surface.
         /// </summary>
         public MaterialCesiumWriter EllipsoidHorizonSurfaceMaterialWriter
@@ -726,6 +976,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenShowDomeSurfacesProperty())
             {
                 writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showDomeSurfaces</code> property as a <code>reference</code> value.  The <code>showDomeSurfaces</code> property specifies whether or not dome surfaces are shown.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowDomeSurfacesPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowDomeSurfacesProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showDomeSurfaces</code> property as a <code>reference</code> value.  The <code>showDomeSurfaces</code> property specifies whether or not dome surfaces are shown.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShowDomeSurfacesPropertyReference(string value)
+        {
+            using (var writer = OpenShowDomeSurfacesProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showDomeSurfaces</code> property as a <code>reference</code> value.  The <code>showDomeSurfaces</code> property specifies whether or not dome surfaces are shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowDomeSurfacesPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowDomeSurfacesProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showDomeSurfaces</code> property as a <code>reference</code> value.  The <code>showDomeSurfaces</code> property specifies whether or not dome surfaces are shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowDomeSurfacesPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowDomeSurfacesProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 

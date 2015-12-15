@@ -5,15 +5,18 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import java.util.Locale;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestGregorianDate {
 	@Test
 	public final void canConstructGregorianDate() {
@@ -79,7 +82,7 @@ public class TestGregorianDate {
 	public final void testEquality() {
 		GregorianDate first = new GregorianDate(2000, 1, 1, 5, 1, 1D);
 		GregorianDate second = new GregorianDate(2000, 1, 1, 5, 1, 1D);
-		Assert.assertEquals(first, second);
+		AssertHelper.assertEquals(first, second);
 		Assert.assertTrue(first.equalsType(second));
 		Assert.assertTrue(second.equalsType(first));
 		Assert.assertEquals((int) 0, (int) first.compareTo(second));
@@ -103,7 +106,7 @@ public class TestGregorianDate {
 	public final void testEqualityInTimePortion() {
 		GregorianDate first = new GregorianDate(1999, 10, 10, 5, 1, 1D);
 		GregorianDate second = new GregorianDate(1999, 10, 10, 5, 1, 1D);
-		Assert.assertEquals(first, second);
+		AssertHelper.assertEquals(first, second);
 		Assert.assertTrue(first.equalsType(second));
 		Assert.assertTrue(second.equalsType(first));
 		Assert.assertEquals((int) 0, (int) first.compareTo(second));
@@ -136,7 +139,7 @@ public class TestGregorianDate {
 		GregorianDate equal = new GregorianDate(2009, 6, 30, 5, 25, 13.12345678901234);
 		AssertHelper.assertNotEqual(13.12345678901234, 13.12345678901239);
 		AssertHelper.assertNotEqual(first, second);
-		Assert.assertEquals(first, equal);
+		AssertHelper.assertEquals(first, equal);
 	}
 
 	@Test
@@ -262,7 +265,7 @@ public class TestGregorianDate {
 	public final void canConstructFromDateTime() {
 		GregorianDate gregorianDate = new GregorianDate(2008, 10, 23, 23, 59, 59.999);
 		GregorianDate constructedFromDateTime = new GregorianDate(new DateTime(2008, 10, 23, 23, 59, 59, 999, org.joda.time.DateTimeZone.UTC));
-		Assert.assertEquals(gregorianDate, constructedFromDateTime);
+		AssertHelper.assertEquals(gregorianDate, constructedFromDateTime);
 	}
 
 	@Test
@@ -270,7 +273,7 @@ public class TestGregorianDate {
 		DateTime date = new DateTime(2008, 10, 23, 23, 59, 59, 999, DateTimeZone.getDefault());
 		GregorianDate constructedFromLocalDateTime = new GregorianDate(date);
 		GregorianDate constructedFromUTCDateTime = new GregorianDate(date.withZone(org.joda.time.DateTimeZone.UTC));
-		Assert.assertEquals(constructedFromLocalDateTime, constructedFromUTCDateTime);
+		AssertHelper.assertEquals(constructedFromLocalDateTime, constructedFromUTCDateTime);
 	}
 
 	@Test
@@ -369,7 +372,7 @@ public class TestGregorianDate {
 	public final void canConvertGregorianDateRepresentingLeapSecondToJulianDate() {
 		GregorianDate leapSecondGregorianDate = new GregorianDate(2008, 12, 31, 23, 59, 60D);
 		JulianDate leapSecondJulianDate = leapSecondGregorianDate.toJulianDate();
-		Assert.assertEquals(leapSecondGregorianDate, leapSecondJulianDate.toGregorianDate());
+		AssertHelper.assertEquals(leapSecondGregorianDate, leapSecondJulianDate.toGregorianDate());
 		GregorianDate oneSecondLater = new GregorianDate(2009, 1, 1, 0, 0, 0D);
 		GregorianDate oneSecondBefore = new GregorianDate(2008, 12, 31, 23, 59, 59D);
 		Assert.assertEquals(1, oneSecondLater.toJulianDate().subtract(leapSecondJulianDate).getSeconds(), 0d);
@@ -380,9 +383,9 @@ public class TestGregorianDate {
 	public final void testNonStandardTimeStandard() {
 		GregorianDate gregorianDate = new GregorianDate(2008, 12, 31, 23, 59, 40D);
 		JulianDate jd = gregorianDate.toJulianDate(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-		Assert.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, jd.getStandard());
+		AssertHelper.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, jd.getStandard());
 		GregorianDate roundTrip1 = jd.toGregorianDate(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-		Assert.assertEquals(gregorianDate, roundTrip1);
+		AssertHelper.assertEquals(gregorianDate, roundTrip1);
 		GregorianDate roundTrip = new GregorianDate(jd);
 		AssertHelper.assertNotEqual(gregorianDate, roundTrip);
 		double expectedDifference = LeapSeconds.getInstance().getTaiMinusUtc(jd);
@@ -393,9 +396,9 @@ public class TestGregorianDate {
 	public final void testRoundTripDefaultConstructed() {
 		GregorianDate gd = new GregorianDate();
 		GregorianDate gd2 = new GregorianDate(gd.toJulianDate());
-		Assert.assertEquals(gd, gd2);
+		AssertHelper.assertEquals(gd, gd2);
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

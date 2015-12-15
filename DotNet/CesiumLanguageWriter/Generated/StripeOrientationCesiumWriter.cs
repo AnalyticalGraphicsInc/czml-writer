@@ -59,9 +59,13 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = StripeOrientationPropertyName;
             if (ForceInterval)
+            {
                 OpenIntervalIfNecessary();
+            }
             if (IsInterval)
+            {
                 Output.WritePropertyName(PropertyName);
+            }
             Output.WriteValue(CesiumFormattingHelper.StripeOrientationToString(value));
         }
 
@@ -126,8 +130,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<CesiumStripeOrientation> CreateStripeOrientationAdaptor()
         {
-            return new CesiumWriterAdaptor<StripeOrientationCesiumWriter, CesiumStripeOrientation>(
-                this, (me, value) => me.WriteStripeOrientation(value));
+            return new CesiumWriterAdaptor<StripeOrientationCesiumWriter, CesiumStripeOrientation>(this, (me, value) => me.WriteStripeOrientation(value));
         }
 
         /// <summary>
@@ -141,8 +144,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
-            return new CesiumWriterAdaptor<StripeOrientationCesiumWriter, Reference>(
-                this, (me, value) => me.WriteReference(value));
+            return new CesiumWriterAdaptor<StripeOrientationCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
         }
 
     }

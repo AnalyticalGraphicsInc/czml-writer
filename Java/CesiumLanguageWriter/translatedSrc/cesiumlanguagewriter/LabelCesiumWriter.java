@@ -1503,6 +1503,86 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	}
 
 	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the label is shown.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeShowPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the label is shown.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeShowPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the label is shown.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeShowPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the label is shown.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>style</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>style</code> property defines the style of the label.
 	
 

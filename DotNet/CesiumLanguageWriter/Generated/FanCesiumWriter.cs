@@ -49,14 +49,19 @@ namespace CesiumLanguageWriter
         public const string OutlinePropertyName = "outline";
 
         /// <summary>
-        /// The name of the <code>numberOfRings</code> property.
-        /// </summary>
-        public const string NumberOfRingsPropertyName = "numberOfRings";
-
-        /// <summary>
         /// The name of the <code>outlineColor</code> property.
         /// </summary>
         public const string OutlineColorPropertyName = "outlineColor";
+
+        /// <summary>
+        /// The name of the <code>outlineWidth</code> property.
+        /// </summary>
+        public const string OutlineWidthPropertyName = "outlineWidth";
+
+        /// <summary>
+        /// The name of the <code>numberOfRings</code> property.
+        /// </summary>
+        public const string NumberOfRingsPropertyName = "numberOfRings";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<DirectionListCesiumWriter> m_directions = new Lazy<DirectionListCesiumWriter>(() => new DirectionListCesiumWriter(DirectionsPropertyName), false);
@@ -65,8 +70,9 @@ namespace CesiumLanguageWriter
         private readonly Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(MaterialPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_fill = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(FillPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(OutlinePropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_numberOfRings = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(NumberOfRingsPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_numberOfRings = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(NumberOfRingsPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -117,6 +123,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenShowProperty())
             {
                 writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the fan is shown.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the fan is shown.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShowPropertyReference(string value)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the fan is shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the fan is shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -309,6 +365,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direction is used instead of a constant radius.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WritePerDirectionRadiusPropertyReference(Reference value)
+        {
+            using (var writer = OpenPerDirectionRadiusProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direction is used instead of a constant radius.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WritePerDirectionRadiusPropertyReference(string value)
+        {
+            using (var writer = OpenPerDirectionRadiusProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direction is used instead of a constant radius.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WritePerDirectionRadiusPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenPerDirectionRadiusProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direction is used instead of a constant radius.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WritePerDirectionRadiusPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenPerDirectionRadiusProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>material</code> property defines the material to display on the surface of the fan.
         /// </summary>
         public MaterialCesiumWriter MaterialWriter
@@ -355,6 +461,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the fan is filled.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteFillPropertyReference(Reference value)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the fan is filled.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteFillPropertyReference(string value)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the fan is filled.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteFillPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the fan is filled.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteFillPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outline</code> property defines whether or not the fan is outlined.
         /// </summary>
         public BooleanCesiumWriter OutlineWriter
@@ -384,94 +540,50 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>numberOfRings</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>numberOfRings</code> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
-        /// </summary>
-        public DoubleCesiumWriter NumberOfRingsWriter
-        {
-            get { return m_numberOfRings.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>numberOfRings</code> property.  The <code>numberOfRings</code> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
-        /// </summary>
-        public DoubleCesiumWriter OpenNumberOfRingsProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(NumberOfRingsWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>numberOfRings</code> property as a <code>number</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteNumberOfRingsProperty(double value)
-        {
-            using (var writer = OpenNumberOfRingsProperty())
-            {
-                writer.WriteNumber(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>numberOfRings</code> property as a <code>number</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteNumberOfRingsProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenNumberOfRingsProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>numberOfRings</code> property as a <code>reference</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the fan is outlined.
         /// </summary>
         /// <param name="value">The reference.</param>
-        public void WriteNumberOfRingsPropertyReference(Reference value)
+        public void WriteOutlinePropertyReference(Reference value)
         {
-            using (var writer = OpenNumberOfRingsProperty())
+            using (var writer = OpenOutlineProperty())
             {
                 writer.WriteReference(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfRings</code> property as a <code>reference</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the fan is outlined.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
-        public void WriteNumberOfRingsPropertyReference(string value)
+        public void WriteOutlinePropertyReference(string value)
         {
-            using (var writer = OpenNumberOfRingsProperty())
+            using (var writer = OpenOutlineProperty())
             {
                 writer.WriteReference(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfRings</code> property as a <code>reference</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the fan is outlined.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteNumberOfRingsPropertyReference(string identifier, string propertyName)
+        public void WriteOutlinePropertyReference(string identifier, string propertyName)
         {
-            using (var writer = OpenNumberOfRingsProperty())
+            using (var writer = OpenOutlineProperty())
             {
                 writer.WriteReference(identifier, propertyName);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfRings</code> property as a <code>reference</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the fan is outlined.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteNumberOfRingsPropertyReference(string identifier, string[] propertyNames)
+        public void WriteOutlinePropertyReference(string identifier, string[] propertyNames)
         {
-            using (var writer = OpenNumberOfRingsProperty())
+            using (var writer = OpenOutlineProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
@@ -596,6 +708,194 @@ namespace CesiumLanguageWriter
         public void WriteOutlineColorPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the fan outline.
+        /// </summary>
+        public DoubleCesiumWriter OutlineWidthWriter
+        {
+            get { return m_outlineWidth.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the fan outline.
+        /// </summary>
+        public DoubleCesiumWriter OpenOutlineWidthProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(OutlineWidthWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the fan outline.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteOutlineWidthProperty(double value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the fan outline.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteOutlineWidthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the fan outline.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOutlineWidthPropertyReference(Reference value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the fan outline.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOutlineWidthPropertyReference(string value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the fan outline.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOutlineWidthPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the fan outline.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOutlineWidthPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>numberOfRings</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>numberOfRings</code> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// </summary>
+        public DoubleCesiumWriter NumberOfRingsWriter
+        {
+            get { return m_numberOfRings.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>numberOfRings</code> property.  The <code>numberOfRings</code> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// </summary>
+        public DoubleCesiumWriter OpenNumberOfRingsProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(NumberOfRingsWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfRings</code> property as a <code>number</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteNumberOfRingsProperty(double value)
+        {
+            using (var writer = OpenNumberOfRingsProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfRings</code> property as a <code>number</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteNumberOfRingsProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenNumberOfRingsProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfRings</code> property as a <code>reference</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteNumberOfRingsPropertyReference(Reference value)
+        {
+            using (var writer = OpenNumberOfRingsProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfRings</code> property as a <code>reference</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteNumberOfRingsPropertyReference(string value)
+        {
+            using (var writer = OpenNumberOfRingsProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfRings</code> property as a <code>reference</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteNumberOfRingsPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenNumberOfRingsProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfRings</code> property as a <code>reference</code> value.  The <code>numberOfRings</code> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteNumberOfRingsPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenNumberOfRingsProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

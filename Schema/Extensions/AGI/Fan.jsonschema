@@ -1,7 +1,7 @@
 {
     "title": "Fan",
     "description": "A fan.  A fan starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.",
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "extensionPrefix": "agi",
     "properties": {
@@ -33,13 +33,17 @@
             "$ref": "Boolean.jsonschema",
             "description": "Whether or not the fan is outlined."
         },
-        "numberOfRings": {
-            "$ref": "Double.jsonschema",
-            "description": "The number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center."
-        },
         "outlineColor": {
             "$ref": "Color.jsonschema",
             "description": "The color of the fan outline."
+        },
+        "outlineWidth": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the fan outline."
+        },
+        "numberOfRings": {
+            "$ref": "Double.jsonschema",
+            "description": "The number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center."
         }
     }
 }

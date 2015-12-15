@@ -6,9 +6,12 @@ import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.DayOfWeek;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.joda.time.DateTime;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -18,7 +21,7 @@ import org.junit.Test;
  
 
  */
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestYearMonthDay {
 	/**
 	 *  
@@ -164,7 +167,7 @@ public class TestYearMonthDay {
 	public final void testEquality() {
 		YearMonthDay first = new YearMonthDay(2000, 1, 1);
 		YearMonthDay second = new YearMonthDay(2000, 1, 1);
-		Assert.assertEquals(first, second);
+		AssertHelper.assertEquals(first, second);
 		Assert.assertTrue(first.equalsType(second));
 		Assert.assertTrue(second.equalsType(first));
 		Assert.assertEquals((int) 0, (int) first.compareTo(second));
@@ -331,27 +334,27 @@ public class TestYearMonthDay {
 	@Test
 	public final void testDayOfWeek() {
 		YearMonthDay ymd = new YearMonthDay(2009, 6, 10);
-		Assert.assertEquals(DayOfWeek.WEDNESDAY, ymd.getDayOfWeek());
+		AssertHelper.assertEquals(DayOfWeek.WEDNESDAY, ymd.getDayOfWeek());
 		ymd = new YearMonthDay(2009, 6, 11);
-		Assert.assertEquals(DayOfWeek.THURSDAY, ymd.getDayOfWeek());
+		AssertHelper.assertEquals(DayOfWeek.THURSDAY, ymd.getDayOfWeek());
 	}
 
 	@Test
 	public final void testRoundTripDefaultConstructed() {
 		YearMonthDay ymd = new YearMonthDay();
 		YearMonthDay ymd2 = new YearMonthDay(ymd.getJulianDayNumber());
-		Assert.assertEquals(ymd, ymd2);
+		AssertHelper.assertEquals(ymd, ymd2);
 	}
 
 	@Test
 	public final void testDefaultConstructedIsValid() {
 		YearMonthDay ymd = new YearMonthDay();
 		YearMonthDay ymd2 = new YearMonthDay(ymd.getYear(), ymd.getMonth(), ymd.getDay());
-		Assert.assertEquals(ymd, ymd2);
-		Assert.assertEquals(ymd.getDayOfWeek(), ymd2.getDayOfWeek());
+		AssertHelper.assertEquals(ymd, ymd2);
+		AssertHelper.assertEquals(ymd.getDayOfWeek(), ymd2.getDayOfWeek());
 		Assert.assertEquals((int) ymd.getDayOfYear(), (int) ymd2.getDayOfYear());
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

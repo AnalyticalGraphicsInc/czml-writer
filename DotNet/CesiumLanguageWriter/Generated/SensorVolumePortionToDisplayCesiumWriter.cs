@@ -59,9 +59,13 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = PortionToDisplayPropertyName;
             if (ForceInterval)
+            {
                 OpenIntervalIfNecessary();
+            }
             if (IsInterval)
+            {
                 Output.WritePropertyName(PropertyName);
+            }
             Output.WriteValue(CesiumFormattingHelper.SensorVolumePortionToDisplayToString(value));
         }
 
@@ -126,8 +130,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<CesiumSensorVolumePortionToDisplay> CreatePortionToDisplayAdaptor()
         {
-            return new CesiumWriterAdaptor<SensorVolumePortionToDisplayCesiumWriter, CesiumSensorVolumePortionToDisplay>(
-                this, (me, value) => me.WritePortionToDisplay(value));
+            return new CesiumWriterAdaptor<SensorVolumePortionToDisplayCesiumWriter, CesiumSensorVolumePortionToDisplay>(this, (me, value) => me.WritePortionToDisplay(value));
         }
 
         /// <summary>
@@ -141,8 +144,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
-            return new CesiumWriterAdaptor<SensorVolumePortionToDisplayCesiumWriter, Reference>(
-                this, (me, value) => me.WriteReference(value));
+            return new CesiumWriterAdaptor<SensorVolumePortionToDisplayCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
         }
 
     }

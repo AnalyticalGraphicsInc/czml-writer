@@ -1,7 +1,7 @@
 {
     "title": "Polygon",
     "description": "A polygon, which is a closed figure on the surface of the Earth.",
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
         "positions": {
@@ -30,7 +30,7 @@
         },
         "stRotation": {
             "$ref": "Double.jsonschema",
-            "description": "The rotation of any applied texture."
+            "description": "The rotation of any applied texture. A positive rotation is counter-clockwise."
         },
         "fill": {
             "$ref": "Boolean.jsonschema",
@@ -43,6 +43,10 @@
         "outlineColor": {
             "$ref": "Color.jsonschema",
             "description": "The color of the polygon outline."
+        },
+        "outlineWidth": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the polygon outline."
         },
         "perPositionHeight": {
             "$ref": "Boolean.jsonschema",

@@ -59,9 +59,13 @@ namespace CesiumLanguageWriter
         {
             const string PropertyName = LabelStylePropertyName;
             if (ForceInterval)
+            {
                 OpenIntervalIfNecessary();
+            }
             if (IsInterval)
+            {
                 Output.WritePropertyName(PropertyName);
+            }
             Output.WriteValue(CesiumFormattingHelper.LabelStyleToString(value));
         }
 
@@ -126,8 +130,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<CesiumLabelStyle> CreateLabelStyleAdaptor()
         {
-            return new CesiumWriterAdaptor<LabelStyleCesiumWriter, CesiumLabelStyle>(
-                this, (me, value) => me.WriteLabelStyle(value));
+            return new CesiumWriterAdaptor<LabelStyleCesiumWriter, CesiumLabelStyle>(this, (me, value) => me.WriteLabelStyle(value));
         }
 
         /// <summary>
@@ -141,8 +144,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
-            return new CesiumWriterAdaptor<LabelStyleCesiumWriter, Reference>(
-                this, (me, value) => me.WriteReference(value));
+            return new CesiumWriterAdaptor<LabelStyleCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
         }
 
     }

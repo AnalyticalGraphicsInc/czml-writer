@@ -159,8 +159,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumInterpolatableValuePropertyWriter<Rectangular> CreateCartesian2Adaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<LineCountCesiumWriter, Rectangular>(
-                this, (me, value) => me.WriteCartesian2(value), (LineCountCesiumWriter me, IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length) => me.WriteCartesian2(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<LineCountCesiumWriter, Rectangular>(this, (me, value) => me.WriteCartesian2(value), (me, dates, values, startIndex, length) => me.WriteCartesian2(dates, values, startIndex, length));
         }
 
         /// <summary>
@@ -174,8 +173,7 @@ namespace CesiumLanguageWriter
 
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
-            return new CesiumWriterAdaptor<LineCountCesiumWriter, Reference>(
-                this, (me, value) => me.WriteReference(value));
+            return new CesiumWriterAdaptor<LineCountCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
         }
 
     }

@@ -6,8 +6,11 @@ import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -17,7 +20,7 @@ import org.junit.Test;
  
 
  */
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestUnitCartesian3 {
 	/**
 	 *  
@@ -133,8 +136,8 @@ public class TestUnitCartesian3 {
 	public final void testEquality() {
 		UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
 		UnitCartesian second = new UnitCartesian(1.0, 2.0, 3.0);
-		Assert.assertEquals(first, second);
-		Assert.assertEquals(second, first);
+		AssertHelper.assertEquals(first, second);
+		AssertHelper.assertEquals(second, first);
 		Assert.assertTrue(UnitCartesian.equals(first, second));
 		Assert.assertTrue(UnitCartesian.equals(second, first));
 		Assert.assertFalse(UnitCartesian.notEquals(first, second));
@@ -262,11 +265,11 @@ public class TestUnitCartesian3 {
 	@Test
 	public final void testMostOrthogonalAxis() {
 		UnitCartesian Cartesian3 = new UnitCartesian(1.0, 2.0, 3.0);
-		Assert.assertEquals(UnitCartesian.getUnitX(), Cartesian3.getMostOrthogonalAxis());
+		AssertHelper.assertEquals(UnitCartesian.getUnitX(), Cartesian3.getMostOrthogonalAxis());
 		Cartesian3 = new UnitCartesian(2.0, 3.0, 1.0);
-		Assert.assertEquals(UnitCartesian.getUnitZ(), Cartesian3.getMostOrthogonalAxis());
+		AssertHelper.assertEquals(UnitCartesian.getUnitZ(), Cartesian3.getMostOrthogonalAxis());
 		Cartesian3 = new UnitCartesian(3.0, 1.0, 2.0);
-		Assert.assertEquals(UnitCartesian.getUnitY(), Cartesian3.getMostOrthogonalAxis());
+		AssertHelper.assertEquals(UnitCartesian.getUnitY(), Cartesian3.getMostOrthogonalAxis());
 	}
 
 	/**
@@ -278,11 +281,11 @@ public class TestUnitCartesian3 {
 	@Test
 	public final void testMostParallelAxis() {
 		UnitCartesian Cartesian3 = new UnitCartesian(1.0, 2.0, 3.0);
-		Assert.assertEquals(UnitCartesian.getUnitZ(), Cartesian3.getMostParallelAxis());
+		AssertHelper.assertEquals(UnitCartesian.getUnitZ(), Cartesian3.getMostParallelAxis());
 		Cartesian3 = new UnitCartesian(2.0, 3.0, 1.0);
-		Assert.assertEquals(UnitCartesian.getUnitY(), Cartesian3.getMostParallelAxis());
+		AssertHelper.assertEquals(UnitCartesian.getUnitY(), Cartesian3.getMostParallelAxis());
 		Cartesian3 = new UnitCartesian(3.0, 1.0, 2.0);
-		Assert.assertEquals(UnitCartesian.getUnitX(), Cartesian3.getMostParallelAxis());
+		AssertHelper.assertEquals(UnitCartesian.getUnitX(), Cartesian3.getMostParallelAxis());
 	}
 
 	/**
@@ -586,6 +589,6 @@ public class TestUnitCartesian3 {
 		Assert.assertEquals("0, 0, 1", test3.toString());
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

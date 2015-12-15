@@ -4,10 +4,13 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.TimeSpanHelper;
 import cesiumlanguagewriter.*;
 import org.joda.time.Period;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -17,7 +20,7 @@ import org.junit.Test;
  
 
  */
-@org.junit.FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestDuration {
 	/**
 	 *  
@@ -96,7 +99,7 @@ public class TestDuration {
 	public final void testEquality() {
 		Duration first = new Duration(5, 565.0);
 		Duration second = new Duration(5, 565.0);
-		Assert.assertEquals(first, second);
+		AssertHelper.assertEquals(first, second);
 		Assert.assertTrue(first.equalsType(second));
 		Assert.assertTrue(second.equalsType(first));
 		Assert.assertTrue(Duration.equals(first, second));
@@ -389,15 +392,15 @@ public class TestDuration {
 		Period timeSpan = TimeSpanHelper.minValue();
 		Duration duration = new Duration(timeSpan);
 		Period result = duration.toPeriod();
-		Assert.assertEquals(timeSpan, result);
+		AssertHelper.assertEquals(timeSpan, result);
 		timeSpan = TimeSpanHelper.zero();
 		duration = new Duration(timeSpan);
 		result = duration.toPeriod();
-		Assert.assertEquals(timeSpan, result);
+		AssertHelper.assertEquals(timeSpan, result);
 		timeSpan = TimeSpanHelper.maxValue();
 		duration = new Duration(timeSpan);
 		result = duration.toPeriod();
-		Assert.assertEquals(timeSpan, result);
+		AssertHelper.assertEquals(timeSpan, result);
 	}
 
 	/**
@@ -459,6 +462,6 @@ public class TestDuration {
 		Assert.assertEquals(0.0, duration.getSeconds(), 0d);
 	}
 
-	@org.junit.Rule
-	public agi.foundation.compatibility.TestContextRule rule$testContext = new agi.foundation.compatibility.TestContextRule();
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

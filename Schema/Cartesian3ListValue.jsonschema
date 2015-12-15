@@ -1,5 +1,5 @@
 {
     "title": "Cartesian3List",
-    "description": "A list of positions specified as Cartesian [X, Y, Z, X, Y, Z, ...] positions.",
+    "description": "A list of three-dimensional Cartesian coordinates specified as `[X, Y, Z, X, Y, Z, ...]`.",
     "type": "array"
 }

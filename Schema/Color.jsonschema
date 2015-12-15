@@ -2,7 +2,7 @@
     "title": "Color",
     "description": "Defines a a color.  The color can optionally vary over time.",
     "extends": { "$ref": "InterpolatableProperty.jsonschema" },
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
         "rgba": {
@@ -17,7 +17,7 @@
         },
         "reference": {
             "$ref": "ReferenceValue.jsonschema",
-            "description": "A reference property.",
+            "description": "The color specified as a reference to another property.",
             "czmlValue": true
         }
     }

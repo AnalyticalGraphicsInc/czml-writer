@@ -1,7 +1,7 @@
 {
     "title": "Ellipsoid",
     "description": "Defines a closed quadric surface that is a three dimensional analogue of an ellipse.",
-    "type": ["array", "object"],
+    "type": [ "array", "object" ],
     "items": { "$ref": "#" },
     "properties": {
         "show": {
@@ -27,6 +27,10 @@
         "outlineColor": {
             "$ref": "Color.jsonschema",
             "description": "The color of the ellipsoid outline."
+        },
+        "outlineWidth": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the ellipsoid outline."
         },
         "stackPartitions": {
             "$ref": "Double.jsonschema",

@@ -1,5 +1,5 @@
 {
     "title": "TimeIntervalCollection",
-    "description": "A collection of ISO8601 intervals of time.",
-    "type": ["array", "string"]
+    "description": "A collection of time intervals, specified in ISO8601 interval format.",
+    "type": [ "array", "string" ]
 }

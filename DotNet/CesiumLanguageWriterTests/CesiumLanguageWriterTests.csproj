@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Advanced\TestCesiumFormattingHelper.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="TestLeapSecond.cs" />
     <Compile Include="TestLeapSeconds.cs" />
     <Compile Include="TestMatrix3By3.cs" />
+    <Compile Include="TestNodeTransformationsCesiumWriter.cs" />
     <Compile Include="TestOrientationCesiumWriter.cs" />
     <Compile Include="TestPositionCesiumWriter.cs" />
     <Compile Include="TestPropertiesOfSimpleJsonTypes.cs" />

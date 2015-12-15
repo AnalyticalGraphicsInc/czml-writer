@@ -28,6 +28,13 @@ import java.util.List;
 public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumWriter> {
 	/**
 	 *  
+	The name of the <code>show</code> property.
+	
+
+	 */
+	public static final String ShowPropertyName = "show";
+	/**
+	 *  
 	The name of the <code>color</code> property.
 	
 
@@ -84,18 +91,16 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	public static final String AlignedAxisPropertyName = "alignedAxis";
 	/**
 	 *  
-	The name of the <code>show</code> property.
-	
-
-	 */
-	public static final String ShowPropertyName = "show";
-	/**
-	 *  
 	The name of the <code>verticalOrigin</code> property.
 	
 
 	 */
 	public static final String VerticalOriginPropertyName = "verticalOrigin";
+	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(ShowPropertyName);
+		}
+	}, false);
 	private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
 		public cesiumlanguagewriter.ColorCesiumWriter invoke() {
 			return new ColorCesiumWriter(ColorPropertyName);
@@ -136,11 +141,6 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 			return new AlignedAxisCesiumWriter(AlignedAxisPropertyName);
 		}
 	}, false);
-	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
-		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
-			return new BooleanCesiumWriter(ShowPropertyName);
-		}
-	}, false);
 	private Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<cesiumlanguagewriter.VerticalOriginCesiumWriter>(new Func1<cesiumlanguagewriter.VerticalOriginCesiumWriter>() {
 		public cesiumlanguagewriter.VerticalOriginCesiumWriter invoke() {
 			return new VerticalOriginCesiumWriter(VerticalOriginPropertyName);
@@ -172,6 +172,125 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	@Override
 	public BillboardCesiumWriter clone() {
 		return new BillboardCesiumWriter(this);
+	}
+
+	/**
+	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the billboard is shown.
+	
+
+	 */
+	public final BooleanCesiumWriter getShowWriter() {
+		return m_show.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the billboard is shown.
+	
+
+	 */
+	public final BooleanCesiumWriter openShowProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeShowProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeShowPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeShowPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeShowPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
@@ -534,7 +653,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	}
 
 	/**
-	 *  Gets the writer for the <code>horizontalOrigin</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>horizontalOrigin</code> property defines the horizontal origin of the billboard.  It controls whether the billboard image is left-, center-, or right-aligned with the `position`.
+	 *  Gets the writer for the <code>horizontalOrigin</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>horizontalOrigin</code> property defines the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
 	
 
 	 */
@@ -544,7 +663,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>horizontalOrigin</code> property.  The <code>horizontalOrigin</code> property defines the horizontal origin of the billboard.  It controls whether the billboard image is left-, center-, or right-aligned with the `position`.
+	Opens and returns the writer for the <code>horizontalOrigin</code> property.  The <code>horizontalOrigin</code> property defines the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
 	
 
 	 */
@@ -555,7 +674,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>horizontalOrigin</code> property as a <code>horizontalOrigin</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard.  It controls whether the billboard image is left-, center-, or right-aligned with the `position`.
+	Writes a value for the <code>horizontalOrigin</code> property as a <code>horizontalOrigin</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
 	
 	
 
@@ -574,7 +693,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard.  It controls whether the billboard image is left-, center-, or right-aligned with the `position`.
+	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
 	
 	
 
@@ -593,7 +712,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard.  It controls whether the billboard image is left-, center-, or right-aligned with the `position`.
+	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
 	
 	
 
@@ -612,7 +731,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard.  It controls whether the billboard image is left-, center-, or right-aligned with the `position`.
+	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
 	
 	
 	
@@ -633,7 +752,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard.  It controls whether the billboard image is left-, center-, or right-aligned with the `position`.
+	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
 	
 	
 	
@@ -1184,7 +1303,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	}
 
 	/**
-	 *  Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the billboard offset from the alignedAxes.
+	 *  Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the billboard, in radians, offset from the alignedAxis.
 	
 
 	 */
@@ -1194,7 +1313,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the billboard offset from the alignedAxes.
+	Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the billboard, in radians, offset from the alignedAxis.
 	
 
 	 */
@@ -1205,7 +1324,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard offset from the alignedAxes.
+	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, offset from the alignedAxis.
 	
 	
 
@@ -1224,7 +1343,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard offset from the alignedAxes.
+	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, offset from the alignedAxis.
 	
 	
 	
@@ -1249,7 +1368,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard offset from the alignedAxes.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, offset from the alignedAxis.
 	
 	
 
@@ -1268,7 +1387,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard offset from the alignedAxes.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, offset from the alignedAxis.
 	
 	
 
@@ -1287,7 +1406,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard offset from the alignedAxes.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, offset from the alignedAxis.
 	
 	
 	
@@ -1308,7 +1427,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard offset from the alignedAxes.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, offset from the alignedAxis.
 	
 	
 	
@@ -1493,46 +1612,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	}
 
 	/**
-	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the billboard is shown.
-	
-
-	 */
-	public final BooleanCesiumWriter getShowWriter() {
-		return m_show.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the billboard is shown.
-	
-
-	 */
-	public final BooleanCesiumWriter openShowProperty() {
-		openIntervalIfNecessary();
-		return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeShowProperty(boolean value) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
-			try {
-				writer.writeBoolean(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>verticalOrigin</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>verticalOrigin</code> property defines the vertical origin of the billboard.  It controls whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+	 *  Gets the writer for the <code>verticalOrigin</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>verticalOrigin</code> property defines the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
 	
 
 	 */
@@ -1542,7 +1622,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>verticalOrigin</code> property.  The <code>verticalOrigin</code> property defines the vertical origin of the billboard.  It controls whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+	Opens and returns the writer for the <code>verticalOrigin</code> property.  The <code>verticalOrigin</code> property defines the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
 	
 
 	 */
@@ -1553,7 +1633,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>verticalOrigin</code> property as a <code>verticalOrigin</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard.  It controls whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+	Writes a value for the <code>verticalOrigin</code> property as a <code>verticalOrigin</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
 	
 	
 
@@ -1572,7 +1652,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard.  It controls whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
 	
 	
 
@@ -1591,7 +1671,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard.  It controls whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
 	
 	
 
@@ -1610,7 +1690,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard.  It controls whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
 	
 	
 	
@@ -1631,7 +1711,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard.  It controls whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
 	
 	
 	

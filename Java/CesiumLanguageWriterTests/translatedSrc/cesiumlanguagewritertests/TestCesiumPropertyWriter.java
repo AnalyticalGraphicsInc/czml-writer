@@ -3,13 +3,18 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
+import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWriter<TDerived>> {
 	public final StringWriter getStringWriter() {
 		return backingField$StringWriter;
@@ -134,4 +139,6 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
 	private CesiumOutputStream backingField$OutputStream;
 	private CesiumStreamWriter backingField$Writer;
 	private PacketCesiumWriter backingField$Packet;
+	@Rule
+	public TestContextRule rule$testContext = new TestContextRule();
 }

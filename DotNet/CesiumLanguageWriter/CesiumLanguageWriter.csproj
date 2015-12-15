@@ -109,6 +109,8 @@
     <Compile Include="Generated\LineThicknessCesiumWriter.cs" />
     <Compile Include="Generated\MaterialCesiumWriter.cs" />
     <Compile Include="Generated\ModelCesiumWriter.cs" />
+    <Compile Include="Generated\NodeTransformationCesiumWriter.cs" />
+    <Compile Include="Generated\NodeTransformationsCesiumWriter.cs" />
     <Compile Include="Generated\OrientationCesiumWriter.cs" />
     <Compile Include="Generated\PacketCesiumWriter.cs" />
     <Compile Include="Generated\PathCesiumWriter.cs" />
@@ -123,11 +125,13 @@
     <Compile Include="Generated\PositionListCesiumWriter.cs" />
     <Compile Include="Generated\RectangularSensorCesiumWriter.cs" />
     <Compile Include="Generated\RepeatCesiumWriter.cs" />
+    <Compile Include="Generated\ScaleCesiumWriter.cs" />
     <Compile Include="Generated\SensorVolumePortionToDisplayCesiumWriter.cs" />
     <Compile Include="Generated\SolidColorMaterialCesiumWriter.cs" />
     <Compile Include="Generated\StringCesiumWriter.cs" />
     <Compile Include="Generated\StripeMaterialCesiumWriter.cs" />
     <Compile Include="Generated\StripeOrientationCesiumWriter.cs" />
+    <Compile Include="Generated\TranslationCesiumWriter.cs" />
     <Compile Include="Generated\UriCesiumWriter.cs" />
     <Compile Include="Generated\VectorCesiumWriter.cs" />
     <Compile Include="Generated\VerticalOriginCesiumWriter.cs" />

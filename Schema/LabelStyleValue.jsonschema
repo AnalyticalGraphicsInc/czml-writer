@@ -2,5 +2,5 @@
     "title": "LabelStyle",
     "description": "A label style.  Valid values are \"FILL\", \"OUTLINE\", and \"FILL_AND_OUTLINE\".",
     "type": "string",
-    "enum": ["FILL", "OUTLINE", "FILL_AND_OUTLINE"]
+    "enum": [ "FILL", "OUTLINE", "FILL_AND_OUTLINE" ]
 }
