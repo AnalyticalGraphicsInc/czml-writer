@@ -15,6 +15,18 @@
         "polylineGlow": {
             "$ref": "PolylineGlowMaterial.jsonschema",
             "description": "Colors the line with a glowing color."
+        },
+        "image": {
+            "$ref": "ImageMaterial.jsonschema",
+            "description": "Fills the line with an image."
+        },
+        "grid": {
+            "$ref": "GridMaterial.jsonschema",
+            "description": "Fills the line with a grid."
+        },
+        "stripe": {
+            "$ref": "StripeMaterial.jsonschema",
+            "description": "Fills the line with alternating colors."
         }
     }
 }
