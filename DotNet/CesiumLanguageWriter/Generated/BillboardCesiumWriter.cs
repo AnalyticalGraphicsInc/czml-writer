@@ -520,11 +520,37 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="uri">The URI of the data.</param>
         /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
+        public void WriteImageProperty(Uri uri, CesiumResourceBehavior resourceBehavior)
+        {
+            using (var writer = OpenImageProperty())
+            {
+                writer.WriteUri(uri, resourceBehavior);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        /// <param name="uri">The URI of the data.</param>
+        /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
         public void WriteImageProperty(string uri, CesiumResourceBehavior resourceBehavior)
         {
             using (var writer = OpenImageProperty())
             {
                 writer.WriteUri(uri, resourceBehavior);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        /// <param name="uri">The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
+        /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
+        public void WriteImageProperty(Uri uri, ICesiumUriResolver resolver)
+        {
+            using (var writer = OpenImageProperty())
+            {
+                writer.WriteUri(uri, resolver);
             }
         }
 

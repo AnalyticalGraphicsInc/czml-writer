@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CesiumLanguageWriter.Advanced
+﻿namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
     /// A URI resolver that leaves URIs unchanged.

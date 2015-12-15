@@ -66,6 +66,16 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="uri">The URI of the data.</param>
         /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
+        public void WriteUri(Uri uri, CesiumResourceBehavior resourceBehavior)
+        {
+            WriteUri(uri.ToString(), resourceBehavior);
+        }
+
+        /// <summary>
+        /// Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URI value.
+        /// </summary>
+        /// <param name="uri">The URI of the data.</param>
+        /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
         public void WriteUri(string uri, CesiumResourceBehavior resourceBehavior)
         {
             const string PropertyName = UriPropertyName;
@@ -78,6 +88,16 @@ namespace CesiumLanguageWriter
                 Output.WritePropertyName(PropertyName);
             }
             Output.WriteValue(CesiumFormattingHelper.GetResourceUri(uri, resourceBehavior));
+        }
+
+        /// <summary>
+        /// Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URI value.
+        /// </summary>
+        /// <param name="uri">The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
+        /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
+        public void WriteUri(Uri uri, ICesiumUriResolver resolver)
+        {
+            WriteUri(uri.ToString(), resolver);
         }
 
         /// <summary>

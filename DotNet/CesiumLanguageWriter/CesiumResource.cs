@@ -15,6 +15,16 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="uri">The URI of the resource.</param>
         /// <param name="behavior">The enumeration describing how the resource is to be included in the document.</param>
+        public CesiumResource(Uri uri, CesiumResourceBehavior behavior)
+            : this(uri.ToString(), behavior)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance.
+        /// </summary>
+        /// <param name="uri">The URI of the resource.</param>
+        /// <param name="behavior">The enumeration describing how the resource is to be included in the document.</param>
         public CesiumResource(string uri, CesiumResourceBehavior behavior)
         {
             m_url = uri;
