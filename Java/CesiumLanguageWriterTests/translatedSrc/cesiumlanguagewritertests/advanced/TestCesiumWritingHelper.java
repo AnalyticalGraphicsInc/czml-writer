@@ -7,6 +7,8 @@ import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewritertests.*;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Collection;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -30,10 +32,10 @@ public class TestCesiumWritingHelper {
 
 	@Test
 	public final void canWriteReferences() {
-		CesiumWritingHelper.writeReferences(m_outputStream, agi.foundation.compatibility.ArrayHelper.arrayAsList(new cesiumlanguagewriter.Reference[] {
-				new Reference("bar", "color"),
-				new Reference("foo", "color2")
-		}));
+		ArrayList<cesiumlanguagewriter.Reference> tempCollection_0 = new ArrayList<cesiumlanguagewriter.Reference>();
+		tempCollection_0.add(new Reference("bar", "color"));
+		tempCollection_0.add(new Reference("foo", "color2"));
+		CesiumWritingHelper.writeReferences(m_outputStream, tempCollection_0);
 		Assert.assertEquals("[\"bar#color\",\"foo#color2\"]", m_stringWriter.toString());
 	}
 

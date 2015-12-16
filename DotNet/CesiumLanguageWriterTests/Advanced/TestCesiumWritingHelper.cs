@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
@@ -25,7 +26,7 @@ namespace CesiumLanguageWriterTests.Advanced
         [Test]
         public void CanWriteReferences()
         {
-            CesiumWritingHelper.WriteReferences(m_outputStream, new[] { new Reference("bar", "color"), new Reference("foo", "color2") });
+            CesiumWritingHelper.WriteReferences(m_outputStream, new List<Reference> { new Reference("bar", "color"), new Reference("foo", "color2") });
             Assert.AreEqual("[\"bar#color\",\"foo#color2\"]", m_stringWriter.ToString());
         }
 
