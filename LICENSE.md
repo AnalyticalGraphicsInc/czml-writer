@@ -1,0 +1,1 @@
+See the license files for the [.NET](DotNet/LICENSE.md) and [Java](Java/LICENSE.md) versions for details.
