@@ -7,7 +7,7 @@
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the cone is shown."
+            "description": "Whether or not the entire conical sensor is shown."
         },
         "innerHalfAngle": {
             "$ref": "Double.jsonschema",
@@ -43,7 +43,7 @@
         },
         "showLateralSurfaces": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the intersections of the cone with the earth are shown."
+            "description": "Whether or not the intersections of the cone with the Earth are shown."
         },
         "lateralSurfaceMaterial": {
             "$ref": "Material.jsonschema",
@@ -75,7 +75,7 @@
         },
         "portionToDisplay": {
             "$ref": "Extensions/AGI/SensorVolumePortionToDisplay.jsonschema",
-            "description": "Indicates what part of a sensor should be displayed."
+            "description": "Indicates what part of the sensor should be displayed."
         }
     }
 }
