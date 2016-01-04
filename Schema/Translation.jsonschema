@@ -1,6 +1,6 @@
 {
     "title": "Translation",
-    "description": "Defines an translational offset which can optionally vary over time.",
+    "description": "Defines a translational offset which can optionally vary over time.",
     "extends": { "$ref": "InterpolatableProperty.jsonschema" },
     "type": [ "array", "object" ],
     "items": { "$ref": "#" },
