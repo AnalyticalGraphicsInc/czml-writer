@@ -43,11 +43,11 @@
         },
         "showLateralSurfaces": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the intersections of the cone with the Earth are shown."
+            "description": "Whether or not the lateral surfaces of the cone are shown."
         },
         "lateralSurfaceMaterial": {
             "$ref": "Material.jsonschema",
-            "description": "Whether or not lateral surfaces are shown."
+            "description": "The material to use for the cone's lateral surfaces."
         },
         "showEllipsoidSurfaces": {
             "$ref": "Boolean.jsonschema",
@@ -55,7 +55,7 @@
         },
         "ellipsoidSurfaceMaterial": {
             "$ref": "Material.jsonschema",
-            "description": "The material to use for the cone's ellipsoid surface."
+            "description": "The material to use for the cone's ellipsoid surfaces."
         },
         "showEllipsoidHorizonSurfaces": {
             "$ref": "Boolean.jsonschema",
@@ -63,7 +63,7 @@
         },
         "ellipsoidHorizonSurfaceMaterial": {
             "$ref": "Material.jsonschema",
-            "description": "The material to use for the cone's ellipsoid horizon surface."
+            "description": "The material to use for the cone's ellipsoid horizon surfaces."
         },
         "showDomeSurfaces": {
             "$ref": "Boolean.jsonschema",
@@ -71,7 +71,7 @@
         },
         "domeSurfaceMaterial": {
             "$ref": "Material.jsonschema",
-            "description": "The material to use for the cone's dome."
+            "description": "The material to use for the cone's dome surfaces."
         },
         "portionToDisplay": {
             "$ref": "Extensions/AGI/SensorVolumePortionToDisplay.jsonschema",
