@@ -243,7 +243,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 	}
 
 	/**
-	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the pyramid is shown.
+	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the entire rectangular pyramid sensor is shown.
 	
 
 	 */
@@ -253,7 +253,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the pyramid is shown.
+	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the entire rectangular pyramid sensor is shown.
 	
 
 	 */
@@ -264,7 +264,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
+	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the entire rectangular pyramid sensor is shown.
 	
 	
 
@@ -283,7 +283,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the entire rectangular pyramid sensor is shown.
 	
 	
 
@@ -302,7 +302,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the entire rectangular pyramid sensor is shown.
 	
 	
 
@@ -321,7 +321,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the entire rectangular pyramid sensor is shown.
 	
 	
 	
@@ -342,7 +342,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the entire rectangular pyramid sensor is shown.
 	
 	
 	
@@ -1251,7 +1251,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 	}
 
 	/**
-	 *  Gets the writer for the <code>showLateralSurfaces</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>showLateralSurfaces</code> property defines whether or not the intersections of the pyramid with the earth are shown.
+	 *  Gets the writer for the <code>showLateralSurfaces</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>showLateralSurfaces</code> property defines whether or not the lateral surfaces of the pyramid are shown.
 	
 
 	 */
@@ -1261,7 +1261,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>showLateralSurfaces</code> property.  The <code>showLateralSurfaces</code> property defines whether or not the intersections of the pyramid with the earth are shown.
+	Opens and returns the writer for the <code>showLateralSurfaces</code> property.  The <code>showLateralSurfaces</code> property defines whether or not the lateral surfaces of the pyramid are shown.
 	
 
 	 */
@@ -1272,7 +1272,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>showLateralSurfaces</code> property as a <code>boolean</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
+	Writes a value for the <code>showLateralSurfaces</code> property as a <code>boolean</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the pyramid are shown.
 	
 	
 
@@ -1291,7 +1291,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
+	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the pyramid are shown.
 	
 	
 
@@ -1310,7 +1310,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
+	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the pyramid are shown.
 	
 	
 
@@ -1329,7 +1329,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
+	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the pyramid are shown.
 	
 	
 	
@@ -1350,7 +1350,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
+	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the pyramid are shown.
 	
 	
 	
@@ -1370,7 +1370,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 	}
 
 	/**
-	 *  Gets the writer for the <code>lateralSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>lateralSurfaceMaterial</code> property defines whether or not lateral surfaces are shown.
+	 *  Gets the writer for the <code>lateralSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>lateralSurfaceMaterial</code> property defines the material to use for the pyramid's lateral surfaces.
 	
 
 	 */
@@ -1380,7 +1380,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>lateralSurfaceMaterial</code> property.  The <code>lateralSurfaceMaterial</code> property defines whether or not lateral surfaces are shown.
+	Opens and returns the writer for the <code>lateralSurfaceMaterial</code> property.  The <code>lateralSurfaceMaterial</code> property defines the material to use for the pyramid's lateral surfaces.
 	
 
 	 */
@@ -1509,7 +1509,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 	}
 
 	/**
-	 *  Gets the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid surface.
+	 *  Gets the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid surfaces.
 	
 
 	 */
@@ -1519,7 +1519,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid surface.
+	Opens and returns the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid surfaces.
 	
 
 	 */
@@ -1648,7 +1648,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 	}
 
 	/**
-	 *  Gets the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid horizon surface.
+	 *  Gets the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid horizon surfaces.
 	
 
 	 */
@@ -1658,7 +1658,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid horizon surface.
+	Opens and returns the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid horizon surfaces.
 	
 
 	 */
@@ -1787,7 +1787,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 	}
 
 	/**
-	 *  Gets the writer for the <code>domeSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>domeSurfaceMaterial</code> property defines the material to use for the pyramid's dome.
+	 *  Gets the writer for the <code>domeSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>domeSurfaceMaterial</code> property defines the material to use for the pyramid's dome surfaces.
 	
 
 	 */
@@ -1797,7 +1797,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>domeSurfaceMaterial</code> property.  The <code>domeSurfaceMaterial</code> property defines the material to use for the pyramid's dome.
+	Opens and returns the writer for the <code>domeSurfaceMaterial</code> property.  The <code>domeSurfaceMaterial</code> property defines the material to use for the pyramid's dome surfaces.
 	
 
 	 */
@@ -1807,7 +1807,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 	}
 
 	/**
-	 *  Gets the writer for the <code>portionToDisplay</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>portionToDisplay</code> property defines indicates what part of a sensor should be displayed.
+	 *  Gets the writer for the <code>portionToDisplay</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>portionToDisplay</code> property defines indicates what part of the sensor should be displayed.
 	
 
 	 */
@@ -1817,7 +1817,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>portionToDisplay</code> property.  The <code>portionToDisplay</code> property defines indicates what part of a sensor should be displayed.
+	Opens and returns the writer for the <code>portionToDisplay</code> property.  The <code>portionToDisplay</code> property defines indicates what part of the sensor should be displayed.
 	
 
 	 */
@@ -1828,7 +1828,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>portionToDisplay</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>portionToDisplay</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
 	
 	
 
@@ -1847,7 +1847,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
 	
 	
 
@@ -1866,7 +1866,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
 	
 	
 
@@ -1885,7 +1885,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
 	
 	
 	
@@ -1906,7 +1906,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
 	
 	
 	

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Translation</code> to a <see cref="CesiumOutputStream" />.  A <code>Translation</code> defines an translational offset which can optionally vary over time.
+    /// Writes a <code>Translation</code> to a <see cref="CesiumOutputStream" />.  A <code>Translation</code> defines a translational offset which can optionally vary over time.
     /// </summary>
     public class TranslationCesiumWriter : CesiumInterpolatablePropertyWriter<TranslationCesiumWriter>
     {

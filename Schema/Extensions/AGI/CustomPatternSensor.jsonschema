@@ -7,23 +7,23 @@
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the pyramid is shown."
+            "description": "Whether or not the entire custom sensor is shown."
         },
         "directions": {
             "$ref": "DirectionList.jsonschema",
-            "description": "The list of directions defining the pyramid."
+            "description": "The list of directions defining the custom sensor."
         },
         "radius": {
             "$ref": "Double.jsonschema",
-            "description": "The radial limit of the pyramid."
+            "description": "The radial limit of the sensor."
         },
         "showIntersection": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the intersection of the pyramid with the Earth is shown."
+            "description": "Whether or not the intersection of the sensor with the Earth is shown."
         },
         "intersectionColor": {
             "$ref": "Color.jsonschema",
-            "description": "The color of the intersection of the pyramid with the Earth."
+            "description": "The color of the intersection of the sensor with the Earth."
         },
         "intersectionWidth": {
             "$ref": "Double.jsonschema",
@@ -31,11 +31,11 @@
         },
         "showLateralSurfaces": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the intersections of the pyramid with the earth are shown."
+            "description": "Whether or not the lateral surfaces of the sensor are shown."
         },
         "lateralSurfaceMaterial": {
             "$ref": "Material.jsonschema",
-            "description": "Whether or not lateral surfaces are shown."
+            "description": "The material to use for the sensor's lateral surfaces."
         },
         "showEllipsoidSurfaces": {
             "$ref": "Boolean.jsonschema",
@@ -43,7 +43,7 @@
         },
         "ellipsoidSurfaceMaterial": {
             "$ref": "Material.jsonschema",
-            "description": "The material to use for the pyramid's ellipsoid surface."
+            "description": "The material to use for the sensor's ellipsoid surfaces."
         },
         "showEllipsoidHorizonSurfaces": {
             "$ref": "Boolean.jsonschema",
@@ -51,7 +51,7 @@
         },
         "ellipsoidHorizonSurfaceMaterial": {
             "$ref": "Material.jsonschema",
-            "description": "The material to use for the pyramid's ellipsoid horizon surface."
+            "description": "The material to use for the sensor's ellipsoid horizon surfaces."
         },
         "showDomeSurfaces": {
             "$ref": "Boolean.jsonschema",
@@ -59,11 +59,11 @@
         },
         "domeSurfaceMaterial": {
             "$ref": "Material.jsonschema",
-            "description": "The material to use for the pyramid's dome."
+            "description": "The material to use for the sensor's dome surfaces."
         },
         "portionToDisplay": {
             "$ref": "Extensions/AGI/SensorVolumePortionToDisplay.jsonschema",
-            "description": "Indicates what part of a sensor should be displayed."
+            "description": "Indicates what part of the sensor should be displayed."
         }
     }
 }
