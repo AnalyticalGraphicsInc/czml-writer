@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Scale</code> to a <see cref="CesiumOutputStream" />.  A <code>Scale</code> defines an scaling factor which can optionally vary over time.
+    /// Writes a <code>Scale</code> to a <see cref="CesiumOutputStream" />.  A <code>Scale</code> defines a scaling factor which can optionally vary over time.
     /// </summary>
     public class ScaleCesiumWriter : CesiumInterpolatablePropertyWriter<ScaleCesiumWriter>
     {
