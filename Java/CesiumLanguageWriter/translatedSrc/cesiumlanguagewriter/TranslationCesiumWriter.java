@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Translation</code> to a  {@link CesiumOutputStream}.  A <code>Translation</code> defines an translational offset which can optionally vary over time.
+ Writes a <code>Translation</code> to a  {@link CesiumOutputStream}.  A <code>Translation</code> defines a translational offset which can optionally vary over time.
  
 
  */

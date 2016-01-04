@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Scale</code> to a  {@link CesiumOutputStream}.  A <code>Scale</code> defines an scaling factor which can optionally vary over time.
+ Writes a <code>Scale</code> to a  {@link CesiumOutputStream}.  A <code>Scale</code> defines a scaling factor which can optionally vary over time.
  
 
  */

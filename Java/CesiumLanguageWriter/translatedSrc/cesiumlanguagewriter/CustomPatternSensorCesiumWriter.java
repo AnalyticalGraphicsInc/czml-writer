@@ -232,7 +232,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	}
 
 	/**
-	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the pyramid is shown.
+	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the entire custom sensor is shown.
 	
 
 	 */
@@ -242,7 +242,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the pyramid is shown.
+	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the entire custom sensor is shown.
 	
 
 	 */
@@ -253,7 +253,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
+	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the entire custom sensor is shown.
 	
 	
 
@@ -272,7 +272,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the entire custom sensor is shown.
 	
 	
 
@@ -291,7 +291,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the entire custom sensor is shown.
 	
 	
 
@@ -310,7 +310,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the entire custom sensor is shown.
 	
 	
 	
@@ -331,7 +331,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the pyramid is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the entire custom sensor is shown.
 	
 	
 	
@@ -351,7 +351,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	}
 
 	/**
-	 *  Gets the writer for the <code>directions</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>directions</code> property defines the list of directions defining the pyramid.
+	 *  Gets the writer for the <code>directions</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>directions</code> property defines the list of directions defining the custom sensor.
 	
 
 	 */
@@ -361,7 +361,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>directions</code> property.  The <code>directions</code> property defines the list of directions defining the pyramid.
+	Opens and returns the writer for the <code>directions</code> property.  The <code>directions</code> property defines the list of directions defining the custom sensor.
 	
 
 	 */
@@ -372,7 +372,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>directions</code> property as a <code>spherical</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+	Writes a value for the <code>directions</code> property as a <code>spherical</code> value.  The <code>directions</code> property specifies the list of directions defining the custom sensor.
 	
 	
 
@@ -391,7 +391,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>directions</code> property as a <code>unitSpherical</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+	Writes a value for the <code>directions</code> property as a <code>unitSpherical</code> value.  The <code>directions</code> property specifies the list of directions defining the custom sensor.
 	
 	
 
@@ -410,7 +410,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>directions</code> property as a <code>cartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+	Writes a value for the <code>directions</code> property as a <code>cartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the custom sensor.
 	
 	
 
@@ -429,7 +429,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>directions</code> property as a <code>unitCartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the pyramid.
+	Writes a value for the <code>directions</code> property as a <code>unitCartesian</code> value.  The <code>directions</code> property specifies the list of directions defining the custom sensor.
 	
 	
 
@@ -447,7 +447,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	}
 
 	/**
-	 *  Gets the writer for the <code>radius</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>radius</code> property defines the radial limit of the pyramid.
+	 *  Gets the writer for the <code>radius</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>radius</code> property defines the radial limit of the sensor.
 	
 
 	 */
@@ -457,7 +457,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>radius</code> property.  The <code>radius</code> property defines the radial limit of the pyramid.
+	Opens and returns the writer for the <code>radius</code> property.  The <code>radius</code> property defines the radial limit of the sensor.
 	
 
 	 */
@@ -468,7 +468,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
+	Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the sensor.
 	
 	
 
@@ -487,7 +487,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
+	Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the sensor.
 	
 	
 	
@@ -512,7 +512,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the sensor.
 	
 	
 
@@ -531,7 +531,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the sensor.
 	
 	
 
@@ -550,7 +550,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the sensor.
 	
 	
 	
@@ -571,7 +571,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the pyramid.
+	Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the sensor.
 	
 	
 	
@@ -591,7 +591,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	}
 
 	/**
-	 *  Gets the writer for the <code>showIntersection</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>showIntersection</code> property defines whether or not the intersection of the pyramid with the Earth is shown.
+	 *  Gets the writer for the <code>showIntersection</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>showIntersection</code> property defines whether or not the intersection of the sensor with the Earth is shown.
 	
 
 	 */
@@ -601,7 +601,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>showIntersection</code> property.  The <code>showIntersection</code> property defines whether or not the intersection of the pyramid with the Earth is shown.
+	Opens and returns the writer for the <code>showIntersection</code> property.  The <code>showIntersection</code> property defines whether or not the intersection of the sensor with the Earth is shown.
 	
 
 	 */
@@ -612,7 +612,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>showIntersection</code> property as a <code>boolean</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the pyramid with the Earth is shown.
+	Writes a value for the <code>showIntersection</code> property as a <code>boolean</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the sensor with the Earth is shown.
 	
 	
 
@@ -631,7 +631,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the pyramid with the Earth is shown.
+	Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the sensor with the Earth is shown.
 	
 	
 
@@ -650,7 +650,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the pyramid with the Earth is shown.
+	Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the sensor with the Earth is shown.
 	
 	
 
@@ -669,7 +669,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the pyramid with the Earth is shown.
+	Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the sensor with the Earth is shown.
 	
 	
 	
@@ -690,7 +690,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the pyramid with the Earth is shown.
+	Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the sensor with the Earth is shown.
 	
 	
 	
@@ -710,7 +710,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	}
 
 	/**
-	 *  Gets the writer for the <code>intersectionColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>intersectionColor</code> property defines the color of the intersection of the pyramid with the Earth.
+	 *  Gets the writer for the <code>intersectionColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>intersectionColor</code> property defines the color of the intersection of the sensor with the Earth.
 	
 
 	 */
@@ -720,7 +720,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>intersectionColor</code> property.  The <code>intersectionColor</code> property defines the color of the intersection of the pyramid with the Earth.
+	Opens and returns the writer for the <code>intersectionColor</code> property.  The <code>intersectionColor</code> property defines the color of the intersection of the sensor with the Earth.
 	
 
 	 */
@@ -731,7 +731,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+	Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the sensor with the Earth.
 	
 	
 
@@ -750,7 +750,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+	Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the sensor with the Earth.
 	
 	
 	
@@ -775,7 +775,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+	Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the sensor with the Earth.
 	
 	
 	
@@ -800,7 +800,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>intersectionColor</code> property as a <code>rgbaf</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+	Writes a value for the <code>intersectionColor</code> property as a <code>rgbaf</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the sensor with the Earth.
 	
 	
 	
@@ -825,7 +825,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the sensor with the Earth.
 	
 	
 
@@ -844,7 +844,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the sensor with the Earth.
 	
 	
 
@@ -863,7 +863,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the sensor with the Earth.
 	
 	
 	
@@ -884,7 +884,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the pyramid with the Earth.
+	Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the sensor with the Earth.
 	
 	
 	
@@ -1048,7 +1048,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	}
 
 	/**
-	 *  Gets the writer for the <code>showLateralSurfaces</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>showLateralSurfaces</code> property defines whether or not the intersections of the pyramid with the earth are shown.
+	 *  Gets the writer for the <code>showLateralSurfaces</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>showLateralSurfaces</code> property defines whether or not the lateral surfaces of the sensor are shown.
 	
 
 	 */
@@ -1058,7 +1058,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>showLateralSurfaces</code> property.  The <code>showLateralSurfaces</code> property defines whether or not the intersections of the pyramid with the earth are shown.
+	Opens and returns the writer for the <code>showLateralSurfaces</code> property.  The <code>showLateralSurfaces</code> property defines whether or not the lateral surfaces of the sensor are shown.
 	
 
 	 */
@@ -1069,7 +1069,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>showLateralSurfaces</code> property as a <code>boolean</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
+	Writes a value for the <code>showLateralSurfaces</code> property as a <code>boolean</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the sensor are shown.
 	
 	
 
@@ -1088,7 +1088,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
+	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the sensor are shown.
 	
 	
 
@@ -1107,7 +1107,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
+	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the sensor are shown.
 	
 	
 
@@ -1126,7 +1126,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
+	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the sensor are shown.
 	
 	
 	
@@ -1147,7 +1147,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the intersections of the pyramid with the earth are shown.
+	Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the sensor are shown.
 	
 	
 	
@@ -1167,7 +1167,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	}
 
 	/**
-	 *  Gets the writer for the <code>lateralSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>lateralSurfaceMaterial</code> property defines whether or not lateral surfaces are shown.
+	 *  Gets the writer for the <code>lateralSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>lateralSurfaceMaterial</code> property defines the material to use for the sensor's lateral surfaces.
 	
 
 	 */
@@ -1177,7 +1177,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>lateralSurfaceMaterial</code> property.  The <code>lateralSurfaceMaterial</code> property defines whether or not lateral surfaces are shown.
+	Opens and returns the writer for the <code>lateralSurfaceMaterial</code> property.  The <code>lateralSurfaceMaterial</code> property defines the material to use for the sensor's lateral surfaces.
 	
 
 	 */
@@ -1306,7 +1306,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	}
 
 	/**
-	 *  Gets the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid surface.
+	 *  Gets the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the sensor's ellipsoid surfaces.
 	
 
 	 */
@@ -1316,7 +1316,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid surface.
+	Opens and returns the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the sensor's ellipsoid surfaces.
 	
 
 	 */
@@ -1445,7 +1445,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	}
 
 	/**
-	 *  Gets the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid horizon surface.
+	 *  Gets the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the sensor's ellipsoid horizon surfaces.
 	
 
 	 */
@@ -1455,7 +1455,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the pyramid's ellipsoid horizon surface.
+	Opens and returns the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the sensor's ellipsoid horizon surfaces.
 	
 
 	 */
@@ -1584,7 +1584,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	}
 
 	/**
-	 *  Gets the writer for the <code>domeSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>domeSurfaceMaterial</code> property defines the material to use for the pyramid's dome.
+	 *  Gets the writer for the <code>domeSurfaceMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>domeSurfaceMaterial</code> property defines the material to use for the sensor's dome surfaces.
 	
 
 	 */
@@ -1594,7 +1594,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>domeSurfaceMaterial</code> property.  The <code>domeSurfaceMaterial</code> property defines the material to use for the pyramid's dome.
+	Opens and returns the writer for the <code>domeSurfaceMaterial</code> property.  The <code>domeSurfaceMaterial</code> property defines the material to use for the sensor's dome surfaces.
 	
 
 	 */
@@ -1604,7 +1604,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	}
 
 	/**
-	 *  Gets the writer for the <code>portionToDisplay</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>portionToDisplay</code> property defines indicates what part of a sensor should be displayed.
+	 *  Gets the writer for the <code>portionToDisplay</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>portionToDisplay</code> property defines indicates what part of the sensor should be displayed.
 	
 
 	 */
@@ -1614,7 +1614,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>portionToDisplay</code> property.  The <code>portionToDisplay</code> property defines indicates what part of a sensor should be displayed.
+	Opens and returns the writer for the <code>portionToDisplay</code> property.  The <code>portionToDisplay</code> property defines indicates what part of the sensor should be displayed.
 	
 
 	 */
@@ -1625,7 +1625,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>portionToDisplay</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>portionToDisplay</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
 	
 	
 
@@ -1644,7 +1644,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
 	
 	
 
@@ -1663,7 +1663,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
 	
 	
 
@@ -1682,7 +1682,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
 	
 	
 	
@@ -1703,7 +1703,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of a sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
 	
 	
 	
