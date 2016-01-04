@@ -1,6 +1,6 @@
 {
     "title": "Scale",
-    "description": "Defines an scaling factor which can optionally vary over time.",
+    "description": "Defines a scaling factor which can optionally vary over time.",
     "extends": { "$ref": "InterpolatableProperty.jsonschema" },
     "type": [ "array", "object" ],
     "items": { "$ref": "#" },
