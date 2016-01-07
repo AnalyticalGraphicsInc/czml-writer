@@ -16,7 +16,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestCesiumPacketWriter {
+public class TestPacketCesiumWriter {
 	private StringWriter m_sw;
 	private CesiumOutputStream m_output;
 	private CesiumStreamWriter m_writer;
@@ -49,7 +49,7 @@ public class TestCesiumPacketWriter {
 	}
 
 	@Test
-	public final void idValueWritesIdProperty() {
+	public final void testIdProperty() {
 		PacketCesiumWriter packet = m_writer.openPacket(m_output);
 		packet.writeId("foo");
 		packet.close();
@@ -57,7 +57,24 @@ public class TestCesiumPacketWriter {
 	}
 
 	@Test
-	public final void availabilityValueWritesAvailabilityProperty() {
+	public final void testDeleteProperty() {
+		PacketCesiumWriter packet = m_writer.openPacket(m_output);
+		packet.writeId("foo");
+		packet.writeDelete(true);
+		packet.close();
+		Assert.assertEquals("{\"id\":\"foo\",\"delete\":true}", m_sw.toString());
+	}
+
+	@Test
+	public final void testDescriptionProperty() {
+		PacketCesiumWriter packet = m_writer.openPacket(m_output);
+		packet.writeDescriptionProperty("blah");
+		packet.close();
+		Assert.assertEquals("{\"description\":\"blah\"}", m_sw.toString());
+	}
+
+	@Test
+	public final void testAvailabilityProperty() {
 		JulianDate start = new JulianDate(new GregorianDate(2012, 4, 2, 1, 2, 3D));
 		JulianDate stop = new JulianDate(new GregorianDate(2012, 4, 3, 1, 2, 3D));
 		m_output.writeStartSequence();
@@ -94,7 +111,7 @@ public class TestCesiumPacketWriter {
 	}
 
 	@Test
-	public final void positionWritesPositionProperty() {
+	public final void testPositionProperty() {
 		PacketCesiumWriter packet = m_writer.openPacket(m_output);
 		PositionCesiumWriter position = packet.openPositionProperty();
 		Assert.assertNotNull(position);
@@ -102,7 +119,7 @@ public class TestCesiumPacketWriter {
 	}
 
 	@Test
-	public final void billboardWritesBillboardProperty() {
+	public final void testBillboardProperty() {
 		PacketCesiumWriter packet = m_writer.openPacket(m_output);
 		{
 			BillboardCesiumWriter billboard = packet.openBillboardProperty();

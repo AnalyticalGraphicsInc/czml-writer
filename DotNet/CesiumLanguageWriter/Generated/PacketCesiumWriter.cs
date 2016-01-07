@@ -19,6 +19,11 @@ namespace CesiumLanguageWriter
         public const string IdPropertyName = "id";
 
         /// <summary>
+        /// The name of the <code>delete</code> property.
+        /// </summary>
+        public const string DeletePropertyName = "delete";
+
+        /// <summary>
         /// The name of the <code>name</code> property.
         /// </summary>
         public const string NamePropertyName = "name";
@@ -175,6 +180,17 @@ namespace CesiumLanguageWriter
         public void WriteId(string value)
         {
             const string PropertyName = IdPropertyName;
+            Output.WritePropertyName(PropertyName);
+            Output.WriteValue(value);
+        }
+
+        /// <summary>
+        /// Writes the <code>delete</code> property.  The <code>delete</code> property specifies whether the client should delete all existing data for this object, identified by ID. If true, all other properties in this packet will be ignored.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteDelete(bool value)
+        {
+            const string PropertyName = DeletePropertyName;
             Output.WritePropertyName(PropertyName);
             Output.WriteValue(value);
         }
@@ -756,7 +772,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
+        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteViewFrom(Cartesian value)
@@ -767,7 +783,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
+        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -777,7 +793,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
+        /// Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>

@@ -42,6 +42,13 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	public static final String IdPropertyName = "id";
 	/**
 	 *  
+	The name of the <code>delete</code> property.
+	
+
+	 */
+	public static final String DeletePropertyName = "delete";
+	/**
+	 *  
 	The name of the <code>name</code> property.
 	
 
@@ -325,6 +332,20 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	 */
 	public final void writeId(String value) {
 		String PropertyName = IdPropertyName;
+		getOutput().writePropertyName(PropertyName);
+		getOutput().writeValue(value);
+	}
+
+	/**
+	 *  
+	Writes the <code>delete</code> property.  The <code>delete</code> property specifies whether the client should delete all existing data for this object, identified by ID. If true, all other properties in this packet will be ignored.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeDelete(boolean value) {
+		String PropertyName = DeletePropertyName;
 		getOutput().writePropertyName(PropertyName);
 		getOutput().writeValue(value);
 	}
@@ -1175,7 +1196,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	/**
 	 *  
-	Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
+	Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
 	
 	
 
@@ -1189,7 +1210,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	/**
 	 *  
-	Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
+	Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
 	
 	
 	
@@ -1203,7 +1224,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	/**
 	 *  
-	Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the objects position property.
+	Writes the <code>viewFrom</code> property.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
 	
 	
 	
