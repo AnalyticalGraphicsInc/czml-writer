@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace CesiumLanguageWriterTests
 {
     [TestFixture]
-    public class TestCesiumPacketWriter
+    public class TestPacketCesiumWriter
     {
         private StringWriter m_sw;
         private CesiumOutputStream m_output;
@@ -40,7 +40,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        public void IdValueWritesIdProperty()
+        public void TestIdProperty()
         {
             PacketCesiumWriter packet = m_writer.OpenPacket(m_output);
             packet.WriteId("foo");
@@ -49,7 +49,26 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        public void AvailabilityValueWritesAvailabilityProperty()
+        public void TestDeleteProperty()
+        {
+            PacketCesiumWriter packet = m_writer.OpenPacket(m_output);
+            packet.WriteId("foo");
+            packet.WriteDelete(true);
+            packet.Close();
+            Assert.AreEqual("{\"id\":\"foo\",\"delete\":true}", m_sw.ToString());
+        }
+
+        [Test]
+        public void TestDescriptionProperty()
+        {
+            PacketCesiumWriter packet = m_writer.OpenPacket(m_output);
+            packet.WriteDescriptionProperty("blah");
+            packet.Close();
+            Assert.AreEqual("{\"description\":\"blah\"}", m_sw.ToString());
+        }
+
+        [Test]
+        public void TestAvailabilityProperty()
         {
             JulianDate start = new JulianDate(new GregorianDate(2012, 4, 2, 1, 2, 3));
             JulianDate stop = new JulianDate(new GregorianDate(2012, 4, 3, 1, 2, 3));
@@ -75,11 +94,11 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual("[{\"availability\":\"20120402T010203Z/20120403T010203Z\"}," +
                             "{\"availability\":\"20120402T010203Z/20120403T010203Z\"}," +
                             "{\"availability\":[\"20120402T010203Z/20120403T010203Z\",\"20120404T010203Z/20120405T010203Z\"]}]",
-                            m_sw.ToString());
+                m_sw.ToString());
         }
 
         [Test]
-        public void PositionWritesPositionProperty()
+        public void TestPositionProperty()
         {
             PacketCesiumWriter packet = m_writer.OpenPacket(m_output);
             PositionCesiumWriter position = packet.OpenPositionProperty();
@@ -88,7 +107,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        public void BillboardWritesBillboardProperty()
+        public void TestBillboardProperty()
         {
             PacketCesiumWriter packet = m_writer.OpenPacket(m_output);
             using (BillboardCesiumWriter billboard = packet.OpenBillboardProperty())

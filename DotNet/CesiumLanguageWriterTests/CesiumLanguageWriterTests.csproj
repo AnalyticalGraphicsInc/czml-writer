@@ -49,7 +49,7 @@
     <Compile Include="TestCartesian3.cs" />
     <Compile Include="TestCartographic.cs" />
     <Compile Include="TestCesiumInterpolatablePropertyWriter.cs" />
-    <Compile Include="TestCesiumPacketWriter.cs" />
+    <Compile Include="TestPacketCesiumWriter.cs" />
     <Compile Include="TestCesiumPropertyWriter.cs" />
     <Compile Include="TestCesiumStreamWriter.cs" />
     <Compile Include="TestDuration.cs" />
