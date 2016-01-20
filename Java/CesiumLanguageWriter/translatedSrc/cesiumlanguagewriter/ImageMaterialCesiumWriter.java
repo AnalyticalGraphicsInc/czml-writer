@@ -6,6 +6,7 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.RepeatCesiumWriter;
 import cesiumlanguagewriter.UriCesiumWriter;
 import java.awt.image.RenderedImage;
@@ -28,6 +29,13 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	public static final String ImagePropertyName = "image";
 	/**
 	 *  
+	The name of the <code>alpha</code> property.
+	
+
+	 */
+	public static final String AlphaPropertyName = "alpha";
+	/**
+	 *  
 	The name of the <code>repeat</code> property.
 	
 
@@ -36,6 +44,11 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	private Lazy<UriCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
 		public cesiumlanguagewriter.UriCesiumWriter invoke() {
 			return new UriCesiumWriter(ImagePropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_alpha = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(AlphaPropertyName);
 		}
 	}, false);
 	private Lazy<RepeatCesiumWriter> m_repeat = new Lazy<cesiumlanguagewriter.RepeatCesiumWriter>(new Func1<cesiumlanguagewriter.RepeatCesiumWriter>() {
@@ -306,6 +319,150 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	public final void writeImagePropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>alpha</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>alpha</code> property defines the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	
+
+	 */
+	public final DoubleCesiumWriter getAlphaWriter() {
+		return m_alpha.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>alpha</code> property.  The <code>alpha</code> property defines the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	
+
+	 */
+	public final DoubleCesiumWriter openAlphaProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getAlphaWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alpha</code> property as a <code>number</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeAlphaProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openAlphaProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alpha</code> property as a <code>number</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeAlphaProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openAlphaProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeAlphaPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openAlphaProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeAlphaPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openAlphaProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeAlphaPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openAlphaProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeAlphaPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openAlphaProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {
