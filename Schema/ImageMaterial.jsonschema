@@ -10,7 +10,7 @@
         },
         "alpha": {
             "$ref": "Double.jsonschema",
-            "description": "Alpha value for the whole image.  This will be combined with alpha values within the image, if any."
+            "description": "The alpha value for the whole image.  This will be multiplied with alpha values within the image, if any."
         },
         "repeat": {
             "$ref": "Repeat.jsonschema",

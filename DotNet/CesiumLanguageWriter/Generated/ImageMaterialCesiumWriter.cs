@@ -212,7 +212,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>alpha</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>alpha</code> property defines alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// Gets the writer for the <code>alpha</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>alpha</code> property defines the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
         /// </summary>
         public DoubleCesiumWriter AlphaWriter
         {
@@ -220,7 +220,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>alpha</code> property.  The <code>alpha</code> property defines alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// Opens and returns the writer for the <code>alpha</code> property.  The <code>alpha</code> property defines the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
         /// </summary>
         public DoubleCesiumWriter OpenAlphaProperty()
         {
@@ -229,7 +229,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>alpha</code> property as a <code>number</code> value.  The <code>alpha</code> property specifies alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// Writes a value for the <code>alpha</code> property as a <code>number</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteAlphaProperty(double value)
@@ -241,7 +241,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>alpha</code> property as a <code>number</code> value.  The <code>alpha</code> property specifies alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// Writes a value for the <code>alpha</code> property as a <code>number</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -256,7 +256,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteAlphaPropertyReference(Reference value)
@@ -268,7 +268,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteAlphaPropertyReference(string value)
@@ -280,7 +280,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -293,7 +293,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
