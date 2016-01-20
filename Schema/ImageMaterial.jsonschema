@@ -8,6 +8,10 @@
             "$ref": "Uri.jsonschema",
             "description": "The image to display on the surface."
         },
+        "alpha": {
+            "$ref": "Double.jsonschema",
+            "description": "Alpha value for the whole image.  This will be combined with alpha values within the image, if any."
+        },
         "repeat": {
             "$ref": "Repeat.jsonschema",
             "description": "The number of times the image repeats along each axis."

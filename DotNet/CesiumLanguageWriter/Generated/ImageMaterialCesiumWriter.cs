@@ -19,11 +19,17 @@ namespace CesiumLanguageWriter
         public const string ImagePropertyName = "image";
 
         /// <summary>
+        /// The name of the <code>alpha</code> property.
+        /// </summary>
+        public const string AlphaPropertyName = "alpha";
+
+        /// <summary>
         /// The name of the <code>repeat</code> property.
         /// </summary>
         public const string RepeatPropertyName = "repeat";
 
         private readonly Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(ImagePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_alpha = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(AlphaPropertyName), false);
         private readonly Lazy<RepeatCesiumWriter> m_repeat = new Lazy<RepeatCesiumWriter>(() => new RepeatCesiumWriter(RepeatPropertyName), false);
 
         /// <summary>
@@ -200,6 +206,100 @@ namespace CesiumLanguageWriter
         public void WriteImagePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenImageProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>alpha</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>alpha</code> property defines alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// </summary>
+        public DoubleCesiumWriter AlphaWriter
+        {
+            get { return m_alpha.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>alpha</code> property.  The <code>alpha</code> property defines alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// </summary>
+        public DoubleCesiumWriter OpenAlphaProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(AlphaWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alpha</code> property as a <code>number</code> value.  The <code>alpha</code> property specifies alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteAlphaProperty(double value)
+        {
+            using (var writer = OpenAlphaProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alpha</code> property as a <code>number</code> value.  The <code>alpha</code> property specifies alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteAlphaProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenAlphaProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteAlphaPropertyReference(Reference value)
+        {
+            using (var writer = OpenAlphaProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteAlphaPropertyReference(string value)
+        {
+            using (var writer = OpenAlphaProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteAlphaPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenAlphaProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies alpha value for the whole image.  This will be combined with alpha values within the image, if any.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteAlphaPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenAlphaProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
