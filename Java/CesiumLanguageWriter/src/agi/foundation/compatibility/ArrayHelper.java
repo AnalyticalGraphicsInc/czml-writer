@@ -2,9 +2,6 @@ package agi.foundation.compatibility;
 
 import java.lang.reflect.Array;
 import java.util.AbstractList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 import java.util.RandomAccess;
 

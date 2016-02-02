@@ -2,7 +2,7 @@ package agi.foundation.compatibility;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.isEmptyString;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
@@ -10,8 +10,6 @@ import static org.junit.Assert.fail;
 
 import java.lang.reflect.Array;
 
-import org.hamcrest.Description;
-import org.hamcrest.TypeSafeMatcher;
 import org.junit.Assert;
 import org.junit.internal.ArrayComparisonFailure;
 
@@ -19,20 +17,6 @@ import org.junit.internal.ArrayComparisonFailure;
  * Extra assert methods.
  */
 public final class AssertHelper {
-	private static final class EmptyStringMatcher extends TypeSafeMatcher<String> {
-		public static final EmptyStringMatcher instance = new EmptyStringMatcher();
-
-		@Override
-		public boolean matchesSafely(String item) {
-			return "".equals(item);
-		}
-
-		@Override
-		public void describeTo(Description description) {
-			description.appendText("an empty string");
-		}
-	}
-
 	private AssertHelper() {}
 
 	public static void assertNotEqual(Object expected, Object actual) {
@@ -40,19 +24,19 @@ public final class AssertHelper {
 	}
 
 	public static void assertNotEqual(String message, Object expected, Object actual) {
-		assertThat(message, actual, is(not(equalTo(expected))));
+		assertThat(message, actual, not(equalTo(expected)));
 	}
 
 	public static void assertIsEmpty(String str) {
-		assertThat(str, is(EmptyStringMatcher.instance));
+		assertThat(str, isEmptyString());
 	}
 
 	public static <T extends Comparable<T>> void assertLess(T a, T b) {
-		assertThat(a, is(lessThan(b)));
+		assertThat(a, lessThan(b));
 	}
 
 	public static <T extends Comparable<T>> void assertGreater(T a, T b) {
-		assertThat(a, is(greaterThan(b)));
+		assertThat(a, greaterThan(b));
 	}
 
 	// NUnit allows comparing two boxed numbers of different type.

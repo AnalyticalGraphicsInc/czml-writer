@@ -1,70 +1,46 @@
 package agi.foundation.compatibility;
 
-import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.ProtocolException;
-import java.net.Proxy;
 import java.net.URL;
+import java.net.URLConnection;
 
 public class HttpWebRequest extends WebRequest {
-	private URL url;
 	private String method;
 	private String userAgent;
-	private int timeout;
-	private Proxy proxy;
 
-	public HttpWebRequest(String urlString) {
-		try {
-			url = new URL(urlString);
-		} catch (MalformedURLException e) {
-			throw new RuntimeMalformedURLException(e);
-		}
+	HttpWebRequest(URL url) {
+		super(url);
+	}
+
+	public String getMethod() {
+		return method;
 	}
 
 	public void setMethod(String method) {
 		this.method = method;
 	}
 
+	public String getUserAgent() {
+		return userAgent;
+	}
+
 	public void setUserAgent(String userAgent) {
 		this.userAgent = userAgent;
 	}
 
-	public void setTimeout(int timeout) {
-		this.timeout = timeout;
-	}
-
-	public void setProxy(Proxy proxy) {
-		this.proxy = proxy;
-	}
-
 	@Override
-	public WebResponse getResponse() {
-		HttpURLConnection connection;
-		try {
-			if (proxy == null)
-				connection = (HttpURLConnection) url.openConnection();
-			else
-				connection = (HttpURLConnection) url.openConnection(proxy);
+	protected void configureConnection(URLConnection connection) {
+		HttpURLConnection httpConnection = (HttpURLConnection) connection;
 
-			if (timeout != 0) {
-				connection.setConnectTimeout(timeout);
-			}
+		if (method != null) {
+			try {
+				httpConnection.setRequestMethod(method);
+			} catch (ProtocolException e) {}
+		}
 
-			if (method != null) {
-				try {
-					connection.setRequestMethod(method);
-				} catch (ProtocolException e) {}
-			}
-
-			if (userAgent != null) {
-				connection.setRequestProperty("User-Agent", userAgent);
-			}
-
-			connection.connect();
-			return new WebResponse(connection);
-		} catch (IOException e) {
-			throw new RuntimeIOException(e);
+		if (userAgent != null) {
+			connection.setRequestProperty("User-Agent", userAgent);
 		}
 	}
 }

@@ -2,13 +2,13 @@ package agi.foundation.compatibility;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
+import java.net.URLConnection;
 
 public class WebResponse implements IDisposable {
-	private final HttpURLConnection connection;
+	private final URLConnection connection;
 	private InputStream inputStream;
 
-	public WebResponse(HttpURLConnection connection) {
+	public WebResponse(URLConnection connection) {
 		this.connection = connection;
 	}
 
