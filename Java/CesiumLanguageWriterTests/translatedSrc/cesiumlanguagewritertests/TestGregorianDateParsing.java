@@ -6,6 +6,7 @@ import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.DateTimeHelper;
+import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.StringHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
@@ -15,6 +16,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -113,18 +115,21 @@ public class TestGregorianDateParsing {
 		result = out$result_10[0];
 	}
 
-	@Test(expected = NumberFormatException.class)
+	@Test
 	public final void testParseISO8601DayOfYearOutOfRange() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
 		GregorianDate result = GregorianDate.parse("1985-367T02:00:05.2134");
 	}
 
-	@Test(expected = NumberFormatException.class)
+	@Test
 	public final void testParseISO8601DayOfYearError() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
 		GregorianDate result = GregorianDate.parse("1985-12#T02:00:05.2134");
 	}
 
-	@Test(expected = NumberFormatException.class)
+	@Test
 	public final void testParseISO8601YearOutOfRange() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
 		GregorianDate result = GregorianDate.parse("21985-167T02:00:05.2134");
 	}
 
@@ -211,18 +216,21 @@ public class TestGregorianDateParsing {
 		AssertHelper.assertNotEqual(expected, GregorianDate.parseExact("06/30/2009 05:25:00.1234567890123459", "MM/dd/yyyy HH:mm:ss.ffffffffffffffff", m_cultureInfo));
 	}
 
-	@Test(expected = NumberFormatException.class)
+	@Test
 	public final void parseExactThrowsOnInvalidFormat() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
 		GregorianDate.parseExact("1/1/2009", "dddd, dd MMMM yyyy HH:mm:ss", m_cultureInfo);
 	}
 
-	@Test(expected = NumberFormatException.class)
+	@Test
 	public final void parseExactThrowsOnNullFormat() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
 		GregorianDate.parseExact("1/1/2009", (String) null, m_cultureInfo);
 	}
 
-	@Test(expected = ArgumentNullException.class)
+	@Test
 	public final void parseExactThrowsOnNullInput() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentNullException.class);
 		GregorianDate.parseExact(null, "dddd, dd MMMM yyyy HH:mm:ss", m_cultureInfo);
 	}
 
@@ -303,18 +311,21 @@ public class TestGregorianDateParsing {
 		AssertHelper.assertEquals(expected, unusedDate);
 	}
 
-	@Test(expected = ArgumentNullException.class)
+	@Test
 	public final void parseThrowsOnNullInput() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentNullException.class);
 		GregorianDate.parse(null, m_cultureInfo);
 	}
 
-	@Test(expected = ArgumentNullException.class)
+	@Test
 	public final void parseThrowsOnNullInputWithoutCultureInfo() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentNullException.class);
 		GregorianDate.parse(null);
 	}
 
-	@Test(expected = NumberFormatException.class)
+	@Test
 	public final void parseThrowsFormatExceptionWhenNoMatch() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
 		GregorianDate.parse("February Q, 2009", m_cultureInfo);
 	}
 
@@ -366,6 +377,17 @@ public class TestGregorianDateParsing {
 		result = out$result_16[0];
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
+
+	private ExpectedException rule$expectedException = ExpectedException.none();
+
+	@Rule
+	public ExpectedException getRule$expectedException() {
+		return rule$expectedException;
+	}
 }

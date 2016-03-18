@@ -2,6 +2,7 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import java.io.StringWriter;
@@ -9,6 +10,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -43,12 +45,24 @@ public class TestCesiumStreamWriter {
 		Assert.assertSame(packet1, packet2);
 	}
 
-	@Test(expected = IllegalStateException.class)
+	@Test
 	public final void multipleCallsToNewPacketWithoutCloseThrowInvalidOperationException() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), IllegalStateException.class, "already opened", MessageMatch.CONTAINS);
 		PacketCesiumWriter packet = m_writer.openPacket(m_output);
 		packet = m_writer.openPacket(m_output);
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
+
+	private ExpectedException rule$expectedException = ExpectedException.none();
+
+	@Rule
+	public ExpectedException getRule$expectedException() {
+		return rule$expectedException;
+	}
 }

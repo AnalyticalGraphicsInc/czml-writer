@@ -4,12 +4,14 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
+import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -294,8 +296,9 @@ public class TestMatrix3By3 {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testFirstIndexTooHigh() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
 		double bad = diagonal.get(3, 0);
 	}
@@ -306,8 +309,9 @@ public class TestMatrix3By3 {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testFirstIndexTooLow() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
 		double bad = diagonal.get(-1, 0);
 	}
@@ -318,8 +322,9 @@ public class TestMatrix3By3 {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testSecondIndexTooHigh0() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
 		double bad = diagonal.get(0, 3);
 	}
@@ -330,8 +335,9 @@ public class TestMatrix3By3 {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testSecondIndexTooLow0() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
 		double bad = diagonal.get(0, -1);
 	}
@@ -342,8 +348,9 @@ public class TestMatrix3By3 {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testSecondIndexTooHigh1() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
 		double bad = diagonal.get(1, -1);
 	}
@@ -354,8 +361,9 @@ public class TestMatrix3By3 {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testSecondIndexTooLow1() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
 		double bad = diagonal.get(1, -1);
 	}
@@ -366,8 +374,9 @@ public class TestMatrix3By3 {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testSecondIndexTooHigh2() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
 		double bad = diagonal.get(2, 3);
 	}
@@ -378,8 +387,9 @@ public class TestMatrix3By3 {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testSecondIndexTooLow2() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
 		double bad = diagonal.get(2, -1);
 	}
@@ -524,11 +534,23 @@ public class TestMatrix3By3 {
 	
 
 	 */
-	@Test(expected = ArithmeticException.class)
+	@Test
 	public final void testZeroInvertException() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArithmeticException.class);
 		Matrix3By3 mat = Matrix3By3.getZero().invert();
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
+
+	private ExpectedException rule$expectedException = ExpectedException.none();
+
+	@Rule
+	public ExpectedException getRule$expectedException() {
+		return rule$expectedException;
+	}
 }

@@ -284,6 +284,10 @@ public class TestPropertiesOfSimpleJsonTypes extends TestCesiumPropertyWriter<Bi
 		Assert.assertEquals("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"labelStyle\":\"FILL_AND_OUTLINE\"}}", getStringWriter().toString());
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
 }

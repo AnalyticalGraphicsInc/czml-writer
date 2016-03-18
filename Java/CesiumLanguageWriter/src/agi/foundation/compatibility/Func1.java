@@ -3,12 +3,8 @@ package agi.foundation.compatibility;
 import agi.foundation.compatibility.annotations.Internal;
 
 /**
- * 
- Encapsulates a method that has no parameters and returns a value of the type specified
+ * Encapsulates a method that has no parameters and returns a value of the type specified
  * by the TResult parameter.
- * 
- * 
- * 
  * 
  * @param <TResult>
  *            The type of the return value of the method that this delegate encapsulates.
@@ -50,12 +46,8 @@ public abstract class Func1<TResult> extends Delegate {
 	}
 
 	/**
-	 * 
-	 Encapsulates a method that has no parameters and returns a value of the type
+	 * Encapsulates a method that has no parameters and returns a value of the type
 	 * specified by the TResult parameter.
-	 * 
-	 * 
-	 * 
 	 * 
 	 * @return The return value of the method that this delegate encapsulates.
 	 */

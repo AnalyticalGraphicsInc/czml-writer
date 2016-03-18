@@ -7,12 +7,14 @@ import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
+import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -138,8 +140,9 @@ public class TestCartographic {
 	
 
 	 */
-	@Test(expected = ArgumentNullException.class)
+	@Test
 	public final void testInitializationFromNull() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentNullException.class);
 		double[] array = null;
 		Cartographic first = new Cartographic(array, 0);
 	}
@@ -150,8 +153,9 @@ public class TestCartographic {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testInitializationFromBadArray() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		double[] array = new double[2];
 		Cartographic first = new Cartographic(array, 0);
 	}
@@ -162,8 +166,9 @@ public class TestCartographic {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testIndexTooHigh() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		Cartographic first = new Cartographic(1.0, 2.0, 3.0);
 		double bad = first.get(3);
 	}
@@ -174,8 +179,9 @@ public class TestCartographic {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testIndexTooLow() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		Cartographic first = new Cartographic(1.0, 2.0, 3.0);
 		double bad = first.get(-1);
 	}
@@ -199,6 +205,17 @@ public class TestCartographic {
 		Assert.assertEquals(s.toString(), test.toString());
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
+
+	private ExpectedException rule$expectedException = ExpectedException.none();
+
+	@Rule
+	public ExpectedException getRule$expectedException() {
+		return rule$expectedException;
+	}
 }

@@ -199,6 +199,10 @@ public class TestTimeInterval {
 		Assert.assertEquals("[2451545:0 (TAI), 2451546:0 (TAI)]", interval.toString());
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
 }

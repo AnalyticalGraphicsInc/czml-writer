@@ -26,8 +26,8 @@ import java.io.InputStream;
 public final class CesiumFormattingHelper {
 	private CesiumFormattingHelper() {}
 
-	private static JulianDate s_minimumGregorianDate = GregorianDate.MinValue.toJulianDate();
-	private static JulianDate s_maximumGregorianDate = GregorianDate.MaxValue.toJulianDate();
+	private static JulianDate s_minimumDate = GregorianDate.MinValue.toJulianDate();
+	private static JulianDate s_maximumDate = GregorianDate.MaxValue.toJulianDate();
 
 	/**
 	 *  
@@ -78,31 +78,11 @@ public final class CesiumFormattingHelper {
 	public static String toIso8601(JulianDate date, Iso8601Format format) {
 		//If the JulianDate is outside the range of supported CZML values,
 		//clamp it to the minimum/maximum CZML ISO8601 value.
-		if (JulianDate.lessThanOrEqual(date, s_minimumGregorianDate)) {
-			switch (format) {
-			case BASIC: {
-				return "00000101T000000Z";
-			}
-			case COMPACT: {
-				return "00000101T00Z";
-			}
-			case EXTENDED: {
-				return "0000-01-01T00:00:00Z";
-			}
-			}
+		if (JulianDate.lessThanOrEqual(date, s_minimumDate)) {
+			return GregorianDate.MinValue.toIso8601String(format);
 		}
-		if (JulianDate.greaterThanOrEqual(date, s_maximumGregorianDate)) {
-			switch (format) {
-			case BASIC: {
-				return "99991231T240000Z";
-			}
-			case COMPACT: {
-				return "99991231T24Z";
-			}
-			case EXTENDED: {
-				return "9999-12-31T24:00:00Z";
-			}
-			}
+		if (JulianDate.greaterThanOrEqual(date, s_maximumDate)) {
+			return GregorianDate.MaxValue.toIso8601String(format);
 		}
 		return date.toGregorianDate().toIso8601String(format);
 	}

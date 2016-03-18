@@ -40,26 +40,34 @@ public class TestCesiumFormattingHelper {
 
 	@Test
 	public final void passClampToIso8601() {
-		String expectedMinimumBasic = "00000101T000000Z";
-		String minStringBasic = CesiumFormattingHelper.toIso8601(JulianDate.getMinValue(), Iso8601Format.BASIC);
-		Assert.assertEquals(expectedMinimumBasic, minStringBasic);
-		String expectedMaximumBasic = "99991231T240000Z";
-		String maxStringBasic = CesiumFormattingHelper.toIso8601(JulianDate.getMaxValue(), Iso8601Format.BASIC);
-		Assert.assertEquals(expectedMaximumBasic, maxStringBasic);
-		String expectedMinimumExtended = "0000-01-01T00:00:00Z";
-		String minStringExtended = CesiumFormattingHelper.toIso8601(JulianDate.getMinValue(), Iso8601Format.EXTENDED);
-		Assert.assertEquals(expectedMinimumExtended, minStringExtended);
-		String expectedMaximumExtended = "9999-12-31T24:00:00Z";
-		String maxStringExtended = CesiumFormattingHelper.toIso8601(JulianDate.getMaxValue(), Iso8601Format.EXTENDED);
-		Assert.assertEquals(expectedMaximumExtended, maxStringExtended);
-		String expectedMinimumCompact = "00000101T00Z";
-		String minStringCompact = CesiumFormattingHelper.toIso8601(JulianDate.getMinValue(), Iso8601Format.COMPACT);
-		Assert.assertEquals(expectedMinimumCompact, minStringCompact);
-		String expectedMaximumCompact = "99991231T24Z";
-		String maxStringCompact = CesiumFormattingHelper.toIso8601(JulianDate.getMaxValue(), Iso8601Format.COMPACT);
-		Assert.assertEquals(expectedMaximumCompact, maxStringCompact);
+		String expected = GregorianDate.MinValue.toIso8601String(Iso8601Format.BASIC);
+		String actual = CesiumFormattingHelper.toIso8601(JulianDate.getMinValue(), Iso8601Format.BASIC);
+		Assert.assertEquals(expected, actual);
+		actual = CesiumFormattingHelper.toIso8601(GregorianDate.MinValue.toJulianDate(), Iso8601Format.BASIC);
+		Assert.assertEquals(expected, actual);
+		expected = GregorianDate.MaxValue.toIso8601String(Iso8601Format.BASIC);
+		actual = CesiumFormattingHelper.toIso8601(JulianDate.getMaxValue(), Iso8601Format.BASIC);
+		Assert.assertEquals(expected, actual);
+		actual = CesiumFormattingHelper.toIso8601(GregorianDate.MaxValue.toJulianDate(), Iso8601Format.BASIC);
+		Assert.assertEquals(expected, actual);
+		expected = GregorianDate.MinValue.toIso8601String(Iso8601Format.EXTENDED);
+		actual = CesiumFormattingHelper.toIso8601(JulianDate.getMinValue(), Iso8601Format.EXTENDED);
+		Assert.assertEquals(expected, actual);
+		expected = GregorianDate.MaxValue.toIso8601String(Iso8601Format.EXTENDED);
+		actual = CesiumFormattingHelper.toIso8601(JulianDate.getMaxValue(), Iso8601Format.EXTENDED);
+		Assert.assertEquals(expected, actual);
+		expected = GregorianDate.MinValue.toIso8601String(Iso8601Format.COMPACT);
+		actual = CesiumFormattingHelper.toIso8601(JulianDate.getMinValue(), Iso8601Format.COMPACT);
+		Assert.assertEquals(expected, actual);
+		expected = GregorianDate.MaxValue.toIso8601String(Iso8601Format.COMPACT);
+		actual = CesiumFormattingHelper.toIso8601(JulianDate.getMaxValue(), Iso8601Format.COMPACT);
+		Assert.assertEquals(expected, actual);
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
 }

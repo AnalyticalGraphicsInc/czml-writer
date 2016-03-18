@@ -4,6 +4,7 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
+import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.Collection;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -131,8 +133,9 @@ public class TestLeapSeconds {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testJulianDateCannotRepresentMomentOfLeapSecond() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		JulianDate momentOfLeapSecond = new JulianDate(2453736, 43232.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
 		momentOfLeapSecond.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
 	}
@@ -180,6 +183,17 @@ public class TestLeapSeconds {
 		Assert.assertEquals((int) 50, (int) i);
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
+
+	private ExpectedException rule$expectedException = ExpectedException.none();
+
+	@Rule
+	public ExpectedException getRule$expectedException() {
+		return rule$expectedException;
+	}
 }

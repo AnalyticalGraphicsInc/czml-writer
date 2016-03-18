@@ -2,6 +2,7 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import java.util.Locale;
@@ -9,6 +10,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -87,28 +89,33 @@ public class TestGregorianDateFormatting {
 		Assert.assertEquals("13.012", date.toString("ss.FFFFFFFFFFFFFFF"));
 	}
 
-	@Test(expected = NumberFormatException.class)
+	@Test
 	public final void toStringThrowsOnInvalidFormatSpecifier() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
 		new GregorianDate(2009, 6, 10).toString("X");
 	}
 
-	@Test(expected = NumberFormatException.class)
+	@Test
 	public final void cantFormatMoreThan15FractionalSeconds() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
 		new GregorianDate(2009, 6, 10).toString("ffffffffffffffff");
 	}
 
-	@Test(expected = NumberFormatException.class)
+	@Test
 	public final void cantEndWithAPercent() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
 		new GregorianDate(2009, 6, 10).toString("f%");
 	}
 
-	@Test(expected = NumberFormatException.class)
+	@Test
 	public final void cantEndWithABackslash() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
 		new GregorianDate(2009, 6, 10).toString("f\\");
 	}
 
-	@Test(expected = NumberFormatException.class)
+	@Test
 	public final void cantHaveADoublePercent() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
 		new GregorianDate(2009, 6, 10).toString("%%");
 	}
 
@@ -134,6 +141,17 @@ public class TestGregorianDateFormatting {
 		Assert.assertEquals("2012-06-30T23:59:60.123Z", iso);
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
+
+	private ExpectedException rule$expectedException = ExpectedException.none();
+
+	@Rule
+	public ExpectedException getRule$expectedException() {
+		return rule$expectedException;
+	}
 }

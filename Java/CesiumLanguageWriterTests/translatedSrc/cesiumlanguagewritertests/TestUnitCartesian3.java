@@ -5,12 +5,14 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
+import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -225,8 +227,9 @@ public class TestUnitCartesian3 {
 	
 
 	 */
-	@Test(expected = ArithmeticException.class)
+	@Test
 	public final void testFromZero() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArithmeticException.class);
 		UnitCartesian first = new UnitCartesian(Cartesian.getZero());
 	}
 
@@ -237,8 +240,9 @@ public class TestUnitCartesian3 {
 	
 
 	 */
-	@Test(expected = ArithmeticException.class)
+	@Test
 	public final void testFromInfinity() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArithmeticException.class);
 		UnitCartesian first = new UnitCartesian(Double.POSITIVE_INFINITY, 0.0, 0.0);
 	}
 
@@ -531,8 +535,9 @@ public class TestUnitCartesian3 {
 	
 
 	 */
-	@Test(expected = ArgumentNullException.class)
+	@Test
 	public final void testInitializationFromNull() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentNullException.class);
 		double[] array = null;
 		UnitCartesian first = new UnitCartesian(array, 0);
 	}
@@ -543,8 +548,9 @@ public class TestUnitCartesian3 {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testInitializationFromBadArray() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		double[] array = new double[2];
 		UnitCartesian first = new UnitCartesian(array, 0);
 	}
@@ -555,8 +561,9 @@ public class TestUnitCartesian3 {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testIndexTooHigh() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
 		double bad = first.get(3);
 	}
@@ -567,8 +574,9 @@ public class TestUnitCartesian3 {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testIndexTooLow() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
 		double bad = first.get(-1);
 	}
@@ -589,6 +597,17 @@ public class TestUnitCartesian3 {
 		Assert.assertEquals("0, 0, 1", test3.toString());
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
+
+	private ExpectedException rule$expectedException = ExpectedException.none();
+
+	@Rule
+	public ExpectedException getRule$expectedException() {
+		return rule$expectedException;
+	}
 }

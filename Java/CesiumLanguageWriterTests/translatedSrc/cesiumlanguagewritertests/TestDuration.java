@@ -462,6 +462,10 @@ public class TestDuration {
 		Assert.assertEquals(0.0, duration.getSeconds(), 0d);
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
 }

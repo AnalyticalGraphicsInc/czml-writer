@@ -4,6 +4,7 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
+import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.Collection;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -93,21 +95,35 @@ public class TestReference {
 		Assert.assertEquals(reference.getValue(), "\\#identif\\\\\\\\\\#ier\\.\\\\#property\\.Name.subProperty");
 	}
 
-	@Test(expected = ArgumentException.class)
+	@Test
 	public final void throwsWithMissingDelimiter() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
 		new Reference("MissingDelimiter");
 	}
 
-	@Test(expected = ArgumentException.class)
+	@Test
 	public final void throwsWithMissingDelimiterDoToEscaping() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
 		new Reference("Missing\\#Delimiter");
 	}
 
-	@Test(expected = ArgumentException.class)
+	@Test
 	public final void throwsWithMissingProperties() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
 		new Reference("MissingPropertyName#");
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
+
+	private ExpectedException rule$expectedException = ExpectedException.none();
+
+	@Rule
+	public ExpectedException getRule$expectedException() {
+		return rule$expectedException;
+	}
 }

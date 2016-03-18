@@ -4,12 +4,14 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
+import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -176,8 +178,9 @@ public class TestUnitQuaternion {
 	
 
 	 */
-	@Test(expected = ArithmeticException.class)
+	@Test
 	public final void testFromInfinity() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArithmeticException.class);
 		UnitQuaternion first = new UnitQuaternion(Double.POSITIVE_INFINITY, 0.0, 0.0, 0.0);
 	}
 
@@ -305,8 +308,9 @@ public class TestUnitQuaternion {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testIndexTooHigh() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		UnitQuaternion first = new UnitQuaternion(7.0, 2.0, 3.0, 6.0);
 		double bad = first.get(4);
 	}
@@ -317,8 +321,9 @@ public class TestUnitQuaternion {
 	
 
 	 */
-	@Test(expected = ArgumentOutOfRangeException.class)
+	@Test
 	public final void testIndexTooLow() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
 		UnitQuaternion first = new UnitQuaternion(7.0, 2.0, 3.0, 6.0);
 		double bad = first.get(-1);
 	}
@@ -341,6 +346,17 @@ public class TestUnitQuaternion {
 		Assert.assertEquals("0, 0, 0, 1", test4.toString());
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
+
+	private ExpectedException rule$expectedException = ExpectedException.none();
+
+	@Rule
+	public ExpectedException getRule$expectedException() {
+		return rule$expectedException;
+	}
 }

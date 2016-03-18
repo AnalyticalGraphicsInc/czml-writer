@@ -41,6 +41,10 @@ public class TestCesiumWritingHelper {
 
 	private StringWriter m_stringWriter;
 	private CesiumOutputStream m_outputStream;
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
 }

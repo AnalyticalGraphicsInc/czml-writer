@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.DayOfWeek;
+import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
@@ -12,6 +13,7 @@ import org.joda.time.DateTime;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -30,8 +32,9 @@ public class TestYearMonthDay {
 	
 
 	 */
-	@Test(expected = ArgumentException.class)
+	@Test
 	public final void testConstructWithInvalidDate() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
 		YearMonthDay ymd = new YearMonthDay(2006, 2, 29);
 	}
 
@@ -355,6 +358,17 @@ public class TestYearMonthDay {
 		Assert.assertEquals((int) ymd.getDayOfYear(), (int) ymd2.getDayOfYear());
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
+
+	private ExpectedException rule$expectedException = ExpectedException.none();
+
+	@Rule
+	public ExpectedException getRule$expectedException() {
+		return rule$expectedException;
+	}
 }

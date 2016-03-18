@@ -29,11 +29,11 @@ class CachingMethodFinder {
 		staticMethodSearchCriteria = EnumSet.of(SearchCriteria.STATIC_METHODS_ONLY, SearchCriteria.CHECK_PARAMETER_TYPES);
 	}
 
+	private final Object delegateObject;
 	private final Object targetObject;
 	private final Class<?> targetClass;
 	private final String methodName;
 	private final Class<?>[] methodParams;
-	private final Object delegateObject;
 	private Method cachedMethod;
 
 	/**
@@ -200,29 +200,42 @@ class CachingMethodFinder {
 			return methodName.equals(that.methodName) && Arrays.equals(methodParams, that.methodParams);
 		}
 
-		// refers to an anonymous function expression. Check the concrete class.
-		// this is not strictly required by the spec, but C# does treat these as equal.
+		// refers to an anonymous function expression.
+
+		// C# treats anonymous function expressions with the same body as equal only if
+		// they do not close over any variables, though this is not strictly required by
+		// the spec.
+
+		// Currently we don't have a good way to determine whether variables are closed
+		// over, so we have to take the conservative approach and return false.
+
 		// e.g.
+
 		// @formatter:off
+		
 		// private Action CreateActionDelegate()
         // {
         //    return () => { };
         // }
-		//
+
 		// Action a = CreateActionDelegate();
 		// Action b = CreateActionDelegate();
 		// a.Equals(b)  // => true
-		// 
-		// Even though:
-		//
+
 		// Action a = () => {};
 		// Action b = () => {};
 		// a.Equals(b)  // => false
-		// @formatter:on
+		
+		// private Action CreateActionDelegate(bool b)
+        // {
+        //    return () => { if (b) { Foo(); } };
+        // }
 
-		if (delegateObject != null && that.delegateObject != null) {
-			return delegateObject.getClass().equals(that.delegateObject.getClass());
-		}
+		// Action a = CreateActionDelegate(true);
+		// Action b = CreateActionDelegate(true);
+		// a.Equals(b)  // => false
+		
+		// @formatter:on
 
 		return false;
 	}

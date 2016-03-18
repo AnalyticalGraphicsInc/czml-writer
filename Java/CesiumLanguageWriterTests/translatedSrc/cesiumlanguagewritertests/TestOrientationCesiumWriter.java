@@ -129,6 +129,10 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
 		}
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
 }

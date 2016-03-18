@@ -2,9 +2,7 @@ package cesiumlanguagewriter.advanced;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.annotations.Internal;
 import agi.foundation.compatibility.ArgumentNullException;
-import agi.foundation.compatibility.Delegate;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.*;

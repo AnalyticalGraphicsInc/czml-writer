@@ -105,6 +105,10 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
 		Assert.assertEquals("{\"foo\":{\"backwardExtrapolationDuration\":12}", getStringWriter().toString());
 	}
 
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
 }

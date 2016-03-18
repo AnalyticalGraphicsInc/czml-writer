@@ -3,6 +3,7 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
@@ -11,6 +12,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -121,14 +123,16 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
 		Assert.assertEquals("{\"woot\":[{\"interval\":\"20120402T12Z/20120402T13Z\"},{\"interval\":\"20120402T12Z/20120402T13Z\"}]", getStringWriter().toString());
 	}
 
-	@Test(expected = IllegalStateException.class)
+	@Test
 	public final void throwsWhenWritingToBeforeOpening() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), IllegalStateException.class, "not currently open", MessageMatch.CONTAINS);
 		CesiumPropertyWriter<TDerived> property = createPropertyWriter("woot");
 		property.openInterval();
 	}
 
-	@Test(expected = IllegalStateException.class)
+	@Test
 	public final void throwsWhenWritingToAfterClosed() {
+		ExpectedExceptionHelper.expectException(getRule$expectedException(), IllegalStateException.class, "not currently open", MessageMatch.CONTAINS);
 		CesiumPropertyWriter<TDerived> property = createPropertyWriter("woot");
 		property.open(getOutputStream());
 		property.close();
@@ -139,6 +143,17 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
 	private CesiumOutputStream backingField$OutputStream;
 	private CesiumStreamWriter backingField$Writer;
 	private PacketCesiumWriter backingField$Packet;
+	private TestContextRule rule$testContext = new TestContextRule();
+
 	@Rule
-	public TestContextRule rule$testContext = new TestContextRule();
+	public TestContextRule getRule$testContext() {
+		return rule$testContext;
+	}
+
+	private ExpectedException rule$expectedException = ExpectedException.none();
+
+	@Rule
+	public ExpectedException getRule$expectedException() {
+		return rule$expectedException;
+	}
 }
