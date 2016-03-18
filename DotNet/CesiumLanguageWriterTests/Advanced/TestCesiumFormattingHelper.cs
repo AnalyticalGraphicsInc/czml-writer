@@ -42,29 +42,35 @@ namespace CesiumLanguageWriterTests.Advanced
         [Test]
         public void PassClampToIso8601()
         {
-            string expectedMinimumBasic = "00000101T000000Z";
-            string minStringBasic = CesiumFormattingHelper.ToIso8601(JulianDate.MinValue, Iso8601Format.Basic);
-            Assert.AreEqual(expectedMinimumBasic, minStringBasic);
+            string expected = GregorianDate.MinValue.ToIso8601String(Iso8601Format.Basic);
+            string actual = CesiumFormattingHelper.ToIso8601(JulianDate.MinValue, Iso8601Format.Basic);
+            Assert.AreEqual(expected, actual);
 
-            string expectedMaximumBasic = "99991231T240000Z";
-            string maxStringBasic = CesiumFormattingHelper.ToIso8601(JulianDate.MaxValue, Iso8601Format.Basic);
-            Assert.AreEqual(expectedMaximumBasic, maxStringBasic);
+            actual = CesiumFormattingHelper.ToIso8601(GregorianDate.MinValue.ToJulianDate(), Iso8601Format.Basic);
+            Assert.AreEqual(expected, actual);
 
-            string expectedMinimumExtended = "0000-01-01T00:00:00Z";
-            string minStringExtended = CesiumFormattingHelper.ToIso8601(JulianDate.MinValue, Iso8601Format.Extended);
-            Assert.AreEqual(expectedMinimumExtended, minStringExtended);
+            expected = GregorianDate.MaxValue.ToIso8601String(Iso8601Format.Basic);
+            actual = CesiumFormattingHelper.ToIso8601(JulianDate.MaxValue, Iso8601Format.Basic);
+            Assert.AreEqual(expected, actual);
 
-            string expectedMaximumExtended = "9999-12-31T24:00:00Z";
-            string maxStringExtended = CesiumFormattingHelper.ToIso8601(JulianDate.MaxValue, Iso8601Format.Extended);
-            Assert.AreEqual(expectedMaximumExtended, maxStringExtended);
+            actual = CesiumFormattingHelper.ToIso8601(GregorianDate.MaxValue.ToJulianDate(), Iso8601Format.Basic);
+            Assert.AreEqual(expected, actual);
 
-            string expectedMinimumCompact = "00000101T00Z";
-            string minStringCompact = CesiumFormattingHelper.ToIso8601(JulianDate.MinValue, Iso8601Format.Compact);
-            Assert.AreEqual(expectedMinimumCompact, minStringCompact);
+            expected = GregorianDate.MinValue.ToIso8601String(Iso8601Format.Extended);
+            actual = CesiumFormattingHelper.ToIso8601(JulianDate.MinValue, Iso8601Format.Extended);
+            Assert.AreEqual(expected, actual);
 
-            string expectedMaximumCompact = "99991231T24Z";
-            string maxStringCompact = CesiumFormattingHelper.ToIso8601(JulianDate.MaxValue, Iso8601Format.Compact);
-            Assert.AreEqual(expectedMaximumCompact, maxStringCompact);
+            expected = GregorianDate.MaxValue.ToIso8601String(Iso8601Format.Extended);
+            actual = CesiumFormattingHelper.ToIso8601(JulianDate.MaxValue, Iso8601Format.Extended);
+            Assert.AreEqual(expected, actual);
+
+            expected = GregorianDate.MinValue.ToIso8601String(Iso8601Format.Compact);
+            actual = CesiumFormattingHelper.ToIso8601(JulianDate.MinValue, Iso8601Format.Compact);
+            Assert.AreEqual(expected, actual);
+
+            expected = GregorianDate.MaxValue.ToIso8601String(Iso8601Format.Compact);
+            actual = CesiumFormattingHelper.ToIso8601(JulianDate.MaxValue, Iso8601Format.Compact);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

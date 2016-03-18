@@ -12,8 +12,8 @@ namespace CesiumLanguageWriter.Advanced
     /// </summary>
     public static class CesiumFormattingHelper
     {
-        private static readonly JulianDate s_minimumGregorianDate = GregorianDate.MinValue.ToJulianDate();
-        private static readonly JulianDate s_maximumGregorianDate = GregorianDate.MaxValue.ToJulianDate();
+        private static readonly JulianDate s_minimumDate = GregorianDate.MinValue.ToJulianDate();
+        private static readonly JulianDate s_maximumDate = GregorianDate.MaxValue.ToJulianDate();
 
         /// <summary>
         /// Converts a <see cref="TimeInterval"/> as an ISO8601 interval string.
@@ -48,34 +48,16 @@ namespace CesiumLanguageWriter.Advanced
         {
             //If the JulianDate is outside the range of supported CZML values,
             //clamp it to the minimum/maximum CZML ISO8601 value.
-            if (date <= s_minimumGregorianDate)
+            if (date <= s_minimumDate)
             {
-                switch (format)
-                {
-                    case Iso8601Format.Basic:
-                        return "00000101T000000Z";
-
-                    case Iso8601Format.Compact:
-                        return "00000101T00Z";
-
-                    case Iso8601Format.Extended:
-                        return "0000-01-01T00:00:00Z";
-                }
+                return GregorianDate.MinValue.ToIso8601String(format);
             }
-            if (date >= s_maximumGregorianDate)
+
+            if (date >= s_maximumDate)
             {
-                switch (format)
-                {
-                    case Iso8601Format.Basic:
-                        return "99991231T240000Z";
-
-                    case Iso8601Format.Compact:
-                        return "99991231T24Z";
-
-                    case Iso8601Format.Extended:
-                        return "9999-12-31T24:00:00Z";
-                }
+                return GregorianDate.MaxValue.ToIso8601String(format);
             }
+
             return date.ToGregorianDate().ToIso8601String(format);
         }
 
