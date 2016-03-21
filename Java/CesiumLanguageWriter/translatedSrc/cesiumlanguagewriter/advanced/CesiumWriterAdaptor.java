@@ -20,7 +20,7 @@ import cesiumlanguagewriter.*;
  * @param <TFrom> The class derived from  {@link CesiumPropertyWriter} to adapt.
  * @param <TValue> The type of value to which to adapt the class to write.
  */
-public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> implements ICesiumValuePropertyWriter<TValue> {
+public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> implements ICesiumValuePropertyWriter<TValue>, ICesiumWriterAdaptor<TFrom> {
 	private TFrom m_parent;
 	private CesiumWriterAdaptorWriteCallback<TFrom, TValue> m_writeValueCallback;
 	private Lazy<CesiumWriterAdaptor<TFrom, TValue>> m_interval;

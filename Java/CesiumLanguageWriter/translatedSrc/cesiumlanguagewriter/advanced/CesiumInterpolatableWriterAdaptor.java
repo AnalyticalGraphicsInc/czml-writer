@@ -22,7 +22,8 @@ import java.util.List;
  * @param <TFrom> The class derived from  {@link CesiumInterpolatablePropertyWriter} to adapt.
  * @param <TValue> The type of value to which to adapt the class to write.
  */
-public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWriter & ICesiumInterpolationInformationWriter, TValue> implements ICesiumInterpolatableValuePropertyWriter<TValue> {
+public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWriter & ICesiumInterpolationInformationWriter, TValue> implements ICesiumInterpolatableValuePropertyWriter<TValue>,
+		ICesiumWriterAdaptor<TFrom> {
 	private TFrom m_parent;
 	private CesiumWriterAdaptorWriteCallback<TFrom, TValue> m_writeValueCallback;
 	private CesiumWriterAdaptorWriteSamplesCallback<TFrom, TValue> m_writeSamplesCallback;

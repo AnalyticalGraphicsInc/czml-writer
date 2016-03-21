@@ -10,7 +10,7 @@ namespace CesiumLanguageWriter.Advanced
     /// </summary>
     /// <typeparam name="TFrom">The class derived from <see cref="CesiumPropertyWriter{TDerived}"/> to adapt.</typeparam>
     /// <typeparam name="TValue">The type of value to which to adapt the class to write.</typeparam>
-    public class CesiumWriterAdaptor<TFrom, TValue> : ICesiumValuePropertyWriter<TValue>
+    public class CesiumWriterAdaptor<TFrom, TValue> : ICesiumValuePropertyWriter<TValue>, ICesiumWriterAdaptor<TFrom>
         where TFrom : class, ICesiumPropertyWriter
     {
         private readonly TFrom m_parent;
