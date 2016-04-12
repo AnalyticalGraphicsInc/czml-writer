@@ -6,9 +6,11 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.DoubleCesiumWriter;
+import cesiumlanguagewriter.BooleanCesiumWriter;
+import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.RepeatCesiumWriter;
 import cesiumlanguagewriter.UriCesiumWriter;
+import java.awt.Color;
 import java.awt.image.RenderedImage;
 import java.net.URI;
 import java.util.List;
@@ -29,11 +31,18 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	public static final String ImagePropertyName = "image";
 	/**
 	 *  
-	The name of the <code>alpha</code> property.
+	The name of the <code>color</code> property.
 	
 
 	 */
-	public static final String AlphaPropertyName = "alpha";
+	public static final String ColorPropertyName = "color";
+	/**
+	 *  
+	The name of the <code>transparent</code> property.
+	
+
+	 */
+	public static final String TransparentPropertyName = "transparent";
 	/**
 	 *  
 	The name of the <code>repeat</code> property.
@@ -46,9 +55,14 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 			return new UriCesiumWriter(ImagePropertyName);
 		}
 	}, false);
-	private Lazy<DoubleCesiumWriter> m_alpha = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(AlphaPropertyName);
+	private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+		public cesiumlanguagewriter.ColorCesiumWriter invoke() {
+			return new ColorCesiumWriter(ColorPropertyName);
+		}
+	}, false);
+	private Lazy<BooleanCesiumWriter> m_transparent = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(TransparentPropertyName);
 		}
 	}, false);
 	private Lazy<RepeatCesiumWriter> m_repeat = new Lazy<cesiumlanguagewriter.RepeatCesiumWriter>(new Func1<cesiumlanguagewriter.RepeatCesiumWriter>() {
@@ -328,38 +342,38 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	}
 
 	/**
-	 *  Gets the writer for the <code>alpha</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>alpha</code> property defines the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	 *  Gets the writer for the <code>color</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>color</code> property defines the color of the image. This color value is multiplied with the image to produce the final color.
 	
 
 	 */
-	public final DoubleCesiumWriter getAlphaWriter() {
-		return m_alpha.getValue();
+	public final ColorCesiumWriter getColorWriter() {
+		return m_color.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>alpha</code> property.  The <code>alpha</code> property defines the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	Opens and returns the writer for the <code>color</code> property.  The <code>color</code> property defines the color of the image. This color value is multiplied with the image to produce the final color.
 	
 
 	 */
-	public final DoubleCesiumWriter openAlphaProperty() {
+	public final ColorCesiumWriter openColorProperty() {
 		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getAlphaWriter());
+		return this.<ColorCesiumWriter> openAndReturn(getColorWriter());
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>alpha</code> property as a <code>number</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
 	
 	
 
-	 * @param value The value.
+	 * @param color The color.
 	 */
-	public final void writeAlphaProperty(double value) {
+	public final void writeColorProperty(Color color) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openAlphaProperty();
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
 			try {
-				writer.writeNumber(value);
+				writer.writeRgba(color);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -368,7 +382,32 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	/**
 	 *  
-	Writes a value for the <code>alpha</code> property as a <code>number</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+	
+	
+	
+	
+	
+
+	 * @param red The red component in the range 0 to 255.
+	 * @param green The green component in the range 0 to 255.
+	 * @param blue The blue component in the range 0 to 255.
+	 * @param alpha The alpha component in the range 0 to 255.
+	 */
+	public final void writeColorProperty(int red, int green, int blue, int alpha) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeRgba(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
 	
 	
 	
@@ -376,15 +415,15 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	
 
 	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
+	 * @param colors The color corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `colors` collection.
+	 * @param length The number of elements to use from the `colors` collection.
 	 */
-	public final void writeAlphaProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+	public final void writeColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openAlphaProperty();
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
 			try {
-				writer.writeNumber(dates, values, startIndex, length);
+				writer.writeRgba(dates, colors, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -393,15 +432,40 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	/**
 	 *  
-	Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+	
+	
+	
+	
+	
+
+	 * @param red The red component in the range 0 to 1.0.
+	 * @param green The green component in the range 0 to 1.0.
+	 * @param blue The blue component in the range 0 to 1.0.
+	 * @param alpha The alpha component in the range 0 to 1.0.
+	 */
+	public final void writeColorPropertyRgbaf(float red, float green, float blue, float alpha) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeRgbaf(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
 	
 	
 
 	 * @param value The reference.
 	 */
-	public final void writeAlphaPropertyReference(Reference value) {
+	public final void writeColorPropertyReference(Reference value) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openAlphaProperty();
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
 			try {
 				writer.writeReference(value);
 			} finally {
@@ -412,15 +476,15 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	/**
 	 *  
-	Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
 	
 	
 
 	 * @param value The earliest date of the interval.
 	 */
-	public final void writeAlphaPropertyReference(String value) {
+	public final void writeColorPropertyReference(String value) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openAlphaProperty();
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
 			try {
 				writer.writeReference(value);
 			} finally {
@@ -431,7 +495,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	/**
 	 *  
-	Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
 	
 	
 	
@@ -439,9 +503,9 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	 * @param identifier The identifier of the object which contains the referenced property.
 	 * @param propertyName The property on the referenced object.
 	 */
-	public final void writeAlphaPropertyReference(String identifier, String propertyName) {
+	public final void writeColorPropertyReference(String identifier, String propertyName) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openAlphaProperty();
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
 			try {
 				writer.writeReference(identifier, propertyName);
 			} finally {
@@ -452,7 +516,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
 	/**
 	 *  
-	Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
 	
 	
 	
@@ -460,9 +524,128 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	 * @param identifier The identifier of the object which contains the referenced property.
 	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
-	public final void writeAlphaPropertyReference(String identifier, String[] propertyNames) {
+	public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openAlphaProperty();
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>transparent</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>transparent</code> property defines whether or not the image has transparency.
+	
+
+	 */
+	public final BooleanCesiumWriter getTransparentWriter() {
+		return m_transparent.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>transparent</code> property.  The <code>transparent</code> property defines whether or not the image has transparency.
+	
+
+	 */
+	public final BooleanCesiumWriter openTransparentProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getTransparentWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>transparent</code> property as a <code>boolean</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeTransparentProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openTransparentProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>transparent</code> property as a <code>reference</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeTransparentPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openTransparentProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>transparent</code> property as a <code>reference</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeTransparentPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openTransparentProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>transparent</code> property as a <code>reference</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeTransparentPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openTransparentProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>transparent</code> property as a <code>reference</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeTransparentPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openTransparentProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {
