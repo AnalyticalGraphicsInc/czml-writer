@@ -19,9 +19,14 @@ namespace CesiumLanguageWriter
         public const string ImagePropertyName = "image";
 
         /// <summary>
-        /// The name of the <code>alpha</code> property.
+        /// The name of the <code>color</code> property.
         /// </summary>
-        public const string AlphaPropertyName = "alpha";
+        public const string ColorPropertyName = "color";
+
+        /// <summary>
+        /// The name of the <code>transparent</code> property.
+        /// </summary>
+        public const string TransparentPropertyName = "transparent";
 
         /// <summary>
         /// The name of the <code>repeat</code> property.
@@ -29,7 +34,8 @@ namespace CesiumLanguageWriter
         public const string RepeatPropertyName = "repeat";
 
         private readonly Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(ImagePropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_alpha = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(AlphaPropertyName), false);
+        private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_transparent = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(TransparentPropertyName), false);
         private readonly Lazy<RepeatCesiumWriter> m_repeat = new Lazy<RepeatCesiumWriter>(() => new RepeatCesiumWriter(RepeatPropertyName), false);
 
         /// <summary>
@@ -212,94 +218,203 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>alpha</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>alpha</code> property defines the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+        /// Gets the writer for the <code>color</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>color</code> property defines the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
-        public DoubleCesiumWriter AlphaWriter
+        public ColorCesiumWriter ColorWriter
         {
-            get { return m_alpha.Value; }
+            get { return m_color.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>alpha</code> property.  The <code>alpha</code> property defines the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+        /// Opens and returns the writer for the <code>color</code> property.  The <code>color</code> property defines the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
-        public DoubleCesiumWriter OpenAlphaProperty()
+        public ColorCesiumWriter OpenColorProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(AlphaWriter);
+            return OpenAndReturn(ColorWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>alpha</code> property as a <code>number</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteAlphaProperty(double value)
+        /// <param name="color">The color.</param>
+        public void WriteColorProperty(Color color)
         {
-            using (var writer = OpenAlphaProperty())
+            using (var writer = OpenColorProperty())
             {
-                writer.WriteNumber(value);
+                writer.WriteRgba(color);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>alpha</code> property as a <code>number</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 255.</param>
+        /// <param name="green">The green component in the range 0 to 255.</param>
+        /// <param name="blue">The blue component in the range 0 to 255.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 255.</param>
+        public void WriteColorProperty(int red, int green, int blue, int alpha)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgba(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteAlphaProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
+        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        public void WriteColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
-            using (var writer = OpenAlphaProperty())
+            using (var writer = OpenColorProperty())
             {
-                writer.WriteNumber(dates, values, startIndex, length);
+                writer.WriteRgba(dates, colors, startIndex, length);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 1.0.</param>
+        /// <param name="green">The green component in the range 0 to 1.0.</param>
+        /// <param name="blue">The blue component in the range 0 to 1.0.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 1.0.</param>
+        public void WriteColorPropertyRgbaf(float red, float green, float blue, float alpha)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="value">The reference.</param>
-        public void WriteAlphaPropertyReference(Reference value)
+        public void WriteColorPropertyReference(Reference value)
         {
-            using (var writer = OpenAlphaProperty())
+            using (var writer = OpenColorProperty())
             {
                 writer.WriteReference(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
-        public void WriteAlphaPropertyReference(string value)
+        public void WriteColorPropertyReference(string value)
         {
-            using (var writer = OpenAlphaProperty())
+            using (var writer = OpenColorProperty())
             {
                 writer.WriteReference(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteAlphaPropertyReference(string identifier, string propertyName)
+        public void WriteColorPropertyReference(string identifier, string propertyName)
         {
-            using (var writer = OpenAlphaProperty())
+            using (var writer = OpenColorProperty())
             {
                 writer.WriteReference(identifier, propertyName);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>alpha</code> property as a <code>reference</code> value.  The <code>alpha</code> property specifies the alpha value for the whole image.  This will be multiplied with alpha values within the image, if any.
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteAlphaPropertyReference(string identifier, string[] propertyNames)
+        public void WriteColorPropertyReference(string identifier, string[] propertyNames)
         {
-            using (var writer = OpenAlphaProperty())
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>transparent</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>transparent</code> property defines whether or not the image has transparency.
+        /// </summary>
+        public BooleanCesiumWriter TransparentWriter
+        {
+            get { return m_transparent.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>transparent</code> property.  The <code>transparent</code> property defines whether or not the image has transparency.
+        /// </summary>
+        public BooleanCesiumWriter OpenTransparentProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(TransparentWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>transparent</code> property as a <code>boolean</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteTransparentProperty(bool value)
+        {
+            using (var writer = OpenTransparentProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>transparent</code> property as a <code>reference</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteTransparentPropertyReference(Reference value)
+        {
+            using (var writer = OpenTransparentProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>transparent</code> property as a <code>reference</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteTransparentPropertyReference(string value)
+        {
+            using (var writer = OpenTransparentProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>transparent</code> property as a <code>reference</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteTransparentPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenTransparentProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>transparent</code> property as a <code>reference</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteTransparentPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenTransparentProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
