@@ -88,6 +88,36 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string PortionToDisplayPropertyName = "portionToDisplay";
 
+        /// <summary>
+        /// The name of the <code>environmentConstraint</code> property.
+        /// </summary>
+        public const string EnvironmentConstraintPropertyName = "environmentConstraint";
+
+        /// <summary>
+        /// The name of the <code>showEnvironmentOcclusion</code> property.
+        /// </summary>
+        public const string ShowEnvironmentOcclusionPropertyName = "showEnvironmentOcclusion";
+
+        /// <summary>
+        /// The name of the <code>environmentOcclusionMaterial</code> property.
+        /// </summary>
+        public const string EnvironmentOcclusionMaterialPropertyName = "environmentOcclusionMaterial";
+
+        /// <summary>
+        /// The name of the <code>showEnvironmentIntersection</code> property.
+        /// </summary>
+        public const string ShowEnvironmentIntersectionPropertyName = "showEnvironmentIntersection";
+
+        /// <summary>
+        /// The name of the <code>environmentIntersectionColor</code> property.
+        /// </summary>
+        public const string EnvironmentIntersectionColorPropertyName = "environmentIntersectionColor";
+
+        /// <summary>
+        /// The name of the <code>environmentIntersectionWidth</code> property.
+        /// </summary>
+        public const string EnvironmentIntersectionWidthPropertyName = "environmentIntersectionWidth";
+
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<DirectionListCesiumWriter> m_directions = new Lazy<DirectionListCesiumWriter>(() => new DirectionListCesiumWriter(DirectionsPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RadiusPropertyName), false);
@@ -103,6 +133,12 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BooleanCesiumWriter> m_showDomeSurfaces = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowDomeSurfacesPropertyName), false);
         private readonly Lazy<MaterialCesiumWriter> m_domeSurfaceMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(DomeSurfaceMaterialPropertyName), false);
         private readonly Lazy<SensorVolumePortionToDisplayCesiumWriter> m_portionToDisplay = new Lazy<SensorVolumePortionToDisplayCesiumWriter>(() => new SensorVolumePortionToDisplayCesiumWriter(PortionToDisplayPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_environmentConstraint = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(EnvironmentConstraintPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_showEnvironmentOcclusion = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowEnvironmentOcclusionPropertyName), false);
+        private readonly Lazy<MaterialCesiumWriter> m_environmentOcclusionMaterial = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(EnvironmentOcclusionMaterialPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_showEnvironmentIntersection = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowEnvironmentIntersectionPropertyName), false);
+        private readonly Lazy<ColorCesiumWriter> m_environmentIntersectionColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(EnvironmentIntersectionColorPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_environmentIntersectionWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(EnvironmentIntersectionWidthPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -1120,6 +1156,478 @@ namespace CesiumLanguageWriter
         public void WritePortionToDisplayPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenPortionToDisplayProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>environmentConstraint</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>environmentConstraint</code> property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
+        /// </summary>
+        public BooleanCesiumWriter EnvironmentConstraintWriter
+        {
+            get { return m_environmentConstraint.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>environmentConstraint</code> property.  The <code>environmentConstraint</code> property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
+        /// </summary>
+        public BooleanCesiumWriter OpenEnvironmentConstraintProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(EnvironmentConstraintWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentConstraint</code> property as a <code>boolean</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteEnvironmentConstraintProperty(bool value)
+        {
+            using (var writer = OpenEnvironmentConstraintProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentConstraint</code> property as a <code>reference</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteEnvironmentConstraintPropertyReference(Reference value)
+        {
+            using (var writer = OpenEnvironmentConstraintProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentConstraint</code> property as a <code>reference</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteEnvironmentConstraintPropertyReference(string value)
+        {
+            using (var writer = OpenEnvironmentConstraintProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentConstraint</code> property as a <code>reference</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteEnvironmentConstraintPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenEnvironmentConstraintProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentConstraint</code> property as a <code>reference</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteEnvironmentConstraintPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenEnvironmentConstraintProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>showEnvironmentOcclusion</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showEnvironmentOcclusion</code> property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+        /// </summary>
+        public BooleanCesiumWriter ShowEnvironmentOcclusionWriter
+        {
+            get { return m_showEnvironmentOcclusion.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>showEnvironmentOcclusion</code> property.  The <code>showEnvironmentOcclusion</code> property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+        /// </summary>
+        public BooleanCesiumWriter OpenShowEnvironmentOcclusionProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ShowEnvironmentOcclusionWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>boolean</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteShowEnvironmentOcclusionProperty(bool value)
+        {
+            using (var writer = OpenShowEnvironmentOcclusionProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>reference</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowEnvironmentOcclusionPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowEnvironmentOcclusionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>reference</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShowEnvironmentOcclusionPropertyReference(string value)
+        {
+            using (var writer = OpenShowEnvironmentOcclusionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>reference</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowEnvironmentOcclusionPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowEnvironmentOcclusionProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>reference</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowEnvironmentOcclusionPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowEnvironmentOcclusionProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>environmentOcclusionMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>environmentOcclusionMaterial</code> property defines the surface apppearance of the port of the sensor occluded by the environment.
+        /// </summary>
+        public MaterialCesiumWriter EnvironmentOcclusionMaterialWriter
+        {
+            get { return m_environmentOcclusionMaterial.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>environmentOcclusionMaterial</code> property.  The <code>environmentOcclusionMaterial</code> property defines the surface apppearance of the port of the sensor occluded by the environment.
+        /// </summary>
+        public MaterialCesiumWriter OpenEnvironmentOcclusionMaterialProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(EnvironmentOcclusionMaterialWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>showEnvironmentIntersection</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showEnvironmentIntersection</code> property defines whether or not a line showing where the sensor intersects the environment will be drawn.
+        /// </summary>
+        public BooleanCesiumWriter ShowEnvironmentIntersectionWriter
+        {
+            get { return m_showEnvironmentIntersection.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>showEnvironmentIntersection</code> property.  The <code>showEnvironmentIntersection</code> property defines whether or not a line showing where the sensor intersects the environment will be drawn.
+        /// </summary>
+        public BooleanCesiumWriter OpenShowEnvironmentIntersectionProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ShowEnvironmentIntersectionWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>boolean</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteShowEnvironmentIntersectionProperty(bool value)
+        {
+            using (var writer = OpenShowEnvironmentIntersectionProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>reference</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowEnvironmentIntersectionPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowEnvironmentIntersectionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>reference</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShowEnvironmentIntersectionPropertyReference(string value)
+        {
+            using (var writer = OpenShowEnvironmentIntersectionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>reference</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowEnvironmentIntersectionPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowEnvironmentIntersectionProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>reference</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowEnvironmentIntersectionPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowEnvironmentIntersectionProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>environmentIntersectionColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>environmentIntersectionColor</code> property defines the color of the intersection line of the sensor and the environment.
+        /// </summary>
+        public ColorCesiumWriter EnvironmentIntersectionColorWriter
+        {
+            get { return m_environmentIntersectionColor.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>environmentIntersectionColor</code> property.  The <code>environmentIntersectionColor</code> property defines the color of the intersection line of the sensor and the environment.
+        /// </summary>
+        public ColorCesiumWriter OpenEnvironmentIntersectionColorProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(EnvironmentIntersectionColorWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteEnvironmentIntersectionColorProperty(Color color)
+        {
+            using (var writer = OpenEnvironmentIntersectionColorProperty())
+            {
+                writer.WriteRgba(color);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 255.</param>
+        /// <param name="green">The green component in the range 0 to 255.</param>
+        /// <param name="blue">The blue component in the range 0 to 255.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 255.</param>
+        public void WriteEnvironmentIntersectionColorProperty(int red, int green, int blue, int alpha)
+        {
+            using (var writer = OpenEnvironmentIntersectionColorProperty())
+            {
+                writer.WriteRgba(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
+        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        public void WriteEnvironmentIntersectionColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenEnvironmentIntersectionColorProperty())
+            {
+                writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 1.0.</param>
+        /// <param name="green">The green component in the range 0 to 1.0.</param>
+        /// <param name="blue">The blue component in the range 0 to 1.0.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 1.0.</param>
+        public void WriteEnvironmentIntersectionColorPropertyRgbaf(float red, float green, float blue, float alpha)
+        {
+            using (var writer = OpenEnvironmentIntersectionColorProperty())
+            {
+                writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteEnvironmentIntersectionColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenEnvironmentIntersectionColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteEnvironmentIntersectionColorPropertyReference(string value)
+        {
+            using (var writer = OpenEnvironmentIntersectionColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteEnvironmentIntersectionColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenEnvironmentIntersectionColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteEnvironmentIntersectionColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenEnvironmentIntersectionColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>environmentIntersectionWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>environmentIntersectionWidth</code> property defines the width in meters of the intersection line of the sensor and the environment.
+        /// </summary>
+        public DoubleCesiumWriter EnvironmentIntersectionWidthWriter
+        {
+            get { return m_environmentIntersectionWidth.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>environmentIntersectionWidth</code> property.  The <code>environmentIntersectionWidth</code> property defines the width in meters of the intersection line of the sensor and the environment.
+        /// </summary>
+        public DoubleCesiumWriter OpenEnvironmentIntersectionWidthProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(EnvironmentIntersectionWidthWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteEnvironmentIntersectionWidthProperty(double value)
+        {
+            using (var writer = OpenEnvironmentIntersectionWidthProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteEnvironmentIntersectionWidthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenEnvironmentIntersectionWidthProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteEnvironmentIntersectionWidthPropertyReference(Reference value)
+        {
+            using (var writer = OpenEnvironmentIntersectionWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteEnvironmentIntersectionWidthPropertyReference(string value)
+        {
+            using (var writer = OpenEnvironmentIntersectionWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteEnvironmentIntersectionWidthPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenEnvironmentIntersectionWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteEnvironmentIntersectionWidthPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenEnvironmentIntersectionWidthProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

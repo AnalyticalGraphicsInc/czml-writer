@@ -68,6 +68,30 @@
         "portionToDisplay": {
             "$ref": "Extensions/AGI/SensorVolumePortionToDisplay.jsonschema",
             "description": "Indicates what part of the sensor should be displayed."
-        }
+        },
+		"environmentConstraint": {
+			"$ref": "Boolean.jsonschema",
+			"description": "Whether or not the sensor will intersect the environment, e.g. terrain or models."
+		},
+		"showEnvironmentOcclusion": {
+			"$ref": "Boolean.jsonschema",
+			"description": "Whether or not the portion of the terrain occluded by the environment will be drawn with a separate material."
+		},
+		"environmentOcclusionMaterial": {
+			"$ref": "Material.jsonschema",
+			"description": "The surface apppearance of the port of the sensor occluded by the environment."
+		},
+		"showEnvironmentIntersection": {
+			"$ref": "Boolean.jsonschema",
+			"description": "Whether or not a line showing where the sensor intersects the environment will be drawn."
+		},
+		"environmentIntersectionColor": {
+			"$ref": "Color.jsonschema",
+			"description": "The color of the intersection line of the sensor and the environment."
+		},
+		"environmentIntersectionWidth": {
+			"$ref": "Double.jsonschema",
+			"description": "The width in meters of the intersection line of the sensor and the environment."
+		}
     }
 }
