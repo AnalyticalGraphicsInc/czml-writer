@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>LineThickness</code> to a  {@link CesiumOutputStream}.  A <code>LineThickness</code> the thickness of grid lines along each axis, in pixels.
+ Writes a <code>LineThickness</code> to a  {@link CesiumOutputStream}.  A <code>LineThickness</code> is the thickness of grid lines along each axis, in pixels.
  
 
  */
@@ -86,7 +86,7 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the thickness of grid lines along each axis, in pixels.
+	Writes the value expressed as a <code>cartesian2</code>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
 	
 	
 
@@ -101,7 +101,7 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the thickness of grid lines along each axis, in pixels.
+	Writes the value expressed as a <code>cartesian2</code>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
 	
 	
 	
@@ -115,7 +115,7 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the thickness of grid lines along each axis, in pixels.
+	Writes the value expressed as a <code>cartesian2</code>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
 	
 	
 	
@@ -129,7 +129,7 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the thickness of grid lines along each axis, in pixels.
+	Writes the value expressed as a <code>cartesian2</code>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
 	
 	
 	
@@ -149,7 +149,7 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the thickness specified as a reference to another property.
 	
 	
 
@@ -164,7 +164,7 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the thickness specified as a reference to another property.
 	
 	
 
@@ -179,7 +179,7 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the thickness specified as a reference to another property.
 	
 	
 	
@@ -196,7 +196,7 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the thickness specified as a reference to another property.
 	
 	
 	

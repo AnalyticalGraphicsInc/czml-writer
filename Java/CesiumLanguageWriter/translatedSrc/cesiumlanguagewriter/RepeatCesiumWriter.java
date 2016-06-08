@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Repeat</code> to a  {@link CesiumOutputStream}.  A <code>Repeat</code> the number of times the image repeats along each axis.
+ Writes a <code>Repeat</code> to a  {@link CesiumOutputStream}.  A <code>Repeat</code> is the number of times an image repeats along each axis.
  
 
  */
@@ -86,7 +86,7 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of times the image repeats along each axis.
+	Writes the value expressed as a <code>cartesian2</code>, which is the number of times the image repeats along each axis.
 	
 	
 
@@ -101,7 +101,7 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of times the image repeats along each axis.
+	Writes the value expressed as a <code>cartesian2</code>, which is the number of times the image repeats along each axis.
 	
 	
 	
@@ -115,7 +115,7 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of times the image repeats along each axis.
+	Writes the value expressed as a <code>cartesian2</code>, which is the number of times the image repeats along each axis.
 	
 	
 	
@@ -129,7 +129,7 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of times the image repeats along each axis.
+	Writes the value expressed as a <code>cartesian2</code>, which is the number of times the image repeats along each axis.
 	
 	
 	
@@ -149,7 +149,7 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the number of times the image repeats specified as a reference to another property.
 	
 	
 
@@ -164,7 +164,7 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the number of times the image repeats specified as a reference to another property.
 	
 	
 
@@ -179,7 +179,7 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the number of times the image repeats specified as a reference to another property.
 	
 	
 	
@@ -196,7 +196,7 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the number of times the image repeats specified as a reference to another property.
 	
 	
 	

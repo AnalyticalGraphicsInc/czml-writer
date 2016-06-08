@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Vector</code> to a  {@link CesiumOutputStream}.  A <code>Vector</code> defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+ Writes a <code>Vector</code> to a  {@link CesiumOutputStream}.  A <code>Vector</code> is defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
  
 
  */

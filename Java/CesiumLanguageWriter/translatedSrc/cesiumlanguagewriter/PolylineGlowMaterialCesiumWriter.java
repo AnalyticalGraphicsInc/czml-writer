@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>PolylineGlowMaterial</code> to a  {@link CesiumOutputStream}.  A <code>PolylineGlowMaterial</code> fills the surface of a line with a glowing color.
+ Writes a <code>PolylineGlowMaterial</code> to a  {@link CesiumOutputStream}.  A <code>PolylineGlowMaterial</code> is a material that fills the surface of a line with a glowing color.
  
 
  */

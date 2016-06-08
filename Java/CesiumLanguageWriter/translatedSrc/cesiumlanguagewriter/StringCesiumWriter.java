@@ -9,7 +9,7 @@ import cesiumlanguagewriter.Reference;
 
 /**
  *  
- Writes a <code>String</code> to a  {@link CesiumOutputStream}.  A <code>String</code> a string value.  The string can optionally vary with time.
+ Writes a <code>String</code> to a  {@link CesiumOutputStream}.  A <code>String</code> is a string value.  The string can optionally vary with time.
  
 
  */
@@ -84,7 +84,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 
 	/**
 	 *  
-	Writes the <code>string</code> property.  The <code>string</code> property specifies the string value.
+	Writes the value expressed as a <code>string</code>, which is the string value.
 	
 	
 
@@ -103,7 +103,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the string specified as a reference to another property.
 	
 	
 
@@ -118,7 +118,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the string specified as a reference to another property.
 	
 	
 
@@ -133,7 +133,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the string specified as a reference to another property.
 	
 	
 	
@@ -150,7 +150,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the string specified as a reference to another property.
 	
 	
 	

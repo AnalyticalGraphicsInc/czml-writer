@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Ellipsoid</code> to a  {@link CesiumOutputStream}.  A <code>Ellipsoid</code> defines a closed quadric surface that is a three dimensional analogue of an ellipse.
+ Writes a <code>Ellipsoid</code> to a  {@link CesiumOutputStream}.  A <code>Ellipsoid</code> is a closed quadric surface that is a three dimensional analogue of an ellipse.
  
 
  */

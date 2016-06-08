@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Billboard</code> to a  {@link CesiumOutputStream}.  A <code>Billboard</code> specifies a billboard, or viewport-aligned image. The billboard is positioned in the scene by the `position` property. A billboard is sometimes called a marker.
+ Writes a <code>Billboard</code> to a  {@link CesiumOutputStream}.  A <code>Billboard</code> is a billboard, or viewport-aligned image.  The billboard is positioned in the scene by the `position` property.  A billboard is sometimes called a marker.
  
 
  */
@@ -773,7 +773,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	}
 
 	/**
-	 *  Gets the writer for the <code>image</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>image</code> property defines the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	 *  Gets the writer for the <code>image</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>image</code> property defines the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 
 	 */
@@ -783,7 +783,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>image</code> property.  The <code>image</code> property defines the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Opens and returns the writer for the <code>image</code> property.  The <code>image</code> property defines the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 
 	 */
@@ -794,7 +794,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 
@@ -813,7 +813,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 	
@@ -834,7 +834,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 	
@@ -855,7 +855,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 	
@@ -876,7 +876,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 	
@@ -897,7 +897,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 
@@ -916,7 +916,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 	
@@ -937,7 +937,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 
@@ -956,7 +956,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 
@@ -975,7 +975,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 	
@@ -996,7 +996,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
 	
 	
 	
@@ -1346,7 +1346,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	}
 
 	/**
-	 *  Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the billboard, in radians, offset from the alignedAxis.
+	 *  Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
 	
 
 	 */
@@ -1356,7 +1356,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the billboard, in radians, offset from the alignedAxis.
+	Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
 	
 
 	 */
@@ -1367,7 +1367,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, offset from the alignedAxis.
+	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
 	
 	
 
@@ -1386,7 +1386,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, offset from the alignedAxis.
+	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
 	
 	
 	
@@ -1411,7 +1411,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, offset from the alignedAxis.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
 	
 	
 
@@ -1430,7 +1430,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, offset from the alignedAxis.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
 	
 	
 
@@ -1449,7 +1449,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, offset from the alignedAxis.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
 	
 	
 	
@@ -1470,7 +1470,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, offset from the alignedAxis.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
 	
 	
 	
@@ -1490,7 +1490,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	}
 
 	/**
-	 *  Gets the writer for the <code>alignedAxis</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>alignedAxis</code> property defines the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	 *  Gets the writer for the <code>alignedAxis</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>alignedAxis</code> property defines the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
 	
 
 	 */
@@ -1500,7 +1500,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>alignedAxis</code> property.  The <code>alignedAxis</code> property defines the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	Opens and returns the writer for the <code>alignedAxis</code> property.  The <code>alignedAxis</code> property defines the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
 	
 
 	 */
@@ -1511,7 +1511,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
 	
 	
 
@@ -1530,7 +1530,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
 	
 	
 	
@@ -1551,7 +1551,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
 	
 	
 	
@@ -1576,7 +1576,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>alignedAxis</code> property as a <code>reference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	Writes a value for the <code>alignedAxis</code> property as a <code>reference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
 	
 	
 
@@ -1595,7 +1595,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>alignedAxis</code> property as a <code>reference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	Writes a value for the <code>alignedAxis</code> property as a <code>reference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
 	
 	
 
@@ -1614,7 +1614,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>alignedAxis</code> property as a <code>reference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	Writes a value for the <code>alignedAxis</code> property as a <code>reference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
 	
 	
 	
@@ -1635,7 +1635,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>alignedAxis</code> property as a <code>reference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	Writes a value for the <code>alignedAxis</code> property as a <code>reference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
 	
 	
 	

@@ -8,7 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 
 /**
  *  
- Writes a <code>DirectionList</code> to a  {@link CesiumOutputStream}.  A <code>DirectionList</code> a list of directions.
+ Writes a <code>DirectionList</code> to a  {@link CesiumOutputStream}.  A <code>DirectionList</code> is a list of directions.
  
 
  */
@@ -123,7 +123,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
 	/**
 	 *  
-	Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies the list of directions represented as a clock angle, a cone angle, both in radians, and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+	Writes the value expressed as a <code>spherical</code>, which is the list of directions specified as spherical values `[Clock, Cone, Magnitude, Clock, Cone, Magnitude, ...]`, with angles in radians and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
 	
 	
 
@@ -138,7 +138,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
 	/**
 	 *  
-	Writes the <code>unitSpherical</code> property.  The <code>unitSpherical</code> property specifies the list of directions represented as a clock angle and a cone angle, both in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+	Writes the value expressed as a <code>unitSpherical</code>, which is the list of directions specified as unit spherical values `[Clock, Cone, Clock, Cone, ...]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
 	
 	
 
@@ -153,7 +153,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
 	/**
 	 *  
-	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the list of directions represented as Cartesian `[X, Y, Z, X, Y, Z, ...]`
+	Writes the value expressed as a <code>cartesian</code>, which is the list of directions specified as three-dimensional Cartesian values `[X, Y, Z, X, Y, Z, ...]`, in world coordinates in meters.
 	
 	
 
@@ -168,7 +168,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
 	/**
 	 *  
-	Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the list of directions represented as three-dimensional Cartesian coordinates with unit magnitude, `[X, Y, Z, X, Y, Z, ...]`.
+	Writes the value expressed as a <code>unitCartesian</code>, which is the list of directions specified as three-dimensional unit magnitude Cartesian values, `[X, Y, Z, X, Y, Z, ...]`, in world coordinates in meters.
 	
 	
 

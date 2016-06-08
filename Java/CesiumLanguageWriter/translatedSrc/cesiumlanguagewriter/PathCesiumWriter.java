@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Path</code> to a  {@link CesiumOutputStream}.  A <code>Path</code> a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
+ Writes a <code>Path</code> to a  {@link CesiumOutputStream}.  A <code>Path</code> is a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
  
 
  */

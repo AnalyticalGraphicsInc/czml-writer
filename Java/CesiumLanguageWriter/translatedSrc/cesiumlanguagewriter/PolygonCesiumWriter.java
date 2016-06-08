@@ -16,18 +16,11 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Polygon</code> to a  {@link CesiumOutputStream}.  A <code>Polygon</code> a polygon, which is a closed figure on the surface of the Earth.
+ Writes a <code>Polygon</code> to a  {@link CesiumOutputStream}.  A <code>Polygon</code> is a polygon, which is a closed figure on the surface of the Earth.
  
 
  */
 public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWriter> {
-	/**
-	 *  
-	The name of the <code>positions</code> property.
-	
-
-	 */
-	public static final String PositionsPropertyName = "positions";
 	/**
 	 *  
 	The name of the <code>show</code> property.
@@ -35,6 +28,13 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	 */
 	public static final String ShowPropertyName = "show";
+	/**
+	 *  
+	The name of the <code>positions</code> property.
+	
+
+	 */
+	public static final String PositionsPropertyName = "positions";
 	/**
 	 *  
 	The name of the <code>material</code> property.
@@ -105,14 +105,14 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	 */
 	public static final String PerPositionHeightPropertyName = "perPositionHeight";
-	private Lazy<PositionListCesiumWriter> m_positions = new Lazy<cesiumlanguagewriter.PositionListCesiumWriter>(new Func1<cesiumlanguagewriter.PositionListCesiumWriter>() {
-		public cesiumlanguagewriter.PositionListCesiumWriter invoke() {
-			return new PositionListCesiumWriter(PositionsPropertyName);
-		}
-	}, false);
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
+		}
+	}, false);
+	private Lazy<PositionListCesiumWriter> m_positions = new Lazy<cesiumlanguagewriter.PositionListCesiumWriter>(new Func1<cesiumlanguagewriter.PositionListCesiumWriter>() {
+		public cesiumlanguagewriter.PositionListCesiumWriter invoke() {
+			return new PositionListCesiumWriter(PositionsPropertyName);
 		}
 	}, false);
 	private Lazy<MaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
@@ -191,102 +191,6 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	@Override
 	public PolygonCesiumWriter clone() {
 		return new PolygonCesiumWriter(this);
-	}
-
-	/**
-	 *  Gets the writer for the <code>positions</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>positions</code> property defines the array of positions defining a simple polygon.
-	
-
-	 */
-	public final PositionListCesiumWriter getPositionsWriter() {
-		return m_positions.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>positions</code> property.  The <code>positions</code> property defines the array of positions defining a simple polygon.
-	
-
-	 */
-	public final PositionListCesiumWriter openPositionsProperty() {
-		openIntervalIfNecessary();
-		return this.<PositionListCesiumWriter> openAndReturn(getPositionsWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>positions</code> property as a <code>cartesian</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
-	
-	
-
-	 * @param values The values.
-	 */
-	public final void writePositionsProperty(Iterable<Cartesian> values) {
-		{
-			cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
-			try {
-				writer.writeCartesian(values);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>positions</code> property as a <code>cartographicRadians</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
-	
-	
-
-	 * @param values The values.
-	 */
-	public final void writePositionsPropertyCartographicRadians(Iterable<Cartographic> values) {
-		{
-			cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
-			try {
-				writer.writeCartographicRadians(values);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>positions</code> property as a <code>cartographicDegrees</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
-	
-	
-
-	 * @param values The values.
-	 */
-	public final void writePositionsPropertyCartographicDegrees(Iterable<Cartographic> values) {
-		{
-			cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
-			try {
-				writer.writeCartographicDegrees(values);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>positions</code> property as a <code>references</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
-	
-	
-
-	 * @param references The list of references.
-	 */
-	public final void writePositionsPropertyReferences(Iterable<Reference> references) {
-		{
-			cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
-			try {
-				writer.writeReferences(references);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
 	}
 
 	/**
@@ -409,6 +313,102 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	}
 
 	/**
+	 *  Gets the writer for the <code>positions</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>positions</code> property defines the array of positions defining a simple polygon.
+	
+
+	 */
+	public final PositionListCesiumWriter getPositionsWriter() {
+		return m_positions.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>positions</code> property.  The <code>positions</code> property defines the array of positions defining a simple polygon.
+	
+
+	 */
+	public final PositionListCesiumWriter openPositionsProperty() {
+		openIntervalIfNecessary();
+		return this.<PositionListCesiumWriter> openAndReturn(getPositionsWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>positions</code> property as a <code>cartesian</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
+	
+	
+
+	 * @param values The values.
+	 */
+	public final void writePositionsProperty(Iterable<Cartesian> values) {
+		{
+			cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
+			try {
+				writer.writeCartesian(values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>positions</code> property as a <code>cartographicRadians</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
+	
+	
+
+	 * @param values The values.
+	 */
+	public final void writePositionsPropertyCartographicRadians(Iterable<Cartographic> values) {
+		{
+			cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
+			try {
+				writer.writeCartographicRadians(values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>positions</code> property as a <code>cartographicDegrees</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
+	
+	
+
+	 * @param values The values.
+	 */
+	public final void writePositionsPropertyCartographicDegrees(Iterable<Cartographic> values) {
+		{
+			cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
+			try {
+				writer.writeCartographicDegrees(values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>positions</code> property as a <code>references</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
+	
+	
+
+	 * @param references The list of references.
+	 */
+	public final void writePositionsPropertyReferences(Iterable<Reference> references) {
+		{
+			cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
+			try {
+				writer.writeReferences(references);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>material</code> property defines the material to use to fill the polygon.
 	
 
@@ -429,7 +429,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>height</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>height</code> property defines the height of the polygon when perPositionHeight is false.
+	 *  Gets the writer for the <code>height</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>height</code> property defines the height of the polygon when `perPositionHeight` is false.
 	
 
 	 */
@@ -439,7 +439,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>height</code> property.  The <code>height</code> property defines the height of the polygon when perPositionHeight is false.
+	Opens and returns the writer for the <code>height</code> property.  The <code>height</code> property defines the height of the polygon when `perPositionHeight` is false.
 	
 
 	 */
@@ -450,7 +450,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the polygon when perPositionHeight is false.
+	Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the polygon when `perPositionHeight` is false.
 	
 	
 
@@ -469,7 +469,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the polygon when perPositionHeight is false.
+	Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the polygon when `perPositionHeight` is false.
 	
 	
 	
@@ -494,7 +494,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the polygon when perPositionHeight is false.
+	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the polygon when `perPositionHeight` is false.
 	
 	
 
@@ -513,7 +513,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the polygon when perPositionHeight is false.
+	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the polygon when `perPositionHeight` is false.
 	
 	
 
@@ -532,7 +532,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the polygon when perPositionHeight is false.
+	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the polygon when `perPositionHeight` is false.
 	
 	
 	
@@ -553,7 +553,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the polygon when perPositionHeight is false.
+	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the polygon when `perPositionHeight` is false.
 	
 	
 	
@@ -1581,7 +1581,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>perPositionHeight</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>perPositionHeight</code> property defines whether to use the height of each position to define the polygon or a constant height above the surface.
+	 *  Gets the writer for the <code>perPositionHeight</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>perPositionHeight</code> property defines whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
 	
 
 	 */
@@ -1591,7 +1591,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>perPositionHeight</code> property.  The <code>perPositionHeight</code> property defines whether to use the height of each position to define the polygon or a constant height above the surface.
+	Opens and returns the writer for the <code>perPositionHeight</code> property.  The <code>perPositionHeight</code> property defines whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
 	
 
 	 */
@@ -1602,7 +1602,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>perPositionHeight</code> property as a <code>boolean</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or a constant height above the surface.
+	Writes a value for the <code>perPositionHeight</code> property as a <code>boolean</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
 	
 	
 
@@ -1621,7 +1621,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or a constant height above the surface.
+	Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
 	
 	
 
@@ -1640,7 +1640,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or a constant height above the surface.
+	Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
 	
 	
 
@@ -1659,7 +1659,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or a constant height above the surface.
+	Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
 	
 	
 	
@@ -1680,7 +1680,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or a constant height above the surface.
+	Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
 	
 	
 	

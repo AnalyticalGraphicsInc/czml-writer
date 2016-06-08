@@ -10,7 +10,7 @@ import cesiumlanguagewriter.Reference;
 
 /**
  *  
- Writes a <code>HorizontalOrigin</code> to a  {@link CesiumOutputStream}.  A <code>HorizontalOrigin</code> defines the horizontal origin of an element, which can optionally vary over time.  It controls whether the element is left-, center-, or right-aligned with the `position`.
+ Writes a <code>HorizontalOrigin</code> to a  {@link CesiumOutputStream}.  A <code>HorizontalOrigin</code> is the horizontal origin of an element, which can optionally vary over time.  It controls whether the element is left-, center-, or right-aligned with the `position`.
  
 
  */
@@ -85,7 +85,7 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 
 	/**
 	 *  
-	Writes the <code>horizontalOrigin</code> property.  The <code>horizontalOrigin</code> property specifies the horizontal origin.  Valid values are "LEFT", "CENTER", and "RIGHT".
+	Writes the value expressed as a <code>horizontalOrigin</code>, which is the horizontal origin.  Valid values are "LEFT", "CENTER", and "RIGHT".
 	
 	
 
@@ -104,7 +104,7 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the horizontal origin specified as a reference to another property.
 	
 	
 
@@ -119,7 +119,7 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the horizontal origin specified as a reference to another property.
 	
 	
 
@@ -134,7 +134,7 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the horizontal origin specified as a reference to another property.
 	
 	
 	
@@ -151,7 +151,7 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the horizontal origin specified as a reference to another property.
 	
 	
 	

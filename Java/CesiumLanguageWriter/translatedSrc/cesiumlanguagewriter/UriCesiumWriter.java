@@ -12,7 +12,7 @@ import java.net.URI;
 
 /**
  *  
- Writes a <code>Uri</code> to a  {@link CesiumOutputStream}.  A <code>Uri</code> a URI value.  The URI can optionally vary with time.
+ Writes a <code>Uri</code> to a  {@link CesiumOutputStream}.  A <code>Uri</code> is a URI value.  The URI can optionally vary with time.
  
 
  */
@@ -87,7 +87,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URI value.
+	Writes the value expressed as a <code>uri</code>, which is the URI value.
 	
 	
 
@@ -99,7 +99,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URI value.
+	Writes the value expressed as a <code>uri</code>, which is the URI value.
 	
 	
 	
@@ -113,7 +113,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URI value.
+	Writes the value expressed as a <code>uri</code>, which is the URI value.
 	
 	
 	
@@ -134,7 +134,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URI value.
+	Writes the value expressed as a <code>uri</code>, which is the URI value.
 	
 	
 	
@@ -148,7 +148,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URI value.
+	Writes the value expressed as a <code>uri</code>, which is the URI value.
 	
 	
 	
@@ -169,7 +169,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URI value.
+	Writes the value expressed as a <code>uri</code>, which is the URI value.
 	
 	
 
@@ -181,7 +181,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>uri</code> property.  The <code>uri</code> property specifies the URI value.
+	Writes the value expressed as a <code>uri</code>, which is the URI value.
 	
 	
 	
@@ -202,7 +202,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the URI specified as a reference to another property.
 	
 	
 
@@ -217,7 +217,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the URI specified as a reference to another property.
 	
 	
 
@@ -232,7 +232,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the URI specified as a reference to another property.
 	
 	
 	
@@ -249,7 +249,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the URI specified as a reference to another property.
 	
 	
 	
