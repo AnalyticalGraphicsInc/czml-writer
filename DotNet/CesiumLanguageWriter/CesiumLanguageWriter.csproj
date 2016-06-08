@@ -119,6 +119,7 @@
     <Compile Include="Generated\PixelOffsetCesiumWriter.cs" />
     <Compile Include="Generated\PointCesiumWriter.cs" />
     <Compile Include="Generated\PolygonCesiumWriter.cs" />
+    <Compile Include="Generated\PolylineArrowMaterialCesiumWriter.cs" />
     <Compile Include="Generated\PolylineCesiumWriter.cs" />
     <Compile Include="Generated\PolylineGlowMaterialCesiumWriter.cs" />
     <Compile Include="Generated\PolylineMaterialCesiumWriter.cs" />

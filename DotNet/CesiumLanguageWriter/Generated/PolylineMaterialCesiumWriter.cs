@@ -24,6 +24,11 @@ namespace CesiumLanguageWriter
         public const string PolylineOutlinePropertyName = "polylineOutline";
 
         /// <summary>
+        /// The name of the <code>polylineArrow</code> property.
+        /// </summary>
+        public const string PolylineArrowPropertyName = "polylineArrow";
+
+        /// <summary>
         /// The name of the <code>polylineGlow</code> property.
         /// </summary>
         public const string PolylineGlowPropertyName = "polylineGlow";
@@ -45,6 +50,7 @@ namespace CesiumLanguageWriter
 
         private readonly Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<SolidColorMaterialCesiumWriter>(() => new SolidColorMaterialCesiumWriter(SolidColorPropertyName), false);
         private readonly Lazy<PolylineOutlineMaterialCesiumWriter> m_polylineOutline = new Lazy<PolylineOutlineMaterialCesiumWriter>(() => new PolylineOutlineMaterialCesiumWriter(PolylineOutlinePropertyName), false);
+        private readonly Lazy<PolylineArrowMaterialCesiumWriter> m_polylineArrow = new Lazy<PolylineArrowMaterialCesiumWriter>(() => new PolylineArrowMaterialCesiumWriter(PolylineArrowPropertyName), false);
         private readonly Lazy<PolylineGlowMaterialCesiumWriter> m_polylineGlow = new Lazy<PolylineGlowMaterialCesiumWriter>(() => new PolylineGlowMaterialCesiumWriter(PolylineGlowPropertyName), false);
         private readonly Lazy<ImageMaterialCesiumWriter> m_image = new Lazy<ImageMaterialCesiumWriter>(() => new ImageMaterialCesiumWriter(ImagePropertyName), false);
         private readonly Lazy<GridMaterialCesiumWriter> m_grid = new Lazy<GridMaterialCesiumWriter>(() => new GridMaterialCesiumWriter(GridPropertyName), false);
@@ -105,6 +111,23 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(PolylineOutlineWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>polylineArrow</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>polylineArrow</code> property defines a material that fills the line with an arrow.
+        /// </summary>
+        public PolylineArrowMaterialCesiumWriter PolylineArrowWriter
+        {
+            get { return m_polylineArrow.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>polylineArrow</code> property.  The <code>polylineArrow</code> property defines a material that fills the line with an arrow.
+        /// </summary>
+        public PolylineArrowMaterialCesiumWriter OpenPolylineArrowProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(PolylineArrowWriter);
         }
 
         /// <summary>
