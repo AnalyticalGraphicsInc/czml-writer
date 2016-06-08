@@ -11,7 +11,6 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
@@ -24,107 +23,114 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
 	}
 
 	@Test
-	@Ignore
-	public final void sandbox() {
-		JulianDate date = new JulianDate(2451545.0);
+	public final void testCompleteExample() {
 		{
-			StringWriter sw = new StringWriter();
+			StringWriter stringWriter = new StringWriter();
 			try {
-				CesiumOutputStream output = new CesiumOutputStream(sw);
-				output.setPrettyFormatting(true);
-				CesiumStreamWriter writer = new CesiumStreamWriter();
+				cesiumlanguagewriter.JulianDate date = new JulianDate(2451545.0);
+				String id = "MyID";
+				cesiumlanguagewriter.TimeInterval availability = new TimeInterval(date, date.addDays(2.0));
+				cesiumlanguagewriter.TimeInterval interval1 = new TimeInterval(date, date.addDays(1.0));
+				cesiumlanguagewriter.Cartesian interval1Position = new Cartesian(1.0, 2.0, 3.0);
+				cesiumlanguagewriter.UnitQuaternion interval1Orientation = new UnitQuaternion(1D, 0D, 0D, 0D);
+				cesiumlanguagewriter.TimeInterval interval2 = new TimeInterval(date.addDays(1.0), date.addDays(2.0));
+				ArrayList<cesiumlanguagewriter.JulianDate> tempCollection_0 = new ArrayList<cesiumlanguagewriter.JulianDate>();
+				tempCollection_0.add(date.addDays(1.0));
+				tempCollection_0.add(date.addDays(1.5));
+				tempCollection_0.add(date.addDays(2.0));
+				ArrayList<cesiumlanguagewriter.JulianDate> interval2SampleDates = tempCollection_0;
+				ArrayList<cesiumlanguagewriter.Cartographic> tempCollection_1 = new ArrayList<cesiumlanguagewriter.Cartographic>();
+				tempCollection_1.add(Cartographic.getZero());
+				tempCollection_1.add(new Cartographic(1.0, 0.0, 0.0));
+				tempCollection_1.add(new Cartographic(0.0, 1.0, 0.0));
+				ArrayList<cesiumlanguagewriter.Cartographic> interval2SamplePositions = tempCollection_1;
+				ArrayList<cesiumlanguagewriter.UnitQuaternion> tempCollection_2 = new ArrayList<cesiumlanguagewriter.UnitQuaternion>();
+				tempCollection_2.add(UnitQuaternion.getIdentity());
+				tempCollection_2.add(new UnitQuaternion(0.0, 1.0, 0.0, 0.0));
+				tempCollection_2.add(new UnitQuaternion(0.0, 0.0, 1.0, 0.0));
+				ArrayList<cesiumlanguagewriter.UnitQuaternion> interval2SampleOrientations = tempCollection_2;
+				CesiumInterpolationAlgorithm orientationInterpolationAlgorithm = CesiumInterpolationAlgorithm.LINEAR;
+				int orientationInterpolationDegree = 1;
+				CesiumOutputStream temp_0 = new CesiumOutputStream(stringWriter);
+				temp_0.setPrettyFormatting(true);
+				cesiumlanguagewriter.CesiumOutputStream outputStream = temp_0;
+				cesiumlanguagewriter.CesiumStreamWriter writer = new CesiumStreamWriter();
 				{
-					PacketCesiumWriter packet = writer.openPacket(output);
+					cesiumlanguagewriter.PacketCesiumWriter packet = writer.openPacket(outputStream);
 					try {
-						packet.writeId("MyID");
-						packet.writeAvailability(date, date.addDays(1.0));
+						packet.writeId(id);
+						packet.writeAvailability(availability);
 						{
-							PositionCesiumWriter position = packet.openPositionProperty();
+							cesiumlanguagewriter.PositionCesiumWriter positionWriter = packet.openPositionProperty();
 							try {
 								{
-									CesiumIntervalListWriter<cesiumlanguagewriter.PositionCesiumWriter> intervalList = position.openMultipleIntervals();
+									cesiumlanguagewriter.CesiumIntervalListWriter<cesiumlanguagewriter.PositionCesiumWriter> intervalListWriter = positionWriter.openMultipleIntervals();
 									try {
 										{
-											PositionCesiumWriter interval = intervalList.openInterval();
+											cesiumlanguagewriter.PositionCesiumWriter interval = intervalListWriter.openInterval();
 											try {
-												interval.writeInterval(new TimeInterval(date, date.addDays(1.0)));
-												interval.writeCartesian(new Cartesian(1.0, 2.0, 3.0));
+												interval.writeInterval(interval1);
+												interval.writeCartesian(interval1Position);
 											} finally {
 												DisposeHelper.dispose(interval);
 											}
 										}
 										{
-											PositionCesiumWriter interval = intervalList.openInterval(date.addDays(1.0), date.addDays(2.0));
+											cesiumlanguagewriter.PositionCesiumWriter interval = intervalListWriter.openInterval(interval2.getStart(), interval2.getStop());
 											try {
-												ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
-												ArrayList<cesiumlanguagewriter.Cartographic> positions = new ArrayList<cesiumlanguagewriter.Cartographic>();
-												dates.add(date.addDays(1.0));
-												positions.add(Cartographic.getZero());
-												dates.add(date.addDays(1.5));
-												positions.add(new Cartographic(1.0, 0.0, 0.0));
-												dates.add(date.addDays(2.0));
-												positions.add(new Cartographic(0.0, 1.0, 0.0));
-												interval.writeCartographicRadians(dates, positions);
+												interval.writeCartographicRadians(interval2SampleDates, interval2SamplePositions);
 											} finally {
 												DisposeHelper.dispose(interval);
 											}
 										}
 									} finally {
-										DisposeHelper.dispose(intervalList);
+										DisposeHelper.dispose(intervalListWriter);
 									}
 								}
 							} finally {
-								DisposeHelper.dispose(position);
+								DisposeHelper.dispose(positionWriter);
 							}
 						}
 						{
-							OrientationCesiumWriter orientation = packet.openOrientationProperty();
+							cesiumlanguagewriter.OrientationCesiumWriter orientationWriter = packet.openOrientationProperty();
 							try {
 								{
-									CesiumIntervalListWriter<cesiumlanguagewriter.OrientationCesiumWriter> intervalList = orientation.openMultipleIntervals();
+									cesiumlanguagewriter.CesiumIntervalListWriter<cesiumlanguagewriter.OrientationCesiumWriter> intervalListWriter = orientationWriter.openMultipleIntervals();
 									try {
 										{
-											OrientationCesiumWriter interval = intervalList.openInterval();
+											cesiumlanguagewriter.OrientationCesiumWriter interval = intervalListWriter.openInterval();
 											try {
-												interval.writeInterval(new TimeInterval(date, date.addDays(1.0)));
-												interval.writeUnitQuaternion(new UnitQuaternion(1D, 0D, 0D, 0D));
+												interval.writeInterval(interval1);
+												interval.writeUnitQuaternion(interval1Orientation);
 											} finally {
 												DisposeHelper.dispose(interval);
 											}
 										}
 										{
-											OrientationCesiumWriter interval = intervalList.openInterval();
+											cesiumlanguagewriter.OrientationCesiumWriter interval = intervalListWriter.openInterval(interval2.getStart(), interval2.getStop());
 											try {
-												interval.writeInterpolationAlgorithm(CesiumInterpolationAlgorithm.LINEAR);
-												interval.writeInterpolationDegree(1);
-												ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
-												ArrayList<cesiumlanguagewriter.UnitQuaternion> orientations = new ArrayList<cesiumlanguagewriter.UnitQuaternion>();
-												dates.add(date.addDays(1.0));
-												orientations.add(UnitQuaternion.getIdentity());
-												dates.add(date.addDays(1.5));
-												orientations.add(new UnitQuaternion(0.0, 1.0, 0.0, 0.0));
-												dates.add(date.addDays(2.0));
-												orientations.add(new UnitQuaternion(0.0, 0.0, 1.0, 0.0));
-												interval.writeUnitQuaternion(dates, orientations);
+												interval.writeInterpolationAlgorithm(orientationInterpolationAlgorithm);
+												interval.writeInterpolationDegree(orientationInterpolationDegree);
+												interval.writeUnitQuaternion(interval2SampleDates, interval2SampleOrientations);
 											} finally {
 												DisposeHelper.dispose(interval);
 											}
 										}
 									} finally {
-										DisposeHelper.dispose(intervalList);
+										DisposeHelper.dispose(intervalListWriter);
 									}
 								}
 							} finally {
-								DisposeHelper.dispose(orientation);
+								DisposeHelper.dispose(orientationWriter);
 							}
 						}
 					} finally {
 						DisposeHelper.dispose(packet);
 					}
 				}
-				ConsoleHelper.writeLine(sw.toString());
+				ConsoleHelper.writeLine(stringWriter.toString());
 			} finally {
-				DisposeHelper.dispose(sw);
+				DisposeHelper.dispose(stringWriter);
 			}
 		}
 	}

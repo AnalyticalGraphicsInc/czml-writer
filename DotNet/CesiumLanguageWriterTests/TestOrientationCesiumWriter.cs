@@ -16,79 +16,90 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        [Explicit]
-        public void Sandbox()
+        public void TestCompleteExample()
         {
-            JulianDate date = new JulianDate(2451545.0);
-
-            using (StringWriter sw = new StringWriter())
+            using (var stringWriter = new StringWriter())
             {
-                CesiumOutputStream output = new CesiumOutputStream(sw);
-                output.PrettyFormatting = true;
-                CesiumStreamWriter writer = new CesiumStreamWriter();
+                var date = new JulianDate(2451545.0);
 
-                using (PacketCesiumWriter packet = writer.OpenPacket(output))
+                const string id = "MyID";
+                var availability = new TimeInterval(date, date.AddDays(2.0));
+
+                var interval1 = new TimeInterval(date, date.AddDays(1.0));
+
+                var interval1Position = new Cartesian(1.0, 2.0, 3.0);
+                var interval1Orientation = new UnitQuaternion(1, 0, 0, 0);
+
+                var interval2 = new TimeInterval(date.AddDays(1.0), date.AddDays(2.0));
+
+                var interval2SampleDates = new List<JulianDate>
+                                           {
+                                               date.AddDays(1.0),
+                                               date.AddDays(1.5),
+                                               date.AddDays(2.0)
+                                           };
+
+                var interval2SamplePositions = new List<Cartographic>
+                                               {
+                                                   Cartographic.Zero,
+                                                   new Cartographic(1.0, 0.0, 0.0),
+                                                   new Cartographic(0.0, 1.0, 0.0)
+                                               };
+                var interval2SampleOrientations = new List<UnitQuaternion>
+                                                  {
+                                                      UnitQuaternion.Identity,
+                                                      new UnitQuaternion(0.0, 1.0, 0.0, 0.0),
+                                                      new UnitQuaternion(0.0, 0.0, 1.0, 0.0)
+                                                  };
+
+                const CesiumInterpolationAlgorithm orientationInterpolationAlgorithm = CesiumInterpolationAlgorithm.Linear;
+                const int orientationInterpolationDegree = 1;
+
+                var outputStream = new CesiumOutputStream(stringWriter)
+                                   {
+                                       PrettyFormatting = true
+                                   };
+                var writer = new CesiumStreamWriter();
+
+                using (var packet = writer.OpenPacket(outputStream))
                 {
-                    packet.WriteId("MyID");
-                    packet.WriteAvailability(date, date.AddDays(1.0));
+                    packet.WriteId(id);
+                    packet.WriteAvailability(availability);
 
-                    using (PositionCesiumWriter position = packet.OpenPositionProperty())
-                    using (CesiumIntervalListWriter<PositionCesiumWriter> intervalList = position.OpenMultipleIntervals())
+                    using (var positionWriter = packet.OpenPositionProperty())
+                    using (var intervalListWriter = positionWriter.OpenMultipleIntervals())
                     {
-                        using (PositionCesiumWriter interval = intervalList.OpenInterval())
+                        using (var interval = intervalListWriter.OpenInterval())
                         {
-                            interval.WriteInterval(new TimeInterval(date, date.AddDays(1.0)));
-                            interval.WriteCartesian(new Cartesian(1.0, 2.0, 3.0));
+                            interval.WriteInterval(interval1);
+                            interval.WriteCartesian(interval1Position);
                         }
 
-                        using (PositionCesiumWriter interval = intervalList.OpenInterval(date.AddDays(1.0), date.AddDays(2.0)))
+                        using (var interval = intervalListWriter.OpenInterval(interval2.Start, interval2.Stop))
                         {
-                            var dates = new List<JulianDate>();
-                            var positions = new List<Cartographic>();
-
-                            dates.Add(date.AddDays(1.0));
-                            positions.Add(Cartographic.Zero);
-
-                            dates.Add(date.AddDays(1.5));
-                            positions.Add(new Cartographic(1.0, 0.0, 0.0));
-
-                            dates.Add(date.AddDays(2.0));
-                            positions.Add(new Cartographic(0.0, 1.0, 0.0));
-
-                            interval.WriteCartographicRadians(dates, positions);
+                            interval.WriteCartographicRadians(interval2SampleDates, interval2SamplePositions);
                         }
                     }
-                    using (OrientationCesiumWriter orientation = packet.OpenOrientationProperty())
-                    using (CesiumIntervalListWriter<OrientationCesiumWriter> intervalList = orientation.OpenMultipleIntervals())
+                    using (var orientationWriter = packet.OpenOrientationProperty())
+                    using (var intervalListWriter = orientationWriter.OpenMultipleIntervals())
                     {
-                        using (OrientationCesiumWriter interval = intervalList.OpenInterval())
+                        using (var interval = intervalListWriter.OpenInterval())
                         {
-                            interval.WriteInterval(new TimeInterval(date, date.AddDays(1.0)));
-                            interval.WriteUnitQuaternion(new UnitQuaternion(1, 0, 0, 0));
+                            interval.WriteInterval(interval1);
+                            interval.WriteUnitQuaternion(interval1Orientation);
                         }
-                        using (OrientationCesiumWriter interval = intervalList.OpenInterval())
+
+                        using (var interval = intervalListWriter.OpenInterval(interval2.Start, interval2.Stop))
                         {
-                            interval.WriteInterpolationAlgorithm(CesiumInterpolationAlgorithm.Linear);
-                            interval.WriteInterpolationDegree(1);
+                            interval.WriteInterpolationAlgorithm(orientationInterpolationAlgorithm);
+                            interval.WriteInterpolationDegree(orientationInterpolationDegree);
 
-                            var dates = new List<JulianDate>();
-                            var orientations = new List<UnitQuaternion>();
-
-                            dates.Add(date.AddDays(1.0));
-                            orientations.Add(UnitQuaternion.Identity);
-
-                            dates.Add(date.AddDays(1.5));
-                            orientations.Add(new UnitQuaternion(0.0, 1.0, 0.0, 0.0));
-
-                            dates.Add(date.AddDays(2.0));
-                            orientations.Add(new UnitQuaternion(0.0, 0.0, 1.0, 0.0));
-
-                            interval.WriteUnitQuaternion(dates, orientations);
+                            interval.WriteUnitQuaternion(interval2SampleDates, interval2SampleOrientations);
                         }
                     }
                 }
 
-                Console.WriteLine(sw.ToString());
+                Console.WriteLine(stringWriter.ToString());
             }
         }
     }

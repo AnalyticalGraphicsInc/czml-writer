@@ -7,6 +7,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.GridMaterialCesiumWriter;
 import cesiumlanguagewriter.ImageMaterialCesiumWriter;
+import cesiumlanguagewriter.PolylineArrowMaterialCesiumWriter;
 import cesiumlanguagewriter.PolylineGlowMaterialCesiumWriter;
 import cesiumlanguagewriter.PolylineOutlineMaterialCesiumWriter;
 import cesiumlanguagewriter.SolidColorMaterialCesiumWriter;
@@ -33,6 +34,13 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 
 	 */
 	public static final String PolylineOutlinePropertyName = "polylineOutline";
+	/**
+	 *  
+	The name of the <code>polylineArrow</code> property.
+	
+
+	 */
+	public static final String PolylineArrowPropertyName = "polylineArrow";
 	/**
 	 *  
 	The name of the <code>polylineGlow</code> property.
@@ -70,6 +78,12 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 			new Func1<cesiumlanguagewriter.PolylineOutlineMaterialCesiumWriter>() {
 				public cesiumlanguagewriter.PolylineOutlineMaterialCesiumWriter invoke() {
 					return new PolylineOutlineMaterialCesiumWriter(PolylineOutlinePropertyName);
+				}
+			}, false);
+	private Lazy<PolylineArrowMaterialCesiumWriter> m_polylineArrow = new Lazy<cesiumlanguagewriter.PolylineArrowMaterialCesiumWriter>(
+			new Func1<cesiumlanguagewriter.PolylineArrowMaterialCesiumWriter>() {
+				public cesiumlanguagewriter.PolylineArrowMaterialCesiumWriter invoke() {
+					return new PolylineArrowMaterialCesiumWriter(PolylineArrowPropertyName);
 				}
 			}, false);
 	private Lazy<PolylineGlowMaterialCesiumWriter> m_polylineGlow = new Lazy<cesiumlanguagewriter.PolylineGlowMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineGlowMaterialCesiumWriter>() {
@@ -158,6 +172,26 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 	public final PolylineOutlineMaterialCesiumWriter openPolylineOutlineProperty() {
 		openIntervalIfNecessary();
 		return this.<PolylineOutlineMaterialCesiumWriter> openAndReturn(getPolylineOutlineWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>polylineArrow</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>polylineArrow</code> property defines a material that fills the line with an arrow.
+	
+
+	 */
+	public final PolylineArrowMaterialCesiumWriter getPolylineArrowWriter() {
+		return m_polylineArrow.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>polylineArrow</code> property.  The <code>polylineArrow</code> property defines a material that fills the line with an arrow.
+	
+
+	 */
+	public final PolylineArrowMaterialCesiumWriter openPolylineArrowProperty() {
+		openIntervalIfNecessary();
+		return this.<PolylineArrowMaterialCesiumWriter> openAndReturn(getPolylineArrowWriter());
 	}
 
 	/**

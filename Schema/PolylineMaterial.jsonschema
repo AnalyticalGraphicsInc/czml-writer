@@ -17,6 +17,10 @@
             "$ref": "PolylineOutlineMaterial.jsonschema",
             "description": "A material that fills the line with a color and outline."
         },
+        "polylineArrow": {
+            "$ref": "PolylineArrowMaterial.jsonschema",
+            "description": "A material that fills the line with an arrow."
+        },
         "polylineGlow": {
             "$ref": "PolylineGlowMaterial.jsonschema",
             "description": "A material that fills the line with a glowing color."
