@@ -60,7 +60,6 @@
     <Compile Include="Advanced\ICesiumValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumWriterAdaptor.cs" />
     <Compile Include="Advanced\PassThroughCesiumUriResolver.cs" />
-    <Compile Include="Attributes\CoverageExcludeAttribute.cs" />
     <Compile Include="Attributes\CSToJavaExcludeAttribute.cs" />
     <Compile Include="Attributes\CSToJavaExcludeBaseAttribute.cs" />
     <Compile Include="Attributes\CSToJavaImmutableValueType.cs" />
