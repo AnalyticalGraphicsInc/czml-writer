@@ -7,7 +7,7 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>NodeTransformations</code> to a <see cref="CesiumOutputStream" />.  A <code>NodeTransformations</code> defines a mapping of node names to node transformations.
+    /// Writes a <code>NodeTransformations</code> to a <see cref="CesiumOutputStream" />.  A <code>NodeTransformations</code> is a mapping of node names to node transformations.
     /// </summary>
     public class NodeTransformationsCesiumWriter : CesiumPropertyWriter<NodeTransformationsCesiumWriter>
     {

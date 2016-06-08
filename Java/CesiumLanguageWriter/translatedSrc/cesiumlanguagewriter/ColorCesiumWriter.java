@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Color</code> to a  {@link CesiumOutputStream}.  A <code>Color</code> defines a a color.  The color can optionally vary over time.
+ Writes a <code>Color</code> to a  {@link CesiumOutputStream}.  A <code>Color</code> is a color.  The color can optionally vary over time.
  
 
  */
@@ -93,7 +93,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
 	/**
 	 *  
-	Writes the <code>rgba</code> property.  The <code>rgba</code> property specifies the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
 	
 	
 
@@ -108,7 +108,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
 	/**
 	 *  
-	Writes the <code>rgba</code> property.  The <code>rgba</code> property specifies the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
 	
 	
 	
@@ -129,7 +129,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
 	/**
 	 *  
-	Writes the <code>rgba</code> property.  The <code>rgba</code> property specifies the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
 	
 	
 	
@@ -149,7 +149,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
 	/**
 	 *  
-	Writes the <code>rgbaf</code> property.  The <code>rgbaf</code> property specifies the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>rgbaf</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
 	
 	
 	
@@ -170,7 +170,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the color specified as a reference to another property.
 	
 	
 
@@ -185,7 +185,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the color specified as a reference to another property.
 	
 	
 
@@ -200,7 +200,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the color specified as a reference to another property.
 	
 	
 	
@@ -217,7 +217,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the color specified as a reference to another property.
 	
 	
 	

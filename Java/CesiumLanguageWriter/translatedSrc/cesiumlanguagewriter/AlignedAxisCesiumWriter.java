@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>AlignedAxis</code> to a  {@link CesiumOutputStream}.  A <code>AlignedAxis</code> defines an aligned axis which can optionally vary over time.
+ Writes a <code>AlignedAxis</code> to a  {@link CesiumOutputStream}.  A <code>AlignedAxis</code> is an aligned axis which can optionally vary over time.
  
 
  */
@@ -86,7 +86,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the axis specified as a unit Cartesian `[X, Y, Z]` in world coordinates in  meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+	Writes the value expressed as a <code>cartesian</code>, which is the axis specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.
 	
 	
 
@@ -101,7 +101,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the axis specified as a unit Cartesian `[X, Y, Z]` in world coordinates in  meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+	Writes the value expressed as a <code>cartesian</code>, which is the axis specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.
 	
 	
 	
@@ -115,7 +115,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the axis specified as a unit Cartesian `[X, Y, Z]` in world coordinates in  meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+	Writes the value expressed as a <code>cartesian</code>, which is the axis specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.
 	
 	
 	
@@ -135,7 +135,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the axis specified as a reference to another property.
 	
 	
 
@@ -150,7 +150,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the axis specified as a reference to another property.
 	
 	
 
@@ -165,7 +165,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the axis specified as a reference to another property.
 	
 	
 	
@@ -182,7 +182,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the axis specified as a reference to another property.
 	
 	
 	

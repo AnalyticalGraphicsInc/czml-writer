@@ -1,8 +1,13 @@
 {
     "title": "ConicSensor",
     "description": "A conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "extensionPrefix": "agi",
     "properties": {
         "show": {
@@ -75,7 +80,7 @@
         },
         "portionToDisplay": {
             "$ref": "Extensions/AGI/SensorVolumePortionToDisplay.jsonschema",
-            "description": "Indicates what part of the sensor should be displayed."
+            "description": "What part of the sensor should be displayed."
         }
     }
 }

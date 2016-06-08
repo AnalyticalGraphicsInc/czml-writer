@@ -2,5 +2,8 @@
     "title": "StripeOrientation",
     "description": "The orientation of stripes in the stripe material. Valid values are \"HORIZONTAL\" or \"VERTICAL\".",
     "type": "string",
-    "enum": [ "HORIZONTAL", "VERTICAL" ]
+    "enum": [
+        "HORIZONTAL",
+        "VERTICAL"
+    ]
 }

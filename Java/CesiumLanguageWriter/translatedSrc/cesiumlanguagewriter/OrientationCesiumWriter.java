@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Orientation</code> to a  {@link CesiumOutputStream}.  A <code>Orientation</code> defines an orientation.  An orientation is a rotation that takes a vector expressed in the "body" axes of the object and transforms it to the Earth fixed axes.
+ Writes a <code>Orientation</code> to a  {@link CesiumOutputStream}.  A <code>Orientation</code> is defines an orientation.  An orientation is a rotation that takes a vector expressed in the "body" axes of the object and transforms it to the Earth fixed axes.
  
 
  */
@@ -86,7 +86,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies the orientation represented as a 4-dimensional quaternion, specified as `[X, Y, Z, W]`.  If the array has four elements, the value is constant.  If it has five or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, W, Time, X, Y, Z, W, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>unitQuaternion</code>, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.
 	
 	
 
@@ -101,7 +101,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies the orientation represented as a 4-dimensional quaternion, specified as `[X, Y, Z, W]`.  If the array has four elements, the value is constant.  If it has five or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, W, Time, X, Y, Z, W, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>unitQuaternion</code>, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.
 	
 	
 	
@@ -115,7 +115,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies the orientation represented as a 4-dimensional quaternion, specified as `[X, Y, Z, W]`.  If the array has four elements, the value is constant.  If it has five or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, W, Time, X, Y, Z, W, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>unitQuaternion</code>, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.
 	
 	
 	
@@ -135,7 +135,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the orientation specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the orientation specified as a reference to another property.
 	
 	
 
@@ -150,7 +150,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the orientation specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the orientation specified as a reference to another property.
 	
 	
 
@@ -165,7 +165,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the orientation specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the orientation specified as a reference to another property.
 	
 	
 	
@@ -182,7 +182,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the orientation specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the orientation specified as a reference to another property.
 	
 	
 	

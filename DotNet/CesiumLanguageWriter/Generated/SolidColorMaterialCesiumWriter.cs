@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>SolidColorMaterial</code> to a <see cref="CesiumOutputStream" />.  A <code>SolidColorMaterial</code> fills the surface with a solid color.
+    /// Writes a <code>SolidColorMaterial</code> to a <see cref="CesiumOutputStream" />.  A <code>SolidColorMaterial</code> is a material that fills the surface with a solid color.
     /// </summary>
     public class SolidColorMaterialCesiumWriter : CesiumPropertyWriter<SolidColorMaterialCesiumWriter>
     {

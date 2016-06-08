@@ -1,17 +1,23 @@
 {
     "title": "SensorVolumePortionToDisplay",
-    "description": "Indicates what part of a sensor should be displayed.  Valid values are \"COMPLETE\", \"BELOW_ELLIPSOID_HORIZON\", \"ABOVE_ELLIPSOID_HORIZON\".",
-    "type": [ "array", "object", "string" ],
-    "items": { "$ref": "#" },
+    "description": "What part of a sensor should be displayed.  Valid values are \"COMPLETE\", \"BELOW_ELLIPSOID_HORIZON\", \"ABOVE_ELLIPSOID_HORIZON\".",
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "portionToDisplay": {
             "$ref": "Extensions/AGI/SensorVolumePortionToDisplayValue.jsonschema",
-            "description": "Indicates what part of a sensor should be displayed.  Valid values are \"COMPLETE\", \"BELOW_ELLIPSOID_HORIZON\", \"ABOVE_ELLIPSOID_HORIZON\".",
+            "description": "What part of a sensor should be displayed.  Valid values are \"COMPLETE\", \"BELOW_ELLIPSOID_HORIZON\", \"ABOVE_ELLIPSOID_HORIZON\".",
             "czmlValue": true
         },
         "reference": {
             "$ref": "ReferenceValue.jsonschema",
-            "description": "A reference property.",
+            "description": "What part of a sensor should be displayed, specified as a reference to another property.",
             "czmlValue": true
         }
     }

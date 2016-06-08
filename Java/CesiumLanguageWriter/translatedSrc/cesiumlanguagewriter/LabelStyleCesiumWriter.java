@@ -10,7 +10,7 @@ import cesiumlanguagewriter.Reference;
 
 /**
  *  
- Writes a <code>LabelStyle</code> to a  {@link CesiumOutputStream}.  A <code>LabelStyle</code> the style of a label.
+ Writes a <code>LabelStyle</code> to a  {@link CesiumOutputStream}.  A <code>LabelStyle</code> is the style of a label.
  
 
  */
@@ -85,7 +85,7 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 
 	/**
 	 *  
-	Writes the <code>labelStyle</code> property.  The <code>labelStyle</code> property specifies the label style.  Valid values are "FILL", "OUTLINE", and "FILL_AND_OUTLINE".
+	Writes the value expressed as a <code>labelStyle</code>, which is the label style.  Valid values are "FILL", "OUTLINE", and "FILL_AND_OUTLINE".
 	
 	
 
@@ -104,7 +104,7 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the label style specified as a reference to another property.
 	
 	
 
@@ -119,7 +119,7 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the label style specified as a reference to another property.
 	
 	
 
@@ -134,7 +134,7 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the label style specified as a reference to another property.
 	
 	
 	
@@ -151,7 +151,7 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the label style specified as a reference to another property.
 	
 	
 	

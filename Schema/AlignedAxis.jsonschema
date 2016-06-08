@@ -1,18 +1,25 @@
 {
     "title": "AlignedAxis",
-    "description": "Defines an aligned axis which can optionally vary over time.",
-    "extends": { "$ref": "InterpolatableProperty.jsonschema" },
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "description": "An aligned axis which can optionally vary over time.",
+    "extends": {
+        "$ref": "InterpolatableProperty.jsonschema"
+    },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "cartesian": {
             "$ref": "Cartesian3Value.jsonschema",
-            "description": "The axis specified as a unit Cartesian `[X, Y, Z]` in world coordinates in  meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.",
+            "description": "The axis specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.",
             "czmlValue": true
         },
         "reference": {
             "$ref": "ReferenceValue.jsonschema",
-            "description": "A reference property.",
+            "description": "The axis specified as a reference to another property.",
             "czmlValue": true
         }
     }

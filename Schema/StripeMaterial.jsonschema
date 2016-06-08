@@ -1,8 +1,13 @@
 {
     "title": "StripeMaterial",
-    "description": "Fills the surface with alternating colors.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "description": "A material that fills the surface with alternating colors.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "orientation": {
             "$ref": "StripeOrientation.jsonschema",

@@ -10,7 +10,7 @@ import cesiumlanguagewriter.Reference;
 
 /**
  *  
- Writes a <code>StripeOrientation</code> to a  {@link CesiumOutputStream}.  A <code>StripeOrientation</code> defines the orientation of stripes in the stripe material.
+ Writes a <code>StripeOrientation</code> to a  {@link CesiumOutputStream}.  A <code>StripeOrientation</code> is the orientation of stripes in a stripe material.
  
 
  */
@@ -85,7 +85,7 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
 	/**
 	 *  
-	Writes the <code>StripeOrientation</code> property.  The <code>StripeOrientation</code> property specifies the orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL".
+	Writes the value expressed as a <code>StripeOrientation</code>, which is the orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL".
 	
 	
 
@@ -104,7 +104,7 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the orientation of stripes specified as a reference to another property.
 	
 	
 
@@ -119,7 +119,7 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the orientation of stripes specified as a reference to another property.
 	
 	
 
@@ -134,7 +134,7 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the orientation of stripes specified as a reference to another property.
 	
 	
 	
@@ -151,7 +151,7 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the orientation of stripes specified as a reference to another property.
 	
 	
 	

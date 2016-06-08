@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>ImageMaterial</code> to a  {@link CesiumOutputStream}.  A <code>ImageMaterial</code> fills the surface with an image.
+ Writes a <code>ImageMaterial</code> to a  {@link CesiumOutputStream}.  A <code>ImageMaterial</code> is a material that fills the surface with an image.
  
 
  */

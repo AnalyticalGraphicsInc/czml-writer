@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Vector</code> to a <see cref="CesiumOutputStream" />.  A <code>Vector</code> defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+    /// Writes a <code>Vector</code> to a <see cref="CesiumOutputStream" />.  A <code>Vector</code> is defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
     /// </summary>
     public class VectorCesiumWriter : CesiumPropertyWriter<VectorCesiumWriter>
     {

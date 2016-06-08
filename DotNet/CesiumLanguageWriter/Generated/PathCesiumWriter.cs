@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Path</code> to a <see cref="CesiumOutputStream" />.  A <code>Path</code> a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
+    /// Writes a <code>Path</code> to a <see cref="CesiumOutputStream" />.  A <code>Path</code> is a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
     /// </summary>
     public class PathCesiumWriter : CesiumPropertyWriter<PathCesiumWriter>
     {

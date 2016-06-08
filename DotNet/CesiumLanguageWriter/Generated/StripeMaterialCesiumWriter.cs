@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>StripeMaterial</code> to a <see cref="CesiumOutputStream" />.  A <code>StripeMaterial</code> fills the surface with alternating colors.
+    /// Writes a <code>StripeMaterial</code> to a <see cref="CesiumOutputStream" />.  A <code>StripeMaterial</code> is a material that fills the surface with alternating colors.
     /// </summary>
     public class StripeMaterialCesiumWriter : CesiumPropertyWriter<StripeMaterialCesiumWriter>
     {

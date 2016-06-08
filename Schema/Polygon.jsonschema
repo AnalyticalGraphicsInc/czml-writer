@@ -1,16 +1,21 @@
 {
     "title": "Polygon",
     "description": "A polygon, which is a closed figure on the surface of the Earth.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
-        "positions": {
-            "$ref": "PositionList.jsonschema",
-            "description": "The array of positions defining a simple polygon."
-        },
         "show": {
             "$ref": "Boolean.jsonschema",
             "description": "Whether or not the polygon is shown."
+        },
+        "positions": {
+            "$ref": "PositionList.jsonschema",
+            "description": "The array of positions defining a simple polygon."
         },
         "material": {
             "$ref": "Material.jsonschema",
@@ -18,7 +23,7 @@
         },
         "height": {
             "$ref": "Double.jsonschema",
-            "description": "The height of the polygon when perPositionHeight is false."
+            "description": "The height of the polygon when `perPositionHeight` is false."
         },
         "extrudedHeight": {
             "$ref": "Double.jsonschema",
@@ -50,7 +55,7 @@
         },
         "perPositionHeight": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether to use the height of each position to define the polygon or a constant height above the surface."
+            "description": "Whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface."
         }
     }
 }

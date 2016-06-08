@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>ConicSensor</code> to a  {@link CesiumOutputStream}.  A <code>ConicSensor</code> a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
+ Writes a <code>ConicSensor</code> to a  {@link CesiumOutputStream}.  A <code>ConicSensor</code> is a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
  
 
  */
@@ -2119,7 +2119,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 	}
 
 	/**
-	 *  Gets the writer for the <code>portionToDisplay</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>portionToDisplay</code> property defines indicates what part of the sensor should be displayed.
+	 *  Gets the writer for the <code>portionToDisplay</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>portionToDisplay</code> property defines what part of the sensor should be displayed.
 	
 
 	 */
@@ -2129,7 +2129,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>portionToDisplay</code> property.  The <code>portionToDisplay</code> property defines indicates what part of the sensor should be displayed.
+	Opens and returns the writer for the <code>portionToDisplay</code> property.  The <code>portionToDisplay</code> property defines what part of the sensor should be displayed.
 	
 
 	 */
@@ -2140,7 +2140,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>portionToDisplay</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>portionToDisplay</code> value.  The <code>portionToDisplay</code> property specifies what part of the sensor should be displayed.
 	
 	
 
@@ -2159,7 +2159,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies what part of the sensor should be displayed.
 	
 	
 
@@ -2178,7 +2178,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies what part of the sensor should be displayed.
 	
 	
 
@@ -2197,7 +2197,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies what part of the sensor should be displayed.
 	
 	
 	
@@ -2218,7 +2218,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies indicates what part of the sensor should be displayed.
+	Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies what part of the sensor should be displayed.
 	
 	
 	

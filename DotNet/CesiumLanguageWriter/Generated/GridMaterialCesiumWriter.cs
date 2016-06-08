@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>GridMaterial</code> to a <see cref="CesiumOutputStream" />.  A <code>GridMaterial</code> fills the surface with a two dimensional grid.
+    /// Writes a <code>GridMaterial</code> to a <see cref="CesiumOutputStream" />.  A <code>GridMaterial</code> is a material that fills the surface with a two dimensional grid.
     /// </summary>
     public class GridMaterialCesiumWriter : CesiumPropertyWriter<GridMaterialCesiumWriter>
     {
@@ -192,7 +192,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>cellAlpha</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>cellAlpha</code> property defines alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Gets the writer for the <code>cellAlpha</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>cellAlpha</code> property defines the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         public DoubleCesiumWriter CellAlphaWriter
         {
@@ -200,7 +200,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>cellAlpha</code> property.  The <code>cellAlpha</code> property defines alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Opens and returns the writer for the <code>cellAlpha</code> property.  The <code>cellAlpha</code> property defines the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         public DoubleCesiumWriter OpenCellAlphaProperty()
         {
@@ -209,7 +209,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>cellAlpha</code> property as a <code>number</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Writes a value for the <code>cellAlpha</code> property as a <code>number</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCellAlphaProperty(double value)
@@ -221,7 +221,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>cellAlpha</code> property as a <code>number</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Writes a value for the <code>cellAlpha</code> property as a <code>number</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -236,7 +236,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteCellAlphaPropertyReference(Reference value)
@@ -248,7 +248,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteCellAlphaPropertyReference(string value)
@@ -260,7 +260,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -273,7 +273,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

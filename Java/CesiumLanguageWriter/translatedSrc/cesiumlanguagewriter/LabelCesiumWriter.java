@@ -21,11 +21,18 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Label</code> to a  {@link CesiumOutputStream}.  A <code>Label</code> a string of text.
+ Writes a <code>Label</code> to a  {@link CesiumOutputStream}.  A <code>Label</code> is a string of text.
  
 
  */
 public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
+	/**
+	 *  
+	The name of the <code>show</code> property.
+	
+
+	 */
+	public static final String ShowPropertyName = "show";
 	/**
 	 *  
 	The name of the <code>eyeOffset</code> property.
@@ -84,13 +91,6 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	public static final String ScalePropertyName = "scale";
 	/**
 	 *  
-	The name of the <code>show</code> property.
-	
-
-	 */
-	public static final String ShowPropertyName = "show";
-	/**
-	 *  
 	The name of the <code>style</code> property.
 	
 
@@ -110,6 +110,11 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
 	 */
 	public static final String VerticalOriginPropertyName = "verticalOrigin";
+	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(ShowPropertyName);
+		}
+	}, false);
 	private Lazy<EyeOffsetCesiumWriter> m_eyeOffset = new Lazy<cesiumlanguagewriter.EyeOffsetCesiumWriter>(new Func1<cesiumlanguagewriter.EyeOffsetCesiumWriter>() {
 		public cesiumlanguagewriter.EyeOffsetCesiumWriter invoke() {
 			return new EyeOffsetCesiumWriter(EyeOffsetPropertyName);
@@ -148,11 +153,6 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	private Lazy<DoubleCesiumWriter> m_scale = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(ScalePropertyName);
-		}
-	}, false);
-	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
-		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
-			return new BooleanCesiumWriter(ShowPropertyName);
 		}
 	}, false);
 	private Lazy<LabelStyleCesiumWriter> m_style = new Lazy<cesiumlanguagewriter.LabelStyleCesiumWriter>(new Func1<cesiumlanguagewriter.LabelStyleCesiumWriter>() {
@@ -196,6 +196,125 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	@Override
 	public LabelCesiumWriter clone() {
 		return new LabelCesiumWriter(this);
+	}
+
+	/**
+	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the label is shown.
+	
+
+	 */
+	public final BooleanCesiumWriter getShowWriter() {
+		return m_show.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the label is shown.
+	
+
+	 */
+	public final BooleanCesiumWriter openShowProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the label is shown.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeShowProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the label is shown.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeShowPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the label is shown.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeShowPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the label is shown.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeShowPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the label is shown.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
@@ -1455,125 +1574,6 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	public final void writeScalePropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the label is shown.
-	
-
-	 */
-	public final BooleanCesiumWriter getShowWriter() {
-		return m_show.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the label is shown.
-	
-
-	 */
-	public final BooleanCesiumWriter openShowProperty() {
-		openIntervalIfNecessary();
-		return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the label is shown.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeShowProperty(boolean value) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
-			try {
-				writer.writeBoolean(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the label is shown.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeShowPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the label is shown.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeShowPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the label is shown.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeShowPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the label is shown.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {

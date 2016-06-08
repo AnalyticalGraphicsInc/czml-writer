@@ -1,16 +1,21 @@
 {
     "title": "NodeTransformation",
-    "description": "Transformations to apply to a particular node in a 3D model.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "description": "A set of transformations to apply to a particular node in a 3D model.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "scale": {
             "$ref": "Scale.jsonschema",
-            "description": "The scaling applied to the model node."
+            "description": "The scaling to apply to the model node."
         },
         "translation": {
             "$ref": "Translation.jsonschema",
-            "description": "The translation applied to the model node."
+            "description": "The translation to apply to the model node."
         },
         "rotation": {
             "$ref": "Orientation.jsonschema",

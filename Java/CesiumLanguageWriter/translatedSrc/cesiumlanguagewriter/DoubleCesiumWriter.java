@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Double</code> to a  {@link CesiumOutputStream}.  A <code>Double</code> a floating-point number.
+ Writes a <code>Double</code> to a  {@link CesiumOutputStream}.  A <code>Double</code> is a floating-point number.
  
 
  */
@@ -85,7 +85,7 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 
 	/**
 	 *  
-	Writes the <code>number</code> property.  The <code>number</code> property specifies the floating-point number.  The value may be a single number, or an array with one element, in which case the value is constant.  If it is an array with two or more elements, they are time-tagged samples arranged as `[Time, Value, Time, Value, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>number</code>, which is the number.
 	
 	
 
@@ -104,7 +104,7 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 
 	/**
 	 *  
-	Writes the <code>number</code> property.  The <code>number</code> property specifies the floating-point number.  The value may be a single number, or an array with one element, in which case the value is constant.  If it is an array with two or more elements, they are time-tagged samples arranged as `[Time, Value, Time, Value, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>number</code>, which is the number.
 	
 	
 	
@@ -124,7 +124,7 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the floating-point number specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the number specified as a reference to another property.
 	
 	
 
@@ -139,7 +139,7 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the floating-point number specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the number specified as a reference to another property.
 	
 	
 
@@ -154,7 +154,7 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the floating-point number specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the number specified as a reference to another property.
 	
 	
 	
@@ -171,7 +171,7 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the floating-point number specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the number specified as a reference to another property.
 	
 	
 	

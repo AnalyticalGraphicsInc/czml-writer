@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>StripeMaterial</code> to a  {@link CesiumOutputStream}.  A <code>StripeMaterial</code> fills the surface with alternating colors.
+ Writes a <code>StripeMaterial</code> to a  {@link CesiumOutputStream}.  A <code>StripeMaterial</code> is a material that fills the surface with alternating colors.
  
 
  */

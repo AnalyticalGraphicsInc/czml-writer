@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>LineCount</code> to a  {@link CesiumOutputStream}.  A <code>LineCount</code> the number of grid lines along each axis.
+ Writes a <code>LineCount</code> to a  {@link CesiumOutputStream}.  A <code>LineCount</code> is the number of grid lines along each axis.
  
 
  */
@@ -86,7 +86,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of grid lines along each axis.
+	Writes the value expressed as a <code>cartesian2</code>, which is the number of grid lines along each axis.
 	
 	
 
@@ -101,7 +101,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of grid lines along each axis.
+	Writes the value expressed as a <code>cartesian2</code>, which is the number of grid lines along each axis.
 	
 	
 	
@@ -115,7 +115,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of grid lines along each axis.
+	Writes the value expressed as a <code>cartesian2</code>, which is the number of grid lines along each axis.
 	
 	
 	
@@ -129,7 +129,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the number of grid lines along each axis.
+	Writes the value expressed as a <code>cartesian2</code>, which is the number of grid lines along each axis.
 	
 	
 	
@@ -149,7 +149,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the number of grid lines along each axis specified as a reference to another property.
 	
 	
 
@@ -164,7 +164,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the number of grid lines along each axis specified as a reference to another property.
 	
 	
 
@@ -179,7 +179,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the number of grid lines along each axis specified as a reference to another property.
 	
 	
 	
@@ -196,7 +196,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the number of grid lines along each axis specified as a reference to another property.
 	
 	
 	

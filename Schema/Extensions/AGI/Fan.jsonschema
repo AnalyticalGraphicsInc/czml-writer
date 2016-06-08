@@ -1,8 +1,13 @@
 {
     "title": "Fan",
     "description": "A fan.  A fan starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "extensionPrefix": "agi",
     "properties": {
         "show": {
@@ -19,7 +24,7 @@
         },
         "perDirectionRadius": {
             "$ref": "Boolean.jsonschema",
-            "description": "When true, the magnitude of each direction is used instead of a constant radius."
+            "description": "Whether the magnitude of each direction is used instead of a constant radius."
         },
         "material": {
             "$ref": "Material.jsonschema",

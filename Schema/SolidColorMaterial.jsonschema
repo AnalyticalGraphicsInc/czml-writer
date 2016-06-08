@@ -1,8 +1,13 @@
 {
     "title": "SolidColorMaterial",
-    "description": "Fills the surface with a solid color.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "description": "A material that fills the surface with a solid color.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "color": {
             "$ref": "Color.jsonschema",

@@ -1,8 +1,14 @@
 {
     "title": "LabelStyle",
     "description": "The style of a label.",
-    "type": [ "array", "object", "string" ],
-    "items": { "$ref": "#" },
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "labelStyle": {
             "$ref": "LabelStyleValue.jsonschema",
@@ -11,7 +17,7 @@
         },
         "reference": {
             "$ref": "ReferenceValue.jsonschema",
-            "description": "A reference property.",
+            "description": "The label style specified as a reference to another property.",
             "czmlValue": true
         }
     }

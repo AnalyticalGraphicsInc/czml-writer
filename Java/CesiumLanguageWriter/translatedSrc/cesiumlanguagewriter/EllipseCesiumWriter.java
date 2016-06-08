@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Ellipse</code> to a  {@link CesiumOutputStream}.  A <code>Ellipse</code> defines an ellipse, which is a closed curve on or above the surface of the Earth
+ Writes a <code>Ellipse</code> to a  {@link CesiumOutputStream}.  A <code>Ellipse</code> is an ellipse, which is a closed curve on or above the surface of the Earth.
  
 
  */

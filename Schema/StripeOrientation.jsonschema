@@ -1,8 +1,14 @@
 {
     "title": "StripeOrientation",
-    "description": "Defines the orientation of stripes in the stripe material.",
-    "type": [ "array", "object", "string" ],
-    "items": { "$ref": "#" },
+    "description": "The orientation of stripes in a stripe material.",
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "StripeOrientation": {
             "$ref": "StripeOrientationValue.jsonschema",
@@ -11,7 +17,7 @@
         },
         "reference": {
             "$ref": "ReferenceValue.jsonschema",
-            "description": "A reference property.",
+            "description": "The orientation of stripes specified as a reference to another property.",
             "czmlValue": true
         }
     }
