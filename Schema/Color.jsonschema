@@ -14,12 +14,12 @@
     "properties": {
         "rgba": {
             "$ref": "RgbaValue.jsonschema",
-            "description": "The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is an integer in the range 0-255.",
+            "description": "The color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.",
             "czmlValue": true
         },
         "rgbaf": {
             "$ref": "RgbafValue.jsonschema",
-            "description": "The color specified as an array of color components [Red, Green, Blue, Alpha] where each component is a double in the range 0.0-1.0.",
+            "description": "The color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.",
             "czmlValue": true
         },
         "reference": {

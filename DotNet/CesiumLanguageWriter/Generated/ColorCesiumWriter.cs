@@ -59,7 +59,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is an integer in the range 0-255.
+        /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteRgba(Color color)
@@ -71,7 +71,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is an integer in the range 0-255.
+        /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -86,7 +86,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is an integer in the range 0-255.
+        /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -100,7 +100,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>rgbaf</code>, which is the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is a double in the range 0.0-1.0.
+        /// Writes the value expressed as a <code>rgbaf</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>

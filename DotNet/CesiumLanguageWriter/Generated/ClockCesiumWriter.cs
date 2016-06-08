@@ -7,15 +7,10 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Clock</code> to a <see cref="CesiumOutputStream" />.  A <code>Clock</code> is initial settings for a simulated clock when a document is loaded.
+    /// Writes a <code>Clock</code> to a <see cref="CesiumOutputStream" />.  A <code>Clock</code> is initial settings for a simulated clock when a document is loaded.  The start and stop time are configured using the interval property.
     /// </summary>
     public class ClockCesiumWriter : CesiumPropertyWriter<ClockCesiumWriter>
     {
-        /// <summary>
-        /// The name of the <code>interval</code> property.
-        /// </summary>
-        public const string IntervalPropertyName = "interval";
-
         /// <summary>
         /// The name of the <code>currentTime</code> property.
         /// </summary>
@@ -58,28 +53,6 @@ namespace CesiumLanguageWriter
         public override ClockCesiumWriter Clone()
         {
             return new ClockCesiumWriter(this);
-        }
-
-        /// <summary>
-        /// Writes the value expressed as a <code>interval</code>, which is the interval of time to show.
-        /// </summary>
-        /// <param name="value">The interval.</param>
-        public void WriteInterval(TimeInterval value)
-        {
-            const string PropertyName = IntervalPropertyName;
-            OpenIntervalIfNecessary();
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteTimeInterval(Output, value);
-        }
-
-        /// <summary>
-        /// Writes the value expressed as a <code>interval</code>, which is the interval of time to show.
-        /// </summary>
-        /// <param name="start">The earliest date of the interval.</param>
-        /// <param name="stop">The latest date of the interval.</param>
-        public void WriteInterval(JulianDate start, JulianDate stop)
-        {
-            WriteInterval(new TimeInterval(start, stop));
         }
 
         /// <summary>
