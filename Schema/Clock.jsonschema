@@ -1,9 +1,18 @@
 {
     "title": "Clock",
-    "description": "Defines initial settings for a simulated clock when a document is loaded.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "description": "Initial settings for a simulated clock when a document is loaded.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
+        "interval": {
+            "$ref": "TimeIntervalValue.jsonschema",
+            "description": "The interval of time to show."
+        },
         "currentTime": {
             "$ref": "TimeValue.jsonschema",
             "description": "The current time, specified in ISO8601 format."

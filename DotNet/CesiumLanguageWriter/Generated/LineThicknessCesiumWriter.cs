@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>LineThickness</code> to a <see cref="CesiumOutputStream" />.  A <code>LineThickness</code> the thickness of grid lines along each axis, in pixels.
+    /// Writes a <code>LineThickness</code> to a <see cref="CesiumOutputStream" />.  A <code>LineThickness</code> is the thickness of grid lines along each axis, in pixels.
     /// </summary>
     public class LineThicknessCesiumWriter : CesiumInterpolatablePropertyWriter<LineThicknessCesiumWriter>
     {
@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes the value expressed as a <code>cartesian2</code>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCartesian2(Rectangular value)
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes the value expressed as a <code>cartesian2</code>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
         /// </summary>
         /// <param name="x">The X component.</param>
         /// <param name="y">The Y component.</param>
@@ -75,7 +75,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes the value expressed as a <code>cartesian2</code>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -85,7 +85,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes the value expressed as a <code>cartesian2</code>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -99,7 +99,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the value expressed as a <code>reference</code>, which is the thickness specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -111,7 +111,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the value expressed as a <code>reference</code>, which is the thickness specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -123,7 +123,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the value expressed as a <code>reference</code>, which is the thickness specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -136,7 +136,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the value expressed as a <code>reference</code>, which is the thickness specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

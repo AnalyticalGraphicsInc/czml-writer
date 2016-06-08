@@ -175,7 +175,7 @@ namespace GenerateFromSchema
 
         private static void WriteDescriptionAsClassSummary(CodeWriter writer, Schema schema)
         {
-            WriteSummaryText(writer, string.Format("Writes a <code>{0}</code> to a <see cref=\"CesiumOutputStream\" />.  A <code>{0}</code> {1}",
+            WriteSummaryText(writer, string.Format("Writes a <code>{0}</code> to a <see cref=\"CesiumOutputStream\" />.  A <code>{0}</code> is {1}",
                 schema.Name,
                 schema.Description.UncapitalizeFirstLetter()));
         }
@@ -362,7 +362,7 @@ namespace GenerateFromSchema
 
             foreach (OverloadInfo overload in overloads)
             {
-                WriteSummaryText(writer, string.Format("Writes the <code>{0}</code> property.  The <code>{0}</code> property specifies {1}", property.Name, property.Description.UncapitalizeFirstLetter()));
+                WriteSummaryText(writer, string.Format("Writes the value expressed as a <code>{0}</code>, which is {1}", property.Name, property.Description.UncapitalizeFirstLetter()));
                 foreach (ParameterInfo parameter in overload.Parameters)
                 {
                     if (string.IsNullOrEmpty(parameter.Description))

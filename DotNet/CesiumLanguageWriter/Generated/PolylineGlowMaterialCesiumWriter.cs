@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>PolylineGlowMaterial</code> to a <see cref="CesiumOutputStream" />.  A <code>PolylineGlowMaterial</code> fills the surface of a line with a glowing color.
+    /// Writes a <code>PolylineGlowMaterial</code> to a <see cref="CesiumOutputStream" />.  A <code>PolylineGlowMaterial</code> is a material that fills the surface of a line with a glowing color.
     /// </summary>
     public class PolylineGlowMaterialCesiumWriter : CesiumPropertyWriter<PolylineGlowMaterialCesiumWriter>
     {

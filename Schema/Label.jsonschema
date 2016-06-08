@@ -1,9 +1,18 @@
 {
     "title": "Label",
     "description": "A string of text.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the label is shown."
+        },
         "eyeOffset": {
             "$ref": "EyeOffset.jsonschema",
             "description": "The eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen."
@@ -35,10 +44,6 @@
         "scale": {
             "$ref": "Double.jsonschema",
             "description": "The scale of the label.  The scale is multiplied with the pixel size of the label's text.  For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text."
-        },
-        "show": {
-            "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the label is shown."
         },
         "style": {
             "$ref": "LabelStyle.jsonschema",

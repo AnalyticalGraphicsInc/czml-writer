@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Color</code> to a <see cref="CesiumOutputStream" />.  A <code>Color</code> defines a a color.  The color can optionally vary over time.
+    /// Writes a <code>Color</code> to a <see cref="CesiumOutputStream" />.  A <code>Color</code> is a color.  The color can optionally vary over time.
     /// </summary>
     public class ColorCesiumWriter : CesiumInterpolatablePropertyWriter<ColorCesiumWriter>
     {
@@ -59,7 +59,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>rgba</code> property.  The <code>rgba</code> property specifies the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteRgba(Color color)
@@ -71,7 +71,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>rgba</code> property.  The <code>rgba</code> property specifies the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -86,7 +86,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>rgba</code> property.  The <code>rgba</code> property specifies the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -100,7 +100,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>rgbaf</code> property.  The <code>rgbaf</code> property specifies the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is in the range 0.0-1.0. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as [Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// Writes the value expressed as a <code>rgbaf</code>, which is the color specified as an array of color components [Red, Green, Blue, Alpha] where each component is a double in the range 0.0-1.0.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -115,7 +115,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the color specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -127,7 +127,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the color specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -139,7 +139,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the color specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -152,7 +152,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the color specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the color specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

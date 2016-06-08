@@ -7,7 +7,7 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>LabelStyle</code> to a <see cref="CesiumOutputStream" />.  A <code>LabelStyle</code> the style of a label.
+    /// Writes a <code>LabelStyle</code> to a <see cref="CesiumOutputStream" />.  A <code>LabelStyle</code> is the style of a label.
     /// </summary>
     public class LabelStyleCesiumWriter : CesiumPropertyWriter<LabelStyleCesiumWriter>
     {
@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>labelStyle</code> property.  The <code>labelStyle</code> property specifies the label style.  Valid values are "FILL", "OUTLINE", and "FILL_AND_OUTLINE".
+        /// Writes the value expressed as a <code>labelStyle</code>, which is the label style.  Valid values are "FILL", "OUTLINE", and "FILL_AND_OUTLINE".
         /// </summary>
         /// <param name="value">The label style.</param>
         public void WriteLabelStyle(CesiumLabelStyle value)
@@ -70,7 +70,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the value expressed as a <code>reference</code>, which is the label style specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -82,7 +82,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the value expressed as a <code>reference</code>, which is the label style specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -94,7 +94,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the value expressed as a <code>reference</code>, which is the label style specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -107,7 +107,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the value expressed as a <code>reference</code>, which is the label style specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

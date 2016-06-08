@@ -1,8 +1,14 @@
 {
     "title": "Uri",
     "description": "A URI value.  The URI can optionally vary with time.",
-    "type": [ "array", "object", "string" ],
-    "items": { "$ref": "#" },
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "uri": {
             "$ref": "UriValue.jsonschema",
@@ -11,7 +17,7 @@
         },
         "reference": {
             "$ref": "ReferenceValue.jsonschema",
-            "description": "A reference property.",
+            "description": "The URI specified as a reference to another property.",
             "czmlValue": true
         }
     }

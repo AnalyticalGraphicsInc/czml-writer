@@ -1,5 +1,5 @@
 {
     "title": "UnitSphericalList",
-    "description": "A list of directions specified as spherical [Clock, Cone, Clock, Cone, ...] angles.",
+    "description": "A list of unit spherical values specified as `[Clock, Cone, Clock, Cone, ...]` angles.",
     "type": "array"
 }

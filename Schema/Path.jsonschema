@@ -1,8 +1,13 @@
 {
     "title": "Path",
     "description": "A path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",

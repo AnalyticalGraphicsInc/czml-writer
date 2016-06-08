@@ -1,8 +1,14 @@
 {
     "title": "HorizontalOrigin",
-    "description": "Defines the horizontal origin of an element, which can optionally vary over time.  It controls whether the element is left-, center-, or right-aligned with the `position`.",
-    "type": [ "array", "object", "string" ],
-    "items": { "$ref": "#" },
+    "description": "The horizontal origin of an element, which can optionally vary over time.  It controls whether the element is left-, center-, or right-aligned with the `position`.",
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "horizontalOrigin": {
             "$ref": "HorizontalOriginValue.jsonschema",
@@ -11,7 +17,7 @@
         },
         "reference": {
             "$ref": "ReferenceValue.jsonschema",
-            "description": "A reference property.",
+            "description": "The horizontal origin specified as a reference to another property.",
             "czmlValue": true
         }
     }

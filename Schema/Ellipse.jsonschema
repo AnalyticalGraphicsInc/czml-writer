@@ -1,8 +1,13 @@
 {
     "title": "Ellipse",
-    "description": "Defines an ellipse, which is a closed curve on or above the surface of the Earth",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "description": "An ellipse, which is a closed curve on or above the surface of the Earth.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",

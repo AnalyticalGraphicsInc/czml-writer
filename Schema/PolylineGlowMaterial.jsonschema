@@ -1,8 +1,13 @@
 {
     "title": "PolylineGlowMaterial",
-    "description": "Fills the surface of a line with a glowing color.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "description": "A material that fills the surface of a line with a glowing color.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "color": {
             "$ref": "Color.jsonschema",

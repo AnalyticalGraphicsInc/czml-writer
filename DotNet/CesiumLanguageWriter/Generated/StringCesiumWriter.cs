@@ -7,7 +7,7 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>String</code> to a <see cref="CesiumOutputStream" />.  A <code>String</code> a string value.  The string can optionally vary with time.
+    /// Writes a <code>String</code> to a <see cref="CesiumOutputStream" />.  A <code>String</code> is a string value.  The string can optionally vary with time.
     /// </summary>
     public class StringCesiumWriter : CesiumPropertyWriter<StringCesiumWriter>
     {
@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>string</code> property.  The <code>string</code> property specifies the string value.
+        /// Writes the value expressed as a <code>string</code>, which is the string value.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteString(string value)
@@ -70,7 +70,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the value expressed as a <code>reference</code>, which is the string specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -82,7 +82,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the value expressed as a <code>reference</code>, which is the string specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -94,7 +94,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the value expressed as a <code>reference</code>, which is the string specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -107,7 +107,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+        /// Writes the value expressed as a <code>reference</code>, which is the string specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

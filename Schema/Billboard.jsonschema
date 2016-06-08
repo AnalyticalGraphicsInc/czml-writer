@@ -1,8 +1,13 @@
 {
     "title": "Billboard",
-    "description": "Specifies a billboard, or viewport-aligned image. The billboard is positioned in the scene by the `position` property. A billboard is sometimes called a marker.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "description": "A billboard, or viewport-aligned image.  The billboard is positioned in the scene by the `position` property.  A billboard is sometimes called a marker.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
@@ -22,7 +27,7 @@
         },
         "image": {
             "$ref": "Uri.jsonschema",
-            "description": "The image displayed on the billboard, expressed as a URI.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
+            "description": "The URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
         },
         "pixelOffset": {
             "$ref": "PixelOffset.jsonschema",
@@ -34,11 +39,11 @@
         },
         "rotation": {
             "$ref": "Double.jsonschema",
-            "description": "The rotation of the billboard, in radians, offset from the alignedAxis."
+            "description": "The rotation of the billboard, in radians, counter-clockwise from the alignedAxis."
         },
         "alignedAxis": {
             "$ref": "AlignedAxis.jsonschema",
-            "description": "The aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector."
+            "description": "The aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector."
         },
         "verticalOrigin": {
             "$ref": "VerticalOrigin.jsonschema",

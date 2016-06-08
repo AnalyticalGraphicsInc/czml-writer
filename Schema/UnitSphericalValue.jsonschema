@@ -1,5 +1,5 @@
 {
     "title": "UnitSpherical",
-    "description": "A direction specified as a spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch.",
+    "description": "A unit spherical value specified as `[Clock, Cone]` angles.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.  If the array has two elements, the value is constant. If it has three or more elements, they are time-tagged samples arranged as `[Time, Clock, Cone, Time, Clock, Cone, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.",
     "type": "array"
 }

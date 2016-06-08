@@ -1,8 +1,14 @@
 {
     "title": "Boolean",
-    "description": "Represents a boolean value.",
-    "type": [ "array", "object", "boolean" ],
-    "items": { "$ref": "#" },
+    "description": "A boolean value.",
+    "type": [
+        "array",
+        "object",
+        "boolean"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "boolean": {
             "$ref": "BooleanValue.jsonschema",

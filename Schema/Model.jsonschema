@@ -1,8 +1,13 @@
 {
     "title": "Model",
     "description": "A 3D model.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
@@ -18,7 +23,7 @@
         },
         "gltf": {
             "$ref": "Uri.jsonschema",
-            "description": "The URI of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model."
+            "description": "The URI of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
         },
         "runAnimations": {
             "$ref": "Boolean.jsonschema",

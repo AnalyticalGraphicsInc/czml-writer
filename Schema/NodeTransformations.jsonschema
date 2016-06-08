@@ -1,6 +1,6 @@
 {
     "title": "NodeTransformations",
-    "description": "Defines a mapping of node names to node transformations.",
+    "description": "A mapping of node names to node transformations.",
     "type": "object",
     "additionalProperties": {
         "$ref": "NodeTransformation.jsonschema",

@@ -1,9 +1,18 @@
 {
     "title": "Point",
     "description": "A point, or viewport-aligned circle.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the point is shown."
+        },
         "color": {
             "$ref": "Color.jsonschema",
             "description": "The color of the point."
@@ -19,10 +28,6 @@
         "pixelSize": {
             "$ref": "Double.jsonschema",
             "description": "The size of the point, in pixels."
-        },
-        "show": {
-            "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the point is shown."
         }
     }
 }

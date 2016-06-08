@@ -1,8 +1,13 @@
 {
     "title": "Ellipsoid",
-    "description": "Defines a closed quadric surface that is a three dimensional analogue of an ellipse.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "description": "A closed quadric surface that is a three dimensional analogue of an ellipse.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
