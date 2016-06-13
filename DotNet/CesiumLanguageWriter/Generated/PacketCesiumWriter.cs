@@ -114,6 +114,21 @@ namespace CesiumLanguageWriter
         public const string EllipsePropertyName = "ellipse";
 
         /// <summary>
+        /// The name of the <code>box</code> property.
+        /// </summary>
+        public const string BoxPropertyName = "box";
+
+        /// <summary>
+        /// The name of the <code>cylinder</code> property.
+        /// </summary>
+        public const string CylinderPropertyName = "cylinder";
+
+        /// <summary>
+        /// The name of the <code>corridor</code> property.
+        /// </summary>
+        public const string CorridorPropertyName = "corridor";
+
+        /// <summary>
         /// The name of the <code>agi_conicSensor</code> property.
         /// </summary>
         public const string ConicSensorPropertyName = "agi_conicSensor";
@@ -151,6 +166,9 @@ namespace CesiumLanguageWriter
         private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
         private readonly Lazy<ModelCesiumWriter> m_model = new Lazy<ModelCesiumWriter>(() => new ModelCesiumWriter(ModelPropertyName), false);
         private readonly Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(() => new EllipseCesiumWriter(EllipsePropertyName), false);
+        private readonly Lazy<BoxCesiumWriter> m_box = new Lazy<BoxCesiumWriter>(() => new BoxCesiumWriter(BoxPropertyName), false);
+        private readonly Lazy<CylinderCesiumWriter> m_cylinder = new Lazy<CylinderCesiumWriter>(() => new CylinderCesiumWriter(CylinderPropertyName), false);
+        private readonly Lazy<CorridorCesiumWriter> m_corridor = new Lazy<CorridorCesiumWriter>(() => new CorridorCesiumWriter(CorridorPropertyName), false);
         private readonly Lazy<ConicSensorCesiumWriter> m_agi_conicSensor = new Lazy<ConicSensorCesiumWriter>(() => new ConicSensorCesiumWriter(ConicSensorPropertyName), false);
         private readonly Lazy<CustomPatternSensorCesiumWriter> m_agi_customPatternSensor = new Lazy<CustomPatternSensorCesiumWriter>(() => new CustomPatternSensorCesiumWriter(CustomPatternSensorPropertyName), false);
         private readonly Lazy<RectangularSensorCesiumWriter> m_agi_rectangularSensor = new Lazy<RectangularSensorCesiumWriter>(() => new RectangularSensorCesiumWriter(RectangularSensorPropertyName), false);
@@ -863,6 +881,54 @@ namespace CesiumLanguageWriter
         public EllipseCesiumWriter OpenEllipseProperty()
         {
             return OpenAndReturn(EllipseWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>box</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>box</code> property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public BoxCesiumWriter BoxWriter
+        {
+            get { return m_box.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>box</code> property.  The <code>box</code> property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public BoxCesiumWriter OpenBoxProperty()
+        {
+            return OpenAndReturn(BoxWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>cylinder</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>cylinder</code> property defines a cylinder.  The cylinder is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public CylinderCesiumWriter CylinderWriter
+        {
+            get { return m_cylinder.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>cylinder</code> property.  The <code>cylinder</code> property defines a cylinder.  The cylinder is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public CylinderCesiumWriter OpenCylinderProperty()
+        {
+            return OpenAndReturn(CylinderWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>corridor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>corridor</code> property defines a corridor, which is a shape defined by a centerline and width.
+        /// </summary>
+        public CorridorCesiumWriter CorridorWriter
+        {
+            get { return m_corridor.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>corridor</code> property.  The <code>corridor</code> property defines a corridor, which is a shape defined by a centerline and width.
+        /// </summary>
+        public CorridorCesiumWriter OpenCorridorProperty()
+        {
+            return OpenAndReturn(CorridorWriter);
         }
 
         /// <summary>

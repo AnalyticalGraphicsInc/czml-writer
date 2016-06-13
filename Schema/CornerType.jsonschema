@@ -1,0 +1,24 @@
+{
+    "title": "CornerType",
+    "description": "The style of a corner.",
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "CornerType": {
+            "$ref": "CornerTypeValue.jsonschema",
+            "description": "The corner style.  Valid values are \"ROUNDED\", \"MITERED\", and \"BEVELED\".",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.jsonschema",
+            "description": "The corner style specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

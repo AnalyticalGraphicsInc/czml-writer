@@ -1,0 +1,10 @@
+{
+    "title": "CornerType",
+    "description": "The style of a corner.",
+    "type": "string",
+    "enum": [
+        "ROUNDED",
+        "MITERED",
+        "BEVELED"
+    ]
+}
