@@ -46,9 +46,14 @@
     <Compile Include="Advanced\TestCesiumWritingHelper.cs" />
     <Compile Include="grisu\TestGrisu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestBillboardCesiumWriter.cs" />
+    <Compile Include="TestBooleanCesiumWriter.cs" />
     <Compile Include="TestCartesian3.cs" />
     <Compile Include="TestCartographic.cs" />
     <Compile Include="TestCesiumInterpolatablePropertyWriter.cs" />
+    <Compile Include="TestDoubleCesiumWriter.cs" />
+    <Compile Include="TestHorizontalOriginCesiumWriter.cs" />
+    <Compile Include="TestLabelStyleCesiumWriter.cs" />
     <Compile Include="TestPacketCesiumWriter.cs" />
     <Compile Include="TestCesiumPropertyWriter.cs" />
     <Compile Include="TestCesiumStreamWriter.cs" />
@@ -66,10 +71,12 @@
     <Compile Include="TestPositionCesiumWriter.cs" />
     <Compile Include="TestPropertiesOfSimpleJsonTypes.cs" />
     <Compile Include="TestReference.cs" />
+    <Compile Include="TestStringCesiumWriter.cs" />
     <Compile Include="TestTimeInterval.cs" />
     <Compile Include="TestUnitCartesian3.cs" />
     <Compile Include="TestUnitQuaternion.cs" />
     <Compile Include="TestUnitSpherical.cs" />
+    <Compile Include="TestVerticalOriginCesiumWriter.cs" />
     <Compile Include="TestYearMonthDay.cs" />
   </ItemGroup>
   <ItemGroup>

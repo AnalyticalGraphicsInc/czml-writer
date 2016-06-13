@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>LineOffset</code> to a  {@link CesiumOutputStream}.  A <code>LineOffset</code> the offset of grid lines along each axis, as a percentage from 0 to 1.
+ Writes a <code>LineOffset</code> to a  {@link CesiumOutputStream}.  A <code>LineOffset</code> is the offset of grid lines along each axis, as a percentage from 0 to 1.
  
 
  */
@@ -86,7 +86,7 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+	Writes the value expressed as a <code>cartesian2</code>, which is the offset of grid lines along each axis, specified as a percentage from 0 to 1.
 	
 	
 
@@ -101,7 +101,7 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+	Writes the value expressed as a <code>cartesian2</code>, which is the offset of grid lines along each axis, specified as a percentage from 0 to 1.
 	
 	
 	
@@ -115,7 +115,7 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+	Writes the value expressed as a <code>cartesian2</code>, which is the offset of grid lines along each axis, specified as a percentage from 0 to 1.
 	
 	
 	
@@ -129,7 +129,7 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+	Writes the value expressed as a <code>cartesian2</code>, which is the offset of grid lines along each axis, specified as a percentage from 0 to 1.
 	
 	
 	
@@ -149,7 +149,7 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the offset of grid lines along each axis specified as a reference to another property.
 	
 	
 
@@ -164,7 +164,7 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the offset of grid lines along each axis specified as a reference to another property.
 	
 	
 
@@ -179,7 +179,7 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the offset of grid lines along each axis specified as a reference to another property.
 	
 	
 	
@@ -196,7 +196,7 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the offset of grid lines along each axis specified as a reference to another property.
 	
 	
 	

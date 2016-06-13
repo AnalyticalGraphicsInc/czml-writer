@@ -28,7 +28,7 @@
             "default": 0
         },
         "backwardExtrapolationType": {
-            "description": "The the type of extrapolation to perform when a value is requested at a time before any available samples. Valid values are \"NONE\", \"HOLD\", and \"EXTRAPOLATE\".",
+            "description": "The type of extrapolation to perform when a value is requested at a time before any available samples. Valid values are \"NONE\", \"HOLD\", and \"EXTRAPOLATE\".",
             "type": "string",
             "default": "NONE"
         },

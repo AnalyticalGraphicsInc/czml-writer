@@ -1,8 +1,13 @@
 {
     "title": "PolylineOutlineMaterial",
-    "description": "Fills the surface of a line with an outlined color.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "description": "A material that fills the surface of a line with an outlined color.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "color": {
             "$ref": "Color.jsonschema",

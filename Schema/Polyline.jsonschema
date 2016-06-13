@@ -1,16 +1,21 @@
 {
     "title": "Polyline",
     "description": "A polyline, which is a line in the scene composed of multiple segments.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
-        "positions": {
-            "$ref": "PositionList.jsonschema",
-            "description": "The array of positions defining the polyline as a line strip."
-        },
         "show": {
             "$ref": "Boolean.jsonschema",
             "description": "Whether or not the polyline is shown."
+        },
+        "positions": {
+            "$ref": "PositionList.jsonschema",
+            "description": "The array of positions defining the polyline as a line strip."
         },
         "material": {
             "$ref": "PolylineMaterial.jsonschema",

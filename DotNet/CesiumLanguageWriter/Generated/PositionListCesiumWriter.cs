@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>PositionList</code> to a <see cref="CesiumOutputStream" />.  A <code>PositionList</code> a list of positions.
+    /// Writes a <code>PositionList</code> to a <see cref="CesiumOutputStream" />.  A <code>PositionList</code> is a list of positions.
     /// </summary>
     public class PositionListCesiumWriter : CesiumPropertyWriter<PositionListCesiumWriter>
     {
@@ -74,7 +74,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>referenceFrame</code> property.  The <code>referenceFrame</code> property specifies the reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". If this property is not specified, the default reference frame is "FIXED".
+        /// Writes the value expressed as a <code>referenceFrame</code>, which is the reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". If this property is not specified, the default reference frame is "FIXED".
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteReferenceFrame(string value)
@@ -86,7 +86,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the list of positions represented as Cartesian coordinates, `[X, Y, Z, X, Y, Z, ...]`, in meters relative to the `referenceFrame`.
+        /// Writes the value expressed as a <code>cartesian</code>, which is the list of positions specified as three-dimensional Cartesian values, `[X, Y, Z, X, Y, Z, ...]`, in meters relative to the `referenceFrame`.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteCartesian(IEnumerable<Cartesian> values)
@@ -98,7 +98,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartographicRadians</code> property.  The <code>cartographicRadians</code> property specifies the list of positions represented as Cartographic WGS84 coordinates, `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in radians and Height is in meters.
+        /// Writes the value expressed as a <code>cartographicRadians</code>, which is the list of positions specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in radians and Height is in meters.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteCartographicRadians(IEnumerable<Cartographic> values)
@@ -110,7 +110,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the list of positions represented as Cartographic WGS84 coordinates, `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in degrees and Height is in meters.
+        /// Writes the value expressed as a <code>cartographicDegrees</code>, which is the list of positions specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in degrees and Height is in meters.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteCartographicDegrees(IEnumerable<Cartographic> values)
@@ -122,7 +122,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>references</code> property.  The <code>references</code> property specifies the list of positions specified as references.  Each reference is to a property that defines a single position, which may change with time.
+        /// Writes the value expressed as a <code>references</code>, which is the list of positions specified as references.  Each reference is to a property that defines a single position, which may change with time.
         /// </summary>
         /// <param name="references">The list of references.</param>
         public void WriteReferences(IEnumerable<Reference> references)

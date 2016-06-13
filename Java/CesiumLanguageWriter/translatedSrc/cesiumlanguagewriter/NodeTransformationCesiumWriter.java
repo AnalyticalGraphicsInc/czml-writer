@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>NodeTransformation</code> to a  {@link CesiumOutputStream}.  A <code>NodeTransformation</code> transformations to apply to a particular node in a 3D model.
+ Writes a <code>NodeTransformation</code> to a  {@link CesiumOutputStream}.  A <code>NodeTransformation</code> is a set of transformations to apply to a particular node in a 3D model.
  
 
  */
@@ -83,7 +83,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 	}
 
 	/**
-	 *  Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>scale</code> property defines the scaling applied to the model node.
+	 *  Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>scale</code> property defines the scaling to apply to the model node.
 	
 
 	 */
@@ -93,7 +93,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>scale</code> property.  The <code>scale</code> property defines the scaling applied to the model node.
+	Opens and returns the writer for the <code>scale</code> property.  The <code>scale</code> property defines the scaling to apply to the model node.
 	
 
 	 */
@@ -104,7 +104,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling applied to the model node.
+	Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
 	
 	
 
@@ -123,7 +123,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling applied to the model node.
+	Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
 	
 	
 	
@@ -144,7 +144,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling applied to the model node.
+	Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
 	
 	
 	
@@ -169,7 +169,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling applied to the model node.
+	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
 	
 	
 
@@ -188,7 +188,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling applied to the model node.
+	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
 	
 	
 
@@ -207,7 +207,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling applied to the model node.
+	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
 	
 	
 	
@@ -228,7 +228,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling applied to the model node.
+	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
 	
 	
 	
@@ -248,7 +248,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 	}
 
 	/**
-	 *  Gets the writer for the <code>translation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>translation</code> property defines the translation applied to the model node.
+	 *  Gets the writer for the <code>translation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>translation</code> property defines the translation to apply to the model node.
 	
 
 	 */
@@ -258,7 +258,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>translation</code> property.  The <code>translation</code> property defines the translation applied to the model node.
+	Opens and returns the writer for the <code>translation</code> property.  The <code>translation</code> property defines the translation to apply to the model node.
 	
 
 	 */
@@ -269,7 +269,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Writes a value for the <code>translation</code> property as a <code>cartesian</code> value.  The <code>translation</code> property specifies the translation applied to the model node.
+	Writes a value for the <code>translation</code> property as a <code>cartesian</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
 	
 	
 
@@ -288,7 +288,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Writes a value for the <code>translation</code> property as a <code>cartesian</code> value.  The <code>translation</code> property specifies the translation applied to the model node.
+	Writes a value for the <code>translation</code> property as a <code>cartesian</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
 	
 	
 	
@@ -309,7 +309,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Writes a value for the <code>translation</code> property as a <code>cartesian</code> value.  The <code>translation</code> property specifies the translation applied to the model node.
+	Writes a value for the <code>translation</code> property as a <code>cartesian</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
 	
 	
 	
@@ -334,7 +334,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation applied to the model node.
+	Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
 	
 	
 
@@ -353,7 +353,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation applied to the model node.
+	Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
 	
 	
 
@@ -372,7 +372,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation applied to the model node.
+	Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
 	
 	
 	
@@ -393,7 +393,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	/**
 	 *  
-	Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation applied to the model node.
+	Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
 	
 	
 	

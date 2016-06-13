@@ -1,24 +1,29 @@
 {
     "title": "Material",
-    "description": "Defines how a surface is colored or shaded.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "description": "A definition of how a surface is colored or shaded.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "solidColor": {
             "$ref": "SolidColorMaterial.jsonschema",
-            "description": "Fills the surface with a solid color, which may be translucent."
+            "description": "A material that fills the surface with a solid color, which may be translucent."
         },
         "image": {
             "$ref": "ImageMaterial.jsonschema",
-            "description": "Fills the surface with an image."
+            "description": "A material that fills the surface with an image."
         },
         "grid": {
             "$ref": "GridMaterial.jsonschema",
-            "description": "Fills the surface with a grid."
+            "description": "A material that fills the surface with a grid."
         },
         "stripe": {
             "$ref": "StripeMaterial.jsonschema",
-            "description": "Fills the surface with alternating colors."
+            "description": "A material that fills the surface with alternating colors."
         }
     }
 }

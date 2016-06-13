@@ -9,10 +9,15 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Point</code> to a <see cref="CesiumOutputStream" />.  A <code>Point</code> a point, or viewport-aligned circle.
+    /// Writes a <code>Point</code> to a <see cref="CesiumOutputStream" />.  A <code>Point</code> is a point, or viewport-aligned circle.
     /// </summary>
     public class PointCesiumWriter : CesiumPropertyWriter<PointCesiumWriter>
     {
+        /// <summary>
+        /// The name of the <code>show</code> property.
+        /// </summary>
+        public const string ShowPropertyName = "show";
+
         /// <summary>
         /// The name of the <code>color</code> property.
         /// </summary>
@@ -33,16 +38,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string PixelSizePropertyName = "pixelSize";
 
-        /// <summary>
-        /// The name of the <code>show</code> property.
-        /// </summary>
-        public const string ShowPropertyName = "show";
-
+        private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_pixelSize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(PixelSizePropertyName), false);
-        private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -65,6 +65,85 @@ namespace CesiumLanguageWriter
         public override PointCesiumWriter Clone()
         {
             return new PointCesiumWriter(this);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the point is shown.
+        /// </summary>
+        public BooleanCesiumWriter ShowWriter
+        {
+            get { return m_show.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the point is shown.
+        /// </summary>
+        public BooleanCesiumWriter OpenShowProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ShowWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the point is shown.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteShowProperty(bool value)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShowPropertyReference(string value)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
         }
 
         /// <summary>
@@ -498,85 +577,6 @@ namespace CesiumLanguageWriter
         public void WritePixelSizePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenPixelSizeProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the point is shown.
-        /// </summary>
-        public BooleanCesiumWriter ShowWriter
-        {
-            get { return m_show.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the point is shown.
-        /// </summary>
-        public BooleanCesiumWriter OpenShowProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(ShowWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the point is shown.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteShowProperty(bool value)
-        {
-            using (var writer = OpenShowProperty())
-            {
-                writer.WriteBoolean(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteShowPropertyReference(Reference value)
-        {
-            using (var writer = OpenShowProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteShowPropertyReference(string value)
-        {
-            using (var writer = OpenShowProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteShowPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenShowProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteShowPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenShowProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

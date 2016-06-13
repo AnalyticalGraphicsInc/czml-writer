@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>SolidColorMaterial</code> to a  {@link CesiumOutputStream}.  A <code>SolidColorMaterial</code> fills the surface with a solid color.
+ Writes a <code>SolidColorMaterial</code> to a  {@link CesiumOutputStream}.  A <code>SolidColorMaterial</code> is a material that fills the surface with a solid color.
  
 
  */

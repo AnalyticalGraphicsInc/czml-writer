@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Fan</code> to a  {@link CesiumOutputStream}.  A <code>Fan</code> a fan.  A fan starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
+ Writes a <code>Fan</code> to a  {@link CesiumOutputStream}.  A <code>Fan</code> is a fan.  A fan starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
  
 
  */
@@ -529,7 +529,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>perDirectionRadius</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>perDirectionRadius</code> property defines when true, the magnitude of each direction is used instead of a constant radius.
+	 *  Gets the writer for the <code>perDirectionRadius</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>perDirectionRadius</code> property defines whether the magnitude of each direction is used instead of a constant radius.
 	
 
 	 */
@@ -539,7 +539,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>perDirectionRadius</code> property.  The <code>perDirectionRadius</code> property defines when true, the magnitude of each direction is used instead of a constant radius.
+	Opens and returns the writer for the <code>perDirectionRadius</code> property.  The <code>perDirectionRadius</code> property defines whether the magnitude of each direction is used instead of a constant radius.
 	
 
 	 */
@@ -550,7 +550,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>perDirectionRadius</code> property as a <code>boolean</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direction is used instead of a constant radius.
+	Writes a value for the <code>perDirectionRadius</code> property as a <code>boolean</code> value.  The <code>perDirectionRadius</code> property specifies whether the magnitude of each direction is used instead of a constant radius.
 	
 	
 
@@ -569,7 +569,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direction is used instead of a constant radius.
+	Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies whether the magnitude of each direction is used instead of a constant radius.
 	
 	
 
@@ -588,7 +588,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direction is used instead of a constant radius.
+	Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies whether the magnitude of each direction is used instead of a constant radius.
 	
 	
 
@@ -607,7 +607,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direction is used instead of a constant radius.
+	Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies whether the magnitude of each direction is used instead of a constant radius.
 	
 	
 	
@@ -628,7 +628,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direction is used instead of a constant radius.
+	Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies whether the magnitude of each direction is used instead of a constant radius.
 	
 	
 	

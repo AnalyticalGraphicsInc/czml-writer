@@ -7,6 +7,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.GridMaterialCesiumWriter;
 import cesiumlanguagewriter.ImageMaterialCesiumWriter;
+import cesiumlanguagewriter.PolylineArrowMaterialCesiumWriter;
 import cesiumlanguagewriter.PolylineGlowMaterialCesiumWriter;
 import cesiumlanguagewriter.PolylineOutlineMaterialCesiumWriter;
 import cesiumlanguagewriter.SolidColorMaterialCesiumWriter;
@@ -14,7 +15,7 @@ import cesiumlanguagewriter.StripeMaterialCesiumWriter;
 
 /**
  *  
- Writes a <code>PolylineMaterial</code> to a  {@link CesiumOutputStream}.  A <code>PolylineMaterial</code> defines how a polyline is colored or shaded.
+ Writes a <code>PolylineMaterial</code> to a  {@link CesiumOutputStream}.  A <code>PolylineMaterial</code> is a definition of how a polyline is colored or shaded.
  
 
  */
@@ -33,6 +34,13 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 
 	 */
 	public static final String PolylineOutlinePropertyName = "polylineOutline";
+	/**
+	 *  
+	The name of the <code>polylineArrow</code> property.
+	
+
+	 */
+	public static final String PolylineArrowPropertyName = "polylineArrow";
 	/**
 	 *  
 	The name of the <code>polylineGlow</code> property.
@@ -70,6 +78,12 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 			new Func1<cesiumlanguagewriter.PolylineOutlineMaterialCesiumWriter>() {
 				public cesiumlanguagewriter.PolylineOutlineMaterialCesiumWriter invoke() {
 					return new PolylineOutlineMaterialCesiumWriter(PolylineOutlinePropertyName);
+				}
+			}, false);
+	private Lazy<PolylineArrowMaterialCesiumWriter> m_polylineArrow = new Lazy<cesiumlanguagewriter.PolylineArrowMaterialCesiumWriter>(
+			new Func1<cesiumlanguagewriter.PolylineArrowMaterialCesiumWriter>() {
+				public cesiumlanguagewriter.PolylineArrowMaterialCesiumWriter invoke() {
+					return new PolylineArrowMaterialCesiumWriter(PolylineArrowPropertyName);
 				}
 			}, false);
 	private Lazy<PolylineGlowMaterialCesiumWriter> m_polylineGlow = new Lazy<cesiumlanguagewriter.PolylineGlowMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineGlowMaterialCesiumWriter>() {
@@ -121,7 +135,7 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 	}
 
 	/**
-	 *  Gets the writer for the <code>solidColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>solidColor</code> property defines colors the line with a solid color, which may be translucent.
+	 *  Gets the writer for the <code>solidColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>solidColor</code> property defines a material that fills the line with a solid color, which may be translucent.
 	
 
 	 */
@@ -131,7 +145,7 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>solidColor</code> property.  The <code>solidColor</code> property defines colors the line with a solid color, which may be translucent.
+	Opens and returns the writer for the <code>solidColor</code> property.  The <code>solidColor</code> property defines a material that fills the line with a solid color, which may be translucent.
 	
 
 	 */
@@ -141,7 +155,7 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 	}
 
 	/**
-	 *  Gets the writer for the <code>polylineOutline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>polylineOutline</code> property defines colors the line with a color and outline.
+	 *  Gets the writer for the <code>polylineOutline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>polylineOutline</code> property defines a material that fills the line with a color and outline.
 	
 
 	 */
@@ -151,7 +165,7 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>polylineOutline</code> property.  The <code>polylineOutline</code> property defines colors the line with a color and outline.
+	Opens and returns the writer for the <code>polylineOutline</code> property.  The <code>polylineOutline</code> property defines a material that fills the line with a color and outline.
 	
 
 	 */
@@ -161,7 +175,27 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 	}
 
 	/**
-	 *  Gets the writer for the <code>polylineGlow</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>polylineGlow</code> property defines colors the line with a glowing color.
+	 *  Gets the writer for the <code>polylineArrow</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>polylineArrow</code> property defines a material that fills the line with an arrow.
+	
+
+	 */
+	public final PolylineArrowMaterialCesiumWriter getPolylineArrowWriter() {
+		return m_polylineArrow.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>polylineArrow</code> property.  The <code>polylineArrow</code> property defines a material that fills the line with an arrow.
+	
+
+	 */
+	public final PolylineArrowMaterialCesiumWriter openPolylineArrowProperty() {
+		openIntervalIfNecessary();
+		return this.<PolylineArrowMaterialCesiumWriter> openAndReturn(getPolylineArrowWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>polylineGlow</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>polylineGlow</code> property defines a material that fills the line with a glowing color.
 	
 
 	 */
@@ -171,7 +205,7 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>polylineGlow</code> property.  The <code>polylineGlow</code> property defines colors the line with a glowing color.
+	Opens and returns the writer for the <code>polylineGlow</code> property.  The <code>polylineGlow</code> property defines a material that fills the line with a glowing color.
 	
 
 	 */
@@ -181,7 +215,7 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 	}
 
 	/**
-	 *  Gets the writer for the <code>image</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>image</code> property defines fills the line with an image.
+	 *  Gets the writer for the <code>image</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>image</code> property defines a material that fills the line with an image.
 	
 
 	 */
@@ -191,7 +225,7 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>image</code> property.  The <code>image</code> property defines fills the line with an image.
+	Opens and returns the writer for the <code>image</code> property.  The <code>image</code> property defines a material that fills the line with an image.
 	
 
 	 */
@@ -201,7 +235,7 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 	}
 
 	/**
-	 *  Gets the writer for the <code>grid</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>grid</code> property defines fills the line with a grid.
+	 *  Gets the writer for the <code>grid</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>grid</code> property defines a material that fills the line with a grid.
 	
 
 	 */
@@ -211,7 +245,7 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>grid</code> property.  The <code>grid</code> property defines fills the line with a grid.
+	Opens and returns the writer for the <code>grid</code> property.  The <code>grid</code> property defines a material that fills the line with a grid.
 	
 
 	 */
@@ -221,7 +255,7 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 	}
 
 	/**
-	 *  Gets the writer for the <code>stripe</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>stripe</code> property defines fills the line with alternating colors.
+	 *  Gets the writer for the <code>stripe</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>stripe</code> property defines a material that fills the line with alternating colors.
 	
 
 	 */
@@ -231,7 +265,7 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>stripe</code> property.  The <code>stripe</code> property defines fills the line with alternating colors.
+	Opens and returns the writer for the <code>stripe</code> property.  The <code>stripe</code> property defines a material that fills the line with alternating colors.
 	
 
 	 */

@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>PixelOffset</code> to a  {@link CesiumOutputStream}.  A <code>PixelOffset</code> defines a pixel offset in viewport coordinates.  A pixel offset is the number of pixels up and to the right to place an element relative to an origin.
+ Writes a <code>PixelOffset</code> to a  {@link CesiumOutputStream}.  A <code>PixelOffset</code> is a pixel offset in viewport coordinates.  A pixel offset is the number of pixels up and to the right to place an element relative to an origin.
  
 
  */
@@ -86,7 +86,7 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the pixel offset specified as a Cartesian `[X, Y]` in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.  If the array has two elements, the pixel offset is constant.  If it has three or more elements, they are time-tagged samples arranged as `[Time, X, Y, Time, X, Y, Time, X, Y, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+	Writes the value expressed as a <code>cartesian2</code>, which is the pixel offset specified as a two-dimensional Cartesian value `[X, Y]`, in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.
 	
 	
 
@@ -101,7 +101,7 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the pixel offset specified as a Cartesian `[X, Y]` in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.  If the array has two elements, the pixel offset is constant.  If it has three or more elements, they are time-tagged samples arranged as `[Time, X, Y, Time, X, Y, Time, X, Y, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+	Writes the value expressed as a <code>cartesian2</code>, which is the pixel offset specified as a two-dimensional Cartesian value `[X, Y]`, in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.
 	
 	
 	
@@ -115,7 +115,7 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the pixel offset specified as a Cartesian `[X, Y]` in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.  If the array has two elements, the pixel offset is constant.  If it has three or more elements, they are time-tagged samples arranged as `[Time, X, Y, Time, X, Y, Time, X, Y, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+	Writes the value expressed as a <code>cartesian2</code>, which is the pixel offset specified as a two-dimensional Cartesian value `[X, Y]`, in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.
 	
 	
 	
@@ -129,7 +129,7 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>cartesian2</code> property.  The <code>cartesian2</code> property specifies the pixel offset specified as a Cartesian `[X, Y]` in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.  If the array has two elements, the pixel offset is constant.  If it has three or more elements, they are time-tagged samples arranged as `[Time, X, Y, Time, X, Y, Time, X, Y, ...]`, where _Time_ is an ISO 8601 date and time string or seconds since `epoch`.
+	Writes the value expressed as a <code>cartesian2</code>, which is the pixel offset specified as a two-dimensional Cartesian value `[X, Y]`, in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.
 	
 	
 	
@@ -149,7 +149,7 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the pixel offset specified as a reference to another property.
 	
 	
 
@@ -164,7 +164,7 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the pixel offset specified as a reference to another property.
 	
 	
 
@@ -179,7 +179,7 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the pixel offset specified as a reference to another property.
 	
 	
 	
@@ -196,7 +196,7 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the pixel offset specified as a reference to another property.
 	
 	
 	

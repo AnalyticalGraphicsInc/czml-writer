@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Direction</code> to a  {@link CesiumOutputStream}.  A <code>Direction</code> defines a direction.  The direction can optionally vary over time.
+ Writes a <code>Direction</code> to a  {@link CesiumOutputStream}.  A <code>Direction</code> is a unit vector, in world coordinates, that defines a direction.
  
 
  */
@@ -149,7 +149,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies the direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>spherical</code>, which is the direction specified as a spherical value `[Clock, Cone, Magnitude]`, with angles in radians and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
 	
 	
 
@@ -164,7 +164,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies the direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>spherical</code>, which is the direction specified as a spherical value `[Clock, Cone, Magnitude]`, with angles in radians and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
 	
 	
 	
@@ -178,7 +178,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>spherical</code> property.  The <code>spherical</code> property specifies the direction specified as a spherical [Clock, Cone, Magnitude] angles in radians, distance in meters. If the array has three elements, the direction is constant. If it has four or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, Time, Clock, Cone, Magnitude, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>spherical</code>, which is the direction specified as a spherical value `[Clock, Cone, Magnitude]`, with angles in radians and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
 	
 	
 	
@@ -198,7 +198,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>unitSpherical</code> property.  The <code>unitSpherical</code> property specifies the direction specified as a unit spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>unitSpherical</code>, which is the direction specified as a unit spherical value `[Clock, Cone]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
 	
 	
 
@@ -213,7 +213,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>unitSpherical</code> property.  The <code>unitSpherical</code> property specifies the direction specified as a unit spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>unitSpherical</code>, which is the direction specified as a unit spherical value `[Clock, Cone]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
 	
 	
 	
@@ -227,7 +227,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>unitSpherical</code> property.  The <code>unitSpherical</code> property specifies the direction specified as a unit spherical [Clock, Cone] angles in radians. If the array has two elements, the direction is constant. If it has three or more elements, they are time-tagged samples arranged as [Time, Clock, Cone, Time, Clock, Cone, Time, Clock, Cone, ...], where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>unitSpherical</code>, which is the direction specified as a unit spherical value `[Clock, Cone]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
 	
 	
 	
@@ -247,7 +247,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+	Writes the value expressed as a <code>cartesian</code>, which is the direction specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.
 	
 	
 
@@ -262,7 +262,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+	Writes the value expressed as a <code>cartesian</code>, which is the direction specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.
 	
 	
 	
@@ -276,7 +276,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+	Writes the value expressed as a <code>cartesian</code>, which is the direction specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.
 	
 	
 	
@@ -296,7 +296,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+	Writes the value expressed as a <code>unitCartesian</code>, which is the direction specified as a three-dimensional unit magnitude Cartesian value `[X, Y, Z]`, in world coordinates in meters.
 	
 	
 
@@ -311,7 +311,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+	Writes the value expressed as a <code>unitCartesian</code>, which is the direction specified as a three-dimensional unit magnitude Cartesian value `[X, Y, Z]`, in world coordinates in meters.
 	
 	
 	
@@ -325,7 +325,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>unitCartesian</code> property.  The <code>unitCartesian</code> property specifies the direction represented as a unit Cartesian `[X, Y, Z]`. If the array has three elements, the position is constant. If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since `epoch`.
+	Writes the value expressed as a <code>unitCartesian</code>, which is the direction specified as a three-dimensional unit magnitude Cartesian value `[X, Y, Z]`, in world coordinates in meters.
 	
 	
 	
@@ -345,7 +345,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the direction specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the direction specified as a reference to another property.
 	
 	
 
@@ -360,7 +360,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the direction specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the direction specified as a reference to another property.
 	
 	
 
@@ -375,7 +375,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the direction specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the direction specified as a reference to another property.
 	
 	
 	
@@ -392,7 +392,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the direction specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the direction specified as a reference to another property.
 	
 	
 	

@@ -1,8 +1,13 @@
 {
     "title": "PositionList",
     "description": "A list of positions.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "referenceFrame": {
             "description": "The reference frame in which cartesian positions are specified. Possible values are \"FIXED\" and \"INERTIAL\". If this property is not specified, the default reference frame is \"FIXED\".",
@@ -11,17 +16,17 @@
         },
         "cartesian": {
             "$ref": "Cartesian3ListValue.jsonschema",
-            "description": "The list of positions represented as Cartesian coordinates, `[X, Y, Z, X, Y, Z, ...]`, in meters relative to the `referenceFrame`.",
+            "description": "The list of positions specified as three-dimensional Cartesian values, `[X, Y, Z, X, Y, Z, ...]`, in meters relative to the `referenceFrame`.",
             "czmlValue": true
         },
         "cartographicRadians": {
             "$ref": "CartographicListValue.jsonschema",
-            "description": "The list of positions represented as Cartographic WGS84 coordinates, `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in radians and Height is in meters.",
+            "description": "The list of positions specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in radians and Height is in meters.",
             "czmlValue": true
         },
         "cartographicDegrees": {
             "$ref": "CartographicListValue.jsonschema",
-            "description": "The list of positions represented as Cartographic WGS84 coordinates, `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in degrees and Height is in meters.",
+            "description": "The list of positions specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in degrees and Height is in meters.",
             "czmlValue": true
         },
         "references": {

@@ -1,8 +1,13 @@
 {
     "title": "Clock",
-    "description": "Defines initial settings for a simulated clock when a document is loaded.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "description": "Initial settings for a simulated clock when a document is loaded.  The start and stop time are configured using the interval property.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "currentTime": {
             "$ref": "TimeValue.jsonschema",

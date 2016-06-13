@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Orientation</code> to a <see cref="CesiumOutputStream" />.  A <code>Orientation</code> defines an orientation.  An orientation is a rotation that takes a vector expressed in the "body" axes of the object and transforms it to the Earth fixed axes.
+    /// Writes a <code>Orientation</code> to a <see cref="CesiumOutputStream" />.  A <code>Orientation</code> is defines an orientation.  An orientation is a rotation that takes a vector expressed in the "body" axes of the object and transforms it to the Earth fixed axes.
     /// </summary>
     public class OrientationCesiumWriter : CesiumInterpolatablePropertyWriter<OrientationCesiumWriter>
     {
@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies the orientation represented as a 4-dimensional quaternion, specified as `[X, Y, Z, W]`.  If the array has four elements, the value is constant.  If it has five or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, W, Time, X, Y, Z, W, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// Writes the value expressed as a <code>unitQuaternion</code>, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteUnitQuaternion(UnitQuaternion value)
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies the orientation represented as a 4-dimensional quaternion, specified as `[X, Y, Z, W]`.  If the array has four elements, the value is constant.  If it has five or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, W, Time, X, Y, Z, W, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// Writes the value expressed as a <code>unitQuaternion</code>, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.
         /// </summary>
         /// <param name="dates">The dates at which the rotation is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -75,7 +75,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>unitQuaternion</code> property.  The <code>unitQuaternion</code> property specifies the orientation represented as a 4-dimensional quaternion, specified as `[X, Y, Z, W]`.  If the array has four elements, the value is constant.  If it has five or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, W, Time, X, Y, Z, W, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// Writes the value expressed as a <code>unitQuaternion</code>, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.
         /// </summary>
         /// <param name="dates">The dates at which the rotation is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -89,7 +89,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the orientation specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the orientation specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -101,7 +101,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the orientation specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the orientation specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -113,7 +113,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the orientation specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the orientation specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -126,7 +126,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the orientation specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the orientation specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

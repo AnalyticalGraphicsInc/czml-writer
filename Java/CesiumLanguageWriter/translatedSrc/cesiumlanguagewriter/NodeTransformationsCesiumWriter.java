@@ -7,7 +7,7 @@ import cesiumlanguagewriter.NodeTransformationCesiumWriter;
 
 /**
  *  
- Writes a <code>NodeTransformations</code> to a  {@link CesiumOutputStream}.  A <code>NodeTransformations</code> defines a mapping of node names to node transformations.
+ Writes a <code>NodeTransformations</code> to a  {@link CesiumOutputStream}.  A <code>NodeTransformations</code> is a mapping of node names to node transformations.
  
 
  */

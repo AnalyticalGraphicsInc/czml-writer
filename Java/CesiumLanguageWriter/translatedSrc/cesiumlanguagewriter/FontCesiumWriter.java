@@ -9,7 +9,7 @@ import cesiumlanguagewriter.Reference;
 
 /**
  *  
- Writes a <code>Font</code> to a  {@link CesiumOutputStream}.  A <code>Font</code> a font used to draw text. Fonts are specified using the same syntax as the CSS "font" property.
+ Writes a <code>Font</code> to a  {@link CesiumOutputStream}.  A <code>Font</code> is a font used to draw text. Fonts are specified using the same syntax as the CSS "font" property.
  
 
  */
@@ -84,7 +84,7 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>font</code> property.  The <code>font</code> property specifies the font, specified using the same syntax as the CSS "font" property.
+	Writes the value expressed as a <code>font</code>, which is the font, specified using the same syntax as the CSS "font" property.
 	
 	
 
@@ -103,7 +103,7 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the font specified as a reference to another property.
 	
 	
 
@@ -118,7 +118,7 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the font specified as a reference to another property.
 	
 	
 
@@ -133,7 +133,7 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the font specified as a reference to another property.
 	
 	
 	
@@ -150,7 +150,7 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the font specified as a reference to another property.
 	
 	
 	

@@ -1,0 +1,49 @@
+{
+    "title": "Cylinder",
+    "description": "A cylinder.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the cylinder is shown."
+        },
+        "length": {
+            "$ref": "Double.jsonschema",
+            "description": "The length of the cylinder."
+        },
+        "topRadius": {
+            "$ref": "Double.jsonschema",
+            "description": "The radius of the top of the cylinder."
+        },
+        "bottomRadius": {
+            "$ref": "Double.jsonschema",
+            "description": "The radius of the bottom of the cylinder."
+        },
+        "fill": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the cylinder is filled."
+        },
+        "material": {
+            "$ref": "Material.jsonschema",
+            "description": "The material to display on the surface of the cylinder."
+        },
+        "outline": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the cylinder is outlined."
+        },
+        "outlineColor": {
+            "$ref": "Color.jsonschema",
+            "description": "The color of the cylinder outline."
+        },
+        "outlineWidth": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the cylinder outline."
+        }
+    }
+}

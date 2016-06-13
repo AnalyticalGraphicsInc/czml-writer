@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Position</code> to a  {@link CesiumOutputStream}.  A <code>Position</code> defines a position.  The position can optionally vary over time.
+ Writes a <code>Position</code> to a  {@link CesiumOutputStream}.  A <code>Position</code> is defines a position.  The position can optionally vary over time.
  
 
  */
@@ -155,7 +155,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>referenceFrame</code> property.  The <code>referenceFrame</code> property specifies the reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". If this property is not specified, the default reference frame is "FIXED".
+	Writes the value expressed as a <code>referenceFrame</code>, which is the reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". If this property is not specified, the default reference frame is "FIXED".
 	
 	
 
@@ -170,7 +170,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the position represented as Cartesian coordinates, `[X, Y, Z]`, in meters relative to the `referenceFrame`.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>cartesian</code>, which is the position specified as a three-dimensional Cartesian value, `[X, Y, Z]`, in meters relative to the `referenceFrame`.
 	
 	
 
@@ -185,7 +185,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the position represented as Cartesian coordinates, `[X, Y, Z]`, in meters relative to the `referenceFrame`.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>cartesian</code>, which is the position specified as a three-dimensional Cartesian value, `[X, Y, Z]`, in meters relative to the `referenceFrame`.
 	
 	
 	
@@ -199,7 +199,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>cartesian</code> property.  The <code>cartesian</code> property specifies the position represented as Cartesian coordinates, `[X, Y, Z]`, in meters relative to the `referenceFrame`.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>cartesian</code>, which is the position specified as a three-dimensional Cartesian value, `[X, Y, Z]`, in meters relative to the `referenceFrame`.
 	
 	
 	
@@ -219,7 +219,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>cartographicRadians</code> property.  The <code>cartographicRadians</code> property specifies the position represented as Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in radians and Height is in meters.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>cartographicRadians</code>, which is the position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in radians and Height is in meters.
 	
 	
 
@@ -234,7 +234,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>cartographicRadians</code> property.  The <code>cartographicRadians</code> property specifies the position represented as Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in radians and Height is in meters.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>cartographicRadians</code>, which is the position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in radians and Height is in meters.
 	
 	
 	
@@ -248,7 +248,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>cartographicRadians</code> property.  The <code>cartographicRadians</code> property specifies the position represented as Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in radians and Height is in meters.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>cartographicRadians</code>, which is the position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in radians and Height is in meters.
 	
 	
 	
@@ -268,7 +268,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the position represented as Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in degrees and Height is in meters.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>cartographicDegrees</code>, which is the position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in degrees and Height is in meters.
 	
 	
 
@@ -283,7 +283,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the position represented as Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in degrees and Height is in meters.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>cartographicDegrees</code>, which is the position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in degrees and Height is in meters.
 	
 	
 	
@@ -297,7 +297,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>cartographicDegrees</code> property.  The <code>cartographicDegrees</code> property specifies the position represented as Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in degrees and Height is in meters.  If the array has three elements, the value is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, Longitude, Latitude, Height, Time, Longitude, Latitude, Height, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>cartographicDegrees</code>, which is the position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in degrees and Height is in meters.
 	
 	
 	
@@ -317,7 +317,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>cartesianVelocity</code> property.  The <code>cartesianVelocity</code> property specifies the position and velocity represented as Cartesian coordinates, `[X, Y, Z, dX, dY, dZ]`, in meters relative to the `referenceFrame`.  If the array has six elements, the value is constant.  If it has seven or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, dX, dY, dZ, Time, X, Y, Z, dX, dY, dZ, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>cartesianVelocity</code>, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, `[X, Y, Z, dX, dY, dZ]`, in meters relative to the `referenceFrame`.
 	
 	
 
@@ -332,7 +332,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>cartesianVelocity</code> property.  The <code>cartesianVelocity</code> property specifies the position and velocity represented as Cartesian coordinates, `[X, Y, Z, dX, dY, dZ]`, in meters relative to the `referenceFrame`.  If the array has six elements, the value is constant.  If it has seven or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, dX, dY, dZ, Time, X, Y, Z, dX, dY, dZ, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>cartesianVelocity</code>, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, `[X, Y, Z, dX, dY, dZ]`, in meters relative to the `referenceFrame`.
 	
 	
 	
@@ -346,7 +346,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>cartesianVelocity</code> property.  The <code>cartesianVelocity</code> property specifies the position and velocity represented as Cartesian coordinates, `[X, Y, Z, dX, dY, dZ]`, in meters relative to the `referenceFrame`.  If the array has six elements, the value is constant.  If it has seven or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, dX, dY, dZ, Time, X, Y, Z, dX, dY, dZ, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+	Writes the value expressed as a <code>cartesianVelocity</code>, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, `[X, Y, Z, dX, dY, dZ]`, in meters relative to the `referenceFrame`.
 	
 	
 	
@@ -366,7 +366,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the position specified as a reference to another property.
 	
 	
 
@@ -381,7 +381,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the position specified as a reference to another property.
 	
 	
 
@@ -396,7 +396,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the position specified as a reference to another property.
 	
 	
 	
@@ -413,7 +413,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the position specified as a reference to another property.
 	
 	
 	

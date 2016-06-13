@@ -9,7 +9,7 @@ import cesiumlanguagewriter.Reference;
 
 /**
  *  
- Writes a <code>Boolean</code> to a  {@link CesiumOutputStream}.  A <code>Boolean</code> represents a boolean value.
+ Writes a <code>Boolean</code> to a  {@link CesiumOutputStream}.  A <code>Boolean</code> is a boolean value.
  
 
  */
@@ -84,7 +84,7 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 
 	/**
 	 *  
-	Writes the <code>boolean</code> property.  The <code>boolean</code> property specifies the boolean value.
+	Writes the value expressed as a <code>boolean</code>, which is the boolean value.
 	
 	
 
@@ -103,7 +103,7 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the boolean specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the boolean specified as a reference to another property.
 	
 	
 
@@ -118,7 +118,7 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the boolean specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the boolean specified as a reference to another property.
 	
 	
 
@@ -133,7 +133,7 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the boolean specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the boolean specified as a reference to another property.
 	
 	
 	
@@ -150,7 +150,7 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies the boolean specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the boolean specified as a reference to another property.
 	
 	
 	

@@ -1,8 +1,14 @@
 {
     "title": "VerticalOrigin",
-    "description": "Defines the vertical origin of an element, which can optionally vary over time.  It controls whether the element is bottom-, center-, or top-aligned with the `position`.",
-    "type": [ "array", "object", "string" ],
-    "items": { "$ref": "#" },
+    "description": "The vertical origin of an element, which can optionally vary over time.  It controls whether the element is bottom-, center-, or top-aligned with the `position`.",
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "verticalOrigin": {
             "$ref": "VerticalOriginValue.jsonschema",
@@ -11,7 +17,7 @@
         },
         "reference": {
             "$ref": "ReferenceValue.jsonschema",
-            "description": "A reference property.",
+            "description": "The vertical origin specified as a reference to another property.",
             "czmlValue": true
         }
     }

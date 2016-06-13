@@ -677,6 +677,19 @@
                 "needsInterval": false
             }
         ],
+        "CornerType": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumCornerType",
+                        "name": "value",
+                        "description": "The style of a corner."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.CornerTypeToString(value));",
+                "needsInterval": false
+            }
+        ],
         "SensorVolumePortionToDisplay": [
             {
                 "parameters": [

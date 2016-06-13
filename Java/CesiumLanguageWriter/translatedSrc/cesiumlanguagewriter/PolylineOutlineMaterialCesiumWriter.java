@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>PolylineOutlineMaterial</code> to a  {@link CesiumOutputStream}.  A <code>PolylineOutlineMaterial</code> fills the surface of a line with an outlined color.
+ Writes a <code>PolylineOutlineMaterial</code> to a  {@link CesiumOutputStream}.  A <code>PolylineOutlineMaterial</code> is a material that fills the surface of a line with an outlined color.
  
 
  */

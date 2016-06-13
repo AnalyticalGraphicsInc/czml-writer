@@ -10,7 +10,7 @@ import cesiumlanguagewriter.Reference;
 
 /**
  *  
- Writes a <code>VerticalOrigin</code> to a  {@link CesiumOutputStream}.  A <code>VerticalOrigin</code> defines the vertical origin of an element, which can optionally vary over time.  It controls whether the element is bottom-, center-, or top-aligned with the `position`.
+ Writes a <code>VerticalOrigin</code> to a  {@link CesiumOutputStream}.  A <code>VerticalOrigin</code> is the vertical origin of an element, which can optionally vary over time.  It controls whether the element is bottom-, center-, or top-aligned with the `position`.
  
 
  */
@@ -85,7 +85,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 
 	/**
 	 *  
-	Writes the <code>verticalOrigin</code> property.  The <code>verticalOrigin</code> property specifies the vertical origin.  Valid values are "BOTTOM", "CENTER", and "TOP".
+	Writes the value expressed as a <code>verticalOrigin</code>, which is the vertical origin.  Valid values are "BOTTOM", "CENTER", and "TOP".
 	
 	
 
@@ -104,7 +104,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the vertical origin specified as a reference to another property.
 	
 	
 
@@ -119,7 +119,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the vertical origin specified as a reference to another property.
 	
 	
 
@@ -134,7 +134,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the vertical origin specified as a reference to another property.
 	
 	
 	
@@ -151,7 +151,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 
 	/**
 	 *  
-	Writes the <code>reference</code> property.  The <code>reference</code> property specifies a reference property.
+	Writes the value expressed as a <code>reference</code>, which is the vertical origin specified as a reference to another property.
 	
 	
 	

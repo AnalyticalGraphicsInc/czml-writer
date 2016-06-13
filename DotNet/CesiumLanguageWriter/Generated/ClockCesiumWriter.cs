@@ -7,7 +7,7 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Clock</code> to a <see cref="CesiumOutputStream" />.  A <code>Clock</code> defines initial settings for a simulated clock when a document is loaded.
+    /// Writes a <code>Clock</code> to a <see cref="CesiumOutputStream" />.  A <code>Clock</code> is initial settings for a simulated clock when a document is loaded.  The start and stop time are configured using the interval property.
     /// </summary>
     public class ClockCesiumWriter : CesiumPropertyWriter<ClockCesiumWriter>
     {
@@ -56,7 +56,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>currentTime</code> property.  The <code>currentTime</code> property specifies the current time, specified in ISO8601 format.
+        /// Writes the value expressed as a <code>currentTime</code>, which is the current time, specified in ISO8601 format.
         /// </summary>
         /// <param name="value">The time.</param>
         public void WriteCurrentTime(JulianDate value)
@@ -68,7 +68,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>multiplier</code> property.  The <code>multiplier</code> property specifies the multiplier.  When `step` is set to `TICK_DEPENDENT`, this is the number of seconds to advance each tick.  When `step` is set to `SYSTEM_CLOCK_DEPENDENT`, this is multiplied by the elapsed system time between ticks.  This value is ignored in `SYSTEM_CLOCK` mode.  The default value is 1.0.
+        /// Writes the value expressed as a <code>multiplier</code>, which is the multiplier.  When `step` is set to `TICK_DEPENDENT`, this is the number of seconds to advance each tick.  When `step` is set to `SYSTEM_CLOCK_DEPENDENT`, this is multiplied by the elapsed system time between ticks.  This value is ignored in `SYSTEM_CLOCK` mode.  The default value is 1.0.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteMultiplier(double value)
@@ -80,7 +80,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>range</code> property.  The <code>range</code> property specifies the behavior when the current time reaches its start or end times.  The default value is `LOOP_STOP`.
+        /// Writes the value expressed as a <code>range</code>, which is the behavior when the current time reaches its start or end times.  The default value is `LOOP_STOP`.
         /// </summary>
         /// <param name="value">The clock range.</param>
         public void WriteRange(ClockRange value)
@@ -92,7 +92,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>step</code> property.  The <code>step</code> property specifies how the current time advances each tick.  The default value is `SYSTEM_CLOCK_MULTIPLIER`.
+        /// Writes the value expressed as a <code>step</code>, which is how the current time advances each tick.  The default value is `SYSTEM_CLOCK_MULTIPLIER`.
         /// </summary>
         /// <param name="value">The clock step.</param>
         public void WriteStep(ClockStep value)

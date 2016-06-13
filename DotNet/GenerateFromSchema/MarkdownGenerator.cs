@@ -71,7 +71,7 @@ namespace GenerateFromSchema
 
             if (property.Examples != null)
             {
-                output.WriteLine("Examples:");
+                output.WriteLine("**Examples**:");
                 output.WriteLine();
 
                 foreach (string example in property.Examples)

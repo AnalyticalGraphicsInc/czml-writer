@@ -1,32 +1,41 @@
 {
     "title": "PolylineMaterial",
-    "description": "Defines how a polyline is colored or shaded.",
-    "type": [ "array", "object" ],
-    "items": { "$ref": "#" },
+    "description": "A definition of how a polyline is colored or shaded.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "solidColor": {
             "$ref": "SolidColorMaterial.jsonschema",
-            "description": "Colors the line with a solid color, which may be translucent."
+            "description": "A material that fills the line with a solid color, which may be translucent."
         },
         "polylineOutline": {
             "$ref": "PolylineOutlineMaterial.jsonschema",
-            "description": "Colors the line with a color and outline."
+            "description": "A material that fills the line with a color and outline."
+        },
+        "polylineArrow": {
+            "$ref": "PolylineArrowMaterial.jsonschema",
+            "description": "A material that fills the line with an arrow."
         },
         "polylineGlow": {
             "$ref": "PolylineGlowMaterial.jsonschema",
-            "description": "Colors the line with a glowing color."
+            "description": "A material that fills the line with a glowing color."
         },
         "image": {
             "$ref": "ImageMaterial.jsonschema",
-            "description": "Fills the line with an image."
+            "description": "A material that fills the line with an image."
         },
         "grid": {
             "$ref": "GridMaterial.jsonschema",
-            "description": "Fills the line with a grid."
+            "description": "A material that fills the line with a grid."
         },
         "stripe": {
             "$ref": "StripeMaterial.jsonschema",
-            "description": "Fills the line with alternating colors."
+            "description": "A material that fills the line with alternating colors."
         }
     }
 }

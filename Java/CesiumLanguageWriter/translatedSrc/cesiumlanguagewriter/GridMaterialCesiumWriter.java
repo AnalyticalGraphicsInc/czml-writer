@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>GridMaterial</code> to a  {@link CesiumOutputStream}.  A <code>GridMaterial</code> fills the surface with a two dimensional grid.
+ Writes a <code>GridMaterial</code> to a  {@link CesiumOutputStream}.  A <code>GridMaterial</code> is a material that fills the surface with a two dimensional grid.
  
 
  */
@@ -304,7 +304,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 	}
 
 	/**
-	 *  Gets the writer for the <code>cellAlpha</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>cellAlpha</code> property defines alpha value for the space between grid lines.  This will be combined with the color alpha.
+	 *  Gets the writer for the <code>cellAlpha</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>cellAlpha</code> property defines the alpha value for the space between grid lines.  This will be combined with the color alpha.
 	
 
 	 */
@@ -314,7 +314,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>cellAlpha</code> property.  The <code>cellAlpha</code> property defines alpha value for the space between grid lines.  This will be combined with the color alpha.
+	Opens and returns the writer for the <code>cellAlpha</code> property.  The <code>cellAlpha</code> property defines the alpha value for the space between grid lines.  This will be combined with the color alpha.
 	
 
 	 */
@@ -325,7 +325,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
 	/**
 	 *  
-	Writes a value for the <code>cellAlpha</code> property as a <code>number</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+	Writes a value for the <code>cellAlpha</code> property as a <code>number</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
 	
 	
 
@@ -344,7 +344,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
 	/**
 	 *  
-	Writes a value for the <code>cellAlpha</code> property as a <code>number</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+	Writes a value for the <code>cellAlpha</code> property as a <code>number</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
 	
 	
 	
@@ -369,7 +369,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
 	/**
 	 *  
-	Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+	Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
 	
 	
 
@@ -388,7 +388,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
 	/**
 	 *  
-	Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+	Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
 	
 	
 
@@ -407,7 +407,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
 	/**
 	 *  
-	Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+	Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
 	
 	
 	
@@ -428,7 +428,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
 	/**
 	 *  
-	Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies alpha value for the space between grid lines.  This will be combined with the color alpha.
+	Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
 	
 	
 	

@@ -9,7 +9,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Ellipsoid</code> to a <see cref="CesiumOutputStream" />.  A <code>Ellipsoid</code> defines a closed quadric surface that is a three dimensional analogue of an ellipse.
+    /// Writes a <code>Ellipsoid</code> to a <see cref="CesiumOutputStream" />.  A <code>Ellipsoid</code> is a closed quadric surface that is a three dimensional analogue of an ellipse.
     /// </summary>
     public class EllipsoidCesiumWriter : CesiumPropertyWriter<EllipsoidCesiumWriter>
     {

@@ -9,7 +9,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Fan</code> to a <see cref="CesiumOutputStream" />.  A <code>Fan</code> a fan.  A fan starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
+    /// Writes a <code>Fan</code> to a <see cref="CesiumOutputStream" />.  A <code>Fan</code> is a fan.  A fan starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
     /// </summary>
     public class FanCesiumWriter : CesiumPropertyWriter<FanCesiumWriter>
     {
@@ -336,7 +336,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>perDirectionRadius</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>perDirectionRadius</code> property defines when true, the magnitude of each direction is used instead of a constant radius.
+        /// Gets the writer for the <code>perDirectionRadius</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>perDirectionRadius</code> property defines whether the magnitude of each direction is used instead of a constant radius.
         /// </summary>
         public BooleanCesiumWriter PerDirectionRadiusWriter
         {
@@ -344,7 +344,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>perDirectionRadius</code> property.  The <code>perDirectionRadius</code> property defines when true, the magnitude of each direction is used instead of a constant radius.
+        /// Opens and returns the writer for the <code>perDirectionRadius</code> property.  The <code>perDirectionRadius</code> property defines whether the magnitude of each direction is used instead of a constant radius.
         /// </summary>
         public BooleanCesiumWriter OpenPerDirectionRadiusProperty()
         {
@@ -353,7 +353,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>boolean</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direction is used instead of a constant radius.
+        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>boolean</code> value.  The <code>perDirectionRadius</code> property specifies whether the magnitude of each direction is used instead of a constant radius.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WritePerDirectionRadiusProperty(bool value)
@@ -365,7 +365,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direction is used instead of a constant radius.
+        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies whether the magnitude of each direction is used instead of a constant radius.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WritePerDirectionRadiusPropertyReference(Reference value)
@@ -377,7 +377,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direction is used instead of a constant radius.
+        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies whether the magnitude of each direction is used instead of a constant radius.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WritePerDirectionRadiusPropertyReference(string value)
@@ -389,7 +389,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direction is used instead of a constant radius.
+        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies whether the magnitude of each direction is used instead of a constant radius.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -402,7 +402,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies when true, the magnitude of each direction is used instead of a constant radius.
+        /// Writes a value for the <code>perDirectionRadius</code> property as a <code>reference</code> value.  The <code>perDirectionRadius</code> property specifies whether the magnitude of each direction is used instead of a constant radius.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

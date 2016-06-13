@@ -1,8 +1,14 @@
 {
     "title": "Font",
     "description": "A font used to draw text. Fonts are specified using the same syntax as the CSS \"font\" property.",
-    "type": [ "array", "object", "string" ],
-    "items": { "$ref": "#" },
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
     "properties": {
         "font": {
             "$ref": "FontValue.jsonschema",
@@ -11,7 +17,7 @@
         },
         "reference": {
             "$ref": "ReferenceValue.jsonschema",
-            "description": "A reference property.",
+            "description": "The font specified as a reference to another property.",
             "czmlValue": true
         }
     }

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>NodeTransformation</code> to a <see cref="CesiumOutputStream" />.  A <code>NodeTransformation</code> transformations to apply to a particular node in a 3D model.
+    /// Writes a <code>NodeTransformation</code> to a <see cref="CesiumOutputStream" />.  A <code>NodeTransformation</code> is a set of transformations to apply to a particular node in a 3D model.
     /// </summary>
     public class NodeTransformationCesiumWriter : CesiumPropertyWriter<NodeTransformationCesiumWriter>
     {
@@ -55,7 +55,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scale</code> property defines the scaling applied to the model node.
+        /// Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scale</code> property defines the scaling to apply to the model node.
         /// </summary>
         public ScaleCesiumWriter ScaleWriter
         {
@@ -63,7 +63,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>scale</code> property.  The <code>scale</code> property defines the scaling applied to the model node.
+        /// Opens and returns the writer for the <code>scale</code> property.  The <code>scale</code> property defines the scaling to apply to the model node.
         /// </summary>
         public ScaleCesiumWriter OpenScaleProperty()
         {
@@ -72,7 +72,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling applied to the model node.
+        /// Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteScaleProperty(Cartesian value)
@@ -84,7 +84,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling applied to the model node.
+        /// Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -97,7 +97,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling applied to the model node.
+        /// Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -112,7 +112,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling applied to the model node.
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteScalePropertyReference(Reference value)
@@ -124,7 +124,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling applied to the model node.
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteScalePropertyReference(string value)
@@ -136,7 +136,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling applied to the model node.
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -149,7 +149,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling applied to the model node.
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -162,7 +162,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>translation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>translation</code> property defines the translation applied to the model node.
+        /// Gets the writer for the <code>translation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>translation</code> property defines the translation to apply to the model node.
         /// </summary>
         public TranslationCesiumWriter TranslationWriter
         {
@@ -170,7 +170,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>translation</code> property.  The <code>translation</code> property defines the translation applied to the model node.
+        /// Opens and returns the writer for the <code>translation</code> property.  The <code>translation</code> property defines the translation to apply to the model node.
         /// </summary>
         public TranslationCesiumWriter OpenTranslationProperty()
         {
@@ -179,7 +179,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translation</code> property as a <code>cartesian</code> value.  The <code>translation</code> property specifies the translation applied to the model node.
+        /// Writes a value for the <code>translation</code> property as a <code>cartesian</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteTranslationProperty(Cartesian value)
@@ -191,7 +191,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translation</code> property as a <code>cartesian</code> value.  The <code>translation</code> property specifies the translation applied to the model node.
+        /// Writes a value for the <code>translation</code> property as a <code>cartesian</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -204,7 +204,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translation</code> property as a <code>cartesian</code> value.  The <code>translation</code> property specifies the translation applied to the model node.
+        /// Writes a value for the <code>translation</code> property as a <code>cartesian</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -219,7 +219,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation applied to the model node.
+        /// Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteTranslationPropertyReference(Reference value)
@@ -231,7 +231,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation applied to the model node.
+        /// Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteTranslationPropertyReference(string value)
@@ -243,7 +243,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation applied to the model node.
+        /// Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -256,7 +256,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation applied to the model node.
+        /// Writes a value for the <code>translation</code> property as a <code>reference</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

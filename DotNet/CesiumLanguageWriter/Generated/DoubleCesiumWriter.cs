@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Double</code> to a <see cref="CesiumOutputStream" />.  A <code>Double</code> a floating-point number.
+    /// Writes a <code>Double</code> to a <see cref="CesiumOutputStream" />.  A <code>Double</code> is a floating-point number.
     /// </summary>
     public class DoubleCesiumWriter : CesiumInterpolatablePropertyWriter<DoubleCesiumWriter>
     {
@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>number</code> property.  The <code>number</code> property specifies the floating-point number.  The value may be a single number, or an array with one element, in which case the value is constant.  If it is an array with two or more elements, they are time-tagged samples arranged as `[Time, Value, Time, Value, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// Writes the value expressed as a <code>number</code>, which is the number.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteNumber(double value)
@@ -71,7 +71,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>number</code> property.  The <code>number</code> property specifies the floating-point number.  The value may be a single number, or an array with one element, in which case the value is constant.  If it is an array with two or more elements, they are time-tagged samples arranged as `[Time, Value, Time, Value, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// Writes the value expressed as a <code>number</code>, which is the number.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -85,7 +85,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the floating-point number specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the number specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -97,7 +97,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the floating-point number specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the number specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -109,7 +109,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the floating-point number specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the number specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -122,7 +122,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the <code>reference</code> property.  The <code>reference</code> property specifies the floating-point number specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the number specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
