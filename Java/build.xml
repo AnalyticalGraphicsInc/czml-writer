@@ -1,0 +1,20 @@
+<project name="CesiumLanguageWriter" basedir="." default="package">
+	<target name="clean" description="Clean all generated output.">
+		<subant target="clean">
+			<fileset dir="CesiumLanguageWriter" includes="build.xml" />
+			<fileset dir="CesiumLanguageWriterTests" includes="build.xml" />
+		</subant>
+	</target>
+
+	<target name="package" description="Package the library into a jar.">
+		<subant target="package">
+			<fileset dir="CesiumLanguageWriter" includes="build.xml" />
+		</subant>
+	</target>
+
+	<target name="test" depends="package" description="Run tests.">
+		<subant target="test">
+			<fileset dir="CesiumLanguageWriterTests" includes="build.xml" />
+		</subant>
+	</target>
+</project>
