@@ -131,16 +131,12 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumImageFormat.Jpeg:
                     return ImageFormat.Jpeg;
-
                 case CesiumImageFormat.Png:
                     return ImageFormat.Png;
-
                 case CesiumImageFormat.Bmp:
                     return ImageFormat.Bmp;
-
                 case CesiumImageFormat.Gif:
                     return ImageFormat.Gif;
-
                 default:
                     throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "imageFormat");
             }
@@ -172,16 +168,12 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumImageFormat.Jpeg:
                     return "image/jpeg";
-
                 case CesiumImageFormat.Png:
                     return "image/png";
-
                 case CesiumImageFormat.Bmp:
                     return "image/bmp";
-
                 case CesiumImageFormat.Gif:
                     return "image/gif";
-
                 default:
                     throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "imageFormat");
             }
@@ -199,10 +191,8 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumStripeOrientation.Horizontal:
                     return "HORIZONTAL";
-
                 case CesiumStripeOrientation.Vertical:
                     return "VERTICAL";
-
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "orientation");
             }
@@ -220,13 +210,10 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumHorizontalOrigin.Left:
                     return "LEFT";
-
                 case CesiumHorizontalOrigin.Center:
                     return "CENTER";
-
                 case CesiumHorizontalOrigin.Right:
                     return "RIGHT";
-
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "horizontalOrigin");
             }
@@ -244,13 +231,10 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumVerticalOrigin.Bottom:
                     return "BOTTOM";
-
                 case CesiumVerticalOrigin.Center:
                     return "CENTER";
-
                 case CesiumVerticalOrigin.Top:
                     return "TOP";
-
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "verticalOrigin");
             }
@@ -268,13 +252,10 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumInterpolationAlgorithm.Linear:
                     return "LINEAR";
-
                 case CesiumInterpolationAlgorithm.Lagrange:
                     return "LAGRANGE";
-
                 case CesiumInterpolationAlgorithm.Hermite:
                     return "HERMITE";
-
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "interpolationAlgorithm");
             }
@@ -292,13 +273,10 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumExtrapolationType.None:
                     return "NONE";
-
                 case CesiumExtrapolationType.Hold:
                     return "HOLD";
-
                 case CesiumExtrapolationType.Extrapolate:
                     return "EXTRAPOLATE";
-
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "extrapolationType");
             }
@@ -316,13 +294,10 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case ClockRange.Clamped:
                     return "CLAMPED";
-
                 case ClockRange.Unbounded:
                     return "UNBOUNDED";
-
                 case ClockRange.LoopStop:
                     return "LOOP_STOP";
-
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "clockRange");
             }
@@ -340,13 +315,10 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case ClockStep.SystemClock:
                     return "SYSTEM_CLOCK";
-
                 case ClockStep.SystemClockMultiplier:
                     return "SYSTEM_CLOCK_MULTIPLIER";
-
                 case ClockStep.TickDependent:
                     return "TICK_DEPENDENT";
-
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "clockStep");
             }
@@ -364,15 +336,33 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumLabelStyle.Fill:
                     return "FILL";
-
                 case CesiumLabelStyle.Outline:
                     return "OUTLINE";
-
                 case CesiumLabelStyle.FillAndOutline:
                     return "FILL_AND_OUTLINE";
-
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "labelStyle");
+            }
+        }
+
+        /// <summary>
+        /// Converts a <see cref="CesiumCornerType"/> to the corresponding string in a
+        /// CZML stream.
+        /// </summary>
+        /// <param name="cornerType">The label style to convert.</param>
+        /// <returns>The string representing the specified <see cref="CesiumCornerType"/>.</returns>
+        public static string CornerTypeToString(CesiumCornerType cornerType)
+        {
+            switch (cornerType)
+            {
+                case CesiumCornerType.Rounded:
+                    return "ROUNDED";
+                case CesiumCornerType.Mitered:
+                    return "MITERED";
+                case CesiumCornerType.Beveled:
+                    return "BEVELED";
+                default:
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "cornerType");
             }
         }
 
@@ -388,13 +378,10 @@ namespace CesiumLanguageWriter.Advanced
             {
                 case CesiumSensorVolumePortionToDisplay.Complete:
                     return "COMPLETE";
-
                 case CesiumSensorVolumePortionToDisplay.AboveEllipsoidHorizon:
                     return "ABOVE_ELLIPSOID_HORIZON";
-
                 case CesiumSensorVolumePortionToDisplay.BelowEllipsoidHorizon:
                     return "BELOW_ELLIPSOID_HORIZON";
-
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "portionToDisplay");
             }

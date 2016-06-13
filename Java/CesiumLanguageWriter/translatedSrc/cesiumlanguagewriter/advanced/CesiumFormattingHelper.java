@@ -460,6 +460,34 @@ public final class CesiumFormattingHelper {
 
 	/**
 	 *  
+	Converts a  {@link CesiumCornerType} to the corresponding string in a
+	CZML stream.
+	
+	
+	
+
+	 * @param cornerType The label style to convert.
+	 * @return The string representing the specified  {@link CesiumCornerType}.
+	 */
+	public static String cornerTypeToString(CesiumCornerType cornerType) {
+		switch (cornerType) {
+		case ROUNDED: {
+			return "ROUNDED";
+		}
+		case MITERED: {
+			return "MITERED";
+		}
+		case BEVELED: {
+			return "BEVELED";
+		}
+		default: {
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "cornerType");
+		}
+		}
+	}
+
+	/**
+	 *  
 	Converts a  {@link CesiumLabelStyle} to the corresponding string in a
 	CZML stream.
 	

@@ -89,6 +89,18 @@
             "$ref": "Ellipse.jsonschema",
             "description": "An ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property."
         },
+        "box": {
+            "$ref": "Box.jsonschema",
+            "description": "A box, which is a closed rectangular cuboid.  The box is positioned and oriented using the `position` and `orientation` properties."
+        },
+        "cylinder": {
+            "$ref": "Cylinder.jsonschema",
+            "description": "A cylinder.  The cylinder is positioned and oriented using the `position` and `orientation` properties."
+        },
+        "corridor": {
+            "$ref": "Corridor.jsonschema",
+            "description": "A corridor, which is a shape defined by a centerline and width."
+        },
         "agi_conicSensor": {
             "$ref": "Extensions/AGI/ConicSensor.jsonschema",
             "description": "A conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the `position` and `orientation` properties."

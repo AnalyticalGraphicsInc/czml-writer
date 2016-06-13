@@ -268,7 +268,8 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
 
 	final private TDerived copyForInterval() {
 		TDerived result = clone();
-		result.m_elementType = ElementType.INTERVAL;
+		CesiumPropertyWriter<TDerived> cesiumPropertyWriter = result;
+		cesiumPropertyWriter.m_elementType = ElementType.INTERVAL;
 		return result;
 	}
 
