@@ -174,7 +174,10 @@ namespace CesiumLanguageWriter.Advanced
         private TDerived CopyForInterval()
         {
             TDerived result = Clone();
-            result.m_elementType = ElementType.Interval;
+
+            CesiumPropertyWriter<TDerived> cesiumPropertyWriter = result;
+            cesiumPropertyWriter.m_elementType = ElementType.Interval;
+
             return result;
         }
 
