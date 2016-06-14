@@ -128,6 +128,15 @@ namespace GenerateFromSchema
                         }
                     }
                 }
+
+                if (schema.AdditionalProperties != null)
+                {
+                    var propertyValueType = schema.AdditionalProperties.ValueType;
+                    output.WriteLine("This type represents a key-value mapping, where values are of type [[{0}]].", propertyValueType.Name);
+                    output.WriteLine();
+
+                    Generate(propertyValueType);
+                }
             }
         }
 
