@@ -9,6 +9,9 @@
     "items": {
         "$ref": "#"
     },
+    "czmlExamples": [
+        "Examples/Uri.json"
+    ],
     "properties": {
         "uri": {
             "$ref": "UriValue.jsonschema",

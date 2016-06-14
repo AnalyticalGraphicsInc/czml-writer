@@ -1,5 +1,9 @@
 {
     "title": "Uri",
     "description": "A URI value.",
-    "type": "string"
+    "type": "string",
+    "czmlExamples": [
+        "Examples/UriValue.json",
+        "Examples/UriValueData.json"
+    ]
 }
