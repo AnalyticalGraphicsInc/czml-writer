@@ -127,6 +127,48 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
 	 */
 	public static final String PortionToDisplayPropertyName = "portionToDisplay";
+	/**
+	 *  
+	The name of the <code>environmentConstraint</code> property.
+	
+
+	 */
+	public static final String EnvironmentConstraintPropertyName = "environmentConstraint";
+	/**
+	 *  
+	The name of the <code>showEnvironmentOcclusion</code> property.
+	
+
+	 */
+	public static final String ShowEnvironmentOcclusionPropertyName = "showEnvironmentOcclusion";
+	/**
+	 *  
+	The name of the <code>environmentOcclusionMaterial</code> property.
+	
+
+	 */
+	public static final String EnvironmentOcclusionMaterialPropertyName = "environmentOcclusionMaterial";
+	/**
+	 *  
+	The name of the <code>showEnvironmentIntersection</code> property.
+	
+
+	 */
+	public static final String ShowEnvironmentIntersectionPropertyName = "showEnvironmentIntersection";
+	/**
+	 *  
+	The name of the <code>environmentIntersectionColor</code> property.
+	
+
+	 */
+	public static final String EnvironmentIntersectionColorPropertyName = "environmentIntersectionColor";
+	/**
+	 *  
+	The name of the <code>environmentIntersectionWidth</code> property.
+	
+
+	 */
+	public static final String EnvironmentIntersectionWidthPropertyName = "environmentIntersectionWidth";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
@@ -203,6 +245,36 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 					return new SensorVolumePortionToDisplayCesiumWriter(PortionToDisplayPropertyName);
 				}
 			}, false);
+	private Lazy<BooleanCesiumWriter> m_environmentConstraint = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(EnvironmentConstraintPropertyName);
+		}
+	}, false);
+	private Lazy<BooleanCesiumWriter> m_showEnvironmentOcclusion = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(ShowEnvironmentOcclusionPropertyName);
+		}
+	}, false);
+	private Lazy<MaterialCesiumWriter> m_environmentOcclusionMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
+		public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
+			return new MaterialCesiumWriter(EnvironmentOcclusionMaterialPropertyName);
+		}
+	}, false);
+	private Lazy<BooleanCesiumWriter> m_showEnvironmentIntersection = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(ShowEnvironmentIntersectionPropertyName);
+		}
+	}, false);
+	private Lazy<ColorCesiumWriter> m_environmentIntersectionColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+		public cesiumlanguagewriter.ColorCesiumWriter invoke() {
+			return new ColorCesiumWriter(EnvironmentIntersectionColorPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_environmentIntersectionWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(EnvironmentIntersectionWidthPropertyName);
+		}
+	}, false);
 
 	/**
 	 *  
@@ -1714,6 +1786,721 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	public final void writePortionToDisplayPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>environmentConstraint</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>environmentConstraint</code> property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
+	
+
+	 */
+	public final BooleanCesiumWriter getEnvironmentConstraintWriter() {
+		return m_environmentConstraint.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>environmentConstraint</code> property.  The <code>environmentConstraint</code> property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
+	
+
+	 */
+	public final BooleanCesiumWriter openEnvironmentConstraintProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getEnvironmentConstraintWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentConstraint</code> property as a <code>boolean</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeEnvironmentConstraintProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentConstraint</code> property as a <code>reference</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeEnvironmentConstraintPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentConstraint</code> property as a <code>reference</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeEnvironmentConstraintPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentConstraint</code> property as a <code>reference</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeEnvironmentConstraintPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentConstraint</code> property as a <code>reference</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeEnvironmentConstraintPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>showEnvironmentOcclusion</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>showEnvironmentOcclusion</code> property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+	
+
+	 */
+	public final BooleanCesiumWriter getShowEnvironmentOcclusionWriter() {
+		return m_showEnvironmentOcclusion.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>showEnvironmentOcclusion</code> property.  The <code>showEnvironmentOcclusion</code> property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+	
+
+	 */
+	public final BooleanCesiumWriter openShowEnvironmentOcclusionProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getShowEnvironmentOcclusionWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>boolean</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeShowEnvironmentOcclusionProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>reference</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeShowEnvironmentOcclusionPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>reference</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeShowEnvironmentOcclusionPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>reference</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeShowEnvironmentOcclusionPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>reference</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeShowEnvironmentOcclusionPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>environmentOcclusionMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>environmentOcclusionMaterial</code> property defines the material to use for the portion of the sensor occluded by the environment.
+	
+
+	 */
+	public final MaterialCesiumWriter getEnvironmentOcclusionMaterialWriter() {
+		return m_environmentOcclusionMaterial.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>environmentOcclusionMaterial</code> property.  The <code>environmentOcclusionMaterial</code> property defines the material to use for the portion of the sensor occluded by the environment.
+	
+
+	 */
+	public final MaterialCesiumWriter openEnvironmentOcclusionMaterialProperty() {
+		openIntervalIfNecessary();
+		return this.<MaterialCesiumWriter> openAndReturn(getEnvironmentOcclusionMaterialWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>showEnvironmentIntersection</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>showEnvironmentIntersection</code> property defines whether or not a line showing where the sensor intersects the environment will be drawn.
+	
+
+	 */
+	public final BooleanCesiumWriter getShowEnvironmentIntersectionWriter() {
+		return m_showEnvironmentIntersection.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>showEnvironmentIntersection</code> property.  The <code>showEnvironmentIntersection</code> property defines whether or not a line showing where the sensor intersects the environment will be drawn.
+	
+
+	 */
+	public final BooleanCesiumWriter openShowEnvironmentIntersectionProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getShowEnvironmentIntersectionWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>boolean</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeShowEnvironmentIntersectionProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>reference</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeShowEnvironmentIntersectionPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>reference</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeShowEnvironmentIntersectionPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>reference</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeShowEnvironmentIntersectionPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>reference</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeShowEnvironmentIntersectionPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>environmentIntersectionColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>environmentIntersectionColor</code> property defines the color of the intersection line between the sensor and the environment.
+	
+
+	 */
+	public final ColorCesiumWriter getEnvironmentIntersectionColorWriter() {
+		return m_environmentIntersectionColor.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>environmentIntersectionColor</code> property.  The <code>environmentIntersectionColor</code> property defines the color of the intersection line between the sensor and the environment.
+	
+
+	 */
+	public final ColorCesiumWriter openEnvironmentIntersectionColorProperty() {
+		openIntervalIfNecessary();
+		return this.<ColorCesiumWriter> openAndReturn(getEnvironmentIntersectionColorWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+	
+	
+
+	 * @param color The color.
+	 */
+	public final void writeEnvironmentIntersectionColorProperty(Color color) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+			try {
+				writer.writeRgba(color);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+	
+	
+	
+	
+	
+
+	 * @param red The red component in the range 0 to 255.
+	 * @param green The green component in the range 0 to 255.
+	 * @param blue The blue component in the range 0 to 255.
+	 * @param alpha The alpha component in the range 0 to 255.
+	 */
+	public final void writeEnvironmentIntersectionColorProperty(int red, int green, int blue, int alpha) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+			try {
+				writer.writeRgba(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param colors The color corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `colors` collection.
+	 * @param length The number of elements to use from the `colors` collection.
+	 */
+	public final void writeEnvironmentIntersectionColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+			try {
+				writer.writeRgba(dates, colors, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+	
+	
+	
+	
+	
+
+	 * @param red The red component in the range 0 to 1.0.
+	 * @param green The green component in the range 0 to 1.0.
+	 * @param blue The blue component in the range 0 to 1.0.
+	 * @param alpha The alpha component in the range 0 to 1.0.
+	 */
+	public final void writeEnvironmentIntersectionColorPropertyRgbaf(float red, float green, float blue, float alpha) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+			try {
+				writer.writeRgbaf(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeEnvironmentIntersectionColorPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeEnvironmentIntersectionColorPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeEnvironmentIntersectionColorPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeEnvironmentIntersectionColorPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>environmentIntersectionWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>environmentIntersectionWidth</code> property defines the width in meters of the intersection line between the sensor and the environment.
+	
+
+	 */
+	public final DoubleCesiumWriter getEnvironmentIntersectionWidthWriter() {
+		return m_environmentIntersectionWidth.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>environmentIntersectionWidth</code> property.  The <code>environmentIntersectionWidth</code> property defines the width in meters of the intersection line between the sensor and the environment.
+	
+
+	 */
+	public final DoubleCesiumWriter openEnvironmentIntersectionWidthProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getEnvironmentIntersectionWidthWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeEnvironmentIntersectionWidthProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeEnvironmentIntersectionWidthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeEnvironmentIntersectionWidthPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeEnvironmentIntersectionWidthPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeEnvironmentIntersectionWidthPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeEnvironmentIntersectionWidthPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {
