@@ -11,6 +11,10 @@
     "items": {
         "$ref": "#"
     },
+    "czmlExamples": [
+        "Examples/Orientation.json",
+        "Examples/OrientationSampled.json"
+    ],
     "properties": {
         "unitQuaternion": {
             "$ref": "UnitQuaternionValue.jsonschema",

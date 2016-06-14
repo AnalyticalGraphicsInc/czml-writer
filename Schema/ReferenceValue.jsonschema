@@ -1,5 +1,8 @@
 {
     "title": "Reference",
     "description": "Represents a reference to another property.  References can be used to specify that two properties on different objects are in fact, the same property.",
-    "type": "string"
+    "type": "string",
+    "czmlExamples": [
+        "Examples/ReferenceValue.json"
+    ]
 }

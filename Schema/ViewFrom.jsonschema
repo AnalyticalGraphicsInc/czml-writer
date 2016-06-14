@@ -11,6 +11,9 @@
     "items": {
         "$ref": "#"
     },
+    "czmlExamples": [
+        "Examples/ViewFrom.json"
+    ],
     "properties": {
         "cartesian": {
             "$ref": "Cartesian3Value.jsonschema",

@@ -25,12 +25,18 @@
         "cartographicRadians": {
             "$ref": "CartographicValue.jsonschema",
             "description": "The position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in radians and Height is in meters.",
-            "czmlValue": true
+            "czmlValue": true,
+            "czmlExamples": [
+                "Examples/PositionCartographicRadians.json"
+            ]
         },
         "cartographicDegrees": {
             "$ref": "CartographicValue.jsonschema",
             "description": "The position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in degrees and Height is in meters.",
-            "czmlValue": true
+            "czmlValue": true,
+            "czmlExamples": [
+                "Examples/PositionCartographicDegrees.json"
+            ]
         },
         "cartesianVelocity": {
             "$ref": "Cartesian3VelocityValue.jsonschema",
