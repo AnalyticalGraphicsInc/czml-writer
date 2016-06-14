@@ -7,7 +7,7 @@ czml-writer
 
 This project has .NET and Java libraries for writing CZML content for use with [Cesium](http://cesium.agi.com/).  For a python library, see [czml](https://github.com/cleder/czml) by [@cleder](https://github.com/cleder).
 
-See the [CZML specification](http://git.io/czml).
+See the [CZML specification](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/CZML-Guide).
 
 ### License ###
 
