@@ -49,6 +49,32 @@ namespace GenerateFromSchema
                 output.WriteLine("**Interpolatable**: {0}", schema.IsInterpolatable ? "yes" : "no");
                 output.WriteLine();
 
+                if (schema.Examples != null)
+                {
+                    output.WriteLine("**Examples**:");
+                    output.WriteLine();
+
+                    foreach (string example in schema.Examples)
+                    {
+                        output.WriteLine("```javascript");
+                        output.WriteLine(example);
+                        output.WriteLine("```");
+                        output.WriteLine();
+                    }
+                }
+
+                if (schema.EnumValues != null)
+                {
+                    output.WriteLine("##Values");
+                    output.WriteLine();
+
+                    foreach (string enumValue in schema.EnumValues)
+                    {
+                        output.WriteLine("* `{0}`", enumValue);
+                        output.WriteLine();
+                    }
+                }
+
                 if (schema.Properties.Count > 0)
                 {
                     output.WriteLine("##Properties");

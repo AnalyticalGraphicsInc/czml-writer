@@ -60,6 +60,27 @@ namespace GenerateFromSchema
             {
                 schema.AdditionalProperties = LoadProperty(additionalPropertiesProperty);
             }
+
+            JProperty enumValuesProperty = schemaJson.Property("enum");
+            if (enumValuesProperty != null)
+            {
+                schema.EnumValues = new List<string>();
+
+                JArray enumValues = (JArray)enumValuesProperty.Value;
+                schema.EnumValues.AddRange(enumValues.Values<string>());
+            }
+
+            JProperty examplesProperty = schemaJson.Property("czmlExamples");
+            if (examplesProperty != null)
+            {
+                schema.Examples = new List<string>();
+
+                JArray examples = (JArray)examplesProperty.Value;
+                foreach (string filename in examples.Values<string>())
+                {
+                    schema.Examples.Add(File.ReadAllText(Path.Combine(m_schemaDirectory, filename)));
+                }
+            }
         }
 
         private Property LoadProperty(JProperty propertyProperty)
