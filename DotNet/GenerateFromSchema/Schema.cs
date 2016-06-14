@@ -40,6 +40,15 @@ namespace GenerateFromSchema
             }
         }
 
+        public bool IsInterpolatable
+        {
+            get
+            {
+                return Extends != null &&
+                       Extends.Name == "InterpolatableProperty";
+            }
+        }
+
         public Property FindFirstValueProperty()
         {
             return Properties.Find(property => property.IsValue);

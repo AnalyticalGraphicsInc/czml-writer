@@ -51,7 +51,7 @@ namespace GenerateFromSchema
         private static void PrintUsage()
         {
             Console.WriteLine("Usage:");
-            Console.WriteLine("\tGenerateWritersFromSchema <schema> markdown <outputFile>");
+            Console.WriteLine("\tGenerateWritersFromSchema <schema> markdown <outputDirectory>");
             Console.WriteLine("\tGenerateWritersFromSchema <schema> csharp <outputDirectory> <configurationFileName>");
         }
     }

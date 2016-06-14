@@ -26,9 +26,9 @@ namespace GenerateFromSchema
             m_configuration = JsonConvert.DeserializeObject<Configuration>(configuration);
         }
 
-        public override void Generate(Schema packetSchema)
+        public override void Generate(Schema schema)
         {
-            GeneratePacketWriter(packetSchema);
+            GeneratePacketWriter(schema);
         }
 
         private void GenerateWriterClass(Schema schema)

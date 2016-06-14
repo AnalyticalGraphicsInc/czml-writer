@@ -42,11 +42,7 @@ namespace GenerateFromSchema
 
         public bool IsInterpolatable
         {
-            get
-            {
-                return ValueType.Extends != null &&
-                       ValueType.Extends.Name == "InterpolatableProperty";
-            }
+            get { return ValueType.IsInterpolatable; }
         }
 
         private string m_description;

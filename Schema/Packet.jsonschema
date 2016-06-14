@@ -29,8 +29,8 @@
             "description": "The clock settings for the entire data set. Only valid on the document object."
         },
         "version": {
-            "$ref": "StringValue.jsonschema",
-            "description": "The CZML version being written. Only valid on the document object."
+            "description": "The CZML version being written. Only valid on the document object.",
+            "type": "string"
         },
         "availability": {
             "$ref": "TimeIntervalCollectionValue.jsonschema",
