@@ -1,0 +1,30 @@
+{
+    "title": "Rotation",
+    "description": "Defines a rotation that transforms a vector expressed in one axes and transforms it to another.",
+    "extends": {
+        "$ref": "InterpolatableProperty.jsonschema"
+    },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "czmlExamples": [
+        "Examples/Rotation.json",
+        "Examples/RotationSampled.json"
+    ],
+    "properties": {
+        "unitQuaternion": {
+            "$ref": "UnitQuaternionValue.jsonschema",
+            "description": "The rotation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.jsonschema",
+            "description": "The rotation specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

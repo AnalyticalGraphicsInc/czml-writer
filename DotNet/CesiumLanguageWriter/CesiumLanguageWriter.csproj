@@ -134,6 +134,7 @@
     <Compile Include="Generated\PositionListCesiumWriter.cs" />
     <Compile Include="Generated\RectangularSensorCesiumWriter.cs" />
     <Compile Include="Generated\RepeatCesiumWriter.cs" />
+    <Compile Include="Generated\RotationCesiumWriter.cs" />
     <Compile Include="Generated\ScaleCesiumWriter.cs" />
     <Compile Include="Generated\SensorVolumePortionToDisplayCesiumWriter.cs" />
     <Compile Include="Generated\SolidColorMaterialCesiumWriter.cs" />

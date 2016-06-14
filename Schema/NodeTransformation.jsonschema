@@ -18,7 +18,7 @@
             "description": "The translation to apply to the model node."
         },
         "rotation": {
-            "$ref": "Orientation.jsonschema",
+            "$ref": "Rotation.jsonschema",
             "description": "The rotation to apply to the model node."
         }
     }

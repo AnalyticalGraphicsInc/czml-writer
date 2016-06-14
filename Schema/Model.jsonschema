@@ -32,7 +32,7 @@
         "nodeTransformations": {
             "$ref": "NodeTransformations.jsonschema",
             "czmlExamples": [
-                "Examples/NodeTransformations.json"
+                "Examples/ModelNodeTransformations.json"
             ]
         }
     }
