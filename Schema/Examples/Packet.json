@@ -1,0 +1,40 @@
+{
+    "id": "Facility/AGI",
+    "name": "AGI",
+    "availability": "2012-03-15T10:00:00Z/2012-03-16T10:00:00Z",
+    "description": "<p>Analytical Graphics, Inc. (AGI) develops commercial modeling and analysis software.</p>",
+    "billboard": {
+        "eyeOffset": {
+            "cartesian": [ 0, 0, 0 ]
+        },
+        "horizontalOrigin": "CENTER",
+        "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACvSURBVDhPrZDRDcMgDAU9GqN0lIzijw6SUbJJygUeNQgSqepJTyHG91LVVpwDdfxM3T9TSl1EXZvDwii471fivK73cBFFQNTT/d2KoGpfGOpSIkhUpgUMxq9DFEsWv4IXhlyCnhBFnZcFEEuYqbiUlNwWgMTdrZ3JbQFoEVG53rd8ztG9aPJMnBUQf/VFraBJeWnLS0RfjbKyLJA8FkT5seDYS1Qwyv8t0B/5C2ZmH2/eTGNNBgMmAAAAAElFTkSuQmCC",
+        "pixelOffset": {
+            "cartesian2": [ 0, 0 ]
+        },
+        "scale": 1.5,
+        "show": true,
+        "verticalOrigin": "CENTER"
+    },
+    "label": {
+        "fillColor": {
+            "rgba": [ 0, 255, 255, 255 ]
+        },
+        "font": "11pt Lucida Console",
+        "horizontalOrigin": "LEFT",
+        "outlineColor": {
+            "rgba": [ 0, 0, 0, 255 ]
+        },
+        "outlineWidth": 2,
+        "pixelOffset": {
+            "cartesian2": [ 12, 0 ]
+        },
+        "show": true,
+        "style": "FILL_AND_OUTLINE",
+        "text": "AGI",
+        "verticalOrigin": "CENTER"
+    },
+    "position": {
+        "cartesian": [ 1216469.9357990976, -4736121.71856379, 4081386.8856866374 ]
+    }
+}

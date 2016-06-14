@@ -8,6 +8,9 @@
     "items": {
         "$ref": "#"
     },
+    "czmlExamples": [
+        "Examples/Clock.json"
+    ],
     "properties": {
         "currentTime": {
             "$ref": "TimeValue.jsonschema",
