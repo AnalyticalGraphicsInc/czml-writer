@@ -16,17 +16,22 @@ namespace GenerateFromSchema
 
         public override void Generate(Schema schema)
         {
+            Generate(schema, false);
+        }
+
+        public void Generate(Schema schema, bool isValue)
+        {
             if (m_writtenSchemas.Contains(schema))
                 return;
 
             m_writtenSchemas.Add(schema);
 
-            using (StreamWriter output = new StreamWriter(Path.Combine(m_outputDirectory, string.Format("{0}.md", schema.Name))))
+            using (StreamWriter output = new StreamWriter(Path.Combine(m_outputDirectory, string.Format("{0}{1}.md", schema.Name, isValue ? "Value" : ""))))
             {
                 output.WriteLine("This page describes the possible content of a CZML document or stream.  Please read [[CZML Structure]] for an explanation of how a CZML document is put together.");
                 output.WriteLine();
 
-                output.WriteLine("#{0}", schema.Name);
+                output.WriteLine("#{0}{1}", schema.Name, isValue ? " (value)" : "");
                 output.WriteLine();
 
                 output.WriteLine(schema.Description);
@@ -46,8 +51,16 @@ namespace GenerateFromSchema
                     Generate(schema.Extends);
                 }
 
-                output.WriteLine("**Interpolatable**: {0}", schema.IsInterpolatable ? "yes" : "no");
-                output.WriteLine();
+                if (isValue)
+                {
+                    output.WriteLine("**Type**: {0}", JsonSchemaTypesToLabel(schema.JsonTypes));
+                    output.WriteLine();
+                }
+                else
+                {
+                    output.WriteLine("**Interpolatable**: {0}", schema.IsInterpolatable ? "yes" : "no");
+                    output.WriteLine();
+                }
 
                 if (schema.Examples != null)
                 {
@@ -83,7 +96,10 @@ namespace GenerateFromSchema
                     foreach (Property property in schema.Properties)
                     {
                         Schema propertyValueType = property.ValueType;
-                        string type = propertyValueType.IsSchemaFromType ? JsonSchemaTypesToLabel(property.ValueType.JsonTypes) : string.Format("[[{0}]]", propertyValueType.Name);
+                        string type =
+                            propertyValueType.IsSchemaFromType
+                                ? JsonSchemaTypesToLabel(property.ValueType.JsonTypes)
+                                : string.Format("[[{0}{1}]]", propertyValueType.Name, property.IsValue ? "Value" : "");
 
                         output.WriteLine("**{0}** - {1}", property.Name, type);
                         output.WriteLine();
@@ -106,8 +122,10 @@ namespace GenerateFromSchema
 
                         output.WriteLine();
 
-                        if (!property.IsValue && !propertyValueType.IsSchemaFromType)
-                            Generate(propertyValueType);
+                        if (!propertyValueType.IsSchemaFromType)
+                        {
+                            Generate(propertyValueType, property.IsValue);
+                        }
                     }
                 }
             }
