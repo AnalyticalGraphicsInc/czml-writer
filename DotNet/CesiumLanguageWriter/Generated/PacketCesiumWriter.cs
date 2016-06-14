@@ -157,6 +157,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<ClockCesiumWriter> m_clock = new Lazy<ClockCesiumWriter>(() => new ClockCesiumWriter(ClockPropertyName), false);
         private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<OrientationCesiumWriter> m_orientation = new Lazy<OrientationCesiumWriter>(() => new OrientationCesiumWriter(OrientationPropertyName), false);
+        private readonly Lazy<ViewFromCesiumWriter> m_viewFrom = new Lazy<ViewFromCesiumWriter>(() => new ViewFromCesiumWriter(ViewFromPropertyName), false);
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter(BillboardPropertyName), false);
         private readonly Lazy<PointCesiumWriter> m_point = new Lazy<PointCesiumWriter>(() => new PointCesiumWriter(PointPropertyName), false);
         private readonly Lazy<LabelCesiumWriter> m_label = new Lazy<LabelCesiumWriter>(() => new LabelCesiumWriter(LabelPropertyName), false);
@@ -705,38 +706,109 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>viewFrom</code>, which is a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Gets the writer for the <code>viewFrom</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>viewFrom</code> property defines a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteViewFrom(Cartesian value)
+        public ViewFromCesiumWriter ViewFromWriter
         {
-            const string PropertyName = ViewFromPropertyName;
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteCartesian3(Output, value);
+            get { return m_viewFrom.Value; }
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>viewFrom</code>, which is a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Opens and returns the writer for the <code>viewFrom</code> property.  The <code>viewFrom</code> property defines a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// </summary>
+        public ViewFromCesiumWriter OpenViewFromProperty()
+        {
+            return OpenAndReturn(ViewFromWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>viewFrom</code> property as a <code>cartesian</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteViewFromProperty(Cartesian value)
+        {
+            using (var writer = OpenViewFromProperty())
+            {
+                writer.WriteCartesian(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>viewFrom</code> property as a <code>cartesian</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteViewFrom(IList<JulianDate> dates, IList<Cartesian> values)
+        public void WriteViewFromProperty(IList<JulianDate> dates, IList<Cartesian> values)
         {
-            WriteViewFrom(dates, values, 0, dates.Count);
+            using (var writer = OpenViewFromProperty())
+            {
+                writer.WriteCartesian(dates, values);
+            }
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>viewFrom</code>, which is a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Writes a value for the <code>viewFrom</code> property as a <code>cartesian</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         /// <param name="dates">The dates at which the vector is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteViewFrom(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        public void WriteViewFromProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
         {
-            const string PropertyName = ViewFromPropertyName;
-            Output.WritePropertyName(PropertyName);
-            CesiumWritingHelper.WriteCartesian3(Output, PropertyName, dates, values, startIndex, length);
+            using (var writer = OpenViewFromProperty())
+            {
+                writer.WriteCartesian(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>viewFrom</code> property as a <code>reference</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteViewFromPropertyReference(Reference value)
+        {
+            using (var writer = OpenViewFromProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>viewFrom</code> property as a <code>reference</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteViewFromPropertyReference(string value)
+        {
+            using (var writer = OpenViewFromProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>viewFrom</code> property as a <code>reference</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteViewFromPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenViewFromProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>viewFrom</code> property as a <code>reference</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteViewFromPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenViewFromProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
         }
 
         /// <summary>

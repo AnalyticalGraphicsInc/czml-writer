@@ -144,6 +144,7 @@
     <Compile Include="Generated\UriCesiumWriter.cs" />
     <Compile Include="Generated\VectorCesiumWriter.cs" />
     <Compile Include="Generated\VerticalOriginCesiumWriter.cs" />
+    <Compile Include="Generated\ViewFromCesiumWriter.cs" />
     <Compile Include="grisu\DiyFp.cs" />
     <Compile Include="grisu\Grisu.cs" />
     <Compile Include="grisu\GrisuDouble.cs" />

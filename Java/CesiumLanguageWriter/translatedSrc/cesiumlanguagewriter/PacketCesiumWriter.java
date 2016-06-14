@@ -27,6 +27,7 @@ import cesiumlanguagewriter.PositionCesiumWriter;
 import cesiumlanguagewriter.RectangularSensorCesiumWriter;
 import cesiumlanguagewriter.StringCesiumWriter;
 import cesiumlanguagewriter.VectorCesiumWriter;
+import cesiumlanguagewriter.ViewFromCesiumWriter;
 import java.util.List;
 
 /**
@@ -250,6 +251,11 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	private Lazy<OrientationCesiumWriter> m_orientation = new Lazy<cesiumlanguagewriter.OrientationCesiumWriter>(new Func1<cesiumlanguagewriter.OrientationCesiumWriter>() {
 		public cesiumlanguagewriter.OrientationCesiumWriter invoke() {
 			return new OrientationCesiumWriter(OrientationPropertyName);
+		}
+	}, false);
+	private Lazy<ViewFromCesiumWriter> m_viewFrom = new Lazy<cesiumlanguagewriter.ViewFromCesiumWriter>(new Func1<cesiumlanguagewriter.ViewFromCesiumWriter>() {
+		public cesiumlanguagewriter.ViewFromCesiumWriter invoke() {
+			return new ViewFromCesiumWriter(ViewFromPropertyName);
 		}
 	}, false);
 	private Lazy<BillboardCesiumWriter> m_billboard = new Lazy<cesiumlanguagewriter.BillboardCesiumWriter>(new Func1<cesiumlanguagewriter.BillboardCesiumWriter>() {
@@ -1134,22 +1140,46 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	}
 
 	/**
+	 *  Gets the writer for the <code>viewFrom</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>viewFrom</code> property defines a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+	
+
+	 */
+	public final ViewFromCesiumWriter getViewFromWriter() {
+		return m_viewFrom.getValue();
+	}
+
+	/**
 	 *  
-	Writes the value expressed as a <code>viewFrom</code>, which is a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+	Opens and returns the writer for the <code>viewFrom</code> property.  The <code>viewFrom</code> property defines a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+	
+
+	 */
+	public final ViewFromCesiumWriter openViewFromProperty() {
+		return this.<ViewFromCesiumWriter> openAndReturn(getViewFromWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>viewFrom</code> property as a <code>cartesian</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeViewFrom(Cartesian value) {
-		String PropertyName = ViewFromPropertyName;
-		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeCartesian3(getOutput(), value);
+	public final void writeViewFromProperty(Cartesian value) {
+		{
+			cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
+			try {
+				writer.writeCartesian(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the value expressed as a <code>viewFrom</code>, which is a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+	Writes a value for the <code>viewFrom</code> property as a <code>cartesian</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
 	
 	
 	
@@ -1157,13 +1187,20 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	 * @param dates The dates at which the vector is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeViewFrom(List<JulianDate> dates, List<Cartesian> values) {
-		writeViewFrom(dates, values, 0, dates.size());
+	public final void writeViewFromProperty(List<JulianDate> dates, List<Cartesian> values) {
+		{
+			cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
+			try {
+				writer.writeCartesian(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
 	 *  
-	Writes the value expressed as a <code>viewFrom</code>, which is a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+	Writes a value for the <code>viewFrom</code> property as a <code>cartesian</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
 	
 	
 	
@@ -1175,10 +1212,95 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeViewFrom(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-		String PropertyName = ViewFromPropertyName;
-		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
+	public final void writeViewFromProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
+			try {
+				writer.writeCartesian(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>viewFrom</code> property as a <code>reference</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeViewFromPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>viewFrom</code> property as a <code>reference</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeViewFromPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>viewFrom</code> property as a <code>reference</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeViewFromPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>viewFrom</code> property as a <code>reference</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeViewFromPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
 	}
 
 	/**
