@@ -1449,7 +1449,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>environmentOcclusionMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>environmentOcclusionMaterial</code> property defines the surface apppearance of the port of the sensor occluded by the environment.
+        /// Gets the writer for the <code>environmentOcclusionMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>environmentOcclusionMaterial</code> property defines the material to use for the portion of the sensor occluded by the environment.
         /// </summary>
         public MaterialCesiumWriter EnvironmentOcclusionMaterialWriter
         {
@@ -1457,7 +1457,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>environmentOcclusionMaterial</code> property.  The <code>environmentOcclusionMaterial</code> property defines the surface apppearance of the port of the sensor occluded by the environment.
+        /// Opens and returns the writer for the <code>environmentOcclusionMaterial</code> property.  The <code>environmentOcclusionMaterial</code> property defines the material to use for the portion of the sensor occluded by the environment.
         /// </summary>
         public MaterialCesiumWriter OpenEnvironmentOcclusionMaterialProperty()
         {
@@ -1545,7 +1545,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>environmentIntersectionColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>environmentIntersectionColor</code> property defines the color of the intersection line of the sensor and the environment.
+        /// Gets the writer for the <code>environmentIntersectionColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>environmentIntersectionColor</code> property defines the color of the intersection line between the sensor and the environment.
         /// </summary>
         public ColorCesiumWriter EnvironmentIntersectionColorWriter
         {
@@ -1553,7 +1553,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>environmentIntersectionColor</code> property.  The <code>environmentIntersectionColor</code> property defines the color of the intersection line of the sensor and the environment.
+        /// Opens and returns the writer for the <code>environmentIntersectionColor</code> property.  The <code>environmentIntersectionColor</code> property defines the color of the intersection line between the sensor and the environment.
         /// </summary>
         public ColorCesiumWriter OpenEnvironmentIntersectionColorProperty()
         {
@@ -1562,7 +1562,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteEnvironmentIntersectionColorProperty(Color color)
@@ -1574,7 +1574,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -1589,7 +1589,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -1604,7 +1604,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -1619,7 +1619,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteEnvironmentIntersectionColorPropertyReference(Reference value)
@@ -1631,7 +1631,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteEnvironmentIntersectionColorPropertyReference(string value)
@@ -1643,7 +1643,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1656,7 +1656,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1669,7 +1669,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>environmentIntersectionWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>environmentIntersectionWidth</code> property defines the width in meters of the intersection line of the sensor and the environment.
+        /// Gets the writer for the <code>environmentIntersectionWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>environmentIntersectionWidth</code> property defines the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         public DoubleCesiumWriter EnvironmentIntersectionWidthWriter
         {
@@ -1677,7 +1677,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>environmentIntersectionWidth</code> property.  The <code>environmentIntersectionWidth</code> property defines the width in meters of the intersection line of the sensor and the environment.
+        /// Opens and returns the writer for the <code>environmentIntersectionWidth</code> property.  The <code>environmentIntersectionWidth</code> property defines the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         public DoubleCesiumWriter OpenEnvironmentIntersectionWidthProperty()
         {
@@ -1686,7 +1686,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteEnvironmentIntersectionWidthProperty(double value)
@@ -1698,7 +1698,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -1713,7 +1713,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteEnvironmentIntersectionWidthPropertyReference(Reference value)
@@ -1725,7 +1725,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteEnvironmentIntersectionWidthPropertyReference(string value)
@@ -1737,7 +1737,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1750,7 +1750,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

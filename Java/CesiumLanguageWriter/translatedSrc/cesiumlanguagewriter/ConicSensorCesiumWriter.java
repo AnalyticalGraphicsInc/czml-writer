@@ -2548,7 +2548,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 	}
 
 	/**
-	 *  Gets the writer for the <code>environmentOcclusionMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>environmentOcclusionMaterial</code> property defines the surface apppearance of the port of the sensor occluded by the environment.
+	 *  Gets the writer for the <code>environmentOcclusionMaterial</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>environmentOcclusionMaterial</code> property defines the material to use for the portion of the sensor occluded by the environment.
 	
 
 	 */
@@ -2558,7 +2558,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>environmentOcclusionMaterial</code> property.  The <code>environmentOcclusionMaterial</code> property defines the surface apppearance of the port of the sensor occluded by the environment.
+	Opens and returns the writer for the <code>environmentOcclusionMaterial</code> property.  The <code>environmentOcclusionMaterial</code> property defines the material to use for the portion of the sensor occluded by the environment.
 	
 
 	 */
@@ -2687,7 +2687,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 	}
 
 	/**
-	 *  Gets the writer for the <code>environmentIntersectionColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>environmentIntersectionColor</code> property defines the color of the intersection line of the sensor and the environment.
+	 *  Gets the writer for the <code>environmentIntersectionColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>environmentIntersectionColor</code> property defines the color of the intersection line between the sensor and the environment.
 	
 
 	 */
@@ -2697,7 +2697,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>environmentIntersectionColor</code> property.  The <code>environmentIntersectionColor</code> property defines the color of the intersection line of the sensor and the environment.
+	Opens and returns the writer for the <code>environmentIntersectionColor</code> property.  The <code>environmentIntersectionColor</code> property defines the color of the intersection line between the sensor and the environment.
 	
 
 	 */
@@ -2708,7 +2708,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
 	
 	
 
@@ -2727,7 +2727,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
 	
 	
 	
@@ -2752,7 +2752,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
 	
 	
 	
@@ -2777,7 +2777,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
 	
 	
 	
@@ -2802,7 +2802,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
 	
 	
 
@@ -2821,7 +2821,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
 	
 	
 
@@ -2840,7 +2840,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
 	
 	
 	
@@ -2861,7 +2861,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line of the sensor and the environment.
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
 	
 	
 	
@@ -2881,7 +2881,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 	}
 
 	/**
-	 *  Gets the writer for the <code>environmentIntersectionWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>environmentIntersectionWidth</code> property defines the width in meters of the intersection line of the sensor and the environment.
+	 *  Gets the writer for the <code>environmentIntersectionWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>environmentIntersectionWidth</code> property defines the width in meters of the intersection line between the sensor and the environment.
 	
 
 	 */
@@ -2891,7 +2891,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>environmentIntersectionWidth</code> property.  The <code>environmentIntersectionWidth</code> property defines the width in meters of the intersection line of the sensor and the environment.
+	Opens and returns the writer for the <code>environmentIntersectionWidth</code> property.  The <code>environmentIntersectionWidth</code> property defines the width in meters of the intersection line between the sensor and the environment.
 	
 
 	 */
@@ -2902,7 +2902,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
 	
 	
 
@@ -2921,7 +2921,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
 	
 	
 	
@@ -2946,7 +2946,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
 	
 	
 
@@ -2965,7 +2965,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
 	
 	
 
@@ -2984,7 +2984,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
 	
 	
 	
@@ -3005,7 +3005,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
 	/**
 	 *  
-	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line of the sensor and the environment.
+	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
 	
 	
 	
