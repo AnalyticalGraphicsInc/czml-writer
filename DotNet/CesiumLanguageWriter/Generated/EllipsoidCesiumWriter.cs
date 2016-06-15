@@ -24,6 +24,21 @@ namespace CesiumLanguageWriter
         public const string RadiiPropertyName = "radii";
 
         /// <summary>
+        /// The name of the <code>stackPartitions</code> property.
+        /// </summary>
+        public const string StackPartitionsPropertyName = "stackPartitions";
+
+        /// <summary>
+        /// The name of the <code>slicePartitions</code> property.
+        /// </summary>
+        public const string SlicePartitionsPropertyName = "slicePartitions";
+
+        /// <summary>
+        /// The name of the <code>subdivisions</code> property.
+        /// </summary>
+        public const string SubdivisionsPropertyName = "subdivisions";
+
+        /// <summary>
         /// The name of the <code>fill</code> property.
         /// </summary>
         public const string FillPropertyName = "fill";
@@ -48,31 +63,16 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string OutlineWidthPropertyName = "outlineWidth";
 
-        /// <summary>
-        /// The name of the <code>stackPartitions</code> property.
-        /// </summary>
-        public const string StackPartitionsPropertyName = "stackPartitions";
-
-        /// <summary>
-        /// The name of the <code>slicePartitions</code> property.
-        /// </summary>
-        public const string SlicePartitionsPropertyName = "slicePartitions";
-
-        /// <summary>
-        /// The name of the <code>subdivisions</code> property.
-        /// </summary>
-        public const string SubdivisionsPropertyName = "subdivisions";
-
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<EllipsoidRadiiCesiumWriter> m_radii = new Lazy<EllipsoidRadiiCesiumWriter>(() => new EllipsoidRadiiCesiumWriter(RadiiPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_stackPartitions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(StackPartitionsPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_slicePartitions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SlicePartitionsPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_subdivisions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SubdivisionsPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_fill = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(FillPropertyName), false);
         private readonly Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(MaterialPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(OutlinePropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_stackPartitions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(StackPartitionsPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_slicePartitions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SlicePartitionsPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_subdivisions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SubdivisionsPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -98,7 +98,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the ellipsoid is shown.
+        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the ellipsoid is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter ShowWriter
         {
@@ -106,7 +106,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the ellipsoid is shown.
+        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the ellipsoid is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
@@ -115,7 +115,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.
+        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -127,7 +127,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(Reference value)
@@ -139,7 +139,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowPropertyReference(string value)
@@ -151,7 +151,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -164,7 +164,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -278,399 +278,6 @@ namespace CesiumLanguageWriter
         public void WriteRadiiPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenRadiiProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>fill</code> property defines whether or not the ellipsoid is filled.
-        /// </summary>
-        public BooleanCesiumWriter FillWriter
-        {
-            get { return m_fill.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the ellipsoid is filled.
-        /// </summary>
-        public BooleanCesiumWriter OpenFillProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(FillWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteFillProperty(bool value)
-        {
-            using (var writer = OpenFillProperty())
-            {
-                writer.WriteBoolean(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteFillPropertyReference(Reference value)
-        {
-            using (var writer = OpenFillProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteFillPropertyReference(string value)
-        {
-            using (var writer = OpenFillProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteFillPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenFillProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteFillPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenFillProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>material</code> property defines the material to display on the surface of the ellipsoid.
-        /// </summary>
-        public MaterialCesiumWriter MaterialWriter
-        {
-            get { return m_material.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to display on the surface of the ellipsoid.
-        /// </summary>
-        public MaterialCesiumWriter OpenMaterialProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(MaterialWriter);
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outline</code> property defines whether or not the ellipsoid is outlined.
-        /// </summary>
-        public BooleanCesiumWriter OutlineWriter
-        {
-            get { return m_outline.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the ellipsoid is outlined.
-        /// </summary>
-        public BooleanCesiumWriter OpenOutlineProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(OutlineWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteOutlineProperty(bool value)
-        {
-            using (var writer = OpenOutlineProperty())
-            {
-                writer.WriteBoolean(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteOutlinePropertyReference(Reference value)
-        {
-            using (var writer = OpenOutlineProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteOutlinePropertyReference(string value)
-        {
-            using (var writer = OpenOutlineProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteOutlinePropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenOutlineProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteOutlinePropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenOutlineProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>outlineColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineColor</code> property defines the color of the ellipsoid outline.
-        /// </summary>
-        public ColorCesiumWriter OutlineColorWriter
-        {
-            get { return m_outlineColor.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>outlineColor</code> property.  The <code>outlineColor</code> property defines the color of the ellipsoid outline.
-        /// </summary>
-        public ColorCesiumWriter OpenOutlineColorProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(OutlineColorWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-        /// </summary>
-        /// <param name="color">The color.</param>
-        public void WriteOutlineColorProperty(Color color)
-        {
-            using (var writer = OpenOutlineColorProperty())
-            {
-                writer.WriteRgba(color);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-        /// </summary>
-        /// <param name="red">The red component in the range 0 to 255.</param>
-        /// <param name="green">The green component in the range 0 to 255.</param>
-        /// <param name="blue">The blue component in the range 0 to 255.</param>
-        /// <param name="alpha">The alpha component in the range 0 to 255.</param>
-        public void WriteOutlineColorProperty(int red, int green, int blue, int alpha)
-        {
-            using (var writer = OpenOutlineColorProperty())
-            {
-                writer.WriteRgba(red, green, blue, alpha);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
-        public void WriteOutlineColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
-        {
-            using (var writer = OpenOutlineColorProperty())
-            {
-                writer.WriteRgba(dates, colors, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-        /// </summary>
-        /// <param name="red">The red component in the range 0 to 1.0.</param>
-        /// <param name="green">The green component in the range 0 to 1.0.</param>
-        /// <param name="blue">The blue component in the range 0 to 1.0.</param>
-        /// <param name="alpha">The alpha component in the range 0 to 1.0.</param>
-        public void WriteOutlineColorPropertyRgbaf(float red, float green, float blue, float alpha)
-        {
-            using (var writer = OpenOutlineColorProperty())
-            {
-                writer.WriteRgbaf(red, green, blue, alpha);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteOutlineColorPropertyReference(Reference value)
-        {
-            using (var writer = OpenOutlineColorProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteOutlineColorPropertyReference(string value)
-        {
-            using (var writer = OpenOutlineColorProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteOutlineColorPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenOutlineColorProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteOutlineColorPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenOutlineColorProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the ellipsoid outline.
-        /// </summary>
-        public DoubleCesiumWriter OutlineWidthWriter
-        {
-            get { return m_outlineWidth.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the ellipsoid outline.
-        /// </summary>
-        public DoubleCesiumWriter OpenOutlineWidthProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(OutlineWidthWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteOutlineWidthProperty(double value)
-        {
-            using (var writer = OpenOutlineWidthProperty())
-            {
-                writer.WriteNumber(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteOutlineWidthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenOutlineWidthProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteOutlineWidthPropertyReference(Reference value)
-        {
-            using (var writer = OpenOutlineWidthProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteOutlineWidthPropertyReference(string value)
-        {
-            using (var writer = OpenOutlineWidthProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteOutlineWidthPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenOutlineWidthProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteOutlineWidthPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenOutlineWidthProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
@@ -865,7 +472,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>subdivisions</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>subdivisions</code> property defines the number of points per outline line, determining the granularity of the curvature.
+        /// Gets the writer for the <code>subdivisions</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>subdivisions</code> property defines the number of samples per outline ring, determining the granularity of the curvature.
         /// </summary>
         public DoubleCesiumWriter SubdivisionsWriter
         {
@@ -873,7 +480,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>subdivisions</code> property.  The <code>subdivisions</code> property defines the number of points per outline line, determining the granularity of the curvature.
+        /// Opens and returns the writer for the <code>subdivisions</code> property.  The <code>subdivisions</code> property defines the number of samples per outline ring, determining the granularity of the curvature.
         /// </summary>
         public DoubleCesiumWriter OpenSubdivisionsProperty()
         {
@@ -882,7 +489,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>subdivisions</code> property as a <code>number</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+        /// Writes a value for the <code>subdivisions</code> property as a <code>number</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteSubdivisionsProperty(double value)
@@ -894,7 +501,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>subdivisions</code> property as a <code>number</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+        /// Writes a value for the <code>subdivisions</code> property as a <code>number</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -909,7 +516,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteSubdivisionsPropertyReference(Reference value)
@@ -921,7 +528,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteSubdivisionsPropertyReference(string value)
@@ -933,7 +540,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -946,13 +553,406 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteSubdivisionsPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenSubdivisionsProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>fill</code> property defines whether or not the ellipsoid is filled.  If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        public BooleanCesiumWriter FillWriter
+        {
+            get { return m_fill.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the ellipsoid is filled.  If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        public BooleanCesiumWriter OpenFillProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(FillWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.  If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteFillProperty(bool value)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.  If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteFillPropertyReference(Reference value)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.  If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteFillPropertyReference(string value)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.  If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteFillPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.  If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteFillPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenFillProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>material</code> property defines the material to display on the surface of the ellipsoid.
+        /// </summary>
+        public MaterialCesiumWriter MaterialWriter
+        {
+            get { return m_material.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to display on the surface of the ellipsoid.
+        /// </summary>
+        public MaterialCesiumWriter OpenMaterialProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(MaterialWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outline</code> property defines whether or not the ellipsoid is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        public BooleanCesiumWriter OutlineWriter
+        {
+            get { return m_outline.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the ellipsoid is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        public BooleanCesiumWriter OpenOutlineProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(OutlineWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteOutlineProperty(bool value)
+        {
+            using (var writer = OpenOutlineProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOutlinePropertyReference(Reference value)
+        {
+            using (var writer = OpenOutlineProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOutlinePropertyReference(string value)
+        {
+            using (var writer = OpenOutlineProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOutlinePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOutlineProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOutlinePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOutlineProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>outlineColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineColor</code> property defines the color of the ellipsoid outline.
+        /// </summary>
+        public ColorCesiumWriter OutlineColorWriter
+        {
+            get { return m_outlineColor.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>outlineColor</code> property.  The <code>outlineColor</code> property defines the color of the ellipsoid outline.
+        /// </summary>
+        public ColorCesiumWriter OpenOutlineColorProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(OutlineColorWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteOutlineColorProperty(Color color)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteRgba(color);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 255.</param>
+        /// <param name="green">The green component in the range 0 to 255.</param>
+        /// <param name="blue">The blue component in the range 0 to 255.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 255.</param>
+        public void WriteOutlineColorProperty(int red, int green, int blue, int alpha)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteRgba(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
+        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        public void WriteOutlineColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 1.0.</param>
+        /// <param name="green">The green component in the range 0 to 1.0.</param>
+        /// <param name="blue">The blue component in the range 0 to 1.0.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 1.0.</param>
+        public void WriteOutlineColorPropertyRgbaf(float red, float green, float blue, float alpha)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOutlineColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOutlineColorPropertyReference(string value)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOutlineColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOutlineColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+        /// </summary>
+        public DoubleCesiumWriter OutlineWidthWriter
+        {
+            get { return m_outlineWidth.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+        /// </summary>
+        public DoubleCesiumWriter OpenOutlineWidthProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(OutlineWidthWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteOutlineWidthProperty(double value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteOutlineWidthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOutlineWidthPropertyReference(Reference value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOutlineWidthPropertyReference(string value)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOutlineWidthPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOutlineWidthPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOutlineWidthProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

@@ -19,9 +19,19 @@ namespace CesiumLanguageWriter
         public const string ShowPropertyName = "show";
 
         /// <summary>
-        /// The name of the <code>color</code> property.
+        /// The name of the <code>image</code> property.
         /// </summary>
-        public const string ColorPropertyName = "color";
+        public const string ImagePropertyName = "image";
+
+        /// <summary>
+        /// The name of the <code>scale</code> property.
+        /// </summary>
+        public const string ScalePropertyName = "scale";
+
+        /// <summary>
+        /// The name of the <code>pixelOffset</code> property.
+        /// </summary>
+        public const string PixelOffsetPropertyName = "pixelOffset";
 
         /// <summary>
         /// The name of the <code>eyeOffset</code> property.
@@ -34,19 +44,14 @@ namespace CesiumLanguageWriter
         public const string HorizontalOriginPropertyName = "horizontalOrigin";
 
         /// <summary>
-        /// The name of the <code>image</code> property.
+        /// The name of the <code>verticalOrigin</code> property.
         /// </summary>
-        public const string ImagePropertyName = "image";
+        public const string VerticalOriginPropertyName = "verticalOrigin";
 
         /// <summary>
-        /// The name of the <code>pixelOffset</code> property.
+        /// The name of the <code>color</code> property.
         /// </summary>
-        public const string PixelOffsetPropertyName = "pixelOffset";
-
-        /// <summary>
-        /// The name of the <code>scale</code> property.
-        /// </summary>
-        public const string ScalePropertyName = "scale";
+        public const string ColorPropertyName = "color";
 
         /// <summary>
         /// The name of the <code>rotation</code> property.
@@ -59,20 +64,21 @@ namespace CesiumLanguageWriter
         public const string AlignedAxisPropertyName = "alignedAxis";
 
         /// <summary>
-        /// The name of the <code>verticalOrigin</code> property.
+        /// The name of the <code>sizeInMeters</code> property.
         /// </summary>
-        public const string VerticalOriginPropertyName = "verticalOrigin";
+        public const string SizeInMetersPropertyName = "sizeInMeters";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
-        private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
+        private readonly Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(ImagePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
+        private readonly Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<PixelOffsetCesiumWriter>(() => new PixelOffsetCesiumWriter(PixelOffsetPropertyName), false);
         private readonly Lazy<EyeOffsetCesiumWriter> m_eyeOffset = new Lazy<EyeOffsetCesiumWriter>(() => new EyeOffsetCesiumWriter(EyeOffsetPropertyName), false);
         private readonly Lazy<HorizontalOriginCesiumWriter> m_horizontalOrigin = new Lazy<HorizontalOriginCesiumWriter>(() => new HorizontalOriginCesiumWriter(HorizontalOriginPropertyName), false);
-        private readonly Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(ImagePropertyName), false);
-        private readonly Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<PixelOffsetCesiumWriter>(() => new PixelOffsetCesiumWriter(PixelOffsetPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
+        private readonly Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<VerticalOriginCesiumWriter>(() => new VerticalOriginCesiumWriter(VerticalOriginPropertyName), false);
+        private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_rotation = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RotationPropertyName), false);
         private readonly Lazy<AlignedAxisCesiumWriter> m_alignedAxis = new Lazy<AlignedAxisCesiumWriter>(() => new AlignedAxisCesiumWriter(AlignedAxisPropertyName), false);
-        private readonly Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<VerticalOriginCesiumWriter>(() => new VerticalOriginCesiumWriter(VerticalOriginPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_sizeInMeters = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(SizeInMetersPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -98,7 +104,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the billboard is shown.
+        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the billboard is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter ShowWriter
         {
@@ -106,7 +112,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the billboard is shown.
+        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the billboard is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
@@ -115,7 +121,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -127,7 +133,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(Reference value)
@@ -139,7 +145,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowPropertyReference(string value)
@@ -151,7 +157,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -164,323 +170,13 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteShowPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenShowProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>color</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>color</code> property defines the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-        /// </summary>
-        public ColorCesiumWriter ColorWriter
-        {
-            get { return m_color.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>color</code> property.  The <code>color</code> property defines the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-        /// </summary>
-        public ColorCesiumWriter OpenColorProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(ColorWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-        /// </summary>
-        /// <param name="color">The color.</param>
-        public void WriteColorProperty(Color color)
-        {
-            using (var writer = OpenColorProperty())
-            {
-                writer.WriteRgba(color);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-        /// </summary>
-        /// <param name="red">The red component in the range 0 to 255.</param>
-        /// <param name="green">The green component in the range 0 to 255.</param>
-        /// <param name="blue">The blue component in the range 0 to 255.</param>
-        /// <param name="alpha">The alpha component in the range 0 to 255.</param>
-        public void WriteColorProperty(int red, int green, int blue, int alpha)
-        {
-            using (var writer = OpenColorProperty())
-            {
-                writer.WriteRgba(red, green, blue, alpha);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
-        public void WriteColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
-        {
-            using (var writer = OpenColorProperty())
-            {
-                writer.WriteRgba(dates, colors, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-        /// </summary>
-        /// <param name="red">The red component in the range 0 to 1.0.</param>
-        /// <param name="green">The green component in the range 0 to 1.0.</param>
-        /// <param name="blue">The blue component in the range 0 to 1.0.</param>
-        /// <param name="alpha">The alpha component in the range 0 to 1.0.</param>
-        public void WriteColorPropertyRgbaf(float red, float green, float blue, float alpha)
-        {
-            using (var writer = OpenColorProperty())
-            {
-                writer.WriteRgbaf(red, green, blue, alpha);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteColorPropertyReference(Reference value)
-        {
-            using (var writer = OpenColorProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteColorPropertyReference(string value)
-        {
-            using (var writer = OpenColorProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteColorPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenColorProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteColorPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenColorProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>eyeOffset</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>eyeOffset</code> property defines the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-        /// </summary>
-        public EyeOffsetCesiumWriter EyeOffsetWriter
-        {
-            get { return m_eyeOffset.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>eyeOffset</code> property.  The <code>eyeOffset</code> property defines the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-        /// </summary>
-        public EyeOffsetCesiumWriter OpenEyeOffsetProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(EyeOffsetWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteEyeOffsetProperty(Cartesian value)
-        {
-            using (var writer = OpenEyeOffsetProperty())
-            {
-                writer.WriteCartesian(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-        /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        public void WriteEyeOffsetProperty(IList<JulianDate> dates, IList<Cartesian> values)
-        {
-            using (var writer = OpenEyeOffsetProperty())
-            {
-                writer.WriteCartesian(dates, values);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-        /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteEyeOffsetProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
-        {
-            using (var writer = OpenEyeOffsetProperty())
-            {
-                writer.WriteCartesian(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteEyeOffsetPropertyReference(Reference value)
-        {
-            using (var writer = OpenEyeOffsetProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteEyeOffsetPropertyReference(string value)
-        {
-            using (var writer = OpenEyeOffsetProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteEyeOffsetPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenEyeOffsetProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteEyeOffsetPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenEyeOffsetProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>horizontalOrigin</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>horizontalOrigin</code> property defines the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
-        /// </summary>
-        public HorizontalOriginCesiumWriter HorizontalOriginWriter
-        {
-            get { return m_horizontalOrigin.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>horizontalOrigin</code> property.  The <code>horizontalOrigin</code> property defines the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
-        /// </summary>
-        public HorizontalOriginCesiumWriter OpenHorizontalOriginProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(HorizontalOriginWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>horizontalOrigin</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
-        /// </summary>
-        /// <param name="value">The horizontal origin.</param>
-        public void WriteHorizontalOriginProperty(CesiumHorizontalOrigin value)
-        {
-            using (var writer = OpenHorizontalOriginProperty())
-            {
-                writer.WriteHorizontalOrigin(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteHorizontalOriginPropertyReference(Reference value)
-        {
-            using (var writer = OpenHorizontalOriginProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteHorizontalOriginPropertyReference(string value)
-        {
-            using (var writer = OpenHorizontalOriginProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteHorizontalOriginPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenHorizontalOriginProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteHorizontalOriginPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenHorizontalOriginProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
@@ -643,6 +339,100 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scale</code> property defines the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+        /// </summary>
+        public DoubleCesiumWriter ScaleWriter
+        {
+            get { return m_scale.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>scale</code> property.  The <code>scale</code> property defines the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+        /// </summary>
+        public DoubleCesiumWriter OpenScaleProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ScaleWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteScaleProperty(double value)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteScaleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteScalePropertyReference(Reference value)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteScalePropertyReference(string value)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteScalePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteScalePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <code>pixelOffset</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>pixelOffset</code> property defines the offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`.
         /// </summary>
         public PixelOffsetCesiumWriter PixelOffsetWriter
@@ -763,101 +553,396 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scale</code> property defines the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+        /// Gets the writer for the <code>eyeOffset</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>eyeOffset</code> property defines the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
-        public DoubleCesiumWriter ScaleWriter
+        public EyeOffsetCesiumWriter EyeOffsetWriter
         {
-            get { return m_scale.Value; }
+            get { return m_eyeOffset.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>scale</code> property.  The <code>scale</code> property defines the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+        /// Opens and returns the writer for the <code>eyeOffset</code> property.  The <code>eyeOffset</code> property defines the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
-        public DoubleCesiumWriter OpenScaleProperty()
+        public EyeOffsetCesiumWriter OpenEyeOffsetProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(ScaleWriter);
+            return OpenAndReturn(EyeOffsetWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+        /// Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteScaleProperty(double value)
+        public void WriteEyeOffsetProperty(Cartesian value)
         {
-            using (var writer = OpenScaleProperty())
+            using (var writer = OpenEyeOffsetProperty())
             {
-                writer.WriteNumber(value);
+                writer.WriteCartesian(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+        /// Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteEyeOffsetProperty(IList<JulianDate> dates, IList<Cartesian> values)
+        {
+            using (var writer = OpenEyeOffsetProperty())
+            {
+                writer.WriteCartesian(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteScaleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        public void WriteEyeOffsetProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
         {
-            using (var writer = OpenScaleProperty())
+            using (var writer = OpenEyeOffsetProperty())
             {
-                writer.WriteNumber(dates, values, startIndex, length);
+                writer.WriteCartesian(dates, values, startIndex, length);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+        /// Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         /// <param name="value">The reference.</param>
-        public void WriteScalePropertyReference(Reference value)
+        public void WriteEyeOffsetPropertyReference(Reference value)
         {
-            using (var writer = OpenScaleProperty())
+            using (var writer = OpenEyeOffsetProperty())
             {
                 writer.WriteReference(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+        /// Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
-        public void WriteScalePropertyReference(string value)
+        public void WriteEyeOffsetPropertyReference(string value)
         {
-            using (var writer = OpenScaleProperty())
+            using (var writer = OpenEyeOffsetProperty())
             {
                 writer.WriteReference(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+        /// Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteScalePropertyReference(string identifier, string propertyName)
+        public void WriteEyeOffsetPropertyReference(string identifier, string propertyName)
         {
-            using (var writer = OpenScaleProperty())
+            using (var writer = OpenEyeOffsetProperty())
             {
                 writer.WriteReference(identifier, propertyName);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+        /// Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteScalePropertyReference(string identifier, string[] propertyNames)
+        public void WriteEyeOffsetPropertyReference(string identifier, string[] propertyNames)
         {
-            using (var writer = OpenScaleProperty())
+            using (var writer = OpenEyeOffsetProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
         }
 
         /// <summary>
-        /// Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+        /// Gets the writer for the <code>horizontalOrigin</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>horizontalOrigin</code> property defines the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// </summary>
+        public HorizontalOriginCesiumWriter HorizontalOriginWriter
+        {
+            get { return m_horizontalOrigin.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>horizontalOrigin</code> property.  The <code>horizontalOrigin</code> property defines the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// </summary>
+        public HorizontalOriginCesiumWriter OpenHorizontalOriginProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(HorizontalOriginWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>horizontalOrigin</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// </summary>
+        /// <param name="value">The horizontal origin.</param>
+        public void WriteHorizontalOriginProperty(CesiumHorizontalOrigin value)
+        {
+            using (var writer = OpenHorizontalOriginProperty())
+            {
+                writer.WriteHorizontalOrigin(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteHorizontalOriginPropertyReference(Reference value)
+        {
+            using (var writer = OpenHorizontalOriginProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteHorizontalOriginPropertyReference(string value)
+        {
+            using (var writer = OpenHorizontalOriginProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteHorizontalOriginPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenHorizontalOriginProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteHorizontalOriginPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenHorizontalOriginProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>verticalOrigin</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>verticalOrigin</code> property defines the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// </summary>
+        public VerticalOriginCesiumWriter VerticalOriginWriter
+        {
+            get { return m_verticalOrigin.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>verticalOrigin</code> property.  The <code>verticalOrigin</code> property defines the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// </summary>
+        public VerticalOriginCesiumWriter OpenVerticalOriginProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(VerticalOriginWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>verticalOrigin</code> property as a <code>verticalOrigin</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// </summary>
+        /// <param name="value">The vertical origin.</param>
+        public void WriteVerticalOriginProperty(CesiumVerticalOrigin value)
+        {
+            using (var writer = OpenVerticalOriginProperty())
+            {
+                writer.WriteVerticalOrigin(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteVerticalOriginPropertyReference(Reference value)
+        {
+            using (var writer = OpenVerticalOriginProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteVerticalOriginPropertyReference(string value)
+        {
+            using (var writer = OpenVerticalOriginProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteVerticalOriginPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenVerticalOriginProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteVerticalOriginPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenVerticalOriginProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>color</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>color</code> property defines the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        public ColorCesiumWriter ColorWriter
+        {
+            get { return m_color.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>color</code> property.  The <code>color</code> property defines the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        public ColorCesiumWriter OpenColorProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ColorWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteColorProperty(Color color)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgba(color);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 255.</param>
+        /// <param name="green">The green component in the range 0 to 255.</param>
+        /// <param name="blue">The blue component in the range 0 to 255.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 255.</param>
+        public void WriteColorProperty(int red, int green, int blue, int alpha)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgba(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
+        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        public void WriteColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 1.0.</param>
+        /// <param name="green">The green component in the range 0 to 1.0.</param>
+        /// <param name="blue">The blue component in the range 0 to 1.0.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 1.0.</param>
+        public void WriteColorPropertyRgbaf(float red, float green, float blue, float alpha)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteColorPropertyReference(string value)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
         /// </summary>
         public DoubleCesiumWriter RotationWriter
         {
@@ -865,7 +950,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+        /// Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
         /// </summary>
         public DoubleCesiumWriter OpenRotationProperty()
         {
@@ -874,7 +959,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteRotationProperty(double value)
@@ -886,7 +971,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -901,7 +986,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteRotationPropertyReference(Reference value)
@@ -913,7 +998,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteRotationPropertyReference(string value)
@@ -925,7 +1010,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -938,7 +1023,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1058,79 +1143,79 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>verticalOrigin</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>verticalOrigin</code> property defines the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+        /// Gets the writer for the <code>sizeInMeters</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>sizeInMeters</code> property defines whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        public VerticalOriginCesiumWriter VerticalOriginWriter
+        public BooleanCesiumWriter SizeInMetersWriter
         {
-            get { return m_verticalOrigin.Value; }
+            get { return m_sizeInMeters.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>verticalOrigin</code> property.  The <code>verticalOrigin</code> property defines the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+        /// Opens and returns the writer for the <code>sizeInMeters</code> property.  The <code>sizeInMeters</code> property defines whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        public VerticalOriginCesiumWriter OpenVerticalOriginProperty()
+        public BooleanCesiumWriter OpenSizeInMetersProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(VerticalOriginWriter);
+            return OpenAndReturn(SizeInMetersWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>verticalOrigin</code> property as a <code>verticalOrigin</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+        /// Writes a value for the <code>sizeInMeters</code> property as a <code>boolean</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        /// <param name="value">The vertical origin.</param>
-        public void WriteVerticalOriginProperty(CesiumVerticalOrigin value)
+        /// <param name="value">The value.</param>
+        public void WriteSizeInMetersProperty(bool value)
         {
-            using (var writer = OpenVerticalOriginProperty())
+            using (var writer = OpenSizeInMetersProperty())
             {
-                writer.WriteVerticalOrigin(value);
+                writer.WriteBoolean(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+        /// Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
-        public void WriteVerticalOriginPropertyReference(Reference value)
+        public void WriteSizeInMetersPropertyReference(Reference value)
         {
-            using (var writer = OpenVerticalOriginProperty())
+            using (var writer = OpenSizeInMetersProperty())
             {
                 writer.WriteReference(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+        /// Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
-        public void WriteVerticalOriginPropertyReference(string value)
+        public void WriteSizeInMetersPropertyReference(string value)
         {
-            using (var writer = OpenVerticalOriginProperty())
+            using (var writer = OpenSizeInMetersProperty())
             {
                 writer.WriteReference(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+        /// Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteVerticalOriginPropertyReference(string identifier, string propertyName)
+        public void WriteSizeInMetersPropertyReference(string identifier, string propertyName)
         {
-            using (var writer = OpenVerticalOriginProperty())
+            using (var writer = OpenSizeInMetersProperty())
             {
                 writer.WriteReference(identifier, propertyName);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+        /// Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteVerticalOriginPropertyReference(string identifier, string[] propertyNames)
+        public void WriteSizeInMetersPropertyReference(string identifier, string[] propertyNames)
         {
-            using (var writer = OpenVerticalOriginProperty())
+            using (var writer = OpenSizeInMetersProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

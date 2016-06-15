@@ -9,9 +9,9 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Ellipse</code> to a <see cref="CesiumOutputStream" />.  A <code>Ellipse</code> is an ellipse, which is a closed curve on or above the surface of the Earth.
+    /// Writes a <code>Rectangle</code> to a <see cref="CesiumOutputStream" />.  A <code>Rectangle</code> is a cartographic rectangle, which conforms to the curvature of the globe and can be placed on the surface or at altitude and can optionally be extruded into a volume.
     /// </summary>
-    public class EllipseCesiumWriter : CesiumPropertyWriter<EllipseCesiumWriter>
+    public class RectangleCesiumWriter : CesiumPropertyWriter<RectangleCesiumWriter>
     {
         /// <summary>
         /// The name of the <code>show</code> property.
@@ -19,14 +19,9 @@ namespace CesiumLanguageWriter
         public const string ShowPropertyName = "show";
 
         /// <summary>
-        /// The name of the <code>semiMajorAxis</code> property.
+        /// The name of the <code>coordinates</code> property.
         /// </summary>
-        public const string SemiMajorAxisPropertyName = "semiMajorAxis";
-
-        /// <summary>
-        /// The name of the <code>semiMinorAxis</code> property.
-        /// </summary>
-        public const string SemiMinorAxisPropertyName = "semiMinorAxis";
+        public const string CoordinatesPropertyName = "coordinates";
 
         /// <summary>
         /// The name of the <code>height</code> property.
@@ -79,13 +74,17 @@ namespace CesiumLanguageWriter
         public const string OutlineWidthPropertyName = "outlineWidth";
 
         /// <summary>
-        /// The name of the <code>numberOfVerticalLines</code> property.
+        /// The name of the <code>closeTop</code> property.
         /// </summary>
-        public const string NumberOfVerticalLinesPropertyName = "numberOfVerticalLines";
+        public const string CloseTopPropertyName = "closeTop";
+
+        /// <summary>
+        /// The name of the <code>closeBottom</code> property.
+        /// </summary>
+        public const string CloseBottomPropertyName = "closeBottom";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_semiMajorAxis = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SemiMajorAxisPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_semiMinorAxis = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SemiMinorAxisPropertyName), false);
+        private readonly Lazy<RectangleCoordinatesCesiumWriter> m_coordinates = new Lazy<RectangleCoordinatesCesiumWriter>(() => new RectangleCoordinatesCesiumWriter(CoordinatesPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_height = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(HeightPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_extrudedHeight = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ExtrudedHeightPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_rotation = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RotationPropertyName), false);
@@ -96,12 +95,13 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(OutlinePropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_numberOfVerticalLines = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(NumberOfVerticalLinesPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_closeTop = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(CloseTopPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_closeBottom = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(CloseBottomPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public EllipseCesiumWriter(string propertyName)
+        public RectangleCesiumWriter(string propertyName)
             : base(propertyName)
         {
         }
@@ -110,19 +110,19 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected EllipseCesiumWriter(EllipseCesiumWriter existingInstance)
+        protected RectangleCesiumWriter(RectangleCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
 
         /// <inheritdoc />
-        public override EllipseCesiumWriter Clone()
+        public override RectangleCesiumWriter Clone()
         {
-            return new EllipseCesiumWriter(this);
+            return new RectangleCesiumWriter(this);
         }
 
         /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the ellipse is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter ShowWriter
         {
@@ -130,7 +130,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the ellipse is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
@@ -139,7 +139,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -151,7 +151,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(Reference value)
@@ -163,7 +163,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowPropertyReference(string value)
@@ -175,7 +175,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -188,7 +188,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -201,195 +201,129 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>semiMajorAxis</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>semiMajorAxis</code> property defines the length of the ellipse's semi-major axis in meters.
+        /// Gets the writer for the <code>coordinates</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>coordinates</code> property defines the coordinates of the rectangle.
         /// </summary>
-        public DoubleCesiumWriter SemiMajorAxisWriter
+        public RectangleCoordinatesCesiumWriter CoordinatesWriter
         {
-            get { return m_semiMajorAxis.Value; }
+            get { return m_coordinates.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>semiMajorAxis</code> property.  The <code>semiMajorAxis</code> property defines the length of the ellipse's semi-major axis in meters.
+        /// Opens and returns the writer for the <code>coordinates</code> property.  The <code>coordinates</code> property defines the coordinates of the rectangle.
         /// </summary>
-        public DoubleCesiumWriter OpenSemiMajorAxisProperty()
+        public RectangleCoordinatesCesiumWriter OpenCoordinatesProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(SemiMajorAxisWriter);
+            return OpenAndReturn(CoordinatesWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>semiMajorAxis</code> property as a <code>number</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+        /// Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteSemiMajorAxisProperty(double value)
+        public void WriteCoordinatesProperty(CartographicExtent value)
         {
-            using (var writer = OpenSemiMajorAxisProperty())
+            using (var writer = OpenCoordinatesProperty())
             {
-                writer.WriteNumber(value);
+                writer.WriteWsenDegrees(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>semiMajorAxis</code> property as a <code>number</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+        /// Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
         /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="west">The westernmost longitude.</param>
+        /// <param name="south">The southernmost latitude.</param>
+        /// <param name="east">The easternmost longitude.</param>
+        /// <param name="north">The northernmost latitude.</param>
+        public void WriteCoordinatesProperty(double west, double south, double east, double north)
+        {
+            using (var writer = OpenCoordinatesProperty())
+            {
+                writer.WriteWsenDegrees(west, south, east, north);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteCoordinatesProperty(IList<JulianDate> dates, IList<CartographicExtent> values)
+        {
+            using (var writer = OpenCoordinatesProperty())
+            {
+                writer.WriteWsenDegrees(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteSemiMajorAxisProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        public void WriteCoordinatesProperty(IList<JulianDate> dates, IList<CartographicExtent> values, int startIndex, int length)
         {
-            using (var writer = OpenSemiMajorAxisProperty())
+            using (var writer = OpenCoordinatesProperty())
             {
-                writer.WriteNumber(dates, values, startIndex, length);
+                writer.WriteWsenDegrees(dates, values, startIndex, length);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>semiMajorAxis</code> property as a <code>reference</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+        /// Writes a value for the <code>coordinates</code> property as a <code>reference</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="value">The reference.</param>
-        public void WriteSemiMajorAxisPropertyReference(Reference value)
+        public void WriteCoordinatesPropertyReference(Reference value)
         {
-            using (var writer = OpenSemiMajorAxisProperty())
+            using (var writer = OpenCoordinatesProperty())
             {
                 writer.WriteReference(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>semiMajorAxis</code> property as a <code>reference</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+        /// Writes a value for the <code>coordinates</code> property as a <code>reference</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
-        public void WriteSemiMajorAxisPropertyReference(string value)
+        public void WriteCoordinatesPropertyReference(string value)
         {
-            using (var writer = OpenSemiMajorAxisProperty())
+            using (var writer = OpenCoordinatesProperty())
             {
                 writer.WriteReference(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>semiMajorAxis</code> property as a <code>reference</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+        /// Writes a value for the <code>coordinates</code> property as a <code>reference</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteSemiMajorAxisPropertyReference(string identifier, string propertyName)
+        public void WriteCoordinatesPropertyReference(string identifier, string propertyName)
         {
-            using (var writer = OpenSemiMajorAxisProperty())
+            using (var writer = OpenCoordinatesProperty())
             {
                 writer.WriteReference(identifier, propertyName);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>semiMajorAxis</code> property as a <code>reference</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+        /// Writes a value for the <code>coordinates</code> property as a <code>reference</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteSemiMajorAxisPropertyReference(string identifier, string[] propertyNames)
+        public void WriteCoordinatesPropertyReference(string identifier, string[] propertyNames)
         {
-            using (var writer = OpenSemiMajorAxisProperty())
+            using (var writer = OpenCoordinatesProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
         }
 
         /// <summary>
-        /// Gets the writer for the <code>semiMinorAxis</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>semiMinorAxis</code> property defines the length of the ellipse's semi-minor axis in meters.
-        /// </summary>
-        public DoubleCesiumWriter SemiMinorAxisWriter
-        {
-            get { return m_semiMinorAxis.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>semiMinorAxis</code> property.  The <code>semiMinorAxis</code> property defines the length of the ellipse's semi-minor axis in meters.
-        /// </summary>
-        public DoubleCesiumWriter OpenSemiMinorAxisProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(SemiMinorAxisWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>semiMinorAxis</code> property as a <code>number</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteSemiMinorAxisProperty(double value)
-        {
-            using (var writer = OpenSemiMinorAxisProperty())
-            {
-                writer.WriteNumber(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>semiMinorAxis</code> property as a <code>number</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteSemiMinorAxisProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenSemiMinorAxisProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>semiMinorAxis</code> property as a <code>reference</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteSemiMinorAxisPropertyReference(Reference value)
-        {
-            using (var writer = OpenSemiMinorAxisProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>semiMinorAxis</code> property as a <code>reference</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteSemiMinorAxisPropertyReference(string value)
-        {
-            using (var writer = OpenSemiMinorAxisProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>semiMinorAxis</code> property as a <code>reference</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteSemiMinorAxisPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenSemiMinorAxisProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>semiMinorAxis</code> property as a <code>reference</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteSemiMinorAxisPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenSemiMinorAxisProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>height</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>height</code> property defines the altitude of the ellipse relative to the surface.
+        /// Gets the writer for the <code>height</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>height</code> property defines the height of the rectangle.
         /// </summary>
         public DoubleCesiumWriter HeightWriter
         {
@@ -397,7 +331,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>height</code> property.  The <code>height</code> property defines the altitude of the ellipse relative to the surface.
+        /// Opens and returns the writer for the <code>height</code> property.  The <code>height</code> property defines the height of the rectangle.
         /// </summary>
         public DoubleCesiumWriter OpenHeightProperty()
         {
@@ -406,7 +340,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the altitude of the ellipse relative to the surface.
+        /// Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the rectangle.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteHeightProperty(double value)
@@ -418,7 +352,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the altitude of the ellipse relative to the surface.
+        /// Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the rectangle.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -433,7 +367,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the altitude of the ellipse relative to the surface.
+        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the rectangle.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteHeightPropertyReference(Reference value)
@@ -445,7 +379,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the altitude of the ellipse relative to the surface.
+        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the rectangle.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteHeightPropertyReference(string value)
@@ -457,7 +391,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the altitude of the ellipse relative to the surface.
+        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the rectangle.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -470,7 +404,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the altitude of the ellipse relative to the surface.
+        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the rectangle.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -483,7 +417,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>extrudedHeight</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>extrudedHeight</code> property defines the altitude of the ellipse's extruded face relative to the surface.
+        /// Gets the writer for the <code>extrudedHeight</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>extrudedHeight</code> property defines the extruded height of the rectangle.
         /// </summary>
         public DoubleCesiumWriter ExtrudedHeightWriter
         {
@@ -491,7 +425,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>extrudedHeight</code> property.  The <code>extrudedHeight</code> property defines the altitude of the ellipse's extruded face relative to the surface.
+        /// Opens and returns the writer for the <code>extrudedHeight</code> property.  The <code>extrudedHeight</code> property defines the extruded height of the rectangle.
         /// </summary>
         public DoubleCesiumWriter OpenExtrudedHeightProperty()
         {
@@ -500,7 +434,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the altitude of the ellipse's extruded face relative to the surface.
+        /// Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteExtrudedHeightProperty(double value)
@@ -512,7 +446,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the altitude of the ellipse's extruded face relative to the surface.
+        /// Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -527,7 +461,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the altitude of the ellipse's extruded face relative to the surface.
+        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteExtrudedHeightPropertyReference(Reference value)
@@ -539,7 +473,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the altitude of the ellipse's extruded face relative to the surface.
+        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteExtrudedHeightPropertyReference(string value)
@@ -551,7 +485,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the altitude of the ellipse's extruded face relative to the surface.
+        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -564,7 +498,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the altitude of the ellipse's extruded face relative to the surface.
+        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -577,7 +511,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>rotation</code> property defines the angle from north (counter-clockwise) in radians.
+        /// Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the rectangle clockwise from north.
         /// </summary>
         public DoubleCesiumWriter RotationWriter
         {
@@ -585,7 +519,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the angle from north (counter-clockwise) in radians.
+        /// Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the rectangle clockwise from north.
         /// </summary>
         public DoubleCesiumWriter OpenRotationProperty()
         {
@@ -594,7 +528,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
+        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteRotationProperty(double value)
@@ -606,7 +540,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
+        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -621,7 +555,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteRotationPropertyReference(Reference value)
@@ -633,7 +567,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteRotationPropertyReference(string value)
@@ -645,7 +579,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -658,7 +592,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
+        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -671,7 +605,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>stRotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>stRotation</code> property defines the rotation of any applied texture coordinates.
+        /// Gets the writer for the <code>stRotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>stRotation</code> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         public DoubleCesiumWriter StRotationWriter
         {
@@ -679,7 +613,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>stRotation</code> property.  The <code>stRotation</code> property defines the rotation of any applied texture coordinates.
+        /// Opens and returns the writer for the <code>stRotation</code> property.  The <code>stRotation</code> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         public DoubleCesiumWriter OpenStRotationProperty()
         {
@@ -688,7 +622,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+        /// Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteStRotationProperty(double value)
@@ -700,7 +634,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+        /// Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -715,7 +649,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteStRotationPropertyReference(Reference value)
@@ -727,7 +661,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteStRotationPropertyReference(string value)
@@ -739,7 +673,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -752,7 +686,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -859,7 +793,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>fill</code> property defines whether or not the ellipse is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>fill</code> property defines whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter FillWriter
         {
@@ -867,7 +801,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the ellipse is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenFillProperty()
         {
@@ -876,7 +810,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteFillProperty(bool value)
@@ -888,7 +822,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteFillPropertyReference(Reference value)
@@ -900,7 +834,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteFillPropertyReference(string value)
@@ -912,7 +846,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -925,7 +859,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -938,7 +872,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>material</code> property defines the material to use to fill the ellipse.
+        /// Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>material</code> property defines the material to display on the surface of the rectangle.
         /// </summary>
         public MaterialCesiumWriter MaterialWriter
         {
@@ -946,7 +880,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to use to fill the ellipse.
+        /// Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to display on the surface of the rectangle.
         /// </summary>
         public MaterialCesiumWriter OpenMaterialProperty()
         {
@@ -955,7 +889,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outline</code> property defines whether or not the ellipse is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outline</code> property defines whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         public BooleanCesiumWriter OutlineWriter
         {
@@ -963,7 +897,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the ellipse is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         public BooleanCesiumWriter OpenOutlineProperty()
         {
@@ -972,7 +906,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOutlineProperty(bool value)
@@ -984,7 +918,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlinePropertyReference(Reference value)
@@ -996,7 +930,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlinePropertyReference(string value)
@@ -1008,7 +942,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1021,7 +955,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1034,7 +968,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outlineColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineColor</code> property defines the color of the ellipse outline.
+        /// Gets the writer for the <code>outlineColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineColor</code> property defines the color of the rectangle outline.
         /// </summary>
         public ColorCesiumWriter OutlineColorWriter
         {
@@ -1042,7 +976,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outlineColor</code> property.  The <code>outlineColor</code> property defines the color of the ellipse outline.
+        /// Opens and returns the writer for the <code>outlineColor</code> property.  The <code>outlineColor</code> property defines the color of the rectangle outline.
         /// </summary>
         public ColorCesiumWriter OpenOutlineColorProperty()
         {
@@ -1051,7 +985,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOutlineColorProperty(Color color)
@@ -1063,7 +997,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -1078,7 +1012,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -1093,7 +1027,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -1108,7 +1042,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(Reference value)
@@ -1120,7 +1054,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlineColorPropertyReference(string value)
@@ -1132,7 +1066,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1145,7 +1079,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1158,7 +1092,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the ellipse outline.  If not specified, the default value is 1.0.
+        /// Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         public DoubleCesiumWriter OutlineWidthWriter
         {
@@ -1166,7 +1100,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the ellipse outline.  If not specified, the default value is 1.0.
+        /// Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         public DoubleCesiumWriter OpenOutlineWidthProperty()
         {
@@ -1175,7 +1109,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOutlineWidthProperty(double value)
@@ -1187,7 +1121,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -1202,7 +1136,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(Reference value)
@@ -1214,7 +1148,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlineWidthPropertyReference(string value)
@@ -1226,7 +1160,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1239,7 +1173,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1252,94 +1186,158 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>numberOfVerticalLines</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>numberOfVerticalLines</code> property defines the number of vertical lines to use when outlining an extruded ellipse.
+        /// Gets the writer for the <code>closeTop</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>closeTop</code> property defines whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        public DoubleCesiumWriter NumberOfVerticalLinesWriter
+        public BooleanCesiumWriter CloseTopWriter
         {
-            get { return m_numberOfVerticalLines.Value; }
+            get { return m_closeTop.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>numberOfVerticalLines</code> property.  The <code>numberOfVerticalLines</code> property defines the number of vertical lines to use when outlining an extruded ellipse.
+        /// Opens and returns the writer for the <code>closeTop</code> property.  The <code>closeTop</code> property defines whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        public DoubleCesiumWriter OpenNumberOfVerticalLinesProperty()
+        public BooleanCesiumWriter OpenCloseTopProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(NumberOfVerticalLinesWriter);
+            return OpenAndReturn(CloseTopWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>number</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
+        /// Writes a value for the <code>closeTop</code> property as a <code>boolean</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteNumberOfVerticalLinesProperty(double value)
+        public void WriteCloseTopProperty(bool value)
         {
-            using (var writer = OpenNumberOfVerticalLinesProperty())
+            using (var writer = OpenCloseTopProperty())
             {
-                writer.WriteNumber(value);
+                writer.WriteBoolean(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>number</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteNumberOfVerticalLinesProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenNumberOfVerticalLinesProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
+        /// Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
-        public void WriteNumberOfVerticalLinesPropertyReference(Reference value)
+        public void WriteCloseTopPropertyReference(Reference value)
         {
-            using (var writer = OpenNumberOfVerticalLinesProperty())
+            using (var writer = OpenCloseTopProperty())
             {
                 writer.WriteReference(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
+        /// Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
-        public void WriteNumberOfVerticalLinesPropertyReference(string value)
+        public void WriteCloseTopPropertyReference(string value)
         {
-            using (var writer = OpenNumberOfVerticalLinesProperty())
+            using (var writer = OpenCloseTopProperty())
             {
                 writer.WriteReference(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
+        /// Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteNumberOfVerticalLinesPropertyReference(string identifier, string propertyName)
+        public void WriteCloseTopPropertyReference(string identifier, string propertyName)
         {
-            using (var writer = OpenNumberOfVerticalLinesProperty())
+            using (var writer = OpenCloseTopProperty())
             {
                 writer.WriteReference(identifier, propertyName);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
+        /// Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteNumberOfVerticalLinesPropertyReference(string identifier, string[] propertyNames)
+        public void WriteCloseTopPropertyReference(string identifier, string[] propertyNames)
         {
-            using (var writer = OpenNumberOfVerticalLinesProperty())
+            using (var writer = OpenCloseTopProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>closeBottom</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>closeBottom</code> property defines whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        public BooleanCesiumWriter CloseBottomWriter
+        {
+            get { return m_closeBottom.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>closeBottom</code> property.  The <code>closeBottom</code> property defines whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        public BooleanCesiumWriter OpenCloseBottomProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(CloseBottomWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>closeBottom</code> property as a <code>boolean</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteCloseBottomProperty(bool value)
+        {
+            using (var writer = OpenCloseBottomProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteCloseBottomPropertyReference(Reference value)
+        {
+            using (var writer = OpenCloseBottomProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteCloseBottomPropertyReference(string value)
+        {
+            using (var writer = OpenCloseBottomProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteCloseBottomPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenCloseBottomProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteCloseBottomPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenCloseBottomProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

@@ -3,8 +3,8 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace CesiumLanguageWriter
 {
@@ -19,6 +19,11 @@ namespace CesiumLanguageWriter
         public const string ShowPropertyName = "show";
 
         /// <summary>
+        /// The name of the <code>gltf</code> property.
+        /// </summary>
+        public const string GltfPropertyName = "gltf";
+
+        /// <summary>
         /// The name of the <code>scale</code> property.
         /// </summary>
         public const string ScalePropertyName = "scale";
@@ -29,9 +34,9 @@ namespace CesiumLanguageWriter
         public const string MinimumPixelSizePropertyName = "minimumPixelSize";
 
         /// <summary>
-        /// The name of the <code>gltf</code> property.
+        /// The name of the <code>incrementallyLoadTextures</code> property.
         /// </summary>
-        public const string GltfPropertyName = "gltf";
+        public const string IncrementallyLoadTexturesPropertyName = "incrementallyLoadTextures";
 
         /// <summary>
         /// The name of the <code>runAnimations</code> property.
@@ -44,9 +49,10 @@ namespace CesiumLanguageWriter
         public const string NodeTransformationsPropertyName = "nodeTransformations";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
+        private readonly Lazy<UriCesiumWriter> m_gltf = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(GltfPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_minimumPixelSize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MinimumPixelSizePropertyName), false);
-        private readonly Lazy<UriCesiumWriter> m_gltf = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(GltfPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_incrementallyLoadTextures = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(IncrementallyLoadTexturesPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_runAnimations = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(RunAnimationsPropertyName), false);
         private readonly Lazy<NodeTransformationsCesiumWriter> m_nodeTransformations = new Lazy<NodeTransformationsCesiumWriter>(() => new NodeTransformationsCesiumWriter(NodeTransformationsPropertyName), false);
 
@@ -74,7 +80,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the model is shown.
+        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter ShowWriter
         {
@@ -82,7 +88,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the model is shown.
+        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
@@ -91,7 +97,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the model is shown.
+        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -103,7 +109,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(Reference value)
@@ -115,7 +121,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowPropertyReference(string value)
@@ -127,7 +133,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -140,13 +146,169 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteShowPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenShowProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>gltf</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>gltf</code> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        public UriCesiumWriter GltfWriter
+        {
+            get { return m_gltf.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>gltf</code> property.  The <code>gltf</code> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        public UriCesiumWriter OpenGltfProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(GltfWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        /// <param name="resource">A resource object describing external data.</param>
+        public void WriteGltfProperty(CesiumResource resource)
+        {
+            using (var writer = OpenGltfProperty())
+            {
+                writer.WriteUri(resource);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        /// <param name="uri">The URI of the data.</param>
+        /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
+        public void WriteGltfProperty(Uri uri, CesiumResourceBehavior resourceBehavior)
+        {
+            using (var writer = OpenGltfProperty())
+            {
+                writer.WriteUri(uri, resourceBehavior);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        /// <param name="uri">The URI of the data.</param>
+        /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
+        public void WriteGltfProperty(string uri, CesiumResourceBehavior resourceBehavior)
+        {
+            using (var writer = OpenGltfProperty())
+            {
+                writer.WriteUri(uri, resourceBehavior);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        /// <param name="uri">The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
+        /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
+        public void WriteGltfProperty(Uri uri, ICesiumUriResolver resolver)
+        {
+            using (var writer = OpenGltfProperty())
+            {
+                writer.WriteUri(uri, resolver);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        /// <param name="uri">The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
+        /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
+        public void WriteGltfProperty(string uri, ICesiumUriResolver resolver)
+        {
+            using (var writer = OpenGltfProperty())
+            {
+                writer.WriteUri(uri, resolver);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        /// <param name="image">The image.  A data URI will be created for this image, using PNG encoding.</param>
+        public void WriteGltfProperty(Image image)
+        {
+            using (var writer = OpenGltfProperty())
+            {
+                writer.WriteUri(image);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        /// <param name="image">The image.  A data URI will be created for this image.</param>
+        /// <param name="imageFormat">The image format to use to encode the image in the data URI.</param>
+        public void WriteGltfProperty(Image image, CesiumImageFormat imageFormat)
+        {
+            using (var writer = OpenGltfProperty())
+            {
+                writer.WriteUri(image, imageFormat);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteGltfPropertyReference(Reference value)
+        {
+            using (var writer = OpenGltfProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteGltfPropertyReference(string value)
+        {
+            using (var writer = OpenGltfProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteGltfPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenGltfProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteGltfPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenGltfProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
@@ -341,163 +503,86 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>gltf</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>gltf</code> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Gets the writer for the <code>incrementallyLoadTextures</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>incrementallyLoadTextures</code> property defines whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        public UriCesiumWriter GltfWriter
+        public BooleanCesiumWriter IncrementallyLoadTexturesWriter
         {
-            get { return m_gltf.Value; }
+            get { return m_incrementallyLoadTextures.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>gltf</code> property.  The <code>gltf</code> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Opens and returns the writer for the <code>incrementallyLoadTextures</code> property.  The <code>incrementallyLoadTextures</code> property defines whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        public UriCesiumWriter OpenGltfProperty()
+        public BooleanCesiumWriter OpenIncrementallyLoadTexturesProperty()
         {
             OpenIntervalIfNecessary();
-            return OpenAndReturn(GltfWriter);
+            return OpenAndReturn(IncrementallyLoadTexturesWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>boolean</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="resource">A resource object describing external data.</param>
-        public void WriteGltfProperty(CesiumResource resource)
+        /// <param name="value">The value.</param>
+        public void WriteIncrementallyLoadTexturesProperty(bool value)
         {
-            using (var writer = OpenGltfProperty())
+            using (var writer = OpenIncrementallyLoadTexturesProperty())
             {
-                writer.WriteUri(resource);
+                writer.WriteBoolean(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
-        /// </summary>
-        /// <param name="uri">The URI of the data.</param>
-        /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
-        public void WriteGltfProperty(Uri uri, CesiumResourceBehavior resourceBehavior)
-        {
-            using (var writer = OpenGltfProperty())
-            {
-                writer.WriteUri(uri, resourceBehavior);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
-        /// </summary>
-        /// <param name="uri">The URI of the data.</param>
-        /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
-        public void WriteGltfProperty(string uri, CesiumResourceBehavior resourceBehavior)
-        {
-            using (var writer = OpenGltfProperty())
-            {
-                writer.WriteUri(uri, resourceBehavior);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
-        /// </summary>
-        /// <param name="uri">The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
-        /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
-        public void WriteGltfProperty(Uri uri, ICesiumUriResolver resolver)
-        {
-            using (var writer = OpenGltfProperty())
-            {
-                writer.WriteUri(uri, resolver);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
-        /// </summary>
-        /// <param name="uri">The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
-        /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
-        public void WriteGltfProperty(string uri, ICesiumUriResolver resolver)
-        {
-            using (var writer = OpenGltfProperty())
-            {
-                writer.WriteUri(uri, resolver);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
-        /// </summary>
-        /// <param name="image">The image.  A data URI will be created for this image, using PNG encoding.</param>
-        public void WriteGltfProperty(Image image)
-        {
-            using (var writer = OpenGltfProperty())
-            {
-                writer.WriteUri(image);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
-        /// </summary>
-        /// <param name="image">The image.  A data URI will be created for this image.</param>
-        /// <param name="imageFormat">The image format to use to encode the image in the data URI.</param>
-        public void WriteGltfProperty(Image image, CesiumImageFormat imageFormat)
-        {
-            using (var writer = OpenGltfProperty())
-            {
-                writer.WriteUri(image, imageFormat);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>reference</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
-        public void WriteGltfPropertyReference(Reference value)
+        public void WriteIncrementallyLoadTexturesPropertyReference(Reference value)
         {
-            using (var writer = OpenGltfProperty())
+            using (var writer = OpenIncrementallyLoadTexturesProperty())
             {
                 writer.WriteReference(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>reference</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
-        public void WriteGltfPropertyReference(string value)
+        public void WriteIncrementallyLoadTexturesPropertyReference(string value)
         {
-            using (var writer = OpenGltfProperty())
+            using (var writer = OpenIncrementallyLoadTexturesProperty())
             {
                 writer.WriteReference(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>reference</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteGltfPropertyReference(string identifier, string propertyName)
+        public void WriteIncrementallyLoadTexturesPropertyReference(string identifier, string propertyName)
         {
-            using (var writer = OpenGltfProperty())
+            using (var writer = OpenIncrementallyLoadTexturesProperty())
             {
                 writer.WriteReference(identifier, propertyName);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>reference</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteGltfPropertyReference(string identifier, string[] propertyNames)
+        public void WriteIncrementallyLoadTexturesPropertyReference(string identifier, string[] propertyNames)
         {
-            using (var writer = OpenGltfProperty())
+            using (var writer = OpenIncrementallyLoadTexturesProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
         }
 
         /// <summary>
-        /// Gets the writer for the <code>runAnimations</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>runAnimations</code> property defines whether or not to run all animations defined in the glTF model.
+        /// Gets the writer for the <code>runAnimations</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>runAnimations</code> property defines whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter RunAnimationsWriter
         {
@@ -505,7 +590,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>runAnimations</code> property.  The <code>runAnimations</code> property defines whether or not to run all animations defined in the glTF model.
+        /// Opens and returns the writer for the <code>runAnimations</code> property.  The <code>runAnimations</code> property defines whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenRunAnimationsProperty()
         {
@@ -514,7 +599,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>runAnimations</code> property as a <code>boolean</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+        /// Writes a value for the <code>runAnimations</code> property as a <code>boolean</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteRunAnimationsProperty(bool value)
@@ -526,7 +611,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+        /// Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteRunAnimationsPropertyReference(Reference value)
@@ -538,7 +623,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+        /// Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteRunAnimationsPropertyReference(string value)
@@ -550,7 +635,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+        /// Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -563,7 +648,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+        /// Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

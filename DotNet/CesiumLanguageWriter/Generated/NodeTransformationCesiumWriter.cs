@@ -13,11 +13,6 @@ namespace CesiumLanguageWriter
     public class NodeTransformationCesiumWriter : CesiumPropertyWriter<NodeTransformationCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>scale</code> property.
-        /// </summary>
-        public const string ScalePropertyName = "scale";
-
-        /// <summary>
         /// The name of the <code>translation</code> property.
         /// </summary>
         public const string TranslationPropertyName = "translation";
@@ -27,9 +22,14 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string RotationPropertyName = "rotation";
 
-        private readonly Lazy<ScaleCesiumWriter> m_scale = new Lazy<ScaleCesiumWriter>(() => new ScaleCesiumWriter(ScalePropertyName), false);
+        /// <summary>
+        /// The name of the <code>scale</code> property.
+        /// </summary>
+        public const string ScalePropertyName = "scale";
+
         private readonly Lazy<TranslationCesiumWriter> m_translation = new Lazy<TranslationCesiumWriter>(() => new TranslationCesiumWriter(TranslationPropertyName), false);
         private readonly Lazy<RotationCesiumWriter> m_rotation = new Lazy<RotationCesiumWriter>(() => new RotationCesiumWriter(RotationPropertyName), false);
+        private readonly Lazy<ScaleCesiumWriter> m_scale = new Lazy<ScaleCesiumWriter>(() => new ScaleCesiumWriter(ScalePropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -52,113 +52,6 @@ namespace CesiumLanguageWriter
         public override NodeTransformationCesiumWriter Clone()
         {
             return new NodeTransformationCesiumWriter(this);
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scale</code> property defines the scaling to apply to the model node.
-        /// </summary>
-        public ScaleCesiumWriter ScaleWriter
-        {
-            get { return m_scale.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>scale</code> property.  The <code>scale</code> property defines the scaling to apply to the model node.
-        /// </summary>
-        public ScaleCesiumWriter OpenScaleProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(ScaleWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteScaleProperty(Cartesian value)
-        {
-            using (var writer = OpenScaleProperty())
-            {
-                writer.WriteCartesian(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
-        /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        public void WriteScaleProperty(IList<JulianDate> dates, IList<Cartesian> values)
-        {
-            using (var writer = OpenScaleProperty())
-            {
-                writer.WriteCartesian(dates, values);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
-        /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteScaleProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
-        {
-            using (var writer = OpenScaleProperty())
-            {
-                writer.WriteCartesian(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteScalePropertyReference(Reference value)
-        {
-            using (var writer = OpenScaleProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteScalePropertyReference(string value)
-        {
-            using (var writer = OpenScaleProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteScalePropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenScaleProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteScalePropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenScaleProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
         }
 
         /// <summary>
@@ -370,6 +263,113 @@ namespace CesiumLanguageWriter
         public void WriteRotationPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenRotationProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scale</code> property defines the scaling to apply to the model node.
+        /// </summary>
+        public ScaleCesiumWriter ScaleWriter
+        {
+            get { return m_scale.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>scale</code> property.  The <code>scale</code> property defines the scaling to apply to the model node.
+        /// </summary>
+        public ScaleCesiumWriter OpenScaleProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ScaleWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteScaleProperty(Cartesian value)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteCartesian(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteScaleProperty(IList<JulianDate> dates, IList<Cartesian> values)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteCartesian(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
+        /// </summary>
+        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteScaleProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteCartesian(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteScalePropertyReference(Reference value)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteScalePropertyReference(string value)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteScalePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteScalePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenScaleProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

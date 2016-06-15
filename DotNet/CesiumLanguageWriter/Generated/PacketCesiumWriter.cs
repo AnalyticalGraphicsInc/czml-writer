@@ -129,6 +129,11 @@ namespace CesiumLanguageWriter
         public const string CorridorPropertyName = "corridor";
 
         /// <summary>
+        /// The name of the <code>wall</code> property.
+        /// </summary>
+        public const string WallPropertyName = "wall";
+
+        /// <summary>
         /// The name of the <code>agi_conicSensor</code> property.
         /// </summary>
         public const string ConicSensorPropertyName = "agi_conicSensor";
@@ -170,6 +175,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BoxCesiumWriter> m_box = new Lazy<BoxCesiumWriter>(() => new BoxCesiumWriter(BoxPropertyName), false);
         private readonly Lazy<CylinderCesiumWriter> m_cylinder = new Lazy<CylinderCesiumWriter>(() => new CylinderCesiumWriter(CylinderPropertyName), false);
         private readonly Lazy<CorridorCesiumWriter> m_corridor = new Lazy<CorridorCesiumWriter>(() => new CorridorCesiumWriter(CorridorPropertyName), false);
+        private readonly Lazy<WallCesiumWriter> m_wall = new Lazy<WallCesiumWriter>(() => new WallCesiumWriter(WallPropertyName), false);
         private readonly Lazy<ConicSensorCesiumWriter> m_agi_conicSensor = new Lazy<ConicSensorCesiumWriter>(() => new ConicSensorCesiumWriter(ConicSensorPropertyName), false);
         private readonly Lazy<CustomPatternSensorCesiumWriter> m_agi_customPatternSensor = new Lazy<CustomPatternSensorCesiumWriter>(() => new CustomPatternSensorCesiumWriter(CustomPatternSensorPropertyName), false);
         private readonly Lazy<RectangularSensorCesiumWriter> m_agi_rectangularSensor = new Lazy<RectangularSensorCesiumWriter>(() => new RectangularSensorCesiumWriter(RectangularSensorPropertyName), false);
@@ -193,7 +199,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>id</code>, which is the ID of the object described by this packet.  IDs do not need to be GUIDs, but they do need to uniquely identify a single object within a CZML source and any other CZML sources loaded into the same scope.  If this property is not specified, the client will automatically generate a unique one.  However, this prevents later packets from referring to this object in order to add more data to it.
+        /// Writes the value expressed as a <code>id</code>, which is the ID of the object described by this packet.  IDs do not need to be GUIDs, but they do need to uniquely identify a single object within a CZML source and any other CZML sources loaded into the same scope.  If this property is not specified, the client will automatically generate a unique one.  However, this prevents later packets from referring to this object in order to add more data to it.  If not specified, the default value is unique.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteId(string value)
@@ -342,7 +348,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>availability</code>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.
+        /// Writes the value expressed as a <code>availability</code>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.  If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
         /// </summary>
         /// <param name="value">The interval.</param>
         public void WriteAvailability(TimeInterval value)
@@ -353,7 +359,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>availability</code>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.
+        /// Writes the value expressed as a <code>availability</code>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.  If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
         /// </summary>
         /// <param name="start">The earliest date of the interval.</param>
         /// <param name="stop">The latest date of the interval.</param>
@@ -363,7 +369,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>availability</code>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.
+        /// Writes the value expressed as a <code>availability</code>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.  If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
         /// </summary>
         /// <param name="value">The intervals.</param>
         public void WriteAvailability(IList<TimeInterval> value)
@@ -972,7 +978,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>cylinder</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>cylinder</code> property defines a cylinder.  The cylinder is positioned and oriented using the `position` and `orientation` properties.
+        /// Gets the writer for the <code>cylinder</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>cylinder</code> property defines a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.  The cylinder is positioned and oriented using the `position` and `orientation` properties.
         /// </summary>
         public CylinderCesiumWriter CylinderWriter
         {
@@ -980,7 +986,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>cylinder</code> property.  The <code>cylinder</code> property defines a cylinder.  The cylinder is positioned and oriented using the `position` and `orientation` properties.
+        /// Opens and returns the writer for the <code>cylinder</code> property.  The <code>cylinder</code> property defines a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.  The cylinder is positioned and oriented using the `position` and `orientation` properties.
         /// </summary>
         public CylinderCesiumWriter OpenCylinderProperty()
         {
@@ -1001,6 +1007,22 @@ namespace CesiumLanguageWriter
         public CorridorCesiumWriter OpenCorridorProperty()
         {
             return OpenAndReturn(CorridorWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>wall</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>wall</code> property defines a two dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+        /// </summary>
+        public WallCesiumWriter WallWriter
+        {
+            get { return m_wall.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>wall</code> property.  The <code>wall</code> property defines a two dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+        /// </summary>
+        public WallCesiumWriter OpenWallProperty()
+        {
+            return OpenAndReturn(WallWriter);
         }
 
         /// <summary>

@@ -23,14 +23,19 @@ namespace CesiumLanguageWriter
         public const string PositionsPropertyName = "positions";
 
         /// <summary>
-        /// The name of the <code>material</code> property.
-        /// </summary>
-        public const string MaterialPropertyName = "material";
-
-        /// <summary>
         /// The name of the <code>width</code> property.
         /// </summary>
         public const string WidthPropertyName = "width";
+
+        /// <summary>
+        /// The name of the <code>granularity</code> property.
+        /// </summary>
+        public const string GranularityPropertyName = "granularity";
+
+        /// <summary>
+        /// The name of the <code>material</code> property.
+        /// </summary>
+        public const string MaterialPropertyName = "material";
 
         /// <summary>
         /// The name of the <code>followSurface</code> property.
@@ -39,8 +44,9 @@ namespace CesiumLanguageWriter
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<PositionListCesiumWriter> m_positions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(PositionsPropertyName), false);
-        private readonly Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<PolylineMaterialCesiumWriter>(() => new PolylineMaterialCesiumWriter(MaterialPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_granularity = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(GranularityPropertyName), false);
+        private readonly Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<PolylineMaterialCesiumWriter>(() => new PolylineMaterialCesiumWriter(MaterialPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_followSurface = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(FollowSurfacePropertyName), false);
 
         /// <summary>
@@ -67,7 +73,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the polyline is shown.
+        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the polyline is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter ShowWriter
         {
@@ -75,7 +81,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the polyline is shown.
+        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the polyline is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
@@ -84,7 +90,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.
+        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -96,7 +102,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(Reference value)
@@ -108,7 +114,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowPropertyReference(string value)
@@ -120,7 +126,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -133,7 +139,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.
+        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -208,23 +214,6 @@ namespace CesiumLanguageWriter
             {
                 writer.WriteReferences(references);
             }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>material</code> property defines the material to use to draw the polyline.
-        /// </summary>
-        public PolylineMaterialCesiumWriter MaterialWriter
-        {
-            get { return m_material.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to use to draw the polyline.
-        /// </summary>
-        public PolylineMaterialCesiumWriter OpenMaterialProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(MaterialWriter);
         }
 
         /// <summary>
@@ -322,7 +311,118 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>followSurface</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>followSurface</code> property defines whether or not the positions are connected as great arcs (the default) or as straight lines.
+        /// Gets the writer for the <code>granularity</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>granularity</code> property defines the sampling distance, in radians.
+        /// </summary>
+        public DoubleCesiumWriter GranularityWriter
+        {
+            get { return m_granularity.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>granularity</code> property.  The <code>granularity</code> property defines the sampling distance, in radians.
+        /// </summary>
+        public DoubleCesiumWriter OpenGranularityProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(GranularityWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteGranularityProperty(double value)
+        {
+            using (var writer = OpenGranularityProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteGranularityProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenGranularityProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteGranularityPropertyReference(Reference value)
+        {
+            using (var writer = OpenGranularityProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteGranularityPropertyReference(string value)
+        {
+            using (var writer = OpenGranularityProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteGranularityPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenGranularityProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteGranularityPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenGranularityProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>material</code> property defines the material to use to draw the polyline.
+        /// </summary>
+        public PolylineMaterialCesiumWriter MaterialWriter
+        {
+            get { return m_material.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to use to draw the polyline.
+        /// </summary>
+        public PolylineMaterialCesiumWriter OpenMaterialProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(MaterialWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>followSurface</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>followSurface</code> property defines whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter FollowSurfaceWriter
         {
@@ -330,7 +430,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>followSurface</code> property.  The <code>followSurface</code> property defines whether or not the positions are connected as great arcs (the default) or as straight lines.
+        /// Opens and returns the writer for the <code>followSurface</code> property.  The <code>followSurface</code> property defines whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenFollowSurfaceProperty()
         {
@@ -339,7 +439,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>followSurface</code> property as a <code>boolean</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.
+        /// Writes a value for the <code>followSurface</code> property as a <code>boolean</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteFollowSurfaceProperty(bool value)
@@ -351,7 +451,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.
+        /// Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteFollowSurfacePropertyReference(Reference value)
@@ -363,7 +463,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.
+        /// Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteFollowSurfacePropertyReference(string value)
@@ -375,7 +475,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.
+        /// Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -388,7 +488,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.
+        /// Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
