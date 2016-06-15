@@ -9,15 +9,13 @@ namespace GenerateFromSchema
 
         public string Description
         {
-            get
-            {
-                if (m_description != null)
-                    return m_description;
-                if (ValueType != null)
-                    return ValueType.Description;
-                return null;
-            }
+            get { return m_description ?? ValueTypeDescription ?? Name; }
             set { m_description = value; }
+        }
+
+        private string ValueTypeDescription
+        {
+            get { return ValueType != null ? ValueType.Description : null; }
         }
 
         public Schema ValueType { get; set; }

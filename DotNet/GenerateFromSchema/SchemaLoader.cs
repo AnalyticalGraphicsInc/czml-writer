@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -87,10 +88,13 @@ namespace GenerateFromSchema
         {
             JObject propertySchema = (JObject)propertyProperty.Value;
 
+            string defaultValue = null;
+
             Property result = new Property
                               {
                                   Name = propertyProperty.Name,
                                   Description = GetValue<string>(propertySchema, "description", null),
+                                  Default = propertySchema.SelectToken("default"),
                                   IsValue = GetValue<bool>(propertySchema, "czmlValue", false)
                               };
 
