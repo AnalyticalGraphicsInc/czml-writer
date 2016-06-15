@@ -17,11 +17,11 @@ import cesiumlanguagewriter.Reference;
 public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiumWriter> {
 	/**
 	 *  
-	The name of the <code>CornerType</code> property.
+	The name of the <code>cornerType</code> property.
 	
 
 	 */
-	public static final String CornerTypePropertyName = "CornerType";
+	public static final String CornerTypePropertyName = "cornerType";
 	/**
 	 *  
 	The name of the <code>reference</code> property.
@@ -85,7 +85,7 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
 	/**
 	 *  
-	Writes the value expressed as a <code>CornerType</code>, which is the corner style.  Valid values are "ROUNDED", "MITERED", and "BEVELED".
+	Writes the value expressed as a <code>cornerType</code>, which is the corner style.  Valid values are "ROUNDED", "MITERED", and "BEVELED".
 	
 	
 

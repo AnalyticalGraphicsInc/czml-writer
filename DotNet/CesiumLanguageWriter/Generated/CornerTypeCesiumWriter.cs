@@ -12,9 +12,9 @@ namespace CesiumLanguageWriter
     public class CornerTypeCesiumWriter : CesiumPropertyWriter<CornerTypeCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>CornerType</code> property.
+        /// The name of the <code>cornerType</code> property.
         /// </summary>
-        public const string CornerTypePropertyName = "CornerType";
+        public const string CornerTypePropertyName = "cornerType";
 
         /// <summary>
         /// The name of the <code>reference</code> property.
@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>CornerType</code>, which is the corner style.  Valid values are "ROUNDED", "MITERED", and "BEVELED".
+        /// Writes the value expressed as a <code>cornerType</code>, which is the corner style.  Valid values are "ROUNDED", "MITERED", and "BEVELED".
         /// </summary>
         /// <param name="value">The style of a corner.</param>
         public void WriteCornerType(CesiumCornerType value)

@@ -482,7 +482,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>cornerType</code> property as a <code>CornerType</code> value.  The <code>cornerType</code> property specifies the style of the corners of the corridor.
+        /// Writes a value for the <code>cornerType</code> property as a <code>cornerType</code> value.  The <code>cornerType</code> property specifies the style of the corners of the corridor.
         /// </summary>
         /// <param name="value">The style of a corner.</param>
         public void WriteCornerTypeProperty(CesiumCornerType value)

@@ -10,7 +10,7 @@
         "$ref": "#"
     },
     "properties": {
-        "CornerType": {
+        "cornerType": {
             "$ref": "CornerTypeValue.jsonschema",
             "description": "The corner style.  Valid values are \"ROUNDED\", \"MITERED\", and \"BEVELED\".",
             "czmlValue": true
