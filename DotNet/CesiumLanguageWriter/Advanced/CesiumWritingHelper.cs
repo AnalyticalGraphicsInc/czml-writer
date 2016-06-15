@@ -106,6 +106,56 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Writes a <see cref="CartographicExtent"/> value as an array in WestLongitude, SouthLatitude, EastLongitude, NorthLatitude order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="value">The value to write.</param>
+        public static void WriteCartographicExtent(CesiumOutputStream output, CartographicExtent value)
+        {
+            output.WriteStartSequence();
+            output.WriteValue(value.WestLongitude);
+            output.WriteValue(value.SouthLatitude);
+            output.WriteValue(value.EastLongitude);
+            output.WriteValue(value.NorthLatitude);
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes time-tagged <see cref="CartographicExtent"/> values as an array in [Time, WestLongitude, SouthLatitude, EastLongitude, NorthLatitude] order.
+        /// Times are epoch seconds since an epoch that is determined from the first date to be written.
+        /// The epoch property is written as well.
+        /// </summary>
+        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="propertyName">The name of the property to write.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The corresponding value for each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
+        /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
+        public static void WriteCartographicExtent(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<CartographicExtent> values, int startIndex, int length)
+        {
+            if (dates.Count != values.Count)
+                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
+
+            JulianDate epoch = GetAndWriteEpoch(output, dates, startIndex, length);
+
+            output.WritePropertyName(propertyName);
+            output.WriteStartSequence();
+            int last = startIndex + length;
+            for (int i = startIndex; i < last; ++i)
+            {
+                output.WriteValue(epoch.SecondsDifference(dates[i]));
+                CartographicExtent value = values[i];
+                output.WriteValue(value.WestLongitude);
+                output.WriteValue(value.SouthLatitude);
+                output.WriteValue(value.EastLongitude);
+                output.WriteValue(value.NorthLatitude);
+                output.WriteLineBreak();
+            }
+
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
         /// Writes a <see cref="Cartesian"/> value as an array in X, Y, Z order.
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
@@ -347,6 +397,21 @@ namespace CesiumLanguageWriter.Advanced
                 output.WriteLineBreak();
             }
 
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes a list of <see cref="double"/> values as an array in X, Y, Z order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="values">The values to write.</param>
+        public static void WriteDoubleList(CesiumOutputStream output, IEnumerable<double> values)
+        {
+            output.WriteStartSequence();
+            foreach (double value in values)
+            {
+                output.WriteValue(value);
+            }
             output.WriteEndSequence();
         }
 
