@@ -11,7 +11,13 @@
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the point is shown."
+            "description": "Whether or not the point is shown.",
+            "default": true
+        },
+        "pixelSize": {
+            "$ref": "Double.jsonschema",
+            "description": "The size of the point, in pixels.",
+            "default": 1.0
         },
         "color": {
             "$ref": "Color.jsonschema",
@@ -23,11 +29,8 @@
         },
         "outlineWidth": {
             "$ref": "Double.jsonschema",
-            "description": "The width of the outline of the point."
-        },
-        "pixelSize": {
-            "$ref": "Double.jsonschema",
-            "description": "The size of the point, in pixels."
+            "description": "The width of the outline of the point.",
+            "default": 0.0
         }
     }
 }

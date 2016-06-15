@@ -1,6 +1,6 @@
 {
     "title": "Cylinder",
-    "description": "A cylinder.",
+    "description": "A cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.",
     "type": [
         "array",
         "object"
@@ -11,7 +11,8 @@
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the cylinder is shown."
+            "description": "Whether or not the cylinder is shown.",
+            "default": true
         },
         "length": {
             "$ref": "Double.jsonschema",
@@ -27,7 +28,8 @@
         },
         "fill": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the cylinder is filled."
+            "description": "Whether or not the cylinder is filled.",
+            "default": true
         },
         "material": {
             "$ref": "Material.jsonschema",
@@ -35,7 +37,8 @@
         },
         "outline": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the cylinder is outlined."
+            "description": "Whether or not the cylinder is outlined.",
+            "default": false
         },
         "outlineColor": {
             "$ref": "Color.jsonschema",
@@ -43,7 +46,8 @@
         },
         "outlineWidth": {
             "$ref": "Double.jsonschema",
-            "description": "The width of the cylinder outline."
+            "description": "The width of the cylinder outline.",
+            "default": 1.0
         }
     }
 }

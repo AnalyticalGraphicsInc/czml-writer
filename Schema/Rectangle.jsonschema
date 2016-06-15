@@ -1,6 +1,6 @@
 {
-    "title": "Polygon",
-    "description": "A polygon, which is a closed figure on the surface of the Earth.",
+    "title": "Rectangle",
+    "description": "A cartographic rectangle, which conforms to the curvature of the globe and can be placed on the surface or at altitude and can optionally be extruded into a volume.",
     "type": [
         "array",
         "object"
@@ -11,20 +11,24 @@
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the polygon is shown.",
+            "description": "Whether or not the rectangle is shown.",
             "default": true
         },
-        "positions": {
-            "$ref": "PositionList.jsonschema",
-            "description": "The array of positions defining a simple polygon."
+        "coordinates": {
+            "$ref": "RectangleCoordinates.jsonschema",
+            "description": "The coordinates of the rectangle."
         },
         "height": {
             "$ref": "Double.jsonschema",
-            "description": "The height of the polygon when `perPositionHeight` is false."
+            "description": "The height of the rectangle."
         },
         "extrudedHeight": {
             "$ref": "Double.jsonschema",
-            "description": "The extruded height of the polygon."
+            "description": "The extruded height of the rectangle."
+        },
+        "rotation": {
+            "$ref": "Double.jsonschema",
+            "description": "The rotation of the rectangle clockwise from north."
         },
         "stRotation": {
             "$ref": "Double.jsonschema",
@@ -36,39 +40,35 @@
         },
         "fill": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the polygon is filled.",
+            "description": "Whether or not the rectangle is filled.",
             "default": true
         },
         "material": {
             "$ref": "Material.jsonschema",
-            "description": "The material to use to fill the polygon."
+            "description": "The material to display on the surface of the rectangle."
         },
         "outline": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the polygon is outlined.",
+            "description": "Whether or not the rectangle is outlined.",
             "default": false
         },
         "outlineColor": {
             "$ref": "Color.jsonschema",
-            "description": "The color of the polygon outline."
+            "description": "The color of the rectangle outline."
         },
         "outlineWidth": {
             "$ref": "Double.jsonschema",
-            "description": "The width of the polygon outline.",
+            "description": "The width of the rectangle outline.",
             "default": 1.0
-        },
-        "perPositionHeight": {
-            "$ref": "Boolean.jsonschema",
-            "description": "Whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface."
         },
         "closeTop": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether to close the top of the polygon.",
+            "description": "Whether to close the top of the rectangle.",
             "default": true
         },
         "closeBottom": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether to close the bottom of the polygon.",
+            "description": "Whether to close the bottom of the rectangle.",
             "default": true
         }
     }

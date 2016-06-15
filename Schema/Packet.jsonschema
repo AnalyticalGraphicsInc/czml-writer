@@ -10,8 +10,7 @@
     "properties": {
         "id": {
             "description": "The ID of the object described by this packet.  IDs do not need to be GUIDs, but they do need to uniquely identify a single object within a CZML source and any other CZML sources loaded into the same scope.  If this property is not specified, the client will automatically generate a unique one.  However, this prevents later packets from referring to this object in order to add more data to it.",
-            "type": "string",
-            "default": "unique"
+            "type": "string"
         },
         "delete": {
             "description": "Whether the client should delete all existing data for this object, identified by ID. If true, all other properties in this packet will be ignored.",
@@ -62,49 +61,57 @@
             "$ref": "Billboard.jsonschema",
             "description": "A billboard, or viewport-aligned image, sometimes called a marker.  The billboard is positioned in the scene by the `position` property."
         },
-        "point": {
-            "$ref": "Point.jsonschema",
-            "description": "A point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property."
+        "box": {
+            "$ref": "Box.jsonschema",
+            "description": "A box, which is a closed rectangular cuboid.  The box is positioned and oriented using the `position` and `orientation` properties."
         },
-        "label": {
-            "$ref": "Label.jsonschema",
-            "description": "A string of text.  The label is positioned in the scene by the `position` property."
+        "corridor": {
+            "$ref": "Corridor.jsonschema",
+            "description": "A corridor, which is a shape defined by a centerline and width."
         },
-        "polyline": {
-            "$ref": "Polyline.jsonschema",
-            "description": "A polyline, which is a line in the scene composed of multiple segments."
-        },
-        "path": {
-            "$ref": "Path.jsonschema",
-            "description": "A path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property."
-        },
-        "polygon": {
-            "$ref": "Polygon.jsonschema",
-            "description": "A polygon, which is a closed figure on the surface of the Earth."
-        },
-        "ellipsoid": {
-            "$ref": "Ellipsoid.jsonschema",
-            "description": "An ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties."
-        },
-        "model": {
-            "$ref": "Model.jsonschema",
-            "description": "A 3D model.  The model is positioned and oriented using the `position` and `orientation` properties."
+        "cylinder": {
+            "$ref": "Cylinder.jsonschema",
+            "description": "A cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.  The cylinder is positioned and oriented using the `position` and `orientation` properties."
         },
         "ellipse": {
             "$ref": "Ellipse.jsonschema",
             "description": "An ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property."
         },
-        "box": {
-            "$ref": "Box.jsonschema",
-            "description": "A box, which is a closed rectangular cuboid.  The box is positioned and oriented using the `position` and `orientation` properties."
+        "ellipsoid": {
+            "$ref": "Ellipsoid.jsonschema",
+            "description": "An ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties."
         },
-        "cylinder": {
-            "$ref": "Cylinder.jsonschema",
-            "description": "A cylinder.  The cylinder is positioned and oriented using the `position` and `orientation` properties."
+        "label": {
+            "$ref": "Label.jsonschema",
+            "description": "A string of text.  The label is positioned in the scene by the `position` property."
         },
-        "corridor": {
-            "$ref": "Corridor.jsonschema",
-            "description": "A corridor, which is a shape defined by a centerline and width."
+        "model": {
+            "$ref": "Model.jsonschema",
+            "description": "A 3D model.  The model is positioned and oriented using the `position` and `orientation` properties."
+        },
+        "path": {
+            "$ref": "Path.jsonschema",
+            "description": "A path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property."
+        },
+        "point": {
+            "$ref": "Point.jsonschema",
+            "description": "A point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property."
+        },
+        "polygon": {
+            "$ref": "Polygon.jsonschema",
+            "description": "A polygon, which is a closed figure on the surface of the Earth."
+        },
+        "polyline": {
+            "$ref": "Polyline.jsonschema",
+            "description": "A polyline, which is a line in the scene composed of multiple segments."
+        },
+        "rectangle": {
+            "$ref": "Rectangle.jsonschema",
+            "description": "A cartographic rectangle, which conforms to the curvature of the globe and can be placed along the surface or at altitude."
+        },
+        "wall": {
+            "$ref": "Wall.jsonschema",
+            "description": "A two dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude."
         },
         "agi_conicSensor": {
             "$ref": "Extensions/AGI/ConicSensor.jsonschema",

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 
 namespace GenerateFromSchema
@@ -276,7 +278,7 @@ namespace GenerateFromSchema
                 Schema additionalPropertiesValueType = additionalProperties.ValueType;
                 GenerateWriterClass(additionalPropertiesValueType);
 
-                WriteSummaryText(writer, string.Format("Gets a new writer for a <code>{0}</code> property.  The returned instance must be opened by calling the <see cref=\"CesiumElementWriter.Open\"/> method before it can be used for writing.  A <code>{0}</code> property defines {1}", additionalPropertiesValueType.Name, additionalProperties.Description.UncapitalizeFirstLetter()));
+                WriteSummaryText(writer, string.Format("Gets a new writer for a <code>{0}</code> property.  The returned instance must be opened by calling the <see cref=\"CesiumElementWriter.Open\"/> method before it can be used for writing.  A <code>{0}</code> property defines {1}", additionalPropertiesValueType.Name, GetDescription(additionalProperties)));
                 writer.WriteLine("public {0}CesiumWriter Get{0}Writer(string name)", additionalPropertiesValueType.NameWithPascalCase);
                 using (writer.OpenScope())
                 {
@@ -284,7 +286,7 @@ namespace GenerateFromSchema
                 }
                 writer.WriteLine();
 
-                WriteSummaryText(writer, string.Format("Opens and returns a new writer for a <code>{0}</code> property.  A <code>{0}</code> property defines {1}", additionalPropertiesValueType.Name, additionalProperties.Description.UncapitalizeFirstLetter()));
+                WriteSummaryText(writer, string.Format("Opens and returns a new writer for a <code>{0}</code> property.  A <code>{0}</code> property defines {1}", additionalPropertiesValueType.Name, GetDescription(additionalProperties)));
                 WriteParameterText(writer, "name", "The name of the new property writer.");
                 writer.WriteLine("public {0}CesiumWriter Open{0}Property(string name)", additionalPropertiesValueType.NameWithPascalCase);
                 using (writer.OpenScope())
@@ -300,7 +302,7 @@ namespace GenerateFromSchema
         {
             GenerateWriterClass(property.ValueType);
 
-            WriteSummaryText(writer, string.Format("Gets the writer for the <code>{0}</code> property.  The returned instance must be opened by calling the <see cref=\"CesiumElementWriter.Open\"/> method before it can be used for writing.  The <code>{0}</code> property defines {1}", property.Name, property.Description.UncapitalizeFirstLetter()));
+            WriteSummaryText(writer, string.Format("Gets the writer for the <code>{0}</code> property.  The returned instance must be opened by calling the <see cref=\"CesiumElementWriter.Open\"/> method before it can be used for writing.  The <code>{0}</code> property defines {1}", property.Name, GetDescription(property)));
             writer.WriteLine("public {0}CesiumWriter {1}Writer", property.ValueType.NameWithPascalCase, property.NameWithPascalCase);
             using (writer.OpenScope())
             {
@@ -308,7 +310,7 @@ namespace GenerateFromSchema
             }
             writer.WriteLine();
 
-            WriteSummaryText(writer, string.Format("Opens and returns the writer for the <code>{0}</code> property.  The <code>{0}</code> property defines {1}", property.Name, property.Description.UncapitalizeFirstLetter()));
+            WriteSummaryText(writer, string.Format("Opens and returns the writer for the <code>{0}</code> property.  The <code>{0}</code> property defines {1}", property.Name, GetDescription(property)));
             writer.WriteLine("public {0}CesiumWriter Open{1}Property()", property.ValueType.NameWithPascalCase, property.NameWithPascalCase);
             using (writer.OpenScope())
             {
@@ -328,7 +330,7 @@ namespace GenerateFromSchema
 
                 foreach (OverloadInfo overload in overloads)
                 {
-                    WriteSummaryText(writer, string.Format("Writes a value for the <code>{0}</code> property as a <code>{1}</code> value.  The <code>{0}</code> property specifies {2}", property.Name, nestedProperty.Name, property.Description.UncapitalizeFirstLetter()));
+                    WriteSummaryText(writer, string.Format("Writes a value for the <code>{0}</code> property as a <code>{1}</code> value.  The <code>{0}</code> property specifies {2}", property.Name, nestedProperty.Name, GetDescription(property)));
                     foreach (ParameterInfo parameter in overload.Parameters)
                     {
                         if (string.IsNullOrEmpty(parameter.Description))
@@ -362,7 +364,7 @@ namespace GenerateFromSchema
 
             foreach (OverloadInfo overload in overloads)
             {
-                WriteSummaryText(writer, string.Format("Writes the value expressed as a <code>{0}</code>, which is {1}", property.Name, property.Description.UncapitalizeFirstLetter()));
+                WriteSummaryText(writer, string.Format("Writes the value expressed as a <code>{0}</code>, which is {1}", property.Name, GetDescription(property)));
                 foreach (ParameterInfo parameter in overload.Parameters)
                 {
                     if (string.IsNullOrEmpty(parameter.Description))
@@ -583,6 +585,27 @@ namespace GenerateFromSchema
                    overload.Parameters[1].Type.StartsWith("IList<") &&
                    overload.Parameters[2].Type == "int" &&
                    overload.Parameters[3].Type == "int";
+        }
+
+        private static string GetDescription(Property property)
+        {
+            string description = property.Description.UncapitalizeFirstLetter();
+
+            JToken defaultToken = property.Default;
+            if (defaultToken != null)
+            {
+                string defaultText;
+                if (defaultToken.Type == JTokenType.Boolean)
+                    defaultText = string.Format("<see langword=\"{0}\"/>", defaultToken.Value<bool>() ? "true" : "false");
+                else if (defaultToken.Type == JTokenType.Float)
+                    defaultText = defaultToken.Value<double>().ToString("0.0###############", CultureInfo.InvariantCulture);
+                else
+                    defaultText = defaultToken.Value<string>();
+
+                description += string.Format("  If not specified, the default value is {0}.", defaultText);
+            }
+
+            return description;
         }
 
         // All the "= null" nonsense is to avoid warnings from Visual Studio, which isn't aware of

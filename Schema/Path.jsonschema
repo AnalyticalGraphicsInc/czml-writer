@@ -11,19 +11,18 @@
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the path is shown."
-        },
-        "material": {
-            "$ref": "PolylineMaterial.jsonschema",
-            "description": "The material to use to draw the path."
+            "description": "Whether or not the path is shown.",
+            "default": true
         },
         "width": {
             "$ref": "Double.jsonschema",
-            "description": "The width of the path line."
+            "description": "The width of the path line.",
+            "default": 1.0
         },
         "resolution": {
             "$ref": "Double.jsonschema",
-            "description": "The maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path."
+            "description": "The maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.",
+            "default": 60.0
         },
         "leadTime": {
             "$ref": "Double.jsonschema",
@@ -32,6 +31,10 @@
         "trailTime": {
             "$ref": "Double.jsonschema",
             "description": "The time behind the animation time, in seconds, to show the path."
+        },
+        "material": {
+            "$ref": "PolylineMaterial.jsonschema",
+            "description": "The material to use to draw the path."
         }
     }
 }

@@ -11,7 +11,12 @@
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the corridor is shown."
+            "description": "Whether or not the corridor is shown.",
+            "default": true
+        },
+        "positions": {
+            "$ref": "PositionList.jsonschema",
+            "description": "The array of positions defining the centerline of the corridor."
         },
         "width": {
             "$ref": "Double.jsonschema",
@@ -35,7 +40,8 @@
         },
         "fill": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the corridor is filled."
+            "description": "Whether or not the corridor is filled.",
+            "default": true
         },
         "material": {
             "$ref": "Material.jsonschema",
@@ -43,7 +49,8 @@
         },
         "outline": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the corridor is outlined."
+            "description": "Whether or not the corridor is outlined.",
+            "default": false
         },
         "outlineColor": {
             "$ref": "Color.jsonschema",
@@ -51,7 +58,8 @@
         },
         "outlineWidth": {
             "$ref": "Double.jsonschema",
-            "description": "The width of the corridor outline."
+            "description": "The width of the corridor outline.",
+            "default": 1.0
         }
     }
 }

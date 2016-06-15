@@ -10,16 +10,17 @@ import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.MaterialCesiumWriter;
+import cesiumlanguagewriter.RectangleCoordinatesCesiumWriter;
 import java.awt.Color;
 import java.util.List;
 
 /**
  *  
- Writes a <code>Ellipse</code> to a  {@link CesiumOutputStream}.  A <code>Ellipse</code> is an ellipse, which is a closed curve on or above the surface of the Earth.
+ Writes a <code>Rectangle</code> to a  {@link CesiumOutputStream}.  A <code>Rectangle</code> is a cartographic rectangle, which conforms to the curvature of the globe and can be placed on the surface or at altitude and can optionally be extruded into a volume.
  
 
  */
-public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWriter> {
+public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumWriter> {
 	/**
 	 *  
 	The name of the <code>show</code> property.
@@ -29,18 +30,11 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	public static final String ShowPropertyName = "show";
 	/**
 	 *  
-	The name of the <code>semiMajorAxis</code> property.
+	The name of the <code>coordinates</code> property.
 	
 
 	 */
-	public static final String SemiMajorAxisPropertyName = "semiMajorAxis";
-	/**
-	 *  
-	The name of the <code>semiMinorAxis</code> property.
-	
-
-	 */
-	public static final String SemiMinorAxisPropertyName = "semiMinorAxis";
+	public static final String CoordinatesPropertyName = "coordinates";
 	/**
 	 *  
 	The name of the <code>height</code> property.
@@ -113,24 +107,26 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	public static final String OutlineWidthPropertyName = "outlineWidth";
 	/**
 	 *  
-	The name of the <code>numberOfVerticalLines</code> property.
+	The name of the <code>closeTop</code> property.
 	
 
 	 */
-	public static final String NumberOfVerticalLinesPropertyName = "numberOfVerticalLines";
+	public static final String CloseTopPropertyName = "closeTop";
+	/**
+	 *  
+	The name of the <code>closeBottom</code> property.
+	
+
+	 */
+	public static final String CloseBottomPropertyName = "closeBottom";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
 		}
 	}, false);
-	private Lazy<DoubleCesiumWriter> m_semiMajorAxis = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(SemiMajorAxisPropertyName);
-		}
-	}, false);
-	private Lazy<DoubleCesiumWriter> m_semiMinorAxis = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(SemiMinorAxisPropertyName);
+	private Lazy<RectangleCoordinatesCesiumWriter> m_coordinates = new Lazy<cesiumlanguagewriter.RectangleCoordinatesCesiumWriter>(new Func1<cesiumlanguagewriter.RectangleCoordinatesCesiumWriter>() {
+		public cesiumlanguagewriter.RectangleCoordinatesCesiumWriter invoke() {
+			return new RectangleCoordinatesCesiumWriter(CoordinatesPropertyName);
 		}
 	}, false);
 	private Lazy<DoubleCesiumWriter> m_height = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
@@ -183,9 +179,14 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 			return new DoubleCesiumWriter(OutlineWidthPropertyName);
 		}
 	}, false);
-	private Lazy<DoubleCesiumWriter> m_numberOfVerticalLines = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(NumberOfVerticalLinesPropertyName);
+	private Lazy<BooleanCesiumWriter> m_closeTop = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(CloseTopPropertyName);
+		}
+	}, false);
+	private Lazy<BooleanCesiumWriter> m_closeBottom = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(CloseBottomPropertyName);
 		}
 	}, false);
 
@@ -195,7 +196,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	
 
 	 */
-	public EllipseCesiumWriter(String propertyName) {
+	public RectangleCesiumWriter(String propertyName) {
 		super(propertyName);
 	}
 
@@ -207,17 +208,17 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	 * @param existingInstance The existing instance to copy.
 	 */
-	protected EllipseCesiumWriter(EllipseCesiumWriter existingInstance) {
+	protected RectangleCesiumWriter(RectangleCesiumWriter existingInstance) {
 		super(existingInstance);
 	}
 
 	@Override
-	public EllipseCesiumWriter clone() {
-		return new EllipseCesiumWriter(this);
+	public RectangleCesiumWriter clone() {
+		return new RectangleCesiumWriter(this);
 	}
 
 	/**
-	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the ellipse is shown.  If not specified, the default value is <see langword="true" />.
+	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the rectangle is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -227,7 +228,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the ellipse is shown.  If not specified, the default value is <see langword="true" />.
+	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the rectangle is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -238,7 +239,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.  If not specified, the default value is <see langword="true" />.
+	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -257,7 +258,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.  If not specified, the default value is <see langword="true" />.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -276,7 +277,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.  If not specified, the default value is <see langword="true" />.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -295,7 +296,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.  If not specified, the default value is <see langword="true" />.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -316,7 +317,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipse is shown.  If not specified, the default value is <see langword="true" />.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -336,38 +337,38 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>semiMajorAxis</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>semiMajorAxis</code> property defines the length of the ellipse's semi-major axis in meters.
+	 *  Gets the writer for the <code>coordinates</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>coordinates</code> property defines the coordinates of the rectangle.
 	
 
 	 */
-	public final DoubleCesiumWriter getSemiMajorAxisWriter() {
-		return m_semiMajorAxis.getValue();
+	public final RectangleCoordinatesCesiumWriter getCoordinatesWriter() {
+		return m_coordinates.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>semiMajorAxis</code> property.  The <code>semiMajorAxis</code> property defines the length of the ellipse's semi-major axis in meters.
+	Opens and returns the writer for the <code>coordinates</code> property.  The <code>coordinates</code> property defines the coordinates of the rectangle.
 	
 
 	 */
-	public final DoubleCesiumWriter openSemiMajorAxisProperty() {
+	public final RectangleCoordinatesCesiumWriter openCoordinatesProperty() {
 		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getSemiMajorAxisWriter());
+		return this.<RectangleCoordinatesCesiumWriter> openAndReturn(getCoordinatesWriter());
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>semiMajorAxis</code> property as a <code>number</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+	Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeSemiMajorAxisProperty(double value) {
+	public final void writeCoordinatesProperty(CartographicExtent value) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openSemiMajorAxisProperty();
+			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
 			try {
-				writer.writeNumber(value);
+				writer.writeWsenDegrees(value);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -376,23 +377,69 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>semiMajorAxis</code> property as a <code>number</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+	Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
 	
 	
 	
 	
 	
 
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
+	 * @param west The westernmost longitude.
+	 * @param south The southernmost latitude.
+	 * @param east The easternmost longitude.
+	 * @param north The northernmost latitude.
+	 */
+	public final void writeCoordinatesProperty(double west, double south, double east, double north) {
+		{
+			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
+			try {
+				writer.writeWsenDegrees(west, south, east, north);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeCoordinatesProperty(List<JulianDate> dates, List<CartographicExtent> values) {
+		{
+			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
+			try {
+				writer.writeWsenDegrees(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeSemiMajorAxisProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+	public final void writeCoordinatesProperty(List<JulianDate> dates, List<CartographicExtent> values, int startIndex, int length) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openSemiMajorAxisProperty();
+			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
 			try {
-				writer.writeNumber(dates, values, startIndex, length);
+				writer.writeWsenDegrees(dates, values, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -401,15 +448,15 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>semiMajorAxis</code> property as a <code>reference</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+	Writes a value for the <code>coordinates</code> property as a <code>reference</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
 	
 	
 
 	 * @param value The reference.
 	 */
-	public final void writeSemiMajorAxisPropertyReference(Reference value) {
+	public final void writeCoordinatesPropertyReference(Reference value) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openSemiMajorAxisProperty();
+			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
 			try {
 				writer.writeReference(value);
 			} finally {
@@ -420,15 +467,15 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>semiMajorAxis</code> property as a <code>reference</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+	Writes a value for the <code>coordinates</code> property as a <code>reference</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
 	
 	
 
 	 * @param value The earliest date of the interval.
 	 */
-	public final void writeSemiMajorAxisPropertyReference(String value) {
+	public final void writeCoordinatesPropertyReference(String value) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openSemiMajorAxisProperty();
+			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
 			try {
 				writer.writeReference(value);
 			} finally {
@@ -439,7 +486,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>semiMajorAxis</code> property as a <code>reference</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+	Writes a value for the <code>coordinates</code> property as a <code>reference</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
 	
 	
 	
@@ -447,9 +494,9 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	 * @param identifier The identifier of the object which contains the referenced property.
 	 * @param propertyName The property on the referenced object.
 	 */
-	public final void writeSemiMajorAxisPropertyReference(String identifier, String propertyName) {
+	public final void writeCoordinatesPropertyReference(String identifier, String propertyName) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openSemiMajorAxisProperty();
+			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
 			try {
 				writer.writeReference(identifier, propertyName);
 			} finally {
@@ -460,7 +507,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>semiMajorAxis</code> property as a <code>reference</code> value.  The <code>semiMajorAxis</code> property specifies the length of the ellipse's semi-major axis in meters.
+	Writes a value for the <code>coordinates</code> property as a <code>reference</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
 	
 	
 	
@@ -468,9 +515,9 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	 * @param identifier The identifier of the object which contains the referenced property.
 	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
-	public final void writeSemiMajorAxisPropertyReference(String identifier, String[] propertyNames) {
+	public final void writeCoordinatesPropertyReference(String identifier, String[] propertyNames) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openSemiMajorAxisProperty();
+			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {
@@ -480,151 +527,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>semiMinorAxis</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>semiMinorAxis</code> property defines the length of the ellipse's semi-minor axis in meters.
-	
-
-	 */
-	public final DoubleCesiumWriter getSemiMinorAxisWriter() {
-		return m_semiMinorAxis.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>semiMinorAxis</code> property.  The <code>semiMinorAxis</code> property defines the length of the ellipse's semi-minor axis in meters.
-	
-
-	 */
-	public final DoubleCesiumWriter openSemiMinorAxisProperty() {
-		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getSemiMinorAxisWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>semiMinorAxis</code> property as a <code>number</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeSemiMinorAxisProperty(double value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openSemiMinorAxisProperty();
-			try {
-				writer.writeNumber(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>semiMinorAxis</code> property as a <code>number</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeSemiMinorAxisProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openSemiMinorAxisProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>semiMinorAxis</code> property as a <code>reference</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeSemiMinorAxisPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openSemiMinorAxisProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>semiMinorAxis</code> property as a <code>reference</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeSemiMinorAxisPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openSemiMinorAxisProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>semiMinorAxis</code> property as a <code>reference</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeSemiMinorAxisPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openSemiMinorAxisProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>semiMinorAxis</code> property as a <code>reference</code> value.  The <code>semiMinorAxis</code> property specifies the length of the ellipse's semi-minor axis in meters.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeSemiMinorAxisPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openSemiMinorAxisProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>height</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>height</code> property defines the altitude of the ellipse relative to the surface.
+	 *  Gets the writer for the <code>height</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>height</code> property defines the height of the rectangle.
 	
 
 	 */
@@ -634,7 +537,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>height</code> property.  The <code>height</code> property defines the altitude of the ellipse relative to the surface.
+	Opens and returns the writer for the <code>height</code> property.  The <code>height</code> property defines the height of the rectangle.
 	
 
 	 */
@@ -645,7 +548,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the altitude of the ellipse relative to the surface.
+	Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the rectangle.
 	
 	
 
@@ -664,7 +567,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the altitude of the ellipse relative to the surface.
+	Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the rectangle.
 	
 	
 	
@@ -689,7 +592,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the altitude of the ellipse relative to the surface.
+	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the rectangle.
 	
 	
 
@@ -708,7 +611,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the altitude of the ellipse relative to the surface.
+	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the rectangle.
 	
 	
 
@@ -727,7 +630,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the altitude of the ellipse relative to the surface.
+	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the rectangle.
 	
 	
 	
@@ -748,7 +651,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the altitude of the ellipse relative to the surface.
+	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the rectangle.
 	
 	
 	
@@ -768,7 +671,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>extrudedHeight</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>extrudedHeight</code> property defines the altitude of the ellipse's extruded face relative to the surface.
+	 *  Gets the writer for the <code>extrudedHeight</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>extrudedHeight</code> property defines the extruded height of the rectangle.
 	
 
 	 */
@@ -778,7 +681,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>extrudedHeight</code> property.  The <code>extrudedHeight</code> property defines the altitude of the ellipse's extruded face relative to the surface.
+	Opens and returns the writer for the <code>extrudedHeight</code> property.  The <code>extrudedHeight</code> property defines the extruded height of the rectangle.
 	
 
 	 */
@@ -789,7 +692,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the altitude of the ellipse's extruded face relative to the surface.
+	Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
 	
 	
 
@@ -808,7 +711,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the altitude of the ellipse's extruded face relative to the surface.
+	Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
 	
 	
 	
@@ -833,7 +736,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the altitude of the ellipse's extruded face relative to the surface.
+	Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
 	
 	
 
@@ -852,7 +755,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the altitude of the ellipse's extruded face relative to the surface.
+	Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
 	
 	
 
@@ -871,7 +774,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the altitude of the ellipse's extruded face relative to the surface.
+	Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
 	
 	
 	
@@ -892,7 +795,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the altitude of the ellipse's extruded face relative to the surface.
+	Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
 	
 	
 	
@@ -912,7 +815,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rotation</code> property defines the angle from north (counter-clockwise) in radians.
+	 *  Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the rectangle clockwise from north.
 	
 
 	 */
@@ -922,7 +825,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the angle from north (counter-clockwise) in radians.
+	Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the rectangle clockwise from north.
 	
 
 	 */
@@ -933,7 +836,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
+	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
 	
 	
 
@@ -952,7 +855,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
+	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
 	
 	
 	
@@ -977,7 +880,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
 	
 	
 
@@ -996,7 +899,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
 	
 	
 
@@ -1015,7 +918,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
 	
 	
 	
@@ -1036,7 +939,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the angle from north (counter-clockwise) in radians.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
 	
 	
 	
@@ -1056,7 +959,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>stRotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>stRotation</code> property defines the rotation of any applied texture coordinates.
+	 *  Gets the writer for the <code>stRotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>stRotation</code> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 
 	 */
@@ -1066,7 +969,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>stRotation</code> property.  The <code>stRotation</code> property defines the rotation of any applied texture coordinates.
+	Opens and returns the writer for the <code>stRotation</code> property.  The <code>stRotation</code> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 
 	 */
@@ -1077,7 +980,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+	Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 	
 
@@ -1096,7 +999,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+	Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 	
 	
@@ -1121,7 +1024,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 	
 
@@ -1140,7 +1043,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 	
 
@@ -1159,7 +1062,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 	
 	
@@ -1180,7 +1083,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture coordinates.
+	Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 	
 	
@@ -1344,7 +1247,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>fill</code> property defines whether or not the ellipse is filled.  If not specified, the default value is <see langword="true" />.
+	 *  Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>fill</code> property defines whether or not the rectangle is filled.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -1354,7 +1257,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the ellipse is filled.  If not specified, the default value is <see langword="true" />.
+	Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the rectangle is filled.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -1365,7 +1268,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.  If not specified, the default value is <see langword="true" />.
+	Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -1384,7 +1287,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.  If not specified, the default value is <see langword="true" />.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -1403,7 +1306,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.  If not specified, the default value is <see langword="true" />.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -1422,7 +1325,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.  If not specified, the default value is <see langword="true" />.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -1443,7 +1346,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipse is filled.  If not specified, the default value is <see langword="true" />.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -1463,7 +1366,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>material</code> property defines the material to use to fill the ellipse.
+	 *  Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>material</code> property defines the material to display on the surface of the rectangle.
 	
 
 	 */
@@ -1473,7 +1376,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to use to fill the ellipse.
+	Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to display on the surface of the rectangle.
 	
 
 	 */
@@ -1483,7 +1386,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outline</code> property defines whether or not the ellipse is outlined.  If not specified, the default value is <see langword="false" />.
+	 *  Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outline</code> property defines whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false" />.
 	
 
 	 */
@@ -1493,7 +1396,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the ellipse is outlined.  If not specified, the default value is <see langword="false" />.
+	Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false" />.
 	
 
 	 */
@@ -1504,7 +1407,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.  If not specified, the default value is <see langword="false" />.
+	Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -1523,7 +1426,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.  If not specified, the default value is <see langword="false" />.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -1542,7 +1445,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.  If not specified, the default value is <see langword="false" />.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -1561,7 +1464,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.  If not specified, the default value is <see langword="false" />.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 	
@@ -1582,7 +1485,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipse is outlined.  If not specified, the default value is <see langword="false" />.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 	
@@ -1602,7 +1505,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>outlineColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineColor</code> property defines the color of the ellipse outline.
+	 *  Gets the writer for the <code>outlineColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineColor</code> property defines the color of the rectangle outline.
 	
 
 	 */
@@ -1612,7 +1515,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>outlineColor</code> property.  The <code>outlineColor</code> property defines the color of the ellipse outline.
+	Opens and returns the writer for the <code>outlineColor</code> property.  The <code>outlineColor</code> property defines the color of the rectangle outline.
 	
 
 	 */
@@ -1623,7 +1526,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+	Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
 	
 	
 
@@ -1642,7 +1545,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+	Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
 	
 	
 	
@@ -1667,7 +1570,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+	Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
 	
 	
 	
@@ -1692,7 +1595,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+	Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
 	
 	
 	
@@ -1717,7 +1620,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
 	
 	
 
@@ -1736,7 +1639,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
 	
 	
 
@@ -1755,7 +1658,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
 	
 	
 	
@@ -1776,7 +1679,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipse outline.
+	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
 	
 	
 	
@@ -1796,7 +1699,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the ellipse outline.  If not specified, the default value is 1.0.
+	 *  Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the rectangle outline.  If not specified, the default value is 1.0.
 	
 
 	 */
@@ -1806,7 +1709,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the ellipse outline.  If not specified, the default value is 1.0.
+	Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the rectangle outline.  If not specified, the default value is 1.0.
 	
 
 	 */
@@ -1817,7 +1720,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.  If not specified, the default value is 1.0.
+	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
 	
 	
 
@@ -1836,7 +1739,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.  If not specified, the default value is 1.0.
+	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
 	
 	
 	
@@ -1861,7 +1764,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.  If not specified, the default value is 1.0.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
 	
 	
 
@@ -1880,7 +1783,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.  If not specified, the default value is 1.0.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
 	
 	
 
@@ -1899,7 +1802,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.  If not specified, the default value is 1.0.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
 	
 	
 	
@@ -1920,7 +1823,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipse outline.  If not specified, the default value is 1.0.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
 	
 	
 	
@@ -1940,38 +1843,38 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>numberOfVerticalLines</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>numberOfVerticalLines</code> property defines the number of vertical lines to use when outlining an extruded ellipse.
+	 *  Gets the writer for the <code>closeTop</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>closeTop</code> property defines whether to close the top of the rectangle.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
-	public final DoubleCesiumWriter getNumberOfVerticalLinesWriter() {
-		return m_numberOfVerticalLines.getValue();
+	public final BooleanCesiumWriter getCloseTopWriter() {
+		return m_closeTop.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>numberOfVerticalLines</code> property.  The <code>numberOfVerticalLines</code> property defines the number of vertical lines to use when outlining an extruded ellipse.
+	Opens and returns the writer for the <code>closeTop</code> property.  The <code>closeTop</code> property defines whether to close the top of the rectangle.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
-	public final DoubleCesiumWriter openNumberOfVerticalLinesProperty() {
+	public final BooleanCesiumWriter openCloseTopProperty() {
 		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getNumberOfVerticalLinesWriter());
+		return this.<BooleanCesiumWriter> openAndReturn(getCloseTopWriter());
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>numberOfVerticalLines</code> property as a <code>number</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
+	Writes a value for the <code>closeTop</code> property as a <code>boolean</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true" />.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeNumberOfVerticalLinesProperty(double value) {
+	public final void writeCloseTopProperty(boolean value) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openNumberOfVerticalLinesProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseTopProperty();
 			try {
-				writer.writeNumber(value);
+				writer.writeBoolean(value);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1980,40 +1883,15 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>numberOfVerticalLines</code> property as a <code>number</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeNumberOfVerticalLinesProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openNumberOfVerticalLinesProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
+	Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true" />.
 	
 	
 
 	 * @param value The reference.
 	 */
-	public final void writeNumberOfVerticalLinesPropertyReference(Reference value) {
+	public final void writeCloseTopPropertyReference(Reference value) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openNumberOfVerticalLinesProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseTopProperty();
 			try {
 				writer.writeReference(value);
 			} finally {
@@ -2024,15 +1902,15 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
+	Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true" />.
 	
 	
 
 	 * @param value The earliest date of the interval.
 	 */
-	public final void writeNumberOfVerticalLinesPropertyReference(String value) {
+	public final void writeCloseTopPropertyReference(String value) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openNumberOfVerticalLinesProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseTopProperty();
 			try {
 				writer.writeReference(value);
 			} finally {
@@ -2043,7 +1921,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
+	Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -2051,9 +1929,9 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	 * @param identifier The identifier of the object which contains the referenced property.
 	 * @param propertyName The property on the referenced object.
 	 */
-	public final void writeNumberOfVerticalLinesPropertyReference(String identifier, String propertyName) {
+	public final void writeCloseTopPropertyReference(String identifier, String propertyName) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openNumberOfVerticalLinesProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseTopProperty();
 			try {
 				writer.writeReference(identifier, propertyName);
 			} finally {
@@ -2064,7 +1942,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to use when outlining an extruded ellipse.
+	Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -2072,9 +1950,128 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 	 * @param identifier The identifier of the object which contains the referenced property.
 	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
-	public final void writeNumberOfVerticalLinesPropertyReference(String identifier, String[] propertyNames) {
+	public final void writeCloseTopPropertyReference(String identifier, String[] propertyNames) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openNumberOfVerticalLinesProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseTopProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>closeBottom</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>closeBottom</code> property defines whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true" />.
+	
+
+	 */
+	public final BooleanCesiumWriter getCloseBottomWriter() {
+		return m_closeBottom.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>closeBottom</code> property.  The <code>closeBottom</code> property defines whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true" />.
+	
+
+	 */
+	public final BooleanCesiumWriter openCloseBottomProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getCloseBottomWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeBottom</code> property as a <code>boolean</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true" />.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeCloseBottomProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseBottomProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true" />.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeCloseBottomPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseBottomProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true" />.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeCloseBottomPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseBottomProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true" />.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeCloseBottomPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseBottomProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true" />.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeCloseBottomPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseBottomProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {

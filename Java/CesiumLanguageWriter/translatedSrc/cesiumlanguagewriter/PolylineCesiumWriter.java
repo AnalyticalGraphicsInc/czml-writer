@@ -35,18 +35,25 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 	public static final String PositionsPropertyName = "positions";
 	/**
 	 *  
-	The name of the <code>material</code> property.
-	
-
-	 */
-	public static final String MaterialPropertyName = "material";
-	/**
-	 *  
 	The name of the <code>width</code> property.
 	
 
 	 */
 	public static final String WidthPropertyName = "width";
+	/**
+	 *  
+	The name of the <code>granularity</code> property.
+	
+
+	 */
+	public static final String GranularityPropertyName = "granularity";
+	/**
+	 *  
+	The name of the <code>material</code> property.
+	
+
+	 */
+	public static final String MaterialPropertyName = "material";
 	/**
 	 *  
 	The name of the <code>followSurface</code> property.
@@ -64,14 +71,19 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 			return new PositionListCesiumWriter(PositionsPropertyName);
 		}
 	}, false);
-	private Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.PolylineMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineMaterialCesiumWriter>() {
-		public cesiumlanguagewriter.PolylineMaterialCesiumWriter invoke() {
-			return new PolylineMaterialCesiumWriter(MaterialPropertyName);
-		}
-	}, false);
 	private Lazy<DoubleCesiumWriter> m_width = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(WidthPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_granularity = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(GranularityPropertyName);
+		}
+	}, false);
+	private Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.PolylineMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineMaterialCesiumWriter>() {
+		public cesiumlanguagewriter.PolylineMaterialCesiumWriter invoke() {
+			return new PolylineMaterialCesiumWriter(MaterialPropertyName);
 		}
 	}, false);
 	private Lazy<BooleanCesiumWriter> m_followSurface = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
@@ -108,7 +120,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 	}
 
 	/**
-	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the polyline is shown.
+	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the polyline is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -118,7 +130,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the polyline is shown.
+	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the polyline is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -129,7 +141,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.
+	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -148,7 +160,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -167,7 +179,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -186,7 +198,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -207,7 +219,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polyline is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -320,26 +332,6 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 				DisposeHelper.dispose(writer);
 			}
 		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>material</code> property defines the material to use to draw the polyline.
-	
-
-	 */
-	public final PolylineMaterialCesiumWriter getMaterialWriter() {
-		return m_material.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to use to draw the polyline.
-	
-
-	 */
-	public final PolylineMaterialCesiumWriter openMaterialProperty() {
-		openIntervalIfNecessary();
-		return this.<PolylineMaterialCesiumWriter> openAndReturn(getMaterialWriter());
 	}
 
 	/**
@@ -487,7 +479,171 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 	}
 
 	/**
-	 *  Gets the writer for the <code>followSurface</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>followSurface</code> property defines whether or not the positions are connected as great arcs (the default) or as straight lines.
+	 *  Gets the writer for the <code>granularity</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>granularity</code> property defines the sampling distance, in radians.
+	
+
+	 */
+	public final DoubleCesiumWriter getGranularityWriter() {
+		return m_granularity.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>granularity</code> property.  The <code>granularity</code> property defines the sampling distance, in radians.
+	
+
+	 */
+	public final DoubleCesiumWriter openGranularityProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getGranularityWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeGranularityProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeGranularityProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeGranularityPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeGranularityPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeGranularityPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeGranularityPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>material</code> property defines the material to use to draw the polyline.
+	
+
+	 */
+	public final PolylineMaterialCesiumWriter getMaterialWriter() {
+		return m_material.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to use to draw the polyline.
+	
+
+	 */
+	public final PolylineMaterialCesiumWriter openMaterialProperty() {
+		openIntervalIfNecessary();
+		return this.<PolylineMaterialCesiumWriter> openAndReturn(getMaterialWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>followSurface</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>followSurface</code> property defines whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -497,7 +653,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>followSurface</code> property.  The <code>followSurface</code> property defines whether or not the positions are connected as great arcs (the default) or as straight lines.
+	Opens and returns the writer for the <code>followSurface</code> property.  The <code>followSurface</code> property defines whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -508,7 +664,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>followSurface</code> property as a <code>boolean</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.
+	Writes a value for the <code>followSurface</code> property as a <code>boolean</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -527,7 +683,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.
+	Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -546,7 +702,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.
+	Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -565,7 +721,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.
+	Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -586,7 +742,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.
+	Writes a value for the <code>followSurface</code> property as a <code>reference</code> value.  The <code>followSurface</code> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is <see langword="true" />.
 	
 	
 	

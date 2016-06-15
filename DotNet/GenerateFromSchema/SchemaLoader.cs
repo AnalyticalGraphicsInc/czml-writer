@@ -91,6 +91,7 @@ namespace GenerateFromSchema
                               {
                                   Name = propertyProperty.Name,
                                   Description = GetValue<string>(propertySchema, "description", null),
+                                  Default = propertySchema.SelectToken("default"),
                                   IsValue = GetValue<bool>(propertySchema, "czmlValue", false)
                               };
 

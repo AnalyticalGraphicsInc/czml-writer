@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 
 namespace GenerateFromSchema
@@ -105,6 +107,22 @@ namespace GenerateFromSchema
                         output.WriteLine();
                         output.WriteLine(property.Description);
                         output.WriteLine();
+
+                        JToken defaultToken = property.Default;
+                        if (defaultToken != null)
+                        {
+                            string defaultValue;
+
+                            if (defaultToken.Type == JTokenType.Boolean)
+                                defaultValue = defaultToken.Value<bool>() ? "true" : "false";
+                            else if (defaultToken.Type == JTokenType.Float)
+                                defaultValue = defaultToken.Value<double>().ToString("0.0###############", CultureInfo.InvariantCulture);
+                            else
+                                defaultValue = defaultToken.Value<string>();
+
+                            output.WriteLine("Default: `{0}`", defaultValue);
+                            output.WriteLine();
+                        }
 
                         if (property.Examples != null)
                         {

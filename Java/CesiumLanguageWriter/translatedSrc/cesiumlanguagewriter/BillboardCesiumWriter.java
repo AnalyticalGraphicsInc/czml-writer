@@ -36,11 +36,25 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	public static final String ShowPropertyName = "show";
 	/**
 	 *  
-	The name of the <code>color</code> property.
+	The name of the <code>image</code> property.
 	
 
 	 */
-	public static final String ColorPropertyName = "color";
+	public static final String ImagePropertyName = "image";
+	/**
+	 *  
+	The name of the <code>scale</code> property.
+	
+
+	 */
+	public static final String ScalePropertyName = "scale";
+	/**
+	 *  
+	The name of the <code>pixelOffset</code> property.
+	
+
+	 */
+	public static final String PixelOffsetPropertyName = "pixelOffset";
 	/**
 	 *  
 	The name of the <code>eyeOffset</code> property.
@@ -57,25 +71,18 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	public static final String HorizontalOriginPropertyName = "horizontalOrigin";
 	/**
 	 *  
-	The name of the <code>image</code> property.
+	The name of the <code>verticalOrigin</code> property.
 	
 
 	 */
-	public static final String ImagePropertyName = "image";
+	public static final String VerticalOriginPropertyName = "verticalOrigin";
 	/**
 	 *  
-	The name of the <code>pixelOffset</code> property.
+	The name of the <code>color</code> property.
 	
 
 	 */
-	public static final String PixelOffsetPropertyName = "pixelOffset";
-	/**
-	 *  
-	The name of the <code>scale</code> property.
-	
-
-	 */
-	public static final String ScalePropertyName = "scale";
+	public static final String ColorPropertyName = "color";
 	/**
 	 *  
 	The name of the <code>rotation</code> property.
@@ -92,19 +99,29 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	public static final String AlignedAxisPropertyName = "alignedAxis";
 	/**
 	 *  
-	The name of the <code>verticalOrigin</code> property.
+	The name of the <code>sizeInMeters</code> property.
 	
 
 	 */
-	public static final String VerticalOriginPropertyName = "verticalOrigin";
+	public static final String SizeInMetersPropertyName = "sizeInMeters";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
 		}
 	}, false);
-	private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
-		public cesiumlanguagewriter.ColorCesiumWriter invoke() {
-			return new ColorCesiumWriter(ColorPropertyName);
+	private Lazy<UriCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
+		public cesiumlanguagewriter.UriCesiumWriter invoke() {
+			return new UriCesiumWriter(ImagePropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_scale = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(ScalePropertyName);
+		}
+	}, false);
+	private Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<cesiumlanguagewriter.PixelOffsetCesiumWriter>(new Func1<cesiumlanguagewriter.PixelOffsetCesiumWriter>() {
+		public cesiumlanguagewriter.PixelOffsetCesiumWriter invoke() {
+			return new PixelOffsetCesiumWriter(PixelOffsetPropertyName);
 		}
 	}, false);
 	private Lazy<EyeOffsetCesiumWriter> m_eyeOffset = new Lazy<cesiumlanguagewriter.EyeOffsetCesiumWriter>(new Func1<cesiumlanguagewriter.EyeOffsetCesiumWriter>() {
@@ -117,19 +134,14 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 			return new HorizontalOriginCesiumWriter(HorizontalOriginPropertyName);
 		}
 	}, false);
-	private Lazy<UriCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
-		public cesiumlanguagewriter.UriCesiumWriter invoke() {
-			return new UriCesiumWriter(ImagePropertyName);
+	private Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<cesiumlanguagewriter.VerticalOriginCesiumWriter>(new Func1<cesiumlanguagewriter.VerticalOriginCesiumWriter>() {
+		public cesiumlanguagewriter.VerticalOriginCesiumWriter invoke() {
+			return new VerticalOriginCesiumWriter(VerticalOriginPropertyName);
 		}
 	}, false);
-	private Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<cesiumlanguagewriter.PixelOffsetCesiumWriter>(new Func1<cesiumlanguagewriter.PixelOffsetCesiumWriter>() {
-		public cesiumlanguagewriter.PixelOffsetCesiumWriter invoke() {
-			return new PixelOffsetCesiumWriter(PixelOffsetPropertyName);
-		}
-	}, false);
-	private Lazy<DoubleCesiumWriter> m_scale = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(ScalePropertyName);
+	private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+		public cesiumlanguagewriter.ColorCesiumWriter invoke() {
+			return new ColorCesiumWriter(ColorPropertyName);
 		}
 	}, false);
 	private Lazy<DoubleCesiumWriter> m_rotation = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
@@ -142,9 +154,9 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 			return new AlignedAxisCesiumWriter(AlignedAxisPropertyName);
 		}
 	}, false);
-	private Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<cesiumlanguagewriter.VerticalOriginCesiumWriter>(new Func1<cesiumlanguagewriter.VerticalOriginCesiumWriter>() {
-		public cesiumlanguagewriter.VerticalOriginCesiumWriter invoke() {
-			return new VerticalOriginCesiumWriter(VerticalOriginPropertyName);
+	private Lazy<BooleanCesiumWriter> m_sizeInMeters = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(SizeInMetersPropertyName);
 		}
 	}, false);
 
@@ -176,7 +188,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	}
 
 	/**
-	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the billboard is shown.
+	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the billboard is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -186,7 +198,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the billboard is shown.
+	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the billboard is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -197,7 +209,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -216,7 +228,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -235,7 +247,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -254,7 +266,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -275,7 +287,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the billboard is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -286,484 +298,6 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>color</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>color</code> property defines the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-	
-
-	 */
-	public final ColorCesiumWriter getColorWriter() {
-		return m_color.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>color</code> property.  The <code>color</code> property defines the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-	
-
-	 */
-	public final ColorCesiumWriter openColorProperty() {
-		openIntervalIfNecessary();
-		return this.<ColorCesiumWriter> openAndReturn(getColorWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-	
-	
-
-	 * @param color The color.
-	 */
-	public final void writeColorProperty(Color color) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
-			try {
-				writer.writeRgba(color);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-	
-	
-	
-	
-	
-
-	 * @param red The red component in the range 0 to 255.
-	 * @param green The green component in the range 0 to 255.
-	 * @param blue The blue component in the range 0 to 255.
-	 * @param alpha The alpha component in the range 0 to 255.
-	 */
-	public final void writeColorProperty(int red, int green, int blue, int alpha) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
-			try {
-				writer.writeRgba(red, green, blue, alpha);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the value is specified.
-	 * @param colors The color corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `colors` collection.
-	 * @param length The number of elements to use from the `colors` collection.
-	 */
-	public final void writeColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
-			try {
-				writer.writeRgba(dates, colors, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-	
-	
-	
-	
-	
-
-	 * @param red The red component in the range 0 to 1.0.
-	 * @param green The green component in the range 0 to 1.0.
-	 * @param blue The blue component in the range 0 to 1.0.
-	 * @param alpha The alpha component in the range 0 to 1.0.
-	 */
-	public final void writeColorPropertyRgbaf(float red, float green, float blue, float alpha) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
-			try {
-				writer.writeRgbaf(red, green, blue, alpha);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeColorPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeColorPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeColorPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>eyeOffset</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>eyeOffset</code> property defines the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-	
-
-	 */
-	public final EyeOffsetCesiumWriter getEyeOffsetWriter() {
-		return m_eyeOffset.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>eyeOffset</code> property.  The <code>eyeOffset</code> property defines the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-	
-
-	 */
-	public final EyeOffsetCesiumWriter openEyeOffsetProperty() {
-		openIntervalIfNecessary();
-		return this.<EyeOffsetCesiumWriter> openAndReturn(getEyeOffsetWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeEyeOffsetProperty(Cartesian value) {
-		{
-			cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
-			try {
-				writer.writeCartesian(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-	
-	
-	
-
-	 * @param dates The dates at which the vector is specified.
-	 * @param values The values corresponding to each date.
-	 */
-	public final void writeEyeOffsetProperty(List<JulianDate> dates, List<Cartesian> values) {
-		{
-			cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
-			try {
-				writer.writeCartesian(dates, values);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the vector is specified.
-	 * @param values The values corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeEyeOffsetProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
-			try {
-				writer.writeCartesian(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeEyeOffsetPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeEyeOffsetPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeEyeOffsetPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeEyeOffsetPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>horizontalOrigin</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>horizontalOrigin</code> property defines the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
-	
-
-	 */
-	public final HorizontalOriginCesiumWriter getHorizontalOriginWriter() {
-		return m_horizontalOrigin.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>horizontalOrigin</code> property.  The <code>horizontalOrigin</code> property defines the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
-	
-
-	 */
-	public final HorizontalOriginCesiumWriter openHorizontalOriginProperty() {
-		openIntervalIfNecessary();
-		return this.<HorizontalOriginCesiumWriter> openAndReturn(getHorizontalOriginWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>horizontalOrigin</code> property as a <code>horizontalOrigin</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
-	
-	
-
-	 * @param value The horizontal origin.
-	 */
-	public final void writeHorizontalOriginProperty(CesiumHorizontalOrigin value) {
-		{
-			cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
-			try {
-				writer.writeHorizontalOrigin(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeHorizontalOriginPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeHorizontalOriginPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeHorizontalOriginPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeHorizontalOriginPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {
@@ -1016,6 +550,150 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	}
 
 	/**
+	 *  Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>scale</code> property defines the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+	
+
+	 */
+	public final DoubleCesiumWriter getScaleWriter() {
+		return m_scale.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>scale</code> property.  The <code>scale</code> property defines the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+	
+
+	 */
+	public final DoubleCesiumWriter openScaleProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getScaleWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeScaleProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeScaleProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeScalePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeScalePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeScalePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeScalePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
 	 *  Gets the writer for the <code>pixelOffset</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>pixelOffset</code> property defines the offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`.
 	
 
@@ -1202,38 +880,38 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	}
 
 	/**
-	 *  Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>scale</code> property defines the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+	 *  Gets the writer for the <code>eyeOffset</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>eyeOffset</code> property defines the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
 	
 
 	 */
-	public final DoubleCesiumWriter getScaleWriter() {
-		return m_scale.getValue();
+	public final EyeOffsetCesiumWriter getEyeOffsetWriter() {
+		return m_eyeOffset.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>scale</code> property.  The <code>scale</code> property defines the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+	Opens and returns the writer for the <code>eyeOffset</code> property.  The <code>eyeOffset</code> property defines the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
 	
 
 	 */
-	public final DoubleCesiumWriter openScaleProperty() {
+	public final EyeOffsetCesiumWriter openEyeOffsetProperty() {
 		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getScaleWriter());
+		return this.<EyeOffsetCesiumWriter> openAndReturn(getEyeOffsetWriter());
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+	Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeScaleProperty(double value) {
+	public final void writeEyeOffsetProperty(Cartesian value) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+			cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
 			try {
-				writer.writeNumber(value);
+				writer.writeCartesian(value);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1242,23 +920,44 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+	Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeEyeOffsetProperty(List<JulianDate> dates, List<Cartesian> values) {
+		{
+			cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
+			try {
+				writer.writeCartesian(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
 	
 	
 	
 	
 	
 
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeScaleProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+	public final void writeEyeOffsetProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+			cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
 			try {
-				writer.writeNumber(dates, values, startIndex, length);
+				writer.writeCartesian(dates, values, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1267,15 +966,15 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+	Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
 	
 	
 
 	 * @param value The reference.
 	 */
-	public final void writeScalePropertyReference(Reference value) {
+	public final void writeEyeOffsetPropertyReference(Reference value) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+			cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
 			try {
 				writer.writeReference(value);
 			} finally {
@@ -1286,15 +985,15 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+	Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
 	
 	
 
 	 * @param value The earliest date of the interval.
 	 */
-	public final void writeScalePropertyReference(String value) {
+	public final void writeEyeOffsetPropertyReference(String value) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+			cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
 			try {
 				writer.writeReference(value);
 			} finally {
@@ -1305,7 +1004,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+	Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
 	
 	
 	
@@ -1313,9 +1012,9 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	 * @param identifier The identifier of the object which contains the referenced property.
 	 * @param propertyName The property on the referenced object.
 	 */
-	public final void writeScalePropertyReference(String identifier, String propertyName) {
+	public final void writeEyeOffsetPropertyReference(String identifier, String propertyName) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+			cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
 			try {
 				writer.writeReference(identifier, propertyName);
 			} finally {
@@ -1326,7 +1025,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.
+	Writes a value for the <code>eyeOffset</code> property as a <code>reference</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
 	
 	
 	
@@ -1334,9 +1033,9 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	 * @param identifier The identifier of the object which contains the referenced property.
 	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
-	public final void writeScalePropertyReference(String identifier, String[] propertyNames) {
+	public final void writeEyeOffsetPropertyReference(String identifier, String[] propertyNames) {
 		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+			cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {
@@ -1346,7 +1045,439 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	}
 
 	/**
-	 *  Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+	 *  Gets the writer for the <code>horizontalOrigin</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>horizontalOrigin</code> property defines the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+	
+
+	 */
+	public final HorizontalOriginCesiumWriter getHorizontalOriginWriter() {
+		return m_horizontalOrigin.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>horizontalOrigin</code> property.  The <code>horizontalOrigin</code> property defines the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+	
+
+	 */
+	public final HorizontalOriginCesiumWriter openHorizontalOriginProperty() {
+		openIntervalIfNecessary();
+		return this.<HorizontalOriginCesiumWriter> openAndReturn(getHorizontalOriginWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>horizontalOrigin</code> property as a <code>horizontalOrigin</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+	
+	
+
+	 * @param value The horizontal origin.
+	 */
+	public final void writeHorizontalOriginProperty(CesiumHorizontalOrigin value) {
+		{
+			cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
+			try {
+				writer.writeHorizontalOrigin(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeHorizontalOriginPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeHorizontalOriginPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeHorizontalOriginPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>horizontalOrigin</code> property as a <code>reference</code> value.  The <code>horizontalOrigin</code> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeHorizontalOriginPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>verticalOrigin</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>verticalOrigin</code> property defines the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+	
+
+	 */
+	public final VerticalOriginCesiumWriter getVerticalOriginWriter() {
+		return m_verticalOrigin.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>verticalOrigin</code> property.  The <code>verticalOrigin</code> property defines the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+	
+
+	 */
+	public final VerticalOriginCesiumWriter openVerticalOriginProperty() {
+		openIntervalIfNecessary();
+		return this.<VerticalOriginCesiumWriter> openAndReturn(getVerticalOriginWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>verticalOrigin</code> property as a <code>verticalOrigin</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+	
+	
+
+	 * @param value The vertical origin.
+	 */
+	public final void writeVerticalOriginProperty(CesiumVerticalOrigin value) {
+		{
+			cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+			try {
+				writer.writeVerticalOrigin(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeVerticalOriginPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeVerticalOriginPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeVerticalOriginPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeVerticalOriginPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>color</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>color</code> property defines the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+	
+
+	 */
+	public final ColorCesiumWriter getColorWriter() {
+		return m_color.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>color</code> property.  The <code>color</code> property defines the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+	
+
+	 */
+	public final ColorCesiumWriter openColorProperty() {
+		openIntervalIfNecessary();
+		return this.<ColorCesiumWriter> openAndReturn(getColorWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+	
+	
+
+	 * @param color The color.
+	 */
+	public final void writeColorProperty(Color color) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeRgba(color);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+	
+	
+	
+	
+	
+
+	 * @param red The red component in the range 0 to 255.
+	 * @param green The green component in the range 0 to 255.
+	 * @param blue The blue component in the range 0 to 255.
+	 * @param alpha The alpha component in the range 0 to 255.
+	 */
+	public final void writeColorProperty(int red, int green, int blue, int alpha) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeRgba(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param colors The color corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `colors` collection.
+	 * @param length The number of elements to use from the `colors` collection.
+	 */
+	public final void writeColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeRgba(dates, colors, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+	
+	
+	
+	
+	
+
+	 * @param red The red component in the range 0 to 1.0.
+	 * @param green The green component in the range 0 to 1.0.
+	 * @param blue The blue component in the range 0 to 1.0.
+	 * @param alpha The alpha component in the range 0 to 1.0.
+	 */
+	public final void writeColorPropertyRgbaf(float red, float green, float blue, float alpha) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeRgbaf(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeColorPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeColorPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeColorPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
 	
 
 	 */
@@ -1356,7 +1487,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+	Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
 	
 
 	 */
@@ -1367,7 +1498,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
 	
 	
 
@@ -1386,7 +1517,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
 	
 	
 	
@@ -1411,7 +1542,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
 	
 	
 
@@ -1430,7 +1561,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
 	
 	
 
@@ -1449,7 +1580,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
 	
 	
 	
@@ -1470,7 +1601,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.
+	Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
 	
 	
 	
@@ -1655,38 +1786,38 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	}
 
 	/**
-	 *  Gets the writer for the <code>verticalOrigin</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>verticalOrigin</code> property defines the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+	 *  Gets the writer for the <code>sizeInMeters</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>sizeInMeters</code> property defines whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
 	
 
 	 */
-	public final VerticalOriginCesiumWriter getVerticalOriginWriter() {
-		return m_verticalOrigin.getValue();
+	public final BooleanCesiumWriter getSizeInMetersWriter() {
+		return m_sizeInMeters.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>verticalOrigin</code> property.  The <code>verticalOrigin</code> property defines the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+	Opens and returns the writer for the <code>sizeInMeters</code> property.  The <code>sizeInMeters</code> property defines whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
 	
 
 	 */
-	public final VerticalOriginCesiumWriter openVerticalOriginProperty() {
+	public final BooleanCesiumWriter openSizeInMetersProperty() {
 		openIntervalIfNecessary();
-		return this.<VerticalOriginCesiumWriter> openAndReturn(getVerticalOriginWriter());
+		return this.<BooleanCesiumWriter> openAndReturn(getSizeInMetersWriter());
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>verticalOrigin</code> property as a <code>verticalOrigin</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+	Writes a value for the <code>sizeInMeters</code> property as a <code>boolean</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
 	
 	
 
-	 * @param value The vertical origin.
+	 * @param value The value.
 	 */
-	public final void writeVerticalOriginProperty(CesiumVerticalOrigin value) {
+	public final void writeSizeInMetersProperty(boolean value) {
 		{
-			cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openSizeInMetersProperty();
 			try {
-				writer.writeVerticalOrigin(value);
+				writer.writeBoolean(value);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1695,15 +1826,15 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+	Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
 	
 	
 
 	 * @param value The reference.
 	 */
-	public final void writeVerticalOriginPropertyReference(Reference value) {
+	public final void writeSizeInMetersPropertyReference(Reference value) {
 		{
-			cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openSizeInMetersProperty();
 			try {
 				writer.writeReference(value);
 			} finally {
@@ -1714,15 +1845,15 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+	Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
 	
 	
 
 	 * @param value The earliest date of the interval.
 	 */
-	public final void writeVerticalOriginPropertyReference(String value) {
+	public final void writeSizeInMetersPropertyReference(String value) {
 		{
-			cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openSizeInMetersProperty();
 			try {
 				writer.writeReference(value);
 			} finally {
@@ -1733,7 +1864,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+	Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
 	
 	
 	
@@ -1741,9 +1872,9 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	 * @param identifier The identifier of the object which contains the referenced property.
 	 * @param propertyName The property on the referenced object.
 	 */
-	public final void writeVerticalOriginPropertyReference(String identifier, String propertyName) {
+	public final void writeSizeInMetersPropertyReference(String identifier, String propertyName) {
 		{
-			cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openSizeInMetersProperty();
 			try {
 				writer.writeReference(identifier, propertyName);
 			} finally {
@@ -1754,7 +1885,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>verticalOrigin</code> property as a <code>reference</code> value.  The <code>verticalOrigin</code> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.
+	Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
 	
 	
 	
@@ -1762,9 +1893,9 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	 * @param identifier The identifier of the object which contains the referenced property.
 	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
-	public final void writeVerticalOriginPropertyReference(String identifier, String[] propertyNames) {
+	public final void writeSizeInMetersPropertyReference(String identifier, String[] propertyNames) {
 		{
-			cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openSizeInMetersProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {

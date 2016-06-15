@@ -11,23 +11,29 @@
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the polyline is shown."
+            "description": "Whether or not the polyline is shown.",
+            "default": true
         },
         "positions": {
             "$ref": "PositionList.jsonschema",
             "description": "The array of positions defining the polyline as a line strip."
         },
-        "material": {
-            "$ref": "PolylineMaterial.jsonschema",
-            "description": "The material to use to draw the polyline."
-        },
         "width": {
             "$ref": "Double.jsonschema",
             "description": "The width of the polyline."
         },
+        "granularity": {
+            "$ref": "Double.jsonschema",
+            "description": "The sampling distance, in radians."
+        },
+        "material": {
+            "$ref": "PolylineMaterial.jsonschema",
+            "description": "The material to use to draw the polyline."
+        },
         "followSurface": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the positions are connected as great arcs (the default) or as straight lines."
+            "description": "Whether or not the positions are connected as great arcs (the default) or as straight lines.",
+            "default": true
         }
     }
 }

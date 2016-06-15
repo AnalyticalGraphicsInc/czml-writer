@@ -134,7 +134,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the box is shown.
+	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the box is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -144,7 +144,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the box is shown.
+	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the box is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -155,7 +155,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the box is shown.
+	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the box is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -174,7 +174,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the box is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the box is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -193,7 +193,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the box is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the box is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -212,7 +212,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the box is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the box is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -233,7 +233,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the box is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the box is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -418,7 +418,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>fill</code> property defines whether or not the box is filled.
+	 *  Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>fill</code> property defines whether or not the box is filled.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -428,7 +428,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the box is filled.
+	Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the box is filled.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -439,7 +439,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the box is filled.
+	Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the box is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -458,7 +458,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the box is filled.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the box is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -477,7 +477,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the box is filled.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the box is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -496,7 +496,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the box is filled.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the box is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -517,7 +517,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the box is filled.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the box is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -557,7 +557,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outline</code> property defines whether or not the box is outlined.
+	 *  Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outline</code> property defines whether or not the box is outlined.  If not specified, the default value is <see langword="false" />.
 	
 
 	 */
@@ -567,7 +567,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the box is outlined.
+	Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the box is outlined.  If not specified, the default value is <see langword="false" />.
 	
 
 	 */
@@ -578,7 +578,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the box is outlined.
+	Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the box is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -597,7 +597,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the box is outlined.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the box is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -616,7 +616,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the box is outlined.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the box is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -635,7 +635,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the box is outlined.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the box is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 	
@@ -656,7 +656,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the box is outlined.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the box is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 	
@@ -870,7 +870,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the box outline.
+	 *  Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the box outline.  If not specified, the default value is 1.0.
 	
 
 	 */
@@ -880,7 +880,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the box outline.
+	Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the box outline.  If not specified, the default value is 1.0.
 	
 
 	 */
@@ -891,7 +891,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the box outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the box outline.  If not specified, the default value is 1.0.
 	
 	
 
@@ -910,7 +910,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the box outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the box outline.  If not specified, the default value is 1.0.
 	
 	
 	
@@ -935,7 +935,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the box outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the box outline.  If not specified, the default value is 1.0.
 	
 	
 
@@ -954,7 +954,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the box outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the box outline.  If not specified, the default value is 1.0.
 	
 	
 
@@ -973,7 +973,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the box outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the box outline.  If not specified, the default value is 1.0.
 	
 	
 	
@@ -994,7 +994,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the box outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the box outline.  If not specified, the default value is 1.0.
 	
 	
 	

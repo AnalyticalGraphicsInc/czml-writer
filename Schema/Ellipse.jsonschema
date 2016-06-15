@@ -11,7 +11,8 @@
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the ellipse is shown."
+            "description": "Whether or not the ellipse is shown.",
+            "default": true
         },
         "semiMajorAxis": {
             "$ref": "Double.jsonschema",
@@ -21,37 +22,39 @@
             "$ref": "Double.jsonschema",
             "description": "The length of the ellipse's semi-minor axis in meters."
         },
-        "rotation": {
-            "$ref": "Double.jsonschema",
-            "description": "The angle from north (counter-clockwise) in radians."
-        },
-        "material": {
-            "$ref": "Material.jsonschema",
-            "description": "The material to use to fill the ellipse."
-        },
         "height": {
             "$ref": "Double.jsonschema",
-            "description": "The height of the ellipse when perPositionHeight is false."
+            "description": "The altitude of the ellipse relative to the surface."
         },
         "extrudedHeight": {
             "$ref": "Double.jsonschema",
-            "description": "The extruded height of the ellipse."
+            "description": "The altitude of the ellipse's extruded face relative to the surface."
         },
-        "granularity": {
+        "rotation": {
             "$ref": "Double.jsonschema",
-            "description": "The sampling distance, in radians."
+            "description": "The angle from north (counter-clockwise) in radians."
         },
         "stRotation": {
             "$ref": "Double.jsonschema",
             "description": "The rotation of any applied texture coordinates."
         },
+        "granularity": {
+            "$ref": "Double.jsonschema",
+            "description": "The sampling distance, in radians."
+        },
         "fill": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the ellipse is filled."
+            "description": "Whether or not the ellipse is filled.",
+            "default": true
+        },
+        "material": {
+            "$ref": "Material.jsonschema",
+            "description": "The material to use to fill the ellipse."
         },
         "outline": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the ellipse is outlined."
+            "description": "Whether or not the ellipse is outlined.",
+            "default": false
         },
         "outlineColor": {
             "$ref": "Color.jsonschema",
@@ -59,7 +62,8 @@
         },
         "outlineWidth": {
             "$ref": "Double.jsonschema",
-            "description": "The width of the ellipse outline."
+            "description": "The width of the ellipse outline.",
+            "default": 1.0
         },
         "numberOfVerticalLines": {
             "$ref": "Double.jsonschema",

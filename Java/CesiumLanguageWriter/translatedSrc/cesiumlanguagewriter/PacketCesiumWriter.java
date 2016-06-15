@@ -24,10 +24,12 @@ import cesiumlanguagewriter.PointCesiumWriter;
 import cesiumlanguagewriter.PolygonCesiumWriter;
 import cesiumlanguagewriter.PolylineCesiumWriter;
 import cesiumlanguagewriter.PositionCesiumWriter;
+import cesiumlanguagewriter.RectangleCesiumWriter;
 import cesiumlanguagewriter.RectangularSensorCesiumWriter;
 import cesiumlanguagewriter.StringCesiumWriter;
 import cesiumlanguagewriter.VectorCesiumWriter;
 import cesiumlanguagewriter.ViewFromCesiumWriter;
+import cesiumlanguagewriter.WallCesiumWriter;
 import java.util.List;
 
 /**
@@ -123,67 +125,18 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	public static final String BillboardPropertyName = "billboard";
 	/**
 	 *  
-	The name of the <code>point</code> property.
-	
-
-	 */
-	public static final String PointPropertyName = "point";
-	/**
-	 *  
-	The name of the <code>label</code> property.
-	
-
-	 */
-	public static final String LabelPropertyName = "label";
-	/**
-	 *  
-	The name of the <code>polyline</code> property.
-	
-
-	 */
-	public static final String PolylinePropertyName = "polyline";
-	/**
-	 *  
-	The name of the <code>path</code> property.
-	
-
-	 */
-	public static final String PathPropertyName = "path";
-	/**
-	 *  
-	The name of the <code>polygon</code> property.
-	
-
-	 */
-	public static final String PolygonPropertyName = "polygon";
-	/**
-	 *  
-	The name of the <code>ellipsoid</code> property.
-	
-
-	 */
-	public static final String EllipsoidPropertyName = "ellipsoid";
-	/**
-	 *  
-	The name of the <code>model</code> property.
-	
-
-	 */
-	public static final String ModelPropertyName = "model";
-	/**
-	 *  
-	The name of the <code>ellipse</code> property.
-	
-
-	 */
-	public static final String EllipsePropertyName = "ellipse";
-	/**
-	 *  
 	The name of the <code>box</code> property.
 	
 
 	 */
 	public static final String BoxPropertyName = "box";
+	/**
+	 *  
+	The name of the <code>corridor</code> property.
+	
+
+	 */
+	public static final String CorridorPropertyName = "corridor";
 	/**
 	 *  
 	The name of the <code>cylinder</code> property.
@@ -193,11 +146,74 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	public static final String CylinderPropertyName = "cylinder";
 	/**
 	 *  
-	The name of the <code>corridor</code> property.
+	The name of the <code>ellipse</code> property.
 	
 
 	 */
-	public static final String CorridorPropertyName = "corridor";
+	public static final String EllipsePropertyName = "ellipse";
+	/**
+	 *  
+	The name of the <code>ellipsoid</code> property.
+	
+
+	 */
+	public static final String EllipsoidPropertyName = "ellipsoid";
+	/**
+	 *  
+	The name of the <code>label</code> property.
+	
+
+	 */
+	public static final String LabelPropertyName = "label";
+	/**
+	 *  
+	The name of the <code>model</code> property.
+	
+
+	 */
+	public static final String ModelPropertyName = "model";
+	/**
+	 *  
+	The name of the <code>path</code> property.
+	
+
+	 */
+	public static final String PathPropertyName = "path";
+	/**
+	 *  
+	The name of the <code>point</code> property.
+	
+
+	 */
+	public static final String PointPropertyName = "point";
+	/**
+	 *  
+	The name of the <code>polygon</code> property.
+	
+
+	 */
+	public static final String PolygonPropertyName = "polygon";
+	/**
+	 *  
+	The name of the <code>polyline</code> property.
+	
+
+	 */
+	public static final String PolylinePropertyName = "polyline";
+	/**
+	 *  
+	The name of the <code>rectangle</code> property.
+	
+
+	 */
+	public static final String RectanglePropertyName = "rectangle";
+	/**
+	 *  
+	The name of the <code>wall</code> property.
+	
+
+	 */
+	public static final String WallPropertyName = "wall";
 	/**
 	 *  
 	The name of the <code>agi_conicSensor</code> property.
@@ -263,49 +279,14 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 			return new BillboardCesiumWriter(BillboardPropertyName);
 		}
 	}, false);
-	private Lazy<PointCesiumWriter> m_point = new Lazy<cesiumlanguagewriter.PointCesiumWriter>(new Func1<cesiumlanguagewriter.PointCesiumWriter>() {
-		public cesiumlanguagewriter.PointCesiumWriter invoke() {
-			return new PointCesiumWriter(PointPropertyName);
-		}
-	}, false);
-	private Lazy<LabelCesiumWriter> m_label = new Lazy<cesiumlanguagewriter.LabelCesiumWriter>(new Func1<cesiumlanguagewriter.LabelCesiumWriter>() {
-		public cesiumlanguagewriter.LabelCesiumWriter invoke() {
-			return new LabelCesiumWriter(LabelPropertyName);
-		}
-	}, false);
-	private Lazy<PolylineCesiumWriter> m_polyline = new Lazy<cesiumlanguagewriter.PolylineCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineCesiumWriter>() {
-		public cesiumlanguagewriter.PolylineCesiumWriter invoke() {
-			return new PolylineCesiumWriter(PolylinePropertyName);
-		}
-	}, false);
-	private Lazy<PathCesiumWriter> m_path = new Lazy<cesiumlanguagewriter.PathCesiumWriter>(new Func1<cesiumlanguagewriter.PathCesiumWriter>() {
-		public cesiumlanguagewriter.PathCesiumWriter invoke() {
-			return new PathCesiumWriter(PathPropertyName);
-		}
-	}, false);
-	private Lazy<PolygonCesiumWriter> m_polygon = new Lazy<cesiumlanguagewriter.PolygonCesiumWriter>(new Func1<cesiumlanguagewriter.PolygonCesiumWriter>() {
-		public cesiumlanguagewriter.PolygonCesiumWriter invoke() {
-			return new PolygonCesiumWriter(PolygonPropertyName);
-		}
-	}, false);
-	private Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<cesiumlanguagewriter.EllipsoidCesiumWriter>(new Func1<cesiumlanguagewriter.EllipsoidCesiumWriter>() {
-		public cesiumlanguagewriter.EllipsoidCesiumWriter invoke() {
-			return new EllipsoidCesiumWriter(EllipsoidPropertyName);
-		}
-	}, false);
-	private Lazy<ModelCesiumWriter> m_model = new Lazy<cesiumlanguagewriter.ModelCesiumWriter>(new Func1<cesiumlanguagewriter.ModelCesiumWriter>() {
-		public cesiumlanguagewriter.ModelCesiumWriter invoke() {
-			return new ModelCesiumWriter(ModelPropertyName);
-		}
-	}, false);
-	private Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<cesiumlanguagewriter.EllipseCesiumWriter>(new Func1<cesiumlanguagewriter.EllipseCesiumWriter>() {
-		public cesiumlanguagewriter.EllipseCesiumWriter invoke() {
-			return new EllipseCesiumWriter(EllipsePropertyName);
-		}
-	}, false);
 	private Lazy<BoxCesiumWriter> m_box = new Lazy<cesiumlanguagewriter.BoxCesiumWriter>(new Func1<cesiumlanguagewriter.BoxCesiumWriter>() {
 		public cesiumlanguagewriter.BoxCesiumWriter invoke() {
 			return new BoxCesiumWriter(BoxPropertyName);
+		}
+	}, false);
+	private Lazy<CorridorCesiumWriter> m_corridor = new Lazy<cesiumlanguagewriter.CorridorCesiumWriter>(new Func1<cesiumlanguagewriter.CorridorCesiumWriter>() {
+		public cesiumlanguagewriter.CorridorCesiumWriter invoke() {
+			return new CorridorCesiumWriter(CorridorPropertyName);
 		}
 	}, false);
 	private Lazy<CylinderCesiumWriter> m_cylinder = new Lazy<cesiumlanguagewriter.CylinderCesiumWriter>(new Func1<cesiumlanguagewriter.CylinderCesiumWriter>() {
@@ -313,9 +294,54 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 			return new CylinderCesiumWriter(CylinderPropertyName);
 		}
 	}, false);
-	private Lazy<CorridorCesiumWriter> m_corridor = new Lazy<cesiumlanguagewriter.CorridorCesiumWriter>(new Func1<cesiumlanguagewriter.CorridorCesiumWriter>() {
-		public cesiumlanguagewriter.CorridorCesiumWriter invoke() {
-			return new CorridorCesiumWriter(CorridorPropertyName);
+	private Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<cesiumlanguagewriter.EllipseCesiumWriter>(new Func1<cesiumlanguagewriter.EllipseCesiumWriter>() {
+		public cesiumlanguagewriter.EllipseCesiumWriter invoke() {
+			return new EllipseCesiumWriter(EllipsePropertyName);
+		}
+	}, false);
+	private Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<cesiumlanguagewriter.EllipsoidCesiumWriter>(new Func1<cesiumlanguagewriter.EllipsoidCesiumWriter>() {
+		public cesiumlanguagewriter.EllipsoidCesiumWriter invoke() {
+			return new EllipsoidCesiumWriter(EllipsoidPropertyName);
+		}
+	}, false);
+	private Lazy<LabelCesiumWriter> m_label = new Lazy<cesiumlanguagewriter.LabelCesiumWriter>(new Func1<cesiumlanguagewriter.LabelCesiumWriter>() {
+		public cesiumlanguagewriter.LabelCesiumWriter invoke() {
+			return new LabelCesiumWriter(LabelPropertyName);
+		}
+	}, false);
+	private Lazy<ModelCesiumWriter> m_model = new Lazy<cesiumlanguagewriter.ModelCesiumWriter>(new Func1<cesiumlanguagewriter.ModelCesiumWriter>() {
+		public cesiumlanguagewriter.ModelCesiumWriter invoke() {
+			return new ModelCesiumWriter(ModelPropertyName);
+		}
+	}, false);
+	private Lazy<PathCesiumWriter> m_path = new Lazy<cesiumlanguagewriter.PathCesiumWriter>(new Func1<cesiumlanguagewriter.PathCesiumWriter>() {
+		public cesiumlanguagewriter.PathCesiumWriter invoke() {
+			return new PathCesiumWriter(PathPropertyName);
+		}
+	}, false);
+	private Lazy<PointCesiumWriter> m_point = new Lazy<cesiumlanguagewriter.PointCesiumWriter>(new Func1<cesiumlanguagewriter.PointCesiumWriter>() {
+		public cesiumlanguagewriter.PointCesiumWriter invoke() {
+			return new PointCesiumWriter(PointPropertyName);
+		}
+	}, false);
+	private Lazy<PolygonCesiumWriter> m_polygon = new Lazy<cesiumlanguagewriter.PolygonCesiumWriter>(new Func1<cesiumlanguagewriter.PolygonCesiumWriter>() {
+		public cesiumlanguagewriter.PolygonCesiumWriter invoke() {
+			return new PolygonCesiumWriter(PolygonPropertyName);
+		}
+	}, false);
+	private Lazy<PolylineCesiumWriter> m_polyline = new Lazy<cesiumlanguagewriter.PolylineCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineCesiumWriter>() {
+		public cesiumlanguagewriter.PolylineCesiumWriter invoke() {
+			return new PolylineCesiumWriter(PolylinePropertyName);
+		}
+	}, false);
+	private Lazy<RectangleCesiumWriter> m_rectangle = new Lazy<cesiumlanguagewriter.RectangleCesiumWriter>(new Func1<cesiumlanguagewriter.RectangleCesiumWriter>() {
+		public cesiumlanguagewriter.RectangleCesiumWriter invoke() {
+			return new RectangleCesiumWriter(RectanglePropertyName);
+		}
+	}, false);
+	private Lazy<WallCesiumWriter> m_wall = new Lazy<cesiumlanguagewriter.WallCesiumWriter>(new Func1<cesiumlanguagewriter.WallCesiumWriter>() {
+		public cesiumlanguagewriter.WallCesiumWriter invoke() {
+			return new WallCesiumWriter(WallPropertyName);
 		}
 	}, false);
 	private Lazy<ConicSensorCesiumWriter> m_agi_conicSensor = new Lazy<cesiumlanguagewriter.ConicSensorCesiumWriter>(new Func1<cesiumlanguagewriter.ConicSensorCesiumWriter>() {
@@ -576,7 +602,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	/**
 	 *  
-	Writes the value expressed as a <code>availability</code>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.
+	Writes the value expressed as a <code>availability</code>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.  If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
 	
 	
 
@@ -590,7 +616,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	/**
 	 *  
-	Writes the value expressed as a <code>availability</code>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.
+	Writes the value expressed as a <code>availability</code>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.  If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
 	
 	
 	
@@ -604,7 +630,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
 	/**
 	 *  
-	Writes the value expressed as a <code>availability</code>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.
+	Writes the value expressed as a <code>availability</code>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.  If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
 	
 	
 
@@ -1323,136 +1349,60 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	}
 
 	/**
-	 *  Gets the writer for the <code>point</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>point</code> property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property.
+	 *  Gets the writer for the <code>box</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>box</code> property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the `position` and `orientation` properties.
 	
 
 	 */
-	public final PointCesiumWriter getPointWriter() {
-		return m_point.getValue();
+	public final BoxCesiumWriter getBoxWriter() {
+		return m_box.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>point</code> property.  The <code>point</code> property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property.
+	Opens and returns the writer for the <code>box</code> property.  The <code>box</code> property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the `position` and `orientation` properties.
 	
 
 	 */
-	public final PointCesiumWriter openPointProperty() {
-		return this.<PointCesiumWriter> openAndReturn(getPointWriter());
+	public final BoxCesiumWriter openBoxProperty() {
+		return this.<BoxCesiumWriter> openAndReturn(getBoxWriter());
 	}
 
 	/**
-	 *  Gets the writer for the <code>label</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>label</code> property defines a string of text.  The label is positioned in the scene by the `position` property.
+	 *  Gets the writer for the <code>corridor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>corridor</code> property defines a corridor, which is a shape defined by a centerline and width.
 	
 
 	 */
-	public final LabelCesiumWriter getLabelWriter() {
-		return m_label.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>label</code> property.  The <code>label</code> property defines a string of text.  The label is positioned in the scene by the `position` property.
-	
-
-	 */
-	public final LabelCesiumWriter openLabelProperty() {
-		return this.<LabelCesiumWriter> openAndReturn(getLabelWriter());
-	}
-
-	/**
-	 *  Gets the writer for the <code>polyline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>polyline</code> property defines a polyline, which is a line in the scene composed of multiple segments.
-	
-
-	 */
-	public final PolylineCesiumWriter getPolylineWriter() {
-		return m_polyline.getValue();
+	public final CorridorCesiumWriter getCorridorWriter() {
+		return m_corridor.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>polyline</code> property.  The <code>polyline</code> property defines a polyline, which is a line in the scene composed of multiple segments.
+	Opens and returns the writer for the <code>corridor</code> property.  The <code>corridor</code> property defines a corridor, which is a shape defined by a centerline and width.
 	
 
 	 */
-	public final PolylineCesiumWriter openPolylineProperty() {
-		return this.<PolylineCesiumWriter> openAndReturn(getPolylineWriter());
+	public final CorridorCesiumWriter openCorridorProperty() {
+		return this.<CorridorCesiumWriter> openAndReturn(getCorridorWriter());
 	}
 
 	/**
-	 *  Gets the writer for the <code>path</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>path</code> property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
+	 *  Gets the writer for the <code>cylinder</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>cylinder</code> property defines a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.  The cylinder is positioned and oriented using the `position` and `orientation` properties.
 	
 
 	 */
-	public final PathCesiumWriter getPathWriter() {
-		return m_path.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>path</code> property.  The <code>path</code> property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
-	
-
-	 */
-	public final PathCesiumWriter openPathProperty() {
-		return this.<PathCesiumWriter> openAndReturn(getPathWriter());
-	}
-
-	/**
-	 *  Gets the writer for the <code>polygon</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>polygon</code> property defines a polygon, which is a closed figure on the surface of the Earth.
-	
-
-	 */
-	public final PolygonCesiumWriter getPolygonWriter() {
-		return m_polygon.getValue();
+	public final CylinderCesiumWriter getCylinderWriter() {
+		return m_cylinder.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>polygon</code> property.  The <code>polygon</code> property defines a polygon, which is a closed figure on the surface of the Earth.
+	Opens and returns the writer for the <code>cylinder</code> property.  The <code>cylinder</code> property defines a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.  The cylinder is positioned and oriented using the `position` and `orientation` properties.
 	
 
 	 */
-	public final PolygonCesiumWriter openPolygonProperty() {
-		return this.<PolygonCesiumWriter> openAndReturn(getPolygonWriter());
-	}
-
-	/**
-	 *  Gets the writer for the <code>ellipsoid</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
-	
-
-	 */
-	public final EllipsoidCesiumWriter getEllipsoidWriter() {
-		return m_ellipsoid.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>ellipsoid</code> property.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
-	
-
-	 */
-	public final EllipsoidCesiumWriter openEllipsoidProperty() {
-		return this.<EllipsoidCesiumWriter> openAndReturn(getEllipsoidWriter());
-	}
-
-	/**
-	 *  Gets the writer for the <code>model</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
-	
-
-	 */
-	public final ModelCesiumWriter getModelWriter() {
-		return m_model.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>model</code> property.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
-	
-
-	 */
-	public final ModelCesiumWriter openModelProperty() {
-		return this.<ModelCesiumWriter> openAndReturn(getModelWriter());
+	public final CylinderCesiumWriter openCylinderProperty() {
+		return this.<CylinderCesiumWriter> openAndReturn(getCylinderWriter());
 	}
 
 	/**
@@ -1475,60 +1425,174 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 	}
 
 	/**
-	 *  Gets the writer for the <code>box</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>box</code> property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the `position` and `orientation` properties.
+	 *  Gets the writer for the <code>ellipsoid</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
 	
 
 	 */
-	public final BoxCesiumWriter getBoxWriter() {
-		return m_box.getValue();
+	public final EllipsoidCesiumWriter getEllipsoidWriter() {
+		return m_ellipsoid.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>box</code> property.  The <code>box</code> property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the `position` and `orientation` properties.
+	Opens and returns the writer for the <code>ellipsoid</code> property.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
 	
 
 	 */
-	public final BoxCesiumWriter openBoxProperty() {
-		return this.<BoxCesiumWriter> openAndReturn(getBoxWriter());
+	public final EllipsoidCesiumWriter openEllipsoidProperty() {
+		return this.<EllipsoidCesiumWriter> openAndReturn(getEllipsoidWriter());
 	}
 
 	/**
-	 *  Gets the writer for the <code>cylinder</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>cylinder</code> property defines a cylinder.  The cylinder is positioned and oriented using the `position` and `orientation` properties.
+	 *  Gets the writer for the <code>label</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>label</code> property defines a string of text.  The label is positioned in the scene by the `position` property.
 	
 
 	 */
-	public final CylinderCesiumWriter getCylinderWriter() {
-		return m_cylinder.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>cylinder</code> property.  The <code>cylinder</code> property defines a cylinder.  The cylinder is positioned and oriented using the `position` and `orientation` properties.
-	
-
-	 */
-	public final CylinderCesiumWriter openCylinderProperty() {
-		return this.<CylinderCesiumWriter> openAndReturn(getCylinderWriter());
-	}
-
-	/**
-	 *  Gets the writer for the <code>corridor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>corridor</code> property defines a corridor, which is a shape defined by a centerline and width.
-	
-
-	 */
-	public final CorridorCesiumWriter getCorridorWriter() {
-		return m_corridor.getValue();
+	public final LabelCesiumWriter getLabelWriter() {
+		return m_label.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>corridor</code> property.  The <code>corridor</code> property defines a corridor, which is a shape defined by a centerline and width.
+	Opens and returns the writer for the <code>label</code> property.  The <code>label</code> property defines a string of text.  The label is positioned in the scene by the `position` property.
 	
 
 	 */
-	public final CorridorCesiumWriter openCorridorProperty() {
-		return this.<CorridorCesiumWriter> openAndReturn(getCorridorWriter());
+	public final LabelCesiumWriter openLabelProperty() {
+		return this.<LabelCesiumWriter> openAndReturn(getLabelWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>model</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+	
+
+	 */
+	public final ModelCesiumWriter getModelWriter() {
+		return m_model.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>model</code> property.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+	
+
+	 */
+	public final ModelCesiumWriter openModelProperty() {
+		return this.<ModelCesiumWriter> openAndReturn(getModelWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>path</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>path</code> property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
+	
+
+	 */
+	public final PathCesiumWriter getPathWriter() {
+		return m_path.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>path</code> property.  The <code>path</code> property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
+	
+
+	 */
+	public final PathCesiumWriter openPathProperty() {
+		return this.<PathCesiumWriter> openAndReturn(getPathWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>point</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>point</code> property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property.
+	
+
+	 */
+	public final PointCesiumWriter getPointWriter() {
+		return m_point.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>point</code> property.  The <code>point</code> property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property.
+	
+
+	 */
+	public final PointCesiumWriter openPointProperty() {
+		return this.<PointCesiumWriter> openAndReturn(getPointWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>polygon</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>polygon</code> property defines a polygon, which is a closed figure on the surface of the Earth.
+	
+
+	 */
+	public final PolygonCesiumWriter getPolygonWriter() {
+		return m_polygon.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>polygon</code> property.  The <code>polygon</code> property defines a polygon, which is a closed figure on the surface of the Earth.
+	
+
+	 */
+	public final PolygonCesiumWriter openPolygonProperty() {
+		return this.<PolygonCesiumWriter> openAndReturn(getPolygonWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>polyline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>polyline</code> property defines a polyline, which is a line in the scene composed of multiple segments.
+	
+
+	 */
+	public final PolylineCesiumWriter getPolylineWriter() {
+		return m_polyline.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>polyline</code> property.  The <code>polyline</code> property defines a polyline, which is a line in the scene composed of multiple segments.
+	
+
+	 */
+	public final PolylineCesiumWriter openPolylineProperty() {
+		return this.<PolylineCesiumWriter> openAndReturn(getPolylineWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>rectangle</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>rectangle</code> property defines a cartographic rectangle, which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+	
+
+	 */
+	public final RectangleCesiumWriter getRectangleWriter() {
+		return m_rectangle.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>rectangle</code> property.  The <code>rectangle</code> property defines a cartographic rectangle, which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+	
+
+	 */
+	public final RectangleCesiumWriter openRectangleProperty() {
+		return this.<RectangleCesiumWriter> openAndReturn(getRectangleWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>wall</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>wall</code> property defines a two dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+	
+
+	 */
+	public final WallCesiumWriter getWallWriter() {
+		return m_wall.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>wall</code> property.  The <code>wall</code> property defines a two dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+	
+
+	 */
+	public final WallCesiumWriter openWallProperty() {
+		return this.<WallCesiumWriter> openAndReturn(getWallWriter());
 	}
 
 	/**

@@ -150,6 +150,86 @@
                 "writeValue": "CesiumWritingHelper.WriteCartesian2(Output, PropertyName, dates, values, startIndex, length);"
             }
         ],
+        "CartographicRectangle": [
+            {
+                "parameters": [
+                    {
+                        "type": "CartographicExtent",
+                        "name": "value",
+                        "description": "The value."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteCartographicExtent(Output, value);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "double",
+                        "name": "west",
+                        "description": "The westernmost longitude."
+                    },
+                    {
+                        "type": "double",
+                        "name": "south",
+                        "description": "The southernmost latitude."
+                    },
+                    {
+                        "type": "double",
+                        "name": "east",
+                        "description": "The easternmost longitude."
+                    },
+                    {
+                        "type": "double",
+                        "name": "north",
+                        "description": "The northernmost latitude."
+                    }
+                ],
+                "callOverload": "new CartographicExtent(west, south, east, north)"
+            },
+            {
+                "namespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the vector is specified."
+                    },
+                    {
+                        "type": "IList<CartographicExtent>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
+                "namespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the vector is specified."
+                    },
+                    {
+                        "type": "IList<CartographicExtent>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to use in the `values` collection."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to use from the `values` collection."
+                    }
+                ],
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteCartographicExtent(Output, PropertyName, dates, values, startIndex, length);"
+            }
+        ],
         "Cartesian3": [
             {
                 "parameters": [
@@ -368,6 +448,19 @@
                 ],
                 "writePropertyName": false,
                 "writeValue": "CesiumWritingHelper.WriteUnitSpherical(Output, PropertyName, dates, values, startIndex, length);"
+            }
+        ],
+        "DoubleList": [
+            {
+                "namespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<double>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteDoubleList(Output, values);"
             }
         ],
         "Cartesian3List": [

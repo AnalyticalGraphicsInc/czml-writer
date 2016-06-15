@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *  
- Writes a <code>Cylinder</code> to a  {@link CesiumOutputStream}.  A <code>Cylinder</code> is a cylinder.
+ Writes a <code>Cylinder</code> to a  {@link CesiumOutputStream}.  A <code>Cylinder</code> is a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.
  
 
  */
@@ -157,7 +157,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 	}
 
 	/**
-	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the cylinder is shown.
+	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the cylinder is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -167,7 +167,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the cylinder is shown.
+	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the cylinder is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -178,7 +178,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.
+	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -197,7 +197,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -216,7 +216,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -235,7 +235,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -256,7 +256,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -708,7 +708,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 	}
 
 	/**
-	 *  Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>fill</code> property defines whether or not the cylinder is filled.
+	 *  Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>fill</code> property defines whether or not the cylinder is filled.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -718,7 +718,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the cylinder is filled.
+	Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the cylinder is filled.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -729,7 +729,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.
+	Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -748,7 +748,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -767,7 +767,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -786,7 +786,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -807,7 +807,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -847,7 +847,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 	}
 
 	/**
-	 *  Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outline</code> property defines whether or not the cylinder is outlined.
+	 *  Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outline</code> property defines whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false" />.
 	
 
 	 */
@@ -857,7 +857,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the cylinder is outlined.
+	Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false" />.
 	
 
 	 */
@@ -868,7 +868,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.
+	Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -887,7 +887,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -906,7 +906,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -925,7 +925,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 	
@@ -946,7 +946,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 	
@@ -1160,7 +1160,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 	}
 
 	/**
-	 *  Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the cylinder outline.
+	 *  Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the cylinder outline.  If not specified, the default value is 1.0.
 	
 
 	 */
@@ -1170,7 +1170,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the cylinder outline.
+	Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the cylinder outline.  If not specified, the default value is 1.0.
 	
 
 	 */
@@ -1181,7 +1181,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
 	
 	
 
@@ -1200,7 +1200,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
 	
 	
 	
@@ -1225,7 +1225,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
 	
 	
 
@@ -1244,7 +1244,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
 	
 	
 
@@ -1263,7 +1263,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
 	
 	
 	
@@ -1284,7 +1284,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
 	
 	
 	

@@ -37,6 +37,27 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	public static final String RadiiPropertyName = "radii";
 	/**
 	 *  
+	The name of the <code>stackPartitions</code> property.
+	
+
+	 */
+	public static final String StackPartitionsPropertyName = "stackPartitions";
+	/**
+	 *  
+	The name of the <code>slicePartitions</code> property.
+	
+
+	 */
+	public static final String SlicePartitionsPropertyName = "slicePartitions";
+	/**
+	 *  
+	The name of the <code>subdivisions</code> property.
+	
+
+	 */
+	public static final String SubdivisionsPropertyName = "subdivisions";
+	/**
+	 *  
 	The name of the <code>fill</code> property.
 	
 
@@ -70,27 +91,6 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
 	 */
 	public static final String OutlineWidthPropertyName = "outlineWidth";
-	/**
-	 *  
-	The name of the <code>stackPartitions</code> property.
-	
-
-	 */
-	public static final String StackPartitionsPropertyName = "stackPartitions";
-	/**
-	 *  
-	The name of the <code>slicePartitions</code> property.
-	
-
-	 */
-	public static final String SlicePartitionsPropertyName = "slicePartitions";
-	/**
-	 *  
-	The name of the <code>subdivisions</code> property.
-	
-
-	 */
-	public static final String SubdivisionsPropertyName = "subdivisions";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
@@ -99,6 +99,21 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	private Lazy<EllipsoidRadiiCesiumWriter> m_radii = new Lazy<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter>(new Func1<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter>() {
 		public cesiumlanguagewriter.EllipsoidRadiiCesiumWriter invoke() {
 			return new EllipsoidRadiiCesiumWriter(RadiiPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_stackPartitions = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(StackPartitionsPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_slicePartitions = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(SlicePartitionsPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_subdivisions = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(SubdivisionsPropertyName);
 		}
 	}, false);
 	private Lazy<BooleanCesiumWriter> m_fill = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
@@ -124,21 +139,6 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	private Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(OutlineWidthPropertyName);
-		}
-	}, false);
-	private Lazy<DoubleCesiumWriter> m_stackPartitions = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(StackPartitionsPropertyName);
-		}
-	}, false);
-	private Lazy<DoubleCesiumWriter> m_slicePartitions = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(SlicePartitionsPropertyName);
-		}
-	}, false);
-	private Lazy<DoubleCesiumWriter> m_subdivisions = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(SubdivisionsPropertyName);
 		}
 	}, false);
 
@@ -170,7 +170,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	}
 
 	/**
-	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the ellipsoid is shown.
+	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the ellipsoid is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -180,7 +180,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the ellipsoid is shown.
+	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the ellipsoid is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -191,7 +191,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.
+	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -210,7 +210,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -229,7 +229,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -248,7 +248,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -269,7 +269,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the ellipsoid is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -445,602 +445,6 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	public final void writeRadiiPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.EllipsoidRadiiCesiumWriter writer = openRadiiProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>fill</code> property defines whether or not the ellipsoid is filled.
-	
-
-	 */
-	public final BooleanCesiumWriter getFillWriter() {
-		return m_fill.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the ellipsoid is filled.
-	
-
-	 */
-	public final BooleanCesiumWriter openFillProperty() {
-		openIntervalIfNecessary();
-		return this.<BooleanCesiumWriter> openAndReturn(getFillWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeFillProperty(boolean value) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openFillProperty();
-			try {
-				writer.writeBoolean(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeFillPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openFillProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeFillPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openFillProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeFillPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openFillProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeFillPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openFillProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>material</code> property defines the material to display on the surface of the ellipsoid.
-	
-
-	 */
-	public final MaterialCesiumWriter getMaterialWriter() {
-		return m_material.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to display on the surface of the ellipsoid.
-	
-
-	 */
-	public final MaterialCesiumWriter openMaterialProperty() {
-		openIntervalIfNecessary();
-		return this.<MaterialCesiumWriter> openAndReturn(getMaterialWriter());
-	}
-
-	/**
-	 *  Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outline</code> property defines whether or not the ellipsoid is outlined.
-	
-
-	 */
-	public final BooleanCesiumWriter getOutlineWriter() {
-		return m_outline.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the ellipsoid is outlined.
-	
-
-	 */
-	public final BooleanCesiumWriter openOutlineProperty() {
-		openIntervalIfNecessary();
-		return this.<BooleanCesiumWriter> openAndReturn(getOutlineWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeOutlineProperty(boolean value) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
-			try {
-				writer.writeBoolean(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeOutlinePropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeOutlinePropertyReference(String value) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeOutlinePropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeOutlinePropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>outlineColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineColor</code> property defines the color of the ellipsoid outline.
-	
-
-	 */
-	public final ColorCesiumWriter getOutlineColorWriter() {
-		return m_outlineColor.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>outlineColor</code> property.  The <code>outlineColor</code> property defines the color of the ellipsoid outline.
-	
-
-	 */
-	public final ColorCesiumWriter openOutlineColorProperty() {
-		openIntervalIfNecessary();
-		return this.<ColorCesiumWriter> openAndReturn(getOutlineColorWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-	
-	
-
-	 * @param color The color.
-	 */
-	public final void writeOutlineColorProperty(Color color) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
-			try {
-				writer.writeRgba(color);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-	
-	
-	
-	
-	
-
-	 * @param red The red component in the range 0 to 255.
-	 * @param green The green component in the range 0 to 255.
-	 * @param blue The blue component in the range 0 to 255.
-	 * @param alpha The alpha component in the range 0 to 255.
-	 */
-	public final void writeOutlineColorProperty(int red, int green, int blue, int alpha) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
-			try {
-				writer.writeRgba(red, green, blue, alpha);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the value is specified.
-	 * @param colors The color corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `colors` collection.
-	 * @param length The number of elements to use from the `colors` collection.
-	 */
-	public final void writeOutlineColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
-			try {
-				writer.writeRgba(dates, colors, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-	
-	
-	
-	
-	
-
-	 * @param red The red component in the range 0 to 1.0.
-	 * @param green The green component in the range 0 to 1.0.
-	 * @param blue The blue component in the range 0 to 1.0.
-	 * @param alpha The alpha component in the range 0 to 1.0.
-	 */
-	public final void writeOutlineColorPropertyRgbaf(float red, float green, float blue, float alpha) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
-			try {
-				writer.writeRgbaf(red, green, blue, alpha);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeOutlineColorPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeOutlineColorPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeOutlineColorPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeOutlineColorPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the ellipsoid outline.
-	
-
-	 */
-	public final DoubleCesiumWriter getOutlineWidthWriter() {
-		return m_outlineWidth.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the ellipsoid outline.
-	
-
-	 */
-	public final DoubleCesiumWriter openOutlineWidthProperty() {
-		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getOutlineWidthWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeOutlineWidthProperty(double value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
-			try {
-				writer.writeNumber(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeOutlineWidthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeOutlineWidthPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeOutlineWidthPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeOutlineWidthPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeOutlineWidthPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {
@@ -1338,7 +742,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	}
 
 	/**
-	 *  Gets the writer for the <code>subdivisions</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>subdivisions</code> property defines the number of points per outline line, determining the granularity of the curvature.
+	 *  Gets the writer for the <code>subdivisions</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>subdivisions</code> property defines the number of samples per outline ring, determining the granularity of the curvature.
 	
 
 	 */
@@ -1348,7 +752,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>subdivisions</code> property.  The <code>subdivisions</code> property defines the number of points per outline line, determining the granularity of the curvature.
+	Opens and returns the writer for the <code>subdivisions</code> property.  The <code>subdivisions</code> property defines the number of samples per outline ring, determining the granularity of the curvature.
 	
 
 	 */
@@ -1359,7 +763,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>subdivisions</code> property as a <code>number</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+	Writes a value for the <code>subdivisions</code> property as a <code>number</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
 	
 	
 
@@ -1378,7 +782,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>subdivisions</code> property as a <code>number</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+	Writes a value for the <code>subdivisions</code> property as a <code>number</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
 	
 	
 	
@@ -1403,7 +807,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+	Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
 	
 	
 
@@ -1422,7 +826,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+	Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
 	
 	
 
@@ -1441,7 +845,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+	Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
 	
 	
 	
@@ -1462,7 +866,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of points per outline line, determining the granularity of the curvature.
+	Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
 	
 	
 	
@@ -1473,6 +877,602 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 	public final void writeSubdivisionsPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openSubdivisionsProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>fill</code> property defines whether or not the ellipsoid is filled.  If not specified, the default value is <see langword="true" />.
+	
+
+	 */
+	public final BooleanCesiumWriter getFillWriter() {
+		return m_fill.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the ellipsoid is filled.  If not specified, the default value is <see langword="true" />.
+	
+
+	 */
+	public final BooleanCesiumWriter openFillProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getFillWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.  If not specified, the default value is <see langword="true" />.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeFillProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openFillProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.  If not specified, the default value is <see langword="true" />.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeFillPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openFillProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.  If not specified, the default value is <see langword="true" />.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeFillPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openFillProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.  If not specified, the default value is <see langword="true" />.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeFillPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openFillProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the ellipsoid is filled.  If not specified, the default value is <see langword="true" />.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeFillPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openFillProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>material</code> property defines the material to display on the surface of the ellipsoid.
+	
+
+	 */
+	public final MaterialCesiumWriter getMaterialWriter() {
+		return m_material.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to display on the surface of the ellipsoid.
+	
+
+	 */
+	public final MaterialCesiumWriter openMaterialProperty() {
+		openIntervalIfNecessary();
+		return this.<MaterialCesiumWriter> openAndReturn(getMaterialWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outline</code> property defines whether or not the ellipsoid is outlined.  If not specified, the default value is <see langword="false" />.
+	
+
+	 */
+	public final BooleanCesiumWriter getOutlineWriter() {
+		return m_outline.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the ellipsoid is outlined.  If not specified, the default value is <see langword="false" />.
+	
+
+	 */
+	public final BooleanCesiumWriter openOutlineProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getOutlineWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.  If not specified, the default value is <see langword="false" />.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeOutlineProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.  If not specified, the default value is <see langword="false" />.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeOutlinePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.  If not specified, the default value is <see langword="false" />.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeOutlinePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.  If not specified, the default value is <see langword="false" />.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeOutlinePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the ellipsoid is outlined.  If not specified, the default value is <see langword="false" />.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeOutlinePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openOutlineProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>outlineColor</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineColor</code> property defines the color of the ellipsoid outline.
+	
+
+	 */
+	public final ColorCesiumWriter getOutlineColorWriter() {
+		return m_outlineColor.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>outlineColor</code> property.  The <code>outlineColor</code> property defines the color of the ellipsoid outline.
+	
+
+	 */
+	public final ColorCesiumWriter openOutlineColorProperty() {
+		openIntervalIfNecessary();
+		return this.<ColorCesiumWriter> openAndReturn(getOutlineColorWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+	
+	
+
+	 * @param color The color.
+	 */
+	public final void writeOutlineColorProperty(Color color) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeRgba(color);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+	
+	
+	
+	
+	
+
+	 * @param red The red component in the range 0 to 255.
+	 * @param green The green component in the range 0 to 255.
+	 * @param blue The blue component in the range 0 to 255.
+	 * @param alpha The alpha component in the range 0 to 255.
+	 */
+	public final void writeOutlineColorProperty(int red, int green, int blue, int alpha) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeRgba(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param colors The color corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `colors` collection.
+	 * @param length The number of elements to use from the `colors` collection.
+	 */
+	public final void writeOutlineColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeRgba(dates, colors, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+	
+	
+	
+	
+	
+
+	 * @param red The red component in the range 0 to 1.0.
+	 * @param green The green component in the range 0 to 1.0.
+	 * @param blue The blue component in the range 0 to 1.0.
+	 * @param alpha The alpha component in the range 0 to 1.0.
+	 */
+	public final void writeOutlineColorPropertyRgbaf(float red, float green, float blue, float alpha) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeRgbaf(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeOutlineColorPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeOutlineColorPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeOutlineColorPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the ellipsoid outline.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeOutlineColorPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+	
+
+	 */
+	public final DoubleCesiumWriter getOutlineWidthWriter() {
+		return m_outlineWidth.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+	
+
+	 */
+	public final DoubleCesiumWriter openOutlineWidthProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getOutlineWidthWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeOutlineWidthProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeOutlineWidthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeOutlineWidthPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeOutlineWidthPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeOutlineWidthPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeOutlineWidthPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {
