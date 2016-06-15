@@ -11,7 +11,8 @@
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the box is shown."
+            "description": "Whether or not the box is shown.",
+            "default": true
         },
         "dimensions": {
             "$ref": "BoxDimensions.jsonschema",
@@ -19,7 +20,8 @@
         },
         "fill": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the box is filled."
+            "description": "Whether or not the box is filled.",
+            "default": true
         },
         "material": {
             "$ref": "Material.jsonschema",
@@ -27,7 +29,8 @@
         },
         "outline": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the box is outlined."
+            "description": "Whether or not the box is outlined.",
+            "default": false
         },
         "outlineColor": {
             "$ref": "Color.jsonschema",
@@ -35,7 +38,8 @@
         },
         "outlineWidth": {
             "$ref": "Double.jsonschema",
-            "description": "The width of the box outline."
+            "description": "The width of the box outline.",
+            "default": 1.0
         }
     }
 }

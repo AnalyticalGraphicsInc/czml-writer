@@ -9,10 +9,6 @@
         "$ref": "#"
     },
     "properties": {
-        "scale": {
-            "$ref": "Scale.jsonschema",
-            "description": "The scaling to apply to the model node."
-        },
         "translation": {
             "$ref": "Translation.jsonschema",
             "description": "The translation to apply to the model node."
@@ -20,6 +16,10 @@
         "rotation": {
             "$ref": "Rotation.jsonschema",
             "description": "The rotation to apply to the model node."
+        },
+        "scale": {
+            "$ref": "Scale.jsonschema",
+            "description": "The scaling to apply to the model node."
         }
     }
 }

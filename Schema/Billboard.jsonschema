@@ -11,11 +11,21 @@
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the billboard is shown."
+            "description": "Whether or not the billboard is shown.",
+            "default": true
         },
-        "color": {
-            "$ref": "Color.jsonschema",
-            "description": "The color of the billboard.  This color value is multiplied with the values of the billboard's \"image\" to produce the final color."
+        "image": {
+            "$ref": "Uri.jsonschema",
+            "description": "The URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
+        },
+        "scale": {
+            "$ref": "Double.jsonschema",
+            "description": "The scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.",
+            "default": 1.0
+        },
+        "pixelOffset": {
+            "$ref": "PixelOffset.jsonschema",
+            "description": "The offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`."
         },
         "eyeOffset": {
             "$ref": "EyeOffset.jsonschema",
@@ -23,31 +33,31 @@
         },
         "horizontalOrigin": {
             "$ref": "HorizontalOrigin.jsonschema",
-            "description": "The horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`."
+            "description": "The horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the `position`.",
+            "default": "CENTER"
         },
-        "image": {
-            "$ref": "Uri.jsonschema",
-            "description": "The URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
+        "verticalOrigin": {
+            "$ref": "VerticalOrigin.jsonschema",
+            "description": "The vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.",
+            "default": "CENTER"
         },
-        "pixelOffset": {
-            "$ref": "PixelOffset.jsonschema",
-            "description": "The offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`."
-        },
-        "scale": {
-            "$ref": "Double.jsonschema",
-            "description": "The scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`."
+        "color": {
+            "$ref": "Color.jsonschema",
+            "description": "The color of the billboard.  This color value is multiplied with the values of the billboard's \"image\" to produce the final color."
         },
         "rotation": {
             "$ref": "Double.jsonschema",
-            "description": "The rotation of the billboard, in radians, counter-clockwise from the alignedAxis."
+            "description": "The rotation of the billboard, in radians, counter-clockwise from the alignedAxis.",
+            "default": 0.0
         },
         "alignedAxis": {
             "$ref": "AlignedAxis.jsonschema",
             "description": "The aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector."
         },
-        "verticalOrigin": {
-            "$ref": "VerticalOrigin.jsonschema",
-            "description": "The vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`."
+        "sizeInMeters": {
+            "$ref": "Boolean.jsonschema",
+            "description": "whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.",
+            "default": false
         }
     }
 }

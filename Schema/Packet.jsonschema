@@ -100,11 +100,15 @@
         },
         "cylinder": {
             "$ref": "Cylinder.jsonschema",
-            "description": "A cylinder.  The cylinder is positioned and oriented using the `position` and `orientation` properties."
+            "description": "A cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.  The cylinder is positioned and oriented using the `position` and `orientation` properties."
         },
         "corridor": {
             "$ref": "Corridor.jsonschema",
             "description": "A corridor, which is a shape defined by a centerline and width."
+        },
+        "wall": {
+            "$ref": "Wall.jsonschema",
+            "description": "A two dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude."
         },
         "agi_conicSensor": {
             "$ref": "Extensions/AGI/ConicSensor.jsonschema",

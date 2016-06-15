@@ -11,31 +11,12 @@
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the ellipsoid is shown."
+            "description": "Whether or not the ellipsoid is shown.",
+            "default": true
         },
         "radii": {
             "$ref": "EllipsoidRadii.jsonschema",
             "description": "The dimensions of the ellipsoid."
-        },
-        "fill": {
-            "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the ellipsoid is filled."
-        },
-        "material": {
-            "$ref": "Material.jsonschema",
-            "description": "The material to display on the surface of the ellipsoid."
-        },
-        "outline": {
-            "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the ellipsoid is outlined."
-        },
-        "outlineColor": {
-            "$ref": "Color.jsonschema",
-            "description": "The color of the ellipsoid outline."
-        },
-        "outlineWidth": {
-            "$ref": "Double.jsonschema",
-            "description": "The width of the ellipsoid outline."
         },
         "stackPartitions": {
             "$ref": "Double.jsonschema",
@@ -47,7 +28,30 @@
         },
         "subdivisions": {
             "$ref": "Double.jsonschema",
-            "description": "The number of points per outline line, determining the granularity of the curvature."
+            "description": "The number of samples per outline ring, determining the granularity of the curvature."
+        },
+        "fill": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the ellipsoid is filled.",
+            "default": true
+        },
+        "material": {
+            "$ref": "Material.jsonschema",
+            "description": "The material to display on the surface of the ellipsoid."
+        },
+        "outline": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the ellipsoid is outlined.",
+            "default": false
+        },
+        "outlineColor": {
+            "$ref": "Color.jsonschema",
+            "description": "The color of the ellipsoid outline."
+        },
+        "outlineWidth": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the ellipsoid outline.",
+            "default": 1.0
         }
     }
 }

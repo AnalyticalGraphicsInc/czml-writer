@@ -11,7 +11,12 @@
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not the model is shown."
+            "description": "Whether or not the model is shown.",
+            "default": true
+        },
+        "gltf": {
+            "$ref": "Uri.jsonschema",
+            "description": "The URI of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
         },
         "scale": {
             "$ref": "Double.jsonschema",
@@ -21,13 +26,15 @@
             "$ref": "Double.jsonschema",
             "description": "The approximate minimum pixel size of the model regardless of zoom."
         },
-        "gltf": {
-            "$ref": "Uri.jsonschema",
-            "description": "The URI of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
+        "incrementallyLoadTextures": {
+            "$ref": "Boolean.jsonschema",
+            "description": "Whether or not the model can be rendered before all textures have loaded.",
+            "default": true
         },
         "runAnimations": {
             "$ref": "Boolean.jsonschema",
-            "description": "Whether or not to run all animations defined in the glTF model."
+            "description": "Whether or not to run all animations defined in the glTF model.",
+            "default": true
         },
         "nodeTransformations": {
             "$ref": "NodeTransformations.jsonschema",
