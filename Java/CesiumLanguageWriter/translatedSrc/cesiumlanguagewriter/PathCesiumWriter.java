@@ -27,13 +27,6 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	public static final String ShowPropertyName = "show";
 	/**
 	 *  
-	The name of the <code>material</code> property.
-	
-
-	 */
-	public static final String MaterialPropertyName = "material";
-	/**
-	 *  
 	The name of the <code>width</code> property.
 	
 
@@ -60,14 +53,16 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	 */
 	public static final String TrailTimePropertyName = "trailTime";
+	/**
+	 *  
+	The name of the <code>material</code> property.
+	
+
+	 */
+	public static final String MaterialPropertyName = "material";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
-		}
-	}, false);
-	private Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.PolylineMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineMaterialCesiumWriter>() {
-		public cesiumlanguagewriter.PolylineMaterialCesiumWriter invoke() {
-			return new PolylineMaterialCesiumWriter(MaterialPropertyName);
 		}
 	}, false);
 	private Lazy<DoubleCesiumWriter> m_width = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
@@ -88,6 +83,11 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	private Lazy<DoubleCesiumWriter> m_trailTime = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(TrailTimePropertyName);
+		}
+	}, false);
+	private Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.PolylineMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineMaterialCesiumWriter>() {
+		public cesiumlanguagewriter.PolylineMaterialCesiumWriter invoke() {
+			return new PolylineMaterialCesiumWriter(MaterialPropertyName);
 		}
 	}, false);
 
@@ -119,7 +119,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the path is shown.
+	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the path is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -129,7 +129,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the path is shown.
+	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the path is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -140,7 +140,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the path is shown.
+	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the path is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -159,7 +159,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the path is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the path is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -178,7 +178,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the path is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the path is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -197,7 +197,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the path is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the path is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -218,7 +218,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the path is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the path is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -238,27 +238,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>material</code> property defines the material to use to draw the path.
-	
-
-	 */
-	public final PolylineMaterialCesiumWriter getMaterialWriter() {
-		return m_material.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to use to draw the path.
-	
-
-	 */
-	public final PolylineMaterialCesiumWriter openMaterialProperty() {
-		openIntervalIfNecessary();
-		return this.<PolylineMaterialCesiumWriter> openAndReturn(getMaterialWriter());
-	}
-
-	/**
-	 *  Gets the writer for the <code>width</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>width</code> property defines the width of the path line.
+	 *  Gets the writer for the <code>width</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>width</code> property defines the width of the path line.  If not specified, the default value is 1.0.
 	
 
 	 */
@@ -268,7 +248,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>width</code> property.  The <code>width</code> property defines the width of the path line.
+	Opens and returns the writer for the <code>width</code> property.  The <code>width</code> property defines the width of the path line.  If not specified, the default value is 1.0.
 	
 
 	 */
@@ -279,7 +259,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the path line.
+	Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the path line.  If not specified, the default value is 1.0.
 	
 	
 
@@ -298,7 +278,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the path line.
+	Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the path line.  If not specified, the default value is 1.0.
 	
 	
 	
@@ -323,7 +303,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the path line.
+	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the path line.  If not specified, the default value is 1.0.
 	
 	
 
@@ -342,7 +322,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the path line.
+	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the path line.  If not specified, the default value is 1.0.
 	
 	
 
@@ -361,7 +341,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the path line.
+	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the path line.  If not specified, the default value is 1.0.
 	
 	
 	
@@ -382,7 +362,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the path line.
+	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the path line.  If not specified, the default value is 1.0.
 	
 	
 	
@@ -402,7 +382,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>resolution</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>resolution</code> property defines the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.
+	 *  Gets the writer for the <code>resolution</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>resolution</code> property defines the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
 	
 
 	 */
@@ -412,7 +392,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>resolution</code> property.  The <code>resolution</code> property defines the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.
+	Opens and returns the writer for the <code>resolution</code> property.  The <code>resolution</code> property defines the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
 	
 
 	 */
@@ -423,7 +403,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>resolution</code> property as a <code>number</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.
+	Writes a value for the <code>resolution</code> property as a <code>number</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
 	
 	
 
@@ -442,7 +422,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>resolution</code> property as a <code>number</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.
+	Writes a value for the <code>resolution</code> property as a <code>number</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
 	
 	
 	
@@ -467,7 +447,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>resolution</code> property as a <code>reference</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.
+	Writes a value for the <code>resolution</code> property as a <code>reference</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
 	
 	
 
@@ -486,7 +466,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>resolution</code> property as a <code>reference</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.
+	Writes a value for the <code>resolution</code> property as a <code>reference</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
 	
 	
 
@@ -505,7 +485,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>resolution</code> property as a <code>reference</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.
+	Writes a value for the <code>resolution</code> property as a <code>reference</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
 	
 	
 	
@@ -526,7 +506,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>resolution</code> property as a <code>reference</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.
+	Writes a value for the <code>resolution</code> property as a <code>reference</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
 	
 	
 	
@@ -831,5 +811,25 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 				DisposeHelper.dispose(writer);
 			}
 		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>material</code> property defines the material to use to draw the path.
+	
+
+	 */
+	public final PolylineMaterialCesiumWriter getMaterialWriter() {
+		return m_material.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to use to draw the path.
+	
+
+	 */
+	public final PolylineMaterialCesiumWriter openMaterialProperty() {
+		openIntervalIfNecessary();
+		return this.<PolylineMaterialCesiumWriter> openAndReturn(getMaterialWriter());
 	}
 }

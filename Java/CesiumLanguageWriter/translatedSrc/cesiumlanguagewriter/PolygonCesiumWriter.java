@@ -37,13 +37,6 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	public static final String PositionsPropertyName = "positions";
 	/**
 	 *  
-	The name of the <code>material</code> property.
-	
-
-	 */
-	public static final String MaterialPropertyName = "material";
-	/**
-	 *  
 	The name of the <code>height</code> property.
 	
 
@@ -58,13 +51,6 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	public static final String ExtrudedHeightPropertyName = "extrudedHeight";
 	/**
 	 *  
-	The name of the <code>granularity</code> property.
-	
-
-	 */
-	public static final String GranularityPropertyName = "granularity";
-	/**
-	 *  
 	The name of the <code>stRotation</code> property.
 	
 
@@ -72,11 +58,25 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	public static final String StRotationPropertyName = "stRotation";
 	/**
 	 *  
+	The name of the <code>granularity</code> property.
+	
+
+	 */
+	public static final String GranularityPropertyName = "granularity";
+	/**
+	 *  
 	The name of the <code>fill</code> property.
 	
 
 	 */
 	public static final String FillPropertyName = "fill";
+	/**
+	 *  
+	The name of the <code>material</code> property.
+	
+
+	 */
+	public static final String MaterialPropertyName = "material";
 	/**
 	 *  
 	The name of the <code>outline</code> property.
@@ -105,6 +105,20 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	 */
 	public static final String PerPositionHeightPropertyName = "perPositionHeight";
+	/**
+	 *  
+	The name of the <code>closeTop</code> property.
+	
+
+	 */
+	public static final String CloseTopPropertyName = "closeTop";
+	/**
+	 *  
+	The name of the <code>closeBottom</code> property.
+	
+
+	 */
+	public static final String CloseBottomPropertyName = "closeBottom";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
@@ -113,11 +127,6 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	private Lazy<PositionListCesiumWriter> m_positions = new Lazy<cesiumlanguagewriter.PositionListCesiumWriter>(new Func1<cesiumlanguagewriter.PositionListCesiumWriter>() {
 		public cesiumlanguagewriter.PositionListCesiumWriter invoke() {
 			return new PositionListCesiumWriter(PositionsPropertyName);
-		}
-	}, false);
-	private Lazy<MaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
-		public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
-			return new MaterialCesiumWriter(MaterialPropertyName);
 		}
 	}, false);
 	private Lazy<DoubleCesiumWriter> m_height = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
@@ -130,19 +139,24 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 			return new DoubleCesiumWriter(ExtrudedHeightPropertyName);
 		}
 	}, false);
-	private Lazy<DoubleCesiumWriter> m_granularity = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(GranularityPropertyName);
-		}
-	}, false);
 	private Lazy<DoubleCesiumWriter> m_stRotation = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(StRotationPropertyName);
 		}
 	}, false);
+	private Lazy<DoubleCesiumWriter> m_granularity = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(GranularityPropertyName);
+		}
+	}, false);
 	private Lazy<BooleanCesiumWriter> m_fill = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(FillPropertyName);
+		}
+	}, false);
+	private Lazy<MaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
+		public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
+			return new MaterialCesiumWriter(MaterialPropertyName);
 		}
 	}, false);
 	private Lazy<BooleanCesiumWriter> m_outline = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
@@ -163,6 +177,16 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	private Lazy<BooleanCesiumWriter> m_perPositionHeight = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(PerPositionHeightPropertyName);
+		}
+	}, false);
+	private Lazy<BooleanCesiumWriter> m_closeTop = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(CloseTopPropertyName);
+		}
+	}, false);
+	private Lazy<BooleanCesiumWriter> m_closeBottom = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(CloseBottomPropertyName);
 		}
 	}, false);
 
@@ -194,7 +218,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the polygon is shown.
+	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the polygon is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -204,7 +228,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the polygon is shown.
+	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the polygon is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -215,7 +239,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.
+	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -234,7 +258,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -253,7 +277,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -272,7 +296,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -293,7 +317,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -406,26 +430,6 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 				DisposeHelper.dispose(writer);
 			}
 		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>material</code> property defines the material to use to fill the polygon.
-	
-
-	 */
-	public final MaterialCesiumWriter getMaterialWriter() {
-		return m_material.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to use to fill the polygon.
-	
-
-	 */
-	public final MaterialCesiumWriter openMaterialProperty() {
-		openIntervalIfNecessary();
-		return this.<MaterialCesiumWriter> openAndReturn(getMaterialWriter());
 	}
 
 	/**
@@ -717,150 +721,6 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>granularity</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>granularity</code> property defines the sampling distance, in radians.
-	
-
-	 */
-	public final DoubleCesiumWriter getGranularityWriter() {
-		return m_granularity.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>granularity</code> property.  The <code>granularity</code> property defines the sampling distance, in radians.
-	
-
-	 */
-	public final DoubleCesiumWriter openGranularityProperty() {
-		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getGranularityWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeGranularityProperty(double value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
-			try {
-				writer.writeNumber(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeGranularityProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeGranularityPropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeGranularityPropertyReference(String value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeGranularityPropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeGranularityPropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
 	 *  Gets the writer for the <code>stRotation</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>stRotation</code> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
 	
 
@@ -1005,7 +865,151 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>fill</code> property defines whether or not the polygon is filled.
+	 *  Gets the writer for the <code>granularity</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>granularity</code> property defines the sampling distance, in radians.
+	
+
+	 */
+	public final DoubleCesiumWriter getGranularityWriter() {
+		return m_granularity.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>granularity</code> property.  The <code>granularity</code> property defines the sampling distance, in radians.
+	
+
+	 */
+	public final DoubleCesiumWriter openGranularityProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getGranularityWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeGranularityProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeGranularityProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeGranularityPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeGranularityPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeGranularityPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeGranularityPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>fill</code> property defines whether or not the polygon is filled.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -1015,7 +1019,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the polygon is filled.
+	Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the polygon is filled.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -1026,7 +1030,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.
+	Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -1045,7 +1049,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -1064,7 +1068,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -1083,7 +1087,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -1104,7 +1108,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.
+	Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -1124,7 +1128,27 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outline</code> property defines whether or not the polygon is outlined.
+	 *  Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>material</code> property defines the material to use to fill the polygon.
+	
+
+	 */
+	public final MaterialCesiumWriter getMaterialWriter() {
+		return m_material.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to use to fill the polygon.
+	
+
+	 */
+	public final MaterialCesiumWriter openMaterialProperty() {
+		openIntervalIfNecessary();
+		return this.<MaterialCesiumWriter> openAndReturn(getMaterialWriter());
+	}
+
+	/**
+	 *  Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outline</code> property defines whether or not the polygon is outlined.  If not specified, the default value is <see langword="false" />.
 	
 
 	 */
@@ -1134,7 +1158,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the polygon is outlined.
+	Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the polygon is outlined.  If not specified, the default value is <see langword="false" />.
 	
 
 	 */
@@ -1145,7 +1169,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.
+	Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -1164,7 +1188,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -1183,7 +1207,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -1202,7 +1226,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 	
@@ -1223,7 +1247,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.
+	Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false" />.
 	
 	
 	
@@ -1437,7 +1461,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	}
 
 	/**
-	 *  Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the polygon outline.
+	 *  Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the polygon outline.  If not specified, the default value is 1.0.
 	
 
 	 */
@@ -1447,7 +1471,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the polygon outline.
+	Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the polygon outline.  If not specified, the default value is 1.0.
 	
 
 	 */
@@ -1458,7 +1482,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
 	
 	
 
@@ -1477,7 +1501,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
 	
 	
 	
@@ -1502,7 +1526,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
 	
 	
 
@@ -1521,7 +1545,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
 	
 	
 
@@ -1540,7 +1564,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
 	
 	
 	
@@ -1561,7 +1585,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
 	
 	
 	
@@ -1691,6 +1715,244 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	public final void writePerPositionHeightPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.BooleanCesiumWriter writer = openPerPositionHeightProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>closeTop</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>closeTop</code> property defines whether to close the top of the polygon.  If not specified, the default value is <see langword="true" />.
+	
+
+	 */
+	public final BooleanCesiumWriter getCloseTopWriter() {
+		return m_closeTop.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>closeTop</code> property.  The <code>closeTop</code> property defines whether to close the top of the polygon.  If not specified, the default value is <see langword="true" />.
+	
+
+	 */
+	public final BooleanCesiumWriter openCloseTopProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getCloseTopWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeTop</code> property as a <code>boolean</code> value.  The <code>closeTop</code> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true" />.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeCloseTopProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseTopProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true" />.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeCloseTopPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseTopProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true" />.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeCloseTopPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseTopProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true" />.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeCloseTopPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseTopProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true" />.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeCloseTopPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseTopProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>closeBottom</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>closeBottom</code> property defines whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true" />.
+	
+
+	 */
+	public final BooleanCesiumWriter getCloseBottomWriter() {
+		return m_closeBottom.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>closeBottom</code> property.  The <code>closeBottom</code> property defines whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true" />.
+	
+
+	 */
+	public final BooleanCesiumWriter openCloseBottomProperty() {
+		openIntervalIfNecessary();
+		return this.<BooleanCesiumWriter> openAndReturn(getCloseBottomWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeBottom</code> property as a <code>boolean</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true" />.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeCloseBottomProperty(boolean value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseBottomProperty();
+			try {
+				writer.writeBoolean(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true" />.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeCloseBottomPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseBottomProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true" />.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeCloseBottomPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseBottomProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true" />.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeCloseBottomPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseBottomProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true" />.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeCloseBottomPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openCloseBottomProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {

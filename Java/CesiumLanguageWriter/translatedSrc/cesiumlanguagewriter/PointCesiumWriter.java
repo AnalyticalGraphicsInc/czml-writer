@@ -28,6 +28,13 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 	public static final String ShowPropertyName = "show";
 	/**
 	 *  
+	The name of the <code>pixelSize</code> property.
+	
+
+	 */
+	public static final String PixelSizePropertyName = "pixelSize";
+	/**
+	 *  
 	The name of the <code>color</code> property.
 	
 
@@ -47,16 +54,14 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	 */
 	public static final String OutlineWidthPropertyName = "outlineWidth";
-	/**
-	 *  
-	The name of the <code>pixelSize</code> property.
-	
-
-	 */
-	public static final String PixelSizePropertyName = "pixelSize";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_pixelSize = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(PixelSizePropertyName);
 		}
 	}, false);
 	private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
@@ -72,11 +77,6 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 	private Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(OutlineWidthPropertyName);
-		}
-	}, false);
-	private Lazy<DoubleCesiumWriter> m_pixelSize = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-			return new DoubleCesiumWriter(PixelSizePropertyName);
 		}
 	}, false);
 
@@ -108,7 +108,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the point is shown.
+	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the point is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -118,7 +118,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the point is shown.
+	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the point is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -129,7 +129,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the point is shown.
+	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -148,7 +148,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -167,7 +167,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -186,7 +186,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -207,7 +207,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -218,6 +218,150 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 	public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>pixelSize</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>pixelSize</code> property defines the size of the point, in pixels.  If not specified, the default value is 1.0.
+	
+
+	 */
+	public final DoubleCesiumWriter getPixelSizeWriter() {
+		return m_pixelSize.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>pixelSize</code> property.  The <code>pixelSize</code> property defines the size of the point, in pixels.  If not specified, the default value is 1.0.
+	
+
+	 */
+	public final DoubleCesiumWriter openPixelSizeProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getPixelSizeWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelSize</code> property as a <code>number</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writePixelSizeProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openPixelSizeProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelSize</code> property as a <code>number</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writePixelSizeProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openPixelSizeProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writePixelSizePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openPixelSizeProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writePixelSizePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openPixelSizeProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writePixelSizePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openPixelSizeProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writePixelSizePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openPixelSizeProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {
@@ -615,7 +759,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the outline of the point.
+	 *  Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the outline of the point.  If not specified, the default value is 0.0.
 	
 
 	 */
@@ -625,7 +769,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the outline of the point.
+	Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the outline of the point.  If not specified, the default value is 0.0.
 	
 
 	 */
@@ -636,7 +780,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.
+	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
 	
 	
 
@@ -655,7 +799,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.
+	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
 	
 	
 	
@@ -680,7 +824,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
 	
 	
 
@@ -699,7 +843,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
 	
 	
 
@@ -718,7 +862,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
 	
 	
 	
@@ -739,7 +883,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.
+	Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
 	
 	
 	
@@ -750,150 +894,6 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 	public final void writeOutlineWidthPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  Gets the writer for the <code>pixelSize</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>pixelSize</code> property defines the size of the point, in pixels.
-	
-
-	 */
-	public final DoubleCesiumWriter getPixelSizeWriter() {
-		return m_pixelSize.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>pixelSize</code> property.  The <code>pixelSize</code> property defines the size of the point, in pixels.
-	
-
-	 */
-	public final DoubleCesiumWriter openPixelSizeProperty() {
-		openIntervalIfNecessary();
-		return this.<DoubleCesiumWriter> openAndReturn(getPixelSizeWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>pixelSize</code> property as a <code>number</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writePixelSizeProperty(double value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openPixelSizeProperty();
-			try {
-				writer.writeNumber(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>pixelSize</code> property as a <code>number</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the value is specified.
-	 * @param values The value corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writePixelSizeProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openPixelSizeProperty();
-			try {
-				writer.writeNumber(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writePixelSizePropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openPixelSizeProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writePixelSizePropertyReference(String value) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openPixelSizeProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writePixelSizePropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openPixelSizeProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writePixelSizePropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.DoubleCesiumWriter writer = openPixelSizeProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {

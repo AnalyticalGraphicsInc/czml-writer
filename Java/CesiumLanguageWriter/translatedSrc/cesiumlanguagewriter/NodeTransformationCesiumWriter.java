@@ -20,13 +20,6 @@ import java.util.List;
 public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTransformationCesiumWriter> {
 	/**
 	 *  
-	The name of the <code>scale</code> property.
-	
-
-	 */
-	public static final String ScalePropertyName = "scale";
-	/**
-	 *  
 	The name of the <code>translation</code> property.
 	
 
@@ -39,11 +32,13 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
 	 */
 	public static final String RotationPropertyName = "rotation";
-	private Lazy<ScaleCesiumWriter> m_scale = new Lazy<cesiumlanguagewriter.ScaleCesiumWriter>(new Func1<cesiumlanguagewriter.ScaleCesiumWriter>() {
-		public cesiumlanguagewriter.ScaleCesiumWriter invoke() {
-			return new ScaleCesiumWriter(ScalePropertyName);
-		}
-	}, false);
+	/**
+	 *  
+	The name of the <code>scale</code> property.
+	
+
+	 */
+	public static final String ScalePropertyName = "scale";
 	private Lazy<TranslationCesiumWriter> m_translation = new Lazy<cesiumlanguagewriter.TranslationCesiumWriter>(new Func1<cesiumlanguagewriter.TranslationCesiumWriter>() {
 		public cesiumlanguagewriter.TranslationCesiumWriter invoke() {
 			return new TranslationCesiumWriter(TranslationPropertyName);
@@ -52,6 +47,11 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 	private Lazy<RotationCesiumWriter> m_rotation = new Lazy<cesiumlanguagewriter.RotationCesiumWriter>(new Func1<cesiumlanguagewriter.RotationCesiumWriter>() {
 		public cesiumlanguagewriter.RotationCesiumWriter invoke() {
 			return new RotationCesiumWriter(RotationPropertyName);
+		}
+	}, false);
+	private Lazy<ScaleCesiumWriter> m_scale = new Lazy<cesiumlanguagewriter.ScaleCesiumWriter>(new Func1<cesiumlanguagewriter.ScaleCesiumWriter>() {
+		public cesiumlanguagewriter.ScaleCesiumWriter invoke() {
+			return new ScaleCesiumWriter(ScalePropertyName);
 		}
 	}, false);
 
@@ -80,171 +80,6 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 	@Override
 	public NodeTransformationCesiumWriter clone() {
 		return new NodeTransformationCesiumWriter(this);
-	}
-
-	/**
-	 *  Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>scale</code> property defines the scaling to apply to the model node.
-	
-
-	 */
-	public final ScaleCesiumWriter getScaleWriter() {
-		return m_scale.getValue();
-	}
-
-	/**
-	 *  
-	Opens and returns the writer for the <code>scale</code> property.  The <code>scale</code> property defines the scaling to apply to the model node.
-	
-
-	 */
-	public final ScaleCesiumWriter openScaleProperty() {
-		openIntervalIfNecessary();
-		return this.<ScaleCesiumWriter> openAndReturn(getScaleWriter());
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
-	
-	
-
-	 * @param value The value.
-	 */
-	public final void writeScaleProperty(Cartesian value) {
-		{
-			cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
-			try {
-				writer.writeCartesian(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
-	
-	
-	
-
-	 * @param dates The dates at which the vector is specified.
-	 * @param values The values corresponding to each date.
-	 */
-	public final void writeScaleProperty(List<JulianDate> dates, List<Cartesian> values) {
-		{
-			cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
-			try {
-				writer.writeCartesian(dates, values);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
-	
-	
-	
-	
-	
-
-	 * @param dates The dates at which the vector is specified.
-	 * @param values The values corresponding to each date.
-	 * @param startIndex The index of the first element to use in the `values` collection.
-	 * @param length The number of elements to use from the `values` collection.
-	 */
-	public final void writeScaleProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-		{
-			cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
-			try {
-				writer.writeCartesian(dates, values, startIndex, length);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
-	
-	
-
-	 * @param value The reference.
-	 */
-	public final void writeScalePropertyReference(Reference value) {
-		{
-			cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
-	
-	
-
-	 * @param value The earliest date of the interval.
-	 */
-	public final void writeScalePropertyReference(String value) {
-		{
-			cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
-			try {
-				writer.writeReference(value);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyName The property on the referenced object.
-	 */
-	public final void writeScalePropertyReference(String identifier, String propertyName) {
-		{
-			cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
-			try {
-				writer.writeReference(identifier, propertyName);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
-	
-	
-	
-
-	 * @param identifier The identifier of the object which contains the referenced property.
-	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-	 */
-	public final void writeScalePropertyReference(String identifier, String[] propertyNames) {
-		{
-			cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
-			try {
-				writer.writeReference(identifier, propertyNames);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
 	}
 
 	/**
@@ -569,6 +404,171 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 	public final void writeRotationPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.RotationCesiumWriter writer = openRotationProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>scale</code> property defines the scaling to apply to the model node.
+	
+
+	 */
+	public final ScaleCesiumWriter getScaleWriter() {
+		return m_scale.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>scale</code> property.  The <code>scale</code> property defines the scaling to apply to the model node.
+	
+
+	 */
+	public final ScaleCesiumWriter openScaleProperty() {
+		openIntervalIfNecessary();
+		return this.<ScaleCesiumWriter> openAndReturn(getScaleWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeScaleProperty(Cartesian value) {
+		{
+			cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
+			try {
+				writer.writeCartesian(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeScaleProperty(List<JulianDate> dates, List<Cartesian> values) {
+		{
+			cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
+			try {
+				writer.writeCartesian(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the vector is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeScaleProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
+			try {
+				writer.writeCartesian(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeScalePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeScalePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeScalePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeScalePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {

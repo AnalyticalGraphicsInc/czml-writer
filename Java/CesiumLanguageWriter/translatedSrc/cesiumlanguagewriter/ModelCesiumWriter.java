@@ -30,6 +30,13 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	public static final String ShowPropertyName = "show";
 	/**
 	 *  
+	The name of the <code>gltf</code> property.
+	
+
+	 */
+	public static final String GltfPropertyName = "gltf";
+	/**
+	 *  
 	The name of the <code>scale</code> property.
 	
 
@@ -44,11 +51,11 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	public static final String MinimumPixelSizePropertyName = "minimumPixelSize";
 	/**
 	 *  
-	The name of the <code>gltf</code> property.
+	The name of the <code>incrementallyLoadTextures</code> property.
 	
 
 	 */
-	public static final String GltfPropertyName = "gltf";
+	public static final String IncrementallyLoadTexturesPropertyName = "incrementallyLoadTextures";
 	/**
 	 *  
 	The name of the <code>runAnimations</code> property.
@@ -68,6 +75,11 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 			return new BooleanCesiumWriter(ShowPropertyName);
 		}
 	}, false);
+	private Lazy<UriCesiumWriter> m_gltf = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
+		public cesiumlanguagewriter.UriCesiumWriter invoke() {
+			return new UriCesiumWriter(GltfPropertyName);
+		}
+	}, false);
 	private Lazy<DoubleCesiumWriter> m_scale = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(ScalePropertyName);
@@ -78,9 +90,9 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 			return new DoubleCesiumWriter(MinimumPixelSizePropertyName);
 		}
 	}, false);
-	private Lazy<UriCesiumWriter> m_gltf = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
-		public cesiumlanguagewriter.UriCesiumWriter invoke() {
-			return new UriCesiumWriter(GltfPropertyName);
+	private Lazy<BooleanCesiumWriter> m_incrementallyLoadTextures = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+			return new BooleanCesiumWriter(IncrementallyLoadTexturesPropertyName);
 		}
 	}, false);
 	private Lazy<BooleanCesiumWriter> m_runAnimations = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
@@ -123,7 +135,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the model is shown.
+	 *  Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>show</code> property defines whether or not the model is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -133,7 +145,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the model is shown.
+	Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the model is shown.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -144,7 +156,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the model is shown.
+	Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -163,7 +175,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -182,7 +194,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -201,7 +213,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -222,7 +234,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.
+	Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -233,6 +245,249 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>gltf</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>gltf</code> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+
+	 */
+	public final UriCesiumWriter getGltfWriter() {
+		return m_gltf.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>gltf</code> property.  The <code>gltf</code> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+
+	 */
+	public final UriCesiumWriter openGltfProperty() {
+		openIntervalIfNecessary();
+		return this.<UriCesiumWriter> openAndReturn(getGltfWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+	
+
+	 * @param resource A resource object describing external data.
+	 */
+	public final void writeGltfProperty(CesiumResource resource) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			try {
+				writer.writeUri(resource);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+	
+	
+
+	 * @param uri The URI of the data.
+	 * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
+	 */
+	public final void writeGltfProperty(URI uri, CesiumResourceBehavior resourceBehavior) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			try {
+				writer.writeUri(uri, resourceBehavior);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+	
+	
+
+	 * @param uri The URI of the data.
+	 * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
+	 */
+	public final void writeGltfProperty(String uri, CesiumResourceBehavior resourceBehavior) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			try {
+				writer.writeUri(uri, resourceBehavior);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+	
+	
+
+	 * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
+	 * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
+	 */
+	public final void writeGltfProperty(URI uri, ICesiumUriResolver resolver) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			try {
+				writer.writeUri(uri, resolver);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+	
+	
+
+	 * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
+	 * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
+	 */
+	public final void writeGltfProperty(String uri, ICesiumUriResolver resolver) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			try {
+				writer.writeUri(uri, resolver);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+	
+
+	 * @param image The image.  A data URI will be created for this image, using PNG encoding.
+	 */
+	public final void writeGltfProperty(RenderedImage image) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			try {
+				writer.writeUri(image);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+	
+	
+
+	 * @param image The image.  A data URI will be created for this image.
+	 * @param imageFormat The image format to use to encode the image in the data URI.
+	 */
+	public final void writeGltfProperty(RenderedImage image, CesiumImageFormat imageFormat) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			try {
+				writer.writeUri(image, imageFormat);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeGltfPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeGltfPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeGltfPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeGltfPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {
@@ -530,38 +785,38 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>gltf</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>gltf</code> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	 *  Gets the writer for the <code>incrementallyLoadTextures</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>incrementallyLoadTextures</code> property defines whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
-	public final UriCesiumWriter getGltfWriter() {
-		return m_gltf.getValue();
+	public final BooleanCesiumWriter getIncrementallyLoadTexturesWriter() {
+		return m_incrementallyLoadTextures.getValue();
 	}
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>gltf</code> property.  The <code>gltf</code> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Opens and returns the writer for the <code>incrementallyLoadTextures</code> property.  The <code>incrementallyLoadTextures</code> property defines whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
-	public final UriCesiumWriter openGltfProperty() {
+	public final BooleanCesiumWriter openIncrementallyLoadTexturesProperty() {
 		openIntervalIfNecessary();
-		return this.<UriCesiumWriter> openAndReturn(getGltfWriter());
+		return this.<BooleanCesiumWriter> openAndReturn(getIncrementallyLoadTexturesWriter());
 	}
 
 	/**
 	 *  
-	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>boolean</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true" />.
 	
 	
 
-	 * @param resource A resource object describing external data.
+	 * @param value The value.
 	 */
-	public final void writeGltfProperty(CesiumResource resource) {
+	public final void writeIncrementallyLoadTexturesProperty(boolean value) {
 		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
 			try {
-				writer.writeUri(resource);
+				writer.writeBoolean(value);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -570,139 +825,15 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
-	
-	
-	
-
-	 * @param uri The URI of the data.
-	 * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
-	 */
-	public final void writeGltfProperty(URI uri, CesiumResourceBehavior resourceBehavior) {
-		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
-			try {
-				writer.writeUri(uri, resourceBehavior);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
-	
-	
-	
-
-	 * @param uri The URI of the data.
-	 * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
-	 */
-	public final void writeGltfProperty(String uri, CesiumResourceBehavior resourceBehavior) {
-		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
-			try {
-				writer.writeUri(uri, resourceBehavior);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
-	
-	
-	
-
-	 * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
-	 * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
-	 */
-	public final void writeGltfProperty(URI uri, ICesiumUriResolver resolver) {
-		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
-			try {
-				writer.writeUri(uri, resolver);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
-	
-	
-	
-
-	 * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
-	 * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
-	 */
-	public final void writeGltfProperty(String uri, ICesiumUriResolver resolver) {
-		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
-			try {
-				writer.writeUri(uri, resolver);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
-	
-	
-
-	 * @param image The image.  A data URI will be created for this image, using PNG encoding.
-	 */
-	public final void writeGltfProperty(RenderedImage image) {
-		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
-			try {
-				writer.writeUri(image);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
-	
-	
-	
-
-	 * @param image The image.  A data URI will be created for this image.
-	 * @param imageFormat The image format to use to encode the image in the data URI.
-	 */
-	public final void writeGltfProperty(RenderedImage image, CesiumImageFormat imageFormat) {
-		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
-			try {
-				writer.writeUri(image, imageFormat);
-			} finally {
-				DisposeHelper.dispose(writer);
-			}
-		}
-	}
-
-	/**
-	 *  
-	Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>reference</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true" />.
 	
 	
 
 	 * @param value The reference.
 	 */
-	public final void writeGltfPropertyReference(Reference value) {
+	public final void writeIncrementallyLoadTexturesPropertyReference(Reference value) {
 		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
 			try {
 				writer.writeReference(value);
 			} finally {
@@ -713,15 +844,15 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>reference</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true" />.
 	
 	
 
 	 * @param value The earliest date of the interval.
 	 */
-	public final void writeGltfPropertyReference(String value) {
+	public final void writeIncrementallyLoadTexturesPropertyReference(String value) {
 		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
 			try {
 				writer.writeReference(value);
 			} finally {
@@ -732,7 +863,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>reference</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -740,9 +871,9 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	 * @param identifier The identifier of the object which contains the referenced property.
 	 * @param propertyName The property on the referenced object.
 	 */
-	public final void writeGltfPropertyReference(String identifier, String propertyName) {
+	public final void writeIncrementallyLoadTexturesPropertyReference(String identifier, String propertyName) {
 		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
 			try {
 				writer.writeReference(identifier, propertyName);
 			} finally {
@@ -753,7 +884,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+	Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>reference</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -761,9 +892,9 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	 * @param identifier The identifier of the object which contains the referenced property.
 	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
 	 */
-	public final void writeGltfPropertyReference(String identifier, String[] propertyNames) {
+	public final void writeIncrementallyLoadTexturesPropertyReference(String identifier, String[] propertyNames) {
 		{
-			cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+			cesiumlanguagewriter.BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {
@@ -773,7 +904,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>runAnimations</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>runAnimations</code> property defines whether or not to run all animations defined in the glTF model.
+	 *  Gets the writer for the <code>runAnimations</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>runAnimations</code> property defines whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -783,7 +914,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>runAnimations</code> property.  The <code>runAnimations</code> property defines whether or not to run all animations defined in the glTF model.
+	Opens and returns the writer for the <code>runAnimations</code> property.  The <code>runAnimations</code> property defines whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true" />.
 	
 
 	 */
@@ -794,7 +925,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>runAnimations</code> property as a <code>boolean</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+	Writes a value for the <code>runAnimations</code> property as a <code>boolean</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -813,7 +944,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+	Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -832,7 +963,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+	Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true" />.
 	
 	
 
@@ -851,7 +982,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+	Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
@@ -872,7 +1003,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.
+	Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true" />.
 	
 	
 	
