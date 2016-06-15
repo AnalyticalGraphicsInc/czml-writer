@@ -88,8 +88,6 @@ namespace GenerateFromSchema
         {
             JObject propertySchema = (JObject)propertyProperty.Value;
 
-            string defaultValue = null;
-
             Property result = new Property
                               {
                                   Name = propertyProperty.Name,
