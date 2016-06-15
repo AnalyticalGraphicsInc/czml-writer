@@ -74,49 +74,14 @@ namespace CesiumLanguageWriter
         public const string BillboardPropertyName = "billboard";
 
         /// <summary>
-        /// The name of the <code>point</code> property.
-        /// </summary>
-        public const string PointPropertyName = "point";
-
-        /// <summary>
-        /// The name of the <code>label</code> property.
-        /// </summary>
-        public const string LabelPropertyName = "label";
-
-        /// <summary>
-        /// The name of the <code>polyline</code> property.
-        /// </summary>
-        public const string PolylinePropertyName = "polyline";
-
-        /// <summary>
-        /// The name of the <code>path</code> property.
-        /// </summary>
-        public const string PathPropertyName = "path";
-
-        /// <summary>
-        /// The name of the <code>polygon</code> property.
-        /// </summary>
-        public const string PolygonPropertyName = "polygon";
-
-        /// <summary>
-        /// The name of the <code>ellipsoid</code> property.
-        /// </summary>
-        public const string EllipsoidPropertyName = "ellipsoid";
-
-        /// <summary>
-        /// The name of the <code>model</code> property.
-        /// </summary>
-        public const string ModelPropertyName = "model";
-
-        /// <summary>
-        /// The name of the <code>ellipse</code> property.
-        /// </summary>
-        public const string EllipsePropertyName = "ellipse";
-
-        /// <summary>
         /// The name of the <code>box</code> property.
         /// </summary>
         public const string BoxPropertyName = "box";
+
+        /// <summary>
+        /// The name of the <code>corridor</code> property.
+        /// </summary>
+        public const string CorridorPropertyName = "corridor";
 
         /// <summary>
         /// The name of the <code>cylinder</code> property.
@@ -124,9 +89,49 @@ namespace CesiumLanguageWriter
         public const string CylinderPropertyName = "cylinder";
 
         /// <summary>
-        /// The name of the <code>corridor</code> property.
+        /// The name of the <code>ellipse</code> property.
         /// </summary>
-        public const string CorridorPropertyName = "corridor";
+        public const string EllipsePropertyName = "ellipse";
+
+        /// <summary>
+        /// The name of the <code>ellipsoid</code> property.
+        /// </summary>
+        public const string EllipsoidPropertyName = "ellipsoid";
+
+        /// <summary>
+        /// The name of the <code>label</code> property.
+        /// </summary>
+        public const string LabelPropertyName = "label";
+
+        /// <summary>
+        /// The name of the <code>model</code> property.
+        /// </summary>
+        public const string ModelPropertyName = "model";
+
+        /// <summary>
+        /// The name of the <code>path</code> property.
+        /// </summary>
+        public const string PathPropertyName = "path";
+
+        /// <summary>
+        /// The name of the <code>point</code> property.
+        /// </summary>
+        public const string PointPropertyName = "point";
+
+        /// <summary>
+        /// The name of the <code>polygon</code> property.
+        /// </summary>
+        public const string PolygonPropertyName = "polygon";
+
+        /// <summary>
+        /// The name of the <code>polyline</code> property.
+        /// </summary>
+        public const string PolylinePropertyName = "polyline";
+
+        /// <summary>
+        /// The name of the <code>rectangle</code> property.
+        /// </summary>
+        public const string RectanglePropertyName = "rectangle";
 
         /// <summary>
         /// The name of the <code>wall</code> property.
@@ -164,17 +169,18 @@ namespace CesiumLanguageWriter
         private readonly Lazy<OrientationCesiumWriter> m_orientation = new Lazy<OrientationCesiumWriter>(() => new OrientationCesiumWriter(OrientationPropertyName), false);
         private readonly Lazy<ViewFromCesiumWriter> m_viewFrom = new Lazy<ViewFromCesiumWriter>(() => new ViewFromCesiumWriter(ViewFromPropertyName), false);
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter(BillboardPropertyName), false);
-        private readonly Lazy<PointCesiumWriter> m_point = new Lazy<PointCesiumWriter>(() => new PointCesiumWriter(PointPropertyName), false);
-        private readonly Lazy<LabelCesiumWriter> m_label = new Lazy<LabelCesiumWriter>(() => new LabelCesiumWriter(LabelPropertyName), false);
-        private readonly Lazy<PolylineCesiumWriter> m_polyline = new Lazy<PolylineCesiumWriter>(() => new PolylineCesiumWriter(PolylinePropertyName), false);
-        private readonly Lazy<PathCesiumWriter> m_path = new Lazy<PathCesiumWriter>(() => new PathCesiumWriter(PathPropertyName), false);
-        private readonly Lazy<PolygonCesiumWriter> m_polygon = new Lazy<PolygonCesiumWriter>(() => new PolygonCesiumWriter(PolygonPropertyName), false);
-        private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
-        private readonly Lazy<ModelCesiumWriter> m_model = new Lazy<ModelCesiumWriter>(() => new ModelCesiumWriter(ModelPropertyName), false);
-        private readonly Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(() => new EllipseCesiumWriter(EllipsePropertyName), false);
         private readonly Lazy<BoxCesiumWriter> m_box = new Lazy<BoxCesiumWriter>(() => new BoxCesiumWriter(BoxPropertyName), false);
-        private readonly Lazy<CylinderCesiumWriter> m_cylinder = new Lazy<CylinderCesiumWriter>(() => new CylinderCesiumWriter(CylinderPropertyName), false);
         private readonly Lazy<CorridorCesiumWriter> m_corridor = new Lazy<CorridorCesiumWriter>(() => new CorridorCesiumWriter(CorridorPropertyName), false);
+        private readonly Lazy<CylinderCesiumWriter> m_cylinder = new Lazy<CylinderCesiumWriter>(() => new CylinderCesiumWriter(CylinderPropertyName), false);
+        private readonly Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(() => new EllipseCesiumWriter(EllipsePropertyName), false);
+        private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
+        private readonly Lazy<LabelCesiumWriter> m_label = new Lazy<LabelCesiumWriter>(() => new LabelCesiumWriter(LabelPropertyName), false);
+        private readonly Lazy<ModelCesiumWriter> m_model = new Lazy<ModelCesiumWriter>(() => new ModelCesiumWriter(ModelPropertyName), false);
+        private readonly Lazy<PathCesiumWriter> m_path = new Lazy<PathCesiumWriter>(() => new PathCesiumWriter(PathPropertyName), false);
+        private readonly Lazy<PointCesiumWriter> m_point = new Lazy<PointCesiumWriter>(() => new PointCesiumWriter(PointPropertyName), false);
+        private readonly Lazy<PolygonCesiumWriter> m_polygon = new Lazy<PolygonCesiumWriter>(() => new PolygonCesiumWriter(PolygonPropertyName), false);
+        private readonly Lazy<PolylineCesiumWriter> m_polyline = new Lazy<PolylineCesiumWriter>(() => new PolylineCesiumWriter(PolylinePropertyName), false);
+        private readonly Lazy<RectangleCesiumWriter> m_rectangle = new Lazy<RectangleCesiumWriter>(() => new RectangleCesiumWriter(RectanglePropertyName), false);
         private readonly Lazy<WallCesiumWriter> m_wall = new Lazy<WallCesiumWriter>(() => new WallCesiumWriter(WallPropertyName), false);
         private readonly Lazy<ConicSensorCesiumWriter> m_agi_conicSensor = new Lazy<ConicSensorCesiumWriter>(() => new ConicSensorCesiumWriter(ConicSensorPropertyName), false);
         private readonly Lazy<CustomPatternSensorCesiumWriter> m_agi_customPatternSensor = new Lazy<CustomPatternSensorCesiumWriter>(() => new CustomPatternSensorCesiumWriter(CustomPatternSensorPropertyName), false);
@@ -834,134 +840,6 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>point</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>point</code> property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property.
-        /// </summary>
-        public PointCesiumWriter PointWriter
-        {
-            get { return m_point.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>point</code> property.  The <code>point</code> property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property.
-        /// </summary>
-        public PointCesiumWriter OpenPointProperty()
-        {
-            return OpenAndReturn(PointWriter);
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>label</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>label</code> property defines a string of text.  The label is positioned in the scene by the `position` property.
-        /// </summary>
-        public LabelCesiumWriter LabelWriter
-        {
-            get { return m_label.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>label</code> property.  The <code>label</code> property defines a string of text.  The label is positioned in the scene by the `position` property.
-        /// </summary>
-        public LabelCesiumWriter OpenLabelProperty()
-        {
-            return OpenAndReturn(LabelWriter);
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>polyline</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>polyline</code> property defines a polyline, which is a line in the scene composed of multiple segments.
-        /// </summary>
-        public PolylineCesiumWriter PolylineWriter
-        {
-            get { return m_polyline.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>polyline</code> property.  The <code>polyline</code> property defines a polyline, which is a line in the scene composed of multiple segments.
-        /// </summary>
-        public PolylineCesiumWriter OpenPolylineProperty()
-        {
-            return OpenAndReturn(PolylineWriter);
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>path</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>path</code> property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
-        /// </summary>
-        public PathCesiumWriter PathWriter
-        {
-            get { return m_path.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>path</code> property.  The <code>path</code> property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
-        /// </summary>
-        public PathCesiumWriter OpenPathProperty()
-        {
-            return OpenAndReturn(PathWriter);
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>polygon</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>polygon</code> property defines a polygon, which is a closed figure on the surface of the Earth.
-        /// </summary>
-        public PolygonCesiumWriter PolygonWriter
-        {
-            get { return m_polygon.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>polygon</code> property.  The <code>polygon</code> property defines a polygon, which is a closed figure on the surface of the Earth.
-        /// </summary>
-        public PolygonCesiumWriter OpenPolygonProperty()
-        {
-            return OpenAndReturn(PolygonWriter);
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>ellipsoid</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
-        /// </summary>
-        public EllipsoidCesiumWriter EllipsoidWriter
-        {
-            get { return m_ellipsoid.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>ellipsoid</code> property.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
-        /// </summary>
-        public EllipsoidCesiumWriter OpenEllipsoidProperty()
-        {
-            return OpenAndReturn(EllipsoidWriter);
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>model</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
-        /// </summary>
-        public ModelCesiumWriter ModelWriter
-        {
-            get { return m_model.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>model</code> property.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
-        /// </summary>
-        public ModelCesiumWriter OpenModelProperty()
-        {
-            return OpenAndReturn(ModelWriter);
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>ellipse</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipse</code> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
-        /// </summary>
-        public EllipseCesiumWriter EllipseWriter
-        {
-            get { return m_ellipse.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>ellipse</code> property.  The <code>ellipse</code> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
-        /// </summary>
-        public EllipseCesiumWriter OpenEllipseProperty()
-        {
-            return OpenAndReturn(EllipseWriter);
-        }
-
-        /// <summary>
         /// Gets the writer for the <code>box</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>box</code> property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the `position` and `orientation` properties.
         /// </summary>
         public BoxCesiumWriter BoxWriter
@@ -975,6 +853,22 @@ namespace CesiumLanguageWriter
         public BoxCesiumWriter OpenBoxProperty()
         {
             return OpenAndReturn(BoxWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>corridor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>corridor</code> property defines a corridor, which is a shape defined by a centerline and width.
+        /// </summary>
+        public CorridorCesiumWriter CorridorWriter
+        {
+            get { return m_corridor.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>corridor</code> property.  The <code>corridor</code> property defines a corridor, which is a shape defined by a centerline and width.
+        /// </summary>
+        public CorridorCesiumWriter OpenCorridorProperty()
+        {
+            return OpenAndReturn(CorridorWriter);
         }
 
         /// <summary>
@@ -994,19 +888,147 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>corridor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>corridor</code> property defines a corridor, which is a shape defined by a centerline and width.
+        /// Gets the writer for the <code>ellipse</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipse</code> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
         /// </summary>
-        public CorridorCesiumWriter CorridorWriter
+        public EllipseCesiumWriter EllipseWriter
         {
-            get { return m_corridor.Value; }
+            get { return m_ellipse.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>corridor</code> property.  The <code>corridor</code> property defines a corridor, which is a shape defined by a centerline and width.
+        /// Opens and returns the writer for the <code>ellipse</code> property.  The <code>ellipse</code> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
         /// </summary>
-        public CorridorCesiumWriter OpenCorridorProperty()
+        public EllipseCesiumWriter OpenEllipseProperty()
         {
-            return OpenAndReturn(CorridorWriter);
+            return OpenAndReturn(EllipseWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>ellipsoid</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public EllipsoidCesiumWriter EllipsoidWriter
+        {
+            get { return m_ellipsoid.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>ellipsoid</code> property.  The <code>ellipsoid</code> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public EllipsoidCesiumWriter OpenEllipsoidProperty()
+        {
+            return OpenAndReturn(EllipsoidWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>label</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>label</code> property defines a string of text.  The label is positioned in the scene by the `position` property.
+        /// </summary>
+        public LabelCesiumWriter LabelWriter
+        {
+            get { return m_label.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>label</code> property.  The <code>label</code> property defines a string of text.  The label is positioned in the scene by the `position` property.
+        /// </summary>
+        public LabelCesiumWriter OpenLabelProperty()
+        {
+            return OpenAndReturn(LabelWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>model</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public ModelCesiumWriter ModelWriter
+        {
+            get { return m_model.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>model</code> property.  The <code>model</code> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+        /// </summary>
+        public ModelCesiumWriter OpenModelProperty()
+        {
+            return OpenAndReturn(ModelWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>path</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>path</code> property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
+        /// </summary>
+        public PathCesiumWriter PathWriter
+        {
+            get { return m_path.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>path</code> property.  The <code>path</code> property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
+        /// </summary>
+        public PathCesiumWriter OpenPathProperty()
+        {
+            return OpenAndReturn(PathWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>point</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>point</code> property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property.
+        /// </summary>
+        public PointCesiumWriter PointWriter
+        {
+            get { return m_point.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>point</code> property.  The <code>point</code> property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property.
+        /// </summary>
+        public PointCesiumWriter OpenPointProperty()
+        {
+            return OpenAndReturn(PointWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>polygon</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>polygon</code> property defines a polygon, which is a closed figure on the surface of the Earth.
+        /// </summary>
+        public PolygonCesiumWriter PolygonWriter
+        {
+            get { return m_polygon.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>polygon</code> property.  The <code>polygon</code> property defines a polygon, which is a closed figure on the surface of the Earth.
+        /// </summary>
+        public PolygonCesiumWriter OpenPolygonProperty()
+        {
+            return OpenAndReturn(PolygonWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>polyline</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>polyline</code> property defines a polyline, which is a line in the scene composed of multiple segments.
+        /// </summary>
+        public PolylineCesiumWriter PolylineWriter
+        {
+            get { return m_polyline.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>polyline</code> property.  The <code>polyline</code> property defines a polyline, which is a line in the scene composed of multiple segments.
+        /// </summary>
+        public PolylineCesiumWriter OpenPolylineProperty()
+        {
+            return OpenAndReturn(PolylineWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>rectangle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>rectangle</code> property defines a cartographic rectangle, which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+        /// </summary>
+        public RectangleCesiumWriter RectangleWriter
+        {
+            get { return m_rectangle.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>rectangle</code> property.  The <code>rectangle</code> property defines a cartographic rectangle, which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+        /// </summary>
+        public RectangleCesiumWriter OpenRectangleProperty()
+        {
+            return OpenAndReturn(RectangleWriter);
         }
 
         /// <summary>
