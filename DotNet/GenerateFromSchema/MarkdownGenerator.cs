@@ -120,7 +120,7 @@ namespace GenerateFromSchema
                             else
                                 defaultValue = defaultToken.Value<string>();
 
-                            output.WriteLine("**Default**: `{0}`", defaultValue);
+                            output.WriteLine("Default: `{0}`", defaultValue);
                             output.WriteLine();
                         }
 
