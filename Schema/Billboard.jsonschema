@@ -72,7 +72,15 @@
         },
         "scaleByDistance": {
             "$ref": "NearFarScalar.jsonschema",
-            "description": "How the billboard's scale should change based on the billboard's distance from the camera."
+            "description": "How the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`."
+        },
+        "translucencyByDistance": {
+            "$ref": "NearFarScalar.jsonschema",
+            "description": "How the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1."
+        },
+        "pixelOffsetScaleByDistance": {
+            "$ref": "NearFarScalar.jsonschema",
+            "description": "How the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`."
         }
     }
 }

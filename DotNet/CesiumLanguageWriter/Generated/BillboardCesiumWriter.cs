@@ -83,6 +83,16 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string ScaleByDistancePropertyName = "scaleByDistance";
 
+        /// <summary>
+        /// The name of the <code>translucencyByDistance</code> property.
+        /// </summary>
+        public const string TranslucencyByDistancePropertyName = "translucencyByDistance";
+
+        /// <summary>
+        /// The name of the <code>pixelOffsetScaleByDistance</code> property.
+        /// </summary>
+        public const string PixelOffsetScaleByDistancePropertyName = "pixelOffsetScaleByDistance";
+
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(ImagePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
@@ -97,6 +107,8 @@ namespace CesiumLanguageWriter
         private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_height = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(HeightPropertyName), false);
         private readonly Lazy<NearFarScalarCesiumWriter> m_scaleByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(ScaleByDistancePropertyName), false);
+        private readonly Lazy<NearFarScalarCesiumWriter> m_translucencyByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(TranslucencyByDistancePropertyName), false);
+        private readonly Lazy<NearFarScalarCesiumWriter> m_pixelOffsetScaleByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(PixelOffsetScaleByDistancePropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -1428,7 +1440,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>scaleByDistance</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scaleByDistance</code> property defines how the billboard's scale should change based on the billboard's distance from the camera.
+        /// Gets the writer for the <code>scaleByDistance</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scaleByDistance</code> property defines how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
         /// </summary>
         public NearFarScalarCesiumWriter ScaleByDistanceWriter
         {
@@ -1436,7 +1448,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>scaleByDistance</code> property.  The <code>scaleByDistance</code> property defines how the billboard's scale should change based on the billboard's distance from the camera.
+        /// Opens and returns the writer for the <code>scaleByDistance</code> property.  The <code>scaleByDistance</code> property defines how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
         /// </summary>
         public NearFarScalarCesiumWriter OpenScaleByDistanceProperty()
         {
@@ -1445,7 +1457,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteScaleByDistanceProperty(NearFarScalar value)
@@ -1457,7 +1469,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
         /// </summary>
         /// <param name="nearDistance">The lower bound of the camera distance range.</param>
         /// <param name="nearValue">The value to use at the lower bound of the camera distance range.</param>
@@ -1472,7 +1484,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1485,7 +1497,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1500,7 +1512,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteScaleByDistancePropertyReference(Reference value)
@@ -1512,7 +1524,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteScaleByDistancePropertyReference(string value)
@@ -1524,7 +1536,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1537,13 +1549,257 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
         public void WriteScaleByDistancePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>translucencyByDistance</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>translucencyByDistance</code> property defines how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        public NearFarScalarCesiumWriter TranslucencyByDistanceWriter
+        {
+            get { return m_translucencyByDistance.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>translucencyByDistance</code> property.  The <code>translucencyByDistance</code> property defines how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        public NearFarScalarCesiumWriter OpenTranslucencyByDistanceProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(TranslucencyByDistanceWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteTranslucencyByDistanceProperty(NearFarScalar value)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="nearDistance">The lower bound of the camera distance range.</param>
+        /// <param name="nearValue">The value to use at the lower bound of the camera distance range.</param>
+        /// <param name="farDistance">The upper bound of the camera distance range.</param>
+        /// <param name="farValue">The value to use at the upper bound of the camera distance range.</param>
+        public void WriteTranslucencyByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(nearDistance, nearValue, farDistance, farValue);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteTranslucencyByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteTranslucencyByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values, int startIndex, int length)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteTranslucencyByDistancePropertyReference(Reference value)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteTranslucencyByDistancePropertyReference(string value)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteTranslucencyByDistancePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteTranslucencyByDistancePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>pixelOffsetScaleByDistance</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>pixelOffsetScaleByDistance</code> property defines how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        public NearFarScalarCesiumWriter PixelOffsetScaleByDistanceWriter
+        {
+            get { return m_pixelOffsetScaleByDistance.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>pixelOffsetScaleByDistance</code> property.  The <code>pixelOffsetScaleByDistance</code> property defines how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        public NearFarScalarCesiumWriter OpenPixelOffsetScaleByDistanceProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(PixelOffsetScaleByDistanceWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WritePixelOffsetScaleByDistanceProperty(NearFarScalar value)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="nearDistance">The lower bound of the camera distance range.</param>
+        /// <param name="nearValue">The value to use at the lower bound of the camera distance range.</param>
+        /// <param name="farDistance">The upper bound of the camera distance range.</param>
+        /// <param name="farValue">The value to use at the upper bound of the camera distance range.</param>
+        public void WritePixelOffsetScaleByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(nearDistance, nearValue, farDistance, farValue);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WritePixelOffsetScaleByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WritePixelOffsetScaleByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values, int startIndex, int length)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WritePixelOffsetScaleByDistancePropertyReference(Reference value)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WritePixelOffsetScaleByDistancePropertyReference(string value)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WritePixelOffsetScaleByDistancePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WritePixelOffsetScaleByDistancePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
