@@ -302,7 +302,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteDirectionProperty(IList<JulianDate> dates, IList<Spherical> values)
         {
@@ -315,7 +315,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -342,7 +342,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>direction</code> property as a <code>unitSpherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteDirectionPropertyUnitSpherical(IList<JulianDate> dates, IList<UnitSpherical> values)
         {
@@ -355,7 +355,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>direction</code> property as a <code>unitSpherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -382,7 +382,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteDirectionPropertyCartesian(IList<JulianDate> dates, IList<Cartesian> values)
         {
@@ -395,7 +395,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -422,7 +422,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteDirectionPropertyUnitCartesian(IList<JulianDate> dates, IList<UnitCartesian> values)
         {
@@ -435,7 +435,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>

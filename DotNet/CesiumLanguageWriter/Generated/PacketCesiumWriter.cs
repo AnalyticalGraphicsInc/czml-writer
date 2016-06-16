@@ -416,7 +416,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>position</code> property as a <code>cartesian</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other graphical items attached to the object.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WritePositionProperty(IList<JulianDate> dates, IList<Cartesian> values)
         {
@@ -429,7 +429,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>position</code> property as a <code>cartesian</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other graphical items attached to the object.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -456,7 +456,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>position</code> property as a <code>cartographicRadians</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other graphical items attached to the object.
         /// </summary>
-        /// <param name="dates">The dates at which the position is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WritePositionPropertyCartographicRadians(IList<JulianDate> dates, IList<Cartographic> values)
         {
@@ -469,7 +469,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>position</code> property as a <code>cartographicRadians</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other graphical items attached to the object.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The position corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -496,7 +496,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>position</code> property as a <code>cartographicDegrees</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other graphical items attached to the object.
         /// </summary>
-        /// <param name="dates">The dates at which the position is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WritePositionPropertyCartographicDegrees(IList<JulianDate> dates, IList<Cartographic> values)
         {
@@ -509,7 +509,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>position</code> property as a <code>cartographicDegrees</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other graphical items attached to the object.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The position corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -536,7 +536,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>position</code> property as a <code>cartesianVelocity</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other graphical items attached to the object.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WritePositionPropertyCartesianVelocity(IList<JulianDate> dates, IList<Motion<Cartesian>> values)
         {
@@ -549,7 +549,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>position</code> property as a <code>cartesianVelocity</code> value.  The <code>position</code> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other graphical items attached to the object.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -642,7 +642,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>orientation</code> property as a <code>unitQuaternion</code> value.  The <code>orientation</code> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
-        /// <param name="dates">The dates at which the rotation is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteOrientationProperty(IList<JulianDate> dates, IList<UnitQuaternion> values)
         {
@@ -655,7 +655,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>orientation</code> property as a <code>unitQuaternion</code> value.  The <code>orientation</code> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
-        /// <param name="dates">The dates at which the rotation is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -748,7 +748,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>viewFrom</code> property as a <code>cartesian</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteViewFromProperty(IList<JulianDate> dates, IList<Cartesian> values)
         {
@@ -761,7 +761,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>viewFrom</code> property as a <code>cartesian</code> value.  The <code>viewFrom</code> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>

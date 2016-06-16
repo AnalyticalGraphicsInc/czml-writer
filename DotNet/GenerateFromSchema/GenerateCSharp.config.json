@@ -112,7 +112,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<Rectangular>",
@@ -128,7 +128,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<Rectangular>",
@@ -192,7 +192,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<CartographicExtent>",
@@ -208,7 +208,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<CartographicExtent>",
@@ -247,7 +247,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<Cartesian>",
@@ -263,7 +263,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<Cartesian>",
@@ -302,7 +302,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<UnitCartesian>",
@@ -318,7 +318,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<UnitCartesian>",
@@ -357,7 +357,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<Motion<Cartesian>>",
@@ -373,7 +373,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<Motion<Cartesian>>",
@@ -412,7 +412,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<UnitSpherical>",
@@ -428,7 +428,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<UnitSpherical>",
@@ -532,7 +532,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the position is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<Cartographic>",
@@ -548,7 +548,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<Cartographic>",
@@ -958,7 +958,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the rotation is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<UnitQuaternion>",
@@ -974,7 +974,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the rotation is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<UnitQuaternion>",
@@ -1104,7 +1104,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<Spherical>",
@@ -1120,7 +1120,7 @@
                     {
                         "type": "IList<JulianDate>",
                         "name": "dates",
-                        "description": "The dates at which the vector is specified."
+                        "description": "The dates at which the value is specified."
                     },
                     {
                         "type": "IList<Spherical>",
@@ -1140,6 +1140,86 @@
                 ],
                 "writePropertyName": false,
                 "writeValue": "CesiumWritingHelper.WriteSpherical(Output, PropertyName, dates, values, startIndex, length);"
+            }
+        ],
+        "NearFarScalar": [
+            {
+                "parameters": [
+                    {
+                        "type": "NearFarScalar",
+                        "name": "value",
+                        "description": "The value."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteNearFarScalar(Output, value);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "double",
+                        "name": "nearDistance",
+                        "description": "The lower bound of the camera distance range."
+                    },
+                    {
+                        "type": "double",
+                        "name": "nearValue",
+                        "description": "The value to use at the lower bound of the camera distance range."
+                    },
+                    {
+                        "type": "double",
+                        "name": "farDistance",
+                        "description": "The upper bound of the camera distance range."
+                    },
+                    {
+                        "type": "double",
+                        "name": "farValue",
+                        "description": "The value to use at the upper bound of the camera distance range."
+                    }
+                ],
+                "callOverload": "new NearFarScalar(nearDistance, nearValue, farDistance, farValue)"
+            },
+            {
+                "namespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<NearFarScalar>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
+                "namespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<NearFarScalar>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to use in the `values` collection."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to use from the `values` collection."
+                    }
+                ],
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteNearFarScalar(Output, PropertyName, dates, values, startIndex, length);"
             }
         ]
     }

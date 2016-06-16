@@ -564,7 +564,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>pixelOffset</code> property as a <code>cartesian2</code> value.  The <code>pixelOffset</code> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WritePixelOffsetProperty(IList<JulianDate> dates, IList<Rectangular> values)
         {
@@ -577,7 +577,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>pixelOffset</code> property as a <code>cartesian2</code> value.  The <code>pixelOffset</code> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -671,7 +671,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteEyeOffsetProperty(IList<JulianDate> dates, IList<Cartesian> values)
         {
@@ -684,7 +684,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>

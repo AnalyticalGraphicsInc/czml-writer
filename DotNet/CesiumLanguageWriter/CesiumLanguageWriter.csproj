@@ -122,6 +122,7 @@
     <Compile Include="Generated\LineThicknessCesiumWriter.cs" />
     <Compile Include="Generated\MaterialCesiumWriter.cs" />
     <Compile Include="Generated\ModelCesiumWriter.cs" />
+    <Compile Include="Generated\NearFarScalarCesiumWriter.cs" />
     <Compile Include="Generated\NodeTransformationCesiumWriter.cs" />
     <Compile Include="Generated\NodeTransformationsCesiumWriter.cs" />
     <Compile Include="Generated\OrientationCesiumWriter.cs" />

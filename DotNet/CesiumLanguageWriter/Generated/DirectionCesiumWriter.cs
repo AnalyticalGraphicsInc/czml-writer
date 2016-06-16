@@ -91,7 +91,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <code>spherical</code>, which is the direction specified as a spherical value `[Clock, Cone, Magnitude]`, with angles in radians and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteSpherical(IList<JulianDate> dates, IList<Spherical> values)
         {
@@ -101,7 +101,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <code>spherical</code>, which is the direction specified as a spherical value `[Clock, Cone, Magnitude]`, with angles in radians and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -127,7 +127,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <code>unitSpherical</code>, which is the direction specified as a unit spherical value `[Clock, Cone]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteUnitSpherical(IList<JulianDate> dates, IList<UnitSpherical> values)
         {
@@ -137,7 +137,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <code>unitSpherical</code>, which is the direction specified as a unit spherical value `[Clock, Cone]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -163,7 +163,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <code>cartesian</code>, which is the direction specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteCartesian(IList<JulianDate> dates, IList<Cartesian> values)
         {
@@ -173,7 +173,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <code>cartesian</code>, which is the direction specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -199,7 +199,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <code>unitCartesian</code>, which is the direction specified as a three-dimensional unit magnitude Cartesian value `[X, Y, Z]`, in world coordinates in meters.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteUnitCartesian(IList<JulianDate> dates, IList<UnitCartesian> values)
         {
@@ -209,7 +209,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <code>unitCartesian</code>, which is the direction specified as a three-dimensional unit magnitude Cartesian value `[X, Y, Z]`, in world coordinates in meters.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>

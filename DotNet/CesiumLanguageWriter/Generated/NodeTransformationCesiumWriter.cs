@@ -86,7 +86,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>translation</code> property as a <code>cartesian</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteTranslationProperty(IList<JulianDate> dates, IList<Cartesian> values)
         {
@@ -99,7 +99,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>translation</code> property as a <code>cartesian</code> value.  The <code>translation</code> property specifies the translation to apply to the model node.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -193,7 +193,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>rotation</code> property as a <code>unitQuaternion</code> value.  The <code>rotation</code> property specifies the rotation to apply to the model node.
         /// </summary>
-        /// <param name="dates">The dates at which the rotation is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteRotationProperty(IList<JulianDate> dates, IList<UnitQuaternion> values)
         {
@@ -206,7 +206,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>rotation</code> property as a <code>unitQuaternion</code> value.  The <code>rotation</code> property specifies the rotation to apply to the model node.
         /// </summary>
-        /// <param name="dates">The dates at which the rotation is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -300,7 +300,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteScaleProperty(IList<JulianDate> dates, IList<Cartesian> values)
         {
@@ -313,7 +313,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>scale</code> property as a <code>cartesian</code> value.  The <code>scale</code> property specifies the scaling to apply to the model node.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>

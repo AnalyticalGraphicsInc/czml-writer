@@ -330,7 +330,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>lineCount</code> property as a <code>cartesian2</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteLineCountProperty(IList<JulianDate> dates, IList<Rectangular> values)
         {
@@ -343,7 +343,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>lineCount</code> property as a <code>cartesian2</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -450,7 +450,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>lineThickness</code> property as a <code>cartesian2</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteLineThicknessProperty(IList<JulianDate> dates, IList<Rectangular> values)
         {
@@ -463,7 +463,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>lineThickness</code> property as a <code>cartesian2</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -570,7 +570,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>lineOffset</code> property as a <code>cartesian2</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteLineOffsetProperty(IList<JulianDate> dates, IList<Rectangular> values)
         {
@@ -583,7 +583,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>lineOffset</code> property as a <code>cartesian2</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
