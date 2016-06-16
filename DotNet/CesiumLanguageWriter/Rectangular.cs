@@ -1,7 +1,6 @@
 using System;
-using System.Globalization;
-using System.Text;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -19,10 +18,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public static Rectangular Zero
         {
-            get
-            {
-                return s_zero;
-            }
+            get { return s_zero; }
         }
 
         /// <summary>
@@ -35,54 +31,7 @@ namespace CesiumLanguageWriter
         /// </remarks>
         public static Rectangular Undefined
         {
-            get
-            {
-                return s_undefined;
-            }
-        }
-
-        /// <summary>
-        /// Initializes a set of <see cref="Rectangular"/> coordinates from 2 consecutive elements in the provided array.
-        /// </summary>
-        /// <param name="elements">The array of coordinate values.</param>
-        /// <param name="startIndex">The index of the first element in the array to use.</param>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when the array of <paramref name="elements"/> is null.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when an object of this type is constructed from an array with less than 2 <paramref name="elements"/>.
-        /// </exception>
-        public Rectangular(double[] elements, int startIndex)
-        {
-            if (elements == null)
-            {
-                throw new ArgumentNullException("elements");
-            }
-            else if (startIndex >= elements.Length ||
-                     elements.Length - startIndex < s_length)
-            {
-                throw new ArgumentOutOfRangeException("elements", String.Format(CultureInfo.CurrentCulture, CesiumLocalization.MustBeConstructedFromSpecificNumberOfElements, typeof(Rectangular), 2));
-            }
-            else
-            {
-                m_x = elements[startIndex + 0];
-                m_y = elements[startIndex + 1];
-            }
-        }
-        
-        /// <summary>
-        /// Initializes a set of <see cref="Rectangular"/> coordinates from the first 2 consecutive elements in the provided array.
-        /// </summary>
-        /// <param name="elements">The array of coordinate values.</param>
-        /// <exception cref="ArgumentNullException">
-        /// The array of <paramref name="elements"/> cannot be null.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// An object of this type must be constructed from an array with at least 2 <paramref name="elements"/>.
-        /// </exception>
-        public Rectangular(double[] elements)
-            : this(elements, 0)
-        {
+            get { return s_undefined; }
         }
 
         /// <summary>
@@ -120,6 +69,7 @@ namespace CesiumLanguageWriter
         /// Inverts this instance.
         /// </summary>
         /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the inverse of this instance.</returns>
+        [Pure]
         public Rectangular Invert()
         {
             return new Rectangular(-m_x, -m_y);
@@ -130,6 +80,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="scalar">The multiplier, or value which is to multiply this instance.</param>
         /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the result of the multiplication.</returns>
+        [Pure]
         public Rectangular Multiply(double scalar)
         {
             return new Rectangular(m_x * scalar, m_y * scalar);
@@ -140,6 +91,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="scalar">The divisor, or value which is to divide this instance.</param>
         /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the result of the division.</returns>
+        [Pure]
         public Rectangular Divide(double scalar)
         {
             return new Rectangular(m_x / scalar, m_y / scalar);
@@ -150,6 +102,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The addend, or value which is to be added to this instance.</param>
         /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the result of the addition.</returns>
+        [Pure]
         public Rectangular Add(Rectangular other)
         {
             return new Rectangular(m_x + other.m_x, m_y + other.m_y);
@@ -160,6 +113,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The subtrahend, or value which is to be subtracted from this instance.</param>
         /// <returns>A set of <see cref="Rectangular"/> coordinates that represents the result of the subtraction.</returns>
+        [Pure]
         public Rectangular Subtract(Rectangular other)
         {
             return new Rectangular(m_x - other.m_x, m_y - other.m_y);
@@ -170,6 +124,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The set of <see cref="Rectangular"/> coordinates to dot with this instance.</param>
         /// <returns>A <see cref="double"/> that represents the result of the product.</returns>
+        [Pure]
         public double Dot(Rectangular other)
         {
             return m_x * other.m_x + m_y * other.m_y;
@@ -249,6 +204,7 @@ namespace CesiumLanguageWriter
         /// <remarks>
         /// This type of rotation is sometimes referred to as an "alias rotation".
         /// </remarks>
+        [Pure]
         public Rectangular Rotate(double angle)
         {
             double c = Math.Cos(angle);
@@ -263,14 +219,18 @@ namespace CesiumLanguageWriter
         /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
-            if (obj is Rectangular)
-            {
-                return Equals((Rectangular)obj);
-            }
-            else
-            {
-                return false;
-            }
+            return obj is Rectangular && Equals((Rectangular)obj);
+        }
+
+        /// <summary>
+        /// Indicates whether another instance of this type is exactly equal to this instance.
+        /// </summary>
+        /// <param name="other">The instance to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        public bool Equals(Rectangular other)
+        {
+            return m_x.Equals(other.m_x) &&
+                   m_y.Equals(other.m_y);
         }
 
         /// <summary>
@@ -280,12 +240,12 @@ namespace CesiumLanguageWriter
         /// <param name="other">The set of <see cref="Rectangular"/> coordinates to compare to this instance.</param>
         /// <param name="epsilon">The limit at which the absolute differences between the coordinate values will not be considered equal.</param>
         /// <returns>
-        /// <see langword="true"/> if the absolute differences are less than <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
+        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
         /// </returns>
         public bool EqualsEpsilon(Rectangular other, double epsilon)
         {
-            return Math.Abs(X - other.X) < epsilon &&
-                   Math.Abs(Y - other.Y) < epsilon;
+            return Math.Abs(m_x - other.m_x) <= epsilon &&
+                   Math.Abs(m_y - other.m_y) <= epsilon;
         }
 
         /// <summary>
@@ -294,7 +254,8 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return m_x.GetHashCode() ^ m_y.GetHashCode();
+            return HashCode.Combine(m_x.GetHashCode(),
+                                    m_y.GetHashCode());
         }
 
         /// <summary>
@@ -306,11 +267,7 @@ namespace CesiumLanguageWriter
         /// </returns>
         public override string ToString()
         {
-            StringBuilder build = new StringBuilder(80);
-            build.Append(m_x.ToString(CultureInfo.CurrentCulture));
-            build.Append(", ");
-            build.Append(m_y.ToString(CultureInfo.CurrentCulture));
-            return build.ToString();
+            return string.Format("{0}, {1}", m_x, m_y);
         }
 
         /// <summary>
@@ -340,108 +297,18 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the magnitude of this instance.
-        /// </summary>
-        public double Magnitude
-        {
-            get
-            {
-                return Math.Sqrt(MagnitudeSquared);
-            }
-        }
-
-        /// <summary>
-        /// Gets the square of the <see cref="Magnitude"/> of this instance.
-        /// </summary>
-        public double MagnitudeSquared
-        {
-            get
-            {
-                return m_x * m_x + m_y * m_y;
-            }
-        }
-
-        /// <summary>
-        /// Gets a value indicating if the <see cref="Magnitude"/> of this instance is zero.
-        /// </summary>
-        public bool HasZeroMagnitude
-        {
-            get
-            {
-                // Test the square of the magnitude since this is equivalent and more efficient.
-                return (MagnitudeSquared == 0.0);
-            }
-        }
-
-        /// <summary>
         /// Gets whether or not any of the coordinates for this instance have the value <see cref="Double.NaN"/>.
         /// </summary>
         public bool IsUndefined
         {
-            get
-            {
-                return Double.IsNaN(m_x) || Double.IsNaN(m_y);
-            }
+            get { return double.IsNaN(m_x) || double.IsNaN(m_y); }
         }
 
         private readonly double m_x;
         private readonly double m_y;
 
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        private static readonly int s_length = 2;
-
         private static readonly Rectangular s_zero = new Rectangular(0.0, 0.0);
 
-        private static readonly Rectangular s_undefined = new Rectangular(Double.NaN, Double.NaN);
-
-        #region IEquatable<Cartesian2> Members
-
-        /// <summary>
-        /// Indicates whether another instance of this type is exactly equal to this instance.
-        /// </summary>
-        /// <param name="other">The instance to compare to this instance.</param>
-        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
-        public bool Equals(Rectangular other)
-        {
-            return other.m_x == m_x && other.m_y == m_y;
-        }
-
-        #endregion
-
-        /// <summary>
-        /// Gets the number of elements in this set of coordinates.
-        /// </summary>
-        public int Length
-        {
-            get
-            {
-                return s_length;
-            }
-        }
-
-        /// <summary>
-        /// Gets the value of the specified element with <paramref name="index"/> of 0 and 1 corresponding to the coordinates
-        /// X and Y.
-        /// </summary>
-        /// <param name="index">Either 0 or 1 corresponding to the coordinates X or Y.</param>
-        /// <returns>The coordinate associated with the specified <paramref name="index"/>.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when the <paramref name="index"/> is less than 0 or is equal to or greater than <see cref="Length"/>.
-        /// </exception>
-        public double this[int index]
-        {
-            get
-            {
-                switch (index)
-                {
-                    case 0:
-                        return X;
-                    case 1:
-                        return Y;
-                    default:
-                        throw new ArgumentOutOfRangeException("index");
-                }
-            }
-        }
+        private static readonly Rectangular s_undefined = new Rectangular(double.NaN, double.NaN);
     }
 }

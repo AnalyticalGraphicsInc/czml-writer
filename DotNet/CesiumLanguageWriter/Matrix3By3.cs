@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -40,29 +41,7 @@ namespace CesiumLanguageWriter
         {
             get { return s_zero; }
         }
-
-        /// <summary>
-        /// Forms a <see cref="Matrix3By3"/> from the input vector such that the result of the cross product of the input vector
-        /// with another vector is equivalent to pre-multiplying the other vector by the returned matrix.
-        /// </summary>
-        /// <param name="vector">The vector for which the cross product equivalent matrix is desired.</param>
-        /// <returns>The cross product equivalent matrix.</returns>
-        public static Matrix3By3 CrossProductEquivalentMatrix(Cartesian vector)
-        {
-            return new Matrix3By3(0.0, -vector.Z, vector.Y, vector.Z, 0.0, -vector.X, -vector.Y, vector.X, 0.0);
-        }
-
-        /// <summary>
-        /// Forms a <see cref="Matrix3By3"/> from the input vector such that the result of the cross product of the input unit vector
-        /// with another vector is equivalent to pre-multiplying the other vector by the returned matrix.
-        /// </summary>
-        /// <param name="vector">The unit vector for which the cross product equivalent matrix is desired.</param>
-        /// <returns>The cross product equivalent matrix.</returns>
-        public static Matrix3By3 CrossProductEquivalentMatrix(UnitCartesian vector)
-        {
-            return new Matrix3By3(0.0, -vector.Z, vector.Y, vector.Z, 0.0, -vector.X, -vector.Y, vector.X, 0.0);
-        }
-
+        
         /// <summary>
         /// Forms a diagonal matrix from the input elements.
         /// </summary>
@@ -300,41 +279,6 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// The determinant of the matrix.
-        /// </summary>
-        /// <returns>The determinant of the matrix.</returns>
-        public double Determinant()
-        {
-            double determinant = m_m11 * (m_m22 * m_m33 - m_m23 * m_m32) + m_m12 * (m_m23 * m_m31 - m_m21 * m_m33) + m_m13 * (m_m21 * m_m32 - m_m22 * m_m31);
-            return determinant;
-        }
-
-        /// <summary>
-        /// Inverts the matrix.
-        /// </summary>
-        /// <returns>The inverted matrix.</returns>
-        /// <exception cref="System.ArithmeticException">
-        /// Thrown when the absolute value of the <see cref="Determinant"/> is less than
-        /// <see cref="Constants.Epsilon15"/>.</exception>
-        public Matrix3By3 Invert()
-        {
-            double determinant = Determinant();
-
-            if (Math.Abs(determinant) > Constants.Epsilon15)
-            {
-                Matrix3By3 m = new Matrix3By3(m_m22 * m_m33 - m_m23 * m_m32, m_m13 * m_m32 - m_m12 * m_m33, m_m12 * m_m23 - m_m13 * m_m22,
-                                              m_m23 * m_m31 - m_m21 * m_m33, m_m11 * m_m33 - m_m13 * m_m31, m_m13 * m_m21 - m_m11 * m_m23,
-                                              m_m21 * m_m32 - m_m22 * m_m31, m_m12 * m_m31 - m_m11 * m_m32, m_m11 * m_m22 - m_m12 * m_m21);
-                double scale = 1.0 / determinant;
-                return m * scale;
-            }
-            else
-            {
-                throw new ArithmeticException();
-            }
-        }
-
-        /// <summary>
         /// Gets an indication as to whether any of the matrix values are <see cref="double.NaN"/>.
         /// </summary>
         public bool IsUndefined
@@ -352,6 +296,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="matrix">The matrix.</param>
         /// <returns>The sum of the matrices.</returns>
+        [Pure]
         public Matrix3By3 Add(Matrix3By3 matrix)
         {
             return new Matrix3By3(m_m11 + matrix.m_m11, m_m12 + matrix.m_m12, m_m13 + matrix.m_m13,
@@ -364,6 +309,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="matrix">The matrix to subtract.</param>
         /// <returns>The result of the subtraction.</returns>
+        [Pure]
         public Matrix3By3 Subtract(Matrix3By3 matrix)
         {
             return new Matrix3By3(m_m11 - matrix.m_m11, m_m12 - matrix.m_m12, m_m13 - matrix.m_m13,
@@ -376,6 +322,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="scalar">The scalar to multiply by.</param>
         /// <returns>The result of the multiplication.</returns>
+        [Pure]
         public Matrix3By3 Multiply(double scalar)
         {
             return new Matrix3By3(m_m11 * scalar, m_m12 * scalar, m_m13 * scalar,
@@ -388,26 +335,26 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="matrix">The matrix to multiply by.</param>
         /// <returns>The result of the multiplication.</returns>
+        [Pure]
         public Matrix3By3 Multiply(Matrix3By3 matrix)
         {
             return new Matrix3By3(m_m11 * matrix.m_m11 + m_m12 * matrix.m_m21 + m_m13 * matrix.m_m31,
                                   m_m11 * matrix.m_m12 + m_m12 * matrix.m_m22 + m_m13 * matrix.m_m32,
                                   m_m11 * matrix.m_m13 + m_m12 * matrix.m_m23 + m_m13 * matrix.m_m33,
-
                                   m_m21 * matrix.m_m11 + m_m22 * matrix.m_m21 + m_m23 * matrix.m_m31,
                                   m_m21 * matrix.m_m12 + m_m22 * matrix.m_m22 + m_m23 * matrix.m_m32,
                                   m_m21 * matrix.m_m13 + m_m22 * matrix.m_m23 + m_m23 * matrix.m_m33,
-
                                   m_m31 * matrix.m_m11 + m_m32 * matrix.m_m21 + m_m33 * matrix.m_m31,
                                   m_m31 * matrix.m_m12 + m_m32 * matrix.m_m22 + m_m33 * matrix.m_m32,
                                   m_m31 * matrix.m_m13 + m_m32 * matrix.m_m23 + m_m33 * matrix.m_m33);
         }
 
         /// <summary>
-        /// Forms a new Cartesian3 vector as the product of this 3-by-3 matrix and the provided Cartesian3 vector.
+        /// Forms a new Cartesian vector as the product of this 3-by-3 matrix and the provided Cartesian vector.
         /// </summary>
         /// <param name="vector">The vector.</param>
-        /// <returns>The resulting Cartesian3 vector.</returns>
+        /// <returns>The resulting Cartesian vector.</returns>
+        [Pure]
         public Cartesian Multiply(Cartesian vector)
         {
             return new Cartesian(m_m11 * vector.X + m_m12 * vector.Y + m_m13 * vector.Z,
@@ -449,7 +396,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Multiplies the 3-by-3 matrix by the Cartesian3 vector.
+        /// Multiplies the 3-by-3 matrix by the Cartesian vector.
         /// </summary>
         /// <param name="matrix">The matrix.</param>
         /// <param name="vector">The vector.</param>
@@ -482,42 +429,48 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns true if all of the elements of this matrix are within <paramref name="epsilon"/>
-        /// of the same elements of the specified matrix.  That is, in order for the matrices to be
-        /// considered equal (and for this function to return true), the absolute value of the
-        /// difference between each of their elements must be less than <paramref name="epsilon"/>.
-        /// </summary>
-        /// <param name="other">The <see cref="Matrix3By3"/> to compare to this matrix.</param>
-        /// <param name="epsilon">The smallest difference between the elements of the matrices for which they will NOT be considered equal.</param>
-        /// <returns>true if the matrices are equal as defined by the epsilon value.</returns>
-        public bool EqualsEpsilon(Matrix3By3 other, double epsilon)
-        {
-            return Math.Abs(M11 - other.M11) < epsilon &&
-                   Math.Abs(M12 - other.M12) < epsilon &&
-                   Math.Abs(M13 - other.M13) < epsilon &&
-                   Math.Abs(M21 - other.M21) < epsilon &&
-                   Math.Abs(M22 - other.M22) < epsilon &&
-                   Math.Abs(M23 - other.M23) < epsilon &&
-                   Math.Abs(M31 - other.M31) < epsilon &&
-                   Math.Abs(M32 - other.M32) < epsilon &&
-                   Math.Abs(M33 - other.M33) < epsilon;
-        }
-
-        /// <summary>
         /// Indicates whether another object is exactly equal to this instance.
         /// </summary>
         /// <param name="obj">The object to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
-            if (obj is Matrix3By3)
-            {
-                return Equals((Matrix3By3)obj);
-            }
-            else
-            {
-                return false;
-            }
+            return obj is Matrix3By3 && Equals((Matrix3By3)obj);
+        }
+
+        /// <summary>
+        /// Indicates whether another instance of this type is exactly equal to this instance.
+        /// </summary>
+        /// <param name="other">The instance to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        public bool Equals(Matrix3By3 other)
+        {
+            return m_m11 == other.m_m11 && m_m12 == other.m_m12 && m_m13 == other.m_m13 &&
+                   m_m21 == other.m_m21 && m_m22 == other.m_m22 && m_m23 == other.m_m23 &&
+                   m_m31 == other.m_m31 && m_m32 == other.m_m32 && m_m33 == other.m_m33;
+        }
+
+        /// <summary>
+        /// Returns true if all of the elements of this matrix are within <paramref name="epsilon"/>
+        /// of the same elements of the specified matrix.  That is, in order for the matrices to be
+        /// considered equal (and for this function to return true), the absolute value of the
+        /// difference between each of their elements must be less than or equal to <paramref name="epsilon"/>.
+        /// </summary>
+        /// <param name="other">The <see cref="Matrix3By3"/> to compare to this matrix.</param>
+        /// <param name="epsilon">The largest difference between the elements of the matrices for which they will be considered equal.</param>
+        /// <returns>true if the matrices are equal as defined by the epsilon value.</returns>
+        [Pure]
+        public bool EqualsEpsilon(Matrix3By3 other, double epsilon)
+        {
+            return Math.Abs(m_m11 - other.m_m11) <= epsilon &&
+                   Math.Abs(m_m12 - other.m_m12) <= epsilon &&
+                   Math.Abs(m_m13 - other.m_m13) <= epsilon &&
+                   Math.Abs(m_m21 - other.m_m21) <= epsilon &&
+                   Math.Abs(m_m22 - other.m_m22) <= epsilon &&
+                   Math.Abs(m_m23 - other.m_m23) <= epsilon &&
+                   Math.Abs(m_m31 - other.m_m31) <= epsilon &&
+                   Math.Abs(m_m32 - other.m_m32) <= epsilon &&
+                   Math.Abs(m_m33 - other.m_m33) <= epsilon;
         }
 
         /// <summary>
@@ -526,9 +479,9 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return m_m11.GetHashCode() ^ m_m12.GetHashCode() ^ m_m13.GetHashCode()
-                 ^ m_m21.GetHashCode() ^ m_m22.GetHashCode() ^ m_m23.GetHashCode()
-                 ^ m_m31.GetHashCode() ^ m_m32.GetHashCode() ^ m_m33.GetHashCode();
+            return HashCode.Combine(m_m11.GetHashCode(), m_m12.GetHashCode(), m_m13.GetHashCode(),
+                                    m_m21.GetHashCode(), m_m22.GetHashCode(), m_m23.GetHashCode(),
+                                    m_m31.GetHashCode(), m_m32.GetHashCode(), m_m33.GetHashCode());
         }
 
         /// <summary>
@@ -580,21 +533,5 @@ namespace CesiumLanguageWriter
         private static readonly Matrix3By3 s_zero = new Matrix3By3(0.0, 0.0, 0.0,
                                                                    0.0, 0.0, 0.0,
                                                                    0.0, 0.0, 0.0);
-
-        #region IEquatable<Matrix3By3> Members
-
-        /// <summary>
-        /// Indicates whether another instance of this type is exactly equal to this instance.
-        /// </summary>
-        /// <param name="other">The instance to compare to this instance.</param>
-        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
-        public bool Equals(Matrix3By3 other)
-        {
-            return other.M11 == M11 && other.M12 == M12 && other.M13 == M13
-                && other.M21 == M21 && other.M22 == M22 && other.M23 == M23
-                && other.M31 == M31 && other.M32 == M32 && other.M33 == M33;
-        }
-
-        #endregion
     }
 }

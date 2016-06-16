@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -89,8 +90,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="day">The whole number part of the date.</param>
         /// <param name="secondsOfDay">The time of day, expressed as seconds past noon on the given whole-number day.</param>
-        public JulianDate(int day, double secondsOfDay) :
-            this(day, secondsOfDay, TimeStandard.InternationalAtomicTime)
+        public JulianDate(int day, double secondsOfDay)
+            : this(day, secondsOfDay, TimeStandard.InternationalAtomicTime)
         {
         }
 
@@ -143,8 +144,8 @@ namespace CesiumLanguageWriter
         /// The time standard will be <see cref="TimeStandard.InternationalAtomicTime">International Atomic Time (TAI)</see>.
         /// </summary>
         /// <param name="dayCount">The complete astronomical Julian date.</param>
-        public JulianDate(double dayCount) :
-            this(dayCount, TimeStandard.InternationalAtomicTime)
+        public JulianDate(double dayCount)
+            : this(dayCount, TimeStandard.InternationalAtomicTime)
         {
         }
 
@@ -181,7 +182,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public double TotalDays
         {
-            get { return (double)Day + SecondsOfDay / TimeConstants.SecondsPerDay; }
+            get { return m_day + m_secondsOfDay / TimeConstants.SecondsPerDay; }
         }
 
         /// <summary>
@@ -218,6 +219,7 @@ namespace CesiumLanguageWriter
         /// Thrown if the specified <see cref="TimeStandard"/> is not capable of
         /// representing this <see cref="JulianDate"/>.
         /// </exception>
+        [Pure]
         public JulianDate ToTimeStandard(TimeStandard timeStandard)
         {
             JulianDate result;
@@ -289,6 +291,7 @@ namespace CesiumLanguageWriter
         /// <paramref name="other"/> Julian date should have the same time standard and it should be
         /// safe for arithmetic.
         /// </remarks>
+        [Pure]
         public double SecondsDifference(JulianDate other)
         {
             JulianDate start = ToInternationalAtomicTime();
@@ -331,6 +334,7 @@ namespace CesiumLanguageWriter
         /// <paramref name="other"/> Julian date should have the same time standard and it should be
         /// safe for arithmetic.
         /// </remarks>
+        [Pure]
         public double DaysDifference(JulianDate other)
         {
             JulianDate start = ToInternationalAtomicTime();
@@ -345,6 +349,7 @@ namespace CesiumLanguageWriter
         /// <returns>
         /// A new <see cref="JulianDate"/> that is the result of the addition.
         /// </returns>
+        [Pure]
         public JulianDate Add(Duration duration)
         {
             if (m_timeStandard == TimeStandard.CoordinatedUniversalTime)
@@ -385,6 +390,7 @@ namespace CesiumLanguageWriter
         /// and the subtrahend Julian date should have the same time standard and it should be
         /// safe for arithmetic.
         /// </remarks>
+        [Pure]
         public Duration Subtract(JulianDate subtrahend)
         {
             if (Standard != TimeStandard.InternationalAtomicTime &&
@@ -425,6 +431,7 @@ namespace CesiumLanguageWriter
         /// <returns>
         /// A new <see cref="JulianDate"/> that is the result of the subtraction.
         /// </returns>
+        [Pure]
         public JulianDate Subtract(Duration duration)
         {
             return Add(new Duration(-duration.Days, -duration.Seconds));
@@ -435,6 +442,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="seconds">The number of seconds.</param>
         /// <returns>The new date.</returns>
+        [Pure]
         public JulianDate AddSeconds(double seconds)
         {
             return Add(Duration.FromSeconds(seconds));
@@ -446,6 +454,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="seconds">The number of seconds.</param>
         /// <returns>The new date.</returns>
+        [Pure]
         public JulianDate SubtractSeconds(double seconds)
         {
             return Subtract(Duration.FromSeconds(seconds));
@@ -456,6 +465,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="days">The number of days.</param>
         /// <returns>The new date.</returns>
+        [Pure]
         public JulianDate AddDays(double days)
         {
             return Add(Duration.FromDays(days));
@@ -586,14 +596,7 @@ namespace CesiumLanguageWriter
         /// <returns><see langword="true"/> if <paramref name="obj"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
-            if (obj is JulianDate)
-            {
-                return Equals((JulianDate)obj);
-            }
-            else
-            {
-                return false;
-            }
+            return obj is JulianDate && Equals((JulianDate)obj);
         }
 
         /// <summary>
@@ -616,6 +619,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The date to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> is identical to this instance; otherwise, <see langword="false"/>.</returns>
+        [Pure]
         public bool IsIdentical(JulianDate other)
         {
             return m_day == other.m_day &&
@@ -627,14 +631,15 @@ namespace CesiumLanguageWriter
         /// Returns true if this date is within <paramref name="epsilon"/> seconds of the
         /// specified date.  That is, in order for the dates to be considered equal (and for
         /// this function to return true), the absolute value of the difference between them, in
-        /// seconds, must be less than <paramref name="epsilon"/>.
+        /// seconds, must be less than or equal to <paramref name="epsilon"/>.
         /// </summary>
         /// <param name="other">The Julian Date to compare to this date.</param>
-        /// <param name="epsilon">The smallest difference between the dates, in seconds, such that they will NOT be considered equal.</param>
+        /// <param name="epsilon">The largest difference between the dates, in seconds, such that they will be considered equal.</param>
         /// <returns>true if the dates are equal as defined by the epsilon value.</returns>
+        [Pure]
         public bool EqualsEpsilon(JulianDate other, double epsilon)
         {
-            return Math.Abs(other.SecondsDifference(this)) < epsilon;
+            return Math.Abs(other.SecondsDifference(this)) <= epsilon;
         }
 
         /// <summary>
@@ -643,7 +648,7 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return Day.GetHashCode() ^ SecondsOfDay.GetHashCode() ^ Standard.GetHashCode();
+            return HashCode.Combine(m_day.GetHashCode(), m_secondsOfDay.GetHashCode(), Standard.GetHashCode());
         }
 
         /// <summary>
@@ -652,7 +657,7 @@ namespace CesiumLanguageWriter
         /// <returns>The string.</returns>
         public override string ToString()
         {
-            return String.Format(CultureInfo.CurrentCulture, "{0}:{1} ({2})", Day, SecondsOfDay, Standard == TimeStandard.CoordinatedUniversalTime ? "UTC" : "TAI");
+            return string.Format(CultureInfo.CurrentCulture, "{0}:{1} ({2})", Day, SecondsOfDay, Standard == TimeStandard.CoordinatedUniversalTime ? "UTC" : "TAI");
         }
 
         /// <summary>
@@ -776,6 +781,7 @@ namespace CesiumLanguageWriter
         /// Time.
         /// </summary>
         /// <returns>The <see cref="DateTime"/>.</returns>
+        [Pure]
         public DateTime ToDateTime()
         {
             return ToGregorianDate().ToDateTime();
@@ -788,6 +794,7 @@ namespace CesiumLanguageWriter
         /// <param name="standard">The time standard in which to express the returned
         /// <see cref="DateTime"/>.</param>
         /// <returns>The <see cref="DateTime"/>.</returns>
+        [Pure]
         public DateTime ToDateTime(TimeStandard standard)
         {
             return ToGregorianDate(standard).ToDateTime();
@@ -798,6 +805,7 @@ namespace CesiumLanguageWriter
         /// default time standard of Coordinated Universal Time.
         /// </summary>
         /// <returns>The <see cref="GregorianDate"/>.</returns>
+        [Pure]
         public GregorianDate ToGregorianDate()
         {
             return new GregorianDate(this, TimeStandard.CoordinatedUniversalTime);
@@ -810,6 +818,7 @@ namespace CesiumLanguageWriter
         /// <param name="standard">The time standard in which to express the returned
         /// <see cref="GregorianDate"/>.</param>
         /// <returns>The <see cref="GregorianDate"/>.</returns>
+        [Pure]
         public GregorianDate ToGregorianDate(TimeStandard standard)
         {
             return new GregorianDate(this, standard);
@@ -823,18 +832,15 @@ namespace CesiumLanguageWriter
         private int IsClose(JulianDate other)
         {
             int dayDifference = m_day - other.m_day;
-            if (dayDifference > 1 ||
-                dayDifference < -1)
+            if (dayDifference > 1 || dayDifference < -1)
             {
-                return (m_day < other.m_day) ? -1 : 1;
+                return m_day < other.m_day ? -1 : 1;
             }
             else
             {
                 return 0;
             }
         }
-
-        #region IConvertible
 
         /// <summary>
         /// Implements <see cref="IConvertible"/> interface. Converts a 
@@ -1026,8 +1032,6 @@ namespace CesiumLanguageWriter
         {
             throw new InvalidCastException();
         }
-
-        #endregion
 
         private readonly int m_day;
         private readonly double m_secondsOfDay;

@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -40,6 +41,14 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Gets a <see cref="Duration"/> of 0 days and seconds.
+        /// </summary>
+        public static Duration Zero
+        {
+            get { return s_zero; }
+        }
+
+        /// <summary>
         /// Converts the specified number of hours, minutes, and seconds to total duration in seconds.
         /// </summary>
         /// <param name="hours">The number of hours.</param>
@@ -59,8 +68,8 @@ namespace CesiumLanguageWriter
         /// <param name="hours">The number of hours in the new duration.</param>
         /// <param name="minutes">The number of minutes in the new duration.</param>
         /// <param name="seconds">The number of seconds in the new duration.</param>
-        public Duration(int days, int hours, int minutes, double seconds) :
-            this(days, Duration.HoursMinutesSecondsToSeconds(hours, minutes, seconds))
+        public Duration(int days, int hours, int minutes, double seconds)
+            : this(days, HoursMinutesSecondsToSeconds(hours, minutes, seconds))
         {
         }
 
@@ -131,24 +140,11 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Initializes a new Duration from a <see cref="System.TimeSpan"/>.
-        /// </summary>
-        /// <param name="timeSpan">The time span.</param>
-        public Duration(TimeSpan timeSpan)
-        {
-            m_days = timeSpan.Days;
-            m_seconds = (timeSpan - TimeSpan.FromDays(m_days)).TotalSeconds;
-        }
-
-        /// <summary>
         /// Gets the day component of this duration.
         /// </summary>
         public int Days
         {
-            get
-            {
-                return m_days;
-            }
+            get { return m_days; }
         }
 
         /// <summary>
@@ -158,10 +154,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public double Seconds
         {
-            get
-            {
-                return m_seconds;
-            }
+            get { return m_seconds; }
         }
 
         /// <summary>
@@ -169,10 +162,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public double TotalDays
         {
-            get
-            {
-                return (double)Days + (Seconds / TimeConstants.SecondsPerDay);
-            }
+            get { return m_days + (m_seconds / TimeConstants.SecondsPerDay); }
         }
 
         /// <summary>
@@ -181,23 +171,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public double TotalSeconds
         {
-            get
-            {
-                return Days * TimeConstants.SecondsPerDay + Seconds;
-            }
-        }
-
-        /// <summary>
-        /// Returns a <see cref="System.TimeSpan"/> equivalent to this Duration.
-        /// </summary>
-        /// <returns>The time span.</returns>
-        [CSToJavaRename("toPeriod")]
-        public TimeSpan ToTimeSpan()
-        {
-            long dayTicks = Days * TimeSpan.TicksPerDay;
-            long secondTicks = (long)Math.Round(Seconds * TimeSpan.TicksPerSecond);
-
-            return new TimeSpan(dayTicks + secondTicks);
+            get { return m_days * TimeConstants.SecondsPerDay + m_seconds; }
         }
 
         /// <summary>
@@ -206,7 +180,7 @@ namespace CesiumLanguageWriter
         /// <returns>The string.</returns>
         public override string ToString()
         {
-            return String.Format(CultureInfo.CurrentCulture, "{0}:{1}", Days, Seconds);
+            return string.Format(CultureInfo.CurrentCulture, "{0}:{1}", m_days, m_seconds);
         }
 
         /// <summary>
@@ -215,22 +189,22 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return Days.GetHashCode() ^ Seconds.GetHashCode();
+            return HashCode.Combine(m_days.GetHashCode(),
+                                    m_seconds.GetHashCode());
         }
 
         /// <summary>
         /// Returns true if this Duration exactly equals another duration, within the limits
         /// of floating point precision.  To be considered equal, the <see cref="Days"/>
-        /// property must be identical and the difference between the <see cref="Seconds"/>
-        /// properties must be less than 1.0e-10.
+        /// property must be identical and the
+        /// difference between the <see cref="Seconds"/> properties must be less than 1.0e-10.
         /// </summary>
         /// <param name="other">The other duration.</param>
         /// <returns>true if this duration exactly equals the <paramref name="other"/> duration, within the limits of floating point precision.</returns>
         public bool Equals(Duration other)
         {
-            return Days == other.Days &&
-                   (m_seconds - other.m_seconds) < 1e-10 &&
-                   (m_seconds - other.m_seconds) > -1e-10;
+            return m_days == other.m_days &&
+                   Math.Abs(m_seconds - other.m_seconds) < Constants.Epsilon10;
         }
 
         /// <summary>
@@ -243,11 +217,7 @@ namespace CesiumLanguageWriter
         /// <returns>true if this duration exactly equals the <paramref name="obj"/> duration, within the limits of floating point precision.</returns>
         public override bool Equals(object obj)
         {
-            if (obj is Duration)
-            {
-                return Equals((Duration)obj);
-            }
-            return false;
+            return obj is Duration && Equals((Duration)obj);
         }
 
         /// <summary>
@@ -257,11 +227,12 @@ namespace CesiumLanguageWriter
         /// seconds, must be less than <paramref name="epsilon"/>.
         /// </summary>
         /// <param name="other">The Duration to compare to this Duration.</param>
-        /// <param name="epsilon">The smallest difference between the Durations, in seconds, such that they will NOT be considered equal.</param>
+        /// <param name="epsilon">The largest difference between the Durations, in seconds, such that they will be considered equal.</param>
         /// <returns>true if the dates are equal as defined by the epsilon value.</returns>
+        [Pure]
         public bool EqualsEpsilon(Duration other, double epsilon)
         {
-            return Math.Abs(Subtract(other).TotalSeconds) < epsilon;
+            return Math.Abs(Subtract(other).TotalSeconds) <= epsilon;
         }
 
         /// <summary>
@@ -297,32 +268,13 @@ namespace CesiumLanguageWriter
         /// </returns>
         public int CompareTo(Duration other)
         {
-            if (Days != other.Days)
-            {
-                if (Days < other.Days)
-                {
-                    return -1;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-            else
-            {
-                if (Seconds == other.Seconds)
-                {
-                    return 0;
-                }
-                else if (Seconds < other.Seconds)
-                {
-                    return -1;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            if (m_days != other.m_days)
+                return m_days < other.m_days ? -1 : 1;
+
+            if (m_seconds.Equals(other.m_seconds))
+                return 0;
+
+            return m_seconds < other.m_seconds ? -1 : 1;
         }
 
         /// <summary>
@@ -360,17 +312,11 @@ namespace CesiumLanguageWriter
         public int CompareTo(object obj)
         {
             if (obj == null)
-            {
                 return 1;
-            }
-            else if (!(obj is Duration))
-            {
+            if (!(obj is Duration))
                 throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "obj");
-            }
-            else
-            {
-                return CompareTo((Duration)obj);
-            }
+
+            return CompareTo((Duration)obj);
         }
 
         /// <summary>
@@ -380,7 +326,7 @@ namespace CesiumLanguageWriter
         /// <returns>A <see cref="Duration"/> that represents the value of this instance plus the value of <paramref name="other"/>.</returns>
         public Duration Add(Duration other)
         {
-            return new Duration(Days + other.Days, Seconds + other.Seconds);
+            return new Duration(m_days + other.m_days, m_seconds + other.m_seconds);
         }
 
         /// <summary>
@@ -390,7 +336,7 @@ namespace CesiumLanguageWriter
         /// <returns>A Duration that represents the value of this instance minus the value of other.</returns>
         public Duration Subtract(Duration other)
         {
-            return new Duration(Days - other.Days, Seconds - other.Seconds);
+            return new Duration(m_days - other.m_days, m_seconds - other.m_seconds);
         }
 
         /// <summary>
@@ -398,12 +344,13 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="constant">The constant by which to multiply the Duration.</param>
         /// <returns>A Duration that represents the value of this instance multiplied by the constant.</returns>
+        [Pure]
         public Duration Multiply(double constant)
         {
-            double days = (double)Days * constant;
+            double days = m_days * constant;
             int wholeDays = (int)days;
-            double fractionOfDay = days - (double)wholeDays;
-            double seconds = fractionOfDay * TimeConstants.SecondsPerDay + Seconds * constant;
+            double fractionOfDay = days - wholeDays;
+            double seconds = fractionOfDay * TimeConstants.SecondsPerDay + m_seconds * constant;
             return new Duration(wholeDays, seconds);
         }
 
@@ -412,6 +359,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="divisor">The duration by which to divide this duration.</param>
         /// <returns>The result of dividing this Duration by another.</returns>
+        [Pure]
         public double Divide(Duration divisor)
         {
             return TotalSeconds / divisor.TotalSeconds;
@@ -422,12 +370,13 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="constant">The constant by which to divide the <see cref="Duration"/>.</param>
         /// <returns>A <see cref="Duration"/> that represents the value of this instance divided by the constant.</returns>
+        [Pure]
         public Duration Divide(double constant)
         {
-            double days = (double)Days / constant;
+            double days = m_days / constant;
             int wholeDays = (int)days;
-            double fractionOfDay = days - (double)wholeDays;
-            double seconds = fractionOfDay * TimeConstants.SecondsPerDay + Seconds / constant;
+            double fractionOfDay = days - wholeDays;
+            double seconds = fractionOfDay * TimeConstants.SecondsPerDay + m_seconds / constant;
             return new Duration(wholeDays, seconds);
         }
 
@@ -436,9 +385,10 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="seconds">The number of seconds to add.</param>
         /// <returns>A new duration which is the sum of the original duration and the specified number of seconds.</returns>
+        [Pure]
         public Duration AddSeconds(double seconds)
         {
-            return Add(Duration.FromSeconds(seconds));
+            return Add(FromSeconds(seconds));
         }
 
         /// <summary>
@@ -446,9 +396,10 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="days">The number of days to add.</param>
         /// <returns>A new duration which is the sum of the original duration and the specified number of days.</returns>
+        [Pure]
         public Duration AddDays(double days)
         {
-            return Add(Duration.FromDays(days));
+            return Add(FromDays(days));
         }
 
         /// <summary>
@@ -614,7 +565,8 @@ namespace CesiumLanguageWriter
         private readonly int m_days;
         private readonly double m_seconds;
 
-        private static readonly Duration s_maxValue = new Duration(Int32.MaxValue, 0.0);
-        private static readonly Duration s_minValue = new Duration(Int32.MinValue, 0.0);
+        private static readonly Duration s_maxValue = new Duration(int.MaxValue, 0.0);
+        private static readonly Duration s_minValue = new Duration(int.MinValue, 0.0);
+        private static readonly Duration s_zero = new Duration(0, 0);
     }
 }

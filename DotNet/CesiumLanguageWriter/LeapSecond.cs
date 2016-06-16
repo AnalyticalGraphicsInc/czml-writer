@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 
 namespace CesiumLanguageWriter
 {
@@ -23,8 +22,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="date">The Julian date of the leap second, in Coordinated Universal Time (UTC).</param>
         /// <param name="totalTaiOffsetFromUtc">The offset of TAI from UTC after this leap second.</param>
-        public LeapSecond(double date, double totalTaiOffsetFromUtc) :
-            this(new JulianDate(date, TimeStandard.CoordinatedUniversalTime), totalTaiOffsetFromUtc)
+        public LeapSecond(double date, double totalTaiOffsetFromUtc)
+            : this(new JulianDate(date, TimeStandard.CoordinatedUniversalTime), totalTaiOffsetFromUtc)
         {
         }
 
@@ -57,40 +56,24 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Indicates whether another instance of this type is exactly equal to this instance.
-        /// </summary>
-        /// <param name="other">The instance to compare to this instance.</param>
-        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
-        public bool Equals(LeapSecond other)
-        {
-            return Date.IsIdentical(other.Date) &&
-                   TotalTaiOffsetFromUtc == other.TotalTaiOffsetFromUtc;
-        }
-
-        /// <summary>
         /// Indicates whether another object is exactly equal to this instance.
         /// </summary>
         /// <param name="obj">The object to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
-            if (obj is LeapSecond)
-            {
-                return Equals((LeapSecond)obj);
-            }
-            else
-            {
-                return false;
-            }
+            return obj is LeapSecond && Equals((LeapSecond)obj);
         }
 
         /// <summary>
-        /// Returns the date of this LeapSecond and offset from UTC as a string.
+        /// Indicates whether another instance of this type is exactly equal to this instance.
         /// </summary>
-        /// <returns>The string.</returns>
-        public override string ToString()
+        /// <param name="other">The instance to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        public bool Equals(LeapSecond other)
         {
-            return String.Format(CultureInfo.CurrentCulture, "{0}, {1}", Date, TotalTaiOffsetFromUtc);
+            return m_date.IsIdentical(other.m_date) &&
+                   m_totalTaiOffsetFromUtc == other.m_totalTaiOffsetFromUtc;
         }
 
         /// <summary>
@@ -99,8 +82,19 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return Date.GetHashCode() ^ TotalTaiOffsetFromUtc.GetHashCode();
+            return HashCode.Combine(m_date.GetHashCode(),
+                                    m_totalTaiOffsetFromUtc.GetHashCode());
         }
+
+        /// <summary>
+        /// Returns the date of this LeapSecond and offset from UTC as a string.
+        /// </summary>
+        /// <returns>The string.</returns>
+        public override string ToString()
+        {
+            return string.Format("{0}, {1}", m_date, m_totalTaiOffsetFromUtc);
+        }
+
 
         /// <summary>
         /// Returns <see langword="true"/> if the two instances are exactly equal.

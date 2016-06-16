@@ -25,21 +25,6 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests initialization from an array of 3 coordinates works correctly.
-        /// </summary>
-        [Test]
-        public void TestFromArray()
-        {
-            double[] values = { 2.0, 3.0, 6.0 };
-
-            Cartographic test = new Cartographic(values);
-            Assert.AreEqual(values.Length, test.Length);
-            Assert.AreEqual(test.Longitude, test[0]);
-            Assert.AreEqual(test.Latitude, test[1]);
-            Assert.AreEqual(test.Height, test[2]);
-        }
-
-        /// <summary>
         /// Tests the equality and inequality methods and operators.
         /// </summary>
         [Test]
@@ -105,50 +90,6 @@ namespace CesiumLanguageWriterTests
             Cartographic object3 = new Cartographic(1.0, 2.0, 3.1);
             Assert.AreEqual(object1.GetHashCode(), object2.GetHashCode());
             Assert.AreNotEqual(object1.GetHashCode(), object3.GetHashCode());
-        }
-
-        /// <summary>
-        /// Tests that construction from a null array of doubles throws the correct exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestInitializationFromNull()
-        {
-            double[] array = null;
-            Cartographic first = new Cartographic(array, 0);
-        }
-
-        /// <summary>
-        /// Tests that construction from an array of doubles with an incorrect length throws the correct exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestInitializationFromBadArray()
-        {
-            double[] array = new double[2];
-            Cartographic first = new Cartographic(array, 0);
-        }
-
-        /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestIndexTooHigh()
-        {
-            Cartographic first = new Cartographic(1.0, 2.0, 3.0);
-            double bad = first[3];
-        }
-
-        /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestIndexTooLow()
-        {
-            Cartographic first = new Cartographic(1.0, 2.0, 3.0);
-            double bad = first[-1];
         }
 
         /// <summary>

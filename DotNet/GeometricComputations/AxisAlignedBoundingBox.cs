@@ -64,7 +64,7 @@ namespace GeometricComputations
             Cartesian minimum = new Cartesian(minimumX, minimumY, minimumZ);
             Cartesian maximum = new Cartesian(maximumX, maximumY, maximumZ);
 
-            if (minimum.AllComponentsAreGreaterThan(maximum))
+            if (minimum.X > maximum.X && minimum.Y > maximum.Y && minimum.Z > maximum.Z)
             {
                 Cartesian temp = minimum;
                 minimum = maximum;

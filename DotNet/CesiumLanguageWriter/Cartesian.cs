@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Text;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -19,10 +18,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public static Cartesian Zero
         {
-            get
-            {
-                return s_zero;
-            }
+            get { return s_zero; }
         }
 
         /// <summary>
@@ -35,55 +31,7 @@ namespace CesiumLanguageWriter
         /// </remarks>
         public static Cartesian Undefined
         {
-            get
-            {
-                return s_undefined;
-            }
-        }
-
-        /// <summary>
-        /// Initializes a set of <see cref="Cartesian"/> coordinates from 3 consecutive elements in the provided array.
-        /// </summary>
-        /// <param name="elements">The array of coordinate values.</param>
-        /// <param name="startIndex">The index of the first element in the array to use.</param>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when the array of <paramref name="elements"/> is <see langword="null"/>.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when an object of this type is constructed from an array with less than 3 <paramref name="elements"/>.
-        /// </exception>
-        public Cartesian(double[] elements, int startIndex)
-        {
-            if (elements == null)
-            {
-                throw new ArgumentNullException("elements");
-            }
-            else if (startIndex >= elements.Length ||
-                     elements.Length - startIndex < s_length)
-            {
-                throw new ArgumentOutOfRangeException("elements", String.Format(CultureInfo.CurrentCulture, CesiumLocalization.MustBeConstructedFromSpecificNumberOfElements, typeof(Cartesian), 3));
-            }
-            else
-            {
-                m_x = elements[startIndex + 0];
-                m_y = elements[startIndex + 1];
-                m_z = elements[startIndex + 2];
-            }
-        }
-
-        /// <summary>
-        /// Initializes a set of <see cref="Cartesian"/> coordinates from the first 3 consecutive elements in the provided array.
-        /// </summary>
-        /// <param name="elements">The array of coordinate values.</param>
-        /// <exception cref="ArgumentNullException">
-        /// The array of <paramref name="elements"/> cannot be null.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// An object of this type must be constructed from an array with at least 3 <paramref name="elements"/>.
-        /// </exception>
-        public Cartesian(double[] elements)
-            : this(elements, 0)
-        {
+            get { return s_undefined; }
         }
 
         /// <summary>
@@ -130,41 +78,11 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the <see cref="UnitCartesian"/> of the axis most orthogonal to this Cartesian.
-        /// </summary>
-        public UnitCartesian MostOrthogonalAxis
-        {
-            get
-            {
-                double x = Math.Abs(m_x);
-                double y = Math.Abs(m_y);
-                double z = Math.Abs(m_z);
-
-                if (x <= y)
-                {
-                    return ((x <= z) ? UnitCartesian.UnitX : UnitCartesian.UnitZ);
-                }
-                else
-                {
-                    return ((y <= z) ? UnitCartesian.UnitY : UnitCartesian.UnitZ);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Inverts this instance.
-        /// </summary>
-        /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the inverse of this instance.</returns>
-        public Cartesian Invert()
-        {
-            return new Cartesian(-m_x, -m_y, -m_z);
-        }
-
-        /// <summary>
         /// Multiplies this instance by a scalar.
         /// </summary>
         /// <param name="scalar">The multiplier, or value which is to multiply this instance.</param>
         /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the multiplication.</returns>
+        [Pure]
         public Cartesian Multiply(double scalar)
         {
             return new Cartesian(m_x * scalar, m_y * scalar, m_z * scalar);
@@ -175,6 +93,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="scalar">The divisor, or value which is to divide this instance.</param>
         /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the division.</returns>
+        [Pure]
         public Cartesian Divide(double scalar)
         {
             return new Cartesian(m_x / scalar, m_y / scalar, m_z / scalar);
@@ -185,6 +104,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The addend, or value which is to be added to this instance.</param>
         /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the addition.</returns>
+        [Pure]
         public Cartesian Add(Cartesian other)
         {
             return new Cartesian(m_x + other.m_x, m_y + other.m_y, m_z + other.m_z);
@@ -195,6 +115,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The subtrahend, or value which is to be subtracted from this instance.</param>
         /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the subtraction.</returns>
+        [Pure]
         public Cartesian Subtract(Cartesian other)
         {
             return new Cartesian(m_x - other.m_x, m_y - other.m_y, m_z - other.m_z);
@@ -205,6 +126,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The set of <see cref="Cartesian"/> coordinates to cross with this instance.</param>
         /// <returns>A set of <see cref="Cartesian"/> coordinates that represents the result of the product.</returns>
+        [Pure]
         public Cartesian Cross(Cartesian other)
         {
             return new Cartesian(m_y * other.m_z - m_z * other.m_y, m_z * other.m_x - m_x * other.m_z, m_x * other.m_y - m_y * other.m_x);
@@ -215,6 +137,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The set of <see cref="Cartesian"/> coordinates to dot with this instance.</param>
         /// <returns>A <see cref="double"/> that represents the result of the product.</returns>
+        [Pure]
         public double Dot(Cartesian other)
         {
             return m_x * other.m_x + m_y * other.m_y + m_z * other.m_z;
@@ -286,70 +209,32 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Performs a component-wise greater than check.
-        /// </summary>
-        /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
-        /// <returns><see langword="true"/> if all components of this Cartesian are greater than all components of <paramref name="other"/></returns>
-        public bool AllComponentsAreGreaterThan(Cartesian other)
-        {
-            return (m_x > other.X) && (m_y > other.Y) && (m_z > other.Z);
-        }
-
-        /// <summary>
-        /// Performs a component-wise greater than or equal to check.
-        /// </summary>
-        /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
-        /// <returns><see langword="true"/> if all components of this <see cref="Cartesian"/> are greater than or equal to all components of <paramref name="other"/></returns>
-        public bool AllComponentsAreGreaterThanOrEqualTo(Cartesian other)
-        {
-            return (m_x >= other.X) && (m_y >= other.Y) && (m_z >= other.Z);
-        }
-
-        /// <summary>
-        /// Performs a component-wise less than check.
-        /// </summary>
-        /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
-        /// <returns><see langword="true"/> if all components of this <see cref="Cartesian"/> are less than all components of <paramref name="other"/></returns>
-        public bool AllComponentsAreLessThan(Cartesian other)
-        {
-            return (m_x < other.X) && (m_y < other.Y) && (m_z < other.Z);
-        }
-
-        /// <summary>
-        /// Performs a component-wise less than or equal to check.
-        /// </summary>
-        /// <param name="other">The <see cref="Cartesian"/> to compare against.</param>
-        /// <returns><see langword="true"/> if all components of this <see cref="Cartesian"/> are less than or equal to all components of <paramref name="other"/></returns>
-        public bool AllComponentsAreLessThanOrEqualTo(Cartesian other)
-        {
-            return (m_x <= other.X) && (m_y <= other.Y) && (m_z <= other.Z);
-        }
-
-        /// <summary>
+        /// <para>
         /// Produces a set of <see cref="Cartesian"/> coordinates representing this instance which results from rotating
-        /// the original axes used to represent this instance by the provided <see cref="Matrix3By3"/> rotation.
+        /// the original axes used to represent this instance by the provided <see cref="Matrix3By3"/> rotation. 
+        /// This type of rotation is sometimes referred to as an "alias rotation".
+        /// </para>
         /// </summary>
         /// <param name="rotation">The <see cref="Matrix3By3"/> rotation.</param>
         /// <returns>A set of <see cref="Cartesian"/> coordinates which is the result of the rotation.</returns>
-        /// <remarks>
-        /// This type of rotation is sometimes referred to as an "alias rotation".
-        /// </remarks>
+        [Pure]
         public Cartesian Rotate(Matrix3By3 rotation)
         {
             return new Cartesian(rotation.M11 * m_x + rotation.M12 * m_y + rotation.M13 * m_z,
-                                  rotation.M21 * m_x + rotation.M22 * m_y + rotation.M23 * m_z,
-                                  rotation.M31 * m_x + rotation.M32 * m_y + rotation.M33 * m_z);
+                                 rotation.M21 * m_x + rotation.M22 * m_y + rotation.M23 * m_z,
+                                 rotation.M31 * m_x + rotation.M32 * m_y + rotation.M33 * m_z);
         }
 
         /// <summary>
+        /// <para>
         /// Produces a set of <see cref="Cartesian"/> coordinates representing this instance which results from rotating
         /// the original axes used to represent this instance by the provided <see cref="UnitQuaternion"/> rotation.
+        /// This type of rotation is sometimes referred to as an "alias rotation".
+        /// </para>
         /// </summary>
         /// <param name="rotation">The <see cref="UnitQuaternion"/> rotation.</param>
         /// <returns>A set of <see cref="Cartesian"/> coordinates which is the result of the rotation.</returns>
-        /// <remarks>
-        /// This type of rotation is sometimes referred to as an "alias rotation".
-        /// </remarks>
+        [Pure]
         public Cartesian Rotate(UnitQuaternion rotation)
         {
             double w = rotation.W;
@@ -357,8 +242,38 @@ namespace CesiumLanguageWriter
             double dot = m_x * rotation.X + m_y * rotation.Y + m_z * rotation.Z;
 
             return new Cartesian(difference * m_x + 2.0 * (w * (m_y * rotation.Z - m_z * rotation.Y) + dot * rotation.X),
-                                  difference * m_y + 2.0 * (w * (m_z * rotation.X - m_x * rotation.Z) + dot * rotation.Y),
-                                  difference * m_z + 2.0 * (w * (m_x * rotation.Y - m_y * rotation.X) + dot * rotation.Z));
+                                 difference * m_y + 2.0 * (w * (m_z * rotation.X - m_x * rotation.Z) + dot * rotation.Y),
+                                 difference * m_z + 2.0 * (w * (m_x * rotation.Y - m_y * rotation.X) + dot * rotation.Z));
+        }
+
+        /// <summary>
+        /// Gets the axis which is most orthogonal to this instance.
+        /// </summary>
+        public UnitCartesian MostOrthogonalAxis
+        {
+            get
+            {
+                double x = Math.Abs(m_x);
+                double y = Math.Abs(m_y);
+                double z = Math.Abs(m_z);
+
+                if (x <= y)
+                {
+                    return x <= z ? UnitCartesian.UnitX : UnitCartesian.UnitZ;
+                }
+                else
+                {
+                    return y <= z ? UnitCartesian.UnitY : UnitCartesian.UnitZ;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets whether or not any of the coordinates for this instance have the value <see cref="Double.NaN"/>.
+        /// </summary>
+        public bool IsUndefined
+        {
+            get { return double.IsNaN(m_x) || double.IsNaN(m_y) || double.IsNaN(m_z); }
         }
 
         /// <summary>
@@ -368,14 +283,19 @@ namespace CesiumLanguageWriter
         /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
-            if (obj is Cartesian)
-            {
-                return Equals((Cartesian)obj);
-            }
-            else
-            {
-                return false;
-            }
+            return obj is Cartesian && Equals((Cartesian)obj);
+        }
+
+        /// <summary>
+        /// Indicates whether another instance of this type is exactly equal to this instance.
+        /// </summary>
+        /// <param name="other">The instance to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        public bool Equals(Cartesian other)
+        {
+            return m_x.Equals(other.m_x) &&
+                   m_y.Equals(other.m_y) &&
+                   m_z.Equals(other.m_z);
         }
 
         /// <summary>
@@ -385,13 +305,14 @@ namespace CesiumLanguageWriter
         /// <param name="other">The set of <see cref="Cartesian"/> coordinates to compare to this instance.</param>
         /// <param name="epsilon">The limit at which the absolute differences between the coordinate values will not be considered equal.</param>
         /// <returns>
-        /// <see langword="true"/> if the absolute differences are less than <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
+        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
         /// </returns>
+        [Pure]
         public bool EqualsEpsilon(Cartesian other, double epsilon)
         {
-            return Math.Abs(X - other.X) < epsilon &&
-                   Math.Abs(Y - other.Y) < epsilon &&
-                   Math.Abs(Z - other.Z) < epsilon;
+            return Math.Abs(m_x - other.m_x) <= epsilon &&
+                   Math.Abs(m_y - other.m_y) <= epsilon &&
+                   Math.Abs(m_z - other.m_z) <= epsilon;
         }
 
         /// <summary>
@@ -400,7 +321,9 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return m_x.GetHashCode() ^ m_y.GetHashCode() ^ m_z.GetHashCode();
+            return HashCode.Combine(m_x.GetHashCode(),
+                                    m_y.GetHashCode(),
+                                    m_z.GetHashCode());
         }
 
         /// <summary>
@@ -412,13 +335,7 @@ namespace CesiumLanguageWriter
         /// </returns>
         public override string ToString()
         {
-            StringBuilder build = new StringBuilder(80);
-            build.Append(m_x.ToString(CultureInfo.CurrentCulture));
-            build.Append(", ");
-            build.Append(m_y.ToString(CultureInfo.CurrentCulture));
-            build.Append(", ");
-            build.Append(m_z.ToString(CultureInfo.CurrentCulture));
-            return build.ToString();
+            return string.Format("{0}, {1}, {2}", m_x, m_y, m_z);
         }
 
         /// <summary>
@@ -452,10 +369,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public double Magnitude
         {
-            get
-            {
-                return Math.Sqrt(MagnitudeSquared);
-            }
+            get { return Math.Sqrt(MagnitudeSquared); }
         }
 
         /// <summary>
@@ -463,33 +377,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public double MagnitudeSquared
         {
-            get
-            {
-                return m_x * m_x + m_y * m_y + m_z * m_z;
-            }
-        }
-
-        /// <summary>
-        /// Gets a value indicating if the <see cref="Magnitude"/> of this instance is zero.
-        /// </summary>
-        public bool HasZeroMagnitude
-        {
-            get
-            {
-                // Test the square of the magnitude since this is equivalent and more efficient.
-                return (MagnitudeSquared == 0.0);
-            }
-        }
-
-        /// <summary>
-        /// Gets whether or not any of the coordinates for this instance have the value <see cref="Double.NaN"/>.
-        /// </summary>
-        public bool IsUndefined
-        {
-            get
-            {
-                return Double.IsNaN(m_x) || Double.IsNaN(m_y) || Double.IsNaN(m_z);
-            }
+            get { return m_x * m_x + m_y * m_y + m_z * m_z; }
         }
 
         /// <summary>
@@ -544,63 +432,7 @@ namespace CesiumLanguageWriter
         private readonly double m_y;
         private readonly double m_z;
 
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        private static readonly int s_length = 3;
-
         private static readonly Cartesian s_zero = new Cartesian(0.0, 0.0, 0.0);
-
-        private static readonly Cartesian s_undefined = new Cartesian(Double.NaN, Double.NaN, Double.NaN);
-
-        #region IEquatable<Cartesian3> Members
-
-        /// <summary>
-        /// Indicates whether another instance of this type is exactly equal to this instance.
-        /// </summary>
-        /// <param name="other">The instance to compare to this instance.</param>
-        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
-        public bool Equals(Cartesian other)
-        {
-            return other.m_x == m_x && other.m_y == m_y && other.m_z == m_z;
-        }
-
-        #endregion
-
-        /// <summary>
-        /// Gets the number of elements in this set of coordinates.
-        /// </summary>
-        public int Length
-        {
-            get
-            {
-                return s_length;
-            }
-        }
-
-        /// <summary>
-        /// Gets the value of the specified element with <paramref name="index"/> of 0, 1, and 2 corresponding to the coordinates
-        /// X, Y, and Z.
-        /// </summary>
-        /// <param name="index">Either a 0, 1, or 2 corresponding to the coordinates X, Y, or Z.</param>
-        /// <returns>The coordinate associated with the specified <paramref name="index"/>.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown if the <paramref name="index"/> is less than 0 or greater than or equal to the <see cref="Length"/>.
-        /// </exception>
-        public double this[int index]
-        {
-            get
-            {
-                switch (index)
-                {
-                    case 0:
-                        return X;
-                    case 1:
-                        return Y;
-                    case 2:
-                        return Z;
-                    default:
-                        throw new ArgumentOutOfRangeException("index");
-                }
-            }
-        }
+        private static readonly Cartesian s_undefined = new Cartesian(double.NaN, double.NaN, double.NaN);
     }
 }
