@@ -172,6 +172,7 @@
     <Compile Include="LeapSeconds.cs" />
     <Compile Include="Matrix3By3.cs" />
     <Compile Include="Motion.cs" />
+    <Compile Include="NearFarScalar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangular.cs" />
     <Compile Include="Reference.cs" />
