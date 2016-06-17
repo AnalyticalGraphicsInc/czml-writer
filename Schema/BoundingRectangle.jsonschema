@@ -12,7 +12,7 @@
         "$ref": "#"
     },
     "properties": {
-        "cartesian": {
+        "boundingRectangle": {
             "$ref": "BoundingRectangleValue.jsonschema",
             "description": "The bounding rectangle specified as `[X, Y, Width, Height]`.",
             "czmlValue": true

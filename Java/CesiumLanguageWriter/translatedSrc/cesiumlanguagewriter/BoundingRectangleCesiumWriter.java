@@ -18,11 +18,11 @@ import java.util.List;
 public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyWriter<BoundingRectangleCesiumWriter> {
 	/**
 	 *  
-	The name of the <code>cartesian</code> property.
+	The name of the <code>boundingRectangle</code> property.
 	
 
 	 */
-	public static final String CartesianPropertyName = "cartesian";
+	public static final String BoundingRectanglePropertyName = "boundingRectangle";
 	/**
 	 *  
 	The name of the <code>reference</code> property.
@@ -30,7 +30,7 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 
 	 */
 	public static final String ReferencePropertyName = "reference";
-	private Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>> m_asCartesian;
+	private Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>> m_asBoundingRectangle;
 	private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
 	/**
@@ -41,10 +41,10 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 	 */
 	public BoundingRectangleCesiumWriter(String propertyName) {
 		super(propertyName);
-		m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(
-				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createCartesianAdaptor", new Class[] {}) {
+		m_asBoundingRectangle = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createBoundingRectangleAdaptor", new Class[] {}) {
 					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> invoke() {
-						return createCartesianAdaptor();
+						return createBoundingRectangleAdaptor();
 					}
 				}, false);
 		m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
@@ -65,10 +65,10 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 	 */
 	protected BoundingRectangleCesiumWriter(BoundingRectangleCesiumWriter existingInstance) {
 		super(existingInstance);
-		m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(
-				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createCartesianAdaptor", new Class[] {}) {
+		m_asBoundingRectangle = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createBoundingRectangleAdaptor", new Class[] {}) {
 					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> invoke() {
-						return createCartesianAdaptor();
+						return createBoundingRectangleAdaptor();
 					}
 				}, false);
 		m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
@@ -86,14 +86,14 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 
 	/**
 	 *  
-	Writes the value expressed as a <code>cartesian</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
+	Writes the value expressed as a <code>boundingRectangle</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeCartesian(BoundingRectangle value) {
-		String PropertyName = CartesianPropertyName;
+	public final void writeBoundingRectangle(BoundingRectangle value) {
+		String PropertyName = BoundingRectanglePropertyName;
 		openIntervalIfNecessary();
 		getOutput().writePropertyName(PropertyName);
 		CesiumWritingHelper.writeBoundingRectangle(getOutput(), value);
@@ -101,7 +101,7 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 
 	/**
 	 *  
-	Writes the value expressed as a <code>cartesian</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
+	Writes the value expressed as a <code>boundingRectangle</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
 	
 	
 	
@@ -109,13 +109,13 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeCartesian(List<JulianDate> dates, List<BoundingRectangle> values) {
-		writeCartesian(dates, values, 0, dates.size());
+	public final void writeBoundingRectangle(List<JulianDate> dates, List<BoundingRectangle> values) {
+		writeBoundingRectangle(dates, values, 0, dates.size());
 	}
 
 	/**
 	 *  
-	Writes the value expressed as a <code>cartesian</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
+	Writes the value expressed as a <code>boundingRectangle</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
 	
 	
 	
@@ -127,8 +127,8 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeCartesian(List<JulianDate> dates, List<BoundingRectangle> values, int startIndex, int length) {
-		String PropertyName = CartesianPropertyName;
+	public final void writeBoundingRectangle(List<JulianDate> dates, List<BoundingRectangle> values, int startIndex, int length) {
+		String PropertyName = BoundingRectanglePropertyName;
 		openIntervalIfNecessary();
 		CesiumWritingHelper.writeBoundingRectangle(getOutput(), PropertyName, dates, values, startIndex, length);
 	}
@@ -199,25 +199,25 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 
 	/**
 	 *  
-	Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in <code>Cartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in <code>BoundingRectangle</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
 	
 	
 
 	 * @return The wrapper.
 	 */
-	public final ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> asCartesian() {
-		return m_asCartesian.getValue();
+	public final ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> asBoundingRectangle() {
+		return m_asBoundingRectangle.getValue();
 	}
 
-	final private ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> createCartesianAdaptor() {
+	final private ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> createBoundingRectangleAdaptor() {
 		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.BoundingRectangleCesiumWriter, cesiumlanguagewriter.BoundingRectangle>(this,
 				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.BoundingRectangleCesiumWriter, cesiumlanguagewriter.BoundingRectangle>() {
 					public void invoke(BoundingRectangleCesiumWriter me, BoundingRectangle value) {
-						me.writeCartesian(value);
+						me.writeBoundingRectangle(value);
 					}
 				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.BoundingRectangleCesiumWriter, cesiumlanguagewriter.BoundingRectangle>() {
 					public void invoke(BoundingRectangleCesiumWriter me, List<JulianDate> dates, List<BoundingRectangle> values, int startIndex, int length) {
-						me.writeCartesian(dates, values, startIndex, length);
+						me.writeBoundingRectangle(dates, values, startIndex, length);
 					}
 				});
 	}

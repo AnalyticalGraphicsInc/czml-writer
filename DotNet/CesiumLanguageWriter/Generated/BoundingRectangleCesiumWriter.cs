@@ -13,16 +13,16 @@ namespace CesiumLanguageWriter
     public class BoundingRectangleCesiumWriter : CesiumInterpolatablePropertyWriter<BoundingRectangleCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>cartesian</code> property.
+        /// The name of the <code>boundingRectangle</code> property.
         /// </summary>
-        public const string CartesianPropertyName = "cartesian";
+        public const string BoundingRectanglePropertyName = "boundingRectangle";
 
         /// <summary>
         /// The name of the <code>reference</code> property.
         /// </summary>
         public const string ReferencePropertyName = "reference";
 
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>> m_asCartesian;
+        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>> m_asBoundingRectangle;
         private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace CesiumLanguageWriter
         public BoundingRectangleCesiumWriter(string propertyName)
             : base(propertyName)
         {
-            m_asCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(CreateCartesianAdaptor, false);
+            m_asBoundingRectangle = new Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(CreateBoundingRectangleAdaptor, false);
             m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
         }
 
@@ -42,7 +42,7 @@ namespace CesiumLanguageWriter
         protected BoundingRectangleCesiumWriter(BoundingRectangleCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(CreateCartesianAdaptor, false);
+            m_asBoundingRectangle = new Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(CreateBoundingRectangleAdaptor, false);
             m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
         }
 
@@ -53,37 +53,37 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>cartesian</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
+        /// Writes the value expressed as a <code>boundingRectangle</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteCartesian(BoundingRectangle value)
+        public void WriteBoundingRectangle(BoundingRectangle value)
         {
-            const string PropertyName = CartesianPropertyName;
+            const string PropertyName = BoundingRectanglePropertyName;
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteBoundingRectangle(Output, value);
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>cartesian</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
+        /// Writes the value expressed as a <code>boundingRectangle</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteCartesian(IList<JulianDate> dates, IList<BoundingRectangle> values)
+        public void WriteBoundingRectangle(IList<JulianDate> dates, IList<BoundingRectangle> values)
         {
-            WriteCartesian(dates, values, 0, dates.Count);
+            WriteBoundingRectangle(dates, values, 0, dates.Count);
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>cartesian</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
+        /// Writes the value expressed as a <code>boundingRectangle</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteCartesian(IList<JulianDate> dates, IList<BoundingRectangle> values, int startIndex, int length)
+        public void WriteBoundingRectangle(IList<JulianDate> dates, IList<BoundingRectangle> values, int startIndex, int length)
         {
-            const string PropertyName = CartesianPropertyName;
+            const string PropertyName = BoundingRectanglePropertyName;
             OpenIntervalIfNecessary();
             CesiumWritingHelper.WriteBoundingRectangle(Output, PropertyName, dates, values, startIndex, length);
         }
@@ -139,17 +139,17 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>Cartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>BoundingRectangle</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> AsCartesian()
+        public ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> AsBoundingRectangle()
         {
-            return m_asCartesian.Value;
+            return m_asBoundingRectangle.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> CreateCartesianAdaptor()
+        private ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> CreateBoundingRectangleAdaptor()
         {
-            return new CesiumInterpolatableWriterAdaptor<BoundingRectangleCesiumWriter, BoundingRectangle>(this, (me, value) => me.WriteCartesian(value), (me, dates, values, startIndex, length) => me.WriteCartesian(dates, values, startIndex, length));
+            return new CesiumInterpolatableWriterAdaptor<BoundingRectangleCesiumWriter, BoundingRectangle>(this, (me, value) => me.WriteBoundingRectangle(value), (me, dates, values, startIndex, length) => me.WriteBoundingRectangle(dates, values, startIndex, length));
         }
 
         /// <summary>

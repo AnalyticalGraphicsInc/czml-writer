@@ -1829,19 +1829,19 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>imageSubRegion</code> property as a <code>cartesian</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+        /// Writes a value for the <code>imageSubRegion</code> property as a <code>boundingRectangle</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteImageSubRegionProperty(BoundingRectangle value)
         {
             using (var writer = OpenImageSubRegionProperty())
             {
-                writer.WriteCartesian(value);
+                writer.WriteBoundingRectangle(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>imageSubRegion</code> property as a <code>cartesian</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+        /// Writes a value for the <code>imageSubRegion</code> property as a <code>boundingRectangle</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1849,12 +1849,12 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenImageSubRegionProperty())
             {
-                writer.WriteCartesian(dates, values);
+                writer.WriteBoundingRectangle(dates, values);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>imageSubRegion</code> property as a <code>cartesian</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+        /// Writes a value for the <code>imageSubRegion</code> property as a <code>boundingRectangle</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1864,7 +1864,7 @@ namespace CesiumLanguageWriter
         {
             using (var writer = OpenImageSubRegionProperty())
             {
-                writer.WriteCartesian(dates, values, startIndex, length);
+                writer.WriteBoundingRectangle(dates, values, startIndex, length);
             }
         }
 

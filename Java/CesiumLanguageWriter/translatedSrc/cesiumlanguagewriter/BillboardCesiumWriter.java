@@ -2858,7 +2858,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>imageSubRegion</code> property as a <code>cartesian</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+	Writes a value for the <code>imageSubRegion</code> property as a <code>boundingRectangle</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
 	
 	
 
@@ -2868,7 +2868,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 		{
 			cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
 			try {
-				writer.writeCartesian(value);
+				writer.writeBoundingRectangle(value);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -2877,7 +2877,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>imageSubRegion</code> property as a <code>cartesian</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+	Writes a value for the <code>imageSubRegion</code> property as a <code>boundingRectangle</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
 	
 	
 	
@@ -2889,7 +2889,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 		{
 			cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
 			try {
-				writer.writeCartesian(dates, values);
+				writer.writeBoundingRectangle(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -2898,7 +2898,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>imageSubRegion</code> property as a <code>cartesian</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+	Writes a value for the <code>imageSubRegion</code> property as a <code>boundingRectangle</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
 	
 	
 	
@@ -2914,7 +2914,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 		{
 			cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
 			try {
-				writer.writeCartesian(dates, values, startIndex, length);
+				writer.writeBoundingRectangle(dates, values, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
