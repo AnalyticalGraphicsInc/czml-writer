@@ -24,21 +24,6 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests initialization from an array of 3 coordinates works correctly.
-        /// </summary>
-        [Test]
-        public void TestFromArray()
-        {
-            double[] values = { 2.0, 3.0, 6.0 };
-
-            Cartesian test = new Cartesian(values);
-            Assert.AreEqual(values.Length, test.Length);
-            Assert.AreEqual(test.X, test[0]);
-            Assert.AreEqual(test.Y, test[1]);
-            Assert.AreEqual(test.Z, test[2]);
-        }
-
-        /// <summary>
         /// Tests implicit conversion from <see cref="UnitCartesian"/> coordinates.
         /// </summary>
         [Test]
@@ -162,15 +147,6 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests the <see cref="Cartesian.HasZeroMagnitude"/> method.
-        /// </summary>
-        [Test]
-        public void TestHasZeroMagnitude()
-        {
-            Assert.IsTrue(Cartesian.Zero.HasZeroMagnitude);
-        }
-
-        /// <summary>
         /// Tests the <see cref="Cartesian.IsUndefined"/> method.
         /// </summary>
         [Test]
@@ -197,19 +173,6 @@ namespace CesiumLanguageWriterTests
 
             v = new UnitCartesian(3.0, 1.0, 2.0);
             Assert.AreEqual(UnitCartesian.UnitY, v.MostOrthogonalAxis);
-        }
-
-        /// <summary>
-        /// Tests the <see cref="Cartesian.Invert"/> method.
-        /// </summary>
-        [Test]
-        public void TestInvert()
-        {
-            Cartesian Cartesian3 = new Cartesian(1.0, 2.0, 3.0);
-            Cartesian inverted = Cartesian3.Invert();
-            Assert.AreEqual(-1.0, inverted.X);
-            Assert.AreEqual(-2.0, inverted.Y);
-            Assert.AreEqual(-3.0, inverted.Z);
         }
 
         /// <summary>
@@ -407,39 +370,6 @@ namespace CesiumLanguageWriterTests
             Cartesian object3 = new Cartesian(1.0, 2.0, 3.1);
             Assert.AreEqual(object1.GetHashCode(), object2.GetHashCode());
             Assert.AreNotEqual(object1.GetHashCode(), object3.GetHashCode());
-        }
-
-        /// <summary>
-        /// Tests that construction from a null array of doubles throws the correct exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestInitializationFromNull()
-        {
-            double[] array = null;
-            Cartesian first = new Cartesian(array, 0);
-        }
-
-        /// <summary>
-        /// Tests that construction from an array of doubles with an incorrect length throws the correct exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestInitializationFromBadArray()
-        {
-            double[] array = new double[2];
-            Cartesian first = new Cartesian(array, 0);
-        }
-
-        /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestIndexTooHigh()
-        {
-            Cartesian first = new Cartesian(1.0, 2.0, 3.0);
-            double bad = first[3];
         }
 
         /// <summary>

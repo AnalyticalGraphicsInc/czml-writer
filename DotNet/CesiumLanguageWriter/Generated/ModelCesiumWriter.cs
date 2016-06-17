@@ -34,6 +34,11 @@ namespace CesiumLanguageWriter
         public const string MinimumPixelSizePropertyName = "minimumPixelSize";
 
         /// <summary>
+        /// The name of the <code>maximumScale</code> property.
+        /// </summary>
+        public const string MaximumScalePropertyName = "maximumScale";
+
+        /// <summary>
         /// The name of the <code>incrementallyLoadTextures</code> property.
         /// </summary>
         public const string IncrementallyLoadTexturesPropertyName = "incrementallyLoadTextures";
@@ -52,6 +57,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<UriCesiumWriter> m_gltf = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(GltfPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_minimumPixelSize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MinimumPixelSizePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_maximumScale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MaximumScalePropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_incrementallyLoadTextures = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(IncrementallyLoadTexturesPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_runAnimations = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(RunAnimationsPropertyName), false);
         private readonly Lazy<NodeTransformationsCesiumWriter> m_nodeTransformations = new Lazy<NodeTransformationsCesiumWriter>(() => new NodeTransformationsCesiumWriter(NodeTransformationsPropertyName), false);
@@ -497,6 +503,100 @@ namespace CesiumLanguageWriter
         public void WriteMinimumPixelSizePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenMinimumPixelSizeProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>maximumScale</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>maximumScale</code> property defines the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// </summary>
+        public DoubleCesiumWriter MaximumScaleWriter
+        {
+            get { return m_maximumScale.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>maximumScale</code> property.  The <code>maximumScale</code> property defines the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// </summary>
+        public DoubleCesiumWriter OpenMaximumScaleProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(MaximumScaleWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>maximumScale</code> property as a <code>number</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteMaximumScaleProperty(double value)
+        {
+            using (var writer = OpenMaximumScaleProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>maximumScale</code> property as a <code>number</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteMaximumScaleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenMaximumScaleProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>maximumScale</code> property as a <code>reference</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteMaximumScalePropertyReference(Reference value)
+        {
+            using (var writer = OpenMaximumScaleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>maximumScale</code> property as a <code>reference</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteMaximumScalePropertyReference(string value)
+        {
+            using (var writer = OpenMaximumScaleProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>maximumScale</code> property as a <code>reference</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteMaximumScalePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenMaximumScaleProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>maximumScale</code> property as a <code>reference</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteMaximumScalePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenMaximumScaleProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

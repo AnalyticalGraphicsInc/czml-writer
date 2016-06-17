@@ -4,12 +4,11 @@ package cesiumlanguagewriter;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
-import agi.foundation.compatibility.ArgumentOutOfRangeException;
-import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.Enumeration;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
+import agi.foundation.compatibility.StringHelper;
 
 /**
  *  
@@ -255,6 +254,7 @@ public class UnitQuaternion implements IEquatable<UnitQuaternion>, ImmutableValu
 
 	 * @return A set of  {@link UnitQuaternion} coordinates that represents the conjugate of this instance.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final UnitQuaternion conjugate() {
 		return new UnitQuaternion(m_w, -m_x, -m_y, -m_z, Normalization.NORMALIZED);
 	}
@@ -269,6 +269,7 @@ public class UnitQuaternion implements IEquatable<UnitQuaternion>, ImmutableValu
 	 * @param quaternion The quaternion by which to multiply this quaternion.
 	 * @return The result of the multiplication.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final UnitQuaternion multiply(UnitQuaternion quaternion) {
 		return new UnitQuaternion(m_w * quaternion.m_w - m_x * quaternion.m_x - m_y * quaternion.m_y - m_z * quaternion.m_z, m_w * quaternion.m_x + m_x * quaternion.m_w - m_y * quaternion.m_z + m_z
 				* quaternion.m_y, m_w * quaternion.m_y + m_x * quaternion.m_z + m_y * quaternion.m_w - m_z * quaternion.m_x, m_w * quaternion.m_z - m_x * quaternion.m_y + m_y * quaternion.m_x + m_z
@@ -319,11 +320,21 @@ public class UnitQuaternion implements IEquatable<UnitQuaternion>, ImmutableValu
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof UnitQuaternion) {
-			return equalsType((UnitQuaternion) obj);
-		} else {
-			return false;
-		}
+		return obj instanceof UnitQuaternion && equalsType((UnitQuaternion) obj);
+	}
+
+	/**
+	 *  
+	Indicates whether another instance of this type is exactly equal to this instance.
+	
+	
+	
+
+	 * @param other The instance to compare to this instance.
+	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
+	 */
+	public final boolean equalsType(UnitQuaternion other) {
+		return Double.valueOf(m_w).equals(other.m_w) && Double.valueOf(m_x).equals(other.m_x) && Double.valueOf(m_y).equals(other.m_y) && Double.valueOf(m_z).equals(other.m_z);
 	}
 
 	/**
@@ -338,11 +349,12 @@ public class UnitQuaternion implements IEquatable<UnitQuaternion>, ImmutableValu
 	 * @param other The set of  {@link UnitQuaternion} coordinates to compare to this instance.
 	 * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
 	 * @return 
-	<see langword="true" /> if the absolute differences are less than <code>epsilon</code>; otherwise, <see langword="false" />.
+	<see langword="true" /> if the absolute differences are less than or equal to <code>epsilon</code>; otherwise, <see langword="false" />.
 	
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final boolean equalsEpsilon(UnitQuaternion other, double epsilon) {
-		return Math.abs(getW() - other.getW()) < epsilon && Math.abs(getX() - other.getX()) < epsilon && Math.abs(getY() - other.getY()) < epsilon && Math.abs(getZ() - other.getZ()) < epsilon;
+		return Math.abs(m_w - other.m_w) <= epsilon && Math.abs(m_x - other.m_x) <= epsilon && Math.abs(m_y - other.m_y) <= epsilon && Math.abs(m_z - other.m_z) <= epsilon;
 	}
 
 	/**
@@ -355,7 +367,7 @@ public class UnitQuaternion implements IEquatable<UnitQuaternion>, ImmutableValu
 	 */
 	@Override
 	public int hashCode() {
-		return DoubleHelper.hashCode(m_w) ^ DoubleHelper.hashCode(m_x) ^ DoubleHelper.hashCode(m_y) ^ DoubleHelper.hashCode(m_z);
+		return HashCode.combine(DoubleHelper.hashCode(m_w), DoubleHelper.hashCode(m_x), DoubleHelper.hashCode(m_y), DoubleHelper.hashCode(m_z));
 	}
 
 	/**
@@ -371,15 +383,7 @@ public class UnitQuaternion implements IEquatable<UnitQuaternion>, ImmutableValu
 	 */
 	@Override
 	public String toString() {
-		StringBuilder build = new StringBuilder(80);
-		build.append(DoubleHelper.toString(m_w, CultureInfoHelper.getCurrentCulture()));
-		build.append(", ");
-		build.append(DoubleHelper.toString(m_x, CultureInfoHelper.getCurrentCulture()));
-		build.append(", ");
-		build.append(DoubleHelper.toString(m_y, CultureInfoHelper.getCurrentCulture()));
-		build.append(", ");
-		build.append(DoubleHelper.toString(m_z, CultureInfoHelper.getCurrentCulture()));
-		return build.toString();
+		return StringHelper.format("{0}, {1}, {2}, {3}", m_w, m_x, m_y, m_z);
 	}
 
 	/**
@@ -469,22 +473,20 @@ public class UnitQuaternion implements IEquatable<UnitQuaternion>, ImmutableValu
 		magnitude[0] = Math.sqrt(w[0] * w[0] + x[0] * x[0] + y[0] * y[0] + z[0] * z[0]);
 		if (magnitude[0] == 0.0) {
 			throw new ArithmeticException(CesiumLocalization.getMagnitudeMustNotBeZero());
-		} else if (Double.isInfinite(magnitude[0])) {
-			throw new ArithmeticException(CesiumLocalization.getMagnitudeMustNotBeInfinite());
-		} else {
-			w[0] /= magnitude[0];
-			x[0] /= magnitude[0];
-			y[0] /= magnitude[0];
-			z[0] /= magnitude[0];
 		}
+		if (Double.isInfinite(magnitude[0])) {
+			throw new ArithmeticException(CesiumLocalization.getMagnitudeMustNotBeInfinite());
+		}
+		w[0] /= magnitude[0];
+		x[0] /= magnitude[0];
+		y[0] /= magnitude[0];
+		z[0] /= magnitude[0];
 	}
 
 	private double m_w;
 	private double m_x;
 	private double m_y;
 	private double m_z;
-	@CS2JWarning("Unhandled attribute removed: SuppressMessage")
-	private static int s_length = 4;
 	private static UnitQuaternion s_identity = new UnitQuaternion(1.0, 0.0, 0.0, 0.0);
 	private static UnitQuaternion s_undefined = new UnitQuaternion(Double.NaN, Double.NaN, Double.NaN, Double.NaN, Normalization.NORMALIZED);
 
@@ -526,63 +528,6 @@ public class UnitQuaternion implements IEquatable<UnitQuaternion>, ImmutableValu
 		 */
 		public static Normalization getDefault() {
 			return UNNORMALIZED;
-		}
-	}
-
-	/**
-	 *  
-	Indicates whether another instance of this type is exactly equal to this instance.
-	
-	
-	
-
-	 * @param other The instance to compare to this instance.
-	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
-	 */
-	public final boolean equalsType(UnitQuaternion other) {
-		return other.getW() == getW() && other.getX() == getX() && other.getY() == getY() && other.getZ() == getZ();
-	}
-
-	/**
-	 *  Gets the number of elements in this set of coordinates.
-	
-
-	 */
-	public final int getLength() {
-		return s_length;
-	}
-
-	/**
-	 *  Gets the value of the specified element with <code>index</code> of 0, 1, 2, and 3 corresponding to the coordinates
-	W, X, Y, and Z.
-	
-	
-	
-	
-
-	 * @param index Either 0, 1, 2, or 3 corresponding to the coordinates W, X, Y, or Z.
-	 * @return The coordinate associated with the specified <code>index</code>.
-	 * @exception ArgumentOutOfRangeException 
-	Thrown when <code>index</code> is less than 0 or is greater than or equal to the <code>Length</code> ({@link #getLength get}).
-	
-	 */
-	public final double get(int index) {
-		switch (index) {
-		case 0: {
-			return getW();
-		}
-		case 1: {
-			return getX();
-		}
-		case 2: {
-			return getY();
-		}
-		case 3: {
-			return getZ();
-		}
-		default: {
-			throw new ArgumentOutOfRangeException("index");
-		}
 		}
 	}
 }

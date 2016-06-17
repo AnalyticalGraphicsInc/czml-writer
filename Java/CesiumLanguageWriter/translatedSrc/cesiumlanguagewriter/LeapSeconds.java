@@ -74,6 +74,7 @@ public class LeapSeconds {
 		m_leapSeconds.add(new LeapSecond(2453736.5, 33D));
 		m_leapSeconds.add(new LeapSecond(2454832.5, 34D));
 		m_leapSeconds.add(new LeapSecond(2456109.5, 35D));
+		m_leapSeconds.add(new LeapSecond(2457204.5, 36D));
 	}
 
 	/**

@@ -128,7 +128,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeTranslationProperty(List<JulianDate> dates, List<Cartesian> values) {
@@ -151,7 +151,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
@@ -293,7 +293,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 	
 	
 
-	 * @param dates The dates at which the rotation is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeRotationProperty(List<JulianDate> dates, List<UnitQuaternion> values) {
@@ -316,7 +316,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 	
 	
 
-	 * @param dates The dates at which the rotation is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
@@ -458,7 +458,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeScaleProperty(List<JulianDate> dates, List<Cartesian> values) {
@@ -481,7 +481,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.

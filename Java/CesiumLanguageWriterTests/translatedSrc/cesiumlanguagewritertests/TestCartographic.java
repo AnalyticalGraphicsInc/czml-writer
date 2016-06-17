@@ -2,19 +2,15 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.ArgumentNullException;
-import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
-import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -38,26 +34,6 @@ public class TestCartographic {
 		Assert.assertEquals(1.0, test.getLongitude(), 0d);
 		Assert.assertEquals(2.0, test.getLatitude(), 0d);
 		Assert.assertEquals(3.0, test.getHeight(), 0d);
-	}
-
-	/**
-	 *  
-	Tests initialization from an array of 3 coordinates works correctly.
-	
-
-	 */
-	@Test
-	public final void testFromArray() {
-		double[] values = {
-				2.0,
-				3.0,
-				6.0
-		};
-		Cartographic test = new Cartographic(values);
-		Assert.assertEquals((int) values.length, (int) test.getLength());
-		Assert.assertEquals(test.getLongitude(), test.get(0), 0d);
-		Assert.assertEquals(test.getLatitude(), test.get(1), 0d);
-		Assert.assertEquals(test.getHeight(), test.get(2), 0d);
 	}
 
 	/**
@@ -136,58 +112,6 @@ public class TestCartographic {
 
 	/**
 	 *  
-	Tests that construction from a null array of doubles throws the correct exception.
-	
-
-	 */
-	@Test
-	public final void testInitializationFromNull() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentNullException.class);
-		double[] array = null;
-		Cartographic first = new Cartographic(array, 0);
-	}
-
-	/**
-	 *  
-	Tests that construction from an array of doubles with an incorrect length throws the correct exception.
-	
-
-	 */
-	@Test
-	public final void testInitializationFromBadArray() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-		double[] array = new double[2];
-		Cartographic first = new Cartographic(array, 0);
-	}
-
-	/**
-	 *  
-	Tests to ensure that an invalid index throws the anticipated exception.
-	
-
-	 */
-	@Test
-	public final void testIndexTooHigh() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-		Cartographic first = new Cartographic(1.0, 2.0, 3.0);
-		double bad = first.get(3);
-	}
-
-	/**
-	 *  
-	Tests to ensure that an invalid index throws the anticipated exception.
-	
-
-	 */
-	@Test
-	public final void testIndexTooLow() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-		Cartographic first = new Cartographic(1.0, 2.0, 3.0);
-		double bad = first.get(-1);
-	}
-
-	/**
-	 *  
 	Tests ToString method
 	
 
@@ -210,12 +134,5 @@ public class TestCartographic {
 	@Rule
 	public TestContextRule getRule$testContext() {
 		return rule$testContext;
-	}
-
-	private ExpectedException rule$expectedException = ExpectedException.none();
-
-	@Rule
-	public ExpectedException getRule$expectedException() {
-		return rule$expectedException;
 	}
 }

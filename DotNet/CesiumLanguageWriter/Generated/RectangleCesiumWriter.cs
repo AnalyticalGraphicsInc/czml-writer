@@ -247,7 +247,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteCoordinatesProperty(IList<JulianDate> dates, IList<CartographicExtent> values)
         {
@@ -260,7 +260,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>

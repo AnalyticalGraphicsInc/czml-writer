@@ -4,9 +4,6 @@ package cesiumlanguagewriter;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
-import agi.foundation.compatibility.ArgumentNullException;
-import agi.foundation.compatibility.ArgumentOutOfRangeException;
-import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
@@ -23,56 +20,6 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	 * Initializes a new instance.
 	 */
 	public UnitSpherical() {}
-
-	/**
-	 *  
-	Initializes a set of  {@link UnitSpherical} coordinates from the provided array.
-	
-	
-	
-	
-	
-
-	 * @param elements The array of coordinate values.
-	 * @param startIndex The index of the first element in the array to use.
-	 * @exception ArgumentNullException 
-	Thrown when the array of <code>elements</code> is null.
-	
-	 * @exception ArgumentOutOfRangeException 
-	Thrown when an object of this type is constructed from an array with less than 2 <code>elements</code>.
-	
-	 */
-	public UnitSpherical(double[] elements, int startIndex) {
-		if (elements == null) {
-			throw new ArgumentNullException("elements");
-		} else if (startIndex >= elements.length || elements.length - startIndex < s_length) {
-			throw new ArgumentOutOfRangeException("elements", StringHelper.format(CultureInfoHelper.getCurrentCulture(), CesiumLocalization.getMustBeConstructedFromSpecificNumberOfElements(),
-					UnitSpherical.class, 2));
-		} else {
-			m_clock = elements[startIndex + 0];
-			m_cone = elements[startIndex + 1];
-		}
-	}
-
-	/**
-	 *  
-	Initializes a set of  {@link UnitSpherical} coordinates from the first 2 consecutive elements in the provided array.
-	
-	
-	
-	
-
-	 * @param elements The array of coordinate values.
-	 * @exception ArgumentNullException 
-	The array of <code>elements</code> cannot be null.
-	
-	 * @exception ArgumentOutOfRangeException 
-	An object of this type must be constructed from an array with at least 2 <code>elements</code>.
-	
-	 */
-	public UnitSpherical(double[] elements) {
-		this(elements, 0);
-	}
 
 	/**
 	 *  
@@ -106,7 +53,7 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	
 	
 
-	 * @param coordinates The set of UnitCartesian3 coordinates.
+	 * @param coordinates The set of UnitCartesian coordinates.
 	 */
 	public UnitSpherical(UnitCartesian coordinates) {
 		double x = coordinates.getX();
@@ -156,11 +103,21 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof UnitSpherical) {
-			return equalsType((UnitSpherical) obj);
-		} else {
-			return false;
-		}
+		return obj instanceof UnitSpherical && equalsType((UnitSpherical) obj);
+	}
+
+	/**
+	 *  
+	Indicates whether another instance of this type is exactly equal to this instance.
+	
+	
+	
+
+	 * @param other The instance to compare to this instance.
+	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
+	 */
+	public final boolean equalsType(UnitSpherical other) {
+		return Double.valueOf(m_clock).equals(other.m_clock) && Double.valueOf(m_cone).equals(other.m_cone);
 	}
 
 	/**
@@ -175,11 +132,12 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	 * @param other The set of  {@link UnitSpherical} coordinates to compare to this instance.
 	 * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
 	 * @return 
-	<see langword="true" /> if the absolute differences are less than <code>epsilon</code>; otherwise, <see langword="false" />.
+	<see langword="true" /> if the absolute differences are less than or equal to <code>epsilon</code>; otherwise, <see langword="false" />.
 	
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final boolean equalsEpsilon(UnitSpherical other, double epsilon) {
-		return Math.abs(getClock() - other.getClock()) < epsilon && Math.abs(getCone() - other.getCone()) < epsilon;
+		return Math.abs(m_clock - other.m_clock) <= epsilon && Math.abs(m_cone - other.m_cone) <= epsilon;
 	}
 
 	/**
@@ -192,7 +150,7 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 	 */
 	@Override
 	public int hashCode() {
-		return DoubleHelper.hashCode(m_clock) ^ DoubleHelper.hashCode(m_cone);
+		return HashCode.combine(DoubleHelper.hashCode(m_clock), DoubleHelper.hashCode(m_cone));
 	}
 
 	/**
@@ -203,16 +161,12 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 
 	 * @return 
 	A string that represents the value of this instance in the form
-	Clock, Cone, and Magnitude.
+	Clock, Cone.
 	
 	 */
 	@Override
 	public String toString() {
-		StringBuilder build = new StringBuilder(80);
-		build.append(DoubleHelper.toString(m_clock, CultureInfoHelper.getCurrentCulture()));
-		build.append(", ");
-		build.append(DoubleHelper.toString(m_cone, CultureInfoHelper.getCurrentCulture()));
-		return build.toString();
+		return StringHelper.format("{0}, {1}", m_clock, m_cone);
 	}
 
 	/**
@@ -255,57 +209,4 @@ public class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueT
 
 	private double m_clock;
 	private double m_cone;
-	@CS2JWarning("Unhandled attribute removed: SuppressMessage")
-	private static int s_length = 2;
-
-	/**
-	 *  
-	Indicates whether another instance of this type is exactly equal to this instance.
-	
-	
-	
-
-	 * @param other The instance to compare to this instance.
-	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
-	 */
-	public final boolean equalsType(UnitSpherical other) {
-		return getClock() == other.getClock() && getCone() == other.getCone();
-	}
-
-	/**
-	 *  Gets the number of elements in this set of coordinates.
-	
-
-	 */
-	public final int getLength() {
-		return s_length;
-	}
-
-	/**
-	 *  Gets the value of the specified element with <code>index</code> of 0 and 1 corresponding to the coordinates
-	Clock and Cone.
-	
-	
-	
-	
-
-	 * @param index Either 0 or 1 corresponding to the coordinates Clock or Cone.
-	 * @return The coordinate associated with the specified <code>index</code>.
-	 * @exception ArgumentOutOfRangeException 
-	Thrown when the <code>index</code> is less than 0 or is equal to or greater than <code>Length</code> ({@link #getLength get}).
-	
-	 */
-	public final double get(int index) {
-		switch (index) {
-		case 0: {
-			return getClock();
-		}
-		case 1: {
-			return getCone();
-		}
-		default: {
-			throw new ArgumentOutOfRangeException("index");
-		}
-		}
-	}
 }

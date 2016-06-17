@@ -342,54 +342,6 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests construction of a <see cref="Duration"/> from a <see cref="TimeSpan"/>.
-        /// </summary>
-        [Test]
-        public void TestFromTimeSpan()
-        {
-            TimeSpan timeSpan = new TimeSpan(28, 6, 42, 12);
-            Duration duration = new Duration(timeSpan);
-            Assert.AreEqual(28, duration.Days);
-            Assert.AreEqual(6 * TimeConstants.SecondsPerHour + 42 * TimeConstants.SecondsPerMinute + 12, duration.Seconds);
-        }
-
-        /// <summary>
-        /// Tests Duration.ToTimeSpan method.
-        /// </summary>
-        [Test]
-        public void TestToTimeSpan()
-        {
-            Duration duration = new Duration(28, 24132.0);
-            TimeSpan timeSpan = duration.ToTimeSpan();
-            Assert.AreEqual(28, timeSpan.Days);
-            Assert.AreEqual(6, timeSpan.Hours);
-            Assert.AreEqual(42, timeSpan.Minutes);
-            Assert.AreEqual(12, timeSpan.Seconds);
-        }
-
-        /// <summary>
-        /// Tests compatibility between the <see cref="Duration"/> and <see cref="TimeSpan"/> types.
-        /// </summary>
-        [Test]
-        public void TestTimeSpanCompatibility()
-        {
-            TimeSpan timeSpan = TimeSpan.MinValue;
-            Duration duration = new Duration(timeSpan);
-            TimeSpan result = duration.ToTimeSpan();
-            Assert.AreEqual(timeSpan, result);
-
-            timeSpan = TimeSpan.Zero;
-            duration = new Duration(timeSpan);
-            result = duration.ToTimeSpan();
-            Assert.AreEqual(timeSpan, result);
-
-            timeSpan = TimeSpan.MaxValue;
-            duration = new Duration(timeSpan);
-            result = duration.ToTimeSpan();
-            Assert.AreEqual(timeSpan, result);
-        }
-
-        /// <summary>
         /// Tests the non-generic IComparable.CompareTo.
         /// </summary>
         [Test]

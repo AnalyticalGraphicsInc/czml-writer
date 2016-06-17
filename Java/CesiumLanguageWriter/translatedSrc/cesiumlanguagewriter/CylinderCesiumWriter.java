@@ -83,6 +83,20 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 
 	 */
 	public static final String OutlineWidthPropertyName = "outlineWidth";
+	/**
+	 *  
+	The name of the <code>numberOfVerticalLines</code> property.
+	
+
+	 */
+	public static final String NumberOfVerticalLinesPropertyName = "numberOfVerticalLines";
+	/**
+	 *  
+	The name of the <code>slices</code> property.
+	
+
+	 */
+	public static final String SlicesPropertyName = "slices";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
@@ -126,6 +140,16 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 	private Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(OutlineWidthPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_numberOfVerticalLines = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(NumberOfVerticalLinesPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_slices = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(SlicesPropertyName);
 		}
 	}, false);
 
@@ -1295,6 +1319,294 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
 	public final void writeOutlineWidthPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>numberOfVerticalLines</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>numberOfVerticalLines</code> property defines the number of vertical lines to draw along the perimeter for the outline.
+	
+
+	 */
+	public final DoubleCesiumWriter getNumberOfVerticalLinesWriter() {
+		return m_numberOfVerticalLines.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>numberOfVerticalLines</code> property.  The <code>numberOfVerticalLines</code> property defines the number of vertical lines to draw along the perimeter for the outline.
+	
+
+	 */
+	public final DoubleCesiumWriter openNumberOfVerticalLinesProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getNumberOfVerticalLinesWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>numberOfVerticalLines</code> property as a <code>number</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeNumberOfVerticalLinesProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openNumberOfVerticalLinesProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>numberOfVerticalLines</code> property as a <code>number</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeNumberOfVerticalLinesProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openNumberOfVerticalLinesProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeNumberOfVerticalLinesPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openNumberOfVerticalLinesProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeNumberOfVerticalLinesPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openNumberOfVerticalLinesProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeNumberOfVerticalLinesPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openNumberOfVerticalLinesProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeNumberOfVerticalLinesPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openNumberOfVerticalLinesProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>slices</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>slices</code> property defines the number of edges around the perimeter of the cylinder.
+	
+
+	 */
+	public final DoubleCesiumWriter getSlicesWriter() {
+		return m_slices.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>slices</code> property.  The <code>slices</code> property defines the number of edges around the perimeter of the cylinder.
+	
+
+	 */
+	public final DoubleCesiumWriter openSlicesProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getSlicesWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>slices</code> property as a <code>number</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeSlicesProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicesProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>slices</code> property as a <code>number</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeSlicesProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicesProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>slices</code> property as a <code>reference</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeSlicesPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicesProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>slices</code> property as a <code>reference</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeSlicesPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicesProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>slices</code> property as a <code>reference</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeSlicesPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicesProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>slices</code> property as a <code>reference</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeSlicesPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicesProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {

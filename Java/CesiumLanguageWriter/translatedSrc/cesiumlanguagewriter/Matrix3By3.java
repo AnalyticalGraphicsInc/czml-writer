@@ -63,36 +63,6 @@ public class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
 
 	/**
 	 *  
-	Forms a  {@link Matrix3By3} from the input vector such that the result of the cross product of the input vector
-	with another vector is equivalent to pre-multiplying the other vector by the returned matrix.
-	
-	
-	
-
-	 * @param vector The vector for which the cross product equivalent matrix is desired.
-	 * @return The cross product equivalent matrix.
-	 */
-	public static Matrix3By3 crossProductEquivalentMatrix(Cartesian vector) {
-		return new Matrix3By3(0.0, -vector.getZ(), vector.getY(), vector.getZ(), 0.0, -vector.getX(), -vector.getY(), vector.getX(), 0.0);
-	}
-
-	/**
-	 *  
-	Forms a  {@link Matrix3By3} from the input vector such that the result of the cross product of the input unit vector
-	with another vector is equivalent to pre-multiplying the other vector by the returned matrix.
-	
-	
-	
-
-	 * @param vector The unit vector for which the cross product equivalent matrix is desired.
-	 * @return The cross product equivalent matrix.
-	 */
-	public static Matrix3By3 crossProductEquivalentMatrix(UnitCartesian vector) {
-		return new Matrix3By3(0.0, -vector.getZ(), vector.getY(), vector.getZ(), 0.0, -vector.getX(), -vector.getY(), vector.getX(), 0.0);
-	}
-
-	/**
-	 *  
 	Forms a diagonal matrix from the input elements.
 	
 	
@@ -373,43 +343,6 @@ public class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
 	}
 
 	/**
-	 *  
-	The determinant of the matrix.
-	
-	
-
-	 * @return The determinant of the matrix.
-	 */
-	public final double determinant() {
-		double determinant = m_m11 * (m_m22 * m_m33 - m_m23 * m_m32) + m_m12 * (m_m23 * m_m31 - m_m21 * m_m33) + m_m13 * (m_m21 * m_m32 - m_m22 * m_m31);
-		return determinant;
-	}
-
-	/**
-	 *  
-	Inverts the matrix.
-	
-	
-	
-
-	 * @return The inverted matrix.
-	 * @exception ArithmeticException 
-	Thrown when the absolute value of the  {@link #determinant} is less than
-	{@link Constants#Epsilon15}.
-	 */
-	public final Matrix3By3 invert() {
-		double determinant = determinant();
-		if (Math.abs(determinant) > Constants.Epsilon15) {
-			Matrix3By3 m = new Matrix3By3(m_m22 * m_m33 - m_m23 * m_m32, m_m13 * m_m32 - m_m12 * m_m33, m_m12 * m_m23 - m_m13 * m_m22, m_m23 * m_m31 - m_m21 * m_m33, m_m11 * m_m33 - m_m13 * m_m31,
-					m_m13 * m_m21 - m_m11 * m_m23, m_m21 * m_m32 - m_m22 * m_m31, m_m12 * m_m31 - m_m11 * m_m32, m_m11 * m_m22 - m_m12 * m_m21);
-			double scale = 1.0 / determinant;
-			return Matrix3By3.multiply(m, scale);
-		} else {
-			throw new ArithmeticException();
-		}
-	}
-
-	/**
 	 *  Gets an indication as to whether any of the matrix values are  {@link Double#NaN}.
 	
 
@@ -429,6 +362,7 @@ public class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
 	 * @param matrix The matrix.
 	 * @return The sum of the matrices.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Matrix3By3 add(Matrix3By3 matrix) {
 		return new Matrix3By3(m_m11 + matrix.m_m11, m_m12 + matrix.m_m12, m_m13 + matrix.m_m13, m_m21 + matrix.m_m21, m_m22 + matrix.m_m22, m_m23 + matrix.m_m23, m_m31 + matrix.m_m31, m_m32
 				+ matrix.m_m32, m_m33 + matrix.m_m33);
@@ -444,6 +378,7 @@ public class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
 	 * @param matrix The matrix to subtract.
 	 * @return The result of the subtraction.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Matrix3By3 subtract(Matrix3By3 matrix) {
 		return new Matrix3By3(m_m11 - matrix.m_m11, m_m12 - matrix.m_m12, m_m13 - matrix.m_m13, m_m21 - matrix.m_m21, m_m22 - matrix.m_m22, m_m23 - matrix.m_m23, m_m31 - matrix.m_m31, m_m32
 				- matrix.m_m32, m_m33 - matrix.m_m33);
@@ -459,6 +394,7 @@ public class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
 	 * @param scalar The scalar to multiply by.
 	 * @return The result of the multiplication.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Matrix3By3 multiply(double scalar) {
 		return new Matrix3By3(m_m11 * scalar, m_m12 * scalar, m_m13 * scalar, m_m21 * scalar, m_m22 * scalar, m_m23 * scalar, m_m31 * scalar, m_m32 * scalar, m_m33 * scalar);
 	}
@@ -473,6 +409,7 @@ public class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
 	 * @param matrix The matrix to multiply by.
 	 * @return The result of the multiplication.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Matrix3By3 multiply(Matrix3By3 matrix) {
 		return new Matrix3By3(m_m11 * matrix.m_m11 + m_m12 * matrix.m_m21 + m_m13 * matrix.m_m31, m_m11 * matrix.m_m12 + m_m12 * matrix.m_m22 + m_m13 * matrix.m_m32, m_m11 * matrix.m_m13 + m_m12
 				* matrix.m_m23 + m_m13 * matrix.m_m33, m_m21 * matrix.m_m11 + m_m22 * matrix.m_m21 + m_m23 * matrix.m_m31, m_m21 * matrix.m_m12 + m_m22 * matrix.m_m22 + m_m23 * matrix.m_m32, m_m21
@@ -482,14 +419,15 @@ public class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
 
 	/**
 	 *  
-	Forms a new Cartesian3 vector as the product of this 3-by-3 matrix and the provided Cartesian3 vector.
+	Forms a new Cartesian vector as the product of this 3-by-3 matrix and the provided Cartesian vector.
 	
 	
 	
 
 	 * @param vector The vector.
-	 * @return The resulting Cartesian3 vector.
+	 * @return The resulting Cartesian vector.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Cartesian multiply(Cartesian vector) {
 		return new Cartesian(m_m11 * vector.getX() + m_m12 * vector.getY() + m_m13 * vector.getZ(), m_m21 * vector.getX() + m_m22 * vector.getY() + m_m23 * vector.getZ(), m_m31 * vector.getX()
 				+ m_m32 * vector.getY() + m_m33 * vector.getZ());
@@ -548,7 +486,7 @@ public class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
 
 	/**
 	 *  
-	Multiplies the 3-by-3 matrix by the Cartesian3 vector.
+	Multiplies the 3-by-3 matrix by the Cartesian vector.
 	
 	
 	
@@ -599,27 +537,6 @@ public class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
 
 	/**
 	 *  
-	Returns true if all of the elements of this matrix are within <code>epsilon</code>
-	of the same elements of the specified matrix.  That is, in order for the matrices to be
-	considered equal (and for this function to return true), the absolute value of the
-	difference between each of their elements must be less than <code>epsilon</code>.
-	
-	
-	
-	
-
-	 * @param other The  {@link Matrix3By3} to compare to this matrix.
-	 * @param epsilon The smallest difference between the elements of the matrices for which they will NOT be considered equal.
-	 * @return true if the matrices are equal as defined by the epsilon value.
-	 */
-	public final boolean equalsEpsilon(Matrix3By3 other, double epsilon) {
-		return Math.abs(getM11() - other.getM11()) < epsilon && Math.abs(getM12() - other.getM12()) < epsilon && Math.abs(getM13() - other.getM13()) < epsilon
-				&& Math.abs(getM21() - other.getM21()) < epsilon && Math.abs(getM22() - other.getM22()) < epsilon && Math.abs(getM23() - other.getM23()) < epsilon
-				&& Math.abs(getM31() - other.getM31()) < epsilon && Math.abs(getM32() - other.getM32()) < epsilon && Math.abs(getM33() - other.getM33()) < epsilon;
-	}
-
-	/**
-	 *  
 	Indicates whether another object is exactly equal to this instance.
 	
 	
@@ -630,11 +547,44 @@ public class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof Matrix3By3) {
-			return equalsType((Matrix3By3) obj);
-		} else {
-			return false;
-		}
+		return obj instanceof Matrix3By3 && equalsType((Matrix3By3) obj);
+	}
+
+	/**
+	 *  
+	Indicates whether another instance of this type is exactly equal to this instance.
+	
+	
+	
+
+	 * @param other The instance to compare to this instance.
+	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
+	 */
+	public final boolean equalsType(Matrix3By3 other) {
+		return m_m11 == other.m_m11 && m_m12 == other.m_m12 && m_m13 == other.m_m13 && m_m21 == other.m_m21 && m_m22 == other.m_m22 && m_m23 == other.m_m23 && m_m31 == other.m_m31
+				&& m_m32 == other.m_m32 && m_m33 == other.m_m33;
+	}
+
+	/**
+	 *  
+	Returns true if all of the elements of this matrix are within <code>epsilon</code>
+	of the same elements of the specified matrix.  That is, in order for the matrices to be
+	considered equal (and for this function to return true), the absolute value of the
+	difference between each of their elements must be less than or equal to <code>epsilon</code>.
+	
+	
+	
+	
+
+	 * @param other The  {@link Matrix3By3} to compare to this matrix.
+	 * @param epsilon The largest difference between the elements of the matrices for which they will be considered equal.
+	 * @return true if the matrices are equal as defined by the epsilon value.
+	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
+	public final boolean equalsEpsilon(Matrix3By3 other, double epsilon) {
+		return Math.abs(m_m11 - other.m_m11) <= epsilon && Math.abs(m_m12 - other.m_m12) <= epsilon && Math.abs(m_m13 - other.m_m13) <= epsilon && Math.abs(m_m21 - other.m_m21) <= epsilon
+				&& Math.abs(m_m22 - other.m_m22) <= epsilon && Math.abs(m_m23 - other.m_m23) <= epsilon && Math.abs(m_m31 - other.m_m31) <= epsilon && Math.abs(m_m32 - other.m_m32) <= epsilon
+				&& Math.abs(m_m33 - other.m_m33) <= epsilon;
 	}
 
 	/**
@@ -647,8 +597,8 @@ public class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
 	 */
 	@Override
 	public int hashCode() {
-		return DoubleHelper.hashCode(m_m11) ^ DoubleHelper.hashCode(m_m12) ^ DoubleHelper.hashCode(m_m13) ^ DoubleHelper.hashCode(m_m21) ^ DoubleHelper.hashCode(m_m22) ^ DoubleHelper.hashCode(m_m23)
-				^ DoubleHelper.hashCode(m_m31) ^ DoubleHelper.hashCode(m_m32) ^ DoubleHelper.hashCode(m_m33);
+		return HashCode.combine(DoubleHelper.hashCode(m_m11), DoubleHelper.hashCode(m_m12), DoubleHelper.hashCode(m_m13), DoubleHelper.hashCode(m_m21), DoubleHelper.hashCode(m_m22), DoubleHelper
+				.hashCode(m_m23), DoubleHelper.hashCode(m_m31), DoubleHelper.hashCode(m_m32), DoubleHelper.hashCode(m_m33));
 	}
 
 	/**
@@ -701,19 +651,4 @@ public class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
 	private static Matrix3By3 s_identity = new Matrix3By3(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0);
 	private static Matrix3By3 s_undefined = new Matrix3By3(Double.NaN, Double.NaN, Double.NaN, Double.NaN, Double.NaN, Double.NaN, Double.NaN, Double.NaN, Double.NaN);
 	private static Matrix3By3 s_zero = new Matrix3By3(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-
-	/**
-	 *  
-	Indicates whether another instance of this type is exactly equal to this instance.
-	
-	
-	
-
-	 * @param other The instance to compare to this instance.
-	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
-	 */
-	public final boolean equalsType(Matrix3By3 other) {
-		return other.getM11() == getM11() && other.getM12() == getM12() && other.getM13() == getM13() && other.getM21() == getM21() && other.getM22() == getM22() && other.getM23() == getM23()
-				&& other.getM31() == getM31() && other.getM32() == getM32() && other.getM33() == getM33();
-	}
 }

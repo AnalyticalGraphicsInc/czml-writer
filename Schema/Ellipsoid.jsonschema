@@ -18,18 +18,6 @@
             "$ref": "EllipsoidRadii.jsonschema",
             "description": "The dimensions of the ellipsoid."
         },
-        "stackPartitions": {
-            "$ref": "Double.jsonschema",
-            "description": "The number of times to partition the ellipsoid into stacks."
-        },
-        "slicePartitions": {
-            "$ref": "Double.jsonschema",
-            "description": "The number of times to partition the ellipsoid into radial slices."
-        },
-        "subdivisions": {
-            "$ref": "Double.jsonschema",
-            "description": "The number of samples per outline ring, determining the granularity of the curvature."
-        },
         "fill": {
             "$ref": "Boolean.jsonschema",
             "description": "Whether or not the ellipsoid is filled.",
@@ -52,6 +40,18 @@
             "$ref": "Double.jsonschema",
             "description": "The width of the ellipsoid outline.",
             "default": 1.0
+        },
+        "stackPartitions": {
+            "$ref": "Double.jsonschema",
+            "description": "The number of times to partition the ellipsoid into stacks."
+        },
+        "slicePartitions": {
+            "$ref": "Double.jsonschema",
+            "description": "The number of times to partition the ellipsoid into radial slices."
+        },
+        "subdivisions": {
+            "$ref": "Double.jsonschema",
+            "description": "The number of samples per outline ring, determining the granularity of the curvature."
         }
     }
 }

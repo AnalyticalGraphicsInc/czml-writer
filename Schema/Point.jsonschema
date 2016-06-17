@@ -31,6 +31,14 @@
             "$ref": "Double.jsonschema",
             "description": "The width of the outline of the point.",
             "default": 0.0
+        },
+        "scaleByDistance": {
+            "$ref": "NearFarScalar.jsonschema",
+            "description": "How the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`."
+        },
+        "translucencyByDistance": {
+            "$ref": "NearFarScalar.jsonschema",
+            "description": "How the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1."
         }
     }
 }

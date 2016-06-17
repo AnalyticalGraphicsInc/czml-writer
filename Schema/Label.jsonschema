@@ -61,6 +61,14 @@
             "$ref": "Double.jsonschema",
             "description": "The outline width of the label.",
             "default": 1.0
+        },
+        "translucencyByDistance": {
+            "$ref": "NearFarScalar.jsonschema",
+            "description": "How the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1."
+        },
+        "pixelOffsetScaleByDistance": {
+            "$ref": "NearFarScalar.jsonschema",
+            "description": "How the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`."
         }
     }
 }

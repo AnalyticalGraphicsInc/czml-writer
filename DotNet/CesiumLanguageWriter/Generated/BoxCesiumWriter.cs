@@ -190,7 +190,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>dimensions</code> property as a <code>cartesian</code> value.  The <code>dimensions</code> property specifies the dimensions of the box.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteDimensionsProperty(IList<JulianDate> dates, IList<Cartesian> values)
         {
@@ -203,7 +203,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>dimensions</code> property as a <code>cartesian</code> value.  The <code>dimensions</code> property specifies the dimensions of the box.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>

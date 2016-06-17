@@ -73,6 +73,16 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string OutlineWidthPropertyName = "outlineWidth";
 
+        /// <summary>
+        /// The name of the <code>translucencyByDistance</code> property.
+        /// </summary>
+        public const string TranslucencyByDistancePropertyName = "translucencyByDistance";
+
+        /// <summary>
+        /// The name of the <code>pixelOffsetScaleByDistance</code> property.
+        /// </summary>
+        public const string PixelOffsetScaleByDistancePropertyName = "pixelOffsetScaleByDistance";
+
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<StringCesiumWriter> m_text = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(TextPropertyName), false);
         private readonly Lazy<FontCesiumWriter> m_font = new Lazy<FontCesiumWriter>(() => new FontCesiumWriter(FontPropertyName), false);
@@ -85,6 +95,8 @@ namespace CesiumLanguageWriter
         private readonly Lazy<ColorCesiumWriter> m_fillColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(FillColorPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
+        private readonly Lazy<NearFarScalarCesiumWriter> m_translucencyByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(TranslucencyByDistancePropertyName), false);
+        private readonly Lazy<NearFarScalarCesiumWriter> m_pixelOffsetScaleByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(PixelOffsetScaleByDistancePropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -564,7 +576,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>pixelOffset</code> property as a <code>cartesian2</code> value.  The <code>pixelOffset</code> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WritePixelOffsetProperty(IList<JulianDate> dates, IList<Rectangular> values)
         {
@@ -577,7 +589,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>pixelOffset</code> property as a <code>cartesian2</code> value.  The <code>pixelOffset</code> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -671,7 +683,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteEyeOffsetProperty(IList<JulianDate> dates, IList<Cartesian> values)
         {
@@ -684,7 +696,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>eyeOffset</code> property as a <code>cartesian</code> value.  The <code>eyeOffset</code> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -1241,6 +1253,250 @@ namespace CesiumLanguageWriter
         public void WriteOutlineWidthPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>translucencyByDistance</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>translucencyByDistance</code> property defines how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        public NearFarScalarCesiumWriter TranslucencyByDistanceWriter
+        {
+            get { return m_translucencyByDistance.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>translucencyByDistance</code> property.  The <code>translucencyByDistance</code> property defines how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        public NearFarScalarCesiumWriter OpenTranslucencyByDistanceProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(TranslucencyByDistanceWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteTranslucencyByDistanceProperty(NearFarScalar value)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="nearDistance">The lower bound of the camera distance range.</param>
+        /// <param name="nearValue">The value to use at the lower bound of the camera distance range.</param>
+        /// <param name="farDistance">The upper bound of the camera distance range.</param>
+        /// <param name="farValue">The value to use at the upper bound of the camera distance range.</param>
+        public void WriteTranslucencyByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(nearDistance, nearValue, farDistance, farValue);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteTranslucencyByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteTranslucencyByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values, int startIndex, int length)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteTranslucencyByDistancePropertyReference(Reference value)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteTranslucencyByDistancePropertyReference(string value)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteTranslucencyByDistancePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteTranslucencyByDistancePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>pixelOffsetScaleByDistance</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>pixelOffsetScaleByDistance</code> property defines how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        public NearFarScalarCesiumWriter PixelOffsetScaleByDistanceWriter
+        {
+            get { return m_pixelOffsetScaleByDistance.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>pixelOffsetScaleByDistance</code> property.  The <code>pixelOffsetScaleByDistance</code> property defines how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        public NearFarScalarCesiumWriter OpenPixelOffsetScaleByDistanceProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(PixelOffsetScaleByDistanceWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WritePixelOffsetScaleByDistanceProperty(NearFarScalar value)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="nearDistance">The lower bound of the camera distance range.</param>
+        /// <param name="nearValue">The value to use at the lower bound of the camera distance range.</param>
+        /// <param name="farDistance">The upper bound of the camera distance range.</param>
+        /// <param name="farValue">The value to use at the upper bound of the camera distance range.</param>
+        public void WritePixelOffsetScaleByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(nearDistance, nearValue, farDistance, farValue);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WritePixelOffsetScaleByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WritePixelOffsetScaleByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values, int startIndex, int length)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WritePixelOffsetScaleByDistancePropertyReference(Reference value)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WritePixelOffsetScaleByDistancePropertyReference(string value)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WritePixelOffsetScaleByDistancePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WritePixelOffsetScaleByDistancePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenPixelOffsetScaleByDistanceProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

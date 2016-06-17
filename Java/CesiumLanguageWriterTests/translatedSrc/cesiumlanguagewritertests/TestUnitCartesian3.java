@@ -2,8 +2,6 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.ArgumentNullException;
-import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
@@ -36,26 +34,6 @@ public class TestUnitCartesian3 {
 		Assert.assertEquals(2.0 / 7.0, test.getX(), 0d);
 		Assert.assertEquals(3.0 / 7.0, test.getY(), 0d);
 		Assert.assertEquals(6.0 / 7.0, test.getZ(), 0d);
-	}
-
-	/**
-	 *  
-	Tests initialization from an array of 3 coordinates works correctly.
-	
-
-	 */
-	@Test
-	public final void testFromArray() {
-		double[] values = {
-				2.0,
-				3.0,
-				6.0
-		};
-		UnitCartesian test = new UnitCartesian(values);
-		Assert.assertEquals((int) values.length, (int) test.getLength());
-		Assert.assertEquals(test.getX(), test.get(0), 0d);
-		Assert.assertEquals(test.getY(), test.get(1), 0d);
-		Assert.assertEquals(test.getZ(), test.get(2), 0d);
 	}
 
 	/**
@@ -248,52 +226,6 @@ public class TestUnitCartesian3 {
 
 	/**
 	 *  
-	Tests the  {@link UnitCartesian#angleBetween} method.
-	
-
-	 */
-	@Test
-	public final void testAngleBetween() {
-		double fortyFiveDegrees = Math.PI / 4.0;
-		UnitCartesian first = new UnitCartesian(1.0, 1.0, 0.0);
-		UnitCartesian second = new UnitCartesian(1.0, 1.0, Math.sqrt(2.0));
-		Assert.assertEquals(fortyFiveDegrees, second.angleBetween(first), Constants.Epsilon15);
-	}
-
-	/**
-	 *  
-	Tests the <code>MostOrthogonalAxis</code> ({@link UnitCartesian#getMostOrthogonalAxis get}) method.
-	
-
-	 */
-	@Test
-	public final void testMostOrthogonalAxis() {
-		UnitCartesian Cartesian3 = new UnitCartesian(1.0, 2.0, 3.0);
-		AssertHelper.assertEquals(UnitCartesian.getUnitX(), Cartesian3.getMostOrthogonalAxis());
-		Cartesian3 = new UnitCartesian(2.0, 3.0, 1.0);
-		AssertHelper.assertEquals(UnitCartesian.getUnitZ(), Cartesian3.getMostOrthogonalAxis());
-		Cartesian3 = new UnitCartesian(3.0, 1.0, 2.0);
-		AssertHelper.assertEquals(UnitCartesian.getUnitY(), Cartesian3.getMostOrthogonalAxis());
-	}
-
-	/**
-	 *  
-	Tests the <code>MostParallelAxis</code> ({@link UnitCartesian#getMostParallelAxis get}) method.
-	
-
-	 */
-	@Test
-	public final void testMostParallelAxis() {
-		UnitCartesian Cartesian3 = new UnitCartesian(1.0, 2.0, 3.0);
-		AssertHelper.assertEquals(UnitCartesian.getUnitZ(), Cartesian3.getMostParallelAxis());
-		Cartesian3 = new UnitCartesian(2.0, 3.0, 1.0);
-		AssertHelper.assertEquals(UnitCartesian.getUnitY(), Cartesian3.getMostParallelAxis());
-		Cartesian3 = new UnitCartesian(3.0, 1.0, 2.0);
-		AssertHelper.assertEquals(UnitCartesian.getUnitX(), Cartesian3.getMostParallelAxis());
-	}
-
-	/**
-	 *  
 	Tests the  {@link UnitCartesian#invert} method.
 	
 
@@ -462,60 +394,6 @@ public class TestUnitCartesian3 {
 
 	/**
 	 *  
-	Tests rotation by a  {@link UnitQuaternion}.
-	
-
-	 */
-	@Test
-	public final void testRotateByQuaternion() {
-		double angle = Math.PI / 3.0;
-		// half angle of 120 degree rotation
-		double cos = Math.cos(angle);
-		double sin = Math.sin(angle);
-		UnitCartesian axis = new UnitCartesian(1.0, 1.0, 1.0);
-		// unit vector along [1,1,1]
-		double w = cos;
-		double x = sin * axis.getX();
-		double y = sin * axis.getY();
-		double z = sin * axis.getZ();
-		// The original vector is along the x-axis.
-		UnitCartesian original = UnitCartesian.getUnitX();
-		// The rotated vector is along the z-axis.
-		UnitCartesian rotated = original.rotate(new UnitQuaternion(w, x, y, z));
-		Assert.assertEquals(0.0, rotated.getX(), Constants.Epsilon15);
-		Assert.assertEquals(0.0, rotated.getY(), Constants.Epsilon15);
-		Assert.assertEquals(1.0, rotated.getZ(), Constants.Epsilon15);
-	}
-
-	/**
-	 *  
-	Tests rotation by an  {@link Matrix3By3}.
-	
-
-	 */
-	@Test
-	public final void testRotateByMatrix3By3() {
-		double angle = Math.PI / 3.0;
-		// half angle of 120 degree rotation
-		double cos = Math.cos(angle);
-		double sin = Math.sin(angle);
-		UnitCartesian axis = new UnitCartesian(1.0, 1.0, 1.0);
-		// unit vector along [1,1,1]
-		double w = cos;
-		double x = sin * axis.getX();
-		double y = sin * axis.getY();
-		double z = sin * axis.getZ();
-		// The original vector is along the x-axis.
-		UnitCartesian original = new UnitCartesian(1.0, 0.0, 0.0);
-		// The rotated vector is along the z-axis.
-		UnitCartesian rotated = original.rotate(new Matrix3By3(new UnitQuaternion(w, x, y, z)));
-		Assert.assertEquals(0.0, rotated.getX(), Constants.Epsilon15);
-		Assert.assertEquals(0.0, rotated.getY(), Constants.Epsilon15);
-		Assert.assertEquals(1.0, rotated.getZ(), Constants.Epsilon15);
-	}
-
-	/**
-	 *  
 	Tests that Cartesian3.GetHashCode returns something at least reasonably random.
 	
 
@@ -527,58 +405,6 @@ public class TestUnitCartesian3 {
 		UnitCartesian object3 = new UnitCartesian(1.0, 2.0, 3.1);
 		Assert.assertEquals((int) object1.hashCode(), (int) object2.hashCode());
 		AssertHelper.assertNotEqual(object1.hashCode(), object3.hashCode());
-	}
-
-	/**
-	 *  
-	Tests that construction from a null array of doubles throws the correct exception.
-	
-
-	 */
-	@Test
-	public final void testInitializationFromNull() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentNullException.class);
-		double[] array = null;
-		UnitCartesian first = new UnitCartesian(array, 0);
-	}
-
-	/**
-	 *  
-	Tests that construction from an array of doubles with an incorrect length throws the correct exception.
-	
-
-	 */
-	@Test
-	public final void testInitializationFromBadArray() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-		double[] array = new double[2];
-		UnitCartesian first = new UnitCartesian(array, 0);
-	}
-
-	/**
-	 *  
-	Tests to ensure that an invalid index throws the anticipated exception.
-	
-
-	 */
-	@Test
-	public final void testIndexTooHigh() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-		UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
-		double bad = first.get(3);
-	}
-
-	/**
-	 *  
-	Tests to ensure that an invalid index throws the anticipated exception.
-	
-
-	 */
-	@Test
-	public final void testIndexTooLow() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-		UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
-		double bad = first.get(-1);
 	}
 
 	/**

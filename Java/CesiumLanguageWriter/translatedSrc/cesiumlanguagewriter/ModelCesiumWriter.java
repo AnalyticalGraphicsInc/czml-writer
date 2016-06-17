@@ -51,6 +51,13 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	public static final String MinimumPixelSizePropertyName = "minimumPixelSize";
 	/**
 	 *  
+	The name of the <code>maximumScale</code> property.
+	
+
+	 */
+	public static final String MaximumScalePropertyName = "maximumScale";
+	/**
+	 *  
 	The name of the <code>incrementallyLoadTextures</code> property.
 	
 
@@ -88,6 +95,11 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	private Lazy<DoubleCesiumWriter> m_minimumPixelSize = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(MinimumPixelSizePropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_maximumScale = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(MaximumScalePropertyName);
 		}
 	}, false);
 	private Lazy<BooleanCesiumWriter> m_incrementallyLoadTextures = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
@@ -776,6 +788,150 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 	public final void writeMinimumPixelSizePropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>maximumScale</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>maximumScale</code> property defines the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+	
+
+	 */
+	public final DoubleCesiumWriter getMaximumScaleWriter() {
+		return m_maximumScale.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>maximumScale</code> property.  The <code>maximumScale</code> property defines the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+	
+
+	 */
+	public final DoubleCesiumWriter openMaximumScaleProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getMaximumScaleWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>maximumScale</code> property as a <code>number</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeMaximumScaleProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumScaleProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>maximumScale</code> property as a <code>number</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeMaximumScaleProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumScaleProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>maximumScale</code> property as a <code>reference</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeMaximumScalePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumScaleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>maximumScale</code> property as a <code>reference</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeMaximumScalePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumScaleProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>maximumScale</code> property as a <code>reference</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeMaximumScalePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumScaleProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>maximumScale</code> property as a <code>reference</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeMaximumScalePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumScaleProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {

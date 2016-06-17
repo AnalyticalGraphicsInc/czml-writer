@@ -48,6 +48,14 @@
             "$ref": "Double.jsonschema",
             "description": "The width of the cylinder outline.",
             "default": 1.0
+        },
+        "numberOfVerticalLines": {
+            "$ref": "Double.jsonschema",
+            "description": "The number of vertical lines to draw along the perimeter for the outline."
+        },
+        "slices": {
+            "$ref": "Double.jsonschema",
+            "description": "The number of edges around the perimeter of the cylinder."
         }
     }
 }

@@ -24,21 +24,6 @@ namespace CesiumLanguageWriter
         public const string RadiiPropertyName = "radii";
 
         /// <summary>
-        /// The name of the <code>stackPartitions</code> property.
-        /// </summary>
-        public const string StackPartitionsPropertyName = "stackPartitions";
-
-        /// <summary>
-        /// The name of the <code>slicePartitions</code> property.
-        /// </summary>
-        public const string SlicePartitionsPropertyName = "slicePartitions";
-
-        /// <summary>
-        /// The name of the <code>subdivisions</code> property.
-        /// </summary>
-        public const string SubdivisionsPropertyName = "subdivisions";
-
-        /// <summary>
         /// The name of the <code>fill</code> property.
         /// </summary>
         public const string FillPropertyName = "fill";
@@ -63,16 +48,31 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string OutlineWidthPropertyName = "outlineWidth";
 
+        /// <summary>
+        /// The name of the <code>stackPartitions</code> property.
+        /// </summary>
+        public const string StackPartitionsPropertyName = "stackPartitions";
+
+        /// <summary>
+        /// The name of the <code>slicePartitions</code> property.
+        /// </summary>
+        public const string SlicePartitionsPropertyName = "slicePartitions";
+
+        /// <summary>
+        /// The name of the <code>subdivisions</code> property.
+        /// </summary>
+        public const string SubdivisionsPropertyName = "subdivisions";
+
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<EllipsoidRadiiCesiumWriter> m_radii = new Lazy<EllipsoidRadiiCesiumWriter>(() => new EllipsoidRadiiCesiumWriter(RadiiPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_stackPartitions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(StackPartitionsPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_slicePartitions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SlicePartitionsPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_subdivisions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SubdivisionsPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_fill = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(FillPropertyName), false);
         private readonly Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(MaterialPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(OutlinePropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_stackPartitions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(StackPartitionsPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_slicePartitions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SlicePartitionsPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_subdivisions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SubdivisionsPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -208,7 +208,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>radii</code> property as a <code>cartesian</code> value.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteRadiiProperty(IList<JulianDate> dates, IList<Cartesian> values)
         {
@@ -221,7 +221,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <code>radii</code> property as a <code>cartesian</code> value.  The <code>radii</code> property specifies the dimensions of the ellipsoid.
         /// </summary>
-        /// <param name="dates">The dates at which the vector is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -278,288 +278,6 @@ namespace CesiumLanguageWriter
         public void WriteRadiiPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenRadiiProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>stackPartitions</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>stackPartitions</code> property defines the number of times to partition the ellipsoid into stacks.
-        /// </summary>
-        public DoubleCesiumWriter StackPartitionsWriter
-        {
-            get { return m_stackPartitions.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>stackPartitions</code> property.  The <code>stackPartitions</code> property defines the number of times to partition the ellipsoid into stacks.
-        /// </summary>
-        public DoubleCesiumWriter OpenStackPartitionsProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(StackPartitionsWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>stackPartitions</code> property as a <code>number</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteStackPartitionsProperty(double value)
-        {
-            using (var writer = OpenStackPartitionsProperty())
-            {
-                writer.WriteNumber(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>stackPartitions</code> property as a <code>number</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteStackPartitionsProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenStackPartitionsProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>stackPartitions</code> property as a <code>reference</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteStackPartitionsPropertyReference(Reference value)
-        {
-            using (var writer = OpenStackPartitionsProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>stackPartitions</code> property as a <code>reference</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteStackPartitionsPropertyReference(string value)
-        {
-            using (var writer = OpenStackPartitionsProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>stackPartitions</code> property as a <code>reference</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteStackPartitionsPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenStackPartitionsProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>stackPartitions</code> property as a <code>reference</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteStackPartitionsPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenStackPartitionsProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>slicePartitions</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>slicePartitions</code> property defines the number of times to partition the ellipsoid into radial slices.
-        /// </summary>
-        public DoubleCesiumWriter SlicePartitionsWriter
-        {
-            get { return m_slicePartitions.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>slicePartitions</code> property.  The <code>slicePartitions</code> property defines the number of times to partition the ellipsoid into radial slices.
-        /// </summary>
-        public DoubleCesiumWriter OpenSlicePartitionsProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(SlicePartitionsWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>slicePartitions</code> property as a <code>number</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteSlicePartitionsProperty(double value)
-        {
-            using (var writer = OpenSlicePartitionsProperty())
-            {
-                writer.WriteNumber(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>slicePartitions</code> property as a <code>number</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteSlicePartitionsProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenSlicePartitionsProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>slicePartitions</code> property as a <code>reference</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteSlicePartitionsPropertyReference(Reference value)
-        {
-            using (var writer = OpenSlicePartitionsProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>slicePartitions</code> property as a <code>reference</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteSlicePartitionsPropertyReference(string value)
-        {
-            using (var writer = OpenSlicePartitionsProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>slicePartitions</code> property as a <code>reference</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteSlicePartitionsPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenSlicePartitionsProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>slicePartitions</code> property as a <code>reference</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteSlicePartitionsPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenSlicePartitionsProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <code>subdivisions</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>subdivisions</code> property defines the number of samples per outline ring, determining the granularity of the curvature.
-        /// </summary>
-        public DoubleCesiumWriter SubdivisionsWriter
-        {
-            get { return m_subdivisions.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <code>subdivisions</code> property.  The <code>subdivisions</code> property defines the number of samples per outline ring, determining the granularity of the curvature.
-        /// </summary>
-        public DoubleCesiumWriter OpenSubdivisionsProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(SubdivisionsWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>subdivisions</code> property as a <code>number</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteSubdivisionsProperty(double value)
-        {
-            using (var writer = OpenSubdivisionsProperty())
-            {
-                writer.WriteNumber(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>subdivisions</code> property as a <code>number</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteSubdivisionsProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenSubdivisionsProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteSubdivisionsPropertyReference(Reference value)
-        {
-            using (var writer = OpenSubdivisionsProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteSubdivisionsPropertyReference(string value)
-        {
-            using (var writer = OpenSubdivisionsProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteSubdivisionsPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenSubdivisionsProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteSubdivisionsPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenSubdivisionsProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
@@ -953,6 +671,288 @@ namespace CesiumLanguageWriter
         public void WriteOutlineWidthPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>stackPartitions</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>stackPartitions</code> property defines the number of times to partition the ellipsoid into stacks.
+        /// </summary>
+        public DoubleCesiumWriter StackPartitionsWriter
+        {
+            get { return m_stackPartitions.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>stackPartitions</code> property.  The <code>stackPartitions</code> property defines the number of times to partition the ellipsoid into stacks.
+        /// </summary>
+        public DoubleCesiumWriter OpenStackPartitionsProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(StackPartitionsWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>stackPartitions</code> property as a <code>number</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteStackPartitionsProperty(double value)
+        {
+            using (var writer = OpenStackPartitionsProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>stackPartitions</code> property as a <code>number</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteStackPartitionsProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenStackPartitionsProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>stackPartitions</code> property as a <code>reference</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteStackPartitionsPropertyReference(Reference value)
+        {
+            using (var writer = OpenStackPartitionsProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>stackPartitions</code> property as a <code>reference</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteStackPartitionsPropertyReference(string value)
+        {
+            using (var writer = OpenStackPartitionsProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>stackPartitions</code> property as a <code>reference</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteStackPartitionsPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenStackPartitionsProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>stackPartitions</code> property as a <code>reference</code> value.  The <code>stackPartitions</code> property specifies the number of times to partition the ellipsoid into stacks.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteStackPartitionsPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenStackPartitionsProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>slicePartitions</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>slicePartitions</code> property defines the number of times to partition the ellipsoid into radial slices.
+        /// </summary>
+        public DoubleCesiumWriter SlicePartitionsWriter
+        {
+            get { return m_slicePartitions.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>slicePartitions</code> property.  The <code>slicePartitions</code> property defines the number of times to partition the ellipsoid into radial slices.
+        /// </summary>
+        public DoubleCesiumWriter OpenSlicePartitionsProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(SlicePartitionsWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>slicePartitions</code> property as a <code>number</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteSlicePartitionsProperty(double value)
+        {
+            using (var writer = OpenSlicePartitionsProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>slicePartitions</code> property as a <code>number</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteSlicePartitionsProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenSlicePartitionsProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>slicePartitions</code> property as a <code>reference</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteSlicePartitionsPropertyReference(Reference value)
+        {
+            using (var writer = OpenSlicePartitionsProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>slicePartitions</code> property as a <code>reference</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteSlicePartitionsPropertyReference(string value)
+        {
+            using (var writer = OpenSlicePartitionsProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>slicePartitions</code> property as a <code>reference</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteSlicePartitionsPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenSlicePartitionsProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>slicePartitions</code> property as a <code>reference</code> value.  The <code>slicePartitions</code> property specifies the number of times to partition the ellipsoid into radial slices.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteSlicePartitionsPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenSlicePartitionsProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>subdivisions</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>subdivisions</code> property defines the number of samples per outline ring, determining the granularity of the curvature.
+        /// </summary>
+        public DoubleCesiumWriter SubdivisionsWriter
+        {
+            get { return m_subdivisions.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>subdivisions</code> property.  The <code>subdivisions</code> property defines the number of samples per outline ring, determining the granularity of the curvature.
+        /// </summary>
+        public DoubleCesiumWriter OpenSubdivisionsProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(SubdivisionsWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>subdivisions</code> property as a <code>number</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteSubdivisionsProperty(double value)
+        {
+            using (var writer = OpenSubdivisionsProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>subdivisions</code> property as a <code>number</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteSubdivisionsProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenSubdivisionsProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteSubdivisionsPropertyReference(Reference value)
+        {
+            using (var writer = OpenSubdivisionsProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteSubdivisionsPropertyReference(string value)
+        {
+            using (var writer = OpenSubdivisionsProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteSubdivisionsPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenSubdivisionsProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>subdivisions</code> property as a <code>reference</code> value.  The <code>subdivisions</code> property specifies the number of samples per outline ring, determining the granularity of the curvature.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteSubdivisionsPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenSubdivisionsProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

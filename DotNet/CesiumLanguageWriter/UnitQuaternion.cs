@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Text;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -227,6 +226,7 @@ namespace CesiumLanguageWriter
         /// Forms the conjugate of this instance.
         /// </summary>
         /// <returns>A set of <see cref="UnitQuaternion"/> coordinates that represents the conjugate of this instance.</returns>
+        [Pure]
         public UnitQuaternion Conjugate()
         {
             return new UnitQuaternion(m_w, -m_x, -m_y, -m_z, Normalization.Normalized);
@@ -237,6 +237,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="quaternion">The quaternion by which to multiply this quaternion.</param>
         /// <returns>The result of the multiplication.</returns>
+        [Pure]
         public UnitQuaternion Multiply(UnitQuaternion quaternion)
         {
             return new UnitQuaternion(m_w * quaternion.m_w - m_x * quaternion.m_x - m_y * quaternion.m_y - m_z * quaternion.m_z,
@@ -273,14 +274,20 @@ namespace CesiumLanguageWriter
         /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
-            if (obj is UnitQuaternion)
-            {
-                return Equals((UnitQuaternion)obj);
-            }
-            else
-            {
-                return false;
-            }
+            return obj is UnitQuaternion && Equals((UnitQuaternion)obj);
+        }
+
+        /// <summary>
+        /// Indicates whether another instance of this type is exactly equal to this instance.
+        /// </summary>
+        /// <param name="other">The instance to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        public bool Equals(UnitQuaternion other)
+        {
+            return m_w.Equals(other.m_w) &&
+                   m_x.Equals(other.m_x) &&
+                   m_y.Equals(other.m_y) &&
+                   m_z.Equals(other.m_z);
         }
 
         /// <summary>
@@ -290,14 +297,15 @@ namespace CesiumLanguageWriter
         /// <param name="other">The set of <see cref="UnitQuaternion"/> coordinates to compare to this instance.</param>
         /// <param name="epsilon">The limit at which the absolute differences between the coordinate values will not be considered equal.</param>
         /// <returns>
-        /// <see langword="true"/> if the absolute differences are less than <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
+        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
         /// </returns>
+        [Pure]
         public bool EqualsEpsilon(UnitQuaternion other, double epsilon)
         {
-            return Math.Abs(W - other.W) < epsilon &&
-                   Math.Abs(X - other.X) < epsilon &&
-                   Math.Abs(Y - other.Y) < epsilon &&
-                   Math.Abs(Z - other.Z) < epsilon;
+            return Math.Abs(m_w - other.m_w) <= epsilon &&
+                   Math.Abs(m_x - other.m_x) <= epsilon &&
+                   Math.Abs(m_y - other.m_y) <= epsilon &&
+                   Math.Abs(m_z - other.m_z) <= epsilon;
         }
 
         /// <summary>
@@ -306,7 +314,10 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return m_w.GetHashCode() ^ m_x.GetHashCode() ^ m_y.GetHashCode() ^ m_z.GetHashCode();
+            return HashCode.Combine(m_w.GetHashCode(),
+                                    m_x.GetHashCode(),
+                                    m_y.GetHashCode(),
+                                    m_z.GetHashCode());
         }
 
         /// <summary>
@@ -318,15 +329,7 @@ namespace CesiumLanguageWriter
         /// </returns>
         public override string ToString()
         {
-            StringBuilder build = new StringBuilder(80);
-            build.Append(m_w.ToString(CultureInfo.CurrentCulture));
-            build.Append(", ");
-            build.Append(m_x.ToString(CultureInfo.CurrentCulture));
-            build.Append(", ");
-            build.Append(m_y.ToString(CultureInfo.CurrentCulture));
-            build.Append(", ");
-            build.Append(m_z.ToString(CultureInfo.CurrentCulture));
-            return build.ToString();
+            return string.Format("{0}, {1}, {2}, {3}", m_w, m_x, m_y, m_z);
         }
 
         /// <summary>
@@ -360,10 +363,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public bool IsUndefined
         {
-            get
-            {
-                return Double.IsNaN(m_w) || Double.IsNaN(m_x) || Double.IsNaN(m_y) || Double.IsNaN(m_z);
-            }
+            get { return double.IsNaN(m_w) || double.IsNaN(m_x) || double.IsNaN(m_y) || double.IsNaN(m_z); }
         }
 
         private UnitQuaternion(double w, double x, double y, double z, Normalization normalization)
@@ -392,20 +392,13 @@ namespace CesiumLanguageWriter
             magnitude = Math.Sqrt(w * w + x * x + y * y + z * z);
 
             if (magnitude == 0.0)
-            {
                 throw new DivideByZeroException(CesiumLocalization.MagnitudeMustNotBeZero);
-            }
-            else if (Double.IsInfinity(magnitude))
-            {
+            if (double.IsInfinity(magnitude))
                 throw new NotFiniteNumberException(CesiumLocalization.MagnitudeMustNotBeInfinite);
-            }
-            else
-            {
-                w /= magnitude;
-                x /= magnitude;
-                y /= magnitude;
-                z /= magnitude;
-            }
+            w /= magnitude;
+            x /= magnitude;
+            y /= magnitude;
+            z /= magnitude;
         }
 
         private readonly double m_w;
@@ -413,68 +406,14 @@ namespace CesiumLanguageWriter
         private readonly double m_y;
         private readonly double m_z;
 
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        private static readonly int s_length = 4;
-
         private static readonly UnitQuaternion s_identity = new UnitQuaternion(1.0, 0.0, 0.0, 0.0);
 
-        private static readonly UnitQuaternion s_undefined = new UnitQuaternion(Double.NaN, Double.NaN, Double.NaN, Double.NaN, Normalization.Normalized);
+        private static readonly UnitQuaternion s_undefined = new UnitQuaternion(double.NaN, double.NaN, double.NaN, double.NaN, Normalization.Normalized);
 
         private enum Normalization
         {
             Unnormalized = 0,
             Normalized = 1
-        };
-
-        #region IEquatable<UnitQuaternion> Members
-
-        /// <summary>
-        /// Indicates whether another instance of this type is exactly equal to this instance.
-        /// </summary>
-        /// <param name="other">The instance to compare to this instance.</param>
-        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
-        public bool Equals(UnitQuaternion other)
-        {
-            return other.W == W && other.X == X && other.Y == Y && other.Z == Z;
-        }
-
-        #endregion
-
-        /// <summary>
-        /// Gets the number of elements in this set of coordinates.
-        /// </summary>
-        public int Length
-        {
-            get { return s_length; }
-        }
-
-        /// <summary>
-        /// Gets the value of the specified element with <paramref name="index"/> of 0, 1, 2, and 3 corresponding to the coordinates
-        /// W, X, Y, and Z.
-        /// </summary>
-        /// <param name="index">Either 0, 1, 2, or 3 corresponding to the coordinates W, X, Y, or Z.</param>
-        /// <returns>The coordinate associated with the specified <paramref name="index"/>.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when <paramref name="index"/> is less than 0 or is greater than or equal to the <see cref="Length"/>.
-        /// </exception>
-        public double this[int index]
-        {
-            get
-            {
-                switch (index)
-                {
-                    case 0:
-                        return W;
-                    case 1:
-                        return X;
-                    case 2:
-                        return Y;
-                    case 3:
-                        return Z;
-                    default:
-                        throw new ArgumentOutOfRangeException("index");
-                }
-            }
         }
     }
 }

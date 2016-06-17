@@ -53,6 +53,7 @@ namespace CesiumLanguageWriter
             m_leapSeconds.Add(new LeapSecond(2453736.5, 33));
             m_leapSeconds.Add(new LeapSecond(2454832.5, 34));
             m_leapSeconds.Add(new LeapSecond(2456109.5, 35));
+            m_leapSeconds.Add(new LeapSecond(2457204.5, 36));
         }
 
         /// <summary>

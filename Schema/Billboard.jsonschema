@@ -8,6 +8,9 @@
     "items": {
         "$ref": "#"
     },
+    "czmlExamples": [
+        "Examples/Billboard.json"
+    ],
     "properties": {
         "show": {
             "$ref": "Boolean.jsonschema",
@@ -56,8 +59,32 @@
         },
         "sizeInMeters": {
             "$ref": "Boolean.jsonschema",
-            "description": "whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.",
+            "description": "Whether this billboard's size (`width` and `height`) should be measured in meters, otherwise size is measured in pixels.",
             "default": false
+        },
+        "width": {
+            "$ref": "Double.jsonschema",
+            "description": "The width of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used."
+        },
+        "height": {
+            "$ref": "Double.jsonschema",
+            "description": "The height of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used."
+        },
+        "scaleByDistance": {
+            "$ref": "NearFarScalar.jsonschema",
+            "description": "How the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`."
+        },
+        "translucencyByDistance": {
+            "$ref": "NearFarScalar.jsonschema",
+            "description": "How the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1."
+        },
+        "pixelOffsetScaleByDistance": {
+            "$ref": "NearFarScalar.jsonschema",
+            "description": "How the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`."
+        },
+        "imageSubRegion": {
+            "$ref": "BoundingRectangle.jsonschema",
+            "description": "A sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left."
         }
     }
 }

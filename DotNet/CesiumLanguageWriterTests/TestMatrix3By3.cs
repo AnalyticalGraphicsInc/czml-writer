@@ -104,7 +104,7 @@ namespace CesiumLanguageWriterTests
             Matrix3By3 first = new Matrix3By3(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
             Matrix3By3 second = new Matrix3By3(1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7, 1e-8, 1e-9, 1e-10);
             Assert.IsTrue(second.EqualsEpsilon(first, 1e-1));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-2));
+            Assert.IsTrue(second.EqualsEpsilon(first, 1e-2));
             Assert.IsFalse(second.EqualsEpsilon(first, 1e-3));
             Assert.IsFalse(second.EqualsEpsilon(first, 1e-4));
             Assert.IsFalse(second.EqualsEpsilon(first, 1e-5));
@@ -380,53 +380,7 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(0.0, zero.M32);
             Assert.AreEqual(0.0, zero.M33);
         }
-
-        /// <summary>
-        /// Tests the cross product equivilant matrix
-        /// Diagonal Matrix
-        /// </summary>
-        [Test]
-        public void TestMatrixReturns()
-        {
-            double x = 1;
-            double y = 2;
-            double z = 3;
-            Matrix3By3 mat1 = Matrix3By3.CrossProductEquivalentMatrix(new Cartesian(x, y, z));
-            Assert.AreEqual(0.0, mat1.M11);
-            Assert.AreEqual(-z, mat1.M12);
-            Assert.AreEqual(y, mat1.M13);
-            Assert.AreEqual(z, mat1.M21);
-            Assert.AreEqual(0, mat1.M22);
-            Assert.AreEqual(-x, mat1.M23);
-            Assert.AreEqual(-y, mat1.M31);
-            Assert.AreEqual(x, mat1.M32);
-            Assert.AreEqual(0.0, mat1.M33);
-
-            UnitCartesian u = new UnitCartesian(x, y, z);
-            x = u.X;
-            y = u.Y;
-            z = u.Z;
-            Matrix3By3 mat2 = Matrix3By3.CrossProductEquivalentMatrix(u);
-            Assert.AreEqual(0.0, mat2.M11);
-            Assert.AreEqual(-z, mat2.M12);
-            Assert.AreEqual(y, mat2.M13);
-            Assert.AreEqual(z, mat2.M21);
-            Assert.AreEqual(0, mat2.M22);
-            Assert.AreEqual(-x, mat2.M23);
-            Assert.AreEqual(-y, mat2.M31);
-            Assert.AreEqual(x, mat2.M32);
-            Assert.AreEqual(0.0, mat2.M33);
-
-            Matrix3By3 mat3 = Matrix3By3.DiagonalMatrix(new Cartesian(1, 2, 3));
-            Assert.AreEqual(mat3.M11, 1);
-            Assert.AreEqual(mat3.M22, 2);
-            Assert.AreEqual(mat3.M33, 3);
-            Matrix3By3 mat4 = Matrix3By3.DiagonalMatrix(new UnitCartesian(1, 0, 0));
-            Assert.AreEqual(mat4.M11, 1);
-            Assert.AreEqual(mat4.M22, 0);
-            Assert.AreEqual(mat4.M33, 0);
-        }
-
+        
         /// <summary>
         /// Tests math operators
         /// </summary>
@@ -453,35 +407,6 @@ namespace CesiumLanguageWriterTests
             Cartesian mult = new Cartesian(1, 2, 3);
             Assert.IsTrue((new Cartesian(17, 23, 32).Equals(test.Multiply(mult))));
             Assert.IsTrue((new Cartesian(17, 23, 32).Equals(test * mult)));
-        }
-
-        /// <summary>
-        /// Test invert and by doing so, determinant
-        /// </summary>
-        [Test]
-        public void TestInvert()
-        {
-            Matrix3By3 test = new Matrix3By3(1.0, 5.0, 2.0, 1.0, 1.0, 7.0, 0.0, -3.0, 4.0);
-            Matrix3By3 inv = test.Invert();
-            Assert.AreEqual(-25.0, inv.M11);
-            Assert.AreEqual(26.0, inv.M12);
-            Assert.AreEqual(-33.0, inv.M13);
-            Assert.AreEqual(4.0, inv.M21);
-            Assert.AreEqual(-4.0, inv.M22);
-            Assert.AreEqual(5.0, inv.M23);
-            Assert.AreEqual(3.0, inv.M31);
-            Assert.AreEqual(-3.0, inv.M32);
-            Assert.AreEqual(4.0, inv.M33);
-        }
-
-        /// <summary>
-        /// Test zero invert exception
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArithmeticException))]
-        public void TestZeroInvertException()
-        {
-            Matrix3By3 mat = Matrix3By3.Zero.Invert();
         }
     }
 }

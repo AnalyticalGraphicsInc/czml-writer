@@ -272,28 +272,6 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestIndexTooHigh()
-        {
-            UnitQuaternion first = new UnitQuaternion(7.0, 2.0, 3.0, 6.0);
-            double bad = first[4];
-        }
-
-        /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestIndexTooLow()
-        {
-            UnitQuaternion first = new UnitQuaternion(7.0, 2.0, 3.0, 6.0);
-            double bad = first[-1];
-        }
-
-        /// <summary>
         /// Tests ToString method
         /// </summary>
         [Test]

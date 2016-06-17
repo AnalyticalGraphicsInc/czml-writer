@@ -67,7 +67,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <code>unitQuaternion</code>, which is the rotation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.
         /// </summary>
-        /// <param name="dates">The dates at which the rotation is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         public void WriteUnitQuaternion(IList<JulianDate> dates, IList<UnitQuaternion> values)
         {
@@ -77,7 +77,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <code>unitQuaternion</code>, which is the rotation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.
         /// </summary>
-        /// <param name="dates">The dates at which the rotation is specified.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>

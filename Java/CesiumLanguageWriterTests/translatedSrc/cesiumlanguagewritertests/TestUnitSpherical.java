@@ -2,19 +2,15 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.ArgumentNullException;
-import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
-import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -37,24 +33,6 @@ public class TestUnitSpherical {
 		UnitSpherical test = new UnitSpherical(1.0, 2.0);
 		Assert.assertEquals(1.0, test.getClock(), 0d);
 		Assert.assertEquals(2.0, test.getCone(), 0d);
-	}
-
-	/**
-	 *  
-	Tests initialization from an array of 2 coordinates works correctly.
-	
-
-	 */
-	@Test
-	public final void testFromArray() {
-		double[] values = {
-				2.0,
-				3.0
-		};
-		UnitSpherical test = new UnitSpherical(values);
-		Assert.assertEquals((int) values.length, (int) test.getLength());
-		Assert.assertEquals(test.getClock(), test.get(0), 0d);
-		Assert.assertEquals(test.getCone(), test.get(1), 0d);
 	}
 
 	/**
@@ -148,58 +126,6 @@ public class TestUnitSpherical {
 
 	/**
 	 *  
-	Tests that construction from a null array of doubles throws the correct exception.
-	
-
-	 */
-	@Test
-	public final void testInitializationFromNull() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentNullException.class);
-		double[] array = null;
-		UnitSpherical first = new UnitSpherical(array, 0);
-	}
-
-	/**
-	 *  
-	Tests that construction from an array of doubles with an incorrect length throws the correct exception.
-	
-
-	 */
-	@Test
-	public final void testInitializationFromBadArray() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-		double[] array = new double[1];
-		UnitSpherical first = new UnitSpherical(array, 0);
-	}
-
-	/**
-	 *  
-	Tests to ensure that an invalid index throws the anticipated exception.
-	
-
-	 */
-	@Test
-	public final void testIndexTooHigh() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-		UnitSpherical first = new UnitSpherical(1.0, 2.0);
-		double bad = first.get(2);
-	}
-
-	/**
-	 *  
-	Tests to ensure that an invalid index throws the anticipated exception.
-	
-
-	 */
-	@Test
-	public final void testIndexTooLow() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-		UnitSpherical first = new UnitSpherical(1.0, 2.0);
-		double bad = first.get(-1);
-	}
-
-	/**
-	 *  
 	Tests ToString method
 	
 
@@ -219,12 +145,5 @@ public class TestUnitSpherical {
 	@Rule
 	public TestContextRule getRule$testContext() {
 		return rule$testContext;
-	}
-
-	private ExpectedException rule$expectedException = ExpectedException.none();
-
-	@Rule
-	public ExpectedException getRule$expectedException() {
-		return rule$expectedException;
 	}
 }

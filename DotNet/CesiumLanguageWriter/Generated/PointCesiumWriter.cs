@@ -38,11 +38,23 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string OutlineWidthPropertyName = "outlineWidth";
 
+        /// <summary>
+        /// The name of the <code>scaleByDistance</code> property.
+        /// </summary>
+        public const string ScaleByDistancePropertyName = "scaleByDistance";
+
+        /// <summary>
+        /// The name of the <code>translucencyByDistance</code> property.
+        /// </summary>
+        public const string TranslucencyByDistancePropertyName = "translucencyByDistance";
+
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_pixelSize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(PixelSizePropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
+        private readonly Lazy<NearFarScalarCesiumWriter> m_scaleByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(ScaleByDistancePropertyName), false);
+        private readonly Lazy<NearFarScalarCesiumWriter> m_translucencyByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(TranslucencyByDistancePropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -577,6 +589,250 @@ namespace CesiumLanguageWriter
         public void WriteOutlineWidthPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>scaleByDistance</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scaleByDistance</code> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// </summary>
+        public NearFarScalarCesiumWriter ScaleByDistanceWriter
+        {
+            get { return m_scaleByDistance.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>scaleByDistance</code> property.  The <code>scaleByDistance</code> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// </summary>
+        public NearFarScalarCesiumWriter OpenScaleByDistanceProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ScaleByDistanceWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteScaleByDistanceProperty(NearFarScalar value)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// </summary>
+        /// <param name="nearDistance">The lower bound of the camera distance range.</param>
+        /// <param name="nearValue">The value to use at the lower bound of the camera distance range.</param>
+        /// <param name="farDistance">The upper bound of the camera distance range.</param>
+        /// <param name="farValue">The value to use at the upper bound of the camera distance range.</param>
+        public void WriteScaleByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(nearDistance, nearValue, farDistance, farValue);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteScaleByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteScaleByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values, int startIndex, int length)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteScaleByDistancePropertyReference(Reference value)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteScaleByDistancePropertyReference(string value)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteScaleByDistancePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteScaleByDistancePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>translucencyByDistance</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>translucencyByDistance</code> property defines how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        public NearFarScalarCesiumWriter TranslucencyByDistanceWriter
+        {
+            get { return m_translucencyByDistance.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>translucencyByDistance</code> property.  The <code>translucencyByDistance</code> property defines how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        public NearFarScalarCesiumWriter OpenTranslucencyByDistanceProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(TranslucencyByDistanceWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteTranslucencyByDistanceProperty(NearFarScalar value)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="nearDistance">The lower bound of the camera distance range.</param>
+        /// <param name="nearValue">The value to use at the lower bound of the camera distance range.</param>
+        /// <param name="farDistance">The upper bound of the camera distance range.</param>
+        /// <param name="farValue">The value to use at the upper bound of the camera distance range.</param>
+        public void WriteTranslucencyByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(nearDistance, nearValue, farDistance, farValue);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteTranslucencyByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteTranslucencyByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values, int startIndex, int length)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteTranslucencyByDistancePropertyReference(Reference value)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteTranslucencyByDistancePropertyReference(string value)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteTranslucencyByDistancePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteTranslucencyByDistancePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenTranslucencyByDistanceProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

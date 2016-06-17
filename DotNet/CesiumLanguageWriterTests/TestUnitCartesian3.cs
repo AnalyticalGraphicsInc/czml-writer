@@ -23,21 +23,6 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests initialization from an array of 3 coordinates works correctly.
-        /// </summary>
-        [Test]
-        public void TestFromArray()
-        {
-            double[] values = { 2.0, 3.0, 6.0 };
-
-            UnitCartesian test = new UnitCartesian(values);
-            Assert.AreEqual(values.Length, test.Length);
-            Assert.AreEqual(test.X, test[0]);
-            Assert.AreEqual(test.Y, test[1]);
-            Assert.AreEqual(test.Z, test[2]);
-        }
-
-        /// <summary>
         /// Tests initialization from <see cref="Cartesian"/> coordinates.
         /// </summary>
         [Test]
@@ -200,47 +185,6 @@ namespace CesiumLanguageWriterTests
         public void TestFromInfinity()
         {
             UnitCartesian first = new UnitCartesian(Double.PositiveInfinity, 0.0, 0.0);
-        }
-
-        /// <summary>
-        /// Tests the <see cref="UnitCartesian.AngleBetween"/> method.
-        /// </summary>
-        [Test]
-        public void TestAngleBetween()
-        {
-            double fortyFiveDegrees = Math.PI / 4.0;
-
-            UnitCartesian first = new UnitCartesian(1.0, 1.0, 0.0);
-            UnitCartesian second = new UnitCartesian(1.0, 1.0, Math.Sqrt(2.0));
-            Assert.AreEqual(fortyFiveDegrees, second.AngleBetween(first), Constants.Epsilon15);
-        }
-
-        /// <summary>
-        /// Tests the <see cref="UnitCartesian.MostOrthogonalAxis"/> method.
-        /// </summary>
-        [Test]
-        public void TestMostOrthogonalAxis()
-        {
-            UnitCartesian Cartesian3 = new UnitCartesian(1.0, 2.0, 3.0);
-            Assert.AreEqual(UnitCartesian.UnitX, Cartesian3.MostOrthogonalAxis);
-            Cartesian3 = new UnitCartesian(2.0, 3.0, 1.0);
-            Assert.AreEqual(UnitCartesian.UnitZ, Cartesian3.MostOrthogonalAxis);
-            Cartesian3 = new UnitCartesian(3.0, 1.0, 2.0);
-            Assert.AreEqual(UnitCartesian.UnitY, Cartesian3.MostOrthogonalAxis);
-        }
-
-        /// <summary>
-        /// Tests the <see cref="UnitCartesian.MostParallelAxis"/> method.
-        /// </summary>
-        [Test]
-        public void TestMostParallelAxis()
-        {
-            UnitCartesian Cartesian3 = new UnitCartesian(1.0, 2.0, 3.0);
-            Assert.AreEqual(UnitCartesian.UnitZ, Cartesian3.MostParallelAxis);
-            Cartesian3 = new UnitCartesian(2.0, 3.0, 1.0);
-            Assert.AreEqual(UnitCartesian.UnitY, Cartesian3.MostParallelAxis);
-            Cartesian3 = new UnitCartesian(3.0, 1.0, 2.0);
-            Assert.AreEqual(UnitCartesian.UnitX, Cartesian3.MostParallelAxis);
         }
 
         /// <summary>
@@ -408,60 +352,6 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests rotation by a <see cref="UnitQuaternion"/>.
-        /// </summary>
-        [Test]
-        public void TestRotateByQuaternion()
-        {
-            double angle = Math.PI / 3.0; // half angle of 120 degree rotation
-            double cos = Math.Cos(angle);
-            double sin = Math.Sin(angle);
-
-            UnitCartesian axis = new UnitCartesian(1.0, 1.0, 1.0); // unit vector along [1,1,1]
-
-            double w = cos;
-            double x = sin * axis.X;
-            double y = sin * axis.Y;
-            double z = sin * axis.Z;
-
-            // The original vector is along the x-axis.
-            UnitCartesian original = UnitCartesian.UnitX;
-
-            // The rotated vector is along the z-axis.
-            UnitCartesian rotated = original.Rotate(new UnitQuaternion(w, x, y, z));
-            Assert.AreEqual(0.0, rotated.X, Constants.Epsilon15);
-            Assert.AreEqual(0.0, rotated.Y, Constants.Epsilon15);
-            Assert.AreEqual(1.0, rotated.Z, Constants.Epsilon15);
-        }
-
-        /// <summary>
-        /// Tests rotation by an <see cref="Matrix3By3"/>.
-        /// </summary>
-        [Test]
-        public void TestRotateByMatrix3By3()
-        {
-            double angle = Math.PI / 3.0; // half angle of 120 degree rotation
-            double cos = Math.Cos(angle);
-            double sin = Math.Sin(angle);
-
-            UnitCartesian axis = new UnitCartesian(1.0, 1.0, 1.0); // unit vector along [1,1,1]
-
-            double w = cos;
-            double x = sin * axis.X;
-            double y = sin * axis.Y;
-            double z = sin * axis.Z;
-
-            // The original vector is along the x-axis.
-            UnitCartesian original = new UnitCartesian(1.0, 0.0, 0.0);
-
-            // The rotated vector is along the z-axis.
-            UnitCartesian rotated = original.Rotate(new Matrix3By3(new UnitQuaternion(w, x, y, z)));
-            Assert.AreEqual(0.0, rotated.X, Constants.Epsilon15);
-            Assert.AreEqual(0.0, rotated.Y, Constants.Epsilon15);
-            Assert.AreEqual(1.0, rotated.Z, Constants.Epsilon15);
-        }
-
-        /// <summary>
         /// Tests that Cartesian3.GetHashCode returns something at least reasonably random.
         /// </summary>
         [Test]
@@ -473,51 +363,7 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(object1.GetHashCode(), object2.GetHashCode());
             Assert.AreNotEqual(object1.GetHashCode(), object3.GetHashCode());
         }
-
-        /// <summary>
-        /// Tests that construction from a null array of doubles throws the correct exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestInitializationFromNull()
-        {
-            double[] array = null;
-            UnitCartesian first = new UnitCartesian(array, 0);
-        }
-
-        /// <summary>
-        /// Tests that construction from an array of doubles with an incorrect length throws the correct exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestInitializationFromBadArray()
-        {
-            double[] array = new double[2];
-            UnitCartesian first = new UnitCartesian(array, 0);
-        }
-
-        /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestIndexTooHigh()
-        {
-            UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
-            double bad = first[3];
-        }
-
-        /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestIndexTooLow()
-        {
-            UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
-            double bad = first[-1];
-        }
-
+        
         /// <summary>
         /// Tests ToString method
         /// </summary>

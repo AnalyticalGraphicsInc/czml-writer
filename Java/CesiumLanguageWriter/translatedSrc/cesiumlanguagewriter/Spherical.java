@@ -4,9 +4,6 @@ package cesiumlanguagewriter;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
-import agi.foundation.compatibility.ArgumentNullException;
-import agi.foundation.compatibility.ArgumentOutOfRangeException;
-import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
@@ -31,57 +28,6 @@ public class Spherical implements IEquatable<Spherical>, ImmutableValueType {
 	 */
 	public static Spherical getZero() {
 		return s_zero;
-	}
-
-	/**
-	 *  
-	Initializes a set of  {@link Spherical} coordinates from the provided array.
-	
-	
-	
-	
-	
-
-	 * @param elements The array of coordinate values.
-	 * @param startIndex The index of the first element in the array to use.
-	 * @exception ArgumentNullException 
-	Thrown when the array of <code>elements</code> is null.
-	
-	 * @exception ArgumentOutOfRangeException 
-	Thrown when an object of this type is constructed from an array with less than 3 <code>elements</code>.
-	
-	 */
-	public Spherical(double[] elements, int startIndex) {
-		if (elements == null) {
-			throw new ArgumentNullException("elements");
-		} else if (startIndex >= elements.length || elements.length - startIndex < s_length) {
-			throw new ArgumentOutOfRangeException("elements", StringHelper.format(CultureInfoHelper.getCurrentCulture(), CesiumLocalization.getMustBeConstructedFromSpecificNumberOfElements(),
-					Spherical.class, 3));
-		} else {
-			m_clock = elements[startIndex + 0];
-			m_cone = elements[startIndex + 1];
-			m_magnitude = elements[startIndex + 2];
-		}
-	}
-
-	/**
-	 *  
-	Initializes a set of  {@link Spherical} coordinates from the first 3 consecutive elements in the provided array.
-	
-	
-	
-	
-
-	 * @param elements The array of coordinate values.
-	 * @exception ArgumentNullException 
-	The array of <code>elements</code> cannot be null.
-	
-	 * @exception ArgumentOutOfRangeException 
-	An object of this type must be constructed from an array with at least 3 <code>elements</code>.
-	
-	 */
-	public Spherical(double[] elements) {
-		this(elements, 0);
 	}
 
 	/**
@@ -155,6 +101,7 @@ public class Spherical implements IEquatable<Spherical>, ImmutableValueType {
 
 	 * @return The resulting set of  {@link UnitSpherical} coordinates.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final UnitSpherical normalize() {
 		return new UnitSpherical(this);
 	}
@@ -171,11 +118,21 @@ public class Spherical implements IEquatable<Spherical>, ImmutableValueType {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof Spherical) {
-			return equalsType((Spherical) obj);
-		} else {
-			return false;
-		}
+		return obj instanceof Spherical && equalsType((Spherical) obj);
+	}
+
+	/**
+	 *  
+	Indicates whether another instance of this type is exactly equal to this instance.
+	
+	
+	
+
+	 * @param other The instance to compare to this instance.
+	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
+	 */
+	public final boolean equalsType(Spherical other) {
+		return m_clock == other.m_clock && m_cone == other.m_cone && m_magnitude == other.m_magnitude;
 	}
 
 	/**
@@ -190,11 +147,12 @@ public class Spherical implements IEquatable<Spherical>, ImmutableValueType {
 	 * @param other The set of  {@link Spherical} coordinates to compare to this instance.
 	 * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
 	 * @return 
-	<see langword="true" /> if the absolute differences are less than <code>epsilon</code>; otherwise, <see langword="false" />.
+	<see langword="true" /> if the absolute differences are less than or equal to <code>epsilon</code>; otherwise, <see langword="false" />.
 	
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final boolean equalsEpsilon(Spherical other, double epsilon) {
-		return Math.abs(getClock() - other.getClock()) < epsilon && Math.abs(getCone() - other.getCone()) < epsilon && Math.abs(getMagnitude() - other.getMagnitude()) < epsilon;
+		return Math.abs(m_clock - other.m_clock) <= epsilon && Math.abs(m_cone - other.m_cone) <= epsilon && Math.abs(m_magnitude - other.m_magnitude) <= epsilon;
 	}
 
 	/**
@@ -207,7 +165,7 @@ public class Spherical implements IEquatable<Spherical>, ImmutableValueType {
 	 */
 	@Override
 	public int hashCode() {
-		return DoubleHelper.hashCode(m_clock) ^ DoubleHelper.hashCode(m_cone) ^ DoubleHelper.hashCode(m_magnitude);
+		return HashCode.combine(DoubleHelper.hashCode(m_clock), DoubleHelper.hashCode(m_cone), DoubleHelper.hashCode(m_magnitude));
 	}
 
 	/**
@@ -223,13 +181,7 @@ public class Spherical implements IEquatable<Spherical>, ImmutableValueType {
 	 */
 	@Override
 	public String toString() {
-		StringBuilder build = new StringBuilder(80);
-		build.append(DoubleHelper.toString(m_clock, CultureInfoHelper.getCurrentCulture()));
-		build.append(", ");
-		build.append(DoubleHelper.toString(m_cone, CultureInfoHelper.getCurrentCulture()));
-		build.append(", ");
-		build.append(DoubleHelper.toString(m_magnitude, CultureInfoHelper.getCurrentCulture()));
-		return build.toString();
+		return StringHelper.format("{0}, {1}, {2}", m_clock, m_cone, m_magnitude);
 	}
 
 	/**
@@ -273,61 +225,5 @@ public class Spherical implements IEquatable<Spherical>, ImmutableValueType {
 	private double m_clock;
 	private double m_cone;
 	private double m_magnitude;
-	@CS2JWarning("Unhandled attribute removed: SuppressMessage")
-	private static int s_length = 3;
 	private static Spherical s_zero = new Spherical(0.0, 0.0, 0.0);
-
-	/**
-	 *  
-	Indicates whether another instance of this type is exactly equal to this instance.
-	
-	
-	
-
-	 * @param other The instance to compare to this instance.
-	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
-	 */
-	public final boolean equalsType(Spherical other) {
-		return getClock() == other.getClock() && getCone() == other.getCone() && getMagnitude() == other.getMagnitude();
-	}
-
-	/**
-	 *  Gets the number of elements in this set of coordinates.
-	
-
-	 */
-	public final int getLength() {
-		return s_length;
-	}
-
-	/**
-	 *  Gets the value of the specified element with <code>index</code> of 0, 1, and 2 corresponding to the coordinates
-	Clock, Cone, and Magnitude.
-	
-	
-	
-	
-
-	 * @param index Either 0, 1, or 2 corresponding to the coordinates Clock, Cone, or Magnitude.
-	 * @return The coordinate associated with the specified <code>index</code>.
-	 * @exception ArgumentOutOfRangeException 
-	Thrown when the <code>index</code> is less than 0 or is equal to or greater than <code>Length</code> ({@link #getLength get}).
-	
-	 */
-	public final double get(int index) {
-		switch (index) {
-		case 0: {
-			return getClock();
-		}
-		case 1: {
-			return getCone();
-		}
-		case 2: {
-			return getMagnitude();
-		}
-		default: {
-			throw new ArgumentOutOfRangeException("index");
-		}
-		}
-	}
 }

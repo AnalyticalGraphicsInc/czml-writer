@@ -24,20 +24,6 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests initialization from an array of 2 coordinates works correctly.
-        /// </summary>
-        [Test]
-        public void TestFromArray()
-        {
-            double[] values = { 2.0, 3.0 };
-
-            UnitSpherical test = new UnitSpherical(values);
-            Assert.AreEqual(values.Length, test.Length);
-            Assert.AreEqual(test.Clock, test[0]);
-            Assert.AreEqual(test.Cone, test[1]);
-        }
-
-        /// <summary>
         /// Tests initialization from <see cref="UnitCartesian"/> coordinates.
         /// </summary>
         [Test]
@@ -117,50 +103,6 @@ namespace CesiumLanguageWriterTests
             UnitSpherical object3 = new UnitSpherical(1.0, 2.1);
             Assert.AreEqual(object1.GetHashCode(), object2.GetHashCode());
             Assert.AreNotEqual(object1.GetHashCode(), object3.GetHashCode());
-        }
-
-        /// <summary>
-        /// Tests that construction from a null array of doubles throws the correct exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestInitializationFromNull()
-        {
-            double[] array = null;
-            UnitSpherical first = new UnitSpherical(array, 0);
-        }
-
-        /// <summary>
-        /// Tests that construction from an array of doubles with an incorrect length throws the correct exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestInitializationFromBadArray()
-        {
-            double[] array = new double[1];
-            UnitSpherical first = new UnitSpherical(array, 0);
-        }
-
-        /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestIndexTooHigh()
-        {
-            UnitSpherical first = new UnitSpherical(1.0, 2.0);
-            double bad = first[2];
-        }
-
-        /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestIndexTooLow()
-        {
-            UnitSpherical first = new UnitSpherical(1.0, 2.0);
-            double bad = first[-1];
         }
 
         /// <summary>

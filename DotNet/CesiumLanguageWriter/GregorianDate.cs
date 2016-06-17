@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -82,13 +83,13 @@ namespace CesiumLanguageWriter
             // day of the week, AM/PM GMT and Z independently of the patterns.
             private static readonly string[] s_parseTimeFormatsTemplate =
                 new[]
-                    {
-                        "H:m:s.f*",
-                        "H:m:s",
-                        "H:m",
-                        "H tt", // Specifies AM to disallow '8'.
-                        "H'\u6642'm'\u5206's'\u79D2'",
-                    };
+                {
+                    "H:m:s.f*",
+                    "H:m:s",
+                    "H:m",
+                    "H tt", // Specifies AM to disallow '8'.
+                    "H'\u6642'm'\u5206's'\u79D2'",
+                };
 
             private static readonly string[] s_extraDateTimePatterns = BuildDateTimePatterns(s_extraDateTimePatternTemplates, 17);
 
@@ -104,93 +105,93 @@ namespace CesiumLanguageWriter
             // Note that the year cannot go between the day and the month.
             private static readonly string[] s_parseYearDayMonthFormats =
                 new[]
-                    {
-                        "yyyy/M/dT",
-                        "M/yyyy/dT",
-                        "yyyy'\u5E74'M'\u6708'd'\u65E5",
-                        "yyyy/d/MMMM",
-                        "yyyy/MMM/d",
-                        "d/MMMM/yyyy",
-                        "MMM/d/yyyy",
-                        "d/yyyy/MMMM",
-                        "MMM/yyyy/d",
-                        "yy/d/M",
-                    };
+                {
+                    "yyyy/M/dT",
+                    "M/yyyy/dT",
+                    "yyyy'\u5E74'M'\u6708'd'\u65E5",
+                    "yyyy/d/MMMM",
+                    "yyyy/MMM/d",
+                    "d/MMMM/yyyy",
+                    "MMM/d/yyyy",
+                    "d/yyyy/MMMM",
+                    "MMM/yyyy/d",
+                    "yy/d/M",
+                };
 
             private static readonly string[] s_parseYearMonthDayFormats =
                 new[]
-                    {
-                        "yyyy/M/dT",
-                        "M/yyyy/dT",
-                        "yyyy'\u5E74'M'\u6708'd'\u65E5",
-                        "yyyy/MMMM/d",
-                        "yyyy/d/MMM",
-                        "MMMM/d/yyyy",
-                        "d/MMM/yyyy",
-                        "MMMM/yyyy/d",
-                        "d/yyyy/MMM",
-                        "yy/MMMM/d",
-                        "yy/d/MMM",
-                        "MMM/yy/d",
-                    };
+                {
+                    "yyyy/M/dT",
+                    "M/yyyy/dT",
+                    "yyyy'\u5E74'M'\u6708'd'\u65E5",
+                    "yyyy/MMMM/d",
+                    "yyyy/d/MMM",
+                    "MMMM/d/yyyy",
+                    "d/MMM/yyyy",
+                    "MMMM/yyyy/d",
+                    "d/yyyy/MMM",
+                    "yy/MMMM/d",
+                    "yy/d/MMM",
+                    "MMM/yy/d",
+                };
 
             private static readonly string[] s_parseDayMonthYearFormats =
                 new[]
-                    {
-                        "yyyy/M/dT",
-                        "M/yyyy/dT",
-                        "yyyy'\u5E74'M'\u6708'd'\u65E5",
-                        "yyyy/MMMM/d",
-                        "yyyy/d/MMM",
-                        "d/MMMM/yyyy",
-                        "MMM/d/yyyy",
-                        "MMMM/yyyy/d",
-                        "d/yyyy/MMM",
-                        "d/MMMM/yy",
-                        "yy/MMM/d",
-                        "d/yy/MMM",
-                        "yy/d/MMM",
-                        "MMM/d/yy",
-                        "MMM/yy/d",
-                    };
+                {
+                    "yyyy/M/dT",
+                    "M/yyyy/dT",
+                    "yyyy'\u5E74'M'\u6708'd'\u65E5",
+                    "yyyy/MMMM/d",
+                    "yyyy/d/MMM",
+                    "d/MMMM/yyyy",
+                    "MMM/d/yyyy",
+                    "MMMM/yyyy/d",
+                    "d/yyyy/MMM",
+                    "d/MMMM/yy",
+                    "yy/MMM/d",
+                    "d/yy/MMM",
+                    "yy/d/MMM",
+                    "MMM/d/yy",
+                    "MMM/yy/d",
+                };
 
             private static readonly string[] s_parseMonthDayYearFormats =
                 new[]
-                    {
-                        "yyyy/M/dT",
-                        "M/yyyy/dT",
-                        "yyyy'\u5E74'M'\u6708'd'\u65E5",
-                        "yyyy/MMMM/d",
-                        "yyyy/d/MMM",
-                        "MMMM/d/yyyy",
-                        "d/MMM/yyyy",
-                        "MMMM/yyyy/d",
-                        "d/yyyy/MMM",
-                        "MMMM/d/yy",
-                        "MMM/yy/d",
-                        "d/MMM/yy",
-                        "yy/MMM/d",
-                        "d/yy/MMM",
-                        "yy/d/MMM",
-                    };
+                {
+                    "yyyy/M/dT",
+                    "M/yyyy/dT",
+                    "yyyy'\u5E74'M'\u6708'd'\u65E5",
+                    "yyyy/MMMM/d",
+                    "yyyy/d/MMM",
+                    "MMMM/d/yyyy",
+                    "d/MMM/yyyy",
+                    "MMMM/yyyy/d",
+                    "d/yyyy/MMM",
+                    "MMMM/d/yy",
+                    "MMM/yy/d",
+                    "d/MMM/yy",
+                    "yy/MMM/d",
+                    "d/yy/MMM",
+                    "yy/d/MMM",
+                };
 
             // Patterns influenced by the MonthDayPattern in DateTimeFormatInfo.
             // Note that these patterns cannot be followed by the time.
             private static readonly string[] s_monthDayShortFormats =
                 new[]
-                    {
-                        "MMMM/d",
-                        "d/MMM",
-                        "yyyy/MMMM",
-                    };
+                {
+                    "MMMM/d",
+                    "d/MMM",
+                    "yyyy/MMMM",
+                };
 
             private static readonly string[] s_dayMonthShortFormats =
                 new[]
-                    {
-                        "d/MMMM",
-                        "MMM/yy",
-                        "yyyy/MMMM",
-                    };
+                {
+                    "d/MMMM",
+                    "MMM/yy",
+                    "yyyy/MMMM",
+                };
 
             public static GregorianDate Parse(string s, IFormatProvider provider)
             {
@@ -469,7 +470,7 @@ namespace CesiumLanguageWriter
                         return 0;
                     }
 
-                    number = number * 10 + (byte) (c - '0');
+                    number = number * 10 + (byte)(c - '0');
                 }
 
                 numParsed = digits;
@@ -786,9 +787,9 @@ namespace CesiumLanguageWriter
                             if (num < 2 && day != -1 || num >= 2 && dayofweek != -1)
                                 return false;
                             if (num == 0)
-                                day = (int) ParseNumber(s, valuePos, 1, 2, false, out numParsed);
+                                day = (int)ParseNumber(s, valuePos, 1, 2, false, out numParsed);
                             else if (num == 1)
-                                day = (int) ParseNumber(s, valuePos, 1, 2, true, out numParsed);
+                                day = (int)ParseNumber(s, valuePos, 1, 2, true, out numParsed);
                             else if (num == 2)
                                 dayofweek = ParseEnum(s, valuePos, dfi.AbbreviatedDayNames, invInfo.AbbreviatedDayNames, exact, out numParsed);
                             else
@@ -802,7 +803,7 @@ namespace CesiumLanguageWriter
                             {
                                 numParsed = -1;
                                 if (num == 0 || num == 3)
-                                    month = (int) ParseNumber(s, valuePos, 1, 2, false, out numParsed);
+                                    month = (int)ParseNumber(s, valuePos, 1, 2, false, out numParsed);
                                 if (num > 1 && numParsed == -1)
                                     month = ParseEnum(s, valuePos, dfi.MonthNames, invInfo.MonthNames, false, out numParsed) + 1;
                                 if (num > 1 && numParsed == -1)
@@ -811,9 +812,9 @@ namespace CesiumLanguageWriter
                             }
 
                             if (num == 0)
-                                month = (int) ParseNumber(s, valuePos, 1, 2, false, out numParsed);
+                                month = (int)ParseNumber(s, valuePos, 1, 2, false, out numParsed);
                             else if (num == 1)
-                                month = (int) ParseNumber(s, valuePos, 1, 2, true, out numParsed);
+                                month = (int)ParseNumber(s, valuePos, 1, 2, true, out numParsed);
                             else if (num == 2)
                                 month = ParseEnum(s, valuePos, dfi.AbbreviatedMonthNames, invInfo.AbbreviatedMonthNames, exact, out numParsed) + 1;
                             else
@@ -825,19 +826,19 @@ namespace CesiumLanguageWriter
 
                             if (num == 0)
                             {
-                                year = (int) ParseNumber(s, valuePos, 1, 2, false, out numParsed);
+                                year = (int)ParseNumber(s, valuePos, 1, 2, false, out numParsed);
                             }
                             else if (num < 3)
                             {
-                                year = (int) ParseNumber(s, valuePos, 1, 2, true, out numParsed);
+                                year = (int)ParseNumber(s, valuePos, 1, 2, true, out numParsed);
                             }
                             else
                             {
-                                year = (int) ParseNumber(s, valuePos, exact ? 4 : 3, 4, false, out numParsed);
+                                year = (int)ParseNumber(s, valuePos, exact ? 4 : 3, 4, false, out numParsed);
                                 if ((year >= 1000) && (numParsed == 4) && (!longYear) && (s.Length > 4 + valuePos))
                                 {
                                     int np;
-                                    int ly = (int) ParseNumber(s, valuePos, 5, 5, false, out np);
+                                    int ly = (int)ParseNumber(s, valuePos, 5, 5, false, out np);
                                     longYear = (ly > 9999);
                                 }
                                 num = 3;
@@ -851,9 +852,9 @@ namespace CesiumLanguageWriter
                             if (hour != -1)
                                 return false;
                             if (num == 0)
-                                hour = (int) ParseNumber(s, valuePos, 1, 2, false, out numParsed);
+                                hour = (int)ParseNumber(s, valuePos, 1, 2, false, out numParsed);
                             else
-                                hour = (int) ParseNumber(s, valuePos, 1, 2, true, out numParsed);
+                                hour = (int)ParseNumber(s, valuePos, 1, 2, true, out numParsed);
 
                             if (hour > 12)
                                 return false;
@@ -865,9 +866,9 @@ namespace CesiumLanguageWriter
                             if (hour != -1 || !flexibleTwoPartsParsing && ampm >= 0)
                                 return false;
                             if (num == 0)
-                                hour = (int) ParseNumber(s, valuePos, 1, 2, false, out numParsed);
+                                hour = (int)ParseNumber(s, valuePos, 1, 2, false, out numParsed);
                             else
-                                hour = (int) ParseNumber(s, valuePos, 1, 2, true, out numParsed);
+                                hour = (int)ParseNumber(s, valuePos, 1, 2, true, out numParsed);
 
                             if (hour >= 24)
                                 return false;
@@ -877,9 +878,9 @@ namespace CesiumLanguageWriter
                             if (minute != -1)
                                 return false;
                             if (num == 0)
-                                minute = (int) ParseNumber(s, valuePos, 1, 2, false, out numParsed);
+                                minute = (int)ParseNumber(s, valuePos, 1, 2, false, out numParsed);
                             else
-                                minute = (int) ParseNumber(s, valuePos, 1, 2, true, out numParsed);
+                                minute = (int)ParseNumber(s, valuePos, 1, 2, true, out numParsed);
 
                             if (minute >= 60)
                                 return false;
@@ -889,9 +890,9 @@ namespace CesiumLanguageWriter
                             if (second != -1)
                                 return false;
                             if (num == 0)
-                                second = (int) ParseNumber(s, valuePos, 1, 2, false, out numParsed);
+                                second = (int)ParseNumber(s, valuePos, 1, 2, false, out numParsed);
                             else
-                                second = (int) ParseNumber(s, valuePos, 1, 2, true, out numParsed);
+                                second = (int)ParseNumber(s, valuePos, 1, 2, true, out numParsed);
 
                             break;
                         case 'F':
@@ -1106,7 +1107,7 @@ namespace CesiumLanguageWriter
 
                 do
                 {
-                    buffer[--pos] = (char) ('0' + digits % 10);
+                    buffer[--pos] = (char)('0' + digits % 10);
                     digits /= 10;
                     len--;
                 } while (digits > 0);
@@ -1151,8 +1152,8 @@ namespace CesiumLanguageWriter
 
             // This is intended as a last resort when all the other formats fail to parse a "day of year" format
             // This will throw exceptions if it cannot parse the string
-            private static bool ParseIso8601DayOfYear(string isoString, DateTimeFormatInfo dfi, out GregorianDate result, 
-                bool setExceptionOnError, ref FormatException exception)
+            private static bool ParseIso8601DayOfYear(string isoString, DateTimeFormatInfo dfi, out GregorianDate result,
+                                                      bool setExceptionOnError, ref FormatException exception)
             {
                 // This is a last resort case to handle the ISO8601 "day of year" format supported by STK
                 // Format: yyyy-dddTHH:mm:ss.f*
@@ -1247,9 +1248,9 @@ namespace CesiumLanguageWriter
 
                     switch (ch)
                     {
-                            //
-                            // Time Formats
-                            //
+                        //
+                        // Time Formats
+                        //
                         case 'h':
                             // hour, [1, 12]
                             tokLen = CountRepeat(format, i, ch);
@@ -1315,9 +1316,9 @@ namespace CesiumLanguageWriter
                                 result.Append(desig);
 
                             break;
-                            //
-                            // Date tokens
-                            //
+                        //
+                        // Date tokens
+                        //
                         case 'd':
                             // day. d(d?) = day of month (leading 0 if two d's)
                             // ddd = three leter day of week
@@ -1363,9 +1364,9 @@ namespace CesiumLanguageWriter
                             result.Append(dfi.GetEraName(1));
                             break;
 
-                            //
-                            // Other
-                            //
+                        //
+                        // Other
+                        //
                         case ':':
 #if SILVERLIGHT
                             result.Append(":");
@@ -1459,7 +1460,8 @@ namespace CesiumLanguageWriter
         /// <exception cref="ArgumentException">
         /// Thrown when one of the provided parameters is outside of its acceptable range.
         /// </exception>
-        public GregorianDate(int year, int month, int day) : this(year, month, day, 0, 0, 0)
+        public GregorianDate(int year, int month, int day)
+            : this(year, month, day, 0, 0, 0)
         {
         }
 
@@ -1522,9 +1524,9 @@ namespace CesiumLanguageWriter
         /// <see cref="TimeStandard.CoordinatedUniversalTime"/> (UTC) time standard.
         /// </summary>
         /// <param name="julianDate">The <see cref="JulianDate"/>.</param>
-        public GregorianDate(JulianDate julianDate) :
-            this(julianDate, TimeStandard.CoordinatedUniversalTime)
-        {     
+        public GregorianDate(JulianDate julianDate)
+            : this(julianDate, TimeStandard.CoordinatedUniversalTime)
+        {
         }
 
         /// <summary>
@@ -1552,10 +1554,10 @@ namespace CesiumLanguageWriter
 
             m_hour = (int)Math.Floor(secondsOfDay / SecondsPerHour);
 
-            double remainingSeconds = secondsOfDay - (m_hour * SecondsPerHour);
+            double remainingSeconds = secondsOfDay - m_hour * SecondsPerHour;
             m_minute = (int)Math.Floor(remainingSeconds / SecondsPerMinute);
 
-            m_second = secondsOfDay - ((m_hour * SecondsPerHour) + (m_minute * SecondsPerMinute));
+            m_second = secondsOfDay - (m_hour * SecondsPerHour + m_minute * SecondsPerMinute);
 
             if (isLeapSecond)
                 m_second += 1;
@@ -1586,7 +1588,7 @@ namespace CesiumLanguageWriter
 
             const long ticksPerMinute = 600000000L;
             const double ticksPerSecond = 1.0e7;
-            m_second = (dateTime.Ticks % ticksPerMinute) / ticksPerSecond;
+            m_second = dateTime.Ticks % ticksPerMinute / ticksPerSecond;
         }
 
         /// <summary>
@@ -1647,11 +1649,11 @@ namespace CesiumLanguageWriter
             get
             {
                 // JulianDates are noon-based
-                int hour = Hour - 12;
+                int hour = m_hour - 12;
                 if (hour < 0)
                     hour += 24;
 
-                return Second + ((hour * SecondsPerHour) + (Minute * SecondsPerMinute));
+                return m_second + hour * SecondsPerHour + m_minute * SecondsPerMinute;
             }
         }
 
@@ -1678,7 +1680,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         private bool IsLeapSecond
         {
-            get { return Second >= 60.0; }
+            get { return m_second >= 60.0; }
         }
 
         /// <summary>
@@ -1726,6 +1728,7 @@ namespace CesiumLanguageWriter
         /// <see cref="TimeStandard.InternationalAtomicTime"/> (TAI).
         ///</summary>
         ///<returns>A <see cref="JulianDate"/> representing this date.</returns>
+        [Pure]
         public JulianDate ToJulianDate()
         {
             return ToJulianDate(TimeStandard.CoordinatedUniversalTime);
@@ -1741,6 +1744,7 @@ namespace CesiumLanguageWriter
         ///<see cref="JulianDate"/> will be expressed in this time standard as well, if possible.
         ///</param>
         ///<returns>A <see cref="JulianDate"/> representing this date.</returns>
+        [Pure]
         public JulianDate ToJulianDate(TimeStandard timeStandard)
         {
             int julianDayNumber = m_yearMonthDay.JulianDayNumber;
@@ -1763,6 +1767,7 @@ namespace CesiumLanguageWriter
         ///The <see cref="DateTime"/> will be in UTC.
         ///</summary>
         ///<returns>A <see cref="DateTime"/> representing this date.</returns>
+        [Pure]
         public DateTime ToDateTime()
         {
             DateTime date = new DateTime(m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day);
@@ -1773,7 +1778,7 @@ namespace CesiumLanguageWriter
             long ticks = date.Ticks;
             ticks += m_hour * ticksPerHour;
             ticks += m_minute * ticksPerMinute;
-            ticks += (long) (Math.Round(m_second, 7) * ticksPerSecond);
+            ticks += (long)(Math.Round(m_second, 7) * ticksPerSecond);
 
             return new DateTime(ticks, DateTimeKind.Utc);
         }
@@ -1815,17 +1820,17 @@ namespace CesiumLanguageWriter
 
             if (result == 0)
             {
-                if (Hour != other.Hour)
+                if (m_hour != other.m_hour)
                 {
-                    return Hour < other.Hour ? -1 : 1;
+                    return m_hour < other.m_hour ? -1 : 1;
                 }
 
-                if (Minute != other.Minute)
+                if (m_minute != other.m_minute)
                 {
-                    return Minute < other.Minute ? -1 : 1;
+                    return m_minute < other.m_minute ? -1 : 1;
                 }
 
-                return Second == other.Second ? 0 : (Second < other.Second ? -1 : 1);
+                return m_second == other.m_second ? 0 : (m_second < other.m_second ? -1 : 1);
             }
             return result;
         }
@@ -1865,16 +1870,11 @@ namespace CesiumLanguageWriter
         public int CompareTo(object obj)
         {
             if (obj == null)
-            {
                 return 1;
-            }
-
             if (!(obj is GregorianDate))
-            {
                 throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "obj");
-            }
 
-            return CompareTo((GregorianDate) obj);
+            return CompareTo((GregorianDate)obj);
         }
 
         /// <summary>
@@ -1883,7 +1883,20 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return m_yearMonthDay.GetHashCode() ^ Hour.GetHashCode() ^ Minute.GetHashCode() ^ Second.GetHashCode();
+            return HashCode.Combine(m_yearMonthDay.GetHashCode(),
+                                    m_hour.GetHashCode(),
+                                    m_minute.GetHashCode(),
+                                    m_second.GetHashCode());
+        }
+
+        /// <summary>
+        /// Indicates whether another object is exactly equal to this instance.
+        /// </summary>
+        /// <param name="obj">The object to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        public override bool Equals(object obj)
+        {
+            return obj is GregorianDate && Equals((GregorianDate)obj);
         }
 
         /// <summary>
@@ -1894,20 +1907,6 @@ namespace CesiumLanguageWriter
         public bool Equals(GregorianDate other)
         {
             return CompareTo(other) == 0;
-        }
-
-        /// <summary>
-        /// Indicates whether another object is exactly equal to this instance.
-        /// </summary>
-        /// <param name="obj">The object to compare to this instance.</param>
-        /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
-        public override bool Equals(object obj)
-        {
-            if (obj is GregorianDate)
-            {
-                return Equals((GregorianDate) obj);
-            }
-            return false;
         }
 
         /// <summary>Converts the value of this instance to its equivalent string
@@ -1967,6 +1966,7 @@ namespace CesiumLanguageWriter
         /// represented to machine precision.
         /// </summary>
         /// <returns>A string representing this date and time in ISO8601 format.</returns>
+        [Pure]
         public string ToIso8601String()
         {
             return ToIso8601String(Iso8601Format.Extended);
@@ -1979,29 +1979,30 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="format">The type of ISO8601 string to create.</param>
         /// <returns>A string representing this date and time in ISO8601 format.</returns>
+        [Pure]
         public string ToIso8601String(Iso8601Format format)
         {
             switch (format)
             {
                 case Iso8601Format.Basic:
                     return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}{4:00}{5:00.###############}Z",
-                        m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute, m_second);
+                                         m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute, m_second);
                 case Iso8601Format.Extended:
                     return string.Format(CultureInfo.InvariantCulture, "{0:0000}-{1:00}-{2:00}T{3:00}:{4:00}:{5:00.###############}Z",
-                        m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute, m_second);
+                                         m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute, m_second);
                 case Iso8601Format.Compact:
-                    {
-                        if (m_second != 0)
-                            return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}{4:00}{5:00.###############}Z",
-                                m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute, m_second);
+                {
+                    if (m_second != 0)
+                        return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}{4:00}{5:00.###############}Z",
+                                             m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute, m_second);
 
-                        if (m_minute != 0)
-                            return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}{4:00}Z",
-                                m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute);
+                    if (m_minute != 0)
+                        return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}{4:00}Z",
+                                             m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute);
 
-                        return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}Z",
-                            m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour);
-                    }
+                    return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}Z",
+                                         m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour);
+                }
             }
 
             throw new InvalidOperationException();
@@ -2009,6 +2010,7 @@ namespace CesiumLanguageWriter
 
         /// <summary>Converts the value of this instance to its equivalent long date string representation.</summary>
         /// <returns>A string containing the name of the day of the week, the name of the month, the numeric day of the month, and the year equivalent to the date value of this instance.</returns>
+        [Pure]
         public string ToLongDateString()
         {
             return ToString("D");
@@ -2019,6 +2021,7 @@ namespace CesiumLanguageWriter
         /// <returns>A string containing the name of the day of the week, the name of the
         /// month, the numeric day of the hours, minutes, and seconds equivalent to the
         /// time value of this instance.</returns>
+        [Pure]
         public string ToLongTimeString()
         {
             return ToString("T");
@@ -2028,6 +2031,7 @@ namespace CesiumLanguageWriter
         /// string representation.</summary>
         /// <returns>A string containing the numeric month, the numeric day of the month,
         /// and the year equivalent to the date value of this instance.</returns>
+        [Pure]
         public string ToShortDateString()
         {
             return ToString("d");
@@ -2038,6 +2042,7 @@ namespace CesiumLanguageWriter
         /// <returns>A string containing the name of the day of the week, the name of the
         /// month, the numeric day of the hours, minutes, and seconds equivalent to the
         /// time value of this instance.</returns>
+        [Pure]
         public string ToShortTimeString()
         {
             return ToString("t");
@@ -2204,7 +2209,7 @@ namespace CesiumLanguageWriter
         /// </exception>
         public static GregorianDate ParseExact(string s, string format, IFormatProvider provider)
         {
-            return Parser.ParseExact(s, new[] {format}, provider);
+            return Parser.ParseExact(s, new[] { format }, provider);
         }
 
         /// <summary>

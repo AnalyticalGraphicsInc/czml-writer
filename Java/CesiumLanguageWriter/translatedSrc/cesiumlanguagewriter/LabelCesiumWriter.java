@@ -13,6 +13,7 @@ import cesiumlanguagewriter.EyeOffsetCesiumWriter;
 import cesiumlanguagewriter.FontCesiumWriter;
 import cesiumlanguagewriter.HorizontalOriginCesiumWriter;
 import cesiumlanguagewriter.LabelStyleCesiumWriter;
+import cesiumlanguagewriter.NearFarScalarCesiumWriter;
 import cesiumlanguagewriter.PixelOffsetCesiumWriter;
 import cesiumlanguagewriter.StringCesiumWriter;
 import cesiumlanguagewriter.VerticalOriginCesiumWriter;
@@ -110,6 +111,20 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
 	 */
 	public static final String OutlineWidthPropertyName = "outlineWidth";
+	/**
+	 *  
+	The name of the <code>translucencyByDistance</code> property.
+	
+
+	 */
+	public static final String TranslucencyByDistancePropertyName = "translucencyByDistance";
+	/**
+	 *  
+	The name of the <code>pixelOffsetScaleByDistance</code> property.
+	
+
+	 */
+	public static final String PixelOffsetScaleByDistancePropertyName = "pixelOffsetScaleByDistance";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
@@ -168,6 +183,16 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	private Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(OutlineWidthPropertyName);
+		}
+	}, false);
+	private Lazy<NearFarScalarCesiumWriter> m_translucencyByDistance = new Lazy<cesiumlanguagewriter.NearFarScalarCesiumWriter>(new Func1<cesiumlanguagewriter.NearFarScalarCesiumWriter>() {
+		public cesiumlanguagewriter.NearFarScalarCesiumWriter invoke() {
+			return new NearFarScalarCesiumWriter(TranslucencyByDistancePropertyName);
+		}
+	}, false);
+	private Lazy<NearFarScalarCesiumWriter> m_pixelOffsetScaleByDistance = new Lazy<cesiumlanguagewriter.NearFarScalarCesiumWriter>(new Func1<cesiumlanguagewriter.NearFarScalarCesiumWriter>() {
+		public cesiumlanguagewriter.NearFarScalarCesiumWriter invoke() {
+			return new NearFarScalarCesiumWriter(PixelOffsetScaleByDistancePropertyName);
 		}
 	}, false);
 
@@ -885,7 +910,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writePixelOffsetProperty(List<JulianDate> dates, List<Rectangular> values) {
@@ -908,7 +933,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
@@ -1050,7 +1075,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeEyeOffsetProperty(List<JulianDate> dates, List<Cartesian> values) {
@@ -1073,7 +1098,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
@@ -1931,6 +1956,386 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 	public final void writeOutlineWidthPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>translucencyByDistance</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>translucencyByDistance</code> property defines how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+	
+
+	 */
+	public final NearFarScalarCesiumWriter getTranslucencyByDistanceWriter() {
+		return m_translucencyByDistance.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>translucencyByDistance</code> property.  The <code>translucencyByDistance</code> property defines how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+	
+
+	 */
+	public final NearFarScalarCesiumWriter openTranslucencyByDistanceProperty() {
+		openIntervalIfNecessary();
+		return this.<NearFarScalarCesiumWriter> openAndReturn(getTranslucencyByDistanceWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeTranslucencyByDistanceProperty(NearFarScalar value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+	
+	
+
+	 * @param nearDistance The lower bound of the camera distance range.
+	 * @param nearValue The value to use at the lower bound of the camera distance range.
+	 * @param farDistance The upper bound of the camera distance range.
+	 * @param farValue The value to use at the upper bound of the camera distance range.
+	 */
+	public final void writeTranslucencyByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(nearDistance, nearValue, farDistance, farValue);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeTranslucencyByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeTranslucencyByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeTranslucencyByDistancePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeTranslucencyByDistancePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeTranslucencyByDistancePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeTranslucencyByDistancePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>pixelOffsetScaleByDistance</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>pixelOffsetScaleByDistance</code> property defines how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+
+	 */
+	public final NearFarScalarCesiumWriter getPixelOffsetScaleByDistanceWriter() {
+		return m_pixelOffsetScaleByDistance.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>pixelOffsetScaleByDistance</code> property.  The <code>pixelOffsetScaleByDistance</code> property defines how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+
+	 */
+	public final NearFarScalarCesiumWriter openPixelOffsetScaleByDistanceProperty() {
+		openIntervalIfNecessary();
+		return this.<NearFarScalarCesiumWriter> openAndReturn(getPixelOffsetScaleByDistanceWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writePixelOffsetScaleByDistanceProperty(NearFarScalar value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+	
+	
+	
+
+	 * @param nearDistance The lower bound of the camera distance range.
+	 * @param nearValue The value to use at the lower bound of the camera distance range.
+	 * @param farDistance The upper bound of the camera distance range.
+	 * @param farValue The value to use at the upper bound of the camera distance range.
+	 */
+	public final void writePixelOffsetScaleByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(nearDistance, nearValue, farDistance, farValue);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writePixelOffsetScaleByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writePixelOffsetScaleByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writePixelOffsetScaleByDistancePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writePixelOffsetScaleByDistancePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writePixelOffsetScaleByDistancePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writePixelOffsetScaleByDistancePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {

@@ -4,9 +4,6 @@ package cesiumlanguagewriter;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
-import agi.foundation.compatibility.ArgumentNullException;
-import agi.foundation.compatibility.ArgumentOutOfRangeException;
-import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
@@ -51,57 +48,6 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	 */
 	public static Cartesian getUndefined() {
 		return s_undefined;
-	}
-
-	/**
-	 *  
-	Initializes a set of  {@link Cartesian} coordinates from 3 consecutive elements in the provided array.
-	
-	
-	
-	
-	
-
-	 * @param elements The array of coordinate values.
-	 * @param startIndex The index of the first element in the array to use.
-	 * @exception ArgumentNullException 
-	Thrown when the array of <code>elements</code> is <see langword="null" />.
-	
-	 * @exception ArgumentOutOfRangeException 
-	Thrown when an object of this type is constructed from an array with less than 3 <code>elements</code>.
-	
-	 */
-	public Cartesian(double[] elements, int startIndex) {
-		if (elements == null) {
-			throw new ArgumentNullException("elements");
-		} else if (startIndex >= elements.length || elements.length - startIndex < s_length) {
-			throw new ArgumentOutOfRangeException("elements", StringHelper.format(CultureInfoHelper.getCurrentCulture(), CesiumLocalization.getMustBeConstructedFromSpecificNumberOfElements(),
-					Cartesian.class, 3));
-		} else {
-			m_x = elements[startIndex + 0];
-			m_y = elements[startIndex + 1];
-			m_z = elements[startIndex + 2];
-		}
-	}
-
-	/**
-	 *  
-	Initializes a set of  {@link Cartesian} coordinates from the first 3 consecutive elements in the provided array.
-	
-	
-	
-	
-
-	 * @param elements The array of coordinate values.
-	 * @exception ArgumentNullException 
-	The array of <code>elements</code> cannot be null.
-	
-	 * @exception ArgumentOutOfRangeException 
-	An object of this type must be constructed from an array with at least 3 <code>elements</code>.
-	
-	 */
-	public Cartesian(double[] elements) {
-		this(elements, 0);
 	}
 
 	/**
@@ -151,34 +97,6 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	}
 
 	/**
-	 *  Gets the  {@link UnitCartesian} of the axis most orthogonal to this Cartesian.
-	
-
-	 */
-	public final UnitCartesian getMostOrthogonalAxis() {
-		double x = Math.abs(m_x);
-		double y = Math.abs(m_y);
-		double z = Math.abs(m_z);
-		if (x <= y) {
-			return ((x <= z) ? UnitCartesian.getUnitX() : UnitCartesian.getUnitZ());
-		} else {
-			return ((y <= z) ? UnitCartesian.getUnitY() : UnitCartesian.getUnitZ());
-		}
-	}
-
-	/**
-	 *  
-	Inverts this instance.
-	
-	
-
-	 * @return A set of  {@link Cartesian} coordinates that represents the inverse of this instance.
-	 */
-	public final Cartesian invert() {
-		return new Cartesian(-m_x, -m_y, -m_z);
-	}
-
-	/**
 	 *  
 	Multiplies this instance by a scalar.
 	
@@ -188,6 +106,7 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	 * @param scalar The multiplier, or value which is to multiply this instance.
 	 * @return A set of  {@link Cartesian} coordinates that represents the result of the multiplication.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Cartesian multiply(double scalar) {
 		return new Cartesian(m_x * scalar, m_y * scalar, m_z * scalar);
 	}
@@ -202,6 +121,7 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	 * @param scalar The divisor, or value which is to divide this instance.
 	 * @return A set of  {@link Cartesian} coordinates that represents the result of the division.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Cartesian divide(double scalar) {
 		return new Cartesian(m_x / scalar, m_y / scalar, m_z / scalar);
 	}
@@ -216,6 +136,7 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	 * @param other The addend, or value which is to be added to this instance.
 	 * @return A set of  {@link Cartesian} coordinates that represents the result of the addition.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Cartesian add(Cartesian other) {
 		return new Cartesian(m_x + other.m_x, m_y + other.m_y, m_z + other.m_z);
 	}
@@ -230,6 +151,7 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	 * @param other The subtrahend, or value which is to be subtracted from this instance.
 	 * @return A set of  {@link Cartesian} coordinates that represents the result of the subtraction.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Cartesian subtract(Cartesian other) {
 		return new Cartesian(m_x - other.m_x, m_y - other.m_y, m_z - other.m_z);
 	}
@@ -244,6 +166,7 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	 * @param other The set of  {@link Cartesian} coordinates to cross with this instance.
 	 * @return A set of  {@link Cartesian} coordinates that represents the result of the product.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Cartesian cross(Cartesian other) {
 		return new Cartesian(m_y * other.m_z - m_z * other.m_y, m_z * other.m_x - m_x * other.m_z, m_x * other.m_y - m_y * other.m_x);
 	}
@@ -258,6 +181,7 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	 * @param other The set of  {@link Cartesian} coordinates to dot with this instance.
 	 * @return A  <code>double</code> that represents the result of the product.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final double dot(Cartesian other) {
 		return m_x * other.m_x + m_y * other.m_y + m_z * other.m_z;
 	}
@@ -364,75 +288,19 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 
 	/**
 	 *  
-	Performs a component-wise greater than check.
-	
-	
-	
-
-	 * @param other The  {@link Cartesian} to compare against.
-	 * @return <see langword="true" /> if all components of this Cartesian are greater than all components of <code>other</code>
-	 */
-	public final boolean allComponentsAreGreaterThan(Cartesian other) {
-		return (m_x > other.getX()) && (m_y > other.getY()) && (m_z > other.getZ());
-	}
-
-	/**
-	 *  
-	Performs a component-wise greater than or equal to check.
-	
-	
-	
-
-	 * @param other The  {@link Cartesian} to compare against.
-	 * @return <see langword="true" /> if all components of this  {@link Cartesian} are greater than or equal to all components of <code>other</code>
-	 */
-	public final boolean allComponentsAreGreaterThanOrEqualTo(Cartesian other) {
-		return (m_x >= other.getX()) && (m_y >= other.getY()) && (m_z >= other.getZ());
-	}
-
-	/**
-	 *  
-	Performs a component-wise less than check.
-	
-	
-	
-
-	 * @param other The  {@link Cartesian} to compare against.
-	 * @return <see langword="true" /> if all components of this  {@link Cartesian} are less than all components of <code>other</code>
-	 */
-	public final boolean allComponentsAreLessThan(Cartesian other) {
-		return (m_x < other.getX()) && (m_y < other.getY()) && (m_z < other.getZ());
-	}
-
-	/**
-	 *  
-	Performs a component-wise less than or equal to check.
-	
-	
-	
-
-	 * @param other The  {@link Cartesian} to compare against.
-	 * @return <see langword="true" /> if all components of this  {@link Cartesian} are less than or equal to all components of <code>other</code>
-	 */
-	public final boolean allComponentsAreLessThanOrEqualTo(Cartesian other) {
-		return (m_x <= other.getX()) && (m_y <= other.getY()) && (m_z <= other.getZ());
-	}
-
-	/**
-	 *  
+	<p>
 	Produces a set of  {@link Cartesian} coordinates representing this instance which results from rotating
-	the original axes used to represent this instance by the provided  {@link Matrix3By3} rotation.
-	
+	the original axes used to represent this instance by the provided  {@link Matrix3By3} rotation. 
+	This type of rotation is sometimes referred to as an "alias rotation".
+	</p>
 	
 	
 	
 
-	 * 
-	This type of rotation is sometimes referred to as an "alias rotation".
-	
 	 * @param rotation The  {@link Matrix3By3} rotation.
 	 * @return A set of  {@link Cartesian} coordinates which is the result of the rotation.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Cartesian rotate(Matrix3By3 rotation) {
 		return new Cartesian(rotation.getM11() * m_x + rotation.getM12() * m_y + rotation.getM13() * m_z, rotation.getM21() * m_x + rotation.getM22() * m_y + rotation.getM23() * m_z, rotation
 				.getM31()
@@ -441,25 +309,50 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 
 	/**
 	 *  
+	<p>
 	Produces a set of  {@link Cartesian} coordinates representing this instance which results from rotating
 	the original axes used to represent this instance by the provided  {@link UnitQuaternion} rotation.
-	
+	This type of rotation is sometimes referred to as an "alias rotation".
+	</p>
 	
 	
 	
 
-	 * 
-	This type of rotation is sometimes referred to as an "alias rotation".
-	
 	 * @param rotation The  {@link UnitQuaternion} rotation.
 	 * @return A set of  {@link Cartesian} coordinates which is the result of the rotation.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Cartesian rotate(UnitQuaternion rotation) {
 		double w = rotation.getW();
 		double difference = w * w - rotation.getX() * rotation.getX() - rotation.getY() * rotation.getY() - rotation.getZ() * rotation.getZ();
 		double dot = m_x * rotation.getX() + m_y * rotation.getY() + m_z * rotation.getZ();
 		return new Cartesian(difference * m_x + 2.0 * (w * (m_y * rotation.getZ() - m_z * rotation.getY()) + dot * rotation.getX()), difference * m_y + 2.0
 				* (w * (m_z * rotation.getX() - m_x * rotation.getZ()) + dot * rotation.getY()), difference * m_z + 2.0 * (w * (m_x * rotation.getY() - m_y * rotation.getX()) + dot * rotation.getZ()));
+	}
+
+	/**
+	 *  Gets the axis which is most orthogonal to this instance.
+	
+
+	 */
+	public final UnitCartesian getMostOrthogonalAxis() {
+		double x = Math.abs(m_x);
+		double y = Math.abs(m_y);
+		double z = Math.abs(m_z);
+		if (x <= y) {
+			return x <= z ? UnitCartesian.getUnitX() : UnitCartesian.getUnitZ();
+		} else {
+			return y <= z ? UnitCartesian.getUnitY() : UnitCartesian.getUnitZ();
+		}
+	}
+
+	/**
+	 *  Gets whether or not any of the coordinates for this instance have the value  {@link Double#NaN}.
+	
+
+	 */
+	public final boolean getIsUndefined() {
+		return Double.isNaN(m_x) || Double.isNaN(m_y) || Double.isNaN(m_z);
 	}
 
 	/**
@@ -474,11 +367,21 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof Cartesian) {
-			return equalsType((Cartesian) obj);
-		} else {
-			return false;
-		}
+		return obj instanceof Cartesian && equalsType((Cartesian) obj);
+	}
+
+	/**
+	 *  
+	Indicates whether another instance of this type is exactly equal to this instance.
+	
+	
+	
+
+	 * @param other The instance to compare to this instance.
+	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
+	 */
+	public final boolean equalsType(Cartesian other) {
+		return Double.valueOf(m_x).equals(other.m_x) && Double.valueOf(m_y).equals(other.m_y) && Double.valueOf(m_z).equals(other.m_z);
 	}
 
 	/**
@@ -493,11 +396,12 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	 * @param other The set of  {@link Cartesian} coordinates to compare to this instance.
 	 * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
 	 * @return 
-	<see langword="true" /> if the absolute differences are less than <code>epsilon</code>; otherwise, <see langword="false" />.
+	<see langword="true" /> if the absolute differences are less than or equal to <code>epsilon</code>; otherwise, <see langword="false" />.
 	
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final boolean equalsEpsilon(Cartesian other, double epsilon) {
-		return Math.abs(getX() - other.getX()) < epsilon && Math.abs(getY() - other.getY()) < epsilon && Math.abs(getZ() - other.getZ()) < epsilon;
+		return Math.abs(m_x - other.m_x) <= epsilon && Math.abs(m_y - other.m_y) <= epsilon && Math.abs(m_z - other.m_z) <= epsilon;
 	}
 
 	/**
@@ -510,7 +414,7 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	 */
 	@Override
 	public int hashCode() {
-		return DoubleHelper.hashCode(m_x) ^ DoubleHelper.hashCode(m_y) ^ DoubleHelper.hashCode(m_z);
+		return HashCode.combine(DoubleHelper.hashCode(m_x), DoubleHelper.hashCode(m_y), DoubleHelper.hashCode(m_z));
 	}
 
 	/**
@@ -526,13 +430,7 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	 */
 	@Override
 	public String toString() {
-		StringBuilder build = new StringBuilder(80);
-		build.append(DoubleHelper.toString(m_x, CultureInfoHelper.getCurrentCulture()));
-		build.append(", ");
-		build.append(DoubleHelper.toString(m_y, CultureInfoHelper.getCurrentCulture()));
-		build.append(", ");
-		build.append(DoubleHelper.toString(m_z, CultureInfoHelper.getCurrentCulture()));
-		return build.toString();
+		return StringHelper.format("{0}, {1}, {2}", m_x, m_y, m_z);
 	}
 
 	/**
@@ -589,25 +487,6 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	 */
 	public final double getMagnitudeSquared() {
 		return m_x * m_x + m_y * m_y + m_z * m_z;
-	}
-
-	/**
-	 *  Gets a value indicating if the <code>Magnitude</code> ({@link #getMagnitude get}) of this instance is zero.
-	
-
-	 */
-	public final boolean getHasZeroMagnitude() {
-		// Test the square of the magnitude since this is equivalent and more efficient.
-		return (getMagnitudeSquared() == 0.0);
-	}
-
-	/**
-	 *  Gets whether or not any of the coordinates for this instance have the value  {@link Double#NaN}.
-	
-
-	 */
-	public final boolean getIsUndefined() {
-		return Double.isNaN(m_x) || Double.isNaN(m_y) || Double.isNaN(m_z);
 	}
 
 	/**
@@ -682,62 +561,6 @@ public class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
 	private double m_x;
 	private double m_y;
 	private double m_z;
-	@CS2JWarning("Unhandled attribute removed: SuppressMessage")
-	private static int s_length = 3;
 	private static Cartesian s_zero = new Cartesian(0.0, 0.0, 0.0);
 	private static Cartesian s_undefined = new Cartesian(Double.NaN, Double.NaN, Double.NaN);
-
-	/**
-	 *  
-	Indicates whether another instance of this type is exactly equal to this instance.
-	
-	
-	
-
-	 * @param other The instance to compare to this instance.
-	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
-	 */
-	public final boolean equalsType(Cartesian other) {
-		return other.m_x == m_x && other.m_y == m_y && other.m_z == m_z;
-	}
-
-	/**
-	 *  Gets the number of elements in this set of coordinates.
-	
-
-	 */
-	public final int getLength() {
-		return s_length;
-	}
-
-	/**
-	 *  Gets the value of the specified element with <code>index</code> of 0, 1, and 2 corresponding to the coordinates
-	X, Y, and Z.
-	
-	
-	
-	
-
-	 * @param index Either a 0, 1, or 2 corresponding to the coordinates X, Y, or Z.
-	 * @return The coordinate associated with the specified <code>index</code>.
-	 * @exception ArgumentOutOfRangeException 
-	Thrown if the <code>index</code> is less than 0 or greater than or equal to the <code>Length</code> ({@link #getLength get}).
-	
-	 */
-	public final double get(int index) {
-		switch (index) {
-		case 0: {
-			return getX();
-		}
-		case 1: {
-			return getY();
-		}
-		case 2: {
-			return getZ();
-		}
-		default: {
-			throw new ArgumentOutOfRangeException("index");
-		}
-		}
-	}
 }
