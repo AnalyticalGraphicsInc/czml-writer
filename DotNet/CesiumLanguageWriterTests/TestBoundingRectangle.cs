@@ -22,23 +22,23 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(boundingRectangle0.Bottom, 0);
             Assert.AreEqual(boundingRectangle0.Right, 0);
             Assert.AreEqual(boundingRectangle0.Top, 0);
-            Assert.AreEqual(boundingRectangle0.Height, 1);
-            Assert.AreEqual(boundingRectangle0.Width, 1);
+            Assert.AreEqual(boundingRectangle0.Height, 0);
+            Assert.AreEqual(boundingRectangle0.Width, 0);
 
             Assert.AreEqual(BoundingRectangle.Empty.Left, 0);
             Assert.AreEqual(BoundingRectangle.Empty.Bottom, 0);
             Assert.AreEqual(BoundingRectangle.Empty.Right, 0);
             Assert.AreEqual(BoundingRectangle.Empty.Top, 0);
-            Assert.AreEqual(BoundingRectangle.Empty.Height, 1);
-            Assert.AreEqual(BoundingRectangle.Empty.Width, 1);
+            Assert.AreEqual(BoundingRectangle.Empty.Height, 0);
+            Assert.AreEqual(BoundingRectangle.Empty.Width, 0);
 
             BoundingRectangle boundingRectangle1 = new BoundingRectangle(1, 2, 3, 4);
             Assert.AreEqual(boundingRectangle1.Left, 1);
             Assert.AreEqual(boundingRectangle1.Bottom, 2);
             Assert.AreEqual(boundingRectangle1.Right, 3);
             Assert.AreEqual(boundingRectangle1.Top, 4);
-            Assert.AreEqual(boundingRectangle1.Height, 3);
-            Assert.AreEqual(boundingRectangle1.Width, 3);
+            Assert.AreEqual(boundingRectangle1.Height, 2);
+            Assert.AreEqual(boundingRectangle1.Width, 2);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace CesiumLanguageWriterTests
 
             Assert.IsTrue(boundingRectangle.EqualsEpsilon(similarBoundingRectangle, 1000));
             Assert.IsTrue(boundingRectangle.EqualsEpsilon(similarBoundingRectangle, 100));
-            Assert.IsFalse(boundingRectangle.EqualsEpsilon(similarBoundingRectangle, 10));
+            Assert.IsTrue(boundingRectangle.EqualsEpsilon(similarBoundingRectangle, 10));
             Assert.IsFalse(boundingRectangle.EqualsEpsilon(similarBoundingRectangle, 1));
         }
 
