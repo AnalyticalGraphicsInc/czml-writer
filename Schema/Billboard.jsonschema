@@ -81,6 +81,10 @@
         "pixelOffsetScaleByDistance": {
             "$ref": "NearFarScalar.jsonschema",
             "description": "How the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`."
+        },
+        "imageSubRegion": {
+            "$ref": "BoundingRectangle.jsonschema",
+            "description": "A sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left."
         }
     }
 }

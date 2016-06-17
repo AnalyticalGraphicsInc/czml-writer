@@ -58,6 +58,16 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string OutlineWidthPropertyName = "outlineWidth";
 
+        /// <summary>
+        /// The name of the <code>numberOfVerticalLines</code> property.
+        /// </summary>
+        public const string NumberOfVerticalLinesPropertyName = "numberOfVerticalLines";
+
+        /// <summary>
+        /// The name of the <code>slices</code> property.
+        /// </summary>
+        public const string SlicesPropertyName = "slices";
+
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_length = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(LengthPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_topRadius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(TopRadiusPropertyName), false);
@@ -67,6 +77,8 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(OutlinePropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_numberOfVerticalLines = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(NumberOfVerticalLinesPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_slices = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SlicesPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -840,6 +852,194 @@ namespace CesiumLanguageWriter
         public void WriteOutlineWidthPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>numberOfVerticalLines</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>numberOfVerticalLines</code> property defines the number of vertical lines to draw along the perimeter for the outline.
+        /// </summary>
+        public DoubleCesiumWriter NumberOfVerticalLinesWriter
+        {
+            get { return m_numberOfVerticalLines.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>numberOfVerticalLines</code> property.  The <code>numberOfVerticalLines</code> property defines the number of vertical lines to draw along the perimeter for the outline.
+        /// </summary>
+        public DoubleCesiumWriter OpenNumberOfVerticalLinesProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(NumberOfVerticalLinesWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>number</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteNumberOfVerticalLinesProperty(double value)
+        {
+            using (var writer = OpenNumberOfVerticalLinesProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>number</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteNumberOfVerticalLinesProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenNumberOfVerticalLinesProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteNumberOfVerticalLinesPropertyReference(Reference value)
+        {
+            using (var writer = OpenNumberOfVerticalLinesProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteNumberOfVerticalLinesPropertyReference(string value)
+        {
+            using (var writer = OpenNumberOfVerticalLinesProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteNumberOfVerticalLinesPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenNumberOfVerticalLinesProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteNumberOfVerticalLinesPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenNumberOfVerticalLinesProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>slices</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>slices</code> property defines the number of edges around the perimeter of the cylinder.
+        /// </summary>
+        public DoubleCesiumWriter SlicesWriter
+        {
+            get { return m_slices.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>slices</code> property.  The <code>slices</code> property defines the number of edges around the perimeter of the cylinder.
+        /// </summary>
+        public DoubleCesiumWriter OpenSlicesProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(SlicesWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>slices</code> property as a <code>number</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteSlicesProperty(double value)
+        {
+            using (var writer = OpenSlicesProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>slices</code> property as a <code>number</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteSlicesProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenSlicesProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>slices</code> property as a <code>reference</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteSlicesPropertyReference(Reference value)
+        {
+            using (var writer = OpenSlicesProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>slices</code> property as a <code>reference</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteSlicesPropertyReference(string value)
+        {
+            using (var writer = OpenSlicesProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>slices</code> property as a <code>reference</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteSlicesPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenSlicesProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>slices</code> property as a <code>reference</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteSlicesPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenSlicesProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

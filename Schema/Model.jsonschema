@@ -26,6 +26,10 @@
             "$ref": "Double.jsonschema",
             "description": "The approximate minimum pixel size of the model regardless of zoom."
         },
+        "maximumScale": {
+            "$ref": "Double.jsonschema",
+            "description": "The maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`."
+        },
         "incrementallyLoadTextures": {
             "$ref": "Boolean.jsonschema",
             "description": "Whether or not the model can be rendered before all textures have loaded.",

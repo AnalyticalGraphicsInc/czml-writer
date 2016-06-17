@@ -69,6 +69,7 @@
     <Compile Include="Attributes\CSToJavaImmutableValueType.cs" />
     <Compile Include="Attributes\CSToJavaRenameAttribute.cs" />
     <Compile Include="Attributes\CSToJavaUseNullForDefaultGenericTypeValueAttribute.cs" />
+    <Compile Include="BoundingRectangle.cs" />
     <Compile Include="Cartesian.cs" />
     <Compile Include="Cartographic.cs" />
     <Compile Include="CartographicExtent.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Generated\AlignedAxisCesiumWriter.cs" />
     <Compile Include="Generated\BillboardCesiumWriter.cs" />
     <Compile Include="Generated\BooleanCesiumWriter.cs" />
+    <Compile Include="Generated\BoundingRectangleCesiumWriter.cs" />
     <Compile Include="Generated\BoxCesiumWriter.cs" />
     <Compile Include="Generated\BoxDimensionsCesiumWriter.cs" />
     <Compile Include="Generated\ClockCesiumWriter.cs" />
