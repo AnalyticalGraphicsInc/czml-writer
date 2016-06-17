@@ -5,9 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
-import agi.foundation.compatibility.TimeSpanHelper;
 import cesiumlanguagewriter.*;
-import org.joda.time.Period;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -349,58 +347,6 @@ public class TestDuration {
 		Duration result = test.addDays(45.5);
 		Assert.assertEquals((int) 51, (int) result.getDays());
 		Assert.assertEquals(0.0, result.getSeconds(), 0d);
-	}
-
-	/**
-	 *  
-	Tests construction of a  {@link Duration} from a  {@link Period}.
-	
-
-	 */
-	@Test
-	public final void testFromTimeSpan() {
-		Period timeSpan = TimeSpanHelper.newPeriod(28, 6, 42, 12);
-		Duration duration = new Duration(timeSpan);
-		Assert.assertEquals((int) 28, (int) duration.getDays());
-		Assert.assertEquals(6 * TimeConstants.SecondsPerHour + 42 * TimeConstants.SecondsPerMinute + 12, duration.getSeconds(), 0d);
-	}
-
-	/**
-	 *  
-	Tests Duration.ToTimeSpan method.
-	
-
-	 */
-	@Test
-	public final void testToTimeSpan() {
-		Duration duration = new Duration(28, 24132.0);
-		Period timeSpan = duration.toPeriod();
-		Assert.assertEquals((int) 28, (int) timeSpan.getDays());
-		Assert.assertEquals((int) 6, (int) timeSpan.getHours());
-		Assert.assertEquals((int) 42, (int) timeSpan.getMinutes());
-		Assert.assertEquals((int) 12, (int) timeSpan.getSeconds());
-	}
-
-	/**
-	 *  
-	Tests compatibility between the  {@link Duration} and  {@link Period} types.
-	
-
-	 */
-	@Test
-	public final void testTimeSpanCompatibility() {
-		Period timeSpan = TimeSpanHelper.minValue();
-		Duration duration = new Duration(timeSpan);
-		Period result = duration.toPeriod();
-		AssertHelper.assertEquals(timeSpan, result);
-		timeSpan = TimeSpanHelper.zero();
-		duration = new Duration(timeSpan);
-		result = duration.toPeriod();
-		AssertHelper.assertEquals(timeSpan, result);
-		timeSpan = TimeSpanHelper.maxValue();
-		duration = new Duration(timeSpan);
-		result = duration.toPeriod();
-		AssertHelper.assertEquals(timeSpan, result);
 	}
 
 	/**

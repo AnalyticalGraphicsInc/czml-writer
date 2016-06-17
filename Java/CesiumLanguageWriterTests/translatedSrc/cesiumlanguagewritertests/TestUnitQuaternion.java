@@ -2,7 +2,6 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
@@ -300,32 +299,6 @@ public class TestUnitQuaternion {
 		UnitQuaternion object3 = new UnitQuaternion(1.0, 2.0, 3.0, 4.1);
 		Assert.assertEquals((int) object1.hashCode(), (int) object2.hashCode());
 		AssertHelper.assertNotEqual(object1.hashCode(), object3.hashCode());
-	}
-
-	/**
-	 *  
-	Tests to ensure that an invalid index throws the anticipated exception.
-	
-
-	 */
-	@Test
-	public final void testIndexTooHigh() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-		UnitQuaternion first = new UnitQuaternion(7.0, 2.0, 3.0, 6.0);
-		double bad = first.get(4);
-	}
-
-	/**
-	 *  
-	Tests to ensure that an invalid index throws the anticipated exception.
-	
-
-	 */
-	@Test
-	public final void testIndexTooLow() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-		UnitQuaternion first = new UnitQuaternion(7.0, 2.0, 3.0, 6.0);
-		double bad = first.get(-1);
 	}
 
 	/**

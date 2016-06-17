@@ -5,17 +5,17 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.Cartesian;
+import cesiumlanguagewriter.BoundingRectangle;
 import cesiumlanguagewriter.Reference;
 import java.util.List;
 
 /**
  *  
- Writes a <code>EllipsoidRadii</code> to a  {@link CesiumOutputStream}.  A <code>EllipsoidRadii</code> is the radii of an ellipsoid.
+ Writes a <code>BoundingRectangle</code> to a  {@link CesiumOutputStream}.  A <code>BoundingRectangle</code> is a bounding rectangle specified by a corner, width and height.
  
 
  */
-public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWriter<EllipsoidRadiiCesiumWriter> {
+public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyWriter<BoundingRectangleCesiumWriter> {
 	/**
 	 *  
 	The name of the <code>cartesian</code> property.
@@ -30,7 +30,7 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 
 	 */
 	public static final String ReferencePropertyName = "reference";
-	private Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asCartesian;
+	private Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>> m_asCartesian;
 	private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
 	/**
@@ -39,11 +39,11 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 	
 
 	 */
-	public EllipsoidRadiiCesiumWriter(String propertyName) {
+	public BoundingRectangleCesiumWriter(String propertyName) {
 		super(propertyName);
-		m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
-				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor", new Class[] {}) {
-					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
+		m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createCartesianAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> invoke() {
 						return createCartesianAdaptor();
 					}
 				}, false);
@@ -63,11 +63,11 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 
 	 * @param existingInstance The existing instance to copy.
 	 */
-	protected EllipsoidRadiiCesiumWriter(EllipsoidRadiiCesiumWriter existingInstance) {
+	protected BoundingRectangleCesiumWriter(BoundingRectangleCesiumWriter existingInstance) {
 		super(existingInstance);
-		m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
-				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor", new Class[] {}) {
-					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
+		m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createCartesianAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> invoke() {
 						return createCartesianAdaptor();
 					}
 				}, false);
@@ -80,28 +80,28 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 	}
 
 	@Override
-	public EllipsoidRadiiCesiumWriter clone() {
-		return new EllipsoidRadiiCesiumWriter(this);
+	public BoundingRectangleCesiumWriter clone() {
+		return new BoundingRectangleCesiumWriter(this);
 	}
 
 	/**
 	 *  
-	Writes the value expressed as a <code>cartesian</code>, which is the radii specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.
+	Writes the value expressed as a <code>cartesian</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeCartesian(Cartesian value) {
+	public final void writeCartesian(BoundingRectangle value) {
 		String PropertyName = CartesianPropertyName;
 		openIntervalIfNecessary();
 		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeCartesian3(getOutput(), value);
+		CesiumWritingHelper.writeBoundingRectangle(getOutput(), value);
 	}
 
 	/**
 	 *  
-	Writes the value expressed as a <code>cartesian</code>, which is the radii specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.
+	Writes the value expressed as a <code>cartesian</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
 	
 	
 	
@@ -109,13 +109,13 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeCartesian(List<JulianDate> dates, List<Cartesian> values) {
+	public final void writeCartesian(List<JulianDate> dates, List<BoundingRectangle> values) {
 		writeCartesian(dates, values, 0, dates.size());
 	}
 
 	/**
 	 *  
-	Writes the value expressed as a <code>cartesian</code>, which is the radii specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.
+	Writes the value expressed as a <code>cartesian</code>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
 	
 	
 	
@@ -127,15 +127,15 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeCartesian(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+	public final void writeCartesian(List<JulianDate> dates, List<BoundingRectangle> values, int startIndex, int length) {
 		String PropertyName = CartesianPropertyName;
 		openIntervalIfNecessary();
-		CesiumWritingHelper.writeCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
+		CesiumWritingHelper.writeBoundingRectangle(getOutput(), PropertyName, dates, values, startIndex, length);
 	}
 
 	/**
 	 *  
-	Writes the value expressed as a <code>reference</code>, which is the radii specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the bounding rectangle specified as a reference to another property.
 	
 	
 
@@ -150,7 +150,7 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 
 	/**
 	 *  
-	Writes the value expressed as a <code>reference</code>, which is the radii specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the bounding rectangle specified as a reference to another property.
 	
 	
 
@@ -165,7 +165,7 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 
 	/**
 	 *  
-	Writes the value expressed as a <code>reference</code>, which is the radii specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the bounding rectangle specified as a reference to another property.
 	
 	
 	
@@ -182,7 +182,7 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 
 	/**
 	 *  
-	Writes the value expressed as a <code>reference</code>, which is the radii specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the bounding rectangle specified as a reference to another property.
 	
 	
 	
@@ -205,18 +205,18 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 
 	 * @return The wrapper.
 	 */
-	public final ICesiumInterpolatableValuePropertyWriter<Cartesian> asCartesian() {
+	public final ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> asCartesian() {
 		return m_asCartesian.getValue();
 	}
 
-	final private ICesiumInterpolatableValuePropertyWriter<Cartesian> createCartesianAdaptor() {
-		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter, cesiumlanguagewriter.Cartesian>(this,
-				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter, cesiumlanguagewriter.Cartesian>() {
-					public void invoke(EllipsoidRadiiCesiumWriter me, Cartesian value) {
+	final private ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> createCartesianAdaptor() {
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.BoundingRectangleCesiumWriter, cesiumlanguagewriter.BoundingRectangle>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.BoundingRectangleCesiumWriter, cesiumlanguagewriter.BoundingRectangle>() {
+					public void invoke(BoundingRectangleCesiumWriter me, BoundingRectangle value) {
 						me.writeCartesian(value);
 					}
-				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter, cesiumlanguagewriter.Cartesian>() {
-					public void invoke(EllipsoidRadiiCesiumWriter me, List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.BoundingRectangleCesiumWriter, cesiumlanguagewriter.BoundingRectangle>() {
+					public void invoke(BoundingRectangleCesiumWriter me, List<JulianDate> dates, List<BoundingRectangle> values, int startIndex, int length) {
 						me.writeCartesian(dates, values, startIndex, length);
 					}
 				});
@@ -235,9 +235,9 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 	}
 
 	final private ICesiumValuePropertyWriter<Reference> createReferenceAdaptor() {
-		return new CesiumWriterAdaptor<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter, cesiumlanguagewriter.Reference>(this,
-				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter, cesiumlanguagewriter.Reference>() {
-					public void invoke(EllipsoidRadiiCesiumWriter me, Reference value) {
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.BoundingRectangleCesiumWriter, cesiumlanguagewriter.Reference>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.BoundingRectangleCesiumWriter, cesiumlanguagewriter.Reference>() {
+					public void invoke(BoundingRectangleCesiumWriter me, Reference value) {
 						me.writeReference(value);
 					}
 				});

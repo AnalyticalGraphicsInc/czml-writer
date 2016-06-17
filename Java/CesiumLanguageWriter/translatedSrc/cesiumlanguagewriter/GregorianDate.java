@@ -3,6 +3,7 @@ package cesiumlanguagewriter;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.CultureInfoHelper;
@@ -1760,9 +1761,9 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 		m_yearMonthDay = new YearMonthDay(convertedJulianDate);
 		double secondsOfDay = convertedJulianDate.getSecondsOfDay();
 		m_hour = (int) Math.floor(secondsOfDay / SecondsPerHour);
-		double remainingSeconds = secondsOfDay - (m_hour * SecondsPerHour);
+		double remainingSeconds = secondsOfDay - m_hour * SecondsPerHour;
 		m_minute = (int) Math.floor(remainingSeconds / SecondsPerMinute);
-		m_second = secondsOfDay - ((m_hour * SecondsPerHour) + (m_minute * SecondsPerMinute));
+		m_second = secondsOfDay - (m_hour * SecondsPerHour + m_minute * SecondsPerMinute);
 		if (isLeapSecond) {
 			m_second += 1D;
 		}
@@ -1792,7 +1793,7 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 		m_minute = dateTime.getMinuteOfHour();
 		long ticksPerMinute = 600000000L;
 		double ticksPerSecond = 1.0e7;
-		m_second = (DateTimeHelper.getTicks(dateTime) % ticksPerMinute) / ticksPerSecond;
+		m_second = DateTimeHelper.getTicks(dateTime) % ticksPerMinute / ticksPerSecond;
 	}
 
 	/**
@@ -1858,11 +1859,11 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 	 */
 	public final double getJulianSecondsOfDay() {
 		// JulianDates are noon-based
-		int hour = getHour() - 12;
+		int hour = m_hour - 12;
 		if (hour < 0) {
 			hour += 24;
 		}
-		return getSecond() + ((hour * SecondsPerHour) + (getMinute() * SecondsPerMinute));
+		return m_second + hour * SecondsPerHour + m_minute * SecondsPerMinute;
 	}
 
 	/**
@@ -1896,7 +1897,7 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 
 	 */
 	final private boolean getIsLeapSecond() {
-		return getSecond() >= 60.0;
+		return m_second >= 60.0;
 	}
 
 	/**
@@ -1954,6 +1955,7 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 
 	 * @return A  {@link JulianDate} representing this date.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final JulianDate toJulianDate() {
 		return toJulianDate(TimeStandard.COORDINATED_UNIVERSAL_TIME);
 	}
@@ -1973,6 +1975,7 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 
 	 * @return A  {@link JulianDate} representing this date.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final JulianDate toJulianDate(TimeStandard timeStandard) {
 		int julianDayNumber = m_yearMonthDay.getJulianDayNumber();
 		double julianSecondsOfDay = getJulianSecondsOfDay();
@@ -1996,6 +1999,7 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 
 	 * @return A  {@link DateTime} representing this date.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final DateTime toDateTime() {
 		DateTime date = new DateTime(m_yearMonthDay.getYear(), m_yearMonthDay.getMonth(), m_yearMonthDay.getDay(), 0, 0, 0, 0, org.joda.time.DateTimeZone.UTC);
 		long ticksPerHour = 36000000000L;
@@ -2030,13 +2034,13 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 	public final int compareTo(GregorianDate other) {
 		int result = m_yearMonthDay.compareTo(other.m_yearMonthDay);
 		if (result == 0) {
-			if (getHour() != other.getHour()) {
-				return getHour() < other.getHour() ? -1 : 1;
+			if (m_hour != other.m_hour) {
+				return m_hour < other.m_hour ? -1 : 1;
 			}
-			if (getMinute() != other.getMinute()) {
-				return getMinute() < other.getMinute() ? -1 : 1;
+			if (m_minute != other.m_minute) {
+				return m_minute < other.m_minute ? -1 : 1;
 			}
-			return getSecond() == other.getSecond() ? 0 : (getSecond() < other.getSecond() ? -1 : 1);
+			return m_second == other.m_second ? 0 : (m_second < other.m_second ? -1 : 1);
 		}
 		return result;
 	}
@@ -2051,21 +2055,7 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 	 */
 	@Override
 	public int hashCode() {
-		return m_yearMonthDay.hashCode() ^ IntHelper.hashCode(getHour()) ^ IntHelper.hashCode(getMinute()) ^ DoubleHelper.hashCode(getSecond());
-	}
-
-	/**
-	 *  
-	Indicates whether another instance of this type is exactly equal to this instance.
-	
-	
-	
-
-	 * @param other The instance to compare to this instance.
-	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
-	 */
-	public final boolean equalsType(GregorianDate other) {
-		return compareTo(other) == 0;
+		return HashCode.combine(m_yearMonthDay.hashCode(), IntHelper.hashCode(m_hour), IntHelper.hashCode(m_minute), DoubleHelper.hashCode(m_second));
 	}
 
 	/**
@@ -2080,10 +2070,21 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof GregorianDate) {
-			return equalsType((GregorianDate) obj);
-		}
-		return false;
+		return obj instanceof GregorianDate && equalsType((GregorianDate) obj);
+	}
+
+	/**
+	 *  
+	Indicates whether another instance of this type is exactly equal to this instance.
+	
+	
+	
+
+	 * @param other The instance to compare to this instance.
+	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
+	 */
+	public final boolean equalsType(GregorianDate other) {
+		return compareTo(other) == 0;
 	}
 
 	/**
@@ -2166,6 +2167,7 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 
 	 * @return A string representing this date and time in ISO8601 format.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final String toIso8601String() {
 		return toIso8601String(Iso8601Format.EXTENDED);
 	}
@@ -2182,6 +2184,7 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 	 * @param format The type of ISO8601 string to create.
 	 * @return A string representing this date and time in ISO8601 format.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final String toIso8601String(Iso8601Format format) {
 		switch (format) {
 		case BASIC: {
@@ -2213,6 +2216,7 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 
 	 * @return A string containing the name of the day of the week, the name of the month, the numeric day of the month, and the year equivalent to the date value of this instance.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final String toLongDateString() {
 		return toString("D");
 	}
@@ -2226,6 +2230,7 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 	month, the numeric day of the hours, minutes, and seconds equivalent to the
 	time value of this instance.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final String toLongTimeString() {
 		return toString("T");
 	}
@@ -2238,6 +2243,7 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 	 * @return A string containing the numeric month, the numeric day of the month,
 	and the year equivalent to the date value of this instance.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final String toShortDateString() {
 		return toString("d");
 	}
@@ -2251,6 +2257,7 @@ public class GregorianDate implements Comparable<GregorianDate>, IEquatable<Greg
 	month, the numeric day of the hours, minutes, and seconds equivalent to the
 	time value of this instance.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final String toShortTimeString() {
 		return toString("t");
 	}

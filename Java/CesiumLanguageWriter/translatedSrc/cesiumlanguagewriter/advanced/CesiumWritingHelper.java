@@ -428,6 +428,124 @@ public final class CesiumWritingHelper {
 
 	/**
 	 *  
+	Writes a  {@link BoundingRectangle} value as an array in X, Y, Width, Height order.
+	
+	
+	
+
+	 * @param output The stream to which to write the value.
+	 * @param value The value to write.
+	 */
+	public static void writeBoundingRectangle(CesiumOutputStream output, BoundingRectangle value) {
+		output.writeStartSequence();
+		output.writeValue(value.getLeft());
+		output.writeValue(value.getBottom());
+		output.writeValue(value.getWidth());
+		output.writeValue(value.getHeight());
+		output.writeEndSequence();
+	}
+
+	/**
+	 *  
+	Writes time-tagged  {@link BoundingRectangle} values as an array in [Time, Clock, Cone, Magnitude] order.
+	Times are epoch seconds since an epoch that is determined from the first date to be written.
+	The epoch property is written as well.
+	
+	
+	
+	
+	
+	
+	
+
+	 * @param output The stream to which to write the array.
+	 * @param propertyName The name of the property to write.
+	 * @param dates The dates at which the value is specified.
+	 * @param values The corresponding value for each date.
+	 * @param startIndex The index of the first element to use in the <code>values</code> collection.
+	 * @param length The number of elements to use from the <code>values</code> collection.
+	 */
+	public static void writeBoundingRectangle(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<BoundingRectangle> values, int startIndex, int length) {
+		if (dates.size() != values.size()) {
+			throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
+		}
+		JulianDate epoch = getAndWriteEpoch(output, dates, startIndex, length);
+		output.writePropertyName(propertyName);
+		output.writeStartSequence();
+		int last = startIndex + length;
+		for (int i = startIndex; i < last; ++i) {
+			output.writeValue(epoch.secondsDifference(dates.get(i)));
+			BoundingRectangle value = values.get(i);
+			output.writeValue(value.getLeft());
+			output.writeValue(value.getBottom());
+			output.writeValue(value.getWidth());
+			output.writeValue(value.getHeight());
+			output.writeLineBreak();
+		}
+		output.writeEndSequence();
+	}
+
+	/**
+	 *  
+	Writes a  {@link NearFarScalar} value as an array in Clock, Cone, Magnitude order.
+	
+	
+	
+
+	 * @param output The stream to which to write the value.
+	 * @param value The value to write.
+	 */
+	public static void writeNearFarScalar(CesiumOutputStream output, NearFarScalar value) {
+		output.writeStartSequence();
+		output.writeValue(value.getNearDistance());
+		output.writeValue(value.getNearValue());
+		output.writeValue(value.getFarDistance());
+		output.writeValue(value.getFarValue());
+		output.writeEndSequence();
+	}
+
+	/**
+	 *  
+	Writes time-tagged  {@link NearFarScalar} values as an array in [Time, Clock, Cone, Magnitude] order.
+	Times are epoch seconds since an epoch that is determined from the first date to be written.
+	The epoch property is written as well.
+	
+	
+	
+	
+	
+	
+	
+
+	 * @param output The stream to which to write the array.
+	 * @param propertyName The name of the property to write.
+	 * @param dates The dates at which the value is specified.
+	 * @param values The corresponding value for each date.
+	 * @param startIndex The index of the first element to use in the <code>values</code> collection.
+	 * @param length The number of elements to use from the <code>values</code> collection.
+	 */
+	public static void writeNearFarScalar(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<NearFarScalar> values, int startIndex, int length) {
+		if (dates.size() != values.size()) {
+			throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
+		}
+		JulianDate epoch = getAndWriteEpoch(output, dates, startIndex, length);
+		output.writePropertyName(propertyName);
+		output.writeStartSequence();
+		int last = startIndex + length;
+		for (int i = startIndex; i < last; ++i) {
+			output.writeValue(epoch.secondsDifference(dates.get(i)));
+			NearFarScalar value = values.get(i);
+			output.writeValue(value.getNearDistance());
+			output.writeValue(value.getNearValue());
+			output.writeValue(value.getFarDistance());
+			output.writeValue(value.getFarValue());
+			output.writeLineBreak();
+		}
+		output.writeEndSequence();
+	}
+
+	/**
+	 *  
 	Writes a  {@link UnitSpherical} value as an array in Clock, Cone order.
 	
 	

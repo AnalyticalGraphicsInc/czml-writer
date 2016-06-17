@@ -2,8 +2,6 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.ArgumentNullException;
-import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
@@ -38,26 +36,6 @@ public class TestCartesian {
 		Assert.assertEquals(1.0, test.getX(), 0d);
 		Assert.assertEquals(2.0, test.getY(), 0d);
 		Assert.assertEquals(3.0, test.getZ(), 0d);
-	}
-
-	/**
-	 *  
-	Tests initialization from an array of 3 coordinates works correctly.
-	
-
-	 */
-	@Test
-	public final void testFromArray() {
-		double[] values = {
-				2.0,
-				3.0,
-				6.0
-		};
-		Cartesian test = new Cartesian(values);
-		Assert.assertEquals((int) values.length, (int) test.getLength());
-		Assert.assertEquals(test.getX(), test.get(0), 0d);
-		Assert.assertEquals(test.getY(), test.get(1), 0d);
-		Assert.assertEquals(test.getZ(), test.get(2), 0d);
 	}
 
 	/**
@@ -196,17 +174,6 @@ public class TestCartesian {
 
 	/**
 	 *  
-	Tests the <code>HasZeroMagnitude</code> ({@link Cartesian#getHasZeroMagnitude get}) method.
-	
-
-	 */
-	@Test
-	public final void testHasZeroMagnitude() {
-		Assert.assertTrue(Cartesian.getZero().getHasZeroMagnitude());
-	}
-
-	/**
-	 *  
 	Tests the <code>IsUndefined</code> ({@link Cartesian#getIsUndefined get}) method.
 	
 
@@ -234,21 +201,6 @@ public class TestCartesian {
 		AssertHelper.assertEquals(UnitCartesian.getUnitZ(), v.getMostOrthogonalAxis());
 		v = Cartesian.toCartesian(new UnitCartesian(3.0, 1.0, 2.0));
 		AssertHelper.assertEquals(UnitCartesian.getUnitY(), v.getMostOrthogonalAxis());
-	}
-
-	/**
-	 *  
-	Tests the  {@link Cartesian#invert} method.
-	
-
-	 */
-	@Test
-	public final void testInvert() {
-		Cartesian Cartesian3 = new Cartesian(1.0, 2.0, 3.0);
-		Cartesian inverted = Cartesian3.invert();
-		Assert.assertEquals(-1.0, inverted.getX(), 0d);
-		Assert.assertEquals(-2.0, inverted.getY(), 0d);
-		Assert.assertEquals(-3.0, inverted.getZ(), 0d);
 	}
 
 	/**
@@ -454,45 +406,6 @@ public class TestCartesian {
 		Cartesian object3 = new Cartesian(1.0, 2.0, 3.1);
 		Assert.assertEquals((int) object1.hashCode(), (int) object2.hashCode());
 		AssertHelper.assertNotEqual(object1.hashCode(), object3.hashCode());
-	}
-
-	/**
-	 *  
-	Tests that construction from a null array of doubles throws the correct exception.
-	
-
-	 */
-	@Test
-	public final void testInitializationFromNull() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentNullException.class);
-		double[] array = null;
-		Cartesian first = new Cartesian(array, 0);
-	}
-
-	/**
-	 *  
-	Tests that construction from an array of doubles with an incorrect length throws the correct exception.
-	
-
-	 */
-	@Test
-	public final void testInitializationFromBadArray() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-		double[] array = new double[2];
-		Cartesian first = new Cartesian(array, 0);
-	}
-
-	/**
-	 *  
-	Tests to ensure that an invalid index throws the anticipated exception.
-	
-
-	 */
-	@Test
-	public final void testIndexTooHigh() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-		Cartesian first = new Cartesian(1.0, 2.0, 3.0);
-		double bad = first.get(3);
 	}
 
 	/**

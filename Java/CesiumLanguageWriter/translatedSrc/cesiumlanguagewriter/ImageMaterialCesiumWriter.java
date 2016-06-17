@@ -408,7 +408,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeRepeatProperty(List<JulianDate> dates, List<Rectangular> values) {
@@ -431,7 +431,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.

@@ -131,7 +131,7 @@ public class TestMatrix3By3 {
 		Matrix3By3 first = new Matrix3By3(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 		Matrix3By3 second = new Matrix3By3(1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7, 1e-8, 1e-9, 1e-10);
 		Assert.assertTrue(second.equalsEpsilon(first, 1e-1));
-		Assert.assertFalse(second.equalsEpsilon(first, 1e-2));
+		Assert.assertTrue(second.equalsEpsilon(first, 1e-2));
 		Assert.assertFalse(second.equalsEpsilon(first, 1e-3));
 		Assert.assertFalse(second.equalsEpsilon(first, 1e-4));
 		Assert.assertFalse(second.equalsEpsilon(first, 1e-5));
@@ -431,52 +431,6 @@ public class TestMatrix3By3 {
 
 	/**
 	 *  
-	Tests the cross product equivilant matrix
-	Diagonal Matrix
-	
-
-	 */
-	@Test
-	public final void testMatrixReturns() {
-		double x = 1D;
-		double y = 2D;
-		double z = 3D;
-		Matrix3By3 mat1 = Matrix3By3.crossProductEquivalentMatrix(new Cartesian(x, y, z));
-		Assert.assertEquals(0.0, mat1.getM11(), 0d);
-		Assert.assertEquals(-z, mat1.getM12(), 0d);
-		Assert.assertEquals(y, mat1.getM13(), 0d);
-		Assert.assertEquals(z, mat1.getM21(), 0d);
-		Assert.assertEquals(0, mat1.getM22(), 0d);
-		Assert.assertEquals(-x, mat1.getM23(), 0d);
-		Assert.assertEquals(-y, mat1.getM31(), 0d);
-		Assert.assertEquals(x, mat1.getM32(), 0d);
-		Assert.assertEquals(0.0, mat1.getM33(), 0d);
-		UnitCartesian u = new UnitCartesian(x, y, z);
-		x = u.getX();
-		y = u.getY();
-		z = u.getZ();
-		Matrix3By3 mat2 = Matrix3By3.crossProductEquivalentMatrix(Cartesian.toCartesian(u));
-		Assert.assertEquals(0.0, mat2.getM11(), 0d);
-		Assert.assertEquals(-z, mat2.getM12(), 0d);
-		Assert.assertEquals(y, mat2.getM13(), 0d);
-		Assert.assertEquals(z, mat2.getM21(), 0d);
-		Assert.assertEquals(0, mat2.getM22(), 0d);
-		Assert.assertEquals(-x, mat2.getM23(), 0d);
-		Assert.assertEquals(-y, mat2.getM31(), 0d);
-		Assert.assertEquals(x, mat2.getM32(), 0d);
-		Assert.assertEquals(0.0, mat2.getM33(), 0d);
-		Matrix3By3 mat3 = Matrix3By3.diagonalMatrix(new Cartesian(1D, 2D, 3D));
-		Assert.assertEquals(mat3.getM11(), 1, 0d);
-		Assert.assertEquals(mat3.getM22(), 2, 0d);
-		Assert.assertEquals(mat3.getM33(), 3, 0d);
-		Matrix3By3 mat4 = Matrix3By3.diagonalMatrix(Cartesian.toCartesian(new UnitCartesian(1D, 0D, 0D)));
-		Assert.assertEquals(mat4.getM11(), 1, 0d);
-		Assert.assertEquals(mat4.getM22(), 0, 0d);
-		Assert.assertEquals(mat4.getM33(), 0, 0d);
-	}
-
-	/**
-	 *  
 	Tests math operators
 	
 
@@ -505,39 +459,6 @@ public class TestMatrix3By3 {
 		Cartesian mult = new Cartesian(1D, 2D, 3D);
 		Assert.assertTrue((new Cartesian(17D, 23D, 32D).equalsType(test.multiply(mult))));
 		Assert.assertTrue((new Cartesian(17D, 23D, 32D).equalsType(Matrix3By3.multiply(test, mult))));
-	}
-
-	/**
-	 *  
-	Test invert and by doing so, determinant
-	
-
-	 */
-	@Test
-	public final void testInvert() {
-		Matrix3By3 test = new Matrix3By3(1.0, 5.0, 2.0, 1.0, 1.0, 7.0, 0.0, -3.0, 4.0);
-		Matrix3By3 inv = test.invert();
-		Assert.assertEquals(-25.0, inv.getM11(), 0d);
-		Assert.assertEquals(26.0, inv.getM12(), 0d);
-		Assert.assertEquals(-33.0, inv.getM13(), 0d);
-		Assert.assertEquals(4.0, inv.getM21(), 0d);
-		Assert.assertEquals(-4.0, inv.getM22(), 0d);
-		Assert.assertEquals(5.0, inv.getM23(), 0d);
-		Assert.assertEquals(3.0, inv.getM31(), 0d);
-		Assert.assertEquals(-3.0, inv.getM32(), 0d);
-		Assert.assertEquals(4.0, inv.getM33(), 0d);
-	}
-
-	/**
-	 *  
-	Test zero invert exception
-	
-
-	 */
-	@Test
-	public final void testZeroInvertException() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArithmeticException.class);
-		Matrix3By3 mat = Matrix3By3.getZero().invert();
 	}
 
 	private TestContextRule rule$testContext = new TestContextRule();

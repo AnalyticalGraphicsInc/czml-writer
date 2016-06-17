@@ -407,7 +407,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeCoordinatesProperty(List<JulianDate> dates, List<CartographicExtent> values) {
@@ -430,7 +430,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.

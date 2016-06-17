@@ -9,6 +9,7 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
+import cesiumlanguagewriter.NearFarScalarCesiumWriter;
 import java.awt.Color;
 import java.util.List;
 
@@ -54,6 +55,20 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	 */
 	public static final String OutlineWidthPropertyName = "outlineWidth";
+	/**
+	 *  
+	The name of the <code>scaleByDistance</code> property.
+	
+
+	 */
+	public static final String ScaleByDistancePropertyName = "scaleByDistance";
+	/**
+	 *  
+	The name of the <code>translucencyByDistance</code> property.
+	
+
+	 */
+	public static final String TranslucencyByDistancePropertyName = "translucencyByDistance";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
@@ -77,6 +92,16 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 	private Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
 		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
 			return new DoubleCesiumWriter(OutlineWidthPropertyName);
+		}
+	}, false);
+	private Lazy<NearFarScalarCesiumWriter> m_scaleByDistance = new Lazy<cesiumlanguagewriter.NearFarScalarCesiumWriter>(new Func1<cesiumlanguagewriter.NearFarScalarCesiumWriter>() {
+		public cesiumlanguagewriter.NearFarScalarCesiumWriter invoke() {
+			return new NearFarScalarCesiumWriter(ScaleByDistancePropertyName);
+		}
+	}, false);
+	private Lazy<NearFarScalarCesiumWriter> m_translucencyByDistance = new Lazy<cesiumlanguagewriter.NearFarScalarCesiumWriter>(new Func1<cesiumlanguagewriter.NearFarScalarCesiumWriter>() {
+		public cesiumlanguagewriter.NearFarScalarCesiumWriter invoke() {
+			return new NearFarScalarCesiumWriter(TranslucencyByDistancePropertyName);
 		}
 	}, false);
 
@@ -894,6 +919,386 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 	public final void writeOutlineWidthPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>scaleByDistance</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>scaleByDistance</code> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+
+	 */
+	public final NearFarScalarCesiumWriter getScaleByDistanceWriter() {
+		return m_scaleByDistance.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>scaleByDistance</code> property.  The <code>scaleByDistance</code> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+
+	 */
+	public final NearFarScalarCesiumWriter openScaleByDistanceProperty() {
+		openIntervalIfNecessary();
+		return this.<NearFarScalarCesiumWriter> openAndReturn(getScaleByDistanceWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeScaleByDistanceProperty(NearFarScalar value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+	
+	
+	
+
+	 * @param nearDistance The lower bound of the camera distance range.
+	 * @param nearValue The value to use at the lower bound of the camera distance range.
+	 * @param farDistance The upper bound of the camera distance range.
+	 * @param farValue The value to use at the upper bound of the camera distance range.
+	 */
+	public final void writeScaleByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(nearDistance, nearValue, farDistance, farValue);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeScaleByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeScaleByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeScaleByDistancePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeScaleByDistancePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeScaleByDistancePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeScaleByDistancePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>translucencyByDistance</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>translucencyByDistance</code> property defines how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+	
+
+	 */
+	public final NearFarScalarCesiumWriter getTranslucencyByDistanceWriter() {
+		return m_translucencyByDistance.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>translucencyByDistance</code> property.  The <code>translucencyByDistance</code> property defines how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+	
+
+	 */
+	public final NearFarScalarCesiumWriter openTranslucencyByDistanceProperty() {
+		openIntervalIfNecessary();
+		return this.<NearFarScalarCesiumWriter> openAndReturn(getTranslucencyByDistanceWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeTranslucencyByDistanceProperty(NearFarScalar value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+	
+	
+
+	 * @param nearDistance The lower bound of the camera distance range.
+	 * @param nearValue The value to use at the lower bound of the camera distance range.
+	 * @param farDistance The upper bound of the camera distance range.
+	 * @param farValue The value to use at the upper bound of the camera distance range.
+	 */
+	public final void writeTranslucencyByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(nearDistance, nearValue, farDistance, farValue);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeTranslucencyByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeTranslucencyByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeTranslucencyByDistancePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeTranslucencyByDistancePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeTranslucencyByDistancePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeTranslucencyByDistancePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {

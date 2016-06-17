@@ -3,7 +3,6 @@ package cesiumlanguagewriter;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
-import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
@@ -81,20 +80,6 @@ public class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueType {
 
 	/**
 	 *  
-	Indicates whether another instance of this type is exactly equal to this instance.
-	
-	
-	
-
-	 * @param other The instance to compare to this instance.
-	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
-	 */
-	public final boolean equalsType(LeapSecond other) {
-		return getDate().isIdentical(other.getDate()) && getTotalTaiOffsetFromUtc() == other.getTotalTaiOffsetFromUtc();
-	}
-
-	/**
-	 *  
 	Indicates whether another object is exactly equal to this instance.
 	
 	
@@ -105,24 +90,21 @@ public class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueType {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof LeapSecond) {
-			return equalsType((LeapSecond) obj);
-		} else {
-			return false;
-		}
+		return obj instanceof LeapSecond && equalsType((LeapSecond) obj);
 	}
 
 	/**
 	 *  
-	Returns the date of this LeapSecond and offset from UTC as a string.
+	Indicates whether another instance of this type is exactly equal to this instance.
+	
 	
 	
 
-	 * @return The string.
+	 * @param other The instance to compare to this instance.
+	 * @return <see langword="true" /> if <code>other</code> represents the same value as this instance; otherwise, <see langword="false" />.
 	 */
-	@Override
-	public String toString() {
-		return StringHelper.format(CultureInfoHelper.getCurrentCulture(), "{0}, {1}", getDate(), getTotalTaiOffsetFromUtc());
+	public final boolean equalsType(LeapSecond other) {
+		return m_date.isIdentical(other.m_date) && m_totalTaiOffsetFromUtc == other.m_totalTaiOffsetFromUtc;
 	}
 
 	/**
@@ -135,7 +117,20 @@ public class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueType {
 	 */
 	@Override
 	public int hashCode() {
-		return getDate().hashCode() ^ DoubleHelper.hashCode(getTotalTaiOffsetFromUtc());
+		return HashCode.combine(m_date.hashCode(), DoubleHelper.hashCode(m_totalTaiOffsetFromUtc));
+	}
+
+	/**
+	 *  
+	Returns the date of this LeapSecond and offset from UTC as a string.
+	
+	
+
+	 * @return The string.
+	 */
+	@Override
+	public String toString() {
+		return StringHelper.format("{0}, {1}", m_date, m_totalTaiOffsetFromUtc);
 	}
 
 	/**

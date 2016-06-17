@@ -3,15 +3,13 @@ package cesiumlanguagewriter;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.IntHelper;
-import agi.foundation.compatibility.MathHelper;
 import agi.foundation.compatibility.StringHelper;
-import agi.foundation.compatibility.TimeSpanHelper;
-import org.joda.time.Period;
 
 /**
  *  
@@ -56,6 +54,15 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	}
 
 	/**
+	 *  Gets a  {@link Duration} of 0 days and seconds.
+	
+
+	 */
+	public static Duration getZero() {
+		return s_zero;
+	}
+
+	/**
 	 *  
 	Converts the specified number of hours, minutes, and seconds to total duration in seconds.
 	
@@ -89,7 +96,7 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	 * @param seconds The number of seconds in the new duration.
 	 */
 	public Duration(int days, int hours, int minutes, double seconds) {
-		this(days, Duration.hoursMinutesSecondsToSeconds(hours, minutes, seconds));
+		this(days, hoursMinutesSecondsToSeconds(hours, minutes, seconds));
 	}
 
 	/**
@@ -131,19 +138,6 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	}
 
 	/**
-	 *  
-	Initializes a new Duration from a  {@link Period}.
-	
-	
-
-	 * @param timeSpan The time span.
-	 */
-	public Duration(Period timeSpan) {
-		m_days = timeSpan.getDays();
-		m_seconds = TimeSpanHelper.totalSeconds((timeSpan.minus(TimeSpanHelper.fromDays(m_days))));
-	}
-
-	/**
 	 *  Gets the day component of this duration.
 	
 
@@ -169,7 +163,7 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 
 	 */
 	public final double getTotalDays() {
-		return (double) getDays() + (getSeconds() / TimeConstants.SecondsPerDay);
+		return m_days + (m_seconds / TimeConstants.SecondsPerDay);
 	}
 
 	/**
@@ -179,21 +173,7 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 
 	 */
 	public final double getTotalSeconds() {
-		return getDays() * TimeConstants.SecondsPerDay + getSeconds();
-	}
-
-	/**
-	 *  
-	Returns a  {@link Period} equivalent to this Duration.
-	
-	
-
-	 * @return The time span.
-	 */
-	public final Period toPeriod() {
-		long dayTicks = getDays() * TimeSpanHelper.TICKS_PER_DAY;
-		long secondTicks = (long) MathHelper.round(getSeconds() * TimeSpanHelper.TICKS_PER_SECOND);
-		return TimeSpanHelper.fromTicks(dayTicks + secondTicks);
+		return m_days * TimeConstants.SecondsPerDay + m_seconds;
 	}
 
 	/**
@@ -206,7 +186,7 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	 */
 	@Override
 	public String toString() {
-		return StringHelper.format(CultureInfoHelper.getCurrentCulture(), "{0}:{1}", getDays(), getSeconds());
+		return StringHelper.format(CultureInfoHelper.getCurrentCulture(), "{0}:{1}", m_days, m_seconds);
 	}
 
 	/**
@@ -219,15 +199,15 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	 */
 	@Override
 	public int hashCode() {
-		return IntHelper.hashCode(getDays()) ^ DoubleHelper.hashCode(getSeconds());
+		return HashCode.combine(IntHelper.hashCode(m_days), DoubleHelper.hashCode(m_seconds));
 	}
 
 	/**
 	 *  
 	Returns true if this Duration exactly equals another duration, within the limits
 	of floating point precision.  To be considered equal, the <code>Days</code> ({@link #getDays get})
-	property must be identical and the difference between the <code>Seconds</code> ({@link #getSeconds get})
-	properties must be less than 1.0e-10.
+	property must be identical and the
+	difference between the <code>Seconds</code> ({@link #getSeconds get}) properties must be less than 1.0e-10.
 	
 	
 	
@@ -236,7 +216,7 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	 * @return true if this duration exactly equals the <code>other</code> duration, within the limits of floating point precision.
 	 */
 	public final boolean equalsType(Duration other) {
-		return getDays() == other.getDays() && (m_seconds - other.m_seconds) < 1e-10 && (m_seconds - other.m_seconds) > -1e-10;
+		return m_days == other.m_days && Math.abs(m_seconds - other.m_seconds) < Constants.Epsilon10;
 	}
 
 	/**
@@ -254,10 +234,7 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof Duration) {
-			return equalsType((Duration) obj);
-		}
-		return false;
+		return obj instanceof Duration && equalsType((Duration) obj);
 	}
 
 	/**
@@ -272,11 +249,12 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	
 
 	 * @param other The Duration to compare to this Duration.
-	 * @param epsilon The smallest difference between the Durations, in seconds, such that they will NOT be considered equal.
+	 * @param epsilon The largest difference between the Durations, in seconds, such that they will be considered equal.
 	 * @return true if the dates are equal as defined by the epsilon value.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final boolean equalsEpsilon(Duration other, double epsilon) {
-		return Math.abs(subtract(other).getTotalSeconds()) < epsilon;
+		return Math.abs(subtract(other).getTotalSeconds()) <= epsilon;
 	}
 
 	/**
@@ -299,21 +277,13 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	
 	 */
 	public final int compareTo(Duration other) {
-		if (getDays() != other.getDays()) {
-			if (getDays() < other.getDays()) {
-				return -1;
-			} else {
-				return 1;
-			}
-		} else {
-			if (getSeconds() == other.getSeconds()) {
-				return 0;
-			} else if (getSeconds() < other.getSeconds()) {
-				return -1;
-			} else {
-				return 1;
-			}
+		if (m_days != other.m_days) {
+			return m_days < other.m_days ? -1 : 1;
 		}
+		if (Double.valueOf(m_seconds).equals(other.m_seconds)) {
+			return 0;
+		}
+		return m_seconds < other.m_seconds ? -1 : 1;
 	}
 
 	/**
@@ -327,7 +297,7 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	 * @return A  {@link Duration} that represents the value of this instance plus the value of <code>other</code>.
 	 */
 	public final Duration add(Duration other) {
-		return new Duration(getDays() + other.getDays(), getSeconds() + other.getSeconds());
+		return new Duration(m_days + other.m_days, m_seconds + other.m_seconds);
 	}
 
 	/**
@@ -341,7 +311,7 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	 * @return A Duration that represents the value of this instance minus the value of other.
 	 */
 	public final Duration subtract(Duration other) {
-		return new Duration(getDays() - other.getDays(), getSeconds() - other.getSeconds());
+		return new Duration(m_days - other.m_days, m_seconds - other.m_seconds);
 	}
 
 	/**
@@ -354,11 +324,12 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	 * @param constant The constant by which to multiply the Duration.
 	 * @return A Duration that represents the value of this instance multiplied by the constant.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Duration multiply(double constant) {
-		double days = (double) getDays() * constant;
+		double days = m_days * constant;
 		int wholeDays = (int) days;
-		double fractionOfDay = days - (double) wholeDays;
-		double seconds = fractionOfDay * TimeConstants.SecondsPerDay + getSeconds() * constant;
+		double fractionOfDay = days - wholeDays;
+		double seconds = fractionOfDay * TimeConstants.SecondsPerDay + m_seconds * constant;
 		return new Duration(wholeDays, seconds);
 	}
 
@@ -372,6 +343,7 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	 * @param divisor The duration by which to divide this duration.
 	 * @return The result of dividing this Duration by another.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final double divide(Duration divisor) {
 		return getTotalSeconds() / divisor.getTotalSeconds();
 	}
@@ -386,11 +358,12 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	 * @param constant The constant by which to divide the  {@link Duration}.
 	 * @return A  {@link Duration} that represents the value of this instance divided by the constant.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Duration divide(double constant) {
-		double days = (double) getDays() / constant;
+		double days = m_days / constant;
 		int wholeDays = (int) days;
-		double fractionOfDay = days - (double) wholeDays;
-		double seconds = fractionOfDay * TimeConstants.SecondsPerDay + getSeconds() / constant;
+		double fractionOfDay = days - wholeDays;
+		double seconds = fractionOfDay * TimeConstants.SecondsPerDay + m_seconds / constant;
 		return new Duration(wholeDays, seconds);
 	}
 
@@ -404,8 +377,9 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	 * @param seconds The number of seconds to add.
 	 * @return A new duration which is the sum of the original duration and the specified number of seconds.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Duration addSeconds(double seconds) {
-		return add(Duration.fromSeconds(seconds));
+		return add(fromSeconds(seconds));
 	}
 
 	/**
@@ -418,8 +392,9 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	 * @param days The number of days to add.
 	 * @return A new duration which is the sum of the original duration and the specified number of days.
 	 */
+	@CS2JWarning("Unhandled attribute removed: Pure")
 	public final Duration addDays(double days) {
-		return add(Duration.fromDays(days));
+		return add(fromDays(days));
 	}
 
 	/**
@@ -665,4 +640,5 @@ public class Duration implements Comparable<Duration>, IEquatable<Duration>, Imm
 	private double m_seconds;
 	private static Duration s_maxValue = new Duration(Integer.MAX_VALUE, 0.0);
 	private static Duration s_minValue = new Duration(Integer.MIN_VALUE, 0.0);
+	private static Duration s_zero = new Duration(0, 0D);
 }

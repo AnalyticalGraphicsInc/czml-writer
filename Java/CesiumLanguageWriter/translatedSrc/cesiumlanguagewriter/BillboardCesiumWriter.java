@@ -8,10 +8,12 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.AlignedAxisCesiumWriter;
 import cesiumlanguagewriter.BooleanCesiumWriter;
+import cesiumlanguagewriter.BoundingRectangleCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.EyeOffsetCesiumWriter;
 import cesiumlanguagewriter.HorizontalOriginCesiumWriter;
+import cesiumlanguagewriter.NearFarScalarCesiumWriter;
 import cesiumlanguagewriter.PixelOffsetCesiumWriter;
 import cesiumlanguagewriter.UriCesiumWriter;
 import cesiumlanguagewriter.VerticalOriginCesiumWriter;
@@ -104,6 +106,48 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	 */
 	public static final String SizeInMetersPropertyName = "sizeInMeters";
+	/**
+	 *  
+	The name of the <code>width</code> property.
+	
+
+	 */
+	public static final String WidthPropertyName = "width";
+	/**
+	 *  
+	The name of the <code>height</code> property.
+	
+
+	 */
+	public static final String HeightPropertyName = "height";
+	/**
+	 *  
+	The name of the <code>scaleByDistance</code> property.
+	
+
+	 */
+	public static final String ScaleByDistancePropertyName = "scaleByDistance";
+	/**
+	 *  
+	The name of the <code>translucencyByDistance</code> property.
+	
+
+	 */
+	public static final String TranslucencyByDistancePropertyName = "translucencyByDistance";
+	/**
+	 *  
+	The name of the <code>pixelOffsetScaleByDistance</code> property.
+	
+
+	 */
+	public static final String PixelOffsetScaleByDistancePropertyName = "pixelOffsetScaleByDistance";
+	/**
+	 *  
+	The name of the <code>imageSubRegion</code> property.
+	
+
+	 */
+	public static final String ImageSubRegionPropertyName = "imageSubRegion";
 	private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(ShowPropertyName);
@@ -157,6 +201,36 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	private Lazy<BooleanCesiumWriter> m_sizeInMeters = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
 		public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
 			return new BooleanCesiumWriter(SizeInMetersPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_width = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(WidthPropertyName);
+		}
+	}, false);
+	private Lazy<DoubleCesiumWriter> m_height = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+		public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+			return new DoubleCesiumWriter(HeightPropertyName);
+		}
+	}, false);
+	private Lazy<NearFarScalarCesiumWriter> m_scaleByDistance = new Lazy<cesiumlanguagewriter.NearFarScalarCesiumWriter>(new Func1<cesiumlanguagewriter.NearFarScalarCesiumWriter>() {
+		public cesiumlanguagewriter.NearFarScalarCesiumWriter invoke() {
+			return new NearFarScalarCesiumWriter(ScaleByDistancePropertyName);
+		}
+	}, false);
+	private Lazy<NearFarScalarCesiumWriter> m_translucencyByDistance = new Lazy<cesiumlanguagewriter.NearFarScalarCesiumWriter>(new Func1<cesiumlanguagewriter.NearFarScalarCesiumWriter>() {
+		public cesiumlanguagewriter.NearFarScalarCesiumWriter invoke() {
+			return new NearFarScalarCesiumWriter(TranslucencyByDistancePropertyName);
+		}
+	}, false);
+	private Lazy<NearFarScalarCesiumWriter> m_pixelOffsetScaleByDistance = new Lazy<cesiumlanguagewriter.NearFarScalarCesiumWriter>(new Func1<cesiumlanguagewriter.NearFarScalarCesiumWriter>() {
+		public cesiumlanguagewriter.NearFarScalarCesiumWriter invoke() {
+			return new NearFarScalarCesiumWriter(PixelOffsetScaleByDistancePropertyName);
+		}
+	}, false);
+	private Lazy<BoundingRectangleCesiumWriter> m_imageSubRegion = new Lazy<cesiumlanguagewriter.BoundingRectangleCesiumWriter>(new Func1<cesiumlanguagewriter.BoundingRectangleCesiumWriter>() {
+		public cesiumlanguagewriter.BoundingRectangleCesiumWriter invoke() {
+			return new BoundingRectangleCesiumWriter(ImageSubRegionPropertyName);
 		}
 	}, false);
 
@@ -760,7 +834,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writePixelOffsetProperty(List<JulianDate> dates, List<Rectangular> values) {
@@ -783,7 +857,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
@@ -925,7 +999,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeEyeOffsetProperty(List<JulianDate> dates, List<Cartesian> values) {
@@ -948,7 +1022,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
@@ -1666,7 +1740,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeAlignedAxisProperty(List<JulianDate> dates, List<Cartesian> values) {
@@ -1689,7 +1763,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
@@ -1786,7 +1860,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	}
 
 	/**
-	 *  Gets the writer for the <code>sizeInMeters</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>sizeInMeters</code> property defines whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
+	 *  Gets the writer for the <code>sizeInMeters</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>sizeInMeters</code> property defines whether this billboard's size (`width` and `height`) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
 	
 
 	 */
@@ -1796,7 +1870,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>sizeInMeters</code> property.  The <code>sizeInMeters</code> property defines whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
+	Opens and returns the writer for the <code>sizeInMeters</code> property.  The <code>sizeInMeters</code> property defines whether this billboard's size (`width` and `height`) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
 	
 
 	 */
@@ -1807,7 +1881,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>sizeInMeters</code> property as a <code>boolean</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
+	Writes a value for the <code>sizeInMeters</code> property as a <code>boolean</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (`width` and `height`) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -1826,7 +1900,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
+	Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (`width` and `height`) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -1845,7 +1919,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
+	Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (`width` and `height`) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
 	
 	
 
@@ -1864,7 +1938,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
+	Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (`width` and `height`) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
 	
 	
 	
@@ -1885,7 +1959,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (width and height) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
+	Writes a value for the <code>sizeInMeters</code> property as a <code>reference</code> value.  The <code>sizeInMeters</code> property specifies whether this billboard's size (`width` and `height`) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false" />.
 	
 	
 	
@@ -1896,6 +1970,1029 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	public final void writeSizeInMetersPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.BooleanCesiumWriter writer = openSizeInMetersProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>width</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>width</code> property defines the width of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+
+	 */
+	public final DoubleCesiumWriter getWidthWriter() {
+		return m_width.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>width</code> property.  The <code>width</code> property defines the width of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+
+	 */
+	public final DoubleCesiumWriter openWidthProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getWidthWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeWidthProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeWidthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeWidthPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeWidthPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeWidthPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>width</code> property as a <code>reference</code> value.  The <code>width</code> property specifies the width of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeWidthPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>height</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>height</code> property defines the height of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+
+	 */
+	public final DoubleCesiumWriter getHeightWriter() {
+		return m_height.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>height</code> property.  The <code>height</code> property defines the height of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+
+	 */
+	public final DoubleCesiumWriter openHeightProperty() {
+		openIntervalIfNecessary();
+		return this.<DoubleCesiumWriter> openAndReturn(getHeightWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeHeightProperty(double value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+			try {
+				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The value corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeHeightProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+			try {
+				writer.writeNumber(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeHeightPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeHeightPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeHeightPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeHeightPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>scaleByDistance</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>scaleByDistance</code> property defines how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+
+	 */
+	public final NearFarScalarCesiumWriter getScaleByDistanceWriter() {
+		return m_scaleByDistance.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>scaleByDistance</code> property.  The <code>scaleByDistance</code> property defines how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+
+	 */
+	public final NearFarScalarCesiumWriter openScaleByDistanceProperty() {
+		openIntervalIfNecessary();
+		return this.<NearFarScalarCesiumWriter> openAndReturn(getScaleByDistanceWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeScaleByDistanceProperty(NearFarScalar value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+	
+	
+	
+
+	 * @param nearDistance The lower bound of the camera distance range.
+	 * @param nearValue The value to use at the lower bound of the camera distance range.
+	 * @param farDistance The upper bound of the camera distance range.
+	 * @param farValue The value to use at the upper bound of the camera distance range.
+	 */
+	public final void writeScaleByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(nearDistance, nearValue, farDistance, farValue);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeScaleByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeScaleByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeScaleByDistancePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeScaleByDistancePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeScaleByDistancePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeScaleByDistancePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>translucencyByDistance</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>translucencyByDistance</code> property defines how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+	
+
+	 */
+	public final NearFarScalarCesiumWriter getTranslucencyByDistanceWriter() {
+		return m_translucencyByDistance.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>translucencyByDistance</code> property.  The <code>translucencyByDistance</code> property defines how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+	
+
+	 */
+	public final NearFarScalarCesiumWriter openTranslucencyByDistanceProperty() {
+		openIntervalIfNecessary();
+		return this.<NearFarScalarCesiumWriter> openAndReturn(getTranslucencyByDistanceWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeTranslucencyByDistanceProperty(NearFarScalar value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+	
+	
+
+	 * @param nearDistance The lower bound of the camera distance range.
+	 * @param nearValue The value to use at the lower bound of the camera distance range.
+	 * @param farDistance The upper bound of the camera distance range.
+	 * @param farValue The value to use at the upper bound of the camera distance range.
+	 */
+	public final void writeTranslucencyByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(nearDistance, nearValue, farDistance, farValue);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeTranslucencyByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeTranslucencyByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeTranslucencyByDistancePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeTranslucencyByDistancePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeTranslucencyByDistancePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeTranslucencyByDistancePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>pixelOffsetScaleByDistance</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>pixelOffsetScaleByDistance</code> property defines how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+
+	 */
+	public final NearFarScalarCesiumWriter getPixelOffsetScaleByDistanceWriter() {
+		return m_pixelOffsetScaleByDistance.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>pixelOffsetScaleByDistance</code> property.  The <code>pixelOffsetScaleByDistance</code> property defines how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+
+	 */
+	public final NearFarScalarCesiumWriter openPixelOffsetScaleByDistanceProperty() {
+		openIntervalIfNecessary();
+		return this.<NearFarScalarCesiumWriter> openAndReturn(getPixelOffsetScaleByDistanceWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writePixelOffsetScaleByDistanceProperty(NearFarScalar value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+	
+	
+	
+
+	 * @param nearDistance The lower bound of the camera distance range.
+	 * @param nearValue The value to use at the lower bound of the camera distance range.
+	 * @param farDistance The upper bound of the camera distance range.
+	 * @param farValue The value to use at the upper bound of the camera distance range.
+	 */
+	public final void writePixelOffsetScaleByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(nearDistance, nearValue, farDistance, farValue);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writePixelOffsetScaleByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writePixelOffsetScaleByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeNearFarScalar(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writePixelOffsetScaleByDistancePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writePixelOffsetScaleByDistancePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writePixelOffsetScaleByDistancePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>pixelOffsetScaleByDistance</code> property as a <code>reference</code> value.  The <code>pixelOffsetScaleByDistance</code> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writePixelOffsetScaleByDistancePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>imageSubRegion</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>imageSubRegion</code> property defines a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+	
+
+	 */
+	public final BoundingRectangleCesiumWriter getImageSubRegionWriter() {
+		return m_imageSubRegion.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>imageSubRegion</code> property.  The <code>imageSubRegion</code> property defines a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+	
+
+	 */
+	public final BoundingRectangleCesiumWriter openImageSubRegionProperty() {
+		openIntervalIfNecessary();
+		return this.<BoundingRectangleCesiumWriter> openAndReturn(getImageSubRegionWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>imageSubRegion</code> property as a <code>cartesian</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeImageSubRegionProperty(BoundingRectangle value) {
+		{
+			cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
+			try {
+				writer.writeCartesian(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>imageSubRegion</code> property as a <code>cartesian</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeImageSubRegionProperty(List<JulianDate> dates, List<BoundingRectangle> values) {
+		{
+			cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
+			try {
+				writer.writeCartesian(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>imageSubRegion</code> property as a <code>cartesian</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeImageSubRegionProperty(List<JulianDate> dates, List<BoundingRectangle> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
+			try {
+				writer.writeCartesian(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>imageSubRegion</code> property as a <code>reference</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeImageSubRegionPropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>imageSubRegion</code> property as a <code>reference</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeImageSubRegionPropertyReference(String value) {
+		{
+			cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>imageSubRegion</code> property as a <code>reference</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeImageSubRegionPropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>imageSubRegion</code> property as a <code>reference</code> value.  The <code>imageSubRegion</code> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeImageSubRegionPropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {

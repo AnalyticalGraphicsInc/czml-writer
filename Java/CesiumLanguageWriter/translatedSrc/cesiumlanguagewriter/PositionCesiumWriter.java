@@ -190,7 +190,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeCartesian(List<JulianDate> dates, List<Cartesian> values) {
@@ -206,7 +206,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
@@ -239,7 +239,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 	
 	
 
-	 * @param dates The dates at which the position is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeCartographicRadians(List<JulianDate> dates, List<Cartographic> values) {
@@ -255,7 +255,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The position corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
@@ -288,7 +288,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 	
 	
 
-	 * @param dates The dates at which the position is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeCartographicDegrees(List<JulianDate> dates, List<Cartographic> values) {
@@ -304,7 +304,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The position corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
@@ -337,7 +337,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeCartesianVelocity(List<JulianDate> dates, List<Motion1<Cartesian>> values) {
@@ -353,7 +353,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.

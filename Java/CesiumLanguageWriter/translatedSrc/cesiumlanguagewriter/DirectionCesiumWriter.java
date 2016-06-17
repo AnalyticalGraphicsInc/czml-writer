@@ -169,7 +169,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeSpherical(List<JulianDate> dates, List<Spherical> values) {
@@ -185,7 +185,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
@@ -218,7 +218,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeUnitSpherical(List<JulianDate> dates, List<UnitSpherical> values) {
@@ -234,7 +234,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
@@ -267,7 +267,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeCartesian(List<JulianDate> dates, List<Cartesian> values) {
@@ -283,7 +283,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
@@ -316,7 +316,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
 	public final void writeUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values) {
@@ -332,7 +332,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 	
 	
 
-	 * @param dates The dates at which the vector is specified.
+	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
