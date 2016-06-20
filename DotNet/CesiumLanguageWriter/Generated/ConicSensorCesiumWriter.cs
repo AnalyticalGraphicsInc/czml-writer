@@ -293,6 +293,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>innerHalfAngle</code> property as a <code>number</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteInnerHalfAngleProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenInnerHalfAngleProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>number</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -380,6 +393,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOuterHalfAngleProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>number</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteOuterHalfAngleProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenOuterHalfAngleProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 
@@ -481,6 +507,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>minimumClockAngle</code> property as a <code>number</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteMinimumClockAngleProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenMinimumClockAngleProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>number</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -575,6 +614,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>maximumClockAngle</code> property as a <code>number</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteMaximumClockAngleProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenMaximumClockAngleProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>number</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -662,6 +714,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenRadiusProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteRadiusProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenRadiusProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 
@@ -857,6 +922,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteIntersectionColorProperty(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenIntersectionColorProperty())
+            {
+                writer.WriteRgba(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
         /// <param name="length">The number of elements to use from the `colors` collection.</param>
@@ -865,6 +943,18 @@ namespace CesiumLanguageWriter
             using (var writer = OpenIntersectionColorProperty())
             {
                 writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgbaf</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteIntersectionColorPropertyRgbaf(Color color)
+        {
+            using (var writer = OpenIntersectionColorProperty())
+            {
+                writer.WriteRgbaf(color);
             }
         }
 
@@ -880,6 +970,34 @@ namespace CesiumLanguageWriter
             using (var writer = OpenIntersectionColorProperty())
             {
                 writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgbaf</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteIntersectionColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenIntersectionColorProperty())
+            {
+                writer.WriteRgbaf(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgbaf</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
+        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        public void WriteIntersectionColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenIntersectionColorProperty())
+            {
+                writer.WriteRgbaf(dates, colors, startIndex, length);
             }
         }
 
@@ -959,6 +1077,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenIntersectionWidthProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>intersectionWidth</code> property as a <code>number</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteIntersectionWidthProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenIntersectionWidthProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 
@@ -1792,6 +1923,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteEnvironmentIntersectionColorProperty(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenEnvironmentIntersectionColorProperty())
+            {
+                writer.WriteRgba(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
         /// <param name="length">The number of elements to use from the `colors` collection.</param>
@@ -1800,6 +1944,18 @@ namespace CesiumLanguageWriter
             using (var writer = OpenEnvironmentIntersectionColorProperty())
             {
                 writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteEnvironmentIntersectionColorPropertyRgbaf(Color color)
+        {
+            using (var writer = OpenEnvironmentIntersectionColorProperty())
+            {
+                writer.WriteRgbaf(color);
             }
         }
 
@@ -1815,6 +1971,34 @@ namespace CesiumLanguageWriter
             using (var writer = OpenEnvironmentIntersectionColorProperty())
             {
                 writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteEnvironmentIntersectionColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenEnvironmentIntersectionColorProperty())
+            {
+                writer.WriteRgbaf(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
+        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        public void WriteEnvironmentIntersectionColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenEnvironmentIntersectionColorProperty())
+            {
+                writer.WriteRgbaf(dates, colors, startIndex, length);
             }
         }
 
@@ -1894,6 +2078,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenEnvironmentIntersectionWidthProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteEnvironmentIntersectionWidthProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenEnvironmentIntersectionWidthProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 

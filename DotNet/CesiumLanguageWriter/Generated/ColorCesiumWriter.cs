@@ -29,6 +29,7 @@ namespace CesiumLanguageWriter
         public const string ReferencePropertyName = "reference";
 
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Color>> m_asRgba;
+        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Color>> m_asRgbaf;
         private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
         /// <summary>
@@ -38,6 +39,7 @@ namespace CesiumLanguageWriter
             : base(propertyName)
         {
             m_asRgba = new Lazy<ICesiumInterpolatableValuePropertyWriter<Color>>(CreateRgbaAdaptor, false);
+            m_asRgbaf = new Lazy<ICesiumInterpolatableValuePropertyWriter<Color>>(CreateRgbafAdaptor, false);
             m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
         }
 
@@ -49,6 +51,7 @@ namespace CesiumLanguageWriter
             : base(existingInstance)
         {
             m_asRgba = new Lazy<ICesiumInterpolatableValuePropertyWriter<Color>>(CreateRgbaAdaptor, false);
+            m_asRgbaf = new Lazy<ICesiumInterpolatableValuePropertyWriter<Color>>(CreateRgbafAdaptor, false);
             m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
         }
 
@@ -89,6 +92,16 @@ namespace CesiumLanguageWriter
         /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteRgba(IList<JulianDate> dates, IList<Color> values)
+        {
+            WriteRgba(dates, values, 0, dates.Count);
+        }
+
+        /// <summary>
+        /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
         /// <param name="length">The number of elements to use from the `colors` collection.</param>
@@ -97,6 +110,18 @@ namespace CesiumLanguageWriter
             const string PropertyName = RgbaPropertyName;
             OpenIntervalIfNecessary();
             CesiumWritingHelper.WriteRgba(Output, PropertyName, dates, colors, startIndex, length);
+        }
+
+        /// <summary>
+        /// Writes the value expressed as a <code>rgbaf</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteRgbaf(Color color)
+        {
+            const string PropertyName = RgbafPropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteRgbaf(Output, color);
         }
 
         /// <summary>
@@ -112,6 +137,30 @@ namespace CesiumLanguageWriter
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteRgbaf(Output, red, green, blue, alpha);
+        }
+
+        /// <summary>
+        /// Writes the value expressed as a <code>rgbaf</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteRgbaf(IList<JulianDate> dates, IList<Color> values)
+        {
+            WriteRgbaf(dates, values, 0, dates.Count);
+        }
+
+        /// <summary>
+        /// Writes the value expressed as a <code>rgbaf</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
+        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        public void WriteRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            const string PropertyName = RgbafPropertyName;
+            OpenIntervalIfNecessary();
+            CesiumWritingHelper.WriteRgbaf(Output, PropertyName, dates, colors, startIndex, length);
         }
 
         /// <summary>
@@ -176,6 +225,20 @@ namespace CesiumLanguageWriter
         private ICesiumInterpolatableValuePropertyWriter<Color> CreateRgbaAdaptor()
         {
             return new CesiumInterpolatableWriterAdaptor<ColorCesiumWriter, Color>(this, (me, value) => me.WriteRgba(value), (me, dates, values, startIndex, length) => me.WriteRgba(dates, values, startIndex, length));
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>Rgbaf</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumInterpolatableValuePropertyWriter<Color> AsRgbaf()
+        {
+            return m_asRgbaf.Value;
+        }
+
+        private ICesiumInterpolatableValuePropertyWriter<Color> CreateRgbafAdaptor()
+        {
+            return new CesiumInterpolatableWriterAdaptor<ColorCesiumWriter, Color>(this, (me, value) => me.WriteRgbaf(value), (me, dates, values, startIndex, length) => me.WriteRgbaf(dates, values, startIndex, length));
         }
 
         /// <summary>

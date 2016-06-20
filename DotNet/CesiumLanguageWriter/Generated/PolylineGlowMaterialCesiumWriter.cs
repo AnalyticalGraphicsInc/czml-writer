@@ -97,6 +97,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the surface.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteColorProperty(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgba(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
         /// <param name="length">The number of elements to use from the `colors` collection.</param>
@@ -105,6 +118,18 @@ namespace CesiumLanguageWriter
             using (var writer = OpenColorProperty())
             {
                 writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteColorPropertyRgbaf(Color color)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgbaf(color);
             }
         }
 
@@ -120,6 +145,34 @@ namespace CesiumLanguageWriter
             using (var writer = OpenColorProperty())
             {
                 writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgbaf(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
+        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        public void WriteColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgbaf(dates, colors, startIndex, length);
             }
         }
 
@@ -199,6 +252,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenGlowPowerProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>glowPower</code> property as a <code>number</code> value.  The <code>glowPower</code> property specifies the strength of the glow.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteGlowPowerProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenGlowPowerProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 

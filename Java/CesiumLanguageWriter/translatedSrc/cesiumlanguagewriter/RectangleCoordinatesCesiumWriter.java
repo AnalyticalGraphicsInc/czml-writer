@@ -18,6 +18,13 @@ import java.util.List;
 public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatablePropertyWriter<RectangleCoordinatesCesiumWriter> {
 	/**
 	 *  
+	The name of the <code>wsen</code> property.
+	
+
+	 */
+	public static final String WsenPropertyName = "wsen";
+	/**
+	 *  
 	The name of the <code>wsenDegrees</code> property.
 	
 
@@ -30,6 +37,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
 
 	 */
 	public static final String ReferencePropertyName = "reference";
+	private Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>> m_asWsen;
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>> m_asWsenDegrees;
 	private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
@@ -41,6 +49,12 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
 	 */
 	public RectangleCoordinatesCesiumWriter(String propertyName) {
 		super(propertyName);
+		m_asWsen = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(this, "createWsenAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent> invoke() {
+						return createWsenAdaptor();
+					}
+				}, false);
 		m_asWsenDegrees = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(
 				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(this, "createWsenDegreesAdaptor", new Class[] {}) {
 					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent> invoke() {
@@ -65,6 +79,12 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
 	 */
 	protected RectangleCoordinatesCesiumWriter(RectangleCoordinatesCesiumWriter existingInstance) {
 		super(existingInstance);
+		m_asWsen = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(this, "createWsenAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent> invoke() {
+						return createWsenAdaptor();
+					}
+				}, false);
 		m_asWsenDegrees = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(
 				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(this, "createWsenDegreesAdaptor", new Class[] {}) {
 					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent> invoke() {
@@ -82,6 +102,73 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
 	@Override
 	public RectangleCoordinatesCesiumWriter clone() {
 		return new RectangleCoordinatesCesiumWriter(this);
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>wsen</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeWsen(CartographicExtent value) {
+		String PropertyName = WsenPropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeCartographicExtent(getOutput(), value);
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>wsen</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+	
+	
+	
+	
+	
+
+	 * @param west The westernmost longitude.
+	 * @param south The southernmost latitude.
+	 * @param east The easternmost longitude.
+	 * @param north The northernmost latitude.
+	 */
+	public final void writeWsen(double west, double south, double east, double north) {
+		writeWsen(new CartographicExtent(west, south, east, north));
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>wsen</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeWsen(List<JulianDate> dates, List<CartographicExtent> values) {
+		writeWsen(dates, values, 0, dates.size());
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>wsen</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeWsen(List<JulianDate> dates, List<CartographicExtent> values, int startIndex, int length) {
+		String PropertyName = WsenPropertyName;
+		openIntervalIfNecessary();
+		CesiumWritingHelper.writeCartographicExtent(getOutput(), PropertyName, dates, values, startIndex, length);
 	}
 
 	/**
@@ -213,6 +300,31 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
 		openIntervalIfNecessary();
 		getOutput().writePropertyName(PropertyName);
 		CesiumWritingHelper.writeReference(getOutput(), identifier, propertyNames);
+	}
+
+	/**
+	 *  
+	Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in <code>Wsen</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	
+	
+
+	 * @return The wrapper.
+	 */
+	public final ICesiumInterpolatableValuePropertyWriter<CartographicExtent> asWsen() {
+		return m_asWsen.getValue();
+	}
+
+	final private ICesiumInterpolatableValuePropertyWriter<CartographicExtent> createWsenAdaptor() {
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.RectangleCoordinatesCesiumWriter, cesiumlanguagewriter.CartographicExtent>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.RectangleCoordinatesCesiumWriter, cesiumlanguagewriter.CartographicExtent>() {
+					public void invoke(RectangleCoordinatesCesiumWriter me, CartographicExtent value) {
+						me.writeWsen(value);
+					}
+				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.RectangleCoordinatesCesiumWriter, cesiumlanguagewriter.CartographicExtent>() {
+					public void invoke(RectangleCoordinatesCesiumWriter me, List<JulianDate> dates, List<CartographicExtent> values, int startIndex, int length) {
+						me.writeWsen(dates, values, startIndex, length);
+					}
+				});
 	}
 
 	/**

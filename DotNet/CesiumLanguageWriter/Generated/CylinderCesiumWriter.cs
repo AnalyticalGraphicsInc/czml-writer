@@ -215,6 +215,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>length</code> property as a <code>number</code> value.  The <code>length</code> property specifies the length of the cylinder.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteLengthProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenLengthProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>length</code> property as a <code>number</code> value.  The <code>length</code> property specifies the length of the cylinder.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -309,6 +322,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>topRadius</code> property as a <code>number</code> value.  The <code>topRadius</code> property specifies the radius of the top of the cylinder.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteTopRadiusProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenTopRadiusProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>topRadius</code> property as a <code>number</code> value.  The <code>topRadius</code> property specifies the radius of the top of the cylinder.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -396,6 +422,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenBottomRadiusProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>bottomRadius</code> property as a <code>number</code> value.  The <code>bottomRadius</code> property specifies the radius of the bottom of the cylinder.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteBottomRadiusProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenBottomRadiusProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 
@@ -687,6 +726,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteOutlineColorProperty(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteRgba(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
         /// <param name="length">The number of elements to use from the `colors` collection.</param>
@@ -695,6 +747,18 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOutlineColorProperty())
             {
                 writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteOutlineColorPropertyRgbaf(Color color)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteRgbaf(color);
             }
         }
 
@@ -710,6 +774,34 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOutlineColorProperty())
             {
                 writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteOutlineColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteRgbaf(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
+        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        public void WriteOutlineColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenOutlineColorProperty())
+            {
+                writer.WriteRgbaf(dates, colors, startIndex, length);
             }
         }
 
@@ -789,6 +881,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOutlineWidthProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteOutlineWidthProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 
@@ -890,6 +995,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>number</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteNumberOfVerticalLinesProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenNumberOfVerticalLinesProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>number</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -977,6 +1095,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenSlicesProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>slices</code> property as a <code>number</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteSlicesProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenSlicesProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 

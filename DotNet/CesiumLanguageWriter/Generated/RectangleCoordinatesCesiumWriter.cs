@@ -13,6 +13,11 @@ namespace CesiumLanguageWriter
     public class RectangleCoordinatesCesiumWriter : CesiumInterpolatablePropertyWriter<RectangleCoordinatesCesiumWriter>
     {
         /// <summary>
+        /// The name of the <code>wsen</code> property.
+        /// </summary>
+        public const string WsenPropertyName = "wsen";
+
+        /// <summary>
         /// The name of the <code>wsenDegrees</code> property.
         /// </summary>
         public const string WsenDegreesPropertyName = "wsenDegrees";
@@ -22,6 +27,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string ReferencePropertyName = "reference";
 
+        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>> m_asWsen;
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>> m_asWsenDegrees;
         private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
@@ -31,6 +37,7 @@ namespace CesiumLanguageWriter
         public RectangleCoordinatesCesiumWriter(string propertyName)
             : base(propertyName)
         {
+            m_asWsen = new Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(CreateWsenAdaptor, false);
             m_asWsenDegrees = new Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(CreateWsenDegreesAdaptor, false);
             m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
         }
@@ -42,6 +49,7 @@ namespace CesiumLanguageWriter
         protected RectangleCoordinatesCesiumWriter(RectangleCoordinatesCesiumWriter existingInstance)
             : base(existingInstance)
         {
+            m_asWsen = new Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(CreateWsenAdaptor, false);
             m_asWsenDegrees = new Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(CreateWsenDegreesAdaptor, false);
             m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
         }
@@ -50,6 +58,54 @@ namespace CesiumLanguageWriter
         public override RectangleCoordinatesCesiumWriter Clone()
         {
             return new RectangleCoordinatesCesiumWriter(this);
+        }
+
+        /// <summary>
+        /// Writes the value expressed as a <code>wsen</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteWsen(CartographicExtent value)
+        {
+            const string PropertyName = WsenPropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteCartographicExtent(Output, value);
+        }
+
+        /// <summary>
+        /// Writes the value expressed as a <code>wsen</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+        /// </summary>
+        /// <param name="west">The westernmost longitude.</param>
+        /// <param name="south">The southernmost latitude.</param>
+        /// <param name="east">The easternmost longitude.</param>
+        /// <param name="north">The northernmost latitude.</param>
+        public void WriteWsen(double west, double south, double east, double north)
+        {
+            WriteWsen(new CartographicExtent(west, south, east, north));
+        }
+
+        /// <summary>
+        /// Writes the value expressed as a <code>wsen</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteWsen(IList<JulianDate> dates, IList<CartographicExtent> values)
+        {
+            WriteWsen(dates, values, 0, dates.Count);
+        }
+
+        /// <summary>
+        /// Writes the value expressed as a <code>wsen</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteWsen(IList<JulianDate> dates, IList<CartographicExtent> values, int startIndex, int length)
+        {
+            const string PropertyName = WsenPropertyName;
+            OpenIntervalIfNecessary();
+            CesiumWritingHelper.WriteCartographicExtent(Output, PropertyName, dates, values, startIndex, length);
         }
 
         /// <summary>
@@ -148,6 +204,20 @@ namespace CesiumLanguageWriter
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteReference(Output, identifier, propertyNames);
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>Wsen</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumInterpolatableValuePropertyWriter<CartographicExtent> AsWsen()
+        {
+            return m_asWsen.Value;
+        }
+
+        private ICesiumInterpolatableValuePropertyWriter<CartographicExtent> CreateWsenAdaptor()
+        {
+            return new CesiumInterpolatableWriterAdaptor<RectangleCoordinatesCesiumWriter, CartographicExtent>(this, (me, value) => me.WriteWsen(value), (me, dates, values, startIndex, length) => me.WriteWsen(dates, values, startIndex, length));
         }
 
         /// <summary>
