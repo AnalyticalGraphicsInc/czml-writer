@@ -477,6 +477,27 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeHeightProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+			try {
+				writer.writeNumber(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the polygon when `perPositionHeight` is false.
+	
+	
+	
 	
 	
 
@@ -609,6 +630,27 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openExtrudedHeightProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the polygon.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeExtrudedHeightProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openExtrudedHeightProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -765,6 +807,27 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeStRotationProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openStRotationProperty();
+			try {
+				writer.writeNumber(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+	
+	
+	
 	
 	
 
@@ -897,6 +960,27 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeGranularityProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1336,6 +1420,27 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeOutlineColorProperty(List<JulianDate> dates, List<Color> values) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeRgba(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+	
+	
+	
 	
 	
 
@@ -1349,6 +1454,25 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
 			try {
 				writer.writeRgba(dates, colors, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+	
+	
+
+	 * @param color The color.
+	 */
+	public final void writeOutlineColorPropertyRgbaf(Color color) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeRgbaf(color);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1374,6 +1498,52 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
 			try {
 				writer.writeRgbaf(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeOutlineColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeRgbaf(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param colors The color corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `colors` collection.
+	 * @param length The number of elements to use from the `colors` collection.
+	 */
+	public final void writeOutlineColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeRgbaf(dates, colors, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1493,6 +1663,27 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeOutlineWidthProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

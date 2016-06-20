@@ -296,6 +296,27 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeEvenColorProperty(List<JulianDate> dates, List<Color> values) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+			try {
+				writer.writeRgba(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the even color.
+	
+	
+	
 	
 	
 
@@ -309,6 +330,25 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 			cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
 			try {
 				writer.writeRgba(dates, colors, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>evenColor</code> property as a <code>rgbaf</code> value.  The <code>evenColor</code> property specifies the even color.
+	
+	
+
+	 * @param color The color.
+	 */
+	public final void writeEvenColorPropertyRgbaf(Color color) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+			try {
+				writer.writeRgbaf(color);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -334,6 +374,52 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 			cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
 			try {
 				writer.writeRgbaf(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>evenColor</code> property as a <code>rgbaf</code> value.  The <code>evenColor</code> property specifies the even color.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeEvenColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+			try {
+				writer.writeRgbaf(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>evenColor</code> property as a <code>rgbaf</code> value.  The <code>evenColor</code> property specifies the even color.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param colors The color corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `colors` collection.
+	 * @param length The number of elements to use from the `colors` collection.
+	 */
+	public final void writeEvenColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+			try {
+				writer.writeRgbaf(dates, colors, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -490,6 +576,27 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeOddColorProperty(List<JulianDate> dates, List<Color> values) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+			try {
+				writer.writeRgba(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the odd color.
+	
+	
+	
 	
 	
 
@@ -503,6 +610,25 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 			cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
 			try {
 				writer.writeRgba(dates, colors, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>oddColor</code> property as a <code>rgbaf</code> value.  The <code>oddColor</code> property specifies the odd color.
+	
+	
+
+	 * @param color The color.
+	 */
+	public final void writeOddColorPropertyRgbaf(Color color) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+			try {
+				writer.writeRgbaf(color);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -528,6 +654,52 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 			cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
 			try {
 				writer.writeRgbaf(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>oddColor</code> property as a <code>rgbaf</code> value.  The <code>oddColor</code> property specifies the odd color.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeOddColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+			try {
+				writer.writeRgbaf(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>oddColor</code> property as a <code>rgbaf</code> value.  The <code>oddColor</code> property specifies the odd color.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param colors The color corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `colors` collection.
+	 * @param length The number of elements to use from the `colors` collection.
+	 */
+	public final void writeOddColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+			try {
+				writer.writeRgbaf(dates, colors, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -647,6 +819,27 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openOffsetProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>offset</code> property as a <code>number</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeOffsetProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openOffsetProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -791,6 +984,27 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openRepeatProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>repeat</code> property as a <code>number</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeRepeatProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRepeatProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

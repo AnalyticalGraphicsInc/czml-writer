@@ -795,7 +795,21 @@ public final class CesiumWritingHelper {
 
 	/**
 	 *  
-	Writes a color value as an array in Red, Green, Blue, Alpha order.
+	Writes a color value as an array in Red, Green, Blue, Alpha order as floating-point values.
+	
+	
+	
+
+	 * @param output The stream to which to write the color.
+	 * @param value The value to write.
+	 */
+	public static void writeRgbaf(CesiumOutputStream output, Color value) {
+		writeRgbaf(output, value.getRed() / 255.0, value.getGreen() / 255.0, value.getBlue() / 255.0, value.getAlpha() / 255.0);
+	}
+
+	/**
+	 *  
+	Writes a color value as an array in Red, Green, Blue, Alpha order as floating-point values.
 	
 	
 	
@@ -809,12 +823,52 @@ public final class CesiumWritingHelper {
 	 * @param blue The blue component in the range 0.0-1.0.
 	 * @param alpha The alpha component in the range 0.0-1.0.
 	 */
-	public static void writeRgbaf(CesiumOutputStream output, float red, float green, float blue, float alpha) {
+	public static void writeRgbaf(CesiumOutputStream output, double red, double green, double blue, double alpha) {
 		output.writeStartSequence();
 		output.writeValue(red);
 		output.writeValue(green);
 		output.writeValue(blue);
 		output.writeValue(alpha);
+		output.writeEndSequence();
+	}
+
+	/**
+	 *  
+	Writes time-tagged color values as an array in [Time, Red, Green, Blue, Alpha] order as floating-point values.
+	Times are epoch seconds since an epoch that is determined from the first date to be written.
+	The epoch property is written as well.
+	
+	
+	
+	
+	
+	
+	
+
+	 * @param output The stream to which to write the array.
+	 * @param propertyName The name of the property to write.
+	 * @param dates The dates at which the value is specified.
+	 * @param values The corresponding value for each date.
+	 * @param startIndex The index of the first element to use in the <code>values</code> collection.
+	 * @param length The number of elements to use from the <code>values</code> collection.
+	 */
+	public static void writeRgbaf(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<Color> values, int startIndex, int length) {
+		if (dates.size() != values.size()) {
+			throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
+		}
+		JulianDate epoch = getAndWriteEpoch(output, dates, startIndex, length);
+		output.writePropertyName(propertyName);
+		output.writeStartSequence();
+		int last = startIndex + length;
+		for (int i = startIndex; i < last; ++i) {
+			output.writeValue(epoch.secondsDifference(dates.get(i)));
+			Color value = values.get(i);
+			output.writeValue(value.getRed() / 255.0);
+			output.writeValue(value.getGreen() / 255.0);
+			output.writeValue(value.getBlue() / 255.0);
+			output.writeValue(value.getAlpha() / 255.0);
+			output.writeLineBreak();
+		}
 		output.writeEndSequence();
 	}
 

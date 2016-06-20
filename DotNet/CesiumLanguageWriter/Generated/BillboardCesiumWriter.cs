@@ -407,6 +407,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteScaleProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenScaleProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -901,6 +914,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteColorProperty(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgba(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
         /// <param name="length">The number of elements to use from the `colors` collection.</param>
@@ -909,6 +935,18 @@ namespace CesiumLanguageWriter
             using (var writer = OpenColorProperty())
             {
                 writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteColorPropertyRgbaf(Color color)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgbaf(color);
             }
         }
 
@@ -924,6 +962,34 @@ namespace CesiumLanguageWriter
             using (var writer = OpenColorProperty())
             {
                 writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgbaf(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
+        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        public void WriteColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgbaf(dates, colors, startIndex, length);
             }
         }
 
@@ -1003,6 +1069,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenRotationProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteRotationProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenRotationProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 
@@ -1290,6 +1369,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteWidthProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -1377,6 +1469,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenHeightProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteHeightProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenHeightProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 

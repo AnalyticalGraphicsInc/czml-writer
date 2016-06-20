@@ -358,13 +358,103 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+	Writes a value for the <code>coordinates</code> property as a <code>wsen</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
 	
 	
 
 	 * @param value The value.
 	 */
 	public final void writeCoordinatesProperty(CartographicExtent value) {
+		{
+			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
+			try {
+				writer.writeWsen(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>coordinates</code> property as a <code>wsen</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+	
+	
+	
+	
+	
+
+	 * @param west The westernmost longitude.
+	 * @param south The southernmost latitude.
+	 * @param east The easternmost longitude.
+	 * @param north The northernmost latitude.
+	 */
+	public final void writeCoordinatesProperty(double west, double south, double east, double north) {
+		{
+			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
+			try {
+				writer.writeWsen(west, south, east, north);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>coordinates</code> property as a <code>wsen</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeCoordinatesProperty(List<JulianDate> dates, List<CartographicExtent> values) {
+		{
+			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
+			try {
+				writer.writeWsen(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>coordinates</code> property as a <code>wsen</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeCoordinatesProperty(List<JulianDate> dates, List<CartographicExtent> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
+			try {
+				writer.writeWsen(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeCoordinatesPropertyWsenDegrees(CartographicExtent value) {
 		{
 			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
 			try {
@@ -389,7 +479,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 	 * @param east The easternmost longitude.
 	 * @param north The northernmost latitude.
 	 */
-	public final void writeCoordinatesProperty(double west, double south, double east, double north) {
+	public final void writeCoordinatesPropertyWsenDegrees(double west, double south, double east, double north) {
 		{
 			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
 			try {
@@ -410,7 +500,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeCoordinatesProperty(List<JulianDate> dates, List<CartographicExtent> values) {
+	public final void writeCoordinatesPropertyWsenDegrees(List<JulianDate> dates, List<CartographicExtent> values) {
 		{
 			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
 			try {
@@ -435,7 +525,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeCoordinatesProperty(List<JulianDate> dates, List<CartographicExtent> values, int startIndex, int length) {
+	public final void writeCoordinatesPropertyWsenDegrees(List<JulianDate> dates, List<CartographicExtent> values, int startIndex, int length) {
 		{
 			cesiumlanguagewriter.RectangleCoordinatesCesiumWriter writer = openCoordinatesProperty();
 			try {
@@ -559,6 +649,27 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the rectangle.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeHeightProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -715,6 +826,27 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeExtrudedHeightProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openExtrudedHeightProperty();
+			try {
+				writer.writeNumber(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
+	
+	
+	
 	
 	
 
@@ -847,6 +979,27 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeRotationProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1003,6 +1156,27 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeStRotationProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openStRotationProperty();
+			try {
+				writer.writeNumber(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+	
+	
+	
 	
 	
 
@@ -1135,6 +1309,27 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeGranularityProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openGranularityProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1574,6 +1769,27 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeOutlineColorProperty(List<JulianDate> dates, List<Color> values) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeRgba(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+	
+	
+	
 	
 	
 
@@ -1587,6 +1803,25 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
 			try {
 				writer.writeRgba(dates, colors, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+	
+	
+
+	 * @param color The color.
+	 */
+	public final void writeOutlineColorPropertyRgbaf(Color color) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeRgbaf(color);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1612,6 +1847,52 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
 			try {
 				writer.writeRgbaf(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeOutlineColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeRgbaf(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param colors The color corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `colors` collection.
+	 * @param length The number of elements to use from the `colors` collection.
+	 */
+	public final void writeOutlineColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
+			try {
+				writer.writeRgbaf(dates, colors, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1731,6 +2012,27 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeOutlineWidthProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

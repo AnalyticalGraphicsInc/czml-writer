@@ -668,6 +668,27 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeScaleProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+			try {
+				writer.writeNumber(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.  If not specified, the default value is 1.0.
+	
+	
+	
 	
 	
 
@@ -1426,6 +1447,27 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeColorProperty(List<JulianDate> dates, List<Color> values) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeRgba(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+	
+	
+	
 	
 	
 
@@ -1439,6 +1481,25 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
 			try {
 				writer.writeRgba(dates, colors, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+	
+	
+
+	 * @param color The color.
+	 */
+	public final void writeColorPropertyRgbaf(Color color) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeRgbaf(color);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1464,6 +1525,52 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
 			try {
 				writer.writeRgbaf(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeRgbaf(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param colors The color corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `colors` collection.
+	 * @param length The number of elements to use from the `colors` collection.
+	 */
+	public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+			try {
+				writer.writeRgbaf(dates, colors, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1583,6 +1690,27 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeRotationProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -2023,6 +2151,27 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeWidthProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+			try {
+				writer.writeNumber(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+	
+	
 	
 	
 
@@ -2155,6 +2304,27 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeHeightProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

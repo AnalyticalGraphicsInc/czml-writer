@@ -282,6 +282,27 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeWidthProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+			try {
+				writer.writeNumber(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the path line.  If not specified, the default value is 1.0.
+	
+	
+	
 	
 	
 
@@ -414,6 +435,27 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>resolution</code> property as a <code>number</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeResolutionProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -570,6 +612,27 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeLeadTimeProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openLeadTimeProperty();
+			try {
+				writer.writeNumber(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>leadTime</code> property as a <code>number</code> value.  The <code>leadTime</code> property specifies the time ahead of the animation time, in seconds, to show the path.
+	
+	
+	
 	
 	
 
@@ -702,6 +765,27 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openTrailTimeProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>trailTime</code> property as a <code>number</code> value.  The <code>trailTime</code> property specifies the time behind the animation time, in seconds, to show the path.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeTrailTimeProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openTrailTimeProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

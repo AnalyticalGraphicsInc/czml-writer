@@ -38,6 +38,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 	 */
 	public static final String ReferencePropertyName = "reference";
 	private Lazy<ICesiumInterpolatableValuePropertyWriter<Color>> m_asRgba;
+	private Lazy<ICesiumInterpolatableValuePropertyWriter<Color>> m_asRgbaf;
 	private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
 	/**
@@ -52,6 +53,12 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 				this, "createRgbaAdaptor", new Class[] {}) {
 			public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color> invoke() {
 				return createRgbaAdaptor();
+			}
+		}, false);
+		m_asRgbaf = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(
+				this, "createRgbafAdaptor", new Class[] {}) {
+			public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color> invoke() {
+				return createRgbafAdaptor();
 			}
 		}, false);
 		m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
@@ -76,6 +83,12 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 				this, "createRgbaAdaptor", new Class[] {}) {
 			public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color> invoke() {
 				return createRgbaAdaptor();
+			}
+		}, false);
+		m_asRgbaf = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(
+				this, "createRgbafAdaptor", new Class[] {}) {
+			public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color> invoke() {
+				return createRgbafAdaptor();
 			}
 		}, false);
 		m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
@@ -133,6 +146,20 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeRgba(List<JulianDate> dates, List<Color> values) {
+		writeRgba(dates, values, 0, dates.size());
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
+	
+	
+	
 	
 	
 
@@ -145,6 +172,21 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 		String PropertyName = RgbaPropertyName;
 		openIntervalIfNecessary();
 		CesiumWritingHelper.writeRgba(getOutput(), PropertyName, dates, colors, startIndex, length);
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>rgbaf</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
+	
+	
+
+	 * @param color The color.
+	 */
+	public final void writeRgbaf(Color color) {
+		String PropertyName = RgbafPropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeRgbaf(getOutput(), color);
 	}
 
 	/**
@@ -166,6 +208,40 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 		openIntervalIfNecessary();
 		getOutput().writePropertyName(PropertyName);
 		CesiumWritingHelper.writeRgbaf(getOutput(), red, green, blue, alpha);
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>rgbaf</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeRgbaf(List<JulianDate> dates, List<Color> values) {
+		writeRgbaf(dates, values, 0, dates.size());
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>rgbaf</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param colors The color corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `colors` collection.
+	 * @param length The number of elements to use from the `colors` collection.
+	 */
+	public final void writeRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+		String PropertyName = RgbafPropertyName;
+		openIntervalIfNecessary();
+		CesiumWritingHelper.writeRgbaf(getOutput(), PropertyName, dates, colors, startIndex, length);
 	}
 
 	/**
@@ -252,6 +328,30 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 		}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.ColorCesiumWriter, Color>() {
 			public void invoke(ColorCesiumWriter me, List<JulianDate> dates, List<Color> values, int startIndex, int length) {
 				me.writeRgba(dates, values, startIndex, length);
+			}
+		});
+	}
+
+	/**
+	 *  
+	Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in <code>Rgbaf</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	
+	
+
+	 * @return The wrapper.
+	 */
+	public final ICesiumInterpolatableValuePropertyWriter<Color> asRgbaf() {
+		return m_asRgbaf.getValue();
+	}
+
+	final private ICesiumInterpolatableValuePropertyWriter<Color> createRgbafAdaptor() {
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.ColorCesiumWriter, Color>(this, new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.ColorCesiumWriter, Color>() {
+			public void invoke(ColorCesiumWriter me, Color value) {
+				me.writeRgbaf(value);
+			}
+		}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.ColorCesiumWriter, Color>() {
+			public void invoke(ColorCesiumWriter me, List<JulianDate> dates, List<Color> values, int startIndex, int length) {
+				me.writeRgbaf(dates, values, startIndex, length);
 			}
 		});
 	}

@@ -12,6 +12,11 @@
         "$ref": "#"
     },
     "properties": {
+        "wsen": {
+            "$ref": "CartographicRectangleValue.jsonschema",
+            "description": "The set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.",
+            "czmlValue": true
+        },
         "wsenDegrees": {
             "$ref": "CartographicRectangleValue.jsonschema",
             "description": "The set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in degrees.",

@@ -563,6 +563,27 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeRadiusProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+			try {
+				writer.writeNumber(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the sensor.
+	
+	
+	
 	
 	
 
@@ -851,6 +872,27 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeIntersectionColorProperty(List<JulianDate> dates, List<Color> values) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+			try {
+				writer.writeRgba(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the sensor with the Earth.
+	
+	
+	
 	
 	
 
@@ -864,6 +906,25 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
 			try {
 				writer.writeRgba(dates, colors, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionColor</code> property as a <code>rgbaf</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the sensor with the Earth.
+	
+	
+
+	 * @param color The color.
+	 */
+	public final void writeIntersectionColorPropertyRgbaf(Color color) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+			try {
+				writer.writeRgbaf(color);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -889,6 +950,52 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
 			try {
 				writer.writeRgbaf(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionColor</code> property as a <code>rgbaf</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the sensor with the Earth.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeIntersectionColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+			try {
+				writer.writeRgbaf(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionColor</code> property as a <code>rgbaf</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the sensor with the Earth.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param colors The color corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `colors` collection.
+	 * @param length The number of elements to use from the `colors` collection.
+	 */
+	public final void writeIntersectionColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+			try {
+				writer.writeRgbaf(dates, colors, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1008,6 +1115,27 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>intersectionWidth</code> property as a <code>number</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeIntersectionWidthProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -2241,6 +2369,27 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeEnvironmentIntersectionColorProperty(List<JulianDate> dates, List<Color> values) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+			try {
+				writer.writeRgba(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+	
+	
+	
 	
 	
 
@@ -2254,6 +2403,25 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 			cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
 			try {
 				writer.writeRgba(dates, colors, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+	
+	
+
+	 * @param color The color.
+	 */
+	public final void writeEnvironmentIntersectionColorPropertyRgbaf(Color color) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+			try {
+				writer.writeRgbaf(color);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -2279,6 +2447,52 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 			cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
 			try {
 				writer.writeRgbaf(red, green, blue, alpha);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeEnvironmentIntersectionColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+			try {
+				writer.writeRgbaf(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param colors The color corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `colors` collection.
+	 * @param length The number of elements to use from the `colors` collection.
+	 */
+	public final void writeEnvironmentIntersectionColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+			try {
+				writer.writeRgbaf(dates, colors, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -2398,6 +2612,27 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 			cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
 			try {
 				writer.writeNumber(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeEnvironmentIntersectionWidthProperty(List<JulianDate> dates, List<Double> values) {
+		{
+			cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
+			try {
+				writer.writeNumber(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}

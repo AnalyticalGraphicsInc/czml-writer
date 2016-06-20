@@ -819,6 +819,22 @@
                     {
                         "type": "IList<double>",
                         "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
+                "namespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<double>",
+                        "name": "values",
                         "description": "The value corresponding to each date."
                     },
                     {
@@ -887,6 +903,22 @@
                 "writeValue": "CesiumWritingHelper.WriteRgba(Output, red, green, blue, alpha);"
             },
             {
+                "namespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<Color>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
                 "namespaces": [ "System.Collections.Generic", "System.Drawing" ],
                 "parameters": [
                     {
@@ -916,6 +948,17 @@
         ],
         "Rgbaf": [
             {
+                "namespaces": [ "System.Drawing" ],
+                "parameters": [
+                    {
+                        "type": "Color",
+                        "name": "color",
+                        "description": "The color."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteRgbaf(Output, color);"
+            },
+            {
                 "parameters": [
                     {
                         "type": "float",
@@ -939,6 +982,49 @@
                     }
                 ],
                 "writeValue": "CesiumWritingHelper.WriteRgbaf(Output, red, green, blue, alpha);"
+            },
+            {
+                "namespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<Color>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
+                "namespaces": [ "System.Collections.Generic", "System.Drawing" ],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<Color>",
+                        "name": "colors",
+                        "description": "The color corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to use in the `colors` collection."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to use from the `colors` collection."
+                    }
+                ],
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteRgbaf(Output, PropertyName, dates, colors, startIndex, length);"
             }
         ],
         "UnitQuaternion": [

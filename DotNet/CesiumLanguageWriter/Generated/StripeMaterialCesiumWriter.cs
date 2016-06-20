@@ -194,6 +194,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the even color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteEvenColorProperty(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenEvenColorProperty())
+            {
+                writer.WriteRgba(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
         /// <param name="length">The number of elements to use from the `colors` collection.</param>
@@ -202,6 +215,18 @@ namespace CesiumLanguageWriter
             using (var writer = OpenEvenColorProperty())
             {
                 writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>evenColor</code> property as a <code>rgbaf</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteEvenColorPropertyRgbaf(Color color)
+        {
+            using (var writer = OpenEvenColorProperty())
+            {
+                writer.WriteRgbaf(color);
             }
         }
 
@@ -217,6 +242,34 @@ namespace CesiumLanguageWriter
             using (var writer = OpenEvenColorProperty())
             {
                 writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>evenColor</code> property as a <code>rgbaf</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteEvenColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenEvenColorProperty())
+            {
+                writer.WriteRgbaf(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>evenColor</code> property as a <code>rgbaf</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
+        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        public void WriteEvenColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenEvenColorProperty())
+            {
+                writer.WriteRgbaf(dates, colors, startIndex, length);
             }
         }
 
@@ -318,6 +371,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the odd color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteOddColorProperty(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenOddColorProperty())
+            {
+                writer.WriteRgba(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
         /// <param name="length">The number of elements to use from the `colors` collection.</param>
@@ -326,6 +392,18 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOddColorProperty())
             {
                 writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>oddColor</code> property as a <code>rgbaf</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteOddColorPropertyRgbaf(Color color)
+        {
+            using (var writer = OpenOddColorProperty())
+            {
+                writer.WriteRgbaf(color);
             }
         }
 
@@ -341,6 +419,34 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOddColorProperty())
             {
                 writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>oddColor</code> property as a <code>rgbaf</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteOddColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenOddColorProperty())
+            {
+                writer.WriteRgbaf(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>oddColor</code> property as a <code>rgbaf</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
+        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        public void WriteOddColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenOddColorProperty())
+            {
+                writer.WriteRgbaf(dates, colors, startIndex, length);
             }
         }
 
@@ -420,6 +526,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenOffsetProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>offset</code> property as a <code>number</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteOffsetProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenOffsetProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 
@@ -514,6 +633,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenRepeatProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>repeat</code> property as a <code>number</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteRepeatProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenRepeatProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 

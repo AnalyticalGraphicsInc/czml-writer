@@ -661,20 +661,65 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Writes a color value as an array in Red, Green, Blue, Alpha order.
+        /// Writes a color value as an array in Red, Green, Blue, Alpha order as floating-point values.
+        /// </summary>
+        /// <param name="output">The stream to which to write the color.</param>
+        /// <param name="value">The value to write.</param>
+        public static void WriteRgbaf(CesiumOutputStream output, Color value)
+        {
+            WriteRgbaf(output, value.R / 255.0, value.G / 255.0, value.B / 255.0, value.A / 255.0);
+        }
+
+        /// <summary>
+        /// Writes a color value as an array in Red, Green, Blue, Alpha order as floating-point values.
         /// </summary>
         /// <param name="output">The stream to which to write the color.</param>
         /// <param name="red">The red component in the range 0.0-1.0.</param>
         /// <param name="green">The green component in the range 0.0-1.0.</param>
         /// <param name="blue">The blue component in the range 0.0-1.0.</param>
         /// <param name="alpha">The alpha component in the range 0.0-1.0.</param>
-        public static void WriteRgbaf(CesiumOutputStream output, float red, float green, float blue, float alpha)
+        public static void WriteRgbaf(CesiumOutputStream output, double red, double green, double blue, double alpha)
         {
             output.WriteStartSequence();
             output.WriteValue(red);
             output.WriteValue(green);
             output.WriteValue(blue);
             output.WriteValue(alpha);
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes time-tagged color values as an array in [Time, Red, Green, Blue, Alpha] order as floating-point values.
+        /// Times are epoch seconds since an epoch that is determined from the first date to be written.
+        /// The epoch property is written as well.
+        /// </summary>
+        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="propertyName">The name of the property to write.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The corresponding value for each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
+        /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
+        public static void WriteRgbaf(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Color> values, int startIndex, int length)
+        {
+            if (dates.Count != values.Count)
+                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
+
+            JulianDate epoch = GetAndWriteEpoch(output, dates, startIndex, length);
+
+            output.WritePropertyName(propertyName);
+            output.WriteStartSequence();
+            int last = startIndex + length;
+            for (int i = startIndex; i < last; ++i)
+            {
+                output.WriteValue(epoch.SecondsDifference(dates[i]));
+                Color value = values[i];
+                output.WriteValue(value.R / 255.0);
+                output.WriteValue(value.G / 255.0);
+                output.WriteValue(value.B / 255.0);
+                output.WriteValue(value.A / 255.0);
+                output.WriteLineBreak();
+            }
+
             output.WriteEndSequence();
         }
 

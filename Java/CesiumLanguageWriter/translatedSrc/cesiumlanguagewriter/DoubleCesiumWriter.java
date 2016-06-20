@@ -108,6 +108,20 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 	
 	
 	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeNumber(List<JulianDate> dates, List<Double> values) {
+		writeNumber(dates, values, 0, dates.size());
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>number</code>, which is the number.
+	
+	
+	
 	
 	
 

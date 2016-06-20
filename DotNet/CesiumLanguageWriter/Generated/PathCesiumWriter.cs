@@ -184,6 +184,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the path line.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteWidthProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the path line.  If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -271,6 +284,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenResolutionProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>resolution</code> property as a <code>number</code> value.  The <code>resolution</code> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteResolutionProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenResolutionProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 
@@ -372,6 +398,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>leadTime</code> property as a <code>number</code> value.  The <code>leadTime</code> property specifies the time ahead of the animation time, in seconds, to show the path.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteLeadTimeProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenLeadTimeProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>leadTime</code> property as a <code>number</code> value.  The <code>leadTime</code> property specifies the time ahead of the animation time, in seconds, to show the path.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -459,6 +498,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenTrailTimeProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>trailTime</code> property as a <code>number</code> value.  The <code>trailTime</code> property specifies the time behind the animation time, in seconds, to show the path.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteTrailTimeProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenTrailTimeProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 

@@ -249,6 +249,19 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the polyline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteWidthProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>width</code> property as a <code>number</code> value.  The <code>width</code> property specifies the width of the polyline.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
@@ -336,6 +349,19 @@ namespace CesiumLanguageWriter
             using (var writer = OpenGranularityProperty())
             {
                 writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteGranularityProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenGranularityProperty())
+            {
+                writer.WriteNumber(dates, values);
             }
         }
 
