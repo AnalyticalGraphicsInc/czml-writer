@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("GenerateWritersFromSchema")]
-[assembly: AssemblyCopyright("Copyright © 2011-2012 Cesium Contributors")]
+[assembly: AssemblyCopyright("Copyright © 2011-2016 Cesium Contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

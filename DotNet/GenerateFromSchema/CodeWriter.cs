@@ -40,7 +40,7 @@ namespace GenerateFromSchema
 
         public CodeScope OpenScope()
         {
-            WriteLine("{{");
+            WriteLine("{");
             IncreaseIndent();
 
             return new CodeScope(this);
@@ -49,12 +49,18 @@ namespace GenerateFromSchema
         public void CloseScope()
         {
             DecreaseIndent();
-            WriteLine("}}");
+            WriteLine("}");
         }
 
         public void WriteLine()
         {
             m_writer.WriteLine();
+        }
+
+        public void WriteLine(string str)
+        {
+            m_writer.Write(m_indentString);
+            m_writer.WriteLine(str);
         }
 
         public void WriteLine(string format, params object[] args)
