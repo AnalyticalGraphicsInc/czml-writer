@@ -39,8 +39,7 @@ namespace GenerateFromSchema
                 return;
 
             m_writtenSchemas.Add(schema);
-            string writerFilename = Path.Combine(m_outputDirectory, schema.NameWithPascalCase + "CesiumWriter.cs");
-            using (CodeWriter writer = new CodeWriter(writerFilename))
+            using (CodeWriter writer = new CodeWriter(Path.Combine(m_outputDirectory, schema.NameWithPascalCase + "CesiumWriter.cs")))
             {
                 WriteGeneratedWarning(writer);
                 writer.WriteLine();

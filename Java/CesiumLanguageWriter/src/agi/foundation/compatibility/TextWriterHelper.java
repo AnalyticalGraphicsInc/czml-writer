@@ -33,6 +33,11 @@ public final class TextWriterHelper {
 		}
 	}
 
+	public static void writeLine(Writer writer, String s) {
+		print(writer, s);
+		writeLine(writer);
+	}
+
 	public static void writeLine(Writer writer) {
 		try {
 			writer.write(getNewLine());

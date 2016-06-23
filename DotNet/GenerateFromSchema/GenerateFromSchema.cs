@@ -1,58 +1,79 @@
 ﻿using System;
 using System.IO;
+using CommandLine;
+using CommandLine.Text;
 
 namespace GenerateFromSchema
 {
     public class GenerateFromSchema
     {
+        public enum GeneratorType
+        {
+            CSharp,
+            MarkDown,
+            Validation
+        }
+
+        public class Options
+        {
+            [Option('p', "packet", Required = true, HelpText = "The path to the Packet schema file.")]
+            public string PacketSchema { get; set; }
+
+            [Option('t', "type", Required = true, HelpText = "The type of output to generate.")]
+            public GeneratorType Type { get; set; }
+
+            [Option('o', "output", Required = true, HelpText = "The output location.")]
+            public string Output { get; set; }
+
+            [Option("configuration", HelpText = "The configuration file for the CSharp generator.")]
+            public string ConfigurationFile { get; set; }
+
+            [HelpOption]
+            public string Usage()
+            {
+                var help = new HelpText { AddDashesToOption = true };
+                help.AddOptions(this);
+                return help;
+            }
+        }
+
         public static void Main(string[] args)
         {
-            if (args.Length < 3)
+            var options = new Options();
+            if (!Parser.Default.ParseArgumentsStrict(args, options))
             {
-                PrintUsage();
                 return;
             }
 
-            string packetSchemaPath = args[0];
-            string outputType = args[1];
-            string output = args[2];
-
             Generator generator;
 
-            switch (outputType)
+            switch (options.Type)
             {
-                case "markdown":
-                    generator = new MarkdownGenerator(output);
+                case GeneratorType.MarkDown:
+                    generator = new MarkdownGenerator(options.Output);
                     break;
-                case "csharp":
+                case GeneratorType.CSharp:
+                    if (options.ConfigurationFile == null)
                     {
-                        if (args.Length < 4)
-                        {
-                            PrintUsage();
-                            return;
-                        }
-                        string configurationFileName = args[3];
-                        generator = new CSharpGenerator(output, configurationFileName);
+                        Console.WriteLine(options.Usage());
+                        return;
                     }
+
+                    generator = new CSharpGenerator(options.Output, options.ConfigurationFile);
+                    break;
+                case GeneratorType.Validation:
+                    generator = new ValidationDocumentGenerator(options.Output);
                     break;
                 default:
-                    PrintUsage();
                     return;
             }
 
             // Load the schema
-            var schemaLoader = new SchemaLoader(Path.GetDirectoryName(packetSchemaPath));
-            Schema packetSchema = schemaLoader.Load(packetSchemaPath);
+            var schemaLoader = new SchemaLoader(Path.GetDirectoryName(options.PacketSchema));
+            Schema packetSchema = schemaLoader.Load(options.PacketSchema);
 
             // Generate output from the schema.
             generator.Generate(packetSchema);
-        }
-
-        private static void PrintUsage()
-        {
-            Console.WriteLine("Usage:");
-            Console.WriteLine("\tGenerateWritersFromSchema <schema> markdown <outputDirectory>");
-            Console.WriteLine("\tGenerateWritersFromSchema <schema> csharp <outputDirectory> <configurationFileName>");
         }
     }
 }
