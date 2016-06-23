@@ -26,6 +26,7 @@ namespace GenerateFromSchema
                 writer.WriteLine();
 
                 writer.WriteLine("using System.Collections.Generic;");
+                writer.WriteLine("using System.Diagnostics.CodeAnalysis;");
                 writer.WriteLine("using System.Drawing;");
                 writer.WriteLine("using System.IO;");
                 writer.WriteLine("using CesiumLanguageWriter;");
@@ -37,12 +38,37 @@ namespace GenerateFromSchema
                 using (writer.OpenScope())
                 {
                     writer.WriteLine("[TestFixture]");
+                    writer.WriteLine("[SuppressMessage(\"ReSharper\", \"MemberCanBeMadeStatic.Local\")]");
                     writer.WriteLine("public class TestGenerateValidationDocument");
 
                     using (writer.OpenScope())
                     {
                         writer.WriteLine("private readonly JulianDate m_documentStartDate = new GregorianDate(2016, 6, 17, 12, 0, 0).ToJulianDate();");
                         writer.WriteLine("private readonly JulianDate m_documentStopDate = new GregorianDate(2016, 6, 17, 13, 0, 0).ToJulianDate();");
+
+                        writer.WriteLine("private TextWriter m_streamWriter;");
+                        writer.WriteLine("private TextWriter m_assertionsWriter;");
+                        writer.WriteLine("private TextWriter m_extensionsAssertionsWriter;");
+                        writer.WriteLine("private CesiumOutputStream m_output;");
+                        writer.WriteLine("private CesiumStreamWriter m_writer;");
+
+                        writer.WriteLine("private void WriteAssertionBoth(string s)");
+                        using (writer.OpenScope())
+                        {
+                            writer.WriteLine("m_assertionsWriter.WriteLine(s);");
+                            writer.WriteLine("m_extensionsAssertionsWriter.WriteLine(s);");
+                        }
+
+                        writer.WriteLine("private static IList<T> CreateList<T>(T t1, T t2)");
+                        using (writer.OpenScope())
+                        {
+                            writer.WriteLine("return new List<T> { t1, t2 };");
+                        }
+                        writer.WriteLine("private static IList<T> CreateList<T>(params T[] ts)");
+                        using (writer.OpenScope())
+                        {
+                            writer.WriteLine("return ts;");
+                        }
 
                         writer.WriteLine("[Test]");
                         writer.WriteLine("public void GenerateValidationDocument()");
@@ -53,43 +79,43 @@ namespace GenerateFromSchema
 
                         using (writer.OpenScope())
                         {
-                            writer.WriteLine("using (var streamWriter = new StreamWriter(\"ValidationDocument.czml\"))");
-                            writer.WriteLine("using (var assertionsStreamWriter = new StreamWriter(\"ValidationDocumentAssertions.js\"))");
+                            writer.WriteLine("using (m_streamWriter = new StreamWriter(\"ValidationDocument.czml\"))");
+                            writer.WriteLine("using (m_assertionsWriter = new StreamWriter(\"ValidationDocumentAssertions.js\"))");
+                            writer.WriteLine("using (m_extensionsAssertionsWriter = new StreamWriter(\"ValidationDocumentExtensionAssertions.js\"))");
                             using (writer.OpenScope())
                             {
-                                WriteAssertion(writer, "return CzmlDataSource.load('Data/CZML/ValidationDocument.czml').then(function(dataSource) {");
+                                WriteAssertionBoth(writer, "return CzmlDataSource.load('Data/CZML/ValidationDocument.czml').then(function(dataSource) {");
                                 s_assertionIndent++;
-                                WriteAssertion(writer, "/*jshint -W030, -W120 */");
-                                WriteAssertion(writer, "var e;");
-                                WriteAssertion(writer, "var checkExtensions = false;");
-                                WriteAssertion(writer, "var date;");
-                                WriteAssertion(writer, "var documentStartDate = JulianDate.fromIso8601('2016-06-17T12:00:00Z');");
-                                WriteAssertion(writer, "var documentStopDate = JulianDate.fromIso8601('2016-06-17T13:00:00Z');");
+                                WriteAssertionBoth(writer, "/*jshint -W120 */");
+                                WriteAssertionBoth(writer, "var e;");
+                                WriteAssertionBoth(writer, "var date;");
+                                WriteAssertionBoth(writer, "var documentStartDate = JulianDate.fromIso8601('2016-06-17T12:00:00Z');");
+                                WriteAssertionBoth(writer, "var documentStopDate = JulianDate.fromIso8601('2016-06-17T13:00:00Z');");
 
-                                writer.WriteLine("var output = new CesiumOutputStream(streamWriter) { PrettyFormatting = true };");
-                                writer.WriteLine("var writer = new CesiumStreamWriter();");
+                                writer.WriteLine("m_output = new CesiumOutputStream(m_streamWriter) { PrettyFormatting = true };");
+                                writer.WriteLine("m_writer = new CesiumStreamWriter();");
 
-                                writer.WriteLine("output.WriteStartSequence();");
+                                writer.WriteLine("m_output.WriteStartSequence();");
 
                                 // Java has a limit on the size of a single method (65535 bytes) so we have to break up all this code in multiple methods
 
-                                writer.WriteLine("WriteClock(writer, assertionsStreamWriter, output);");
-                                writer.WriteLine("WriteConstantValues(writer, assertionsStreamWriter, output);");
-                                writer.WriteLine("WriteReferenceValues(writer, assertionsStreamWriter, output);");
-                                writer.WriteLine("WriteSampledValues(writer, assertionsStreamWriter, output);");
+                                writer.WriteLine("WriteClock();");
+                                writer.WriteLine("WriteConstantValues();");
+                                writer.WriteLine("WriteReferenceValues();");
+                                writer.WriteLine("WriteSampledValues();");
 
-                                writer.WriteLine("output.WriteEndSequence();");
+                                writer.WriteLine("m_output.WriteEndSequence();");
 
                                 s_assertionIndent--;
-                                WriteAssertion(writer, "});");
+                                WriteAssertionBoth(writer, "});");
                                 s_assertionIndent++;
                             }
                         }
 
-                        writer.WriteLine("private void WriteClock(CesiumStreamWriter writer, StreamWriter assertionsStreamWriter, CesiumOutputStream output)");
+                        writer.WriteLine("private void WriteClock()");
                         using (writer.OpenScope())
                         {
-                            writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                            writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                             using (writer.OpenScope())
                             {
                                 writer.WriteLine("packet.WriteId(\"document\");");
@@ -100,35 +126,35 @@ namespace GenerateFromSchema
                                 using (writer.OpenScope())
                                 {
                                     writer.WriteLine("clock.WriteInterval(m_documentStartDate, m_documentStopDate);");
-                                    WriteAssertion(writer, "expect(dataSource.clock.startTime).toEqual(documentStartDate);");
-                                    WriteAssertion(writer, "expect(dataSource.clock.stopTime).toEqual(documentStopDate);");
+                                    WriteAssertion(writer, false, "expect(dataSource.clock.startTime).toEqual(documentStartDate);");
+                                    WriteAssertion(writer, false, "expect(dataSource.clock.stopTime).toEqual(documentStopDate);");
 
                                     writer.WriteLine("clock.WriteCurrentTime(m_documentStartDate);");
-                                    WriteAssertion(writer, "expect(dataSource.clock.currentTime).toEqual(documentStartDate);");
+                                    WriteAssertion(writer, false, "expect(dataSource.clock.currentTime).toEqual(documentStartDate);");
 
                                     writer.WriteLine("clock.WriteMultiplier(1.0);");
-                                    WriteAssertion(writer, "expect(dataSource.clock.multiplier).toEqual(1.0);");
+                                    WriteAssertion(writer, false, "expect(dataSource.clock.multiplier).toEqual(1.0);");
 
                                     writer.WriteLine("clock.WriteRange(ClockRange.Unbounded);");
-                                    WriteAssertion(writer, "expect(dataSource.clock.clockRange).toEqual(ClockRange.UNBOUNDED);");
+                                    WriteAssertion(writer, false, "expect(dataSource.clock.clockRange).toEqual(ClockRange.UNBOUNDED);");
 
                                     writer.WriteLine("clock.WriteStep(ClockStep.SystemClockMultiplier);");
-                                    WriteAssertion(writer, "expect(dataSource.clock.clockStep).toEqual(ClockStep.SYSTEM_CLOCK_MULTIPLIER);");
+                                    WriteAssertion(writer, false, "expect(dataSource.clock.clockStep).toEqual(ClockStep.SYSTEM_CLOCK_MULTIPLIER);");
                                 }
                             }
                         }
 
-                        writer.WriteLine("private void WriteConstantValues(CesiumStreamWriter writer, StreamWriter assertionsStreamWriter, CesiumOutputStream output)");
+                        writer.WriteLine("private void WriteConstantValues()");
                         using (writer.OpenScope())
                         {
-                            writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                            writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                             using (writer.OpenScope())
                             {
                                 writer.WriteLine("packet.WriteId(\"Constant\");");
 
-                                WriteAssertion(writer, "var constant = e = dataSource.entities.getById('Constant');");
-                                WriteAssertion(writer, "expect(e).toBeDefined();");
-                                WriteAssertion(writer, "date = JulianDate.now();");
+                                WriteAssertionBoth(writer, "var constant = e = dataSource.entities.getById('Constant');");
+                                WriteAssertionBoth(writer, "expect(e).toBeDefined();");
+                                WriteAssertionBoth(writer, "date = JulianDate.now();");
 
                                 // Write one packet with first value types for each property
 
@@ -219,15 +245,22 @@ namespace GenerateFromSchema
                                 }
                             }
 
-                            writer.WriteLine("WriteConstantValuesIndividual(writer, assertionsStreamWriter, output);");
+                            writer.WriteLine("WriteConstantValuesIndividual();");
                         }
 
-                        writer.WriteLine("private void WriteConstantValuesIndividual(CesiumStreamWriter writer, StreamWriter assertionsStreamWriter, CesiumOutputStream output)");
+                        writer.WriteLine("private void WriteConstantValuesIndividual()");
                         using (writer.OpenScope())
                         {
                             // write other value types as individual packets
-
                             foreach (var property in schemaProperties)
+                            {
+                                writer.WriteLine("WriteConstantValuesIndividual{0}();", property.NameWithPascalCase);
+                            }
+                        }
+                        foreach (var property in schemaProperties)
+                        {
+                            writer.WriteLine("private void WriteConstantValuesIndividual{0}()", property.NameWithPascalCase);
+                            using (writer.OpenScope())
                             {
                                 string propertyName = property.Name;
 
@@ -238,13 +271,14 @@ namespace GenerateFromSchema
                                 var properties = property.ValueType.Properties;
                                 foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
                                 {
-                                    writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                    writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                     using (writer.OpenScope())
                                     {
                                         string id = string.Format("constant{0}", s_counter++);
                                         writer.WriteLine("packet.WriteId(\"{0}\");", id);
-                                        WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                        WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                        WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
+
                                         writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                         using (writer.OpenScope())
                                         {
@@ -261,13 +295,14 @@ namespace GenerateFromSchema
 
                                     foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
                                     {
-                                        writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                        writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                         using (writer.OpenScope())
                                         {
                                             string id = string.Format("constant{0}", s_counter++);
                                             writer.WriteLine("packet.WriteId(\"{0}\");", id);
-                                            WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                            WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                            WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
+
                                             writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                             writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
                                             using (writer.OpenScope())
@@ -290,13 +325,14 @@ namespace GenerateFromSchema
                                             properties = materialSubProperty.ValueType.Properties;
                                             foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
                                             {
-                                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
                                                 {
                                                     string id = string.Format("constant{0}", s_counter++);
                                                     writer.WriteLine("packet.WriteId(\"{0}\");", id);
-                                                    WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                                    WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                                    WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
+
                                                     writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                                     writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
                                                     writer.WriteLine("using (var m = w2.Open{0}Property())", firstMaterialProperty.NameWithPascalCase);
@@ -312,13 +348,13 @@ namespace GenerateFromSchema
                                         properties = subProperty.ValueType.Properties;
                                         foreach (var materialProperty in properties.Skip(1))
                                         {
-                                            writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                            writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                             using (writer.OpenScope())
                                             {
                                                 string id = string.Format("material_{0}_{1}_{2}", propertyName, subProperty.Name, materialProperty.Name);
                                                 writer.WriteLine("packet.WriteId(\"{0}\");", id);
-                                                WriteAssertion(writer, "var {0} = e = dataSource.entities.getById('{0}');", id);
-                                                WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                                WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}'));", id);
 
                                                 writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                                 writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
@@ -352,13 +388,14 @@ namespace GenerateFromSchema
                                                 properties = materialSubProperty.ValueType.Properties;
                                                 foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
                                                 {
-                                                    writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                    writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                     using (writer.OpenScope())
                                                     {
                                                         string id = string.Format("material_{0}_{1}_{2}_{3}", propertyName, subProperty.Name, materialProperty.Name, s_counter++);
                                                         writer.WriteLine("packet.WriteId(\"{0}\");", id);
-                                                        WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                                        WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                                        WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
+
                                                         writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                                         writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
                                                         writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
@@ -381,13 +418,14 @@ namespace GenerateFromSchema
                                             properties = additionalProperty.ValueType.Properties;
                                             foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
                                             {
-                                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
                                                 {
                                                     string id = string.Format("constant{0}", s_counter++);
                                                     writer.WriteLine("packet.WriteId(\"{0}\");", id);
-                                                    WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                                    WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                                    WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
+
                                                     string propName = string.Format("prop{0}", s_counter++);
                                                     writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                                     writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
@@ -406,19 +444,18 @@ namespace GenerateFromSchema
                         }
 
                         // create entities using references
-                        writer.WriteLine("private void WriteReferenceValues(CesiumStreamWriter writer, StreamWriter assertionsStreamWriter, CesiumOutputStream output)");
+                        writer.WriteLine("private void WriteReferenceValues()");
                         using (writer.OpenScope())
                         {
                             // write some positions and double values to use to create reference lists for position lists and double lists later
 
                             for (int i = 1; i <= 2; ++i)
                             {
-                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                 using (writer.OpenScope())
                                 {
                                     writer.WriteLine("packet.WriteId(\"ConstantPosition{0}\");", i);
-                                    WriteAssertion(writer, "var constantPosition{0} = e = dataSource.entities.getById('ConstantPosition{0}');", i);
-                                    WriteAssertion(writer, "expect(e).toBeDefined();");
+                                    WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('ConstantPosition{0}')).toBeDefined();", i);
                                     var property = schemaProperties.First(p => p.Name == "position");
                                     writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                     using (writer.OpenScope())
@@ -428,12 +465,11 @@ namespace GenerateFromSchema
                                         WriteValue(writer, "w", firstValueProperty, property, false, property.Name);
                                     }
                                 }
-                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                 using (writer.OpenScope())
                                 {
                                     writer.WriteLine("packet.WriteId(\"ConstantDouble{0}\");", i);
-                                    WriteAssertion(writer, "var constantDouble{0} = e = dataSource.entities.getById('ConstantDouble{0}');", i);
-                                    WriteAssertion(writer, "expect(e).toBeDefined();");
+                                    WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('ConstantDouble{0}')).toBeDefined();", i);
                                     var property = schemaProperties.First(p => p.Name == "billboard");
                                     var properties = property.ValueType.Properties;
                                     var subProperty = properties.First(p => p.Name == "scale");
@@ -449,13 +485,12 @@ namespace GenerateFromSchema
                             }
 
                             // write one big packet with references for everything
-                            writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                            writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                             using (writer.OpenScope())
                             {
                                 writer.WriteLine("packet.WriteId(\"Reference\");");
 
-                                WriteAssertion(writer, "e = dataSource.entities.getById('Reference');");
-                                WriteAssertion(writer, "expect(e).toBeDefined();");
+                                WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('Reference')).toBeDefined();");
 
                                 foreach (var property in schemaProperties)
                                 {
@@ -487,7 +522,7 @@ namespace GenerateFromSchema
                                                     writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
                                                     using (writer.OpenScope())
                                                     {
-                                                        writer.WriteLine("w2.WriteReference(new Reference(\"Constant\", new List<string> {{ \"{0}\", \"{1}\" }}));", propertyName, subPropertyName);
+                                                        writer.WriteLine("w2.WriteReference(new Reference(\"Constant\", CreateList(\"{0}\", \"{1}\")));", propertyName, subPropertyName);
                                                         WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date)).toEqual(constant.{0}.{1}.getValue(date));", propertyName, subPropertyName);
                                                     }
                                                 }
@@ -509,8 +544,8 @@ namespace GenerateFromSchema
                                                     writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
                                                     using (writer.OpenScope())
                                                     {
-                                                        writer.WriteLine("w2.WriteReferences(new List<Reference> {{ new Reference(\"Constant{0}1\", new List<string> {{ {1} }}), new Reference(\"Constant{0}2\", new List<string> {{ {1} }}) }});", targetId, string.Join(", ", referencePropertyNames.Select(n => string.Format("\"{0}\"", n))));
-                                                        WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date)).toEqual([constant{2}1.{3}.getValue(date), constant{2}2.{3}.getValue(date)]);", propertyName, subPropertyName, targetId, string.Join(".", referencePropertyNames));
+                                                        writer.WriteLine("w2.WriteReferences(CreateList(new Reference(\"Constant{0}1\", CreateList({1})), new Reference(\"Constant{0}2\", CreateList({1}))));", targetId, string.Join(", ", referencePropertyNames.Select(n => string.Format("\"{0}\"", n))));
+                                                        WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date)).toEqual([dataSource.entities.getById('Constant{2}1').{3}.getValue(date), dataSource.entities.getById('Constant{2}2').{3}.getValue(date)]);", propertyName, subPropertyName, targetId, string.Join(".", referencePropertyNames));
                                                     }
                                                 }
                                                 else if (subProperty.ValueType.Name.Contains("Material"))
@@ -526,7 +561,7 @@ namespace GenerateFromSchema
                                                             writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
                                                             using (writer.OpenScope())
                                                             {
-                                                                writer.WriteLine("m2.WriteReference(new Reference(\"Constant\", new List<string> {{ \"{0}\", \"{1}\", \"{2}\" }}));", propertyName, subPropertyName, materialSubProperty.Name);
+                                                                writer.WriteLine("m2.WriteReference(new Reference(\"Constant\", CreateList(\"{0}\", \"{1}\", \"{2}\")));", propertyName, subPropertyName, materialSubProperty.Name);
                                                                 WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.{2}.getValue(date)).toEqual(constant.{0}.{1}.{2}.getValue(date));", propertyName, subPropertyName, materialSubProperty.Name);
                                                             }
                                                         }
@@ -546,7 +581,7 @@ namespace GenerateFromSchema
                                                                 writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalProperty.NameWithPascalCase);
                                                                 using (writer.OpenScope())
                                                                 {
-                                                                    writer.WriteLine("w3.WriteReference(new Reference(\"Constant\", new List<string> {{ \"{0}\", \"{1}\", \"prop\", \"{2}\" }}));", propertyName, subPropertyName, additionalProperty.Name);
+                                                                    writer.WriteLine("w3.WriteReference(new Reference(\"Constant\", CreateList(\"{0}\", \"{1}\", \"prop\", \"{2}\")));", propertyName, subPropertyName, additionalProperty.Name);
                                                                     WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.referenceProp.{2}.getValue(date)).toEqual(constant.{0}.{1}.prop.{2}.getValue(date));", propertyName, subPropertyName, additionalProperty.Name);
                                                                 }
                                                             }
@@ -558,14 +593,23 @@ namespace GenerateFromSchema
                                     }
                                 }
                             }
-                            writer.WriteLine("WriteReferenceValuesIndividual(writer, assertionsStreamWriter, output);");
+                            writer.WriteLine("WriteReferenceValuesIndividual();");
                         }
 
-                        writer.WriteLine("private void WriteReferenceValuesIndividual(CesiumStreamWriter writer, StreamWriter assertionsStreamWriter, CesiumOutputStream output)");
+                        writer.WriteLine("private void WriteReferenceValuesIndividual()");
                         using (writer.OpenScope())
                         {
                             // write other materials as individual packets
                             foreach (var property in schemaProperties)
+                            {
+                                writer.WriteLine("WriteReferenceValuesIndividual{0}();", property.NameWithPascalCase);
+                            }
+                        }
+                        // write other materials as individual packets
+                        foreach (var property in schemaProperties)
+                        {
+                            writer.WriteLine("private void WriteReferenceValuesIndividual{0}()", property.NameWithPascalCase);
+                            using (writer.OpenScope())
                             {
                                 string propertyName = property.Name;
 
@@ -584,15 +628,14 @@ namespace GenerateFromSchema
                                         properties = subProperty.ValueType.Properties;
                                         foreach (var materialProperty in properties.Skip(1))
                                         {
-                                            writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                            writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                             using (writer.OpenScope())
                                             {
                                                 string targetId = string.Format("material_{0}_{1}_{2}", propertyName, subProperty.Name, materialProperty.Name);
                                                 string id = string.Format("reference{0}", s_counter++);
 
                                                 writer.WriteLine("packet.WriteId(\"{0}\");", id);
-                                                WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                                WriteAssertion(writer, "expect(e).toBeDefined();");
+                                                WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
 
                                                 writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                                 writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
@@ -605,8 +648,8 @@ namespace GenerateFromSchema
                                                         writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
                                                         using (writer.OpenScope())
                                                         {
-                                                            writer.WriteLine("m2.WriteReference(new Reference(\"{0}\", new List<string> {{ \"{1}\", \"{2}\", \"{3}\" }}));", targetId, propertyName, subPropertyName, materialSubProperty.Name);
-                                                            WriteAssertion(writer, isExtension, "expect(e.{1}.{2}.{3}.getValue(date)).toEqual({0}.{1}.{2}.{3}.getValue(date));", targetId, propertyName, subPropertyName, materialSubProperty.Name);
+                                                            writer.WriteLine("m2.WriteReference(new Reference(\"{0}\", CreateList(\"{1}\", \"{2}\", \"{3}\")));", targetId, propertyName, subPropertyName, materialSubProperty.Name);
+                                                            WriteAssertion(writer, isExtension, "expect(e.{1}.{2}.{3}.getValue(date)).toEqual(dataSource.entities.getById('{0}').{1}.{2}.{3}.getValue(date));", targetId, propertyName, subPropertyName, materialSubProperty.Name);
                                                         }
                                                     }
                                                 }
@@ -618,17 +661,16 @@ namespace GenerateFromSchema
                         }
 
                         // test sampled properties
-                        writer.WriteLine("private void WriteSampledValues(CesiumStreamWriter writer, StreamWriter assertionsStreamWriter, CesiumOutputStream output)");
+                        writer.WriteLine("private void WriteSampledValues()");
                         using (writer.OpenScope())
                         {
                             // Write one packet with first value types for each property
 
-                            writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                            writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                             using (writer.OpenScope())
                             {
                                 writer.WriteLine("packet.WriteId(\"Sampled\");");
-                                WriteAssertion(writer, "e = dataSource.entities.getById('Sampled');");
-                                WriteAssertion(writer, "expect(e).toBeDefined();");
+                                WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('Sampled')).toBeDefined();");
 
                                 foreach (var property in schemaProperties)
                                 {
@@ -695,15 +737,25 @@ namespace GenerateFromSchema
                                     }
                                 }
                             }
-                            writer.WriteLine("WriteSampledValuesIndividual(writer, assertionsStreamWriter, output);");
+                            writer.WriteLine("WriteSampledValuesIndividual();");
                         }
 
-                        writer.WriteLine("private void WriteSampledValuesIndividual(CesiumStreamWriter writer, StreamWriter assertionsStreamWriter, CesiumOutputStream output)");
+                        writer.WriteLine("private void WriteSampledValuesIndividual()");
                         using (writer.OpenScope())
                         {
                             // write other value types as individual packets
 
+                            // split method into multiple methods
                             foreach (var property in schemaProperties)
+                            {
+                                writer.WriteLine("WriteSampledValuesIndividual{0}();", property.NameWithPascalCase);
+                            }
+                        }
+
+                        foreach (var property in schemaProperties)
+                        {
+                            writer.WriteLine("private void WriteSampledValuesIndividual{0}()", property.NameWithPascalCase);
+                            using (writer.OpenScope())
                             {
                                 string propertyName = property.Name;
 
@@ -717,13 +769,14 @@ namespace GenerateFromSchema
                                 {
                                     foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array).Skip(1))
                                     {
-                                        writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                        writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                         using (writer.OpenScope())
                                         {
                                             string id = string.Format("sampled{0}", s_counter++);
                                             writer.WriteLine("packet.WriteId(\"{0}\");", id);
-                                            WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                            WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                            WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
+
                                             writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                             using (writer.OpenScope())
                                             {
@@ -744,14 +797,13 @@ namespace GenerateFromSchema
                                         {
                                             foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array).Skip(1))
                                             {
-                                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
                                                 {
                                                     string id = string.Format("sampled{0}", s_counter++);
                                                     writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
-                                                    WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                                    WriteAssertion(writer, "expect(e).toBeDefined();");
+                                                    WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
 
                                                     writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                                     writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
@@ -775,13 +827,14 @@ namespace GenerateFromSchema
                                                 properties = materialSubProperty.ValueType.Properties;
                                                 foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array).Skip(1))
                                                 {
-                                                    writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                    writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                     using (writer.OpenScope())
                                                     {
                                                         string id = string.Format("sampledmaterial{0}", s_counter++);
                                                         writer.WriteLine("packet.WriteId(\"{0}\");", id);
-                                                        WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                                        WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                                        WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
+
                                                         writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                                         writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
                                                         writer.WriteLine("using (var m = w2.Open{0}Property())", firstMaterialProperty.NameWithPascalCase);
@@ -797,13 +850,13 @@ namespace GenerateFromSchema
                                             properties = subProperty.ValueType.Properties;
                                             foreach (var materialProperty in properties.Skip(1))
                                             {
-                                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
                                                 {
                                                     string id = string.Format("sampledmaterial{0}", s_counter++);
                                                     writer.WriteLine("packet.WriteId(\"{0}\");", id);
-                                                    WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                                    WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                                    WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
 
                                                     writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                                     writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
@@ -834,13 +887,14 @@ namespace GenerateFromSchema
                                                     properties = materialSubProperty.ValueType.Properties;
                                                     foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array).Skip(1))
                                                     {
-                                                        writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                        writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                         using (writer.OpenScope())
                                                         {
                                                             string id = string.Format("sampledmaterial{0}", s_counter++);
                                                             writer.WriteLine("packet.WriteId(\"{0}\");", id);
-                                                            WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                                            WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                                            WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
+
                                                             writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                                             writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
                                                             writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
@@ -881,8 +935,7 @@ namespace GenerateFromSchema
             string valueType;
             GetUniqueValue(valueProperty, parentProperty, out value, out assertionValue, out assertionEpsilon, out valueType);
             writer.WriteLine("{0}.Write{1}({2});", openWriterName, valueProperty.NameWithPascalCase, value);
-            WriteAssertion(writer, "{0}expect(e.{1}.getValue(date)).toEqual{2}({3}{4});",
-                           isExtension ? "checkExtensions && " : "",
+            WriteAssertion(writer, isExtension, "expect(e.{0}.getValue(date)).toEqual{1}({2}{3});",
                            propertyName,
                            assertionEpsilon == null ? "" : "Epsilon",
                            assertionValue,
@@ -901,15 +954,13 @@ namespace GenerateFromSchema
             string assertionEpsilon2;
             string valueType2;
             GetUniqueValue(valueProperty, parentProperty, out value2, out assertionValue2, out assertionEpsilon2, out valueType2);
-            writer.WriteLine("{0}.Write{1}(new List<JulianDate> {{ m_documentStartDate, m_documentStopDate }}, new List<{2}> {{ {3}, {4} }});", openWriterName, valueProperty.NameWithPascalCase, valueType1, value1, value2);
-            WriteAssertion(writer, "{0}expect(e.{1}.getValue(documentStartDate)).toEqual{2}({3}{4});",
-                           isExtension ? "checkExtensions && " : "",
+            writer.WriteLine("{0}.Write{1}(CreateList(m_documentStartDate, m_documentStopDate), CreateList({3}, {4}));", openWriterName, valueProperty.NameWithPascalCase, valueType1, value1, value2);
+            WriteAssertion(writer, isExtension, "expect(e.{0}.getValue(documentStartDate)).toEqual{1}({2}{3});",
                            propertyName,
                            assertionEpsilon1 == null ? "" : "Epsilon",
                            assertionValue1,
                            assertionEpsilon1 == null ? "" : string.Format(", {0}", assertionEpsilon1));
-            WriteAssertion(writer, "{0}expect(e.{1}.getValue(documentStopDate)).toEqual{2}({3}{4});",
-                           isExtension ? "checkExtensions && " : "",
+            WriteAssertion(writer, isExtension, "expect(e.{0}.getValue(documentStopDate)).toEqual{1}({2}{3});",
                            propertyName,
                            assertionEpsilon2 == null ? "" : "Epsilon",
                            assertionValue2,
@@ -941,7 +992,7 @@ namespace GenerateFromSchema
                 {
                     int v1 = s_counter++;
                     int v2 = s_counter++;
-                    value = string.Format("new List<double> {{ {0}, {1} }}", v1, v2);
+                    value = string.Format("CreateList<double>({0}, {1})", v1, v2);
                     assertionValue = string.Format("[ {0}, {1} ]", v1, v2);
                     valueType = "List<double>";
                     return;
@@ -972,8 +1023,10 @@ namespace GenerateFromSchema
                     int x2 = s_counter++;
                     int y2 = s_counter++;
                     int z2 = s_counter++;
-                    value = string.Format("new List<Cartesian> {{ new Cartesian({0}, {1}, {2}), new Cartesian({3}, {4}, {5}) }}", x1, y1, z1, x2, y2, z2);
-                    assertionValue = string.Format("[ new Cartesian3({0}, {1}, {2}), new Cartesian3({3}, {4}, {5}) ]", x1, y1, z1, x2, y2, z2);
+                    value = string.Format("CreateList(new Cartesian({0}, {1}, {2}), new Cartesian({3}, {4}, {5}))", x1, y1, z1, x2, y2, z2);
+                    assertionValue = string.Format("[ {6}new Cartesian3({0}, {1}, {2}){7}, {6}new Cartesian3({3}, {4}, {5}){7} ]", x1, y1, z1, x2, y2, z2,
+                                                   parentProperty.ValueType.Name == "DirectionList" ? "Spherical.fromCartesian3(" : "",
+                                                   parentProperty.ValueType.Name == "DirectionList" ? ")" : "");
                     valueType = "List<Cartesian>";
                     return;
                 }
@@ -992,6 +1045,7 @@ namespace GenerateFromSchema
                     value = string.Format("new UnitCartesian({0}, {1}, {2})", x, y, z);
                     assertionValue = string.Format("new Cartesian3({0}, {1}, {2})", x, y, z);
                     valueType = "UnitCartesian";
+                    assertionEpsilon = "1e-14";
                     return;
                 }
                 case "UnitCartesian3List":
@@ -1014,10 +1068,11 @@ namespace GenerateFromSchema
                     x2 /= magnitude;
                     y2 /= magnitude;
                     z2 /= magnitude;
-                    value = string.Format("new List<UnitCartesian> {{ new UnitCartesian({0}, {1}, {2}), new UnitCartesian({3}, {4}, {5}) }}", x1, y1, z1, x2, y2, z2);
+                    value = string.Format("CreateList(new UnitCartesian({0}, {1}, {2}), new UnitCartesian({3}, {4}, {5}))", x1, y1, z1, x2, y2, z2);
                     assertionValue = string.Format("[ {6}new Cartesian3({0}, {1}, {2}){7}, {6}new Cartesian3({3}, {4}, {5}){7} ]", x1, y1, z1, x2, y2, z2,
                                                    parentProperty.ValueType.Name == "DirectionList" ? "Spherical.fromCartesian3(" : "",
                                                    parentProperty.ValueType.Name == "DirectionList" ? ")" : "");
+                    assertionEpsilon = "1e-14";
                     valueType = "List<UnitCartesian>";
                     return;
                 }
@@ -1055,7 +1110,7 @@ namespace GenerateFromSchema
                     double longitude2 = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
                     double latitude2 = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
                     double height2 = s_counter++;
-                    value = string.Format("new List<Cartographic> {{ new Cartographic({0}, {1}, {2}), new Cartographic({3}, {4}, {5}) }}", longitude1, latitude1, height1, longitude2, latitude2, height2);
+                    value = string.Format("CreateList(new Cartographic({0}, {1}, {2}), new Cartographic({3}, {4}, {5}))", longitude1, latitude1, height1, longitude2, latitude2, height2);
                     assertionValue = string.Format("[ Cartesian3.from{6}({0}, {1}, {2}), Cartesian3.from{6}({3}, {4}, {5}) ]", longitude1, latitude1, height1, longitude2, latitude2, height2,
                                                    isDegrees ? "Degrees" : "Radians");
                     valueType = "List<Cartesian>";
@@ -1088,7 +1143,7 @@ namespace GenerateFromSchema
                     int clock2 = s_counter++;
                     int cone2 = s_counter++;
                     int magnitude2 = s_counter++;
-                    value = string.Format("new List<Spherical> {{ new Spherical({0}, {1}, {2}), new Spherical({3}, {4}, {5}) }}", clock1, cone1, magnitude1, clock2, cone2, magnitude2);
+                    value = string.Format("CreateList(new Spherical({0}, {1}, {2}), new Spherical({3}, {4}, {5}))", clock1, cone1, magnitude1, clock2, cone2, magnitude2);
                     assertionValue = string.Format("[ new Spherical({0}, {1}, {2}), new Spherical({3}, {4}, {5}) ]", clock1, cone1, magnitude1, clock2, cone2, magnitude2);
                     valueType = "List<Spherical>";
                     return;
@@ -1108,7 +1163,7 @@ namespace GenerateFromSchema
                     int cone1 = s_counter++;
                     int clock2 = s_counter++;
                     int cone2 = s_counter++;
-                    value = string.Format("new List<UnitSpherical> {{ new UnitSpherical({0}, {1}), new UnitSpherical({2}, {3}) }}", clock1, cone1, clock2, cone2);
+                    value = string.Format("CreateList(new UnitSpherical({0}, {1}), new UnitSpherical({2}, {3}))", clock1, cone1, clock2, cone2);
                     assertionValue = string.Format("[ new Spherical({0}, {1}), new Spherical({2}, {3}) ]", clock1, cone1, clock2, cone2);
                     valueType = "List<UnitSpherical>";
                     return;
@@ -1153,7 +1208,7 @@ namespace GenerateFromSchema
 
                     value = string.Format("Color.FromArgb({0}, {1}, {2}, {3})", a, r, g, b);
                     assertionValue = string.Format("new Color({0}, {1}, {2}, {3})", r / 255.0, g / 255.0, b / 255.0, a / 255.0);
-                    assertionEpsilon = "1e-6";
+                    assertionEpsilon = "1e-14";
                     valueType = "Color";
                     return;
                 }
@@ -1258,25 +1313,29 @@ namespace GenerateFromSchema
 
         private static int s_assertionIndent = 0;
 
-        private static void WriteAssertion(CodeWriter writer, string assertion, params object[] args)
-        {
-            WriteAssertion(writer, false, string.Format(assertion, args));
-        }
-
         private static void WriteAssertion(CodeWriter writer, bool isExtension, string assertion, params object[] args)
         {
             WriteAssertion(writer, isExtension, string.Format(assertion, args));
         }
 
-        private static void WriteAssertion(CodeWriter writer, string assertion)
-        {
-            WriteAssertion(writer, false, assertion);
-        }
-
         private static void WriteAssertion(CodeWriter writer, bool isExtension, string assertion)
         {
-            string indent = new string(' ', s_assertionIndent * 4);
-            writer.WriteLine(string.Format("assertionsStreamWriter.WriteLine(\"{0}{1}{2}\");", indent, isExtension ? "checkExtensions && " : "", assertion));
+            writer.WriteLine(string.Format("{0}.WriteLine(\"{1}{2}\");", isExtension ? "m_extensionsAssertionsWriter" : "m_assertionsWriter", AssertionIndent, assertion));
+        }
+
+        private static void WriteAssertionBoth(CodeWriter writer, string assertion, params object[] args)
+        {
+            WriteAssertionBoth(writer, string.Format(assertion, args));
+        }
+
+        private static void WriteAssertionBoth(CodeWriter writer, string assertion)
+        {
+            writer.WriteLine(string.Format("WriteAssertionBoth(\"{0}{1}\");", AssertionIndent, assertion));
+        }
+
+        private static string AssertionIndent
+        {
+            get { return new string(' ', s_assertionIndent * 4); }
         }
     }
 }
