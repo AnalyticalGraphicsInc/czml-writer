@@ -41,14 +41,18 @@ namespace GenerateFromSchema
 
                     using (writer.OpenScope())
                     {
+                        writer.WriteLine("private readonly JulianDate m_documentStartDate = new GregorianDate(2016, 6, 17, 12, 0, 0).ToJulianDate();");
+                        writer.WriteLine("private readonly JulianDate m_documentStopDate = new GregorianDate(2016, 6, 17, 13, 0, 0).ToJulianDate();");
+
                         writer.WriteLine("[Test]");
                         writer.WriteLine("public void GenerateValidationDocument()");
 
+                        var schemaProperties = schema.Properties
+                                                     .Where(p => p.Name != "clock" && p.Name != "availability" && !p.ValueType.IsSchemaFromType)
+                                                     .ToList();
+
                         using (writer.OpenScope())
                         {
-                            writer.WriteLine("JulianDate documentStartDate = new GregorianDate(2016, 6, 17, 12, 0, 0).ToJulianDate();");
-                            writer.WriteLine("JulianDate documentStopDate = new GregorianDate(2016, 6, 17, 13, 0, 0).ToJulianDate();");
-
                             writer.WriteLine("using (var streamWriter = new StreamWriter(\"ValidationDocument.czml\"))");
                             writer.WriteLine("using (var assertionsStreamWriter = new StreamWriter(\"ValidationDocumentAssertions.js\"))");
                             using (writer.OpenScope())
@@ -67,137 +71,66 @@ namespace GenerateFromSchema
 
                                 writer.WriteLine("output.WriteStartSequence();");
 
-                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                // Java has a limit on the size of a single method (65535 bytes) so we have to break up all this code in multiple methods
+
+                                writer.WriteLine("WriteClock(writer, assertionsStreamWriter, output);");
+                                writer.WriteLine("WriteConstantValues(writer, assertionsStreamWriter, output);");
+                                writer.WriteLine("WriteReferenceValues(writer, assertionsStreamWriter, output);");
+                                writer.WriteLine("WriteSampledValues(writer, assertionsStreamWriter, output);");
+
+                                writer.WriteLine("output.WriteEndSequence();");
+
+                                s_assertionIndent--;
+                                WriteAssertion(writer, "});");
+                                s_assertionIndent++;
+                            }
+                        }
+
+                        writer.WriteLine("private void WriteClock(CesiumStreamWriter writer, StreamWriter assertionsStreamWriter, CesiumOutputStream output)");
+                        using (writer.OpenScope())
+                        {
+                            writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                            using (writer.OpenScope())
+                            {
+                                writer.WriteLine("packet.WriteId(\"document\");");
+                                writer.WriteLine("packet.WriteName(\"ValidationDocument\");");
+                                writer.WriteLine("packet.WriteVersion(\"1.0\");");
+
+                                writer.WriteLine("using (var clock = packet.OpenClockProperty())");
                                 using (writer.OpenScope())
                                 {
-                                    writer.WriteLine("packet.WriteId(\"document\");");
-                                    writer.WriteLine("packet.WriteName(\"ValidationDocument\");");
-                                    writer.WriteLine("packet.WriteVersion(\"1.0\");");
+                                    writer.WriteLine("clock.WriteInterval(m_documentStartDate, m_documentStopDate);");
+                                    WriteAssertion(writer, "expect(dataSource.clock.startTime).toEqual(documentStartDate);");
+                                    WriteAssertion(writer, "expect(dataSource.clock.stopTime).toEqual(documentStopDate);");
 
-                                    writer.WriteLine("using (var clock = packet.OpenClockProperty())");
-                                    using (writer.OpenScope())
-                                    {
-                                        writer.WriteLine("clock.WriteInterval(documentStartDate, documentStopDate);");
-                                        WriteAssertion(writer, "expect(dataSource.clock.startTime).toEqual(documentStartDate);");
-                                        WriteAssertion(writer, "expect(dataSource.clock.stopTime).toEqual(documentStopDate);");
+                                    writer.WriteLine("clock.WriteCurrentTime(m_documentStartDate);");
+                                    WriteAssertion(writer, "expect(dataSource.clock.currentTime).toEqual(documentStartDate);");
 
-                                        writer.WriteLine("clock.WriteCurrentTime(documentStartDate);");
-                                        WriteAssertion(writer, "expect(dataSource.clock.currentTime).toEqual(documentStartDate);");
+                                    writer.WriteLine("clock.WriteMultiplier(1.0);");
+                                    WriteAssertion(writer, "expect(dataSource.clock.multiplier).toEqual(1.0);");
 
-                                        writer.WriteLine("clock.WriteMultiplier(1.0);");
-                                        WriteAssertion(writer, "expect(dataSource.clock.multiplier).toEqual(1.0);");
+                                    writer.WriteLine("clock.WriteRange(ClockRange.Unbounded);");
+                                    WriteAssertion(writer, "expect(dataSource.clock.clockRange).toEqual(ClockRange.UNBOUNDED);");
 
-                                        writer.WriteLine("clock.WriteRange(ClockRange.Unbounded);");
-                                        WriteAssertion(writer, "expect(dataSource.clock.clockRange).toEqual(ClockRange.UNBOUNDED);");
-
-                                        writer.WriteLine("clock.WriteStep(ClockStep.SystemClockMultiplier);");
-                                        WriteAssertion(writer, "expect(dataSource.clock.clockStep).toEqual(ClockStep.SYSTEM_CLOCK_MULTIPLIER);");
-                                    }
+                                    writer.WriteLine("clock.WriteStep(ClockStep.SystemClockMultiplier);");
+                                    WriteAssertion(writer, "expect(dataSource.clock.clockStep).toEqual(ClockStep.SYSTEM_CLOCK_MULTIPLIER);");
                                 }
+                            }
+                        }
 
-                                var schemaProperties = schema.Properties
-                                                             .Where(p => p.Name != "clock" && p.Name != "availability" && !p.ValueType.IsSchemaFromType)
-                                                             .ToList();
+                        writer.WriteLine("private void WriteConstantValues(CesiumStreamWriter writer, StreamWriter assertionsStreamWriter, CesiumOutputStream output)");
+                        using (writer.OpenScope())
+                        {
+                            writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                            using (writer.OpenScope())
+                            {
+                                writer.WriteLine("packet.WriteId(\"Constant\");");
 
-                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
-                                using (writer.OpenScope())
-                                {
-                                    writer.WriteLine("packet.WriteId(\"Constant\");");
+                                WriteAssertion(writer, "var constant = e = dataSource.entities.getById('Constant');");
+                                WriteAssertion(writer, "expect(e).toBeDefined();");
+                                WriteAssertion(writer, "date = JulianDate.now();");
 
-                                    WriteAssertion(writer, "var constant = e = dataSource.entities.getById('Constant');");
-                                    WriteAssertion(writer, "expect(e).toBeDefined();");
-                                    WriteAssertion(writer, "date = JulianDate.now();");
-
-                                    foreach (var property in schemaProperties)
-                                    {
-                                        string propertyName = property.Name;
-
-                                        bool isExtension = !string.IsNullOrEmpty(property.ValueType.ExtensionPrefix);
-                                        if (isExtension)
-                                            propertyName = propertyName.Substring(property.ValueType.ExtensionPrefix.Length + 1);
-
-                                        writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
-                                        using (writer.OpenScope())
-                                        {
-                                            var properties = property.ValueType.Properties;
-
-                                            var firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
-                                            if (firstValueProperty != null)
-                                            {
-                                                WriteValue(writer, "w", firstValueProperty, isExtension, propertyName);
-                                            }
-                                            else
-                                            {
-                                                foreach (var subProperty in properties.Where(p => !p.IsValue))
-                                                {
-                                                    writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
-                                                    using (writer.OpenScope())
-                                                    {
-                                                        properties = subProperty.ValueType.Properties;
-                                                        firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
-
-                                                        string subPropertyName = GetSubPropertyName(propertyName, subProperty);
-
-                                                        if (firstValueProperty != null)
-                                                        {
-                                                            WriteValue(writer, "w2", firstValueProperty, isExtension, string.Format("{0}.{1}", propertyName, subPropertyName));
-                                                        }
-                                                        else if (subProperty.ValueType.Name.Contains("Material"))
-                                                        {
-                                                            int materialIndex = s_counter++ % properties.Count;
-                                                            Property materialProperty = properties[materialIndex];
-                                                            writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
-                                                            using (writer.OpenScope())
-                                                            {
-                                                                properties = materialProperty.ValueType.Properties;
-                                                                foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
-                                                                {
-                                                                    writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
-                                                                    using (writer.OpenScope())
-                                                                    {
-                                                                        properties = materialSubProperty.ValueType.Properties;
-                                                                        firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
-                                                                        if (firstValueProperty != null)
-                                                                        {
-                                                                            WriteValue(writer, "m2", firstValueProperty, isExtension, string.Format("{0}.{1}.{2}", propertyName, subPropertyName, materialSubProperty.Name));
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                        else
-                                                        {
-                                                            var additionalProperties = subProperty.ValueType.AdditionalProperties;
-                                                            if (additionalProperties != null)
-                                                            {
-                                                                string propName = string.Format("prop{0}", s_counter++);
-                                                                writer.WriteLine("using (var a = w2.Open{0}Property(\"{1}\"))", additionalProperties.ValueType.NameWithPascalCase, propName);
-                                                                using (writer.OpenScope())
-                                                                {
-                                                                    foreach (var additionalProperty in additionalProperties.ValueType.Properties.Where(p => !p.IsValue))
-                                                                    {
-                                                                        writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalProperty.NameWithPascalCase);
-                                                                        using (writer.OpenScope())
-                                                                        {
-                                                                            properties = additionalProperty.ValueType.Properties;
-                                                                            firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
-                                                                            if (firstValueProperty != null)
-                                                                            {
-                                                                                WriteValue(writer, "w3", firstValueProperty, isExtension, string.Format("{0}.{1}.{2}.{3}", propertyName, subPropertyName, propName, additionalProperty.Name));
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-                                // create entities using references
+                                // Write one packet with first value types for each property
 
                                 foreach (var property in schemaProperties)
                                 {
@@ -207,69 +140,35 @@ namespace GenerateFromSchema
                                     if (isExtension)
                                         propertyName = propertyName.Substring(property.ValueType.ExtensionPrefix.Length + 1);
 
-                                    var properties = property.ValueType.Properties;
-
-                                    var referenceProperty = properties.FirstOrDefault(p => p.ValueType.Name == "Reference");
-                                    if (referenceProperty != null)
+                                    writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                    using (writer.OpenScope())
                                     {
-                                        writer.WriteLine("using (var packet = writer.OpenPacket(output))");
-                                        using (writer.OpenScope())
+                                        var properties = property.ValueType.Properties;
+
+                                        var firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
+                                        if (firstValueProperty != null)
                                         {
-                                            string id = string.Format("reference{0}", s_counter++);
-                                            writer.WriteLine("packet.WriteId(\"{0}\");", id);
-                                            WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                            WriteAssertion(writer, "expect(e).toBeDefined();");
-                                            writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
-                                            using (writer.OpenScope())
-                                            {
-                                                writer.WriteLine("w.WriteReference(new Reference(\"Constant\", \"{0}\"));", propertyName);
-                                                WriteAssertion(writer, isExtension, "expect(e.{0}.getValue(date)).toEqual(constant.{0}.getValue(date));", propertyName);
-                                            }
+                                            WriteValue(writer, "w", firstValueProperty, property, isExtension, propertyName);
                                         }
-                                    }
-                                    else
-                                    {
-                                        foreach (var subProperty in properties.Where(p => !p.IsValue))
+                                        else
                                         {
-                                            string subPropertyName = GetSubPropertyName(propertyName, subProperty);
-
-                                            properties = subProperty.ValueType.Properties;
-
-                                            referenceProperty = properties.FirstOrDefault(p => p.ValueType.Name == "Reference");
-                                            if (referenceProperty != null)
+                                            foreach (var subProperty in properties.Where(p => !p.IsValue))
                                             {
-                                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
                                                 using (writer.OpenScope())
                                                 {
-                                                    string id = string.Format("reference{0}", s_counter++);
-                                                    writer.WriteLine("packet.WriteId(\"{0}\");", id);
-                                                    WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                                    WriteAssertion(writer, "expect(e).toBeDefined();");
-                                                    writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
-                                                    writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
-                                                    using (writer.OpenScope())
+                                                    properties = subProperty.ValueType.Properties;
+                                                    firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
+
+                                                    string subPropertyName = GetSubPropertyName(propertyName, subProperty);
+
+                                                    if (firstValueProperty != null)
                                                     {
-                                                        writer.WriteLine("w2.WriteReference(new Reference(\"Constant\", new List<string> {{ \"{0}\", \"{1}\" }}));", propertyName, subPropertyName);
-                                                        WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date)).toEqual(constant.{0}.{1}.getValue(date));", propertyName, subPropertyName);
+                                                        WriteValue(writer, "w2", firstValueProperty, subProperty, isExtension, string.Format("{0}.{1}", propertyName, subPropertyName));
                                                     }
-                                                }
-                                            }
-                                            else if (subProperty.ValueType.Name.Contains("Material"))
-                                            {
-                                                foreach (var materialProperty in properties)
-                                                {
-                                                    string materialId = string.Format("material{0}", s_counter++);
-
-                                                    writer.WriteLine("using (var packet = writer.OpenPacket(output))");
-                                                    using (writer.OpenScope())
+                                                    else if (subProperty.ValueType.Name.Contains("Material"))
                                                     {
-                                                        writer.WriteLine("packet.WriteId(\"{0}\");", materialId);
-
-                                                        WriteAssertion(writer, "var {0} = e = dataSource.entities.getById('{0}');", materialId);
-                                                        WriteAssertion(writer, "expect(e).toBeDefined();");
-
-                                                        writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
-                                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                        Property materialProperty = properties.First();
                                                         writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
                                                         using (writer.OpenScope())
                                                         {
@@ -280,103 +179,35 @@ namespace GenerateFromSchema
                                                                 using (writer.OpenScope())
                                                                 {
                                                                     properties = materialSubProperty.ValueType.Properties;
-                                                                    var firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
+                                                                    firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
                                                                     if (firstValueProperty != null)
                                                                     {
-                                                                        WriteValue(writer, "m2", firstValueProperty, isExtension, string.Format("{0}.{1}.{2}", propertyName, subPropertyName, materialSubProperty.Name));
+                                                                        WriteValue(writer, "m2", firstValueProperty, materialSubProperty, isExtension, string.Format("{0}.{1}.{2}", propertyName, subPropertyName, materialSubProperty.Name));
                                                                     }
                                                                 }
                                                             }
                                                         }
                                                     }
-
-                                                    writer.WriteLine("using (var packet = writer.OpenPacket(output))");
-                                                    using (writer.OpenScope())
+                                                    else
                                                     {
-                                                        string referenceId = string.Format("reference{0}", s_counter++);
-                                                        writer.WriteLine("packet.WriteId(\"{0}\");", referenceId);
-
-                                                        WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", referenceId);
-                                                        WriteAssertion(writer, "expect(e).toBeDefined();");
-
-                                                        writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
-                                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
-                                                        writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
-                                                        using (writer.OpenScope())
+                                                        var additionalProperties = subProperty.ValueType.AdditionalProperties;
+                                                        if (additionalProperties != null)
                                                         {
-                                                            properties = materialProperty.ValueType.Properties;
-                                                            foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
+                                                            writer.WriteLine("using (var a = w2.Open{0}Property(\"prop\"))", additionalProperties.ValueType.NameWithPascalCase);
+                                                            using (writer.OpenScope())
                                                             {
-                                                                writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
-                                                                using (writer.OpenScope())
+                                                                foreach (var additionalProperty in additionalProperties.ValueType.Properties.Where(p => !p.IsValue))
                                                                 {
-                                                                    writer.WriteLine("m2.WriteReference(new Reference(\"{0}\", new List<string> {{ \"{1}\", \"{2}\", \"{3}\" }}));", materialId, propertyName, subPropertyName, materialSubProperty.Name);
-                                                                    WriteAssertion(writer, isExtension, "expect(e.{1}.{2}.{3}.getValue(date)).toEqual({0}.{1}.{2}.{3}.getValue(date));", materialId, propertyName, subPropertyName, materialSubProperty.Name);
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            else
-                                            {
-                                                var additionalProperties = subProperty.ValueType.AdditionalProperties;
-                                                if (additionalProperties != null)
-                                                {
-                                                    string targetId = string.Format("obj{0}", s_counter++);
-                                                    string targetPropName = string.Format("prop{0}", s_counter++);
-
-                                                    writer.WriteLine("using (var packet = writer.OpenPacket(output))");
-                                                    using (writer.OpenScope())
-                                                    {
-                                                        writer.WriteLine("packet.WriteId(\"{0}\");", targetId);
-
-                                                        WriteAssertion(writer, "var {0} = e = dataSource.entities.getById('{0}');", targetId);
-                                                        WriteAssertion(writer, "expect(e).toBeDefined();");
-
-                                                        writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
-                                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
-                                                        writer.WriteLine("using (var a = w2.Open{0}Property(\"{1}\"))", additionalProperties.ValueType.NameWithPascalCase, targetPropName);
-                                                        using (writer.OpenScope())
-                                                        {
-                                                            foreach (var additionalProperty in additionalProperties.ValueType.Properties.Where(p => !p.IsValue))
-                                                            {
-                                                                writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalProperty.NameWithPascalCase);
-                                                                using (writer.OpenScope())
-                                                                {
-                                                                    properties = additionalProperty.ValueType.Properties;
-                                                                    var firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
-                                                                    if (firstValueProperty != null)
+                                                                    writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalProperty.NameWithPascalCase);
+                                                                    using (writer.OpenScope())
                                                                     {
-                                                                        WriteValue(writer, "w3", firstValueProperty, isExtension, string.Format("{0}.{1}.{2}.{3}", propertyName, subPropertyName, targetPropName, additionalProperty.Name));
+                                                                        properties = additionalProperty.ValueType.Properties;
+                                                                        firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
+                                                                        if (firstValueProperty != null)
+                                                                        {
+                                                                            WriteValue(writer, "w3", firstValueProperty, additionalProperty, isExtension, string.Format("{0}.{1}.{2}.{3}", propertyName, subPropertyName, "prop", additionalProperty.Name));
+                                                                        }
                                                                     }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-
-                                                    writer.WriteLine("using (var packet = writer.OpenPacket(output))");
-                                                    using (writer.OpenScope())
-                                                    {
-                                                        string referenceId = string.Format("reference{0}", s_counter++);
-                                                        string propName = string.Format("prop{0}", s_counter++);
-                                                        writer.WriteLine("packet.WriteId(\"{0}\");", referenceId);
-
-                                                        WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", referenceId);
-                                                        WriteAssertion(writer, "expect(e).toBeDefined();");
-
-                                                        writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
-                                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
-                                                        writer.WriteLine("using (var a = w2.Open{0}Property(\"{1}\"))", additionalProperties.ValueType.NameWithPascalCase, propName);
-                                                        using (writer.OpenScope())
-                                                        {
-                                                            foreach (var additionalProperty in additionalProperties.ValueType.Properties.Where(p => !p.IsValue))
-                                                            {
-                                                                writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalProperty.NameWithPascalCase);
-                                                                using (writer.OpenScope())
-                                                                {
-                                                                    writer.WriteLine("w3.WriteReference(new Reference(\"{0}\", new List<string> {{ \"{1}\", \"{2}\", \"{3}\", \"{4}\" }}));", targetId, propertyName, subPropertyName, targetPropName, additionalProperty.Name);
-                                                                    WriteAssertion(writer, isExtension, "expect(e.{1}.{2}.{3}.{5}.getValue(date)).toEqual({0}.{1}.{2}.{4}.{5}.getValue(date));", targetId, propertyName, subPropertyName, propName, targetPropName, additionalProperty.Name);
                                                                 }
                                                             }
                                                         }
@@ -386,8 +217,418 @@ namespace GenerateFromSchema
                                         }
                                     }
                                 }
+                            }
 
-                                // test sampled properties
+                            writer.WriteLine("WriteConstantValuesIndividual(writer, assertionsStreamWriter, output);");
+                        }
+
+                        writer.WriteLine("private void WriteConstantValuesIndividual(CesiumStreamWriter writer, StreamWriter assertionsStreamWriter, CesiumOutputStream output)");
+                        using (writer.OpenScope())
+                        {
+                            // write other value types as individual packets
+
+                            foreach (var property in schemaProperties)
+                            {
+                                string propertyName = property.Name;
+
+                                bool isExtension = !string.IsNullOrEmpty(property.ValueType.ExtensionPrefix);
+                                if (isExtension)
+                                    propertyName = propertyName.Substring(property.ValueType.ExtensionPrefix.Length + 1);
+
+                                var properties = property.ValueType.Properties;
+                                foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
+                                {
+                                    writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                    using (writer.OpenScope())
+                                    {
+                                        string id = string.Format("constant{0}", s_counter++);
+                                        writer.WriteLine("packet.WriteId(\"{0}\");", id);
+                                        WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
+                                        WriteAssertion(writer, "expect(e).toBeDefined();");
+                                        writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                        using (writer.OpenScope())
+                                        {
+                                            WriteValue(writer, "w", valueProperty, property, isExtension, propertyName);
+                                        }
+                                    }
+                                }
+
+                                foreach (var subProperty in properties.Where(p => !p.IsValue))
+                                {
+                                    string subPropertyName = GetSubPropertyName(propertyName, subProperty);
+
+                                    properties = subProperty.ValueType.Properties;
+
+                                    foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
+                                    {
+                                        writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                        using (writer.OpenScope())
+                                        {
+                                            string id = string.Format("constant{0}", s_counter++);
+                                            writer.WriteLine("packet.WriteId(\"{0}\");", id);
+                                            WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
+                                            WriteAssertion(writer, "expect(e).toBeDefined();");
+                                            writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                            writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                            using (writer.OpenScope())
+                                            {
+                                                WriteValue(writer, "w2", valueProperty, subProperty, isExtension, string.Format("{0}.{1}", propertyName, subPropertyName));
+                                            }
+                                        }
+                                    }
+
+                                    if (subProperty.ValueType.Name.Contains("Material"))
+                                    {
+                                        // write other values for the first material
+                                        // then write first values for other materials 
+                                        // then write remaining values for other materials individually
+
+                                        var firstMaterialProperty = properties.First();
+                                        properties = firstMaterialProperty.ValueType.Properties;
+                                        foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
+                                        {
+                                            properties = materialSubProperty.ValueType.Properties;
+                                            foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
+                                            {
+                                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                using (writer.OpenScope())
+                                                {
+                                                    string id = string.Format("constant{0}", s_counter++);
+                                                    writer.WriteLine("packet.WriteId(\"{0}\");", id);
+                                                    WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
+                                                    WriteAssertion(writer, "expect(e).toBeDefined();");
+                                                    writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                                    writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                    writer.WriteLine("using (var m = w2.Open{0}Property())", firstMaterialProperty.NameWithPascalCase);
+                                                    writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
+                                                    using (writer.OpenScope())
+                                                    {
+                                                        WriteValue(writer, "m2", valueProperty, materialSubProperty, isExtension, string.Format("{0}.{1}.{2}", propertyName, subPropertyName, materialSubProperty.Name));
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        properties = subProperty.ValueType.Properties;
+                                        foreach (var materialProperty in properties.Skip(1))
+                                        {
+                                            writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                            using (writer.OpenScope())
+                                            {
+                                                string id = string.Format("material_{0}_{1}_{2}", propertyName, subProperty.Name, materialProperty.Name);
+                                                writer.WriteLine("packet.WriteId(\"{0}\");", id);
+                                                WriteAssertion(writer, "var {0} = e = dataSource.entities.getById('{0}');", id);
+                                                WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                                writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                                writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
+                                                using (writer.OpenScope())
+                                                {
+                                                    properties = materialProperty.ValueType.Properties;
+                                                    foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
+                                                    {
+                                                        writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
+                                                        using (writer.OpenScope())
+                                                        {
+                                                            properties = materialSubProperty.ValueType.Properties;
+                                                            var firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
+                                                            if (firstValueProperty != null)
+                                                            {
+                                                                WriteValue(writer, "m2", firstValueProperty, materialSubProperty, isExtension, string.Format("{0}.{1}.{2}", propertyName, subPropertyName, materialSubProperty.Name));
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        properties = subProperty.ValueType.Properties;
+                                        foreach (var materialProperty in properties.Skip(1))
+                                        {
+                                            properties = materialProperty.ValueType.Properties;
+                                            foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
+                                            {
+                                                properties = materialSubProperty.ValueType.Properties;
+                                                foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
+                                                {
+                                                    writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                    using (writer.OpenScope())
+                                                    {
+                                                        string id = string.Format("material_{0}_{1}_{2}_{3}", propertyName, subProperty.Name, materialProperty.Name, s_counter++);
+                                                        writer.WriteLine("packet.WriteId(\"{0}\");", id);
+                                                        WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
+                                                        WriteAssertion(writer, "expect(e).toBeDefined();");
+                                                        writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                        writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
+                                                        writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
+                                                        using (writer.OpenScope())
+                                                        {
+                                                            WriteValue(writer, "m2", valueProperty, materialSubProperty, isExtension, string.Format("{0}.{1}.{2}", propertyName, subPropertyName, materialSubProperty.Name));
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    var additionalProperties = subProperty.ValueType.AdditionalProperties;
+                                    if (additionalProperties != null)
+                                    {
+                                        foreach (var additionalProperty in additionalProperties.ValueType.Properties.Where(p => !p.IsValue))
+                                        {
+                                            properties = additionalProperty.ValueType.Properties;
+                                            foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
+                                            {
+                                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                using (writer.OpenScope())
+                                                {
+                                                    string id = string.Format("constant{0}", s_counter++);
+                                                    writer.WriteLine("packet.WriteId(\"{0}\");", id);
+                                                    WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
+                                                    WriteAssertion(writer, "expect(e).toBeDefined();");
+                                                    string propName = string.Format("prop{0}", s_counter++);
+                                                    writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                                    writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                    writer.WriteLine("using (var a = w2.Open{0}Property(\"{1}\"))", additionalProperties.ValueType.NameWithPascalCase, propName);
+                                                    writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalProperty.NameWithPascalCase);
+                                                    using (writer.OpenScope())
+                                                    {
+                                                        WriteValue(writer, "w3", valueProperty, additionalProperty, isExtension, string.Format("{0}.{1}.{2}.{3}", propertyName, subPropertyName, propName, additionalProperty.Name));
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        // create entities using references
+                        writer.WriteLine("private void WriteReferenceValues(CesiumStreamWriter writer, StreamWriter assertionsStreamWriter, CesiumOutputStream output)");
+                        using (writer.OpenScope())
+                        {
+                            // write some positions and double values to use to create reference lists for position lists and double lists later
+
+                            for (int i = 1; i <= 2; ++i)
+                            {
+                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                using (writer.OpenScope())
+                                {
+                                    writer.WriteLine("packet.WriteId(\"ConstantPosition{0}\");", i);
+                                    WriteAssertion(writer, "var constantPosition{0} = e = dataSource.entities.getById('ConstantPosition{0}');", i);
+                                    WriteAssertion(writer, "expect(e).toBeDefined();");
+                                    var property = schemaProperties.First(p => p.Name == "position");
+                                    writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                    using (writer.OpenScope())
+                                    {
+                                        var properties = property.ValueType.Properties;
+                                        var firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
+                                        WriteValue(writer, "w", firstValueProperty, property, false, property.Name);
+                                    }
+                                }
+                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                using (writer.OpenScope())
+                                {
+                                    writer.WriteLine("packet.WriteId(\"ConstantDouble{0}\");", i);
+                                    WriteAssertion(writer, "var constantDouble{0} = e = dataSource.entities.getById('ConstantDouble{0}');", i);
+                                    WriteAssertion(writer, "expect(e).toBeDefined();");
+                                    var property = schemaProperties.First(p => p.Name == "billboard");
+                                    var properties = property.ValueType.Properties;
+                                    var subProperty = properties.First(p => p.Name == "scale");
+                                    writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                    writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                    using (writer.OpenScope())
+                                    {
+                                        properties = subProperty.ValueType.Properties;
+                                        var firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
+                                        WriteValue(writer, "w2", firstValueProperty, subProperty, false, string.Format("{0}.{1}", property.Name, subProperty.Name));
+                                    }
+                                }
+                            }
+
+                            // write one big packet with references for everything
+                            writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                            using (writer.OpenScope())
+                            {
+                                writer.WriteLine("packet.WriteId(\"Reference\");");
+
+                                WriteAssertion(writer, "e = dataSource.entities.getById('Reference');");
+                                WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                foreach (var property in schemaProperties)
+                                {
+                                    string propertyName = property.Name;
+
+                                    bool isExtension = !string.IsNullOrEmpty(property.ValueType.ExtensionPrefix);
+                                    if (isExtension)
+                                        propertyName = propertyName.Substring(property.ValueType.ExtensionPrefix.Length + 1);
+
+                                    writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                    using (writer.OpenScope())
+                                    {
+                                        var properties = property.ValueType.Properties;
+                                        if (properties.Any(p => p.ValueType.Name == "Reference"))
+                                        {
+                                            writer.WriteLine("w.WriteReference(new Reference(\"Constant\", \"{0}\"));", propertyName);
+                                            WriteAssertion(writer, isExtension, "expect(e.{0}.getValue(date)).toEqual(constant.{0}.getValue(date));", propertyName);
+                                        }
+                                        else
+                                        {
+                                            foreach (var subProperty in properties.Where(p => !p.IsValue))
+                                            {
+                                                properties = subProperty.ValueType.Properties;
+
+                                                string subPropertyName = GetSubPropertyName(propertyName, subProperty);
+
+                                                if (properties.Any(p => p.ValueType.Name == "Reference"))
+                                                {
+                                                    writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                    using (writer.OpenScope())
+                                                    {
+                                                        writer.WriteLine("w2.WriteReference(new Reference(\"Constant\", new List<string> {{ \"{0}\", \"{1}\" }}));", propertyName, subPropertyName);
+                                                        WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date)).toEqual(constant.{0}.{1}.getValue(date));", propertyName, subPropertyName);
+                                                    }
+                                                }
+                                                else if (properties.Any(p => p.ValueType.Name == "ReferenceList"))
+                                                {
+                                                    string targetId = "";
+                                                    string[] referencePropertyNames = { };
+                                                    if (subProperty.ValueType.Name == "PositionList")
+                                                    {
+                                                        targetId = "Position";
+                                                        referencePropertyNames = new[] { "position" };
+                                                    }
+                                                    else if (subProperty.ValueType.Name == "DoubleList")
+                                                    {
+                                                        targetId = "Double";
+                                                        referencePropertyNames = new[] { "billboard", "scale" };
+                                                    }
+
+                                                    writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                    using (writer.OpenScope())
+                                                    {
+                                                        writer.WriteLine("w2.WriteReferences(new List<Reference> {{ new Reference(\"Constant{0}1\", new List<string> {{ {1} }}), new Reference(\"Constant{0}2\", new List<string> {{ {1} }}) }});", targetId, string.Join(", ", referencePropertyNames.Select(n => string.Format("\"{0}\"", n))));
+                                                        WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date)).toEqual([constant{2}1.{3}.getValue(date), constant{2}2.{3}.getValue(date)]);", propertyName, subPropertyName, targetId, string.Join(".", referencePropertyNames));
+                                                    }
+                                                }
+                                                else if (subProperty.ValueType.Name.Contains("Material"))
+                                                {
+                                                    Property materialProperty = properties.First();
+                                                    writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                    writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
+                                                    using (writer.OpenScope())
+                                                    {
+                                                        properties = materialProperty.ValueType.Properties;
+                                                        foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
+                                                        {
+                                                            writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
+                                                            using (writer.OpenScope())
+                                                            {
+                                                                writer.WriteLine("m2.WriteReference(new Reference(\"Constant\", new List<string> {{ \"{0}\", \"{1}\", \"{2}\" }}));", propertyName, subPropertyName, materialSubProperty.Name);
+                                                                WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.{2}.getValue(date)).toEqual(constant.{0}.{1}.{2}.getValue(date));", propertyName, subPropertyName, materialSubProperty.Name);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    var additionalProperties = subProperty.ValueType.AdditionalProperties;
+                                                    if (additionalProperties != null)
+                                                    {
+                                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                        writer.WriteLine("using (var a = w2.Open{0}Property(\"referenceProp\"))", additionalProperties.ValueType.NameWithPascalCase);
+                                                        using (writer.OpenScope())
+                                                        {
+                                                            foreach (var additionalProperty in additionalProperties.ValueType.Properties.Where(p => !p.IsValue))
+                                                            {
+                                                                writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalProperty.NameWithPascalCase);
+                                                                using (writer.OpenScope())
+                                                                {
+                                                                    writer.WriteLine("w3.WriteReference(new Reference(\"Constant\", new List<string> {{ \"{0}\", \"{1}\", \"prop\", \"{2}\" }}));", propertyName, subPropertyName, additionalProperty.Name);
+                                                                    WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.referenceProp.{2}.getValue(date)).toEqual(constant.{0}.{1}.prop.{2}.getValue(date));", propertyName, subPropertyName, additionalProperty.Name);
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            writer.WriteLine("WriteReferenceValuesIndividual(writer, assertionsStreamWriter, output);");
+                        }
+
+                        writer.WriteLine("private void WriteReferenceValuesIndividual(CesiumStreamWriter writer, StreamWriter assertionsStreamWriter, CesiumOutputStream output)");
+                        using (writer.OpenScope())
+                        {
+                            // write other materials as individual packets
+                            foreach (var property in schemaProperties)
+                            {
+                                string propertyName = property.Name;
+
+                                bool isExtension = !string.IsNullOrEmpty(property.ValueType.ExtensionPrefix);
+                                if (isExtension)
+                                    propertyName = propertyName.Substring(property.ValueType.ExtensionPrefix.Length + 1);
+
+                                var properties = property.ValueType.Properties;
+
+                                foreach (var subProperty in properties.Where(p => !p.IsValue))
+                                {
+                                    string subPropertyName = GetSubPropertyName(propertyName, subProperty);
+
+                                    if (subProperty.ValueType.Name.Contains("Material"))
+                                    {
+                                        properties = subProperty.ValueType.Properties;
+                                        foreach (var materialProperty in properties.Skip(1))
+                                        {
+                                            writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                            using (writer.OpenScope())
+                                            {
+                                                string targetId = string.Format("material_{0}_{1}_{2}", propertyName, subProperty.Name, materialProperty.Name);
+                                                string id = string.Format("reference{0}", s_counter++);
+
+                                                writer.WriteLine("packet.WriteId(\"{0}\");", id);
+                                                WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
+                                                WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                                writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                                writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
+                                                using (writer.OpenScope())
+                                                {
+                                                    properties = materialProperty.ValueType.Properties;
+                                                    foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
+                                                    {
+                                                        writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
+                                                        using (writer.OpenScope())
+                                                        {
+                                                            writer.WriteLine("m2.WriteReference(new Reference(\"{0}\", new List<string> {{ \"{1}\", \"{2}\", \"{3}\" }}));", targetId, propertyName, subPropertyName, materialSubProperty.Name);
+                                                            WriteAssertion(writer, isExtension, "expect(e.{1}.{2}.{3}.getValue(date)).toEqual({0}.{1}.{2}.{3}.getValue(date));", targetId, propertyName, subPropertyName, materialSubProperty.Name);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        // test sampled properties
+                        writer.WriteLine("private void WriteSampledValues(CesiumStreamWriter writer, StreamWriter assertionsStreamWriter, CesiumOutputStream output)");
+                        using (writer.OpenScope())
+                        {
+                            // Write one packet with first value types for each property
+
+                            writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                            using (writer.OpenScope())
+                            {
+                                writer.WriteLine("packet.WriteId(\"Sampled\");");
+                                WriteAssertion(writer, "e = dataSource.entities.getById('Sampled');");
+                                WriteAssertion(writer, "expect(e).toBeDefined();");
 
                                 foreach (var property in schemaProperties)
                                 {
@@ -398,82 +639,52 @@ namespace GenerateFromSchema
                                         propertyName = propertyName.Substring(property.ValueType.ExtensionPrefix.Length + 1);
 
                                     var properties = property.ValueType.Properties;
-
                                     if (property.IsInterpolatable)
                                     {
-                                        foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array))
+                                        writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                        using (writer.OpenScope())
                                         {
-                                            writer.WriteLine("using (var packet = writer.OpenPacket(output))");
-                                            using (writer.OpenScope())
-                                            {
-                                                string id = string.Format("sampled{0}", s_counter++);
-                                                writer.WriteLine("packet.WriteId(\"{0}\");", id);
-                                                WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                                WriteAssertion(writer, "expect(e).toBeDefined();");
-                                                writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
-                                                using (writer.OpenScope())
-                                                {
-                                                    WriteValues(writer, "w", valueProperty, isExtension, propertyName);
-                                                }
-                                            }
+                                            var firstValueProperty = properties.First(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array);
+                                            WriteValues(writer, "w", firstValueProperty, property, isExtension, propertyName);
                                         }
                                     }
                                     else
                                     {
-                                        foreach (var subProperty in properties.Where(p => !p.IsValue))
+                                        var subProperties = properties.Where(p => !p.IsValue && (p.IsInterpolatable || p.ValueType.Name.Contains("Material"))).ToList();
+                                        if (subProperties.Any())
                                         {
-                                            string subPropertyName = GetSubPropertyName(propertyName, subProperty);
-
-                                            properties = subProperty.ValueType.Properties;
-
-                                            if (subProperty.IsInterpolatable)
+                                            writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                            using (writer.OpenScope())
                                             {
-                                                foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array))
+                                                foreach (var subProperty in subProperties)
                                                 {
-                                                    writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                    properties = subProperty.ValueType.Properties;
+
+                                                    string subPropertyName = GetSubPropertyName(propertyName, subProperty);
+                                                    writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
                                                     using (writer.OpenScope())
                                                     {
-                                                        string id = string.Format("sampled{0}", s_counter++);
-                                                        writer.WriteLine("packet.WriteId(\"{0}\");", id);
-
-                                                        WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                                        WriteAssertion(writer, "expect(e).toBeDefined();");
-
-                                                        writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
-                                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
-                                                        using (writer.OpenScope())
+                                                        if (subProperty.IsInterpolatable)
                                                         {
-                                                            WriteValues(writer, "w2", valueProperty, isExtension, string.Format("{0}.{1}", propertyName, subPropertyName));
+                                                            var firstValueProperty = properties.First(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array);
+                                                            WriteValues(writer, "w2", firstValueProperty, subProperty, isExtension, string.Format("{0}.{1}", propertyName, subPropertyName));
                                                         }
-                                                    }
-                                                }
-                                            }
-                                            else if (subProperty.ValueType.Name.Contains("Material"))
-                                            {
-                                                foreach (var materialProperty in properties)
-                                                {
-                                                    properties = materialProperty.ValueType.Properties;
-                                                    foreach (var materialSubProperty in properties.Where(p => p.IsInterpolatable))
-                                                    {
-                                                        properties = materialSubProperty.ValueType.Properties;
-                                                        foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array))
+                                                        else if (subProperty.ValueType.Name.Contains("Material"))
                                                         {
-                                                            writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                            Property materialProperty = properties.First();
+                                                            writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
                                                             using (writer.OpenScope())
                                                             {
-                                                                string id = string.Format("sampledmaterial{0}", s_counter++);
-                                                                writer.WriteLine("packet.WriteId(\"{0}\");", id);
-
-                                                                WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
-                                                                WriteAssertion(writer, "expect(e).toBeDefined();");
-
-                                                                writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
-                                                                writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
-                                                                writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
-                                                                writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
-                                                                using (writer.OpenScope())
+                                                                properties = materialProperty.ValueType.Properties;
+                                                                foreach (var materialSubProperty in properties.Where(p => p.IsInterpolatable))
                                                                 {
-                                                                    WriteValues(writer, "m2", valueProperty, isExtension, string.Format("{0}.{1}.{2}", propertyName, subPropertyName, materialSubProperty.Name));
+                                                                    writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
+                                                                    using (writer.OpenScope())
+                                                                    {
+                                                                        properties = materialSubProperty.ValueType.Properties;
+                                                                        var firstValueProperty = properties.First(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array);
+                                                                        WriteValues(writer, "m2", firstValueProperty, materialSubProperty, isExtension, string.Format("{0}.{1}.{2}", propertyName, subPropertyName, materialSubProperty.Name));
+                                                                    }
                                                                 }
                                                             }
                                                         }
@@ -483,11 +694,168 @@ namespace GenerateFromSchema
                                         }
                                     }
                                 }
+                            }
+                            writer.WriteLine("WriteSampledValuesIndividual(writer, assertionsStreamWriter, output);");
+                        }
 
-                                writer.WriteLine("output.WriteEndSequence();");
+                        writer.WriteLine("private void WriteSampledValuesIndividual(CesiumStreamWriter writer, StreamWriter assertionsStreamWriter, CesiumOutputStream output)");
+                        using (writer.OpenScope())
+                        {
+                            // write other value types as individual packets
 
-                                s_assertionIndent--;
-                                WriteAssertion(writer, "});");
+                            foreach (var property in schemaProperties)
+                            {
+                                string propertyName = property.Name;
+
+                                bool isExtension = !string.IsNullOrEmpty(property.ValueType.ExtensionPrefix);
+                                if (isExtension)
+                                    propertyName = propertyName.Substring(property.ValueType.ExtensionPrefix.Length + 1);
+
+                                var properties = property.ValueType.Properties;
+
+                                if (property.IsInterpolatable)
+                                {
+                                    foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array).Skip(1))
+                                    {
+                                        writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                        using (writer.OpenScope())
+                                        {
+                                            string id = string.Format("sampled{0}", s_counter++);
+                                            writer.WriteLine("packet.WriteId(\"{0}\");", id);
+                                            WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
+                                            WriteAssertion(writer, "expect(e).toBeDefined();");
+                                            writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                            using (writer.OpenScope())
+                                            {
+                                                WriteValues(writer, "w", valueProperty, property, isExtension, propertyName);
+                                            }
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    foreach (var subProperty in properties.Where(p => !p.IsValue))
+                                    {
+                                        string subPropertyName = GetSubPropertyName(propertyName, subProperty);
+
+                                        properties = subProperty.ValueType.Properties;
+
+                                        if (subProperty.IsInterpolatable)
+                                        {
+                                            foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array).Skip(1))
+                                            {
+                                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                using (writer.OpenScope())
+                                                {
+                                                    string id = string.Format("sampled{0}", s_counter++);
+                                                    writer.WriteLine("packet.WriteId(\"{0}\");", id);
+
+                                                    WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
+                                                    WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                                    writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                                    writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                    using (writer.OpenScope())
+                                                    {
+                                                        WriteValues(writer, "w2", valueProperty, subProperty, isExtension, string.Format("{0}.{1}", propertyName, subPropertyName));
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        else if (subProperty.ValueType.Name.Contains("Material"))
+                                        {
+                                            // write other values for the first material
+                                            // then write first values for other materials 
+                                            // then write remaining values for other materials individually
+
+                                            var firstMaterialProperty = properties.First();
+                                            properties = firstMaterialProperty.ValueType.Properties;
+                                            foreach (var materialSubProperty in properties.Where(p => p.IsInterpolatable))
+                                            {
+                                                properties = materialSubProperty.ValueType.Properties;
+                                                foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array).Skip(1))
+                                                {
+                                                    writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                    using (writer.OpenScope())
+                                                    {
+                                                        string id = string.Format("sampledmaterial{0}", s_counter++);
+                                                        writer.WriteLine("packet.WriteId(\"{0}\");", id);
+                                                        WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
+                                                        WriteAssertion(writer, "expect(e).toBeDefined();");
+                                                        writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                                        writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                        writer.WriteLine("using (var m = w2.Open{0}Property())", firstMaterialProperty.NameWithPascalCase);
+                                                        writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
+                                                        using (writer.OpenScope())
+                                                        {
+                                                            WriteValues(writer, "m2", valueProperty, materialSubProperty, isExtension, string.Format("{0}.{1}.{2}", propertyName, subPropertyName, materialSubProperty.Name));
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            properties = subProperty.ValueType.Properties;
+                                            foreach (var materialProperty in properties.Skip(1))
+                                            {
+                                                writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                using (writer.OpenScope())
+                                                {
+                                                    string id = string.Format("sampledmaterial{0}", s_counter++);
+                                                    writer.WriteLine("packet.WriteId(\"{0}\");", id);
+                                                    WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
+                                                    WriteAssertion(writer, "expect(e).toBeDefined();");
+
+                                                    writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                                    writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                    writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
+                                                    using (writer.OpenScope())
+                                                    {
+                                                        properties = materialProperty.ValueType.Properties;
+                                                        foreach (var materialSubProperty in properties.Where(p => p.IsInterpolatable))
+                                                        {
+                                                            writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
+                                                            using (writer.OpenScope())
+                                                            {
+                                                                properties = materialSubProperty.ValueType.Properties;
+                                                                var firstValueProperty = properties.First(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array);
+                                                                WriteValues(writer, "m2", firstValueProperty, materialSubProperty, isExtension, string.Format("{0}.{1}.{2}", propertyName, subPropertyName, materialSubProperty.Name));
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            properties = subProperty.ValueType.Properties;
+                                            foreach (var materialProperty in properties.Skip(1))
+                                            {
+                                                properties = materialProperty.ValueType.Properties;
+                                                foreach (var materialSubProperty in properties.Where(p => p.IsInterpolatable))
+                                                {
+                                                    properties = materialSubProperty.ValueType.Properties;
+                                                    foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array).Skip(1))
+                                                    {
+                                                        writer.WriteLine("using (var packet = writer.OpenPacket(output))");
+                                                        using (writer.OpenScope())
+                                                        {
+                                                            string id = string.Format("sampledmaterial{0}", s_counter++);
+                                                            writer.WriteLine("packet.WriteId(\"{0}\");", id);
+                                                            WriteAssertion(writer, "e = dataSource.entities.getById('{0}');", id);
+                                                            WriteAssertion(writer, "expect(e).toBeDefined();");
+                                                            writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                                            writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                            writer.WriteLine("using (var m = w2.Open{0}Property())", materialProperty.NameWithPascalCase);
+                                                            writer.WriteLine("using (var m2 = m.Open{0}Property())", materialSubProperty.NameWithPascalCase);
+                                                            using (writer.OpenScope())
+                                                            {
+                                                                WriteValues(writer, "m2", valueProperty, materialSubProperty, isExtension, string.Format("{0}.{1}.{2}", propertyName, subPropertyName, materialSubProperty.Name));
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -505,13 +873,14 @@ namespace GenerateFromSchema
             return subPropertyName;
         }
 
-        private static void WriteValue(CodeWriter writer, string openWriterName, Property property, bool isExtension, string propertyName)
+        private static void WriteValue(CodeWriter writer, string openWriterName, Property valueProperty, Property parentProperty, bool isExtension, string propertyName)
         {
             string value;
             string assertionValue;
             string assertionEpsilon;
-            GetUniqueValue(property, out value, out assertionValue, out assertionEpsilon);
-            writer.WriteLine("{0}.Write{1}({2});", openWriterName, property.NameWithPascalCase, value);
+            string valueType;
+            GetUniqueValue(valueProperty, parentProperty, out value, out assertionValue, out assertionEpsilon, out valueType);
+            writer.WriteLine("{0}.Write{1}({2});", openWriterName, valueProperty.NameWithPascalCase, value);
             WriteAssertion(writer, "{0}expect(e.{1}.getValue(date)).toEqual{2}({3}{4});",
                            isExtension ? "checkExtensions && " : "",
                            propertyName,
@@ -520,17 +889,19 @@ namespace GenerateFromSchema
                            assertionEpsilon == null ? "" : string.Format(", {0}", assertionEpsilon));
         }
 
-        private static void WriteValues(CodeWriter writer, string openWriterName, Property property, bool isExtension, string propertyName)
+        private static void WriteValues(CodeWriter writer, string openWriterName, Property valueProperty, Property parentProperty, bool isExtension, string propertyName)
         {
             string value1;
             string assertionValue1;
             string assertionEpsilon1;
-            GetUniqueValue(property, out value1, out assertionValue1, out assertionEpsilon1);
+            string valueType1;
+            GetUniqueValue(valueProperty, parentProperty, out value1, out assertionValue1, out assertionEpsilon1, out valueType1);
             string value2;
             string assertionValue2;
             string assertionEpsilon2;
-            GetUniqueValue(property, out value2, out assertionValue2, out assertionEpsilon2);
-            writer.WriteLine("{0}.Write{1}(new [] {{ documentStartDate, documentStopDate, }}, new [] {{ {2}, {3} }});", openWriterName, property.NameWithPascalCase, value1, value2);
+            string valueType2;
+            GetUniqueValue(valueProperty, parentProperty, out value2, out assertionValue2, out assertionEpsilon2, out valueType2);
+            writer.WriteLine("{0}.Write{1}(new List<JulianDate> {{ m_documentStartDate, m_documentStopDate }}, new List<{2}> {{ {3}, {4} }});", openWriterName, valueProperty.NameWithPascalCase, valueType1, value1, value2);
             WriteAssertion(writer, "{0}expect(e.{1}.getValue(documentStartDate)).toEqual{2}({3}{4});",
                            isExtension ? "checkExtensions && " : "",
                            propertyName,
@@ -547,22 +918,23 @@ namespace GenerateFromSchema
 
         private static int s_counter = 0;
 
-        private static void GetUniqueValue(Property property, out string value, out string assertionValue, out string assertionEpsilon)
+        private static void GetUniqueValue(Property valueProperty, Property parentProperty, out string value, out string assertionValue, out string assertionEpsilon, out string valueType)
         {
-            value = "";
-            assertionValue = "";
+            value = assertionValue = valueType = "";
             assertionEpsilon = null;
 
-            switch (property.ValueType.Name)
+            switch (valueProperty.ValueType.Name)
             {
                 case "Boolean":
                 {
                     value = assertionValue = "true";
+                    valueType = "bool";
                     return;
                 }
                 case "Double":
                 {
                     value = assertionValue = s_counter++.ToString("#.0");
+                    valueType = "double";
                     return;
                 }
                 case "DoubleList":
@@ -571,6 +943,7 @@ namespace GenerateFromSchema
                     int v2 = s_counter++;
                     value = string.Format("new List<double> {{ {0}, {1} }}", v1, v2);
                     assertionValue = string.Format("[ {0}, {1} ]", v1, v2);
+                    valueType = "List<double>";
                     return;
                 }
                 case "String":
@@ -578,6 +951,7 @@ namespace GenerateFromSchema
                     string v = string.Format("string{0}", s_counter++);
                     value = string.Format("\"{0}\"", v);
                     assertionValue = string.Format("'{0}'", v);
+                    valueType = "string";
                     return;
                 }
                 case "Cartesian3":
@@ -587,6 +961,20 @@ namespace GenerateFromSchema
                     int z = s_counter++;
                     value = string.Format("new Cartesian({0}, {1}, {2})", x, y, z);
                     assertionValue = string.Format("new Cartesian3({0}, {1}, {2})", x, y, z);
+                    valueType = "Cartesian";
+                    return;
+                }
+                case "Cartesian3List":
+                {
+                    int x1 = s_counter++;
+                    int y1 = s_counter++;
+                    int z1 = s_counter++;
+                    int x2 = s_counter++;
+                    int y2 = s_counter++;
+                    int z2 = s_counter++;
+                    value = string.Format("new List<Cartesian> {{ new Cartesian({0}, {1}, {2}), new Cartesian({3}, {4}, {5}) }}", x1, y1, z1, x2, y2, z2);
+                    assertionValue = string.Format("[ new Cartesian3({0}, {1}, {2}), new Cartesian3({3}, {4}, {5}) ]", x1, y1, z1, x2, y2, z2);
+                    valueType = "List<Cartesian>";
                     return;
                 }
                 case "UnitCartesian3":
@@ -603,6 +991,34 @@ namespace GenerateFromSchema
 
                     value = string.Format("new UnitCartesian({0}, {1}, {2})", x, y, z);
                     assertionValue = string.Format("new Cartesian3({0}, {1}, {2})", x, y, z);
+                    valueType = "UnitCartesian";
+                    return;
+                }
+                case "UnitCartesian3List":
+                {
+                    double x1 = s_counter++;
+                    double y1 = s_counter++;
+                    double z1 = s_counter++;
+
+                    double magnitude = Math.Sqrt(x1 * x1 + y1 * y1 + z1 * z1);
+
+                    x1 /= magnitude;
+                    y1 /= magnitude;
+                    z1 /= magnitude;
+                    double x2 = s_counter++;
+                    double y2 = s_counter++;
+                    double z2 = s_counter++;
+
+                    magnitude = Math.Sqrt(x2 * x2 + y2 * y2 + z2 * z2);
+
+                    x2 /= magnitude;
+                    y2 /= magnitude;
+                    z2 /= magnitude;
+                    value = string.Format("new List<UnitCartesian> {{ new UnitCartesian({0}, {1}, {2}), new UnitCartesian({3}, {4}, {5}) }}", x1, y1, z1, x2, y2, z2);
+                    assertionValue = string.Format("[ {6}new Cartesian3({0}, {1}, {2}){7}, {6}new Cartesian3({3}, {4}, {5}){7} ]", x1, y1, z1, x2, y2, z2,
+                                                   parentProperty.ValueType.Name == "DirectionList" ? "Spherical.fromCartesian3(" : "",
+                                                   parentProperty.ValueType.Name == "DirectionList" ? ")" : "");
+                    valueType = "List<UnitCartesian>";
                     return;
                 }
                 case "Cartesian3Velocity":
@@ -615,28 +1031,34 @@ namespace GenerateFromSchema
                     int dZ = s_counter++;
                     value = string.Format("new Motion<Cartesian>(new Cartesian({0}, {1}, {2}), new Cartesian({3}, {4}, {5}))", x, y, z, dX, dY, dZ);
                     assertionValue = string.Format("new Cartesian3({0}, {1}, {2})", x, y, z);
+                    valueType = "Motion<Cartesian>";
                     return;
                 }
                 case "Cartographic":
                 {
-                    bool isDegrees = property.Name == "cartographicDegrees";
+                    bool isDegrees = valueProperty.Name == "cartographicDegrees";
                     double longitude = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
                     double latitude = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
                     double height = s_counter++;
                     value = string.Format("new Cartographic({0}, {1}, {2})", longitude, latitude, height);
-                    assertionValue = string.Format("Cartesian3.from{0}({1}, {2}, {3})", isDegrees ? "Degrees" : "Radians", longitude, latitude, height);
+                    assertionValue = string.Format("Cartesian3.from{3}({0}, {1}, {2})", longitude, latitude, height,
+                                                   isDegrees ? "Degrees" : "Radians");
+                    valueType = "Cartographic";
                     return;
                 }
-                case "Cartesian3List":
+                case "CartographicList":
                 {
-                    int x1 = s_counter++;
-                    int y1 = s_counter++;
-                    int z1 = s_counter++;
-                    int x2 = s_counter++;
-                    int y2 = s_counter++;
-                    int z2 = s_counter++;
-                    value = string.Format("new List<Cartesian> {{ new Cartesian({0}, {1}, {2}), new Cartesian({3}, {4}, {5}) }}", x1, y1, z1, x2, y2, z2);
-                    assertionValue = string.Format("[ new Cartesian3({0}, {1}, {2}), new Cartesian3({3}, {4}, {5}) ]", x1, y1, z1, x2, y2, z2);
+                    bool isDegrees = valueProperty.Name == "cartographicDegrees";
+                    double longitude1 = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
+                    double latitude1 = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
+                    double height1 = s_counter++;
+                    double longitude2 = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
+                    double latitude2 = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
+                    double height2 = s_counter++;
+                    value = string.Format("new List<Cartographic> {{ new Cartographic({0}, {1}, {2}), new Cartographic({3}, {4}, {5}) }}", longitude1, latitude1, height1, longitude2, latitude2, height2);
+                    assertionValue = string.Format("[ Cartesian3.from{6}({0}, {1}, {2}), Cartesian3.from{6}({3}, {4}, {5}) ]", longitude1, latitude1, height1, longitude2, latitude2, height2,
+                                                   isDegrees ? "Degrees" : "Radians");
+                    valueType = "List<Cartesian>";
                     return;
                 }
                 case "Cartesian2":
@@ -645,6 +1067,7 @@ namespace GenerateFromSchema
                     int y = s_counter++;
                     value = string.Format("new Rectangular({0}, {1})", x, y);
                     assertionValue = string.Format("new Cartesian2({0}, {1})", x, y);
+                    valueType = "Rectangular";
                     return;
                 }
                 case "Spherical":
@@ -653,15 +1076,8 @@ namespace GenerateFromSchema
                     int cone = s_counter++;
                     int magnitude = s_counter++;
                     value = string.Format("new Spherical({0}, {1}, {2})", clock, cone, magnitude);
-                    assertionValue = string.Format("new Spherical({0}, {1}, {2})", clock, cone, magnitude);
-                    return;
-                }
-                case "UnitSpherical":
-                {
-                    int clock = s_counter++;
-                    int cone = s_counter++;
-                    value = string.Format("new UnitSpherical({0}, {1})", clock, cone);
-                    assertionValue = string.Format("new Spherical({0}, {1})", clock, cone);
+                    assertionValue = string.Format("Cartesian3.fromSpherical(new Spherical({0}, {1}, {2}))", clock, cone, magnitude);
+                    valueType = "Spherical";
                     return;
                 }
                 case "SphericalList":
@@ -674,6 +1090,27 @@ namespace GenerateFromSchema
                     int magnitude2 = s_counter++;
                     value = string.Format("new List<Spherical> {{ new Spherical({0}, {1}, {2}), new Spherical({3}, {4}, {5}) }}", clock1, cone1, magnitude1, clock2, cone2, magnitude2);
                     assertionValue = string.Format("[ new Spherical({0}, {1}, {2}), new Spherical({3}, {4}, {5}) ]", clock1, cone1, magnitude1, clock2, cone2, magnitude2);
+                    valueType = "List<Spherical>";
+                    return;
+                }
+                case "UnitSpherical":
+                {
+                    int clock = s_counter++;
+                    int cone = s_counter++;
+                    value = string.Format("new UnitSpherical({0}, {1})", clock, cone);
+                    assertionValue = string.Format("Cartesian3.fromSpherical(new Spherical({0}, {1}))", clock, cone);
+                    valueType = "UnitSpherical";
+                    return;
+                }
+                case "UnitSphericalList":
+                {
+                    int clock1 = s_counter++;
+                    int cone1 = s_counter++;
+                    int clock2 = s_counter++;
+                    int cone2 = s_counter++;
+                    value = string.Format("new List<UnitSpherical> {{ new UnitSpherical({0}, {1}), new UnitSpherical({2}, {3}) }}", clock1, cone1, clock2, cone2);
+                    assertionValue = string.Format("[ new Spherical({0}, {1}), new Spherical({2}, {3}) ]", clock1, cone1, clock2, cone2);
+                    valueType = "List<UnitSpherical>";
                     return;
                 }
                 case "UnitQuaternion":
@@ -692,6 +1129,7 @@ namespace GenerateFromSchema
                     value = string.Format("new UnitQuaternion({0}, {1}, {2}, {3})", w, x, y, z);
                     assertionValue = string.Format("new Quaternion({0}, {1}, {2}, {3})", x, y, z, w);
                     assertionEpsilon = "1e-14";
+                    valueType = "UnitQuaternion";
                     return;
                 }
                 case "Rgba":
@@ -703,6 +1141,7 @@ namespace GenerateFromSchema
 
                     value = string.Format("Color.FromArgb({0}, {1}, {2}, {3})", a, r, g, b);
                     assertionValue = string.Format("Color.fromBytes({0}, {1}, {2}, {3})", r, g, b, a);
+                    valueType = "Color";
                     return;
                 }
                 case "Rgbaf":
@@ -715,42 +1154,49 @@ namespace GenerateFromSchema
                     value = string.Format("Color.FromArgb({0}, {1}, {2}, {3})", a, r, g, b);
                     assertionValue = string.Format("new Color({0}, {1}, {2}, {3})", r / 255.0, g / 255.0, b / 255.0, a / 255.0);
                     assertionEpsilon = "1e-6";
+                    valueType = "Color";
                     return;
                 }
                 case "VerticalOrigin":
                 {
                     value = "CesiumVerticalOrigin.Bottom";
                     assertionValue = "VerticalOrigin.BOTTOM";
+                    valueType = "CesiumVerticalOrigin";
                     return;
                 }
                 case "HorizontalOrigin":
                 {
                     value = "CesiumHorizontalOrigin.Left";
                     assertionValue = "HorizontalOrigin.LEFT";
+                    valueType = "CesiumHorizontalOrigin";
                     return;
                 }
                 case "LabelStyle":
                 {
                     value = "CesiumLabelStyle.FillAndOutline";
                     assertionValue = "LabelStyle.FILL_AND_OUTLINE";
+                    valueType = "CesiumLabelStyle";
                     return;
                 }
                 case "CornerType":
                 {
                     value = "CesiumCornerType.Beveled";
                     assertionValue = "CornerType.BEVELED";
+                    valueType = "CesiumCornerType";
                     return;
                 }
                 case "StripeOrientation":
                 {
                     value = "CesiumStripeOrientation.Vertical";
                     assertionValue = "StripeOrientation.VERTICAL";
+                    valueType = "CesiumStripeOrientation";
                     return;
                 }
                 case "SensorVolumePortionToDisplay":
                 {
                     value = "CesiumSensorVolumePortionToDisplay.BelowEllipsoidHorizon";
                     assertionValue = "SensorVolumePortionToDisplay.BELOW_ELLIPSOID_HORIZON";
+                    valueType = "CesiumSensorVolumePortionToDisplay";
                     return;
                 }
                 case "Font":
@@ -758,6 +1204,7 @@ namespace GenerateFromSchema
                     string s = string.Format("{0}px sans-serif", s_counter++ % 25);
                     value = string.Format("\"{0}\"", s);
                     assertionValue = string.Format("'{0}'", s);
+                    valueType = "string";
                     return;
                 }
                 case "Uri":
@@ -765,6 +1212,7 @@ namespace GenerateFromSchema
                     string s = string.Format("http://example.com/{0}", s_counter++);
                     value = string.Format("\"{0}\", CesiumResourceBehavior.LinkTo", s);
                     assertionValue = string.Format("'{0}'", s);
+                    valueType = "string";
                     return;
                 }
                 case "NearFarScalar":
@@ -776,6 +1224,7 @@ namespace GenerateFromSchema
 
                     value = string.Format("new NearFarScalar({0}, {1}, {2}, {3})", nearDistance, nearValue, farDistance, farValue);
                     assertionValue = string.Format("new NearFarScalar({0}, {1}, {2}, {3})", nearDistance, nearValue, farDistance, farValue);
+                    valueType = "NearFarScalar";
                     return;
                 }
                 case "BoundingRectangle":
@@ -787,18 +1236,21 @@ namespace GenerateFromSchema
 
                     value = string.Format("BoundingRectangle.FromWidthHeight({0}, {1}, {2}, {3})", x, y, width, height);
                     assertionValue = string.Format("new BoundingRectangle({0}, {1}, {2}, {3})", x, y, width, height);
+                    valueType = "BoundingRectangle";
                     return;
                 }
                 case "CartographicRectangle":
                 {
-                    bool isDegrees = property.Name == "wsenDegrees";
+                    bool isDegrees = valueProperty.Name == "wsenDegrees";
                     double w = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
                     double s = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
                     double e = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
                     double n = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
 
                     value = string.Format("new CartographicExtent({0}, {1}, {2}, {3})", w, s, e, n);
-                    assertionValue = string.Format("{0}({1}, {2}, {3}, {4})", isDegrees ? "Rectangle.fromDegrees" : "new Rectangle", w, s, e, n);
+                    assertionValue = string.Format("{4}({0}, {1}, {2}, {3})", w, s, e, n,
+                                                   isDegrees ? "Rectangle.fromDegrees" : "new Rectangle");
+                    valueType = "CartographicExtent";
                     return;
                 }
             }
