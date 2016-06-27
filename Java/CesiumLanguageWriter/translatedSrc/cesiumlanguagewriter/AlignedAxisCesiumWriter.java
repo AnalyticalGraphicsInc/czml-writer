@@ -5,24 +5,32 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.Cartesian;
 import cesiumlanguagewriter.Reference;
+import cesiumlanguagewriter.UnitCartesian;
+import cesiumlanguagewriter.UnitSpherical;
 import java.util.List;
 
 /**
  *  
- Writes a <code>AlignedAxis</code> to a  {@link CesiumOutputStream}.  A <code>AlignedAxis</code> is an aligned axis which can optionally vary over time.
+ Writes a <code>AlignedAxis</code> to a  {@link CesiumOutputStream}.  A <code>AlignedAxis</code> is an aligned axis represented by a unit vector which can optionally vary over time.
  
 
  */
 public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<AlignedAxisCesiumWriter> {
 	/**
 	 *  
-	The name of the <code>cartesian</code> property.
+	The name of the <code>unitCartesian</code> property.
 	
 
 	 */
-	public static final String CartesianPropertyName = "cartesian";
+	public static final String UnitCartesianPropertyName = "unitCartesian";
+	/**
+	 *  
+	The name of the <code>unitSpherical</code> property.
+	
+
+	 */
+	public static final String UnitSphericalPropertyName = "unitSpherical";
 	/**
 	 *  
 	The name of the <code>reference</code> property.
@@ -30,8 +38,17 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	 */
 	public static final String ReferencePropertyName = "reference";
-	private Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asCartesian;
+	/**
+	 *  
+	The name of the <code>velocityReference</code> property.
+	
+
+	 */
+	public static final String VelocityReferencePropertyName = "velocityReference";
+	private Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>> m_asUnitCartesian;
+	private Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>> m_asUnitSpherical;
 	private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+	private Lazy<ICesiumValuePropertyWriter<Reference>> m_asVelocityReference;
 
 	/**
 	 *  
@@ -41,16 +58,28 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 	 */
 	public AlignedAxisCesiumWriter(String propertyName) {
 		super(propertyName);
-		m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
-				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor", new Class[] {}) {
-					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
-						return createCartesianAdaptor();
+		m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian> invoke() {
+						return createUnitCartesianAdaptor();
+					}
+				}, false);
+		m_asUnitSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(this, "createUnitSphericalAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical> invoke() {
+						return createUnitSphericalAdaptor();
 					}
 				}, false);
 		m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
 				"createReferenceAdaptor", new Class[] {}) {
 			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
 				return createReferenceAdaptor();
+			}
+		}, false);
+		m_asVelocityReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
+				"createVelocityReferenceAdaptor", new Class[] {}) {
+			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
+				return createVelocityReferenceAdaptor();
 			}
 		}, false);
 	}
@@ -65,16 +94,28 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 	 */
 	protected AlignedAxisCesiumWriter(AlignedAxisCesiumWriter existingInstance) {
 		super(existingInstance);
-		m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
-				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor", new Class[] {}) {
-					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
-						return createCartesianAdaptor();
+		m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian> invoke() {
+						return createUnitCartesianAdaptor();
+					}
+				}, false);
+		m_asUnitSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(
+				new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(this, "createUnitSphericalAdaptor", new Class[] {}) {
+					public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical> invoke() {
+						return createUnitSphericalAdaptor();
 					}
 				}, false);
 		m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
 				"createReferenceAdaptor", new Class[] {}) {
 			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
 				return createReferenceAdaptor();
+			}
+		}, false);
+		m_asVelocityReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
+				"createVelocityReferenceAdaptor", new Class[] {}) {
+			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
+				return createVelocityReferenceAdaptor();
 			}
 		}, false);
 	}
@@ -86,22 +127,22 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Writes the value expressed as a <code>cartesian</code>, which is the axis specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.
+	Writes the value expressed as a <code>unitCartesian</code>, which is the axis specified as a three-dimensional unit magnitude Cartesian value `[X, Y, Z]`, in world coordinates.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeCartesian(Cartesian value) {
-		String PropertyName = CartesianPropertyName;
+	public final void writeUnitCartesian(UnitCartesian value) {
+		String PropertyName = UnitCartesianPropertyName;
 		openIntervalIfNecessary();
 		getOutput().writePropertyName(PropertyName);
-		CesiumWritingHelper.writeCartesian3(getOutput(), value);
+		CesiumWritingHelper.writeUnitCartesian3(getOutput(), value);
 	}
 
 	/**
 	 *  
-	Writes the value expressed as a <code>cartesian</code>, which is the axis specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.
+	Writes the value expressed as a <code>unitCartesian</code>, which is the axis specified as a three-dimensional unit magnitude Cartesian value `[X, Y, Z]`, in world coordinates.
 	
 	
 	
@@ -109,13 +150,13 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeCartesian(List<JulianDate> dates, List<Cartesian> values) {
-		writeCartesian(dates, values, 0, dates.size());
+	public final void writeUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values) {
+		writeUnitCartesian(dates, values, 0, dates.size());
 	}
 
 	/**
 	 *  
-	Writes the value expressed as a <code>cartesian</code>, which is the axis specified as a three-dimensional Cartesian value `[X, Y, Z]`, in world coordinates in meters.
+	Writes the value expressed as a <code>unitCartesian</code>, which is the axis specified as a three-dimensional unit magnitude Cartesian value `[X, Y, Z]`, in world coordinates.
 	
 	
 	
@@ -127,10 +168,59 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeCartesian(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-		String PropertyName = CartesianPropertyName;
+	public final void writeUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
+		String PropertyName = UnitCartesianPropertyName;
 		openIntervalIfNecessary();
-		CesiumWritingHelper.writeCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
+		CesiumWritingHelper.writeUnitCartesian3(getOutput(), PropertyName, dates, values, startIndex, length);
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>unitSpherical</code>, which is the axis specified as a unit spherical value `[Clock, Cone]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeUnitSpherical(UnitSpherical value) {
+		String PropertyName = UnitSphericalPropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeUnitSpherical(getOutput(), value);
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>unitSpherical</code>, which is the axis specified as a unit spherical value `[Clock, Cone]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeUnitSpherical(List<JulianDate> dates, List<UnitSpherical> values) {
+		writeUnitSpherical(dates, values, 0, dates.size());
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>unitSpherical</code>, which is the axis specified as a unit spherical value `[Clock, Cone]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeUnitSpherical(List<JulianDate> dates, List<UnitSpherical> values, int startIndex, int length) {
+		String PropertyName = UnitSphericalPropertyName;
+		openIntervalIfNecessary();
+		CesiumWritingHelper.writeUnitSpherical(getOutput(), PropertyName, dates, values, startIndex, length);
 	}
 
 	/**
@@ -199,25 +289,114 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
 	/**
 	 *  
-	Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in <code>Cartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	Writes the value expressed as a <code>velocityReference</code>, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a `position` property.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeVelocityReference(Reference value) {
+		String PropertyName = VelocityReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>velocityReference</code>, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a `position` property.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeVelocityReference(String value) {
+		String PropertyName = VelocityReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), value);
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>velocityReference</code>, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a `position` property.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeVelocityReference(String identifier, String propertyName) {
+		String PropertyName = VelocityReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), identifier, propertyName);
+	}
+
+	/**
+	 *  
+	Writes the value expressed as a <code>velocityReference</code>, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a `position` property.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeVelocityReference(String identifier, String[] propertyNames) {
+		String PropertyName = VelocityReferencePropertyName;
+		openIntervalIfNecessary();
+		getOutput().writePropertyName(PropertyName);
+		CesiumWritingHelper.writeReference(getOutput(), identifier, propertyNames);
+	}
+
+	/**
+	 *  
+	Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in <code>UnitCartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
 	
 	
 
 	 * @return The wrapper.
 	 */
-	public final ICesiumInterpolatableValuePropertyWriter<Cartesian> asCartesian() {
-		return m_asCartesian.getValue();
+	public final ICesiumInterpolatableValuePropertyWriter<UnitCartesian> asUnitCartesian() {
+		return m_asUnitCartesian.getValue();
 	}
 
-	final private ICesiumInterpolatableValuePropertyWriter<Cartesian> createCartesianAdaptor() {
-		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.AlignedAxisCesiumWriter, cesiumlanguagewriter.Cartesian>(this,
-				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.AlignedAxisCesiumWriter, cesiumlanguagewriter.Cartesian>() {
-					public void invoke(AlignedAxisCesiumWriter me, Cartesian value) {
-						me.writeCartesian(value);
+	final private ICesiumInterpolatableValuePropertyWriter<UnitCartesian> createUnitCartesianAdaptor() {
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.AlignedAxisCesiumWriter, cesiumlanguagewriter.UnitCartesian>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.AlignedAxisCesiumWriter, cesiumlanguagewriter.UnitCartesian>() {
+					public void invoke(AlignedAxisCesiumWriter me, UnitCartesian value) {
+						me.writeUnitCartesian(value);
 					}
-				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.AlignedAxisCesiumWriter, cesiumlanguagewriter.Cartesian>() {
-					public void invoke(AlignedAxisCesiumWriter me, List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-						me.writeCartesian(dates, values, startIndex, length);
+				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.AlignedAxisCesiumWriter, cesiumlanguagewriter.UnitCartesian>() {
+					public void invoke(AlignedAxisCesiumWriter me, List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
+						me.writeUnitCartesian(dates, values, startIndex, length);
+					}
+				});
+	}
+
+	/**
+	 *  
+	Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in <code>UnitSpherical</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	
+	
+
+	 * @return The wrapper.
+	 */
+	public final ICesiumInterpolatableValuePropertyWriter<UnitSpherical> asUnitSpherical() {
+		return m_asUnitSpherical.getValue();
+	}
+
+	final private ICesiumInterpolatableValuePropertyWriter<UnitSpherical> createUnitSphericalAdaptor() {
+		return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.AlignedAxisCesiumWriter, cesiumlanguagewriter.UnitSpherical>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.AlignedAxisCesiumWriter, cesiumlanguagewriter.UnitSpherical>() {
+					public void invoke(AlignedAxisCesiumWriter me, UnitSpherical value) {
+						me.writeUnitSpherical(value);
+					}
+				}, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.AlignedAxisCesiumWriter, cesiumlanguagewriter.UnitSpherical>() {
+					public void invoke(AlignedAxisCesiumWriter me, List<JulianDate> dates, List<UnitSpherical> values, int startIndex, int length) {
+						me.writeUnitSpherical(dates, values, startIndex, length);
 					}
 				});
 	}
@@ -239,6 +418,27 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.AlignedAxisCesiumWriter, cesiumlanguagewriter.Reference>() {
 					public void invoke(AlignedAxisCesiumWriter me, Reference value) {
 						me.writeReference(value);
+					}
+				});
+	}
+
+	/**
+	 *  
+	Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in <code>VelocityReference</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	
+	
+
+	 * @return The wrapper.
+	 */
+	public final ICesiumValuePropertyWriter<Reference> asVelocityReference() {
+		return m_asVelocityReference.getValue();
+	}
+
+	final private ICesiumValuePropertyWriter<Reference> createVelocityReferenceAdaptor() {
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.AlignedAxisCesiumWriter, cesiumlanguagewriter.Reference>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.AlignedAxisCesiumWriter, cesiumlanguagewriter.Reference>() {
+					public void invoke(AlignedAxisCesiumWriter me, Reference value) {
+						me.writeVelocityReference(value);
 					}
 				});
 	}
