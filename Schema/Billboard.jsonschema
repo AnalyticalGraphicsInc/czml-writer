@@ -68,7 +68,7 @@
         },
         "height": {
             "$ref": "Double.jsonschema",
-            "description": "The height of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native width of the image is used."
+            "description": "The height of the billboard, in pixels (or meters, if `sizeInMeters` is true). By default, the native height of the image is used."
         },
         "scaleByDistance": {
             "$ref": "NearFarScalar.jsonschema",
