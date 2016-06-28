@@ -34,7 +34,7 @@
         },
         "scaleByDistance": {
             "$ref": "NearFarScalar.jsonschema",
-            "description": "How the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`."
+            "description": "How the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`."
         },
         "translucencyByDistance": {
             "$ref": "NearFarScalar.jsonschema",
