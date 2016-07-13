@@ -727,7 +727,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>scaleByDistance</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scaleByDistance</code> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// Gets the writer for the <code>scaleByDistance</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scaleByDistance</code> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         public NearFarScalarCesiumWriter ScaleByDistanceWriter
         {
@@ -735,7 +735,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>scaleByDistance</code> property.  The <code>scaleByDistance</code> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// Opens and returns the writer for the <code>scaleByDistance</code> property.  The <code>scaleByDistance</code> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         public NearFarScalarCesiumWriter OpenScaleByDistanceProperty()
         {
@@ -744,7 +744,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteScaleByDistanceProperty(NearFarScalar value)
@@ -756,7 +756,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="nearDistance">The lower bound of the camera distance range.</param>
         /// <param name="nearValue">The value to use at the lower bound of the camera distance range.</param>
@@ -771,7 +771,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -784,7 +784,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -799,7 +799,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteScaleByDistancePropertyReference(Reference value)
@@ -811,7 +811,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteScaleByDistancePropertyReference(string value)
@@ -823,7 +823,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -836,7 +836,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

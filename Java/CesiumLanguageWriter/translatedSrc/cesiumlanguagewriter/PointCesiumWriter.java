@@ -1142,7 +1142,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 	}
 
 	/**
-	 *  Gets the writer for the <code>scaleByDistance</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>scaleByDistance</code> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	 *  Gets the writer for the <code>scaleByDistance</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>scaleByDistance</code> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
 	
 
 	 */
@@ -1152,7 +1152,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Opens and returns the writer for the <code>scaleByDistance</code> property.  The <code>scaleByDistance</code> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	Opens and returns the writer for the <code>scaleByDistance</code> property.  The <code>scaleByDistance</code> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
 	
 
 	 */
@@ -1163,7 +1163,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
 	
 	
 
@@ -1182,7 +1182,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
 	
 	
 	
@@ -1207,7 +1207,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
 	
 	
 	
@@ -1228,7 +1228,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
 	
 	
 	
@@ -1253,7 +1253,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
 	
 	
 
@@ -1272,7 +1272,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
 	
 	
 
@@ -1291,7 +1291,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
 	
 	
 	
@@ -1312,7 +1312,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
 	/**
 	 *  
-	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `scale`.
+	Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
 	
 	
 	
