@@ -49,6 +49,11 @@
             "description": "The vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`.",
             "default": "CENTER"
         },
+        "heightReference": {
+            "$ref": "HeightReference.jsonschema",
+            "description": "The height reference of the label, which indicates if the position is relative to terrain or not.",
+            "default": "NONE"
+        },
         "fillColor": {
             "$ref": "Color.jsonschema",
             "description": "The fill color of the label."

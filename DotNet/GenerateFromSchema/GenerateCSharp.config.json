@@ -731,6 +731,19 @@
                 "needsInterval": false
             }
         ],
+        "HeightReference": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumHeightReference",
+                        "name": "value",
+                        "description": "The height reference."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.HeightReferenceToString(value));",
+                "needsInterval": false
+            }
+        ],
         "ClockRange": [
             {
                 "parameters": [

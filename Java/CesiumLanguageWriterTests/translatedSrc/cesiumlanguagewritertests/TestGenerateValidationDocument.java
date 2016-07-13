@@ -231,6 +231,15 @@ public class TestGenerateValidationDocument {
 							}
 						}
 						{
+							cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+							try {
+								w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+								TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+							} finally {
+								DisposeHelper.dispose(w2);
+							}
+						}
+						{
 							cesiumlanguagewriter.ColorCesiumWriter w2 = w.openColorProperty();
 							try {
 								w2.writeRgba(ColorHelper.fromArgb(1, 2, 3, 4));
@@ -1001,6 +1010,15 @@ public class TestGenerateValidationDocument {
 							}
 						}
 						{
+							cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+							try {
+								w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+								TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+							} finally {
+								DisposeHelper.dispose(w2);
+							}
+						}
+						{
 							cesiumlanguagewriter.ColorCesiumWriter w2 = w.openFillColorProperty();
 							try {
 								w2.writeRgba(ColorHelper.fromArgb(45, 46, 47, 48));
@@ -1111,6 +1129,15 @@ public class TestGenerateValidationDocument {
 							try {
 								w2.writeBoolean(true);
 								TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.runAnimations.getValue(date)).toEqual(true);");
+							} finally {
+								DisposeHelper.dispose(w2);
+							}
+						}
+						{
+							cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+							try {
+								w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+								TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
 							} finally {
 								DisposeHelper.dispose(w2);
 							}
@@ -1256,6 +1283,15 @@ public class TestGenerateValidationDocument {
 							try {
 								w2.writeNumber(39.0);
 								TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.point.pixelSize.getValue(date)).toEqual(39.0);");
+							} finally {
+								DisposeHelper.dispose(w2);
+							}
+						}
+						{
+							cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+							try {
+								w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+								TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.point.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
 							} finally {
 								DisposeHelper.dispose(w2);
 							}
@@ -15991,6 +16027,15 @@ public class TestGenerateValidationDocument {
 							}
 						}
 						{
+							cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+							try {
+								w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("billboard", "heightReference")));
+								TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.heightReference.getValue(date)).toEqual(constant.billboard.heightReference.getValue(date));");
+							} finally {
+								DisposeHelper.dispose(w2);
+							}
+						}
+						{
 							cesiumlanguagewriter.ColorCesiumWriter w2 = w.openColorProperty();
 							try {
 								w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("billboard", "color")));
@@ -16772,6 +16817,15 @@ public class TestGenerateValidationDocument {
 							}
 						}
 						{
+							cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+							try {
+								w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("label", "heightReference")));
+								TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.heightReference.getValue(date)).toEqual(constant.label.heightReference.getValue(date));");
+							} finally {
+								DisposeHelper.dispose(w2);
+							}
+						}
+						{
 							cesiumlanguagewriter.ColorCesiumWriter w2 = w.openFillColorProperty();
 							try {
 								w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("label", "fillColor")));
@@ -16885,6 +16939,15 @@ public class TestGenerateValidationDocument {
 							try {
 								w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("model", "runAnimations")));
 								TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.runAnimations.getValue(date)).toEqual(constant.model.runAnimations.getValue(date));");
+							} finally {
+								DisposeHelper.dispose(w2);
+							}
+						}
+						{
+							cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+							try {
+								w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("model", "heightReference")));
+								TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.heightReference.getValue(date)).toEqual(constant.model.heightReference.getValue(date));");
 							} finally {
 								DisposeHelper.dispose(w2);
 							}
@@ -17033,6 +17096,15 @@ public class TestGenerateValidationDocument {
 							try {
 								w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("point", "pixelSize")));
 								TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.point.pixelSize.getValue(date)).toEqual(constant.point.pixelSize.getValue(date));");
+							} finally {
+								DisposeHelper.dispose(w2);
+							}
+						}
+						{
+							cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+							try {
+								w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("point", "heightReference")));
+								TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.point.heightReference.getValue(date)).toEqual(constant.point.heightReference.getValue(date));");
 							} finally {
 								DisposeHelper.dispose(w2);
 							}

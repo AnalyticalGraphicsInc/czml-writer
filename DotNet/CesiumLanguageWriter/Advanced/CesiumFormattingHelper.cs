@@ -180,33 +180,31 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Converts a <see cref="CesiumStripeOrientation"/> to the corresponding string in a
-        /// CZML stream.
+        /// Converts a <see cref="CesiumStripeOrientation"/> to the corresponding string in a CZML stream.
         /// </summary>
-        /// <param name="orientation">The orientation to convert.</param>
-        /// <returns>The string representation of the specified <see cref="CesiumStripeOrientation"/>.</returns>
-        public static string StripeOrientationToString(CesiumStripeOrientation orientation)
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        public static string StripeOrientationToString(CesiumStripeOrientation value)
         {
-            switch (orientation)
+            switch (value)
             {
                 case CesiumStripeOrientation.Horizontal:
                     return "HORIZONTAL";
                 case CesiumStripeOrientation.Vertical:
                     return "VERTICAL";
                 default:
-                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "orientation");
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
             }
         }
 
         /// <summary>
-        /// Converts a <see cref="CesiumHorizontalOrigin"/> to the corresponding string in a
-        /// CZML stream.
+        /// Converts a <see cref="CesiumHorizontalOrigin"/> to the corresponding string in a CZML stream.
         /// </summary>
-        /// <param name="horizontalOrigin">The horizontal origin to convert.</param>
-        /// <returns>The string representation of the specified <see cref="CesiumHorizontalOrigin"/>.</returns>
-        public static string HorizontalOriginToString(CesiumHorizontalOrigin horizontalOrigin)
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        public static string HorizontalOriginToString(CesiumHorizontalOrigin value)
         {
-            switch (horizontalOrigin)
+            switch (value)
             {
                 case CesiumHorizontalOrigin.Left:
                     return "LEFT";
@@ -215,19 +213,18 @@ namespace CesiumLanguageWriter.Advanced
                 case CesiumHorizontalOrigin.Right:
                     return "RIGHT";
                 default:
-                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "horizontalOrigin");
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
             }
         }
 
         /// <summary>
-        /// Converts a <see cref="CesiumVerticalOrigin"/> to the corresponding string in a
-        /// CZML stream.
+        /// Converts a <see cref="CesiumVerticalOrigin"/> to the corresponding string in a CZML stream.
         /// </summary>
-        /// <param name="verticalOrigin">The vertical origin to convert.</param>
-        /// <returns>The string representation of the specified <see cref="CesiumVerticalOrigin"/>.</returns>
-        public static string VerticalOriginToString(CesiumVerticalOrigin verticalOrigin)
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        public static string VerticalOriginToString(CesiumVerticalOrigin value)
         {
-            switch (verticalOrigin)
+            switch (value)
             {
                 case CesiumVerticalOrigin.Bottom:
                     return "BOTTOM";
@@ -236,19 +233,38 @@ namespace CesiumLanguageWriter.Advanced
                 case CesiumVerticalOrigin.Top:
                     return "TOP";
                 default:
-                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "verticalOrigin");
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
             }
         }
 
         /// <summary>
-        /// Converts a <see cref="CesiumInterpolationAlgorithm"/> to the corresponding string in a
-        /// CZML stream.
+        /// Converts a <see cref="CesiumHeightReference"/> to the corresponding string in a CZML stream.
         /// </summary>
-        /// <param name="interpolationAlgorithm">The interpolation algorithm to convert.</param>
-        /// <returns>The string representing the specified <see cref="CesiumInterpolationAlgorithm"/>.</returns>
-        public static string InterpolationAlgorithmToString(CesiumInterpolationAlgorithm interpolationAlgorithm)
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        public static string HeightReferenceToString(CesiumHeightReference value)
         {
-            switch (interpolationAlgorithm)
+            switch (value)
+            {
+                case CesiumHeightReference.None:
+                    return "NONE";
+                case CesiumHeightReference.ClampToGround:
+                    return "CLAMP_TO_GROUND";
+                case CesiumHeightReference.RelativeToGround:
+                    return "RELATIVE_TO_GROUND";
+                default:
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
+            }
+        }
+
+        /// <summary>
+        /// Converts a <see cref="CesiumInterpolationAlgorithm"/> to the corresponding string in a CZML stream.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        public static string InterpolationAlgorithmToString(CesiumInterpolationAlgorithm value)
+        {
+            switch (value)
             {
                 case CesiumInterpolationAlgorithm.Linear:
                     return "LINEAR";
@@ -257,19 +273,18 @@ namespace CesiumLanguageWriter.Advanced
                 case CesiumInterpolationAlgorithm.Hermite:
                     return "HERMITE";
                 default:
-                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "interpolationAlgorithm");
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
             }
         }
 
         /// <summary>
-        /// Converts a <see cref="CesiumExtrapolationType"/> to the corresponding string in a
-        /// CZML stream.
+        /// Converts a <see cref="CesiumExtrapolationType"/> to the corresponding string in a CZML stream.
         /// </summary>
-        /// <param name="extrapolationType">The value to convert.</param>
-        /// <returns>The string representing the specified <see cref="CesiumExtrapolationType"/>.</returns>
-        public static string ExtrapolationTypeToString(CesiumExtrapolationType extrapolationType)
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        public static string ExtrapolationTypeToString(CesiumExtrapolationType value)
         {
-            switch (extrapolationType)
+            switch (value)
             {
                 case CesiumExtrapolationType.None:
                     return "NONE";
@@ -278,19 +293,18 @@ namespace CesiumLanguageWriter.Advanced
                 case CesiumExtrapolationType.Extrapolate:
                     return "EXTRAPOLATE";
                 default:
-                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "extrapolationType");
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
             }
         }
 
         /// <summary>
-        /// Converts a <see cref="ClockRange"/> to the corresponding string in a
-        /// CZML stream.
+        /// Converts a <see cref="ClockRange"/> to the corresponding string in a CZML stream.
         /// </summary>
-        /// <param name="clockRange">The label style to convert.</param>
-        /// <returns>The string representing the specified <see cref="CesiumLabelStyle"/>.</returns>
-        public static string ClockRangeToString(ClockRange clockRange)
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        public static string ClockRangeToString(ClockRange value)
         {
-            switch (clockRange)
+            switch (value)
             {
                 case ClockRange.Clamped:
                     return "CLAMPED";
@@ -299,19 +313,18 @@ namespace CesiumLanguageWriter.Advanced
                 case ClockRange.LoopStop:
                     return "LOOP_STOP";
                 default:
-                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "clockRange");
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
             }
         }
 
         /// <summary>
-        /// Converts a <see cref="ClockStep"/> to the corresponding string in a
-        /// CZML stream.
+        /// Converts a <see cref="ClockStep"/> to the corresponding string in a CZML stream.
         /// </summary>
-        /// <param name="clockStep">The label style to convert.</param>
-        /// <returns>The string representing the specified <see cref="CesiumLabelStyle"/>.</returns>
-        public static string ClockStepToString(ClockStep clockStep)
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        public static string ClockStepToString(ClockStep value)
         {
-            switch (clockStep)
+            switch (value)
             {
                 case ClockStep.SystemClock:
                     return "SYSTEM_CLOCK";
@@ -320,19 +333,18 @@ namespace CesiumLanguageWriter.Advanced
                 case ClockStep.TickDependent:
                     return "TICK_DEPENDENT";
                 default:
-                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "clockStep");
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
             }
         }
 
         /// <summary>
-        /// Converts a <see cref="CesiumLabelStyle"/> to the corresponding string in a
-        /// CZML stream.
+        /// Converts a <see cref="CesiumLabelStyle"/> to the corresponding string in a CZML stream.
         /// </summary>
-        /// <param name="labelStyle">The label style to convert.</param>
-        /// <returns>The string representing the specified <see cref="CesiumLabelStyle"/>.</returns>
-        public static string LabelStyleToString(CesiumLabelStyle labelStyle)
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        public static string LabelStyleToString(CesiumLabelStyle value)
         {
-            switch (labelStyle)
+            switch (value)
             {
                 case CesiumLabelStyle.Fill:
                     return "FILL";
@@ -341,19 +353,18 @@ namespace CesiumLanguageWriter.Advanced
                 case CesiumLabelStyle.FillAndOutline:
                     return "FILL_AND_OUTLINE";
                 default:
-                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "labelStyle");
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
             }
         }
 
         /// <summary>
-        /// Converts a <see cref="CesiumCornerType"/> to the corresponding string in a
-        /// CZML stream.
+        /// Converts a <see cref="CesiumCornerType"/> to the corresponding string in a CZML stream.
         /// </summary>
-        /// <param name="cornerType">The label style to convert.</param>
-        /// <returns>The string representing the specified <see cref="CesiumCornerType"/>.</returns>
-        public static string CornerTypeToString(CesiumCornerType cornerType)
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        public static string CornerTypeToString(CesiumCornerType value)
         {
-            switch (cornerType)
+            switch (value)
             {
                 case CesiumCornerType.Rounded:
                     return "ROUNDED";
@@ -362,19 +373,18 @@ namespace CesiumLanguageWriter.Advanced
                 case CesiumCornerType.Beveled:
                     return "BEVELED";
                 default:
-                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "cornerType");
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
             }
         }
 
         /// <summary>
-        /// Converts a <see cref="CesiumLabelStyle"/> to the corresponding string in a
-        /// CZML stream.
+        /// Converts a <see cref="CesiumSensorVolumePortionToDisplay"/> to the corresponding string in a CZML stream.
         /// </summary>
-        /// <param name="portionToDisplay">The value to convert.</param>
-        /// <returns>The string representing the specified <see cref="CesiumSensorVolumePortionToDisplay"/>.</returns>
-        public static string SensorVolumePortionToDisplayToString(CesiumSensorVolumePortionToDisplay portionToDisplay)
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        public static string SensorVolumePortionToDisplayToString(CesiumSensorVolumePortionToDisplay value)
         {
-            switch (portionToDisplay)
+            switch (value)
             {
                 case CesiumSensorVolumePortionToDisplay.Complete:
                     return "COMPLETE";
@@ -383,7 +393,7 @@ namespace CesiumLanguageWriter.Advanced
                 case CesiumSensorVolumePortionToDisplay.BelowEllipsoidHorizon:
                     return "BELOW_ELLIPSOID_HORIZON";
                 default:
-                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "portionToDisplay");
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
             }
         }
 

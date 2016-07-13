@@ -1,0 +1,10 @@
+{
+    "title": "HeightReference",
+    "description": "The height reference of an object, which indicates if the object's position is relative to terrain or not.",
+    "type": "string",
+    "enum": [
+        "NONE",
+        "CLAMP_TO_GROUND",
+        "RELATIVE_TO_GROUND"
+    ]
+}

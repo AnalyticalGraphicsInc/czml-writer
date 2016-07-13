@@ -24,6 +24,11 @@ namespace CesiumLanguageWriter
         public const string PixelSizePropertyName = "pixelSize";
 
         /// <summary>
+        /// The name of the <code>heightReference</code> property.
+        /// </summary>
+        public const string HeightReferencePropertyName = "heightReference";
+
+        /// <summary>
         /// The name of the <code>color</code> property.
         /// </summary>
         public const string ColorPropertyName = "color";
@@ -50,6 +55,7 @@ namespace CesiumLanguageWriter
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_pixelSize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(PixelSizePropertyName), false);
+        private readonly Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(HeightReferencePropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
@@ -260,6 +266,85 @@ namespace CesiumLanguageWriter
         public void WritePixelSizePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenPixelSizeProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>heightReference</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>heightReference</code> property defines the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// </summary>
+        public HeightReferenceCesiumWriter HeightReferenceWriter
+        {
+            get { return m_heightReference.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>heightReference</code> property.  The <code>heightReference</code> property defines the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// </summary>
+        public HeightReferenceCesiumWriter OpenHeightReferenceProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(HeightReferenceWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>heightReference</code> property as a <code>heightReference</code> value.  The <code>heightReference</code> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="value">The height reference.</param>
+        public void WriteHeightReferenceProperty(CesiumHeightReference value)
+        {
+            using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteHeightReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteHeightReferencePropertyReference(Reference value)
+        {
+            using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteHeightReferencePropertyReference(string value)
+        {
+            using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteHeightReferencePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteHeightReferencePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenHeightReferenceProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
