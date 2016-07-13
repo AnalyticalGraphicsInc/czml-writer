@@ -74,6 +74,7 @@
     <Compile Include="Cartographic.cs" />
     <Compile Include="CartographicExtent.cs" />
     <Compile Include="CesiumCornerType.cs" />
+    <Compile Include="CesiumHeightReference.cs" />
     <Compile Include="CesiumSensorVolumePortionToDisplay.cs" />
     <Compile Include="CesiumStripeOrientation.cs" />
     <Compile Include="CesiumResource.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Generated\FanCesiumWriter.cs" />
     <Compile Include="Generated\FontCesiumWriter.cs" />
     <Compile Include="Generated\GridMaterialCesiumWriter.cs" />
+    <Compile Include="Generated\HeightReferenceCesiumWriter.cs" />
     <Compile Include="Generated\HorizontalOriginCesiumWriter.cs" />
     <Compile Include="Generated\ImageMaterialCesiumWriter.cs" />
     <Compile Include="Generated\LabelCesiumWriter.cs" />

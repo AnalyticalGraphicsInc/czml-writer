@@ -146,6 +146,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteVerticalOrigin(CesiumVerticalOrigin.Bottom);
                         m_assertionsWriter.WriteLine("    expect(e.billboard.verticalOrigin.getValue(date)).toEqual(VerticalOrigin.BOTTOM);");
                     }
+                    using (var w2 = w.OpenHeightReferenceProperty())
+                    {
+                        w2.WriteHeightReference(CesiumHeightReference.ClampToGround);
+                        m_assertionsWriter.WriteLine("    expect(e.billboard.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                    }
                     using (var w2 = w.OpenColorProperty())
                     {
                         w2.WriteRgba(Color.FromArgb(18, 19, 20, 21));
@@ -559,6 +564,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteVerticalOrigin(CesiumVerticalOrigin.Bottom);
                         m_assertionsWriter.WriteLine("    expect(e.label.verticalOrigin.getValue(date)).toEqual(VerticalOrigin.BOTTOM);");
                     }
+                    using (var w2 = w.OpenHeightReferenceProperty())
+                    {
+                        w2.WriteHeightReference(CesiumHeightReference.ClampToGround);
+                        m_assertionsWriter.WriteLine("    expect(e.label.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                    }
                     using (var w2 = w.OpenFillColorProperty())
                     {
                         w2.WriteRgba(Color.FromArgb(129, 130, 131, 132));
@@ -621,6 +631,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteBoolean(true);
                         m_assertionsWriter.WriteLine("    expect(e.model.runAnimations.getValue(date)).toEqual(true);");
+                    }
+                    using (var w2 = w.OpenHeightReferenceProperty())
+                    {
+                        w2.WriteHeightReference(CesiumHeightReference.ClampToGround);
+                        m_assertionsWriter.WriteLine("    expect(e.model.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
                     }
                     using (var w2 = w.OpenNodeTransformationsProperty())
                     {
@@ -694,6 +709,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteNumber(168.0);
                         m_assertionsWriter.WriteLine("    expect(e.point.pixelSize.getValue(date)).toEqual(168.0);");
+                    }
+                    using (var w2 = w.OpenHeightReferenceProperty())
+                    {
+                        w2.WriteHeightReference(CesiumHeightReference.ClampToGround);
+                        m_assertionsWriter.WriteLine("    expect(e.point.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
                     }
                     using (var w2 = w.OpenColorProperty())
                     {
@@ -6674,6 +6694,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("billboard", "verticalOrigin")));
                         m_assertionsWriter.WriteLine("    expect(e.billboard.verticalOrigin.getValue(date)).toEqual(constant.billboard.verticalOrigin.getValue(date));");
                     }
+                    using (var w2 = w.OpenHeightReferenceProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("billboard", "heightReference")));
+                        m_assertionsWriter.WriteLine("    expect(e.billboard.heightReference.getValue(date)).toEqual(constant.billboard.heightReference.getValue(date));");
+                    }
                     using (var w2 = w.OpenColorProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("billboard", "color")));
@@ -7077,6 +7102,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("label", "verticalOrigin")));
                         m_assertionsWriter.WriteLine("    expect(e.label.verticalOrigin.getValue(date)).toEqual(constant.label.verticalOrigin.getValue(date));");
                     }
+                    using (var w2 = w.OpenHeightReferenceProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("label", "heightReference")));
+                        m_assertionsWriter.WriteLine("    expect(e.label.heightReference.getValue(date)).toEqual(constant.label.heightReference.getValue(date));");
+                    }
                     using (var w2 = w.OpenFillColorProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("label", "fillColor")));
@@ -7139,6 +7169,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("model", "runAnimations")));
                         m_assertionsWriter.WriteLine("    expect(e.model.runAnimations.getValue(date)).toEqual(constant.model.runAnimations.getValue(date));");
+                    }
+                    using (var w2 = w.OpenHeightReferenceProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("model", "heightReference")));
+                        m_assertionsWriter.WriteLine("    expect(e.model.heightReference.getValue(date)).toEqual(constant.model.heightReference.getValue(date));");
                     }
                     using (var w2 = w.OpenNodeTransformationsProperty())
                     using (var a = w2.OpenNodeTransformationProperty("referenceProp"))
@@ -7208,6 +7243,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("point", "pixelSize")));
                         m_assertionsWriter.WriteLine("    expect(e.point.pixelSize.getValue(date)).toEqual(constant.point.pixelSize.getValue(date));");
+                    }
+                    using (var w2 = w.OpenHeightReferenceProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("point", "heightReference")));
+                        m_assertionsWriter.WriteLine("    expect(e.point.heightReference.getValue(date)).toEqual(constant.point.heightReference.getValue(date));");
                     }
                     using (var w2 = w.OpenColorProperty())
                     {

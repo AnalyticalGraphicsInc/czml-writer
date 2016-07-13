@@ -1,0 +1,24 @@
+{
+    "title": "HeightReference",
+    "description": "The height reference of an object, which indicates if the object's position is relative to terrain or not.",
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "heightReference": {
+            "$ref": "HeightReferenceValue.jsonschema",
+            "description": "The height reference.  Valid values are \"NONE\", \"CLAMP_TO_GROUND\", and \"RELATIVE_TO_GROUND\".",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.jsonschema",
+            "description": "The height reference specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

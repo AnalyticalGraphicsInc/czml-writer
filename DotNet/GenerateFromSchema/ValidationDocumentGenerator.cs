@@ -1226,6 +1226,13 @@ namespace GenerateFromSchema
                     valueType = "CesiumHorizontalOrigin";
                     return;
                 }
+                case "HeightReference":
+                {
+                    value = "CesiumHeightReference.ClampToGround";
+                    assertionValue = "HeightReference.CLAMP_TO_GROUND";
+                    valueType = "CesiumHeightReference";
+                    return;
+                }
                 case "LabelStyle":
                 {
                     value = "CesiumLabelStyle.FillAndOutline";

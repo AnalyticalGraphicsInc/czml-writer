@@ -19,6 +19,11 @@
             "description": "The size of the point, in pixels.",
             "default": 1.0
         },
+        "heightReference": {
+            "$ref": "HeightReference.jsonschema",
+            "description": "The height reference of the point, which indicates if the position is relative to terrain or not.",
+            "default": "NONE"
+        },
         "color": {
             "$ref": "Color.jsonschema",
             "description": "The color of the point."

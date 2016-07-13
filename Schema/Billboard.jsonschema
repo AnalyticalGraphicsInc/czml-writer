@@ -44,6 +44,11 @@
             "description": "The vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the `position`.",
             "default": "CENTER"
         },
+        "heightReference": {
+            "$ref": "HeightReference.jsonschema",
+            "description": "The height reference of the billboard, which indicates if the position is relative to terrain or not.",
+            "default": "NONE"
+        },
         "color": {
             "$ref": "Color.jsonschema",
             "description": "The color of the billboard.  This color value is multiplied with the values of the billboard's \"image\" to produce the final color."
