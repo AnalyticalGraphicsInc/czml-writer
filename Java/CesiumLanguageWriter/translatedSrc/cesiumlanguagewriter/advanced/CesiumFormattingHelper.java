@@ -239,17 +239,16 @@ public final class CesiumFormattingHelper {
 
 	/**
 	 *  
-	Converts a  {@link CesiumStripeOrientation} to the corresponding string in a
-	CZML stream.
+	Converts a  {@link CesiumStripeOrientation} to the corresponding string in a CZML stream.
 	
 	
 	
 
-	 * @param orientation The orientation to convert.
-	 * @return The string representation of the specified  {@link CesiumStripeOrientation}.
+	 * @param value The value to convert.
+	 * @return The string representing the specified value.
 	 */
-	public static String stripeOrientationToString(CesiumStripeOrientation orientation) {
-		switch (orientation) {
+	public static String stripeOrientationToString(CesiumStripeOrientation value) {
+		switch (value) {
 		case HORIZONTAL: {
 			return "HORIZONTAL";
 		}
@@ -257,24 +256,23 @@ public final class CesiumFormattingHelper {
 			return "VERTICAL";
 		}
 		default: {
-			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "orientation");
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
 		}
 		}
 	}
 
 	/**
 	 *  
-	Converts a  {@link CesiumHorizontalOrigin} to the corresponding string in a
-	CZML stream.
+	Converts a  {@link CesiumHorizontalOrigin} to the corresponding string in a CZML stream.
 	
 	
 	
 
-	 * @param horizontalOrigin The horizontal origin to convert.
-	 * @return The string representation of the specified  {@link CesiumHorizontalOrigin}.
+	 * @param value The value to convert.
+	 * @return The string representing the specified value.
 	 */
-	public static String horizontalOriginToString(CesiumHorizontalOrigin horizontalOrigin) {
-		switch (horizontalOrigin) {
+	public static String horizontalOriginToString(CesiumHorizontalOrigin value) {
+		switch (value) {
 		case LEFT: {
 			return "LEFT";
 		}
@@ -285,24 +283,23 @@ public final class CesiumFormattingHelper {
 			return "RIGHT";
 		}
 		default: {
-			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "horizontalOrigin");
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
 		}
 		}
 	}
 
 	/**
 	 *  
-	Converts a  {@link CesiumVerticalOrigin} to the corresponding string in a
-	CZML stream.
+	Converts a  {@link CesiumVerticalOrigin} to the corresponding string in a CZML stream.
 	
 	
 	
 
-	 * @param verticalOrigin The vertical origin to convert.
-	 * @return The string representation of the specified  {@link CesiumVerticalOrigin}.
+	 * @param value The value to convert.
+	 * @return The string representing the specified value.
 	 */
-	public static String verticalOriginToString(CesiumVerticalOrigin verticalOrigin) {
-		switch (verticalOrigin) {
+	public static String verticalOriginToString(CesiumVerticalOrigin value) {
+		switch (value) {
 		case BOTTOM: {
 			return "BOTTOM";
 		}
@@ -313,24 +310,50 @@ public final class CesiumFormattingHelper {
 			return "TOP";
 		}
 		default: {
-			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "verticalOrigin");
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
 		}
 		}
 	}
 
 	/**
 	 *  
-	Converts a  {@link CesiumInterpolationAlgorithm} to the corresponding string in a
-	CZML stream.
+	Converts a  {@link CesiumHeightReference} to the corresponding string in a CZML stream.
 	
 	
 	
 
-	 * @param interpolationAlgorithm The interpolation algorithm to convert.
-	 * @return The string representing the specified  {@link CesiumInterpolationAlgorithm}.
+	 * @param value The value to convert.
+	 * @return The string representing the specified value.
 	 */
-	public static String interpolationAlgorithmToString(CesiumInterpolationAlgorithm interpolationAlgorithm) {
-		switch (interpolationAlgorithm) {
+	public static String heightReferenceToString(CesiumHeightReference value) {
+		switch (value) {
+		case NONE: {
+			return "NONE";
+		}
+		case CLAMP_TO_GROUND: {
+			return "CLAMP_TO_GROUND";
+		}
+		case RELATIVE_TO_GROUND: {
+			return "RELATIVE_TO_GROUND";
+		}
+		default: {
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
+		}
+		}
+	}
+
+	/**
+	 *  
+	Converts a  {@link CesiumInterpolationAlgorithm} to the corresponding string in a CZML stream.
+	
+	
+	
+
+	 * @param value The value to convert.
+	 * @return The string representing the specified value.
+	 */
+	public static String interpolationAlgorithmToString(CesiumInterpolationAlgorithm value) {
+		switch (value) {
 		case LINEAR: {
 			return "LINEAR";
 		}
@@ -341,24 +364,23 @@ public final class CesiumFormattingHelper {
 			return "HERMITE";
 		}
 		default: {
-			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "interpolationAlgorithm");
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
 		}
 		}
 	}
 
 	/**
 	 *  
-	Converts a  {@link CesiumExtrapolationType} to the corresponding string in a
-	CZML stream.
+	Converts a  {@link CesiumExtrapolationType} to the corresponding string in a CZML stream.
 	
 	
 	
 
-	 * @param extrapolationType The value to convert.
-	 * @return The string representing the specified  {@link CesiumExtrapolationType}.
+	 * @param value The value to convert.
+	 * @return The string representing the specified value.
 	 */
-	public static String extrapolationTypeToString(CesiumExtrapolationType extrapolationType) {
-		switch (extrapolationType) {
+	public static String extrapolationTypeToString(CesiumExtrapolationType value) {
+		switch (value) {
 		case NONE: {
 			return "NONE";
 		}
@@ -369,24 +391,23 @@ public final class CesiumFormattingHelper {
 			return "EXTRAPOLATE";
 		}
 		default: {
-			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "extrapolationType");
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
 		}
 		}
 	}
 
 	/**
 	 *  
-	Converts a  {@link ClockRange} to the corresponding string in a
-	CZML stream.
+	Converts a  {@link ClockRange} to the corresponding string in a CZML stream.
 	
 	
 	
 
-	 * @param clockRange The label style to convert.
-	 * @return The string representing the specified  {@link CesiumLabelStyle}.
+	 * @param value The value to convert.
+	 * @return The string representing the specified value.
 	 */
-	public static String clockRangeToString(ClockRange clockRange) {
-		switch (clockRange) {
+	public static String clockRangeToString(ClockRange value) {
+		switch (value) {
 		case CLAMPED: {
 			return "CLAMPED";
 		}
@@ -397,24 +418,23 @@ public final class CesiumFormattingHelper {
 			return "LOOP_STOP";
 		}
 		default: {
-			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "clockRange");
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
 		}
 		}
 	}
 
 	/**
 	 *  
-	Converts a  {@link ClockStep} to the corresponding string in a
-	CZML stream.
+	Converts a  {@link ClockStep} to the corresponding string in a CZML stream.
 	
 	
 	
 
-	 * @param clockStep The label style to convert.
-	 * @return The string representing the specified  {@link CesiumLabelStyle}.
+	 * @param value The value to convert.
+	 * @return The string representing the specified value.
 	 */
-	public static String clockStepToString(ClockStep clockStep) {
-		switch (clockStep) {
+	public static String clockStepToString(ClockStep value) {
+		switch (value) {
 		case SYSTEM_CLOCK: {
 			return "SYSTEM_CLOCK";
 		}
@@ -425,24 +445,23 @@ public final class CesiumFormattingHelper {
 			return "TICK_DEPENDENT";
 		}
 		default: {
-			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "clockStep");
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
 		}
 		}
 	}
 
 	/**
 	 *  
-	Converts a  {@link CesiumLabelStyle} to the corresponding string in a
-	CZML stream.
+	Converts a  {@link CesiumLabelStyle} to the corresponding string in a CZML stream.
 	
 	
 	
 
-	 * @param labelStyle The label style to convert.
-	 * @return The string representing the specified  {@link CesiumLabelStyle}.
+	 * @param value The value to convert.
+	 * @return The string representing the specified value.
 	 */
-	public static String labelStyleToString(CesiumLabelStyle labelStyle) {
-		switch (labelStyle) {
+	public static String labelStyleToString(CesiumLabelStyle value) {
+		switch (value) {
 		case FILL: {
 			return "FILL";
 		}
@@ -453,24 +472,23 @@ public final class CesiumFormattingHelper {
 			return "FILL_AND_OUTLINE";
 		}
 		default: {
-			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "labelStyle");
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
 		}
 		}
 	}
 
 	/**
 	 *  
-	Converts a  {@link CesiumCornerType} to the corresponding string in a
-	CZML stream.
+	Converts a  {@link CesiumCornerType} to the corresponding string in a CZML stream.
 	
 	
 	
 
-	 * @param cornerType The label style to convert.
-	 * @return The string representing the specified  {@link CesiumCornerType}.
+	 * @param value The value to convert.
+	 * @return The string representing the specified value.
 	 */
-	public static String cornerTypeToString(CesiumCornerType cornerType) {
-		switch (cornerType) {
+	public static String cornerTypeToString(CesiumCornerType value) {
+		switch (value) {
 		case ROUNDED: {
 			return "ROUNDED";
 		}
@@ -481,24 +499,23 @@ public final class CesiumFormattingHelper {
 			return "BEVELED";
 		}
 		default: {
-			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "cornerType");
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
 		}
 		}
 	}
 
 	/**
 	 *  
-	Converts a  {@link CesiumLabelStyle} to the corresponding string in a
-	CZML stream.
+	Converts a  {@link CesiumSensorVolumePortionToDisplay} to the corresponding string in a CZML stream.
 	
 	
 	
 
-	 * @param portionToDisplay The value to convert.
-	 * @return The string representing the specified  {@link CesiumSensorVolumePortionToDisplay}.
+	 * @param value The value to convert.
+	 * @return The string representing the specified value.
 	 */
-	public static String sensorVolumePortionToDisplayToString(CesiumSensorVolumePortionToDisplay portionToDisplay) {
-		switch (portionToDisplay) {
+	public static String sensorVolumePortionToDisplayToString(CesiumSensorVolumePortionToDisplay value) {
+		switch (value) {
 		case COMPLETE: {
 			return "COMPLETE";
 		}
@@ -509,7 +526,7 @@ public final class CesiumFormattingHelper {
 			return "BELOW_ELLIPSOID_HORIZON";
 		}
 		default: {
-			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "portionToDisplay");
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
 		}
 		}
 	}

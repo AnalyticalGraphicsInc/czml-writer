@@ -12,6 +12,7 @@ import cesiumlanguagewriter.BoundingRectangleCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.EyeOffsetCesiumWriter;
+import cesiumlanguagewriter.HeightReferenceCesiumWriter;
 import cesiumlanguagewriter.HorizontalOriginCesiumWriter;
 import cesiumlanguagewriter.NearFarScalarCesiumWriter;
 import cesiumlanguagewriter.PixelOffsetCesiumWriter;
@@ -78,6 +79,13 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	 */
 	public static final String VerticalOriginPropertyName = "verticalOrigin";
+	/**
+	 *  
+	The name of the <code>heightReference</code> property.
+	
+
+	 */
+	public static final String HeightReferencePropertyName = "heightReference";
 	/**
 	 *  
 	The name of the <code>color</code> property.
@@ -181,6 +189,11 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	private Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<cesiumlanguagewriter.VerticalOriginCesiumWriter>(new Func1<cesiumlanguagewriter.VerticalOriginCesiumWriter>() {
 		public cesiumlanguagewriter.VerticalOriginCesiumWriter invoke() {
 			return new VerticalOriginCesiumWriter(VerticalOriginPropertyName);
+		}
+	}, false);
+	private Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<cesiumlanguagewriter.HeightReferenceCesiumWriter>(new Func1<cesiumlanguagewriter.HeightReferenceCesiumWriter>() {
+		public cesiumlanguagewriter.HeightReferenceCesiumWriter invoke() {
+			return new HeightReferenceCesiumWriter(HeightReferencePropertyName);
 		}
 	}, false);
 	private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
@@ -1369,6 +1382,125 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	public final void writeVerticalOriginPropertyReference(String identifier, String[] propertyNames) {
 		{
 			cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+			try {
+				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  Gets the writer for the <code>heightReference</code> property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The <code>heightReference</code> property defines the height reference of the billboard, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+	
+
+	 */
+	public final HeightReferenceCesiumWriter getHeightReferenceWriter() {
+		return m_heightReference.getValue();
+	}
+
+	/**
+	 *  
+	Opens and returns the writer for the <code>heightReference</code> property.  The <code>heightReference</code> property defines the height reference of the billboard, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+	
+
+	 */
+	public final HeightReferenceCesiumWriter openHeightReferenceProperty() {
+		openIntervalIfNecessary();
+		return this.<HeightReferenceCesiumWriter> openAndReturn(getHeightReferenceWriter());
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>heightReference</code> property as a <code>heightReference</code> value.  The <code>heightReference</code> property specifies the height reference of the billboard, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+	
+	
+
+	 * @param value The height reference.
+	 */
+	public final void writeHeightReferenceProperty(CesiumHeightReference value) {
+		{
+			cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+			try {
+				writer.writeHeightReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the billboard, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeHeightReferencePropertyReference(Reference value) {
+		{
+			cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the billboard, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeHeightReferencePropertyReference(String value) {
+		{
+			cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+			try {
+				writer.writeReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the billboard, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeHeightReferencePropertyReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+			try {
+				writer.writeReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the billboard, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeHeightReferencePropertyReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
 			} finally {
