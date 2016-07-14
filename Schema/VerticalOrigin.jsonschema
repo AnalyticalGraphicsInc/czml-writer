@@ -12,7 +12,7 @@
     "properties": {
         "verticalOrigin": {
             "$ref": "VerticalOriginValue.jsonschema",
-            "description": "The vertical origin.  Valid values are \"BOTTOM\", \"CENTER\", and \"TOP\".",
+            "description": "The vertical origin.",
             "czmlValue": true
         },
         "reference": {
