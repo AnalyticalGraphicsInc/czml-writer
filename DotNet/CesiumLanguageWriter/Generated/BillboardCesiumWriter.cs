@@ -1253,42 +1253,82 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// Writes a value for the <code>alignedAxis</code> property as a <code>unitCartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteAlignedAxisProperty(Cartesian value)
+        public void WriteAlignedAxisProperty(UnitCartesian value)
         {
             using (var writer = OpenAlignedAxisProperty())
             {
-                writer.WriteCartesian(value);
+                writer.WriteUnitCartesian(value);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// Writes a value for the <code>alignedAxis</code> property as a <code>unitCartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteAlignedAxisProperty(IList<JulianDate> dates, IList<Cartesian> values)
+        public void WriteAlignedAxisProperty(IList<JulianDate> dates, IList<UnitCartesian> values)
         {
             using (var writer = OpenAlignedAxisProperty())
             {
-                writer.WriteCartesian(dates, values);
+                writer.WriteUnitCartesian(dates, values);
             }
         }
 
         /// <summary>
-        /// Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// Writes a value for the <code>alignedAxis</code> property as a <code>unitCartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
         /// <param name="length">The number of elements to use from the `values` collection.</param>
-        public void WriteAlignedAxisProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        public void WriteAlignedAxisProperty(IList<JulianDate> dates, IList<UnitCartesian> values, int startIndex, int length)
         {
             using (var writer = OpenAlignedAxisProperty())
             {
-                writer.WriteCartesian(dates, values, startIndex, length);
+                writer.WriteUnitCartesian(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alignedAxis</code> property as a <code>unitSpherical</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteAlignedAxisPropertyUnitSpherical(UnitSpherical value)
+        {
+            using (var writer = OpenAlignedAxisProperty())
+            {
+                writer.WriteUnitSpherical(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alignedAxis</code> property as a <code>unitSpherical</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteAlignedAxisPropertyUnitSpherical(IList<JulianDate> dates, IList<UnitSpherical> values)
+        {
+            using (var writer = OpenAlignedAxisProperty())
+            {
+                writer.WriteUnitSpherical(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alignedAxis</code> property as a <code>unitSpherical</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
+        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        public void WriteAlignedAxisPropertyUnitSpherical(IList<JulianDate> dates, IList<UnitSpherical> values, int startIndex, int length)
+        {
+            using (var writer = OpenAlignedAxisProperty())
+            {
+                writer.WriteUnitSpherical(dates, values, startIndex, length);
             }
         }
 
@@ -1339,6 +1379,56 @@ namespace CesiumLanguageWriter
             using (var writer = OpenAlignedAxisProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alignedAxis</code> property as a <code>velocityReference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteAlignedAxisPropertyVelocityReference(Reference value)
+        {
+            using (var writer = OpenAlignedAxisProperty())
+            {
+                writer.WriteVelocityReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alignedAxis</code> property as a <code>velocityReference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteAlignedAxisPropertyVelocityReference(string value)
+        {
+            using (var writer = OpenAlignedAxisProperty())
+            {
+                writer.WriteVelocityReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alignedAxis</code> property as a <code>velocityReference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteAlignedAxisPropertyVelocityReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenAlignedAxisProperty())
+            {
+                writer.WriteVelocityReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>alignedAxis</code> property as a <code>velocityReference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteAlignedAxisPropertyVelocityReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenAlignedAxisProperty())
+            {
+                writer.WriteVelocityReference(identifier, propertyNames);
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Schema;
@@ -257,6 +258,7 @@ namespace GenerateFromSchema
                                 writer.WriteLine("WriteConstantValuesIndividual{0}();", property.NameWithPascalCase);
                             }
                         }
+
                         foreach (var property in schemaProperties)
                         {
                             writer.WriteLine("private void WriteConstantValuesIndividual{0}()", property.NameWithPascalCase);
@@ -269,12 +271,12 @@ namespace GenerateFromSchema
                                     propertyName = propertyName.Substring(property.ValueType.ExtensionPrefix.Length + 1);
 
                                 var properties = property.ValueType.Properties;
-                                foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
+                                foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.StartsWith("Reference")).Skip(1))
                                 {
                                     writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                     using (writer.OpenScope())
                                     {
-                                        string id = string.Format("constant{0}", s_counter++);
+                                        string id = GetUniqueString("constant");
                                         writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                         WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -293,12 +295,12 @@ namespace GenerateFromSchema
 
                                     properties = subProperty.ValueType.Properties;
 
-                                    foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
+                                    foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.StartsWith("Reference")).Skip(1))
                                     {
                                         writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                         using (writer.OpenScope())
                                         {
-                                            string id = string.Format("constant{0}", s_counter++);
+                                            string id = GetUniqueString("constant");
                                             writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                             WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -323,12 +325,12 @@ namespace GenerateFromSchema
                                         foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
                                         {
                                             properties = materialSubProperty.ValueType.Properties;
-                                            foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
+                                            foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.StartsWith("Reference")).Skip(1))
                                             {
                                                 writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
                                                 {
-                                                    string id = string.Format("constant{0}", s_counter++);
+                                                    string id = GetUniqueString("constant");
                                                     writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                     WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -354,7 +356,7 @@ namespace GenerateFromSchema
                                                 string id = string.Format("material_{0}_{1}_{2}", propertyName, subProperty.Name, materialProperty.Name);
                                                 writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
-                                                WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}'));", id);
+                                                WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
 
                                                 writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                                 writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
@@ -386,12 +388,12 @@ namespace GenerateFromSchema
                                             foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
                                             {
                                                 properties = materialSubProperty.ValueType.Properties;
-                                                foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
+                                                foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.StartsWith("Reference")).Skip(1))
                                                 {
                                                     writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                     using (writer.OpenScope())
                                                     {
-                                                        string id = string.Format("material_{0}_{1}_{2}_{3}", propertyName, subProperty.Name, materialProperty.Name, s_counter++);
+                                                        string id = GetUniqueString("material");
                                                         writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                         WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -416,17 +418,17 @@ namespace GenerateFromSchema
                                         foreach (var additionalProperty in additionalProperties.ValueType.Properties.Where(p => !p.IsValue))
                                         {
                                             properties = additionalProperty.ValueType.Properties;
-                                            foreach (var valueProperty in properties.Where(p => p.IsValue && !p.Name.StartsWith("reference")).Skip(1))
+                                            foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.StartsWith("Reference")).Skip(1))
                                             {
                                                 writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
                                                 {
-                                                    string id = string.Format("constant{0}", s_counter++);
+                                                    string id = GetUniqueString("constant");
                                                     writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                     WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
 
-                                                    string propName = string.Format("prop{0}", s_counter++);
+                                                    string propName = GetUniqueString("prop");
                                                     writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                                     writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
                                                     writer.WriteLine("using (var a = w2.Open{0}Property(\"{1}\"))", additionalProperties.ValueType.NameWithPascalCase, propName);
@@ -604,7 +606,90 @@ namespace GenerateFromSchema
                             {
                                 writer.WriteLine("WriteReferenceValuesIndividual{0}();", property.NameWithPascalCase);
                             }
+
+                            // special case - velocity reference
+                            writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
+                            using (writer.OpenScope())
+                            {
+                                writer.WriteLine("packet.WriteId(\"VelocityPosition\");");
+                                WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('VelocityPosition')).toBeDefined();");
+                                var property = schemaProperties.First(p => p.Name == "position");
+                                writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                using (writer.OpenScope())
+                                {
+                                    // construct a position with specific velocity
+                                    double dx = 1.0;
+                                    double dy = 2.0;
+                                    double dz = 3.0;
+                                    double deltaTime = 60.0;
+
+                                    double x1 = 1.0;
+                                    double x2 = x1 + dx * deltaTime;
+
+                                    double y1 = 2.0;
+                                    double y2 = y1 + dy * deltaTime;
+
+                                    double z1 = 3.0;
+                                    double z2 = z1 + dz * deltaTime;
+
+                                    string value1 = string.Format("new Cartesian({0}, {1}, {2})", x1, y1, z1);
+                                    string assertionValue1 = string.Format("new Cartesian3({0}, {1}, {2})", x1, y1, z1);
+
+                                    string value2 = string.Format("new Cartesian({0}, {1}, {2})", x2, y2, z2);
+                                    string assertionValue2 = string.Format("new Cartesian3({0}, {1}, {2})", x2, y2, z2);
+
+                                    writer.WriteLine("w.WriteCartesian(CreateList(m_documentStartDate, m_documentStartDate.AddSeconds({0})), CreateList({1}, {2}));", deltaTime, value1, value2);
+                                    WriteAssertion(writer, false, "expect(e.position.getValue(documentStartDate)).toEqual({0});", assertionValue1);
+                                    WriteAssertion(writer, false, "expect(e.position.getValue(JulianDate.addSeconds(documentStartDate, {0}, new JulianDate()))).toEqual({1});", deltaTime, assertionValue2);
+                                }
+                            }
+
+                            foreach (var property in schemaProperties)
+                            {
+                                string propertyName = property.Name;
+
+                                bool isExtension = !string.IsNullOrEmpty(property.ValueType.ExtensionPrefix);
+                                if (isExtension)
+                                    propertyName = propertyName.Substring(property.ValueType.ExtensionPrefix.Length + 1);
+
+                                var properties = property.ValueType.Properties;
+
+                                foreach (var subProperty in properties.Where(p => !p.IsValue))
+                                {
+                                    properties = subProperty.ValueType.Properties;
+                                    if (properties.Any(p => p.Name == "velocityReference"))
+                                    {
+                                        writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
+                                        using (writer.OpenScope())
+                                        {
+                                            string id = GetUniqueString("velocityReference");
+                                            writer.WriteLine("packet.WriteId(\"{0}\");", id);
+
+                                            WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
+
+                                            writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
+                                            writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                            using (writer.OpenScope())
+                                            {
+                                                writer.WriteLine("w2.WriteVelocityReference(new Reference(\"VelocityPosition\", \"position\"));");
+
+                                                double expectedX = 1.0;
+                                                double expectedY = 2.0;
+                                                double expectedZ = 3.0;
+                                                bool isNormalized = subProperty.NameWithPascalCase == "AlignedAxis";
+                                                if (isNormalized)
+                                                {
+                                                    NormalizeCartesian(ref expectedX, ref expectedY, ref expectedZ);
+                                                }
+
+                                                WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(JulianDate.addSeconds(documentStartDate, 50, new JulianDate()))).toEqualEpsilon(new Cartesian3({2}, {3}, {4}), 1e-13);", propertyName, subProperty.Name, expectedX, expectedY, expectedZ);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
+
                         // write other materials as individual packets
                         foreach (var property in schemaProperties)
                         {
@@ -632,7 +717,7 @@ namespace GenerateFromSchema
                                             using (writer.OpenScope())
                                             {
                                                 string targetId = string.Format("material_{0}_{1}_{2}", propertyName, subProperty.Name, materialProperty.Name);
-                                                string id = string.Format("reference{0}", s_counter++);
+                                                string id = GetUniqueString("reference");
 
                                                 writer.WriteLine("packet.WriteId(\"{0}\");", id);
                                                 WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -772,7 +857,7 @@ namespace GenerateFromSchema
                                         writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                         using (writer.OpenScope())
                                         {
-                                            string id = string.Format("sampled{0}", s_counter++);
+                                            string id = GetUniqueString("sampled");
                                             writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                             WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -800,7 +885,7 @@ namespace GenerateFromSchema
                                                 writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
                                                 {
-                                                    string id = string.Format("sampled{0}", s_counter++);
+                                                    string id = GetUniqueString("sampled");
                                                     writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                     WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -830,7 +915,7 @@ namespace GenerateFromSchema
                                                     writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                     using (writer.OpenScope())
                                                     {
-                                                        string id = string.Format("sampledmaterial{0}", s_counter++);
+                                                        string id = GetUniqueString("sampled");
                                                         writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                         WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -853,7 +938,7 @@ namespace GenerateFromSchema
                                                 writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
                                                 {
-                                                    string id = string.Format("sampledmaterial{0}", s_counter++);
+                                                    string id = GetUniqueString("sampled");
                                                     writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                     WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -890,7 +975,7 @@ namespace GenerateFromSchema
                                                         writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                         using (writer.OpenScope())
                                                         {
-                                                            string id = string.Format("sampledmaterial{0}", s_counter++);
+                                                            string id = GetUniqueString("sampled");
                                                             writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                             WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -967,7 +1052,19 @@ namespace GenerateFromSchema
                            assertionEpsilon2 == null ? "" : string.Format(", {0}", assertionEpsilon2));
         }
 
-        private static int s_counter = 0;
+        private static string GetUniqueString(string prefix)
+        {
+            return string.Format("{0}{1}", prefix, GetUniqueNumber(prefix));
+        }
+
+        private static int GetUniqueNumber(string key)
+        {
+            int counter;
+            s_counters.TryGetValue(key, out counter);
+            return s_counters[key] = ++counter;
+        }
+
+        private static readonly Dictionary<string, int> s_counters = new Dictionary<string, int>();
 
         private static void GetUniqueValue(Property valueProperty, Property parentProperty, out string value, out string assertionValue, out string assertionEpsilon, out string valueType)
         {
@@ -984,14 +1081,14 @@ namespace GenerateFromSchema
                 }
                 case "Double":
                 {
-                    value = assertionValue = s_counter++.ToString("#.0");
+                    value = assertionValue = GetUniqueNumber("double").ToString("#.0");
                     valueType = "double";
                     return;
                 }
                 case "DoubleList":
                 {
-                    int v1 = s_counter++;
-                    int v2 = s_counter++;
+                    int v1 = GetUniqueNumber("doublelist");
+                    int v2 = GetUniqueNumber("doublelist");
                     value = string.Format("CreateList<double>({0}, {1})", v1, v2);
                     assertionValue = string.Format("[ {0}, {1} ]", v1, v2);
                     valueType = "List<double>";
@@ -999,7 +1096,7 @@ namespace GenerateFromSchema
                 }
                 case "String":
                 {
-                    string v = string.Format("string{0}", s_counter++);
+                    string v = string.Format("string{0}", GetUniqueNumber("string"));
                     value = string.Format("\"{0}\"", v);
                     assertionValue = string.Format("'{0}'", v);
                     valueType = "string";
@@ -1007,9 +1104,9 @@ namespace GenerateFromSchema
                 }
                 case "Cartesian3":
                 {
-                    int x = s_counter++;
-                    int y = s_counter++;
-                    int z = s_counter++;
+                    int x = GetUniqueNumber("cartesian");
+                    int y = GetUniqueNumber("cartesian");
+                    int z = GetUniqueNumber("cartesian");
                     value = string.Format("new Cartesian({0}, {1}, {2})", x, y, z);
                     assertionValue = string.Format("new Cartesian3({0}, {1}, {2})", x, y, z);
                     valueType = "Cartesian";
@@ -1017,12 +1114,12 @@ namespace GenerateFromSchema
                 }
                 case "Cartesian3List":
                 {
-                    int x1 = s_counter++;
-                    int y1 = s_counter++;
-                    int z1 = s_counter++;
-                    int x2 = s_counter++;
-                    int y2 = s_counter++;
-                    int z2 = s_counter++;
+                    int x1 = GetUniqueNumber("cartesianlist");
+                    int y1 = GetUniqueNumber("cartesianlist");
+                    int z1 = GetUniqueNumber("cartesianlist");
+                    int x2 = GetUniqueNumber("cartesianlist");
+                    int y2 = GetUniqueNumber("cartesianlist");
+                    int z2 = GetUniqueNumber("cartesianlist");
                     value = string.Format("CreateList(new Cartesian({0}, {1}, {2}), new Cartesian({3}, {4}, {5}))", x1, y1, z1, x2, y2, z2);
                     assertionValue = string.Format("[ {6}new Cartesian3({0}, {1}, {2}){7}, {6}new Cartesian3({3}, {4}, {5}){7} ]", x1, y1, z1, x2, y2, z2,
                                                    parentProperty.ValueType.Name == "DirectionList" ? "Spherical.fromCartesian3(" : "",
@@ -1032,15 +1129,10 @@ namespace GenerateFromSchema
                 }
                 case "UnitCartesian3":
                 {
-                    double x = s_counter++;
-                    double y = s_counter++;
-                    double z = s_counter++;
-
-                    double magnitude = Math.Sqrt(x * x + y * y + z * z);
-
-                    x /= magnitude;
-                    y /= magnitude;
-                    z /= magnitude;
+                    double x = GetUniqueNumber("unitcartesian");
+                    double y = GetUniqueNumber("unitcartesian");
+                    double z = GetUniqueNumber("unitcartesian");
+                    NormalizeCartesian(ref x, ref y, ref z);
 
                     value = string.Format("new UnitCartesian({0}, {1}, {2})", x, y, z);
                     assertionValue = string.Format("new Cartesian3({0}, {1}, {2})", x, y, z);
@@ -1050,24 +1142,16 @@ namespace GenerateFromSchema
                 }
                 case "UnitCartesian3List":
                 {
-                    double x1 = s_counter++;
-                    double y1 = s_counter++;
-                    double z1 = s_counter++;
+                    double x1 = GetUniqueNumber("unitcartesianlist");
+                    double y1 = GetUniqueNumber("unitcartesianlist");
+                    double z1 = GetUniqueNumber("unitcartesianlist");
+                    NormalizeCartesian(ref x1, ref y1, ref z1);
 
-                    double magnitude = Math.Sqrt(x1 * x1 + y1 * y1 + z1 * z1);
+                    double x2 = GetUniqueNumber("unitcartesianlist");
+                    double y2 = GetUniqueNumber("unitcartesianlist");
+                    double z2 = GetUniqueNumber("unitcartesianlist");
+                    NormalizeCartesian(ref x2, ref y2, ref z2);
 
-                    x1 /= magnitude;
-                    y1 /= magnitude;
-                    z1 /= magnitude;
-                    double x2 = s_counter++;
-                    double y2 = s_counter++;
-                    double z2 = s_counter++;
-
-                    magnitude = Math.Sqrt(x2 * x2 + y2 * y2 + z2 * z2);
-
-                    x2 /= magnitude;
-                    y2 /= magnitude;
-                    z2 /= magnitude;
                     value = string.Format("CreateList(new UnitCartesian({0}, {1}, {2}), new UnitCartesian({3}, {4}, {5}))", x1, y1, z1, x2, y2, z2);
                     assertionValue = string.Format("[ {6}new Cartesian3({0}, {1}, {2}){7}, {6}new Cartesian3({3}, {4}, {5}){7} ]", x1, y1, z1, x2, y2, z2,
                                                    parentProperty.ValueType.Name == "DirectionList" ? "Spherical.fromCartesian3(" : "",
@@ -1078,12 +1162,12 @@ namespace GenerateFromSchema
                 }
                 case "Cartesian3Velocity":
                 {
-                    int x = s_counter++;
-                    int y = s_counter++;
-                    int z = s_counter++;
-                    int dX = s_counter++;
-                    int dY = s_counter++;
-                    int dZ = s_counter++;
+                    int x = GetUniqueNumber("cartesianvelocity");
+                    int y = GetUniqueNumber("cartesianvelocity");
+                    int z = GetUniqueNumber("cartesianvelocity");
+                    int dX = GetUniqueNumber("cartesianvelocity");
+                    int dY = GetUniqueNumber("cartesianvelocity");
+                    int dZ = GetUniqueNumber("cartesianvelocity");
                     value = string.Format("new Motion<Cartesian>(new Cartesian({0}, {1}, {2}), new Cartesian({3}, {4}, {5}))", x, y, z, dX, dY, dZ);
                     assertionValue = string.Format("new Cartesian3({0}, {1}, {2})", x, y, z);
                     valueType = "Motion<Cartesian>";
@@ -1092,9 +1176,9 @@ namespace GenerateFromSchema
                 case "Cartographic":
                 {
                     bool isDegrees = valueProperty.Name == "cartographicDegrees";
-                    double longitude = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
-                    double latitude = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
-                    double height = s_counter++;
+                    double longitude = GetUniqueNumber("cartographic") % (isDegrees ? 45 : Math.PI / 2);
+                    double latitude = GetUniqueNumber("cartographic") % (isDegrees ? 45 : Math.PI / 2);
+                    double height = GetUniqueNumber("cartographic");
                     value = string.Format("new Cartographic({0}, {1}, {2})", longitude, latitude, height);
                     assertionValue = string.Format("Cartesian3.from{3}({0}, {1}, {2})", longitude, latitude, height,
                                                    isDegrees ? "Degrees" : "Radians");
@@ -1104,12 +1188,12 @@ namespace GenerateFromSchema
                 case "CartographicList":
                 {
                     bool isDegrees = valueProperty.Name == "cartographicDegrees";
-                    double longitude1 = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
-                    double latitude1 = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
-                    double height1 = s_counter++;
-                    double longitude2 = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
-                    double latitude2 = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
-                    double height2 = s_counter++;
+                    double longitude1 = GetUniqueNumber("cartographiclist") % (isDegrees ? 45 : Math.PI / 2);
+                    double latitude1 = GetUniqueNumber("cartographiclist") % (isDegrees ? 45 : Math.PI / 2);
+                    double height1 = GetUniqueNumber("cartographiclist");
+                    double longitude2 = GetUniqueNumber("cartographiclist") % (isDegrees ? 45 : Math.PI / 2);
+                    double latitude2 = GetUniqueNumber("cartographiclist") % (isDegrees ? 45 : Math.PI / 2);
+                    double height2 = GetUniqueNumber("cartographiclist");
                     value = string.Format("CreateList(new Cartographic({0}, {1}, {2}), new Cartographic({3}, {4}, {5}))", longitude1, latitude1, height1, longitude2, latitude2, height2);
                     assertionValue = string.Format("[ Cartesian3.from{6}({0}, {1}, {2}), Cartesian3.from{6}({3}, {4}, {5}) ]", longitude1, latitude1, height1, longitude2, latitude2, height2,
                                                    isDegrees ? "Degrees" : "Radians");
@@ -1118,8 +1202,8 @@ namespace GenerateFromSchema
                 }
                 case "Cartesian2":
                 {
-                    int x = s_counter++;
-                    int y = s_counter++;
+                    int x = GetUniqueNumber("cartesian2");
+                    int y = GetUniqueNumber("cartesian2");
                     value = string.Format("new Rectangular({0}, {1})", x, y);
                     assertionValue = string.Format("new Cartesian2({0}, {1})", x, y);
                     valueType = "Rectangular";
@@ -1127,9 +1211,9 @@ namespace GenerateFromSchema
                 }
                 case "Spherical":
                 {
-                    int clock = s_counter++;
-                    int cone = s_counter++;
-                    int magnitude = s_counter++;
+                    int clock = GetUniqueNumber("spherical");
+                    int cone = GetUniqueNumber("spherical");
+                    int magnitude = GetUniqueNumber("spherical");
                     value = string.Format("new Spherical({0}, {1}, {2})", clock, cone, magnitude);
                     assertionValue = string.Format("Cartesian3.fromSpherical(new Spherical({0}, {1}, {2}))", clock, cone, magnitude);
                     valueType = "Spherical";
@@ -1137,12 +1221,12 @@ namespace GenerateFromSchema
                 }
                 case "SphericalList":
                 {
-                    int clock1 = s_counter++;
-                    int cone1 = s_counter++;
-                    int magnitude1 = s_counter++;
-                    int clock2 = s_counter++;
-                    int cone2 = s_counter++;
-                    int magnitude2 = s_counter++;
+                    int clock1 = GetUniqueNumber("sphericallist");
+                    int cone1 = GetUniqueNumber("sphericallist");
+                    int magnitude1 = GetUniqueNumber("sphericallist");
+                    int clock2 = GetUniqueNumber("sphericallist");
+                    int cone2 = GetUniqueNumber("sphericallist");
+                    int magnitude2 = GetUniqueNumber("sphericallist");
                     value = string.Format("CreateList(new Spherical({0}, {1}, {2}), new Spherical({3}, {4}, {5}))", clock1, cone1, magnitude1, clock2, cone2, magnitude2);
                     assertionValue = string.Format("[ new Spherical({0}, {1}, {2}), new Spherical({3}, {4}, {5}) ]", clock1, cone1, magnitude1, clock2, cone2, magnitude2);
                     valueType = "List<Spherical>";
@@ -1150,8 +1234,8 @@ namespace GenerateFromSchema
                 }
                 case "UnitSpherical":
                 {
-                    int clock = s_counter++;
-                    int cone = s_counter++;
+                    int clock = GetUniqueNumber("unitspherical");
+                    int cone = GetUniqueNumber("unitspherical");
                     value = string.Format("new UnitSpherical({0}, {1})", clock, cone);
                     assertionValue = string.Format("Cartesian3.fromSpherical(new Spherical({0}, {1}))", clock, cone);
                     valueType = "UnitSpherical";
@@ -1159,10 +1243,10 @@ namespace GenerateFromSchema
                 }
                 case "UnitSphericalList":
                 {
-                    int clock1 = s_counter++;
-                    int cone1 = s_counter++;
-                    int clock2 = s_counter++;
-                    int cone2 = s_counter++;
+                    int clock1 = GetUniqueNumber("unitsphericallist");
+                    int cone1 = GetUniqueNumber("unitsphericallist");
+                    int clock2 = GetUniqueNumber("unitsphericallist");
+                    int cone2 = GetUniqueNumber("unitsphericallist");
                     value = string.Format("CreateList(new UnitSpherical({0}, {1}), new UnitSpherical({2}, {3}))", clock1, cone1, clock2, cone2);
                     assertionValue = string.Format("[ new Spherical({0}, {1}), new Spherical({2}, {3}) ]", clock1, cone1, clock2, cone2);
                     valueType = "List<UnitSpherical>";
@@ -1170,10 +1254,10 @@ namespace GenerateFromSchema
                 }
                 case "UnitQuaternion":
                 {
-                    double w = s_counter++;
-                    double x = s_counter++;
-                    double y = s_counter++;
-                    double z = s_counter++;
+                    double w = GetUniqueNumber("unitquaternion");
+                    double x = GetUniqueNumber("unitquaternion");
+                    double y = GetUniqueNumber("unitquaternion");
+                    double z = GetUniqueNumber("unitquaternion");
 
                     double magnitude = Math.Sqrt(w * w + x * x + y * y + z * z);
 
@@ -1189,10 +1273,10 @@ namespace GenerateFromSchema
                 }
                 case "Rgba":
                 {
-                    int a = s_counter++ % 255;
-                    int r = s_counter++ % 255;
-                    int g = s_counter++ % 255;
-                    int b = s_counter++ % 255;
+                    int a = GetUniqueNumber("rgba") % 255;
+                    int r = GetUniqueNumber("rgba") % 255;
+                    int g = GetUniqueNumber("rgba") % 255;
+                    int b = GetUniqueNumber("rgba") % 255;
 
                     value = string.Format("Color.FromArgb({0}, {1}, {2}, {3})", a, r, g, b);
                     assertionValue = string.Format("Color.fromBytes({0}, {1}, {2}, {3})", r, g, b, a);
@@ -1201,10 +1285,10 @@ namespace GenerateFromSchema
                 }
                 case "Rgbaf":
                 {
-                    int a = s_counter++ % 255;
-                    int r = s_counter++ % 255;
-                    int g = s_counter++ % 255;
-                    int b = s_counter++ % 255;
+                    int a = GetUniqueNumber("rgbaf") % 255;
+                    int r = GetUniqueNumber("rgbaf") % 255;
+                    int g = GetUniqueNumber("rgbaf") % 255;
+                    int b = GetUniqueNumber("rgbaf") % 255;
 
                     value = string.Format("Color.FromArgb({0}, {1}, {2}, {3})", a, r, g, b);
                     assertionValue = string.Format("new Color({0}, {1}, {2}, {3})", r / 255.0, g / 255.0, b / 255.0, a / 255.0);
@@ -1263,7 +1347,7 @@ namespace GenerateFromSchema
                 }
                 case "Font":
                 {
-                    string s = string.Format("{0}px sans-serif", s_counter++ % 25);
+                    string s = string.Format("{0}px sans-serif", (GetUniqueNumber("font") + 5) % 25);
                     value = string.Format("\"{0}\"", s);
                     assertionValue = string.Format("'{0}'", s);
                     valueType = "string";
@@ -1271,7 +1355,7 @@ namespace GenerateFromSchema
                 }
                 case "Uri":
                 {
-                    string s = string.Format("http://example.com/{0}", s_counter++);
+                    string s = string.Format("http://example.com/{0}", GetUniqueNumber("uri"));
                     value = string.Format("\"{0}\", CesiumResourceBehavior.LinkTo", s);
                     assertionValue = string.Format("'{0}'", s);
                     valueType = "string";
@@ -1279,10 +1363,10 @@ namespace GenerateFromSchema
                 }
                 case "NearFarScalar":
                 {
-                    int nearDistance = s_counter++;
-                    int nearValue = s_counter++;
-                    int farDistance = s_counter++;
-                    int farValue = s_counter++;
+                    int nearDistance = GetUniqueNumber("nearfarscalar");
+                    int nearValue = GetUniqueNumber("nearfarscalar");
+                    int farDistance = GetUniqueNumber("nearfarscalar");
+                    int farValue = GetUniqueNumber("nearfarscalar");
 
                     value = string.Format("new NearFarScalar({0}, {1}, {2}, {3})", nearDistance, nearValue, farDistance, farValue);
                     assertionValue = string.Format("new NearFarScalar({0}, {1}, {2}, {3})", nearDistance, nearValue, farDistance, farValue);
@@ -1291,10 +1375,10 @@ namespace GenerateFromSchema
                 }
                 case "BoundingRectangle":
                 {
-                    int x = s_counter++;
-                    int y = s_counter++;
-                    int width = s_counter++;
-                    int height = s_counter++;
+                    int x = GetUniqueNumber("boundingrectangle");
+                    int y = GetUniqueNumber("boundingrectangle");
+                    int width = GetUniqueNumber("boundingrectangle");
+                    int height = GetUniqueNumber("boundingrectangle");
 
                     value = string.Format("BoundingRectangle.FromWidthHeight({0}, {1}, {2}, {3})", x, y, width, height);
                     assertionValue = string.Format("new BoundingRectangle({0}, {1}, {2}, {3})", x, y, width, height);
@@ -1304,10 +1388,10 @@ namespace GenerateFromSchema
                 case "CartographicRectangle":
                 {
                     bool isDegrees = valueProperty.Name == "wsenDegrees";
-                    double w = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
-                    double s = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
-                    double e = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
-                    double n = s_counter++ % (isDegrees ? 45 : Math.PI / 2);
+                    double w = GetUniqueNumber("cartographicrectangle") % (isDegrees ? 45 : Math.PI / 2);
+                    double s = GetUniqueNumber("cartographicrectangle") % (isDegrees ? 45 : Math.PI / 2);
+                    double e = GetUniqueNumber("cartographicrectangle") % (isDegrees ? 45 : Math.PI / 2);
+                    double n = GetUniqueNumber("cartographicrectangle") % (isDegrees ? 45 : Math.PI / 2);
 
                     value = string.Format("new CartographicExtent({0}, {1}, {2}, {3})", w, s, e, n);
                     assertionValue = string.Format("{4}({0}, {1}, {2}, {3})", w, s, e, n,
@@ -1316,6 +1400,15 @@ namespace GenerateFromSchema
                     return;
                 }
             }
+        }
+
+        private static void NormalizeCartesian(ref double x, ref double y, ref double z)
+        {
+            double magnitude = Math.Sqrt(x * x + y * y + z * z);
+
+            x /= magnitude;
+            y /= magnitude;
+            z /= magnitude;
         }
 
         private static int s_assertionIndent = 0;

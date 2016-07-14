@@ -1976,17 +1976,17 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	Writes a value for the <code>alignedAxis</code> property as a <code>unitCartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
 	
 	
 
 	 * @param value The value.
 	 */
-	public final void writeAlignedAxisProperty(Cartesian value) {
+	public final void writeAlignedAxisProperty(UnitCartesian value) {
 		{
 			cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
 			try {
-				writer.writeCartesian(value);
+				writer.writeUnitCartesian(value);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -1995,7 +1995,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	Writes a value for the <code>alignedAxis</code> property as a <code>unitCartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
 	
 	
 	
@@ -2003,11 +2003,11 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	 * @param dates The dates at which the value is specified.
 	 * @param values The values corresponding to each date.
 	 */
-	public final void writeAlignedAxisProperty(List<JulianDate> dates, List<Cartesian> values) {
+	public final void writeAlignedAxisProperty(List<JulianDate> dates, List<UnitCartesian> values) {
 		{
 			cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
 			try {
-				writer.writeCartesian(dates, values);
+				writer.writeUnitCartesian(dates, values);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -2016,7 +2016,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
 	/**
 	 *  
-	Writes a value for the <code>alignedAxis</code> property as a <code>cartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	Writes a value for the <code>alignedAxis</code> property as a <code>unitCartesian</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
 	
 	
 	
@@ -2028,11 +2028,76 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 	 * @param startIndex The index of the first element to use in the `values` collection.
 	 * @param length The number of elements to use from the `values` collection.
 	 */
-	public final void writeAlignedAxisProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+	public final void writeAlignedAxisProperty(List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
 		{
 			cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
 			try {
-				writer.writeCartesian(dates, values, startIndex, length);
+				writer.writeUnitCartesian(dates, values, startIndex, length);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alignedAxis</code> property as a <code>unitSpherical</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	
+	
+
+	 * @param value The value.
+	 */
+	public final void writeAlignedAxisPropertyUnitSpherical(UnitSpherical value) {
+		{
+			cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+			try {
+				writer.writeUnitSpherical(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alignedAxis</code> property as a <code>unitSpherical</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 */
+	public final void writeAlignedAxisPropertyUnitSpherical(List<JulianDate> dates, List<UnitSpherical> values) {
+		{
+			cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+			try {
+				writer.writeUnitSpherical(dates, values);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alignedAxis</code> property as a <code>unitSpherical</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	
+	
+	
+	
+	
+
+	 * @param dates The dates at which the value is specified.
+	 * @param values The values corresponding to each date.
+	 * @param startIndex The index of the first element to use in the `values` collection.
+	 * @param length The number of elements to use from the `values` collection.
+	 */
+	public final void writeAlignedAxisPropertyUnitSpherical(List<JulianDate> dates, List<UnitSpherical> values, int startIndex, int length) {
+		{
+			cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+			try {
+				writer.writeUnitSpherical(dates, values, startIndex, length);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
@@ -2113,6 +2178,86 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 			cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
 			try {
 				writer.writeReference(identifier, propertyNames);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alignedAxis</code> property as a <code>velocityReference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	
+	
+
+	 * @param value The reference.
+	 */
+	public final void writeAlignedAxisPropertyVelocityReference(Reference value) {
+		{
+			cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+			try {
+				writer.writeVelocityReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alignedAxis</code> property as a <code>velocityReference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	
+	
+
+	 * @param value The earliest date of the interval.
+	 */
+	public final void writeAlignedAxisPropertyVelocityReference(String value) {
+		{
+			cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+			try {
+				writer.writeVelocityReference(value);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alignedAxis</code> property as a <code>velocityReference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyName The property on the referenced object.
+	 */
+	public final void writeAlignedAxisPropertyVelocityReference(String identifier, String propertyName) {
+		{
+			cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+			try {
+				writer.writeVelocityReference(identifier, propertyName);
+			} finally {
+				DisposeHelper.dispose(writer);
+			}
+		}
+	}
+
+	/**
+	 *  
+	Writes a value for the <code>alignedAxis</code> property as a <code>velocityReference</code> value.  The <code>alignedAxis</code> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+	
+	
+	
+
+	 * @param identifier The identifier of the object which contains the referenced property.
+	 * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+	 */
+	public final void writeAlignedAxisPropertyVelocityReference(String identifier, String[] propertyNames) {
+		{
+			cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+			try {
+				writer.writeVelocityReference(identifier, propertyNames);
 			} finally {
 				DisposeHelper.dispose(writer);
 			}
