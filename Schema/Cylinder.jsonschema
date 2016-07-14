@@ -56,6 +56,11 @@
         "slices": {
             "$ref": "Double.jsonschema",
             "description": "The number of edges around the perimeter of the cylinder."
+        },
+        "shadows": {
+            "$ref": "ShadowMode.jsonschema",
+            "description": "Whether or not the cylinder casts or receives shadows.",
+            "default": "DISABLED"
         }
     }
 }

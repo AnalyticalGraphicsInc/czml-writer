@@ -52,6 +52,11 @@
             "$ref": "Double.jsonschema",
             "description": "The width of the wall outline.",
             "default": 1.0
+        },
+        "shadows": {
+            "$ref": "ShadowMode.jsonschema",
+            "description": "Whether or not the wall casts or receives shadows.",
+            "default": "DISABLED"
         }
     }
 }

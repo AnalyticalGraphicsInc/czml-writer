@@ -70,6 +70,11 @@
             "$ref": "Boolean.jsonschema",
             "description": "Whether to close the bottom of the polygon.",
             "default": true
+        },
+        "shadows": {
+            "$ref": "ShadowMode.jsonschema",
+            "description": "Whether or not the polygon casts or receives shadows.",
+            "default": "DISABLED"
         }
     }
 }

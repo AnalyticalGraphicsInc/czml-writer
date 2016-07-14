@@ -68,6 +68,11 @@
         "numberOfVerticalLines": {
             "$ref": "Double.jsonschema",
             "description": "The number of vertical lines to use when outlining an extruded ellipse."
+        },
+        "shadows": {
+            "$ref": "ShadowMode.jsonschema",
+            "description": "Whether or not the ellipse casts or receives shadows.",
+            "default": "DISABLED"
         }
     }
 }

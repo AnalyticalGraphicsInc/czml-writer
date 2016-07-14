@@ -60,6 +60,11 @@
             "$ref": "Double.jsonschema",
             "description": "The width of the corridor outline.",
             "default": 1.0
+        },
+        "shadows": {
+            "$ref": "ShadowMode.jsonschema",
+            "description": "Whether or not the corridor casts or receives shadows.",
+            "default": "DISABLED"
         }
     }
 }

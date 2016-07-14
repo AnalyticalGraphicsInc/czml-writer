@@ -34,6 +34,11 @@
             "$ref": "Boolean.jsonschema",
             "description": "Whether or not the positions are connected as great arcs (the default) or as straight lines.",
             "default": true
+        },
+        "shadows": {
+            "$ref": "ShadowMode.jsonschema",
+            "description": "Whether or not the polyline casts or receives shadows.",
+            "default": "DISABLED"
         }
     }
 }

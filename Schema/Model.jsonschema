@@ -40,6 +40,11 @@
             "description": "Whether or not to run all animations defined in the glTF model.",
             "default": true
         },
+        "shadows": {
+            "$ref": "ShadowMode.jsonschema",
+            "description": "Whether or not the model casts or receives shadows.",
+            "default": "ENABLED"
+        },
         "heightReference": {
             "$ref": "HeightReference.jsonschema",
             "description": "The height reference of the model, which indicates if the position is relative to terrain or not.",

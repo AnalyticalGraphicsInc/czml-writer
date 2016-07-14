@@ -1,0 +1,24 @@
+{
+    "title": "ShadowMode",
+    "description": "Whether or not an object casts or receives shadows from each light source when shadows are enabled.",
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "shadowMode": {
+            "$ref": "ShadowModeValue.jsonschema",
+            "description": "The shadow mode.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.jsonschema",
+            "description": "The shadow mode specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

@@ -40,6 +40,11 @@
             "$ref": "Double.jsonschema",
             "description": "The width of the box outline.",
             "default": 1.0
+        },
+        "shadows": {
+            "$ref": "ShadowMode.jsonschema",
+            "description": "Whether or not the box casts or receives shadows.",
+            "default": "DISABLED"
         }
     }
 }
