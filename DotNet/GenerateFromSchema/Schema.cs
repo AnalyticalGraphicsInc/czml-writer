@@ -24,7 +24,7 @@ namespace GenerateFromSchema
 
         public Property AdditionalProperties { get; set; }
 
-        public List<string> EnumValues { get; set; }
+        public List<SchemaEnumValue> EnumValues { get; set; }
 
         public List<string> Examples { get; set; }
 

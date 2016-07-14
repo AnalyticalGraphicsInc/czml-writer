@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 
@@ -78,14 +79,14 @@ namespace GenerateFromSchema
                     }
                 }
 
-                if (schema.EnumValues != null)
+                if (schema.EnumValues.Any())
                 {
                     output.WriteLine("##Values");
                     output.WriteLine();
 
-                    foreach (string enumValue in schema.EnumValues)
+                    foreach (SchemaEnumValue enumValue in schema.EnumValues)
                     {
-                        output.WriteLine("* `{0}`", enumValue);
+                        output.WriteLine("* `{0}` - {1}", enumValue.Name, enumValue.Description);
                         output.WriteLine();
                     }
                 }
