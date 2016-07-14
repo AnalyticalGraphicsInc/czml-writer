@@ -1,9 +1,19 @@
 {
     "title": "StripeOrientation",
-    "description": "The orientation of stripes in the stripe material. Valid values are \"HORIZONTAL\" or \"VERTICAL\".",
+    "description": "The orientation of stripes in the stripe material.",
     "type": "string",
-    "enum": [
-        "HORIZONTAL",
-        "VERTICAL"
+    "oneOf": [
+        {
+            "enum": [
+                "HORIZONTAL"
+            ],
+            "description": "The stripes are oriented horizontally along the X axis."
+        },
+        {
+            "enum": [
+                "VERTICAL"
+            ],
+            "description": "The stripes are oriented vertically along the Y axis."
+        }
     ]
 }
