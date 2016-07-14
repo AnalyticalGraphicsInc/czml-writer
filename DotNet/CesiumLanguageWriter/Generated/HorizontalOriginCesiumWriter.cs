@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>horizontalOrigin</code>, which is the horizontal origin.  Valid values are "LEFT", "CENTER", and "RIGHT".
+        /// Writes the value expressed as a <code>horizontalOrigin</code>, which is the horizontal origin.
         /// </summary>
         /// <param name="value">The horizontal origin.</param>
         public void WriteHorizontalOrigin(CesiumHorizontalOrigin value)

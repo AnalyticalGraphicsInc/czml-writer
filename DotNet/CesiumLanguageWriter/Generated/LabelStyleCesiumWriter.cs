@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>labelStyle</code>, which is the label style.  Valid values are "FILL", "OUTLINE", and "FILL_AND_OUTLINE".
+        /// Writes the value expressed as a <code>labelStyle</code>, which is the label style.
         /// </summary>
         /// <param name="value">The label style.</param>
         public void WriteLabelStyle(CesiumLabelStyle value)

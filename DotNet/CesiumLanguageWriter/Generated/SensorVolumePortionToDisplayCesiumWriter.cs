@@ -7,7 +7,7 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>SensorVolumePortionToDisplay</code> to a <see cref="CesiumOutputStream" />.  A <code>SensorVolumePortionToDisplay</code> is what part of a sensor should be displayed.  Valid values are "COMPLETE", "BELOW_ELLIPSOID_HORIZON", "ABOVE_ELLIPSOID_HORIZON".
+    /// Writes a <code>SensorVolumePortionToDisplay</code> to a <see cref="CesiumOutputStream" />.  A <code>SensorVolumePortionToDisplay</code> is what part of a sensor should be displayed.
     /// </summary>
     public class SensorVolumePortionToDisplayCesiumWriter : CesiumPropertyWriter<SensorVolumePortionToDisplayCesiumWriter>
     {
@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>portionToDisplay</code>, which is what part of a sensor should be displayed.  Valid values are "COMPLETE", "BELOW_ELLIPSOID_HORIZON", "ABOVE_ELLIPSOID_HORIZON".
+        /// Writes the value expressed as a <code>portionToDisplay</code>, which is the part of a sensor to display.
         /// </summary>
         /// <param name="value">The portion of the sensor to display.</param>
         public void WritePortionToDisplay(CesiumSensorVolumePortionToDisplay value)
@@ -70,7 +70,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is what part of a sensor should be displayed, specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the part of a sensor to display, specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -82,7 +82,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is what part of a sensor should be displayed, specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the part of a sensor to display, specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -94,7 +94,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is what part of a sensor should be displayed, specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the part of a sensor to display, specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -107,7 +107,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is what part of a sensor should be displayed, specified as a reference to another property.
+        /// Writes the value expressed as a <code>reference</code>, which is the part of a sensor to display, specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
