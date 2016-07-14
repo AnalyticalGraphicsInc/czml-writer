@@ -76,6 +76,7 @@
     <Compile Include="CesiumCornerType.cs" />
     <Compile Include="CesiumHeightReference.cs" />
     <Compile Include="CesiumSensorVolumePortionToDisplay.cs" />
+    <Compile Include="CesiumShadowMode.cs" />
     <Compile Include="CesiumStripeOrientation.cs" />
     <Compile Include="CesiumResource.cs" />
     <Compile Include="CesiumResourceBehavior.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Generated\RotationCesiumWriter.cs" />
     <Compile Include="Generated\ScaleCesiumWriter.cs" />
     <Compile Include="Generated\SensorVolumePortionToDisplayCesiumWriter.cs" />
+    <Compile Include="Generated\ShadowModeCesiumWriter.cs" />
     <Compile Include="Generated\SolidColorMaterialCesiumWriter.cs" />
     <Compile Include="Generated\StringCesiumWriter.cs" />
     <Compile Include="Generated\StripeMaterialCesiumWriter.cs" />

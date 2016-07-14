@@ -796,6 +796,19 @@
                 "needsInterval": false
             }
         ],
+        "ShadowMode": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumShadowMode",
+                        "name": "value",
+                        "description": "The shadow mode."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.ShadowModeToString(value));",
+                "needsInterval": false
+            }
+        ],
         "SensorVolumePortionToDisplay": [
             {
                 "parameters": [

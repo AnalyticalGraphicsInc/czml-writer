@@ -49,6 +49,11 @@ namespace CesiumLanguageWriter
         public const string RunAnimationsPropertyName = "runAnimations";
 
         /// <summary>
+        /// The name of the <code>shadows</code> property.
+        /// </summary>
+        public const string ShadowsPropertyName = "shadows";
+
+        /// <summary>
         /// The name of the <code>heightReference</code> property.
         /// </summary>
         public const string HeightReferencePropertyName = "heightReference";
@@ -65,6 +70,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<DoubleCesiumWriter> m_maximumScale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MaximumScalePropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_incrementallyLoadTextures = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(IncrementallyLoadTexturesPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_runAnimations = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(RunAnimationsPropertyName), false);
+        private readonly Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<ShadowModeCesiumWriter>(() => new ShadowModeCesiumWriter(ShadowsPropertyName), false);
         private readonly Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(HeightReferencePropertyName), false);
         private readonly Lazy<NodeTransformationsCesiumWriter> m_nodeTransformations = new Lazy<NodeTransformationsCesiumWriter>(() => new NodeTransformationsCesiumWriter(NodeTransformationsPropertyName), false);
 
@@ -800,6 +806,85 @@ namespace CesiumLanguageWriter
         public void WriteRunAnimationsPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenRunAnimationsProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <code>shadows</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>shadows</code> property defines whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+        /// </summary>
+        public ShadowModeCesiumWriter ShadowsWriter
+        {
+            get { return m_shadows.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <code>shadows</code> property.  The <code>shadows</code> property defines whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+        /// </summary>
+        public ShadowModeCesiumWriter OpenShadowsProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ShadowsWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>shadows</code> property as a <code>shadowMode</code> value.  The <code>shadows</code> property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="value">The shadow mode.</param>
+        public void WriteShadowsProperty(CesiumShadowMode value)
+        {
+            using (var writer = OpenShadowsProperty())
+            {
+                writer.WriteShadowMode(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>shadows</code> property as a <code>reference</code> value.  The <code>shadows</code> property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShadowsPropertyReference(Reference value)
+        {
+            using (var writer = OpenShadowsProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>shadows</code> property as a <code>reference</code> value.  The <code>shadows</code> property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShadowsPropertyReference(string value)
+        {
+            using (var writer = OpenShadowsProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>shadows</code> property as a <code>reference</code> value.  The <code>shadows</code> property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShadowsPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShadowsProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <code>shadows</code> property as a <code>reference</code> value.  The <code>shadows</code> property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShadowsPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShadowsProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
