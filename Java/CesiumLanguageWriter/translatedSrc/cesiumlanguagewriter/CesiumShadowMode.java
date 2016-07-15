@@ -6,33 +6,39 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- The horizontal origin of an item relative to its position.
+ Whether or not an object casts or receives shadows from each light source when shadows are enabled.
  
 
  */
-public enum CesiumHorizontalOrigin implements Enumeration {
+public enum CesiumShadowMode implements Enumeration {
 	/**
 	 *  
-	The left side of the item is located at the position.
+	The object does not cast or receive shadows.
 	
 
 	 */
-	LEFT(0), /**
+	DISABLED(0), /**
+					 *  
+					The object casts and receives shadows.
+					
+
+					 */
+	ENABLED(1), /**
 				 *  
-				The item is horizontally centered on the position.
+				The object casts shadows only.
 				
 
 				 */
-	CENTER(1), /**
-				 *  
-				The right side of the item is located at the position.
-				
+	CAST_ONLY(2), /**
+					 *  
+					The object receives shadows only.
+					
 
-				 */
-	RIGHT(2);
+					 */
+	RECEIVE_ONLY(3);
 	private final int value;
 
-	CesiumHorizontalOrigin(int value) {
+	CesiumShadowMode(int value) {
 		this.value = value;
 	}
 
@@ -49,14 +55,16 @@ public enum CesiumHorizontalOrigin implements Enumeration {
 	 * @return The enum constant associated with value.
 	 * @param value a numeric value.
 	 */
-	public static CesiumHorizontalOrigin getFromValue(int value) {
+	public static CesiumShadowMode getFromValue(int value) {
 		switch (value) {
 		case 0:
-			return LEFT;
+			return DISABLED;
 		case 1:
-			return CENTER;
+			return ENABLED;
 		case 2:
-			return RIGHT;
+			return CAST_ONLY;
+		case 3:
+			return RECEIVE_ONLY;
 		default:
 			throw new IllegalArgumentException("Undefined enum value.");
 		}
@@ -66,7 +74,7 @@ public enum CesiumHorizontalOrigin implements Enumeration {
 	 * Get the enum constant that is considered to be the default.
 	 * @return The default enum constant.
 	 */
-	public static CesiumHorizontalOrigin getDefault() {
-		return LEFT;
+	public static CesiumShadowMode getDefault() {
+		return DISABLED;
 	}
 }

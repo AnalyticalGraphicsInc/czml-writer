@@ -5,23 +5,23 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.CesiumHeightReference;
+import cesiumlanguagewriter.CesiumShadowMode;
 import cesiumlanguagewriter.Reference;
 
 /**
  *  
- Writes a <code>HeightReference</code> to a  {@link CesiumOutputStream}.  A <code>HeightReference</code> is the height reference of an object, which indicates if the object's position is relative to terrain or not.
+ Writes a <code>ShadowMode</code> to a  {@link CesiumOutputStream}.  A <code>ShadowMode</code> is whether or not an object casts or receives shadows from each light source when shadows are enabled.
  
 
  */
-public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightReferenceCesiumWriter> {
+public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiumWriter> {
 	/**
 	 *  
-	The name of the <code>heightReference</code> property.
+	The name of the <code>shadowMode</code> property.
 	
 
 	 */
-	public static final String HeightReferencePropertyName = "heightReference";
+	public static final String ShadowModePropertyName = "shadowMode";
 	/**
 	 *  
 	The name of the <code>reference</code> property.
@@ -29,7 +29,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
 
 	 */
 	public static final String ReferencePropertyName = "reference";
-	private Lazy<ICesiumValuePropertyWriter<CesiumHeightReference>> m_asHeightReference;
+	private Lazy<ICesiumValuePropertyWriter<CesiumShadowMode>> m_asShadowMode;
 	private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
 	/**
@@ -38,14 +38,14 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
 	
 
 	 */
-	public HeightReferenceCesiumWriter(String propertyName) {
+	public ShadowModeCesiumWriter(String propertyName) {
 		super(propertyName);
-		m_asHeightReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(
-				new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(this, "createHeightReferenceAdaptor", new Class[] {}) {
-					public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference> invoke() {
-						return createHeightReferenceAdaptor();
-					}
-				}, false);
+		m_asShadowMode = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(
+				this, "createShadowModeAdaptor", new Class[] {}) {
+			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode> invoke() {
+				return createShadowModeAdaptor();
+			}
+		}, false);
 		m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
 				"createReferenceAdaptor", new Class[] {}) {
 			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
@@ -62,14 +62,14 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
 
 	 * @param existingInstance The existing instance to copy.
 	 */
-	protected HeightReferenceCesiumWriter(HeightReferenceCesiumWriter existingInstance) {
+	protected ShadowModeCesiumWriter(ShadowModeCesiumWriter existingInstance) {
 		super(existingInstance);
-		m_asHeightReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(
-				new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(this, "createHeightReferenceAdaptor", new Class[] {}) {
-					public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference> invoke() {
-						return createHeightReferenceAdaptor();
-					}
-				}, false);
+		m_asShadowMode = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(
+				this, "createShadowModeAdaptor", new Class[] {}) {
+			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode> invoke() {
+				return createShadowModeAdaptor();
+			}
+		}, false);
 		m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
 				"createReferenceAdaptor", new Class[] {}) {
 			public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
@@ -79,32 +79,32 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
 	}
 
 	@Override
-	public HeightReferenceCesiumWriter clone() {
-		return new HeightReferenceCesiumWriter(this);
+	public ShadowModeCesiumWriter clone() {
+		return new ShadowModeCesiumWriter(this);
 	}
 
 	/**
 	 *  
-	Writes the value expressed as a <code>heightReference</code>, which is the height reference.
+	Writes the value expressed as a <code>shadowMode</code>, which is the shadow mode.
 	
 	
 
-	 * @param value The height reference.
+	 * @param value The shadow mode.
 	 */
-	public final void writeHeightReference(CesiumHeightReference value) {
-		String PropertyName = HeightReferencePropertyName;
+	public final void writeShadowMode(CesiumShadowMode value) {
+		String PropertyName = ShadowModePropertyName;
 		if (getForceInterval()) {
 			openIntervalIfNecessary();
 		}
 		if (getIsInterval()) {
 			getOutput().writePropertyName(PropertyName);
 		}
-		getOutput().writeValue(CesiumFormattingHelper.heightReferenceToString(value));
+		getOutput().writeValue(CesiumFormattingHelper.shadowModeToString(value));
 	}
 
 	/**
 	 *  
-	Writes the value expressed as a <code>reference</code>, which is the height reference specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the shadow mode specified as a reference to another property.
 	
 	
 
@@ -119,7 +119,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
 
 	/**
 	 *  
-	Writes the value expressed as a <code>reference</code>, which is the height reference specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the shadow mode specified as a reference to another property.
 	
 	
 
@@ -134,7 +134,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
 
 	/**
 	 *  
-	Writes the value expressed as a <code>reference</code>, which is the height reference specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the shadow mode specified as a reference to another property.
 	
 	
 	
@@ -151,7 +151,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
 
 	/**
 	 *  
-	Writes the value expressed as a <code>reference</code>, which is the height reference specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the shadow mode specified as a reference to another property.
 	
 	
 	
@@ -168,21 +168,21 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
 
 	/**
 	 *  
-	Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in <code>HeightReference</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+	Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in <code>ShadowMode</code> format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
 	
 	
 
 	 * @return The wrapper.
 	 */
-	public final ICesiumValuePropertyWriter<CesiumHeightReference> asHeightReference() {
-		return m_asHeightReference.getValue();
+	public final ICesiumValuePropertyWriter<CesiumShadowMode> asShadowMode() {
+		return m_asShadowMode.getValue();
 	}
 
-	final private ICesiumValuePropertyWriter<CesiumHeightReference> createHeightReferenceAdaptor() {
-		return new CesiumWriterAdaptor<cesiumlanguagewriter.HeightReferenceCesiumWriter, cesiumlanguagewriter.CesiumHeightReference>(this,
-				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.HeightReferenceCesiumWriter, cesiumlanguagewriter.CesiumHeightReference>() {
-					public void invoke(HeightReferenceCesiumWriter me, CesiumHeightReference value) {
-						me.writeHeightReference(value);
+	final private ICesiumValuePropertyWriter<CesiumShadowMode> createShadowModeAdaptor() {
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.ShadowModeCesiumWriter, cesiumlanguagewriter.CesiumShadowMode>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.ShadowModeCesiumWriter, cesiumlanguagewriter.CesiumShadowMode>() {
+					public void invoke(ShadowModeCesiumWriter me, CesiumShadowMode value) {
+						me.writeShadowMode(value);
 					}
 				});
 	}
@@ -200,9 +200,9 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
 	}
 
 	final private ICesiumValuePropertyWriter<Reference> createReferenceAdaptor() {
-		return new CesiumWriterAdaptor<cesiumlanguagewriter.HeightReferenceCesiumWriter, cesiumlanguagewriter.Reference>(this,
-				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.HeightReferenceCesiumWriter, cesiumlanguagewriter.Reference>() {
-					public void invoke(HeightReferenceCesiumWriter me, Reference value) {
+		return new CesiumWriterAdaptor<cesiumlanguagewriter.ShadowModeCesiumWriter, cesiumlanguagewriter.Reference>(this,
+				new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.ShadowModeCesiumWriter, cesiumlanguagewriter.Reference>() {
+					public void invoke(ShadowModeCesiumWriter me, Reference value) {
 						me.writeReference(value);
 					}
 				});

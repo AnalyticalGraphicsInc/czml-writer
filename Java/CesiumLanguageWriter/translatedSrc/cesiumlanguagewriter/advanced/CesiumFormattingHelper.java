@@ -344,6 +344,36 @@ public final class CesiumFormattingHelper {
 
 	/**
 	 *  
+	Converts a  {@link CesiumShadowMode} to the corresponding string in a CZML stream.
+	
+	
+	
+
+	 * @param value The value to convert.
+	 * @return The string representing the specified value.
+	 */
+	public static String shadowModeToString(CesiumShadowMode value) {
+		switch (value) {
+		case DISABLED: {
+			return "DISABLED";
+		}
+		case ENABLED: {
+			return "ENABLED";
+		}
+		case CAST_ONLY: {
+			return "CAST_ONLY";
+		}
+		case RECEIVE_ONLY: {
+			return "RECEIVE_ONLY";
+		}
+		default: {
+			throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
+		}
+		}
+	}
+
+	/**
+	 *  
 	Converts a  {@link CesiumInterpolationAlgorithm} to the corresponding string in a CZML stream.
 	
 	
