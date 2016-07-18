@@ -1,22 +1,22 @@
 ﻿namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Specifies the style of label.
+    /// Specifies how the text of a label is drawn.
     /// </summary>
     public enum CesiumLabelStyle
     {
         /// <summary>
-        /// The label is filled.
+        /// The text of the label is filled, but not outlined.
         /// </summary>
         Fill,
 
         /// <summary>
-        /// The label is outlined.
+        /// The text of the label is outlined, but not filled.
         /// </summary>
         Outline,
 
         /// <summary>
-        /// The label is filled and outlined.
+        /// The text of the label is both filled and outlined.
         /// </summary>
         FillAndOutline,
     }

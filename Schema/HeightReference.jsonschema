@@ -12,7 +12,7 @@
     "properties": {
         "heightReference": {
             "$ref": "HeightReferenceValue.jsonschema",
-            "description": "The height reference.  Valid values are \"NONE\", \"CLAMP_TO_GROUND\", and \"RELATIVE_TO_GROUND\".",
+            "description": "The height reference.",
             "czmlValue": true
         },
         "reference": {

@@ -1,10 +1,25 @@
 {
     "title": "ClockStep",
-    "description": "Defines how a clock advances each tick.  If `TICK_DEPENDENT`, the current time is advanced by `multiplier` seconds each tick.  If `SYSTEM_CLOCK_MULTIPLIER`, the current time is advanced by the amount of system time since the last tick, multiplied by `multiplier`.  If `SYSTEM_CLOCK`, the clock is always set to the current system time.",
+    "description": "Defines how a clock advances each tick.",
     "type": "string",
-    "enum": [
-        "SYSTEM_CLOCK",
-        "SYSTEM_CLOCK_MULTIPLIER",
-        "TICK_DEPENDENT"
+    "oneOf": [
+        {
+            "enum": [
+                "TICK_DEPENDENT"
+            ],
+            "description": "The current time is advanced by `multiplier` seconds each tick."
+        },
+        {
+            "enum": [
+                "SYSTEM_CLOCK_MULTIPLIER"
+            ],
+            "description": "The current time is advanced by the amount of system time since the last tick, multiplied by `multiplier`."
+        },
+        {
+            "enum": [
+                "SYSTEM_CLOCK"
+            ],
+            "description": "The clock is always set to the current system time."
+        }
     ]
 }

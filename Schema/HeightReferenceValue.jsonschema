@@ -2,9 +2,24 @@
     "title": "HeightReference",
     "description": "The height reference of an object, which indicates if the object's position is relative to terrain or not.",
     "type": "string",
-    "enum": [
-        "NONE",
-        "CLAMP_TO_GROUND",
-        "RELATIVE_TO_GROUND"
+    "oneOf": [
+        {
+            "enum": [
+                "NONE"
+            ],
+            "description": "The position is absolute."
+        },
+        {
+            "enum": [
+                "CLAMP_TO_GROUND"
+            ],
+            "description": "The position is clamped to the terrain."
+        },
+        {
+            "enum": [
+                "RELATIVE_TO_GROUND"
+            ],
+            "description": "The position height is the height above the terrain."
+        }
     ]
 }

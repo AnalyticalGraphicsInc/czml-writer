@@ -1,10 +1,25 @@
 {
     "title": "HorizontalOrigin",
-    "description": "A horizontal origin, which specifies whether an element is left-, center-, or right-aligned with respect to an origin.  Valid values are \"LEFT\", \"CENTER\", and \"RIGHT\".",
+    "description": "The horizontal location of an origin relative to an object's position.",
     "type": "string",
-    "enum": [
-        "LEFT",
-        "CENTER",
-        "RIGHT"
+    "oneOf": [
+        {
+            "enum": [
+                "LEFT"
+            ],
+            "description": "The origin is on the left side of the object."
+        },
+        {
+            "enum": [
+                "CENTER"
+            ],
+            "description": "The origin is at the horizontal center of the object."
+        },
+        {
+            "enum": [
+                "RIGHT"
+            ],
+            "description": "The origin is on the right side of the object."
+        }
     ]
 }
