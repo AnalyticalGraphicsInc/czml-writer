@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/CartographicListValue.jsonschema",
     "title": "CartographicList",
     "description": "A list of geodetic, WGS84 positions specified as `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`.",
     "type": "array"

@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Rotation.jsonschema",
     "title": "Rotation",
     "description": "Defines a rotation that transforms a vector expressed in one axes and transforms it to another.",
     "extends": {

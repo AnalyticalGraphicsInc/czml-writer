@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Color.jsonschema",
     "title": "Color",
     "description": "A color.  The color can optionally vary over time.",
     "extends": {

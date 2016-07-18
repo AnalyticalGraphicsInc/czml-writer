@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Scale.jsonschema",
     "title": "Scale",
     "description": "A scaling factor which can optionally vary over time.",
     "extends": {

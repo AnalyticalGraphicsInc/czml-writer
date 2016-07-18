@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/BoxDimensions.jsonschema",
     "title": "BoxDimensions",
     "description": "The width, depth, and height of a box.",
     "extends": {

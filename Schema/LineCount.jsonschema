@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/LineCount.jsonschema",
     "title": "LineCount",
     "description": "The number of grid lines along each axis.",
     "extends": {

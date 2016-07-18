@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/BoundingRectangle.jsonschema",
     "title": "BoundingRectangle",
     "description": "A bounding rectangle specified by a corner, width and height.",
     "extends": {

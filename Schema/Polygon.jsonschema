@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Polygon.jsonschema",
     "title": "Polygon",
     "description": "A polygon, which is a closed figure on the surface of the Earth.",
     "type": [

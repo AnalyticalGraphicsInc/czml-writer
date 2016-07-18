@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/GridMaterial.jsonschema",
     "title": "GridMaterial",
     "description": "A material that fills the surface with a two dimensional grid.",
     "type": [

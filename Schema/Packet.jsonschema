@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Packet.jsonschema",
     "title": "Packet",
     "description": "Describes the graphical properties of a single object in a scene, such as a single aircraft.",
     "type": "object",

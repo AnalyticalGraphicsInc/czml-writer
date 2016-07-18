@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Box.jsonschema",
     "title": "Box",
     "description": "A box, which is a closed rectangular cuboid.",
     "type": [

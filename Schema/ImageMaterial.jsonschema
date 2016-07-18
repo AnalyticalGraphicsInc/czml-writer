@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/ImageMaterial.jsonschema",
     "title": "ImageMaterial",
     "description": "A material that fills the surface with an image.",
     "type": [

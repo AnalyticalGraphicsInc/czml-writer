@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/BooleanValue.jsonschema",
     "title": "Boolean",
     "description": "A boolean value.",
     "type": "boolean"

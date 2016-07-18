@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/NodeTransformations.jsonschema",
     "title": "NodeTransformations",
     "description": "A mapping of node names to node transformations.",
     "type": "object",

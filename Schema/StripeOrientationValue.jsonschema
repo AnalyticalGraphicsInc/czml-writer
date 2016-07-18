@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/StripeOrientationValue.jsonschema",
     "title": "StripeOrientation",
     "description": "The orientation of stripes in the stripe material. Valid values are \"HORIZONTAL\" or \"VERTICAL\".",
     "type": "string",

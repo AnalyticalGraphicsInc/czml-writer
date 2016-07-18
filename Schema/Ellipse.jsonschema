@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Ellipse.jsonschema",
     "title": "Ellipse",
     "description": "An ellipse, which is a closed curve on or above the surface of the Earth.",
     "type": [

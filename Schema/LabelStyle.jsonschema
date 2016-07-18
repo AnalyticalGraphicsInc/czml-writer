@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/LabelStyle.jsonschema",
     "title": "LabelStyle",
     "description": "The style of a label.",
     "type": [

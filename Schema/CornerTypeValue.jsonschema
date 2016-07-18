@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/CornerTypeValue.jsonschema",
     "title": "CornerType",
     "description": "The style of a corner.",
     "type": "string",

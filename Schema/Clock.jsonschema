@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Clock.jsonschema",
     "title": "Clock",
     "description": "Initial settings for a simulated clock when a document is loaded.  The start and stop time are configured using the interval property.",
     "type": [

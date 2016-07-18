@@ -1,3 +1,0 @@
-[submodule "Schema/JSV"]
-	path = Schema/JSV
-	url = git://github.com/garycourt/JSV.git

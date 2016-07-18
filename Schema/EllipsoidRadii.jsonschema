@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/EllipsoidRadii.jsonschema",
     "title": "EllipsoidRadii",
     "description": "The radii of an ellipsoid.",
     "extends": {

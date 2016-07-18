@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/String.jsonschema",
     "title": "String",
     "description": "A string value.  The string can optionally vary with time.",
     "type": [

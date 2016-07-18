@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/LineThickness.jsonschema",
     "title": "LineThickness",
     "description": "The thickness of grid lines along each axis, in pixels.",
     "extends": {

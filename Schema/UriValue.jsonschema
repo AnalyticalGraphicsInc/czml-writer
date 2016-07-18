@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/UriValue.jsonschema",
     "title": "Uri",
     "description": "A URI value.",
     "type": "string",

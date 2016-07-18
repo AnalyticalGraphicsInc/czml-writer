@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Ellipsoid.jsonschema",
     "title": "Ellipsoid",
     "description": "A closed quadric surface that is a three dimensional analogue of an ellipse.",
     "type": [

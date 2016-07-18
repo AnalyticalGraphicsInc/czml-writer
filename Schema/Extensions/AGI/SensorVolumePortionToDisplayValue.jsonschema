@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Extensions/AGI/SensorVolumePortionToDisplayValue.jsonschema",
     "title": "SensorVolumePortionToDisplay",
     "description": "What part of a sensor should be displayed.  Valid values are \"COMPLETE\", \"BELOW_ELLIPSOID_HORIZON\", \"ABOVE_ELLIPSOID_HORIZON\".",
     "type": "string",

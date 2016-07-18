@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Extensions/AGI/SensorVolumePortionToDisplay.jsonschema",
     "title": "SensorVolumePortionToDisplay",
     "description": "What part of a sensor should be displayed.  Valid values are \"COMPLETE\", \"BELOW_ELLIPSOID_HORIZON\", \"ABOVE_ELLIPSOID_HORIZON\".",
     "type": [
@@ -11,12 +13,12 @@
     },
     "properties": {
         "portionToDisplay": {
-            "$ref": "Extensions/AGI/SensorVolumePortionToDisplayValue.jsonschema",
+            "$ref": "../../Extensions/AGI/SensorVolumePortionToDisplayValue.jsonschema",
             "description": "What part of a sensor should be displayed.  Valid values are \"COMPLETE\", \"BELOW_ELLIPSOID_HORIZON\", \"ABOVE_ELLIPSOID_HORIZON\".",
             "czmlValue": true
         },
         "reference": {
-            "$ref": "ReferenceValue.jsonschema",
+            "$ref": "../../ReferenceValue.jsonschema",
             "description": "What part of a sensor should be displayed, specified as a reference to another property.",
             "czmlValue": true
         }

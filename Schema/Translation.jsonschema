@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Translation.jsonschema",
     "title": "Translation",
     "description": "A translational offset which can optionally vary over time.",
     "extends": {

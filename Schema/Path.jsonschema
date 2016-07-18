@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Path.jsonschema",
     "title": "Path",
     "description": "A path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.",
     "type": [

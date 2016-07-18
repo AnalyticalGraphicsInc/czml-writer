@@ -1,6 +1,10 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/ReferenceListValue.jsonschema",
     "title": "ReferenceList",
     "description": "A list of references to other properties.",
     "type": "array",
-    "items": "string"
+    "items": {
+        "type": "string"
+    }
 }

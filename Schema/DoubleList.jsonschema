@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/DoubleList.jsonschema",
     "title": "DoubleList",
     "description": "A list of floating-point numbers.",
     "type": [

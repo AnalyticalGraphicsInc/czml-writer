@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/InterpolatableProperty.jsonschema",
     "title": "InterpolatableProperty",
     "description": "The base schema for a property whose value may be determined by interpolating over provided time-tagged samples.",
     "properties": {

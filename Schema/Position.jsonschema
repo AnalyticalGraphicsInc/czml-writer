@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Position.jsonschema",
     "title": "Position",
     "description": "Defines a position.  The position can optionally vary over time.",
     "extends": {

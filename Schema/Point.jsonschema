@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/Point.jsonschema",
     "title": "Point",
     "description": "A point, or viewport-aligned circle.",
     "type": [

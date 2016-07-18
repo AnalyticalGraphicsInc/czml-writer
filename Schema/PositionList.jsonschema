@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/PositionList.jsonschema",
     "title": "PositionList",
     "description": "A list of positions.",
     "type": [

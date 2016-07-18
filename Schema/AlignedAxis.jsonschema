@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/AlignedAxis.jsonschema",
     "title": "AlignedAxis",
     "description": "An aligned axis represented by a unit vector which can optionally vary over time.",
     "extends": {

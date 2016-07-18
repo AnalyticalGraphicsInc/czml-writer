@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/DoubleListValue.jsonschema",
     "title": "DoubleList",
     "description": "A list of values specified as an array of numbers.",
     "type": "array"

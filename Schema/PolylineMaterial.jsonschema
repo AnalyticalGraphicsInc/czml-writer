@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://cesiumjs.org/schemas/czml/PolylineMaterial.jsonschema",
     "title": "PolylineMaterial",
     "description": "A definition of how a polyline is colored or shaded.",
     "type": [
