@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>cornerType</code>, which is the corner style.  Valid values are "ROUNDED", "MITERED", and "BEVELED".
+        /// Writes the value expressed as a <code>cornerType</code>, which is the corner style.
         /// </summary>
         /// <param name="value">The style of a corner.</param>
         public void WriteCornerType(CesiumCornerType value)
