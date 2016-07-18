@@ -28,12 +28,12 @@ namespace GenerateFromSchema
                 result = new Schema();
                 m_schemas[schemaFileName] = result;
                 JObject schemaJson = JObject.Load(jsonReader);
-                LoadSchema(schemaJson, result);
+                LoadSchema(schemaFileName, schemaJson, result);
                 return result;
             }
         }
 
-        private void LoadSchema(JObject schemaJson, Schema schema)
+        private void LoadSchema(string schemaFileName, JObject schemaJson, Schema schema)
         {
             schema.Name = GetValue<string>(schemaJson, "title", null);
             schema.Description = GetValue<string>(schemaJson, "description", null);
@@ -41,7 +41,7 @@ namespace GenerateFromSchema
 
             string extends = GetValue<string>(schemaJson, "extends.$ref", null);
             if (extends != null)
-                schema.Extends = Load(Path.Combine(m_schemaDirectory, extends));
+                schema.Extends = Load(Path.Combine(Path.GetDirectoryName(schemaFileName), extends));
 
             schema.JsonTypes = LoadJsonSchemaType(schemaJson);
 
@@ -51,14 +51,14 @@ namespace GenerateFromSchema
                 JObject propertiesPropertyValue = (JObject)propertiesProperty.Value;
                 foreach (JProperty propertyProperty in propertiesPropertyValue.Properties())
                 {
-                    schema.Properties.Add(LoadProperty(propertyProperty));
+                    schema.Properties.Add(LoadProperty(schemaFileName, propertyProperty));
                 }
             }
 
             JProperty additionalPropertiesProperty = schemaJson.Property("additionalProperties");
             if (additionalPropertiesProperty != null)
             {
-                schema.AdditionalProperties = LoadProperty(additionalPropertiesProperty);
+                schema.AdditionalProperties = LoadProperty(schemaFileName, additionalPropertiesProperty);
             }
 
             JProperty enumValuesProperty = schemaJson.Property("enum");
@@ -83,7 +83,7 @@ namespace GenerateFromSchema
             }
         }
 
-        private Property LoadProperty(JProperty propertyProperty)
+        private Property LoadProperty(string schemaFileName, JProperty propertyProperty)
         {
             JObject propertySchema = (JObject)propertyProperty.Value;
 
@@ -98,7 +98,7 @@ namespace GenerateFromSchema
             string refString = GetValue<string>(propertySchema, "$ref", null);
             if (refString != null)
             {
-                result.ValueType = Load(Path.Combine(m_schemaDirectory, refString));
+                result.ValueType = Load(Path.Combine(Path.GetDirectoryName(schemaFileName), refString));
             }
             else
             {
