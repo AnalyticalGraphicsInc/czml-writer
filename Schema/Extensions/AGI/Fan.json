@@ -1,0 +1,56 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/Fan.json",
+    "title": "Fan",
+    "description": "A fan.  A fan starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "extensionPrefix": "agi",
+    "properties": {
+        "show": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not the fan is shown."
+        },
+        "directions": {
+            "$ref": "../../DirectionList.json",
+            "description": "The list of directions defining the fan."
+        },
+        "radius": {
+            "$ref": "../../Double.json",
+            "description": "The radial limit of the fan."
+        },
+        "perDirectionRadius": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether the magnitude of each direction is used instead of a constant radius."
+        },
+        "material": {
+            "$ref": "../../Material.json",
+            "description": "The material to display on the surface of the fan."
+        },
+        "fill": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not the fan is filled."
+        },
+        "outline": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not the fan is outlined."
+        },
+        "outlineColor": {
+            "$ref": "../../Color.json",
+            "description": "The color of the fan outline."
+        },
+        "outlineWidth": {
+            "$ref": "../../Double.json",
+            "description": "The width of the fan outline."
+        },
+        "numberOfRings": {
+            "$ref": "../../Double.json",
+            "description": "The number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center."
+        }
+    }
+}

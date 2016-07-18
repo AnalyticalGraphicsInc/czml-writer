@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Path.json",
+    "title": "Path",
+    "description": "A path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the path is shown.",
+            "default": true
+        },
+        "width": {
+            "$ref": "Double.json",
+            "description": "The width of the path line.",
+            "default": 1.0
+        },
+        "resolution": {
+            "$ref": "Double.json",
+            "description": "The maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.",
+            "default": 60.0
+        },
+        "leadTime": {
+            "$ref": "Double.json",
+            "description": "The time ahead of the animation time, in seconds, to show the path."
+        },
+        "trailTime": {
+            "$ref": "Double.json",
+            "description": "The time behind the animation time, in seconds, to show the path."
+        },
+        "material": {
+            "$ref": "PolylineMaterial.json",
+            "description": "The material to use to draw the path."
+        }
+    }
+}

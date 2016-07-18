@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/PolylineOutlineMaterial.json",
+    "title": "PolylineOutlineMaterial",
+    "description": "A material that fills the surface of a line with an outlined color.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "color": {
+            "$ref": "Color.json",
+            "description": "The color of the surface."
+        },
+        "outlineColor": {
+            "$ref": "Color.json",
+            "description": "The color of the surface outline."
+        },
+        "outlineWidth": {
+            "$ref": "Double.json",
+            "description": "The width of the outline."
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Color.json",
+    "title": "Color",
+    "description": "A color.  The color can optionally vary over time.",
+    "extends": {
+        "$ref": "InterpolatableProperty.json"
+    },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "rgba": {
+            "$ref": "RgbaValue.json",
+            "description": "The color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.",
+            "czmlValue": true
+        },
+        "rgbaf": {
+            "$ref": "RgbafValue.json",
+            "description": "The color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The color specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

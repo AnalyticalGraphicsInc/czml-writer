@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/NodeTransformation.json",
+    "title": "NodeTransformation",
+    "description": "A set of transformations to apply to a particular node in a 3D model.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "translation": {
+            "$ref": "Translation.json",
+            "description": "The translation to apply to the model node."
+        },
+        "rotation": {
+            "$ref": "Rotation.json",
+            "description": "The rotation to apply to the model node."
+        },
+        "scale": {
+            "$ref": "Scale.json",
+            "description": "The scaling to apply to the model node."
+        }
+    }
+}

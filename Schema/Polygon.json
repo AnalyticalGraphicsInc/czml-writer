@@ -1,0 +1,77 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Polygon.json",
+    "title": "Polygon",
+    "description": "A polygon, which is a closed figure on the surface of the Earth.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the polygon is shown.",
+            "default": true
+        },
+        "positions": {
+            "$ref": "PositionList.json",
+            "description": "The array of positions defining a simple polygon."
+        },
+        "height": {
+            "$ref": "Double.json",
+            "description": "The height of the polygon when `perPositionHeight` is false."
+        },
+        "extrudedHeight": {
+            "$ref": "Double.json",
+            "description": "The extruded height of the polygon."
+        },
+        "stRotation": {
+            "$ref": "Double.json",
+            "description": "The rotation of any applied texture. A positive rotation is counter-clockwise."
+        },
+        "granularity": {
+            "$ref": "Double.json",
+            "description": "The sampling distance, in radians."
+        },
+        "fill": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the polygon is filled.",
+            "default": true
+        },
+        "material": {
+            "$ref": "Material.json",
+            "description": "The material to use to fill the polygon."
+        },
+        "outline": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the polygon is outlined.",
+            "default": false
+        },
+        "outlineColor": {
+            "$ref": "Color.json",
+            "description": "The color of the polygon outline."
+        },
+        "outlineWidth": {
+            "$ref": "Double.json",
+            "description": "The width of the polygon outline.",
+            "default": 1.0
+        },
+        "perPositionHeight": {
+            "$ref": "Boolean.json",
+            "description": "Whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface."
+        },
+        "closeTop": {
+            "$ref": "Boolean.json",
+            "description": "Whether to close the top of the polygon.",
+            "default": true
+        },
+        "closeBottom": {
+            "$ref": "Boolean.json",
+            "description": "Whether to close the bottom of the polygon.",
+            "default": true
+        }
+    }
+}

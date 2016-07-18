@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/CornerType.json",
+    "title": "CornerType",
+    "description": "The style of a corner.",
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "cornerType": {
+            "$ref": "CornerTypeValue.json",
+            "description": "The corner style.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The corner style specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

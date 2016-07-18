@@ -1,0 +1,67 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Corridor.json",
+    "title": "Corridor",
+    "description": "A corridor, which is a shape defined by a centerline and width that conforms to the curvature of the globe. It can be placed on the surface or at altitude and can optionally be extruded into a volume.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the corridor is shown.",
+            "default": true
+        },
+        "positions": {
+            "$ref": "PositionList.json",
+            "description": "The array of positions defining the centerline of the corridor."
+        },
+        "width": {
+            "$ref": "Double.json",
+            "description": "The width of the corridor, which is the distance between the edges of the corridor."
+        },
+        "height": {
+            "$ref": "Double.json",
+            "description": "The height of the corridor, which is the altitude of the corridor relative to the surface."
+        },
+        "extrudedHeight": {
+            "$ref": "Double.json",
+            "description": "The extruded height of the corridor, which is the altitude of the corridor's extruded face relative to the surface."
+        },
+        "cornerType": {
+            "$ref": "CornerType.json",
+            "description": "The style of the corners of the corridor."
+        },
+        "granularity": {
+            "$ref": "Double.json",
+            "description": "The sampling distance, in radians."
+        },
+        "fill": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the corridor is filled.",
+            "default": true
+        },
+        "material": {
+            "$ref": "Material.json",
+            "description": "The material to display on the surface of the corridor."
+        },
+        "outline": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the corridor is outlined.",
+            "default": false
+        },
+        "outlineColor": {
+            "$ref": "Color.json",
+            "description": "The color of the corridor outline."
+        },
+        "outlineWidth": {
+            "$ref": "Double.json",
+            "description": "The width of the corridor outline.",
+            "default": 1.0
+        }
+    }
+}

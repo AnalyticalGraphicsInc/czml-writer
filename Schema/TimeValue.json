@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/TimeValue.json",
+    "title": "Time",
+    "description": "A time, specified in ISO8601 format.",
+    "type": "string"
+}

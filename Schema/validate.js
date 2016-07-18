@@ -6,7 +6,7 @@ function requireJSON(path) {
 	return JSON.parse(fs.readFileSync(path, 'utf8'));
 }
 
-var schemas = glob.sync('**/*.jsonschema').map(function(filename) {
+var schemas = glob.sync('*.json').concat(glob.sync('Extensions/**/*.json')).map(function(filename) {
 	return requireJSON(filename);
 });
 
@@ -16,7 +16,7 @@ var ajv = new Ajv({
 	schemas: schemas
 });
 
-var schema = requireJSON('./Packet.jsonschema');
+var schema = requireJSON('./Packet.json');
 
 var validate = ajv.compile(schema);
 

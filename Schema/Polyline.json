@@ -1,0 +1,41 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Polyline.json",
+    "title": "Polyline",
+    "description": "A polyline, which is a line in the scene composed of multiple segments.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the polyline is shown.",
+            "default": true
+        },
+        "positions": {
+            "$ref": "PositionList.json",
+            "description": "The array of positions defining the polyline as a line strip."
+        },
+        "width": {
+            "$ref": "Double.json",
+            "description": "The width of the polyline."
+        },
+        "granularity": {
+            "$ref": "Double.json",
+            "description": "The sampling distance, in radians."
+        },
+        "material": {
+            "$ref": "PolylineMaterial.json",
+            "description": "The material to use to draw the polyline."
+        },
+        "followSurface": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the positions are connected as great arcs (the default) or as straight lines.",
+            "default": true
+        }
+    }
+}

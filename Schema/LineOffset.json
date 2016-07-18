@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/LineOffset.json",
+    "title": "LineOffset",
+    "description": "The offset of grid lines along each axis, as a percentage from 0 to 1.",
+    "extends": {
+        "$ref": "InterpolatableProperty.json"
+    },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "cartesian2": {
+            "$ref": "Cartesian2Value.json",
+            "description": "The offset of grid lines along each axis, specified as a percentage from 0 to 1.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The offset of grid lines along each axis specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

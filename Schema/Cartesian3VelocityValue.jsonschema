@@ -1,7 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://cesiumjs.org/schemas/czml/Cartesian3VelocityValue.jsonschema",
-    "title": "Cartesian3Velocity",
-    "description": "A three-dimensional Cartesian value and its derivative specified as `[X, Y, Z, dX, dY, dZ]`.  If the array has six elements, the value is constant.  If it has seven or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, dX, dY, dZ, Time, X, Y, Z, dX, dY, dZ, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.",
-    "type": "array"
-}

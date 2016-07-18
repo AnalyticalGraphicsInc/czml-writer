@@ -1,7 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://cesiumjs.org/schemas/czml/TimeValue.jsonschema",
-    "title": "Time",
-    "description": "A time, specified in ISO8601 format.",
-    "type": "string"
-}

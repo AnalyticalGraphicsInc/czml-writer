@@ -1,7 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://cesiumjs.org/schemas/czml/FontValue.jsonschema",
-    "title": "Font",
-    "description": "A font, specified using the same syntax as the CSS \"font\" property.",
-    "type": "string"
-}

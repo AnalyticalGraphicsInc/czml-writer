@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/PolylineGlowMaterial.json",
+    "title": "PolylineGlowMaterial",
+    "description": "A material that fills the surface of a line with a glowing color.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "color": {
+            "$ref": "Color.json",
+            "description": "The color of the surface."
+        },
+        "glowPower": {
+            "$ref": "Double.json",
+            "description": "The strength of the glow."
+        }
+    }
+}

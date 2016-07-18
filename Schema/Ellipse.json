@@ -1,0 +1,75 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Ellipse.json",
+    "title": "Ellipse",
+    "description": "An ellipse, which is a closed curve on or above the surface of the Earth.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the ellipse is shown.",
+            "default": true
+        },
+        "semiMajorAxis": {
+            "$ref": "Double.json",
+            "description": "The length of the ellipse's semi-major axis in meters."
+        },
+        "semiMinorAxis": {
+            "$ref": "Double.json",
+            "description": "The length of the ellipse's semi-minor axis in meters."
+        },
+        "height": {
+            "$ref": "Double.json",
+            "description": "The altitude of the ellipse relative to the surface."
+        },
+        "extrudedHeight": {
+            "$ref": "Double.json",
+            "description": "The altitude of the ellipse's extruded face relative to the surface."
+        },
+        "rotation": {
+            "$ref": "Double.json",
+            "description": "The angle from north (counter-clockwise) in radians."
+        },
+        "stRotation": {
+            "$ref": "Double.json",
+            "description": "The rotation of any applied texture coordinates."
+        },
+        "granularity": {
+            "$ref": "Double.json",
+            "description": "The sampling distance, in radians."
+        },
+        "fill": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the ellipse is filled.",
+            "default": true
+        },
+        "material": {
+            "$ref": "Material.json",
+            "description": "The material to use to fill the ellipse."
+        },
+        "outline": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the ellipse is outlined.",
+            "default": false
+        },
+        "outlineColor": {
+            "$ref": "Color.json",
+            "description": "The color of the ellipse outline."
+        },
+        "outlineWidth": {
+            "$ref": "Double.json",
+            "description": "The width of the ellipse outline.",
+            "default": 1.0
+        },
+        "numberOfVerticalLines": {
+            "$ref": "Double.json",
+            "description": "The number of vertical lines to use when outlining an extruded ellipse."
+        }
+    }
+}

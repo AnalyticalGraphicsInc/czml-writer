@@ -1,7 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://cesiumjs.org/schemas/czml/Cartesian2Value.jsonschema",
-    "title": "Cartesian2",
-    "description": "A two-dimensional Cartesian value specified as `[X, Y]`.  If the array has two elements, the value is constant.  If it has three or more elements, they are time-tagged samples arranged as `[Time, X, Y, Time, X, Y, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.",
-    "type": "array"
-}
