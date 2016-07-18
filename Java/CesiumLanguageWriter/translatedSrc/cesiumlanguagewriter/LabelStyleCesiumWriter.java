@@ -85,7 +85,7 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 
 	/**
 	 *  
-	Writes the value expressed as a <code>labelStyle</code>, which is the label style.  Valid values are "FILL", "OUTLINE", and "FILL_AND_OUTLINE".
+	Writes the value expressed as a <code>labelStyle</code>, which is the label style.
 	
 	
 
