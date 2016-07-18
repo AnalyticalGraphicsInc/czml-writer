@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>verticalOrigin</code>, which is the vertical origin.  Valid values are "BOTTOM", "CENTER", and "TOP".
+        /// Writes the value expressed as a <code>verticalOrigin</code>, which is the vertical origin.
         /// </summary>
         /// <param name="value">The vertical origin.</param>
         public void WriteVerticalOrigin(CesiumVerticalOrigin value)

@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/StripeOrientation.json",
+    "title": "StripeOrientation",
+    "description": "The orientation of stripes in a stripe material.",
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "StripeOrientation": {
+            "$ref": "StripeOrientationValue.json",
+            "description": "The orientation of stripes in the stripe material.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The orientation of stripes specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

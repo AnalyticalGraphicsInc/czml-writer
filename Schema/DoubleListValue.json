@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/DoubleListValue.json",
+    "title": "DoubleList",
+    "description": "A list of values specified as an array of numbers.",
+    "type": "array"
+}

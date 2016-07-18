@@ -6,26 +6,26 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- Specifies the style of label.
+ Specifies how the text of a label is drawn.
  
 
  */
 public enum CesiumLabelStyle implements Enumeration {
 	/**
 	 *  
-	The label is filled.
+	The text of the label is filled, but not outlined.
 	
 
 	 */
 	FILL(0), /**
 				 *  
-				The label is outlined.
+				The text of the label is outlined, but not filled.
 				
 
 				 */
 	OUTLINE(1), /**
 				 *  
-				The label is filled and outlined.
+				The text of the label is both filled and outlined.
 				
 
 				 */

@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/StripeOrientationValue.json",
+    "title": "StripeOrientation",
+    "description": "The orientation of stripes in the stripe material.",
+    "type": "string",
+    "oneOf": [
+        {
+            "enum": [
+                "HORIZONTAL"
+            ],
+            "description": "The stripes are oriented horizontally along the X axis."
+        },
+        {
+            "enum": [
+                "VERTICAL"
+            ],
+            "description": "The stripes are oriented vertically along the Y axis."
+        }
+    ]
+}

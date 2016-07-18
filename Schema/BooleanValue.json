@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/BooleanValue.json",
+    "title": "Boolean",
+    "description": "A boolean value.",
+    "type": "boolean"
+}

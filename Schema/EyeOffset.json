@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/EyeOffset.json",
+    "title": "EyeOffset",
+    "description": "An offset in eye coordinates which can optionally vary over time.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen.",
+    "extends": {
+        "$ref": "InterpolatableProperty.json"
+    },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "cartesian": {
+            "$ref": "Cartesian3Value.json",
+            "description": "The eye offset specified as a three-dimensional Cartesian value `[X, Y, Z]`, in eye coordinates in meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The eye offset specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

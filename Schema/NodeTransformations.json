@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/NodeTransformations.json",
+    "title": "NodeTransformations",
+    "description": "A mapping of node names to node transformations.",
+    "type": "object",
+    "czmlExamples": [
+        "Examples/NodeTransformations.json"
+    ],
+    "additionalProperties": {
+        "$ref": "NodeTransformation.json",
+        "description": "Transformations to apply to a particular node in a 3D model."
+    }
+}

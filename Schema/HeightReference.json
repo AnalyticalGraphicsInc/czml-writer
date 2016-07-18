@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/HeightReference.json",
+    "title": "HeightReference",
+    "description": "The height reference of an object, which indicates if the object's position is relative to terrain or not.",
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "heightReference": {
+            "$ref": "HeightReferenceValue.json",
+            "description": "The height reference.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The height reference specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

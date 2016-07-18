@@ -1,9 +1,0 @@
-{
-    "title": "CartographicRectangle",
-    "description": "A two dimensional region specified as `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`.  If the array has four elements, the value is constant.  If it has five or more elements, they are time-tagged samples arranged as `[Time, WestLongitude, SouthLatitude, EastLongitude, NorthLatitude, Time, WestLongitude, SouthLatitude, EastLongitude, NorthLatitude, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.",
-    "type": "array",
-    "czmlExamples": [
-        "Examples/CartographicRectangleValue.json",
-        "Examples/CartographicRectangleValueSamples.json"
-    ]
-}

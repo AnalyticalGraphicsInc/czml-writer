@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/LabelStyle.json",
+    "title": "LabelStyle",
+    "description": "The style of a label.",
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "labelStyle": {
+            "$ref": "LabelStyleValue.json",
+            "description": "The label style.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The label style specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

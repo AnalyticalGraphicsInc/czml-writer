@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ImageMaterial.json",
+    "title": "ImageMaterial",
+    "description": "A material that fills the surface with an image.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "image": {
+            "$ref": "Uri.json",
+            "description": "The image to display on the surface."
+        },
+        "repeat": {
+            "$ref": "Repeat.json",
+            "description": "The number of times the image repeats along each axis."
+        },
+        "color": {
+            "$ref": "Color.json",
+            "description": "The color of the image. This color value is multiplied with the image to produce the final color."
+        },
+        "transparent": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the image has transparency."
+        }
+    }
+}

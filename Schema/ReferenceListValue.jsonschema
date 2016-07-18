@@ -1,6 +1,0 @@
-{
-    "title": "ReferenceList",
-    "description": "A list of references to other properties.",
-    "type": "array",
-    "items": "string"
-}

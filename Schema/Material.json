@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Material.json",
+    "title": "Material",
+    "description": "A definition of how a surface is colored or shaded.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "solidColor": {
+            "$ref": "SolidColorMaterial.json",
+            "description": "A material that fills the surface with a solid color, which may be translucent."
+        },
+        "image": {
+            "$ref": "ImageMaterial.json",
+            "description": "A material that fills the surface with an image."
+        },
+        "grid": {
+            "$ref": "GridMaterial.json",
+            "description": "A material that fills the surface with a grid."
+        },
+        "stripe": {
+            "$ref": "StripeMaterial.json",
+            "description": "A material that fills the surface with alternating colors."
+        }
+    }
+}

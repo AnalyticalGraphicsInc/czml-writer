@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/StripeMaterial.json",
+    "title": "StripeMaterial",
+    "description": "A material that fills the surface with alternating colors.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "orientation": {
+            "$ref": "StripeOrientation.json",
+            "description": "The value indicating if the stripes are horizontal or vertical."
+        },
+        "evenColor": {
+            "$ref": "Color.json",
+            "description": "The even color."
+        },
+        "oddColor": {
+            "$ref": "Color.json",
+            "description": "The odd color."
+        },
+        "offset": {
+            "$ref": "Double.json",
+            "description": "The value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between."
+        },
+        "repeat": {
+            "$ref": "Double.json",
+            "description": "The number of times the stripes repeat."
+        }
+    }
+}

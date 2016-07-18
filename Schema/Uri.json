@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Uri.json",
+    "title": "Uri",
+    "description": "A URI value.  The URI can optionally vary with time.",
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "czmlExamples": [
+        "Examples/Uri.json"
+    ],
+    "properties": {
+        "uri": {
+            "$ref": "UriValue.json",
+            "description": "The URI value.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The URI specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

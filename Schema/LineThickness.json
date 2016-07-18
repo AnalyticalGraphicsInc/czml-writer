@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/LineThickness.json",
+    "title": "LineThickness",
+    "description": "The thickness of grid lines along each axis, in pixels.",
+    "extends": {
+        "$ref": "InterpolatableProperty.json"
+    },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "cartesian2": {
+            "$ref": "Cartesian2Value.json",
+            "description": "The thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The thickness specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

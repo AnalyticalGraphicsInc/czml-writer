@@ -85,7 +85,7 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
 	/**
 	 *  
-	Writes the value expressed as a <code>cornerType</code>, which is the corner style.  Valid values are "ROUNDED", "MITERED", and "BEVELED".
+	Writes the value expressed as a <code>cornerType</code>, which is the corner style.
 	
 	
 

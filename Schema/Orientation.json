@@ -1,0 +1,32 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Orientation.json",
+    "title": "Orientation",
+    "description": "Defines an orientation.  An orientation is a rotation that takes a vector expressed in the \"body\" axes of the object and transforms it to the Earth fixed axes.",
+    "extends": {
+        "$ref": "InterpolatableProperty.json"
+    },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "czmlExamples": [
+        "Examples/Orientation.json",
+        "Examples/OrientationSampled.json"
+    ],
+    "properties": {
+        "unitQuaternion": {
+            "$ref": "UnitQuaternionValue.json",
+            "description": "The orientation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The orientation specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

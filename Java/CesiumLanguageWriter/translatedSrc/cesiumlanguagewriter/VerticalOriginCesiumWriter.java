@@ -85,7 +85,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 
 	/**
 	 *  
-	Writes the value expressed as a <code>verticalOrigin</code>, which is the vertical origin.  Valid values are "BOTTOM", "CENTER", and "TOP".
+	Writes the value expressed as a <code>verticalOrigin</code>, which is the vertical origin.
 	
 	
 

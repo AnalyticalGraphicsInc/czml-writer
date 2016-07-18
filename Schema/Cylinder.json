@@ -1,0 +1,63 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Cylinder.json",
+    "title": "Cylinder",
+    "description": "A cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the cylinder is shown.",
+            "default": true
+        },
+        "length": {
+            "$ref": "Double.json",
+            "description": "The length of the cylinder."
+        },
+        "topRadius": {
+            "$ref": "Double.json",
+            "description": "The radius of the top of the cylinder."
+        },
+        "bottomRadius": {
+            "$ref": "Double.json",
+            "description": "The radius of the bottom of the cylinder."
+        },
+        "fill": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the cylinder is filled.",
+            "default": true
+        },
+        "material": {
+            "$ref": "Material.json",
+            "description": "The material to display on the surface of the cylinder."
+        },
+        "outline": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the cylinder is outlined.",
+            "default": false
+        },
+        "outlineColor": {
+            "$ref": "Color.json",
+            "description": "The color of the cylinder outline."
+        },
+        "outlineWidth": {
+            "$ref": "Double.json",
+            "description": "The width of the cylinder outline.",
+            "default": 1.0
+        },
+        "numberOfVerticalLines": {
+            "$ref": "Double.json",
+            "description": "The number of vertical lines to draw along the perimeter for the outline."
+        },
+        "slices": {
+            "$ref": "Double.json",
+            "description": "The number of edges around the perimeter of the cylinder."
+        }
+    }
+}

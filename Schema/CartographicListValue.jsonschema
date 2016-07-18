@@ -1,5 +1,0 @@
-{
-    "title": "CartographicList",
-    "description": "A list of geodetic, WGS84 positions specified as `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`.",
-    "type": "array"
-}

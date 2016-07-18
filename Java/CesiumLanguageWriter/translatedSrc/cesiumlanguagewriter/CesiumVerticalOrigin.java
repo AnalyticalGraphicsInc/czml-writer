@@ -6,26 +6,26 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- The vertical origin of a billboard or label relative to its position.
+ The vertical origin of an item relative to its position.
  
 
  */
 public enum CesiumVerticalOrigin implements Enumeration {
 	/**
 	 *  
-	The bottom of the billboard or label is located at the position.
+	The bottom of the item is located at the position.
 	
 
 	 */
 	BOTTOM(0), /**
 				 *  
-				The billboard or label is vertically centered at the position.
+				The item is vertically centered at the position.
 				
 
 				 */
 	CENTER(1), /**
 				 *  
-				The top of the billboard or label is located at the position.
+				The top of the item is located at the position.
 				
 
 				 */

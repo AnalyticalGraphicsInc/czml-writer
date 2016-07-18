@@ -6,26 +6,26 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- The horizontal origin of a billboard or label relative to its position.
+ The horizontal origin of an item relative to its position.
  
 
  */
 public enum CesiumHorizontalOrigin implements Enumeration {
 	/**
 	 *  
-	The left side of the billboard or label is located at the position.
+	The left side of the item is located at the position.
 	
 
 	 */
 	LEFT(0), /**
 				 *  
-				The billboard or label is horizontally centered on the position.
+				The item is horizontally centered on the position.
 				
 
 				 */
 	CENTER(1), /**
 				 *  
-				The right side of the billboard or label is located at the position.
+				The right side of the item is located at the position.
 				
 
 				 */

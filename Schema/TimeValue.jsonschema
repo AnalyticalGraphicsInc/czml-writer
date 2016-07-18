@@ -1,5 +1,0 @@
-{
-    "title": "Time",
-    "description": "A time, specified in ISO8601 format.",
-    "type": "string"
-}

@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ViewFrom.json",
+    "title": "ViewFrom",
+    "description": "A suggested camera location when viewing an object, specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.",
+    "extends": {
+        "$ref": "InterpolatableProperty.json"
+    },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "czmlExamples": [
+        "Examples/ViewFrom.json"
+    ],
+    "properties": {
+        "cartesian": {
+            "$ref": "Cartesian3Value.json",
+            "description": "The camera location specified as a three-dimensional Cartesian value `[X, Y, Z]`, in the East (x), North (y), Up (z) reference frame relative to the object's position.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The camera location specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

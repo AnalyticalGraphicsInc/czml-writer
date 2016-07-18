@@ -85,7 +85,7 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
 	/**
 	 *  
-	Writes the value expressed as a <code>StripeOrientation</code>, which is the orientation of stripes in the stripe material. Valid values are "HORIZONTAL" or "VERTICAL".
+	Writes the value expressed as a <code>StripeOrientation</code>, which is the orientation of stripes in the stripe material.
 	
 	
 

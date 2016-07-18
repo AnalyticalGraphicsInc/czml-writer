@@ -1,0 +1,59 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Ellipsoid.json",
+    "title": "Ellipsoid",
+    "description": "A closed quadric surface that is a three dimensional analogue of an ellipse.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the ellipsoid is shown.",
+            "default": true
+        },
+        "radii": {
+            "$ref": "EllipsoidRadii.json",
+            "description": "The dimensions of the ellipsoid."
+        },
+        "fill": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the ellipsoid is filled.",
+            "default": true
+        },
+        "material": {
+            "$ref": "Material.json",
+            "description": "The material to display on the surface of the ellipsoid."
+        },
+        "outline": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the ellipsoid is outlined.",
+            "default": false
+        },
+        "outlineColor": {
+            "$ref": "Color.json",
+            "description": "The color of the ellipsoid outline."
+        },
+        "outlineWidth": {
+            "$ref": "Double.json",
+            "description": "The width of the ellipsoid outline.",
+            "default": 1.0
+        },
+        "stackPartitions": {
+            "$ref": "Double.json",
+            "description": "The number of times to partition the ellipsoid into stacks."
+        },
+        "slicePartitions": {
+            "$ref": "Double.json",
+            "description": "The number of times to partition the ellipsoid into radial slices."
+        },
+        "subdivisions": {
+            "$ref": "Double.json",
+            "description": "The number of samples per outline ring, determining the granularity of the curvature."
+        }
+    }
+}

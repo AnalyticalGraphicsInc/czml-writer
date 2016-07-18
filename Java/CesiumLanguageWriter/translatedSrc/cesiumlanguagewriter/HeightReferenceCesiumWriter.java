@@ -85,7 +85,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
 
 	/**
 	 *  
-	Writes the value expressed as a <code>heightReference</code>, which is the height reference.  Valid values are "NONE", "CLAMP_TO_GROUND", and "RELATIVE_TO_GROUND".
+	Writes the value expressed as a <code>heightReference</code>, which is the height reference.
 	
 	
 

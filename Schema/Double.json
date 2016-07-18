@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Double.json",
+    "title": "Double",
+    "description": "A floating-point number.",
+    "extends": {
+        "$ref": "InterpolatableProperty.json"
+    },
+    "type": [
+        "array",
+        "object",
+        "number"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "number": {
+            "$ref": "DoubleValue.json",
+            "description": "The number.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The number specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

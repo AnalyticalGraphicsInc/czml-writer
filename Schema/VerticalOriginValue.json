@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/VerticalOriginValue.json",
+    "title": "VerticalOrigin",
+    "description": "The vertical location of an origin relative to an object's position.",
+    "type": "string",
+    "oneOf": [
+        {
+            "enum": [
+                "BOTTOM"
+            ],
+            "description": "The origin is at the bottom of the object."
+        },
+        {
+            "enum": [
+                "CENTER"
+            ],
+            "description": "The origin is at the vertical center of the object."
+        },
+        {
+            "enum": [
+                "TOP"
+            ],
+            "description": "The origin is at the top of the object."
+        }
+    ]
+}

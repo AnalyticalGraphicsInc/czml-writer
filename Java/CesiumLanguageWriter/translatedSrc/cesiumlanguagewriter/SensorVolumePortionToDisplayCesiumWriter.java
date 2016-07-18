@@ -10,7 +10,7 @@ import cesiumlanguagewriter.Reference;
 
 /**
  *  
- Writes a <code>SensorVolumePortionToDisplay</code> to a  {@link CesiumOutputStream}.  A <code>SensorVolumePortionToDisplay</code> is what part of a sensor should be displayed.  Valid values are "COMPLETE", "BELOW_ELLIPSOID_HORIZON", "ABOVE_ELLIPSOID_HORIZON".
+ Writes a <code>SensorVolumePortionToDisplay</code> to a  {@link CesiumOutputStream}.  A <code>SensorVolumePortionToDisplay</code> is what part of a sensor should be displayed.
  
 
  */
@@ -85,7 +85,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
 
 	/**
 	 *  
-	Writes the value expressed as a <code>portionToDisplay</code>, which is what part of a sensor should be displayed.  Valid values are "COMPLETE", "BELOW_ELLIPSOID_HORIZON", "ABOVE_ELLIPSOID_HORIZON".
+	Writes the value expressed as a <code>portionToDisplay</code>, which is the part of a sensor to display.
 	
 	
 
@@ -104,7 +104,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
 
 	/**
 	 *  
-	Writes the value expressed as a <code>reference</code>, which is what part of a sensor should be displayed, specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the part of a sensor to display, specified as a reference to another property.
 	
 	
 
@@ -119,7 +119,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
 
 	/**
 	 *  
-	Writes the value expressed as a <code>reference</code>, which is what part of a sensor should be displayed, specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the part of a sensor to display, specified as a reference to another property.
 	
 	
 
@@ -134,7 +134,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
 
 	/**
 	 *  
-	Writes the value expressed as a <code>reference</code>, which is what part of a sensor should be displayed, specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the part of a sensor to display, specified as a reference to another property.
 	
 	
 	
@@ -151,7 +151,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
 
 	/**
 	 *  
-	Writes the value expressed as a <code>reference</code>, which is what part of a sensor should be displayed, specified as a reference to another property.
+	Writes the value expressed as a <code>reference</code>, which is the part of a sensor to display, specified as a reference to another property.
 	
 	
 	

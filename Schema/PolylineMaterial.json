@@ -1,0 +1,43 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/PolylineMaterial.json",
+    "title": "PolylineMaterial",
+    "description": "A definition of how a polyline is colored or shaded.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "solidColor": {
+            "$ref": "SolidColorMaterial.json",
+            "description": "A material that fills the line with a solid color, which may be translucent."
+        },
+        "polylineOutline": {
+            "$ref": "PolylineOutlineMaterial.json",
+            "description": "A material that fills the line with a color and outline."
+        },
+        "polylineArrow": {
+            "$ref": "PolylineArrowMaterial.json",
+            "description": "A material that fills the line with an arrow."
+        },
+        "polylineGlow": {
+            "$ref": "PolylineGlowMaterial.json",
+            "description": "A material that fills the line with a glowing color."
+        },
+        "image": {
+            "$ref": "ImageMaterial.json",
+            "description": "A material that fills the line with an image."
+        },
+        "grid": {
+            "$ref": "GridMaterial.json",
+            "description": "A material that fills the line with a grid."
+        },
+        "stripe": {
+            "$ref": "StripeMaterial.json",
+            "description": "A material that fills the line with alternating colors."
+        }
+    }
+}

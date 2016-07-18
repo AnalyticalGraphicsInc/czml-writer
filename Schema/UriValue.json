@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/UriValue.json",
+    "title": "Uri",
+    "description": "A URI value.",
+    "type": "string",
+    "czmlExamples": [
+        "Examples/UriValue.json",
+        "Examples/UriValueData.json"
+    ]
+}

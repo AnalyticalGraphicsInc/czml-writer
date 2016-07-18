@@ -1,0 +1,77 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Rectangle.json",
+    "title": "Rectangle",
+    "description": "A cartographic rectangle, which conforms to the curvature of the globe and can be placed on the surface or at altitude and can optionally be extruded into a volume.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "show": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the rectangle is shown.",
+            "default": true
+        },
+        "coordinates": {
+            "$ref": "RectangleCoordinates.json",
+            "description": "The coordinates of the rectangle."
+        },
+        "height": {
+            "$ref": "Double.json",
+            "description": "The height of the rectangle."
+        },
+        "extrudedHeight": {
+            "$ref": "Double.json",
+            "description": "The extruded height of the rectangle."
+        },
+        "rotation": {
+            "$ref": "Double.json",
+            "description": "The rotation of the rectangle clockwise from north."
+        },
+        "stRotation": {
+            "$ref": "Double.json",
+            "description": "The rotation of any applied texture. A positive rotation is counter-clockwise."
+        },
+        "granularity": {
+            "$ref": "Double.json",
+            "description": "The sampling distance, in radians."
+        },
+        "fill": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the rectangle is filled.",
+            "default": true
+        },
+        "material": {
+            "$ref": "Material.json",
+            "description": "The material to display on the surface of the rectangle."
+        },
+        "outline": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the rectangle is outlined.",
+            "default": false
+        },
+        "outlineColor": {
+            "$ref": "Color.json",
+            "description": "The color of the rectangle outline."
+        },
+        "outlineWidth": {
+            "$ref": "Double.json",
+            "description": "The width of the rectangle outline.",
+            "default": 1.0
+        },
+        "closeTop": {
+            "$ref": "Boolean.json",
+            "description": "Whether to close the top of the rectangle.",
+            "default": true
+        },
+        "closeBottom": {
+            "$ref": "Boolean.json",
+            "description": "Whether to close the bottom of the rectangle.",
+            "default": true
+        }
+    }
+}
