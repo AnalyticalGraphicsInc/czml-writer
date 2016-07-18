@@ -2,11 +2,26 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "https://cesiumjs.org/schemas/czml/LabelStyleValue.jsonschema",
     "title": "LabelStyle",
-    "description": "A label style.  Valid values are \"FILL\", \"OUTLINE\", and \"FILL_AND_OUTLINE\".",
+    "description": "The style of a label.",
     "type": "string",
-    "enum": [
-        "FILL",
-        "OUTLINE",
-        "FILL_AND_OUTLINE"
+    "oneOf": [
+        {
+            "enum": [
+                "FILL"
+            ],
+            "description": "The text of the label is filled, but not outlined."
+        },
+        {
+            "enum": [
+                "OUTLINE"
+            ],
+            "description": "The text of the label is outlined, but not filled."
+        },
+        {
+            "enum": [
+                "FILL_AND_OUTLINE"
+            ],
+            "description": "The text of the label is both filled and outlined."
+        }
     ]
 }

@@ -2,11 +2,26 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "https://cesiumjs.org/schemas/czml/ClockRangeValue.jsonschema",
     "title": "ClockRange",
-    "description": "The behavior of a clock when its current time reaches its start or end time.  If `UNBOUNDED`, time will continue advancing.  If `CLAMPED`, the clock will stop.  If `LOOP_STOP`, when the end time is reached while advancing forward, the clock will jump to the start time, and when the start time is reached while advancing backward, the clock will stop.",
+    "description": "The behavior of a clock when its current time reaches its start or end time.",
     "type": "string",
-    "enum": [
-        "UNBOUNDED",
-        "CLAMPED",
-        "LOOP_STOP"
+    "oneOf": [
+        {
+            "enum": [
+                "UNBOUNDED"
+            ],
+            "description": "The clock will continue advancing in the current direction."
+        },
+        {
+            "enum": [
+                "CLAMPED"
+            ],
+            "description": "The clock will stop."
+        },
+        {
+            "enum": [
+                "LOOP_STOP"
+            ],
+            "description": "When the end time is reached while advancing forward, the clock will jump to the start time, and when the start time is reached while advancing backward, the clock will stop."
+        }
     ]
 }

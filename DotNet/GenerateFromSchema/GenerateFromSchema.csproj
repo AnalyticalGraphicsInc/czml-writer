@@ -45,6 +45,7 @@
     <Compile Include="CodeWriter.cs" />
     <Compile Include="CSharpGenerator.cs" />
     <Compile Include="GenerateFromSchema.cs" />
+    <Compile Include="SchemaEnumValue.cs" />
     <Compile Include="ValidationDocumentGenerator.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="MarkdownGenerator.cs" />

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
@@ -61,14 +62,13 @@ namespace GenerateFromSchema
                 schema.AdditionalProperties = LoadProperty(schemaFileName, additionalPropertiesProperty);
             }
 
-            JProperty enumValuesProperty = schemaJson.Property("enum");
-            if (enumValuesProperty != null)
-            {
-                schema.EnumValues = new List<string>();
-
-                JArray enumValues = (JArray)enumValuesProperty.Value;
-                schema.EnumValues.AddRange(enumValues.Values<string>());
-            }
+            schema.EnumValues = schemaJson.SelectTokens("oneOf[?(@.enum)]")
+                                          .Cast<JObject>()
+                                          .Select(obj => new SchemaEnumValue
+                                                         {
+                                                             Name = obj.SelectToken("enum[0]").Value<string>(),
+                                                             Description = obj.SelectToken("description").Value<string>()
+                                                         }).ToList();
 
             JProperty examplesProperty = schemaJson.Property("czmlExamples");
             if (examplesProperty != null)

@@ -4,9 +4,24 @@
     "title": "CornerType",
     "description": "The style of a corner.",
     "type": "string",
-    "enum": [
-        "ROUNDED",
-        "MITERED",
-        "BEVELED"
+    "oneOf": [
+        {
+            "enum": [
+                "ROUNDED"
+            ],
+            "description": "The corner has a smooth edge."
+        },
+        {
+            "enum": [
+                "MITERED"
+            ],
+            "description": "The corner point is the intersection of adjacent edges."
+        },
+        {
+            "enum": [
+                "BEVELED"
+            ],
+            "description": "The corner is clipped."
+        }
     ]
 }

@@ -14,7 +14,7 @@
     "properties": {
         "labelStyle": {
             "$ref": "LabelStyleValue.jsonschema",
-            "description": "The label style.  Valid values are \"FILL\", \"OUTLINE\", and \"FILL_AND_OUTLINE\".",
+            "description": "The label style.",
             "czmlValue": true
         },
         "reference": {
