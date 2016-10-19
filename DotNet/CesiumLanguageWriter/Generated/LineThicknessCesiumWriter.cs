@@ -8,17 +8,17 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>LineThickness</code> to a <see cref="CesiumOutputStream" />.  A <code>LineThickness</code> is the thickness of grid lines along each axis, in pixels.
+    /// Writes a <c>LineThickness</c> to a <see cref="CesiumOutputStream" />.  A <c>LineThickness</c> is the thickness of grid lines along each axis, in pixels.
     /// </summary>
     public class LineThicknessCesiumWriter : CesiumInterpolatablePropertyWriter<LineThicknessCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>cartesian2</code> property.
+        /// The name of the <c>cartesian2</c> property.
         /// </summary>
         public const string Cartesian2PropertyName = "cartesian2";
 
         /// <summary>
-        /// The name of the <code>reference</code> property.
+        /// The name of the <c>reference</c> property.
         /// </summary>
         public const string ReferencePropertyName = "reference";
 
@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>cartesian2</code>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
+        /// Writes the value expressed as a <c>cartesian2</c>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCartesian2(Rectangular value)
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>cartesian2</code>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
+        /// Writes the value expressed as a <c>cartesian2</c>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
         /// </summary>
         /// <param name="x">The X component.</param>
         /// <param name="y">The Y component.</param>
@@ -75,7 +75,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>cartesian2</code>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
+        /// Writes the value expressed as a <c>cartesian2</c>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -85,7 +85,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>cartesian2</code>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
+        /// Writes the value expressed as a <c>cartesian2</c>, which is the thickness specified as a two-dimensional Cartesian value `[X, Y]`, in pixels.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -99,7 +99,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the thickness specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the thickness specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -111,7 +111,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the thickness specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the thickness specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -123,7 +123,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the thickness specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the thickness specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -136,7 +136,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the thickness specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the thickness specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -149,7 +149,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>Cartesian2</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Cartesian2</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumInterpolatableValuePropertyWriter<Rectangular> AsCartesian2()
@@ -163,7 +163,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Reference</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumValuePropertyWriter<Reference> AsReference()

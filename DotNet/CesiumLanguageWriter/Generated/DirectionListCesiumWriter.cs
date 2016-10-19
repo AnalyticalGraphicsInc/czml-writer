@@ -8,27 +8,27 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>DirectionList</code> to a <see cref="CesiumOutputStream" />.  A <code>DirectionList</code> is a list of directions.
+    /// Writes a <c>DirectionList</c> to a <see cref="CesiumOutputStream" />.  A <c>DirectionList</c> is a list of directions.
     /// </summary>
     public class DirectionListCesiumWriter : CesiumPropertyWriter<DirectionListCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>spherical</code> property.
+        /// The name of the <c>spherical</c> property.
         /// </summary>
         public const string SphericalPropertyName = "spherical";
 
         /// <summary>
-        /// The name of the <code>unitSpherical</code> property.
+        /// The name of the <c>unitSpherical</c> property.
         /// </summary>
         public const string UnitSphericalPropertyName = "unitSpherical";
 
         /// <summary>
-        /// The name of the <code>cartesian</code> property.
+        /// The name of the <c>cartesian</c> property.
         /// </summary>
         public const string CartesianPropertyName = "cartesian";
 
         /// <summary>
-        /// The name of the <code>unitCartesian</code> property.
+        /// The name of the <c>unitCartesian</c> property.
         /// </summary>
         public const string UnitCartesianPropertyName = "unitCartesian";
 
@@ -69,7 +69,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>spherical</code>, which is the list of directions specified as spherical values `[Clock, Cone, Magnitude, Clock, Cone, Magnitude, ...]`, with angles in radians and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+        /// Writes the value expressed as a <c>spherical</c>, which is the list of directions specified as spherical values `[Clock, Cone, Magnitude, Clock, Cone, Magnitude, ...]`, with angles in radians and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteSpherical(IEnumerable<Spherical> values)
@@ -81,7 +81,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>unitSpherical</code>, which is the list of directions specified as unit spherical values `[Clock, Cone, Clock, Cone, ...]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+        /// Writes the value expressed as a <c>unitSpherical</c>, which is the list of directions specified as unit spherical values `[Clock, Cone, Clock, Cone, ...]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteUnitSpherical(IEnumerable<UnitSpherical> values)
@@ -93,7 +93,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>cartesian</code>, which is the list of directions specified as three-dimensional Cartesian values `[X, Y, Z, X, Y, Z, ...]`, in world coordinates in meters.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the list of directions specified as three-dimensional Cartesian values `[X, Y, Z, X, Y, Z, ...]`, in world coordinates in meters.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteCartesian(IEnumerable<Cartesian> values)
@@ -105,7 +105,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>unitCartesian</code>, which is the list of directions specified as three-dimensional unit magnitude Cartesian values, `[X, Y, Z, X, Y, Z, ...]`, in world coordinates in meters.
+        /// Writes the value expressed as a <c>unitCartesian</c>, which is the list of directions specified as three-dimensional unit magnitude Cartesian values, `[X, Y, Z, X, Y, Z, ...]`, in world coordinates in meters.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteUnitCartesian(IEnumerable<UnitCartesian> values)
@@ -117,7 +117,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Spherical</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Spherical</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumValuePropertyWriter<IEnumerable<Spherical>> AsSpherical()
@@ -131,7 +131,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>UnitSpherical</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>UnitSpherical</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>> AsUnitSpherical()
@@ -145,7 +145,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Cartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Cartesian</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumValuePropertyWriter<IEnumerable<Cartesian>> AsCartesian()
@@ -159,7 +159,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>UnitCartesian</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>UnitCartesian</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>> AsUnitCartesian()

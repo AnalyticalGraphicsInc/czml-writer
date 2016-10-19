@@ -8,22 +8,22 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>RectangleCoordinates</code> to a <see cref="CesiumOutputStream" />.  A <code>RectangleCoordinates</code> is a set of coordinates describing a cartographic rectangle on the surface of the ellipsoid.
+    /// Writes a <c>RectangleCoordinates</c> to a <see cref="CesiumOutputStream" />.  A <c>RectangleCoordinates</c> is a set of coordinates describing a cartographic rectangle on the surface of the ellipsoid.
     /// </summary>
     public class RectangleCoordinatesCesiumWriter : CesiumInterpolatablePropertyWriter<RectangleCoordinatesCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>wsen</code> property.
+        /// The name of the <c>wsen</c> property.
         /// </summary>
         public const string WsenPropertyName = "wsen";
 
         /// <summary>
-        /// The name of the <code>wsenDegrees</code> property.
+        /// The name of the <c>wsenDegrees</c> property.
         /// </summary>
         public const string WsenDegreesPropertyName = "wsenDegrees";
 
         /// <summary>
-        /// The name of the <code>reference</code> property.
+        /// The name of the <c>reference</c> property.
         /// </summary>
         public const string ReferencePropertyName = "reference";
 
@@ -61,7 +61,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>wsen</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+        /// Writes the value expressed as a <c>wsen</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteWsen(CartographicExtent value)
@@ -73,7 +73,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>wsen</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+        /// Writes the value expressed as a <c>wsen</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
         /// </summary>
         /// <param name="west">The westernmost longitude.</param>
         /// <param name="south">The southernmost latitude.</param>
@@ -85,7 +85,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>wsen</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+        /// Writes the value expressed as a <c>wsen</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -95,7 +95,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>wsen</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+        /// Writes the value expressed as a <c>wsen</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -109,7 +109,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>wsenDegrees</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in degrees.
+        /// Writes the value expressed as a <c>wsenDegrees</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in degrees.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteWsenDegrees(CartographicExtent value)
@@ -121,7 +121,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>wsenDegrees</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in degrees.
+        /// Writes the value expressed as a <c>wsenDegrees</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in degrees.
         /// </summary>
         /// <param name="west">The westernmost longitude.</param>
         /// <param name="south">The southernmost latitude.</param>
@@ -133,7 +133,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>wsenDegrees</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in degrees.
+        /// Writes the value expressed as a <c>wsenDegrees</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in degrees.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -143,7 +143,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>wsenDegrees</code>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in degrees.
+        /// Writes the value expressed as a <c>wsenDegrees</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in degrees.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -157,7 +157,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the set of coordinates specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the set of coordinates specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -169,7 +169,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the set of coordinates specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the set of coordinates specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -181,7 +181,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the set of coordinates specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the set of coordinates specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -194,7 +194,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the set of coordinates specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the set of coordinates specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -207,7 +207,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>Wsen</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Wsen</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumInterpolatableValuePropertyWriter<CartographicExtent> AsWsen()
@@ -221,7 +221,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>WsenDegrees</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>WsenDegrees</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumInterpolatableValuePropertyWriter<CartographicExtent> AsWsenDegrees()
@@ -235,7 +235,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Reference</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumValuePropertyWriter<Reference> AsReference()

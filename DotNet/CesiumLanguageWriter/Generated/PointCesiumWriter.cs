@@ -9,47 +9,47 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Point</code> to a <see cref="CesiumOutputStream" />.  A <code>Point</code> is a point, or viewport-aligned circle.
+    /// Writes a <c>Point</c> to a <see cref="CesiumOutputStream" />.  A <c>Point</c> is a point, or viewport-aligned circle.
     /// </summary>
     public class PointCesiumWriter : CesiumPropertyWriter<PointCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>show</code> property.
+        /// The name of the <c>show</c> property.
         /// </summary>
         public const string ShowPropertyName = "show";
 
         /// <summary>
-        /// The name of the <code>pixelSize</code> property.
+        /// The name of the <c>pixelSize</c> property.
         /// </summary>
         public const string PixelSizePropertyName = "pixelSize";
 
         /// <summary>
-        /// The name of the <code>heightReference</code> property.
+        /// The name of the <c>heightReference</c> property.
         /// </summary>
         public const string HeightReferencePropertyName = "heightReference";
 
         /// <summary>
-        /// The name of the <code>color</code> property.
+        /// The name of the <c>color</c> property.
         /// </summary>
         public const string ColorPropertyName = "color";
 
         /// <summary>
-        /// The name of the <code>outlineColor</code> property.
+        /// The name of the <c>outlineColor</c> property.
         /// </summary>
         public const string OutlineColorPropertyName = "outlineColor";
 
         /// <summary>
-        /// The name of the <code>outlineWidth</code> property.
+        /// The name of the <c>outlineWidth</c> property.
         /// </summary>
         public const string OutlineWidthPropertyName = "outlineWidth";
 
         /// <summary>
-        /// The name of the <code>scaleByDistance</code> property.
+        /// The name of the <c>scaleByDistance</c> property.
         /// </summary>
         public const string ScaleByDistancePropertyName = "scaleByDistance";
 
         /// <summary>
-        /// The name of the <code>translucencyByDistance</code> property.
+        /// The name of the <c>translucencyByDistance</c> property.
         /// </summary>
         public const string TranslucencyByDistancePropertyName = "translucencyByDistance";
 
@@ -86,7 +86,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter ShowWriter
         {
@@ -94,7 +94,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
@@ -103,7 +103,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>boolean</c> value.  The <c>show</c> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -115,7 +115,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(Reference value)
@@ -127,7 +127,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowPropertyReference(string value)
@@ -139,7 +139,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -152,7 +152,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -165,7 +165,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>pixelSize</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>pixelSize</code> property defines the size of the point, in pixels.  If not specified, the default value is 1.0.
+        /// Gets the writer for the <c>pixelSize</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>pixelSize</c> property defines the size of the point, in pixels.  If not specified, the default value is 1.0.
         /// </summary>
         public DoubleCesiumWriter PixelSizeWriter
         {
@@ -173,7 +173,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>pixelSize</code> property.  The <code>pixelSize</code> property defines the size of the point, in pixels.  If not specified, the default value is 1.0.
+        /// Opens and returns the writer for the <c>pixelSize</c> property.  The <c>pixelSize</c> property defines the size of the point, in pixels.  If not specified, the default value is 1.0.
         /// </summary>
         public DoubleCesiumWriter OpenPixelSizeProperty()
         {
@@ -182,7 +182,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>pixelSize</code> property as a <code>number</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>pixelSize</c> property as a <c>number</c> value.  The <c>pixelSize</c> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WritePixelSizeProperty(double value)
@@ -194,7 +194,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>pixelSize</code> property as a <code>number</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>pixelSize</c> property as a <c>number</c> value.  The <c>pixelSize</c> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -207,7 +207,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>pixelSize</code> property as a <code>number</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>pixelSize</c> property as a <c>number</c> value.  The <c>pixelSize</c> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -222,7 +222,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>pixelSize</c> property as a <c>reference</c> value.  The <c>pixelSize</c> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WritePixelSizePropertyReference(Reference value)
@@ -234,7 +234,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>pixelSize</c> property as a <c>reference</c> value.  The <c>pixelSize</c> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WritePixelSizePropertyReference(string value)
@@ -246,7 +246,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>pixelSize</c> property as a <c>reference</c> value.  The <c>pixelSize</c> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -259,7 +259,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>pixelSize</code> property as a <code>reference</code> value.  The <code>pixelSize</code> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>pixelSize</c> property as a <c>reference</c> value.  The <c>pixelSize</c> property specifies the size of the point, in pixels.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -272,7 +272,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>heightReference</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>heightReference</code> property defines the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// Gets the writer for the <c>heightReference</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>heightReference</c> property defines the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         public HeightReferenceCesiumWriter HeightReferenceWriter
         {
@@ -280,7 +280,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>heightReference</code> property.  The <code>heightReference</code> property defines the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// Opens and returns the writer for the <c>heightReference</c> property.  The <c>heightReference</c> property defines the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         public HeightReferenceCesiumWriter OpenHeightReferenceProperty()
         {
@@ -289,7 +289,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>heightReference</code> property as a <code>heightReference</code> value.  The <code>heightReference</code> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// Writes a value for the <c>heightReference</c> property as a <c>heightReference</c> value.  The <c>heightReference</c> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         /// <param name="value">The height reference.</param>
         public void WriteHeightReferenceProperty(CesiumHeightReference value)
@@ -301,7 +301,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value.  The <c>heightReference</c> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteHeightReferencePropertyReference(Reference value)
@@ -313,7 +313,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value.  The <c>heightReference</c> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteHeightReferencePropertyReference(string value)
@@ -325,7 +325,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value.  The <c>heightReference</c> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -338,7 +338,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value.  The <c>heightReference</c> property specifies the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -351,7 +351,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>color</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>color</code> property defines the color of the point.
+        /// Gets the writer for the <c>color</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>color</c> property defines the color of the point.
         /// </summary>
         public ColorCesiumWriter ColorWriter
         {
@@ -359,7 +359,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>color</code> property.  The <code>color</code> property defines the color of the point.
+        /// Opens and returns the writer for the <c>color</c> property.  The <c>color</c> property defines the color of the point.
         /// </summary>
         public ColorCesiumWriter OpenColorProperty()
         {
@@ -368,7 +368,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the point.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the point.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteColorProperty(Color color)
@@ -380,7 +380,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the point.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the point.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -395,7 +395,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the point.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the point.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -408,7 +408,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the point.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the point.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -423,7 +423,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the point.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the point.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteColorPropertyRgbaf(Color color)
@@ -435,7 +435,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the point.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the point.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -450,7 +450,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the point.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the point.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -463,7 +463,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the point.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the point.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -478,7 +478,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the point.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the point.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(Reference value)
@@ -490,7 +490,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the point.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the point.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteColorPropertyReference(string value)
@@ -502,7 +502,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the point.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the point.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -515,7 +515,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the point.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the point.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -528,7 +528,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outlineColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineColor</code> property defines the color of the outline of the point.
+        /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the color of the outline of the point.
         /// </summary>
         public ColorCesiumWriter OutlineColorWriter
         {
@@ -536,7 +536,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outlineColor</code> property.  The <code>outlineColor</code> property defines the color of the outline of the point.
+        /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the color of the outline of the point.
         /// </summary>
         public ColorCesiumWriter OpenOutlineColorProperty()
         {
@@ -545,7 +545,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the outline of the point.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOutlineColorProperty(Color color)
@@ -557,7 +557,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the outline of the point.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -572,7 +572,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the outline of the point.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -585,7 +585,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the outline of the point.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -600,7 +600,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the outline of the point.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOutlineColorPropertyRgbaf(Color color)
@@ -612,7 +612,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the outline of the point.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -627,7 +627,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the outline of the point.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -640,7 +640,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the outline of the point.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -655,7 +655,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the outline of the point.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(Reference value)
@@ -667,7 +667,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the outline of the point.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlineColorPropertyReference(string value)
@@ -679,7 +679,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the outline of the point.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -692,7 +692,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the outline of the point.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the outline of the point.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -705,7 +705,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the outline of the point.  If not specified, the default value is 0.0.
+        /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the width of the outline of the point.  If not specified, the default value is 0.0.
         /// </summary>
         public DoubleCesiumWriter OutlineWidthWriter
         {
@@ -713,7 +713,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the outline of the point.  If not specified, the default value is 0.0.
+        /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the width of the outline of the point.  If not specified, the default value is 0.0.
         /// </summary>
         public DoubleCesiumWriter OpenOutlineWidthProperty()
         {
@@ -722,7 +722,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOutlineWidthProperty(double value)
@@ -734,7 +734,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -747,7 +747,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -762,7 +762,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(Reference value)
@@ -774,7 +774,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlineWidthPropertyReference(string value)
@@ -786,7 +786,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -799,7 +799,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the outline of the point.  If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -812,7 +812,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>scaleByDistance</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scaleByDistance</code> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Gets the writer for the <c>scaleByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>scaleByDistance</c> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         public NearFarScalarCesiumWriter ScaleByDistanceWriter
         {
@@ -820,7 +820,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>scaleByDistance</code> property.  The <code>scaleByDistance</code> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Opens and returns the writer for the <c>scaleByDistance</c> property.  The <c>scaleByDistance</c> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         public NearFarScalarCesiumWriter OpenScaleByDistanceProperty()
         {
@@ -829,7 +829,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteScaleByDistanceProperty(NearFarScalar value)
@@ -841,7 +841,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="nearDistance">The lower bound of the camera distance range.</param>
         /// <param name="nearValue">The value to use at the lower bound of the camera distance range.</param>
@@ -856,7 +856,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -869,7 +869,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -884,7 +884,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteScaleByDistancePropertyReference(Reference value)
@@ -896,7 +896,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteScaleByDistancePropertyReference(string value)
@@ -908,7 +908,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -921,7 +921,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scaleByDistance</code> property as a <code>reference</code> value.  The <code>scaleByDistance</code> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -934,7 +934,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>translucencyByDistance</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>translucencyByDistance</code> property defines how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// Gets the writer for the <c>translucencyByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>translucencyByDistance</c> property defines how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
         public NearFarScalarCesiumWriter TranslucencyByDistanceWriter
         {
@@ -942,7 +942,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>translucencyByDistance</code> property.  The <code>translucencyByDistance</code> property defines how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// Opens and returns the writer for the <c>translucencyByDistance</c> property.  The <c>translucencyByDistance</c> property defines how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
         public NearFarScalarCesiumWriter OpenTranslucencyByDistanceProperty()
         {
@@ -951,7 +951,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// Writes a value for the <c>translucencyByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>translucencyByDistance</c> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteTranslucencyByDistanceProperty(NearFarScalar value)
@@ -963,7 +963,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// Writes a value for the <c>translucencyByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>translucencyByDistance</c> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
         /// <param name="nearDistance">The lower bound of the camera distance range.</param>
         /// <param name="nearValue">The value to use at the lower bound of the camera distance range.</param>
@@ -978,7 +978,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// Writes a value for the <c>translucencyByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>translucencyByDistance</c> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -991,7 +991,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>nearFarScalar</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// Writes a value for the <c>translucencyByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>translucencyByDistance</c> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1006,7 +1006,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// Writes a value for the <c>translucencyByDistance</c> property as a <c>reference</c> value.  The <c>translucencyByDistance</c> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteTranslucencyByDistancePropertyReference(Reference value)
@@ -1018,7 +1018,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// Writes a value for the <c>translucencyByDistance</c> property as a <c>reference</c> value.  The <c>translucencyByDistance</c> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteTranslucencyByDistancePropertyReference(string value)
@@ -1030,7 +1030,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// Writes a value for the <c>translucencyByDistance</c> property as a <c>reference</c> value.  The <c>translucencyByDistance</c> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1043,7 +1043,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>translucencyByDistance</code> property as a <code>reference</code> value.  The <code>translucencyByDistance</code> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+        /// Writes a value for the <c>translucencyByDistance</c> property as a <c>reference</c> value.  The <c>translucencyByDistance</c> property specifies how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

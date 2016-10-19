@@ -9,32 +9,32 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Vector</code> to a <see cref="CesiumOutputStream" />.  A <code>Vector</code> is defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+    /// Writes a <c>Vector</c> to a <see cref="CesiumOutputStream" />.  A <c>Vector</c> is defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
     /// </summary>
     public class VectorCesiumWriter : CesiumPropertyWriter<VectorCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>show</code> property.
+        /// The name of the <c>show</c> property.
         /// </summary>
         public const string ShowPropertyName = "show";
 
         /// <summary>
-        /// The name of the <code>color</code> property.
+        /// The name of the <c>color</c> property.
         /// </summary>
         public const string ColorPropertyName = "color";
 
         /// <summary>
-        /// The name of the <code>direction</code> property.
+        /// The name of the <c>direction</c> property.
         /// </summary>
         public const string DirectionPropertyName = "direction";
 
         /// <summary>
-        /// The name of the <code>length</code> property.
+        /// The name of the <c>length</c> property.
         /// </summary>
         public const string LengthPropertyName = "length";
 
         /// <summary>
-        /// The name of the <code>minimumLengthInPixels</code> property.
+        /// The name of the <c>minimumLengthInPixels</c> property.
         /// </summary>
         public const string MinimumLengthInPixelsPropertyName = "minimumLengthInPixels";
 
@@ -68,7 +68,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the vector is shown.
+        /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the vector is shown.
         /// </summary>
         public BooleanCesiumWriter ShowWriter
         {
@@ -76,7 +76,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the vector is shown.
+        /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the vector is shown.
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
@@ -85,7 +85,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the vector is shown.
+        /// Writes a value for the <c>show</c> property as a <c>boolean</c> value.  The <c>show</c> property specifies whether or not the vector is shown.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -97,7 +97,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the vector is shown.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the vector is shown.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(Reference value)
@@ -109,7 +109,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the vector is shown.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the vector is shown.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowPropertyReference(string value)
@@ -121,7 +121,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the vector is shown.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the vector is shown.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -134,7 +134,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the vector is shown.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the vector is shown.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -147,7 +147,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>color</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>color</code> property defines the color of the vector.
+        /// Gets the writer for the <c>color</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>color</c> property defines the color of the vector.
         /// </summary>
         public ColorCesiumWriter ColorWriter
         {
@@ -155,7 +155,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>color</code> property.  The <code>color</code> property defines the color of the vector.
+        /// Opens and returns the writer for the <c>color</c> property.  The <c>color</c> property defines the color of the vector.
         /// </summary>
         public ColorCesiumWriter OpenColorProperty()
         {
@@ -164,7 +164,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the vector.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteColorProperty(Color color)
@@ -176,7 +176,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the vector.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -191,7 +191,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -204,7 +204,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -219,7 +219,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the vector.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteColorPropertyRgbaf(Color color)
@@ -231,7 +231,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the vector.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -246,7 +246,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -259,7 +259,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -274,7 +274,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the vector.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(Reference value)
@@ -286,7 +286,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the vector.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteColorPropertyReference(string value)
@@ -298,7 +298,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the vector.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -311,7 +311,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the vector.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the vector.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -324,7 +324,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>direction</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>direction</code> property defines the direction of the vector.
+        /// Gets the writer for the <c>direction</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>direction</c> property defines the direction of the vector.
         /// </summary>
         public DirectionCesiumWriter DirectionWriter
         {
@@ -332,7 +332,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>direction</code> property.  The <code>direction</code> property defines the direction of the vector.
+        /// Opens and returns the writer for the <c>direction</c> property.  The <c>direction</c> property defines the direction of the vector.
         /// </summary>
         public DirectionCesiumWriter OpenDirectionProperty()
         {
@@ -341,7 +341,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>spherical</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDirectionProperty(Spherical value)
@@ -353,7 +353,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>spherical</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -366,7 +366,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>spherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>spherical</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -381,7 +381,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>unitSpherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>unitSpherical</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDirectionPropertyUnitSpherical(UnitSpherical value)
@@ -393,7 +393,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>unitSpherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>unitSpherical</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -406,7 +406,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>unitSpherical</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>unitSpherical</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -421,7 +421,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>cartesian</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDirectionPropertyCartesian(Cartesian value)
@@ -433,7 +433,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>cartesian</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -446,7 +446,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>cartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>cartesian</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -461,7 +461,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>unitCartesian</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDirectionPropertyUnitCartesian(UnitCartesian value)
@@ -473,7 +473,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>unitCartesian</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -486,7 +486,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>unitCartesian</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>unitCartesian</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -501,7 +501,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>reference</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>reference</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteDirectionPropertyReference(Reference value)
@@ -513,7 +513,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>reference</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>reference</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteDirectionPropertyReference(string value)
@@ -525,7 +525,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>reference</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>reference</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -538,7 +538,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>direction</code> property as a <code>reference</code> value.  The <code>direction</code> property specifies the direction of the vector.
+        /// Writes a value for the <c>direction</c> property as a <c>reference</c> value.  The <c>direction</c> property specifies the direction of the vector.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -551,7 +551,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>length</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>length</code> property defines the graphical length of the vector.
+        /// Gets the writer for the <c>length</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>length</c> property defines the graphical length of the vector.
         /// </summary>
         public DoubleCesiumWriter LengthWriter
         {
@@ -559,7 +559,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>length</code> property.  The <code>length</code> property defines the graphical length of the vector.
+        /// Opens and returns the writer for the <c>length</c> property.  The <c>length</c> property defines the graphical length of the vector.
         /// </summary>
         public DoubleCesiumWriter OpenLengthProperty()
         {
@@ -568,7 +568,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>length</code> property as a <code>number</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+        /// Writes a value for the <c>length</c> property as a <c>number</c> value.  The <c>length</c> property specifies the graphical length of the vector.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteLengthProperty(double value)
@@ -580,7 +580,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>length</code> property as a <code>number</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+        /// Writes a value for the <c>length</c> property as a <c>number</c> value.  The <c>length</c> property specifies the graphical length of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -593,7 +593,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>length</code> property as a <code>number</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+        /// Writes a value for the <c>length</c> property as a <c>number</c> value.  The <c>length</c> property specifies the graphical length of the vector.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -608,7 +608,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+        /// Writes a value for the <c>length</c> property as a <c>reference</c> value.  The <c>length</c> property specifies the graphical length of the vector.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteLengthPropertyReference(Reference value)
@@ -620,7 +620,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+        /// Writes a value for the <c>length</c> property as a <c>reference</c> value.  The <c>length</c> property specifies the graphical length of the vector.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteLengthPropertyReference(string value)
@@ -632,7 +632,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+        /// Writes a value for the <c>length</c> property as a <c>reference</c> value.  The <c>length</c> property specifies the graphical length of the vector.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -645,7 +645,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the graphical length of the vector.
+        /// Writes a value for the <c>length</c> property as a <c>reference</c> value.  The <c>length</c> property specifies the graphical length of the vector.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -658,7 +658,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>minimumLengthInPixels</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>minimumLengthInPixels</code> property defines the minimum graphical length of the vector in pixels.
+        /// Gets the writer for the <c>minimumLengthInPixels</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>minimumLengthInPixels</c> property defines the minimum graphical length of the vector in pixels.
         /// </summary>
         public DoubleCesiumWriter MinimumLengthInPixelsWriter
         {
@@ -666,7 +666,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>minimumLengthInPixels</code> property.  The <code>minimumLengthInPixels</code> property defines the minimum graphical length of the vector in pixels.
+        /// Opens and returns the writer for the <c>minimumLengthInPixels</c> property.  The <c>minimumLengthInPixels</c> property defines the minimum graphical length of the vector in pixels.
         /// </summary>
         public DoubleCesiumWriter OpenMinimumLengthInPixelsProperty()
         {
@@ -675,7 +675,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumLengthInPixels</code> property as a <code>number</code> value.  The <code>minimumLengthInPixels</code> property specifies the minimum graphical length of the vector in pixels.
+        /// Writes a value for the <c>minimumLengthInPixels</c> property as a <c>number</c> value.  The <c>minimumLengthInPixels</c> property specifies the minimum graphical length of the vector in pixels.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteMinimumLengthInPixelsProperty(double value)
@@ -687,7 +687,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumLengthInPixels</code> property as a <code>number</code> value.  The <code>minimumLengthInPixels</code> property specifies the minimum graphical length of the vector in pixels.
+        /// Writes a value for the <c>minimumLengthInPixels</c> property as a <c>number</c> value.  The <c>minimumLengthInPixels</c> property specifies the minimum graphical length of the vector in pixels.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -700,7 +700,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumLengthInPixels</code> property as a <code>number</code> value.  The <code>minimumLengthInPixels</code> property specifies the minimum graphical length of the vector in pixels.
+        /// Writes a value for the <c>minimumLengthInPixels</c> property as a <c>number</c> value.  The <c>minimumLengthInPixels</c> property specifies the minimum graphical length of the vector in pixels.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -715,7 +715,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumLengthInPixels</code> property as a <code>reference</code> value.  The <code>minimumLengthInPixels</code> property specifies the minimum graphical length of the vector in pixels.
+        /// Writes a value for the <c>minimumLengthInPixels</c> property as a <c>reference</c> value.  The <c>minimumLengthInPixels</c> property specifies the minimum graphical length of the vector in pixels.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteMinimumLengthInPixelsPropertyReference(Reference value)
@@ -727,7 +727,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumLengthInPixels</code> property as a <code>reference</code> value.  The <code>minimumLengthInPixels</code> property specifies the minimum graphical length of the vector in pixels.
+        /// Writes a value for the <c>minimumLengthInPixels</c> property as a <c>reference</c> value.  The <c>minimumLengthInPixels</c> property specifies the minimum graphical length of the vector in pixels.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteMinimumLengthInPixelsPropertyReference(string value)
@@ -739,7 +739,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumLengthInPixels</code> property as a <code>reference</code> value.  The <code>minimumLengthInPixels</code> property specifies the minimum graphical length of the vector in pixels.
+        /// Writes a value for the <c>minimumLengthInPixels</c> property as a <c>reference</c> value.  The <c>minimumLengthInPixels</c> property specifies the minimum graphical length of the vector in pixels.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -752,7 +752,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumLengthInPixels</code> property as a <code>reference</code> value.  The <code>minimumLengthInPixels</code> property specifies the minimum graphical length of the vector in pixels.
+        /// Writes a value for the <c>minimumLengthInPixels</c> property as a <c>reference</c> value.  The <c>minimumLengthInPixels</c> property specifies the minimum graphical length of the vector in pixels.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

@@ -9,77 +9,77 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Rectangle</code> to a <see cref="CesiumOutputStream" />.  A <code>Rectangle</code> is a cartographic rectangle, which conforms to the curvature of the globe and can be placed on the surface or at altitude and can optionally be extruded into a volume.
+    /// Writes a <c>Rectangle</c> to a <see cref="CesiumOutputStream" />.  A <c>Rectangle</c> is a cartographic rectangle, which conforms to the curvature of the globe and can be placed on the surface or at altitude and can optionally be extruded into a volume.
     /// </summary>
     public class RectangleCesiumWriter : CesiumPropertyWriter<RectangleCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>show</code> property.
+        /// The name of the <c>show</c> property.
         /// </summary>
         public const string ShowPropertyName = "show";
 
         /// <summary>
-        /// The name of the <code>coordinates</code> property.
+        /// The name of the <c>coordinates</c> property.
         /// </summary>
         public const string CoordinatesPropertyName = "coordinates";
 
         /// <summary>
-        /// The name of the <code>height</code> property.
+        /// The name of the <c>height</c> property.
         /// </summary>
         public const string HeightPropertyName = "height";
 
         /// <summary>
-        /// The name of the <code>extrudedHeight</code> property.
+        /// The name of the <c>extrudedHeight</c> property.
         /// </summary>
         public const string ExtrudedHeightPropertyName = "extrudedHeight";
 
         /// <summary>
-        /// The name of the <code>rotation</code> property.
+        /// The name of the <c>rotation</c> property.
         /// </summary>
         public const string RotationPropertyName = "rotation";
 
         /// <summary>
-        /// The name of the <code>stRotation</code> property.
+        /// The name of the <c>stRotation</c> property.
         /// </summary>
         public const string StRotationPropertyName = "stRotation";
 
         /// <summary>
-        /// The name of the <code>granularity</code> property.
+        /// The name of the <c>granularity</c> property.
         /// </summary>
         public const string GranularityPropertyName = "granularity";
 
         /// <summary>
-        /// The name of the <code>fill</code> property.
+        /// The name of the <c>fill</c> property.
         /// </summary>
         public const string FillPropertyName = "fill";
 
         /// <summary>
-        /// The name of the <code>material</code> property.
+        /// The name of the <c>material</c> property.
         /// </summary>
         public const string MaterialPropertyName = "material";
 
         /// <summary>
-        /// The name of the <code>outline</code> property.
+        /// The name of the <c>outline</c> property.
         /// </summary>
         public const string OutlinePropertyName = "outline";
 
         /// <summary>
-        /// The name of the <code>outlineColor</code> property.
+        /// The name of the <c>outlineColor</c> property.
         /// </summary>
         public const string OutlineColorPropertyName = "outlineColor";
 
         /// <summary>
-        /// The name of the <code>outlineWidth</code> property.
+        /// The name of the <c>outlineWidth</c> property.
         /// </summary>
         public const string OutlineWidthPropertyName = "outlineWidth";
 
         /// <summary>
-        /// The name of the <code>closeTop</code> property.
+        /// The name of the <c>closeTop</c> property.
         /// </summary>
         public const string CloseTopPropertyName = "closeTop";
 
         /// <summary>
-        /// The name of the <code>closeBottom</code> property.
+        /// The name of the <c>closeBottom</c> property.
         /// </summary>
         public const string CloseBottomPropertyName = "closeBottom";
 
@@ -122,7 +122,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter ShowWriter
         {
@@ -130,7 +130,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
@@ -139,7 +139,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>boolean</c> value.  The <c>show</c> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -151,7 +151,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(Reference value)
@@ -163,7 +163,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowPropertyReference(string value)
@@ -175,7 +175,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -188,7 +188,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -201,7 +201,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>coordinates</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>coordinates</code> property defines the coordinates of the rectangle.
+        /// Gets the writer for the <c>coordinates</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>coordinates</c> property defines the coordinates of the rectangle.
         /// </summary>
         public RectangleCoordinatesCesiumWriter CoordinatesWriter
         {
@@ -209,7 +209,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>coordinates</code> property.  The <code>coordinates</code> property defines the coordinates of the rectangle.
+        /// Opens and returns the writer for the <c>coordinates</c> property.  The <c>coordinates</c> property defines the coordinates of the rectangle.
         /// </summary>
         public RectangleCoordinatesCesiumWriter OpenCoordinatesProperty()
         {
@@ -218,7 +218,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>coordinates</code> property as a <code>wsen</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+        /// Writes a value for the <c>coordinates</c> property as a <c>wsen</c> value.  The <c>coordinates</c> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCoordinatesProperty(CartographicExtent value)
@@ -230,7 +230,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>coordinates</code> property as a <code>wsen</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+        /// Writes a value for the <c>coordinates</c> property as a <c>wsen</c> value.  The <c>coordinates</c> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="west">The westernmost longitude.</param>
         /// <param name="south">The southernmost latitude.</param>
@@ -245,7 +245,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>coordinates</code> property as a <code>wsen</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+        /// Writes a value for the <c>coordinates</c> property as a <c>wsen</c> value.  The <c>coordinates</c> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -258,7 +258,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>coordinates</code> property as a <code>wsen</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+        /// Writes a value for the <c>coordinates</c> property as a <c>wsen</c> value.  The <c>coordinates</c> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -273,7 +273,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+        /// Writes a value for the <c>coordinates</c> property as a <c>wsenDegrees</c> value.  The <c>coordinates</c> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCoordinatesPropertyWsenDegrees(CartographicExtent value)
@@ -285,7 +285,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+        /// Writes a value for the <c>coordinates</c> property as a <c>wsenDegrees</c> value.  The <c>coordinates</c> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="west">The westernmost longitude.</param>
         /// <param name="south">The southernmost latitude.</param>
@@ -300,7 +300,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+        /// Writes a value for the <c>coordinates</c> property as a <c>wsenDegrees</c> value.  The <c>coordinates</c> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -313,7 +313,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>coordinates</code> property as a <code>wsenDegrees</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+        /// Writes a value for the <c>coordinates</c> property as a <c>wsenDegrees</c> value.  The <c>coordinates</c> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -328,7 +328,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>coordinates</code> property as a <code>reference</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+        /// Writes a value for the <c>coordinates</c> property as a <c>reference</c> value.  The <c>coordinates</c> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteCoordinatesPropertyReference(Reference value)
@@ -340,7 +340,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>coordinates</code> property as a <code>reference</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+        /// Writes a value for the <c>coordinates</c> property as a <c>reference</c> value.  The <c>coordinates</c> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteCoordinatesPropertyReference(string value)
@@ -352,7 +352,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>coordinates</code> property as a <code>reference</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+        /// Writes a value for the <c>coordinates</c> property as a <c>reference</c> value.  The <c>coordinates</c> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -365,7 +365,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>coordinates</code> property as a <code>reference</code> value.  The <code>coordinates</code> property specifies the coordinates of the rectangle.
+        /// Writes a value for the <c>coordinates</c> property as a <c>reference</c> value.  The <c>coordinates</c> property specifies the coordinates of the rectangle.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -378,7 +378,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>height</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>height</code> property defines the height of the rectangle.
+        /// Gets the writer for the <c>height</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>height</c> property defines the height of the rectangle.
         /// </summary>
         public DoubleCesiumWriter HeightWriter
         {
@@ -386,7 +386,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>height</code> property.  The <code>height</code> property defines the height of the rectangle.
+        /// Opens and returns the writer for the <c>height</c> property.  The <c>height</c> property defines the height of the rectangle.
         /// </summary>
         public DoubleCesiumWriter OpenHeightProperty()
         {
@@ -395,7 +395,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the rectangle.
+        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the rectangle.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteHeightProperty(double value)
@@ -407,7 +407,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the rectangle.
+        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the rectangle.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -420,7 +420,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the rectangle.
+        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the rectangle.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -435,7 +435,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the rectangle.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the rectangle.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteHeightPropertyReference(Reference value)
@@ -447,7 +447,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the rectangle.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the rectangle.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteHeightPropertyReference(string value)
@@ -459,7 +459,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the rectangle.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the rectangle.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -472,7 +472,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the rectangle.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the rectangle.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -485,7 +485,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>extrudedHeight</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>extrudedHeight</code> property defines the extruded height of the rectangle.
+        /// Gets the writer for the <c>extrudedHeight</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>extrudedHeight</c> property defines the extruded height of the rectangle.
         /// </summary>
         public DoubleCesiumWriter ExtrudedHeightWriter
         {
@@ -493,7 +493,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>extrudedHeight</code> property.  The <code>extrudedHeight</code> property defines the extruded height of the rectangle.
+        /// Opens and returns the writer for the <c>extrudedHeight</c> property.  The <c>extrudedHeight</c> property defines the extruded height of the rectangle.
         /// </summary>
         public DoubleCesiumWriter OpenExtrudedHeightProperty()
         {
@@ -502,7 +502,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
+        /// Writes a value for the <c>extrudedHeight</c> property as a <c>number</c> value.  The <c>extrudedHeight</c> property specifies the extruded height of the rectangle.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteExtrudedHeightProperty(double value)
@@ -514,7 +514,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
+        /// Writes a value for the <c>extrudedHeight</c> property as a <c>number</c> value.  The <c>extrudedHeight</c> property specifies the extruded height of the rectangle.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -527,7 +527,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
+        /// Writes a value for the <c>extrudedHeight</c> property as a <c>number</c> value.  The <c>extrudedHeight</c> property specifies the extruded height of the rectangle.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -542,7 +542,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
+        /// Writes a value for the <c>extrudedHeight</c> property as a <c>reference</c> value.  The <c>extrudedHeight</c> property specifies the extruded height of the rectangle.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteExtrudedHeightPropertyReference(Reference value)
@@ -554,7 +554,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
+        /// Writes a value for the <c>extrudedHeight</c> property as a <c>reference</c> value.  The <c>extrudedHeight</c> property specifies the extruded height of the rectangle.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteExtrudedHeightPropertyReference(string value)
@@ -566,7 +566,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
+        /// Writes a value for the <c>extrudedHeight</c> property as a <c>reference</c> value.  The <c>extrudedHeight</c> property specifies the extruded height of the rectangle.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -579,7 +579,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the rectangle.
+        /// Writes a value for the <c>extrudedHeight</c> property as a <c>reference</c> value.  The <c>extrudedHeight</c> property specifies the extruded height of the rectangle.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -592,7 +592,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>rotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>rotation</code> property defines the rotation of the rectangle clockwise from north.
+        /// Gets the writer for the <c>rotation</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>rotation</c> property defines the rotation of the rectangle clockwise from north.
         /// </summary>
         public DoubleCesiumWriter RotationWriter
         {
@@ -600,7 +600,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>rotation</code> property.  The <code>rotation</code> property defines the rotation of the rectangle clockwise from north.
+        /// Opens and returns the writer for the <c>rotation</c> property.  The <c>rotation</c> property defines the rotation of the rectangle clockwise from north.
         /// </summary>
         public DoubleCesiumWriter OpenRotationProperty()
         {
@@ -609,7 +609,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
+        /// Writes a value for the <c>rotation</c> property as a <c>number</c> value.  The <c>rotation</c> property specifies the rotation of the rectangle clockwise from north.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteRotationProperty(double value)
@@ -621,7 +621,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
+        /// Writes a value for the <c>rotation</c> property as a <c>number</c> value.  The <c>rotation</c> property specifies the rotation of the rectangle clockwise from north.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -634,7 +634,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>number</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
+        /// Writes a value for the <c>rotation</c> property as a <c>number</c> value.  The <c>rotation</c> property specifies the rotation of the rectangle clockwise from north.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -649,7 +649,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
+        /// Writes a value for the <c>rotation</c> property as a <c>reference</c> value.  The <c>rotation</c> property specifies the rotation of the rectangle clockwise from north.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteRotationPropertyReference(Reference value)
@@ -661,7 +661,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
+        /// Writes a value for the <c>rotation</c> property as a <c>reference</c> value.  The <c>rotation</c> property specifies the rotation of the rectangle clockwise from north.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteRotationPropertyReference(string value)
@@ -673,7 +673,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
+        /// Writes a value for the <c>rotation</c> property as a <c>reference</c> value.  The <c>rotation</c> property specifies the rotation of the rectangle clockwise from north.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -686,7 +686,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>rotation</code> property as a <code>reference</code> value.  The <code>rotation</code> property specifies the rotation of the rectangle clockwise from north.
+        /// Writes a value for the <c>rotation</c> property as a <c>reference</c> value.  The <c>rotation</c> property specifies the rotation of the rectangle clockwise from north.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -699,7 +699,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>stRotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>stRotation</code> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Gets the writer for the <c>stRotation</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>stRotation</c> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         public DoubleCesiumWriter StRotationWriter
         {
@@ -707,7 +707,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>stRotation</code> property.  The <code>stRotation</code> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Opens and returns the writer for the <c>stRotation</c> property.  The <c>stRotation</c> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         public DoubleCesiumWriter OpenStRotationProperty()
         {
@@ -716,7 +716,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Writes a value for the <c>stRotation</c> property as a <c>number</c> value.  The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteStRotationProperty(double value)
@@ -728,7 +728,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Writes a value for the <c>stRotation</c> property as a <c>number</c> value.  The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -741,7 +741,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Writes a value for the <c>stRotation</c> property as a <c>number</c> value.  The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -756,7 +756,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Writes a value for the <c>stRotation</c> property as a <c>reference</c> value.  The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteStRotationPropertyReference(Reference value)
@@ -768,7 +768,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Writes a value for the <c>stRotation</c> property as a <c>reference</c> value.  The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteStRotationPropertyReference(string value)
@@ -780,7 +780,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Writes a value for the <c>stRotation</c> property as a <c>reference</c> value.  The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -793,7 +793,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Writes a value for the <c>stRotation</c> property as a <c>reference</c> value.  The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -806,7 +806,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>granularity</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>granularity</code> property defines the sampling distance, in radians.
+        /// Gets the writer for the <c>granularity</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>granularity</c> property defines the sampling distance, in radians.
         /// </summary>
         public DoubleCesiumWriter GranularityWriter
         {
@@ -814,7 +814,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>granularity</code> property.  The <code>granularity</code> property defines the sampling distance, in radians.
+        /// Opens and returns the writer for the <c>granularity</c> property.  The <c>granularity</c> property defines the sampling distance, in radians.
         /// </summary>
         public DoubleCesiumWriter OpenGranularityProperty()
         {
@@ -823,7 +823,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>number</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteGranularityProperty(double value)
@@ -835,7 +835,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>number</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -848,7 +848,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>number</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -863,7 +863,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteGranularityPropertyReference(Reference value)
@@ -875,7 +875,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteGranularityPropertyReference(string value)
@@ -887,7 +887,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -900,7 +900,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -913,7 +913,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>fill</code> property defines whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>fill</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>fill</c> property defines whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter FillWriter
         {
@@ -921,7 +921,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>fill</c> property.  The <c>fill</c> property defines whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenFillProperty()
         {
@@ -930,7 +930,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>boolean</c> value.  The <c>fill</c> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteFillProperty(bool value)
@@ -942,7 +942,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteFillPropertyReference(Reference value)
@@ -954,7 +954,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteFillPropertyReference(string value)
@@ -966,7 +966,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -979,7 +979,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -992,7 +992,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>material</code> property defines the material to display on the surface of the rectangle.
+        /// Gets the writer for the <c>material</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>material</c> property defines the material to display on the surface of the rectangle.
         /// </summary>
         public MaterialCesiumWriter MaterialWriter
         {
@@ -1000,7 +1000,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to display on the surface of the rectangle.
+        /// Opens and returns the writer for the <c>material</c> property.  The <c>material</c> property defines the material to display on the surface of the rectangle.
         /// </summary>
         public MaterialCesiumWriter OpenMaterialProperty()
         {
@@ -1009,7 +1009,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outline</code> property defines whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Gets the writer for the <c>outline</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outline</c> property defines whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         public BooleanCesiumWriter OutlineWriter
         {
@@ -1017,7 +1017,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Opens and returns the writer for the <c>outline</c> property.  The <c>outline</c> property defines whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         public BooleanCesiumWriter OpenOutlineProperty()
         {
@@ -1026,7 +1026,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>boolean</c> value.  The <c>outline</c> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOutlineProperty(bool value)
@@ -1038,7 +1038,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlinePropertyReference(Reference value)
@@ -1050,7 +1050,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlinePropertyReference(string value)
@@ -1062,7 +1062,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1075,7 +1075,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1088,7 +1088,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outlineColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineColor</code> property defines the color of the rectangle outline.
+        /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the color of the rectangle outline.
         /// </summary>
         public ColorCesiumWriter OutlineColorWriter
         {
@@ -1096,7 +1096,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outlineColor</code> property.  The <code>outlineColor</code> property defines the color of the rectangle outline.
+        /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the color of the rectangle outline.
         /// </summary>
         public ColorCesiumWriter OpenOutlineColorProperty()
         {
@@ -1105,7 +1105,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOutlineColorProperty(Color color)
@@ -1117,7 +1117,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -1132,7 +1132,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1145,7 +1145,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -1160,7 +1160,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOutlineColorPropertyRgbaf(Color color)
@@ -1172,7 +1172,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -1187,7 +1187,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1200,7 +1200,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -1215,7 +1215,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(Reference value)
@@ -1227,7 +1227,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlineColorPropertyReference(string value)
@@ -1239,7 +1239,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1252,7 +1252,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the rectangle outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the rectangle outline.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1265,7 +1265,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the rectangle outline.  If not specified, the default value is 1.0.
+        /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         public DoubleCesiumWriter OutlineWidthWriter
         {
@@ -1273,7 +1273,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the rectangle outline.  If not specified, the default value is 1.0.
+        /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         public DoubleCesiumWriter OpenOutlineWidthProperty()
         {
@@ -1282,7 +1282,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOutlineWidthProperty(double value)
@@ -1294,7 +1294,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1307,7 +1307,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -1322,7 +1322,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(Reference value)
@@ -1334,7 +1334,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlineWidthPropertyReference(string value)
@@ -1346,7 +1346,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1359,7 +1359,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1372,7 +1372,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>closeTop</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>closeTop</code> property defines whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>closeTop</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>closeTop</c> property defines whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter CloseTopWriter
         {
@@ -1380,7 +1380,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>closeTop</code> property.  The <code>closeTop</code> property defines whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>closeTop</c> property.  The <c>closeTop</c> property defines whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenCloseTopProperty()
         {
@@ -1389,7 +1389,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeTop</code> property as a <code>boolean</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeTop</c> property as a <c>boolean</c> value.  The <c>closeTop</c> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCloseTopProperty(bool value)
@@ -1401,7 +1401,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeTop</c> property as a <c>reference</c> value.  The <c>closeTop</c> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteCloseTopPropertyReference(Reference value)
@@ -1413,7 +1413,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeTop</c> property as a <c>reference</c> value.  The <c>closeTop</c> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteCloseTopPropertyReference(string value)
@@ -1425,7 +1425,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeTop</c> property as a <c>reference</c> value.  The <c>closeTop</c> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1438,7 +1438,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeTop</c> property as a <c>reference</c> value.  The <c>closeTop</c> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1451,7 +1451,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>closeBottom</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>closeBottom</code> property defines whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>closeBottom</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>closeBottom</c> property defines whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter CloseBottomWriter
         {
@@ -1459,7 +1459,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>closeBottom</code> property.  The <code>closeBottom</code> property defines whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>closeBottom</c> property.  The <c>closeBottom</c> property defines whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenCloseBottomProperty()
         {
@@ -1468,7 +1468,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeBottom</code> property as a <code>boolean</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeBottom</c> property as a <c>boolean</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCloseBottomProperty(bool value)
@@ -1480,7 +1480,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeBottom</c> property as a <c>reference</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteCloseBottomPropertyReference(Reference value)
@@ -1492,7 +1492,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeBottom</c> property as a <c>reference</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteCloseBottomPropertyReference(string value)
@@ -1504,7 +1504,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeBottom</c> property as a <c>reference</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1517,7 +1517,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeBottom</c> property as a <c>reference</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

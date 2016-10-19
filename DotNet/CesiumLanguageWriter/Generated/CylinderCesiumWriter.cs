@@ -9,62 +9,62 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Cylinder</code> to a <see cref="CesiumOutputStream" />.  A <code>Cylinder</code> is a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.
+    /// Writes a <c>Cylinder</c> to a <see cref="CesiumOutputStream" />.  A <c>Cylinder</c> is a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.
     /// </summary>
     public class CylinderCesiumWriter : CesiumPropertyWriter<CylinderCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>show</code> property.
+        /// The name of the <c>show</c> property.
         /// </summary>
         public const string ShowPropertyName = "show";
 
         /// <summary>
-        /// The name of the <code>length</code> property.
+        /// The name of the <c>length</c> property.
         /// </summary>
         public const string LengthPropertyName = "length";
 
         /// <summary>
-        /// The name of the <code>topRadius</code> property.
+        /// The name of the <c>topRadius</c> property.
         /// </summary>
         public const string TopRadiusPropertyName = "topRadius";
 
         /// <summary>
-        /// The name of the <code>bottomRadius</code> property.
+        /// The name of the <c>bottomRadius</c> property.
         /// </summary>
         public const string BottomRadiusPropertyName = "bottomRadius";
 
         /// <summary>
-        /// The name of the <code>fill</code> property.
+        /// The name of the <c>fill</c> property.
         /// </summary>
         public const string FillPropertyName = "fill";
 
         /// <summary>
-        /// The name of the <code>material</code> property.
+        /// The name of the <c>material</c> property.
         /// </summary>
         public const string MaterialPropertyName = "material";
 
         /// <summary>
-        /// The name of the <code>outline</code> property.
+        /// The name of the <c>outline</c> property.
         /// </summary>
         public const string OutlinePropertyName = "outline";
 
         /// <summary>
-        /// The name of the <code>outlineColor</code> property.
+        /// The name of the <c>outlineColor</c> property.
         /// </summary>
         public const string OutlineColorPropertyName = "outlineColor";
 
         /// <summary>
-        /// The name of the <code>outlineWidth</code> property.
+        /// The name of the <c>outlineWidth</c> property.
         /// </summary>
         public const string OutlineWidthPropertyName = "outlineWidth";
 
         /// <summary>
-        /// The name of the <code>numberOfVerticalLines</code> property.
+        /// The name of the <c>numberOfVerticalLines</c> property.
         /// </summary>
         public const string NumberOfVerticalLinesPropertyName = "numberOfVerticalLines";
 
         /// <summary>
-        /// The name of the <code>slices</code> property.
+        /// The name of the <c>slices</c> property.
         /// </summary>
         public const string SlicesPropertyName = "slices";
 
@@ -104,7 +104,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the cylinder is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the cylinder is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter ShowWriter
         {
@@ -112,7 +112,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the cylinder is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the cylinder is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
@@ -121,7 +121,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>boolean</c> value.  The <c>show</c> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -133,7 +133,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(Reference value)
@@ -145,7 +145,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowPropertyReference(string value)
@@ -157,7 +157,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -170,7 +170,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the cylinder is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -183,7 +183,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>length</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>length</code> property defines the length of the cylinder.
+        /// Gets the writer for the <c>length</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>length</c> property defines the length of the cylinder.
         /// </summary>
         public DoubleCesiumWriter LengthWriter
         {
@@ -191,7 +191,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>length</code> property.  The <code>length</code> property defines the length of the cylinder.
+        /// Opens and returns the writer for the <c>length</c> property.  The <c>length</c> property defines the length of the cylinder.
         /// </summary>
         public DoubleCesiumWriter OpenLengthProperty()
         {
@@ -200,7 +200,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>length</code> property as a <code>number</code> value.  The <code>length</code> property specifies the length of the cylinder.
+        /// Writes a value for the <c>length</c> property as a <c>number</c> value.  The <c>length</c> property specifies the length of the cylinder.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteLengthProperty(double value)
@@ -212,7 +212,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>length</code> property as a <code>number</code> value.  The <code>length</code> property specifies the length of the cylinder.
+        /// Writes a value for the <c>length</c> property as a <c>number</c> value.  The <c>length</c> property specifies the length of the cylinder.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -225,7 +225,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>length</code> property as a <code>number</code> value.  The <code>length</code> property specifies the length of the cylinder.
+        /// Writes a value for the <c>length</c> property as a <c>number</c> value.  The <c>length</c> property specifies the length of the cylinder.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -240,7 +240,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the length of the cylinder.
+        /// Writes a value for the <c>length</c> property as a <c>reference</c> value.  The <c>length</c> property specifies the length of the cylinder.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteLengthPropertyReference(Reference value)
@@ -252,7 +252,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the length of the cylinder.
+        /// Writes a value for the <c>length</c> property as a <c>reference</c> value.  The <c>length</c> property specifies the length of the cylinder.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteLengthPropertyReference(string value)
@@ -264,7 +264,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the length of the cylinder.
+        /// Writes a value for the <c>length</c> property as a <c>reference</c> value.  The <c>length</c> property specifies the length of the cylinder.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -277,7 +277,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>length</code> property as a <code>reference</code> value.  The <code>length</code> property specifies the length of the cylinder.
+        /// Writes a value for the <c>length</c> property as a <c>reference</c> value.  The <c>length</c> property specifies the length of the cylinder.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -290,7 +290,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>topRadius</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>topRadius</code> property defines the radius of the top of the cylinder.
+        /// Gets the writer for the <c>topRadius</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>topRadius</c> property defines the radius of the top of the cylinder.
         /// </summary>
         public DoubleCesiumWriter TopRadiusWriter
         {
@@ -298,7 +298,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>topRadius</code> property.  The <code>topRadius</code> property defines the radius of the top of the cylinder.
+        /// Opens and returns the writer for the <c>topRadius</c> property.  The <c>topRadius</c> property defines the radius of the top of the cylinder.
         /// </summary>
         public DoubleCesiumWriter OpenTopRadiusProperty()
         {
@@ -307,7 +307,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>topRadius</code> property as a <code>number</code> value.  The <code>topRadius</code> property specifies the radius of the top of the cylinder.
+        /// Writes a value for the <c>topRadius</c> property as a <c>number</c> value.  The <c>topRadius</c> property specifies the radius of the top of the cylinder.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteTopRadiusProperty(double value)
@@ -319,7 +319,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>topRadius</code> property as a <code>number</code> value.  The <code>topRadius</code> property specifies the radius of the top of the cylinder.
+        /// Writes a value for the <c>topRadius</c> property as a <c>number</c> value.  The <c>topRadius</c> property specifies the radius of the top of the cylinder.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -332,7 +332,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>topRadius</code> property as a <code>number</code> value.  The <code>topRadius</code> property specifies the radius of the top of the cylinder.
+        /// Writes a value for the <c>topRadius</c> property as a <c>number</c> value.  The <c>topRadius</c> property specifies the radius of the top of the cylinder.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -347,7 +347,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>topRadius</code> property as a <code>reference</code> value.  The <code>topRadius</code> property specifies the radius of the top of the cylinder.
+        /// Writes a value for the <c>topRadius</c> property as a <c>reference</c> value.  The <c>topRadius</c> property specifies the radius of the top of the cylinder.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteTopRadiusPropertyReference(Reference value)
@@ -359,7 +359,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>topRadius</code> property as a <code>reference</code> value.  The <code>topRadius</code> property specifies the radius of the top of the cylinder.
+        /// Writes a value for the <c>topRadius</c> property as a <c>reference</c> value.  The <c>topRadius</c> property specifies the radius of the top of the cylinder.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteTopRadiusPropertyReference(string value)
@@ -371,7 +371,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>topRadius</code> property as a <code>reference</code> value.  The <code>topRadius</code> property specifies the radius of the top of the cylinder.
+        /// Writes a value for the <c>topRadius</c> property as a <c>reference</c> value.  The <c>topRadius</c> property specifies the radius of the top of the cylinder.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -384,7 +384,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>topRadius</code> property as a <code>reference</code> value.  The <code>topRadius</code> property specifies the radius of the top of the cylinder.
+        /// Writes a value for the <c>topRadius</c> property as a <c>reference</c> value.  The <c>topRadius</c> property specifies the radius of the top of the cylinder.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -397,7 +397,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>bottomRadius</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>bottomRadius</code> property defines the radius of the bottom of the cylinder.
+        /// Gets the writer for the <c>bottomRadius</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>bottomRadius</c> property defines the radius of the bottom of the cylinder.
         /// </summary>
         public DoubleCesiumWriter BottomRadiusWriter
         {
@@ -405,7 +405,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>bottomRadius</code> property.  The <code>bottomRadius</code> property defines the radius of the bottom of the cylinder.
+        /// Opens and returns the writer for the <c>bottomRadius</c> property.  The <c>bottomRadius</c> property defines the radius of the bottom of the cylinder.
         /// </summary>
         public DoubleCesiumWriter OpenBottomRadiusProperty()
         {
@@ -414,7 +414,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>bottomRadius</code> property as a <code>number</code> value.  The <code>bottomRadius</code> property specifies the radius of the bottom of the cylinder.
+        /// Writes a value for the <c>bottomRadius</c> property as a <c>number</c> value.  The <c>bottomRadius</c> property specifies the radius of the bottom of the cylinder.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteBottomRadiusProperty(double value)
@@ -426,7 +426,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>bottomRadius</code> property as a <code>number</code> value.  The <code>bottomRadius</code> property specifies the radius of the bottom of the cylinder.
+        /// Writes a value for the <c>bottomRadius</c> property as a <c>number</c> value.  The <c>bottomRadius</c> property specifies the radius of the bottom of the cylinder.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -439,7 +439,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>bottomRadius</code> property as a <code>number</code> value.  The <code>bottomRadius</code> property specifies the radius of the bottom of the cylinder.
+        /// Writes a value for the <c>bottomRadius</c> property as a <c>number</c> value.  The <c>bottomRadius</c> property specifies the radius of the bottom of the cylinder.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -454,7 +454,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>bottomRadius</code> property as a <code>reference</code> value.  The <code>bottomRadius</code> property specifies the radius of the bottom of the cylinder.
+        /// Writes a value for the <c>bottomRadius</c> property as a <c>reference</c> value.  The <c>bottomRadius</c> property specifies the radius of the bottom of the cylinder.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteBottomRadiusPropertyReference(Reference value)
@@ -466,7 +466,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>bottomRadius</code> property as a <code>reference</code> value.  The <code>bottomRadius</code> property specifies the radius of the bottom of the cylinder.
+        /// Writes a value for the <c>bottomRadius</c> property as a <c>reference</c> value.  The <c>bottomRadius</c> property specifies the radius of the bottom of the cylinder.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteBottomRadiusPropertyReference(string value)
@@ -478,7 +478,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>bottomRadius</code> property as a <code>reference</code> value.  The <code>bottomRadius</code> property specifies the radius of the bottom of the cylinder.
+        /// Writes a value for the <c>bottomRadius</c> property as a <c>reference</c> value.  The <c>bottomRadius</c> property specifies the radius of the bottom of the cylinder.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -491,7 +491,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>bottomRadius</code> property as a <code>reference</code> value.  The <code>bottomRadius</code> property specifies the radius of the bottom of the cylinder.
+        /// Writes a value for the <c>bottomRadius</c> property as a <c>reference</c> value.  The <c>bottomRadius</c> property specifies the radius of the bottom of the cylinder.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -504,7 +504,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>fill</code> property defines whether or not the cylinder is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>fill</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>fill</c> property defines whether or not the cylinder is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter FillWriter
         {
@@ -512,7 +512,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the cylinder is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>fill</c> property.  The <c>fill</c> property defines whether or not the cylinder is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenFillProperty()
         {
@@ -521,7 +521,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>boolean</c> value.  The <c>fill</c> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteFillProperty(bool value)
@@ -533,7 +533,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteFillPropertyReference(Reference value)
@@ -545,7 +545,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteFillPropertyReference(string value)
@@ -557,7 +557,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -570,7 +570,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the cylinder is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -583,7 +583,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>material</code> property defines the material to display on the surface of the cylinder.
+        /// Gets the writer for the <c>material</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>material</c> property defines the material to display on the surface of the cylinder.
         /// </summary>
         public MaterialCesiumWriter MaterialWriter
         {
@@ -591,7 +591,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to display on the surface of the cylinder.
+        /// Opens and returns the writer for the <c>material</c> property.  The <c>material</c> property defines the material to display on the surface of the cylinder.
         /// </summary>
         public MaterialCesiumWriter OpenMaterialProperty()
         {
@@ -600,7 +600,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outline</code> property defines whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Gets the writer for the <c>outline</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outline</c> property defines whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         public BooleanCesiumWriter OutlineWriter
         {
@@ -608,7 +608,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Opens and returns the writer for the <c>outline</c> property.  The <c>outline</c> property defines whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         public BooleanCesiumWriter OpenOutlineProperty()
         {
@@ -617,7 +617,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>boolean</c> value.  The <c>outline</c> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOutlineProperty(bool value)
@@ -629,7 +629,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlinePropertyReference(Reference value)
@@ -641,7 +641,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlinePropertyReference(string value)
@@ -653,7 +653,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -666,7 +666,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the cylinder is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -679,7 +679,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outlineColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineColor</code> property defines the color of the cylinder outline.
+        /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the color of the cylinder outline.
         /// </summary>
         public ColorCesiumWriter OutlineColorWriter
         {
@@ -687,7 +687,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outlineColor</code> property.  The <code>outlineColor</code> property defines the color of the cylinder outline.
+        /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the color of the cylinder outline.
         /// </summary>
         public ColorCesiumWriter OpenOutlineColorProperty()
         {
@@ -696,7 +696,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the cylinder outline.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOutlineColorProperty(Color color)
@@ -708,7 +708,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the cylinder outline.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -723,7 +723,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the cylinder outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -736,7 +736,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the cylinder outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -751,7 +751,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the cylinder outline.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOutlineColorPropertyRgbaf(Color color)
@@ -763,7 +763,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the cylinder outline.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -778,7 +778,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the cylinder outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -791,7 +791,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the cylinder outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -806,7 +806,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the cylinder outline.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(Reference value)
@@ -818,7 +818,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the cylinder outline.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlineColorPropertyReference(string value)
@@ -830,7 +830,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the cylinder outline.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -843,7 +843,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the cylinder outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the cylinder outline.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -856,7 +856,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the cylinder outline.  If not specified, the default value is 1.0.
+        /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the width of the cylinder outline.  If not specified, the default value is 1.0.
         /// </summary>
         public DoubleCesiumWriter OutlineWidthWriter
         {
@@ -864,7 +864,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the cylinder outline.  If not specified, the default value is 1.0.
+        /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the width of the cylinder outline.  If not specified, the default value is 1.0.
         /// </summary>
         public DoubleCesiumWriter OpenOutlineWidthProperty()
         {
@@ -873,7 +873,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOutlineWidthProperty(double value)
@@ -885,7 +885,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -898,7 +898,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -913,7 +913,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(Reference value)
@@ -925,7 +925,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlineWidthPropertyReference(string value)
@@ -937,7 +937,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -950,7 +950,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the cylinder outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -963,7 +963,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>numberOfVerticalLines</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>numberOfVerticalLines</code> property defines the number of vertical lines to draw along the perimeter for the outline.
+        /// Gets the writer for the <c>numberOfVerticalLines</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>numberOfVerticalLines</c> property defines the number of vertical lines to draw along the perimeter for the outline.
         /// </summary>
         public DoubleCesiumWriter NumberOfVerticalLinesWriter
         {
@@ -971,7 +971,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>numberOfVerticalLines</code> property.  The <code>numberOfVerticalLines</code> property defines the number of vertical lines to draw along the perimeter for the outline.
+        /// Opens and returns the writer for the <c>numberOfVerticalLines</c> property.  The <c>numberOfVerticalLines</c> property defines the number of vertical lines to draw along the perimeter for the outline.
         /// </summary>
         public DoubleCesiumWriter OpenNumberOfVerticalLinesProperty()
         {
@@ -980,7 +980,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>number</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+        /// Writes a value for the <c>numberOfVerticalLines</c> property as a <c>number</c> value.  The <c>numberOfVerticalLines</c> property specifies the number of vertical lines to draw along the perimeter for the outline.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteNumberOfVerticalLinesProperty(double value)
@@ -992,7 +992,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>number</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+        /// Writes a value for the <c>numberOfVerticalLines</c> property as a <c>number</c> value.  The <c>numberOfVerticalLines</c> property specifies the number of vertical lines to draw along the perimeter for the outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1005,7 +1005,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>number</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+        /// Writes a value for the <c>numberOfVerticalLines</c> property as a <c>number</c> value.  The <c>numberOfVerticalLines</c> property specifies the number of vertical lines to draw along the perimeter for the outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -1020,7 +1020,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+        /// Writes a value for the <c>numberOfVerticalLines</c> property as a <c>reference</c> value.  The <c>numberOfVerticalLines</c> property specifies the number of vertical lines to draw along the perimeter for the outline.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteNumberOfVerticalLinesPropertyReference(Reference value)
@@ -1032,7 +1032,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+        /// Writes a value for the <c>numberOfVerticalLines</c> property as a <c>reference</c> value.  The <c>numberOfVerticalLines</c> property specifies the number of vertical lines to draw along the perimeter for the outline.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteNumberOfVerticalLinesPropertyReference(string value)
@@ -1044,7 +1044,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+        /// Writes a value for the <c>numberOfVerticalLines</c> property as a <c>reference</c> value.  The <c>numberOfVerticalLines</c> property specifies the number of vertical lines to draw along the perimeter for the outline.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1057,7 +1057,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>numberOfVerticalLines</code> property as a <code>reference</code> value.  The <code>numberOfVerticalLines</code> property specifies the number of vertical lines to draw along the perimeter for the outline.
+        /// Writes a value for the <c>numberOfVerticalLines</c> property as a <c>reference</c> value.  The <c>numberOfVerticalLines</c> property specifies the number of vertical lines to draw along the perimeter for the outline.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1070,7 +1070,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>slices</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>slices</code> property defines the number of edges around the perimeter of the cylinder.
+        /// Gets the writer for the <c>slices</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>slices</c> property defines the number of edges around the perimeter of the cylinder.
         /// </summary>
         public DoubleCesiumWriter SlicesWriter
         {
@@ -1078,7 +1078,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>slices</code> property.  The <code>slices</code> property defines the number of edges around the perimeter of the cylinder.
+        /// Opens and returns the writer for the <c>slices</c> property.  The <c>slices</c> property defines the number of edges around the perimeter of the cylinder.
         /// </summary>
         public DoubleCesiumWriter OpenSlicesProperty()
         {
@@ -1087,7 +1087,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>slices</code> property as a <code>number</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+        /// Writes a value for the <c>slices</c> property as a <c>number</c> value.  The <c>slices</c> property specifies the number of edges around the perimeter of the cylinder.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteSlicesProperty(double value)
@@ -1099,7 +1099,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>slices</code> property as a <code>number</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+        /// Writes a value for the <c>slices</c> property as a <c>number</c> value.  The <c>slices</c> property specifies the number of edges around the perimeter of the cylinder.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1112,7 +1112,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>slices</code> property as a <code>number</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+        /// Writes a value for the <c>slices</c> property as a <c>number</c> value.  The <c>slices</c> property specifies the number of edges around the perimeter of the cylinder.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -1127,7 +1127,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>slices</code> property as a <code>reference</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+        /// Writes a value for the <c>slices</c> property as a <c>reference</c> value.  The <c>slices</c> property specifies the number of edges around the perimeter of the cylinder.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteSlicesPropertyReference(Reference value)
@@ -1139,7 +1139,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>slices</code> property as a <code>reference</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+        /// Writes a value for the <c>slices</c> property as a <c>reference</c> value.  The <c>slices</c> property specifies the number of edges around the perimeter of the cylinder.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteSlicesPropertyReference(string value)
@@ -1151,7 +1151,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>slices</code> property as a <code>reference</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+        /// Writes a value for the <c>slices</c> property as a <c>reference</c> value.  The <c>slices</c> property specifies the number of edges around the perimeter of the cylinder.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1164,7 +1164,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>slices</code> property as a <code>reference</code> value.  The <code>slices</code> property specifies the number of edges around the perimeter of the cylinder.
+        /// Writes a value for the <c>slices</c> property as a <c>reference</c> value.  The <c>slices</c> property specifies the number of edges around the perimeter of the cylinder.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

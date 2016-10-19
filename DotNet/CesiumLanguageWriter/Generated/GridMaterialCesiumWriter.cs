@@ -9,32 +9,32 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>GridMaterial</code> to a <see cref="CesiumOutputStream" />.  A <code>GridMaterial</code> is a material that fills the surface with a two dimensional grid.
+    /// Writes a <c>GridMaterial</c> to a <see cref="CesiumOutputStream" />.  A <c>GridMaterial</c> is a material that fills the surface with a two dimensional grid.
     /// </summary>
     public class GridMaterialCesiumWriter : CesiumPropertyWriter<GridMaterialCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>color</code> property.
+        /// The name of the <c>color</c> property.
         /// </summary>
         public const string ColorPropertyName = "color";
 
         /// <summary>
-        /// The name of the <code>cellAlpha</code> property.
+        /// The name of the <c>cellAlpha</c> property.
         /// </summary>
         public const string CellAlphaPropertyName = "cellAlpha";
 
         /// <summary>
-        /// The name of the <code>lineCount</code> property.
+        /// The name of the <c>lineCount</c> property.
         /// </summary>
         public const string LineCountPropertyName = "lineCount";
 
         /// <summary>
-        /// The name of the <code>lineThickness</code> property.
+        /// The name of the <c>lineThickness</c> property.
         /// </summary>
         public const string LineThicknessPropertyName = "lineThickness";
 
         /// <summary>
-        /// The name of the <code>lineOffset</code> property.
+        /// The name of the <c>lineOffset</c> property.
         /// </summary>
         public const string LineOffsetPropertyName = "lineOffset";
 
@@ -68,7 +68,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>color</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>color</code> property defines the color of the surface.
+        /// Gets the writer for the <c>color</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>color</c> property defines the color of the surface.
         /// </summary>
         public ColorCesiumWriter ColorWriter
         {
@@ -76,7 +76,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>color</code> property.  The <code>color</code> property defines the color of the surface.
+        /// Opens and returns the writer for the <c>color</c> property.  The <c>color</c> property defines the color of the surface.
         /// </summary>
         public ColorCesiumWriter OpenColorProperty()
         {
@@ -85,7 +85,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the surface.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteColorProperty(Color color)
@@ -97,7 +97,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the surface.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -112,7 +112,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the surface.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -125,7 +125,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the surface.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -140,7 +140,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the surface.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteColorPropertyRgbaf(Color color)
@@ -152,7 +152,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the surface.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -167,7 +167,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the surface.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -180,7 +180,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the surface.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -195,7 +195,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the surface.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(Reference value)
@@ -207,7 +207,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the surface.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteColorPropertyReference(string value)
@@ -219,7 +219,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the surface.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -232,7 +232,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the surface.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the surface.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -245,7 +245,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>cellAlpha</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>cellAlpha</code> property defines the alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Gets the writer for the <c>cellAlpha</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>cellAlpha</c> property defines the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         public DoubleCesiumWriter CellAlphaWriter
         {
@@ -253,7 +253,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>cellAlpha</code> property.  The <code>cellAlpha</code> property defines the alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Opens and returns the writer for the <c>cellAlpha</c> property.  The <c>cellAlpha</c> property defines the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         public DoubleCesiumWriter OpenCellAlphaProperty()
         {
@@ -262,7 +262,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>cellAlpha</code> property as a <code>number</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Writes a value for the <c>cellAlpha</c> property as a <c>number</c> value.  The <c>cellAlpha</c> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCellAlphaProperty(double value)
@@ -274,7 +274,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>cellAlpha</code> property as a <code>number</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Writes a value for the <c>cellAlpha</c> property as a <c>number</c> value.  The <c>cellAlpha</c> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -287,7 +287,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>cellAlpha</code> property as a <code>number</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Writes a value for the <c>cellAlpha</c> property as a <c>number</c> value.  The <c>cellAlpha</c> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -302,7 +302,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Writes a value for the <c>cellAlpha</c> property as a <c>reference</c> value.  The <c>cellAlpha</c> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteCellAlphaPropertyReference(Reference value)
@@ -314,7 +314,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Writes a value for the <c>cellAlpha</c> property as a <c>reference</c> value.  The <c>cellAlpha</c> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteCellAlphaPropertyReference(string value)
@@ -326,7 +326,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Writes a value for the <c>cellAlpha</c> property as a <c>reference</c> value.  The <c>cellAlpha</c> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -339,7 +339,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>cellAlpha</code> property as a <code>reference</code> value.  The <code>cellAlpha</code> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
+        /// Writes a value for the <c>cellAlpha</c> property as a <c>reference</c> value.  The <c>cellAlpha</c> property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -352,7 +352,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>lineCount</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>lineCount</code> property defines the number of grid lines along each axis.
+        /// Gets the writer for the <c>lineCount</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>lineCount</c> property defines the number of grid lines along each axis.
         /// </summary>
         public LineCountCesiumWriter LineCountWriter
         {
@@ -360,7 +360,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>lineCount</code> property.  The <code>lineCount</code> property defines the number of grid lines along each axis.
+        /// Opens and returns the writer for the <c>lineCount</c> property.  The <c>lineCount</c> property defines the number of grid lines along each axis.
         /// </summary>
         public LineCountCesiumWriter OpenLineCountProperty()
         {
@@ -369,7 +369,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineCount</code> property as a <code>cartesian2</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// Writes a value for the <c>lineCount</c> property as a <c>cartesian2</c> value.  The <c>lineCount</c> property specifies the number of grid lines along each axis.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteLineCountProperty(Rectangular value)
@@ -381,7 +381,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineCount</code> property as a <code>cartesian2</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// Writes a value for the <c>lineCount</c> property as a <c>cartesian2</c> value.  The <c>lineCount</c> property specifies the number of grid lines along each axis.
         /// </summary>
         /// <param name="x">The X component.</param>
         /// <param name="y">The Y component.</param>
@@ -394,7 +394,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineCount</code> property as a <code>cartesian2</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// Writes a value for the <c>lineCount</c> property as a <c>cartesian2</c> value.  The <c>lineCount</c> property specifies the number of grid lines along each axis.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -407,7 +407,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineCount</code> property as a <code>cartesian2</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// Writes a value for the <c>lineCount</c> property as a <c>cartesian2</c> value.  The <c>lineCount</c> property specifies the number of grid lines along each axis.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -422,7 +422,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineCount</code> property as a <code>reference</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// Writes a value for the <c>lineCount</c> property as a <c>reference</c> value.  The <c>lineCount</c> property specifies the number of grid lines along each axis.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteLineCountPropertyReference(Reference value)
@@ -434,7 +434,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineCount</code> property as a <code>reference</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// Writes a value for the <c>lineCount</c> property as a <c>reference</c> value.  The <c>lineCount</c> property specifies the number of grid lines along each axis.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteLineCountPropertyReference(string value)
@@ -446,7 +446,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineCount</code> property as a <code>reference</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// Writes a value for the <c>lineCount</c> property as a <c>reference</c> value.  The <c>lineCount</c> property specifies the number of grid lines along each axis.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -459,7 +459,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineCount</code> property as a <code>reference</code> value.  The <code>lineCount</code> property specifies the number of grid lines along each axis.
+        /// Writes a value for the <c>lineCount</c> property as a <c>reference</c> value.  The <c>lineCount</c> property specifies the number of grid lines along each axis.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -472,7 +472,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>lineThickness</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>lineThickness</code> property defines the thickness of grid lines along each axis, in pixels.
+        /// Gets the writer for the <c>lineThickness</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>lineThickness</c> property defines the thickness of grid lines along each axis, in pixels.
         /// </summary>
         public LineThicknessCesiumWriter LineThicknessWriter
         {
@@ -480,7 +480,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>lineThickness</code> property.  The <code>lineThickness</code> property defines the thickness of grid lines along each axis, in pixels.
+        /// Opens and returns the writer for the <c>lineThickness</c> property.  The <c>lineThickness</c> property defines the thickness of grid lines along each axis, in pixels.
         /// </summary>
         public LineThicknessCesiumWriter OpenLineThicknessProperty()
         {
@@ -489,7 +489,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineThickness</code> property as a <code>cartesian2</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes a value for the <c>lineThickness</c> property as a <c>cartesian2</c> value.  The <c>lineThickness</c> property specifies the thickness of grid lines along each axis, in pixels.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteLineThicknessProperty(Rectangular value)
@@ -501,7 +501,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineThickness</code> property as a <code>cartesian2</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes a value for the <c>lineThickness</c> property as a <c>cartesian2</c> value.  The <c>lineThickness</c> property specifies the thickness of grid lines along each axis, in pixels.
         /// </summary>
         /// <param name="x">The X component.</param>
         /// <param name="y">The Y component.</param>
@@ -514,7 +514,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineThickness</code> property as a <code>cartesian2</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes a value for the <c>lineThickness</c> property as a <c>cartesian2</c> value.  The <c>lineThickness</c> property specifies the thickness of grid lines along each axis, in pixels.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -527,7 +527,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineThickness</code> property as a <code>cartesian2</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes a value for the <c>lineThickness</c> property as a <c>cartesian2</c> value.  The <c>lineThickness</c> property specifies the thickness of grid lines along each axis, in pixels.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -542,7 +542,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineThickness</code> property as a <code>reference</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes a value for the <c>lineThickness</c> property as a <c>reference</c> value.  The <c>lineThickness</c> property specifies the thickness of grid lines along each axis, in pixels.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteLineThicknessPropertyReference(Reference value)
@@ -554,7 +554,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineThickness</code> property as a <code>reference</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes a value for the <c>lineThickness</c> property as a <c>reference</c> value.  The <c>lineThickness</c> property specifies the thickness of grid lines along each axis, in pixels.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteLineThicknessPropertyReference(string value)
@@ -566,7 +566,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineThickness</code> property as a <code>reference</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes a value for the <c>lineThickness</c> property as a <c>reference</c> value.  The <c>lineThickness</c> property specifies the thickness of grid lines along each axis, in pixels.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -579,7 +579,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineThickness</code> property as a <code>reference</code> value.  The <code>lineThickness</code> property specifies the thickness of grid lines along each axis, in pixels.
+        /// Writes a value for the <c>lineThickness</c> property as a <c>reference</c> value.  The <c>lineThickness</c> property specifies the thickness of grid lines along each axis, in pixels.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -592,7 +592,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>lineOffset</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>lineOffset</code> property defines the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// Gets the writer for the <c>lineOffset</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>lineOffset</c> property defines the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
         public LineOffsetCesiumWriter LineOffsetWriter
         {
@@ -600,7 +600,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>lineOffset</code> property.  The <code>lineOffset</code> property defines the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// Opens and returns the writer for the <c>lineOffset</c> property.  The <c>lineOffset</c> property defines the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
         public LineOffsetCesiumWriter OpenLineOffsetProperty()
         {
@@ -609,7 +609,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineOffset</code> property as a <code>cartesian2</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// Writes a value for the <c>lineOffset</c> property as a <c>cartesian2</c> value.  The <c>lineOffset</c> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteLineOffsetProperty(Rectangular value)
@@ -621,7 +621,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineOffset</code> property as a <code>cartesian2</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// Writes a value for the <c>lineOffset</c> property as a <c>cartesian2</c> value.  The <c>lineOffset</c> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
         /// <param name="x">The X component.</param>
         /// <param name="y">The Y component.</param>
@@ -634,7 +634,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineOffset</code> property as a <code>cartesian2</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// Writes a value for the <c>lineOffset</c> property as a <c>cartesian2</c> value.  The <c>lineOffset</c> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -647,7 +647,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineOffset</code> property as a <code>cartesian2</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// Writes a value for the <c>lineOffset</c> property as a <c>cartesian2</c> value.  The <c>lineOffset</c> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -662,7 +662,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineOffset</code> property as a <code>reference</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// Writes a value for the <c>lineOffset</c> property as a <c>reference</c> value.  The <c>lineOffset</c> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteLineOffsetPropertyReference(Reference value)
@@ -674,7 +674,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineOffset</code> property as a <code>reference</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// Writes a value for the <c>lineOffset</c> property as a <c>reference</c> value.  The <c>lineOffset</c> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteLineOffsetPropertyReference(string value)
@@ -686,7 +686,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineOffset</code> property as a <code>reference</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// Writes a value for the <c>lineOffset</c> property as a <c>reference</c> value.  The <c>lineOffset</c> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -699,7 +699,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>lineOffset</code> property as a <code>reference</code> value.  The <code>lineOffset</code> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+        /// Writes a value for the <c>lineOffset</c> property as a <c>reference</c> value.  The <c>lineOffset</c> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

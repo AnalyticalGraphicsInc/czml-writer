@@ -9,77 +9,77 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Polygon</code> to a <see cref="CesiumOutputStream" />.  A <code>Polygon</code> is a polygon, which is a closed figure on the surface of the Earth.
+    /// Writes a <c>Polygon</c> to a <see cref="CesiumOutputStream" />.  A <c>Polygon</c> is a polygon, which is a closed figure on the surface of the Earth.
     /// </summary>
     public class PolygonCesiumWriter : CesiumPropertyWriter<PolygonCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>show</code> property.
+        /// The name of the <c>show</c> property.
         /// </summary>
         public const string ShowPropertyName = "show";
 
         /// <summary>
-        /// The name of the <code>positions</code> property.
+        /// The name of the <c>positions</c> property.
         /// </summary>
         public const string PositionsPropertyName = "positions";
 
         /// <summary>
-        /// The name of the <code>height</code> property.
+        /// The name of the <c>height</c> property.
         /// </summary>
         public const string HeightPropertyName = "height";
 
         /// <summary>
-        /// The name of the <code>extrudedHeight</code> property.
+        /// The name of the <c>extrudedHeight</c> property.
         /// </summary>
         public const string ExtrudedHeightPropertyName = "extrudedHeight";
 
         /// <summary>
-        /// The name of the <code>stRotation</code> property.
+        /// The name of the <c>stRotation</c> property.
         /// </summary>
         public const string StRotationPropertyName = "stRotation";
 
         /// <summary>
-        /// The name of the <code>granularity</code> property.
+        /// The name of the <c>granularity</c> property.
         /// </summary>
         public const string GranularityPropertyName = "granularity";
 
         /// <summary>
-        /// The name of the <code>fill</code> property.
+        /// The name of the <c>fill</c> property.
         /// </summary>
         public const string FillPropertyName = "fill";
 
         /// <summary>
-        /// The name of the <code>material</code> property.
+        /// The name of the <c>material</c> property.
         /// </summary>
         public const string MaterialPropertyName = "material";
 
         /// <summary>
-        /// The name of the <code>outline</code> property.
+        /// The name of the <c>outline</c> property.
         /// </summary>
         public const string OutlinePropertyName = "outline";
 
         /// <summary>
-        /// The name of the <code>outlineColor</code> property.
+        /// The name of the <c>outlineColor</c> property.
         /// </summary>
         public const string OutlineColorPropertyName = "outlineColor";
 
         /// <summary>
-        /// The name of the <code>outlineWidth</code> property.
+        /// The name of the <c>outlineWidth</c> property.
         /// </summary>
         public const string OutlineWidthPropertyName = "outlineWidth";
 
         /// <summary>
-        /// The name of the <code>perPositionHeight</code> property.
+        /// The name of the <c>perPositionHeight</c> property.
         /// </summary>
         public const string PerPositionHeightPropertyName = "perPositionHeight";
 
         /// <summary>
-        /// The name of the <code>closeTop</code> property.
+        /// The name of the <c>closeTop</c> property.
         /// </summary>
         public const string CloseTopPropertyName = "closeTop";
 
         /// <summary>
-        /// The name of the <code>closeBottom</code> property.
+        /// The name of the <c>closeBottom</c> property.
         /// </summary>
         public const string CloseBottomPropertyName = "closeBottom";
 
@@ -122,7 +122,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter ShowWriter
         {
@@ -130,7 +130,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
@@ -139,7 +139,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>boolean</c> value.  The <c>show</c> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -151,7 +151,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(Reference value)
@@ -163,7 +163,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowPropertyReference(string value)
@@ -175,7 +175,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -188,7 +188,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -201,7 +201,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>positions</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>positions</code> property defines the array of positions defining a simple polygon.
+        /// Gets the writer for the <c>positions</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>positions</c> property defines the array of positions defining a simple polygon.
         /// </summary>
         public PositionListCesiumWriter PositionsWriter
         {
@@ -209,7 +209,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>positions</code> property.  The <code>positions</code> property defines the array of positions defining a simple polygon.
+        /// Opens and returns the writer for the <c>positions</c> property.  The <c>positions</c> property defines the array of positions defining a simple polygon.
         /// </summary>
         public PositionListCesiumWriter OpenPositionsProperty()
         {
@@ -218,7 +218,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>positions</code> property as a <code>cartesian</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
+        /// Writes a value for the <c>positions</c> property as a <c>cartesian</c> value.  The <c>positions</c> property specifies the array of positions defining a simple polygon.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsProperty(IEnumerable<Cartesian> values)
@@ -230,7 +230,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>positions</code> property as a <code>cartographicRadians</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
+        /// Writes a value for the <c>positions</c> property as a <c>cartographicRadians</c> value.  The <c>positions</c> property specifies the array of positions defining a simple polygon.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsPropertyCartographicRadians(IEnumerable<Cartographic> values)
@@ -242,7 +242,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>positions</code> property as a <code>cartographicDegrees</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
+        /// Writes a value for the <c>positions</c> property as a <c>cartographicDegrees</c> value.  The <c>positions</c> property specifies the array of positions defining a simple polygon.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsPropertyCartographicDegrees(IEnumerable<Cartographic> values)
@@ -254,7 +254,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>positions</code> property as a <code>references</code> value.  The <code>positions</code> property specifies the array of positions defining a simple polygon.
+        /// Writes a value for the <c>positions</c> property as a <c>references</c> value.  The <c>positions</c> property specifies the array of positions defining a simple polygon.
         /// </summary>
         /// <param name="references">The list of references.</param>
         public void WritePositionsPropertyReferences(IEnumerable<Reference> references)
@@ -266,7 +266,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>height</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>height</code> property defines the height of the polygon when `perPositionHeight` is false.
+        /// Gets the writer for the <c>height</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>height</c> property defines the height of the polygon when `perPositionHeight` is false.
         /// </summary>
         public DoubleCesiumWriter HeightWriter
         {
@@ -274,7 +274,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>height</code> property.  The <code>height</code> property defines the height of the polygon when `perPositionHeight` is false.
+        /// Opens and returns the writer for the <c>height</c> property.  The <c>height</c> property defines the height of the polygon when `perPositionHeight` is false.
         /// </summary>
         public DoubleCesiumWriter OpenHeightProperty()
         {
@@ -283,7 +283,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the polygon when `perPositionHeight` is false.
+        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the polygon when `perPositionHeight` is false.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteHeightProperty(double value)
@@ -295,7 +295,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the polygon when `perPositionHeight` is false.
+        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the polygon when `perPositionHeight` is false.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -308,7 +308,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>number</code> value.  The <code>height</code> property specifies the height of the polygon when `perPositionHeight` is false.
+        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the polygon when `perPositionHeight` is false.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -323,7 +323,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the polygon when `perPositionHeight` is false.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the polygon when `perPositionHeight` is false.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteHeightPropertyReference(Reference value)
@@ -335,7 +335,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the polygon when `perPositionHeight` is false.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the polygon when `perPositionHeight` is false.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteHeightPropertyReference(string value)
@@ -347,7 +347,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the polygon when `perPositionHeight` is false.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the polygon when `perPositionHeight` is false.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -360,7 +360,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>height</code> property as a <code>reference</code> value.  The <code>height</code> property specifies the height of the polygon when `perPositionHeight` is false.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the polygon when `perPositionHeight` is false.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -373,7 +373,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>extrudedHeight</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>extrudedHeight</code> property defines the extruded height of the polygon.
+        /// Gets the writer for the <c>extrudedHeight</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>extrudedHeight</c> property defines the extruded height of the polygon.
         /// </summary>
         public DoubleCesiumWriter ExtrudedHeightWriter
         {
@@ -381,7 +381,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>extrudedHeight</code> property.  The <code>extrudedHeight</code> property defines the extruded height of the polygon.
+        /// Opens and returns the writer for the <c>extrudedHeight</c> property.  The <c>extrudedHeight</c> property defines the extruded height of the polygon.
         /// </summary>
         public DoubleCesiumWriter OpenExtrudedHeightProperty()
         {
@@ -390,7 +390,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the polygon.
+        /// Writes a value for the <c>extrudedHeight</c> property as a <c>number</c> value.  The <c>extrudedHeight</c> property specifies the extruded height of the polygon.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteExtrudedHeightProperty(double value)
@@ -402,7 +402,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the polygon.
+        /// Writes a value for the <c>extrudedHeight</c> property as a <c>number</c> value.  The <c>extrudedHeight</c> property specifies the extruded height of the polygon.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -415,7 +415,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>number</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the polygon.
+        /// Writes a value for the <c>extrudedHeight</c> property as a <c>number</c> value.  The <c>extrudedHeight</c> property specifies the extruded height of the polygon.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -430,7 +430,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the polygon.
+        /// Writes a value for the <c>extrudedHeight</c> property as a <c>reference</c> value.  The <c>extrudedHeight</c> property specifies the extruded height of the polygon.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteExtrudedHeightPropertyReference(Reference value)
@@ -442,7 +442,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the polygon.
+        /// Writes a value for the <c>extrudedHeight</c> property as a <c>reference</c> value.  The <c>extrudedHeight</c> property specifies the extruded height of the polygon.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteExtrudedHeightPropertyReference(string value)
@@ -454,7 +454,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the polygon.
+        /// Writes a value for the <c>extrudedHeight</c> property as a <c>reference</c> value.  The <c>extrudedHeight</c> property specifies the extruded height of the polygon.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -467,7 +467,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>extrudedHeight</code> property as a <code>reference</code> value.  The <code>extrudedHeight</code> property specifies the extruded height of the polygon.
+        /// Writes a value for the <c>extrudedHeight</c> property as a <c>reference</c> value.  The <c>extrudedHeight</c> property specifies the extruded height of the polygon.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -480,7 +480,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>stRotation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>stRotation</code> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Gets the writer for the <c>stRotation</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>stRotation</c> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         public DoubleCesiumWriter StRotationWriter
         {
@@ -488,7 +488,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>stRotation</code> property.  The <code>stRotation</code> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Opens and returns the writer for the <c>stRotation</c> property.  The <c>stRotation</c> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         public DoubleCesiumWriter OpenStRotationProperty()
         {
@@ -497,7 +497,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Writes a value for the <c>stRotation</c> property as a <c>number</c> value.  The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteStRotationProperty(double value)
@@ -509,7 +509,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Writes a value for the <c>stRotation</c> property as a <c>number</c> value.  The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -522,7 +522,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>number</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Writes a value for the <c>stRotation</c> property as a <c>number</c> value.  The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -537,7 +537,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Writes a value for the <c>stRotation</c> property as a <c>reference</c> value.  The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteStRotationPropertyReference(Reference value)
@@ -549,7 +549,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Writes a value for the <c>stRotation</c> property as a <c>reference</c> value.  The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteStRotationPropertyReference(string value)
@@ -561,7 +561,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Writes a value for the <c>stRotation</c> property as a <c>reference</c> value.  The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -574,7 +574,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>stRotation</code> property as a <code>reference</code> value.  The <code>stRotation</code> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
+        /// Writes a value for the <c>stRotation</c> property as a <c>reference</c> value.  The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -587,7 +587,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>granularity</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>granularity</code> property defines the sampling distance, in radians.
+        /// Gets the writer for the <c>granularity</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>granularity</c> property defines the sampling distance, in radians.
         /// </summary>
         public DoubleCesiumWriter GranularityWriter
         {
@@ -595,7 +595,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>granularity</code> property.  The <code>granularity</code> property defines the sampling distance, in radians.
+        /// Opens and returns the writer for the <c>granularity</c> property.  The <c>granularity</c> property defines the sampling distance, in radians.
         /// </summary>
         public DoubleCesiumWriter OpenGranularityProperty()
         {
@@ -604,7 +604,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>number</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteGranularityProperty(double value)
@@ -616,7 +616,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>number</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -629,7 +629,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>granularity</code> property as a <code>number</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>number</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -644,7 +644,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteGranularityPropertyReference(Reference value)
@@ -656,7 +656,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteGranularityPropertyReference(string value)
@@ -668,7 +668,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -681,7 +681,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>granularity</code> property as a <code>reference</code> value.  The <code>granularity</code> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -694,7 +694,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>fill</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>fill</code> property defines whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>fill</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>fill</c> property defines whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter FillWriter
         {
@@ -702,7 +702,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>fill</code> property.  The <code>fill</code> property defines whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>fill</c> property.  The <c>fill</c> property defines whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenFillProperty()
         {
@@ -711,7 +711,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>boolean</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>boolean</c> value.  The <c>fill</c> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteFillProperty(bool value)
@@ -723,7 +723,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteFillPropertyReference(Reference value)
@@ -735,7 +735,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteFillPropertyReference(string value)
@@ -747,7 +747,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -760,7 +760,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>fill</code> property as a <code>reference</code> value.  The <code>fill</code> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -773,7 +773,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>material</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>material</code> property defines the material to use to fill the polygon.
+        /// Gets the writer for the <c>material</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>material</c> property defines the material to use to fill the polygon.
         /// </summary>
         public MaterialCesiumWriter MaterialWriter
         {
@@ -781,7 +781,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>material</code> property.  The <code>material</code> property defines the material to use to fill the polygon.
+        /// Opens and returns the writer for the <c>material</c> property.  The <c>material</c> property defines the material to use to fill the polygon.
         /// </summary>
         public MaterialCesiumWriter OpenMaterialProperty()
         {
@@ -790,7 +790,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outline</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outline</code> property defines whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Gets the writer for the <c>outline</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outline</c> property defines whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         public BooleanCesiumWriter OutlineWriter
         {
@@ -798,7 +798,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outline</code> property.  The <code>outline</code> property defines whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Opens and returns the writer for the <c>outline</c> property.  The <c>outline</c> property defines whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         public BooleanCesiumWriter OpenOutlineProperty()
         {
@@ -807,7 +807,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>boolean</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>boolean</c> value.  The <c>outline</c> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOutlineProperty(bool value)
@@ -819,7 +819,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlinePropertyReference(Reference value)
@@ -831,7 +831,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlinePropertyReference(string value)
@@ -843,7 +843,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -856,7 +856,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outline</code> property as a <code>reference</code> value.  The <code>outline</code> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -869,7 +869,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outlineColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineColor</code> property defines the color of the polygon outline.
+        /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the color of the polygon outline.
         /// </summary>
         public ColorCesiumWriter OutlineColorWriter
         {
@@ -877,7 +877,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outlineColor</code> property.  The <code>outlineColor</code> property defines the color of the polygon outline.
+        /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the color of the polygon outline.
         /// </summary>
         public ColorCesiumWriter OpenOutlineColorProperty()
         {
@@ -886,7 +886,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the polygon outline.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOutlineColorProperty(Color color)
@@ -898,7 +898,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the polygon outline.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -913,7 +913,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the polygon outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -926,7 +926,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgba</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the polygon outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -941,7 +941,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the polygon outline.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOutlineColorPropertyRgbaf(Color color)
@@ -953,7 +953,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the polygon outline.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -968,7 +968,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the polygon outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -981,7 +981,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>rgbaf</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the polygon outline.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -996,7 +996,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the polygon outline.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(Reference value)
@@ -1008,7 +1008,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the polygon outline.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlineColorPropertyReference(string value)
@@ -1020,7 +1020,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the polygon outline.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1033,7 +1033,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineColor</code> property as a <code>reference</code> value.  The <code>outlineColor</code> property specifies the color of the polygon outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the polygon outline.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1046,7 +1046,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outlineWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outlineWidth</code> property defines the width of the polygon outline.  If not specified, the default value is 1.0.
+        /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the width of the polygon outline.  If not specified, the default value is 1.0.
         /// </summary>
         public DoubleCesiumWriter OutlineWidthWriter
         {
@@ -1054,7 +1054,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outlineWidth</code> property.  The <code>outlineWidth</code> property defines the width of the polygon outline.  If not specified, the default value is 1.0.
+        /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the width of the polygon outline.  If not specified, the default value is 1.0.
         /// </summary>
         public DoubleCesiumWriter OpenOutlineWidthProperty()
         {
@@ -1063,7 +1063,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOutlineWidthProperty(double value)
@@ -1075,7 +1075,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1088,7 +1088,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>number</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -1103,7 +1103,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(Reference value)
@@ -1115,7 +1115,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlineWidthPropertyReference(string value)
@@ -1127,7 +1127,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1140,7 +1140,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outlineWidth</code> property as a <code>reference</code> value.  The <code>outlineWidth</code> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the polygon outline.  If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1153,7 +1153,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>perPositionHeight</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>perPositionHeight</code> property defines whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
+        /// Gets the writer for the <c>perPositionHeight</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>perPositionHeight</c> property defines whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
         /// </summary>
         public BooleanCesiumWriter PerPositionHeightWriter
         {
@@ -1161,7 +1161,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>perPositionHeight</code> property.  The <code>perPositionHeight</code> property defines whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
+        /// Opens and returns the writer for the <c>perPositionHeight</c> property.  The <c>perPositionHeight</c> property defines whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
         /// </summary>
         public BooleanCesiumWriter OpenPerPositionHeightProperty()
         {
@@ -1170,7 +1170,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>perPositionHeight</code> property as a <code>boolean</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
+        /// Writes a value for the <c>perPositionHeight</c> property as a <c>boolean</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WritePerPositionHeightProperty(bool value)
@@ -1182,7 +1182,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
+        /// Writes a value for the <c>perPositionHeight</c> property as a <c>reference</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WritePerPositionHeightPropertyReference(Reference value)
@@ -1194,7 +1194,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
+        /// Writes a value for the <c>perPositionHeight</c> property as a <c>reference</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WritePerPositionHeightPropertyReference(string value)
@@ -1206,7 +1206,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
+        /// Writes a value for the <c>perPositionHeight</c> property as a <c>reference</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1219,7 +1219,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>perPositionHeight</code> property as a <code>reference</code> value.  The <code>perPositionHeight</code> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
+        /// Writes a value for the <c>perPositionHeight</c> property as a <c>reference</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1232,7 +1232,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>closeTop</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>closeTop</code> property defines whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>closeTop</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>closeTop</c> property defines whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter CloseTopWriter
         {
@@ -1240,7 +1240,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>closeTop</code> property.  The <code>closeTop</code> property defines whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>closeTop</c> property.  The <c>closeTop</c> property defines whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenCloseTopProperty()
         {
@@ -1249,7 +1249,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeTop</code> property as a <code>boolean</code> value.  The <code>closeTop</code> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeTop</c> property as a <c>boolean</c> value.  The <c>closeTop</c> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCloseTopProperty(bool value)
@@ -1261,7 +1261,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeTop</c> property as a <c>reference</c> value.  The <c>closeTop</c> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteCloseTopPropertyReference(Reference value)
@@ -1273,7 +1273,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeTop</c> property as a <c>reference</c> value.  The <c>closeTop</c> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteCloseTopPropertyReference(string value)
@@ -1285,7 +1285,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeTop</c> property as a <c>reference</c> value.  The <c>closeTop</c> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1298,7 +1298,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeTop</code> property as a <code>reference</code> value.  The <code>closeTop</code> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeTop</c> property as a <c>reference</c> value.  The <c>closeTop</c> property specifies whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1311,7 +1311,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>closeBottom</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>closeBottom</code> property defines whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>closeBottom</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>closeBottom</c> property defines whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter CloseBottomWriter
         {
@@ -1319,7 +1319,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>closeBottom</code> property.  The <code>closeBottom</code> property defines whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>closeBottom</c> property.  The <c>closeBottom</c> property defines whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenCloseBottomProperty()
         {
@@ -1328,7 +1328,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeBottom</code> property as a <code>boolean</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeBottom</c> property as a <c>boolean</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCloseBottomProperty(bool value)
@@ -1340,7 +1340,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeBottom</c> property as a <c>reference</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteCloseBottomPropertyReference(Reference value)
@@ -1352,7 +1352,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeBottom</c> property as a <c>reference</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteCloseBottomPropertyReference(string value)
@@ -1364,7 +1364,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeBottom</c> property as a <c>reference</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1377,7 +1377,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>closeBottom</code> property as a <code>reference</code> value.  The <code>closeBottom</code> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>closeBottom</c> property as a <c>reference</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

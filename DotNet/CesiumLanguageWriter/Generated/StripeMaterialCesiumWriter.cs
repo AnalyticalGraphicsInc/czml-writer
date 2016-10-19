@@ -9,32 +9,32 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>StripeMaterial</code> to a <see cref="CesiumOutputStream" />.  A <code>StripeMaterial</code> is a material that fills the surface with alternating colors.
+    /// Writes a <c>StripeMaterial</c> to a <see cref="CesiumOutputStream" />.  A <c>StripeMaterial</c> is a material that fills the surface with alternating colors.
     /// </summary>
     public class StripeMaterialCesiumWriter : CesiumPropertyWriter<StripeMaterialCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>orientation</code> property.
+        /// The name of the <c>orientation</c> property.
         /// </summary>
         public const string OrientationPropertyName = "orientation";
 
         /// <summary>
-        /// The name of the <code>evenColor</code> property.
+        /// The name of the <c>evenColor</c> property.
         /// </summary>
         public const string EvenColorPropertyName = "evenColor";
 
         /// <summary>
-        /// The name of the <code>oddColor</code> property.
+        /// The name of the <c>oddColor</c> property.
         /// </summary>
         public const string OddColorPropertyName = "oddColor";
 
         /// <summary>
-        /// The name of the <code>offset</code> property.
+        /// The name of the <c>offset</c> property.
         /// </summary>
         public const string OffsetPropertyName = "offset";
 
         /// <summary>
-        /// The name of the <code>repeat</code> property.
+        /// The name of the <c>repeat</c> property.
         /// </summary>
         public const string RepeatPropertyName = "repeat";
 
@@ -68,7 +68,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>orientation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>orientation</code> property defines the value indicating if the stripes are horizontal or vertical.
+        /// Gets the writer for the <c>orientation</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>orientation</c> property defines the value indicating if the stripes are horizontal or vertical.
         /// </summary>
         public StripeOrientationCesiumWriter OrientationWriter
         {
@@ -76,7 +76,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>orientation</code> property.  The <code>orientation</code> property defines the value indicating if the stripes are horizontal or vertical.
+        /// Opens and returns the writer for the <c>orientation</c> property.  The <c>orientation</c> property defines the value indicating if the stripes are horizontal or vertical.
         /// </summary>
         public StripeOrientationCesiumWriter OpenOrientationProperty()
         {
@@ -85,7 +85,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>orientation</code> property as a <code>StripeOrientation</code> value.  The <code>orientation</code> property specifies the value indicating if the stripes are horizontal or vertical.
+        /// Writes a value for the <c>orientation</c> property as a <c>StripeOrientation</c> value.  The <c>orientation</c> property specifies the value indicating if the stripes are horizontal or vertical.
         /// </summary>
         /// <param name="value">The orientation.</param>
         public void WriteOrientationProperty(CesiumStripeOrientation value)
@@ -97,7 +97,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the value indicating if the stripes are horizontal or vertical.
+        /// Writes a value for the <c>orientation</c> property as a <c>reference</c> value.  The <c>orientation</c> property specifies the value indicating if the stripes are horizontal or vertical.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOrientationPropertyReference(Reference value)
@@ -109,7 +109,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the value indicating if the stripes are horizontal or vertical.
+        /// Writes a value for the <c>orientation</c> property as a <c>reference</c> value.  The <c>orientation</c> property specifies the value indicating if the stripes are horizontal or vertical.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOrientationPropertyReference(string value)
@@ -121,7 +121,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the value indicating if the stripes are horizontal or vertical.
+        /// Writes a value for the <c>orientation</c> property as a <c>reference</c> value.  The <c>orientation</c> property specifies the value indicating if the stripes are horizontal or vertical.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -134,7 +134,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>orientation</code> property as a <code>reference</code> value.  The <code>orientation</code> property specifies the value indicating if the stripes are horizontal or vertical.
+        /// Writes a value for the <c>orientation</c> property as a <c>reference</c> value.  The <c>orientation</c> property specifies the value indicating if the stripes are horizontal or vertical.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -147,7 +147,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>evenColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>evenColor</code> property defines the even color.
+        /// Gets the writer for the <c>evenColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>evenColor</c> property defines the even color.
         /// </summary>
         public ColorCesiumWriter EvenColorWriter
         {
@@ -155,7 +155,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>evenColor</code> property.  The <code>evenColor</code> property defines the even color.
+        /// Opens and returns the writer for the <c>evenColor</c> property.  The <c>evenColor</c> property defines the even color.
         /// </summary>
         public ColorCesiumWriter OpenEvenColorProperty()
         {
@@ -164,7 +164,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// Writes a value for the <c>evenColor</c> property as a <c>rgba</c> value.  The <c>evenColor</c> property specifies the even color.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteEvenColorProperty(Color color)
@@ -176,7 +176,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// Writes a value for the <c>evenColor</c> property as a <c>rgba</c> value.  The <c>evenColor</c> property specifies the even color.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -191,7 +191,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// Writes a value for the <c>evenColor</c> property as a <c>rgba</c> value.  The <c>evenColor</c> property specifies the even color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -204,7 +204,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>evenColor</code> property as a <code>rgba</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// Writes a value for the <c>evenColor</c> property as a <c>rgba</c> value.  The <c>evenColor</c> property specifies the even color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -219,7 +219,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>evenColor</code> property as a <code>rgbaf</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// Writes a value for the <c>evenColor</c> property as a <c>rgbaf</c> value.  The <c>evenColor</c> property specifies the even color.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteEvenColorPropertyRgbaf(Color color)
@@ -231,7 +231,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>evenColor</code> property as a <code>rgbaf</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// Writes a value for the <c>evenColor</c> property as a <c>rgbaf</c> value.  The <c>evenColor</c> property specifies the even color.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -246,7 +246,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>evenColor</code> property as a <code>rgbaf</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// Writes a value for the <c>evenColor</c> property as a <c>rgbaf</c> value.  The <c>evenColor</c> property specifies the even color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -259,7 +259,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>evenColor</code> property as a <code>rgbaf</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// Writes a value for the <c>evenColor</c> property as a <c>rgbaf</c> value.  The <c>evenColor</c> property specifies the even color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -274,7 +274,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>evenColor</code> property as a <code>reference</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// Writes a value for the <c>evenColor</c> property as a <c>reference</c> value.  The <c>evenColor</c> property specifies the even color.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteEvenColorPropertyReference(Reference value)
@@ -286,7 +286,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>evenColor</code> property as a <code>reference</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// Writes a value for the <c>evenColor</c> property as a <c>reference</c> value.  The <c>evenColor</c> property specifies the even color.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteEvenColorPropertyReference(string value)
@@ -298,7 +298,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>evenColor</code> property as a <code>reference</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// Writes a value for the <c>evenColor</c> property as a <c>reference</c> value.  The <c>evenColor</c> property specifies the even color.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -311,7 +311,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>evenColor</code> property as a <code>reference</code> value.  The <code>evenColor</code> property specifies the even color.
+        /// Writes a value for the <c>evenColor</c> property as a <c>reference</c> value.  The <c>evenColor</c> property specifies the even color.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -324,7 +324,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>oddColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>oddColor</code> property defines the odd color.
+        /// Gets the writer for the <c>oddColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>oddColor</c> property defines the odd color.
         /// </summary>
         public ColorCesiumWriter OddColorWriter
         {
@@ -332,7 +332,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>oddColor</code> property.  The <code>oddColor</code> property defines the odd color.
+        /// Opens and returns the writer for the <c>oddColor</c> property.  The <c>oddColor</c> property defines the odd color.
         /// </summary>
         public ColorCesiumWriter OpenOddColorProperty()
         {
@@ -341,7 +341,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// Writes a value for the <c>oddColor</c> property as a <c>rgba</c> value.  The <c>oddColor</c> property specifies the odd color.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOddColorProperty(Color color)
@@ -353,7 +353,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// Writes a value for the <c>oddColor</c> property as a <c>rgba</c> value.  The <c>oddColor</c> property specifies the odd color.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -368,7 +368,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// Writes a value for the <c>oddColor</c> property as a <c>rgba</c> value.  The <c>oddColor</c> property specifies the odd color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -381,7 +381,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>oddColor</code> property as a <code>rgba</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// Writes a value for the <c>oddColor</c> property as a <c>rgba</c> value.  The <c>oddColor</c> property specifies the odd color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -396,7 +396,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>oddColor</code> property as a <code>rgbaf</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// Writes a value for the <c>oddColor</c> property as a <c>rgbaf</c> value.  The <c>oddColor</c> property specifies the odd color.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOddColorPropertyRgbaf(Color color)
@@ -408,7 +408,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>oddColor</code> property as a <code>rgbaf</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// Writes a value for the <c>oddColor</c> property as a <c>rgbaf</c> value.  The <c>oddColor</c> property specifies the odd color.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -423,7 +423,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>oddColor</code> property as a <code>rgbaf</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// Writes a value for the <c>oddColor</c> property as a <c>rgbaf</c> value.  The <c>oddColor</c> property specifies the odd color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -436,7 +436,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>oddColor</code> property as a <code>rgbaf</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// Writes a value for the <c>oddColor</c> property as a <c>rgbaf</c> value.  The <c>oddColor</c> property specifies the odd color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -451,7 +451,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>oddColor</code> property as a <code>reference</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// Writes a value for the <c>oddColor</c> property as a <c>reference</c> value.  The <c>oddColor</c> property specifies the odd color.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOddColorPropertyReference(Reference value)
@@ -463,7 +463,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>oddColor</code> property as a <code>reference</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// Writes a value for the <c>oddColor</c> property as a <c>reference</c> value.  The <c>oddColor</c> property specifies the odd color.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOddColorPropertyReference(string value)
@@ -475,7 +475,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>oddColor</code> property as a <code>reference</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// Writes a value for the <c>oddColor</c> property as a <c>reference</c> value.  The <c>oddColor</c> property specifies the odd color.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -488,7 +488,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>oddColor</code> property as a <code>reference</code> value.  The <code>oddColor</code> property specifies the odd color.
+        /// Writes a value for the <c>oddColor</c> property as a <c>reference</c> value.  The <c>oddColor</c> property specifies the odd color.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -501,7 +501,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>offset</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>offset</code> property defines the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+        /// Gets the writer for the <c>offset</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>offset</c> property defines the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
         /// </summary>
         public DoubleCesiumWriter OffsetWriter
         {
@@ -509,7 +509,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>offset</code> property.  The <code>offset</code> property defines the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+        /// Opens and returns the writer for the <c>offset</c> property.  The <c>offset</c> property defines the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
         /// </summary>
         public DoubleCesiumWriter OpenOffsetProperty()
         {
@@ -518,7 +518,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>offset</code> property as a <code>number</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+        /// Writes a value for the <c>offset</c> property as a <c>number</c> value.  The <c>offset</c> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOffsetProperty(double value)
@@ -530,7 +530,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>offset</code> property as a <code>number</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+        /// Writes a value for the <c>offset</c> property as a <c>number</c> value.  The <c>offset</c> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -543,7 +543,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>offset</code> property as a <code>number</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+        /// Writes a value for the <c>offset</c> property as a <c>number</c> value.  The <c>offset</c> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -558,7 +558,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+        /// Writes a value for the <c>offset</c> property as a <c>reference</c> value.  The <c>offset</c> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOffsetPropertyReference(Reference value)
@@ -570,7 +570,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+        /// Writes a value for the <c>offset</c> property as a <c>reference</c> value.  The <c>offset</c> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOffsetPropertyReference(string value)
@@ -582,7 +582,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+        /// Writes a value for the <c>offset</c> property as a <c>reference</c> value.  The <c>offset</c> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -595,7 +595,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>offset</code> property as a <code>reference</code> value.  The <code>offset</code> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+        /// Writes a value for the <c>offset</c> property as a <c>reference</c> value.  The <c>offset</c> property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -608,7 +608,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>repeat</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>repeat</code> property defines the number of times the stripes repeat.
+        /// Gets the writer for the <c>repeat</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>repeat</c> property defines the number of times the stripes repeat.
         /// </summary>
         public DoubleCesiumWriter RepeatWriter
         {
@@ -616,7 +616,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>repeat</code> property.  The <code>repeat</code> property defines the number of times the stripes repeat.
+        /// Opens and returns the writer for the <c>repeat</c> property.  The <c>repeat</c> property defines the number of times the stripes repeat.
         /// </summary>
         public DoubleCesiumWriter OpenRepeatProperty()
         {
@@ -625,7 +625,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>number</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
+        /// Writes a value for the <c>repeat</c> property as a <c>number</c> value.  The <c>repeat</c> property specifies the number of times the stripes repeat.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteRepeatProperty(double value)
@@ -637,7 +637,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>number</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
+        /// Writes a value for the <c>repeat</c> property as a <c>number</c> value.  The <c>repeat</c> property specifies the number of times the stripes repeat.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -650,7 +650,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>number</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
+        /// Writes a value for the <c>repeat</c> property as a <c>number</c> value.  The <c>repeat</c> property specifies the number of times the stripes repeat.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -665,7 +665,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
+        /// Writes a value for the <c>repeat</c> property as a <c>reference</c> value.  The <c>repeat</c> property specifies the number of times the stripes repeat.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteRepeatPropertyReference(Reference value)
@@ -677,7 +677,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
+        /// Writes a value for the <c>repeat</c> property as a <c>reference</c> value.  The <c>repeat</c> property specifies the number of times the stripes repeat.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteRepeatPropertyReference(string value)
@@ -689,7 +689,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
+        /// Writes a value for the <c>repeat</c> property as a <c>reference</c> value.  The <c>repeat</c> property specifies the number of times the stripes repeat.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -702,7 +702,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the stripes repeat.
+        /// Writes a value for the <c>repeat</c> property as a <c>reference</c> value.  The <c>repeat</c> property specifies the number of times the stripes repeat.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

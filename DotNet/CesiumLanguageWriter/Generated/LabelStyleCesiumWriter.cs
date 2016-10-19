@@ -7,17 +7,17 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>LabelStyle</code> to a <see cref="CesiumOutputStream" />.  A <code>LabelStyle</code> is the style of a label.
+    /// Writes a <c>LabelStyle</c> to a <see cref="CesiumOutputStream" />.  A <c>LabelStyle</c> is the style of a label.
     /// </summary>
     public class LabelStyleCesiumWriter : CesiumPropertyWriter<LabelStyleCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>labelStyle</code> property.
+        /// The name of the <c>labelStyle</c> property.
         /// </summary>
         public const string LabelStylePropertyName = "labelStyle";
 
         /// <summary>
-        /// The name of the <code>reference</code> property.
+        /// The name of the <c>reference</c> property.
         /// </summary>
         public const string ReferencePropertyName = "reference";
 
@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>labelStyle</code>, which is the label style.
+        /// Writes the value expressed as a <c>labelStyle</c>, which is the label style.
         /// </summary>
         /// <param name="value">The label style.</param>
         public void WriteLabelStyle(CesiumLabelStyle value)
@@ -70,7 +70,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the label style specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the label style specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -82,7 +82,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the label style specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the label style specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -94,7 +94,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the label style specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the label style specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -107,7 +107,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the label style specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the label style specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -120,7 +120,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>LabelStyle</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>LabelStyle</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumValuePropertyWriter<CesiumLabelStyle> AsLabelStyle()
@@ -134,7 +134,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Reference</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumValuePropertyWriter<Reference> AsReference()

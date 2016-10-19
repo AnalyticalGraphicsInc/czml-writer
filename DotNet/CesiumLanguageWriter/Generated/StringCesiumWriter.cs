@@ -7,17 +7,17 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>String</code> to a <see cref="CesiumOutputStream" />.  A <code>String</code> is a string value.  The string can optionally vary with time.
+    /// Writes a <c>String</c> to a <see cref="CesiumOutputStream" />.  A <c>String</c> is a string value.  The string can optionally vary with time.
     /// </summary>
     public class StringCesiumWriter : CesiumPropertyWriter<StringCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>string</code> property.
+        /// The name of the <c>string</c> property.
         /// </summary>
         public const string StringPropertyName = "string";
 
         /// <summary>
-        /// The name of the <code>reference</code> property.
+        /// The name of the <c>reference</c> property.
         /// </summary>
         public const string ReferencePropertyName = "reference";
 
@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>string</code>, which is the string value.
+        /// Writes the value expressed as a <c>string</c>, which is the string value.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteString(string value)
@@ -70,7 +70,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the string specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the string specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -82,7 +82,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the string specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the string specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -94,7 +94,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the string specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the string specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -107,7 +107,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the string specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the string specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -120,7 +120,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>String</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>String</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumValuePropertyWriter<string> AsString()
@@ -134,7 +134,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Reference</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumValuePropertyWriter<Reference> AsReference()

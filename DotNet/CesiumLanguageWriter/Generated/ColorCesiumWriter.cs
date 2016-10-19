@@ -9,22 +9,22 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Color</code> to a <see cref="CesiumOutputStream" />.  A <code>Color</code> is a color.  The color can optionally vary over time.
+    /// Writes a <c>Color</c> to a <see cref="CesiumOutputStream" />.  A <c>Color</c> is a color.  The color can optionally vary over time.
     /// </summary>
     public class ColorCesiumWriter : CesiumInterpolatablePropertyWriter<ColorCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>rgba</code> property.
+        /// The name of the <c>rgba</c> property.
         /// </summary>
         public const string RgbaPropertyName = "rgba";
 
         /// <summary>
-        /// The name of the <code>rgbaf</code> property.
+        /// The name of the <c>rgbaf</c> property.
         /// </summary>
         public const string RgbafPropertyName = "rgbaf";
 
         /// <summary>
-        /// The name of the <code>reference</code> property.
+        /// The name of the <c>reference</c> property.
         /// </summary>
         public const string ReferencePropertyName = "reference";
 
@@ -62,7 +62,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
+        /// Writes the value expressed as a <c>rgba</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteRgba(Color color)
@@ -74,7 +74,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
+        /// Writes the value expressed as a <c>rgba</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -89,7 +89,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
+        /// Writes the value expressed as a <c>rgba</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -99,7 +99,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>rgba</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
+        /// Writes the value expressed as a <c>rgba</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -113,7 +113,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>rgbaf</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
+        /// Writes the value expressed as a <c>rgbaf</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteRgbaf(Color color)
@@ -125,7 +125,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>rgbaf</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
+        /// Writes the value expressed as a <c>rgbaf</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -140,7 +140,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>rgbaf</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
+        /// Writes the value expressed as a <c>rgbaf</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -150,7 +150,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>rgbaf</code>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
+        /// Writes the value expressed as a <c>rgbaf</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -164,7 +164,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the color specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the color specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -176,7 +176,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the color specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the color specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -188,7 +188,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the color specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the color specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -201,7 +201,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>reference</code>, which is the color specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the color specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -214,7 +214,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>Rgba</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Rgba</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumInterpolatableValuePropertyWriter<Color> AsRgba()
@@ -228,7 +228,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <code>Rgbaf</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Rgbaf</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumInterpolatableValuePropertyWriter<Color> AsRgbaf()
@@ -242,7 +242,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Reference</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumValuePropertyWriter<Reference> AsReference()

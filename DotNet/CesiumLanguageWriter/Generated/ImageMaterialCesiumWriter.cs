@@ -9,27 +9,27 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>ImageMaterial</code> to a <see cref="CesiumOutputStream" />.  A <code>ImageMaterial</code> is a material that fills the surface with an image.
+    /// Writes a <c>ImageMaterial</c> to a <see cref="CesiumOutputStream" />.  A <c>ImageMaterial</c> is a material that fills the surface with an image.
     /// </summary>
     public class ImageMaterialCesiumWriter : CesiumPropertyWriter<ImageMaterialCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>image</code> property.
+        /// The name of the <c>image</c> property.
         /// </summary>
         public const string ImagePropertyName = "image";
 
         /// <summary>
-        /// The name of the <code>repeat</code> property.
+        /// The name of the <c>repeat</c> property.
         /// </summary>
         public const string RepeatPropertyName = "repeat";
 
         /// <summary>
-        /// The name of the <code>color</code> property.
+        /// The name of the <c>color</c> property.
         /// </summary>
         public const string ColorPropertyName = "color";
 
         /// <summary>
-        /// The name of the <code>transparent</code> property.
+        /// The name of the <c>transparent</c> property.
         /// </summary>
         public const string TransparentPropertyName = "transparent";
 
@@ -62,7 +62,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>image</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>image</code> property defines the image to display on the surface.
+        /// Gets the writer for the <c>image</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>image</c> property defines the image to display on the surface.
         /// </summary>
         public UriCesiumWriter ImageWriter
         {
@@ -70,7 +70,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>image</code> property.  The <code>image</code> property defines the image to display on the surface.
+        /// Opens and returns the writer for the <c>image</c> property.  The <c>image</c> property defines the image to display on the surface.
         /// </summary>
         public UriCesiumWriter OpenImageProperty()
         {
@@ -79,7 +79,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// Writes a value for the <c>image</c> property as a <c>uri</c> value.  The <c>image</c> property specifies the image to display on the surface.
         /// </summary>
         /// <param name="resource">A resource object describing external data.</param>
         public void WriteImageProperty(CesiumResource resource)
@@ -91,7 +91,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// Writes a value for the <c>image</c> property as a <c>uri</c> value.  The <c>image</c> property specifies the image to display on the surface.
         /// </summary>
         /// <param name="uri">The URI of the data.</param>
         /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
@@ -104,7 +104,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// Writes a value for the <c>image</c> property as a <c>uri</c> value.  The <c>image</c> property specifies the image to display on the surface.
         /// </summary>
         /// <param name="uri">The URI of the data.</param>
         /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
@@ -117,7 +117,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// Writes a value for the <c>image</c> property as a <c>uri</c> value.  The <c>image</c> property specifies the image to display on the surface.
         /// </summary>
         /// <param name="uri">The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
         /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
@@ -130,7 +130,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// Writes a value for the <c>image</c> property as a <c>uri</c> value.  The <c>image</c> property specifies the image to display on the surface.
         /// </summary>
         /// <param name="uri">The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
         /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
@@ -143,7 +143,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// Writes a value for the <c>image</c> property as a <c>uri</c> value.  The <c>image</c> property specifies the image to display on the surface.
         /// </summary>
         /// <param name="image">The image.  A data URI will be created for this image, using PNG encoding.</param>
         public void WriteImageProperty(Image image)
@@ -155,7 +155,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>uri</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// Writes a value for the <c>image</c> property as a <c>uri</c> value.  The <c>image</c> property specifies the image to display on the surface.
         /// </summary>
         /// <param name="image">The image.  A data URI will be created for this image.</param>
         /// <param name="imageFormat">The image format to use to encode the image in the data URI.</param>
@@ -168,7 +168,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// Writes a value for the <c>image</c> property as a <c>reference</c> value.  The <c>image</c> property specifies the image to display on the surface.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteImagePropertyReference(Reference value)
@@ -180,7 +180,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// Writes a value for the <c>image</c> property as a <c>reference</c> value.  The <c>image</c> property specifies the image to display on the surface.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteImagePropertyReference(string value)
@@ -192,7 +192,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// Writes a value for the <c>image</c> property as a <c>reference</c> value.  The <c>image</c> property specifies the image to display on the surface.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -205,7 +205,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>image</code> property as a <code>reference</code> value.  The <code>image</code> property specifies the image to display on the surface.
+        /// Writes a value for the <c>image</c> property as a <c>reference</c> value.  The <c>image</c> property specifies the image to display on the surface.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -218,7 +218,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>repeat</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>repeat</code> property defines the number of times the image repeats along each axis.
+        /// Gets the writer for the <c>repeat</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>repeat</c> property defines the number of times the image repeats along each axis.
         /// </summary>
         public RepeatCesiumWriter RepeatWriter
         {
@@ -226,7 +226,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>repeat</code> property.  The <code>repeat</code> property defines the number of times the image repeats along each axis.
+        /// Opens and returns the writer for the <c>repeat</c> property.  The <c>repeat</c> property defines the number of times the image repeats along each axis.
         /// </summary>
         public RepeatCesiumWriter OpenRepeatProperty()
         {
@@ -235,7 +235,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
+        /// Writes a value for the <c>repeat</c> property as a <c>cartesian2</c> value.  The <c>repeat</c> property specifies the number of times the image repeats along each axis.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteRepeatProperty(Rectangular value)
@@ -247,7 +247,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
+        /// Writes a value for the <c>repeat</c> property as a <c>cartesian2</c> value.  The <c>repeat</c> property specifies the number of times the image repeats along each axis.
         /// </summary>
         /// <param name="x">The X component.</param>
         /// <param name="y">The Y component.</param>
@@ -260,7 +260,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
+        /// Writes a value for the <c>repeat</c> property as a <c>cartesian2</c> value.  The <c>repeat</c> property specifies the number of times the image repeats along each axis.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -273,7 +273,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>cartesian2</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
+        /// Writes a value for the <c>repeat</c> property as a <c>cartesian2</c> value.  The <c>repeat</c> property specifies the number of times the image repeats along each axis.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -288,7 +288,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
+        /// Writes a value for the <c>repeat</c> property as a <c>reference</c> value.  The <c>repeat</c> property specifies the number of times the image repeats along each axis.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteRepeatPropertyReference(Reference value)
@@ -300,7 +300,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
+        /// Writes a value for the <c>repeat</c> property as a <c>reference</c> value.  The <c>repeat</c> property specifies the number of times the image repeats along each axis.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteRepeatPropertyReference(string value)
@@ -312,7 +312,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
+        /// Writes a value for the <c>repeat</c> property as a <c>reference</c> value.  The <c>repeat</c> property specifies the number of times the image repeats along each axis.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -325,7 +325,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>repeat</code> property as a <code>reference</code> value.  The <code>repeat</code> property specifies the number of times the image repeats along each axis.
+        /// Writes a value for the <c>repeat</c> property as a <c>reference</c> value.  The <c>repeat</c> property specifies the number of times the image repeats along each axis.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -338,7 +338,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>color</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>color</code> property defines the color of the image. This color value is multiplied with the image to produce the final color.
+        /// Gets the writer for the <c>color</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>color</c> property defines the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         public ColorCesiumWriter ColorWriter
         {
@@ -346,7 +346,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>color</code> property.  The <code>color</code> property defines the color of the image. This color value is multiplied with the image to produce the final color.
+        /// Opens and returns the writer for the <c>color</c> property.  The <c>color</c> property defines the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         public ColorCesiumWriter OpenColorProperty()
         {
@@ -355,7 +355,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteColorProperty(Color color)
@@ -367,7 +367,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -382,7 +382,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -395,7 +395,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgba</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -410,7 +410,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteColorPropertyRgbaf(Color color)
@@ -422,7 +422,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -437,7 +437,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -450,7 +450,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>rgbaf</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -465,7 +465,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(Reference value)
@@ -477,7 +477,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteColorPropertyReference(string value)
@@ -489,7 +489,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -502,7 +502,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>color</code> property as a <code>reference</code> value.  The <code>color</code> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -515,7 +515,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>transparent</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>transparent</code> property defines whether or not the image has transparency.
+        /// Gets the writer for the <c>transparent</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>transparent</c> property defines whether or not the image has transparency.
         /// </summary>
         public BooleanCesiumWriter TransparentWriter
         {
@@ -523,7 +523,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>transparent</code> property.  The <code>transparent</code> property defines whether or not the image has transparency.
+        /// Opens and returns the writer for the <c>transparent</c> property.  The <c>transparent</c> property defines whether or not the image has transparency.
         /// </summary>
         public BooleanCesiumWriter OpenTransparentProperty()
         {
@@ -532,7 +532,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>transparent</code> property as a <code>boolean</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+        /// Writes a value for the <c>transparent</c> property as a <c>boolean</c> value.  The <c>transparent</c> property specifies whether or not the image has transparency.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteTransparentProperty(bool value)
@@ -544,7 +544,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>transparent</code> property as a <code>reference</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+        /// Writes a value for the <c>transparent</c> property as a <c>reference</c> value.  The <c>transparent</c> property specifies whether or not the image has transparency.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteTransparentPropertyReference(Reference value)
@@ -556,7 +556,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>transparent</code> property as a <code>reference</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+        /// Writes a value for the <c>transparent</c> property as a <c>reference</c> value.  The <c>transparent</c> property specifies whether or not the image has transparency.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteTransparentPropertyReference(string value)
@@ -568,7 +568,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>transparent</code> property as a <code>reference</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+        /// Writes a value for the <c>transparent</c> property as a <c>reference</c> value.  The <c>transparent</c> property specifies whether or not the image has transparency.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -581,7 +581,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>transparent</code> property as a <code>reference</code> value.  The <code>transparent</code> property specifies whether or not the image has transparency.
+        /// Writes a value for the <c>transparent</c> property as a <c>reference</c> value.  The <c>transparent</c> property specifies whether or not the image has transparency.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

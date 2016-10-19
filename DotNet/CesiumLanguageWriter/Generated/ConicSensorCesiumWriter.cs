@@ -9,127 +9,127 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>ConicSensor</code> to a <see cref="CesiumOutputStream" />.  A <code>ConicSensor</code> is a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
+    /// Writes a <c>ConicSensor</c> to a <see cref="CesiumOutputStream" />.  A <c>ConicSensor</c> is a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
     /// </summary>
     public class ConicSensorCesiumWriter : CesiumPropertyWriter<ConicSensorCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>show</code> property.
+        /// The name of the <c>show</c> property.
         /// </summary>
         public const string ShowPropertyName = "show";
 
         /// <summary>
-        /// The name of the <code>innerHalfAngle</code> property.
+        /// The name of the <c>innerHalfAngle</c> property.
         /// </summary>
         public const string InnerHalfAnglePropertyName = "innerHalfAngle";
 
         /// <summary>
-        /// The name of the <code>outerHalfAngle</code> property.
+        /// The name of the <c>outerHalfAngle</c> property.
         /// </summary>
         public const string OuterHalfAnglePropertyName = "outerHalfAngle";
 
         /// <summary>
-        /// The name of the <code>minimumClockAngle</code> property.
+        /// The name of the <c>minimumClockAngle</c> property.
         /// </summary>
         public const string MinimumClockAnglePropertyName = "minimumClockAngle";
 
         /// <summary>
-        /// The name of the <code>maximumClockAngle</code> property.
+        /// The name of the <c>maximumClockAngle</c> property.
         /// </summary>
         public const string MaximumClockAnglePropertyName = "maximumClockAngle";
 
         /// <summary>
-        /// The name of the <code>radius</code> property.
+        /// The name of the <c>radius</c> property.
         /// </summary>
         public const string RadiusPropertyName = "radius";
 
         /// <summary>
-        /// The name of the <code>showIntersection</code> property.
+        /// The name of the <c>showIntersection</c> property.
         /// </summary>
         public const string ShowIntersectionPropertyName = "showIntersection";
 
         /// <summary>
-        /// The name of the <code>intersectionColor</code> property.
+        /// The name of the <c>intersectionColor</c> property.
         /// </summary>
         public const string IntersectionColorPropertyName = "intersectionColor";
 
         /// <summary>
-        /// The name of the <code>intersectionWidth</code> property.
+        /// The name of the <c>intersectionWidth</c> property.
         /// </summary>
         public const string IntersectionWidthPropertyName = "intersectionWidth";
 
         /// <summary>
-        /// The name of the <code>showLateralSurfaces</code> property.
+        /// The name of the <c>showLateralSurfaces</c> property.
         /// </summary>
         public const string ShowLateralSurfacesPropertyName = "showLateralSurfaces";
 
         /// <summary>
-        /// The name of the <code>lateralSurfaceMaterial</code> property.
+        /// The name of the <c>lateralSurfaceMaterial</c> property.
         /// </summary>
         public const string LateralSurfaceMaterialPropertyName = "lateralSurfaceMaterial";
 
         /// <summary>
-        /// The name of the <code>showEllipsoidSurfaces</code> property.
+        /// The name of the <c>showEllipsoidSurfaces</c> property.
         /// </summary>
         public const string ShowEllipsoidSurfacesPropertyName = "showEllipsoidSurfaces";
 
         /// <summary>
-        /// The name of the <code>ellipsoidSurfaceMaterial</code> property.
+        /// The name of the <c>ellipsoidSurfaceMaterial</c> property.
         /// </summary>
         public const string EllipsoidSurfaceMaterialPropertyName = "ellipsoidSurfaceMaterial";
 
         /// <summary>
-        /// The name of the <code>showEllipsoidHorizonSurfaces</code> property.
+        /// The name of the <c>showEllipsoidHorizonSurfaces</c> property.
         /// </summary>
         public const string ShowEllipsoidHorizonSurfacesPropertyName = "showEllipsoidHorizonSurfaces";
 
         /// <summary>
-        /// The name of the <code>ellipsoidHorizonSurfaceMaterial</code> property.
+        /// The name of the <c>ellipsoidHorizonSurfaceMaterial</c> property.
         /// </summary>
         public const string EllipsoidHorizonSurfaceMaterialPropertyName = "ellipsoidHorizonSurfaceMaterial";
 
         /// <summary>
-        /// The name of the <code>showDomeSurfaces</code> property.
+        /// The name of the <c>showDomeSurfaces</c> property.
         /// </summary>
         public const string ShowDomeSurfacesPropertyName = "showDomeSurfaces";
 
         /// <summary>
-        /// The name of the <code>domeSurfaceMaterial</code> property.
+        /// The name of the <c>domeSurfaceMaterial</c> property.
         /// </summary>
         public const string DomeSurfaceMaterialPropertyName = "domeSurfaceMaterial";
 
         /// <summary>
-        /// The name of the <code>portionToDisplay</code> property.
+        /// The name of the <c>portionToDisplay</c> property.
         /// </summary>
         public const string PortionToDisplayPropertyName = "portionToDisplay";
 
         /// <summary>
-        /// The name of the <code>environmentConstraint</code> property.
+        /// The name of the <c>environmentConstraint</c> property.
         /// </summary>
         public const string EnvironmentConstraintPropertyName = "environmentConstraint";
 
         /// <summary>
-        /// The name of the <code>showEnvironmentOcclusion</code> property.
+        /// The name of the <c>showEnvironmentOcclusion</c> property.
         /// </summary>
         public const string ShowEnvironmentOcclusionPropertyName = "showEnvironmentOcclusion";
 
         /// <summary>
-        /// The name of the <code>environmentOcclusionMaterial</code> property.
+        /// The name of the <c>environmentOcclusionMaterial</c> property.
         /// </summary>
         public const string EnvironmentOcclusionMaterialPropertyName = "environmentOcclusionMaterial";
 
         /// <summary>
-        /// The name of the <code>showEnvironmentIntersection</code> property.
+        /// The name of the <c>showEnvironmentIntersection</c> property.
         /// </summary>
         public const string ShowEnvironmentIntersectionPropertyName = "showEnvironmentIntersection";
 
         /// <summary>
-        /// The name of the <code>environmentIntersectionColor</code> property.
+        /// The name of the <c>environmentIntersectionColor</c> property.
         /// </summary>
         public const string EnvironmentIntersectionColorPropertyName = "environmentIntersectionColor";
 
         /// <summary>
-        /// The name of the <code>environmentIntersectionWidth</code> property.
+        /// The name of the <c>environmentIntersectionWidth</c> property.
         /// </summary>
         public const string EnvironmentIntersectionWidthPropertyName = "environmentIntersectionWidth";
 
@@ -182,7 +182,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the entire conical sensor is shown.
+        /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the entire conical sensor is shown.
         /// </summary>
         public BooleanCesiumWriter ShowWriter
         {
@@ -190,7 +190,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the entire conical sensor is shown.
+        /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the entire conical sensor is shown.
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
@@ -199,7 +199,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the entire conical sensor is shown.
+        /// Writes a value for the <c>show</c> property as a <c>boolean</c> value.  The <c>show</c> property specifies whether or not the entire conical sensor is shown.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -211,7 +211,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the entire conical sensor is shown.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the entire conical sensor is shown.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(Reference value)
@@ -223,7 +223,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the entire conical sensor is shown.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the entire conical sensor is shown.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowPropertyReference(string value)
@@ -235,7 +235,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the entire conical sensor is shown.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the entire conical sensor is shown.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -248,7 +248,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the entire conical sensor is shown.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the entire conical sensor is shown.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -261,7 +261,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>innerHalfAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>innerHalfAngle</code> property defines the inner half angle of the cone.
+        /// Gets the writer for the <c>innerHalfAngle</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>innerHalfAngle</c> property defines the inner half angle of the cone.
         /// </summary>
         public DoubleCesiumWriter InnerHalfAngleWriter
         {
@@ -269,7 +269,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>innerHalfAngle</code> property.  The <code>innerHalfAngle</code> property defines the inner half angle of the cone.
+        /// Opens and returns the writer for the <c>innerHalfAngle</c> property.  The <c>innerHalfAngle</c> property defines the inner half angle of the cone.
         /// </summary>
         public DoubleCesiumWriter OpenInnerHalfAngleProperty()
         {
@@ -278,7 +278,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>number</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+        /// Writes a value for the <c>innerHalfAngle</c> property as a <c>number</c> value.  The <c>innerHalfAngle</c> property specifies the inner half angle of the cone.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteInnerHalfAngleProperty(double value)
@@ -290,7 +290,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>number</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+        /// Writes a value for the <c>innerHalfAngle</c> property as a <c>number</c> value.  The <c>innerHalfAngle</c> property specifies the inner half angle of the cone.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -303,7 +303,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>number</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+        /// Writes a value for the <c>innerHalfAngle</c> property as a <c>number</c> value.  The <c>innerHalfAngle</c> property specifies the inner half angle of the cone.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -318,7 +318,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+        /// Writes a value for the <c>innerHalfAngle</c> property as a <c>reference</c> value.  The <c>innerHalfAngle</c> property specifies the inner half angle of the cone.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteInnerHalfAnglePropertyReference(Reference value)
@@ -330,7 +330,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+        /// Writes a value for the <c>innerHalfAngle</c> property as a <c>reference</c> value.  The <c>innerHalfAngle</c> property specifies the inner half angle of the cone.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteInnerHalfAnglePropertyReference(string value)
@@ -342,7 +342,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+        /// Writes a value for the <c>innerHalfAngle</c> property as a <c>reference</c> value.  The <c>innerHalfAngle</c> property specifies the inner half angle of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -355,7 +355,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>innerHalfAngle</code> property as a <code>reference</code> value.  The <code>innerHalfAngle</code> property specifies the inner half angle of the cone.
+        /// Writes a value for the <c>innerHalfAngle</c> property as a <c>reference</c> value.  The <c>innerHalfAngle</c> property specifies the inner half angle of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -368,7 +368,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>outerHalfAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>outerHalfAngle</code> property defines the outer half angle of the cone.
+        /// Gets the writer for the <c>outerHalfAngle</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outerHalfAngle</c> property defines the outer half angle of the cone.
         /// </summary>
         public DoubleCesiumWriter OuterHalfAngleWriter
         {
@@ -376,7 +376,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>outerHalfAngle</code> property.  The <code>outerHalfAngle</code> property defines the outer half angle of the cone.
+        /// Opens and returns the writer for the <c>outerHalfAngle</c> property.  The <c>outerHalfAngle</c> property defines the outer half angle of the cone.
         /// </summary>
         public DoubleCesiumWriter OpenOuterHalfAngleProperty()
         {
@@ -385,7 +385,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>number</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// Writes a value for the <c>outerHalfAngle</c> property as a <c>number</c> value.  The <c>outerHalfAngle</c> property specifies the outer half angle of the cone.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOuterHalfAngleProperty(double value)
@@ -397,7 +397,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>number</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// Writes a value for the <c>outerHalfAngle</c> property as a <c>number</c> value.  The <c>outerHalfAngle</c> property specifies the outer half angle of the cone.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -410,7 +410,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>number</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// Writes a value for the <c>outerHalfAngle</c> property as a <c>number</c> value.  The <c>outerHalfAngle</c> property specifies the outer half angle of the cone.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -425,7 +425,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// Writes a value for the <c>outerHalfAngle</c> property as a <c>reference</c> value.  The <c>outerHalfAngle</c> property specifies the outer half angle of the cone.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOuterHalfAnglePropertyReference(Reference value)
@@ -437,7 +437,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// Writes a value for the <c>outerHalfAngle</c> property as a <c>reference</c> value.  The <c>outerHalfAngle</c> property specifies the outer half angle of the cone.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOuterHalfAnglePropertyReference(string value)
@@ -449,7 +449,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// Writes a value for the <c>outerHalfAngle</c> property as a <c>reference</c> value.  The <c>outerHalfAngle</c> property specifies the outer half angle of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -462,7 +462,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>outerHalfAngle</code> property as a <code>reference</code> value.  The <code>outerHalfAngle</code> property specifies the outer half angle of the cone.
+        /// Writes a value for the <c>outerHalfAngle</c> property as a <c>reference</c> value.  The <c>outerHalfAngle</c> property specifies the outer half angle of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -475,7 +475,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>minimumClockAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>minimumClockAngle</code> property defines the minimum clock angle limit of the cone.
+        /// Gets the writer for the <c>minimumClockAngle</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>minimumClockAngle</c> property defines the minimum clock angle limit of the cone.
         /// </summary>
         public DoubleCesiumWriter MinimumClockAngleWriter
         {
@@ -483,7 +483,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>minimumClockAngle</code> property.  The <code>minimumClockAngle</code> property defines the minimum clock angle limit of the cone.
+        /// Opens and returns the writer for the <c>minimumClockAngle</c> property.  The <c>minimumClockAngle</c> property defines the minimum clock angle limit of the cone.
         /// </summary>
         public DoubleCesiumWriter OpenMinimumClockAngleProperty()
         {
@@ -492,7 +492,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>number</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+        /// Writes a value for the <c>minimumClockAngle</c> property as a <c>number</c> value.  The <c>minimumClockAngle</c> property specifies the minimum clock angle limit of the cone.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteMinimumClockAngleProperty(double value)
@@ -504,7 +504,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>number</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+        /// Writes a value for the <c>minimumClockAngle</c> property as a <c>number</c> value.  The <c>minimumClockAngle</c> property specifies the minimum clock angle limit of the cone.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -517,7 +517,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>number</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+        /// Writes a value for the <c>minimumClockAngle</c> property as a <c>number</c> value.  The <c>minimumClockAngle</c> property specifies the minimum clock angle limit of the cone.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -532,7 +532,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+        /// Writes a value for the <c>minimumClockAngle</c> property as a <c>reference</c> value.  The <c>minimumClockAngle</c> property specifies the minimum clock angle limit of the cone.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteMinimumClockAnglePropertyReference(Reference value)
@@ -544,7 +544,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+        /// Writes a value for the <c>minimumClockAngle</c> property as a <c>reference</c> value.  The <c>minimumClockAngle</c> property specifies the minimum clock angle limit of the cone.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteMinimumClockAnglePropertyReference(string value)
@@ -556,7 +556,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+        /// Writes a value for the <c>minimumClockAngle</c> property as a <c>reference</c> value.  The <c>minimumClockAngle</c> property specifies the minimum clock angle limit of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -569,7 +569,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumClockAngle</code> property as a <code>reference</code> value.  The <code>minimumClockAngle</code> property specifies the minimum clock angle limit of the cone.
+        /// Writes a value for the <c>minimumClockAngle</c> property as a <c>reference</c> value.  The <c>minimumClockAngle</c> property specifies the minimum clock angle limit of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -582,7 +582,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>maximumClockAngle</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>maximumClockAngle</code> property defines the maximum clock angle limit of the cone.
+        /// Gets the writer for the <c>maximumClockAngle</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>maximumClockAngle</c> property defines the maximum clock angle limit of the cone.
         /// </summary>
         public DoubleCesiumWriter MaximumClockAngleWriter
         {
@@ -590,7 +590,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>maximumClockAngle</code> property.  The <code>maximumClockAngle</code> property defines the maximum clock angle limit of the cone.
+        /// Opens and returns the writer for the <c>maximumClockAngle</c> property.  The <c>maximumClockAngle</c> property defines the maximum clock angle limit of the cone.
         /// </summary>
         public DoubleCesiumWriter OpenMaximumClockAngleProperty()
         {
@@ -599,7 +599,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>number</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// Writes a value for the <c>maximumClockAngle</c> property as a <c>number</c> value.  The <c>maximumClockAngle</c> property specifies the maximum clock angle limit of the cone.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteMaximumClockAngleProperty(double value)
@@ -611,7 +611,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>number</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// Writes a value for the <c>maximumClockAngle</c> property as a <c>number</c> value.  The <c>maximumClockAngle</c> property specifies the maximum clock angle limit of the cone.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -624,7 +624,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>number</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// Writes a value for the <c>maximumClockAngle</c> property as a <c>number</c> value.  The <c>maximumClockAngle</c> property specifies the maximum clock angle limit of the cone.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -639,7 +639,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// Writes a value for the <c>maximumClockAngle</c> property as a <c>reference</c> value.  The <c>maximumClockAngle</c> property specifies the maximum clock angle limit of the cone.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteMaximumClockAnglePropertyReference(Reference value)
@@ -651,7 +651,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// Writes a value for the <c>maximumClockAngle</c> property as a <c>reference</c> value.  The <c>maximumClockAngle</c> property specifies the maximum clock angle limit of the cone.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteMaximumClockAnglePropertyReference(string value)
@@ -663,7 +663,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// Writes a value for the <c>maximumClockAngle</c> property as a <c>reference</c> value.  The <c>maximumClockAngle</c> property specifies the maximum clock angle limit of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -676,7 +676,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>maximumClockAngle</code> property as a <code>reference</code> value.  The <code>maximumClockAngle</code> property specifies the maximum clock angle limit of the cone.
+        /// Writes a value for the <c>maximumClockAngle</c> property as a <c>reference</c> value.  The <c>maximumClockAngle</c> property specifies the maximum clock angle limit of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -689,7 +689,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>radius</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>radius</code> property defines the radial limit of the cone.
+        /// Gets the writer for the <c>radius</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>radius</c> property defines the radial limit of the cone.
         /// </summary>
         public DoubleCesiumWriter RadiusWriter
         {
@@ -697,7 +697,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>radius</code> property.  The <code>radius</code> property defines the radial limit of the cone.
+        /// Opens and returns the writer for the <c>radius</c> property.  The <c>radius</c> property defines the radial limit of the cone.
         /// </summary>
         public DoubleCesiumWriter OpenRadiusProperty()
         {
@@ -706,7 +706,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// Writes a value for the <c>radius</c> property as a <c>number</c> value.  The <c>radius</c> property specifies the radial limit of the cone.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteRadiusProperty(double value)
@@ -718,7 +718,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// Writes a value for the <c>radius</c> property as a <c>number</c> value.  The <c>radius</c> property specifies the radial limit of the cone.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -731,7 +731,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>number</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// Writes a value for the <c>radius</c> property as a <c>number</c> value.  The <c>radius</c> property specifies the radial limit of the cone.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -746,7 +746,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value.  The <c>radius</c> property specifies the radial limit of the cone.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteRadiusPropertyReference(Reference value)
@@ -758,7 +758,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value.  The <c>radius</c> property specifies the radial limit of the cone.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteRadiusPropertyReference(string value)
@@ -770,7 +770,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value.  The <c>radius</c> property specifies the radial limit of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -783,7 +783,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>radius</code> property as a <code>reference</code> value.  The <code>radius</code> property specifies the radial limit of the cone.
+        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value.  The <c>radius</c> property specifies the radial limit of the cone.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -796,7 +796,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>showIntersection</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showIntersection</code> property defines whether or not the intersection of the cone with the Earth is shown.
+        /// Gets the writer for the <c>showIntersection</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showIntersection</c> property defines whether or not the intersection of the cone with the Earth is shown.
         /// </summary>
         public BooleanCesiumWriter ShowIntersectionWriter
         {
@@ -804,7 +804,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>showIntersection</code> property.  The <code>showIntersection</code> property defines whether or not the intersection of the cone with the Earth is shown.
+        /// Opens and returns the writer for the <c>showIntersection</c> property.  The <c>showIntersection</c> property defines whether or not the intersection of the cone with the Earth is shown.
         /// </summary>
         public BooleanCesiumWriter OpenShowIntersectionProperty()
         {
@@ -813,7 +813,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showIntersection</code> property as a <code>boolean</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the cone with the Earth is shown.
+        /// Writes a value for the <c>showIntersection</c> property as a <c>boolean</c> value.  The <c>showIntersection</c> property specifies whether or not the intersection of the cone with the Earth is shown.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowIntersectionProperty(bool value)
@@ -825,7 +825,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the cone with the Earth is shown.
+        /// Writes a value for the <c>showIntersection</c> property as a <c>reference</c> value.  The <c>showIntersection</c> property specifies whether or not the intersection of the cone with the Earth is shown.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowIntersectionPropertyReference(Reference value)
@@ -837,7 +837,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the cone with the Earth is shown.
+        /// Writes a value for the <c>showIntersection</c> property as a <c>reference</c> value.  The <c>showIntersection</c> property specifies whether or not the intersection of the cone with the Earth is shown.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowIntersectionPropertyReference(string value)
@@ -849,7 +849,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the cone with the Earth is shown.
+        /// Writes a value for the <c>showIntersection</c> property as a <c>reference</c> value.  The <c>showIntersection</c> property specifies whether or not the intersection of the cone with the Earth is shown.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -862,7 +862,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showIntersection</code> property as a <code>reference</code> value.  The <code>showIntersection</code> property specifies whether or not the intersection of the cone with the Earth is shown.
+        /// Writes a value for the <c>showIntersection</c> property as a <c>reference</c> value.  The <c>showIntersection</c> property specifies whether or not the intersection of the cone with the Earth is shown.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -875,7 +875,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>intersectionColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>intersectionColor</code> property defines the color of the intersection of the cone with the Earth.
+        /// Gets the writer for the <c>intersectionColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>intersectionColor</c> property defines the color of the intersection of the cone with the Earth.
         /// </summary>
         public ColorCesiumWriter IntersectionColorWriter
         {
@@ -883,7 +883,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>intersectionColor</code> property.  The <code>intersectionColor</code> property defines the color of the intersection of the cone with the Earth.
+        /// Opens and returns the writer for the <c>intersectionColor</c> property.  The <c>intersectionColor</c> property defines the color of the intersection of the cone with the Earth.
         /// </summary>
         public ColorCesiumWriter OpenIntersectionColorProperty()
         {
@@ -892,7 +892,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <c>intersectionColor</c> property as a <c>rgba</c> value.  The <c>intersectionColor</c> property specifies the color of the intersection of the cone with the Earth.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteIntersectionColorProperty(Color color)
@@ -904,7 +904,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <c>intersectionColor</c> property as a <c>rgba</c> value.  The <c>intersectionColor</c> property specifies the color of the intersection of the cone with the Earth.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -919,7 +919,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <c>intersectionColor</c> property as a <c>rgba</c> value.  The <c>intersectionColor</c> property specifies the color of the intersection of the cone with the Earth.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -932,7 +932,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgba</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <c>intersectionColor</c> property as a <c>rgba</c> value.  The <c>intersectionColor</c> property specifies the color of the intersection of the cone with the Earth.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -947,7 +947,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgbaf</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <c>intersectionColor</c> property as a <c>rgbaf</c> value.  The <c>intersectionColor</c> property specifies the color of the intersection of the cone with the Earth.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteIntersectionColorPropertyRgbaf(Color color)
@@ -959,7 +959,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgbaf</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <c>intersectionColor</c> property as a <c>rgbaf</c> value.  The <c>intersectionColor</c> property specifies the color of the intersection of the cone with the Earth.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -974,7 +974,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgbaf</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <c>intersectionColor</c> property as a <c>rgbaf</c> value.  The <c>intersectionColor</c> property specifies the color of the intersection of the cone with the Earth.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -987,7 +987,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>rgbaf</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <c>intersectionColor</c> property as a <c>rgbaf</c> value.  The <c>intersectionColor</c> property specifies the color of the intersection of the cone with the Earth.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -1002,7 +1002,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <c>intersectionColor</c> property as a <c>reference</c> value.  The <c>intersectionColor</c> property specifies the color of the intersection of the cone with the Earth.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteIntersectionColorPropertyReference(Reference value)
@@ -1014,7 +1014,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <c>intersectionColor</c> property as a <c>reference</c> value.  The <c>intersectionColor</c> property specifies the color of the intersection of the cone with the Earth.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteIntersectionColorPropertyReference(string value)
@@ -1026,7 +1026,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <c>intersectionColor</c> property as a <c>reference</c> value.  The <c>intersectionColor</c> property specifies the color of the intersection of the cone with the Earth.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1039,7 +1039,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionColor</code> property as a <code>reference</code> value.  The <code>intersectionColor</code> property specifies the color of the intersection of the cone with the Earth.
+        /// Writes a value for the <c>intersectionColor</c> property as a <c>reference</c> value.  The <c>intersectionColor</c> property specifies the color of the intersection of the cone with the Earth.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1052,7 +1052,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>intersectionWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>intersectionWidth</code> property defines the width of the intersection in pixels.
+        /// Gets the writer for the <c>intersectionWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>intersectionWidth</c> property defines the width of the intersection in pixels.
         /// </summary>
         public DoubleCesiumWriter IntersectionWidthWriter
         {
@@ -1060,7 +1060,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>intersectionWidth</code> property.  The <code>intersectionWidth</code> property defines the width of the intersection in pixels.
+        /// Opens and returns the writer for the <c>intersectionWidth</c> property.  The <c>intersectionWidth</c> property defines the width of the intersection in pixels.
         /// </summary>
         public DoubleCesiumWriter OpenIntersectionWidthProperty()
         {
@@ -1069,7 +1069,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionWidth</code> property as a <code>number</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// Writes a value for the <c>intersectionWidth</c> property as a <c>number</c> value.  The <c>intersectionWidth</c> property specifies the width of the intersection in pixels.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteIntersectionWidthProperty(double value)
@@ -1081,7 +1081,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionWidth</code> property as a <code>number</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// Writes a value for the <c>intersectionWidth</c> property as a <c>number</c> value.  The <c>intersectionWidth</c> property specifies the width of the intersection in pixels.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1094,7 +1094,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionWidth</code> property as a <code>number</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// Writes a value for the <c>intersectionWidth</c> property as a <c>number</c> value.  The <c>intersectionWidth</c> property specifies the width of the intersection in pixels.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -1109,7 +1109,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// Writes a value for the <c>intersectionWidth</c> property as a <c>reference</c> value.  The <c>intersectionWidth</c> property specifies the width of the intersection in pixels.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteIntersectionWidthPropertyReference(Reference value)
@@ -1121,7 +1121,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// Writes a value for the <c>intersectionWidth</c> property as a <c>reference</c> value.  The <c>intersectionWidth</c> property specifies the width of the intersection in pixels.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteIntersectionWidthPropertyReference(string value)
@@ -1133,7 +1133,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// Writes a value for the <c>intersectionWidth</c> property as a <c>reference</c> value.  The <c>intersectionWidth</c> property specifies the width of the intersection in pixels.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1146,7 +1146,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>intersectionWidth</code> property as a <code>reference</code> value.  The <code>intersectionWidth</code> property specifies the width of the intersection in pixels.
+        /// Writes a value for the <c>intersectionWidth</c> property as a <c>reference</c> value.  The <c>intersectionWidth</c> property specifies the width of the intersection in pixels.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1159,7 +1159,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>showLateralSurfaces</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showLateralSurfaces</code> property defines whether or not the lateral surfaces of the cone are shown.
+        /// Gets the writer for the <c>showLateralSurfaces</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showLateralSurfaces</c> property defines whether or not the lateral surfaces of the cone are shown.
         /// </summary>
         public BooleanCesiumWriter ShowLateralSurfacesWriter
         {
@@ -1167,7 +1167,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>showLateralSurfaces</code> property.  The <code>showLateralSurfaces</code> property defines whether or not the lateral surfaces of the cone are shown.
+        /// Opens and returns the writer for the <c>showLateralSurfaces</c> property.  The <c>showLateralSurfaces</c> property defines whether or not the lateral surfaces of the cone are shown.
         /// </summary>
         public BooleanCesiumWriter OpenShowLateralSurfacesProperty()
         {
@@ -1176,7 +1176,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showLateralSurfaces</code> property as a <code>boolean</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the cone are shown.
+        /// Writes a value for the <c>showLateralSurfaces</c> property as a <c>boolean</c> value.  The <c>showLateralSurfaces</c> property specifies whether or not the lateral surfaces of the cone are shown.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowLateralSurfacesProperty(bool value)
@@ -1188,7 +1188,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the cone are shown.
+        /// Writes a value for the <c>showLateralSurfaces</c> property as a <c>reference</c> value.  The <c>showLateralSurfaces</c> property specifies whether or not the lateral surfaces of the cone are shown.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowLateralSurfacesPropertyReference(Reference value)
@@ -1200,7 +1200,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the cone are shown.
+        /// Writes a value for the <c>showLateralSurfaces</c> property as a <c>reference</c> value.  The <c>showLateralSurfaces</c> property specifies whether or not the lateral surfaces of the cone are shown.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowLateralSurfacesPropertyReference(string value)
@@ -1212,7 +1212,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the cone are shown.
+        /// Writes a value for the <c>showLateralSurfaces</c> property as a <c>reference</c> value.  The <c>showLateralSurfaces</c> property specifies whether or not the lateral surfaces of the cone are shown.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1225,7 +1225,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showLateralSurfaces</code> property as a <code>reference</code> value.  The <code>showLateralSurfaces</code> property specifies whether or not the lateral surfaces of the cone are shown.
+        /// Writes a value for the <c>showLateralSurfaces</c> property as a <c>reference</c> value.  The <c>showLateralSurfaces</c> property specifies whether or not the lateral surfaces of the cone are shown.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1238,7 +1238,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>lateralSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>lateralSurfaceMaterial</code> property defines the material to use for the cone's lateral surfaces.
+        /// Gets the writer for the <c>lateralSurfaceMaterial</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>lateralSurfaceMaterial</c> property defines the material to use for the cone's lateral surfaces.
         /// </summary>
         public MaterialCesiumWriter LateralSurfaceMaterialWriter
         {
@@ -1246,7 +1246,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>lateralSurfaceMaterial</code> property.  The <code>lateralSurfaceMaterial</code> property defines the material to use for the cone's lateral surfaces.
+        /// Opens and returns the writer for the <c>lateralSurfaceMaterial</c> property.  The <c>lateralSurfaceMaterial</c> property defines the material to use for the cone's lateral surfaces.
         /// </summary>
         public MaterialCesiumWriter OpenLateralSurfaceMaterialProperty()
         {
@@ -1255,7 +1255,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>showEllipsoidSurfaces</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showEllipsoidSurfaces</code> property defines whether or not ellipsoid surfaces are shown.
+        /// Gets the writer for the <c>showEllipsoidSurfaces</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showEllipsoidSurfaces</c> property defines whether or not ellipsoid surfaces are shown.
         /// </summary>
         public BooleanCesiumWriter ShowEllipsoidSurfacesWriter
         {
@@ -1263,7 +1263,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>showEllipsoidSurfaces</code> property.  The <code>showEllipsoidSurfaces</code> property defines whether or not ellipsoid surfaces are shown.
+        /// Opens and returns the writer for the <c>showEllipsoidSurfaces</c> property.  The <c>showEllipsoidSurfaces</c> property defines whether or not ellipsoid surfaces are shown.
         /// </summary>
         public BooleanCesiumWriter OpenShowEllipsoidSurfacesProperty()
         {
@@ -1272,7 +1272,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEllipsoidSurfaces</code> property as a <code>boolean</code> value.  The <code>showEllipsoidSurfaces</code> property specifies whether or not ellipsoid surfaces are shown.
+        /// Writes a value for the <c>showEllipsoidSurfaces</c> property as a <c>boolean</c> value.  The <c>showEllipsoidSurfaces</c> property specifies whether or not ellipsoid surfaces are shown.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowEllipsoidSurfacesProperty(bool value)
@@ -1284,7 +1284,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEllipsoidSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidSurfaces</code> property specifies whether or not ellipsoid surfaces are shown.
+        /// Writes a value for the <c>showEllipsoidSurfaces</c> property as a <c>reference</c> value.  The <c>showEllipsoidSurfaces</c> property specifies whether or not ellipsoid surfaces are shown.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowEllipsoidSurfacesPropertyReference(Reference value)
@@ -1296,7 +1296,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEllipsoidSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidSurfaces</code> property specifies whether or not ellipsoid surfaces are shown.
+        /// Writes a value for the <c>showEllipsoidSurfaces</c> property as a <c>reference</c> value.  The <c>showEllipsoidSurfaces</c> property specifies whether or not ellipsoid surfaces are shown.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowEllipsoidSurfacesPropertyReference(string value)
@@ -1308,7 +1308,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEllipsoidSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidSurfaces</code> property specifies whether or not ellipsoid surfaces are shown.
+        /// Writes a value for the <c>showEllipsoidSurfaces</c> property as a <c>reference</c> value.  The <c>showEllipsoidSurfaces</c> property specifies whether or not ellipsoid surfaces are shown.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1321,7 +1321,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEllipsoidSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidSurfaces</code> property specifies whether or not ellipsoid surfaces are shown.
+        /// Writes a value for the <c>showEllipsoidSurfaces</c> property as a <c>reference</c> value.  The <c>showEllipsoidSurfaces</c> property specifies whether or not ellipsoid surfaces are shown.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1334,7 +1334,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid surfaces.
+        /// Gets the writer for the <c>ellipsoidSurfaceMaterial</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>ellipsoidSurfaceMaterial</c> property defines the material to use for the cone's ellipsoid surfaces.
         /// </summary>
         public MaterialCesiumWriter EllipsoidSurfaceMaterialWriter
         {
@@ -1342,7 +1342,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>ellipsoidSurfaceMaterial</code> property.  The <code>ellipsoidSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid surfaces.
+        /// Opens and returns the writer for the <c>ellipsoidSurfaceMaterial</c> property.  The <c>ellipsoidSurfaceMaterial</c> property defines the material to use for the cone's ellipsoid surfaces.
         /// </summary>
         public MaterialCesiumWriter OpenEllipsoidSurfaceMaterialProperty()
         {
@@ -1351,7 +1351,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>showEllipsoidHorizonSurfaces</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showEllipsoidHorizonSurfaces</code> property defines whether or not ellipsoid horizon surfaces are shown.
+        /// Gets the writer for the <c>showEllipsoidHorizonSurfaces</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showEllipsoidHorizonSurfaces</c> property defines whether or not ellipsoid horizon surfaces are shown.
         /// </summary>
         public BooleanCesiumWriter ShowEllipsoidHorizonSurfacesWriter
         {
@@ -1359,7 +1359,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>showEllipsoidHorizonSurfaces</code> property.  The <code>showEllipsoidHorizonSurfaces</code> property defines whether or not ellipsoid horizon surfaces are shown.
+        /// Opens and returns the writer for the <c>showEllipsoidHorizonSurfaces</c> property.  The <c>showEllipsoidHorizonSurfaces</c> property defines whether or not ellipsoid horizon surfaces are shown.
         /// </summary>
         public BooleanCesiumWriter OpenShowEllipsoidHorizonSurfacesProperty()
         {
@@ -1368,7 +1368,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEllipsoidHorizonSurfaces</code> property as a <code>boolean</code> value.  The <code>showEllipsoidHorizonSurfaces</code> property specifies whether or not ellipsoid horizon surfaces are shown.
+        /// Writes a value for the <c>showEllipsoidHorizonSurfaces</c> property as a <c>boolean</c> value.  The <c>showEllipsoidHorizonSurfaces</c> property specifies whether or not ellipsoid horizon surfaces are shown.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowEllipsoidHorizonSurfacesProperty(bool value)
@@ -1380,7 +1380,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEllipsoidHorizonSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidHorizonSurfaces</code> property specifies whether or not ellipsoid horizon surfaces are shown.
+        /// Writes a value for the <c>showEllipsoidHorizonSurfaces</c> property as a <c>reference</c> value.  The <c>showEllipsoidHorizonSurfaces</c> property specifies whether or not ellipsoid horizon surfaces are shown.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowEllipsoidHorizonSurfacesPropertyReference(Reference value)
@@ -1392,7 +1392,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEllipsoidHorizonSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidHorizonSurfaces</code> property specifies whether or not ellipsoid horizon surfaces are shown.
+        /// Writes a value for the <c>showEllipsoidHorizonSurfaces</c> property as a <c>reference</c> value.  The <c>showEllipsoidHorizonSurfaces</c> property specifies whether or not ellipsoid horizon surfaces are shown.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowEllipsoidHorizonSurfacesPropertyReference(string value)
@@ -1404,7 +1404,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEllipsoidHorizonSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidHorizonSurfaces</code> property specifies whether or not ellipsoid horizon surfaces are shown.
+        /// Writes a value for the <c>showEllipsoidHorizonSurfaces</c> property as a <c>reference</c> value.  The <c>showEllipsoidHorizonSurfaces</c> property specifies whether or not ellipsoid horizon surfaces are shown.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1417,7 +1417,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEllipsoidHorizonSurfaces</code> property as a <code>reference</code> value.  The <code>showEllipsoidHorizonSurfaces</code> property specifies whether or not ellipsoid horizon surfaces are shown.
+        /// Writes a value for the <c>showEllipsoidHorizonSurfaces</c> property as a <c>reference</c> value.  The <c>showEllipsoidHorizonSurfaces</c> property specifies whether or not ellipsoid horizon surfaces are shown.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1430,7 +1430,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid horizon surfaces.
+        /// Gets the writer for the <c>ellipsoidHorizonSurfaceMaterial</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>ellipsoidHorizonSurfaceMaterial</c> property defines the material to use for the cone's ellipsoid horizon surfaces.
         /// </summary>
         public MaterialCesiumWriter EllipsoidHorizonSurfaceMaterialWriter
         {
@@ -1438,7 +1438,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>ellipsoidHorizonSurfaceMaterial</code> property.  The <code>ellipsoidHorizonSurfaceMaterial</code> property defines the material to use for the cone's ellipsoid horizon surfaces.
+        /// Opens and returns the writer for the <c>ellipsoidHorizonSurfaceMaterial</c> property.  The <c>ellipsoidHorizonSurfaceMaterial</c> property defines the material to use for the cone's ellipsoid horizon surfaces.
         /// </summary>
         public MaterialCesiumWriter OpenEllipsoidHorizonSurfaceMaterialProperty()
         {
@@ -1447,7 +1447,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>showDomeSurfaces</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showDomeSurfaces</code> property defines whether or not dome surfaces are shown.
+        /// Gets the writer for the <c>showDomeSurfaces</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showDomeSurfaces</c> property defines whether or not dome surfaces are shown.
         /// </summary>
         public BooleanCesiumWriter ShowDomeSurfacesWriter
         {
@@ -1455,7 +1455,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>showDomeSurfaces</code> property.  The <code>showDomeSurfaces</code> property defines whether or not dome surfaces are shown.
+        /// Opens and returns the writer for the <c>showDomeSurfaces</c> property.  The <c>showDomeSurfaces</c> property defines whether or not dome surfaces are shown.
         /// </summary>
         public BooleanCesiumWriter OpenShowDomeSurfacesProperty()
         {
@@ -1464,7 +1464,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showDomeSurfaces</code> property as a <code>boolean</code> value.  The <code>showDomeSurfaces</code> property specifies whether or not dome surfaces are shown.
+        /// Writes a value for the <c>showDomeSurfaces</c> property as a <c>boolean</c> value.  The <c>showDomeSurfaces</c> property specifies whether or not dome surfaces are shown.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowDomeSurfacesProperty(bool value)
@@ -1476,7 +1476,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showDomeSurfaces</code> property as a <code>reference</code> value.  The <code>showDomeSurfaces</code> property specifies whether or not dome surfaces are shown.
+        /// Writes a value for the <c>showDomeSurfaces</c> property as a <c>reference</c> value.  The <c>showDomeSurfaces</c> property specifies whether or not dome surfaces are shown.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowDomeSurfacesPropertyReference(Reference value)
@@ -1488,7 +1488,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showDomeSurfaces</code> property as a <code>reference</code> value.  The <code>showDomeSurfaces</code> property specifies whether or not dome surfaces are shown.
+        /// Writes a value for the <c>showDomeSurfaces</c> property as a <c>reference</c> value.  The <c>showDomeSurfaces</c> property specifies whether or not dome surfaces are shown.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowDomeSurfacesPropertyReference(string value)
@@ -1500,7 +1500,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showDomeSurfaces</code> property as a <code>reference</code> value.  The <code>showDomeSurfaces</code> property specifies whether or not dome surfaces are shown.
+        /// Writes a value for the <c>showDomeSurfaces</c> property as a <c>reference</c> value.  The <c>showDomeSurfaces</c> property specifies whether or not dome surfaces are shown.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1513,7 +1513,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showDomeSurfaces</code> property as a <code>reference</code> value.  The <code>showDomeSurfaces</code> property specifies whether or not dome surfaces are shown.
+        /// Writes a value for the <c>showDomeSurfaces</c> property as a <c>reference</c> value.  The <c>showDomeSurfaces</c> property specifies whether or not dome surfaces are shown.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1526,7 +1526,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>domeSurfaceMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>domeSurfaceMaterial</code> property defines the material to use for the cone's dome surfaces.
+        /// Gets the writer for the <c>domeSurfaceMaterial</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>domeSurfaceMaterial</c> property defines the material to use for the cone's dome surfaces.
         /// </summary>
         public MaterialCesiumWriter DomeSurfaceMaterialWriter
         {
@@ -1534,7 +1534,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>domeSurfaceMaterial</code> property.  The <code>domeSurfaceMaterial</code> property defines the material to use for the cone's dome surfaces.
+        /// Opens and returns the writer for the <c>domeSurfaceMaterial</c> property.  The <c>domeSurfaceMaterial</c> property defines the material to use for the cone's dome surfaces.
         /// </summary>
         public MaterialCesiumWriter OpenDomeSurfaceMaterialProperty()
         {
@@ -1543,7 +1543,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>portionToDisplay</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>portionToDisplay</code> property defines what part of the sensor should be displayed.
+        /// Gets the writer for the <c>portionToDisplay</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>portionToDisplay</c> property defines what part of the sensor should be displayed.
         /// </summary>
         public SensorVolumePortionToDisplayCesiumWriter PortionToDisplayWriter
         {
@@ -1551,7 +1551,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>portionToDisplay</code> property.  The <code>portionToDisplay</code> property defines what part of the sensor should be displayed.
+        /// Opens and returns the writer for the <c>portionToDisplay</c> property.  The <c>portionToDisplay</c> property defines what part of the sensor should be displayed.
         /// </summary>
         public SensorVolumePortionToDisplayCesiumWriter OpenPortionToDisplayProperty()
         {
@@ -1560,7 +1560,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>portionToDisplay</code> property as a <code>portionToDisplay</code> value.  The <code>portionToDisplay</code> property specifies what part of the sensor should be displayed.
+        /// Writes a value for the <c>portionToDisplay</c> property as a <c>portionToDisplay</c> value.  The <c>portionToDisplay</c> property specifies what part of the sensor should be displayed.
         /// </summary>
         /// <param name="value">The portion of the sensor to display.</param>
         public void WritePortionToDisplayProperty(CesiumSensorVolumePortionToDisplay value)
@@ -1572,7 +1572,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies what part of the sensor should be displayed.
+        /// Writes a value for the <c>portionToDisplay</c> property as a <c>reference</c> value.  The <c>portionToDisplay</c> property specifies what part of the sensor should be displayed.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WritePortionToDisplayPropertyReference(Reference value)
@@ -1584,7 +1584,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies what part of the sensor should be displayed.
+        /// Writes a value for the <c>portionToDisplay</c> property as a <c>reference</c> value.  The <c>portionToDisplay</c> property specifies what part of the sensor should be displayed.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WritePortionToDisplayPropertyReference(string value)
@@ -1596,7 +1596,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies what part of the sensor should be displayed.
+        /// Writes a value for the <c>portionToDisplay</c> property as a <c>reference</c> value.  The <c>portionToDisplay</c> property specifies what part of the sensor should be displayed.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1609,7 +1609,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>portionToDisplay</code> property as a <code>reference</code> value.  The <code>portionToDisplay</code> property specifies what part of the sensor should be displayed.
+        /// Writes a value for the <c>portionToDisplay</c> property as a <c>reference</c> value.  The <c>portionToDisplay</c> property specifies what part of the sensor should be displayed.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1622,7 +1622,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>environmentConstraint</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>environmentConstraint</code> property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
+        /// Gets the writer for the <c>environmentConstraint</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>environmentConstraint</c> property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
         /// </summary>
         public BooleanCesiumWriter EnvironmentConstraintWriter
         {
@@ -1630,7 +1630,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>environmentConstraint</code> property.  The <code>environmentConstraint</code> property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
+        /// Opens and returns the writer for the <c>environmentConstraint</c> property.  The <c>environmentConstraint</c> property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
         /// </summary>
         public BooleanCesiumWriter OpenEnvironmentConstraintProperty()
         {
@@ -1639,7 +1639,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentConstraint</code> property as a <code>boolean</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+        /// Writes a value for the <c>environmentConstraint</c> property as a <c>boolean</c> value.  The <c>environmentConstraint</c> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteEnvironmentConstraintProperty(bool value)
@@ -1651,7 +1651,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentConstraint</code> property as a <code>reference</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+        /// Writes a value for the <c>environmentConstraint</c> property as a <c>reference</c> value.  The <c>environmentConstraint</c> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteEnvironmentConstraintPropertyReference(Reference value)
@@ -1663,7 +1663,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentConstraint</code> property as a <code>reference</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+        /// Writes a value for the <c>environmentConstraint</c> property as a <c>reference</c> value.  The <c>environmentConstraint</c> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteEnvironmentConstraintPropertyReference(string value)
@@ -1675,7 +1675,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentConstraint</code> property as a <code>reference</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+        /// Writes a value for the <c>environmentConstraint</c> property as a <c>reference</c> value.  The <c>environmentConstraint</c> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1688,7 +1688,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentConstraint</code> property as a <code>reference</code> value.  The <code>environmentConstraint</code> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+        /// Writes a value for the <c>environmentConstraint</c> property as a <c>reference</c> value.  The <c>environmentConstraint</c> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1701,7 +1701,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>showEnvironmentOcclusion</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showEnvironmentOcclusion</code> property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+        /// Gets the writer for the <c>showEnvironmentOcclusion</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showEnvironmentOcclusion</c> property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
         /// </summary>
         public BooleanCesiumWriter ShowEnvironmentOcclusionWriter
         {
@@ -1709,7 +1709,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>showEnvironmentOcclusion</code> property.  The <code>showEnvironmentOcclusion</code> property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+        /// Opens and returns the writer for the <c>showEnvironmentOcclusion</c> property.  The <c>showEnvironmentOcclusion</c> property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
         /// </summary>
         public BooleanCesiumWriter OpenShowEnvironmentOcclusionProperty()
         {
@@ -1718,7 +1718,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>boolean</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>boolean</c> value.  The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowEnvironmentOcclusionProperty(bool value)
@@ -1730,7 +1730,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>reference</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>reference</c> value.  The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowEnvironmentOcclusionPropertyReference(Reference value)
@@ -1742,7 +1742,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>reference</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>reference</c> value.  The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowEnvironmentOcclusionPropertyReference(string value)
@@ -1754,7 +1754,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>reference</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>reference</c> value.  The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1767,7 +1767,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEnvironmentOcclusion</code> property as a <code>reference</code> value.  The <code>showEnvironmentOcclusion</code> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+        /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>reference</c> value.  The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1780,7 +1780,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>environmentOcclusionMaterial</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>environmentOcclusionMaterial</code> property defines the material to use for the portion of the sensor occluded by the environment.
+        /// Gets the writer for the <c>environmentOcclusionMaterial</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>environmentOcclusionMaterial</c> property defines the material to use for the portion of the sensor occluded by the environment.
         /// </summary>
         public MaterialCesiumWriter EnvironmentOcclusionMaterialWriter
         {
@@ -1788,7 +1788,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>environmentOcclusionMaterial</code> property.  The <code>environmentOcclusionMaterial</code> property defines the material to use for the portion of the sensor occluded by the environment.
+        /// Opens and returns the writer for the <c>environmentOcclusionMaterial</c> property.  The <c>environmentOcclusionMaterial</c> property defines the material to use for the portion of the sensor occluded by the environment.
         /// </summary>
         public MaterialCesiumWriter OpenEnvironmentOcclusionMaterialProperty()
         {
@@ -1797,7 +1797,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>showEnvironmentIntersection</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>showEnvironmentIntersection</code> property defines whether or not a line showing where the sensor intersects the environment will be drawn.
+        /// Gets the writer for the <c>showEnvironmentIntersection</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showEnvironmentIntersection</c> property defines whether or not a line showing where the sensor intersects the environment will be drawn.
         /// </summary>
         public BooleanCesiumWriter ShowEnvironmentIntersectionWriter
         {
@@ -1805,7 +1805,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>showEnvironmentIntersection</code> property.  The <code>showEnvironmentIntersection</code> property defines whether or not a line showing where the sensor intersects the environment will be drawn.
+        /// Opens and returns the writer for the <c>showEnvironmentIntersection</c> property.  The <c>showEnvironmentIntersection</c> property defines whether or not a line showing where the sensor intersects the environment will be drawn.
         /// </summary>
         public BooleanCesiumWriter OpenShowEnvironmentIntersectionProperty()
         {
@@ -1814,7 +1814,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>boolean</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+        /// Writes a value for the <c>showEnvironmentIntersection</c> property as a <c>boolean</c> value.  The <c>showEnvironmentIntersection</c> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowEnvironmentIntersectionProperty(bool value)
@@ -1826,7 +1826,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>reference</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+        /// Writes a value for the <c>showEnvironmentIntersection</c> property as a <c>reference</c> value.  The <c>showEnvironmentIntersection</c> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowEnvironmentIntersectionPropertyReference(Reference value)
@@ -1838,7 +1838,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>reference</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+        /// Writes a value for the <c>showEnvironmentIntersection</c> property as a <c>reference</c> value.  The <c>showEnvironmentIntersection</c> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowEnvironmentIntersectionPropertyReference(string value)
@@ -1850,7 +1850,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>reference</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+        /// Writes a value for the <c>showEnvironmentIntersection</c> property as a <c>reference</c> value.  The <c>showEnvironmentIntersection</c> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1863,7 +1863,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>showEnvironmentIntersection</code> property as a <code>reference</code> value.  The <code>showEnvironmentIntersection</code> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+        /// Writes a value for the <c>showEnvironmentIntersection</c> property as a <c>reference</c> value.  The <c>showEnvironmentIntersection</c> property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1876,7 +1876,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>environmentIntersectionColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>environmentIntersectionColor</code> property defines the color of the intersection line between the sensor and the environment.
+        /// Gets the writer for the <c>environmentIntersectionColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>environmentIntersectionColor</c> property defines the color of the intersection line between the sensor and the environment.
         /// </summary>
         public ColorCesiumWriter EnvironmentIntersectionColorWriter
         {
@@ -1884,7 +1884,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>environmentIntersectionColor</code> property.  The <code>environmentIntersectionColor</code> property defines the color of the intersection line between the sensor and the environment.
+        /// Opens and returns the writer for the <c>environmentIntersectionColor</c> property.  The <c>environmentIntersectionColor</c> property defines the color of the intersection line between the sensor and the environment.
         /// </summary>
         public ColorCesiumWriter OpenEnvironmentIntersectionColorProperty()
         {
@@ -1893,7 +1893,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionColor</c> property as a <c>rgba</c> value.  The <c>environmentIntersectionColor</c> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteEnvironmentIntersectionColorProperty(Color color)
@@ -1905,7 +1905,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionColor</c> property as a <c>rgba</c> value.  The <c>environmentIntersectionColor</c> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -1920,7 +1920,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionColor</c> property as a <c>rgba</c> value.  The <c>environmentIntersectionColor</c> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1933,7 +1933,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgba</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionColor</c> property as a <c>rgba</c> value.  The <c>environmentIntersectionColor</c> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -1948,7 +1948,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionColor</c> property as a <c>rgbaf</c> value.  The <c>environmentIntersectionColor</c> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteEnvironmentIntersectionColorPropertyRgbaf(Color color)
@@ -1960,7 +1960,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionColor</c> property as a <c>rgbaf</c> value.  The <c>environmentIntersectionColor</c> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -1975,7 +1975,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionColor</c> property as a <c>rgbaf</c> value.  The <c>environmentIntersectionColor</c> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1988,7 +1988,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>rgbaf</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionColor</c> property as a <c>rgbaf</c> value.  The <c>environmentIntersectionColor</c> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -2003,7 +2003,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionColor</c> property as a <c>reference</c> value.  The <c>environmentIntersectionColor</c> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteEnvironmentIntersectionColorPropertyReference(Reference value)
@@ -2015,7 +2015,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionColor</c> property as a <c>reference</c> value.  The <c>environmentIntersectionColor</c> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteEnvironmentIntersectionColorPropertyReference(string value)
@@ -2027,7 +2027,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionColor</c> property as a <c>reference</c> value.  The <c>environmentIntersectionColor</c> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -2040,7 +2040,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionColor</code> property as a <code>reference</code> value.  The <code>environmentIntersectionColor</code> property specifies the color of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionColor</c> property as a <c>reference</c> value.  The <c>environmentIntersectionColor</c> property specifies the color of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -2053,7 +2053,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>environmentIntersectionWidth</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>environmentIntersectionWidth</code> property defines the width in meters of the intersection line between the sensor and the environment.
+        /// Gets the writer for the <c>environmentIntersectionWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>environmentIntersectionWidth</c> property defines the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         public DoubleCesiumWriter EnvironmentIntersectionWidthWriter
         {
@@ -2061,7 +2061,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>environmentIntersectionWidth</code> property.  The <code>environmentIntersectionWidth</code> property defines the width in meters of the intersection line between the sensor and the environment.
+        /// Opens and returns the writer for the <c>environmentIntersectionWidth</c> property.  The <c>environmentIntersectionWidth</c> property defines the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         public DoubleCesiumWriter OpenEnvironmentIntersectionWidthProperty()
         {
@@ -2070,7 +2070,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionWidth</c> property as a <c>number</c> value.  The <c>environmentIntersectionWidth</c> property specifies the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteEnvironmentIntersectionWidthProperty(double value)
@@ -2082,7 +2082,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionWidth</c> property as a <c>number</c> value.  The <c>environmentIntersectionWidth</c> property specifies the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -2095,7 +2095,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>number</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionWidth</c> property as a <c>number</c> value.  The <c>environmentIntersectionWidth</c> property specifies the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -2110,7 +2110,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionWidth</c> property as a <c>reference</c> value.  The <c>environmentIntersectionWidth</c> property specifies the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteEnvironmentIntersectionWidthPropertyReference(Reference value)
@@ -2122,7 +2122,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionWidth</c> property as a <c>reference</c> value.  The <c>environmentIntersectionWidth</c> property specifies the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteEnvironmentIntersectionWidthPropertyReference(string value)
@@ -2134,7 +2134,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionWidth</c> property as a <c>reference</c> value.  The <c>environmentIntersectionWidth</c> property specifies the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -2147,7 +2147,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>environmentIntersectionWidth</code> property as a <code>reference</code> value.  The <code>environmentIntersectionWidth</code> property specifies the width in meters of the intersection line between the sensor and the environment.
+        /// Writes a value for the <c>environmentIntersectionWidth</c> property as a <c>reference</c> value.  The <c>environmentIntersectionWidth</c> property specifies the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

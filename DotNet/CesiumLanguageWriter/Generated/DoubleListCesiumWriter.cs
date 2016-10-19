@@ -8,17 +8,17 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>DoubleList</code> to a <see cref="CesiumOutputStream" />.  A <code>DoubleList</code> is a list of floating-point numbers.
+    /// Writes a <c>DoubleList</c> to a <see cref="CesiumOutputStream" />.  A <c>DoubleList</c> is a list of floating-point numbers.
     /// </summary>
     public class DoubleListCesiumWriter : CesiumPropertyWriter<DoubleListCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>array</code> property.
+        /// The name of the <c>array</c> property.
         /// </summary>
         public const string ArrayPropertyName = "array";
 
         /// <summary>
-        /// The name of the <code>references</code> property.
+        /// The name of the <c>references</c> property.
         /// </summary>
         public const string ReferencesPropertyName = "references";
 
@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>array</code>, which is the list of values specified as an array of numbers.
+        /// Writes the value expressed as a <c>array</c>, which is the list of values specified as an array of numbers.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteArray(IEnumerable<double> values)
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <code>references</code>, which is the list of values specified as references.  Each reference is to a property that defines a single value, which may change with time.
+        /// Writes the value expressed as a <c>references</c>, which is the list of values specified as references.  Each reference is to a property that defines a single value, which may change with time.
         /// </summary>
         /// <param name="references">The list of references.</param>
         public void WriteReferences(IEnumerable<Reference> references)
@@ -77,7 +77,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>Array</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Array</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumValuePropertyWriter<IEnumerable<double>> AsArray()
@@ -91,7 +91,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <code>References</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>References</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
         public ICesiumValuePropertyWriter<IEnumerable<Reference>> AsReferences()

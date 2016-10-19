@@ -9,42 +9,42 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>PolylineMaterial</code> to a <see cref="CesiumOutputStream" />.  A <code>PolylineMaterial</code> is a definition of how a polyline is colored or shaded.
+    /// Writes a <c>PolylineMaterial</c> to a <see cref="CesiumOutputStream" />.  A <c>PolylineMaterial</c> is a definition of how a polyline is colored or shaded.
     /// </summary>
     public class PolylineMaterialCesiumWriter : CesiumPropertyWriter<PolylineMaterialCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>solidColor</code> property.
+        /// The name of the <c>solidColor</c> property.
         /// </summary>
         public const string SolidColorPropertyName = "solidColor";
 
         /// <summary>
-        /// The name of the <code>polylineOutline</code> property.
+        /// The name of the <c>polylineOutline</c> property.
         /// </summary>
         public const string PolylineOutlinePropertyName = "polylineOutline";
 
         /// <summary>
-        /// The name of the <code>polylineArrow</code> property.
+        /// The name of the <c>polylineArrow</c> property.
         /// </summary>
         public const string PolylineArrowPropertyName = "polylineArrow";
 
         /// <summary>
-        /// The name of the <code>polylineGlow</code> property.
+        /// The name of the <c>polylineGlow</c> property.
         /// </summary>
         public const string PolylineGlowPropertyName = "polylineGlow";
 
         /// <summary>
-        /// The name of the <code>image</code> property.
+        /// The name of the <c>image</c> property.
         /// </summary>
         public const string ImagePropertyName = "image";
 
         /// <summary>
-        /// The name of the <code>grid</code> property.
+        /// The name of the <c>grid</c> property.
         /// </summary>
         public const string GridPropertyName = "grid";
 
         /// <summary>
-        /// The name of the <code>stripe</code> property.
+        /// The name of the <c>stripe</c> property.
         /// </summary>
         public const string StripePropertyName = "stripe";
 
@@ -80,7 +80,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>solidColor</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>solidColor</code> property defines a material that fills the line with a solid color, which may be translucent.
+        /// Gets the writer for the <c>solidColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>solidColor</c> property defines a material that fills the line with a solid color, which may be translucent.
         /// </summary>
         public SolidColorMaterialCesiumWriter SolidColorWriter
         {
@@ -88,7 +88,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>solidColor</code> property.  The <code>solidColor</code> property defines a material that fills the line with a solid color, which may be translucent.
+        /// Opens and returns the writer for the <c>solidColor</c> property.  The <c>solidColor</c> property defines a material that fills the line with a solid color, which may be translucent.
         /// </summary>
         public SolidColorMaterialCesiumWriter OpenSolidColorProperty()
         {
@@ -97,7 +97,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>polylineOutline</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>polylineOutline</code> property defines a material that fills the line with a color and outline.
+        /// Gets the writer for the <c>polylineOutline</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>polylineOutline</c> property defines a material that fills the line with a color and outline.
         /// </summary>
         public PolylineOutlineMaterialCesiumWriter PolylineOutlineWriter
         {
@@ -105,7 +105,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>polylineOutline</code> property.  The <code>polylineOutline</code> property defines a material that fills the line with a color and outline.
+        /// Opens and returns the writer for the <c>polylineOutline</c> property.  The <c>polylineOutline</c> property defines a material that fills the line with a color and outline.
         /// </summary>
         public PolylineOutlineMaterialCesiumWriter OpenPolylineOutlineProperty()
         {
@@ -114,7 +114,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>polylineArrow</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>polylineArrow</code> property defines a material that fills the line with an arrow.
+        /// Gets the writer for the <c>polylineArrow</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>polylineArrow</c> property defines a material that fills the line with an arrow.
         /// </summary>
         public PolylineArrowMaterialCesiumWriter PolylineArrowWriter
         {
@@ -122,7 +122,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>polylineArrow</code> property.  The <code>polylineArrow</code> property defines a material that fills the line with an arrow.
+        /// Opens and returns the writer for the <c>polylineArrow</c> property.  The <c>polylineArrow</c> property defines a material that fills the line with an arrow.
         /// </summary>
         public PolylineArrowMaterialCesiumWriter OpenPolylineArrowProperty()
         {
@@ -131,7 +131,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>polylineGlow</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>polylineGlow</code> property defines a material that fills the line with a glowing color.
+        /// Gets the writer for the <c>polylineGlow</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>polylineGlow</c> property defines a material that fills the line with a glowing color.
         /// </summary>
         public PolylineGlowMaterialCesiumWriter PolylineGlowWriter
         {
@@ -139,7 +139,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>polylineGlow</code> property.  The <code>polylineGlow</code> property defines a material that fills the line with a glowing color.
+        /// Opens and returns the writer for the <c>polylineGlow</c> property.  The <c>polylineGlow</c> property defines a material that fills the line with a glowing color.
         /// </summary>
         public PolylineGlowMaterialCesiumWriter OpenPolylineGlowProperty()
         {
@@ -148,7 +148,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>image</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>image</code> property defines a material that fills the line with an image.
+        /// Gets the writer for the <c>image</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>image</c> property defines a material that fills the line with an image.
         /// </summary>
         public ImageMaterialCesiumWriter ImageWriter
         {
@@ -156,7 +156,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>image</code> property.  The <code>image</code> property defines a material that fills the line with an image.
+        /// Opens and returns the writer for the <c>image</c> property.  The <c>image</c> property defines a material that fills the line with an image.
         /// </summary>
         public ImageMaterialCesiumWriter OpenImageProperty()
         {
@@ -165,7 +165,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>grid</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>grid</code> property defines a material that fills the line with a grid.
+        /// Gets the writer for the <c>grid</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>grid</c> property defines a material that fills the line with a grid.
         /// </summary>
         public GridMaterialCesiumWriter GridWriter
         {
@@ -173,7 +173,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>grid</code> property.  The <code>grid</code> property defines a material that fills the line with a grid.
+        /// Opens and returns the writer for the <c>grid</c> property.  The <c>grid</c> property defines a material that fills the line with a grid.
         /// </summary>
         public GridMaterialCesiumWriter OpenGridProperty()
         {
@@ -182,7 +182,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>stripe</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>stripe</code> property defines a material that fills the line with alternating colors.
+        /// Gets the writer for the <c>stripe</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>stripe</c> property defines a material that fills the line with alternating colors.
         /// </summary>
         public StripeMaterialCesiumWriter StripeWriter
         {
@@ -190,7 +190,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>stripe</code> property.  The <code>stripe</code> property defines a material that fills the line with alternating colors.
+        /// Opens and returns the writer for the <c>stripe</c> property.  The <c>stripe</c> property defines a material that fills the line with alternating colors.
         /// </summary>
         public StripeMaterialCesiumWriter OpenStripeProperty()
         {

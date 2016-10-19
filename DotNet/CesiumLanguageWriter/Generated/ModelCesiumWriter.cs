@@ -9,52 +9,52 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>Model</code> to a <see cref="CesiumOutputStream" />.  A <code>Model</code> is a 3D model.
+    /// Writes a <c>Model</c> to a <see cref="CesiumOutputStream" />.  A <c>Model</c> is a 3D model.
     /// </summary>
     public class ModelCesiumWriter : CesiumPropertyWriter<ModelCesiumWriter>
     {
         /// <summary>
-        /// The name of the <code>show</code> property.
+        /// The name of the <c>show</c> property.
         /// </summary>
         public const string ShowPropertyName = "show";
 
         /// <summary>
-        /// The name of the <code>gltf</code> property.
+        /// The name of the <c>gltf</c> property.
         /// </summary>
         public const string GltfPropertyName = "gltf";
 
         /// <summary>
-        /// The name of the <code>scale</code> property.
+        /// The name of the <c>scale</c> property.
         /// </summary>
         public const string ScalePropertyName = "scale";
 
         /// <summary>
-        /// The name of the <code>minimumPixelSize</code> property.
+        /// The name of the <c>minimumPixelSize</c> property.
         /// </summary>
         public const string MinimumPixelSizePropertyName = "minimumPixelSize";
 
         /// <summary>
-        /// The name of the <code>maximumScale</code> property.
+        /// The name of the <c>maximumScale</c> property.
         /// </summary>
         public const string MaximumScalePropertyName = "maximumScale";
 
         /// <summary>
-        /// The name of the <code>incrementallyLoadTextures</code> property.
+        /// The name of the <c>incrementallyLoadTextures</c> property.
         /// </summary>
         public const string IncrementallyLoadTexturesPropertyName = "incrementallyLoadTextures";
 
         /// <summary>
-        /// The name of the <code>runAnimations</code> property.
+        /// The name of the <c>runAnimations</c> property.
         /// </summary>
         public const string RunAnimationsPropertyName = "runAnimations";
 
         /// <summary>
-        /// The name of the <code>heightReference</code> property.
+        /// The name of the <c>heightReference</c> property.
         /// </summary>
         public const string HeightReferencePropertyName = "heightReference";
 
         /// <summary>
-        /// The name of the <code>nodeTransformations</code> property.
+        /// The name of the <c>nodeTransformations</c> property.
         /// </summary>
         public const string NodeTransformationsPropertyName = "nodeTransformations";
 
@@ -92,7 +92,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>show</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>show</code> property defines whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter ShowWriter
         {
@@ -100,7 +100,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>show</code> property.  The <code>show</code> property defines whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenShowProperty()
         {
@@ -109,7 +109,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>boolean</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>boolean</c> value.  The <c>show</c> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -121,7 +121,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(Reference value)
@@ -133,7 +133,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowPropertyReference(string value)
@@ -145,7 +145,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -158,7 +158,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>show</code> property as a <code>reference</code> value.  The <code>show</code> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -171,7 +171,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>gltf</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>gltf</code> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Gets the writer for the <c>gltf</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>gltf</c> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         public UriCesiumWriter GltfWriter
         {
@@ -179,7 +179,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>gltf</code> property.  The <code>gltf</code> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Opens and returns the writer for the <c>gltf</c> property.  The <c>gltf</c> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         public UriCesiumWriter OpenGltfProperty()
         {
@@ -188,7 +188,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value.  The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="resource">A resource object describing external data.</param>
         public void WriteGltfProperty(CesiumResource resource)
@@ -200,7 +200,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value.  The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="uri">The URI of the data.</param>
         /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
@@ -213,7 +213,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value.  The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="uri">The URI of the data.</param>
         /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
@@ -226,7 +226,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value.  The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="uri">The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
         /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
@@ -239,7 +239,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value.  The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="uri">The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
         /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
@@ -252,7 +252,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value.  The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="image">The image.  A data URI will be created for this image, using PNG encoding.</param>
         public void WriteGltfProperty(Image image)
@@ -264,7 +264,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>uri</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value.  The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="image">The image.  A data URI will be created for this image.</param>
         /// <param name="imageFormat">The image format to use to encode the image in the data URI.</param>
@@ -277,7 +277,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <c>gltf</c> property as a <c>reference</c> value.  The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteGltfPropertyReference(Reference value)
@@ -289,7 +289,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <c>gltf</c> property as a <c>reference</c> value.  The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteGltfPropertyReference(string value)
@@ -301,7 +301,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <c>gltf</c> property as a <c>reference</c> value.  The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -314,7 +314,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>gltf</code> property as a <code>reference</code> value.  The <code>gltf</code> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+        /// Writes a value for the <c>gltf</c> property as a <c>reference</c> value.  The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -327,7 +327,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>scale</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>scale</code> property defines the scale of the model.
+        /// Gets the writer for the <c>scale</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>scale</c> property defines the scale of the model.
         /// </summary>
         public DoubleCesiumWriter ScaleWriter
         {
@@ -335,7 +335,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>scale</code> property.  The <code>scale</code> property defines the scale of the model.
+        /// Opens and returns the writer for the <c>scale</c> property.  The <c>scale</c> property defines the scale of the model.
         /// </summary>
         public DoubleCesiumWriter OpenScaleProperty()
         {
@@ -344,7 +344,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the model.
+        /// Writes a value for the <c>scale</c> property as a <c>number</c> value.  The <c>scale</c> property specifies the scale of the model.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteScaleProperty(double value)
@@ -356,7 +356,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the model.
+        /// Writes a value for the <c>scale</c> property as a <c>number</c> value.  The <c>scale</c> property specifies the scale of the model.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -369,7 +369,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>number</code> value.  The <code>scale</code> property specifies the scale of the model.
+        /// Writes a value for the <c>scale</c> property as a <c>number</c> value.  The <c>scale</c> property specifies the scale of the model.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -384,7 +384,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the model.
+        /// Writes a value for the <c>scale</c> property as a <c>reference</c> value.  The <c>scale</c> property specifies the scale of the model.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteScalePropertyReference(Reference value)
@@ -396,7 +396,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the model.
+        /// Writes a value for the <c>scale</c> property as a <c>reference</c> value.  The <c>scale</c> property specifies the scale of the model.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteScalePropertyReference(string value)
@@ -408,7 +408,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the model.
+        /// Writes a value for the <c>scale</c> property as a <c>reference</c> value.  The <c>scale</c> property specifies the scale of the model.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -421,7 +421,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>scale</code> property as a <code>reference</code> value.  The <code>scale</code> property specifies the scale of the model.
+        /// Writes a value for the <c>scale</c> property as a <c>reference</c> value.  The <c>scale</c> property specifies the scale of the model.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -434,7 +434,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>minimumPixelSize</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>minimumPixelSize</code> property defines the approximate minimum pixel size of the model regardless of zoom.
+        /// Gets the writer for the <c>minimumPixelSize</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>minimumPixelSize</c> property defines the approximate minimum pixel size of the model regardless of zoom.
         /// </summary>
         public DoubleCesiumWriter MinimumPixelSizeWriter
         {
@@ -442,7 +442,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>minimumPixelSize</code> property.  The <code>minimumPixelSize</code> property defines the approximate minimum pixel size of the model regardless of zoom.
+        /// Opens and returns the writer for the <c>minimumPixelSize</c> property.  The <c>minimumPixelSize</c> property defines the approximate minimum pixel size of the model regardless of zoom.
         /// </summary>
         public DoubleCesiumWriter OpenMinimumPixelSizeProperty()
         {
@@ -451,7 +451,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumPixelSize</code> property as a <code>number</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+        /// Writes a value for the <c>minimumPixelSize</c> property as a <c>number</c> value.  The <c>minimumPixelSize</c> property specifies the approximate minimum pixel size of the model regardless of zoom.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteMinimumPixelSizeProperty(double value)
@@ -463,7 +463,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumPixelSize</code> property as a <code>number</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+        /// Writes a value for the <c>minimumPixelSize</c> property as a <c>number</c> value.  The <c>minimumPixelSize</c> property specifies the approximate minimum pixel size of the model regardless of zoom.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -476,7 +476,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumPixelSize</code> property as a <code>number</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+        /// Writes a value for the <c>minimumPixelSize</c> property as a <c>number</c> value.  The <c>minimumPixelSize</c> property specifies the approximate minimum pixel size of the model regardless of zoom.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -491,7 +491,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumPixelSize</code> property as a <code>reference</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+        /// Writes a value for the <c>minimumPixelSize</c> property as a <c>reference</c> value.  The <c>minimumPixelSize</c> property specifies the approximate minimum pixel size of the model regardless of zoom.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteMinimumPixelSizePropertyReference(Reference value)
@@ -503,7 +503,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumPixelSize</code> property as a <code>reference</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+        /// Writes a value for the <c>minimumPixelSize</c> property as a <c>reference</c> value.  The <c>minimumPixelSize</c> property specifies the approximate minimum pixel size of the model regardless of zoom.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteMinimumPixelSizePropertyReference(string value)
@@ -515,7 +515,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumPixelSize</code> property as a <code>reference</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+        /// Writes a value for the <c>minimumPixelSize</c> property as a <c>reference</c> value.  The <c>minimumPixelSize</c> property specifies the approximate minimum pixel size of the model regardless of zoom.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -528,7 +528,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>minimumPixelSize</code> property as a <code>reference</code> value.  The <code>minimumPixelSize</code> property specifies the approximate minimum pixel size of the model regardless of zoom.
+        /// Writes a value for the <c>minimumPixelSize</c> property as a <c>reference</c> value.  The <c>minimumPixelSize</c> property specifies the approximate minimum pixel size of the model regardless of zoom.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -541,7 +541,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>maximumScale</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>maximumScale</code> property defines the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Gets the writer for the <c>maximumScale</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>maximumScale</c> property defines the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
         /// </summary>
         public DoubleCesiumWriter MaximumScaleWriter
         {
@@ -549,7 +549,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>maximumScale</code> property.  The <code>maximumScale</code> property defines the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Opens and returns the writer for the <c>maximumScale</c> property.  The <c>maximumScale</c> property defines the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
         /// </summary>
         public DoubleCesiumWriter OpenMaximumScaleProperty()
         {
@@ -558,7 +558,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>maximumScale</code> property as a <code>number</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Writes a value for the <c>maximumScale</c> property as a <c>number</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteMaximumScaleProperty(double value)
@@ -570,7 +570,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>maximumScale</code> property as a <code>number</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Writes a value for the <c>maximumScale</c> property as a <c>number</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -583,7 +583,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>maximumScale</code> property as a <code>number</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Writes a value for the <c>maximumScale</c> property as a <c>number</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -598,7 +598,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>maximumScale</code> property as a <code>reference</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Writes a value for the <c>maximumScale</c> property as a <c>reference</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteMaximumScalePropertyReference(Reference value)
@@ -610,7 +610,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>maximumScale</code> property as a <code>reference</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Writes a value for the <c>maximumScale</c> property as a <c>reference</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteMaximumScalePropertyReference(string value)
@@ -622,7 +622,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>maximumScale</code> property as a <code>reference</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Writes a value for the <c>maximumScale</c> property as a <c>reference</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -635,7 +635,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>maximumScale</code> property as a <code>reference</code> value.  The <code>maximumScale</code> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Writes a value for the <c>maximumScale</c> property as a <c>reference</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -648,7 +648,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>incrementallyLoadTextures</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>incrementallyLoadTextures</code> property defines whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>incrementallyLoadTextures</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>incrementallyLoadTextures</c> property defines whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter IncrementallyLoadTexturesWriter
         {
@@ -656,7 +656,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>incrementallyLoadTextures</code> property.  The <code>incrementallyLoadTextures</code> property defines whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>incrementallyLoadTextures</c> property.  The <c>incrementallyLoadTextures</c> property defines whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenIncrementallyLoadTexturesProperty()
         {
@@ -665,7 +665,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>boolean</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>incrementallyLoadTextures</c> property as a <c>boolean</c> value.  The <c>incrementallyLoadTextures</c> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteIncrementallyLoadTexturesProperty(bool value)
@@ -677,7 +677,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>reference</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>incrementallyLoadTextures</c> property as a <c>reference</c> value.  The <c>incrementallyLoadTextures</c> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteIncrementallyLoadTexturesPropertyReference(Reference value)
@@ -689,7 +689,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>reference</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>incrementallyLoadTextures</c> property as a <c>reference</c> value.  The <c>incrementallyLoadTextures</c> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteIncrementallyLoadTexturesPropertyReference(string value)
@@ -701,7 +701,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>reference</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>incrementallyLoadTextures</c> property as a <c>reference</c> value.  The <c>incrementallyLoadTextures</c> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -714,7 +714,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>incrementallyLoadTextures</code> property as a <code>reference</code> value.  The <code>incrementallyLoadTextures</code> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>incrementallyLoadTextures</c> property as a <c>reference</c> value.  The <c>incrementallyLoadTextures</c> property specifies whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -727,7 +727,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>runAnimations</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>runAnimations</code> property defines whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>runAnimations</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>runAnimations</c> property defines whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter RunAnimationsWriter
         {
@@ -735,7 +735,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>runAnimations</code> property.  The <code>runAnimations</code> property defines whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>runAnimations</c> property.  The <c>runAnimations</c> property defines whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         public BooleanCesiumWriter OpenRunAnimationsProperty()
         {
@@ -744,7 +744,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>runAnimations</code> property as a <code>boolean</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>runAnimations</c> property as a <c>boolean</c> value.  The <c>runAnimations</c> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteRunAnimationsProperty(bool value)
@@ -756,7 +756,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>runAnimations</c> property as a <c>reference</c> value.  The <c>runAnimations</c> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteRunAnimationsPropertyReference(Reference value)
@@ -768,7 +768,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>runAnimations</c> property as a <c>reference</c> value.  The <c>runAnimations</c> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteRunAnimationsPropertyReference(string value)
@@ -780,7 +780,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>runAnimations</c> property as a <c>reference</c> value.  The <c>runAnimations</c> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -793,7 +793,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>runAnimations</code> property as a <code>reference</code> value.  The <code>runAnimations</code> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>runAnimations</c> property as a <c>reference</c> value.  The <c>runAnimations</c> property specifies whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -806,7 +806,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>heightReference</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>heightReference</code> property defines the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// Gets the writer for the <c>heightReference</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>heightReference</c> property defines the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         public HeightReferenceCesiumWriter HeightReferenceWriter
         {
@@ -814,7 +814,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>heightReference</code> property.  The <code>heightReference</code> property defines the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// Opens and returns the writer for the <c>heightReference</c> property.  The <c>heightReference</c> property defines the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         public HeightReferenceCesiumWriter OpenHeightReferenceProperty()
         {
@@ -823,7 +823,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>heightReference</code> property as a <code>heightReference</code> value.  The <code>heightReference</code> property specifies the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// Writes a value for the <c>heightReference</c> property as a <c>heightReference</c> value.  The <c>heightReference</c> property specifies the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         /// <param name="value">The height reference.</param>
         public void WriteHeightReferenceProperty(CesiumHeightReference value)
@@ -835,7 +835,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value.  The <c>heightReference</c> property specifies the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteHeightReferencePropertyReference(Reference value)
@@ -847,7 +847,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value.  The <c>heightReference</c> property specifies the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteHeightReferencePropertyReference(string value)
@@ -859,7 +859,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value.  The <c>heightReference</c> property specifies the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -872,7 +872,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <code>heightReference</code> property as a <code>reference</code> value.  The <code>heightReference</code> property specifies the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value.  The <c>heightReference</c> property specifies the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -885,7 +885,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <code>nodeTransformations</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <code>nodeTransformations</code> property defines a mapping of node names to node transformations.
+        /// Gets the writer for the <c>nodeTransformations</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>nodeTransformations</c> property defines a mapping of node names to node transformations.
         /// </summary>
         public NodeTransformationsCesiumWriter NodeTransformationsWriter
         {
@@ -893,7 +893,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <code>nodeTransformations</code> property.  The <code>nodeTransformations</code> property defines a mapping of node names to node transformations.
+        /// Opens and returns the writer for the <c>nodeTransformations</c> property.  The <c>nodeTransformations</c> property defines a mapping of node names to node transformations.
         /// </summary>
         public NodeTransformationsCesiumWriter OpenNodeTransformationsProperty()
         {

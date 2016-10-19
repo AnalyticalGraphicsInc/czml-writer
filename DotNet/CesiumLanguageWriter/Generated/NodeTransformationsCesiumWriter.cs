@@ -7,7 +7,7 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <code>NodeTransformations</code> to a <see cref="CesiumOutputStream" />.  A <code>NodeTransformations</code> is a mapping of node names to node transformations.
+    /// Writes a <c>NodeTransformations</c> to a <see cref="CesiumOutputStream" />.  A <c>NodeTransformations</c> is a mapping of node names to node transformations.
     /// </summary>
     public class NodeTransformationsCesiumWriter : CesiumPropertyWriter<NodeTransformationsCesiumWriter>
     {
@@ -35,7 +35,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets a new writer for a <code>NodeTransformation</code> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  A <code>NodeTransformation</code> property defines transformations to apply to a particular node in a 3D model.
+        /// Gets a new writer for a <c>NodeTransformation</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  A <c>NodeTransformation</c> property defines transformations to apply to a particular node in a 3D model.
         /// </summary>
         public NodeTransformationCesiumWriter GetNodeTransformationWriter(string name)
         {
@@ -43,7 +43,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns a new writer for a <code>NodeTransformation</code> property.  A <code>NodeTransformation</code> property defines transformations to apply to a particular node in a 3D model.
+        /// Opens and returns a new writer for a <c>NodeTransformation</c> property.  A <c>NodeTransformation</c> property defines transformations to apply to a particular node in a 3D model.
         /// </summary>
         /// <param name="name">The name of the new property writer.</param>
         public NodeTransformationCesiumWriter OpenNodeTransformationProperty(string name)
