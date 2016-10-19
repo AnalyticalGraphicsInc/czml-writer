@@ -5,7 +5,7 @@ namespace CesiumLanguageWriter.Advanced
     /// <summary>
     /// The base class for types that write CZML data to a stream.
     /// </summary>
-    public abstract class CesiumElementWriter : ICesiumElementWriter, IDisposable
+    public abstract class CesiumElementWriter : ICesiumElementWriter
     {
         private CesiumOutputStream m_output;
 

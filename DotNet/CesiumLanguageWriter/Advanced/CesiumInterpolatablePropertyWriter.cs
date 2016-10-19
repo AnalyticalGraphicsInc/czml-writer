@@ -12,7 +12,7 @@
         /// Initializes a new instance.
         /// </summary>
         /// <param name="propertyName">The name of the property.</param>
-        public CesiumInterpolatablePropertyWriter(string propertyName)
+        protected CesiumInterpolatablePropertyWriter(string propertyName)
             : base(propertyName)
         {
         }

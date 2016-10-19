@@ -176,7 +176,7 @@ namespace GenerateFromSchema
 
         private static void WriteDescriptionAsClassSummary(CodeWriter writer, Schema schema)
         {
-            WriteSummaryText(writer, string.Format("Writes a <code>{0}</code> to a <see cref=\"CesiumOutputStream\" />.  A <code>{0}</code> is {1}",
+            WriteSummaryText(writer, string.Format("Writes a <c>{0}</c> to a <see cref=\"CesiumOutputStream\" />.  A <c>{0}</c> is {1}",
                 schema.Name,
                 schema.Description.UncapitalizeFirstLetter()));
         }
@@ -185,7 +185,7 @@ namespace GenerateFromSchema
         {
             foreach (Property property in schema.Properties)
             {
-                WriteSummaryText(writer, string.Format("The name of the <code>{0}</code> property.", property.Name));
+                WriteSummaryText(writer, string.Format("The name of the <c>{0}</c> property.", property.Name));
                 writer.WriteLine("public const string {0}PropertyName = \"{1}\";", property.NameWithPascalCase, property.Name);
                 writer.WriteLine();
             }
@@ -277,7 +277,7 @@ namespace GenerateFromSchema
                 Schema additionalPropertiesValueType = additionalProperties.ValueType;
                 GenerateWriterClass(additionalPropertiesValueType);
 
-                WriteSummaryText(writer, string.Format("Gets a new writer for a <code>{0}</code> property.  The returned instance must be opened by calling the <see cref=\"CesiumElementWriter.Open\"/> method before it can be used for writing.  A <code>{0}</code> property defines {1}", additionalPropertiesValueType.Name, GetDescription(additionalProperties)));
+                WriteSummaryText(writer, string.Format("Gets a new writer for a <c>{0}</c> property.  The returned instance must be opened by calling the <see cref=\"CesiumElementWriter.Open\"/> method before it can be used for writing.  A <c>{0}</c> property defines {1}", additionalPropertiesValueType.Name, GetDescription(additionalProperties)));
                 writer.WriteLine("public {0}CesiumWriter Get{0}Writer(string name)", additionalPropertiesValueType.NameWithPascalCase);
                 using (writer.OpenScope())
                 {
@@ -285,7 +285,7 @@ namespace GenerateFromSchema
                 }
                 writer.WriteLine();
 
-                WriteSummaryText(writer, string.Format("Opens and returns a new writer for a <code>{0}</code> property.  A <code>{0}</code> property defines {1}", additionalPropertiesValueType.Name, GetDescription(additionalProperties)));
+                WriteSummaryText(writer, string.Format("Opens and returns a new writer for a <c>{0}</c> property.  A <c>{0}</c> property defines {1}", additionalPropertiesValueType.Name, GetDescription(additionalProperties)));
                 WriteParameterText(writer, "name", "The name of the new property writer.");
                 writer.WriteLine("public {0}CesiumWriter Open{0}Property(string name)", additionalPropertiesValueType.NameWithPascalCase);
                 using (writer.OpenScope())
@@ -301,7 +301,7 @@ namespace GenerateFromSchema
         {
             GenerateWriterClass(property.ValueType);
 
-            WriteSummaryText(writer, string.Format("Gets the writer for the <code>{0}</code> property.  The returned instance must be opened by calling the <see cref=\"CesiumElementWriter.Open\"/> method before it can be used for writing.  The <code>{0}</code> property defines {1}", property.Name, GetDescription(property)));
+            WriteSummaryText(writer, string.Format("Gets the writer for the <c>{0}</c> property.  The returned instance must be opened by calling the <see cref=\"CesiumElementWriter.Open\"/> method before it can be used for writing.  The <c>{0}</c> property defines {1}", property.Name, GetDescription(property)));
             writer.WriteLine("public {0}CesiumWriter {1}Writer", property.ValueType.NameWithPascalCase, property.NameWithPascalCase);
             using (writer.OpenScope())
             {
@@ -309,7 +309,7 @@ namespace GenerateFromSchema
             }
             writer.WriteLine();
 
-            WriteSummaryText(writer, string.Format("Opens and returns the writer for the <code>{0}</code> property.  The <code>{0}</code> property defines {1}", property.Name, GetDescription(property)));
+            WriteSummaryText(writer, string.Format("Opens and returns the writer for the <c>{0}</c> property.  The <c>{0}</c> property defines {1}", property.Name, GetDescription(property)));
             writer.WriteLine("public {0}CesiumWriter Open{1}Property()", property.ValueType.NameWithPascalCase, property.NameWithPascalCase);
             using (writer.OpenScope())
             {
@@ -329,7 +329,7 @@ namespace GenerateFromSchema
 
                 foreach (OverloadInfo overload in overloads)
                 {
-                    WriteSummaryText(writer, string.Format("Writes a value for the <code>{0}</code> property as a <code>{1}</code> value.  The <code>{0}</code> property specifies {2}", property.Name, nestedProperty.Name, GetDescription(property)));
+                    WriteSummaryText(writer, string.Format("Writes a value for the <c>{0}</c> property as a <c>{1}</c> value.  The <c>{0}</c> property specifies {2}", property.Name, nestedProperty.Name, GetDescription(property)));
                     foreach (ParameterInfo parameter in overload.Parameters)
                     {
                         if (string.IsNullOrEmpty(parameter.Description))
@@ -363,7 +363,7 @@ namespace GenerateFromSchema
 
             foreach (OverloadInfo overload in overloads)
             {
-                WriteSummaryText(writer, string.Format("Writes the value expressed as a <code>{0}</code>, which is {1}", property.Name, GetDescription(property)));
+                WriteSummaryText(writer, string.Format("Writes the value expressed as a <c>{0}</c>, which is {1}", property.Name, GetDescription(property)));
                 foreach (ParameterInfo parameter in overload.Parameters)
                 {
                     if (string.IsNullOrEmpty(parameter.Description))
@@ -501,7 +501,7 @@ namespace GenerateFromSchema
                     if (sampleOverload != null)
                         interfaceName = "ICesiumInterpolatableValuePropertyWriter";
 
-                    WriteSummaryText(writer, string.Format("Returns a wrapper for this instance that implements <see cref=\"{0}{{T}}\" /> to write a value in <code>{1}</code> format.  Because the returned instance is a wrapper for this instance, you may call <see cref=\"ICesiumElementWriter.Close\" /> on either this instance or the wrapper, but you must not call it on both.", interfaceName, property.NameWithPascalCase));
+                    WriteSummaryText(writer, string.Format("Returns a wrapper for this instance that implements <see cref=\"{0}{{T}}\" /> to write a value in <c>{1}</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref=\"ICesiumElementWriter.Close\" /> on either this instance or the wrapper, but you must not call it on both.", interfaceName, property.NameWithPascalCase));
                     WriteReturnsText(writer, "The wrapper.");
                     writer.WriteLine("public {0}<{1}> As{2}()", interfaceName, firstOverloadFirstParameterType, property.NameWithPascalCase);
                     using (writer.OpenScope())

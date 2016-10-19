@@ -26,7 +26,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Initializes a new instance.
         /// </summary>
         /// <param name="propertyName">The name of the property.</param>
-        public CesiumPropertyWriter(string propertyName)
+        protected CesiumPropertyWriter(string propertyName)
         {
             m_propertyName = propertyName;
             m_multipleIntervals = new Lazy<CesiumIntervalListWriter<TDerived>>(CreateIntervalListWriter, false);
@@ -138,7 +138,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <inheritdoc />
-        protected override sealed void OnOpen()
+        protected sealed override void OnOpen()
         {
             if (m_elementType == ElementType.Interval || m_elementType == ElementType.PropertyConvertedToInterval)
                 Output.WriteStartObject();
@@ -147,7 +147,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <inheritdoc />
-        protected override sealed void OnClose()
+        protected sealed override void OnClose()
         {
             if (m_elementType == ElementType.Interval || m_elementType == ElementType.PropertyConvertedToInterval)
             {
@@ -158,9 +158,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Opens an interval for this property if one is not already open.  This method should be called by
-        /// derived-class <filter name="DotNet,Silverlight"><code>Open...</code></filter>
-        /// <filter name="Java"><code>open...</code></filter> methods prior to opening the nested property.
+        /// Opens an interval for this property if one is not already open.
         /// </summary>
         protected void OpenIntervalIfNecessary()
         {

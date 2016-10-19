@@ -1,4 +1,3 @@
-
 namespace CesiumLanguageWriter
 {
     /// <summary>
@@ -17,14 +16,8 @@ namespace CesiumLanguageWriter
         /// <remarks>
         /// <para>
         /// UTC is related to TAI according to the relationship
-        /// </para>
-        /// <para>
-        /// <code>UTC = TAI - deltaT</code>
-        /// </para>
-        /// <para>
-        /// where 
-        /// <code>deltaT</code>
-        /// is the number of leap seconds which have been introduced as of 
+        /// <c>UTC = TAI - deltaT</c>,
+        /// where <c>deltaT</c> is the number of leap seconds which have been introduced as of 
         /// the time in TAI.
         /// </para>
         /// </remarks>

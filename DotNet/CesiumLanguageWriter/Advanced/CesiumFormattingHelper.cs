@@ -63,9 +63,9 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Downloads and converts a remote resource URI into a data URI in the form
-        /// <code>data:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>, where
-        /// <code>&lt;MimeType&gt;</code> is the MIME type of the specified resource, and
-        /// <code>&lt;ImageData&gt;</code> is the data encoded as a Base 64 string.
+        /// <c>data:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</c>, where
+        /// <c>&lt;MimeType&gt;</c> is the MIME type of the specified resource, and
+        /// <c>&lt;ImageData&gt;</c> is the data encoded as a Base 64 string.
         /// </summary>
         /// <param name="uri">The URI of the resource to convert.</param>
         /// <returns>A data URI containing the content of the resource.</returns>
@@ -91,9 +91,9 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Reads from a stream containing an image into a data URI in the form
-        /// <code>data:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>, where
-        /// <code>&lt;MimeType&gt;</code> is the MIME type of the specified image format, and
-        /// <code>&lt;ImageData&gt;</code> is the image data encoded as a Base 64 string.
+        /// <c>data:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</c>, where
+        /// <c>&lt;MimeType&gt;</c> is the MIME type of the specified image format, and
+        /// <c>&lt;ImageData&gt;</c> is the image data encoded as a Base 64 string.
         /// This method does not attempt to decode the image data, but simply writes it directly to the data URI.
         /// </summary>
         /// <param name="stream">The stream containing the image to encode into a data URI.</param>
@@ -107,9 +107,9 @@ namespace CesiumLanguageWriter.Advanced
 
         /// <summary>
         /// Converts an image to a data URI in the form
-        /// <code>data:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</code>, where
-        /// <code>&lt;MimeType&gt;</code> is the MIME type of the specified <paramref name="image"/>, and
-        /// <code>&lt;ImageData&gt;</code> is the image data encoded as a Base 64 string.
+        /// <c>data:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</c>, where
+        /// <c>&lt;MimeType&gt;</c> is the MIME type of the specified <paramref name="image"/>, and
+        /// <c>&lt;ImageData&gt;</c> is the image data encoded as a Base 64 string.
         /// </summary>
         /// <param name="image">The image to convert.</param>
         /// <param name="imageFormat">The format of the image, which controls the mime type.</param>
