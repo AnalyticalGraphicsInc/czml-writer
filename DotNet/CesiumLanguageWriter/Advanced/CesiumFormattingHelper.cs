@@ -378,6 +378,26 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Converts a <see cref="CesiumColorBlendMode"/> to the corresponding string in a CZML stream.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        public static string ColorBlendModeToString(CesiumColorBlendMode value)
+        {
+            switch (value)
+            {
+                case CesiumColorBlendMode.Highlight:
+                    return "HIGHLIGHT";
+                case CesiumColorBlendMode.Replace:
+                    return "REPLACE";
+                case CesiumColorBlendMode.Mix:
+                    return "MIX";
+                default:
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
+            }
+        }
+
+        /// <summary>
         /// Converts a <see cref="CesiumSensorVolumePortionToDisplay"/> to the corresponding string in a CZML stream.
         /// </summary>
         /// <param name="value">The value to convert.</param>
