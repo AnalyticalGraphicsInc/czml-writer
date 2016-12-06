@@ -431,8 +431,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WritePositionProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
         {
             using (var writer = OpenPositionProperty())
@@ -471,8 +471,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The position corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WritePositionPropertyCartographicRadians(IList<JulianDate> dates, IList<Cartographic> values, int startIndex, int length)
         {
             using (var writer = OpenPositionProperty())
@@ -511,8 +511,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The position corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WritePositionPropertyCartographicDegrees(IList<JulianDate> dates, IList<Cartographic> values, int startIndex, int length)
         {
             using (var writer = OpenPositionProperty())
@@ -551,8 +551,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WritePositionPropertyCartesianVelocity(IList<JulianDate> dates, IList<Motion<Cartesian>> values, int startIndex, int length)
         {
             using (var writer = OpenPositionProperty())
@@ -657,8 +657,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteOrientationProperty(IList<JulianDate> dates, IList<UnitQuaternion> values, int startIndex, int length)
         {
             using (var writer = OpenOrientationProperty())
@@ -763,8 +763,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteViewFromProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
         {
             using (var writer = OpenViewFromProperty())
@@ -824,7 +824,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>billboard</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>billboard</c> property defines a billboard, or viewport-aligned image, sometimes called a marker.  The billboard is positioned in the scene by the `position` property.
+        /// Gets the writer for the <c>billboard</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>billboard</c> property defines a billboard, or viewport-aligned image, sometimes called a marker.  The billboard is positioned in the scene by the <c>position</c> property.
         /// </summary>
         public BillboardCesiumWriter BillboardWriter
         {
@@ -832,7 +832,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>billboard</c> property.  The <c>billboard</c> property defines a billboard, or viewport-aligned image, sometimes called a marker.  The billboard is positioned in the scene by the `position` property.
+        /// Opens and returns the writer for the <c>billboard</c> property.  The <c>billboard</c> property defines a billboard, or viewport-aligned image, sometimes called a marker.  The billboard is positioned in the scene by the <c>position</c> property.
         /// </summary>
         public BillboardCesiumWriter OpenBillboardProperty()
         {
@@ -840,7 +840,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>box</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>box</c> property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the `position` and `orientation` properties.
+        /// Gets the writer for the <c>box</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>box</c> property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public BoxCesiumWriter BoxWriter
         {
@@ -848,7 +848,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>box</c> property.  The <c>box</c> property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the `position` and `orientation` properties.
+        /// Opens and returns the writer for the <c>box</c> property.  The <c>box</c> property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public BoxCesiumWriter OpenBoxProperty()
         {
@@ -872,7 +872,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>cylinder</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>cylinder</c> property defines a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.  The cylinder is positioned and oriented using the `position` and `orientation` properties.
+        /// Gets the writer for the <c>cylinder</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>cylinder</c> property defines a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.  The cylinder is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public CylinderCesiumWriter CylinderWriter
         {
@@ -880,7 +880,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>cylinder</c> property.  The <c>cylinder</c> property defines a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.  The cylinder is positioned and oriented using the `position` and `orientation` properties.
+        /// Opens and returns the writer for the <c>cylinder</c> property.  The <c>cylinder</c> property defines a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.  The cylinder is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public CylinderCesiumWriter OpenCylinderProperty()
         {
@@ -888,7 +888,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>ellipse</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>ellipse</c> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
+        /// Gets the writer for the <c>ellipse</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>ellipse</c> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the <c>position</c> property.
         /// </summary>
         public EllipseCesiumWriter EllipseWriter
         {
@@ -896,7 +896,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>ellipse</c> property.  The <c>ellipse</c> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the `position` property.
+        /// Opens and returns the writer for the <c>ellipse</c> property.  The <c>ellipse</c> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the <c>position</c> property.
         /// </summary>
         public EllipseCesiumWriter OpenEllipseProperty()
         {
@@ -904,7 +904,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>ellipsoid</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>ellipsoid</c> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+        /// Gets the writer for the <c>ellipsoid</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>ellipsoid</c> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public EllipsoidCesiumWriter EllipsoidWriter
         {
@@ -912,7 +912,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>ellipsoid</c> property.  The <c>ellipsoid</c> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the `position` and `orientation` properties.
+        /// Opens and returns the writer for the <c>ellipsoid</c> property.  The <c>ellipsoid</c> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public EllipsoidCesiumWriter OpenEllipsoidProperty()
         {
@@ -920,7 +920,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>label</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>label</c> property defines a string of text.  The label is positioned in the scene by the `position` property.
+        /// Gets the writer for the <c>label</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>label</c> property defines a string of text.  The label is positioned in the scene by the <c>position</c> property.
         /// </summary>
         public LabelCesiumWriter LabelWriter
         {
@@ -928,7 +928,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>label</c> property.  The <c>label</c> property defines a string of text.  The label is positioned in the scene by the `position` property.
+        /// Opens and returns the writer for the <c>label</c> property.  The <c>label</c> property defines a string of text.  The label is positioned in the scene by the <c>position</c> property.
         /// </summary>
         public LabelCesiumWriter OpenLabelProperty()
         {
@@ -936,7 +936,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>model</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>model</c> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+        /// Gets the writer for the <c>model</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>model</c> property defines a 3D model.  The model is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public ModelCesiumWriter ModelWriter
         {
@@ -944,7 +944,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>model</c> property.  The <c>model</c> property defines a 3D model.  The model is positioned and oriented using the `position` and `orientation` properties.
+        /// Opens and returns the writer for the <c>model</c> property.  The <c>model</c> property defines a 3D model.  The model is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public ModelCesiumWriter OpenModelProperty()
         {
@@ -952,7 +952,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>path</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>path</c> property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
+        /// Gets the writer for the <c>path</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>path</c> property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the <c>position</c> property.
         /// </summary>
         public PathCesiumWriter PathWriter
         {
@@ -960,7 +960,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>path</c> property.  The <c>path</c> property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
+        /// Opens and returns the writer for the <c>path</c> property.  The <c>path</c> property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the <c>position</c> property.
         /// </summary>
         public PathCesiumWriter OpenPathProperty()
         {
@@ -968,7 +968,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>point</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>point</c> property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property.
+        /// Gets the writer for the <c>point</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>point</c> property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the <c>position</c> property.
         /// </summary>
         public PointCesiumWriter PointWriter
         {
@@ -976,7 +976,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>point</c> property.  The <c>point</c> property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the `position` property.
+        /// Opens and returns the writer for the <c>point</c> property.  The <c>point</c> property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the <c>position</c> property.
         /// </summary>
         public PointCesiumWriter OpenPointProperty()
         {
@@ -1048,7 +1048,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>agi_conicSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_conicSensor</c> property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the `position` and `orientation` properties.
+        /// Gets the writer for the <c>agi_conicSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_conicSensor</c> property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public ConicSensorCesiumWriter ConicSensorWriter
         {
@@ -1056,7 +1056,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>agi_conicSensor</c> property.  The <c>agi_conicSensor</c> property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the `position` and `orientation` properties.
+        /// Opens and returns the writer for the <c>agi_conicSensor</c> property.  The <c>agi_conicSensor</c> property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public ConicSensorCesiumWriter OpenConicSensorProperty()
         {
@@ -1064,7 +1064,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>agi_customPatternSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_customPatternSensor</c> property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the `position` and `orientation` properties.
+        /// Gets the writer for the <c>agi_customPatternSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_customPatternSensor</c> property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public CustomPatternSensorCesiumWriter CustomPatternSensorWriter
         {
@@ -1072,7 +1072,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>agi_customPatternSensor</c> property.  The <c>agi_customPatternSensor</c> property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the `position` and `orientation` properties.
+        /// Opens and returns the writer for the <c>agi_customPatternSensor</c> property.  The <c>agi_customPatternSensor</c> property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public CustomPatternSensorCesiumWriter OpenCustomPatternSensorProperty()
         {
@@ -1080,7 +1080,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>agi_rectangularSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_rectangularSensor</c> property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the `position` and `orientation` properties.
+        /// Gets the writer for the <c>agi_rectangularSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_rectangularSensor</c> property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public RectangularSensorCesiumWriter RectangularSensorWriter
         {
@@ -1088,7 +1088,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>agi_rectangularSensor</c> property.  The <c>agi_rectangularSensor</c> property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the `position` and `orientation` properties.
+        /// Opens and returns the writer for the <c>agi_rectangularSensor</c> property.  The <c>agi_rectangularSensor</c> property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public RectangularSensorCesiumWriter OpenRectangularSensorProperty()
         {
@@ -1096,7 +1096,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>agi_fan</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_fan</c> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.  The fan is positioned and oriented using the `position` and `orientation` properties.
+        /// Gets the writer for the <c>agi_fan</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_fan</c> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.  The fan is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public FanCesiumWriter FanWriter
         {
@@ -1104,7 +1104,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>agi_fan</c> property.  The <c>agi_fan</c> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.  The fan is positioned and oriented using the `position` and `orientation` properties.
+        /// Opens and returns the writer for the <c>agi_fan</c> property.  The <c>agi_fan</c> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.  The fan is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public FanCesiumWriter OpenFanProperty()
         {
@@ -1112,7 +1112,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>agi_vector</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_vector</c> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.  The vector is positioned using the `position` property.
+        /// Gets the writer for the <c>agi_vector</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_vector</c> property defines defines a graphical vector that originates at the <c>position</c> property and extends in the provided direction for the provided length.  The vector is positioned using the <c>position</c> property.
         /// </summary>
         public VectorCesiumWriter VectorWriter
         {
@@ -1120,7 +1120,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>agi_vector</c> property.  The <c>agi_vector</c> property defines defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.  The vector is positioned using the `position` property.
+        /// Opens and returns the writer for the <c>agi_vector</c> property.  The <c>agi_vector</c> property defines defines a graphical vector that originates at the <c>position</c> property and extends in the provided direction for the provided length.  The vector is positioned using the <c>position</c> property.
         /// </summary>
         public VectorCesiumWriter OpenVectorProperty()
         {

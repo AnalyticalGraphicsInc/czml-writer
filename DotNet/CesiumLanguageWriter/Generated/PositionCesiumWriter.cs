@@ -94,7 +94,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian</c>, which is the position specified as a three-dimensional Cartesian value, `[X, Y, Z]`, in meters relative to the `referenceFrame`.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the position specified as a three-dimensional Cartesian value, <c>[X, Y, Z]</c>, in meters relative to the <c>referenceFrame</c>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCartesian(Cartesian value)
@@ -106,7 +106,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian</c>, which is the position specified as a three-dimensional Cartesian value, `[X, Y, Z]`, in meters relative to the `referenceFrame`.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the position specified as a three-dimensional Cartesian value, <c>[X, Y, Z]</c>, in meters relative to the <c>referenceFrame</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -116,12 +116,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian</c>, which is the position specified as a three-dimensional Cartesian value, `[X, Y, Z]`, in meters relative to the `referenceFrame`.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the position specified as a three-dimensional Cartesian value, <c>[X, Y, Z]</c>, in meters relative to the <c>referenceFrame</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteCartesian(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
         {
             const string PropertyName = CartesianPropertyName;
@@ -130,7 +130,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartographicRadians</c>, which is the position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in radians and Height is in meters.
+        /// Writes the value expressed as a <c>cartographicRadians</c>, which is the position specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in radians and Height is in meters.
         /// </summary>
         /// <param name="value">The interval.</param>
         public void WriteCartographicRadians(Cartographic value)
@@ -142,7 +142,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartographicRadians</c>, which is the position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in radians and Height is in meters.
+        /// Writes the value expressed as a <c>cartographicRadians</c>, which is the position specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in radians and Height is in meters.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -152,12 +152,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartographicRadians</c>, which is the position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in radians and Height is in meters.
+        /// Writes the value expressed as a <c>cartographicRadians</c>, which is the position specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in radians and Height is in meters.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The position corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteCartographicRadians(IList<JulianDate> dates, IList<Cartographic> values, int startIndex, int length)
         {
             const string PropertyName = CartographicRadiansPropertyName;
@@ -166,7 +166,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in degrees and Height is in meters.
+        /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the position specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in degrees and Height is in meters.
         /// </summary>
         /// <param name="value">The interval.</param>
         public void WriteCartographicDegrees(Cartographic value)
@@ -178,7 +178,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in degrees and Height is in meters.
+        /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the position specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in degrees and Height is in meters.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -188,12 +188,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in degrees and Height is in meters.
+        /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the position specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in degrees and Height is in meters.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The position corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteCartographicDegrees(IList<JulianDate> dates, IList<Cartographic> values, int startIndex, int length)
         {
             const string PropertyName = CartographicDegreesPropertyName;
@@ -202,7 +202,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesianVelocity</c>, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, `[X, Y, Z, dX, dY, dZ]`, in meters relative to the `referenceFrame`.
+        /// Writes the value expressed as a <c>cartesianVelocity</c>, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, <c>[X, Y, Z, dX, dY, dZ]</c>, in meters relative to the <c>referenceFrame</c>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCartesianVelocity(Motion<Cartesian> value)
@@ -214,7 +214,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesianVelocity</c>, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, `[X, Y, Z, dX, dY, dZ]`, in meters relative to the `referenceFrame`.
+        /// Writes the value expressed as a <c>cartesianVelocity</c>, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, <c>[X, Y, Z, dX, dY, dZ]</c>, in meters relative to the <c>referenceFrame</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -224,12 +224,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesianVelocity</c>, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, `[X, Y, Z, dX, dY, dZ]`, in meters relative to the `referenceFrame`.
+        /// Writes the value expressed as a <c>cartesianVelocity</c>, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, <c>[X, Y, Z, dX, dY, dZ]</c>, in meters relative to the <c>referenceFrame</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteCartesianVelocity(IList<JulianDate> dates, IList<Motion<Cartesian>> values, int startIndex, int length)
         {
             const string PropertyName = CartesianVelocityPropertyName;

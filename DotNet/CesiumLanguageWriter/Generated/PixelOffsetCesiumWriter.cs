@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian2</c>, which is the pixel offset specified as a two-dimensional Cartesian value `[X, Y]`, in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.
+        /// Writes the value expressed as a <c>cartesian2</c>, which is the pixel offset specified as a two-dimensional Cartesian value <c>[X, Y]</c>, in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCartesian2(Rectangular value)
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian2</c>, which is the pixel offset specified as a two-dimensional Cartesian value `[X, Y]`, in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.
+        /// Writes the value expressed as a <c>cartesian2</c>, which is the pixel offset specified as a two-dimensional Cartesian value <c>[X, Y]</c>, in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.
         /// </summary>
         /// <param name="x">The X component.</param>
         /// <param name="y">The Y component.</param>
@@ -75,7 +75,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian2</c>, which is the pixel offset specified as a two-dimensional Cartesian value `[X, Y]`, in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.
+        /// Writes the value expressed as a <c>cartesian2</c>, which is the pixel offset specified as a two-dimensional Cartesian value <c>[X, Y]</c>, in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -85,12 +85,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian2</c>, which is the pixel offset specified as a two-dimensional Cartesian value `[X, Y]`, in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.
+        /// Writes the value expressed as a <c>cartesian2</c>, which is the pixel offset specified as a two-dimensional Cartesian value <c>[X, Y]</c>, in viewport coordinates in pixels, where X is pixels to the right and Y is pixels up.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteCartesian2(IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
         {
             const string PropertyName = Cartesian2PropertyName;

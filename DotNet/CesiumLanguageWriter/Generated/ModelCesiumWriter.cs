@@ -54,6 +54,21 @@ namespace CesiumLanguageWriter
         public const string HeightReferencePropertyName = "heightReference";
 
         /// <summary>
+        /// The name of the <c>color</c> property.
+        /// </summary>
+        public const string ColorPropertyName = "color";
+
+        /// <summary>
+        /// The name of the <c>colorBlendMode</c> property.
+        /// </summary>
+        public const string ColorBlendModePropertyName = "colorBlendMode";
+
+        /// <summary>
+        /// The name of the <c>colorBlendAmount</c> property.
+        /// </summary>
+        public const string ColorBlendAmountPropertyName = "colorBlendAmount";
+
+        /// <summary>
         /// The name of the <c>nodeTransformations</c> property.
         /// </summary>
         public const string NodeTransformationsPropertyName = "nodeTransformations";
@@ -66,6 +81,9 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BooleanCesiumWriter> m_incrementallyLoadTextures = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(IncrementallyLoadTexturesPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_runAnimations = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(RunAnimationsPropertyName), false);
         private readonly Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(HeightReferencePropertyName), false);
+        private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
+        private readonly Lazy<ColorBlendModeCesiumWriter> m_colorBlendMode = new Lazy<ColorBlendModeCesiumWriter>(() => new ColorBlendModeCesiumWriter(ColorBlendModePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_colorBlendAmount = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ColorBlendAmountPropertyName), false);
         private readonly Lazy<NodeTransformationsCesiumWriter> m_nodeTransformations = new Lazy<NodeTransformationsCesiumWriter>(() => new NodeTransformationsCesiumWriter(NodeTransformationsPropertyName), false);
 
         /// <summary>
@@ -373,8 +391,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteScaleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenScaleProperty())
@@ -480,8 +498,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteMinimumPixelSizeProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenMinimumPixelSizeProperty())
@@ -541,7 +559,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>maximumScale</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>maximumScale</c> property defines the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Gets the writer for the <c>maximumScale</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>maximumScale</c> property defines the maximum scale size of the model. This is used as an upper limit for <c>minimumPixelSize</c>.
         /// </summary>
         public DoubleCesiumWriter MaximumScaleWriter
         {
@@ -549,7 +567,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>maximumScale</c> property.  The <c>maximumScale</c> property defines the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Opens and returns the writer for the <c>maximumScale</c> property.  The <c>maximumScale</c> property defines the maximum scale size of the model. This is used as an upper limit for <c>minimumPixelSize</c>.
         /// </summary>
         public DoubleCesiumWriter OpenMaximumScaleProperty()
         {
@@ -558,7 +576,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>maximumScale</c> property as a <c>number</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Writes a value for the <c>maximumScale</c> property as a <c>number</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for <c>minimumPixelSize</c>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteMaximumScaleProperty(double value)
@@ -570,7 +588,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>maximumScale</c> property as a <c>number</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Writes a value for the <c>maximumScale</c> property as a <c>number</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for <c>minimumPixelSize</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -583,12 +601,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>maximumScale</c> property as a <c>number</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Writes a value for the <c>maximumScale</c> property as a <c>number</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for <c>minimumPixelSize</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteMaximumScaleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenMaximumScaleProperty())
@@ -598,7 +616,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>maximumScale</c> property as a <c>reference</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Writes a value for the <c>maximumScale</c> property as a <c>reference</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for <c>minimumPixelSize</c>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteMaximumScalePropertyReference(Reference value)
@@ -610,7 +628,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>maximumScale</c> property as a <c>reference</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Writes a value for the <c>maximumScale</c> property as a <c>reference</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for <c>minimumPixelSize</c>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteMaximumScalePropertyReference(string value)
@@ -622,7 +640,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>maximumScale</c> property as a <c>reference</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Writes a value for the <c>maximumScale</c> property as a <c>reference</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for <c>minimumPixelSize</c>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -635,7 +653,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>maximumScale</c> property as a <c>reference</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for `minimumPixelSize`.
+        /// Writes a value for the <c>maximumScale</c> property as a <c>reference</c> value.  The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for <c>minimumPixelSize</c>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -879,6 +897,369 @@ namespace CesiumLanguageWriter
         public void WriteHeightReferencePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>color</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>color</c> property defines the color to blend with the model's rendered color.
+        /// </summary>
+        public ColorCesiumWriter ColorWriter
+        {
+            get { return m_color.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>color</c> property.  The <c>color</c> property defines the color to blend with the model's rendered color.
+        /// </summary>
+        public ColorCesiumWriter OpenColorProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ColorWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color to blend with the model's rendered color.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteColorProperty(Color color)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgba(color);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color to blend with the model's rendered color.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 255.</param>
+        /// <param name="green">The green component in the range 0 to 255.</param>
+        /// <param name="blue">The blue component in the range 0 to 255.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 255.</param>
+        public void WriteColorProperty(int red, int green, int blue, int alpha)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgba(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color to blend with the model's rendered color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteColorProperty(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgba(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value.  The <c>color</c> property specifies the color to blend with the model's rendered color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color to blend with the model's rendered color.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteColorPropertyRgbaf(Color color)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgbaf(color);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color to blend with the model's rendered color.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 1.0.</param>
+        /// <param name="green">The green component in the range 0 to 1.0.</param>
+        /// <param name="blue">The blue component in the range 0 to 1.0.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 1.0.</param>
+        public void WriteColorPropertyRgbaf(float red, float green, float blue, float alpha)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color to blend with the model's rendered color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgbaf(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value.  The <c>color</c> property specifies the color to blend with the model's rendered color.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteRgbaf(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color to blend with the model's rendered color.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color to blend with the model's rendered color.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteColorPropertyReference(string value)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color to blend with the model's rendered color.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value.  The <c>color</c> property specifies the color to blend with the model's rendered color.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>colorBlendMode</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>colorBlendMode</c> property defines the mode to use for blending between <c>color</c> and the model's color.  If not specified, the default value is HIGHLIGHT.
+        /// </summary>
+        public ColorBlendModeCesiumWriter ColorBlendModeWriter
+        {
+            get { return m_colorBlendMode.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>colorBlendMode</c> property.  The <c>colorBlendMode</c> property defines the mode to use for blending between <c>color</c> and the model's color.  If not specified, the default value is HIGHLIGHT.
+        /// </summary>
+        public ColorBlendModeCesiumWriter OpenColorBlendModeProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ColorBlendModeWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>colorBlendMode</c> property as a <c>colorBlendMode</c> value.  The <c>colorBlendMode</c> property specifies the mode to use for blending between <c>color</c> and the model's color.  If not specified, the default value is HIGHLIGHT.
+        /// </summary>
+        /// <param name="value">The blend mode.</param>
+        public void WriteColorBlendModeProperty(CesiumColorBlendMode value)
+        {
+            using (var writer = OpenColorBlendModeProperty())
+            {
+                writer.WriteColorBlendMode(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>colorBlendMode</c> property as a <c>reference</c> value.  The <c>colorBlendMode</c> property specifies the mode to use for blending between <c>color</c> and the model's color.  If not specified, the default value is HIGHLIGHT.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteColorBlendModePropertyReference(Reference value)
+        {
+            using (var writer = OpenColorBlendModeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>colorBlendMode</c> property as a <c>reference</c> value.  The <c>colorBlendMode</c> property specifies the mode to use for blending between <c>color</c> and the model's color.  If not specified, the default value is HIGHLIGHT.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteColorBlendModePropertyReference(string value)
+        {
+            using (var writer = OpenColorBlendModeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>colorBlendMode</c> property as a <c>reference</c> value.  The <c>colorBlendMode</c> property specifies the mode to use for blending between <c>color</c> and the model's color.  If not specified, the default value is HIGHLIGHT.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteColorBlendModePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenColorBlendModeProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>colorBlendMode</c> property as a <c>reference</c> value.  The <c>colorBlendMode</c> property specifies the mode to use for blending between <c>color</c> and the model's color.  If not specified, the default value is HIGHLIGHT.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteColorBlendModePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenColorBlendModeProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>colorBlendAmount</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>colorBlendAmount</c> property defines the color strength when <c>colorBlendMode</c> is <c>MIX</c>. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.  If not specified, the default value is 0.5.
+        /// </summary>
+        public DoubleCesiumWriter ColorBlendAmountWriter
+        {
+            get { return m_colorBlendAmount.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>colorBlendAmount</c> property.  The <c>colorBlendAmount</c> property defines the color strength when <c>colorBlendMode</c> is <c>MIX</c>. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.  If not specified, the default value is 0.5.
+        /// </summary>
+        public DoubleCesiumWriter OpenColorBlendAmountProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ColorBlendAmountWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>colorBlendAmount</c> property as a <c>number</c> value.  The <c>colorBlendAmount</c> property specifies the color strength when <c>colorBlendMode</c> is <c>MIX</c>. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.  If not specified, the default value is 0.5.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteColorBlendAmountProperty(double value)
+        {
+            using (var writer = OpenColorBlendAmountProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>colorBlendAmount</c> property as a <c>number</c> value.  The <c>colorBlendAmount</c> property specifies the color strength when <c>colorBlendMode</c> is <c>MIX</c>. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.  If not specified, the default value is 0.5.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteColorBlendAmountProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenColorBlendAmountProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>colorBlendAmount</c> property as a <c>number</c> value.  The <c>colorBlendAmount</c> property specifies the color strength when <c>colorBlendMode</c> is <c>MIX</c>. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.  If not specified, the default value is 0.5.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteColorBlendAmountProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenColorBlendAmountProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>colorBlendAmount</c> property as a <c>reference</c> value.  The <c>colorBlendAmount</c> property specifies the color strength when <c>colorBlendMode</c> is <c>MIX</c>. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.  If not specified, the default value is 0.5.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteColorBlendAmountPropertyReference(Reference value)
+        {
+            using (var writer = OpenColorBlendAmountProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>colorBlendAmount</c> property as a <c>reference</c> value.  The <c>colorBlendAmount</c> property specifies the color strength when <c>colorBlendMode</c> is <c>MIX</c>. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.  If not specified, the default value is 0.5.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteColorBlendAmountPropertyReference(string value)
+        {
+            using (var writer = OpenColorBlendAmountProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>colorBlendAmount</c> property as a <c>reference</c> value.  The <c>colorBlendAmount</c> property specifies the color strength when <c>colorBlendMode</c> is <c>MIX</c>. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.  If not specified, the default value is 0.5.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteColorBlendAmountPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenColorBlendAmountProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>colorBlendAmount</c> property as a <c>reference</c> value.  The <c>colorBlendAmount</c> property specifies the color strength when <c>colorBlendMode</c> is <c>MIX</c>. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.  If not specified, the default value is 0.5.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteColorBlendAmountPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenColorBlendAmountProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

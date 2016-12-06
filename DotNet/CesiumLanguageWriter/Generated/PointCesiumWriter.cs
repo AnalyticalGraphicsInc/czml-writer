@@ -211,8 +211,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WritePixelSizeProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenPixelSizeProperty())
@@ -412,8 +412,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             using (var writer = OpenColorProperty())
@@ -467,8 +467,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             using (var writer = OpenColorProperty())
@@ -589,8 +589,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteOutlineColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -644,8 +644,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteOutlineColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -751,8 +751,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteOutlineWidthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenOutlineWidthProperty())
@@ -812,7 +812,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>scaleByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>scaleByDistance</c> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Gets the writer for the <c>scaleByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>scaleByDistance</c> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by <c>pixelSize</c>.
         /// </summary>
         public NearFarScalarCesiumWriter ScaleByDistanceWriter
         {
@@ -820,7 +820,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>scaleByDistance</c> property.  The <c>scaleByDistance</c> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Opens and returns the writer for the <c>scaleByDistance</c> property.  The <c>scaleByDistance</c> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by <c>pixelSize</c>.
         /// </summary>
         public NearFarScalarCesiumWriter OpenScaleByDistanceProperty()
         {
@@ -829,7 +829,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by <c>pixelSize</c>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteScaleByDistanceProperty(NearFarScalar value)
@@ -841,7 +841,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by <c>pixelSize</c>.
         /// </summary>
         /// <param name="nearDistance">The lower bound of the camera distance range.</param>
         /// <param name="nearValue">The value to use at the lower bound of the camera distance range.</param>
@@ -856,7 +856,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by <c>pixelSize</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -869,12 +869,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by <c>pixelSize</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteScaleByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values, int startIndex, int length)
         {
             using (var writer = OpenScaleByDistanceProperty())
@@ -884,7 +884,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by <c>pixelSize</c>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteScaleByDistancePropertyReference(Reference value)
@@ -896,7 +896,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by <c>pixelSize</c>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteScaleByDistancePropertyReference(string value)
@@ -908,7 +908,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by <c>pixelSize</c>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -921,7 +921,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`.
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by <c>pixelSize</c>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -995,8 +995,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteTranslucencyByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values, int startIndex, int length)
         {
             using (var writer = OpenTranslucencyByDistanceProperty())

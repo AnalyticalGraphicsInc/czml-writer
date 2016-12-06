@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Vector</c> to a <see cref="CesiumOutputStream" />.  A <c>Vector</c> is defines a graphical vector that originates at the `position` property and extends in the provided direction for the provided length.
+    /// Writes a <c>Vector</c> to a <see cref="CesiumOutputStream" />.  A <c>Vector</c> is defines a graphical vector that originates at the <c>position</c> property and extends in the provided direction for the provided length.
     /// </summary>
     public class VectorCesiumWriter : CesiumPropertyWriter<VectorCesiumWriter>
     {
@@ -208,8 +208,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             using (var writer = OpenColorProperty())
@@ -263,8 +263,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             using (var writer = OpenColorProperty())
@@ -370,8 +370,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteDirectionProperty(IList<JulianDate> dates, IList<Spherical> values, int startIndex, int length)
         {
             using (var writer = OpenDirectionProperty())
@@ -410,8 +410,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteDirectionPropertyUnitSpherical(IList<JulianDate> dates, IList<UnitSpherical> values, int startIndex, int length)
         {
             using (var writer = OpenDirectionProperty())
@@ -450,8 +450,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteDirectionPropertyCartesian(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
         {
             using (var writer = OpenDirectionProperty())
@@ -490,8 +490,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteDirectionPropertyUnitCartesian(IList<JulianDate> dates, IList<UnitCartesian> values, int startIndex, int length)
         {
             using (var writer = OpenDirectionProperty())
@@ -597,8 +597,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteLengthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenLengthProperty())
@@ -704,8 +704,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteMinimumLengthInPixelsProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenMinimumLengthInPixelsProperty())

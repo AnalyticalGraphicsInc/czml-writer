@@ -490,8 +490,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteScaleProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenScaleProperty())
@@ -551,7 +551,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>pixelOffset</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>pixelOffset</c> property defines the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
+        /// Gets the writer for the <c>pixelOffset</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>pixelOffset</c> property defines the offset, in viewport pixels, of the label origin from the <c>position</c>.  A pixel offset is the number of pixels up and to the right to place the label, relative to the <c>position</c>.
         /// </summary>
         public PixelOffsetCesiumWriter PixelOffsetWriter
         {
@@ -559,7 +559,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>pixelOffset</c> property.  The <c>pixelOffset</c> property defines the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
+        /// Opens and returns the writer for the <c>pixelOffset</c> property.  The <c>pixelOffset</c> property defines the offset, in viewport pixels, of the label origin from the <c>position</c>.  A pixel offset is the number of pixels up and to the right to place the label, relative to the <c>position</c>.
         /// </summary>
         public PixelOffsetCesiumWriter OpenPixelOffsetProperty()
         {
@@ -568,7 +568,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffset</c> property as a <c>cartesian2</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
+        /// Writes a value for the <c>pixelOffset</c> property as a <c>cartesian2</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the <c>position</c>.  A pixel offset is the number of pixels up and to the right to place the label, relative to the <c>position</c>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WritePixelOffsetProperty(Rectangular value)
@@ -580,7 +580,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffset</c> property as a <c>cartesian2</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
+        /// Writes a value for the <c>pixelOffset</c> property as a <c>cartesian2</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the <c>position</c>.  A pixel offset is the number of pixels up and to the right to place the label, relative to the <c>position</c>.
         /// </summary>
         /// <param name="x">The X component.</param>
         /// <param name="y">The Y component.</param>
@@ -593,7 +593,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffset</c> property as a <c>cartesian2</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
+        /// Writes a value for the <c>pixelOffset</c> property as a <c>cartesian2</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the <c>position</c>.  A pixel offset is the number of pixels up and to the right to place the label, relative to the <c>position</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -606,12 +606,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffset</c> property as a <c>cartesian2</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
+        /// Writes a value for the <c>pixelOffset</c> property as a <c>cartesian2</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the <c>position</c>.  A pixel offset is the number of pixels up and to the right to place the label, relative to the <c>position</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WritePixelOffsetProperty(IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
         {
             using (var writer = OpenPixelOffsetProperty())
@@ -621,7 +621,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffset</c> property as a <c>reference</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
+        /// Writes a value for the <c>pixelOffset</c> property as a <c>reference</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the <c>position</c>.  A pixel offset is the number of pixels up and to the right to place the label, relative to the <c>position</c>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WritePixelOffsetPropertyReference(Reference value)
@@ -633,7 +633,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffset</c> property as a <c>reference</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
+        /// Writes a value for the <c>pixelOffset</c> property as a <c>reference</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the <c>position</c>.  A pixel offset is the number of pixels up and to the right to place the label, relative to the <c>position</c>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WritePixelOffsetPropertyReference(string value)
@@ -645,7 +645,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffset</c> property as a <c>reference</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
+        /// Writes a value for the <c>pixelOffset</c> property as a <c>reference</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the <c>position</c>.  A pixel offset is the number of pixels up and to the right to place the label, relative to the <c>position</c>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -658,7 +658,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffset</c> property as a <c>reference</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the label, relative to the `position`.
+        /// Writes a value for the <c>pixelOffset</c> property as a <c>reference</c> value.  The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the <c>position</c>.  A pixel offset is the number of pixels up and to the right to place the label, relative to the <c>position</c>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -671,7 +671,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>eyeOffset</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>eyeOffset</c> property defines the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+        /// Gets the writer for the <c>eyeOffset</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>eyeOffset</c> property defines the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the <c>position</c> property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         public EyeOffsetCesiumWriter EyeOffsetWriter
         {
@@ -679,7 +679,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>eyeOffset</c> property.  The <c>eyeOffset</c> property defines the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+        /// Opens and returns the writer for the <c>eyeOffset</c> property.  The <c>eyeOffset</c> property defines the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the <c>position</c> property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         public EyeOffsetCesiumWriter OpenEyeOffsetProperty()
         {
@@ -688,7 +688,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>eyeOffset</c> property as a <c>cartesian</c> value.  The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+        /// Writes a value for the <c>eyeOffset</c> property as a <c>cartesian</c> value.  The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the <c>position</c> property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteEyeOffsetProperty(Cartesian value)
@@ -700,7 +700,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>eyeOffset</c> property as a <c>cartesian</c> value.  The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+        /// Writes a value for the <c>eyeOffset</c> property as a <c>cartesian</c> value.  The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the <c>position</c> property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -713,12 +713,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>eyeOffset</c> property as a <c>cartesian</c> value.  The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+        /// Writes a value for the <c>eyeOffset</c> property as a <c>cartesian</c> value.  The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the <c>position</c> property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteEyeOffsetProperty(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
         {
             using (var writer = OpenEyeOffsetProperty())
@@ -728,7 +728,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>eyeOffset</c> property as a <c>reference</c> value.  The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+        /// Writes a value for the <c>eyeOffset</c> property as a <c>reference</c> value.  The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the <c>position</c> property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteEyeOffsetPropertyReference(Reference value)
@@ -740,7 +740,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>eyeOffset</c> property as a <c>reference</c> value.  The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+        /// Writes a value for the <c>eyeOffset</c> property as a <c>reference</c> value.  The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the <c>position</c> property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteEyeOffsetPropertyReference(string value)
@@ -752,7 +752,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>eyeOffset</c> property as a <c>reference</c> value.  The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+        /// Writes a value for the <c>eyeOffset</c> property as a <c>reference</c> value.  The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the <c>position</c> property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -765,7 +765,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>eyeOffset</c> property as a <c>reference</c> value.  The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+        /// Writes a value for the <c>eyeOffset</c> property as a <c>reference</c> value.  The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the <c>position</c> property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -778,7 +778,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>horizontalOrigin</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>horizontalOrigin</c> property defines the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// Gets the writer for the <c>horizontalOrigin</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>horizontalOrigin</c> property defines the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
         public HorizontalOriginCesiumWriter HorizontalOriginWriter
         {
@@ -786,7 +786,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>horizontalOrigin</c> property.  The <c>horizontalOrigin</c> property defines the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// Opens and returns the writer for the <c>horizontalOrigin</c> property.  The <c>horizontalOrigin</c> property defines the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
         public HorizontalOriginCesiumWriter OpenHorizontalOriginProperty()
         {
@@ -795,7 +795,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>horizontalOrigin</c> property as a <c>horizontalOrigin</c> value.  The <c>horizontalOrigin</c> property specifies the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// Writes a value for the <c>horizontalOrigin</c> property as a <c>horizontalOrigin</c> value.  The <c>horizontalOrigin</c> property specifies the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
         /// <param name="value">The horizontal origin.</param>
         public void WriteHorizontalOriginProperty(CesiumHorizontalOrigin value)
@@ -807,7 +807,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>horizontalOrigin</c> property as a <c>reference</c> value.  The <c>horizontalOrigin</c> property specifies the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// Writes a value for the <c>horizontalOrigin</c> property as a <c>reference</c> value.  The <c>horizontalOrigin</c> property specifies the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteHorizontalOriginPropertyReference(Reference value)
@@ -819,7 +819,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>horizontalOrigin</c> property as a <c>reference</c> value.  The <c>horizontalOrigin</c> property specifies the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// Writes a value for the <c>horizontalOrigin</c> property as a <c>reference</c> value.  The <c>horizontalOrigin</c> property specifies the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteHorizontalOriginPropertyReference(string value)
@@ -831,7 +831,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>horizontalOrigin</c> property as a <c>reference</c> value.  The <c>horizontalOrigin</c> property specifies the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// Writes a value for the <c>horizontalOrigin</c> property as a <c>reference</c> value.  The <c>horizontalOrigin</c> property specifies the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -844,7 +844,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>horizontalOrigin</c> property as a <c>reference</c> value.  The <c>horizontalOrigin</c> property specifies the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// Writes a value for the <c>horizontalOrigin</c> property as a <c>reference</c> value.  The <c>horizontalOrigin</c> property specifies the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -857,7 +857,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>verticalOrigin</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>verticalOrigin</c> property defines the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// Gets the writer for the <c>verticalOrigin</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>verticalOrigin</c> property defines the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
         public VerticalOriginCesiumWriter VerticalOriginWriter
         {
@@ -865,7 +865,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>verticalOrigin</c> property.  The <c>verticalOrigin</c> property defines the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// Opens and returns the writer for the <c>verticalOrigin</c> property.  The <c>verticalOrigin</c> property defines the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
         public VerticalOriginCesiumWriter OpenVerticalOriginProperty()
         {
@@ -874,7 +874,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>verticalOrigin</c> property as a <c>verticalOrigin</c> value.  The <c>verticalOrigin</c> property specifies the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// Writes a value for the <c>verticalOrigin</c> property as a <c>verticalOrigin</c> value.  The <c>verticalOrigin</c> property specifies the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
         /// <param name="value">The vertical origin.</param>
         public void WriteVerticalOriginProperty(CesiumVerticalOrigin value)
@@ -886,7 +886,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>verticalOrigin</c> property as a <c>reference</c> value.  The <c>verticalOrigin</c> property specifies the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// Writes a value for the <c>verticalOrigin</c> property as a <c>reference</c> value.  The <c>verticalOrigin</c> property specifies the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteVerticalOriginPropertyReference(Reference value)
@@ -898,7 +898,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>verticalOrigin</c> property as a <c>reference</c> value.  The <c>verticalOrigin</c> property specifies the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// Writes a value for the <c>verticalOrigin</c> property as a <c>reference</c> value.  The <c>verticalOrigin</c> property specifies the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteVerticalOriginPropertyReference(string value)
@@ -910,7 +910,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>verticalOrigin</c> property as a <c>reference</c> value.  The <c>verticalOrigin</c> property specifies the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// Writes a value for the <c>verticalOrigin</c> property as a <c>reference</c> value.  The <c>verticalOrigin</c> property specifies the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -923,7 +923,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>verticalOrigin</c> property as a <c>reference</c> value.  The <c>verticalOrigin</c> property specifies the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the `position`.  If not specified, the default value is CENTER.
+        /// Writes a value for the <c>verticalOrigin</c> property as a <c>reference</c> value.  The <c>verticalOrigin</c> property specifies the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1076,8 +1076,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteFillColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             using (var writer = OpenFillColorProperty())
@@ -1131,8 +1131,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteFillColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             using (var writer = OpenFillColorProperty())
@@ -1253,8 +1253,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteOutlineColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -1308,8 +1308,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteOutlineColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -1415,8 +1415,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteOutlineWidthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenOutlineWidthProperty())
@@ -1537,8 +1537,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteTranslucencyByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values, int startIndex, int length)
         {
             using (var writer = OpenTranslucencyByDistanceProperty())
@@ -1598,7 +1598,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>pixelOffsetScaleByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>pixelOffsetScaleByDistance</c> property defines how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// Gets the writer for the <c>pixelOffsetScaleByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>pixelOffsetScaleByDistance</c> property defines how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
         public NearFarScalarCesiumWriter PixelOffsetScaleByDistanceWriter
         {
@@ -1606,7 +1606,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>pixelOffsetScaleByDistance</c> property.  The <c>pixelOffsetScaleByDistance</c> property defines how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// Opens and returns the writer for the <c>pixelOffsetScaleByDistance</c> property.  The <c>pixelOffsetScaleByDistance</c> property defines how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
         public NearFarScalarCesiumWriter OpenPixelOffsetScaleByDistanceProperty()
         {
@@ -1615,7 +1615,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WritePixelOffsetScaleByDistanceProperty(NearFarScalar value)
@@ -1627,7 +1627,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
         /// <param name="nearDistance">The lower bound of the camera distance range.</param>
         /// <param name="nearValue">The value to use at the lower bound of the camera distance range.</param>
@@ -1642,7 +1642,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1655,12 +1655,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WritePixelOffsetScaleByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values, int startIndex, int length)
         {
             using (var writer = OpenPixelOffsetScaleByDistanceProperty())
@@ -1670,7 +1670,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>reference</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>reference</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WritePixelOffsetScaleByDistancePropertyReference(Reference value)
@@ -1682,7 +1682,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>reference</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>reference</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WritePixelOffsetScaleByDistancePropertyReference(string value)
@@ -1694,7 +1694,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>reference</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>reference</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1707,7 +1707,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>reference</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by `pixelOffset`.
+        /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>reference</c> value.  The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

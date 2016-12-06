@@ -6,19 +6,21 @@ import java.lang.reflect.InvocationTargetException;
  * {@link RuntimeException} wrapper around {@link InvocationTargetException}.
  */
 public class RuntimeInvocationTargetException extends WrappedRuntimeException {
-	public RuntimeInvocationTargetException(InvocationTargetException e) {
-		super(e);
-	}
+    private static final long serialVersionUID = -1347127370192379291L;
 
-	public RuntimeInvocationTargetException(Throwable target) {
-		this(new InvocationTargetException(target));
-	}
+    public RuntimeInvocationTargetException(InvocationTargetException e) {
+        super(e);
+    }
 
-	public RuntimeInvocationTargetException(Throwable target, String s) {
-		this(new InvocationTargetException(target, s));
-	}
+    public RuntimeInvocationTargetException(Throwable target) {
+        this(new InvocationTargetException(target));
+    }
 
-	public Throwable getTargetException() {
-		return getCause();
-	}
+    public RuntimeInvocationTargetException(Throwable target, String s) {
+        this(new InvocationTargetException(target, s));
+    }
+
+    public Throwable getTargetException() {
+        return getCause();
+    }
 }

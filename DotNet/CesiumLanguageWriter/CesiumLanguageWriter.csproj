@@ -73,6 +73,7 @@
     <Compile Include="Cartesian.cs" />
     <Compile Include="Cartographic.cs" />
     <Compile Include="CartographicExtent.cs" />
+    <Compile Include="CesiumColorBlendMode.cs" />
     <Compile Include="CesiumCornerType.cs" />
     <Compile Include="CesiumHeightReference.cs" />
     <Compile Include="CesiumSensorVolumePortionToDisplay.cs" />
@@ -92,73 +93,210 @@
     <Compile Include="ClockRange.cs" />
     <Compile Include="ClockStep.cs" />
     <Compile Include="CustomCesiumWriter.cs" />
-    <Compile Include="Generated\AlignedAxisCesiumWriter.cs" />
-    <Compile Include="Generated\BillboardCesiumWriter.cs" />
-    <Compile Include="Generated\BooleanCesiumWriter.cs" />
-    <Compile Include="Generated\BoundingRectangleCesiumWriter.cs" />
-    <Compile Include="Generated\BoxCesiumWriter.cs" />
-    <Compile Include="Generated\BoxDimensionsCesiumWriter.cs" />
-    <Compile Include="Generated\ClockCesiumWriter.cs" />
-    <Compile Include="Generated\ColorCesiumWriter.cs" />
-    <Compile Include="Generated\ConicSensorCesiumWriter.cs" />
-    <Compile Include="Generated\CornerTypeCesiumWriter.cs" />
-    <Compile Include="Generated\CorridorCesiumWriter.cs" />
-    <Compile Include="Generated\CustomPatternSensorCesiumWriter.cs" />
-    <Compile Include="Generated\CylinderCesiumWriter.cs" />
-    <Compile Include="Generated\DirectionCesiumWriter.cs" />
-    <Compile Include="Generated\DirectionListCesiumWriter.cs" />
-    <Compile Include="Generated\DoubleCesiumWriter.cs" />
-    <Compile Include="Generated\DoubleListCesiumWriter.cs" />
-    <Compile Include="Generated\EllipseCesiumWriter.cs" />
-    <Compile Include="Generated\EllipsoidCesiumWriter.cs" />
-    <Compile Include="Generated\EllipsoidRadiiCesiumWriter.cs" />
-    <Compile Include="Generated\EyeOffsetCesiumWriter.cs" />
-    <Compile Include="Generated\FanCesiumWriter.cs" />
-    <Compile Include="Generated\FontCesiumWriter.cs" />
-    <Compile Include="Generated\GridMaterialCesiumWriter.cs" />
-    <Compile Include="Generated\HeightReferenceCesiumWriter.cs" />
-    <Compile Include="Generated\HorizontalOriginCesiumWriter.cs" />
-    <Compile Include="Generated\ImageMaterialCesiumWriter.cs" />
-    <Compile Include="Generated\LabelCesiumWriter.cs" />
-    <Compile Include="Generated\LabelStyleCesiumWriter.cs" />
-    <Compile Include="Generated\LineCountCesiumWriter.cs" />
-    <Compile Include="Generated\LineOffsetCesiumWriter.cs" />
-    <Compile Include="Generated\LineThicknessCesiumWriter.cs" />
-    <Compile Include="Generated\MaterialCesiumWriter.cs" />
-    <Compile Include="Generated\ModelCesiumWriter.cs" />
-    <Compile Include="Generated\NearFarScalarCesiumWriter.cs" />
-    <Compile Include="Generated\NodeTransformationCesiumWriter.cs" />
-    <Compile Include="Generated\NodeTransformationsCesiumWriter.cs" />
-    <Compile Include="Generated\OrientationCesiumWriter.cs" />
-    <Compile Include="Generated\PacketCesiumWriter.cs" />
-    <Compile Include="Generated\PathCesiumWriter.cs" />
-    <Compile Include="Generated\PixelOffsetCesiumWriter.cs" />
-    <Compile Include="Generated\PointCesiumWriter.cs" />
-    <Compile Include="Generated\PolygonCesiumWriter.cs" />
-    <Compile Include="Generated\PolylineArrowMaterialCesiumWriter.cs" />
-    <Compile Include="Generated\PolylineCesiumWriter.cs" />
-    <Compile Include="Generated\PolylineGlowMaterialCesiumWriter.cs" />
-    <Compile Include="Generated\PolylineMaterialCesiumWriter.cs" />
-    <Compile Include="Generated\PolylineOutlineMaterialCesiumWriter.cs" />
-    <Compile Include="Generated\PositionCesiumWriter.cs" />
-    <Compile Include="Generated\PositionListCesiumWriter.cs" />
-    <Compile Include="Generated\RectangleCesiumWriter.cs" />
-    <Compile Include="Generated\RectangleCoordinatesCesiumWriter.cs" />
-    <Compile Include="Generated\RectangularSensorCesiumWriter.cs" />
-    <Compile Include="Generated\RepeatCesiumWriter.cs" />
-    <Compile Include="Generated\RotationCesiumWriter.cs" />
-    <Compile Include="Generated\ScaleCesiumWriter.cs" />
-    <Compile Include="Generated\SensorVolumePortionToDisplayCesiumWriter.cs" />
-    <Compile Include="Generated\SolidColorMaterialCesiumWriter.cs" />
-    <Compile Include="Generated\StringCesiumWriter.cs" />
-    <Compile Include="Generated\StripeMaterialCesiumWriter.cs" />
-    <Compile Include="Generated\StripeOrientationCesiumWriter.cs" />
-    <Compile Include="Generated\TranslationCesiumWriter.cs" />
-    <Compile Include="Generated\UriCesiumWriter.cs" />
-    <Compile Include="Generated\VectorCesiumWriter.cs" />
-    <Compile Include="Generated\VerticalOriginCesiumWriter.cs" />
-    <Compile Include="Generated\ViewFromCesiumWriter.cs" />
-    <Compile Include="Generated\WallCesiumWriter.cs" />
+    <Compile Include="Generated\AlignedAxisCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\BillboardCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\BooleanCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\BoundingRectangleCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\BoxCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\BoxDimensionsCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ClockCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ColorBlendModeCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ColorCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ConicSensorCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\CornerTypeCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\CorridorCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\CustomPatternSensorCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\CylinderCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\DirectionCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\DirectionListCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\DoubleCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\DoubleListCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\EllipseCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\EllipsoidCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\EllipsoidRadiiCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\EyeOffsetCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\FanCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\FontCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\GridMaterialCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HeightReferenceCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\HorizontalOriginCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ImageMaterialCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LabelCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LabelStyleCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LineCountCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LineOffsetCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\LineThicknessCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\MaterialCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ModelCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\NearFarScalarCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\NodeTransformationCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\NodeTransformationsCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\OrientationCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\PacketCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\PathCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\PixelOffsetCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\PointCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\PolygonCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\PolylineArrowMaterialCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\PolylineCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\PolylineGlowMaterialCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\PolylineMaterialCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\PolylineOutlineMaterialCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\PositionCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\PositionListCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\RectangleCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\RectangleCoordinatesCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\RectangularSensorCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\RepeatCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\RotationCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ScaleCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SensorVolumePortionToDisplayCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SolidColorMaterialCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\StringCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\StripeMaterialCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\StripeOrientationCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\TranslationCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\UriCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VectorCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\VerticalOriginCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\ViewFromCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\WallCesiumWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="grisu\DiyFp.cs" />
     <Compile Include="grisu\Grisu.cs" />
     <Compile Include="grisu\GrisuDouble.cs" />

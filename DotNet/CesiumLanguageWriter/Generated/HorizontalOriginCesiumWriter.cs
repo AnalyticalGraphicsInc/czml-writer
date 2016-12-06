@@ -7,7 +7,7 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>HorizontalOrigin</c> to a <see cref="CesiumOutputStream" />.  A <c>HorizontalOrigin</c> is the horizontal origin of an element, which can optionally vary over time.  It controls whether the element is left-, center-, or right-aligned with the `position`.
+    /// Writes a <c>HorizontalOrigin</c> to a <see cref="CesiumOutputStream" />.  A <c>HorizontalOrigin</c> is the horizontal origin of an element, which can optionally vary over time.  It controls whether the element is left-, center-, or right-aligned with the <c>position</c>.
     /// </summary>
     public class HorizontalOriginCesiumWriter : CesiumPropertyWriter<HorizontalOriginCesiumWriter>
     {

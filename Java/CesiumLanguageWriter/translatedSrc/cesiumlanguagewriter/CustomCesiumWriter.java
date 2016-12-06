@@ -14,30 +14,30 @@ import cesiumlanguagewriter.advanced.*;
 
  */
 public class CustomCesiumWriter extends CesiumPropertyWriter<CustomCesiumWriter> {
-	/**
-	 *  
-	Initializes a new instance.
-	
+    /**
+    *  
+    Initializes a new instance.
+    
 
-	 */
-	public CustomCesiumWriter(String propertyName) {
-		super(propertyName);
-	}
+    */
+    public CustomCesiumWriter(String propertyName) {
+        super(propertyName);
+    }
 
-	/**
-	 *  
-	Initializes a new instance as a copy of an existing instance.
-	
-	
+    /**
+    *  
+    Initializes a new instance as a copy of an existing instance.
+    
+    
 
-	 * @param existingInstance The existing instance to copy.
-	 */
-	protected CustomCesiumWriter(CustomCesiumWriter existingInstance) {
-		super(existingInstance);
-	}
+    * @param existingInstance The existing instance to copy.
+    */
+    protected CustomCesiumWriter(CustomCesiumWriter existingInstance) {
+        super(existingInstance);
+    }
 
-	@Override
-	public CustomCesiumWriter clone() {
-		return new CustomCesiumWriter(this);
-	}
+    @Override
+    public CustomCesiumWriter clone() {
+        return new CustomCesiumWriter(this);
+    }
 }

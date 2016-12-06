@@ -69,7 +69,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>spherical</c>, which is the list of directions specified as spherical values `[Clock, Cone, Magnitude, Clock, Cone, Magnitude, ...]`, with angles in radians and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+        /// Writes the value expressed as a <c>spherical</c>, which is the list of directions specified as spherical values <c>[Clock, Cone, Magnitude, Clock, Cone, Magnitude, ...]</c>, with angles in radians and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteSpherical(IEnumerable<Spherical> values)
@@ -81,7 +81,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>unitSpherical</c>, which is the list of directions specified as unit spherical values `[Clock, Cone, Clock, Cone, ...]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+        /// Writes the value expressed as a <c>unitSpherical</c>, which is the list of directions specified as unit spherical values <c>[Clock, Cone, Clock, Cone, ...]</c>, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteUnitSpherical(IEnumerable<UnitSpherical> values)
@@ -93,7 +93,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian</c>, which is the list of directions specified as three-dimensional Cartesian values `[X, Y, Z, X, Y, Z, ...]`, in world coordinates in meters.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the list of directions specified as three-dimensional Cartesian values <c>[X, Y, Z, X, Y, Z, ...]</c>, in world coordinates in meters.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteCartesian(IEnumerable<Cartesian> values)
@@ -105,7 +105,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>unitCartesian</c>, which is the list of directions specified as three-dimensional unit magnitude Cartesian values, `[X, Y, Z, X, Y, Z, ...]`, in world coordinates in meters.
+        /// Writes the value expressed as a <c>unitCartesian</c>, which is the list of directions specified as three-dimensional unit magnitude Cartesian values, <c>[X, Y, Z, X, Y, Z, ...]</c>, in world coordinates in meters.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteUnitCartesian(IEnumerable<UnitCartesian> values)

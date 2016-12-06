@@ -47,6 +47,20 @@
             "description": "The height reference of the model, which indicates if the position is relative to terrain or not.",
             "default": "NONE"
         },
+        "color": {
+            "$ref": "Color.json",
+            "description": "The color to blend with the model's rendered color."
+        },
+        "colorBlendMode": {
+            "$ref": "ColorBlendMode.json",
+            "description": "The mode to use for blending between `color` and the model's color.",
+            "default": "HIGHLIGHT"
+        },
+        "colorBlendAmount": {
+            "$ref": "Double.json",
+            "description": "The color strength when `colorBlendMode` is `MIX`. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.",
+            "default": 0.5
+        },
         "nodeTransformations": {
             "$ref": "NodeTransformations.json",
             "czmlExamples": [

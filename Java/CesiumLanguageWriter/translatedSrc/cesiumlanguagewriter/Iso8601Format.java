@@ -11,62 +11,62 @@ import agi.foundation.compatibility.Enumeration;
 
  */
 public enum Iso8601Format implements Enumeration {
-	/**
-	 *  
-	A complete ISO8601 date and time in the basic format, which omits the dash and colon separators used between time and date components.
-	
+    /**
+    *  
+    A complete ISO8601 date and time in the basic format, which omits the dash and colon separators used between time and date components.
+    
 
-	 */
-	BASIC(0), /**
-				 *  
-				A complete ISO8601 date and time in the extended format, which uses dash and colon separators between time and date components.
-				
+    */
+    BASIC(0), /**
+              *  
+              A complete ISO8601 date and time in the extended format, which uses dash and colon separators between time and date components.
+              
 
-				 */
-	EXTENDED(1), /**
-					 *  
-					The shortest possible way to accurately represent an ISO8601 date and time.
-					
+              */
+    EXTENDED(1), /**
+                 *  
+                 The shortest possible way to accurately represent an ISO8601 date and time.
+                 
 
-					 */
-	COMPACT(2);
-	private final int value;
+                 */
+    COMPACT(2);
+    private final int value;
 
-	Iso8601Format(int value) {
-		this.value = value;
-	}
+    Iso8601Format(int value) {
+        this.value = value;
+    }
 
-	/**
-	 * Get the numeric value associated with this enum constant.
-	 * @return A numeric value.
-	 */
-	public int getValue() {
-		return value;
-	}
+    /**
+    * Get the numeric value associated with this enum constant.
+    * @return A numeric value.
+    */
+    public int getValue() {
+        return value;
+    }
 
-	/**
-	 * Get the enum constant that is associated with the given numeric value.
-	 * @return The enum constant associated with value.
-	 * @param value a numeric value.
-	 */
-	public static Iso8601Format getFromValue(int value) {
-		switch (value) {
-		case 0:
-			return BASIC;
-		case 1:
-			return EXTENDED;
-		case 2:
-			return COMPACT;
-		default:
-			throw new IllegalArgumentException("Undefined enum value.");
-		}
-	}
+    /**
+    * Get the enum constant that is associated with the given numeric value.
+    * @return The enum constant associated with value.
+    * @param value a numeric value.
+    */
+    public static Iso8601Format getFromValue(int value) {
+        switch (value) {
+        case 0:
+            return BASIC;
+        case 1:
+            return EXTENDED;
+        case 2:
+            return COMPACT;
+        default:
+            throw new IllegalArgumentException("Undefined enum value.");
+        }
+    }
 
-	/**
-	 * Get the enum constant that is considered to be the default.
-	 * @return The default enum constant.
-	 */
-	public static Iso8601Format getDefault() {
-		return BASIC;
-	}
+    /**
+    * Get the enum constant that is considered to be the default.
+    * @return The default enum constant.
+    */
+    public static Iso8601Format getDefault() {
+        return BASIC;
+    }
 }

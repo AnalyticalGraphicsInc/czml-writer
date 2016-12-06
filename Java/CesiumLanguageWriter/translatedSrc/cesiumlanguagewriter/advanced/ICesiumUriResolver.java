@@ -13,15 +13,15 @@ import cesiumlanguagewriter.*;
 
  */
 public interface ICesiumUriResolver {
-	/**
-	 *  
-	Resolves a URI, producing a new URI for inclusion in a CZML document.
-	
-	
-	
+    /**
+    *  
+    Resolves a URI, producing a new URI for inclusion in a CZML document.
+    
+    
+    
 
-	 * @param uri The source URI.
-	 * @return A URI suitable for CZML.
-	 */
-	String resolveUri(String uri);
+    * @param uri The source URI.
+    * @return A URI suitable for CZML.
+    */
+    String resolveUri(String uri);
 }

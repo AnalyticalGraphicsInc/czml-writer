@@ -7,5 +7,5 @@ package agi.foundation.compatibility;
  * enumeration.
  */
 public interface Enumeration {
-	int getValue();
+    int getValue();
 }

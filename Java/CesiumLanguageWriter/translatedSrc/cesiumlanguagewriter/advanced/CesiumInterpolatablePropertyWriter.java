@@ -14,112 +14,112 @@ import cesiumlanguagewriter.*;
  * @param <TDerived> The type of the class derived from this one.
  */
 public abstract class CesiumInterpolatablePropertyWriter<TDerived extends CesiumInterpolatablePropertyWriter<TDerived>> extends CesiumPropertyWriter<TDerived> implements
-		ICesiumInterpolationInformationWriter {
-	/**
-	 *  
-	Initializes a new instance.
-	
-	
+        ICesiumInterpolationInformationWriter {
+    /**
+    *  
+    Initializes a new instance.
+    
+    
 
-	 * @param propertyName The name of the property.
-	 */
-	public CesiumInterpolatablePropertyWriter(String propertyName) {
-		super(propertyName);
-	}
+    * @param propertyName The name of the property.
+    */
+    protected CesiumInterpolatablePropertyWriter(String propertyName) {
+        super(propertyName);
+    }
 
-	/**
-	 *  
-	Initializes a new instance as a copy of an existing instance.
-	
-	
+    /**
+    *  
+    Initializes a new instance as a copy of an existing instance.
+    
+    
 
-	 * @param existingInstance The existing instance to copy.
-	 */
-	protected CesiumInterpolatablePropertyWriter(CesiumInterpolatablePropertyWriter<TDerived> existingInstance) {
-		super(existingInstance);
-	}
+    * @param existingInstance The existing instance to copy.
+    */
+    protected CesiumInterpolatablePropertyWriter(CesiumInterpolatablePropertyWriter<TDerived> existingInstance) {
+        super(existingInstance);
+    }
 
-	/**
-	 *  
-	Writes the interpolation algorithm to use to interpolate the sampled data in this interval.
-	
-	
+    /**
+    *  
+    Writes the interpolation algorithm to use to interpolate the sampled data in this interval.
+    
+    
 
-	 * @param interpolationAlgorithm The interpolation algorithm.
-	 */
-	public final void writeInterpolationAlgorithm(CesiumInterpolationAlgorithm interpolationAlgorithm) {
-		openIntervalIfNecessary();
-		getOutput().writePropertyName("interpolationAlgorithm");
-		getOutput().writeValue(CesiumFormattingHelper.interpolationAlgorithmToString(interpolationAlgorithm));
-	}
+    * @param interpolationAlgorithm The interpolation algorithm.
+    */
+    public final void writeInterpolationAlgorithm(CesiumInterpolationAlgorithm interpolationAlgorithm) {
+        openIntervalIfNecessary();
+        getOutput().writePropertyName("interpolationAlgorithm");
+        getOutput().writeValue(CesiumFormattingHelper.interpolationAlgorithmToString(interpolationAlgorithm));
+    }
 
-	/**
-	 *  
-	Writes the degree of polynomial to use to interpolate sampled data in this interval.
-	
-	
+    /**
+    *  
+    Writes the degree of polynomial to use to interpolate sampled data in this interval.
+    
+    
 
-	 * @param degree The degree.
-	 */
-	public final void writeInterpolationDegree(int degree) {
-		openIntervalIfNecessary();
-		getOutput().writePropertyName("interpolationDegree");
-		getOutput().writeValue(degree);
-	}
+    * @param degree The degree.
+    */
+    public final void writeInterpolationDegree(int degree) {
+        openIntervalIfNecessary();
+        getOutput().writePropertyName("interpolationDegree");
+        getOutput().writeValue(degree);
+    }
 
-	/**
-	 *  
-	Writes the type of extrapolation to perform when a value is requested at a time after any available samples.
-	
-	
+    /**
+    *  
+    Writes the type of extrapolation to perform when a value is requested at a time after any available samples.
+    
+    
 
-	 * @param extrapolationType The extrapolation type.
-	 */
-	public final void writeForwardExtrapolationType(CesiumExtrapolationType extrapolationType) {
-		openIntervalIfNecessary();
-		getOutput().writePropertyName("forwardExtrapolationType");
-		getOutput().writeValue(CesiumFormattingHelper.extrapolationTypeToString(extrapolationType));
-	}
+    * @param extrapolationType The extrapolation type.
+    */
+    public final void writeForwardExtrapolationType(CesiumExtrapolationType extrapolationType) {
+        openIntervalIfNecessary();
+        getOutput().writePropertyName("forwardExtrapolationType");
+        getOutput().writeValue(CesiumFormattingHelper.extrapolationTypeToString(extrapolationType));
+    }
 
-	/**
-	 *  
-	Writes the amount of time to extrapolate forward before the property becomes undefined.  A value of 0 will extrapolate forever.
-	
-	
+    /**
+    *  
+    Writes the amount of time to extrapolate forward before the property becomes undefined.  A value of 0 will extrapolate forever.
+    
+    
 
-	 * @param duration The duration.
-	 */
-	public final void writeForwardExtrapolationDuration(Duration duration) {
-		openIntervalIfNecessary();
-		getOutput().writePropertyName("forwardExtrapolationDuration");
-		getOutput().writeValue(duration.getTotalSeconds());
-	}
+    * @param duration The duration.
+    */
+    public final void writeForwardExtrapolationDuration(Duration duration) {
+        openIntervalIfNecessary();
+        getOutput().writePropertyName("forwardExtrapolationDuration");
+        getOutput().writeValue(duration.getTotalSeconds());
+    }
 
-	/**
-	 *  
-	Writes the type of extrapolation to perform when a value is requested at a time before any available samples.
-	
-	
+    /**
+    *  
+    Writes the type of extrapolation to perform when a value is requested at a time before any available samples.
+    
+    
 
-	 * @param extrapolationType The extrapolation type.
-	 */
-	public final void writeBackwardExtrapolationType(CesiumExtrapolationType extrapolationType) {
-		openIntervalIfNecessary();
-		getOutput().writePropertyName("backwardExtrapolationType");
-		getOutput().writeValue(CesiumFormattingHelper.extrapolationTypeToString(extrapolationType));
-	}
+    * @param extrapolationType The extrapolation type.
+    */
+    public final void writeBackwardExtrapolationType(CesiumExtrapolationType extrapolationType) {
+        openIntervalIfNecessary();
+        getOutput().writePropertyName("backwardExtrapolationType");
+        getOutput().writeValue(CesiumFormattingHelper.extrapolationTypeToString(extrapolationType));
+    }
 
-	/**
-	 *  
-	Writes the amount of time to extrapolate backward before the property becomes undefined.  A value of 0 will extrapolate forever.
-	
-	
+    /**
+    *  
+    Writes the amount of time to extrapolate backward before the property becomes undefined.  A value of 0 will extrapolate forever.
+    
+    
 
-	 * @param duration The duration.
-	 */
-	public final void writeBackwardExtrapolationDuration(Duration duration) {
-		openIntervalIfNecessary();
-		getOutput().writePropertyName("backwardExtrapolationDuration");
-		getOutput().writeValue(duration.getTotalSeconds());
-	}
+    * @param duration The duration.
+    */
+    public final void writeBackwardExtrapolationDuration(Duration duration) {
+        openIntervalIfNecessary();
+        getOutput().writePropertyName("backwardExtrapolationDuration");
+        getOutput().writeValue(duration.getTotalSeconds());
+    }
 }

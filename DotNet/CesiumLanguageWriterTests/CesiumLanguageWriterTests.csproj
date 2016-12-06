@@ -56,6 +56,7 @@
     <Compile Include="TestGenerateValidationDocument.cs" />
     <Compile Include="TestHorizontalOriginCesiumWriter.cs" />
     <Compile Include="TestLabelStyleCesiumWriter.cs" />
+    <Compile Include="TestModelCesiumWriter.cs" />
     <Compile Include="TestPacketCesiumWriter.cs" />
     <Compile Include="TestCesiumPropertyWriter.cs" />
     <Compile Include="TestCesiumStreamWriter.cs" />

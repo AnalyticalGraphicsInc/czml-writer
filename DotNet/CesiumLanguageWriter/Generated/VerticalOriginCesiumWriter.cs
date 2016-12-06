@@ -7,7 +7,7 @@ using System;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>VerticalOrigin</c> to a <see cref="CesiumOutputStream" />.  A <c>VerticalOrigin</c> is the vertical origin of an element, which can optionally vary over time.  It controls whether the element is bottom-, center-, or top-aligned with the `position`.
+    /// Writes a <c>VerticalOrigin</c> to a <see cref="CesiumOutputStream" />.  A <c>VerticalOrigin</c> is the vertical origin of an element, which can optionally vary over time.  It controls whether the element is bottom-, center-, or top-aligned with the <c>position</c>.
     /// </summary>
     public class VerticalOriginCesiumWriter : CesiumPropertyWriter<VerticalOriginCesiumWriter>
     {

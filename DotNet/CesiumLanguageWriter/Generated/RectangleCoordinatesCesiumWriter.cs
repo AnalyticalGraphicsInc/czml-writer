@@ -61,7 +61,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>wsen</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+        /// Writes the value expressed as a <c>wsen</c>, which is the set of coordinates specified as Cartographic values <c>[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]</c>, with values in radians.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteWsen(CartographicExtent value)
@@ -73,7 +73,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>wsen</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+        /// Writes the value expressed as a <c>wsen</c>, which is the set of coordinates specified as Cartographic values <c>[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]</c>, with values in radians.
         /// </summary>
         /// <param name="west">The westernmost longitude.</param>
         /// <param name="south">The southernmost latitude.</param>
@@ -85,7 +85,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>wsen</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+        /// Writes the value expressed as a <c>wsen</c>, which is the set of coordinates specified as Cartographic values <c>[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]</c>, with values in radians.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -95,12 +95,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>wsen</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.
+        /// Writes the value expressed as a <c>wsen</c>, which is the set of coordinates specified as Cartographic values <c>[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]</c>, with values in radians.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteWsen(IList<JulianDate> dates, IList<CartographicExtent> values, int startIndex, int length)
         {
             const string PropertyName = WsenPropertyName;
@@ -109,7 +109,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>wsenDegrees</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in degrees.
+        /// Writes the value expressed as a <c>wsenDegrees</c>, which is the set of coordinates specified as Cartographic values <c>[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]</c>, with values in degrees.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteWsenDegrees(CartographicExtent value)
@@ -121,7 +121,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>wsenDegrees</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in degrees.
+        /// Writes the value expressed as a <c>wsenDegrees</c>, which is the set of coordinates specified as Cartographic values <c>[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]</c>, with values in degrees.
         /// </summary>
         /// <param name="west">The westernmost longitude.</param>
         /// <param name="south">The southernmost latitude.</param>
@@ -133,7 +133,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>wsenDegrees</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in degrees.
+        /// Writes the value expressed as a <c>wsenDegrees</c>, which is the set of coordinates specified as Cartographic values <c>[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]</c>, with values in degrees.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -143,12 +143,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>wsenDegrees</c>, which is the set of coordinates specified as Cartographic values `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in degrees.
+        /// Writes the value expressed as a <c>wsenDegrees</c>, which is the set of coordinates specified as Cartographic values <c>[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]</c>, with values in degrees.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteWsenDegrees(IList<JulianDate> dates, IList<CartographicExtent> values, int startIndex, int length)
         {
             const string PropertyName = WsenDegreesPropertyName;

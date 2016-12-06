@@ -138,12 +138,12 @@
                     {
                         "type": "int",
                         "name": "startIndex",
-                        "description": "The index of the first element to use in the `values` collection."
+                        "description": "The index of the first element to write."
                     },
                     {
                         "type": "int",
                         "name": "length",
-                        "description": "The number of elements to use from the `values` collection."
+                        "description": "The number of elements to write."
                     }
                 ],
                 "writePropertyName": false,
@@ -218,12 +218,12 @@
                     {
                         "type": "int",
                         "name": "startIndex",
-                        "description": "The index of the first element to use in the `values` collection."
+                        "description": "The index of the first element to write."
                     },
                     {
                         "type": "int",
                         "name": "length",
-                        "description": "The number of elements to use from the `values` collection."
+                        "description": "The number of elements to write."
                     }
                 ],
                 "writePropertyName": false,
@@ -273,12 +273,12 @@
                     {
                         "type": "int",
                         "name": "startIndex",
-                        "description": "The index of the first element to use in the `values` collection."
+                        "description": "The index of the first element to write."
                     },
                     {
                         "type": "int",
                         "name": "length",
-                        "description": "The number of elements to use from the `values` collection."
+                        "description": "The number of elements to write."
                     }
                 ],
                 "writePropertyName": false,
@@ -328,12 +328,12 @@
                     {
                         "type": "int",
                         "name": "startIndex",
-                        "description": "The index of the first element to use in the `values` collection."
+                        "description": "The index of the first element to write."
                     },
                     {
                         "type": "int",
                         "name": "length",
-                        "description": "The number of elements to use from the `values` collection."
+                        "description": "The number of elements to write."
                     }
                 ],
                 "writePropertyName": false,
@@ -383,12 +383,12 @@
                     {
                         "type": "int",
                         "name": "startIndex",
-                        "description": "The index of the first element to use in the `values` collection."
+                        "description": "The index of the first element to write."
                     },
                     {
                         "type": "int",
                         "name": "length",
-                        "description": "The number of elements to use from the `values` collection."
+                        "description": "The number of elements to write."
                     }
                 ],
                 "writePropertyName": false,
@@ -438,12 +438,12 @@
                     {
                         "type": "int",
                         "name": "startIndex",
-                        "description": "The index of the first element to use in the `values` collection."
+                        "description": "The index of the first element to write."
                     },
                     {
                         "type": "int",
                         "name": "length",
-                        "description": "The number of elements to use from the `values` collection."
+                        "description": "The number of elements to write."
                     }
                 ],
                 "writePropertyName": false,
@@ -558,12 +558,12 @@
                     {
                         "type": "int",
                         "name": "startIndex",
-                        "description": "The index of the first element to use in the `values` collection."
+                        "description": "The index of the first element to write."
                     },
                     {
                         "type": "int",
                         "name": "length",
-                        "description": "The number of elements to use from the `values` collection."
+                        "description": "The number of elements to write."
                     }
                 ],
                 "writePropertyName": false,
@@ -796,6 +796,19 @@
                 "needsInterval": false
             }
         ],
+        "ColorBlendMode": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumColorBlendMode",
+                        "name": "value",
+                        "description": "The blend mode."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.ColorBlendModeToString(value));",
+                "needsInterval": false
+            }
+        ],
         "SensorVolumePortionToDisplay": [
             {
                 "parameters": [
@@ -853,12 +866,12 @@
                     {
                         "type": "int",
                         "name": "startIndex",
-                        "description": "The index of the first element to use in the `values` collection."
+                        "description": "The index of the first element to write."
                     },
                     {
                         "type": "int",
                         "name": "length",
-                        "description": "The number of elements to use from the `values` collection."
+                        "description": "The number of elements to write."
                     }
                 ],
                 "writePropertyName": false,
@@ -947,12 +960,12 @@
                     {
                         "type": "int",
                         "name": "startIndex",
-                        "description": "The index of the first element to use in the `colors` collection."
+                        "description": "The index of the first element to write."
                     },
                     {
                         "type": "int",
                         "name": "length",
-                        "description": "The number of elements to use from the `colors` collection."
+                        "description": "The number of elements to write."
                     }
                 ],
                 "writePropertyName": false,
@@ -1028,12 +1041,12 @@
                     {
                         "type": "int",
                         "name": "startIndex",
-                        "description": "The index of the first element to use in the `colors` collection."
+                        "description": "The index of the first element to write."
                     },
                     {
                         "type": "int",
                         "name": "length",
-                        "description": "The number of elements to use from the `colors` collection."
+                        "description": "The number of elements to write."
                     }
                 ],
                 "writePropertyName": false,
@@ -1083,12 +1096,12 @@
                     {
                         "type": "int",
                         "name": "startIndex",
-                        "description": "The index of the first element to use in the `values` collection."
+                        "description": "The index of the first element to write."
                     },
                     {
                         "type": "int",
                         "name": "length",
-                        "description": "The number of elements to use from the `values` collection."
+                        "description": "The number of elements to write."
                     }
                 ],
                 "writePropertyName": false,
@@ -1229,12 +1242,12 @@
                     {
                         "type": "int",
                         "name": "startIndex",
-                        "description": "The index of the first element to use in the `values` collection."
+                        "description": "The index of the first element to write."
                     },
                     {
                         "type": "int",
                         "name": "length",
-                        "description": "The number of elements to use from the `values` collection."
+                        "description": "The number of elements to write."
                     }
                 ],
                 "writePropertyName": false,
@@ -1284,12 +1297,12 @@
                     {
                         "type": "int",
                         "name": "startIndex",
-                        "description": "The index of the first element to use in the `values` collection."
+                        "description": "The index of the first element to write."
                     },
                     {
                         "type": "int",
                         "name": "length",
-                        "description": "The number of elements to use from the `values` collection."
+                        "description": "The number of elements to write."
                     }
                 ],
                 "writePropertyName": false,
@@ -1364,12 +1377,12 @@
                     {
                         "type": "int",
                         "name": "startIndex",
-                        "description": "The index of the first element to use in the `values` collection."
+                        "description": "The index of the first element to write."
                     },
                     {
                         "type": "int",
                         "name": "length",
-                        "description": "The number of elements to use from the `values` collection."
+                        "description": "The number of elements to write."
                     }
                 ],
                 "writePropertyName": false,

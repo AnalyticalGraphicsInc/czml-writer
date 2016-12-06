@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>boundingRectangle</c>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
+        /// Writes the value expressed as a <c>boundingRectangle</c>, which is the bounding rectangle specified as <c>[X, Y, Width, Height]</c>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteBoundingRectangle(BoundingRectangle value)
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>boundingRectangle</c>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
+        /// Writes the value expressed as a <c>boundingRectangle</c>, which is the bounding rectangle specified as <c>[X, Y, Width, Height]</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -75,12 +75,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>boundingRectangle</c>, which is the bounding rectangle specified as `[X, Y, Width, Height]`.
+        /// Writes the value expressed as a <c>boundingRectangle</c>, which is the bounding rectangle specified as <c>[X, Y, Width, Height]</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteBoundingRectangle(IList<JulianDate> dates, IList<BoundingRectangle> values, int startIndex, int length)
         {
             const string PropertyName = BoundingRectanglePropertyName;

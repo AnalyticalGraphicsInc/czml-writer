@@ -11,70 +11,70 @@ import agi.foundation.compatibility.Enumeration;
 
  */
 public enum CesiumImageFormat implements Enumeration {
-	/**
-	 *  
-	The image is in Portable Network Graphics (PNG) format.
-	
+    /**
+    *  
+    The image is in Portable Network Graphics (PNG) format.
+    
 
-	 */
-	PNG(0), /**
-			 *  
-			The image is in Joint Photographic Experts Group (JPEG) format.
-			
+    */
+    PNG(0), /**
+            *  
+            The image is in Joint Photographic Experts Group (JPEG) format.
+            
 
-			 */
-	JPEG(1), /**
-				 *  
-				The image is in Graphics Interchange Format (GIF) format.
-				
+            */
+    JPEG(1), /**
+             *  
+             The image is in Graphics Interchange Format (GIF) format.
+             
 
-				 */
-	GIF(2), /**
-			 *  
-			The image is in bitmap (BMP) format.
-			
+             */
+    GIF(2), /**
+            *  
+            The image is in bitmap (BMP) format.
+            
 
-			 */
-	BMP(3);
-	private final int value;
+            */
+    BMP(3);
+    private final int value;
 
-	CesiumImageFormat(int value) {
-		this.value = value;
-	}
+    CesiumImageFormat(int value) {
+        this.value = value;
+    }
 
-	/**
-	 * Get the numeric value associated with this enum constant.
-	 * @return A numeric value.
-	 */
-	public int getValue() {
-		return value;
-	}
+    /**
+    * Get the numeric value associated with this enum constant.
+    * @return A numeric value.
+    */
+    public int getValue() {
+        return value;
+    }
 
-	/**
-	 * Get the enum constant that is associated with the given numeric value.
-	 * @return The enum constant associated with value.
-	 * @param value a numeric value.
-	 */
-	public static CesiumImageFormat getFromValue(int value) {
-		switch (value) {
-		case 0:
-			return PNG;
-		case 1:
-			return JPEG;
-		case 2:
-			return GIF;
-		case 3:
-			return BMP;
-		default:
-			throw new IllegalArgumentException("Undefined enum value.");
-		}
-	}
+    /**
+    * Get the enum constant that is associated with the given numeric value.
+    * @return The enum constant associated with value.
+    * @param value a numeric value.
+    */
+    public static CesiumImageFormat getFromValue(int value) {
+        switch (value) {
+        case 0:
+            return PNG;
+        case 1:
+            return JPEG;
+        case 2:
+            return GIF;
+        case 3:
+            return BMP;
+        default:
+            throw new IllegalArgumentException("Undefined enum value.");
+        }
+    }
 
-	/**
-	 * Get the enum constant that is considered to be the default.
-	 * @return The default enum constant.
-	 */
-	public static CesiumImageFormat getDefault() {
-		return PNG;
-	}
+    /**
+    * Get the enum constant that is considered to be the default.
+    * @return The default enum constant.
+    */
+    public static CesiumImageFormat getDefault() {
+        return PNG;
+    }
 }

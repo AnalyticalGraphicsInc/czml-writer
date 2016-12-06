@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Path</c> to a <see cref="CesiumOutputStream" />.  A <c>Path</c> is a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the `position` property.
+    /// Writes a <c>Path</c> to a <see cref="CesiumOutputStream" />.  A <c>Path</c> is a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the <c>position</c> property.
     /// </summary>
     public class PathCesiumWriter : CesiumPropertyWriter<PathCesiumWriter>
     {
@@ -198,8 +198,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteWidthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenWidthProperty())
@@ -259,7 +259,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>resolution</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>resolution</c> property defines the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+        /// Gets the writer for the <c>resolution</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>resolution</c> property defines the maximum step-size, in seconds, used to sample the path.  If the <c>position</c> property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
         /// </summary>
         public DoubleCesiumWriter ResolutionWriter
         {
@@ -267,7 +267,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>resolution</c> property.  The <c>resolution</c> property defines the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+        /// Opens and returns the writer for the <c>resolution</c> property.  The <c>resolution</c> property defines the maximum step-size, in seconds, used to sample the path.  If the <c>position</c> property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
         /// </summary>
         public DoubleCesiumWriter OpenResolutionProperty()
         {
@@ -276,7 +276,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>resolution</c> property as a <c>number</c> value.  The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+        /// Writes a value for the <c>resolution</c> property as a <c>number</c> value.  The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path.  If the <c>position</c> property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteResolutionProperty(double value)
@@ -288,7 +288,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>resolution</c> property as a <c>number</c> value.  The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+        /// Writes a value for the <c>resolution</c> property as a <c>number</c> value.  The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path.  If the <c>position</c> property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -301,12 +301,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>resolution</c> property as a <c>number</c> value.  The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+        /// Writes a value for the <c>resolution</c> property as a <c>number</c> value.  The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path.  If the <c>position</c> property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteResolutionProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenResolutionProperty())
@@ -316,7 +316,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value.  The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value.  The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path.  If the <c>position</c> property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteResolutionPropertyReference(Reference value)
@@ -328,7 +328,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value.  The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value.  The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path.  If the <c>position</c> property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteResolutionPropertyReference(string value)
@@ -340,7 +340,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value.  The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value.  The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path.  If the <c>position</c> property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -353,7 +353,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value.  The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path.  If the `position` property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value.  The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path.  If the <c>position</c> property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -412,8 +412,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteLeadTimeProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenLeadTimeProperty())
@@ -519,8 +519,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteTrailTimeProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenTrailTimeProperty())
