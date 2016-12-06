@@ -1331,6 +1331,13 @@ namespace GenerateFromSchema
                     valueType = "CesiumCornerType";
                     return;
                 }
+                case "ColorBlendMode":
+                {
+                    value = "CesiumColorBlendMode.Replace";
+                    assertionValue = "ColorBlendMode.REPLACE";
+                    valueType = "CesiumColorBlendMode";
+                    return;
+                }
                 case "StripeOrientation":
                 {
                     value = "CesiumStripeOrientation.Vertical";
