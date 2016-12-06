@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian</c>, which is the eye offset specified as a three-dimensional Cartesian value `[X, Y, Z]`, in eye coordinates in meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the eye offset specified as a three-dimensional Cartesian value <c>[X, Y, Z]</c>, in eye coordinates in meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as <c>[Time, X, Y, Z, Time, X, Y, Z, ...]</c>, where Time is an ISO 8601 date and time string or seconds since epoch.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCartesian(Cartesian value)
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian</c>, which is the eye offset specified as a three-dimensional Cartesian value `[X, Y, Z]`, in eye coordinates in meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the eye offset specified as a three-dimensional Cartesian value <c>[X, Y, Z]</c>, in eye coordinates in meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as <c>[Time, X, Y, Z, Time, X, Y, Z, ...]</c>, where Time is an ISO 8601 date and time string or seconds since epoch.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -75,12 +75,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian</c>, which is the eye offset specified as a three-dimensional Cartesian value `[X, Y, Z]`, in eye coordinates in meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, Time, X, Y, Z, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the eye offset specified as a three-dimensional Cartesian value <c>[X, Y, Z]</c>, in eye coordinates in meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as <c>[Time, X, Y, Z, Time, X, Y, Z, ...]</c>, where Time is an ISO 8601 date and time string or seconds since epoch.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteCartesian(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
         {
             const string PropertyName = CartesianPropertyName;

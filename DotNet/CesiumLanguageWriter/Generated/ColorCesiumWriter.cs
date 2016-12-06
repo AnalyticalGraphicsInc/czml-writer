@@ -62,7 +62,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>rgba</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
+        /// Writes the value expressed as a <c>rgba</c>, which is the color specified as an array of color components <c>[Red, Green, Blue, Alpha]</c> where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteRgba(Color color)
@@ -74,7 +74,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>rgba</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
+        /// Writes the value expressed as a <c>rgba</c>, which is the color specified as an array of color components <c>[Red, Green, Blue, Alpha]</c> where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -89,7 +89,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>rgba</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
+        /// Writes the value expressed as a <c>rgba</c>, which is the color specified as an array of color components <c>[Red, Green, Blue, Alpha]</c> where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -99,12 +99,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>rgba</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.
+        /// Writes the value expressed as a <c>rgba</c>, which is the color specified as an array of color components <c>[Red, Green, Blue, Alpha]</c> where each component is an integer in the range 0-255.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteRgba(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             const string PropertyName = RgbaPropertyName;
@@ -113,7 +113,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>rgbaf</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
+        /// Writes the value expressed as a <c>rgbaf</c>, which is the color specified as an array of color components <c>[Red, Green, Blue, Alpha]</c> where each component is a double in the range 0.0-1.0.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteRgbaf(Color color)
@@ -125,7 +125,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>rgbaf</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
+        /// Writes the value expressed as a <c>rgbaf</c>, which is the color specified as an array of color components <c>[Red, Green, Blue, Alpha]</c> where each component is a double in the range 0.0-1.0.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -140,7 +140,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>rgbaf</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
+        /// Writes the value expressed as a <c>rgbaf</c>, which is the color specified as an array of color components <c>[Red, Green, Blue, Alpha]</c> where each component is a double in the range 0.0-1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -150,12 +150,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>rgbaf</c>, which is the color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.
+        /// Writes the value expressed as a <c>rgbaf</c>, which is the color specified as an array of color components <c>[Red, Green, Blue, Alpha]</c> where each component is a double in the range 0.0-1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             const string PropertyName = RgbafPropertyName;

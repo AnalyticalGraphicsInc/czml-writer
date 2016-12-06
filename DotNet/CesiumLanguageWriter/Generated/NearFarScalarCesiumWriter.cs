@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>nearFarScalar</c>, which is the value specified as four values `[NearDistance, NearValue, FarDistance, FarValue]`, with distances in eye coordinates in meters.
+        /// Writes the value expressed as a <c>nearFarScalar</c>, which is the value specified as four values <c>[NearDistance, NearValue, FarDistance, FarValue]</c>, with distances in eye coordinates in meters.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteNearFarScalar(NearFarScalar value)
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>nearFarScalar</c>, which is the value specified as four values `[NearDistance, NearValue, FarDistance, FarValue]`, with distances in eye coordinates in meters.
+        /// Writes the value expressed as a <c>nearFarScalar</c>, which is the value specified as four values <c>[NearDistance, NearValue, FarDistance, FarValue]</c>, with distances in eye coordinates in meters.
         /// </summary>
         /// <param name="nearDistance">The lower bound of the camera distance range.</param>
         /// <param name="nearValue">The value to use at the lower bound of the camera distance range.</param>
@@ -77,7 +77,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>nearFarScalar</c>, which is the value specified as four values `[NearDistance, NearValue, FarDistance, FarValue]`, with distances in eye coordinates in meters.
+        /// Writes the value expressed as a <c>nearFarScalar</c>, which is the value specified as four values <c>[NearDistance, NearValue, FarDistance, FarValue]</c>, with distances in eye coordinates in meters.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -87,12 +87,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>nearFarScalar</c>, which is the value specified as four values `[NearDistance, NearValue, FarDistance, FarValue]`, with distances in eye coordinates in meters.
+        /// Writes the value expressed as a <c>nearFarScalar</c>, which is the value specified as four values <c>[NearDistance, NearValue, FarDistance, FarValue]</c>, with distances in eye coordinates in meters.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteNearFarScalar(IList<JulianDate> dates, IList<NearFarScalar> values, int startIndex, int length)
         {
             const string PropertyName = NearFarScalarPropertyName;

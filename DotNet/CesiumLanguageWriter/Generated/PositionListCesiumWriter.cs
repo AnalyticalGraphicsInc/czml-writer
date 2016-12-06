@@ -86,7 +86,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian</c>, which is the list of positions specified as three-dimensional Cartesian values, `[X, Y, Z, X, Y, Z, ...]`, in meters relative to the `referenceFrame`.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the list of positions specified as three-dimensional Cartesian values, <c>[X, Y, Z, X, Y, Z, ...]</c>, in meters relative to the <c>referenceFrame</c>.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteCartesian(IEnumerable<Cartesian> values)
@@ -98,7 +98,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartographicRadians</c>, which is the list of positions specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in radians and Height is in meters.
+        /// Writes the value expressed as a <c>cartographicRadians</c>, which is the list of positions specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]</c>, where Longitude and Latitude are in radians and Height is in meters.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteCartographicRadians(IEnumerable<Cartographic> values)
@@ -110,7 +110,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the list of positions specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in degrees and Height is in meters.
+        /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the list of positions specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]</c>, where Longitude and Latitude are in degrees and Height is in meters.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteCartographicDegrees(IEnumerable<Cartographic> values)

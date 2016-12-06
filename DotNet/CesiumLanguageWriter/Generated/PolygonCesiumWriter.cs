@@ -266,7 +266,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>height</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>height</c> property defines the height of the polygon when `perPositionHeight` is false.
+        /// Gets the writer for the <c>height</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>height</c> property defines the height of the polygon when <c>perPositionHeight</c> is false.
         /// </summary>
         public DoubleCesiumWriter HeightWriter
         {
@@ -274,7 +274,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>height</c> property.  The <c>height</c> property defines the height of the polygon when `perPositionHeight` is false.
+        /// Opens and returns the writer for the <c>height</c> property.  The <c>height</c> property defines the height of the polygon when <c>perPositionHeight</c> is false.
         /// </summary>
         public DoubleCesiumWriter OpenHeightProperty()
         {
@@ -283,7 +283,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the polygon when `perPositionHeight` is false.
+        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the polygon when <c>perPositionHeight</c> is false.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteHeightProperty(double value)
@@ -295,7 +295,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the polygon when `perPositionHeight` is false.
+        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the polygon when <c>perPositionHeight</c> is false.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -308,12 +308,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the polygon when `perPositionHeight` is false.
+        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the polygon when <c>perPositionHeight</c> is false.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteHeightProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenHeightProperty())
@@ -323,7 +323,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the polygon when `perPositionHeight` is false.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the polygon when <c>perPositionHeight</c> is false.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteHeightPropertyReference(Reference value)
@@ -335,7 +335,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the polygon when `perPositionHeight` is false.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the polygon when <c>perPositionHeight</c> is false.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteHeightPropertyReference(string value)
@@ -347,7 +347,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the polygon when `perPositionHeight` is false.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the polygon when <c>perPositionHeight</c> is false.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -360,7 +360,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the polygon when `perPositionHeight` is false.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the polygon when <c>perPositionHeight</c> is false.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -419,8 +419,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteExtrudedHeightProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenExtrudedHeightProperty())
@@ -526,8 +526,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteStRotationProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenStRotationProperty())
@@ -633,8 +633,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteGranularityProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenGranularityProperty())
@@ -930,8 +930,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteOutlineColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -985,8 +985,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `colors` collection.</param>
-        /// <param name="length">The number of elements to use from the `colors` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteOutlineColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -1092,8 +1092,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteOutlineWidthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
         {
             using (var writer = OpenOutlineWidthProperty())
@@ -1153,7 +1153,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>perPositionHeight</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>perPositionHeight</c> property defines whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
+        /// Gets the writer for the <c>perPositionHeight</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>perPositionHeight</c> property defines whether to use the height of each position to define the polygon or to use <c>height</c> as a constant height above the surface.
         /// </summary>
         public BooleanCesiumWriter PerPositionHeightWriter
         {
@@ -1161,7 +1161,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>perPositionHeight</c> property.  The <c>perPositionHeight</c> property defines whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
+        /// Opens and returns the writer for the <c>perPositionHeight</c> property.  The <c>perPositionHeight</c> property defines whether to use the height of each position to define the polygon or to use <c>height</c> as a constant height above the surface.
         /// </summary>
         public BooleanCesiumWriter OpenPerPositionHeightProperty()
         {
@@ -1170,7 +1170,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>perPositionHeight</c> property as a <c>boolean</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
+        /// Writes a value for the <c>perPositionHeight</c> property as a <c>boolean</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use <c>height</c> as a constant height above the surface.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WritePerPositionHeightProperty(bool value)
@@ -1182,7 +1182,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>perPositionHeight</c> property as a <c>reference</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
+        /// Writes a value for the <c>perPositionHeight</c> property as a <c>reference</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use <c>height</c> as a constant height above the surface.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WritePerPositionHeightPropertyReference(Reference value)
@@ -1194,7 +1194,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>perPositionHeight</c> property as a <c>reference</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
+        /// Writes a value for the <c>perPositionHeight</c> property as a <c>reference</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use <c>height</c> as a constant height above the surface.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WritePerPositionHeightPropertyReference(string value)
@@ -1206,7 +1206,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>perPositionHeight</c> property as a <c>reference</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
+        /// Writes a value for the <c>perPositionHeight</c> property as a <c>reference</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use <c>height</c> as a constant height above the surface.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1219,7 +1219,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>perPositionHeight</c> property as a <c>reference</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.
+        /// Writes a value for the <c>perPositionHeight</c> property as a <c>reference</c> value.  The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use <c>height</c> as a constant height above the surface.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

@@ -68,7 +68,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>multiplier</c>, which is the multiplier.  When `step` is set to `TICK_DEPENDENT`, this is the number of seconds to advance each tick.  When `step` is set to `SYSTEM_CLOCK_DEPENDENT`, this is multiplied by the elapsed system time between ticks.  This value is ignored in `SYSTEM_CLOCK` mode.  The default value is 1.0.
+        /// Writes the value expressed as a <c>multiplier</c>, which is the multiplier.  When <c>step</c> is set to <c>TICK_DEPENDENT</c>, this is the number of seconds to advance each tick.  When <c>step</c> is set to <c>SYSTEM_CLOCK_DEPENDENT</c>, this is multiplied by the elapsed system time between ticks.  This value is ignored in <c>SYSTEM_CLOCK</c> mode.  The default value is 1.0.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteMultiplier(double value)
@@ -80,7 +80,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>range</c>, which is the behavior when the current time reaches its start or end times.  The default value is `LOOP_STOP`.
+        /// Writes the value expressed as a <c>range</c>, which is the behavior when the current time reaches its start or end times.  The default value is <c>LOOP_STOP</c>.
         /// </summary>
         /// <param name="value">The clock range.</param>
         public void WriteRange(ClockRange value)
@@ -92,7 +92,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>step</c>, which is how the current time advances each tick.  The default value is `SYSTEM_CLOCK_MULTIPLIER`.
+        /// Writes the value expressed as a <c>step</c>, which is how the current time advances each tick.  The default value is <c>SYSTEM_CLOCK_MULTIPLIER</c>.
         /// </summary>
         /// <param name="value">The clock step.</param>
         public void WriteStep(ClockStep value)

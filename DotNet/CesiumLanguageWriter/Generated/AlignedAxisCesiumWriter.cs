@@ -69,7 +69,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>unitCartesian</c>, which is the axis specified as a three-dimensional unit magnitude Cartesian value `[X, Y, Z]`, in world coordinates.
+        /// Writes the value expressed as a <c>unitCartesian</c>, which is the axis specified as a three-dimensional unit magnitude Cartesian value <c>[X, Y, Z]</c>, in world coordinates.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteUnitCartesian(UnitCartesian value)
@@ -81,7 +81,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>unitCartesian</c>, which is the axis specified as a three-dimensional unit magnitude Cartesian value `[X, Y, Z]`, in world coordinates.
+        /// Writes the value expressed as a <c>unitCartesian</c>, which is the axis specified as a three-dimensional unit magnitude Cartesian value <c>[X, Y, Z]</c>, in world coordinates.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -91,12 +91,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>unitCartesian</c>, which is the axis specified as a three-dimensional unit magnitude Cartesian value `[X, Y, Z]`, in world coordinates.
+        /// Writes the value expressed as a <c>unitCartesian</c>, which is the axis specified as a three-dimensional unit magnitude Cartesian value <c>[X, Y, Z]</c>, in world coordinates.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteUnitCartesian(IList<JulianDate> dates, IList<UnitCartesian> values, int startIndex, int length)
         {
             const string PropertyName = UnitCartesianPropertyName;
@@ -105,7 +105,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>unitSpherical</c>, which is the axis specified as a unit spherical value `[Clock, Cone]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+        /// Writes the value expressed as a <c>unitSpherical</c>, which is the axis specified as a unit spherical value <c>[Clock, Cone]</c>, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteUnitSpherical(UnitSpherical value)
@@ -117,7 +117,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>unitSpherical</c>, which is the axis specified as a unit spherical value `[Clock, Cone]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+        /// Writes the value expressed as a <c>unitSpherical</c>, which is the axis specified as a unit spherical value <c>[Clock, Cone]</c>, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -127,12 +127,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>unitSpherical</c>, which is the axis specified as a unit spherical value `[Clock, Cone]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+        /// Writes the value expressed as a <c>unitSpherical</c>, which is the axis specified as a unit spherical value <c>[Clock, Cone]</c>, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteUnitSpherical(IList<JulianDate> dates, IList<UnitSpherical> values, int startIndex, int length)
         {
             const string PropertyName = UnitSphericalPropertyName;
@@ -191,7 +191,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>velocityReference</c>, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a `position` property.
+        /// Writes the value expressed as a <c>velocityReference</c>, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a <c>position</c> property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteVelocityReference(Reference value)
@@ -203,7 +203,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>velocityReference</c>, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a `position` property.
+        /// Writes the value expressed as a <c>velocityReference</c>, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a <c>position</c> property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteVelocityReference(string value)
@@ -215,7 +215,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>velocityReference</c>, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a `position` property.
+        /// Writes the value expressed as a <c>velocityReference</c>, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a <c>position</c> property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -228,7 +228,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>velocityReference</c>, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a `position` property.
+        /// Writes the value expressed as a <c>velocityReference</c>, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a <c>position</c> property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

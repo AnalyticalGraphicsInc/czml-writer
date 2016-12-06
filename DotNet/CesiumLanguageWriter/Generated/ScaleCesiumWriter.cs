@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian</c>, which is the scale specified as a three-dimensional Cartesian value `[X, Y, Z]`.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the scale specified as a three-dimensional Cartesian value <c>[X, Y, Z]</c>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCartesian(Cartesian value)
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian</c>, which is the scale specified as a three-dimensional Cartesian value `[X, Y, Z]`.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the scale specified as a three-dimensional Cartesian value <c>[X, Y, Z]</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -75,12 +75,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian</c>, which is the scale specified as a three-dimensional Cartesian value `[X, Y, Z]`.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the scale specified as a three-dimensional Cartesian value <c>[X, Y, Z]</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteCartesian(IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
         {
             const string PropertyName = CartesianPropertyName;

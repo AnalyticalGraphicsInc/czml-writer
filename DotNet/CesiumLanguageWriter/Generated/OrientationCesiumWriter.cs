@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>unitQuaternion</c>, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.
+        /// Writes the value expressed as a <c>unitQuaternion</c>, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as <c>[X, Y, Z, W]</c>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteUnitQuaternion(UnitQuaternion value)
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>unitQuaternion</c>, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.
+        /// Writes the value expressed as a <c>unitQuaternion</c>, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as <c>[X, Y, Z, W]</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -75,12 +75,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>unitQuaternion</c>, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.
+        /// Writes the value expressed as a <c>unitQuaternion</c>, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as <c>[X, Y, Z, W]</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to use in the `values` collection.</param>
-        /// <param name="length">The number of elements to use from the `values` collection.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
         public void WriteUnitQuaternion(IList<JulianDate> dates, IList<UnitQuaternion> values, int startIndex, int length)
         {
             const string PropertyName = UnitQuaternionPropertyName;
