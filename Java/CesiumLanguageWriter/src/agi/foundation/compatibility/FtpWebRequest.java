@@ -4,10 +4,10 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class FtpWebRequest extends WebRequest {
-	FtpWebRequest(URL url) {
-		super(url);
-	}
+    FtpWebRequest(URL url) {
+        super(url);
+    }
 
-	@Override
-	protected void configureConnection(URLConnection connection) {}
+    @Override
+    protected void configureConnection(URLConnection connection) {}
 }
