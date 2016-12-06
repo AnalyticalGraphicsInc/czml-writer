@@ -1,27 +1,27 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ColorBlendModeValue.json",
-  "title": "ColorBlendMode",
-  "description": "Defines different modes for blending between a target color and an entity's source color.",
-  "type": "string",
-  "oneOf": [
-    {
-      "enum": [
-        "HIGHLIGHT"
-      ],
-      "description": "Multiplies the source color by the target color."
-    },
-    {
-      "enum": [
-        "REPLACE"
-      ],
-      "description": "Replaces the source color with the target color."
-    },
-    {
-      "enum": [
-        "MIX"
-      ],
-      "description": "Blends the source color and target color together."
-    }
-  ]
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ColorBlendModeValue.json",
+    "title": "ColorBlendMode",
+    "description": "Defines different modes for blending between a target color and an entity's source color.",
+    "type": "string",
+    "oneOf": [
+        {
+            "enum": [
+                "HIGHLIGHT"
+            ],
+            "description": "Multiplies the source color by the target color."
+        },
+        {
+            "enum": [
+                "REPLACE"
+            ],
+            "description": "Replaces the source color with the target color."
+        },
+        {
+            "enum": [
+                "MIX"
+            ],
+            "description": "Blends the source color and target color together."
+        }
+    ]
 }

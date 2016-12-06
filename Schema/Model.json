@@ -49,16 +49,16 @@
         },
         "color": {
             "$ref": "Color.json",
-            "description": "The color that blends with the model's rendered color."
+            "description": "The color to blend with the model's rendered color."
         },
         "colorBlendMode": {
             "$ref": "ColorBlendMode.json",
-            "description": "Defines different modes for blending between a target color and an entity's source color.",
+            "description": "The mode to use for blending between `color` and the model's color.",
             "default": "HIGHLIGHT"
         },
         "colorBlendAmount": {
             "$ref": "Double.json",
-            "description": "Value used to determine the color strength when the colorBlendMode is MIX. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.",
+            "description": "The color strength when `colorBlendMode` is `MIX`. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.",
             "default": 0.5
         },
         "nodeTransformations": {
