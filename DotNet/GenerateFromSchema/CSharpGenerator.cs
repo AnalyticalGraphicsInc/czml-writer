@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
@@ -176,9 +177,10 @@ namespace GenerateFromSchema
 
         private static void WriteDescriptionAsClassSummary(CodeWriter writer, Schema schema)
         {
-            WriteSummaryText(writer, string.Format("Writes a <c>{0}</c> to a <see cref=\"CesiumOutputStream\" />.  A <c>{0}</c> is {1}",
-                schema.Name,
-                schema.Description.UncapitalizeFirstLetter()));
+            string description = schema.Description.UncapitalizeFirstLetter();
+            description = s_markdownRegex.Replace(description, match => string.Format("<c>{0}</c>", match.Groups[1].Value));
+
+            WriteSummaryText(writer, string.Format("Writes a <c>{0}</c> to a <see cref=\"CesiumOutputStream\" />.  A <c>{0}</c> is {1}", schema.Name, description));
         }
 
         private static void WritePropertyNameConstants(CodeWriter writer, Schema schema)
@@ -219,9 +221,9 @@ namespace GenerateFromSchema
                 else
                 {
                     writer.WriteLine("private readonly Lazy<{0}CesiumWriter> m_{1} = new Lazy<{0}CesiumWriter>(() => new {0}CesiumWriter({2}PropertyName), false);",
-                        property.ValueType.NameWithPascalCase,
-                        property.Name,
-                        property.NameWithPascalCase);
+                                     property.ValueType.NameWithPascalCase,
+                                     property.Name,
+                                     property.NameWithPascalCase);
                 }
             }
 
@@ -472,9 +474,9 @@ namespace GenerateFromSchema
                         interfaceName = "ICesiumInterpolatableValuePropertyWriter";
 
                     writer.WriteLine("m_as{0} = new Lazy<{1}<{2}>>(Create{0}Adaptor, false);",
-                        property.NameWithPascalCase,
-                        interfaceName,
-                        firstOverload.Parameters[0].Type);
+                                     property.NameWithPascalCase,
+                                     interfaceName,
+                                     firstOverload.Parameters[0].Type);
                 }
             }
         }
@@ -572,12 +574,12 @@ namespace GenerateFromSchema
             }
         }
 
-        private OverloadInfo FindSampledDataOverload(IEnumerable<OverloadInfo> overloads)
+        private static OverloadInfo FindSampledDataOverload(IEnumerable<OverloadInfo> overloads)
         {
             return overloads.FirstOrDefault(IsSampledDataOverload);
         }
 
-        private bool IsSampledDataOverload(OverloadInfo overload)
+        private static bool IsSampledDataOverload(OverloadInfo overload)
         {
             return overload.Parameters.Length == 4 &&
                    overload.Parameters[0].Type == "IList<JulianDate>" &&
@@ -586,9 +588,13 @@ namespace GenerateFromSchema
                    overload.Parameters[3].Type == "int";
         }
 
+        private static readonly Regex s_markdownRegex = new Regex("`([^`]+)`", RegexOptions.Compiled);
+
         private static string GetDescription(Property property)
         {
             string description = property.Description.UncapitalizeFirstLetter();
+
+            description = s_markdownRegex.Replace(description, match => string.Format("<c>{0}</c>", match.Groups[1].Value));
 
             JToken defaultToken = property.Default;
             if (defaultToken != null)
