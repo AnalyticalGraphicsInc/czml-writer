@@ -6,39 +6,33 @@ import agi.foundation.compatibility.Enumeration;
 
 /**
  *  
- The format of an image to be embedded in a CZML stream.
+ The mode to use when blending between a target color and an entity's source color.
  
 
  */
-public enum CesiumImageFormat implements Enumeration {
+public enum CesiumColorBlendMode implements Enumeration {
     /**
     *  
-    The image is in Portable Network Graphics (PNG) format.
+    Multiplies the source color by the target color.
     
 
     */
-    PNG(0), /**
-            *  
-            The image is in Joint Photographic Experts Group (JPEG) format.
-            
+    HIGHLIGHT(0), /**
+                  *  
+                  Replaces the source color with the target color.
+                  
 
-            */
-    JPEG(1), /**
-             *  
-             The image is in Graphics Interchange Format (GIF) format.
-             
+                  */
+    REPLACE(1), /**
+                *  
+                Blends the source color and target color together.
+                
 
-             */
-    GIF(2), /**
-            *  
-            The image is in bitmap (BMP) format.
-            
-
-            */
-    BMP(3);
+                */
+    MIX(2);
     private final int value;
 
-    CesiumImageFormat(int value) {
+    CesiumColorBlendMode(int value) {
         this.value = value;
     }
 
@@ -55,16 +49,14 @@ public enum CesiumImageFormat implements Enumeration {
     * @return The enum constant associated with value.
     * @param value a numeric value.
     */
-    public static CesiumImageFormat getFromValue(int value) {
+    public static CesiumColorBlendMode getFromValue(int value) {
         switch (value) {
         case 0:
-            return PNG;
+            return HIGHLIGHT;
         case 1:
-            return JPEG;
+            return REPLACE;
         case 2:
-            return GIF;
-        case 3:
-            return BMP;
+            return MIX;
         default:
             throw new IllegalArgumentException("Undefined enum value.");
         }
@@ -74,7 +66,7 @@ public enum CesiumImageFormat implements Enumeration {
     * Get the enum constant that is considered to be the default.
     * @return The default enum constant.
     */
-    public static CesiumImageFormat getDefault() {
-        return PNG;
+    public static CesiumColorBlendMode getDefault() {
+        return HIGHLIGHT;
     }
 }

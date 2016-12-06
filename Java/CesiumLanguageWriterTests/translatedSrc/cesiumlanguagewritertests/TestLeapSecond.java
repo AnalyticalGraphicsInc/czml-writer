@@ -19,57 +19,57 @@ import org.junit.Test;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLeapSecond {
-	/**
-	 *  
-	Tests equality between leap second instances.
-	
+    /**
+    *  
+    Tests equality between leap second instances.
+    
 
-	 */
-	@Test
-	public final void testEquality() {
-		LeapSecond ls1 = new LeapSecond(2451545.0, 100.0);
-		LeapSecond ls2 = new LeapSecond(2451545.0, 100.0);
-		LeapSecond ls3 = new LeapSecond(2451545.0, 101.0);
-		LeapSecond ls4 = new LeapSecond(2451546.0, 101.0);
-		AssertHelper.assertEquals(ls1, ls2);
-		Assert.assertTrue(LeapSecond.equals(ls1, ls2));
-		AssertHelper.assertNotEqual(ls1, ls3);
-		Assert.assertTrue(LeapSecond.notEquals(ls1, ls3));
-		AssertHelper.assertNotEqual(ls1, 5);
-		AssertHelper.assertNotEqual(ls3, ls4);
-	}
+    */
+    @Test
+    public final void testEquality() {
+        LeapSecond ls1 = new LeapSecond(2451545.0, 100.0);
+        LeapSecond ls2 = new LeapSecond(2451545.0, 100.0);
+        LeapSecond ls3 = new LeapSecond(2451545.0, 101.0);
+        LeapSecond ls4 = new LeapSecond(2451546.0, 101.0);
+        AssertHelper.assertEquals(ls1, ls2);
+        Assert.assertTrue(LeapSecond.equals(ls1, ls2));
+        AssertHelper.assertNotEqual(ls1, ls3);
+        Assert.assertTrue(LeapSecond.notEquals(ls1, ls3));
+        AssertHelper.assertNotEqual(ls1, 5);
+        AssertHelper.assertNotEqual(ls3, ls4);
+    }
 
-	/**
-	 *  
-	Tests that JulianDate.GetHashCode returns something at least reasonably random.
-	
+    /**
+    *  
+    Tests that JulianDate.GetHashCode returns something at least reasonably random.
+    
 
-	 */
-	@Test
-	public final void testGetHashCode() {
-		LeapSecond ls1 = new LeapSecond(2451545.0, 100.0);
-		LeapSecond ls2 = new LeapSecond(2451545.0, 100.0);
-		LeapSecond ls3 = new LeapSecond(2451545.0, 101.0);
-		Assert.assertEquals((int) ls1.hashCode(), (int) ls2.hashCode());
-		AssertHelper.assertNotEqual(ls1.hashCode(), ls3.hashCode());
-	}
+    */
+    @Test
+    public final void testGetHashCode() {
+        LeapSecond ls1 = new LeapSecond(2451545.0, 100.0);
+        LeapSecond ls2 = new LeapSecond(2451545.0, 100.0);
+        LeapSecond ls3 = new LeapSecond(2451545.0, 101.0);
+        Assert.assertEquals((int) ls1.hashCode(), (int) ls2.hashCode());
+        AssertHelper.assertNotEqual(ls1.hashCode(), ls3.hashCode());
+    }
 
-	/**
-	 *  
-	Tests the ToString of LeapSecond.
-	
+    /**
+    *  
+    Tests the ToString of LeapSecond.
+    
 
-	 */
-	@Test
-	public final void testToString() {
-		LeapSecond ls1 = new LeapSecond(2451545.0, 100.0);
-		Assert.assertEquals("2451545:0 (UTC), 100", ls1.toString());
-	}
+    */
+    @Test
+    public final void testToString() {
+        LeapSecond ls1 = new LeapSecond(2451545.0, 100.0);
+        Assert.assertEquals("2451545:0 (UTC), 100", ls1.toString());
+    }
 
-	private TestContextRule rule$testContext = new TestContextRule();
+    private TestContextRule rule$testContext = new TestContextRule();
 
-	@Rule
-	public TestContextRule getRule$testContext() {
-		return rule$testContext;
-	}
+    @Rule
+    public TestContextRule getRule$testContext() {
+        return rule$testContext;
+    }
 }

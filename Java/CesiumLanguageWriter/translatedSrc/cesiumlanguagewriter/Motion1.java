@@ -7,7 +7,7 @@ import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
-import agi.foundation.compatibility.IntHelper;
+import agi.foundation.compatibility.PrimitiveHelper;
 
 /**
  *  
@@ -17,242 +17,242 @@ import agi.foundation.compatibility.IntHelper;
 
  * @param <T> The coordinate type used to describe the motion.
  */
-public class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueType {
-	/**
-	 * Initializes a new instance.
-	 */
-	public Motion1() {}
+public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueType {
+    /**
+    * Initializes a new instance.
+    */
+    public Motion1() {}
 
-	/**
-	 *  
-	Initializes a new instance.
-	
-	
-	
-	
-	
+    /**
+    *  
+    Initializes a new instance.
+    
+    
+    
+    
+    
 
-	 * 
-	The first array element describes the value of the coordinate.  The second
-	describes the first derivative, the third describes the second derivative, and so on.
-	The array must have at least one element.
-	
-	 * @param motion The description of the motion.
-	 * @exception ArgumentNullException 
-	Thrown when the parameter <code>motion</code> is <see langword="null" />.
-	
-	 * @exception IllegalStateException 
-	Thrown when the <code>motion</code> does not contain any values.
-	
-	 */
-	public Motion1(T... motion) {
-		if (motion == null) {
-			throw new ArgumentNullException("motion");
-		} else if (motion.length < 1) {
-			throw new IllegalStateException(CesiumLocalization.getMotionMustContainValue());
-		}
-		m_motion = motion;
-	}
+    * <p>
+    The first array element describes the value of the coordinate.  The second
+    describes the first derivative, the third describes the second derivative, and so on.
+    The array must have at least one element.
+    
+    * @param motion The description of the motion.
+    * @exception ArgumentNullException 
+    Thrown when the parameter {@code motion} is {@code null}.
+    
+    * @exception IllegalStateException 
+    Thrown when the {@code motion} does not contain any values.
+    
+    */
+    public Motion1(T... motion) {
+        if (motion == null) {
+            throw new ArgumentNullException("motion");
+        } else if (motion.length < 1) {
+            throw new IllegalStateException(CesiumLocalization.getMotionMustContainValue());
+        }
+        m_motion = motion;
+    }
 
-	/**
-	 *  
-	Indicates whether another object is exactly equal to this instance.
-	
-	
-	
-	
+    /**
+    *  
+    Indicates whether another object is exactly equal to this instance.
+    
+    
+    
+    
 
-	 * 
-	For two Motion instances to be considered equal, the value and derivatives of each
-	must compare as equal.
-	
-	 * @param other The object to compare to this instance.
-	 * @return <see langword="true" /> if <code>other</code> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false" />.
-	 */
-	public final boolean equalsType(Motion1<T> other) {
-		if (m_motion == null && other.m_motion == null) {
-			return true;
-		}
-		if (m_motion == null || other.m_motion == null || m_motion.length != other.m_motion.length) {
-			return false;
-		}
-		for (int i = 0; i < m_motion.length; ++i) {
-			if (!m_motion[i].equals(other.m_motion[i])) {
-				return false;
-			}
-		}
-		return true;
-	}
+    * <p>
+    For two Motion instances to be considered equal, the value and derivatives of each
+    must compare as equal.
+    
+    * @param other The object to compare to this instance.
+    * @return {@code true} if {@code other} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
+    */
+    public final boolean equalsType(Motion1<T> other) {
+        if (m_motion == null && other.m_motion == null) {
+            return true;
+        }
+        if (m_motion == null || other.m_motion == null || m_motion.length != other.m_motion.length) {
+            return false;
+        }
+        for (int i = 0; i < m_motion.length; ++i) {
+            if (!m_motion[i].equals(other.m_motion[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-	/**
-	 *  
-	Indicates whether another object is exactly equal to this instance.
-	
-	
-	
-	
+    /**
+    *  
+    Indicates whether another object is exactly equal to this instance.
+    
+    
+    
+    
 
-	 * 
-	For two Motion instances to be considered equal, the value and derivatives of each
-	must compare as equal.
-	
-	 * @param obj The object to compare to this instance.
-	 * @return <see langword="true" /> if <code>obj</code> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false" />.
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Motion1) {
-			Motion1<T> motion = (Motion1<T>) obj;
-			return equalsType(motion);
-		} else {
-			return false;
-		}
-	}
+    * <p>
+    For two Motion instances to be considered equal, the value and derivatives of each
+    must compare as equal.
+    
+    * @param obj The object to compare to this instance.
+    * @return {@code true} if {@code obj} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
+    */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Motion1) {
+            Motion1<T> motion = (Motion1<T>) obj;
+            return equalsType(motion);
+        } else {
+            return false;
+        }
+    }
 
-	/**
-	 *  
-	Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
-	
-	
+    /**
+    *  
+    Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
+    
+    
 
-	 * @return A hash code for the current object.
-	 */
-	@Override
-	public int hashCode() {
-		int hashValue = IntHelper.hashCode(getOrder());
-		if (m_motion != null) {
-			for (int i = 0; i < m_motion.length; ++i) {
-				hashValue ^= m_motion[i].hashCode();
-			}
-		}
-		return hashValue;
-	}
+    * @return A hash code for the current object.
+    */
+    @Override
+    public int hashCode() {
+        int hashValue = PrimitiveHelper.hashCode(getOrder());
+        if (m_motion != null) {
+            for (int i = 0; i < m_motion.length; ++i) {
+                hashValue ^= m_motion[i].hashCode();
+            }
+        }
+        return hashValue;
+    }
 
-	/**
-	 *  
-	Returns <see langword="true" /> if the two instances are exactly equal.
-	
-	
-	
-	
-	
+    /**
+    *  
+    Returns {@code true} if the two instances are exactly equal.
+    
+    
+    
+    
+    
 
-	 * 
-	For two Motion instances to be considered equal, the value and derivatives of each
-	must compare as equal.
-	
-	 * @param left The instance to compare to <code>right</code>.
-	 * @param right The instance to compare to <code>left</code>.
-	 * @return 
-	<see langword="true" /> if <code>left</code> represents the same value as <code>right</code>; otherwise, <see langword="false" />.
-	
-	 */
-	@CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Motion,Motion)'")
-	public static <T> boolean equals(Motion1<T> left, Motion1<T> right) {
-		return left.equalsType(right);
-	}
+    * <p>
+    For two Motion instances to be considered equal, the value and derivatives of each
+    must compare as equal.
+    
+    * @param left The instance to compare to {@code right}.
+    * @param right The instance to compare to {@code left}.
+    * @return 
+    {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
+    
+    */
+    @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Motion,Motion)'")
+    public static <T> boolean equals(Motion1<T> left, Motion1<T> right) {
+        return left.equalsType(right);
+    }
 
-	/**
-	 *  
-	Returns <see langword="true" /> if the two instances are not exactly equal.
-	
-	
-	
-	
-	
+    /**
+    *  
+    Returns {@code true} if the two instances are not exactly equal.
+    
+    
+    
+    
+    
 
-	 * 
-	For two Motion instances to be considered equal, the value and derivatives of each
-	must compare as equal.
-	
-	 * @param left The instance to compare to <code>right</code>.
-	 * @param right The instance to compare to <code>left</code>.
-	 * @return 
-	<see langword="true" /> if <code>left</code> does not represent the same value as <code>right</code>; otherwise, <see langword="false" />.
-	
-	 */
-	@CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Motion,Motion)'")
-	public static <T> boolean notEquals(Motion1<T> left, Motion1<T> right) {
-		return !left.equalsType(right);
-	}
+    * <p>
+    For two Motion instances to be considered equal, the value and derivatives of each
+    must compare as equal.
+    
+    * @param left The instance to compare to {@code right}.
+    * @param right The instance to compare to {@code left}.
+    * @return 
+    {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
+    
+    */
+    @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Motion,Motion)'")
+    public static <T> boolean notEquals(Motion1<T> left, Motion1<T> right) {
+        return !left.equalsType(right);
+    }
 
-	private T[] m_motion;
+    private T[] m_motion;
 
-	/**
-	 *  Gets the value of the coordinate.
-	
+    /**
+    *  Gets the value of the coordinate.
+    
 
-	 */
-	public final T getValue() {
-		return get(0);
-	}
+    */
+    public final T getValue() {
+        return get(0);
+    }
 
-	/**
-	 *  Gets the first derivative, if it is available.
-	
-	
+    /**
+    *  Gets the first derivative, if it is available.
+    
+    
 
-	 * @exception ArgumentOutOfRangeException 
-	This motion instance does not contain a first derivative.
-	
-	 */
-	public final T getFirstDerivative() {
-		return get(1);
-	}
+    * @exception ArgumentOutOfRangeException 
+    This motion instance does not contain a first derivative.
+    
+    */
+    public final T getFirstDerivative() {
+        return get(1);
+    }
 
-	/**
-	 *  Gets the second derivative, if it is available.
-	
-	
+    /**
+    *  Gets the second derivative, if it is available.
+    
+    
 
-	 * @exception ArgumentOutOfRangeException 
-	This motion instance does not contain a second derivative.
-	
-	 */
-	public final T getSecondDerivative() {
-		return get(2);
-	}
+    * @exception ArgumentOutOfRangeException 
+    This motion instance does not contain a second derivative.
+    
+    */
+    public final T getSecondDerivative() {
+        return get(2);
+    }
 
-	/**
-	 *  Gets the indicated component of the motion.
-	Index 0 retrieves the coordinate value.  Index 1 retrieves the first derivative, if it
-	exists.  Index 2 retrieves the second derivative, if it exists.  The number of available
-	derivatives is indicated by the <code>Order</code> ({@link #getOrder get}) property.
-	
-	
-	
-	
+    /**
+    *  Gets the indicated component of the motion.
+    Index 0 retrieves the coordinate value.  Index 1 retrieves the first derivative, if it
+    exists.  Index 2 retrieves the second derivative, if it exists.  The number of available
+    derivatives is indicated by the {@code Order} ({@link #getOrder get}) property.
+    
+    
+    
+    
 
-	 * @param index The index of the motion component to retrieve.
-	 * @return The requested motion component.
-	 * @exception ArgumentOutOfRangeException 
-	Thrown when the <code>index</code> is not between zero and the <code>Order</code> ({@link #getOrder get}) inclusive.
-	
-	 */
-	public final T get(int index) {
-		if (m_motion == null) {
-			if (index == 0) {
-				return (T) null;
-			} else {
-				throw new ArgumentOutOfRangeException("index");
-			}
-		} else if (index >= 0 && index < m_motion.length) {
-			return m_motion[index];
-		} else {
-			throw new ArgumentOutOfRangeException("index");
-		}
-	}
+    * @param index The index of the motion component to retrieve.
+    * @return The requested motion component.
+    * @exception ArgumentOutOfRangeException 
+    Thrown when the {@code index} is not between zero and the {@code Order} ({@link #getOrder get}) inclusive.
+    
+    */
+    public final T get(int index) {
+        if (m_motion == null) {
+            if (index == 0) {
+                return (T) null;
+            } else {
+                throw new ArgumentOutOfRangeException("index");
+            }
+        } else if (index >= 0 && index < m_motion.length) {
+            return m_motion[index];
+        } else {
+            throw new ArgumentOutOfRangeException("index");
+        }
+    }
 
-	/**
-	 *  Gets the number of derivatives described by this instance.
-	
+    /**
+    *  Gets the number of derivatives described by this instance.
+    
 
-	 */
-	public final int getOrder() {
-		if (m_motion == null) {
-			return 0;
-		} else {
-			return m_motion.length - 1;
-		}
-	}
+    */
+    public final int getOrder() {
+        if (m_motion == null) {
+            return 0;
+        } else {
+            return m_motion.length - 1;
+        }
+    }
 }

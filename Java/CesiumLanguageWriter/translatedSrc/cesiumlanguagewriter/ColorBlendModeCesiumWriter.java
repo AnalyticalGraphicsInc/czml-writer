@@ -5,23 +5,23 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.CesiumCornerType;
+import cesiumlanguagewriter.CesiumColorBlendMode;
 import cesiumlanguagewriter.Reference;
 
 /**
  *  
- Writes a {@code CornerType} to a  {@link CesiumOutputStream}.  A {@code CornerType} is the style of a corner.
+ Writes a {@code ColorBlendMode} to a  {@link CesiumOutputStream}.  A {@code ColorBlendMode} is defines different modes for blending between a target color and an entity's source color.
  
 
  */
-public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiumWriter> {
+public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendModeCesiumWriter> {
     /**
     *  
-    The name of the {@code cornerType} property.
+    The name of the {@code colorBlendMode} property.
     
 
     */
-    public static final String CornerTypePropertyName = "cornerType";
+    public static final String ColorBlendModePropertyName = "colorBlendMode";
     /**
     *  
     The name of the {@code reference} property.
@@ -29,7 +29,7 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
     */
     public static final String ReferencePropertyName = "reference";
-    private Lazy<ICesiumValuePropertyWriter<CesiumCornerType>> m_asCornerType;
+    private Lazy<ICesiumValuePropertyWriter<CesiumColorBlendMode>> m_asColorBlendMode;
     private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
     /**
@@ -38,14 +38,14 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
     
 
     */
-    public CornerTypeCesiumWriter(String propertyName) {
+    public ColorBlendModeCesiumWriter(String propertyName) {
         super(propertyName);
-        m_asCornerType = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(
-                this, "createCornerTypeAdaptor", new Class[] {}) {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType> invoke() {
-                return createCornerTypeAdaptor();
-            }
-        }, false);
+        m_asColorBlendMode = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode>>(
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode>>(this, "createColorBlendModeAdaptor", new Class[] {}) {
+                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode> invoke() {
+                        return createColorBlendModeAdaptor();
+                    }
+                }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
                 "createReferenceAdaptor", new Class[] {}) {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
@@ -62,14 +62,14 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
     * @param existingInstance The existing instance to copy.
     */
-    protected CornerTypeCesiumWriter(CornerTypeCesiumWriter existingInstance) {
+    protected ColorBlendModeCesiumWriter(ColorBlendModeCesiumWriter existingInstance) {
         super(existingInstance);
-        m_asCornerType = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(
-                this, "createCornerTypeAdaptor", new Class[] {}) {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType> invoke() {
-                return createCornerTypeAdaptor();
-            }
-        }, false);
+        m_asColorBlendMode = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode>>(
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode>>(this, "createColorBlendModeAdaptor", new Class[] {}) {
+                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode> invoke() {
+                        return createColorBlendModeAdaptor();
+                    }
+                }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
                 "createReferenceAdaptor", new Class[] {}) {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
@@ -79,32 +79,32 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
     }
 
     @Override
-    public CornerTypeCesiumWriter clone() {
-        return new CornerTypeCesiumWriter(this);
+    public ColorBlendModeCesiumWriter clone() {
+        return new ColorBlendModeCesiumWriter(this);
     }
 
     /**
     *  
-    Writes the value expressed as a {@code cornerType}, which is the corner style.
+    Writes the value expressed as a {@code colorBlendMode}, which is the color blend mode.
     
     
 
-    * @param value The style of a corner.
+    * @param value The blend mode.
     */
-    public final void writeCornerType(CesiumCornerType value) {
-        final String PropertyName = CornerTypePropertyName;
+    public final void writeColorBlendMode(CesiumColorBlendMode value) {
+        final String PropertyName = ColorBlendModePropertyName;
         if (getForceInterval()) {
             openIntervalIfNecessary();
         }
         if (getIsInterval()) {
             getOutput().writePropertyName(PropertyName);
         }
-        getOutput().writeValue(CesiumFormattingHelper.cornerTypeToString(value));
+        getOutput().writeValue(CesiumFormattingHelper.colorBlendModeToString(value));
     }
 
     /**
     *  
-    Writes the value expressed as a {@code reference}, which is the corner style specified as a reference to another property.
+    Writes the value expressed as a {@code reference}, which is the color blend mode specified as a reference to another property.
     
     
 
@@ -119,7 +119,7 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
     /**
     *  
-    Writes the value expressed as a {@code reference}, which is the corner style specified as a reference to another property.
+    Writes the value expressed as a {@code reference}, which is the color blend mode specified as a reference to another property.
     
     
 
@@ -134,7 +134,7 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
     /**
     *  
-    Writes the value expressed as a {@code reference}, which is the corner style specified as a reference to another property.
+    Writes the value expressed as a {@code reference}, which is the color blend mode specified as a reference to another property.
     
     
     
@@ -151,7 +151,7 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
     /**
     *  
-    Writes the value expressed as a {@code reference}, which is the corner style specified as a reference to another property.
+    Writes the value expressed as a {@code reference}, which is the color blend mode specified as a reference to another property.
     
     
     
@@ -168,21 +168,21 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code CornerType} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code ColorBlendMode} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<CesiumCornerType> asCornerType() {
-        return m_asCornerType.getValue();
+    public final ICesiumValuePropertyWriter<CesiumColorBlendMode> asColorBlendMode() {
+        return m_asColorBlendMode.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<CesiumCornerType> createCornerTypeAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.CornerTypeCesiumWriter, cesiumlanguagewriter.CesiumCornerType>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.CornerTypeCesiumWriter, cesiumlanguagewriter.CesiumCornerType>() {
-                    public void invoke(CornerTypeCesiumWriter me, CesiumCornerType value) {
-                        me.writeCornerType(value);
+    private final ICesiumValuePropertyWriter<CesiumColorBlendMode> createColorBlendModeAdaptor() {
+        return new CesiumWriterAdaptor<cesiumlanguagewriter.ColorBlendModeCesiumWriter, cesiumlanguagewriter.CesiumColorBlendMode>(this,
+                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.ColorBlendModeCesiumWriter, cesiumlanguagewriter.CesiumColorBlendMode>() {
+                    public void invoke(ColorBlendModeCesiumWriter me, CesiumColorBlendMode value) {
+                        me.writeColorBlendMode(value);
                     }
                 });
     }
@@ -200,9 +200,9 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
     }
 
     private final ICesiumValuePropertyWriter<Reference> createReferenceAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.CornerTypeCesiumWriter, cesiumlanguagewriter.Reference>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.CornerTypeCesiumWriter, cesiumlanguagewriter.Reference>() {
-                    public void invoke(CornerTypeCesiumWriter me, Reference value) {
+        return new CesiumWriterAdaptor<cesiumlanguagewriter.ColorBlendModeCesiumWriter, cesiumlanguagewriter.Reference>(this,
+                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.ColorBlendModeCesiumWriter, cesiumlanguagewriter.Reference>() {
+                    public void invoke(ColorBlendModeCesiumWriter me, Reference value) {
                         me.writeReference(value);
                     }
                 });

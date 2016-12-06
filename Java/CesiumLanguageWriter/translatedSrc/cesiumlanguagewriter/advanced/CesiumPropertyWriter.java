@@ -17,261 +17,259 @@ import cesiumlanguagewriter.*;
  * @param <TDerived> The type of the class derived from this one.
  */
 public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter<TDerived>> extends CesiumElementWriter implements ICesiumPropertyWriter {
-	private String m_propertyName;
-	private Lazy<CesiumIntervalListWriter<TDerived>> m_multipleIntervals;
-	private Lazy<TDerived> m_interval;
-	private ElementType m_elementType = ElementType.PROPERTY;
+    private String m_propertyName;
+    private Lazy<CesiumIntervalListWriter<TDerived>> m_multipleIntervals;
+    private Lazy<TDerived> m_interval;
+    private ElementType m_elementType = ElementType.PROPERTY;
 
-	static private enum ElementType implements Enumeration {
-		PROPERTY(0), INTERVAL(1), PROPERTY_CONVERTED_TO_INTERVAL(2);
-		private final int value;
+    private static enum ElementType implements Enumeration {
+        PROPERTY(0), INTERVAL(1), PROPERTY_CONVERTED_TO_INTERVAL(2);
+        private final int value;
 
-		ElementType(int value) {
-			this.value = value;
-		}
+        ElementType(int value) {
+            this.value = value;
+        }
 
-		/**
-		 * Get the numeric value associated with this enum constant.
-		 * @return A numeric value.
-		 */
-		public int getValue() {
-			return value;
-		}
+        /**
+        * Get the numeric value associated with this enum constant.
+        * @return A numeric value.
+        */
+        public int getValue() {
+            return value;
+        }
 
-		/**
-		 * Get the enum constant that is associated with the given numeric value.
-		 * @return The enum constant associated with value.
-		 * @param value a numeric value.
-		 */
-		public static ElementType getFromValue(int value) {
-			switch (value) {
-			case 0:
-				return PROPERTY;
-			case 1:
-				return INTERVAL;
-			case 2:
-				return PROPERTY_CONVERTED_TO_INTERVAL;
-			default:
-				throw new IllegalArgumentException("Undefined enum value.");
-			}
-		}
+        /**
+        * Get the enum constant that is associated with the given numeric value.
+        * @return The enum constant associated with value.
+        * @param value a numeric value.
+        */
+        public static ElementType getFromValue(int value) {
+            switch (value) {
+            case 0:
+                return PROPERTY;
+            case 1:
+                return INTERVAL;
+            case 2:
+                return PROPERTY_CONVERTED_TO_INTERVAL;
+            default:
+                throw new IllegalArgumentException("Undefined enum value.");
+            }
+        }
 
-		/**
-		 * Get the enum constant that is considered to be the default.
-		 * @return The default enum constant.
-		 */
-		public static ElementType getDefault() {
-			return PROPERTY;
-		}
-	}
+        /**
+        * Get the enum constant that is considered to be the default.
+        * @return The default enum constant.
+        */
+        public static ElementType getDefault() {
+            return PROPERTY;
+        }
+    }
 
-	/**
-	 *  
-	Initializes a new instance.
-	
-	
+    /**
+    *  
+    Initializes a new instance.
+    
+    
 
-	 * @param propertyName The name of the property.
-	 */
-	public CesiumPropertyWriter(String propertyName) {
-		m_propertyName = propertyName;
-		m_multipleIntervals = new Lazy<cesiumlanguagewriter.CesiumIntervalListWriter<TDerived>>(new Func1<cesiumlanguagewriter.CesiumIntervalListWriter<TDerived>>(this, "createIntervalListWriter",
-				new Class[] {}) {
-			public cesiumlanguagewriter.CesiumIntervalListWriter<TDerived> invoke() {
-				return createIntervalListWriter();
-			}
-		}, false);
-		m_interval = new Lazy<TDerived>(new Func1<TDerived>(this, "copyForInterval", new Class[] {}) {
-			public TDerived invoke() {
-				return copyForInterval();
-			}
-		}, false);
-	}
+    * @param propertyName The name of the property.
+    */
+    protected CesiumPropertyWriter(String propertyName) {
+        m_propertyName = propertyName;
+        m_multipleIntervals = new Lazy<cesiumlanguagewriter.CesiumIntervalListWriter<TDerived>>(new Func1<cesiumlanguagewriter.CesiumIntervalListWriter<TDerived>>(this, "createIntervalListWriter",
+                new Class[] {}) {
+            public cesiumlanguagewriter.CesiumIntervalListWriter<TDerived> invoke() {
+                return createIntervalListWriter();
+            }
+        }, false);
+        m_interval = new Lazy<TDerived>(new Func1<TDerived>(this, "copyForInterval", new Class[] {}) {
+            public TDerived invoke() {
+                return copyForInterval();
+            }
+        }, false);
+    }
 
-	final private CesiumIntervalListWriter<TDerived> createIntervalListWriter() {
-		return new CesiumIntervalListWriter<TDerived>((TDerived) this);
-	}
+    private final CesiumIntervalListWriter<TDerived> createIntervalListWriter() {
+        return new CesiumIntervalListWriter<TDerived>((TDerived) this);
+    }
 
-	/**
-	 *  
-	Initializes a new instance as a copy of an existing instance.
-	
-	
+    /**
+    *  
+    Initializes a new instance as a copy of an existing instance.
+    
+    
 
-	 * @param existingInstance The existing instance to copy.
-	 */
-	protected CesiumPropertyWriter(CesiumPropertyWriter<TDerived> existingInstance) {
-		this(existingInstance.m_propertyName);
-	}
+    * @param existingInstance The existing instance to copy.
+    */
+    protected CesiumPropertyWriter(CesiumPropertyWriter<TDerived> existingInstance) {
+        this(existingInstance.m_propertyName);
+    }
 
-	/**
-	 *  Gets the name of the property written by this instance.
-	
+    /**
+    *  Gets the name of the property written by this instance.
+    
 
-	 */
-	public final String getPropertyName() {
-		return m_propertyName;
-	}
+    */
+    public final String getPropertyName() {
+        return m_propertyName;
+    }
 
-	/**
-	 *  Gets a value indicating whether this instance represents an open interval.
-	
+    /**
+    *  Gets a value indicating whether this instance represents an open interval.
+    
 
-	 */
-	public final boolean getIsInterval() {
-		return m_elementType == ElementType.INTERVAL || m_elementType == ElementType.PROPERTY_CONVERTED_TO_INTERVAL;
-	}
+    */
+    public final boolean getIsInterval() {
+        return m_elementType == ElementType.INTERVAL || m_elementType == ElementType.PROPERTY_CONVERTED_TO_INTERVAL;
+    }
 
-	/**
-	 *  Gets a writer for intervals of this property.  The returned instance must be opened by calling
-	the  {@link ICesiumElementWriter#open} method before it can be used for writing.  Consider
-	calling the  {@link #openInterval(JulianDate,JulianDate)} or  {@link #openMultipleIntervals} method, which will automatically
-	open the writer, instead of accessing this property directly.
-	
+    /**
+    *  Gets a writer for intervals of this property.  The returned instance must be opened by calling
+    the  {@link ICesiumElementWriter#open} method before it can be used for writing.  Consider
+    calling the  {@link #openInterval(JulianDate,JulianDate)} or  {@link #openMultipleIntervals} method, which will automatically
+    open the writer, instead of accessing this property directly.
+    
 
-	 */
-	public final TDerived getIntervalWriter() {
-		return m_interval.getValue();
-	}
+    */
+    public final TDerived getIntervalWriter() {
+        return m_interval.getValue();
+    }
 
-	/**
-	 *  Gets a value indicating whether this instance should always open an interval.
-	
+    /**
+    *  Gets a value indicating whether this instance should always open an interval.
+    
 
-	 */
-	public final boolean getForceInterval() {
-		return backingField$ForceInterval;
-	}
+    */
+    public final boolean getForceInterval() {
+        return backingField$ForceInterval;
+    }
 
-	/**
-	 *  Sets a value indicating whether this instance should always open an interval.
-	
+    /**
+    *  Sets a value indicating whether this instance should always open an interval.
+    
 
-	 */
-	public final void setForceInterval(boolean value) {
-		backingField$ForceInterval = value;
-	}
+    */
+    public final void setForceInterval(boolean value) {
+        backingField$ForceInterval = value;
+    }
 
-	/**
-	 *  
-	Copies this instance and returns the copy.
-	
-	
+    /**
+    *  
+    Copies this instance and returns the copy.
+    
+    
 
-	 * @return The copy.
-	 */
-	public abstract TDerived clone();
+    * @return The copy.
+    */
+    public abstract TDerived clone();
 
-	/**
-	 *  
-	Opens a writer that is used to write information about this property for a single interval.
-	
-	
+    /**
+    *  
+    Opens a writer that is used to write information about this property for a single interval.
+    
+    
 
-	 * @return The writer.
-	 */
-	public final TDerived openInterval() {
-		return openAndReturn(m_interval.getValue());
-	}
+    * @return The writer.
+    */
+    public final TDerived openInterval() {
+        return openAndReturn(m_interval.getValue());
+    }
 
-	/**
-	 *  
-	Opens a writer that is used to write information about this property for a single interval.
-	
-	
-	
-	
+    /**
+    *  
+    Opens a writer that is used to write information about this property for a single interval.
+    
+    
+    
+    
 
-	 * @param start The start of the interval of time covered by this interval element.
-	 * @param stop The end of the interval of time covered by this interval element.
-	 * @return The writer.
-	 */
-	public final TDerived openInterval(JulianDate start, JulianDate stop) {
-		TDerived result = openAndReturn(m_interval.getValue());
-		result.writeInterval(start, stop);
-		return result;
-	}
+    * @param start The start of the interval of time covered by this interval element.
+    * @param stop The end of the interval of time covered by this interval element.
+    * @return The writer.
+    */
+    public final TDerived openInterval(JulianDate start, JulianDate stop) {
+        TDerived result = openAndReturn(m_interval.getValue());
+        result.writeInterval(start, stop);
+        return result;
+    }
 
-	/**
-	 *  
-	Opens a writer that is used to write information about this property for multiple discrete intervals.
-	
-	
+    /**
+    *  
+    Opens a writer that is used to write information about this property for multiple discrete intervals.
+    
+    
 
-	 * @return The writer.
-	 */
-	public final CesiumIntervalListWriter<TDerived> openMultipleIntervals() {
-		return openAndReturn(m_multipleIntervals.getValue());
-	}
+    * @return The writer.
+    */
+    public final CesiumIntervalListWriter<TDerived> openMultipleIntervals() {
+        return openAndReturn(m_multipleIntervals.getValue());
+    }
 
-	/**
-	 *  
-	Writes the actual interval of time covered by this CZML interval.
-	
-	
-	
+    /**
+    *  
+    Writes the actual interval of time covered by this CZML interval.
+    
+    
+    
 
-	 * @param start The first date of the interval.
-	 * @param stop The last date of the interval.
-	 */
-	public final void writeInterval(JulianDate start, JulianDate stop) {
-		writeInterval(new TimeInterval(start, stop));
-	}
+    * @param start The first date of the interval.
+    * @param stop The last date of the interval.
+    */
+    public final void writeInterval(JulianDate start, JulianDate stop) {
+        writeInterval(new TimeInterval(start, stop));
+    }
 
-	/**
-	 *  
-	Writes the actual interval of time covered by this CZML interval.
-	
-	
+    /**
+    *  
+    Writes the actual interval of time covered by this CZML interval.
+    
+    
 
-	 * @param interval The interval.
-	 */
-	public final void writeInterval(TimeInterval interval) {
-		openIntervalIfNecessary();
-		getOutput().writePropertyName("interval");
-		getOutput().writeValue(CesiumFormattingHelper.toIso8601Interval(interval.getStart(), interval.getStop(), getOutput().getPrettyFormatting() ? Iso8601Format.EXTENDED : Iso8601Format.COMPACT));
-	}
+    * @param interval The interval.
+    */
+    public final void writeInterval(TimeInterval interval) {
+        openIntervalIfNecessary();
+        getOutput().writePropertyName("interval");
+        getOutput().writeValue(CesiumFormattingHelper.toIso8601Interval(interval.getStart(), interval.getStop(), getOutput().getPrettyFormatting() ? Iso8601Format.EXTENDED : Iso8601Format.COMPACT));
+    }
 
-	@Override
-	final protected void onOpen() {
-		if (m_elementType == ElementType.INTERVAL || m_elementType == ElementType.PROPERTY_CONVERTED_TO_INTERVAL) {
-			getOutput().writeStartObject();
-		} else {
-			getOutput().writePropertyName(m_propertyName);
-		}
-	}
+    @Override
+    protected final void onOpen() {
+        if (m_elementType == ElementType.INTERVAL || m_elementType == ElementType.PROPERTY_CONVERTED_TO_INTERVAL) {
+            getOutput().writeStartObject();
+        } else {
+            getOutput().writePropertyName(m_propertyName);
+        }
+    }
 
-	@Override
-	final protected void onClose() {
-		if (m_elementType == ElementType.INTERVAL || m_elementType == ElementType.PROPERTY_CONVERTED_TO_INTERVAL) {
-			getOutput().writeEndObject();
-			if (m_elementType == ElementType.PROPERTY_CONVERTED_TO_INTERVAL) {
-				m_elementType = ElementType.PROPERTY;
-			}
-		}
-	}
+    @Override
+    protected final void onClose() {
+        if (m_elementType == ElementType.INTERVAL || m_elementType == ElementType.PROPERTY_CONVERTED_TO_INTERVAL) {
+            getOutput().writeEndObject();
+            if (m_elementType == ElementType.PROPERTY_CONVERTED_TO_INTERVAL) {
+                m_elementType = ElementType.PROPERTY;
+            }
+        }
+    }
 
-	/**
-	 *  
-	Opens an interval for this property if one is not already open.  This method should be called by
-	derived-class 
-	<code>open...</code> methods prior to opening the nested property.
-	
+    /**
+    *  
+    Opens an interval for this property if one is not already open.
+    
 
-	 */
-	final protected void openIntervalIfNecessary() {
-		if (m_elementType == ElementType.PROPERTY) {
-			m_elementType = ElementType.PROPERTY_CONVERTED_TO_INTERVAL;
-			onOpen();
-		}
-	}
+    */
+    protected final void openIntervalIfNecessary() {
+        if (m_elementType == ElementType.PROPERTY) {
+            m_elementType = ElementType.PROPERTY_CONVERTED_TO_INTERVAL;
+            onOpen();
+        }
+    }
 
-	final private TDerived copyForInterval() {
-		TDerived result = clone();
-		CesiumPropertyWriter<TDerived> cesiumPropertyWriter = result;
-		cesiumPropertyWriter.m_elementType = ElementType.INTERVAL;
-		return result;
-	}
+    private final TDerived copyForInterval() {
+        TDerived result = clone();
+        CesiumPropertyWriter<TDerived> cesiumPropertyWriter = result;
+        cesiumPropertyWriter.m_elementType = ElementType.INTERVAL;
+        return result;
+    }
 
-	private boolean backingField$ForceInterval;
+    private boolean backingField$ForceInterval;
 }

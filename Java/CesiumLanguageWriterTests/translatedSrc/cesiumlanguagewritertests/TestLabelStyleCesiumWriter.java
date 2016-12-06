@@ -15,59 +15,59 @@ import org.junit.Test;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLabelStyleCesiumWriter extends TestCesiumPropertyWriter<LabelStyleCesiumWriter> {
-	@Test
-	public final void labelStyleCanBeWrittenAsSimpleString() {
-		{
-			PacketCesiumWriter disposable_0 = (getPacket());
-			try {
-				{
-					LabelStyleCesiumWriter writer = new LabelStyleCesiumWriter("foo");
-					try {
-						writer.open(getOutputStream());
-						writer.writeLabelStyle(CesiumLabelStyle.FILL_AND_OUTLINE);
-					} finally {
-						DisposeHelper.dispose(writer);
-					}
-				}
-			} finally {
-				DisposeHelper.dispose(disposable_0);
-			}
-		}
-		Assert.assertEquals("{\"foo\":\"FILL_AND_OUTLINE\"}", getStringWriter().toString());
-	}
+    @Test
+    public final void labelStyleCanBeWrittenAsSimpleString() {
+        {
+            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            try {
+                {
+                    LabelStyleCesiumWriter writer = new LabelStyleCesiumWriter("foo");
+                    try {
+                        writer.open(getOutputStream());
+                        writer.writeLabelStyle(CesiumLabelStyle.FILL_AND_OUTLINE);
+                    } finally {
+                        DisposeHelper.dispose(writer);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(usingExpression_0);
+            }
+        }
+        Assert.assertEquals("{\"foo\":\"FILL_AND_OUTLINE\"}", getStringWriter().toString());
+    }
 
-	@Test
-	public final void labelStyleCanBeWrittenInsideInterval() {
-		JulianDate startDate = new GregorianDate(2012, 6, 7, 12, 0, 0D).toJulianDate();
-		{
-			PacketCesiumWriter disposable_1 = (getPacket());
-			try {
-				{
-					LabelStyleCesiumWriter writer = new LabelStyleCesiumWriter("foo");
-					try {
-						writer.open(getOutputStream());
-						writer.writeInterval(startDate, startDate.addSeconds(100.0));
-						writer.writeLabelStyle(CesiumLabelStyle.FILL_AND_OUTLINE);
-					} finally {
-						DisposeHelper.dispose(writer);
-					}
-				}
-			} finally {
-				DisposeHelper.dispose(disposable_1);
-			}
-		}
-		Assert.assertEquals("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"labelStyle\":\"FILL_AND_OUTLINE\"}}", getStringWriter().toString());
-	}
+    @Test
+    public final void labelStyleCanBeWrittenInsideInterval() {
+        JulianDate startDate = new GregorianDate(2012, 6, 7, 12, 0, 0D).toJulianDate();
+        {
+            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            try {
+                {
+                    LabelStyleCesiumWriter writer = new LabelStyleCesiumWriter("foo");
+                    try {
+                        writer.open(getOutputStream());
+                        writer.writeInterval(startDate, startDate.addSeconds(100.0));
+                        writer.writeLabelStyle(CesiumLabelStyle.FILL_AND_OUTLINE);
+                    } finally {
+                        DisposeHelper.dispose(writer);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(usingExpression_1);
+            }
+        }
+        Assert.assertEquals("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"labelStyle\":\"FILL_AND_OUTLINE\"}}", getStringWriter().toString());
+    }
 
-	@Override
-	protected CesiumPropertyWriter<LabelStyleCesiumWriter> createPropertyWriter(String propertyName) {
-		return new LabelStyleCesiumWriter(propertyName);
-	}
+    @Override
+    protected CesiumPropertyWriter<LabelStyleCesiumWriter> createPropertyWriter(String propertyName) {
+        return new LabelStyleCesiumWriter(propertyName);
+    }
 
-	private TestContextRule rule$testContext = new TestContextRule();
+    private TestContextRule rule$testContext = new TestContextRule();
 
-	@Rule
-	public TestContextRule getRule$testContext() {
-		return rule$testContext;
-	}
+    @Rule
+    public TestContextRule getRule$testContext() {
+        return rule$testContext;
+    }
 }

@@ -18,112 +18,112 @@ import org.junit.Test;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestReference {
-	@Test
-	public final void canContructEscapedReferences() {
-		String value = "identifier#property";
-		cesiumlanguagewriter.Reference reference = new Reference(value);
-		Assert.assertEquals(reference.getIdentifier(), "identifier");
-		ArrayList<String> tempCollection_0 = new ArrayList<String>();
-		tempCollection_0.add("property");
-		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_0);
-		Assert.assertEquals(value, reference.getValue());
-		value = ("identifier#property.subProperty");
-		reference = new Reference(value);
-		Assert.assertEquals(reference.getIdentifier(), "identifier");
-		ArrayList<String> tempCollection_1 = new ArrayList<String>();
-		tempCollection_1.add("property");
-		tempCollection_1.add("subProperty");
-		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_1);
-		Assert.assertEquals(value, reference.getValue());
-		value = "\\#identif\\\\\\\\\\#ier\\.\\\\#propertyName.\\.abc\\\\.def";
-		reference = new Reference(value);
-		Assert.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
-		ArrayList<String> tempCollection_2 = new ArrayList<String>();
-		tempCollection_2.add("propertyName");
-		tempCollection_2.add(".abc\\");
-		tempCollection_2.add("def");
-		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_2);
-		Assert.assertEquals(value, reference.getValue());
-		value = "#propertyName.\\.abc\\\\.def";
-		reference = new Reference(value);
-		AssertHelper.assertIsEmpty(reference.getIdentifier());
-		ArrayList<String> tempCollection_3 = new ArrayList<String>();
-		tempCollection_3.add("propertyName");
-		tempCollection_3.add(".abc\\");
-		tempCollection_3.add("def");
-		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_3);
-		Assert.assertEquals(value, reference.getValue());
-	}
+    @Test
+    public final void canContructEscapedReferences() {
+        String value = "identifier#property";
+        cesiumlanguagewriter.Reference reference = new Reference(value);
+        Assert.assertEquals(reference.getIdentifier(), "identifier");
+        final ArrayList<String> tempCollection$0 = new ArrayList<String>();
+        tempCollection$0.add("property");
+        AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection$0);
+        Assert.assertEquals(value, reference.getValue());
+        value = ("identifier#property.subProperty");
+        reference = new Reference(value);
+        Assert.assertEquals(reference.getIdentifier(), "identifier");
+        final ArrayList<String> tempCollection$1 = new ArrayList<String>();
+        tempCollection$1.add("property");
+        tempCollection$1.add("subProperty");
+        AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection$1);
+        Assert.assertEquals(value, reference.getValue());
+        value = "\\#identif\\\\\\\\\\#ier\\.\\\\#propertyName.\\.abc\\\\.def";
+        reference = new Reference(value);
+        Assert.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
+        final ArrayList<String> tempCollection$2 = new ArrayList<String>();
+        tempCollection$2.add("propertyName");
+        tempCollection$2.add(".abc\\");
+        tempCollection$2.add("def");
+        AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection$2);
+        Assert.assertEquals(value, reference.getValue());
+        value = "#propertyName.\\.abc\\\\.def";
+        reference = new Reference(value);
+        AssertHelper.assertIsEmpty(reference.getIdentifier());
+        final ArrayList<String> tempCollection$3 = new ArrayList<String>();
+        tempCollection$3.add("propertyName");
+        tempCollection$3.add(".abc\\");
+        tempCollection$3.add("def");
+        AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection$3);
+        Assert.assertEquals(value, reference.getValue());
+    }
 
-	@Test
-	public final void canContructFromIdentifierAndProperty() {
-		cesiumlanguagewriter.Reference reference = new Reference("identifier", "property");
-		Assert.assertEquals(reference.getIdentifier(), "identifier");
-		ArrayList<String> tempCollection_4 = new ArrayList<String>();
-		tempCollection_4.add("property");
-		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_4);
-		Assert.assertEquals(reference.getValue(), "identifier#property");
-		reference = new Reference("#identif\\\\#ier.\\", "property.Name");
-		Assert.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
-		ArrayList<String> tempCollection_5 = new ArrayList<String>();
-		tempCollection_5.add("property.Name");
-		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_5);
-		Assert.assertEquals(reference.getValue(), "\\#identif\\\\\\\\\\#ier\\.\\\\#property\\.Name");
-	}
+    @Test
+    public final void canContructFromIdentifierAndProperty() {
+        cesiumlanguagewriter.Reference reference = new Reference("identifier", "property");
+        Assert.assertEquals(reference.getIdentifier(), "identifier");
+        final ArrayList<String> tempCollection$4 = new ArrayList<String>();
+        tempCollection$4.add("property");
+        AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection$4);
+        Assert.assertEquals(reference.getValue(), "identifier#property");
+        reference = new Reference("#identif\\\\#ier.\\", "property.Name");
+        Assert.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
+        final ArrayList<String> tempCollection$5 = new ArrayList<String>();
+        tempCollection$5.add("property.Name");
+        AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection$5);
+        Assert.assertEquals(reference.getValue(), "\\#identif\\\\\\\\\\#ier\\.\\\\#property\\.Name");
+    }
 
-	@Test
-	public final void canContructFromIdentifierAndProperties() {
-		ArrayList<String> tempCollection_6 = new ArrayList<String>();
-		tempCollection_6.add("property");
-		tempCollection_6.add("subProperty");
-		cesiumlanguagewriter.Reference reference = new Reference("identifier", tempCollection_6);
-		Assert.assertEquals(reference.getIdentifier(), "identifier");
-		ArrayList<String> tempCollection_7 = new ArrayList<String>();
-		tempCollection_7.add("property");
-		tempCollection_7.add("subProperty");
-		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_7);
-		Assert.assertEquals(reference.getValue(), "identifier#property.subProperty");
-		ArrayList<String> tempCollection_8 = new ArrayList<String>();
-		tempCollection_8.add("property.Name");
-		tempCollection_8.add("subProperty");
-		reference = new Reference("#identif\\\\#ier.\\", tempCollection_8);
-		Assert.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
-		ArrayList<String> tempCollection_9 = new ArrayList<String>();
-		tempCollection_9.add("property.Name");
-		tempCollection_9.add("subProperty");
-		AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection_9);
-		Assert.assertEquals(reference.getValue(), "\\#identif\\\\\\\\\\#ier\\.\\\\#property\\.Name.subProperty");
-	}
+    @Test
+    public final void canContructFromIdentifierAndProperties() {
+        final ArrayList<String> tempCollection$6 = new ArrayList<String>();
+        tempCollection$6.add("property");
+        tempCollection$6.add("subProperty");
+        cesiumlanguagewriter.Reference reference = new Reference("identifier", tempCollection$6);
+        Assert.assertEquals(reference.getIdentifier(), "identifier");
+        final ArrayList<String> tempCollection$7 = new ArrayList<String>();
+        tempCollection$7.add("property");
+        tempCollection$7.add("subProperty");
+        AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection$7);
+        Assert.assertEquals(reference.getValue(), "identifier#property.subProperty");
+        final ArrayList<String> tempCollection$8 = new ArrayList<String>();
+        tempCollection$8.add("property.Name");
+        tempCollection$8.add("subProperty");
+        reference = new Reference("#identif\\\\#ier.\\", tempCollection$8);
+        Assert.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
+        final ArrayList<String> tempCollection$9 = new ArrayList<String>();
+        tempCollection$9.add("property.Name");
+        tempCollection$9.add("subProperty");
+        AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection$9);
+        Assert.assertEquals(reference.getValue(), "\\#identif\\\\\\\\\\#ier\\.\\\\#property\\.Name.subProperty");
+    }
 
-	@Test
-	public final void throwsWithMissingDelimiter() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
-		new Reference("MissingDelimiter");
-	}
+    @Test
+    public final void throwsWithMissingDelimiter() {
+        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
+        new Reference("MissingDelimiter");
+    }
 
-	@Test
-	public final void throwsWithMissingDelimiterDoToEscaping() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
-		new Reference("Missing\\#Delimiter");
-	}
+    @Test
+    public final void throwsWithMissingDelimiterDoToEscaping() {
+        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
+        new Reference("Missing\\#Delimiter");
+    }
 
-	@Test
-	public final void throwsWithMissingProperties() {
-		ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
-		new Reference("MissingPropertyName#");
-	}
+    @Test
+    public final void throwsWithMissingProperties() {
+        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
+        new Reference("MissingPropertyName#");
+    }
 
-	private TestContextRule rule$testContext = new TestContextRule();
+    private TestContextRule rule$testContext = new TestContextRule();
 
-	@Rule
-	public TestContextRule getRule$testContext() {
-		return rule$testContext;
-	}
+    @Rule
+    public TestContextRule getRule$testContext() {
+        return rule$testContext;
+    }
 
-	private ExpectedException rule$expectedException = ExpectedException.none();
+    private ExpectedException rule$expectedException = ExpectedException.none();
 
-	@Rule
-	public ExpectedException getRule$expectedException() {
-		return rule$expectedException;
-	}
+    @Rule
+    public ExpectedException getRule$expectedException() {
+        return rule$expectedException;
+    }
 }
