@@ -18,7 +18,7 @@
         },
         "text": {
             "$ref": "String.json",
-            "description": "The text displayed by the label."
+            "description": "The text displayed by the label.  The newline character (\\n) indicates line breaks."
         },
         "font": {
             "$ref": "Font.json",
