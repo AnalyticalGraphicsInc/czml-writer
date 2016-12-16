@@ -65,6 +65,27 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     public static final String ScalePropertyName = "scale";
     /**
     *  
+    The name of the {@code showBackground} property.
+    
+
+    */
+    public static final String ShowBackgroundPropertyName = "showBackground";
+    /**
+    *  
+    The name of the {@code backgroundColor} property.
+    
+
+    */
+    public static final String BackgroundColorPropertyName = "backgroundColor";
+    /**
+    *  
+    The name of the {@code backgroundPadding} property.
+    
+
+    */
+    public static final String BackgroundPaddingPropertyName = "backgroundPadding";
+    /**
+    *  
     The name of the {@code pixelOffset} property.
     
 
@@ -156,6 +177,21 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     private Lazy<DoubleCesiumWriter> m_scale = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(ScalePropertyName);
+        }
+    }, false);
+    private Lazy<BooleanCesiumWriter> m_showBackground = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+        public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+            return new BooleanCesiumWriter(ShowBackgroundPropertyName);
+        }
+    }, false);
+    private Lazy<ColorCesiumWriter> m_backgroundColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+        public cesiumlanguagewriter.ColorCesiumWriter invoke() {
+            return new ColorCesiumWriter(BackgroundColorPropertyName);
+        }
+    }, false);
+    private Lazy<BackgroundPaddingCesiumWriter> m_backgroundPadding = new Lazy<BackgroundPaddingCesiumWriter>(new Func1<T>() {
+        public T invoke() {
+            return new BackgroundPaddingCesiumWriter(BackgroundPaddingPropertyName);
         }
     }, false);
     private Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<cesiumlanguagewriter.PixelOffsetCesiumWriter>(new Func1<cesiumlanguagewriter.PixelOffsetCesiumWriter>() {
@@ -356,7 +392,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code text} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code text} property defines the text displayed by the label.
+    *  Gets the writer for the {@code text} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code text} property defines the text displayed by the label.  The newline character (\n) indicates line breaks.
     
 
     */
@@ -366,7 +402,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code text} property.  The {@code text} property defines the text displayed by the label.
+    Opens and returns the writer for the {@code text} property.  The {@code text} property defines the text displayed by the label.  The newline character (\n) indicates line breaks.
     
 
     */
@@ -377,7 +413,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code text} property as a {@code string} value.  The {@code text} property specifies the text displayed by the label.
+    Writes a value for the {@code text} property as a {@code string} value.  The {@code text} property specifies the text displayed by the label.  The newline character (\n) indicates line breaks.
     
     
 
@@ -396,7 +432,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code text} property as a {@code reference} value.  The {@code text} property specifies the text displayed by the label.
+    Writes a value for the {@code text} property as a {@code reference} value.  The {@code text} property specifies the text displayed by the label.  The newline character (\n) indicates line breaks.
     
     
 
@@ -415,7 +451,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code text} property as a {@code reference} value.  The {@code text} property specifies the text displayed by the label.
+    Writes a value for the {@code text} property as a {@code reference} value.  The {@code text} property specifies the text displayed by the label.  The newline character (\n) indicates line breaks.
     
     
 
@@ -434,7 +470,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code text} property as a {@code reference} value.  The {@code text} property specifies the text displayed by the label.
+    Writes a value for the {@code text} property as a {@code reference} value.  The {@code text} property specifies the text displayed by the label.  The newline character (\n) indicates line breaks.
     
     
     
@@ -455,7 +491,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code text} property as a {@code reference} value.  The {@code text} property specifies the text displayed by the label.
+    Writes a value for the {@code text} property as a {@code reference} value.  The {@code text} property specifies the text displayed by the label.  The newline character (\n) indicates line breaks.
     
     
     
@@ -869,6 +905,591 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     public final void writeScalePropertyReference(String identifier, String[] propertyNames) {
         {
             cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code showBackground} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showBackground} property defines whether or not a background behind the label is shown.  If not specified, the default value is {@code true}.
+    
+
+    */
+    public final BooleanCesiumWriter getShowBackgroundWriter() {
+        return m_showBackground.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code showBackground} property.  The {@code showBackground} property defines whether or not a background behind the label is shown.  If not specified, the default value is {@code true}.
+    
+
+    */
+    public final BooleanCesiumWriter openShowBackgroundProperty() {
+        openIntervalIfNecessary();
+        return this.<BooleanCesiumWriter> openAndReturn(getShowBackgroundWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code showBackground} property as a {@code boolean} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code true}.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeShowBackgroundProperty(boolean value) {
+        {
+            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowBackgroundProperty();
+            try {
+                writer.writeBoolean(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code true}.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeShowBackgroundPropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowBackgroundProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code true}.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeShowBackgroundPropertyReference(String value) {
+        {
+            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowBackgroundProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code true}.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeShowBackgroundPropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowBackgroundProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code true}.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeShowBackgroundPropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowBackgroundProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code backgroundColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code backgroundColor} property defines the color of the background behind the label.
+    
+
+    */
+    public final ColorCesiumWriter getBackgroundColorWriter() {
+        return m_backgroundColor.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code backgroundColor} property.  The {@code backgroundColor} property defines the color of the background behind the label.
+    
+
+    */
+    public final ColorCesiumWriter openBackgroundColorProperty() {
+        openIntervalIfNecessary();
+        return this.<ColorCesiumWriter> openAndReturn(getBackgroundColorWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundColor} property as a {@code rgba} value.  The {@code backgroundColor} property specifies the color of the background behind the label.
+    
+    
+
+    * @param color The color.
+    */
+    public final void writeBackgroundColorProperty(Color color) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openBackgroundColorProperty();
+            try {
+                writer.writeRgba(color);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundColor} property as a {@code rgba} value.  The {@code backgroundColor} property specifies the color of the background behind the label.
+    
+    
+    
+    
+    
+
+    * @param red The red component in the range 0 to 255.
+    * @param green The green component in the range 0 to 255.
+    * @param blue The blue component in the range 0 to 255.
+    * @param alpha The alpha component in the range 0 to 255.
+    */
+    public final void writeBackgroundColorProperty(int red, int green, int blue, int alpha) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openBackgroundColorProperty();
+            try {
+                writer.writeRgba(red, green, blue, alpha);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundColor} property as a {@code rgba} value.  The {@code backgroundColor} property specifies the color of the background behind the label.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeBackgroundColorProperty(List<JulianDate> dates, List<Color> values) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openBackgroundColorProperty();
+            try {
+                writer.writeRgba(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundColor} property as a {@code rgba} value.  The {@code backgroundColor} property specifies the color of the background behind the label.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param colors The color corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeBackgroundColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openBackgroundColorProperty();
+            try {
+                writer.writeRgba(dates, colors, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundColor} property as a {@code rgbaf} value.  The {@code backgroundColor} property specifies the color of the background behind the label.
+    
+    
+
+    * @param color The color.
+    */
+    public final void writeBackgroundColorPropertyRgbaf(Color color) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openBackgroundColorProperty();
+            try {
+                writer.writeRgbaf(color);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundColor} property as a {@code rgbaf} value.  The {@code backgroundColor} property specifies the color of the background behind the label.
+    
+    
+    
+    
+    
+
+    * @param red The red component in the range 0 to 1.0.
+    * @param green The green component in the range 0 to 1.0.
+    * @param blue The blue component in the range 0 to 1.0.
+    * @param alpha The alpha component in the range 0 to 1.0.
+    */
+    public final void writeBackgroundColorPropertyRgbaf(float red, float green, float blue, float alpha) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openBackgroundColorProperty();
+            try {
+                writer.writeRgbaf(red, green, blue, alpha);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundColor} property as a {@code rgbaf} value.  The {@code backgroundColor} property specifies the color of the background behind the label.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeBackgroundColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openBackgroundColorProperty();
+            try {
+                writer.writeRgbaf(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundColor} property as a {@code rgbaf} value.  The {@code backgroundColor} property specifies the color of the background behind the label.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param colors The color corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeBackgroundColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openBackgroundColorProperty();
+            try {
+                writer.writeRgbaf(dates, colors, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundColor} property as a {@code reference} value.  The {@code backgroundColor} property specifies the color of the background behind the label.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeBackgroundColorPropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openBackgroundColorProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundColor} property as a {@code reference} value.  The {@code backgroundColor} property specifies the color of the background behind the label.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeBackgroundColorPropertyReference(String value) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openBackgroundColorProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundColor} property as a {@code reference} value.  The {@code backgroundColor} property specifies the color of the background behind the label.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeBackgroundColorPropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openBackgroundColorProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundColor} property as a {@code reference} value.  The {@code backgroundColor} property specifies the color of the background behind the label.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeBackgroundColorPropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openBackgroundColorProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code backgroundPadding} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code backgroundPadding} property defines the amount of padding between the text and the label's background.
+    
+
+    */
+    public final BackgroundPaddingCesiumWriter getBackgroundPaddingWriter() {
+        return m_backgroundPadding.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code backgroundPadding} property.  The {@code backgroundPadding} property defines the amount of padding between the text and the label's background.
+    
+
+    */
+    public final BackgroundPaddingCesiumWriter openBackgroundPaddingProperty() {
+        openIntervalIfNecessary();
+        return this.<BackgroundPaddingCesiumWriter> openAndReturn(getBackgroundPaddingWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundPadding} property as a {@code cartesian2} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeBackgroundPaddingProperty(Rectangular value) {
+        {
+            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            try {
+                writer.writeCartesian2(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundPadding} property as a {@code cartesian2} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background.
+    
+    
+    
+
+    * @param x The X component.
+    * @param y The Y component.
+    */
+    public final void writeBackgroundPaddingProperty(double x, double y) {
+        {
+            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            try {
+                writer.writeCartesian2(x, y);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundPadding} property as a {@code cartesian2} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeBackgroundPaddingProperty(List<JulianDate> dates, List<Rectangular> values) {
+        {
+            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            try {
+                writer.writeCartesian2(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundPadding} property as a {@code cartesian2} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeBackgroundPaddingProperty(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
+        {
+            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            try {
+                writer.writeCartesian2(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundPadding} property as a {@code reference} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeBackgroundPaddingPropertyReference(Reference value) {
+        {
+            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundPadding} property as a {@code reference} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeBackgroundPaddingPropertyReference(String value) {
+        {
+            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundPadding} property as a {@code reference} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeBackgroundPaddingPropertyReference(String identifier, String propertyName) {
+        {
+            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code backgroundPadding} property as a {@code reference} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeBackgroundPaddingPropertyReference(String identifier, String[] propertyNames) {
+        {
+            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
