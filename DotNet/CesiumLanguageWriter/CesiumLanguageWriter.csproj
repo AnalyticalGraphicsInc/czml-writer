@@ -96,6 +96,7 @@
     <Compile Include="Generated\AlignedAxisCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\BackgroundPaddingCesiumWriter.cs" />
     <Compile Include="Generated\BillboardCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -6,6 +6,7 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.BackgroundPaddingCesiumWriter;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
@@ -189,8 +190,8 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
             return new ColorCesiumWriter(BackgroundColorPropertyName);
         }
     }, false);
-    private Lazy<BackgroundPaddingCesiumWriter> m_backgroundPadding = new Lazy<BackgroundPaddingCesiumWriter>(new Func1<T>() {
-        public T invoke() {
+    private Lazy<BackgroundPaddingCesiumWriter> m_backgroundPadding = new Lazy<cesiumlanguagewriter.BackgroundPaddingCesiumWriter>(new Func1<cesiumlanguagewriter.BackgroundPaddingCesiumWriter>() {
+        public cesiumlanguagewriter.BackgroundPaddingCesiumWriter invoke() {
             return new BackgroundPaddingCesiumWriter(BackgroundPaddingPropertyName);
         }
     }, false);
@@ -1342,7 +1343,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     */
     public final void writeBackgroundPaddingProperty(Rectangular value) {
         {
-            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            cesiumlanguagewriter.BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
             try {
                 writer.writeCartesian2(value);
             } finally {
@@ -1363,7 +1364,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     */
     public final void writeBackgroundPaddingProperty(double x, double y) {
         {
-            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            cesiumlanguagewriter.BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
             try {
                 writer.writeCartesian2(x, y);
             } finally {
@@ -1384,7 +1385,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     */
     public final void writeBackgroundPaddingProperty(List<JulianDate> dates, List<Rectangular> values) {
         {
-            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            cesiumlanguagewriter.BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
             try {
                 writer.writeCartesian2(dates, values);
             } finally {
@@ -1409,7 +1410,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     */
     public final void writeBackgroundPaddingProperty(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
         {
-            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            cesiumlanguagewriter.BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
             try {
                 writer.writeCartesian2(dates, values, startIndex, length);
             } finally {
@@ -1428,7 +1429,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     */
     public final void writeBackgroundPaddingPropertyReference(Reference value) {
         {
-            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            cesiumlanguagewriter.BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1447,7 +1448,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     */
     public final void writeBackgroundPaddingPropertyReference(String value) {
         {
-            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            cesiumlanguagewriter.BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1468,7 +1469,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     */
     public final void writeBackgroundPaddingPropertyReference(String identifier, String propertyName) {
         {
-            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            cesiumlanguagewriter.BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1489,7 +1490,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     */
     public final void writeBackgroundPaddingPropertyReference(String identifier, String[] propertyNames) {
         {
-            BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
+            cesiumlanguagewriter.BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
