@@ -48,6 +48,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string OutlineWidthPropertyName = "outlineWidth";
 
+        /// <summary>
+        /// The name of the <c>shadows</c> property.
+        /// </summary>
+        public const string ShadowsPropertyName = "shadows";
+
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<BoxDimensionsCesiumWriter> m_dimensions = new Lazy<BoxDimensionsCesiumWriter>(() => new BoxDimensionsCesiumWriter(DimensionsPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_fill = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(FillPropertyName), false);
@@ -55,6 +60,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(OutlinePropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
+        private readonly Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<ShadowModeCesiumWriter>(() => new ShadowModeCesiumWriter(ShadowsPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -719,6 +725,85 @@ namespace CesiumLanguageWriter
         public void WriteOutlineWidthPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOutlineWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>shadows</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>shadows</c> property defines whether or not the box casts or receives shadows.  If not specified, the default value is DISABLED.
+        /// </summary>
+        public ShadowModeCesiumWriter ShadowsWriter
+        {
+            get { return m_shadows.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>shadows</c> property.  The <c>shadows</c> property defines whether or not the box casts or receives shadows.  If not specified, the default value is DISABLED.
+        /// </summary>
+        public ShadowModeCesiumWriter OpenShadowsProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ShadowsWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>shadows</c> property as a <c>shadowMode</c> value.  The <c>shadows</c> property specifies whether or not the box casts or receives shadows.  If not specified, the default value is DISABLED.
+        /// </summary>
+        /// <param name="value">The shadow mode.</param>
+        public void WriteShadowsProperty(CesiumShadowMode value)
+        {
+            using (var writer = OpenShadowsProperty())
+            {
+                writer.WriteShadowMode(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the box casts or receives shadows.  If not specified, the default value is DISABLED.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShadowsPropertyReference(Reference value)
+        {
+            using (var writer = OpenShadowsProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the box casts or receives shadows.  If not specified, the default value is DISABLED.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShadowsPropertyReference(string value)
+        {
+            using (var writer = OpenShadowsProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the box casts or receives shadows.  If not specified, the default value is DISABLED.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShadowsPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShadowsProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the box casts or receives shadows.  If not specified, the default value is DISABLED.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShadowsPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShadowsProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

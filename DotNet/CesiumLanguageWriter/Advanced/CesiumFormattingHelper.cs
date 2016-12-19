@@ -258,6 +258,28 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Converts a <see cref="CesiumShadowMode"/> to the corresponding string in a CZML stream.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        public static string ShadowModeToString(CesiumShadowMode value)
+        {
+            switch (value)
+            {
+                case CesiumShadowMode.Disabled:
+                    return "DISABLED";
+                case CesiumShadowMode.Enabled:
+                    return "ENABLED";
+                case CesiumShadowMode.CastOnly:
+                    return "CAST_ONLY";
+                case CesiumShadowMode.ReceiveOnly:
+                    return "RECEIVE_ONLY";
+                default:
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
+            }
+        }
+
+        /// <summary>
         /// Converts a <see cref="CesiumInterpolationAlgorithm"/> to the corresponding string in a CZML stream.
         /// </summary>
         /// <param name="value">The value to convert.</param>

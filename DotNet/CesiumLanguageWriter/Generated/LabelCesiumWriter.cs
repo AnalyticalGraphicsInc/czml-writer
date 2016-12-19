@@ -569,7 +569,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>showBackground</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showBackground</c> property defines whether or not a background behind the label is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>showBackground</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showBackground</c> property defines whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         public BooleanCesiumWriter ShowBackgroundWriter
         {
@@ -577,7 +577,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>showBackground</c> property.  The <c>showBackground</c> property defines whether or not a background behind the label is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>showBackground</c> property.  The <c>showBackground</c> property defines whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         public BooleanCesiumWriter OpenShowBackgroundProperty()
         {
@@ -586,7 +586,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>showBackground</c> property as a <c>boolean</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>showBackground</c> property as a <c>boolean</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowBackgroundProperty(bool value)
@@ -598,7 +598,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>showBackground</c> property as a <c>reference</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>showBackground</c> property as a <c>reference</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowBackgroundPropertyReference(Reference value)
@@ -610,7 +610,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>showBackground</c> property as a <c>reference</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>showBackground</c> property as a <c>reference</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowBackgroundPropertyReference(string value)
@@ -622,7 +622,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>showBackground</c> property as a <c>reference</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>showBackground</c> property as a <c>reference</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -635,7 +635,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>showBackground</c> property as a <c>reference</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>showBackground</c> property as a <c>reference</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
