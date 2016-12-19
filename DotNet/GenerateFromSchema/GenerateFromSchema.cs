@@ -55,7 +55,8 @@ namespace GenerateFromSchema
                 case GeneratorType.CSharp:
                     if (options.ConfigurationFile == null)
                     {
-                        Console.WriteLine(options.Usage());
+                        Console.Error.WriteLine("ERROR: When type is CSharp, a configuration file is required.");
+                        Console.Error.WriteLine(options.Usage());
                         return;
                     }
 
