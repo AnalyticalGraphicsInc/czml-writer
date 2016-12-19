@@ -415,6 +415,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeShadowMode(CesiumShadowMode.CAST_ONLY);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -545,6 +554,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeShadowMode(CesiumShadowMode.CAST_ONLY);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -661,6 +679,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeNumber(39979.0);
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.slices.getValue(date)).toEqual(39979.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeShadowMode(CesiumShadowMode.CAST_ONLY);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -812,6 +839,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeShadowMode(CesiumShadowMode.CAST_ONLY);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -923,6 +959,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeShadowMode(CesiumShadowMode.CAST_ONLY);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -971,6 +1016,33 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeNumber(6510.0);
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.scale.getValue(date)).toEqual(6510.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.BooleanCesiumWriter w2 = w.openShowBackgroundProperty();
+                            try {
+                                w2.writeBoolean(true);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.showBackground.getValue(date)).toEqual(true);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ColorCesiumWriter w2 = w.openBackgroundColorProperty();
+                            try {
+                                w2.writeRgba(ColorHelper.fromArgb(128, 225, 114, 54));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.backgroundColor.getValue(date)).toEqual(Color.fromBytes(225, 114, 54, 128));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.BackgroundPaddingCesiumWriter w2 = w.openBackgroundPaddingProperty();
+                            try {
+                                w2.writeCartesian2(new Rectangular(5508D, 56341D));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.backgroundPadding.getValue(date)).toEqual(new Cartesian2(5508, 56341));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -1136,10 +1208,37 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeShadowMode(CesiumShadowMode.CAST_ONLY);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
                             try {
                                 w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ColorCesiumWriter w2 = w.openSilhouetteColorProperty();
+                            try {
+                                w2.writeRgba(ColorHelper.fromArgb(101, 29, 61, 52));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.silhouetteColor.getValue(date)).toEqual(Color.fromBytes(29, 61, 52, 101));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openSilhouetteSizeProperty();
+                            try {
+                                w2.writeNumber(4645.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.silhouetteSize.getValue(date)).toEqual(4645.0);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -1518,6 +1617,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeShadowMode(CesiumShadowMode.CAST_ONLY);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -1590,6 +1698,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeBoolean(true);
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.followSurface.getValue(date)).toEqual(true);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeShadowMode(CesiumShadowMode.CAST_ONLY);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -1742,6 +1859,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeShadowMode(CesiumShadowMode.CAST_ONLY);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -1850,6 +1976,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeNumber(50458.0);
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.outlineWidth.getValue(date)).toEqual(50458.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeShadowMode(CesiumShadowMode.CAST_ONLY);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -5343,6 +5478,33 @@ public class TestGenerateValidationDocument {
         {
             cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
             try {
+                packet.writeId("constant_label_backgroundColor_rgbaf");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_label_backgroundColor_rgbaf')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.LabelCesiumWriter w = packet.openLabelProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.ColorCesiumWriter w2 = w.openBackgroundColorProperty();
+                            try {
+                                w2.writeRgbaf(ColorHelper.fromArgb(215, 228, 242, 126));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.label.backgroundColor.getValue(date)).toEqualEpsilon(new Color(0.894117647058824, 0.949019607843137, 0.494117647058824, 0.843137254901961), 1e-14);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
                 packet.writeId("constant_label_fillColor_rgbaf");
                 writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_label_fillColor_rgbaf')).toBeDefined();");
                 {
@@ -5395,6 +5557,33 @@ public class TestGenerateValidationDocument {
     }
 
     private final void writeConstantValuesIndividualModel() {
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_model_silhouetteColor_rgbaf");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_model_silhouetteColor_rgbaf')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.ModelCesiumWriter w = packet.openModelProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.ColorCesiumWriter w2 = w.openSilhouetteColorProperty();
+                            try {
+                                w2.writeRgbaf(ColorHelper.fromArgb(224, 75, 80, 107));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.model.silhouetteColor.getValue(date)).toEqualEpsilon(new Color(0.294117647058824, 0.313725490196078, 0.419607843137255, 0.87843137254902), 1e-14);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
         {
             cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
             try {
@@ -16272,6 +16461,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("box", "shadows")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.shadows.getValue(date)).toEqual(constant.box.shadows.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -16406,6 +16604,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("corridor", "shadows")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.shadows.getValue(date)).toEqual(constant.corridor.shadows.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -16524,6 +16731,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("cylinder", "slices")));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.slices.getValue(date)).toEqual(constant.cylinder.slices.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("cylinder", "shadows")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.shadows.getValue(date)).toEqual(constant.cylinder.shadows.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -16677,6 +16893,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipse", "shadows")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.shadows.getValue(date)).toEqual(constant.ellipse.shadows.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -16789,6 +17014,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipsoid", "shadows")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.shadows.getValue(date)).toEqual(constant.ellipsoid.shadows.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -16837,6 +17071,33 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("label", "scale")));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.scale.getValue(date)).toEqual(constant.label.scale.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.BooleanCesiumWriter w2 = w.openShowBackgroundProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("label", "showBackground")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.showBackground.getValue(date)).toEqual(constant.label.showBackground.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ColorCesiumWriter w2 = w.openBackgroundColorProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("label", "backgroundColor")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.backgroundColor.getValue(date)).toEqual(constant.label.backgroundColor.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.BackgroundPaddingCesiumWriter w2 = w.openBackgroundPaddingProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("label", "backgroundPadding")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.backgroundPadding.getValue(date)).toEqual(constant.label.backgroundPadding.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -17005,10 +17266,37 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("model", "shadows")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.shadows.getValue(date)).toEqual(constant.model.shadows.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("model", "heightReference")));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.heightReference.getValue(date)).toEqual(constant.model.heightReference.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ColorCesiumWriter w2 = w.openSilhouetteColorProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("model", "silhouetteColor")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.silhouetteColor.getValue(date)).toEqual(constant.model.silhouetteColor.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openSilhouetteSizeProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("model", "silhouetteSize")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.silhouetteSize.getValue(date)).toEqual(constant.model.silhouetteSize.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -17395,6 +17683,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polygon", "shadows")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.shadows.getValue(date)).toEqual(constant.polygon.shadows.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -17471,6 +17768,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polyline", "followSurface")));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.followSurface.getValue(date)).toEqual(constant.polyline.followSurface.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polyline", "shadows")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.shadows.getValue(date)).toEqual(constant.polyline.shadows.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -17623,6 +17929,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "shadows")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.shadows.getValue(date)).toEqual(constant.rectangle.shadows.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -17743,6 +18058,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("wall", "outlineWidth")));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.outlineWidth.getValue(date)).toEqual(constant.wall.outlineWidth.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("wall", "shadows")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.shadows.getValue(date)).toEqual(constant.wall.shadows.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -26748,6 +27072,28 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.ColorCesiumWriter w2 = w.openBackgroundColorProperty();
+                            try {
+                                w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Color> createList(
+                                        ColorHelper.fromArgb(169, 30, 92, 161), ColorHelper.fromArgb(62, 85, 52, 166)));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.backgroundColor.getValue(documentStartDate)).toEqual(Color.fromBytes(30, 92, 161, 169));");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.backgroundColor.getValue(documentStopDate)).toEqual(Color.fromBytes(85, 52, 166, 62));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.BackgroundPaddingCesiumWriter w2 = w.openBackgroundPaddingProperty();
+                            try {
+                                w2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<Rectangular> createList(new Rectangular(32945D, 5504D), new Rectangular(35323D, 6281D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.backgroundPadding.getValue(documentStartDate)).toEqual(new Cartesian2(32945, 5504));");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.backgroundPadding.getValue(documentStopDate)).toEqual(new Cartesian2(35323, 6281));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.PixelOffsetCesiumWriter w2 = w.openPixelOffsetProperty();
                             try {
                                 w2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
@@ -26864,6 +27210,28 @@ public class TestGenerateValidationDocument {
                                         8290.0, 25558.0));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.maximumScale.getValue(documentStartDate)).toEqual(8290.0);");
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.maximumScale.getValue(documentStopDate)).toEqual(25558.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ColorCesiumWriter w2 = w.openSilhouetteColorProperty();
+                            try {
+                                w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Color> createList(
+                                        ColorHelper.fromArgb(81, 33, 239, 70), ColorHelper.fromArgb(123, 60, 48, 26)));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.silhouetteColor.getValue(documentStartDate)).toEqual(Color.fromBytes(33, 239, 70, 81));");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.silhouetteColor.getValue(documentStopDate)).toEqual(Color.fromBytes(60, 48, 26, 123));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openSilhouetteSizeProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
+                                        65103.0, 29065.0));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.silhouetteSize.getValue(documentStartDate)).toEqual(65103.0);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.silhouetteSize.getValue(documentStopDate)).toEqual(29065.0);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -30802,6 +31170,37 @@ public class TestGenerateValidationDocument {
         {
             cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
             try {
+                packet.writeId("sampled_label_backgroundColor_rgbaf");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_label_backgroundColor_rgbaf')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.LabelCesiumWriter w = packet.openLabelProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.ColorCesiumWriter w2 = w.openBackgroundColorProperty();
+                            try {
+                                w2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Color> createList(
+                                        ColorHelper.fromArgb(69, 245, 48, 222), ColorHelper.fromArgb(210, 225, 203, 154)));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.label.backgroundColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.96078431372549, 0.188235294117647, 0.870588235294118, 0.270588235294118), 1e-14);");
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.label.backgroundColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.882352941176471, 0.796078431372549, 0.603921568627451, 0.823529411764706), 1e-14);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
                 packet.writeId("sampled_label_fillColor_rgbaf");
                 writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_label_fillColor_rgbaf')).toBeDefined();");
                 {
@@ -30864,6 +31263,37 @@ public class TestGenerateValidationDocument {
     }
 
     private final void writeSampledValuesIndividualModel() {
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_model_silhouetteColor_rgbaf");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_model_silhouetteColor_rgbaf')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.ModelCesiumWriter w = packet.openModelProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.ColorCesiumWriter w2 = w.openSilhouetteColorProperty();
+                            try {
+                                w2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Color> createList(
+                                        ColorHelper.fromArgb(162, 59, 221, 68), ColorHelper.fromArgb(21, 191, 58, 206)));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.model.silhouetteColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.231372549019608, 0.866666666666667, 0.266666666666667, 0.635294117647059), 1e-14);");
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.model.silhouetteColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.749019607843137, 0.227450980392157, 0.807843137254902, 0.0823529411764706), 1e-14);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
         {
             cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
             try {
