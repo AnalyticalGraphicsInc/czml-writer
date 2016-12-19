@@ -56,6 +56,7 @@ namespace GenerateFromSchema
                     if (options.ConfigurationFile == null)
                     {
                         Console.Error.WriteLine("ERROR: When type is CSharp, a configuration file is required.");
+                        Console.Error.WriteLine(options.Usage());
                         return;
                     }
 
