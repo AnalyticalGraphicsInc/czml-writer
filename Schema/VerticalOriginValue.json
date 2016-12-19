@@ -9,7 +9,7 @@
             "enum": [
                 "BASELINE"
             ],
-            "description": "If the object contains text, the origin is at the baseline of the text, else the origin is at the bottom of the object."
+            "description": "If the object contains text, the origin is at the baseline of the text, otherwise the origin is at the bottom of the object."
         },
         {
             "enum": [
@@ -21,7 +21,7 @@
             "enum": [
                 "CENTER"
             ],
-            "description": "The origin is at the vertical center between BASELINE and TOP."
+            "description": "The origin is at the vertical center between `BASELINE` and `TOP`."
         },
         {
             "enum": [
