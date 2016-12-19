@@ -915,7 +915,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code showBackground} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showBackground} property defines whether or not a background behind the label is shown.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code showBackground} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showBackground} property defines whether or not a background behind the label is shown.  If not specified, the default value is {@code false}.
     
 
     */
@@ -925,7 +925,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code showBackground} property.  The {@code showBackground} property defines whether or not a background behind the label is shown.  If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code showBackground} property.  The {@code showBackground} property defines whether or not a background behind the label is shown.  If not specified, the default value is {@code false}.
     
 
     */
@@ -936,7 +936,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code showBackground} property as a {@code boolean} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code showBackground} property as a {@code boolean} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code false}.
     
     
 
@@ -955,7 +955,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code false}.
     
     
 
@@ -974,7 +974,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code false}.
     
     
 
@@ -993,7 +993,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code false}.
     
     
     
@@ -1014,7 +1014,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown.  If not specified, the default value is {@code false}.
     
     
     

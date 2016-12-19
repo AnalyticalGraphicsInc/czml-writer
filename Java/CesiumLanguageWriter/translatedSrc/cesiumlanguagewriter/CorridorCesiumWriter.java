@@ -12,6 +12,7 @@ import cesiumlanguagewriter.CornerTypeCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.MaterialCesiumWriter;
 import cesiumlanguagewriter.PositionListCesiumWriter;
+import cesiumlanguagewriter.ShadowModeCesiumWriter;
 import java.awt.Color;
 import java.util.List;
 
@@ -106,6 +107,13 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     */
     public static final String OutlineWidthPropertyName = "outlineWidth";
+    /**
+    *  
+    The name of the {@code shadows} property.
+    
+
+    */
+    public static final String ShadowsPropertyName = "shadows";
     private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowPropertyName);
@@ -164,6 +172,11 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     private Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(OutlineWidthPropertyName);
+        }
+    }, false);
+    private Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<cesiumlanguagewriter.ShadowModeCesiumWriter>(new Func1<cesiumlanguagewriter.ShadowModeCesiumWriter>() {
+        public cesiumlanguagewriter.ShadowModeCesiumWriter invoke() {
+            return new ShadowModeCesiumWriter(ShadowsPropertyName);
         }
     }, false);
 
@@ -1883,6 +1896,125 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     public final void writeOutlineWidthPropertyReference(String identifier, String[] propertyNames) {
         {
             cesiumlanguagewriter.DoubleCesiumWriter writer = openOutlineWidthProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    
+
+    */
+    public final ShadowModeCesiumWriter getShadowsWriter() {
+        return m_shadows.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code shadows} property.  The {@code shadows} property defines whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    
+
+    */
+    public final ShadowModeCesiumWriter openShadowsProperty() {
+        openIntervalIfNecessary();
+        return this.<ShadowModeCesiumWriter> openAndReturn(getShadowsWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code shadows} property as a {@code shadowMode} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    
+    
+
+    * @param value The shadow mode.
+    */
+    public final void writeShadowsProperty(CesiumShadowMode value) {
+        {
+            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
+            try {
+                writer.writeShadowMode(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeShadowsPropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeShadowsPropertyReference(String value) {
+        {
+            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeShadowsPropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeShadowsPropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
