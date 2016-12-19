@@ -26,6 +26,42 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        public void TestGltfProperty()
+        {
+            using (Packet)
+            using (ModelCesiumWriter model = Packet.OpenModelProperty())
+            using (ModelCesiumWriter interval = model.OpenInterval())
+            {
+                interval.WriteGltfProperty("test.gltf", CesiumResourceBehavior.LinkTo);
+            }
+            Assert.AreEqual("{\"model\":{\"gltf\":\"test.gltf\"}}", StringWriter.ToString());
+        }
+
+        [Test]
+        public void TestSilhouetteColorProperty()
+        {
+            using (Packet)
+            using (ModelCesiumWriter model = Packet.OpenModelProperty())
+            using (ModelCesiumWriter interval = model.OpenInterval())
+            {
+                interval.WriteSilhouetteColorProperty(Color.Blue);
+            }
+            Assert.AreEqual("{\"model\":{\"silhouetteColor\":{\"rgba\":[0,0,255,255]}}}", StringWriter.ToString());
+        }
+
+        [Test]
+        public void TestSilhouetteSizeProperty()
+        {
+            using (Packet)
+            using (ModelCesiumWriter model = Packet.OpenModelProperty())
+            using (ModelCesiumWriter interval = model.OpenInterval())
+            {
+                interval.WriteSilhouetteSizeProperty(0.75);
+            }
+            Assert.AreEqual("{\"model\":{\"silhouetteSize\":0.75}}", StringWriter.ToString());
+        }
+
+        [Test]
         public void TestColorProperty()
         {
             using (Packet)
