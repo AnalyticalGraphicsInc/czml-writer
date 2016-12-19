@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ShadowModeValue.json",
+    "title": "ShadowMode",
+    "description": "Whether or not an object casts or receives shadows from each light source when shadows are enabled.",
+    "type": "string",
+    "oneOf": [
+        {
+            "enum": [
+                "DISABLED"
+            ],
+            "description": "The object does not cast or receive shadows."
+        },
+        {
+            "enum": [
+                "ENABLED"
+            ],
+            "description": "The object casts and receives shadows."
+        },
+        {
+            "enum": [
+                "CAST_ONLY"
+            ],
+            "description": "The object casts shadows only."
+        },
+        {
+            "enum": [
+                "RECEIVE_ONLY"
+            ],
+            "description": "The object receives shadows only."
+        }
+    ]
+}

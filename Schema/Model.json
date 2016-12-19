@@ -42,10 +42,24 @@
             "description": "Whether or not to run all animations defined in the glTF model.",
             "default": true
         },
+        "shadows": {
+            "$ref": "ShadowMode.json",
+            "description": "Whether or not the model casts or receives shadows.",
+            "default": "ENABLED"
+        },
         "heightReference": {
             "$ref": "HeightReference.json",
             "description": "The height reference of the model, which indicates if the position is relative to terrain or not.",
             "default": "NONE"
+        },
+        "silhouetteColor": {
+            "$ref": "Color.json",
+            "description": "The color of the silhouette drawn around the model."
+        },
+        "silhouetteSize": {
+            "$ref": "Double.json",
+            "description": "The size, in pixels, of the silhouette drawn around the model.",
+            "default": 0.0
         },
         "color": {
             "$ref": "Color.json",

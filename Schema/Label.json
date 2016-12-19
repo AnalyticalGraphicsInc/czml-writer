@@ -36,7 +36,7 @@
         "showBackground": {
             "$ref": "Boolean.json",
             "description": "Whether or not a background behind the label is shown.",
-            "default": true
+            "default": false
         },
         "backgroundColor": {
             "$ref": "Color.json",

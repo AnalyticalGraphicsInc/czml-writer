@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ShadowMode.json",
+    "title": "ShadowMode",
+    "description": "Whether or not an object casts or receives shadows from each light source when shadows are enabled.",
+    "type": [
+        "array",
+        "object",
+        "string"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "shadowMode": {
+            "$ref": "ShadowModeValue.json",
+            "description": "The shadow mode.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The shadow mode specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

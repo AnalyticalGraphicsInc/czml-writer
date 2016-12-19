@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F4E-CD74-44F3-9A80-604BCA10FB67}"
 	ProjectSection(SolutionItems) = preProject
 		..\Schema\AlignedAxis.json = ..\Schema\AlignedAxis.json
+		..\Schema\BackgroundPadding.json = ..\Schema\BackgroundPadding.json
 		..\Schema\Billboard.json = ..\Schema\Billboard.json
 		..\Schema\Boolean.json = ..\Schema\Boolean.json
 		..\Schema\BooleanValue.json = ..\Schema\BooleanValue.json
@@ -89,6 +90,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\RgbaValue.json = ..\Schema\RgbaValue.json
 		..\Schema\Rotation.json = ..\Schema\Rotation.json
 		..\Schema\Scale.json = ..\Schema\Scale.json
+		..\Schema\ShadowMode.json = ..\Schema\ShadowMode.json
+		..\Schema\ShadowModeValue.json = ..\Schema\ShadowModeValue.json
 		..\Schema\SolidColorMaterial.json = ..\Schema\SolidColorMaterial.json
 		..\Schema\SphericalListValue.json = ..\Schema\SphericalListValue.json
 		..\Schema\SphericalValue.json = ..\Schema\SphericalValue.json

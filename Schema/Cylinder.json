@@ -58,6 +58,11 @@
         "slices": {
             "$ref": "Double.json",
             "description": "The number of edges around the perimeter of the cylinder."
+        },
+        "shadows": {
+            "$ref": "ShadowMode.json",
+            "description": "Whether or not the cylinder casts or receives shadows.",
+            "default": "DISABLED"
         }
     }
 }
