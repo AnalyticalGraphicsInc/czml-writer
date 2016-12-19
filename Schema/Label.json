@@ -18,7 +18,7 @@
         },
         "text": {
             "$ref": "String.json",
-            "description": "The text displayed by the label."
+            "description": "The text displayed by the label.  The newline character (\\n) indicates line breaks."
         },
         "font": {
             "$ref": "Font.json",
@@ -32,6 +32,19 @@
             "$ref": "Double.json",
             "description": "The scale of the label.  The scale is multiplied with the pixel size of the label's text.  For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text.",
             "default": 1.0
+        },
+        "showBackground": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not a background behind the label is shown.",
+            "default": false
+        },
+        "backgroundColor": {
+            "$ref": "Color.json",
+            "description": "The color of the background behind the label."
+        },
+        "backgroundPadding": {
+            "$ref": "BackgroundPadding.json",
+            "description": "The amount of padding between the text and the label's background."
         },
         "pixelOffset": {
             "$ref": "PixelOffset.json",

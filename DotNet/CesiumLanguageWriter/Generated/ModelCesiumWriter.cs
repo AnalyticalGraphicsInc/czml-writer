@@ -49,9 +49,24 @@ namespace CesiumLanguageWriter
         public const string RunAnimationsPropertyName = "runAnimations";
 
         /// <summary>
+        /// The name of the <c>shadows</c> property.
+        /// </summary>
+        public const string ShadowsPropertyName = "shadows";
+
+        /// <summary>
         /// The name of the <c>heightReference</c> property.
         /// </summary>
         public const string HeightReferencePropertyName = "heightReference";
+
+        /// <summary>
+        /// The name of the <c>silhouetteColor</c> property.
+        /// </summary>
+        public const string SilhouetteColorPropertyName = "silhouetteColor";
+
+        /// <summary>
+        /// The name of the <c>silhouetteSize</c> property.
+        /// </summary>
+        public const string SilhouetteSizePropertyName = "silhouetteSize";
 
         /// <summary>
         /// The name of the <c>color</c> property.
@@ -80,7 +95,10 @@ namespace CesiumLanguageWriter
         private readonly Lazy<DoubleCesiumWriter> m_maximumScale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MaximumScalePropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_incrementallyLoadTextures = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(IncrementallyLoadTexturesPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_runAnimations = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(RunAnimationsPropertyName), false);
+        private readonly Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<ShadowModeCesiumWriter>(() => new ShadowModeCesiumWriter(ShadowsPropertyName), false);
         private readonly Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(HeightReferencePropertyName), false);
+        private readonly Lazy<ColorCesiumWriter> m_silhouetteColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(SilhouetteColorPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_silhouetteSize = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SilhouetteSizePropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
         private readonly Lazy<ColorBlendModeCesiumWriter> m_colorBlendMode = new Lazy<ColorBlendModeCesiumWriter>(() => new ColorBlendModeCesiumWriter(ColorBlendModePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_colorBlendAmount = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ColorBlendAmountPropertyName), false);
@@ -824,6 +842,85 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Gets the writer for the <c>shadows</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>shadows</c> property defines whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+        /// </summary>
+        public ShadowModeCesiumWriter ShadowsWriter
+        {
+            get { return m_shadows.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>shadows</c> property.  The <c>shadows</c> property defines whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+        /// </summary>
+        public ShadowModeCesiumWriter OpenShadowsProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ShadowsWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>shadows</c> property as a <c>shadowMode</c> value.  The <c>shadows</c> property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="value">The shadow mode.</param>
+        public void WriteShadowsProperty(CesiumShadowMode value)
+        {
+            using (var writer = OpenShadowsProperty())
+            {
+                writer.WriteShadowMode(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShadowsPropertyReference(Reference value)
+        {
+            using (var writer = OpenShadowsProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShadowsPropertyReference(string value)
+        {
+            using (var writer = OpenShadowsProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShadowsPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShadowsProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShadowsPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShadowsProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <c>heightReference</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>heightReference</c> property defines the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
         public HeightReferenceCesiumWriter HeightReferenceWriter
@@ -897,6 +994,290 @@ namespace CesiumLanguageWriter
         public void WriteHeightReferencePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>silhouetteColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>silhouetteColor</c> property defines the color of the silhouette drawn around the model.
+        /// </summary>
+        public ColorCesiumWriter SilhouetteColorWriter
+        {
+            get { return m_silhouetteColor.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>silhouetteColor</c> property.  The <c>silhouetteColor</c> property defines the color of the silhouette drawn around the model.
+        /// </summary>
+        public ColorCesiumWriter OpenSilhouetteColorProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(SilhouetteColorWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteColor</c> property as a <c>rgba</c> value.  The <c>silhouetteColor</c> property specifies the color of the silhouette drawn around the model.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteSilhouetteColorProperty(Color color)
+        {
+            using (var writer = OpenSilhouetteColorProperty())
+            {
+                writer.WriteRgba(color);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteColor</c> property as a <c>rgba</c> value.  The <c>silhouetteColor</c> property specifies the color of the silhouette drawn around the model.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 255.</param>
+        /// <param name="green">The green component in the range 0 to 255.</param>
+        /// <param name="blue">The blue component in the range 0 to 255.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 255.</param>
+        public void WriteSilhouetteColorProperty(int red, int green, int blue, int alpha)
+        {
+            using (var writer = OpenSilhouetteColorProperty())
+            {
+                writer.WriteRgba(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteColor</c> property as a <c>rgba</c> value.  The <c>silhouetteColor</c> property specifies the color of the silhouette drawn around the model.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteSilhouetteColorProperty(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenSilhouetteColorProperty())
+            {
+                writer.WriteRgba(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteColor</c> property as a <c>rgba</c> value.  The <c>silhouetteColor</c> property specifies the color of the silhouette drawn around the model.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteSilhouetteColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenSilhouetteColorProperty())
+            {
+                writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteColor</c> property as a <c>rgbaf</c> value.  The <c>silhouetteColor</c> property specifies the color of the silhouette drawn around the model.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteSilhouetteColorPropertyRgbaf(Color color)
+        {
+            using (var writer = OpenSilhouetteColorProperty())
+            {
+                writer.WriteRgbaf(color);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteColor</c> property as a <c>rgbaf</c> value.  The <c>silhouetteColor</c> property specifies the color of the silhouette drawn around the model.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 1.0.</param>
+        /// <param name="green">The green component in the range 0 to 1.0.</param>
+        /// <param name="blue">The blue component in the range 0 to 1.0.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 1.0.</param>
+        public void WriteSilhouetteColorPropertyRgbaf(float red, float green, float blue, float alpha)
+        {
+            using (var writer = OpenSilhouetteColorProperty())
+            {
+                writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteColor</c> property as a <c>rgbaf</c> value.  The <c>silhouetteColor</c> property specifies the color of the silhouette drawn around the model.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteSilhouetteColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenSilhouetteColorProperty())
+            {
+                writer.WriteRgbaf(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteColor</c> property as a <c>rgbaf</c> value.  The <c>silhouetteColor</c> property specifies the color of the silhouette drawn around the model.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteSilhouetteColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenSilhouetteColorProperty())
+            {
+                writer.WriteRgbaf(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteColor</c> property as a <c>reference</c> value.  The <c>silhouetteColor</c> property specifies the color of the silhouette drawn around the model.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteSilhouetteColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenSilhouetteColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteColor</c> property as a <c>reference</c> value.  The <c>silhouetteColor</c> property specifies the color of the silhouette drawn around the model.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteSilhouetteColorPropertyReference(string value)
+        {
+            using (var writer = OpenSilhouetteColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteColor</c> property as a <c>reference</c> value.  The <c>silhouetteColor</c> property specifies the color of the silhouette drawn around the model.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteSilhouetteColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenSilhouetteColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteColor</c> property as a <c>reference</c> value.  The <c>silhouetteColor</c> property specifies the color of the silhouette drawn around the model.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteSilhouetteColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenSilhouetteColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>silhouetteSize</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>silhouetteSize</c> property defines the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+        /// </summary>
+        public DoubleCesiumWriter SilhouetteSizeWriter
+        {
+            get { return m_silhouetteSize.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>silhouetteSize</c> property.  The <c>silhouetteSize</c> property defines the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+        /// </summary>
+        public DoubleCesiumWriter OpenSilhouetteSizeProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(SilhouetteSizeWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteSize</c> property as a <c>number</c> value.  The <c>silhouetteSize</c> property specifies the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteSilhouetteSizeProperty(double value)
+        {
+            using (var writer = OpenSilhouetteSizeProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteSize</c> property as a <c>number</c> value.  The <c>silhouetteSize</c> property specifies the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteSilhouetteSizeProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenSilhouetteSizeProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteSize</c> property as a <c>number</c> value.  The <c>silhouetteSize</c> property specifies the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteSilhouetteSizeProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenSilhouetteSizeProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteSize</c> property as a <c>reference</c> value.  The <c>silhouetteSize</c> property specifies the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteSilhouetteSizePropertyReference(Reference value)
+        {
+            using (var writer = OpenSilhouetteSizeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteSize</c> property as a <c>reference</c> value.  The <c>silhouetteSize</c> property specifies the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteSilhouetteSizePropertyReference(string value)
+        {
+            using (var writer = OpenSilhouetteSizeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteSize</c> property as a <c>reference</c> value.  The <c>silhouetteSize</c> property specifies the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteSilhouetteSizePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenSilhouetteSizeProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>silhouetteSize</c> property as a <c>reference</c> value.  The <c>silhouetteSize</c> property specifies the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteSilhouetteSizePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenSilhouetteSizeProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/BackgroundPadding.json",
+    "title": "BackgroundPadding",
+    "description": "The amount of horizontal and vertical padding, in pixels, between a label's text and its background.",
+    "extends": {
+        "$ref": "InterpolatableProperty.json"
+    },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "cartesian2": {
+            "$ref": "Cartesian2Value.json",
+            "description": "The background padding specified as a two-dimensional Cartesian value `[X, Y]`, in pixels, where X is the horizontal padding, and Y is the vertical padding.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The background padding specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

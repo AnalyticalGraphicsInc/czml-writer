@@ -245,6 +245,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(15323.0);
                         m_assertionsWriter.WriteLine("    expect(e.box.outlineWidth.getValue(date)).toEqual(15323.0);");
                     }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteShadowMode(CesiumShadowMode.CastOnly);
+                        m_assertionsWriter.WriteLine("    expect(e.box.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                    }
                 }
                 using (var w = packet.OpenCorridorProperty())
                 {
@@ -314,6 +319,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(9132.0);
                         m_assertionsWriter.WriteLine("    expect(e.corridor.outlineWidth.getValue(date)).toEqual(9132.0);");
                     }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteShadowMode(CesiumShadowMode.CastOnly);
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                    }
                 }
                 using (var w = packet.OpenCylinderProperty())
                 {
@@ -377,6 +387,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteNumber(39979.0);
                         m_assertionsWriter.WriteLine("    expect(e.cylinder.slices.getValue(date)).toEqual(39979.0);");
+                    }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteShadowMode(CesiumShadowMode.CastOnly);
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
                     }
                 }
                 using (var w = packet.OpenEllipseProperty())
@@ -457,6 +472,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(38878.0);
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.numberOfVerticalLines.getValue(date)).toEqual(38878.0);");
                     }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteShadowMode(CesiumShadowMode.CastOnly);
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                    }
                 }
                 using (var w = packet.OpenEllipsoidProperty())
                 {
@@ -516,6 +536,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(14008.0);
                         m_assertionsWriter.WriteLine("    expect(e.ellipsoid.subdivisions.getValue(date)).toEqual(14008.0);");
                     }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteShadowMode(CesiumShadowMode.CastOnly);
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                    }
                 }
                 using (var w = packet.OpenLabelProperty())
                 {
@@ -543,6 +568,21 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteNumber(6510.0);
                         m_assertionsWriter.WriteLine("    expect(e.label.scale.getValue(date)).toEqual(6510.0);");
+                    }
+                    using (var w2 = w.OpenShowBackgroundProperty())
+                    {
+                        w2.WriteBoolean(true);
+                        m_assertionsWriter.WriteLine("    expect(e.label.showBackground.getValue(date)).toEqual(true);");
+                    }
+                    using (var w2 = w.OpenBackgroundColorProperty())
+                    {
+                        w2.WriteRgba(Color.FromArgb(128, 225, 114, 54));
+                        m_assertionsWriter.WriteLine("    expect(e.label.backgroundColor.getValue(date)).toEqual(Color.fromBytes(225, 114, 54, 128));");
+                    }
+                    using (var w2 = w.OpenBackgroundPaddingProperty())
+                    {
+                        w2.WriteCartesian2(new Rectangular(5508, 56341));
+                        m_assertionsWriter.WriteLine("    expect(e.label.backgroundPadding.getValue(date)).toEqual(new Cartesian2(5508, 56341));");
                     }
                     using (var w2 = w.OpenPixelOffsetProperty())
                     {
@@ -632,10 +672,25 @@ namespace CesiumLanguageWriterTests
                         w2.WriteBoolean(true);
                         m_assertionsWriter.WriteLine("    expect(e.model.runAnimations.getValue(date)).toEqual(true);");
                     }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteShadowMode(CesiumShadowMode.CastOnly);
+                        m_assertionsWriter.WriteLine("    expect(e.model.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                    }
                     using (var w2 = w.OpenHeightReferenceProperty())
                     {
                         w2.WriteHeightReference(CesiumHeightReference.ClampToGround);
                         m_assertionsWriter.WriteLine("    expect(e.model.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                    }
+                    using (var w2 = w.OpenSilhouetteColorProperty())
+                    {
+                        w2.WriteRgba(Color.FromArgb(101, 29, 61, 52));
+                        m_assertionsWriter.WriteLine("    expect(e.model.silhouetteColor.getValue(date)).toEqual(Color.fromBytes(29, 61, 52, 101));");
+                    }
+                    using (var w2 = w.OpenSilhouetteSizeProperty())
+                    {
+                        w2.WriteNumber(4645.0);
+                        m_assertionsWriter.WriteLine("    expect(e.model.silhouetteSize.getValue(date)).toEqual(4645.0);");
                     }
                     using (var w2 = w.OpenColorProperty())
                     {
@@ -834,6 +889,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteBoolean(true);
                         m_assertionsWriter.WriteLine("    expect(e.polygon.closeBottom.getValue(date)).toEqual(true);");
                     }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteShadowMode(CesiumShadowMode.CastOnly);
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                    }
                 }
                 using (var w = packet.OpenPolylineProperty())
                 {
@@ -872,6 +932,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteBoolean(true);
                         m_assertionsWriter.WriteLine("    expect(e.polyline.followSurface.getValue(date)).toEqual(true);");
+                    }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteShadowMode(CesiumShadowMode.CastOnly);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
                     }
                 }
                 using (var w = packet.OpenRectangleProperty())
@@ -952,6 +1017,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteBoolean(true);
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.closeBottom.getValue(date)).toEqual(true);");
                     }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteShadowMode(CesiumShadowMode.CastOnly);
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                    }
                 }
                 using (var w = packet.OpenWallProperty())
                 {
@@ -1010,6 +1080,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteNumber(50458.0);
                         m_assertionsWriter.WriteLine("    expect(e.wall.outlineWidth.getValue(date)).toEqual(50458.0);");
+                    }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteShadowMode(CesiumShadowMode.CastOnly);
+                        m_assertionsWriter.WriteLine("    expect(e.wall.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
                     }
                 }
                 using (var w = packet.OpenConicSensorProperty())
@@ -2550,6 +2625,17 @@ namespace CesiumLanguageWriterTests
         {
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("constant_label_backgroundColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_label_backgroundColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenLabelProperty())
+                using (var w2 = w.OpenBackgroundColorProperty())
+                {
+                    w2.WriteRgbaf(Color.FromArgb(215, 228, 242, 126));
+                    m_assertionsWriter.WriteLine("    expect(e.label.backgroundColor.getValue(date)).toEqualEpsilon(new Color(0.894117647058824, 0.949019607843137, 0.494117647058824, 0.843137254901961), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_label_fillColor_rgbaf");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_label_fillColor_rgbaf')).toBeDefined();");
                 using (var w = packet.OpenLabelProperty())
@@ -2573,6 +2659,17 @@ namespace CesiumLanguageWriterTests
         }
         private void WriteConstantValuesIndividualModel()
         {
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_model_silhouetteColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_model_silhouetteColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenModelProperty())
+                using (var w2 = w.OpenSilhouetteColorProperty())
+                {
+                    w2.WriteRgbaf(Color.FromArgb(224, 75, 80, 107));
+                    m_assertionsWriter.WriteLine("    expect(e.model.silhouetteColor.getValue(date)).toEqualEpsilon(new Color(0.294117647058824, 0.313725490196078, 0.419607843137255, 0.87843137254902), 1e-14);");
+                }
+            }
             using (var packet = m_writer.OpenPacket(m_output))
             {
                 packet.WriteId("constant_model_color_rgbaf");
@@ -6828,6 +6925,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("box", "outlineWidth")));
                         m_assertionsWriter.WriteLine("    expect(e.box.outlineWidth.getValue(date)).toEqual(constant.box.outlineWidth.getValue(date));");
                     }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("box", "shadows")));
+                        m_assertionsWriter.WriteLine("    expect(e.box.shadows.getValue(date)).toEqual(constant.box.shadows.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenCorridorProperty())
                 {
@@ -6895,6 +6997,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("corridor", "outlineWidth")));
                         m_assertionsWriter.WriteLine("    expect(e.corridor.outlineWidth.getValue(date)).toEqual(constant.corridor.outlineWidth.getValue(date));");
                     }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("corridor", "shadows")));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.shadows.getValue(date)).toEqual(constant.corridor.shadows.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenCylinderProperty())
                 {
@@ -6956,6 +7063,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("cylinder", "slices")));
                         m_assertionsWriter.WriteLine("    expect(e.cylinder.slices.getValue(date)).toEqual(constant.cylinder.slices.getValue(date));");
+                    }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("cylinder", "shadows")));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.shadows.getValue(date)).toEqual(constant.cylinder.shadows.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenEllipseProperty())
@@ -7034,6 +7146,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("ellipse", "numberOfVerticalLines")));
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.numberOfVerticalLines.getValue(date)).toEqual(constant.ellipse.numberOfVerticalLines.getValue(date));");
                     }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("ellipse", "shadows")));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.shadows.getValue(date)).toEqual(constant.ellipse.shadows.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenEllipsoidProperty())
                 {
@@ -7091,6 +7208,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("ellipsoid", "subdivisions")));
                         m_assertionsWriter.WriteLine("    expect(e.ellipsoid.subdivisions.getValue(date)).toEqual(constant.ellipsoid.subdivisions.getValue(date));");
                     }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("ellipsoid", "shadows")));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.shadows.getValue(date)).toEqual(constant.ellipsoid.shadows.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenLabelProperty())
                 {
@@ -7118,6 +7240,21 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("label", "scale")));
                         m_assertionsWriter.WriteLine("    expect(e.label.scale.getValue(date)).toEqual(constant.label.scale.getValue(date));");
+                    }
+                    using (var w2 = w.OpenShowBackgroundProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("label", "showBackground")));
+                        m_assertionsWriter.WriteLine("    expect(e.label.showBackground.getValue(date)).toEqual(constant.label.showBackground.getValue(date));");
+                    }
+                    using (var w2 = w.OpenBackgroundColorProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("label", "backgroundColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.label.backgroundColor.getValue(date)).toEqual(constant.label.backgroundColor.getValue(date));");
+                    }
+                    using (var w2 = w.OpenBackgroundPaddingProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("label", "backgroundPadding")));
+                        m_assertionsWriter.WriteLine("    expect(e.label.backgroundPadding.getValue(date)).toEqual(constant.label.backgroundPadding.getValue(date));");
                     }
                     using (var w2 = w.OpenPixelOffsetProperty())
                     {
@@ -7207,10 +7344,25 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("model", "runAnimations")));
                         m_assertionsWriter.WriteLine("    expect(e.model.runAnimations.getValue(date)).toEqual(constant.model.runAnimations.getValue(date));");
                     }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("model", "shadows")));
+                        m_assertionsWriter.WriteLine("    expect(e.model.shadows.getValue(date)).toEqual(constant.model.shadows.getValue(date));");
+                    }
                     using (var w2 = w.OpenHeightReferenceProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("model", "heightReference")));
                         m_assertionsWriter.WriteLine("    expect(e.model.heightReference.getValue(date)).toEqual(constant.model.heightReference.getValue(date));");
+                    }
+                    using (var w2 = w.OpenSilhouetteColorProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("model", "silhouetteColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.model.silhouetteColor.getValue(date)).toEqual(constant.model.silhouetteColor.getValue(date));");
+                    }
+                    using (var w2 = w.OpenSilhouetteSizeProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("model", "silhouetteSize")));
+                        m_assertionsWriter.WriteLine("    expect(e.model.silhouetteSize.getValue(date)).toEqual(constant.model.silhouetteSize.getValue(date));");
                     }
                     using (var w2 = w.OpenColorProperty())
                     {
@@ -7403,6 +7555,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("polygon", "closeBottom")));
                         m_assertionsWriter.WriteLine("    expect(e.polygon.closeBottom.getValue(date)).toEqual(constant.polygon.closeBottom.getValue(date));");
                     }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("polygon", "shadows")));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.shadows.getValue(date)).toEqual(constant.polygon.shadows.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenPolylineProperty())
                 {
@@ -7439,6 +7596,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("polyline", "followSurface")));
                         m_assertionsWriter.WriteLine("    expect(e.polyline.followSurface.getValue(date)).toEqual(constant.polyline.followSurface.getValue(date));");
+                    }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("polyline", "shadows")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.shadows.getValue(date)).toEqual(constant.polyline.shadows.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenRectangleProperty())
@@ -7517,6 +7679,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("rectangle", "closeBottom")));
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.closeBottom.getValue(date)).toEqual(constant.rectangle.closeBottom.getValue(date));");
                     }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("rectangle", "shadows")));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.shadows.getValue(date)).toEqual(constant.rectangle.shadows.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenWallProperty())
                 {
@@ -7573,6 +7740,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("wall", "outlineWidth")));
                         m_assertionsWriter.WriteLine("    expect(e.wall.outlineWidth.getValue(date)).toEqual(constant.wall.outlineWidth.getValue(date));");
+                    }
+                    using (var w2 = w.OpenShadowsProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("wall", "shadows")));
+                        m_assertionsWriter.WriteLine("    expect(e.wall.shadows.getValue(date)).toEqual(constant.wall.shadows.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenConicSensorProperty())
@@ -11268,6 +11440,18 @@ namespace CesiumLanguageWriterTests
                         m_assertionsWriter.WriteLine("    expect(e.label.scale.getValue(documentStartDate)).toEqual(40153.0);");
                         m_assertionsWriter.WriteLine("    expect(e.label.scale.getValue(documentStopDate)).toEqual(42123.0);");
                     }
+                    using (var w2 = w.OpenBackgroundColorProperty())
+                    {
+                        w2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(169, 30, 92, 161), Color.FromArgb(62, 85, 52, 166)));
+                        m_assertionsWriter.WriteLine("    expect(e.label.backgroundColor.getValue(documentStartDate)).toEqual(Color.fromBytes(30, 92, 161, 169));");
+                        m_assertionsWriter.WriteLine("    expect(e.label.backgroundColor.getValue(documentStopDate)).toEqual(Color.fromBytes(85, 52, 166, 62));");
+                    }
+                    using (var w2 = w.OpenBackgroundPaddingProperty())
+                    {
+                        w2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(32945, 5504), new Rectangular(35323, 6281)));
+                        m_assertionsWriter.WriteLine("    expect(e.label.backgroundPadding.getValue(documentStartDate)).toEqual(new Cartesian2(32945, 5504));");
+                        m_assertionsWriter.WriteLine("    expect(e.label.backgroundPadding.getValue(documentStopDate)).toEqual(new Cartesian2(35323, 6281));");
+                    }
                     using (var w2 = w.OpenPixelOffsetProperty())
                     {
                         w2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(8539, 9761), new Rectangular(10537, 54569)));
@@ -11330,6 +11514,18 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(8290.0, 25558.0));
                         m_assertionsWriter.WriteLine("    expect(e.model.maximumScale.getValue(documentStartDate)).toEqual(8290.0);");
                         m_assertionsWriter.WriteLine("    expect(e.model.maximumScale.getValue(documentStopDate)).toEqual(25558.0);");
+                    }
+                    using (var w2 = w.OpenSilhouetteColorProperty())
+                    {
+                        w2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(81, 33, 239, 70), Color.FromArgb(123, 60, 48, 26)));
+                        m_assertionsWriter.WriteLine("    expect(e.model.silhouetteColor.getValue(documentStartDate)).toEqual(Color.fromBytes(33, 239, 70, 81));");
+                        m_assertionsWriter.WriteLine("    expect(e.model.silhouetteColor.getValue(documentStopDate)).toEqual(Color.fromBytes(60, 48, 26, 123));");
+                    }
+                    using (var w2 = w.OpenSilhouetteSizeProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(65103.0, 29065.0));
+                        m_assertionsWriter.WriteLine("    expect(e.model.silhouetteSize.getValue(documentStartDate)).toEqual(65103.0);");
+                        m_assertionsWriter.WriteLine("    expect(e.model.silhouetteSize.getValue(documentStopDate)).toEqual(29065.0);");
                     }
                     using (var w2 = w.OpenColorProperty())
                     {
@@ -12987,6 +13183,18 @@ namespace CesiumLanguageWriterTests
         {
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_label_backgroundColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_label_backgroundColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenLabelProperty())
+                using (var w2 = w.OpenBackgroundColorProperty())
+                {
+                    w2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(69, 245, 48, 222), Color.FromArgb(210, 225, 203, 154)));
+                    m_assertionsWriter.WriteLine("    expect(e.label.backgroundColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.96078431372549, 0.188235294117647, 0.870588235294118, 0.270588235294118), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.label.backgroundColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.882352941176471, 0.796078431372549, 0.603921568627451, 0.823529411764706), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_label_fillColor_rgbaf");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_label_fillColor_rgbaf')).toBeDefined();");
                 using (var w = packet.OpenLabelProperty())
@@ -13012,6 +13220,18 @@ namespace CesiumLanguageWriterTests
         }
         private void WriteSampledValuesIndividualModel()
         {
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_model_silhouetteColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_model_silhouetteColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenModelProperty())
+                using (var w2 = w.OpenSilhouetteColorProperty())
+                {
+                    w2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(162, 59, 221, 68), Color.FromArgb(21, 191, 58, 206)));
+                    m_assertionsWriter.WriteLine("    expect(e.model.silhouetteColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.231372549019608, 0.866666666666667, 0.266666666666667, 0.635294117647059), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.model.silhouetteColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.749019607843137, 0.227450980392157, 0.807843137254902, 0.0823529411764706), 1e-14);");
+                }
+            }
             using (var packet = m_writer.OpenPacket(m_output))
             {
                 packet.WriteId("sampled_model_color_rgbaf");

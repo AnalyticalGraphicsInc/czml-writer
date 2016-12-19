@@ -39,6 +39,21 @@ namespace CesiumLanguageWriter
         public const string ScalePropertyName = "scale";
 
         /// <summary>
+        /// The name of the <c>showBackground</c> property.
+        /// </summary>
+        public const string ShowBackgroundPropertyName = "showBackground";
+
+        /// <summary>
+        /// The name of the <c>backgroundColor</c> property.
+        /// </summary>
+        public const string BackgroundColorPropertyName = "backgroundColor";
+
+        /// <summary>
+        /// The name of the <c>backgroundPadding</c> property.
+        /// </summary>
+        public const string BackgroundPaddingPropertyName = "backgroundPadding";
+
+        /// <summary>
         /// The name of the <c>pixelOffset</c> property.
         /// </summary>
         public const string PixelOffsetPropertyName = "pixelOffset";
@@ -93,6 +108,9 @@ namespace CesiumLanguageWriter
         private readonly Lazy<FontCesiumWriter> m_font = new Lazy<FontCesiumWriter>(() => new FontCesiumWriter(FontPropertyName), false);
         private readonly Lazy<LabelStyleCesiumWriter> m_style = new Lazy<LabelStyleCesiumWriter>(() => new LabelStyleCesiumWriter(StylePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_showBackground = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowBackgroundPropertyName), false);
+        private readonly Lazy<ColorCesiumWriter> m_backgroundColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(BackgroundColorPropertyName), false);
+        private readonly Lazy<BackgroundPaddingCesiumWriter> m_backgroundPadding = new Lazy<BackgroundPaddingCesiumWriter>(() => new BackgroundPaddingCesiumWriter(BackgroundPaddingPropertyName), false);
         private readonly Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<PixelOffsetCesiumWriter>(() => new PixelOffsetCesiumWriter(PixelOffsetPropertyName), false);
         private readonly Lazy<EyeOffsetCesiumWriter> m_eyeOffset = new Lazy<EyeOffsetCesiumWriter>(() => new EyeOffsetCesiumWriter(EyeOffsetPropertyName), false);
         private readonly Lazy<HorizontalOriginCesiumWriter> m_horizontalOrigin = new Lazy<HorizontalOriginCesiumWriter>(() => new HorizontalOriginCesiumWriter(HorizontalOriginPropertyName), false);
@@ -207,7 +225,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>text</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>text</c> property defines the text displayed by the label.
+        /// Gets the writer for the <c>text</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>text</c> property defines the text displayed by the label.  The newline character (\n) indicates line breaks.
         /// </summary>
         public StringCesiumWriter TextWriter
         {
@@ -215,7 +233,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>text</c> property.  The <c>text</c> property defines the text displayed by the label.
+        /// Opens and returns the writer for the <c>text</c> property.  The <c>text</c> property defines the text displayed by the label.  The newline character (\n) indicates line breaks.
         /// </summary>
         public StringCesiumWriter OpenTextProperty()
         {
@@ -224,7 +242,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>text</c> property as a <c>string</c> value.  The <c>text</c> property specifies the text displayed by the label.
+        /// Writes a value for the <c>text</c> property as a <c>string</c> value.  The <c>text</c> property specifies the text displayed by the label.  The newline character (\n) indicates line breaks.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteTextProperty(string value)
@@ -236,7 +254,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>text</c> property as a <c>reference</c> value.  The <c>text</c> property specifies the text displayed by the label.
+        /// Writes a value for the <c>text</c> property as a <c>reference</c> value.  The <c>text</c> property specifies the text displayed by the label.  The newline character (\n) indicates line breaks.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteTextPropertyReference(Reference value)
@@ -248,7 +266,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>text</c> property as a <c>reference</c> value.  The <c>text</c> property specifies the text displayed by the label.
+        /// Writes a value for the <c>text</c> property as a <c>reference</c> value.  The <c>text</c> property specifies the text displayed by the label.  The newline character (\n) indicates line breaks.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteTextPropertyReference(string value)
@@ -260,7 +278,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>text</c> property as a <c>reference</c> value.  The <c>text</c> property specifies the text displayed by the label.
+        /// Writes a value for the <c>text</c> property as a <c>reference</c> value.  The <c>text</c> property specifies the text displayed by the label.  The newline character (\n) indicates line breaks.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -273,7 +291,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>text</c> property as a <c>reference</c> value.  The <c>text</c> property specifies the text displayed by the label.
+        /// Writes a value for the <c>text</c> property as a <c>reference</c> value.  The <c>text</c> property specifies the text displayed by the label.  The newline character (\n) indicates line breaks.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -545,6 +563,382 @@ namespace CesiumLanguageWriter
         public void WriteScalePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenScaleProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>showBackground</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showBackground</c> property defines whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        public BooleanCesiumWriter ShowBackgroundWriter
+        {
+            get { return m_showBackground.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>showBackground</c> property.  The <c>showBackground</c> property defines whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        public BooleanCesiumWriter OpenShowBackgroundProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ShowBackgroundWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showBackground</c> property as a <c>boolean</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteShowBackgroundProperty(bool value)
+        {
+            using (var writer = OpenShowBackgroundProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showBackground</c> property as a <c>reference</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowBackgroundPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowBackgroundProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showBackground</c> property as a <c>reference</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteShowBackgroundPropertyReference(string value)
+        {
+            using (var writer = OpenShowBackgroundProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showBackground</c> property as a <c>reference</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowBackgroundPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowBackgroundProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showBackground</c> property as a <c>reference</c> value.  The <c>showBackground</c> property specifies whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowBackgroundPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowBackgroundProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>backgroundColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>backgroundColor</c> property defines the color of the background behind the label.
+        /// </summary>
+        public ColorCesiumWriter BackgroundColorWriter
+        {
+            get { return m_backgroundColor.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>backgroundColor</c> property.  The <c>backgroundColor</c> property defines the color of the background behind the label.
+        /// </summary>
+        public ColorCesiumWriter OpenBackgroundColorProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(BackgroundColorWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundColor</c> property as a <c>rgba</c> value.  The <c>backgroundColor</c> property specifies the color of the background behind the label.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteBackgroundColorProperty(Color color)
+        {
+            using (var writer = OpenBackgroundColorProperty())
+            {
+                writer.WriteRgba(color);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundColor</c> property as a <c>rgba</c> value.  The <c>backgroundColor</c> property specifies the color of the background behind the label.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 255.</param>
+        /// <param name="green">The green component in the range 0 to 255.</param>
+        /// <param name="blue">The blue component in the range 0 to 255.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 255.</param>
+        public void WriteBackgroundColorProperty(int red, int green, int blue, int alpha)
+        {
+            using (var writer = OpenBackgroundColorProperty())
+            {
+                writer.WriteRgba(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundColor</c> property as a <c>rgba</c> value.  The <c>backgroundColor</c> property specifies the color of the background behind the label.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteBackgroundColorProperty(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenBackgroundColorProperty())
+            {
+                writer.WriteRgba(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundColor</c> property as a <c>rgba</c> value.  The <c>backgroundColor</c> property specifies the color of the background behind the label.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteBackgroundColorProperty(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenBackgroundColorProperty())
+            {
+                writer.WriteRgba(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundColor</c> property as a <c>rgbaf</c> value.  The <c>backgroundColor</c> property specifies the color of the background behind the label.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        public void WriteBackgroundColorPropertyRgbaf(Color color)
+        {
+            using (var writer = OpenBackgroundColorProperty())
+            {
+                writer.WriteRgbaf(color);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundColor</c> property as a <c>rgbaf</c> value.  The <c>backgroundColor</c> property specifies the color of the background behind the label.
+        /// </summary>
+        /// <param name="red">The red component in the range 0 to 1.0.</param>
+        /// <param name="green">The green component in the range 0 to 1.0.</param>
+        /// <param name="blue">The blue component in the range 0 to 1.0.</param>
+        /// <param name="alpha">The alpha component in the range 0 to 1.0.</param>
+        public void WriteBackgroundColorPropertyRgbaf(float red, float green, float blue, float alpha)
+        {
+            using (var writer = OpenBackgroundColorProperty())
+            {
+                writer.WriteRgbaf(red, green, blue, alpha);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundColor</c> property as a <c>rgbaf</c> value.  The <c>backgroundColor</c> property specifies the color of the background behind the label.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteBackgroundColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> values)
+        {
+            using (var writer = OpenBackgroundColorProperty())
+            {
+                writer.WriteRgbaf(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundColor</c> property as a <c>rgbaf</c> value.  The <c>backgroundColor</c> property specifies the color of the background behind the label.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="colors">The color corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteBackgroundColorPropertyRgbaf(IList<JulianDate> dates, IList<Color> colors, int startIndex, int length)
+        {
+            using (var writer = OpenBackgroundColorProperty())
+            {
+                writer.WriteRgbaf(dates, colors, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundColor</c> property as a <c>reference</c> value.  The <c>backgroundColor</c> property specifies the color of the background behind the label.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteBackgroundColorPropertyReference(Reference value)
+        {
+            using (var writer = OpenBackgroundColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundColor</c> property as a <c>reference</c> value.  The <c>backgroundColor</c> property specifies the color of the background behind the label.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteBackgroundColorPropertyReference(string value)
+        {
+            using (var writer = OpenBackgroundColorProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundColor</c> property as a <c>reference</c> value.  The <c>backgroundColor</c> property specifies the color of the background behind the label.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteBackgroundColorPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenBackgroundColorProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundColor</c> property as a <c>reference</c> value.  The <c>backgroundColor</c> property specifies the color of the background behind the label.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteBackgroundColorPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenBackgroundColorProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>backgroundPadding</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>backgroundPadding</c> property defines the amount of padding between the text and the label's background.
+        /// </summary>
+        public BackgroundPaddingCesiumWriter BackgroundPaddingWriter
+        {
+            get { return m_backgroundPadding.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>backgroundPadding</c> property.  The <c>backgroundPadding</c> property defines the amount of padding between the text and the label's background.
+        /// </summary>
+        public BackgroundPaddingCesiumWriter OpenBackgroundPaddingProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(BackgroundPaddingWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundPadding</c> property as a <c>cartesian2</c> value.  The <c>backgroundPadding</c> property specifies the amount of padding between the text and the label's background.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteBackgroundPaddingProperty(Rectangular value)
+        {
+            using (var writer = OpenBackgroundPaddingProperty())
+            {
+                writer.WriteCartesian2(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundPadding</c> property as a <c>cartesian2</c> value.  The <c>backgroundPadding</c> property specifies the amount of padding between the text and the label's background.
+        /// </summary>
+        /// <param name="x">The X component.</param>
+        /// <param name="y">The Y component.</param>
+        public void WriteBackgroundPaddingProperty(double x, double y)
+        {
+            using (var writer = OpenBackgroundPaddingProperty())
+            {
+                writer.WriteCartesian2(x, y);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundPadding</c> property as a <c>cartesian2</c> value.  The <c>backgroundPadding</c> property specifies the amount of padding between the text and the label's background.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteBackgroundPaddingProperty(IList<JulianDate> dates, IList<Rectangular> values)
+        {
+            using (var writer = OpenBackgroundPaddingProperty())
+            {
+                writer.WriteCartesian2(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundPadding</c> property as a <c>cartesian2</c> value.  The <c>backgroundPadding</c> property specifies the amount of padding between the text and the label's background.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteBackgroundPaddingProperty(IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
+        {
+            using (var writer = OpenBackgroundPaddingProperty())
+            {
+                writer.WriteCartesian2(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundPadding</c> property as a <c>reference</c> value.  The <c>backgroundPadding</c> property specifies the amount of padding between the text and the label's background.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteBackgroundPaddingPropertyReference(Reference value)
+        {
+            using (var writer = OpenBackgroundPaddingProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundPadding</c> property as a <c>reference</c> value.  The <c>backgroundPadding</c> property specifies the amount of padding between the text and the label's background.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteBackgroundPaddingPropertyReference(string value)
+        {
+            using (var writer = OpenBackgroundPaddingProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundPadding</c> property as a <c>reference</c> value.  The <c>backgroundPadding</c> property specifies the amount of padding between the text and the label's background.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteBackgroundPaddingPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenBackgroundPaddingProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>backgroundPadding</c> property as a <c>reference</c> value.  The <c>backgroundPadding</c> property specifies the amount of padding between the text and the label's background.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteBackgroundPaddingPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenBackgroundPaddingProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

@@ -54,6 +54,11 @@
         "subdivisions": {
             "$ref": "Double.json",
             "description": "The number of samples per outline ring, determining the granularity of the curvature."
+        },
+        "shadows": {
+            "$ref": "ShadowMode.json",
+            "description": "Whether or not the ellipsoid casts or receives shadows.",
+            "default": "DISABLED"
         }
     }
 }

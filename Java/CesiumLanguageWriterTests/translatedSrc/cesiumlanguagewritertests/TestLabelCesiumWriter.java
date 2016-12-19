@@ -8,6 +8,8 @@ import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Collection;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -15,10 +17,10 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumWriter> {
+public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumWriter> {
     @Override
-    protected CesiumPropertyWriter<ModelCesiumWriter> createPropertyWriter(String propertyName) {
-        return new ModelCesiumWriter(propertyName);
+    protected CesiumPropertyWriter<LabelCesiumWriter> createPropertyWriter(String propertyName) {
+        return new LabelCesiumWriter(propertyName);
     }
 
     @Test
@@ -27,10 +29,10 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    ModelCesiumWriter model = getPacket().openModelProperty();
+                    LabelCesiumWriter label = getPacket().openLabelProperty();
                     try {
                         {
-                            ModelCesiumWriter interval = model.openInterval();
+                            LabelCesiumWriter interval = label.openInterval();
                             try {
                                 interval.writeShowProperty(true);
                             } finally {
@@ -38,176 +40,190 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                             }
                         }
                     } finally {
-                        DisposeHelper.dispose(model);
+                        DisposeHelper.dispose(label);
                     }
                 }
             } finally {
                 DisposeHelper.dispose(usingExpression_0);
             }
         }
-        Assert.assertEquals("{\"model\":{\"show\":true}}", getStringWriter().toString());
+        Assert.assertEquals("{\"label\":{\"show\":true}}", getStringWriter().toString());
     }
 
     @Test
-    public final void testGltfProperty() {
+    public final void testTextProperty() {
         {
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
                 {
-                    ModelCesiumWriter model = getPacket().openModelProperty();
+                    LabelCesiumWriter label = getPacket().openLabelProperty();
                     try {
                         {
-                            ModelCesiumWriter interval = model.openInterval();
+                            LabelCesiumWriter interval = label.openInterval();
                             try {
-                                interval.writeGltfProperty("test.gltf", CesiumResourceBehavior.LINK_TO);
+                                interval.writeTextProperty("asdf");
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
                         }
                     } finally {
-                        DisposeHelper.dispose(model);
+                        DisposeHelper.dispose(label);
                     }
                 }
             } finally {
                 DisposeHelper.dispose(usingExpression_1);
             }
         }
-        Assert.assertEquals("{\"model\":{\"gltf\":\"test.gltf\"}}", getStringWriter().toString());
+        Assert.assertEquals("{\"label\":{\"text\":\"asdf\"}}", getStringWriter().toString());
     }
 
     @Test
-    public final void testSilhouetteColorProperty() {
+    public final void testShowBackgroundProperty() {
         {
             final PacketCesiumWriter usingExpression_2 = (getPacket());
             try {
                 {
-                    ModelCesiumWriter model = getPacket().openModelProperty();
+                    LabelCesiumWriter label = getPacket().openLabelProperty();
                     try {
                         {
-                            ModelCesiumWriter interval = model.openInterval();
+                            LabelCesiumWriter interval = label.openInterval();
                             try {
-                                interval.writeSilhouetteColorProperty(Color.BLUE);
+                                interval.writeShowBackgroundProperty(true);
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
                         }
                     } finally {
-                        DisposeHelper.dispose(model);
+                        DisposeHelper.dispose(label);
                     }
                 }
             } finally {
                 DisposeHelper.dispose(usingExpression_2);
             }
         }
-        Assert.assertEquals("{\"model\":{\"silhouetteColor\":{\"rgba\":[0,0,255,255]}}}", getStringWriter().toString());
+        Assert.assertEquals("{\"label\":{\"showBackground\":true}}", getStringWriter().toString());
     }
 
     @Test
-    public final void testSilhouetteSizeProperty() {
+    public final void testBackgroundColorProperty() {
         {
             final PacketCesiumWriter usingExpression_3 = (getPacket());
             try {
                 {
-                    ModelCesiumWriter model = getPacket().openModelProperty();
+                    LabelCesiumWriter label = getPacket().openLabelProperty();
                     try {
                         {
-                            ModelCesiumWriter interval = model.openInterval();
+                            LabelCesiumWriter interval = label.openInterval();
                             try {
-                                interval.writeSilhouetteSizeProperty(0.75);
+                                interval.writeBackgroundColorProperty(Color.RED);
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
                         }
                     } finally {
-                        DisposeHelper.dispose(model);
+                        DisposeHelper.dispose(label);
                     }
                 }
             } finally {
                 DisposeHelper.dispose(usingExpression_3);
             }
         }
-        Assert.assertEquals("{\"model\":{\"silhouetteSize\":0.75}}", getStringWriter().toString());
+        Assert.assertEquals("{\"label\":{\"backgroundColor\":{\"rgba\":[255,0,0,255]}}}", getStringWriter().toString());
     }
 
     @Test
-    public final void testColorProperty() {
+    public final void testBackgroundPaddingProperty() {
         {
             final PacketCesiumWriter usingExpression_4 = (getPacket());
             try {
                 {
-                    ModelCesiumWriter model = getPacket().openModelProperty();
+                    LabelCesiumWriter label = getPacket().openLabelProperty();
                     try {
                         {
-                            ModelCesiumWriter interval = model.openInterval();
+                            LabelCesiumWriter interval = label.openInterval();
                             try {
-                                interval.writeColorProperty(Color.RED);
+                                interval.writeBackgroundPaddingProperty(new Rectangular(3D, 4D));
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
                         }
                     } finally {
-                        DisposeHelper.dispose(model);
+                        DisposeHelper.dispose(label);
                     }
                 }
             } finally {
                 DisposeHelper.dispose(usingExpression_4);
             }
         }
-        Assert.assertEquals("{\"model\":{\"color\":{\"rgba\":[255,0,0,255]}}}", getStringWriter().toString());
+        Assert.assertEquals("{\"label\":{\"backgroundPadding\":{\"cartesian2\":[3,4]}}}", getStringWriter().toString());
     }
 
     @Test
-    public final void testColorBlendModeProperty() {
+    public final void testTranslucencyByDistanceProperty() {
         {
             final PacketCesiumWriter usingExpression_5 = (getPacket());
             try {
                 {
-                    ModelCesiumWriter model = getPacket().openModelProperty();
+                    LabelCesiumWriter label = getPacket().openLabelProperty();
                     try {
                         {
-                            ModelCesiumWriter interval = model.openInterval();
+                            LabelCesiumWriter interval = label.openInterval();
                             try {
-                                interval.writeColorBlendModeProperty(CesiumColorBlendMode.REPLACE);
+                                interval.writeTranslucencyByDistanceProperty(new NearFarScalar(100.0, 1.0, 200.0, 2.0));
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
                         }
                     } finally {
-                        DisposeHelper.dispose(model);
+                        DisposeHelper.dispose(label);
                     }
                 }
             } finally {
                 DisposeHelper.dispose(usingExpression_5);
             }
         }
-        Assert.assertEquals("{\"model\":{\"colorBlendMode\":\"REPLACE\"}}", getStringWriter().toString());
+        Assert.assertEquals("{\"label\":{\"translucencyByDistance\":{\"nearFarScalar\":[100,1,200,2]}}}", getStringWriter().toString());
     }
 
     @Test
-    public final void testColorBlendAmountProperty() {
+    public final void testTranslucencyByDistancePropertySamples() {
+        JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
         {
             final PacketCesiumWriter usingExpression_6 = (getPacket());
             try {
                 {
-                    ModelCesiumWriter model = getPacket().openModelProperty();
+                    LabelCesiumWriter label = getPacket().openLabelProperty();
                     try {
                         {
-                            ModelCesiumWriter interval = model.openInterval();
+                            LabelCesiumWriter interval = label.openInterval();
                             try {
-                                interval.writeColorBlendAmountProperty(0.75);
+                                {
+                                    NearFarScalarCesiumWriter scaleByDistance = interval.openTranslucencyByDistanceProperty();
+                                    try {
+                                        ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
+                                        ArrayList<cesiumlanguagewriter.NearFarScalar> values = new ArrayList<cesiumlanguagewriter.NearFarScalar>();
+                                        dates.add(startDate);
+                                        values.add(new NearFarScalar(100.0, 1.0, 200.0, 2.0));
+                                        dates.add(startDate.addSeconds(60.0));
+                                        values.add(new NearFarScalar(200.0, 1.0, 300.0, 2.0));
+                                        scaleByDistance.writeNearFarScalar(dates, values);
+                                    } finally {
+                                        DisposeHelper.dispose(scaleByDistance);
+                                    }
+                                }
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
                         }
                     } finally {
-                        DisposeHelper.dispose(model);
+                        DisposeHelper.dispose(label);
                     }
                 }
             } finally {
                 DisposeHelper.dispose(usingExpression_6);
             }
         }
-        Assert.assertEquals("{\"model\":{\"colorBlendAmount\":0.75}}", getStringWriter().toString());
+        Assert.assertEquals("{\"label\":{\"translucencyByDistance\":{\"epoch\":\"20120402T12Z\",\"nearFarScalar\":[0,100,1,200,2,60,200,1,300,2]}}}", getStringWriter().toString());
     }
 
     private TestContextRule rule$testContext = new TestContextRule();

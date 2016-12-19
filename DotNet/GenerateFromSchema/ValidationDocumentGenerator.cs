@@ -1332,6 +1332,13 @@ namespace GenerateFromSchema
                     valueType = "CesiumCornerType";
                     return;
                 }
+                case "ShadowMode":
+                {
+                    value = "CesiumShadowMode.CastOnly";
+                    assertionValue = "ShadowMode.CAST_ONLY";
+                    valueType = "CesiumShadowMode";
+                    return;
+                }
                 case "ColorBlendMode":
                 {
                     value = "CesiumColorBlendMode.Replace";

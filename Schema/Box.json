@@ -42,6 +42,11 @@
             "$ref": "Double.json",
             "description": "The width of the box outline.",
             "default": 1.0
+        },
+        "shadows": {
+            "$ref": "ShadowMode.json",
+            "description": "Whether or not the box casts or receives shadows.",
+            "default": "DISABLED"
         }
     }
 }

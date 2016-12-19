@@ -12,6 +12,7 @@ import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.HeightReferenceCesiumWriter;
 import cesiumlanguagewriter.NodeTransformationsCesiumWriter;
+import cesiumlanguagewriter.ShadowModeCesiumWriter;
 import cesiumlanguagewriter.UriCesiumWriter;
 import java.awt.Color;
 import java.awt.image.RenderedImage;
@@ -76,11 +77,32 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     public static final String RunAnimationsPropertyName = "runAnimations";
     /**
     *  
+    The name of the {@code shadows} property.
+    
+
+    */
+    public static final String ShadowsPropertyName = "shadows";
+    /**
+    *  
     The name of the {@code heightReference} property.
     
 
     */
     public static final String HeightReferencePropertyName = "heightReference";
+    /**
+    *  
+    The name of the {@code silhouetteColor} property.
+    
+
+    */
+    public static final String SilhouetteColorPropertyName = "silhouetteColor";
+    /**
+    *  
+    The name of the {@code silhouetteSize} property.
+    
+
+    */
+    public static final String SilhouetteSizePropertyName = "silhouetteSize";
     /**
     *  
     The name of the {@code color} property.
@@ -144,9 +166,24 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
             return new BooleanCesiumWriter(RunAnimationsPropertyName);
         }
     }, false);
+    private Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<cesiumlanguagewriter.ShadowModeCesiumWriter>(new Func1<cesiumlanguagewriter.ShadowModeCesiumWriter>() {
+        public cesiumlanguagewriter.ShadowModeCesiumWriter invoke() {
+            return new ShadowModeCesiumWriter(ShadowsPropertyName);
+        }
+    }, false);
     private Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<cesiumlanguagewriter.HeightReferenceCesiumWriter>(new Func1<cesiumlanguagewriter.HeightReferenceCesiumWriter>() {
         public cesiumlanguagewriter.HeightReferenceCesiumWriter invoke() {
             return new HeightReferenceCesiumWriter(HeightReferencePropertyName);
+        }
+    }, false);
+    private Lazy<ColorCesiumWriter> m_silhouetteColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+        public cesiumlanguagewriter.ColorCesiumWriter invoke() {
+            return new ColorCesiumWriter(SilhouetteColorPropertyName);
+        }
+    }, false);
+    private Lazy<DoubleCesiumWriter> m_silhouetteSize = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+            return new DoubleCesiumWriter(SilhouetteSizePropertyName);
         }
     }, false);
     private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
@@ -1294,6 +1331,125 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
+    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+    
+
+    */
+    public final ShadowModeCesiumWriter getShadowsWriter() {
+        return m_shadows.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code shadows} property.  The {@code shadows} property defines whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+    
+
+    */
+    public final ShadowModeCesiumWriter openShadowsProperty() {
+        openIntervalIfNecessary();
+        return this.<ShadowModeCesiumWriter> openAndReturn(getShadowsWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code shadows} property as a {@code shadowMode} value.  The {@code shadows} property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+    
+    
+
+    * @param value The shadow mode.
+    */
+    public final void writeShadowsProperty(CesiumShadowMode value) {
+        {
+            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
+            try {
+                writer.writeShadowMode(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeShadowsPropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeShadowsPropertyReference(String value) {
+        {
+            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeShadowsPropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeShadowsPropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
     *  Gets the writer for the {@code heightReference} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code heightReference} property defines the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
     
 
@@ -1404,6 +1560,451 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     public final void writeHeightReferencePropertyReference(String identifier, String[] propertyNames) {
         {
             cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code silhouetteColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code silhouetteColor} property defines the color of the silhouette drawn around the model.
+    
+
+    */
+    public final ColorCesiumWriter getSilhouetteColorWriter() {
+        return m_silhouetteColor.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code silhouetteColor} property.  The {@code silhouetteColor} property defines the color of the silhouette drawn around the model.
+    
+
+    */
+    public final ColorCesiumWriter openSilhouetteColorProperty() {
+        openIntervalIfNecessary();
+        return this.<ColorCesiumWriter> openAndReturn(getSilhouetteColorWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteColor} property as a {@code rgba} value.  The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model.
+    
+    
+
+    * @param color The color.
+    */
+    public final void writeSilhouetteColorProperty(Color color) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            try {
+                writer.writeRgba(color);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteColor} property as a {@code rgba} value.  The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model.
+    
+    
+    
+    
+    
+
+    * @param red The red component in the range 0 to 255.
+    * @param green The green component in the range 0 to 255.
+    * @param blue The blue component in the range 0 to 255.
+    * @param alpha The alpha component in the range 0 to 255.
+    */
+    public final void writeSilhouetteColorProperty(int red, int green, int blue, int alpha) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            try {
+                writer.writeRgba(red, green, blue, alpha);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteColor} property as a {@code rgba} value.  The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeSilhouetteColorProperty(List<JulianDate> dates, List<Color> values) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            try {
+                writer.writeRgba(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteColor} property as a {@code rgba} value.  The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param colors The color corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeSilhouetteColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            try {
+                writer.writeRgba(dates, colors, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteColor} property as a {@code rgbaf} value.  The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model.
+    
+    
+
+    * @param color The color.
+    */
+    public final void writeSilhouetteColorPropertyRgbaf(Color color) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            try {
+                writer.writeRgbaf(color);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteColor} property as a {@code rgbaf} value.  The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model.
+    
+    
+    
+    
+    
+
+    * @param red The red component in the range 0 to 1.0.
+    * @param green The green component in the range 0 to 1.0.
+    * @param blue The blue component in the range 0 to 1.0.
+    * @param alpha The alpha component in the range 0 to 1.0.
+    */
+    public final void writeSilhouetteColorPropertyRgbaf(float red, float green, float blue, float alpha) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            try {
+                writer.writeRgbaf(red, green, blue, alpha);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteColor} property as a {@code rgbaf} value.  The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeSilhouetteColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            try {
+                writer.writeRgbaf(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteColor} property as a {@code rgbaf} value.  The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param colors The color corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeSilhouetteColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            try {
+                writer.writeRgbaf(dates, colors, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteColor} property as a {@code reference} value.  The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeSilhouetteColorPropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteColor} property as a {@code reference} value.  The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeSilhouetteColorPropertyReference(String value) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteColor} property as a {@code reference} value.  The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeSilhouetteColorPropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteColor} property as a {@code reference} value.  The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeSilhouetteColorPropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code silhouetteSize} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code silhouetteSize} property defines the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+    
+
+    */
+    public final DoubleCesiumWriter getSilhouetteSizeWriter() {
+        return m_silhouetteSize.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code silhouetteSize} property.  The {@code silhouetteSize} property defines the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+    
+
+    */
+    public final DoubleCesiumWriter openSilhouetteSizeProperty() {
+        openIntervalIfNecessary();
+        return this.<DoubleCesiumWriter> openAndReturn(getSilhouetteSizeWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteSize} property as a {@code number} value.  The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeSilhouetteSizeProperty(double value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openSilhouetteSizeProperty();
+            try {
+                writer.writeNumber(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteSize} property as a {@code number} value.  The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeSilhouetteSizeProperty(List<JulianDate> dates, List<Double> values) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openSilhouetteSizeProperty();
+            try {
+                writer.writeNumber(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteSize} property as a {@code number} value.  The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The value corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeSilhouetteSizeProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openSilhouetteSizeProperty();
+            try {
+                writer.writeNumber(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteSize} property as a {@code reference} value.  The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeSilhouetteSizePropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openSilhouetteSizeProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteSize} property as a {@code reference} value.  The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeSilhouetteSizePropertyReference(String value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openSilhouetteSizeProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteSize} property as a {@code reference} value.  The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeSilhouetteSizePropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openSilhouetteSizeProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code silhouetteSize} property as a {@code reference} value.  The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeSilhouetteSizePropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openSilhouetteSizeProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

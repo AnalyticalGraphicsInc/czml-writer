@@ -7,6 +7,12 @@
     "oneOf": [
         {
             "enum": [
+                "BASELINE"
+            ],
+            "description": "If the object contains text, the origin is at the baseline of the text, otherwise the origin is at the bottom of the object."
+        },
+        {
+            "enum": [
                 "BOTTOM"
             ],
             "description": "The origin is at the bottom of the object."
@@ -15,7 +21,7 @@
             "enum": [
                 "CENTER"
             ],
-            "description": "The origin is at the vertical center of the object."
+            "description": "The origin is at the vertical center between `BASELINE` and `TOP`."
         },
         {
             "enum": [

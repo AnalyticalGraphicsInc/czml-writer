@@ -72,6 +72,11 @@
             "$ref": "Boolean.json",
             "description": "Whether to close the bottom of the rectangle.",
             "default": true
+        },
+        "shadows": {
+            "$ref": "ShadowMode.json",
+            "description": "Whether or not the rectangle casts or receives shadows.",
+            "default": "DISABLED"
         }
     }
 }
