@@ -8,15 +8,11 @@ namespace CesiumLanguageWriterTests
     [TestFixture]
     public class TestPacketCesiumWriter
     {
-        private StringWriter m_sw;
-        private CesiumOutputStream m_output;
-        private CesiumStreamWriter m_writer;
-
         [SetUp]
         public void SetUp()
         {
-            m_sw = new StringWriter();
-            m_output = new CesiumOutputStream(m_sw);
+            m_stringWriter = new StringWriter();
+            m_outputStream = new CesiumOutputStream(m_stringWriter);
             m_writer = new CesiumStreamWriter();
         }
 
@@ -24,47 +20,47 @@ namespace CesiumLanguageWriterTests
         public void OpensObjectLiteralOnOpenAndClosesItOnClose()
         {
             PacketCesiumWriter packet = new PacketCesiumWriter();
-            packet.Open(m_output);
-            Assert.AreEqual("{", m_sw.ToString());
+            packet.Open(m_outputStream);
+            Assert.AreEqual("{", m_stringWriter.ToString());
             packet.Close();
-            Assert.AreEqual("{}", m_sw.ToString());
+            Assert.AreEqual("{}", m_stringWriter.ToString());
         }
 
         [Test]
         public void DisposeClosesPacket()
         {
-            using (PacketCesiumWriter packet = m_writer.OpenPacket(m_output))
+            using (m_writer.OpenPacket(m_outputStream))
             {
             }
-            Assert.AreEqual("{}", m_sw.ToString());
+            Assert.AreEqual("{}", m_stringWriter.ToString());
         }
 
         [Test]
         public void TestIdProperty()
         {
-            PacketCesiumWriter packet = m_writer.OpenPacket(m_output);
+            PacketCesiumWriter packet = m_writer.OpenPacket(m_outputStream);
             packet.WriteId("foo");
             packet.Close();
-            Assert.AreEqual("{\"id\":\"foo\"}", m_sw.ToString());
+            Assert.AreEqual("{\"id\":\"foo\"}", m_stringWriter.ToString());
         }
 
         [Test]
         public void TestDeleteProperty()
         {
-            PacketCesiumWriter packet = m_writer.OpenPacket(m_output);
+            PacketCesiumWriter packet = m_writer.OpenPacket(m_outputStream);
             packet.WriteId("foo");
             packet.WriteDelete(true);
             packet.Close();
-            Assert.AreEqual("{\"id\":\"foo\",\"delete\":true}", m_sw.ToString());
+            Assert.AreEqual("{\"id\":\"foo\",\"delete\":true}", m_stringWriter.ToString());
         }
 
         [Test]
         public void TestDescriptionProperty()
         {
-            PacketCesiumWriter packet = m_writer.OpenPacket(m_output);
+            PacketCesiumWriter packet = m_writer.OpenPacket(m_outputStream);
             packet.WriteDescriptionProperty("blah");
             packet.Close();
-            Assert.AreEqual("{\"description\":\"blah\"}", m_sw.ToString());
+            Assert.AreEqual("{\"description\":\"blah\"}", m_stringWriter.ToString());
         }
 
         [Test]
@@ -73,48 +69,54 @@ namespace CesiumLanguageWriterTests
             JulianDate start = new JulianDate(new GregorianDate(2012, 4, 2, 1, 2, 3));
             JulianDate stop = new JulianDate(new GregorianDate(2012, 4, 3, 1, 2, 3));
 
-            m_output.WriteStartSequence();
-            using (PacketCesiumWriter packet = m_writer.OpenPacket(m_output))
+            m_outputStream.WriteStartSequence();
+            using (PacketCesiumWriter packet = m_writer.OpenPacket(m_outputStream))
             {
                 packet.WriteAvailability(start, stop);
             }
-            using (PacketCesiumWriter packet = m_writer.OpenPacket(m_output))
+            using (PacketCesiumWriter packet = m_writer.OpenPacket(m_outputStream))
             {
                 packet.WriteAvailability(new TimeInterval(start, stop));
             }
-            using (PacketCesiumWriter packet = m_writer.OpenPacket(m_output))
+            using (PacketCesiumWriter packet = m_writer.OpenPacket(m_outputStream))
             {
-                var intervals = new List<TimeInterval>();
-                intervals.Add(new TimeInterval(start, stop));
-                intervals.Add(new TimeInterval(start.AddDays(2.0), stop.AddDays(2.0)));
+                var intervals = new List<TimeInterval>
+                {
+                    new TimeInterval(start, stop),
+                    new TimeInterval(start.AddDays(2.0), stop.AddDays(2.0))
+                };
                 packet.WriteAvailability(intervals);
             }
-            m_output.WriteEndSequence();
+            m_outputStream.WriteEndSequence();
 
             Assert.AreEqual("[{\"availability\":\"20120402T010203Z/20120403T010203Z\"}," +
                             "{\"availability\":\"20120402T010203Z/20120403T010203Z\"}," +
                             "{\"availability\":[\"20120402T010203Z/20120403T010203Z\",\"20120404T010203Z/20120405T010203Z\"]}]",
-                m_sw.ToString());
+                            m_stringWriter.ToString());
         }
 
         [Test]
         public void TestPositionProperty()
         {
-            PacketCesiumWriter packet = m_writer.OpenPacket(m_output);
+            PacketCesiumWriter packet = m_writer.OpenPacket(m_outputStream);
             PositionCesiumWriter position = packet.OpenPositionProperty();
             Assert.IsNotNull(position);
-            Assert.AreEqual("{\"position\":", m_sw.ToString());
+            Assert.AreEqual("{\"position\":", m_stringWriter.ToString());
         }
 
         [Test]
         public void TestBillboardProperty()
         {
-            PacketCesiumWriter packet = m_writer.OpenPacket(m_output);
+            PacketCesiumWriter packet = m_writer.OpenPacket(m_outputStream);
             using (BillboardCesiumWriter billboard = packet.OpenBillboardProperty())
             {
                 Assert.IsNotNull(billboard);
             }
-            Assert.AreEqual("{\"billboard\":", m_sw.ToString());
+            Assert.AreEqual("{\"billboard\":", m_stringWriter.ToString());
         }
+
+        private StringWriter m_stringWriter;
+        private CesiumOutputStream m_outputStream;
+        private CesiumStreamWriter m_writer;
     }
 }

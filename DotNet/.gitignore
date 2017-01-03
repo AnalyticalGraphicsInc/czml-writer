@@ -1,6 +1,7 @@
 bin
 obj
-packages
+/packages/
+/.vs/
 !ThirdParty/**/bin/
 ThirdParty/LoadDBF/bin/
 _ReSharper.*

@@ -22,7 +22,7 @@ namespace CesiumLanguageWriter
         /// <param name="day">The day of the month (in the range 1 through the number of
         /// days in <paramref name="month"/>)</param>
         /// <exception cref="ArgumentException">
-        /// Thrown when the <paramref name="year"/>, <paramref name="month"/>, or 
+        /// Thrown when the <paramref name="year"/>, <paramref name="month"/>, or
         /// <paramref name="day"/> is outside of its acceptable range.</exception>
         public YearMonthDay(int year, int month, int day)
         {
@@ -57,7 +57,8 @@ namespace CesiumLanguageWriter
                 //month is stored zero-indexed
                 for (m_month = 11; m_month > 0; --m_month)
                 {
-                    if (cumulativeDays[m_month] < dayOfYear) break;
+                    if (cumulativeDays[m_month] < dayOfYear)
+                        break;
                 }
 
                 //day is stored zero-indexed
@@ -82,10 +83,10 @@ namespace CesiumLanguageWriter
         /// <param name="astronomicalJulianDayNumber">The astronomical Julian day number.
         /// </param>
         [SuppressMessage("Microsoft.Usage", "CA2233:OperationsShouldNotOverflow",
-            MessageId = "astronomicalJulianDayNumber+68569",
-            Justification =
-                "In order for this to overflow you would need to pass in a Julian day number above 2 billion, which is safely 54 million years away or so."
-            )]
+             MessageId = "astronomicalJulianDayNumber+68569",
+             Justification =
+                 "In order for this to overflow you would need to pass in a Julian day number above 2 billion, which is safely 54 million years away or so."
+         )]
         public YearMonthDay(int astronomicalJulianDayNumber)
         {
             // Algorithm from page 604 of the Explanatory Supplement to the
@@ -93,10 +94,10 @@ namespace CesiumLanguageWriter
             int L = astronomicalJulianDayNumber + 68569;
             int N = 4 * L / 146097;
             L = L - (146097 * N + 3) / 4;
-            int I = (4000 * (L + 1)) / 1461001;
-            L = L - (1461 * I) / 4 + 31;
-            int J = (80 * L) / 2447;
-            m_day = L - (2447 * J) / 80;
+            int I = 4000 * (L + 1) / 1461001;
+            L = L - 1461 * I / 4 + 31;
+            int J = 80 * L / 2447;
+            m_day = L - 2447 * J / 80;
             L = J / 11;
             m_month = J + 2 - 12 * L;
             m_year = 100 * (N - 49) + I + L;
@@ -122,12 +123,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// The constructor taking an integer Julian day number assumes that the desired 
+        /// The constructor taking an integer Julian day number assumes that the desired
         /// <see cref="YearMonthDay" /> should represent the Gregorian day corresponding to
-        /// the beginning of the provided Julian day number. If the 
+        /// the beginning of the provided Julian day number. If the
         /// <see cref="JulianDate"/> is more than one half day later than that, the
         /// calculation will be wrong.
-        /// 
+        ///
         /// So, if <paramref name="date"/> is more than 12 hours past the start of the
         /// Julian day, we instead use the  Julian date number of tomorrow.
         /// </summary>
@@ -215,9 +216,9 @@ namespace CesiumLanguageWriter
                 // Astronomical Almanac (Seidelmann 1992).
                 int a = (Month - 14) / 12;
                 int b = Year + 4800 + a;
-                return (1461 * b) / 4
-                       + (367 * (Month - 2 - 12 * a)) / 12
-                       - (3 * ((b + 100) / 100)) / 4
+                return 1461 * b / 4
+                       + 367 * (Month - 2 - 12 * a) / 12
+                       - 3 * ((b + 100) / 100) / 4
                        + Day
                        - 32075;
             }
@@ -227,7 +228,7 @@ namespace CesiumLanguageWriter
         /// Indicates whether the year in question is a leap year.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns><see langword="true"/> if <paramref name="year"/> is a leap year and 
+        /// <returns><see langword="true"/> if <paramref name="year"/> is a leap year and
         /// <see langword="false"/> if it is not.
         /// </returns>
         public static bool IsLeapYear(int year)
@@ -267,9 +268,9 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="year">The year.</param>
         /// <param name="month">The month of the year (in the range 1 through 12)</param>
-        /// <param name="day">The day of the month (in the range 1 through the number of days in 
+        /// <param name="day">The day of the month (in the range 1 through the number of days in
         /// <paramref name="month"/>)</param>
-        /// <returns><see langword="true"/> if the representation is valid and 
+        /// <returns><see langword="true"/> if the representation is valid and
         /// <see langword="false"/> if it is not.</returns>
         public static bool IsValidDate(int year, int month, int day)
         {
@@ -297,10 +298,9 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            int result = m_year;
-            result = (result * 397) ^ m_month;
-            result = (result * 397) ^ m_day;
-            return result;
+            return HashCode.Combine(m_year.GetHashCode(),
+                                    m_month.GetHashCode(),
+                                    m_day.GetHashCode());
         }
 
         /// <summary>
@@ -310,7 +310,9 @@ namespace CesiumLanguageWriter
         /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public bool Equals(YearMonthDay other)
         {
-            return m_year == other.m_year && m_month == other.m_month && m_day == other.m_day;
+            return m_year == other.m_year &&
+                   m_month == other.m_month &&
+                   m_day == other.m_day;
         }
 
         /// <summary>
@@ -320,11 +322,7 @@ namespace CesiumLanguageWriter
         /// <returns><see langword="true"/> if <paramref name="obj"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
-            if (obj is YearMonthDay)
-            {
-                return Equals((YearMonthDay)obj);
-            }
-            return false;
+            return obj is YearMonthDay && Equals((YearMonthDay)obj);
         }
 
         /// <summary>
@@ -333,7 +331,7 @@ namespace CesiumLanguageWriter
         /// <returns>The string.</returns>
         public override string ToString()
         {
-            return String.Format(CultureInfo.CurrentCulture, "{0}:{1}:{2}", Year, Month, Day);
+            return string.Format(CultureInfo.CurrentCulture, "{0}:{1}:{2}", Year, Month, Day);
         }
 
         /// <summary>
@@ -417,14 +415,10 @@ namespace CesiumLanguageWriter
         public int CompareTo(object obj)
         {
             if (obj == null)
-            {
                 return 1;
-            }
 
             if (!(obj is YearMonthDay))
-            {
                 throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "obj");
-            }
 
             return CompareTo((YearMonthDay)obj);
         }

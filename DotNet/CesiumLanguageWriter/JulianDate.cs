@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using JetBrains.Annotations;
 
@@ -43,7 +44,7 @@ namespace CesiumLanguageWriter
         /// the <see cref="JulianDate"/> will be in the <see cref="TimeStandard.InternationalAtomicTime"/> (TAI)
         /// standard.
         /// </summary>
-        /// <param name="gregorianDate">The <see cref="GregorianDate"/> to use to specify the 
+        /// <param name="gregorianDate">The <see cref="GregorianDate"/> to use to specify the
         /// <see cref="JulianDate"/>.</param>
         public JulianDate(GregorianDate gregorianDate)
         {
@@ -67,13 +68,13 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Initializes a <see cref="JulianDate"/> from a <see cref="GregorianDate"/> where the <see cref="GregorianDate"/> 
-        /// is expressed in the given <see cref="TimeStandard"/>.  If the date is during a leap second, the 
+        /// Initializes a <see cref="JulianDate"/> from a <see cref="GregorianDate"/> where the <see cref="GregorianDate"/>
+        /// is expressed in the given <see cref="TimeStandard"/>.  If the date is during a leap second, the
         /// <see cref="JulianDate"/> will be expressed in <see cref="TimeStandard.InternationalAtomicTime"/> (TAI).
         /// </summary>
         /// <param name="gregorianDate">The <see cref="GregorianDate"/>.</param>
         /// <param name="standard">
-        /// The time standard in which the <paramref name="gregorianDate"/> is expressed.  
+        /// The time standard in which the <paramref name="gregorianDate"/> is expressed.
         /// </param>
         public JulianDate(GregorianDate gregorianDate, TimeStandard standard)
         {
@@ -122,7 +123,7 @@ namespace CesiumLanguageWriter
                     // double.  If it's the latter, it's in danger of being rounded to 86400.0.
                     // 86400.0 is of course not a valid value for m_secondsOfDay, so we need to
                     // reset it to 0.0 and increment m_day.
-                    // 
+                    //
                     // This can happen if the original m_secondsOfDay coming in is a very small
                     // negative number.  When we add 86400.0 to it, we get 86400.0 instead of
                     // something slightly less than that as expected, because a double has more
@@ -229,20 +230,21 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Try to convert this <see cref="JulianDate"/> to the specified 
+        /// Try to convert this <see cref="JulianDate"/> to the specified
         /// <see cref="TimeStandard"/>, if the specified <see cref="TimeStandard"/> is
         /// capable of representing this time.
         /// </summary>
         /// <param name="timeStandard">The requested time standard.</param>
         /// <param name="result">
         /// <filter name="Java">On input, an array with one element.  On return, the array is populated with</filter>
-        /// <filter name="DotNet,Silverlight">On return,</filter>
+        /// <filter name="DotNet">On return,</filter>
         /// an equivalent
         /// <see cref="JulianDate"/> using the requested <see cref="TimeStandard"/>, if it
         /// is capable  of representing this time, otherwise <see cref="JulianDate.MinValue"/>.
         /// </param>
         /// <returns><see langword="true"/> if this date could be converted to the
         /// requested <see cref="TimeStandard"/>, otherwise false.</returns>
+        [Pure]
         public bool TryConvertTimeStandard(TimeStandard timeStandard, out JulianDate result)
         {
             if (timeStandard == m_timeStandard)
@@ -313,6 +315,7 @@ namespace CesiumLanguageWriter
         /// <paramref name="other"/> Julian date should have the same time standard and it should be
         /// safe for arithmetic.
         /// </remarks>
+        [Pure]
         public double MinutesDifference(JulianDate other)
         {
             JulianDate start = ToInternationalAtomicTime();
@@ -472,13 +475,13 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Subtracts a Julian date from another Julian date, yielding a 
+        /// Subtracts a Julian date from another Julian date, yielding a
         /// <see cref="Duration"/>.
         /// </summary>
         /// <param name="left">The minuend.</param>
         /// <param name="right">The subtrahend.</param>
         /// <returns>
-        /// The Duration that is the result of the subtraction; that is, 
+        /// The Duration that is the result of the subtraction; that is,
         /// <paramref name="left"/> minus <paramref name="right"/>.  The time standard will
         /// be the same as the time standard of the subtrahend.
         /// </returns>
@@ -488,13 +491,13 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Subtracts a <see cref="Duration"/> from a Julian date, yielding a new 
+        /// Subtracts a <see cref="Duration"/> from a Julian date, yielding a new
         /// <see cref="JulianDate"/>.
         /// </summary>
         /// <param name="left">The minuend.</param>
         /// <param name="right">The subtrahend.</param>
         /// <returns>
-        /// A new Julian Date that is the result of the subtraction; that is, 
+        /// A new Julian Date that is the result of the subtraction; that is,
         /// <paramref name="left"/> minus <paramref name="right"/>.
         /// </returns>
         public static JulianDate operator -(JulianDate left, Duration right)
@@ -620,6 +623,7 @@ namespace CesiumLanguageWriter
         /// <param name="other">The date to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> is identical to this instance; otherwise, <see langword="false"/>.</returns>
         [Pure]
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool IsIdentical(JulianDate other)
         {
             return m_day == other.m_day &&
@@ -776,7 +780,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Converts this <see cref="JulianDate"/> to a <filter name="DotNet,Silverlight">.NET standard</filter>
+        /// Converts this <see cref="JulianDate"/> to a <filter name="DotNet">.NET standard</filter>
         /// <see cref="DateTime"/> with a default time standard of Coordinated Universal
         /// Time.
         /// </summary>
@@ -788,7 +792,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Converts this <see cref="JulianDate"/> to a <filter name="DotNet,Silverlight">.NET standard</filter>
+        /// Converts this <see cref="JulianDate"/> to a <filter name="DotNet">.NET standard</filter>
         /// <see cref="DateTime"/> expressed in the specified time standard.
         /// </summary>
         /// <param name="standard">The time standard in which to express the returned
@@ -843,7 +847,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Converts a 
+        /// Implements <see cref="IConvertible"/> interface. Converts a
         /// <see cref="JulianDate"/> to a <see cref="DateTime"/> object.
         /// </summary>
         /// <returns>A <see cref="DateTime"/> representation of a <see cref="JulianDate"/>
@@ -855,7 +859,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Returns the 
+        /// Implements <see cref="IConvertible"/> interface. Returns the
         /// <see cref="TypeCode"/> for this instance.
         /// </summary>
         /// <returns><see cref="TypeCode.Object"/></returns>
@@ -866,7 +870,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an 
+        /// Implements <see cref="IConvertible"/> interface. Throws an
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
@@ -877,7 +881,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an 
+        /// Implements <see cref="IConvertible"/> interface. Throws an
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
@@ -888,7 +892,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an 
+        /// Implements <see cref="IConvertible"/> interface. Throws an
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
@@ -899,7 +903,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an 
+        /// Implements <see cref="IConvertible"/> interface. Throws an
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
@@ -910,7 +914,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Converts 
+        /// Implements <see cref="IConvertible"/> interface. Converts
         /// <see cref="JulianDate"/> to its decimal representation.
         /// </summary>
         /// <returns>The total number of whole and fractional days represented by this astronomical
@@ -922,7 +926,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an 
+        /// Implements <see cref="IConvertible"/> interface. Throws an
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
@@ -933,7 +937,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an 
+        /// Implements <see cref="IConvertible"/> interface. Throws an
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
@@ -944,7 +948,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an 
+        /// Implements <see cref="IConvertible"/> interface. Throws an
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
@@ -955,7 +959,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an 
+        /// Implements <see cref="IConvertible"/> interface. Throws an
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
@@ -966,7 +970,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an 
+        /// Implements <see cref="IConvertible"/> interface. Throws an
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
@@ -977,7 +981,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Converts the 
+        /// Implements <see cref="IConvertible"/> interface. Converts the
         /// <see cref="JulianDate"/> to a string representation.
         /// </summary>
         /// <returns>The string representation of this <see cref="JulianDate"/>.</returns>
@@ -988,11 +992,11 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Converts this 
-        /// <see cref="JulianDate"/> to the  type given by 
+        /// Implements <see cref="IConvertible"/> interface. Converts this
+        /// <see cref="JulianDate"/> to the  type given by
         /// <paramref name="conversionType"/>.
         /// </summary>
-        /// <returns>A <see cref="JulianDate"/> converted to the type specified by 
+        /// <returns>A <see cref="JulianDate"/> converted to the type specified by
         /// <paramref name="conversionType"/>.</returns>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         Object IConvertible.ToType(Type conversionType, IFormatProvider provider)
@@ -1001,7 +1005,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an 
+        /// Implements <see cref="IConvertible"/> interface. Throws an
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
@@ -1012,7 +1016,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an 
+        /// Implements <see cref="IConvertible"/> interface. Throws an
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
@@ -1023,7 +1027,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an 
+        /// Implements <see cref="IConvertible"/> interface. Throws an
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>

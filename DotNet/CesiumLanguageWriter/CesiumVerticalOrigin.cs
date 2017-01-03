@@ -11,7 +11,7 @@
         Bottom,
 
         /// <summary>
-        /// The item is vertically centered at the position.
+        /// The item is at the vertical center between <see cref="Baseline"/> and <see cref="Top"/>.
         /// </summary>
         Center,
 
@@ -19,5 +19,10 @@
         /// The top of the item is located at the position.
         /// </summary>
         Top,
+
+        /// <summary>
+        /// If the object contains text, the origin is at the baseline of the text, otherwise the origin is at the bottom of the object.
+        /// </summary>
+        Baseline,
     }
 }

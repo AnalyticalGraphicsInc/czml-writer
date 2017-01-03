@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -24,16 +25,13 @@ namespace CesiumLanguageWriter
         /// <exception cref="InvalidOperationException">
         /// Thrown when the <paramref name="motion"/> does not contain any values.
         /// </exception>
-        public Motion(params T[] motion)
+        public Motion([NotNull] params T[] motion)
         {
             if (motion == null)
-            {
                 throw new ArgumentNullException("motion");
-            }
-            else if (motion.Length < 1)
-            {
+
+            if (motion.Length < 1)
                 throw new InvalidOperationException(CesiumLocalization.MotionMustContainValue);
-            }
             m_motion = motion;
         }
 
@@ -82,15 +80,7 @@ namespace CesiumLanguageWriter
         /// </remarks>
         public override bool Equals(object obj)
         {
-            if (obj is Motion<T>)
-            {
-                Motion<T> motion = (Motion<T>)obj;
-                return Equals(motion);
-            }
-            else
-            {
-                return false;
-            }
+            return obj is Motion<T> && Equals((Motion<T>)obj);
         }
 
         /// <summary>
@@ -144,8 +134,6 @@ namespace CesiumLanguageWriter
             return !left.Equals(right);
         }
 
-        private readonly T[] m_motion;
-
         /// <summary>
         /// Gets the value of the coordinate.
         /// </summary>
@@ -198,19 +186,16 @@ namespace CesiumLanguageWriter
                     {
                         return default(T);
                     }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("index");
-                    }
+
+                    throw new ArgumentOutOfRangeException("index");
                 }
-                else if (index >= 0 && index < m_motion.Length)
+
+                if (index >= 0 && index < m_motion.Length)
                 {
                     return m_motion[index];
                 }
-                else
-                {
-                    throw new ArgumentOutOfRangeException("index");
-                }
+
+                throw new ArgumentOutOfRangeException("index");
             }
         }
 
@@ -222,15 +207,13 @@ namespace CesiumLanguageWriter
             get
             {
                 if (m_motion == null)
-                {
                     return 0;
-                }
-                else
-                {
-                    return m_motion.Length - 1;
-                }
+
+                return m_motion.Length - 1;
             }
         }
+
+        private readonly T[] m_motion;
     }
 
     /// <summary>
@@ -309,15 +292,7 @@ namespace CesiumLanguageWriter
         /// </remarks>
         public override bool Equals(object obj)
         {
-            if (obj is Motion<T, TDerivative>)
-            {
-                Motion<T, TDerivative> motion = (Motion<T, TDerivative>)obj;
-                return Equals(motion);
-            }
-            else
-            {
-                return false;
-            }
+            return obj is Motion<T, TDerivative> && Equals((Motion<T, TDerivative>)obj);
         }
 
         /// <summary>
@@ -371,18 +346,12 @@ namespace CesiumLanguageWriter
             return !left.Equals(right);
         }
 
-        private readonly T m_value;
-        private readonly TDerivative[] m_derivatives;
-
         /// <summary>
         /// Gets the coordinate value.
         /// </summary>
         public T Value
         {
-            get
-            {
-                return m_value;
-            }
+            get { return m_value; }
         }
 
         /// <summary>
@@ -442,14 +411,13 @@ namespace CesiumLanguageWriter
             get
             {
                 if (m_derivatives == null)
-                {
                     return 0;
-                }
-                else
-                {
-                    return m_derivatives.Length;
-                }
+
+                return m_derivatives.Length;
             }
         }
+
+        private readonly T m_value;
+        private readonly TDerivative[] m_derivatives;
     }
 }

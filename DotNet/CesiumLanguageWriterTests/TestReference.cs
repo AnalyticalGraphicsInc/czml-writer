@@ -9,7 +9,7 @@ namespace CesiumLanguageWriterTests
     public class TestReference
     {
         [Test]
-        public void CanContructEscapedReferences()
+        public void CanConstructEscapedReferences()
         {
             var value = "identifier#property";
             var reference = new Reference(value);
@@ -17,7 +17,7 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(reference.PropertyNames, new List<string> { "property" });
             Assert.AreEqual(value, reference.Value);
 
-            value = ("identifier#property.subProperty");
+            value = "identifier#property.subProperty";
             reference = new Reference(value);
             Assert.AreEqual(reference.Identifier, "identifier");
             Assert.AreEqual(reference.PropertyNames, new List<string> { "property", "subProperty" });
@@ -37,7 +37,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        public void CanContructFromIdentifierAndProperty()
+        public void CanConstructFromIdentifierAndProperty()
         {
             var reference = new Reference("identifier", "property");
             Assert.AreEqual(reference.Identifier, "identifier");
@@ -51,7 +51,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        public void CanContructFromIdentifierAndProperties()
+        public void CanConstructFromIdentifierAndProperties()
         {
             var reference = new Reference("identifier", new List<string> { "property", "subProperty" });
             Assert.AreEqual(reference.Identifier, "identifier");

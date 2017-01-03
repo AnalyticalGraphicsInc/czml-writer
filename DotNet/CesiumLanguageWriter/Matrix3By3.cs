@@ -271,6 +271,7 @@ namespace CesiumLanguageWriter
         /// Transposes the matrix.
         /// </summary>
         /// <returns>The transposed matrix.</returns>
+        [Pure]
         public Matrix3By3 Transpose()
         {
             return new Matrix3By3(m_m11, m_m21, m_m31,
@@ -443,6 +444,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The instance to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(Matrix3By3 other)
         {
             return m_m11 == other.m_m11 && m_m12 == other.m_m12 && m_m13 == other.m_m13 &&

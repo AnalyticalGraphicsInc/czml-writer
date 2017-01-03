@@ -1,6 +1,4 @@
 using System;
-using System.Globalization;
-using System.Text;
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 
@@ -97,6 +95,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The instance to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(Spherical other)
         {
             return m_clock == other.m_clock &&

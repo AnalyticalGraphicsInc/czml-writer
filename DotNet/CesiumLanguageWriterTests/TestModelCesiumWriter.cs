@@ -8,11 +8,6 @@ namespace CesiumLanguageWriterTests
     [TestFixture]
     public class TestModelCesiumWriter : TestCesiumPropertyWriter<ModelCesiumWriter>
     {
-        protected override CesiumPropertyWriter<ModelCesiumWriter> CreatePropertyWriter(string propertyName)
-        {
-            return new ModelCesiumWriter(propertyName);
-        }
-
         [Test]
         public void TestShowProperty()
         {
@@ -95,6 +90,11 @@ namespace CesiumLanguageWriterTests
                 interval.WriteColorBlendAmountProperty(0.75);
             }
             Assert.AreEqual("{\"model\":{\"colorBlendAmount\":0.75}}", StringWriter.ToString());
+        }
+
+        protected override CesiumPropertyWriter<ModelCesiumWriter> CreatePropertyWriter(string propertyName)
+        {
+            return new ModelCesiumWriter(propertyName);
         }
     }
 }
