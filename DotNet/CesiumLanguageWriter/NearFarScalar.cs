@@ -65,12 +65,13 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The instance to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(NearFarScalar other)
         {
-            return m_nearDistance.Equals(other.m_nearDistance) &&
-                   m_nearValue.Equals(other.m_nearValue) &&
-                   m_farDistance.Equals(other.m_farDistance) &&
-                   m_farValue.Equals(other.m_farValue);
+            return m_nearDistance == other.m_nearDistance &&
+                   m_nearValue == other.m_nearValue &&
+                   m_farDistance == other.m_farDistance &&
+                   m_farValue == other.m_farValue;
         }
 
         /// <summary>
