@@ -9,11 +9,6 @@ namespace CesiumLanguageWriterTests
     [TestFixture]
     public class TestLabelCesiumWriter : TestCesiumPropertyWriter<LabelCesiumWriter>
     {
-        protected override CesiumPropertyWriter<LabelCesiumWriter> CreatePropertyWriter(string propertyName)
-        {
-            return new LabelCesiumWriter(propertyName);
-        }
-
         [Test]
         public void TestShowProperty()
         {
@@ -108,6 +103,11 @@ namespace CesiumLanguageWriterTests
                 scaleByDistance.WriteNearFarScalar(dates, values);
             }
             Assert.AreEqual("{\"label\":{\"translucencyByDistance\":{\"epoch\":\"20120402T12Z\",\"nearFarScalar\":[0,100,1,200,2,60,200,1,300,2]}}}", StringWriter.ToString());
+        }
+
+        protected override CesiumPropertyWriter<LabelCesiumWriter> CreatePropertyWriter(string propertyName)
+        {
+            return new LabelCesiumWriter(propertyName);
         }
     }
 }

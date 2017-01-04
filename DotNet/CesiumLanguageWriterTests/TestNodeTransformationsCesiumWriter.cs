@@ -10,11 +10,6 @@ namespace CesiumLanguageWriterTests
     [TestFixture]
     public class TestNodeTransformationsCesiumWriter : TestCesiumPropertyWriter<NodeTransformationsCesiumWriter>
     {
-        protected override CesiumPropertyWriter<NodeTransformationsCesiumWriter> CreatePropertyWriter(string propertyName)
-        {
-            return new NodeTransformationsCesiumWriter(propertyName);
-        }
-
         [Test]
         public void SingleNodeTransformation()
         {
@@ -70,8 +65,7 @@ namespace CesiumLanguageWriterTests
         {
             using (var stringWriter = new StringWriter())
             {
-                var output = new CesiumOutputStream(stringWriter);
-                output.PrettyFormatting = true;
+                var output = new CesiumOutputStream(stringWriter) { PrettyFormatting = true };
                 var writer = new CesiumStreamWriter();
 
                 using (var packet = writer.OpenPacket(output))
@@ -105,15 +99,15 @@ namespace CesiumLanguageWriterTests
                             using (var nodeTransformationWriter = nodeTransformationsWriter.OpenNodeTransformationProperty("node2"))
                             {
                                 var dates = new List<JulianDate>
-                                            {
-                                                startDate,
-                                                stopDate
-                                            };
+                                {
+                                    startDate,
+                                    stopDate
+                                };
                                 var values = new List<Cartesian>
-                                             {
-                                                 new Cartesian(1.0, 2.0, 3.0),
-                                                 new Cartesian(10.0, 12.0, 14.0)
-                                             };
+                                {
+                                    new Cartesian(1.0, 2.0, 3.0),
+                                    new Cartesian(10.0, 12.0, 14.0)
+                                };
                                 nodeTransformationWriter.WriteScaleProperty(dates, values);
                             }
                         }
@@ -122,6 +116,11 @@ namespace CesiumLanguageWriterTests
 
                 Console.WriteLine(stringWriter.ToString());
             }
+        }
+
+        protected override CesiumPropertyWriter<NodeTransformationsCesiumWriter> CreatePropertyWriter(string propertyName)
+        {
+            return new NodeTransformationsCesiumWriter(propertyName);
         }
     }
 }

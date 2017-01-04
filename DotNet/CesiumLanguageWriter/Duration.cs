@@ -5,8 +5,8 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Represents a span of time.  
-    /// <filter name="DotNet,Silverlight">This is different from the .NET <see cref="System.TimeSpan"/> class in that it</filter>
+    /// Represents a span of time.
+    /// <filter name="DotNet">This is different from the .NET <see cref="System.TimeSpan"/> class in that it</filter>
     /// <filter name="Java">This class</filter>
     /// offers the same precision as the <see cref="JulianDate"/> type.  It stores a
     /// number of days as an <see cref="System.Int32"/> and a number of seconds as a <see cref="System.Double"/>.
@@ -19,7 +19,7 @@ namespace CesiumLanguageWriter
         IEquatable<Duration>
     {
         /// <summary>
-        /// Gets the largest possible value of a <see cref="Duration"/>. 
+        /// Gets the largest possible value of a <see cref="Duration"/>.
         /// </summary>
         /// <remarks>
         /// The value is <see cref="Int32.MaxValue"/> days and 86399.0 seconds.
@@ -30,7 +30,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the smallest possible value of a <see cref="Duration"/>. 
+        /// Gets the smallest possible value of a <see cref="Duration"/>.
         /// </summary>
         /// <remarks>
         /// The value is <see cref="Int32.MinValue"/> days and -86399.0 seconds.
@@ -103,7 +103,7 @@ namespace CesiumLanguageWriter
                     // double.  If it's the latter, it's in danger of being rounded to -86400.0.
                     // -86400.0 is of course not a valid value for seconds, so we need to
                     // reset it to 0.0 and decrement days.
-                    // 
+                    //
                     // This can happen if the original seconds coming in is a very small
                     // positive number.  When we subtract 86400.0 from it, we get -86400.0 instead of
                     // something slightly greater than that as expected, because a double has more
@@ -125,7 +125,7 @@ namespace CesiumLanguageWriter
                     // double.  If it's the latter, it's in danger of being rounded to 86400.0.
                     // 86400.0 is of course not a valid value for seconds, so we need to
                     // reset it to 0.0 and increment day.
-                    // 
+                    //
                     // This can happen if the original seconds coming in is a very small
                     // negative number.  When we add 86400.0 to it, we get 86400.0 instead of
                     // something slightly less than that as expected, because a double has more
@@ -162,7 +162,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         public double TotalDays
         {
-            get { return m_days + (m_seconds / TimeConstants.SecondsPerDay); }
+            get { return m_days + m_seconds / TimeConstants.SecondsPerDay; }
         }
 
         /// <summary>
@@ -271,7 +271,7 @@ namespace CesiumLanguageWriter
             if (m_days != other.m_days)
                 return m_days < other.m_days ? -1 : 1;
 
-            if (m_seconds.Equals(other.m_seconds))
+            if (m_seconds == other.m_seconds)
                 return 0;
 
             return m_seconds < other.m_seconds ? -1 : 1;

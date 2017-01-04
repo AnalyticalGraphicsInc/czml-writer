@@ -63,8 +63,8 @@ namespace CesiumLanguageWriter
         /// <returns>An equivalent interval with the new time standard.</returns>
         public TimeInterval ToTimeStandard(TimeStandard timeStandard)
         {
-            if (m_start.Standard ==  timeStandard &&
-                m_stop.Standard == timeStandard)
+            if (ReferenceEquals(m_start.Standard, timeStandard) &&
+                ReferenceEquals(m_stop.Standard, timeStandard))
             {
                 return this;
             }
@@ -96,12 +96,14 @@ namespace CesiumLanguageWriter
         /// seconds of each other.  All other properties must be identical.
         /// </summary>
         /// <param name="other">The time interval to compare to this time interval.</param>
-        /// <param name="epsilon">The smallest difference between the <see cref="Start"/> and <see cref="Stop"/> dates, in seconds, such that they will NOT be considered equal.</param>
+        /// <param name="epsilon">The largest difference between the <see cref="Start"/> and <see cref="Stop"/> dates, in seconds, such that they will be considered equal.</param>
         /// <returns>true if the <see cref="Start"/> and <see cref="Stop"/> dates of the intervals are equal as defined by the epsilon value and all other properties are identical.</returns>
         public bool EqualsEpsilon(TimeInterval other, double epsilon)
         {
-            if (ReferenceEquals(other, null))
+            if (ReferenceEquals(null, other))
                 return false;
+            if (ReferenceEquals(this, other))
+                return true;
 
             if (IsEmpty && other.IsEmpty)
                 return true;
@@ -119,7 +121,6 @@ namespace CesiumLanguageWriter
         {
             if (ReferenceEquals(null, other))
                 return false;
-
             if (ReferenceEquals(this, other))
                 return true;
 
@@ -171,11 +172,8 @@ namespace CesiumLanguageWriter
         /// </returns>
         public static bool operator ==(TimeInterval left, TimeInterval right)
         {
-            if (ReferenceEquals(left, right))
-                return true;
-
             if (ReferenceEquals(left, null))
-                return false;
+                return ReferenceEquals(right, null);
 
             return left.Equals(right);
         }

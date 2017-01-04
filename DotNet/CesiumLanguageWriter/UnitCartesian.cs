@@ -77,7 +77,7 @@ namespace CesiumLanguageWriter
         /// <param name="z">The linear coordinate along the positive z-axis.</param>
         /// <param name="magnitude">
         /// <filter name="Java">On input, an array with one element.  On return, the array is populated with</filter>
-        /// <filter name="DotNet,Silverlight">On return,</filter>
+        /// <filter name="DotNet">On return,</filter>
         /// the magnitude of the original set of coordinates.
         /// </param>
         /// <exception cref="DivideByZeroException">
@@ -119,7 +119,7 @@ namespace CesiumLanguageWriter
         /// <param name="coordinates">The set of <see cref="Cartesian"/> coordinates.</param>
         /// <param name="magnitude">
         /// <filter name="Java">On input, an array with one element.  On return, the array is populated with</filter>
-        /// <filter name="DotNet,Silverlight">On return,</filter>
+        /// <filter name="DotNet">On return,</filter>
         /// the magnitude of the original set of coordinates.
         /// </param>
         /// <exception cref="DivideByZeroException">
@@ -155,6 +155,25 @@ namespace CesiumLanguageWriter
         public UnitCartesian(UnitSpherical unitSpherical)
             : this(unitSpherical.Clock, unitSpherical.Cone)
         {
+        }
+
+        private UnitCartesian(double x, double y, double z, Normalization normalization)
+        {
+            if (normalization == Normalization.Normalized)
+            {
+                m_x = x;
+                m_y = y;
+                m_z = z;
+            }
+            else
+            {
+                double magnitude;
+                NormalizeCoordinates(ref x, ref y, ref z, out magnitude);
+
+                m_x = x;
+                m_y = y;
+                m_z = z;
+            }
         }
 
         /// <summary>
@@ -414,6 +433,14 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Gets whether or not any of the coordinates for this instance have the value <see cref="Double.NaN"/>.
+        /// </summary>
+        public bool IsUndefined
+        {
+            get { return double.IsNaN(m_x) || double.IsNaN(m_y) || double.IsNaN(m_z); }
+        }
+
+        /// <summary>
         /// Indicates whether another object is exactly equal to this instance.
         /// </summary>
         /// <param name="obj">The object to compare to this instance.</param>
@@ -428,6 +455,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The instance to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(UnitCartesian other)
         {
             return m_x == other.m_x &&
@@ -501,40 +529,11 @@ namespace CesiumLanguageWriter
             return !left.Equals(right);
         }
 
-        /// <summary>
-        /// Gets whether or not any of the coordinates for this instance have the value <see cref="Double.NaN"/>.
-        /// </summary>
-        public bool IsUndefined
-        {
-            get
-            {
-                return Double.IsNaN(m_x) || Double.IsNaN(m_y) || Double.IsNaN(m_z);
-            }
-        }
-        
-        private UnitCartesian(double x, double y, double z, Normalization normalization)
-        {
-            if (normalization == Normalization.Normalized)
-            {
-                m_x = x;
-                m_y = y;
-                m_z = z;
-            }
-            else
-            {
-                double magnitude;
-                NormalizeCoordinates(ref x, ref y, ref z, out magnitude);
-
-                m_x = x;
-                m_y = y;
-                m_z = z;
-            }
-        }
-
         private static void NormalizeCoordinates(ref double x, ref double y, ref double z, out double magnitude)
         {
             magnitude = Math.Sqrt(x * x + y * y + z * z);
 
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
             if (magnitude == 0.0)
             {
                 throw new DivideByZeroException(CesiumLocalization.MagnitudeMustNotBeZero);

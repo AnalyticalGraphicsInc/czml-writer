@@ -67,7 +67,7 @@ namespace CesiumLanguageWriter
         /// <param name="z">The Z coordinate.</param>
         /// <param name="magnitude">
         /// <filter name="Java">On input, an array with one element.  On return, the array is populated with</filter>
-        /// <filter name="DotNet,Silverlight">On return,</filter>
+        /// <filter name="DotNet">On return,</filter>
         /// the magnitude of the original set of coordinates.
         /// </param>
         /// <exception cref="DivideByZeroException">
@@ -282,12 +282,13 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The instance to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(UnitQuaternion other)
         {
-            return m_w.Equals(other.m_w) &&
-                   m_x.Equals(other.m_x) &&
-                   m_y.Equals(other.m_y) &&
-                   m_z.Equals(other.m_z);
+            return m_w == other.m_w &&
+                   m_x == other.m_x &&
+                   m_y == other.m_y &&
+                   m_z == other.m_z;
         }
 
         /// <summary>
@@ -391,6 +392,7 @@ namespace CesiumLanguageWriter
         {
             magnitude = Math.Sqrt(w * w + x * x + y * y + z * z);
 
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
             if (magnitude == 0.0)
                 throw new DivideByZeroException(CesiumLocalization.MagnitudeMustNotBeZero);
             if (double.IsInfinity(magnitude))

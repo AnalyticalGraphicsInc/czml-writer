@@ -7,11 +7,6 @@ namespace CesiumLanguageWriterTests
     [TestFixture]
     public class TestPropertiesOfSimpleJsonTypes : TestCesiumPropertyWriter<BillboardCesiumWriter>
     {
-        protected override CesiumPropertyWriter<BillboardCesiumWriter> CreatePropertyWriter(string propertyName)
-        {
-            return new BillboardCesiumWriter(propertyName);
-        }
-
         [Test]
         public void StringCanBeWrittenAsSimpleString()
         {
@@ -172,6 +167,11 @@ namespace CesiumLanguageWriterTests
                 writer.WriteLabelStyle(CesiumLabelStyle.FillAndOutline);
             }
             Assert.AreEqual("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"labelStyle\":\"FILL_AND_OUTLINE\"}}", StringWriter.ToString());
+        }
+
+        protected override CesiumPropertyWriter<BillboardCesiumWriter> CreatePropertyWriter(string propertyName)
+        {
+            return new BillboardCesiumWriter(propertyName);
         }
     }
 }

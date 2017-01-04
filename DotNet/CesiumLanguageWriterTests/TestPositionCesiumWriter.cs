@@ -8,11 +8,6 @@ namespace CesiumLanguageWriterTests
     [TestFixture]
     public class TestPositionCesiumWriter : TestCesiumInterpolatablePropertyWriter<PositionCesiumWriter>
     {
-        protected override CesiumPropertyWriter<PositionCesiumWriter> CreatePropertyWriter(string propertyName)
-        {
-            return new PositionCesiumWriter(propertyName);
-        }
-
         [Test]
         public void ReferenceFrameValueWritesReferenceFrameProperty()
         {
@@ -173,6 +168,11 @@ namespace CesiumLanguageWriterTests
                 interval.WriteCartographicRadians(dates, positions);
             }
             Assert.AreEqual("{\"position\":{\"cartographicRadians\":[]}}", StringWriter.ToString());
+        }
+
+        protected override CesiumPropertyWriter<PositionCesiumWriter> CreatePropertyWriter(string propertyName)
+        {
+            return new PositionCesiumWriter(propertyName);
         }
     }
 }

@@ -10,11 +10,6 @@ namespace CesiumLanguageWriterTests
     [TestFixture]
     public class TestOrientationCesiumWriter : TestCesiumInterpolatablePropertyWriter<OrientationCesiumWriter>
     {
-        protected override CesiumPropertyWriter<OrientationCesiumWriter> CreatePropertyWriter(string propertyName)
-        {
-            return new OrientationCesiumWriter(propertyName);
-        }
-
         [Test]
         public void TestCompleteExample()
         {
@@ -33,32 +28,32 @@ namespace CesiumLanguageWriterTests
                 var interval2 = new TimeInterval(date.AddDays(1.0), date.AddDays(2.0));
 
                 var interval2SampleDates = new List<JulianDate>
-                                           {
-                                               date.AddDays(1.0),
-                                               date.AddDays(1.5),
-                                               date.AddDays(2.0)
-                                           };
+                {
+                    date.AddDays(1.0),
+                    date.AddDays(1.5),
+                    date.AddDays(2.0)
+                };
 
                 var interval2SamplePositions = new List<Cartographic>
-                                               {
-                                                   Cartographic.Zero,
-                                                   new Cartographic(1.0, 0.0, 0.0),
-                                                   new Cartographic(0.0, 1.0, 0.0)
-                                               };
+                {
+                    Cartographic.Zero,
+                    new Cartographic(1.0, 0.0, 0.0),
+                    new Cartographic(0.0, 1.0, 0.0)
+                };
                 var interval2SampleOrientations = new List<UnitQuaternion>
-                                                  {
-                                                      UnitQuaternion.Identity,
-                                                      new UnitQuaternion(0.0, 1.0, 0.0, 0.0),
-                                                      new UnitQuaternion(0.0, 0.0, 1.0, 0.0)
-                                                  };
+                {
+                    UnitQuaternion.Identity,
+                    new UnitQuaternion(0.0, 1.0, 0.0, 0.0),
+                    new UnitQuaternion(0.0, 0.0, 1.0, 0.0)
+                };
 
                 const CesiumInterpolationAlgorithm orientationInterpolationAlgorithm = CesiumInterpolationAlgorithm.Linear;
                 const int orientationInterpolationDegree = 1;
 
                 var outputStream = new CesiumOutputStream(stringWriter)
-                                   {
-                                       PrettyFormatting = true
-                                   };
+                {
+                    PrettyFormatting = true
+                };
                 var writer = new CesiumStreamWriter();
 
                 using (var packet = writer.OpenPacket(outputStream))
@@ -98,9 +93,14 @@ namespace CesiumLanguageWriterTests
                         }
                     }
                 }
-
+                
                 Console.WriteLine(stringWriter.ToString());
             }
+        }
+
+        protected override CesiumPropertyWriter<OrientationCesiumWriter> CreatePropertyWriter(string propertyName)
+        {
+            return new OrientationCesiumWriter(propertyName);
         }
     }
 }

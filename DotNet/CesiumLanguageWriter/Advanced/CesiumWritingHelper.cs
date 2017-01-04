@@ -829,8 +829,8 @@ namespace CesiumLanguageWriter.Advanced
         /// Writes a reference and an identifier and property name.
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
-        /// <param name="identifier"></param>
-        /// <param name="propertyName"></param>
+        /// <param name="identifier">The identifier of the referenced object.</param>
+        /// <param name="propertyName">The property name.</param>
         public static void WriteReference(CesiumOutputStream output, string identifier, string propertyName)
         {
             WriteReference(output, new Reference(identifier, propertyName));

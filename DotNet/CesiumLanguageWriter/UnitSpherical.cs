@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
@@ -82,10 +83,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The instance to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(UnitSpherical other)
         {
-            return m_clock.Equals(other.m_clock) &&
-                   m_cone.Equals(other.m_cone);
+            return m_clock == other.m_clock &&
+                   m_cone == other.m_cone;
         }
 
         /// <summary>
