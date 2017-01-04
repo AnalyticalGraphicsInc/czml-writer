@@ -3,6 +3,7 @@ package cesiumlanguagewriter;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
@@ -96,9 +97,9 @@ public final class NearFarScalar implements IEquatable<NearFarScalar>, Immutable
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public final boolean equalsType(NearFarScalar other) {
-        return PrimitiveHelper.equals(m_nearDistance, other.m_nearDistance) && PrimitiveHelper.equals(m_nearValue, other.m_nearValue) && PrimitiveHelper.equals(m_farDistance, other.m_farDistance)
-                && PrimitiveHelper.equals(m_farValue, other.m_farValue);
+        return m_nearDistance == other.m_nearDistance && m_nearValue == other.m_nearValue && m_farDistance == other.m_farDistance && m_farValue == other.m_farValue;
     }
 
     /**

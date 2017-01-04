@@ -16,11 +16,6 @@ import org.junit.Test;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumWriter> {
-    @Override
-    protected CesiumPropertyWriter<ModelCesiumWriter> createPropertyWriter(String propertyName) {
-        return new ModelCesiumWriter(propertyName);
-    }
-
     @Test
     public final void testShowProperty() {
         {
@@ -208,6 +203,11 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
             }
         }
         Assert.assertEquals("{\"model\":{\"colorBlendAmount\":0.75}}", getStringWriter().toString());
+    }
+
+    @Override
+    protected CesiumPropertyWriter<ModelCesiumWriter> createPropertyWriter(String propertyName) {
+        return new ModelCesiumWriter(propertyName);
     }
 
     private TestContextRule rule$testContext = new TestContextRule();

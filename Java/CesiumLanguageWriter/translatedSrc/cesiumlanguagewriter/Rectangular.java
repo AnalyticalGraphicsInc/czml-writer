@@ -319,8 +319,9 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public final boolean equalsType(Rectangular other) {
-        return PrimitiveHelper.equals(m_x, other.m_x) && PrimitiveHelper.equals(m_y, other.m_y);
+        return m_x == other.m_x && m_y == other.m_y;
     }
 
     /**

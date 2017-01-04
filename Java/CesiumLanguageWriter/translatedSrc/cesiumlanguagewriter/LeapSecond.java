@@ -3,6 +3,7 @@ package cesiumlanguagewriter;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
@@ -103,6 +104,7 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public final boolean equalsType(LeapSecond other) {
         return m_date.isIdentical(other.m_date) && m_totalTaiOffsetFromUtc == other.m_totalTaiOffsetFromUtc;
     }

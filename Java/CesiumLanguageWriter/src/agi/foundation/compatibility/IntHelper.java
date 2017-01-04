@@ -47,6 +47,43 @@ public final class IntHelper {
 
     /**
      * Converts the string representation of a number to its 32-bit signed integer
+     * equivalent.
+     *
+     * @param s
+     *            A string containing a number to convert.
+     * @return A 32-bit signed integer equivalent to the number contained in s.
+     */
+    public static int parse(String s) {
+        return parse(s, defaultNumberStyle, null);
+    }
+
+    /**
+     * Converts the string representation of a number in a specified style and
+     * culture-specific format to its 32-bit signed integer equivalent.
+     *
+     * @param s
+     *            A string containing a number to convert.
+     * @param style
+     *            A bitwise combination of the enumeration values that indicates the style
+     *            elements that can be present in s. A typical value to specify is
+     *            Integer.
+     * @param locale
+     *            An object that supplies culture-specific formatting information about s.
+     * @return A 32-bit signed integer equivalent to the number contained in s.
+     */
+    public static int parse(String s, NumberStyles style, Locale locale) {
+        if (locale == null)
+            locale = CultureInfoHelper.getCurrentCulture();
+
+        int[] out_result = new int[1];
+        if (tryParse(s, style, locale, out_result))
+            return out_result[0];
+
+        throw new NumberFormatException("Input string was not in a correct format.");
+    }
+
+    /**
+     * Converts the string representation of a number to its 32-bit signed integer
      * equivalent. A return value indicates whether the operation succeeded.
      *
      * @param s

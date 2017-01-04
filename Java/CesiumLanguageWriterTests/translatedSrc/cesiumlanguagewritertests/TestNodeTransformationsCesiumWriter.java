@@ -19,11 +19,6 @@ import org.junit.Test;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWriter<NodeTransformationsCesiumWriter> {
-    @Override
-    protected CesiumPropertyWriter<NodeTransformationsCesiumWriter> createPropertyWriter(String propertyName) {
-        return new NodeTransformationsCesiumWriter(propertyName);
-    }
-
     @Test
     public final void singleNodeTransformation() {
         {
@@ -115,8 +110,9 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
         {
             StringWriter stringWriter = new StringWriter();
             try {
-                cesiumlanguagewriter.CesiumOutputStream output = new CesiumOutputStream(stringWriter);
-                output.setPrettyFormatting(true);
+                final CesiumOutputStream tempObj$0 = new CesiumOutputStream(stringWriter);
+                tempObj$0.setPrettyFormatting(true);
+                cesiumlanguagewriter.CesiumOutputStream output = tempObj$0;
                 cesiumlanguagewriter.CesiumStreamWriter writer = new CesiumStreamWriter();
                 {
                     cesiumlanguagewriter.PacketCesiumWriter packet = writer.openPacket(output);
@@ -189,6 +185,11 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
                 DisposeHelper.dispose(stringWriter);
             }
         }
+    }
+
+    @Override
+    protected CesiumPropertyWriter<NodeTransformationsCesiumWriter> createPropertyWriter(String propertyName) {
+        return new NodeTransformationsCesiumWriter(propertyName);
     }
 
     private TestContextRule rule$testContext = new TestContextRule();

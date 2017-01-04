@@ -15,11 +15,6 @@ import org.junit.Test;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPropertiesOfSimpleJsonTypes extends TestCesiumPropertyWriter<BillboardCesiumWriter> {
-    @Override
-    protected CesiumPropertyWriter<BillboardCesiumWriter> createPropertyWriter(String propertyName) {
-        return new BillboardCesiumWriter(propertyName);
-    }
-
     @Test
     public final void stringCanBeWrittenAsSimpleString() {
         {
@@ -282,6 +277,11 @@ public class TestPropertiesOfSimpleJsonTypes extends TestCesiumPropertyWriter<Bi
             }
         }
         Assert.assertEquals("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"labelStyle\":\"FILL_AND_OUTLINE\"}}", getStringWriter().toString());
+    }
+
+    @Override
+    protected CesiumPropertyWriter<BillboardCesiumWriter> createPropertyWriter(String propertyName) {
+        return new BillboardCesiumWriter(propertyName);
     }
 
     private TestContextRule rule$testContext = new TestContextRule();

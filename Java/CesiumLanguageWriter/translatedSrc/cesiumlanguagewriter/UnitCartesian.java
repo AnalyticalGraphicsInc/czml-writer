@@ -217,6 +217,36 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
         this(unitSpherical.getClock(), unitSpherical.getCone());
     }
 
+    private UnitCartesian(double x, double y, double z, Normalization normalization) {
+        if (normalization == Normalization.NORMALIZED) {
+            m_x = x;
+            m_y = y;
+            m_z = z;
+        } else {
+            double magnitude = 0D;
+            final double[] ref$x$3 = {
+                x
+            };
+            final double[] ref$y$4 = {
+                y
+            };
+            final double[] ref$z$5 = {
+                z
+            };
+            final double[] out$magnitude$6 = {
+                0D
+            };
+            normalizeCoordinates(ref$x$3, ref$y$4, ref$z$5, out$magnitude$6);
+            magnitude = out$magnitude$6[0];
+            z = ref$z$5[0];
+            y = ref$y$4[0];
+            x = ref$x$3[0];
+            m_x = x;
+            m_y = y;
+            m_z = z;
+        }
+    }
+
     /**
     *  Gets the linear coordinate along the positive x-axis.
     
@@ -576,6 +606,15 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     }
 
     /**
+    *  Gets whether or not any of the coordinates for this instance have the value  {@link Double#NaN}.
+    
+
+    */
+    public final boolean getIsUndefined() {
+        return Double.isNaN(m_x) || Double.isNaN(m_y) || Double.isNaN(m_z);
+    }
+
+    /**
     *  
     Indicates whether another object is exactly equal to this instance.
     
@@ -600,6 +639,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public final boolean equalsType(UnitCartesian other) {
         return m_x == other.m_x && m_y == other.m_y && m_z == other.m_z;
     }
@@ -691,48 +731,10 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
         return !left.equalsType(right);
     }
 
-    /**
-    *  Gets whether or not any of the coordinates for this instance have the value  {@link Double#NaN}.
-    
-
-    */
-    public final boolean getIsUndefined() {
-        return Double.isNaN(m_x) || Double.isNaN(m_y) || Double.isNaN(m_z);
-    }
-
-    private UnitCartesian(double x, double y, double z, Normalization normalization) {
-        if (normalization == Normalization.NORMALIZED) {
-            m_x = x;
-            m_y = y;
-            m_z = z;
-        } else {
-            double magnitude = 0D;
-            final double[] ref$x$3 = {
-                x
-            };
-            final double[] ref$y$4 = {
-                y
-            };
-            final double[] ref$z$5 = {
-                z
-            };
-            final double[] out$magnitude$6 = {
-                0D
-            };
-            normalizeCoordinates(ref$x$3, ref$y$4, ref$z$5, out$magnitude$6);
-            magnitude = out$magnitude$6[0];
-            z = ref$z$5[0];
-            y = ref$y$4[0];
-            x = ref$x$3[0];
-            m_x = x;
-            m_y = y;
-            m_z = z;
-        }
-    }
-
     private static void normalizeCoordinates(double[] x, double[] y, double[] z, double[] magnitude) {
         magnitude[0] = Math.sqrt(x[0] * x[0] + y[0] * y[0] + z[0] * z[0]);
-        if (magnitude[0] == 0.0) {
+        // ReSharper disable once CompareOfFloatsByEqualityOperator
+		if (magnitude[0] == 0.0) {
             throw new ArithmeticException(CesiumLocalization.getMagnitudeMustNotBeZero());
         }
         if (Double.isInfinite(magnitude[0])) {

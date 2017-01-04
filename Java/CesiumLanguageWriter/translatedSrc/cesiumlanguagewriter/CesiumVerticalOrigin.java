@@ -19,7 +19,7 @@ public enum CesiumVerticalOrigin implements Enumeration {
     */
     BOTTOM(0), /**
                *  
-               The item is vertically centered at the position.
+               The item is at the vertical center between  {@link #Baseline} and  {@link #Top}.
                
 
                */
@@ -29,7 +29,13 @@ public enum CesiumVerticalOrigin implements Enumeration {
                
 
                */
-    TOP(2);
+    TOP(2), /**
+            *  
+            If the object contains text, the origin is at the baseline of the text, otherwise the origin is at the bottom of the object.
+            
+
+            */
+    BASELINE(3);
     private final int value;
 
     CesiumVerticalOrigin(int value) {
@@ -57,6 +63,8 @@ public enum CesiumVerticalOrigin implements Enumeration {
             return CENTER;
         case 2:
             return TOP;
+        case 3:
+            return BASELINE;
         default:
             throw new IllegalArgumentException("Undefined enum value.");
         }

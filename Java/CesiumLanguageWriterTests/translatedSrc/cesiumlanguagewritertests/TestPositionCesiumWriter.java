@@ -17,11 +17,6 @@ import org.junit.Test;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWriter<PositionCesiumWriter> {
-    @Override
-    protected CesiumPropertyWriter<PositionCesiumWriter> createPropertyWriter(String propertyName) {
-        return new PositionCesiumWriter(propertyName);
-    }
-
     @Test
     public final void referenceFrameValueWritesReferenceFrameProperty() {
         {
@@ -299,6 +294,11 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
             }
         }
         Assert.assertEquals("{\"position\":{\"cartographicRadians\":[]}}", getStringWriter().toString());
+    }
+
+    @Override
+    protected CesiumPropertyWriter<PositionCesiumWriter> createPropertyWriter(String propertyName) {
+        return new PositionCesiumWriter(propertyName);
     }
 
     private TestContextRule rule$testContext = new TestContextRule();

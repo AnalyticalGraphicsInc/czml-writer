@@ -2,6 +2,7 @@ package agi.foundation.compatibility;
 
 import java.text.Collator;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.MatchResult;
@@ -91,6 +92,22 @@ public final class StringHelper {
     }
 
     private StringHelper() {}
+
+    /**
+     * Initializes a new instance of the String class to the value indicated by a
+     * specified Unicode character repeated a specified number of times.
+     *
+     * @param c
+     *            A Unicode character.
+     * @param count
+     *            The number of times c occurs.
+     * @return the new String.
+     */
+    public static String create(char c, int count) {
+        char[] array = new char[count];
+        Arrays.fill(array, c);
+        return new String(array);
+    }
 
     /**
      * Indicates whether the specified string is null or an Empty string.
@@ -183,40 +200,6 @@ public final class StringHelper {
     }
 
     /**
-     * Returns a string array that contains the substrings in this string that are
-     * delimited by elements of a specified string array. Parameters specify the maximum
-     * number of substrings to return and whether to return empty array elements.
-     *
-     * @param string
-     *            the String to split.
-     * @param separator
-     *            An array of strings that delimit the substrings in this string, an empty
-     *            array that contains no delimiters, or null.
-     * @param count
-     *            The maximum number of substrings to return.
-     * @param options
-     *            Specify <code>RemoveEmptyEntries</code> to omit empty array elements
-     *            from the array returned, or <code>None</code> to include empty array
-     *            elements in the array returned.
-     * @return An array whose elements contain the substrings in this string that are
-     *         delimited by one or more strings in separator.
-     */
-    public static String[] split(String string, String[] separator, int count, StringSplitOptions options) {
-        String regex = null;
-        if (separator != null && separator.length > 0) {
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < separator.length; i++) {
-                builder.append(separator[i]);
-                if (i < separator.length - 1)
-                    builder.append("|");
-            }
-            regex = builder.toString();
-        }
-
-        return split(string, regex, options, count);
-    }
-
-    /**
      * Do the work of splitting the string according to the specified regex and options.
      */
     private static String[] split(String string, String regex, StringSplitOptions options, int count) {
@@ -284,6 +267,35 @@ public final class StringHelper {
     }
 
     /**
+     * Deletes a specified number of characters from this instance beginning at a
+     * specified position.
+     *
+     * @param str
+     *            The string.
+     * @param startIndex
+     *            The zero-based position to begin deleting characters.
+     * @param count
+     *            The number of characters to delete.
+     * @return A new string that is equivalent to this string except for the removed
+     *         characters.
+     */
+    public static String remove(String str, int startIndex, int count) {
+        if (startIndex < 0)
+            throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be less than zero.");
+        if (count < 0)
+            throw new ArgumentOutOfRangeException("count", "count cannot be less than zero.");
+
+        int strLength = str.length();
+        if (startIndex > strLength - count)
+            throw new ArgumentOutOfRangeException("startIndex", "startIndex must be less than length of string minus count.");
+
+        StringBuilder result = new StringBuilder(strLength - count);
+        result.append(str.substring(0, startIndex));
+        result.append(str.substring(startIndex + count));
+        return result.toString();
+    }
+
+    /**
      * Returns a new string that right-aligns the characters in this instance by padding
      * them on the left with a specified Unicode character, for a specified total length.
      *
@@ -301,6 +313,26 @@ public final class StringHelper {
      */
     public static String padLeft(String str, int totalWidth, char paddingChar) {
         return pad(str, totalWidth, paddingChar, PaddingType.LEFT);
+    }
+
+    /**
+     * Returns a new string that left-aligns the characters in this string by padding them
+     * on the right with a specified Unicode character, for a specified total length.
+     *
+     * @param str
+     *            The string.
+     * @param totalWidth
+     *            The number of characters in the resulting string, equal to the number of
+     *            original characters plus any additional padding characters.
+     * @param paddingChar
+     *            A Unicode padding character.
+     * @return A new string that is equivalent to this instance, but left-aligned and
+     *         padded on the right with as many paddingChar characters as needed to create
+     *         a length of totalWidth. Or, if totalWidth is less than the length of this
+     *         instance, a new string that is identical to this instance.
+     */
+    public static String padRight(String str, int totalWidth, char paddingChar) {
+        return pad(str, totalWidth, paddingChar, PaddingType.RIGHT);
     }
 
     private static String pad(String str, int totalWidth, char paddingChar, PaddingType paddingType) {
@@ -692,6 +724,31 @@ public final class StringHelper {
     }
 
     /**
+     * Reports the index of the first occurrence of the specified string in the current
+     * String object. A parameter specifies the type of search to use for the specified
+     * string.
+     *
+     * @param string
+     * @param value
+     *            The String object to seek.
+     * @param comparisonType
+     *            One of the StringComparison values.
+     * @return The index position of the value parameter if that string is found, or -1 if
+     *         it is not. If value is Empty, the return value is 0.
+     */
+    public static int indexOf(String string, String value, StringComparison comparisonType) {
+        if (getIgnoreCase(comparisonType)) {
+            Locale locale = getLocale(comparisonType);
+
+            String stringLowerCase = string.toLowerCase(locale);
+            String valueLowerCase = value.toLowerCase(locale);
+            return stringLowerCase.indexOf(valueLowerCase);
+        } else {
+            return string.indexOf(value);
+        }
+    }
+
+    /**
      * Returns a copy of this String object converted to lowercase using the casing rules
      * of the invariant culture.
      *
@@ -718,6 +775,60 @@ public final class StringHelper {
             throw new ArgumentNullException("value");
 
         return str.startsWith(value);
+    }
+
+    /**
+     * Retrieves a substring from this instance. The substring starts at a specified
+     * character position.
+     *
+     * @param str
+     *            The string.
+     * @param startIndex
+     *            The zero-based starting character position of a substring in this
+     *            instance.
+     * @return A string that is equivalent to the substring that begins at startIndex in
+     *         this instance, or Empty if startIndex is equal to the length of this
+     *         instance.
+     */
+    public static String substring(String str, int startIndex) {
+        return substring(str, startIndex, str.length() - startIndex);
+    }
+
+    /**
+     * Retrieves a substring from this instance. The substring starts at a specified
+     * character position and has a specified length.
+     *
+     * @param str
+     *            The string.
+     * @param startIndex
+     *            The zero-based starting character position of a substring in this
+     *            instance.
+     * @param length
+     *            The number of characters in the substring.
+     * @return A string that is equivalent to the substring of length length that begins
+     *         at startIndex in this instance, or Empty if startIndex is equal to the
+     *         length of this instance and length is zero.
+     */
+    public static String substring(String str, int startIndex, int length) {
+        if (startIndex < 0)
+            throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be less than zero.");
+
+        int strLen = str.length();
+        if (startIndex > strLen)
+            throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be larger than length of string.");
+
+        if (length < 0)
+            throw new ArgumentOutOfRangeException("length", "Length cannot be less than zero.");
+
+        int endIndex = startIndex + length;
+        if (endIndex > strLen) {
+            throw new ArgumentOutOfRangeException("length", "Index and length must refer to a location within the string.");
+        }
+
+        if (length == 0)
+            return "";
+
+        return str.substring(startIndex, endIndex);
     }
 
     /**
@@ -767,6 +878,24 @@ public final class StringHelper {
             index++;
         }
         return str.substring(index);
+    }
+
+    /**
+     * Appends a copy of a specified substring to the given StringBuilder object.
+     *
+     * @param builder
+     *            The StringBuilder.
+     * @param value
+     *            The string that contains the substring to append.
+     * @param startIndex
+     *            The starting position of the substring within value.
+     * @param count
+     *            The number of characters in value to append.
+     * @return A reference to the StringBuilder object after the append operation has
+     *         completed.
+     */
+    public static StringBuilder append(StringBuilder builder, String value, int startIndex, int count) {
+        return builder.append(value, startIndex, startIndex + count);
     }
 
     private static boolean arrayContains(char[] array, char charToFind) {

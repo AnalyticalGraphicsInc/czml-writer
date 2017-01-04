@@ -17,11 +17,6 @@ import org.junit.Test;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropertyWriter<OrientationCesiumWriter> {
-    @Override
-    protected CesiumPropertyWriter<OrientationCesiumWriter> createPropertyWriter(String propertyName) {
-        return new OrientationCesiumWriter(propertyName);
-    }
-
     @Test
     public final void testCompleteExample() {
         {
@@ -133,6 +128,11 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
                 DisposeHelper.dispose(stringWriter);
             }
         }
+    }
+
+    @Override
+    protected CesiumPropertyWriter<OrientationCesiumWriter> createPropertyWriter(String propertyName) {
+        return new OrientationCesiumWriter(propertyName);
     }
 
     private TestContextRule rule$testContext = new TestContextRule();

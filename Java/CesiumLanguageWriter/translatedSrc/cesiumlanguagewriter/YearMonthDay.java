@@ -11,6 +11,7 @@ import agi.foundation.compatibility.DateTimeHelper;
 import agi.foundation.compatibility.DayOfWeek;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
+import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
 import org.joda.time.DateTime;
 
@@ -40,7 +41,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     * @param day The day of the month (in the range 1 through the number of
     days in {@code month})
     * @exception ArgumentException 
-    Thrown when the {@code year}, {@code month}, or 
+    Thrown when the {@code year}, {@code month}, or
     {@code day} is outside of its acceptable range.
     */
     public YearMonthDay(int year, int month, int day) {
@@ -104,10 +105,10 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
 		int L = astronomicalJulianDayNumber + 68569;
         int N = 4 * L / 146097;
         L = L - (146097 * N + 3) / 4;
-        int I = (4000 * (L + 1)) / 1461001;
-        L = L - (1461 * I) / 4 + 31;
-        int J = (80 * L) / 2447;
-        m_day = L - (2447 * J) / 80;
+        int I = 4000 * (L + 1) / 1461001;
+        L = L - 1461 * I / 4 + 31;
+        int J = 80 * L / 2447;
+        m_day = L - 2447 * J / 80;
         L = J / 11;
         m_month = J + 2 - 12 * L;
         m_year = 100 * (N - 49) + I + L;
@@ -133,12 +134,12 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
 
     /**
     *  
-    The constructor taking an integer Julian day number assumes that the desired 
+    The constructor taking an integer Julian day number assumes that the desired
     {@link YearMonthDay} should represent the Gregorian day corresponding to
-    the beginning of the provided Julian day number. If the 
+    the beginning of the provided Julian day number. If the
     {@link JulianDate} is more than one half day later than that, the
     calculation will be wrong.
-    
+
     So, if {@code date} is more than 12 hours past the start of the
     Julian day, we instead use the  Julian date number of tomorrow.
     
@@ -223,7 +224,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
 		// Astronomical Almanac (Seidelmann 1992).
 		int a = (getMonth() - 14) / 12;
         int b = getYear() + 4800 + a;
-        return (1461 * b) / 4 + (367 * (getMonth() - 2 - 12 * a)) / 12 - (3 * ((b + 100) / 100)) / 4 + getDay() - 32075;
+        return 1461 * b / 4 + 367 * (getMonth() - 2 - 12 * a) / 12 - 3 * ((b + 100) / 100) / 4 + getDay() - 32075;
     }
 
     /**
@@ -234,7 +235,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     
 
     * @param year The year.
-    * @return {@code true} if {@code year} is a leap year and 
+    * @return {@code true} if {@code year} is a leap year and
     {@code false} if it is not.
     
     */
@@ -287,9 +288,9 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
 
     * @param year The year.
     * @param month The month of the year (in the range 1 through 12)
-    * @param day The day of the month (in the range 1 through the number of days in 
+    * @param day The day of the month (in the range 1 through the number of days in
     {@code month})
-    * @return {@code true} if the representation is valid and 
+    * @return {@code true} if the representation is valid and
     {@code false} if it is not.
     */
     public static boolean isValidDate(int year, int month, int day) {
@@ -315,10 +316,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     */
     @Override
     public int hashCode() {
-        int result = m_year;
-        result = (result * 397) ^ m_month;
-        result = (result * 397) ^ m_day;
-        return result;
+        return HashCode.combine(PrimitiveHelper.hashCode(m_year), PrimitiveHelper.hashCode(m_month), PrimitiveHelper.hashCode(m_day));
     }
 
     /**
@@ -347,10 +345,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     */
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof YearMonthDay) {
-            return equalsType((YearMonthDay) obj);
-        }
-        return false;
+        return obj instanceof YearMonthDay && equalsType((YearMonthDay) obj);
     }
 
     /**

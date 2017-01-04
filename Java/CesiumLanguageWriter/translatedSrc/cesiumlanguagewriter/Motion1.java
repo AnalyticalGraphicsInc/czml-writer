@@ -48,7 +48,8 @@ public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueT
     public Motion1(T... motion) {
         if (motion == null) {
             throw new ArgumentNullException("motion");
-        } else if (motion.length < 1) {
+        }
+        if (motion.length < 1) {
             throw new IllegalStateException(CesiumLocalization.getMotionMustContainValue());
         }
         m_motion = motion;
@@ -101,12 +102,7 @@ public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueT
     */
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Motion1) {
-            Motion1<T> motion = (Motion1<T>) obj;
-            return equalsType(motion);
-        } else {
-            return false;
-        }
+        return obj instanceof Motion1 && equalsType((Motion1<T>) obj);
     }
 
     /**
@@ -176,8 +172,6 @@ public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueT
         return !left.equalsType(right);
     }
 
-    private T[] m_motion;
-
     /**
     *  Gets the value of the coordinate.
     
@@ -233,14 +227,13 @@ public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueT
         if (m_motion == null) {
             if (index == 0) {
                 return (T) null;
-            } else {
-                throw new ArgumentOutOfRangeException("index");
             }
-        } else if (index >= 0 && index < m_motion.length) {
-            return m_motion[index];
-        } else {
             throw new ArgumentOutOfRangeException("index");
         }
+        if (index >= 0 && index < m_motion.length) {
+            return m_motion[index];
+        }
+        throw new ArgumentOutOfRangeException("index");
     }
 
     /**
@@ -251,8 +244,9 @@ public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueT
     public final int getOrder() {
         if (m_motion == null) {
             return 0;
-        } else {
-            return m_motion.length - 1;
         }
+        return m_motion.length - 1;
     }
+
+    private T[] m_motion;
 }

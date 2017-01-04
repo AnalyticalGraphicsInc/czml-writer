@@ -338,6 +338,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
 
     * @return The transposed matrix.
     */
+    @CS2JWarning("Unhandled attribute removed: Pure")
     public final Matrix3By3 transpose() {
         return new Matrix3By3(m_m11, m_m21, m_m31, m_m12, m_m22, m_m32, m_m13, m_m23, m_m33);
     }
@@ -560,6 +561,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public final boolean equalsType(Matrix3By3 other) {
         return m_m11 == other.m_m11 && m_m12 == other.m_m12 && m_m13 == other.m_m13 && m_m21 == other.m_m21 && m_m22 == other.m_m22 && m_m23 == other.m_m23 && m_m31 == other.m_m31
                 && m_m32 == other.m_m32 && m_m33 == other.m_m33;

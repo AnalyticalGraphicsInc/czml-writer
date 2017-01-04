@@ -1005,8 +1005,8 @@ public final class CesiumWritingHelper {
     
 
     * @param output The stream to which to write the value.
-    * @param identifier 
-    * @param propertyName 
+    * @param identifier The identifier of the referenced object.
+    * @param propertyName The property name.
     */
     public static void writeReference(CesiumOutputStream output, String identifier, String propertyName) {
         writeReference(output, new Reference(identifier, propertyName));

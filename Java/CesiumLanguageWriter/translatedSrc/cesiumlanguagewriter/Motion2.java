@@ -98,12 +98,7 @@ public final class Motion2<T, TDerivative> implements IEquatable<Motion2<T, TDer
     */
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Motion2) {
-            Motion2<T, TDerivative> motion = (Motion2<T, TDerivative>) obj;
-            return equalsType(motion);
-        } else {
-            return false;
-        }
+        return obj instanceof Motion2 && equalsType((Motion2<T, TDerivative>) obj);
     }
 
     /**
@@ -172,9 +167,6 @@ public final class Motion2<T, TDerivative> implements IEquatable<Motion2<T, TDer
     public static <T, TDerivative> boolean notEquals(Motion2<T, TDerivative> left, Motion2<T, TDerivative> right) {
         return !left.equalsType(right);
     }
-
-    private T m_value;
-    private TDerivative[] m_derivatives;
 
     /**
     *  Gets the coordinate value.
@@ -245,8 +237,10 @@ public final class Motion2<T, TDerivative> implements IEquatable<Motion2<T, TDer
     public final int getOrder() {
         if (m_derivatives == null) {
             return 0;
-        } else {
-            return m_derivatives.length;
         }
+        return m_derivatives.length;
     }
+
+    private T m_value;
+    private TDerivative[] m_derivatives;
 }

@@ -18,11 +18,6 @@ import org.junit.Test;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumWriter> {
-    @Override
-    protected CesiumPropertyWriter<LabelCesiumWriter> createPropertyWriter(String propertyName) {
-        return new LabelCesiumWriter(propertyName);
-    }
-
     @Test
     public final void testShowProperty() {
         {
@@ -224,6 +219,11 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
             }
         }
         Assert.assertEquals("{\"label\":{\"translucencyByDistance\":{\"epoch\":\"20120402T12Z\",\"nearFarScalar\":[0,100,1,200,2,60,200,1,300,2]}}}", getStringWriter().toString());
+    }
+
+    @Override
+    protected CesiumPropertyWriter<LabelCesiumWriter> createPropertyWriter(String propertyName) {
+        return new LabelCesiumWriter(propertyName);
     }
 
     private TestContextRule rule$testContext = new TestContextRule();

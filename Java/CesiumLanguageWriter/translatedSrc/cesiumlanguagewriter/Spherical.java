@@ -131,6 +131,7 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public final boolean equalsType(Spherical other) {
         return m_clock == other.m_clock && m_cone == other.m_cone && m_magnitude == other.m_magnitude;
     }

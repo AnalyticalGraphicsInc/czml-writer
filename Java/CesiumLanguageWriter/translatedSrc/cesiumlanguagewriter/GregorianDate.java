@@ -9,10 +9,12 @@ import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DateTimeFormatInfo;
 import agi.foundation.compatibility.DateTimeHelper;
+import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.IntHelper;
 import agi.foundation.compatibility.MathHelper;
+import agi.foundation.compatibility.NumberFormatInfo;
 import agi.foundation.compatibility.ObjectHelper;
 import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringComparison;
@@ -25,7 +27,7 @@ import org.joda.time.DateTimeZone;
 
 /**
  *  
- Represents a calendar date in the Gregorian calendar.  A 
+ Represents a calendar date in the Gregorian calendar.  A
   {@link GregorianDate} does not include a  {@link TimeStandard} as  {@link JulianDate}
  does.  However, without explicitly specifying a  {@link TimeStandard} for the date, the  {@link GregorianDate}
  is assumed to be represented in  {@link TimeStandard#COORDINATED_UNIVERSAL_TIME}.  {@link GregorianDate} is
@@ -46,14 +48,15 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     This class was taken from the Mono  {@link DateTime} class, and
     substantially altered to fit the needs of Gregorian Date.  Gregorian Date
     assumes UTC, so all time-zone handling was ripped out.  The "f" parsing was
-    also changed to allow more precision than the 7 digits that 
+    also changed to allow more precision than the 7 digits that
     {@link DateTime} mandates.
-    
+
     Note: any comment from here on is taken from the Mono source, so any references
     to bug numbers refer to their bugs.
     
 
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     private static class Parser {
         /**
         *  
@@ -86,118 +89,6 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             }
             return result.toArray(new String[result.size()]);
         }
-
-        /**
-        *  
-        Don't use these patterns directly.  Instead get your patterns from 
-        {@link #buildDateTimePatterns}.
-        
-
-        */
-        private static String[] s_extraDateTimePatternTemplates = new String[] {
-                "M/d/yyyy H:mm:ss.f*",
-                "d MMM yyyy H:mm:ss.f*",
-                "yyyy-M-dTHH:mm:ss.f*",
-                "M-yyyy-dTH:mm:ss.f*",
-                "M-yyyy-d H:mm:ss.f*"
-        };
-        // DateTime.Parse patterns
-		// Patterns are divided to date and time patterns. The algorithm will
-		// try combinations of these patterns. The algorithm also looks for
-		// day of the week, AM/PM GMT and Z independently of the patterns.
-
-		private static String[] s_parseTimeFormatsTemplate = new String[] {
-                "H:m:s.f*",
-                "H:m:s",
-                "H:m",
-                "H tt",
-                "H'\u6642'm'\u5206's'\u79d2'"
-        };
-        // Specifies AM to disallow '8'.
-
-		private static String[] s_extraDateTimePatterns = buildDateTimePatterns(s_extraDateTimePatternTemplates, 17);
-        private static String[] s_parseTimeFormats = buildDateTimePatterns(s_parseTimeFormatsTemplate, 17);
-        // DateTime.Parse date patterns extend ParseExact patterns as follows:
-		//   MMM - month short name or month full name
-		//   MMMM - month number or short name or month full name
-		// Parse behaves differently according to the ShorDatePattern of the
-		// DateTimeFormatInfo. The following define the date patterns for
-		// different orders of day, month and year in ShorDatePattern.
-		// Note that the year cannot go between the day and the month.
-
-		private static String[] s_parseYearDayMonthFormats = new String[] {
-                "yyyy/M/dT",
-                "M/yyyy/dT",
-                "yyyy'\u5e74'M'\u6708'd'\u65e5",
-                "yyyy/d/MMMM",
-                "yyyy/MMM/d",
-                "d/MMMM/yyyy",
-                "MMM/d/yyyy",
-                "d/yyyy/MMMM",
-                "MMM/yyyy/d",
-                "yy/d/M"
-        };
-        private static String[] s_parseYearMonthDayFormats = new String[] {
-                "yyyy/M/dT",
-                "M/yyyy/dT",
-                "yyyy'\u5e74'M'\u6708'd'\u65e5",
-                "yyyy/MMMM/d",
-                "yyyy/d/MMM",
-                "MMMM/d/yyyy",
-                "d/MMM/yyyy",
-                "MMMM/yyyy/d",
-                "d/yyyy/MMM",
-                "yy/MMMM/d",
-                "yy/d/MMM",
-                "MMM/yy/d"
-        };
-        private static String[] s_parseDayMonthYearFormats = new String[] {
-                "yyyy/M/dT",
-                "M/yyyy/dT",
-                "yyyy'\u5e74'M'\u6708'd'\u65e5",
-                "yyyy/MMMM/d",
-                "yyyy/d/MMM",
-                "d/MMMM/yyyy",
-                "MMM/d/yyyy",
-                "MMMM/yyyy/d",
-                "d/yyyy/MMM",
-                "d/MMMM/yy",
-                "yy/MMM/d",
-                "d/yy/MMM",
-                "yy/d/MMM",
-                "MMM/d/yy",
-                "MMM/yy/d"
-        };
-        private static String[] s_parseMonthDayYearFormats = new String[] {
-                "yyyy/M/dT",
-                "M/yyyy/dT",
-                "yyyy'\u5e74'M'\u6708'd'\u65e5",
-                "yyyy/MMMM/d",
-                "yyyy/d/MMM",
-                "MMMM/d/yyyy",
-                "d/MMM/yyyy",
-                "MMMM/yyyy/d",
-                "d/yyyy/MMM",
-                "MMMM/d/yy",
-                "MMM/yy/d",
-                "d/MMM/yy",
-                "yy/MMM/d",
-                "d/yy/MMM",
-                "yy/d/MMM"
-        };
-        // Patterns influenced by the MonthDayPattern in DateTimeFormatInfo.
-		// Note that these patterns cannot be followed by the time.
-
-		private static String[] s_monthDayShortFormats = new String[] {
-                "MMMM/d",
-                "d/MMM",
-                "yyyy/MMMM"
-        };
-        private static String[] s_dayMonthShortFormats = new String[] {
-                "d/MMMM",
-                "MMM/yy",
-                "yyyy/MMMM"
-        };
 
         public static GregorianDate parse(String s, Locale provider) {
             if (s == null) {
@@ -507,7 +398,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 return false;
             }
             if (parseTimeSeparator(s, sPos, dfi, exact, numParsed) || Character.isDigit(s.charAt(sPos)) || Character.isLetter(s.charAt(sPos))) {
-                return (false);
+                return false;
             }
             numParsed[0] = 1;
             return true;
@@ -588,7 +479,6 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
         // Note that in case of Parse (exact == false) we check both for AM/PM
 		// and the culture specific AM/PM strings.
-
 		private static boolean parseAmPm(String s, int valuePos, int num, DateTimeFormatInfo dfi, boolean exact, int[] numParsed, int[] ampm) {
             numParsed[0] = -1;
             if (ampm[0] != -1) {
@@ -620,7 +510,6 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
         // Note that in case of Parse (exact == false) we check both for ':'
 		// and the culture specific TimeSperator
-
 		private static boolean parseTimeSeparator(String s, int sPos, DateTimeFormatInfo dfi, boolean exact, int[] numParsed) {
             String timeSeparator = dfi.getTimeSeparator();
             return parseString(s, sPos, 0, timeSeparator, numParsed) || !exact && parseString(s, sPos, 0, ":", numParsed);
@@ -629,7 +518,6 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         // Accept any character for DateSeparator, except TimeSeparator,
 		// a digit or a letter.
 		// Not documented, but seems to be MS behaviour here.  See bug 54047.
-
 		private static boolean isLetter(String s, int pos) {
             return pos < s.length() && Character.isLetter(s.charAt(pos));
         }
@@ -965,7 +853,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                         final long temp$70 = parseNumber(s, valuePos, exact ? 4 : 3, 4, false, out$numParsed$71);
                         numParsed = out$numParsed$71[0];
                         year = (int) temp$70;
-                        if ((year >= 1000) && (numParsed == 4) && (!longYear[0]) && (s.length() > 4 + valuePos)) {
+                        if ((year >= 1000) && (numParsed == 4) && !longYear[0] && (s.length() > 4 + valuePos)) {
                             int np = 0;
                             final int[] out$np$73 = {
                                 0
@@ -973,13 +861,13 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                             final long temp$72 = parseNumber(s, valuePos, 5, 5, false, out$np$73);
                             np = out$np$73[0];
                             int ly = (int) temp$72;
-                            longYear[0] = (ly > 9999);
+                            longYear[0] = ly > 9999;
                         }
                         num = 3;
                     }
                     //FIXME: We should do use dfi.Calendat.TwoDigitYearMax
 					if (numParsed <= 2) {
-                        year += (year < 30) ? 2000 : 1900;
+                        year += year < 30 ? 2000 : 1900;
                     }
                     break;
                 }
@@ -1352,13 +1240,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
         // This is intended as a last resort when all the other formats fail to parse a "day of year" format
 		// This will throw exceptions if it cannot parse the string
-
 		private static boolean parseIso8601DayOfYear(String isoString, DateTimeFormatInfo dfi, GregorianDate[] result, boolean setExceptionOnError, NumberFormatException[] exception) {
             // This is a last resort case to handle the ISO8601 "day of year" format supported by STK
 			// Format: yyyy-dddTHH:mm:ss.f*
 			result[0] = new GregorianDate();
             String[] tokens = StringHelper.split(isoString, '-');
-            if (tokens.length < 2) {
+            if (tokens.length != 2) {
                 // In this case we simply have no idea what this format is.
 				// Defer the exception to the surrounding code
 				return false;
@@ -1428,6 +1315,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
         public static String toString(GregorianDate dt, String format, Locale provider) {
             DateTimeFormatInfo dfi = DateTimeFormatInfo.getInstance(provider);
+            NumberFormatInfo nfi = NumberFormatInfo.getInstance(provider);
             if (StringHelper.isNullOrEmpty(format)) {
                 format = "G";
             }
@@ -1451,6 +1339,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             // For some cases, the output should not use culture dependent calendar
 			if (useInvariant) {
                 dfi = DateTimeFormatInfo.getInvariantInfo();
+                nfi = NumberFormatInfo.getInvariantInfo();
             }
             int i = 0;
             while (i < format.length()) {
@@ -1489,15 +1378,32 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                         throw new NumberFormatException(CesiumLocalization.getGregorianDateFormatInvalid());
                     }
                     int startLen = result.length();
-                    double fraction = MathHelper.round(dt.getSecond() - (int) dt.getSecond(), tokLen);
-                    long number = (long) (fraction * Math.pow(10D, tokLen));
-                    zeroPad(result, number, tokLen);
+                    String formattedSeconds = DoubleHelper.toString(dt.getSecond(), "R", provider);
+                    formattedSeconds = StringFormatting.toNonExponentialNotation(nfi, formattedSeconds);
+                    int indexOfDecimalPoint = formattedSeconds.indexOf(nfi.getNumberDecimalSeparator());
+                    if (indexOfDecimalPoint == -1) {
+                        indexOfDecimalPoint = formattedSeconds.length();
+                    }
+                    int digitsAfterDecimalPoint = formattedSeconds.length() - indexOfDecimalPoint - 1;
+                    if (digitsAfterDecimalPoint > tokLen) {
+                        formattedSeconds = StringHelper.substring(formattedSeconds, 0, tokLen + indexOfDecimalPoint + 1);
+                    } else if (digitsAfterDecimalPoint < tokLen) {
+                        formattedSeconds = StringHelper.padRight(formattedSeconds, tokLen + indexOfDecimalPoint + 1, '0');
+                    }
+                    StringHelper.append(result, formattedSeconds, indexOfDecimalPoint + nfi.getNumberDecimalSeparator().length(), formattedSeconds.length() - indexOfDecimalPoint
+                            - nfi.getNumberDecimalSeparator().length());
                     if (ch == 'F') {
                         while (result.length() > startLen && result.charAt(result.length() - 1) == '0')
                             result.setLength(result.length() - 1);
                         // when the value was 0, then trim even preceding '.' (!) It is fixed character.
-						if (number == 0 && startLen > 0 && result.charAt(startLen - 1) == '.') {
-                            result.setLength(result.length() - 1);
+						if (result.length() == startLen && startLen >= nfi.getNumberDecimalSeparator().length()) {
+                            boolean matchesSeparator = true;
+                            for (int separatorIndex = 0; matchesSeparator && separatorIndex < nfi.getNumberDecimalSeparator().length(); ++separatorIndex) {
+                                matchesSeparator = result.charAt(result.length() - nfi.getNumberDecimalSeparator().length() + separatorIndex) == nfi.getNumberDecimalSeparator().charAt(separatorIndex);
+                            }
+                            if (matchesSeparator) {
+                                result.setLength(result.length() - nfi.getNumberDecimalSeparator().length());
+                            }
                         }
                     }
                     break;
@@ -1585,6 +1491,11 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     tokLen = 2;
                     break;
                 }
+                case '.': {
+                    result.append(nfi.getNumberDecimalSeparator());
+                    tokLen = nfi.getNumberDecimalSeparator().length();
+                    break;
+                }
                 default: {
                     result.append(ch);
                     tokLen = 1;
@@ -1595,6 +1506,115 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             }
             return result.toString();
         }
+
+        /**
+        *  
+        Don't use these patterns directly.  Instead get your patterns from
+        {@link #buildDateTimePatterns}.
+        
+
+        */
+        private static String[] s_extraDateTimePatternTemplates = {
+                "M/d/yyyy H:mm:ss.f*",
+                "d MMM yyyy H:mm:ss.f*",
+                "yyyy-M-dTHH:mm:ss.f*",
+                "M-yyyy-dTH:mm:ss.f*",
+                "M-yyyy-d H:mm:ss.f*",
+                "yyyyMMddTHHmmss.f*"
+        };
+        // DateTime.Parse patterns
+		// Patterns are divided to date and time patterns. The algorithm will
+		// try combinations of these patterns. The algorithm also looks for
+		// day of the week, AM/PM GMT and Z independently of the patterns.
+		private static String[] s_parseTimeFormatsTemplate = {
+                "H:m:s.f*",
+                "H:m:s",
+                "H:m",
+                "H tt",
+                "H'\u6642'm'\u5206's'\u79d2'"
+        };
+        // Specifies AM to disallow '8'.
+		private static String[] s_extraDateTimePatterns = buildDateTimePatterns(s_extraDateTimePatternTemplates, 17);
+        private static String[] s_parseTimeFormats = buildDateTimePatterns(s_parseTimeFormatsTemplate, 17);
+        // DateTime.Parse date patterns extend ParseExact patterns as follows:
+		//   MMM - month short name or month full name
+		//   MMMM - month number or short name or month full name
+		// Parse behaves differently according to the ShortDatePattern of the
+		// DateTimeFormatInfo. The following define the date patterns for
+		// different orders of day, month and year in ShortDatePattern.
+		// Note that the year cannot go between the day and the month.
+		private static String[] s_parseYearDayMonthFormats = {
+                "yyyy/M/dT",
+                "M/yyyy/dT",
+                "yyyy'\u5e74'M'\u6708'd'\u65e5",
+                "yyyy/d/MMMM",
+                "yyyy/MMM/d",
+                "d/MMMM/yyyy",
+                "MMM/d/yyyy",
+                "d/yyyy/MMMM",
+                "MMM/yyyy/d",
+                "yy/d/M"
+        };
+        private static String[] s_parseYearMonthDayFormats = {
+                "yyyy/M/dT",
+                "M/yyyy/dT",
+                "yyyy'\u5e74'M'\u6708'd'\u65e5",
+                "yyyy/MMMM/d",
+                "yyyy/d/MMM",
+                "MMMM/d/yyyy",
+                "d/MMM/yyyy",
+                "MMMM/yyyy/d",
+                "d/yyyy/MMM",
+                "yy/MMMM/d",
+                "yy/d/MMM",
+                "MMM/yy/d"
+        };
+        private static String[] s_parseDayMonthYearFormats = {
+                "yyyy/M/dT",
+                "M/yyyy/dT",
+                "yyyy'\u5e74'M'\u6708'd'\u65e5",
+                "yyyy/MMMM/d",
+                "yyyy/d/MMM",
+                "d/MMMM/yyyy",
+                "MMM/d/yyyy",
+                "MMMM/yyyy/d",
+                "d/yyyy/MMM",
+                "d/MMMM/yy",
+                "yy/MMM/d",
+                "d/yy/MMM",
+                "yy/d/MMM",
+                "MMM/d/yy",
+                "MMM/yy/d"
+        };
+        private static String[] s_parseMonthDayYearFormats = {
+                "yyyy/M/dT",
+                "M/yyyy/dT",
+                "yyyy'\u5e74'M'\u6708'd'\u65e5",
+                "yyyy/MMMM/d",
+                "yyyy/d/MMM",
+                "MMMM/d/yyyy",
+                "d/MMM/yyyy",
+                "MMMM/yyyy/d",
+                "d/yyyy/MMM",
+                "MMMM/d/yy",
+                "MMM/yy/d",
+                "d/MMM/yy",
+                "yy/MMM/d",
+                "d/yy/MMM",
+                "yy/d/MMM"
+        };
+        // Patterns influenced by the MonthDayPattern in DateTimeFormatInfo.
+		// Note that these patterns cannot be followed by the time.
+		private static String[] s_monthDayShortFormats = {
+                "MMMM/d",
+                "d/MMM",
+                "yyyy/MMMM"
+        };
+        private static String[] s_dayMonthShortFormats = {
+                "d/MMMM",
+                "MMM/yy",
+                "yyyy/MMMM"
+        };
     }
 
     /**
@@ -1702,7 +1722,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
 
     * @param year The year.
-    * @param daysOfYear The day of year plus the fractional portion of the day 
+    * @param daysOfYear The day of year plus the fractional portion of the day
     (in the range 1 through the number of days in the given year).
     */
     public GregorianDate(int year, double daysOfYear) {
@@ -1718,7 +1738,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     /**
     *  
-    Initializes a  {@link GregorianDate} from the provided 
+    Initializes a  {@link GregorianDate} from the provided
     {@link JulianDate}.  The new  {@link GregorianDate} will be in the
     {@link TimeStandard#COORDINATED_UNIVERSAL_TIME} (UTC) time standard.
     
@@ -1732,7 +1752,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     /**
     *  
-    Initializes a  {@link GregorianDate} from the provided 
+    Initializes a  {@link GregorianDate} from the provided
     {@link JulianDate}.  The new  {@link GregorianDate} will be in the
     provided  {@link TimeStandard}.
     
@@ -1776,7 +1796,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     /**
     *  
-    Initializes a  {@link GregorianDate} from the provided 
+    Initializes a  {@link GregorianDate} from the provided
     {@link DateTime}.  If the provided  {@link DateTime} is in local
     time, it is converted to UTC.
     
@@ -1850,6 +1870,15 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     */
     public final double getSecond() {
         return m_second;
+    }
+
+    /**
+    *  Gets the corresponding seconds past midnight for this instance.
+    
+
+    */
+    public final double getSecondsOfDay() {
+        return m_second + m_hour * SecondsPerHour + m_minute * SecondsPerMinute;
     }
 
     /**
@@ -1948,7 +1977,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     Convert this  {@link GregorianDate} to a  {@link JulianDate}. The
     time standard will be  {@link TimeStandard#COORDINATED_UNIVERSAL_TIME}
     (UTC), unless this   {@link GregorianDate} represents the instant of a
-    leap second, in which case the  {@link JulianDate} will be in 
+    leap second, in which case the  {@link JulianDate} will be in
     {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} (TAI).
 
 
@@ -1992,7 +2021,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    * Convert this  {@link GregorianDate} to a  {@link DateTime}. 
+    * Convert this  {@link GregorianDate} to a  {@link DateTime}.
     The  {@link DateTime} will be in UTC.
 
 
@@ -2010,6 +2039,74 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         ticks += m_minute * ticksPerMinute;
         ticks += (long) (MathHelper.round(m_second, 7) * ticksPerSecond);
         return DateTimeHelper.fromTicks(ticks, DateTimeZone.UTC);
+    }
+
+    /**
+    *  
+    Rounds this instance to the specified number of decimal digits in the seconds, rolling over to minutes, hours, days,
+    etc. as necessary.  This instance is assumed to express a time in the  {@link TimeStandard#COORDINATED_UNIVERSAL_TIME}
+    (UTC) time standard so the {@code Second} ({@link #getSecond get}) will be allowed to go above 60 during a leap second.
+    
+    
+    
+
+    * @param digits The number of digits after the decimal point to include in the seconds.
+    * @return The rounded date.
+    */
+    @CS2JWarning("Unhandled attribute removed: Pure")
+    public final GregorianDate roundSeconds(int digits) {
+        return roundSeconds(digits, TimeStandard.COORDINATED_UNIVERSAL_TIME);
+    }
+
+    /**
+    *  
+    Rounds this instance to the specified number of decimal digits in the seconds, rolling over to minutes, hours, days,
+    etc. as necessary.  If the specified {@code timeStandard} is  {@link TimeStandard#COORDINATED_UNIVERSAL_TIME},
+    (UTC), the seconds will be allowed to go above 60 during a leap second.  For any other time standard, the
+    {@code Second} ({@link #getSecond get}) will be below 60.
+    
+    
+    
+    
+
+    * @param digits The number of digits after the decimal point to include in the seconds.
+    * @param timeStandard The time standard in which this  {@link GregorianDate} is expressed.
+    * @return The rounded date.
+    */
+    @CS2JWarning("Unhandled attribute removed: Pure")
+    public final GregorianDate roundSeconds(int digits, TimeStandard timeStandard) {
+        double maxSeconds = 60.0;
+        if (timeStandard == TimeStandard.COORDINATED_UNIVERSAL_TIME && m_hour == 23 && m_minute == 59
+                && LeapSeconds.getInstance().doesDayHaveLeapSecond(new YearMonthDay(getYear(), getMonth(), getDay()).getJulianDayNumber())) {
+            maxSeconds = 61.0;
+        }
+        int year = getYear();
+        int month = getMonth();
+        int day = getDay();
+        int hour = m_hour;
+        int minute = m_minute;
+        double roundedSeconds = MathHelper.round(m_second, digits);
+        if (roundedSeconds >= maxSeconds) {
+            roundedSeconds = 0.0;
+            ++minute;
+        }
+        if (minute > 59) {
+            minute = 0;
+            ++hour;
+        }
+        if (hour > 23) {
+            hour = 0;
+            ++day;
+        }
+        if (!YearMonthDay.isValidDate(year, month, day)) {
+            day = 1;
+            ++month;
+        }
+        if (!YearMonthDay.isValidDate(year, month, day)) {
+            month = 1;
+            ++year;
+        }
+        return new GregorianDate(year, month, day, hour, minute, roundedSeconds);
     }
 
     /**
@@ -2110,7 +2207,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @return A string representation of value of this instance as specified by
     {@code format}.
     * @exception NumberFormatException The length of {@code format} is 1,
-    and it is not one of the format specifier characters defined for 
+    and it is not one of the format specifier characters defined for
     {@link DateTimeFormatInfo}.-or- {@code format} does not
     contain a valid custom format pattern. 
     */
@@ -2149,7 +2246,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @return A string representation of value of this instance as specified by
     {@code format} and {@code provider}.
     * @exception NumberFormatException The length of {@code format} is 1,
-    and it is not one of the format specifier characters defined for 
+    and it is not one of the format specifier characters defined for
     {@link DateTimeFormatInfo}.-or- {@code format} does not
     contain a valid custom format pattern. 
     */
@@ -2159,9 +2256,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     /**
     *  
-    Converts the value of this instance to its equivalent ISO8601 string representation,
-    corresponding to year month day hours minutes and seconds with seconds
-    represented to machine precision.
+    Converts the value of this instance to its equivalent ISO8601 extended string
+    representation, corresponding to year month day hours minutes and seconds with
+    seconds represented to machine precision.
     
     
 
@@ -2186,19 +2283,43 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final String toIso8601String(Iso8601Format format) {
+        return toIso8601String(format, StringHelper.create('#', 15));
+    }
+
+    /**
+    *  
+    Converts the value of this instance to its equivalent ISO8601 string representation,
+    corresponding to year month day hours minutes and seconds with seconds
+    rounded to and formatted with the specified number of decimal digits.
+    
+    
+    
+    
+
+    * @param format The type of ISO8601 string to create.
+    * @param digitsOfFractionalSeconds The number of digits after the decimal point in the 'seconds' portion of the time.
+    * @return A string representing this date and time in ISO8601 format.
+    */
+    @CS2JWarning("Unhandled attribute removed: Pure")
+    public final String toIso8601String(Iso8601Format format, int digitsOfFractionalSeconds) {
+        String fractionalSecondsFormatString = StringHelper.create('0', digitsOfFractionalSeconds);
+        return roundSeconds(digitsOfFractionalSeconds).toIso8601String(format, fractionalSecondsFormatString);
+    }
+
+    private final String toIso8601String(Iso8601Format format, String fractionalSecondsFormatString) {
         switch (format) {
         case BASIC: {
-            return StringHelper.format(CultureInfoHelper.getInvariantCulture(), "{0:0000}{1:00}{2:00}T{3:00}{4:00}{5:00.###############}Z", m_yearMonthDay.getYear(), m_yearMonthDay.getMonth(),
-                    m_yearMonthDay.getDay(), m_hour, m_minute, m_second);
+            return StringHelper.format(CultureInfoHelper.getInvariantCulture(), "{0:0000}{1:00}{2:00}T{3:00}{4:00}{5:00." + fractionalSecondsFormatString + "}Z", m_yearMonthDay.getYear(),
+                    m_yearMonthDay.getMonth(), m_yearMonthDay.getDay(), m_hour, m_minute, m_second);
         }
         case EXTENDED: {
-            return StringHelper.format(CultureInfoHelper.getInvariantCulture(), "{0:0000}-{1:00}-{2:00}T{3:00}:{4:00}:{5:00.###############}Z", m_yearMonthDay.getYear(), m_yearMonthDay.getMonth(),
-                    m_yearMonthDay.getDay(), m_hour, m_minute, m_second);
+            return StringHelper.format(CultureInfoHelper.getInvariantCulture(), "{0:0000}-{1:00}-{2:00}T{3:00}:{4:00}:{5:00." + fractionalSecondsFormatString + "}Z", m_yearMonthDay.getYear(),
+                    m_yearMonthDay.getMonth(), m_yearMonthDay.getDay(), m_hour, m_minute, m_second);
         }
         case COMPACT: {
             if (m_second != 0) {
-                return StringHelper.format(CultureInfoHelper.getInvariantCulture(), "{0:0000}{1:00}{2:00}T{3:00}{4:00}{5:00.###############}Z", m_yearMonthDay.getYear(), m_yearMonthDay.getMonth(),
-                        m_yearMonthDay.getDay(), m_hour, m_minute, m_second);
+                return StringHelper.format(CultureInfoHelper.getInvariantCulture(), "{0:0000}{1:00}{2:00}T{3:00}{4:00}{5:00." + fractionalSecondsFormatString + "}Z", m_yearMonthDay.getYear(),
+                        m_yearMonthDay.getMonth(), m_yearMonthDay.getDay(), m_hour, m_minute, m_second);
             }
             if (m_minute != 0) {
                 return StringHelper.format(CultureInfoHelper.getInvariantCulture(), "{0:0000}{1:00}{2:00}T{3:00}{4:00}Z", m_yearMonthDay.getYear(), m_yearMonthDay.getMonth(), m_yearMonthDay.getDay(),
@@ -2380,11 +2501,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     *  
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent.
-    
+
     Note:  {@link GregorianDate} is always assumed to be in UTC.  You cannot
     parse strings containing time zone information. However, this will handle
-    two common ISO8601 formats: YYYY-MM-DDThh:mm:ss.sZ (with seconds to machine precision)
-    and it's "day of year" equivalent: YYYY-DDDThh:mm:ss.sZ
+    three common ISO8601 formats: the extended format YYYY-MM-DDThh:mm:ss.sZ
+    (with seconds to machine precision), it's "day of year" equivalent YYYY-DDDThh:mm:ss.sZ,
+    and the basic format YYYYMMDDThhmmss.sZ.
     
     
     
@@ -2396,11 +2518,11 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     A  {@link GregorianDate} equivalent to the date and time contained in s.
     
     * @exception ArgumentNullException 
-    {@code s} is null. 
+    {@code s} is null.
     
     * @exception NumberFormatException 
     {@code s} does not contain a valid string representation of a date
-    and time. 
+    and time.
     
     */
     public static GregorianDate parse(String s) {
@@ -2412,11 +2534,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent using the specified culture-specific
     format information.
-    
+
     Note:  {@link GregorianDate} is always assumed to be in UTC.  You cannot
     parse strings containing time zone information. However, this will handle
-    two common ISO8601 formats: YYYY-MM-DDThh:mm:ss.sZ (with seconds to machine precision)
-    and it's "day of year" equivalent: YYYY-DDDThh:mm:ss.sZ
+    three common ISO8601 formats: the extended format YYYY-MM-DDThh:mm:ss.sZ
+    (with seconds to machine precision), it's "day of year" equivalent YYYY-DDDThh:mm:ss.sZ,
+    and the basic format YYYYMMDDThhmmss.sZ.
     
     
     
@@ -2428,15 +2551,15 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @param provider An  {@link Locale} that supplies
     culture-specific format information about {@code s}.
     * @return 
-    A  {@link GregorianDate} equivalent to the date and time contained in 
+    A  {@link GregorianDate} equivalent to the date and time contained in
     {@code s} as specified by {@code provider}.
     
     * @exception ArgumentNullException 
-    {@code s} is null. 
+    {@code s} is null.
     
     * @exception NumberFormatException 
     {@code s} does not contain a valid string representation of a date
-    and time. 
+    and time.
     
     */
     public static GregorianDate parse(String s, Locale provider) {
@@ -2465,18 +2588,18 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @param provider An  {@link Locale} that supplies
     culture-specific format information about {@code s}. 
     * @return 
-    A  {@link GregorianDate} equivalent to the date and time contained in 
-    {@code s} as specified by {@code format} and 
+    A  {@link GregorianDate} equivalent to the date and time contained in
+    {@code s} as specified by {@code format} and
     {@code provider}.
     
     * @exception ArgumentNullException 
     {@code s} or {@code format} is null.
     
     * @exception NumberFormatException 
-    {@code s} or {@code format} is an empty string. -or- 
+    {@code s} or {@code format} is an empty string. -or-
     {@code s} does not contain a date and time that corresponds to the
     pattern specified in
-    {@code format}. 
+    {@code format}.
     
     */
     public static GregorianDate parseExact(String s, String format, Locale provider) {
@@ -2507,18 +2630,18 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @param provider An  {@link Locale} that supplies
     culture-specific format information about {@code s}. 
     * @return 
-    A  {@link GregorianDate} equivalent to the date and time contained in 
-    {@code s} as specified by {@code format} and 
+    A  {@link GregorianDate} equivalent to the date and time contained in
+    {@code s} as specified by {@code format} and
     {@code provider}.
     
     * @exception ArgumentNullException 
     {@code s} or {@code format} is null.
     
     * @exception NumberFormatException 
-    {@code s} or {@code format} is an empty string. -or- 
+    {@code s} or {@code format} is an empty string. -or-
     {@code s} does not contain a date and time that corresponds to the
     pattern specified in
-    {@code format}. 
+    {@code format}.
     
     */
     public static GregorianDate parseExact(String s, String[] format, Locale provider) {
@@ -2529,11 +2652,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     *  
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent.
-    
+
     Note:  {@link GregorianDate} is always assumed to be in UTC.  You cannot
     parse strings containing time zone information. However, this will handle
-    two common ISO8601 formats: YYYY-MM-DDThh:mm:ss.sZ (with seconds to machine precision)
-    and it's "day of year" equivalent: YYYY-DDDThh:mm:ss.sZ
+    three common ISO8601 formats: the extended format YYYY-MM-DDThh:mm:ss.sZ
+    (with seconds to machine precision), it's "day of year" equivalent YYYY-DDDThh:mm:ss.sZ,
+    and the basic format YYYYMMDDThhmmss.sZ.
     
     
     
@@ -2544,11 +2668,11 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     On input, an array with one element.  On return, the array is populated with
     
     the  {@link GregorianDate} value equivalent to the date and time contained in
-    {@code s}, if the conversion succeeded, or 
+    {@code s}, if the conversion succeeded, or
     {@link GregorianDate#MinValue} if the conversion failed. The conversion
     fails if the {@code s} parameter is null, or does not contain a
     valid string representation of a date and time. This parameter is passed
-    uninitialized. 
+    uninitialized.
     
     * @return 
     true if the {@code s} parameter was converted successfully;
@@ -2564,11 +2688,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent using the specified culture-specific
     format information.
-    
+
     Note:  {@link GregorianDate} is always assumed to be in UTC.  You cannot
     parse strings containing time zone information. However, this will handle
-    two common ISO8601 formats: YYYY-MM-DDThh:mm:ss.sZ (with seconds to machine precision)
-    and it's "day of year" equivalent: YYYY-DDDThh:mm:ss.sZ
+    three common ISO8601 formats: the extended format YYYY-MM-DDThh:mm:ss.sZ
+    (with seconds to machine precision), it's "day of year" equivalent YYYY-DDDThh:mm:ss.sZ,
+    and the basic format YYYYMMDDThhmmss.sZ.
     
     
     
@@ -2582,11 +2707,11 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     On input, an array with one element.  On return, the array is populated with
     
     the  {@link GregorianDate} value equivalent to the date and time contained in
-    {@code s}, if the conversion succeeded, or 
+    {@code s}, if the conversion succeeded, or
     {@link GregorianDate#MinValue} if the conversion failed. The conversion
     fails if the {@code s} parameter is null, or does not contain a
     valid string representation of a date and time. This parameter is passed
-    uninitialized. 
+    uninitialized.
     
     * @return 
     true if the {@code s} parameter was converted successfully;
@@ -2599,7 +2724,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     /**
     *  
-    Represents the largest possible value of  {@link GregorianDate}. 
+    Represents the largest possible value of  {@link GregorianDate}.
     Corresponds to  {@link DateTimeHelper#maxValue()}.
     
 
@@ -2607,7 +2732,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     public static final GregorianDate MaxValue = new GregorianDate(DateTimeHelper.maxValue());
     /**
     *  
-    Represents the smallest possible value of  {@link GregorianDate}. 
+    Represents the smallest possible value of  {@link GregorianDate}.
     Corresponds to  {@link DateTimeHelper#minValue()}.
     
 

@@ -12,7 +12,7 @@ import agi.foundation.compatibility.StringHelper;
 
 /**
  *  
- Represents a span of time.  
+ Represents a span of time.
  
  This class
  offers the same precision as the  {@link JulianDate} type.  It stores a
@@ -27,7 +27,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     public Duration() {}
 
     /**
-    *  Gets the largest possible value of a  {@link Duration}. 
+    *  Gets the largest possible value of a  {@link Duration}.
     
     
 
@@ -40,7 +40,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     }
 
     /**
-    *  Gets the smallest possible value of a  {@link Duration}. 
+    *  Gets the smallest possible value of a  {@link Duration}.
     
     
 
@@ -162,7 +162,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
 
     */
     public final double getTotalDays() {
-        return m_days + (m_seconds / TimeConstants.SecondsPerDay);
+        return m_days + m_seconds / TimeConstants.SecondsPerDay;
     }
 
     /**
@@ -279,7 +279,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
         if (m_days != other.m_days) {
             return m_days < other.m_days ? -1 : 1;
         }
-        if (PrimitiveHelper.equals(m_seconds, other.m_seconds)) {
+        if (m_seconds == other.m_seconds) {
             return 0;
         }
         return m_seconds < other.m_seconds ? -1 : 1;

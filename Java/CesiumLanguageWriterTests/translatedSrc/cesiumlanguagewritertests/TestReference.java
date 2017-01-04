@@ -19,7 +19,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestReference {
     @Test
-    public final void canContructEscapedReferences() {
+    public final void canConstructEscapedReferences() {
         String value = "identifier#property";
         cesiumlanguagewriter.Reference reference = new Reference(value);
         Assert.assertEquals(reference.getIdentifier(), "identifier");
@@ -27,7 +27,7 @@ public class TestReference {
         tempCollection$0.add("property");
         AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection$0);
         Assert.assertEquals(value, reference.getValue());
-        value = ("identifier#property.subProperty");
+        value = "identifier#property.subProperty";
         reference = new Reference(value);
         Assert.assertEquals(reference.getIdentifier(), "identifier");
         final ArrayList<String> tempCollection$1 = new ArrayList<String>();
@@ -56,7 +56,7 @@ public class TestReference {
     }
 
     @Test
-    public final void canContructFromIdentifierAndProperty() {
+    public final void canConstructFromIdentifierAndProperty() {
         cesiumlanguagewriter.Reference reference = new Reference("identifier", "property");
         Assert.assertEquals(reference.getIdentifier(), "identifier");
         final ArrayList<String> tempCollection$4 = new ArrayList<String>();
@@ -72,7 +72,7 @@ public class TestReference {
     }
 
     @Test
-    public final void canContructFromIdentifierAndProperties() {
+    public final void canConstructFromIdentifierAndProperties() {
         final ArrayList<String> tempCollection$6 = new ArrayList<String>();
         tempCollection$6.add("property");
         tempCollection$6.add("subProperty");

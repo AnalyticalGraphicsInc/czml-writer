@@ -16,42 +16,41 @@ import org.junit.Test;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumStreamWriter {
-    private StringWriter m_sw;
-    private CesiumOutputStream m_output;
-    private CesiumStreamWriter m_writer;
-
     @Before
     public final void setUp() {
-        m_sw = new StringWriter();
-        m_output = new CesiumOutputStream(m_sw);
+        m_stringWriter = new StringWriter();
+        m_outputStream = new CesiumOutputStream(m_stringWriter);
         m_writer = new CesiumStreamWriter();
     }
 
     @Test
     public final void newPacketWritesObjectLiteral() {
-        PacketCesiumWriter packet = m_writer.openPacket(m_output);
+        PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
         packet.close();
-        Assert.assertEquals("{}", m_sw.toString());
+        Assert.assertEquals("{}", m_stringWriter.toString());
     }
 
     @Test
     public final void successiveCallsToNewPacketReturnSameInstance() {
-        m_output.writeStartSequence();
-        PacketCesiumWriter packet1 = m_writer.openPacket(m_output);
+        m_outputStream.writeStartSequence();
+        PacketCesiumWriter packet1 = m_writer.openPacket(m_outputStream);
         packet1.close();
-        PacketCesiumWriter packet2 = m_writer.openPacket(m_output);
+        PacketCesiumWriter packet2 = m_writer.openPacket(m_outputStream);
         packet2.close();
-        m_output.writeEndSequence();
+        m_outputStream.writeEndSequence();
         Assert.assertSame(packet1, packet2);
     }
 
     @Test
     public final void multipleCallsToNewPacketWithoutCloseThrowInvalidOperationException() {
         ExpectedExceptionHelper.expectException(getRule$expectedException(), IllegalStateException.class, "already opened", MessageMatch.CONTAINS);
-        PacketCesiumWriter packet = m_writer.openPacket(m_output);
-        packet = m_writer.openPacket(m_output);
+        PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
+        packet = m_writer.openPacket(m_outputStream);
     }
 
+    private StringWriter m_stringWriter;
+    private CesiumOutputStream m_outputStream;
+    private CesiumStreamWriter m_writer;
     private TestContextRule rule$testContext = new TestContextRule();
 
     @Rule

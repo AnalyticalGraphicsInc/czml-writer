@@ -84,7 +84,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     * @return An equivalent interval with the new time standard.
     */
     public final TimeInterval toTimeStandard(TimeStandard timeStandard) {
-        if (m_start.getStandard() == timeStandard && m_stop.getStandard() == timeStandard) {
+        if (ObjectHelper.referenceEquals(m_start.getStandard(), timeStandard) && ObjectHelper.referenceEquals(m_stop.getStandard(), timeStandard)) {
             return this;
         }
         return new TimeInterval(m_start.toTimeStandard(timeStandard), m_stop.toTimeStandard(timeStandard));
@@ -122,12 +122,15 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     
 
     * @param other The time interval to compare to this time interval.
-    * @param epsilon The smallest difference between the {@code Start} ({@link #getStart get}) and {@code Stop} ({@link #getStop get}) dates, in seconds, such that they will NOT be considered equal.
+    * @param epsilon The largest difference between the {@code Start} ({@link #getStart get}) and {@code Stop} ({@link #getStop get}) dates, in seconds, such that they will be considered equal.
     * @return true if the {@code Start} ({@link #getStart get}) and {@code Stop} ({@link #getStop get}) dates of the intervals are equal as defined by the epsilon value and all other properties are identical.
     */
     public final boolean equalsEpsilon(TimeInterval other, double epsilon) {
-        if (ObjectHelper.referenceEquals(other, null)) {
+        if (ObjectHelper.referenceEquals(null, other)) {
             return false;
+        }
+        if (ObjectHelper.referenceEquals(this, other)) {
+            return true;
         }
         if (getIsEmpty() && other.getIsEmpty()) {
             return true;
@@ -217,11 +220,8 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(TimeInterval,TimeInterval)'")
     public static boolean equals(TimeInterval left, TimeInterval right) {
-        if (ObjectHelper.referenceEquals(left, right)) {
-            return true;
-        }
         if (ObjectHelper.referenceEquals(left, null)) {
-            return false;
+            return ObjectHelper.referenceEquals(right, null);
         }
         return left.equalsType(right);
     }

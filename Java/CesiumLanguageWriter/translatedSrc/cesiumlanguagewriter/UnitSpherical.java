@@ -116,8 +116,9 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public final boolean equalsType(UnitSpherical other) {
-        return PrimitiveHelper.equals(m_clock, other.m_clock) && PrimitiveHelper.equals(m_cone, other.m_cone);
+        return m_clock == other.m_clock && m_cone == other.m_cone;
     }
 
     /**
