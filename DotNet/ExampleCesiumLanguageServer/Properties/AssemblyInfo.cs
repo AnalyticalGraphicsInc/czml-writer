@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ExampleCesiumLanguageServer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A sample web application demonstrating writing CZML content and loading it in Cesium.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Analytical Graphics, Inc.")]
 [assembly: AssemblyProduct("ExampleCesiumLanguageServer")]
-[assembly: AssemblyCopyright("Copyright © 2014 Cesium Contributors")]
+[assembly: AssemblyCopyright("Copyright © 2014-2017 Cesium Contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

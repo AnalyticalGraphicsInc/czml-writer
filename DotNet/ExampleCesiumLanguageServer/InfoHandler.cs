@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.IO;
 using System.Web;
 using System.Web.Routing;
@@ -31,12 +30,13 @@ namespace ExampleCesiumLanguageServer
             using (var outputStream = new StreamWriter(context.Response.OutputStream))
             {
                 var cesiumWriter = new CesiumStreamWriter();
-                var output = new CesiumOutputStream(outputStream);
-
-                // Since this is a demo, turning on PrettyFormatting makes the response easier to view
-                // with web browser developer tools.  It just adds whitespace and newlines to the response,
-                // so production environments would typically leave this turned off.
-                output.PrettyFormatting = true;
+                var output = new CesiumOutputStream(outputStream)
+                             {
+                                 // Since this is a demo, turning on PrettyFormatting makes the response easier to view
+                                 // with web browser developer tools.  It just adds whitespace and newlines to the response,
+                                 // so production environments would typically leave this turned off.
+                                 PrettyFormatting = true
+                             };
 
                 // The whole body of CZML must be wrapped in a JSON array, opened here.
                 output.WriteStartSequence();
@@ -75,11 +75,18 @@ namespace ExampleCesiumLanguageServer
                             // Click any dot in Cesium Viewer to read its description.
                             using (var description = entity.OpenDescriptionProperty())
                             {
-                                description.WriteString(
-                                    "<table class=\"cesium-infoBox-defaultTable\"><tbody>" +
-                                    "<tr><td>Longitude</td><td>" + lon.ToString("0") + " degrees</td></tr>" +
-                                    "<tr><td>Latitude</td><td>" + lat.ToString("0") + " degrees</td></tr>" +
-                                    "</tbody></table>");
+                                description.WriteString($@"
+<table class=""cesium-infoBox-defaultTable"">
+<tbody>
+ <tr>
+  <td>Longitude</td>
+  <td>{lon:0} degrees</td>
+ </tr>
+ <tr>
+  <td>Latitude</td>
+  <td>{lat:0} degrees</td>
+ </tr>
+</tbody></table>");
                             }
                         }
                     }
@@ -90,11 +97,8 @@ namespace ExampleCesiumLanguageServer
             }
         }
 
-        public bool IsReusable
-        {
-            // Return false if your handler cannot be reused for another request, true if it can.
-            get { return true; }
-        }
+        // Return false if your handler cannot be reused for another request, true if it can.
+        public bool IsReusable => true;
 
         /// <summary>
         /// Gets the IHttpHandler for this route, which is always "this" because this class

@@ -11,9 +11,9 @@
     <title>Example page for server-side CZML generation</title>
 
     <!-- For debugging client-side code, use the "Unminified" Cesium.js.  -->
-    <script src="http://cesiumjs.org/releases/1.2/Cesium.js"></script>
-    <!--  <script src="http://cesiumjs.org/releases/1.2/Unminified/Cesium.js"></script> -->
-    <link rel="stylesheet" href="http://cesiumjs.org/releases/1.2/Widgets/widgets.css" />
+    <script src="http://cesiumjs.org/releases/1.29/Cesium.js"></script>
+    <!--  <script src="http://cesiumjs.org/releases/1.29/Unminified/Cesium.js"></script> -->
+    <link rel="stylesheet" href="http://cesiumjs.org/releases/1.29/Widgets/widgets.css" />
     <style>
         body, #viewerContainer {
             position: absolute;
@@ -27,6 +27,7 @@
             color: #fff;
             font-family: sans-serif;
         }
+
         #message {
             position: absolute;
             top: 5px;
@@ -54,18 +55,10 @@
 
         // The following line creates the Cesium viewer with all the default widgets on it.
         var viewer = window.viewer = new Cesium.Viewer('viewerContainer');
-        // CZML entity visualization happens in a mixin for the viewer, applied here.
-        viewer.extend(Cesium.viewerEntityMixin);
 
-        // Create an empty CzmlDataSource (with an ID of 'info') that will hold CZML data once returned from the server.
-        var dataSource = new Cesium.CzmlDataSource('info');
-        // Add the empty dataSource to the viewer.
-        viewer.dataSources.add(dataSource);
-
-        // Request that the dataSource populate itself asynchronously with data from URL path 'info'.
-        // This requires that our server will be able to handle HTTP requests such as 'GET /info', which
+        // Create and load a CzmlDataSource with CZML data from the server, from URL 'info', which
         // is a route that we register in Global.asax.cs.
-        dataSource.loadUrl('info');
+        viewer.dataSources.add(Cesium.CzmlDataSource.load('info'));
 
     </script>
 </body>
