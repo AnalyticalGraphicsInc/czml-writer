@@ -13,6 +13,12 @@ See the [CZML specification](https://github.com/AnalyticalGraphicsInc/czml-write
 
 [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).  czml-writer is free for both commercial and non-commercial use.
 
+### Downloads ###
+
+#### .NET
+
+Binary releases are [available on NuGet](https://www.nuget.org/packages/CesiumLanguageWriter/).
+
 ### Get Started ###
 
 Check out the [wiki](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki), including the [quick start](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/Quick-Start) and [contributor's guide](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/Contributor's-Guide).  Also browse the [forum](https://groups.google.com/d/forum/cesium-dev).
