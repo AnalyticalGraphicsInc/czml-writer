@@ -94,6 +94,9 @@ namespace CesiumLanguageWriterTests
                     w.WriteString("string31449");
                     m_assertionsWriter.WriteLine("    expect(e.description.getValue(date)).toEqual('string31449');");
                 }
+                using (var w = packet.OpenPropertiesProperty())
+                {
+                }
                 using (var w = packet.OpenPositionProperty())
                 {
                     w.WriteCartesian(new Cartesian(24944, 16481, 24896));
@@ -1610,10 +1613,12 @@ namespace CesiumLanguageWriterTests
                 }
             }
             WriteConstantValuesIndividual();
+            WriteConstantValuesCustomProperties();
         }
         private void WriteConstantValuesIndividual()
         {
             WriteConstantValuesIndividualDescription();
+            WriteConstantValuesIndividualProperties();
             WriteConstantValuesIndividualPosition();
             WriteConstantValuesIndividualOrientation();
             WriteConstantValuesIndividualViewFrom();
@@ -1638,6 +1643,9 @@ namespace CesiumLanguageWriterTests
             WriteConstantValuesIndividualVector();
         }
         private void WriteConstantValuesIndividualDescription()
+        {
+        }
+        private void WriteConstantValuesIndividualProperties()
         {
         }
         private void WriteConstantValuesIndividualPosition()
@@ -6723,6 +6731,152 @@ namespace CesiumLanguageWriterTests
                 }
             }
         }
+        private void WriteConstantValuesCustomProperties()
+        {
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_custom");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_custom')).toBeDefined();");
+                using (var w = packet.OpenPropertiesProperty())
+                {
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_boolean"))
+                    {
+                        w2.WriteBoolean(true);
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_boolean.getValue(date)).toEqual(true);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_boundingRectangle"))
+                    {
+                        w2.WriteBoundingRectangle(BoundingRectangle.FromWidthHeight(9369, 63524, 6904, 17690));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_boundingRectangle.getValue(date)).toEqual(new BoundingRectangle(9369, 63524, 6904, 17690));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_cartesian"))
+                    {
+                        w2.WriteCartesian(new Cartesian(28502, 45167, 944));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartesian.getValue(date)).toEqual(new Cartesian3(28502, 45167, 944));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_cartographicRadians"))
+                    {
+                        w2.WriteCartographicRadians(new Cartographic(0.350571264887744, 0.633274262413284, 42979));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartographicRadians.getValue(date)).toEqual(Cartesian3.fromRadians(0.350571264887744, 0.633274262413284, 42979));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_cartographicDegrees"))
+                    {
+                        w2.WriteCartographicDegrees(new Cartographic(18, 36, 37743));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartographicDegrees.getValue(date)).toEqual(Cartesian3.fromDegrees(18, 36, 37743));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_cartesianVelocity"))
+                    {
+                        w2.WriteCartesianVelocity(new Motion<Cartesian>(new Cartesian(59520, 34280, 25989), new Cartesian(42341, 42661, 16038)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartesianVelocity.getValue(date)).toEqual(new Cartesian3(59520, 34280, 25989));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_cartesian2"))
+                    {
+                        w2.WriteCartesian2(new Rectangular(44825, 16303));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartesian2.getValue(date)).toEqual(new Cartesian2(44825, 16303));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_unitCartesian"))
+                    {
+                        w2.WriteUnitCartesian(new UnitCartesian(0.77935070007851, 0.565493818550955, 0.269868907930861));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitCartesian.getValue(date)).toEqualEpsilon(new Cartesian3(0.77935070007851, 0.565493818550955, 0.269868907930861), 1e-14);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_spherical"))
+                    {
+                        w2.WriteSpherical(new Spherical(1705, 13830, 21558));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_spherical.getValue(date)).toEqual(Cartesian3.fromSpherical(new Spherical(1705, 13830, 21558)));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_unitSpherical"))
+                    {
+                        w2.WriteUnitSpherical(new UnitSpherical(59387, 15591));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitSpherical.getValue(date)).toEqual(Cartesian3.fromSpherical(new Spherical(59387, 15591)));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_rgba"))
+                    {
+                        w2.WriteRgba(Color.FromArgb(147, 50, 149, 175));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_rgba.getValue(date)).toEqual(Color.fromBytes(50, 149, 175, 147));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_rgbaf"))
+                    {
+                        w2.WriteRgbaf(Color.FromArgb(109, 17, 17, 59));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_rgbaf.getValue(date)).toEqualEpsilon(new Color(0.0666666666666667, 0.0666666666666667, 0.231372549019608, 0.427450980392157), 1e-14);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_colorBlendMode"))
+                    {
+                        w2.WriteColorBlendMode(CesiumColorBlendMode.Replace);
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_colorBlendMode.getValue(date)).toEqual(ColorBlendMode.REPLACE);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_cornerType"))
+                    {
+                        w2.WriteCornerType(CesiumCornerType.Beveled);
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cornerType.getValue(date)).toEqual(CornerType.BEVELED);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_heightReference"))
+                    {
+                        w2.WriteHeightReference(CesiumHeightReference.ClampToGround);
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_horizontalOrigin"))
+                    {
+                        w2.WriteHorizontalOrigin(CesiumHorizontalOrigin.Left);
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_horizontalOrigin.getValue(date)).toEqual(HorizontalOrigin.LEFT);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_labelStyle"))
+                    {
+                        w2.WriteLabelStyle(CesiumLabelStyle.FillAndOutline);
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_labelStyle.getValue(date)).toEqual(LabelStyle.FILL_AND_OUTLINE);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_number"))
+                    {
+                        w2.WriteNumber(31507.0);
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_number.getValue(date)).toEqual(31507.0);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_nearFarScalar"))
+                    {
+                        w2.WriteNearFarScalar(new NearFarScalar(14621, 24121, 16734, 56129));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_nearFarScalar.getValue(date)).toEqual(new NearFarScalar(14621, 24121, 16734, 56129));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_unitQuaternion"))
+                    {
+                        w2.WriteUnitQuaternion(new UnitQuaternion(0.344558178514049, 0.742737937277143, 0.267679401430615, 0.507905263014791));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitQuaternion.getValue(date)).toEqualEpsilon(new Quaternion(0.742737937277143, 0.267679401430615, 0.507905263014791, 0.344558178514049), 1e-14);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_shadowMode"))
+                    {
+                        w2.WriteShadowMode(CesiumShadowMode.CastOnly);
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_shadowMode.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_string"))
+                    {
+                        w2.WriteString("string41758");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_string.getValue(date)).toEqual('string41758');");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_StripeOrientation"))
+                    {
+                        w2.WriteStripeOrientation(CesiumStripeOrientation.Vertical);
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_StripeOrientation.getValue(date)).toEqual(StripeOrientation.VERTICAL);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_wsen"))
+                    {
+                        w2.WriteWsen(new CartographicExtent(1.47520917005826, 1.17615981869183, 0.973692387723505, 1.00039738410474));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_wsen.getValue(date)).toEqual(new Rectangle(1.47520917005826, 1.17615981869183, 0.973692387723505, 1.00039738410474));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_wsenDegrees"))
+                    {
+                        w2.WriteWsenDegrees(new CartographicExtent(5, 3, 6, 19));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_wsenDegrees.getValue(date)).toEqual(Rectangle.fromDegrees(5, 3, 6, 19));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_uri"))
+                    {
+                        w2.WriteUri("http://example.com/41986", CesiumResourceBehavior.LinkTo);
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_uri.getValue(date)).toEqual('http://example.com/41986');");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_verticalOrigin"))
+                    {
+                        w2.WriteVerticalOrigin(CesiumVerticalOrigin.Bottom);
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_verticalOrigin.getValue(date)).toEqual(VerticalOrigin.BOTTOM);");
+                    }
+                }
+            }
+        }
         private void WriteReferenceValues()
         {
             using (var packet = m_writer.OpenPacket(m_output))
@@ -6775,6 +6929,9 @@ namespace CesiumLanguageWriterTests
                 {
                     w.WriteReference(new Reference("Constant", "description"));
                     m_assertionsWriter.WriteLine("    expect(e.description.getValue(date)).toEqual(constant.description.getValue(date));");
+                }
+                using (var w = packet.OpenPropertiesProperty())
+                {
                 }
                 using (var w = packet.OpenPositionProperty())
                 {
@@ -8232,6 +8389,7 @@ namespace CesiumLanguageWriterTests
         private void WriteReferenceValuesIndividual()
         {
             WriteReferenceValuesIndividualDescription();
+            WriteReferenceValuesIndividualProperties();
             WriteReferenceValuesIndividualPosition();
             WriteReferenceValuesIndividualOrientation();
             WriteReferenceValuesIndividualViewFrom();
@@ -8278,6 +8436,9 @@ namespace CesiumLanguageWriterTests
             }
         }
         private void WriteReferenceValuesIndividualDescription()
+        {
+        }
+        private void WriteReferenceValuesIndividualProperties()
         {
         }
         private void WriteReferenceValuesIndividualPosition()
@@ -12175,10 +12336,12 @@ namespace CesiumLanguageWriterTests
                 }
             }
             WriteSampledValuesIndividual();
+            WriteSampledValuesCustomProperties();
         }
         private void WriteSampledValuesIndividual()
         {
             WriteSampledValuesIndividualDescription();
+            WriteSampledValuesIndividualProperties();
             WriteSampledValuesIndividualPosition();
             WriteSampledValuesIndividualOrientation();
             WriteSampledValuesIndividualViewFrom();
@@ -12203,6 +12366,9 @@ namespace CesiumLanguageWriterTests
             WriteSampledValuesIndividualVector();
         }
         private void WriteSampledValuesIndividualDescription()
+        {
+        }
+        private void WriteSampledValuesIndividualProperties()
         {
         }
         private void WriteSampledValuesIndividualPosition()
@@ -17209,6 +17375,113 @@ namespace CesiumLanguageWriterTests
                     w2.WriteUnitCartesian(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new UnitCartesian(0.553282791500359, 0.696109910096765, 0.457503164682654), new UnitCartesian(0.754665701430316, 0.115201313599266, 0.645916663687888)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.vector.direction.getValue(documentStartDate)).toEqualEpsilon(new Cartesian3(0.553282791500359, 0.696109910096765, 0.457503164682654), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.vector.direction.getValue(documentStopDate)).toEqualEpsilon(new Cartesian3(0.754665701430316, 0.115201313599266, 0.645916663687888), 1e-14);");
+                }
+            }
+        }
+        private void WriteSampledValuesCustomProperties()
+        {
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_custom");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_custom')).toBeDefined();");
+                using (var w = packet.OpenPropertiesProperty())
+                {
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_boundingRectangle"))
+                    {
+                        w2.WriteBoundingRectangle(CreateList(m_documentStartDate, m_documentStopDate), CreateList(BoundingRectangle.FromWidthHeight(10924, 3626, 12558, 56113), BoundingRectangle.FromWidthHeight(59127, 45286, 34992, 17032)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_boundingRectangle.getValue(documentStartDate)).toEqual(new BoundingRectangle(10924, 3626, 12558, 56113));");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_boundingRectangle.getValue(documentStopDate)).toEqual(new BoundingRectangle(59127, 45286, 34992, 17032));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_cartesian"))
+                    {
+                        w2.WriteCartesian(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Cartesian(59456, 60648, 1004), new Cartesian(37915, 14740, 14905)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartesian.getValue(documentStartDate)).toEqual(new Cartesian3(59456, 60648, 1004));");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartesian.getValue(documentStopDate)).toEqual(new Cartesian3(37915, 14740, 14905));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_cartographicRadians"))
+                    {
+                        w2.WriteCartographicRadians(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Cartographic(1.25380297085855, 1.03510976346284, 7102), new Cartographic(1.10648839763778, 0.231915563506949, 340)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartographicRadians.getValue(documentStartDate)).toEqual(Cartesian3.fromRadians(1.25380297085855, 1.03510976346284, 7102));");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartographicRadians.getValue(documentStopDate)).toEqual(Cartesian3.fromRadians(1.10648839763778, 0.231915563506949, 340));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_cartographicDegrees"))
+                    {
+                        w2.WriteCartographicDegrees(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Cartographic(44, 31, 55762), new Cartographic(10, 18, 28847)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartographicDegrees.getValue(documentStartDate)).toEqual(Cartesian3.fromDegrees(44, 31, 55762));");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartographicDegrees.getValue(documentStopDate)).toEqual(Cartesian3.fromDegrees(10, 18, 28847));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_cartesianVelocity"))
+                    {
+                        w2.WriteCartesianVelocity(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Motion<Cartesian>(new Cartesian(52722, 32461, 63358), new Cartesian(52983, 62670, 42484)), new Motion<Cartesian>(new Cartesian(13465, 14644, 62777), new Cartesian(41461, 28833, 44400))));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartesianVelocity.getValue(documentStartDate)).toEqual(new Cartesian3(52722, 32461, 63358));");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartesianVelocity.getValue(documentStopDate)).toEqual(new Cartesian3(13465, 14644, 62777));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_cartesian2"))
+                    {
+                        w2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(9033, 9251), new Rectangular(34048, 58501)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartesian2.getValue(documentStartDate)).toEqual(new Cartesian2(9033, 9251));");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartesian2.getValue(documentStopDate)).toEqual(new Cartesian2(34048, 58501));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_unitCartesian"))
+                    {
+                        w2.WriteUnitCartesian(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new UnitCartesian(0.0501133095086564, 0.917195967206924, 0.395272328843601), new UnitCartesian(0.797476048450763, 0.40584478979077, 0.446454878735849)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitCartesian.getValue(documentStartDate)).toEqualEpsilon(new Cartesian3(0.0501133095086564, 0.917195967206924, 0.395272328843601), 1e-14);");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitCartesian.getValue(documentStopDate)).toEqualEpsilon(new Cartesian3(0.797476048450763, 0.40584478979077, 0.446454878735849), 1e-14);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_spherical"))
+                    {
+                        w2.WriteSpherical(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Spherical(47098, 2231, 14088), new Spherical(34883, 48264, 41148)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_spherical.getValue(documentStartDate)).toEqual(Cartesian3.fromSpherical(new Spherical(47098, 2231, 14088)));");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_spherical.getValue(documentStopDate)).toEqual(Cartesian3.fromSpherical(new Spherical(34883, 48264, 41148)));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_unitSpherical"))
+                    {
+                        w2.WriteUnitSpherical(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new UnitSpherical(48811, 24254), new UnitSpherical(44800, 8111)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitSpherical.getValue(documentStartDate)).toEqual(Cartesian3.fromSpherical(new Spherical(48811, 24254)));");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitSpherical.getValue(documentStopDate)).toEqual(Cartesian3.fromSpherical(new Spherical(44800, 8111)));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_rgba"))
+                    {
+                        w2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(46, 179, 175, 115), Color.FromArgb(156, 136, 187, 237)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_rgba.getValue(documentStartDate)).toEqual(Color.fromBytes(179, 175, 115, 46));");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_rgba.getValue(documentStopDate)).toEqual(Color.fromBytes(136, 187, 237, 156));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_rgbaf"))
+                    {
+                        w2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(184, 227, 115, 150), Color.FromArgb(108, 107, 215, 92)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_rgbaf.getValue(documentStartDate)).toEqualEpsilon(new Color(0.890196078431373, 0.450980392156863, 0.588235294117647, 0.72156862745098), 1e-14);");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_rgbaf.getValue(documentStopDate)).toEqualEpsilon(new Color(0.419607843137255, 0.843137254901961, 0.36078431372549, 0.423529411764706), 1e-14);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_number"))
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(24561.0, 45446.0));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_number.getValue(documentStartDate)).toEqual(24561.0);");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_number.getValue(documentStopDate)).toEqual(45446.0);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_nearFarScalar"))
+                    {
+                        w2.WriteNearFarScalar(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new NearFarScalar(64112, 15354, 32827, 10368), new NearFarScalar(55643, 45785, 33458, 29826)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_nearFarScalar.getValue(documentStartDate)).toEqual(new NearFarScalar(64112, 15354, 32827, 10368));");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_nearFarScalar.getValue(documentStopDate)).toEqual(new NearFarScalar(55643, 45785, 33458, 29826));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_unitQuaternion"))
+                    {
+                        w2.WriteUnitQuaternion(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new UnitQuaternion(0.253327354041402, 0.697299305414108, 0.26496667122144, 0.615947719782462), new UnitQuaternion(0.0332513608247514, 0.134764165794432, 0.408681085292446, 0.902060273565587)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitQuaternion.getValue(documentStartDate)).toEqualEpsilon(new Quaternion(0.697299305414108, 0.26496667122144, 0.615947719782462, 0.253327354041402), 1e-14);");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitQuaternion.getValue(documentStopDate)).toEqualEpsilon(new Quaternion(0.134764165794432, 0.408681085292446, 0.902060273565587, 0.0332513608247514), 1e-14);");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_wsen"))
+                    {
+                        w2.WriteWsen(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new CartographicExtent(1.4164143530628, 1.2888469381038, 0.679756561409663, 1.29649258884014), new CartographicExtent(1.19133054275098, 0.9154648059314, 0.71347968461712, 1.32750822775441)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_wsen.getValue(documentStartDate)).toEqual(new Rectangle(1.4164143530628, 1.2888469381038, 0.679756561409663, 1.29649258884014));");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_wsen.getValue(documentStopDate)).toEqual(new Rectangle(1.19133054275098, 0.9154648059314, 0.71347968461712, 1.32750822775441));");
+                    }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_wsenDegrees"))
+                    {
+                        w2.WriteWsenDegrees(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new CartographicExtent(29, 11, 17, 36), new CartographicExtent(37, 16, 25, 23)));
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_wsenDegrees.getValue(documentStartDate)).toEqual(Rectangle.fromDegrees(29, 11, 17, 36));");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_wsenDegrees.getValue(documentStopDate)).toEqual(Rectangle.fromDegrees(37, 16, 25, 23));");
+                    }
                 }
             }
         }

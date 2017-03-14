@@ -249,6 +249,7 @@ namespace GenerateFromSchema
                             }
 
                             writer.WriteLine("WriteConstantValuesIndividual();");
+                            writer.WriteLine("WriteConstantValuesCustomProperties();");
                         }
 
                         writer.WriteLine("private void WriteConstantValuesIndividual()");
@@ -440,6 +441,41 @@ namespace GenerateFromSchema
                                                     {
                                                         WriteValue(writer, "w3", id + property.Name + subProperty.Name, valueProperty, additionalProperty, isExtension, string.Format("{0}.{1}.{2}.{3}", propertyName, subPropertyName, propName, additionalProperty.Name));
                                                     }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        // create all types of custom properties
+                        writer.WriteLine("private void WriteConstantValuesCustomProperties()");
+                        using (writer.OpenScope())
+                        {
+                            var customPropertiesProperty = schemaProperties.FirstOrDefault(p => p.NameWithPascalCase == "Properties");
+                            if (customPropertiesProperty != null)
+                            {
+                                var additionalProperties = customPropertiesProperty.ValueType.AdditionalProperties;
+                                if (additionalProperties != null)
+                                {
+                                    writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
+                                    using (writer.OpenScope())
+                                    {
+                                        string id = "constant_custom";
+                                        writer.WriteLine("packet.WriteId(\"{0}\");", id);
+                                        WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
+
+                                        writer.WriteLine("using (var w = packet.Open{0}Property())", customPropertiesProperty.NameWithPascalCase);
+                                        using (writer.OpenScope())
+                                        {
+                                            foreach (var valueProperty in additionalProperties.ValueType.Properties.Where(p => p.IsValue))
+                                            {
+                                                string propName = string.Format("custom_{0}", valueProperty.Name);
+                                                writer.WriteLine("using (var w2 = w.Open{0}Property(\"{1}\"))", additionalProperties.ValueType.NameWithPascalCase, propName);
+                                                using (writer.OpenScope())
+                                                {
+                                                    WriteValue(writer, "w2", id + valueProperty.Name, valueProperty, additionalProperties, false, string.Format("{0}.{1}", customPropertiesProperty.Name, propName));
                                                 }
                                             }
                                         }
@@ -829,6 +865,7 @@ namespace GenerateFromSchema
                                 }
                             }
                             writer.WriteLine("WriteSampledValuesIndividual();");
+                            writer.WriteLine("WriteSampledValuesCustomProperties();");
                         }
 
                         writer.WriteLine("private void WriteSampledValuesIndividual()");
@@ -1003,6 +1040,41 @@ namespace GenerateFromSchema
                                 }
                             }
                         }
+
+                        // create all types of custom properties
+                        writer.WriteLine("private void WriteSampledValuesCustomProperties()");
+                        using (writer.OpenScope())
+                        {
+                            var customPropertiesProperty = schemaProperties.FirstOrDefault(p => p.NameWithPascalCase == "Properties");
+                            if (customPropertiesProperty != null)
+                            {
+                                var additionalProperties = customPropertiesProperty.ValueType.AdditionalProperties;
+                                if (additionalProperties != null)
+                                {
+                                    writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
+                                    using (writer.OpenScope())
+                                    {
+                                        string id = "sampled_custom";
+                                        writer.WriteLine("packet.WriteId(\"{0}\");", id);
+                                        WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
+
+                                        writer.WriteLine("using (var w = packet.Open{0}Property())", customPropertiesProperty.NameWithPascalCase);
+                                        using (writer.OpenScope())
+                                        {
+                                            foreach (var valueProperty in additionalProperties.ValueType.Properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array))
+                                            {
+                                                string propName = string.Format("custom_{0}", valueProperty.Name);
+                                                writer.WriteLine("using (var w2 = w.Open{0}Property(\"{1}\"))", additionalProperties.ValueType.NameWithPascalCase, propName);
+                                                using (writer.OpenScope())
+                                                {
+                                                    WriteValues(writer, "w2", id + valueProperty.Name, valueProperty, additionalProperties, false, string.Format("{0}.{1}", customPropertiesProperty.Name, propName));
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -1064,12 +1136,12 @@ namespace GenerateFromSchema
             assertionEpsilon = null;
 
             var hash = new Lazy<byte[]>(() =>
-                                        {
-                                            using (var md5 = MD5.Create())
-                                            {
-                                                return md5.ComputeHash(Encoding.UTF8.GetBytes(valueName + parentProperty.Name + valueProperty.Name));
-                                            }
-                                        });
+            {
+                using (var md5 = MD5.Create())
+                {
+                    return md5.ComputeHash(Encoding.UTF8.GetBytes(valueName + parentProperty.Name + valueProperty.Name));
+                }
+            });
             Func<int, int> getNumber = n => BitConverter.ToUInt16(hash.Value, n);
 
             switch (valueProperty.ValueType.Name)
