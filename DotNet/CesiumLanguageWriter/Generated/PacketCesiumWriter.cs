@@ -54,6 +54,11 @@ namespace CesiumLanguageWriter
         public const string AvailabilityPropertyName = "availability";
 
         /// <summary>
+        /// The name of the <c>properties</c> property.
+        /// </summary>
+        public const string PropertiesPropertyName = "properties";
+
+        /// <summary>
         /// The name of the <c>position</c> property.
         /// </summary>
         public const string PositionPropertyName = "position";
@@ -165,6 +170,7 @@ namespace CesiumLanguageWriter
 
         private readonly Lazy<StringCesiumWriter> m_description = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(DescriptionPropertyName), false);
         private readonly Lazy<ClockCesiumWriter> m_clock = new Lazy<ClockCesiumWriter>(() => new ClockCesiumWriter(ClockPropertyName), false);
+        private readonly Lazy<CustomPropertiesCesiumWriter> m_properties = new Lazy<CustomPropertiesCesiumWriter>(() => new CustomPropertiesCesiumWriter(PropertiesPropertyName), false);
         private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
         private readonly Lazy<OrientationCesiumWriter> m_orientation = new Lazy<OrientationCesiumWriter>(() => new OrientationCesiumWriter(OrientationPropertyName), false);
         private readonly Lazy<ViewFromCesiumWriter> m_viewFrom = new Lazy<ViewFromCesiumWriter>(() => new ViewFromCesiumWriter(ViewFromPropertyName), false);
@@ -383,6 +389,22 @@ namespace CesiumLanguageWriter
             const string PropertyName = AvailabilityPropertyName;
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteTimeIntervalCollection(Output, value);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>properties</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>properties</c> property defines a set of custom properties for this object.
+        /// </summary>
+        public CustomPropertiesCesiumWriter PropertiesWriter
+        {
+            get { return m_properties.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>properties</c> property.  The <c>properties</c> property defines a set of custom properties for this object.
+        /// </summary>
+        public CustomPropertiesCesiumWriter OpenPropertiesProperty()
+        {
+            return OpenAndReturn(PropertiesWriter);
         }
 
         /// <summary>

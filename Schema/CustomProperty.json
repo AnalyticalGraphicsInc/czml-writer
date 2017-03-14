@@ -1,0 +1,58 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/CustomProperty.json",
+    "title": "CustomProperty",
+    "description": "A custom property.",
+    "extends": {
+        "$ref": "InterpolatableProperty.json"
+    },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "boolean": {
+            "$ref": "BooleanValue.json",
+            "description": "The property specified as a boolean value.",
+            "czmlValue": true
+        },
+        "boundingRectangle": {
+            "$ref": "BoundingRectangleValue.json",
+            "description": "The property specified as `[X, Y, Width, Height]`.",
+            "czmlValue": true
+        },
+        "cartesian": {
+            "$ref": "Cartesian3Value.json",
+            "description": "The property specified as a three-dimensional Cartesian value `[X, Y, Z]`.",
+            "czmlValue": true
+        },
+        "cartesian2": {
+            "$ref": "Cartesian2Value.json",
+            "description": "The property specified as a two-dimensional Cartesian value `[X, Y]`.",
+            "czmlValue": true
+        },
+        "unitCartesian": {
+            "$ref": "UnitCartesian3Value.json",
+            "description": "The property specified as a three-dimensional unit magnitude Cartesian value `[X, Y, Z]`.",
+            "czmlValue": true
+        },
+        "spherical": {
+            "$ref": "SphericalValue.json",
+            "description": "The property specified as a spherical value `[Clock, Cone, Magnitude]`.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.",
+            "czmlValue": true
+        },
+        "unitSpherical": {
+            "$ref": "UnitSphericalValue.json",
+            "description": "The property specified as a unit spherical value `[Clock, Cone]`.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The property specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}

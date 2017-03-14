@@ -135,6 +135,8 @@
     <Compile Include="Generated\CustomPatternSensorCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\CustomPropertiesCesiumWriter.cs" />
+    <Compile Include="Generated\CustomPropertyCesiumWriter.cs" />
     <Compile Include="Generated\CylinderCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>

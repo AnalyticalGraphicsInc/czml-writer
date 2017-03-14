@@ -18,7 +18,7 @@ namespace CesiumLanguageWriterTests
         public PacketCesiumWriter Packet { get; private set; }
 
         [SetUp]
-        public void SetUp()
+        public void TestCesiumPropertyWriterSetUp()
         {
             StringWriter = new StringWriter();
             OutputStream = new CesiumOutputStream(StringWriter);

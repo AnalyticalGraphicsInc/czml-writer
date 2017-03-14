@@ -53,6 +53,7 @@
     <Compile Include="TestCartesian3.cs" />
     <Compile Include="TestCartographic.cs" />
     <Compile Include="TestCesiumInterpolatablePropertyWriter.cs" />
+    <Compile Include="TestCustomPropertiesCesiumWriter.cs" />
     <Compile Include="TestDoubleCesiumWriter.cs" />
     <Compile Include="TestGenerateValidationDocument.cs" />
     <Compile Include="TestHorizontalOriginCesiumWriter.cs" />
