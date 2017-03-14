@@ -29,6 +29,21 @@
             "description": "The property specified as a three-dimensional Cartesian value `[X, Y, Z]`.",
             "czmlValue": true
         },
+        "cartographicRadians": {
+            "$ref": "CartographicValue.json",
+            "description": "The property specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in radians.",
+            "czmlValue": true
+        },
+        "cartographicDegrees": {
+            "$ref": "CartographicValue.json",
+            "description": "The property specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in degrees.",
+            "czmlValue": true
+        },
+        "cartesianVelocity": {
+            "$ref": "Cartesian3VelocityValue.json",
+            "description": "The property specified as a three-dimensional Cartesian value and its derivative, `[X, Y, Z, dX, dY, dZ]`.",
+            "czmlValue": true
+        },
         "cartesian2": {
             "$ref": "Cartesian2Value.json",
             "description": "The property specified as a two-dimensional Cartesian value `[X, Y]`.",
@@ -49,9 +64,89 @@
             "description": "The property specified as a unit spherical value `[Clock, Cone]`.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.",
             "czmlValue": true
         },
-        "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The property specified as a reference to another property.",
+        "rgba": {
+            "$ref": "RgbaValue.json",
+            "description": "The property specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.",
+            "czmlValue": true
+        },
+        "rgbaf": {
+            "$ref": "RgbafValue.json",
+            "description": "The property specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.",
+            "czmlValue": true
+        },
+        "colorBlendMode": {
+            "$ref": "ColorBlendModeValue.json",
+            "description": "The property specified as a color blend mode.",
+            "czmlValue": true
+        },
+        "cornerType": {
+            "$ref": "CornerTypeValue.json",
+            "description": "The property specified as a corner style.",
+            "czmlValue": true
+        },
+        "heightReference": {
+            "$ref": "HeightReferenceValue.json",
+            "description": "The property specified as a height reference.",
+            "czmlValue": true
+        },
+        "horizontalOrigin": {
+            "$ref": "HorizontalOriginValue.json",
+            "description": "The property specified as a horizontal origin.",
+            "czmlValue": true
+        },
+        "labelStyle": {
+            "$ref": "LabelStyleValue.json",
+            "description": "The property specified as a label style.",
+            "czmlValue": true
+        },
+        "number": {
+            "$ref": "DoubleValue.json",
+            "description": "The property specified as a number.",
+            "czmlValue": true
+        },
+        "nearFarScalar": {
+            "$ref": "NearFarScalarValue.json",
+            "description": "The property specified as four values `[NearDistance, NearValue, FarDistance, FarValue]`.",
+            "czmlValue": true
+        },
+        "unitQuaternion": {
+            "$ref": "UnitQuaternionValue.json",
+            "description": "The property specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.",
+            "czmlValue": true
+        },
+        "shadowMode": {
+            "$ref": "ShadowModeValue.json",
+            "description": "The property specified as a shadow mode.",
+            "czmlValue": true
+        },
+        "string": {
+            "$ref": "StringValue.json",
+            "description": "The property specified as a string.",
+            "czmlValue": true
+        },
+        "StripeOrientation": {
+            "$ref": "StripeOrientationValue.json",
+            "description": "The property specified as an orientation of stripes in the stripe material.",
+            "czmlValue": true
+        },
+        "wsen": {
+            "$ref": "CartographicRectangleValue.json",
+            "description": "The property specified as a Cartographic rectangle `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in radians.",
+            "czmlValue": true
+        },
+        "wsenDegrees": {
+            "$ref": "CartographicRectangleValue.json",
+            "description": "The property specified as a Cartographic rectangle `[WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]`, with values in degrees.",
+            "czmlValue": true
+        },
+        "uri": {
+            "$ref": "UriValue.json",
+            "description": "The property specified as a URI.",
+            "czmlValue": true
+        },
+        "verticalOrigin": {
+            "$ref": "VerticalOriginValue.json",
+            "description": "The property specified as a vertical origin.",
             "czmlValue": true
         }
     }
