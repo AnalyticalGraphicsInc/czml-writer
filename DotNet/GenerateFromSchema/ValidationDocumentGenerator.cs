@@ -77,6 +77,7 @@ namespace GenerateFromSchema
 
                         var schemaProperties = schema.Properties
                                                      .Where(p => p.Name != "clock" && p.Name != "availability" && !p.ValueType.IsSchemaFromType)
+                                                     .Where(p => p.Name != "properties")
                                                      .ToList();
 
                         using (writer.OpenScope())
@@ -453,10 +454,10 @@ namespace GenerateFromSchema
                         writer.WriteLine("private void WriteConstantValuesCustomProperties()");
                         using (writer.OpenScope())
                         {
-                            var customPropertiesProperty = schemaProperties.FirstOrDefault(p => p.NameWithPascalCase == "Properties");
-                            if (customPropertiesProperty != null)
+                            var propertiesProperty = schema.Properties.FirstOrDefault(p => p.Name == "properties");
+                            if (propertiesProperty != null)
                             {
-                                var additionalProperties = customPropertiesProperty.ValueType.AdditionalProperties;
+                                var additionalProperties = propertiesProperty.ValueType.AdditionalProperties;
                                 if (additionalProperties != null)
                                 {
                                     writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
@@ -466,7 +467,7 @@ namespace GenerateFromSchema
                                         writer.WriteLine("packet.WriteId(\"{0}\");", id);
                                         WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
 
-                                        writer.WriteLine("using (var w = packet.Open{0}Property())", customPropertiesProperty.NameWithPascalCase);
+                                        writer.WriteLine("using (var w = packet.Open{0}Property())", propertiesProperty.NameWithPascalCase);
                                         using (writer.OpenScope())
                                         {
                                             foreach (var valueProperty in additionalProperties.ValueType.Properties.Where(p => p.IsValue))
@@ -475,7 +476,7 @@ namespace GenerateFromSchema
                                                 writer.WriteLine("using (var w2 = w.Open{0}Property(\"{1}\"))", additionalProperties.ValueType.NameWithPascalCase, propName);
                                                 using (writer.OpenScope())
                                                 {
-                                                    WriteValue(writer, "w2", id + valueProperty.Name, valueProperty, additionalProperties, false, string.Format("{0}.{1}", customPropertiesProperty.Name, propName));
+                                                    WriteValue(writer, "w2", id + valueProperty.Name, valueProperty, additionalProperties, false, string.Format("{0}.{1}", propertiesProperty.Name, propName));
                                                 }
                                             }
                                         }
@@ -1045,10 +1046,10 @@ namespace GenerateFromSchema
                         writer.WriteLine("private void WriteSampledValuesCustomProperties()");
                         using (writer.OpenScope())
                         {
-                            var customPropertiesProperty = schemaProperties.FirstOrDefault(p => p.NameWithPascalCase == "Properties");
-                            if (customPropertiesProperty != null)
+                            var propertiesProperty = schema.Properties.FirstOrDefault(p => p.Name == "properties");
+                            if (propertiesProperty != null)
                             {
-                                var additionalProperties = customPropertiesProperty.ValueType.AdditionalProperties;
+                                var additionalProperties = propertiesProperty.ValueType.AdditionalProperties;
                                 if (additionalProperties != null)
                                 {
                                     writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
@@ -1058,7 +1059,7 @@ namespace GenerateFromSchema
                                         writer.WriteLine("packet.WriteId(\"{0}\");", id);
                                         WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
 
-                                        writer.WriteLine("using (var w = packet.Open{0}Property())", customPropertiesProperty.NameWithPascalCase);
+                                        writer.WriteLine("using (var w = packet.Open{0}Property())", propertiesProperty.NameWithPascalCase);
                                         using (writer.OpenScope())
                                         {
                                             foreach (var valueProperty in additionalProperties.ValueType.Properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array))
@@ -1067,7 +1068,7 @@ namespace GenerateFromSchema
                                                 writer.WriteLine("using (var w2 = w.Open{0}Property(\"{1}\"))", additionalProperties.ValueType.NameWithPascalCase, propName);
                                                 using (writer.OpenScope())
                                                 {
-                                                    WriteValues(writer, "w2", id + valueProperty.Name, valueProperty, additionalProperties, false, string.Format("{0}.{1}", customPropertiesProperty.Name, propName));
+                                                    WriteValues(writer, "w2", id + valueProperty.Name, valueProperty, additionalProperties, false, string.Format("{0}.{1}", propertiesProperty.Name, propName));
                                                 }
                                             }
                                         }

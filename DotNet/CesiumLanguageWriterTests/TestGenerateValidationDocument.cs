@@ -94,9 +94,6 @@ namespace CesiumLanguageWriterTests
                     w.WriteString("string31449");
                     m_assertionsWriter.WriteLine("    expect(e.description.getValue(date)).toEqual('string31449');");
                 }
-                using (var w = packet.OpenPropertiesProperty())
-                {
-                }
                 using (var w = packet.OpenPositionProperty())
                 {
                     w.WriteCartesian(new Cartesian(24944, 16481, 24896));
@@ -1618,7 +1615,6 @@ namespace CesiumLanguageWriterTests
         private void WriteConstantValuesIndividual()
         {
             WriteConstantValuesIndividualDescription();
-            WriteConstantValuesIndividualProperties();
             WriteConstantValuesIndividualPosition();
             WriteConstantValuesIndividualOrientation();
             WriteConstantValuesIndividualViewFrom();
@@ -1643,9 +1639,6 @@ namespace CesiumLanguageWriterTests
             WriteConstantValuesIndividualVector();
         }
         private void WriteConstantValuesIndividualDescription()
-        {
-        }
-        private void WriteConstantValuesIndividualProperties()
         {
         }
         private void WriteConstantValuesIndividualPosition()
@@ -6764,11 +6757,6 @@ namespace CesiumLanguageWriterTests
                         w2.WriteCartographicDegrees(new Cartographic(18, 36, 37743));
                         m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartographicDegrees.getValue(date)).toEqual(Cartesian3.fromDegrees(18, 36, 37743));");
                     }
-                    using (var w2 = w.OpenCustomPropertyProperty("custom_cartesianVelocity"))
-                    {
-                        w2.WriteCartesianVelocity(new Motion<Cartesian>(new Cartesian(59520, 34280, 25989), new Cartesian(42341, 42661, 16038)));
-                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartesianVelocity.getValue(date)).toEqual(new Cartesian3(59520, 34280, 25989));");
-                    }
                     using (var w2 = w.OpenCustomPropertyProperty("custom_cartesian2"))
                     {
                         w2.WriteCartesian2(new Rectangular(44825, 16303));
@@ -6849,10 +6837,10 @@ namespace CesiumLanguageWriterTests
                         w2.WriteString("string41758");
                         m_assertionsWriter.WriteLine("    expect(e.properties.custom_string.getValue(date)).toEqual('string41758');");
                     }
-                    using (var w2 = w.OpenCustomPropertyProperty("custom_StripeOrientation"))
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_stripeOrientation"))
                     {
                         w2.WriteStripeOrientation(CesiumStripeOrientation.Vertical);
-                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_StripeOrientation.getValue(date)).toEqual(StripeOrientation.VERTICAL);");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_stripeOrientation.getValue(date)).toEqual(StripeOrientation.VERTICAL);");
                     }
                     using (var w2 = w.OpenCustomPropertyProperty("custom_wsen"))
                     {
@@ -6929,9 +6917,6 @@ namespace CesiumLanguageWriterTests
                 {
                     w.WriteReference(new Reference("Constant", "description"));
                     m_assertionsWriter.WriteLine("    expect(e.description.getValue(date)).toEqual(constant.description.getValue(date));");
-                }
-                using (var w = packet.OpenPropertiesProperty())
-                {
                 }
                 using (var w = packet.OpenPositionProperty())
                 {
@@ -8389,7 +8374,6 @@ namespace CesiumLanguageWriterTests
         private void WriteReferenceValuesIndividual()
         {
             WriteReferenceValuesIndividualDescription();
-            WriteReferenceValuesIndividualProperties();
             WriteReferenceValuesIndividualPosition();
             WriteReferenceValuesIndividualOrientation();
             WriteReferenceValuesIndividualViewFrom();
@@ -8436,9 +8420,6 @@ namespace CesiumLanguageWriterTests
             }
         }
         private void WriteReferenceValuesIndividualDescription()
-        {
-        }
-        private void WriteReferenceValuesIndividualProperties()
         {
         }
         private void WriteReferenceValuesIndividualPosition()
@@ -12341,7 +12322,6 @@ namespace CesiumLanguageWriterTests
         private void WriteSampledValuesIndividual()
         {
             WriteSampledValuesIndividualDescription();
-            WriteSampledValuesIndividualProperties();
             WriteSampledValuesIndividualPosition();
             WriteSampledValuesIndividualOrientation();
             WriteSampledValuesIndividualViewFrom();
@@ -12366,9 +12346,6 @@ namespace CesiumLanguageWriterTests
             WriteSampledValuesIndividualVector();
         }
         private void WriteSampledValuesIndividualDescription()
-        {
-        }
-        private void WriteSampledValuesIndividualProperties()
         {
         }
         private void WriteSampledValuesIndividualPosition()
@@ -17409,12 +17386,6 @@ namespace CesiumLanguageWriterTests
                         w2.WriteCartographicDegrees(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Cartographic(44, 31, 55762), new Cartographic(10, 18, 28847)));
                         m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartographicDegrees.getValue(documentStartDate)).toEqual(Cartesian3.fromDegrees(44, 31, 55762));");
                         m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartographicDegrees.getValue(documentStopDate)).toEqual(Cartesian3.fromDegrees(10, 18, 28847));");
-                    }
-                    using (var w2 = w.OpenCustomPropertyProperty("custom_cartesianVelocity"))
-                    {
-                        w2.WriteCartesianVelocity(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Motion<Cartesian>(new Cartesian(52722, 32461, 63358), new Cartesian(52983, 62670, 42484)), new Motion<Cartesian>(new Cartesian(13465, 14644, 62777), new Cartesian(41461, 28833, 44400))));
-                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartesianVelocity.getValue(documentStartDate)).toEqual(new Cartesian3(52722, 32461, 63358));");
-                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_cartesianVelocity.getValue(documentStopDate)).toEqual(new Cartesian3(13465, 14644, 62777));");
                     }
                     using (var w2 = w.OpenCustomPropertyProperty("custom_cartesian2"))
                     {
