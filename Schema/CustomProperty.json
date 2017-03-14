@@ -39,11 +39,6 @@
             "description": "The property specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in degrees.",
             "czmlValue": true
         },
-        "cartesianVelocity": {
-            "$ref": "Cartesian3VelocityValue.json",
-            "description": "The property specified as a three-dimensional Cartesian value and its derivative, `[X, Y, Z, dX, dY, dZ]`.",
-            "czmlValue": true
-        },
         "cartesian2": {
             "$ref": "Cartesian2Value.json",
             "description": "The property specified as a two-dimensional Cartesian value `[X, Y]`.",
@@ -124,7 +119,7 @@
             "description": "The property specified as a string.",
             "czmlValue": true
         },
-        "StripeOrientation": {
+        "stripeOrientation": {
             "$ref": "StripeOrientationValue.json",
             "description": "The property specified as an orientation of stripes in the stripe material.",
             "czmlValue": true
