@@ -376,9 +376,9 @@ public class TestUnitCartesian3 {
         double b = 2.0 * (sin * sin + sin * cos * Math.sqrt(3.0)) / 3.0;
         double c = 2.0 * (sin * sin - sin * cos * Math.sqrt(3.0)) / 3.0;
         // The three vectors here are the orthonormal set obtained by rotating
-		// the x-axis, y-axis, and z-axis through an angle of 45 degrees about
-		// the (1,1,1) vector.
-		UnitCartesian first = new UnitCartesian(a, b, c);
+        // the x-axis, y-axis, and z-axis through an angle of 45 degrees about
+        // the (1,1,1) vector.
+        UnitCartesian first = new UnitCartesian(a, b, c);
         UnitCartesian second = new UnitCartesian(c, a, b);
         UnitCartesian third = new UnitCartesian(b, c, a);
         Cartesian result = first.cross(Cartesian.toCartesian(second));

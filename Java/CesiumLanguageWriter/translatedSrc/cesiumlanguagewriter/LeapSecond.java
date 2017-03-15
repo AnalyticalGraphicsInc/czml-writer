@@ -57,7 +57,7 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     */
     public LeapSecond(JulianDate date, double totalTaiOffsetFromUtc) {
         // Force the time standard to be UTC.
-		m_date = new JulianDate(date.getDay(), date.getSecondsOfDay(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
+        m_date = new JulianDate(date.getDay(), date.getSecondsOfDay(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
         m_totalTaiOffsetFromUtc = totalTaiOffsetFromUtc;
     }
 

@@ -107,7 +107,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
         int startComparedToDate = m_start.compareTo(date);
         int dateComparedToStop = date.compareTo(m_stop);
         // return start < date && date < stop
-		return startComparedToDate <= 0 && dateComparedToStop <= 0;
+        return startComparedToDate <= 0 && dateComparedToStop <= 0;
     }
 
     /**

@@ -77,8 +77,8 @@ public final class CesiumFormattingHelper {
     */
     public static String toIso8601(JulianDate date, Iso8601Format format) {
         //If the JulianDate is outside the range of supported CZML values,
-		//clamp it to the minimum/maximum CZML ISO8601 value.
-		if (JulianDate.lessThanOrEqual(date, s_minimumDate)) {
+        //clamp it to the minimum/maximum CZML ISO8601 value.
+        if (JulianDate.lessThanOrEqual(date, s_minimumDate)) {
             return GregorianDate.MinValue.toIso8601String(format);
         }
         if (JulianDate.greaterThanOrEqual(date, s_maximumDate)) {

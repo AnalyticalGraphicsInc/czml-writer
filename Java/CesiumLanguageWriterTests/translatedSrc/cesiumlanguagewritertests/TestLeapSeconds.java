@@ -180,7 +180,7 @@ public class TestLeapSeconds {
             }
         }
         //5 second difference, so 50 additions of a tenth of a second each
-		Assert.assertEquals((int) 50, (int) i);
+        Assert.assertEquals((int) 50, (int) i);
     }
 
     private TestContextRule rule$testContext = new TestContextRule();

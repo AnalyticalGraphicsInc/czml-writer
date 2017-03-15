@@ -3,6 +3,7 @@ package cesiumlanguagewriter.advanced;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentException;
+import agi.foundation.compatibility.ArrayHelper;
 import cesiumlanguagewriter.*;
 import java.awt.Color;
 import java.util.List;
@@ -1025,7 +1026,7 @@ public final class CesiumWritingHelper {
     * @param propertyNames The hierarchy of property names, where each name is a subproperty of the previous item.
     */
     public static void writeReference(CesiumOutputStream output, String identifier, String[] propertyNames) {
-        writeReference(output, new Reference(identifier, agi.foundation.compatibility.ArrayHelper.arrayAsList(propertyNames)));
+        writeReference(output, new Reference(identifier, ArrayHelper.arrayAsList(propertyNames)));
     }
 
     /**

@@ -83,7 +83,7 @@ public class TestYearMonthDay {
         for (int i = 1; i < 10000; ++i) {
             Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 1));
             // January
-			if ((i % 4 == 0) && !((i % 100 == 0) && (i % 400 != 0))) {
+            if ((i % 4 == 0) && !((i % 100 == 0) && (i % 400 != 0))) {
                 Assert.assertEquals((int) 29, (int) YearMonthDay.daysInMonth(i, 2));
                 // February of a leap year
             } else {
@@ -92,23 +92,23 @@ public class TestYearMonthDay {
             }
             Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 3));
             // March
-			Assert.assertEquals((int) 30, (int) YearMonthDay.daysInMonth(i, 4));
+            Assert.assertEquals((int) 30, (int) YearMonthDay.daysInMonth(i, 4));
             // April
-			Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 5));
+            Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 5));
             // May
-			Assert.assertEquals((int) 30, (int) YearMonthDay.daysInMonth(i, 6));
+            Assert.assertEquals((int) 30, (int) YearMonthDay.daysInMonth(i, 6));
             // June
-			Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 7));
+            Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 7));
             // July
-			Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 8));
+            Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 8));
             // August
-			Assert.assertEquals((int) 30, (int) YearMonthDay.daysInMonth(i, 9));
+            Assert.assertEquals((int) 30, (int) YearMonthDay.daysInMonth(i, 9));
             // September
-			Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 10));
+            Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 10));
             // October
-			Assert.assertEquals((int) 30, (int) YearMonthDay.daysInMonth(i, 11));
+            Assert.assertEquals((int) 30, (int) YearMonthDay.daysInMonth(i, 11));
             // November
-			Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 12));
+            Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 12));
             // December
         }
     }
@@ -312,13 +312,13 @@ public class TestYearMonthDay {
             int cumulativeDays = 0;
             for (int month = 1; month <= 12; ++month) {
                 // Test first of the month.
-				YearMonthDay ymd = new YearMonthDay(year, cumulativeDays + 1);
+                YearMonthDay ymd = new YearMonthDay(year, cumulativeDays + 1);
                 Assert.assertEquals((int) year, (int) ymd.getYear());
                 Assert.assertEquals((int) month, (int) ymd.getMonth());
                 Assert.assertEquals((int) 1, (int) ymd.getDay());
                 int daysInMonth = YearMonthDay.daysInMonth(year, month);
                 // Test last of the month.
-				ymd = new YearMonthDay(year, cumulativeDays + daysInMonth);
+                ymd = new YearMonthDay(year, cumulativeDays + daysInMonth);
                 Assert.assertEquals((int) year, (int) ymd.getYear());
                 Assert.assertEquals((int) month, (int) ymd.getMonth());
                 Assert.assertEquals((int) daysInMonth, (int) ymd.getDay());

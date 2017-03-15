@@ -111,13 +111,13 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     */
     public Duration(int days, double seconds) {
         // Ensure that the number of seconds is less than a whole (positive or negative) day.
-		if (seconds >= 86400.0 || seconds <= -86400.0) {
+        if (seconds >= 86400.0 || seconds <= -86400.0) {
             int newDays = (int) (seconds / TimeConstants.SecondsPerDay);
             days += newDays;
             seconds -= TimeConstants.SecondsPerDay * newDays;
         }
         // Ensure that days and seconds are either both negative or both positive
-		if (days < 0 && seconds > 0) {
+        if (days < 0 && seconds > 0) {
             ++days;
             seconds -= TimeConstants.SecondsPerDay;
             if (seconds < -TimeConstants.NextBefore86400) {

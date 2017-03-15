@@ -140,7 +140,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
         m_day = day;
         m_secondsOfDay = secondsOfDay;
         // Normalize so that the number of seconds is >= 0 and < a day.
-		if (m_secondsOfDay < 0) {
+        if (m_secondsOfDay < 0) {
             int wholeDays = (int) (m_secondsOfDay / TimeConstants.SecondsPerDay) - 1;
             m_day += wholeDays;
             m_secondsOfDay -= TimeConstants.SecondsPerDay * wholeDays;
@@ -419,9 +419,9 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     public final JulianDate add(Duration duration) {
         if (m_timeStandard == TimeStandard.COORDINATED_UNIVERSAL_TIME) {
             // Do the addition in the addition time standard
-			JulianDate resultInAdditionStandard = toTimeStandard(TimeStandard.INTERNATIONAL_ATOMIC_TIME).addIgnoringTimeStandard(duration);
+            JulianDate resultInAdditionStandard = toTimeStandard(TimeStandard.INTERNATIONAL_ATOMIC_TIME).addIgnoringTimeStandard(duration);
             //then convert back if possible
-			@CS2JInfo("Initialization of C# struct variable 'result' added by translator.")
+            @CS2JInfo("Initialization of C# struct variable 'result' added by translator.")
             JulianDate result = new JulianDate();
             final JulianDate[] out$result$3 = {
                 null
@@ -432,10 +432,10 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
                 return result;
             }
             //if we couldn't convert back, then use the valid result in the addition standard
-			return resultInAdditionStandard;
+            return resultInAdditionStandard;
         }
         // Time standards match up, so do the addition directly.
-		return addIgnoringTimeStandard(duration);
+        return addIgnoringTimeStandard(duration);
     }
 
     private final JulianDate addIgnoringTimeStandard(Duration duration) {
@@ -467,16 +467,16 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     public final Duration subtract(JulianDate subtrahend) {
         if (getStandard() != TimeStandard.INTERNATIONAL_ATOMIC_TIME && subtrahend.getStandard() != TimeStandard.INTERNATIONAL_ATOMIC_TIME) {
             // Convert both the subtrahend and the minuend to the subtraction time standard.
-			return toInternationalAtomicTime().subtractIgnoringTimeStandard(subtrahend.toInternationalAtomicTime(), subtrahend.getStandard());
+            return toInternationalAtomicTime().subtractIgnoringTimeStandard(subtrahend.toInternationalAtomicTime(), subtrahend.getStandard());
         } else if (getStandard() != TimeStandard.INTERNATIONAL_ATOMIC_TIME) {
             return toInternationalAtomicTime().subtractIgnoringTimeStandard(subtrahend, subtrahend.getStandard());
         } else if (subtrahend.getStandard() != TimeStandard.INTERNATIONAL_ATOMIC_TIME) {
             return subtractIgnoringTimeStandard(subtrahend.toInternationalAtomicTime(), subtrahend.getStandard());
         } else {
             // Convert the minuend to the subtraction time standard - subtrahend is already in the correct standard.
-			// Convert the subtrahend to the subtraction time standard - minuend is already in the correct standard.
-			// Time standards match up, so do the subtraction directly.
-			return subtractIgnoringTimeStandard(subtrahend, subtrahend.getStandard());
+            // Convert the subtrahend to the subtraction time standard - minuend is already in the correct standard.
+            // Time standards match up, so do the subtraction directly.
+            return subtractIgnoringTimeStandard(subtrahend, subtrahend.getStandard());
         }
     }
 
@@ -841,7 +841,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     */
     public final int compareTo(JulianDate other) {
         // If the days aren't even close, don't bother thinking about the time standard.
-		int isClose = isClose(other);
+        int isClose = isClose(other);
         if (isClose != 0) {
             return isClose;
         }
@@ -858,7 +858,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
             self = this;
         } else {
             //if we can't convert the other date to our time standard, then try our ArithmeticSafeStandard
-			self = toInternationalAtomicTime();
+            self = toInternationalAtomicTime();
             otherDate = other.toInternationalAtomicTime();
         }
         if (self.getDay() != otherDate.getDay()) {

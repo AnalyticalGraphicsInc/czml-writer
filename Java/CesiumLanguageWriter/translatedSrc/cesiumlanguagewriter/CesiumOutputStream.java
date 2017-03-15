@@ -251,7 +251,7 @@ public class CesiumOutputStream {
             char c = value.charAt(i);
             String escapedValue;
             // Paragraph Separator
-			switch (c) {
+            switch (c) {
             case '\t': {
                 escapedValue = "\\t";
                 break;
@@ -302,19 +302,19 @@ public class CesiumOutputStream {
                     chars = value.toCharArray();
                 }
                 // write skipped text
-				if (skipped > 0) {
+                if (skipped > 0) {
                     TextWriterHelper.print(writer, chars, lastWritePosition, skipped);
                     skipped = 0;
                 }
                 // write escaped value and note position
-				TextWriterHelper.print(writer, escapedValue);
+                TextWriterHelper.print(writer, escapedValue);
                 lastWritePosition = i + 1;
             } else {
                 skipped++;
             }
         }
         // write any remaining skipped text
-		if (skipped > 0) {
+        if (skipped > 0) {
             if (lastWritePosition == 0) {
                 TextWriterHelper.print(writer, value);
             } else {

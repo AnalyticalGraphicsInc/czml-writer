@@ -47,7 +47,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     public YearMonthDay(int year, int month, int day) {
         if (isValidDate(year, month, day)) {
             //fields are stored zero-indexed
-			m_year = year - 1;
+            m_year = year - 1;
             m_month = month - 1;
             m_day = day - 1;
         } else {
@@ -69,16 +69,16 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     public YearMonthDay(int year, int dayOfYear) {
         if (dayOfYear <= daysInYear(year)) {
             //year is stored zero-indexed
-			m_year = year - 1;
+            m_year = year - 1;
             int[] cumulativeDays = isLeapYear(year) ? s_leapYearCumulativeMonthTable : s_commonYearCumulativeMonthTable;
             //month is stored zero-indexed
-			for (m_month = 11; m_month > 0; --m_month) {
+            for (m_month = 11; m_month > 0; --m_month) {
                 if (cumulativeDays[m_month] < dayOfYear) {
                     break;
                 }
             }
             //day is stored zero-indexed
-			m_day = dayOfYear - cumulativeDays[m_month] - 1;
+            m_day = dayOfYear - cumulativeDays[m_month] - 1;
             if (!isValidDate(m_year + 1, m_month + 1, m_day + 1)) {
                 throw new ArgumentException(CesiumLocalization.getYearMonthDayInvalidArgument());
             }
@@ -101,8 +101,8 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public YearMonthDay(int astronomicalJulianDayNumber) {
         // Algorithm from page 604 of the Explanatory Supplement to the
-		// Astronomical Almanac (Seidelmann 1992).
-		int L = astronomicalJulianDayNumber + 68569;
+        // Astronomical Almanac (Seidelmann 1992).
+        int L = astronomicalJulianDayNumber + 68569;
         int N = 4 * L / 146097;
         L = L - (146097 * N + 3) / 4;
         int I = 4000 * (L + 1) / 1461001;
@@ -174,7 +174,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     */
     public final int getMonth() {
         //month is stored zero-indexed
-		return m_month + 1;
+        return m_month + 1;
     }
 
     /**
@@ -185,7 +185,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     */
     public final int getDay() {
         //day is stored zero-indexed
-		return m_day + 1;
+        return m_day + 1;
     }
 
     /**
@@ -221,8 +221,8 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     */
     public final int getJulianDayNumber() {
         // Algorithm from page 604 of the Explanatory Supplement to the
-		// Astronomical Almanac (Seidelmann 1992).
-		int a = (getMonth() - 14) / 12;
+        // Astronomical Almanac (Seidelmann 1992).
+        int a = (getMonth() - 14) / 12;
         int b = getYear() + 4800 + a;
         return 1461 * b / 4 + 367 * (getMonth() - 2 - 12 * a) / 12 - 3 * ((b + 100) / 100) / 4 + getDay() - 32075;
     }
@@ -505,7 +505,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     //fields are stored zero-indexed so that default-constructed instances are valid
-	private int m_year;
+    private int m_year;
     private int m_month;
     private int m_day;
     private static int[] s_commonYearCumulativeMonthTable = {

@@ -45,7 +45,7 @@ public final class StringFormatting {
         }
         int desiredIndexOfSeparator = indexOfSeparator + exponent;
         // Pad the beginning or end with zeros if necessary
-		if (desiredIndexOfSeparator <= 0) {
+        if (desiredIndexOfSeparator <= 0) {
             withoutDecimalSeparator = StringHelper.create('0', -desiredIndexOfSeparator + 1) + withoutDecimalSeparator;
             desiredIndexOfSeparator = 1;
         } else if (desiredIndexOfSeparator >= withoutDecimalSeparator.length()) {

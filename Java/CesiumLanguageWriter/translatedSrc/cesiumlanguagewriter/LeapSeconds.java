@@ -112,17 +112,17 @@ public class LeapSeconds {
     public final double getTaiMinusUtc(JulianDate date) {
         LeapSecond toFind = new LeapSecond(date, 0.0);
         // Start by assuming we're working with UTC, we'll check later if we're
-		// off by one because we really have TAI.
-		int index = Collections.binarySearch(m_leapSeconds, toFind, s_compareLeapSecondDate);
+        // off by one because we really have TAI.
+        int index = Collections.binarySearch(m_leapSeconds, toFind, s_compareLeapSecondDate);
         if (index < 0) {
             index = ~index;
             --index;
         }
         // Check if we're off by one because we're really working with TAI.
-		// If the requested date minus the most recent previous leap second offset is less than the date
-		// for the current leap second, then we haven't quite gotten to that leap second yet.
-		// This gets a little tricky because JulianDate and its conversion mechanisms try to outsmart us.
-		if (date.getStandard() == TimeStandard.INTERNATIONAL_ATOMIC_TIME) {
+        // If the requested date minus the most recent previous leap second offset is less than the date
+        // for the current leap second, then we haven't quite gotten to that leap second yet.
+        // This gets a little tricky because JulianDate and its conversion mechanisms try to outsmart us.
+        if (date.getStandard() == TimeStandard.INTERNATIONAL_ATOMIC_TIME) {
             JulianDate lastDate = getDateForIndex(index);
             JulianDate taiCutoff = new JulianDate(lastDate.getDay(), lastDate.getSecondsOfDay(), TimeStandard.INTERNATIONAL_ATOMIC_TIME);
             taiCutoff = JulianDate.add(taiCutoff, Duration.fromSeconds(getOffsetForIndex(index)));
@@ -181,22 +181,22 @@ public class LeapSeconds {
     @Internal
     public final boolean tryConvertTaiToUtc(JulianDate date, JulianDate[] result) {
         //treat the request date as if it were UTC, and search for the most recent leap second.
-		LeapSecond toFind = new LeapSecond(date, 0.0);
+        LeapSecond toFind = new LeapSecond(date, 0.0);
         int index = Collections.binarySearch(m_leapSeconds, toFind, s_compareLeapSecondDate);
         if (index < 0) {
             index = ~index;
             --index;
         }
         //now we have the index of the most recent leap second that is after the requested date
-		if (index >= 0) {
+        if (index >= 0) {
             double mostRecentOffset = getOffsetForIndex(index);
             JulianDate leapSecondDate = getDateForIndex(index);
             if (date.getDay() == leapSecondDate.getDay()) {
                 //if the requested date is on the day of the leap second, we may have to adjust
-				double secondsSinceLeapSecond = date.getSecondsOfDay() - leapSecondDate.getSecondsOfDay();
+                double secondsSinceLeapSecond = date.getSecondsOfDay() - leapSecondDate.getSecondsOfDay();
                 if (secondsSinceLeapSecond >= mostRecentOffset - 1 && secondsSinceLeapSecond < mostRecentOffset) {
                     //if the requested date is during the moment of a leap second, then we cannot convert to UTC.
-					result[0] = JulianDate.getMinValue();
+                    result[0] = JulianDate.getMinValue();
                     return false;
                 }
                 if (secondsSinceLeapSecond < mostRecentOffset) {

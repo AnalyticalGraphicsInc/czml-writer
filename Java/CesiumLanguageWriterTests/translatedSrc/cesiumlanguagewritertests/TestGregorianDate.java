@@ -302,7 +302,7 @@ public class TestGregorianDate {
         DateTime aTime = new DateTime(2000, 2, 28, 1, 3, 4, 0, org.joda.time.DateTimeZone.UTC);
         Assert.assertEquals((int) 31 + 28, (int) aTime.getDayOfYear());
         //* January has 31 days, so add 28 to that...
-		GregorianDate sameDate = new GregorianDate(aTime.getYear(), aTime.getDayOfYear());
+        GregorianDate sameDate = new GregorianDate(aTime.getYear(), aTime.getDayOfYear());
         Assert.assertEquals((int) 2000, (int) sameDate.getYear());
         Assert.assertEquals((int) 59, (int) sameDate.getDayOfYear());
         Assert.assertEquals((int) 2, (int) sameDate.getMonth());
@@ -311,11 +311,11 @@ public class TestGregorianDate {
         Assert.assertEquals(0, sameDate.getSecond(), 0d);
         sameDate = new GregorianDate(2000, 60.6);
         //* 60 days and 14.4 hours, or 14 hours and 24 minutes (1/10 of a day is 2.4 hours, times that by 6)
-		Assert.assertEquals((int) 2000, (int) sameDate.getYear());
+        Assert.assertEquals((int) 2000, (int) sameDate.getYear());
         Assert.assertEquals((int) 60, (int) sameDate.getDayOfYear());
         Assert.assertEquals((int) 2, (int) sameDate.getMonth());
         //* leap year
-		Assert.assertEquals((int) 14, (int) sameDate.getHour());
+        Assert.assertEquals((int) 14, (int) sameDate.getHour());
         Assert.assertEquals((int) 24, (int) sameDate.getMinute());
         Assert.assertEquals(0D, sameDate.getSecond(), Constants.Epsilon9);
         //* Richard and Michael both said this is ok
@@ -346,9 +346,9 @@ public class TestGregorianDate {
     @Test
     public final void testSixtySecondsAreNotValidIfTheInstantDoesNotRepresentALeapSecond() {
         //12/30/2008 was not the day of a leap second day.
-		Assert.assertFalse(GregorianDate.isValid(2008, 12, 30, 23, 59, 60D));
+        Assert.assertFalse(GregorianDate.isValid(2008, 12, 30, 23, 59, 60D));
         //23:58 is one minute before a valid leap second.
-		Assert.assertFalse(GregorianDate.isValid(2008, 12, 31, 23, 58, 60D));
+        Assert.assertFalse(GregorianDate.isValid(2008, 12, 31, 23, 58, 60D));
     }
 
     @Test

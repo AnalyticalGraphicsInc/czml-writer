@@ -3,6 +3,7 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JWarning;
+import agi.foundation.compatibility.ArrayHelper;
 import agi.foundation.compatibility.ColorHelper;
 import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.StreamWriterHelper;
@@ -43,7 +44,7 @@ public class TestGenerateValidationDocument {
     }
 
     private static <T> List<T> createList(T... ts) {
-        return agi.foundation.compatibility.ArrayHelper.arrayAsList(ts);
+        return ArrayHelper.arrayAsList(ts);
     }
 
     @Test

@@ -214,7 +214,7 @@ public class TestMatrix3By3 {
         Assert.assertFalse(Matrix3By3.getIdentity().getIsUndefined());
         Assert.assertTrue(Matrix3By3.getUndefined().getIsUndefined());
         //* Check what happens if any of the elements are NaN
-		for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             double[] values = new double[9];
             for (int k = 0; k < 9; k++) {
                 values[k] = 1.0;
@@ -280,9 +280,9 @@ public class TestMatrix3By3 {
         double b = 2.0 * (sin * sin + sin * cos * Math.sqrt(3.0)) / 3.0;
         double c = 2.0 * (sin * sin - sin * cos * Math.sqrt(3.0)) / 3.0;
         // The matrix here is formed from the orthonormal set obtained by rotating
-		// the x-axis, y-axis, and z-axis through an angle of 45 degrees about
-		// the (1,1,1) vector.
-		Matrix3By3 test = new Matrix3By3(a, c, b, b, a, c, c, b, a);
+        // the x-axis, y-axis, and z-axis through an angle of 45 degrees about
+        // the (1,1,1) vector.
+        Matrix3By3 test = new Matrix3By3(a, c, b, b, a, c, c, b, a);
         Matrix3By3 transpose = test.transpose();
         Matrix3By3 result = test.multiply(transpose);
         Assert.assertTrue(result.equalsEpsilon(Matrix3By3.getIdentity(), 1e-16));
