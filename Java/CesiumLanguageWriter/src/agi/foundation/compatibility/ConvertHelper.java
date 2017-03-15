@@ -291,6 +291,7 @@ public final class ConvertHelper {
             throw new RuntimeIOException(e);
         }
     }
+
     // @formatter:off
     /**
      * <p>Encodes and decodes to and from Base64 notation.</p>
@@ -443,6 +444,7 @@ public final class ConvertHelper {
     {
 
     /* ********  P U B L I C   F I E L D S  ******** */
+
 
         /** No options specified. Value is zero. */
         public final static int NO_OPTIONS = 0;

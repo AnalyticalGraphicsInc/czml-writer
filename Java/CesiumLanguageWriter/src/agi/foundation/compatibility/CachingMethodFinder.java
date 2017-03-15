@@ -16,7 +16,9 @@ import agi.foundation.TypeLiteral;
  */
 class CachingMethodFinder {
     private enum SearchCriteria {
-        STATIC_METHODS_ONLY, INSTANCE_METHODS_ONLY, CHECK_PARAMETER_TYPES
+        STATIC_METHODS_ONLY,
+        INSTANCE_METHODS_ONLY,
+        CHECK_PARAMETER_TYPES
     }
 
     private static final EnumSet<SearchCriteria> delegateObjectSearchCriteria;

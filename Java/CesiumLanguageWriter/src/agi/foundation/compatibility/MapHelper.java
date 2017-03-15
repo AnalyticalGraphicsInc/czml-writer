@@ -10,7 +10,7 @@ public final class MapHelper {
 
     /**
      * Gets the value associated with the specified key.
-     * 
+     *
      * @param map
      *            map to get value from
      * @param key
@@ -33,7 +33,7 @@ public final class MapHelper {
 
     /**
      * Removes the value with the specified key from the map.
-     * 
+     *
      * @param map
      *            the map
      * @param key
@@ -52,7 +52,7 @@ public final class MapHelper {
 
     /**
      * Adds the specified key and value to the dictionary.
-     * 
+     *
      * @param map
      *            the map
      * @param key

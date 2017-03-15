@@ -5,7 +5,12 @@ package agi.foundation.compatibility;
  * {@link StringHelper#compare(String,String)} and {@link String#equals(Object)} methods.
  */
 public enum StringComparison implements Enumeration {
-    CURRENT_CULTURE(0), CURRENT_CULTURE_IGNORE_CASE(1), INVARIANT_CULTURE(2), INVARIANT_CULTURE_IGNORE_CASE(3), ORDINAL(4), ORDINAL_IGNORE_CASE(5);
+    CURRENT_CULTURE(0),
+    CURRENT_CULTURE_IGNORE_CASE(1),
+    INVARIANT_CULTURE(2),
+    INVARIANT_CULTURE_IGNORE_CASE(3),
+    ORDINAL(4),
+    ORDINAL_IGNORE_CASE(5);
     private final int value;
 
     StringComparison(int value) {
@@ -14,16 +19,17 @@ public enum StringComparison implements Enumeration {
 
     /**
      * Get the numeric value associated with this enum constant.
-     * 
+     *
      * @return A numeric value.
      */
+    @Override
     public int getValue() {
         return value;
     }
 
     /**
      * Get the enum constant that is associated with the given numeric value.
-     * 
+     *
      * @return The enum constant associated with value.
      * @param value
      *            a numeric value.
@@ -49,7 +55,7 @@ public enum StringComparison implements Enumeration {
 
     /**
      * Get the enum constant that is considered to be the default.
-     * 
+     *
      * @return The default enum constant.
      */
     public static StringComparison getDefault() {

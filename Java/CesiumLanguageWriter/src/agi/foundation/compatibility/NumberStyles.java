@@ -11,22 +11,26 @@ public class NumberStyles implements Enumeration {
      * Indicates that none of the bit styles are allowed.
      */
     public static final NumberStyles NONE = new NumberStyles();
+
     /**
      * Indicates that the numeric string is parsed as currency if it contains a currency
      * symbol; otherwise, it is parsed as a number. Valid currency symbols are determined
      * by the {@link NumberFormatInfo.CurrencySymbol} property of .
      */
     public static final NumberStyles ALLOW_CURRENCY_SYMBOL = new NumberStyles(Values.ALLOW_CURRENCY_SYMBOL);
+
     /**
      * Indicates that the numeric string can have a decimal point. Valid decimal point
      * characters are determined by the {@link NumberFormatInfo.NumberDecimalSeparator}
      * and properties of .
      */
     public static final NumberStyles ALLOW_DECIMAL_POINT = new NumberStyles(Values.ALLOW_DECIMAL_POINT);
+
     /**
      * Indicates that the numeric string can be in exponential notation.
      */
     public static final NumberStyles ALLOW_EXPONENT = new NumberStyles(Values.ALLOW_EXPONENT);
+
     /**
      * Indicates that the numeric string represents a hexadecimal value. Valid hexadecimal
      * values include the numeric digits 0-9 and the hexadecimal digits A-F and a-f.
@@ -34,23 +38,27 @@ public class NumberStyles implements Enumeration {
      * are not permitted to be prefixed with "0x".
      */
     public static final NumberStyles ALLOW_HEX_SPECIFIER = new NumberStyles(Values.ALLOW_HEX_SPECIFIER);
+
     /**
      * Indicates that the numeric string can have a leading sign. Valid leading sign
      * characters are determined by the {@link NumberFormatInfo.PositiveSign} and
      * properties of .
      */
     public static final NumberStyles ALLOW_LEADING_SIGN = new NumberStyles(Values.ALLOW_LEADING_SIGN);
+
     /**
      * Indicates that a leading white-space character must be ignored during parsing.
      * Valid white-space characters have the Unicode values U+0009, U+000A, U+000B,
      * U+000C, U+000D, and U+0020.
      */
     public static final NumberStyles ALLOW_LEADING_WHITE = new NumberStyles(Values.ALLOW_LEADING_WHITE);
+
     /**
      * Indicates that the numeric string can have one pair of parentheses enclosing the
      * number.
      */
     public static final NumberStyles ALLOW_PARENTHESES = new NumberStyles(Values.ALLOW_PARENTHESES);
+
     /**
      * Indicates that the numeric string can have group separators; for example,
      * separating the hundreds from the thousands. Valid group separator characters are
@@ -58,30 +66,35 @@ public class NumberStyles implements Enumeration {
      * and the number of digits in each group is determined by the and properties of .
      */
     public static final NumberStyles ALLOW_THOUSANDS = new NumberStyles(Values.ALLOW_THOUSANDS);
+
     /**
      * Indicates that the numeric string can have a trailing sign. Valid trailing sign
      * characters are determined by the {@link NumberFormatInfo.PositiveSign} and
      * properties of .
      */
     public static final NumberStyles ALLOW_TRAILING_SIGN = new NumberStyles(Values.ALLOW_TRAILING_SIGN);
+
     /**
      * Indicates that trailing white-space character must be ignored during parsing. Valid
      * white-space characters have the Unicode values U+0009, U+000A, U+000B, U+000C,
      * U+000D, and U+0020.
      */
     public static final NumberStyles ALLOW_TRAILING_WHITE = new NumberStyles(Values.ALLOW_TRAILING_WHITE);
+
     /**
      * Indicates that all styles, except AllowHexSpecifier, are used. This is a composite
      * number style.
      */
     public static final NumberStyles ANY = new NumberStyles(Values.ALLOW_LEADING_WHITE, Values.ALLOW_TRAILING_WHITE, Values.ALLOW_LEADING_SIGN, Values.ALLOW_TRAILING_SIGN,
             Values.ALLOW_PARENTHESES, Values.ALLOW_DECIMAL_POINT, Values.ALLOW_THOUSANDS, Values.ALLOW_EXPONENT, Values.ALLOW_CURRENCY_SYMBOL);
+
     /**
      * Indicates that all styles, except AllowExponent and AllowHexSpecifier, are used.
      * This is a composite number style.
      */
     public static final NumberStyles CURRENCY = new NumberStyles(Values.ALLOW_LEADING_WHITE, Values.ALLOW_TRAILING_WHITE, Values.ALLOW_LEADING_SIGN,
             Values.ALLOW_TRAILING_SIGN, Values.ALLOW_PARENTHESES, Values.ALLOW_DECIMAL_POINT, Values.ALLOW_THOUSANDS, Values.ALLOW_CURRENCY_SYMBOL);
+
     /**
      * Indicates that the AllowLeadingWhite, AllowTrailingWhite, AllowLeadingSign,
      * AllowDecimalPoint, and AllowExponent styles are used. This is a composite number
@@ -89,16 +102,19 @@ public class NumberStyles implements Enumeration {
      */
     public static final NumberStyles FLOAT = new NumberStyles(Values.ALLOW_LEADING_WHITE, Values.ALLOW_TRAILING_WHITE, Values.ALLOW_LEADING_SIGN, Values.ALLOW_DECIMAL_POINT,
             Values.ALLOW_EXPONENT);
+
     /**
      * Indicates that the AllowLeadingWhite, AllowTrailingWhite, and AllowHexSpecifier
      * styles are used. This is a composite number style.
      */
     public static final NumberStyles HEX_NUMBER = new NumberStyles(Values.ALLOW_LEADING_WHITE, Values.ALLOW_TRAILING_WHITE, Values.ALLOW_HEX_SPECIFIER);
+
     /**
      * Indicates that the AllowLeadingWhite, AllowTrailingWhite, and AllowLeadingSign
      * styles are used. This is a composite number style.
      */
     public static final NumberStyles INTEGER = new NumberStyles(Values.ALLOW_LEADING_WHITE, Values.ALLOW_TRAILING_WHITE, Values.ALLOW_LEADING_SIGN);
+
     /**
      * Indicates that the AllowLeadingWhite, AllowTrailingWhite, AllowLeadingSign,
      * AllowTrailingSign, AllowDecimalPoint, and AllowThousands styles are used. This is a
@@ -127,7 +143,7 @@ public class NumberStyles implements Enumeration {
 
         /**
          * Get the numeric value associated with this enum constant.
-         * 
+         *
          * @return A numeric value.
          */
         public int getValue() {
@@ -136,7 +152,7 @@ public class NumberStyles implements Enumeration {
 
         /**
          * Get the enum constant that is associated with the given numeric value.
-         * 
+         *
          * @return The enum constant associated with value.
          * @param value
          *            a numeric value.
@@ -174,26 +190,26 @@ public class NumberStyles implements Enumeration {
     private final EnumSet<Values> value;
 
     private NumberStyles() {
-        this.value = EnumSet.noneOf(Values.class);
+        value = EnumSet.noneOf(Values.class);
     }
 
     private NumberStyles(NumberStyles... enums) {
         this();
         for (int i = 0; i < enums.length; ++i) {
-            this.value.addAll(enums[i].value);
+            value.addAll(enums[i].value);
         }
     }
 
     private NumberStyles(Values... values) {
         this();
         for (int i = 0; i < values.length; ++i) {
-            this.value.add(values[i]);
+            value.add(values[i]);
         }
     }
 
     /**
      * Create a new value built by combining the specified values.
-     * 
+     *
      * @return A value that is the combination of the specified values.
      * @param enums
      *            the values that the new value will contain.
@@ -204,7 +220,7 @@ public class NumberStyles implements Enumeration {
 
     /**
      * Add the specified value to the current set and return the result.
-     * 
+     *
      * @return A value that is the combination of the current set and the specified value.
      * @param other
      *            the new value to be added into the current set.
@@ -215,7 +231,7 @@ public class NumberStyles implements Enumeration {
 
     /**
      * Determines whether the specified value is present in the current set.
-     * 
+     *
      * @return True if the specified value is present in the current set, false otherwise.
      * @param other
      *            the value to be checked against the current set.
@@ -226,9 +242,10 @@ public class NumberStyles implements Enumeration {
 
     /**
      * Get the numeric value associated with this value.
-     * 
+     *
      * @return A numeric value.
      */
+    @Override
     public int getValue() {
         int result = 0;
         for (Values v : value) {
@@ -239,7 +256,7 @@ public class NumberStyles implements Enumeration {
 
     /**
      * Get the set of values that are associated with the given numeric value.
-     * 
+     *
      * @return The set of values associated with the numeric value.
      * @param value
      *            a numeric value.
@@ -256,7 +273,7 @@ public class NumberStyles implements Enumeration {
 
     /**
      * Get the value that is considered to be the default.
-     * 
+     *
      * @return The default value.
      */
     public static NumberStyles getDefault() {
@@ -273,7 +290,7 @@ public class NumberStyles implements Enumeration {
         if (!(o instanceof NumberStyles))
             return false;
         NumberStyles e = (NumberStyles) o;
-        return this.value.equals(e.value);
+        return value.equals(e.value);
     }
 
     @Override

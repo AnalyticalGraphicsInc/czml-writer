@@ -4,7 +4,9 @@ package agi.foundation.compatibility;
  * Provides the fields that represent reference points in streams for seeking.
  */
 public enum SeekOrigin implements Enumeration {
-    BEGIN(0), CURRENT(1), END(2);
+    BEGIN(0),
+    CURRENT(1),
+    END(2);
     private final int value;
 
     SeekOrigin(int value) {
@@ -13,16 +15,17 @@ public enum SeekOrigin implements Enumeration {
 
     /**
      * Get the numeric value associated with this enum constant.
-     * 
+     *
      * @return A numeric value.
      */
+    @Override
     public int getValue() {
         return value;
     }
 
     /**
      * Get the enum constant that is associated with the given numeric value.
-     * 
+     *
      * @return The enum constant associated with value.
      * @param value
      *            a numeric value.
@@ -42,7 +45,7 @@ public enum SeekOrigin implements Enumeration {
 
     /**
      * Get the enum constant that is considered to be the default.
-     * 
+     *
      * @return The default enum constant.
      */
     public static SeekOrigin getDefault() {

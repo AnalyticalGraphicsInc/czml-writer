@@ -550,6 +550,7 @@ public abstract class TypeLiteral<T> {
      *
      * @return The hash code.
      */
+    @Override
     public int hashCode() {
         return this.type.hashCode();
     }
@@ -562,6 +563,7 @@ public abstract class TypeLiteral<T> {
      *            The object to test; can be null.
      * @return True if equal, false if not.
      */
+    @Override
     public boolean equals(Object object) {
         if (!(object instanceof TypeLiteral<?>)) {
             return false;
@@ -575,6 +577,7 @@ public abstract class TypeLiteral<T> {
      *
      * @return The string representation; never null.
      */
+    @Override
     public String toString() {
         return this.type.toString();
     }

@@ -7,11 +7,11 @@ import org.joda.time.DateTimeConstants;
 /**
  * Class storing values for System.DayOfWeek, with static methods to translate either to
  * the Java Calendar API mappings or the Joda mappings.
- * 
+ *
  * C# uses 0 through 7 for Sunday through Saturday.
- * 
+ *
  * Java Calendar uses 1 through 7 for Sunday through Saturday.
- * 
+ *
  * Joda uses 1 through 7 for Monday through Sunday.
  */
 public final class DayOfWeek {
@@ -52,7 +52,7 @@ public final class DayOfWeek {
 
     /**
      * Get the appropriate C# calendar day of week from a Joda day of week.
-     * 
+     *
      * @param jodaDayOfWeek
      *            a Joda day of week, using 1 through 7 for Monday through Sunday.
      * @return a C# day of week, using 0 through 7 for Sunday through Saturday.
@@ -64,7 +64,7 @@ public final class DayOfWeek {
 
     /**
      * Get the appropriate Java calendar day of week from a C# day of week.
-     * 
+     *
      * @param dayOfWeek
      *            a C# day of week, using 0 through 7 for Sunday through Saturday.
      * @return a Java Calendar day of week, using 1 through 7 for Sunday through Saturday.

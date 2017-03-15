@@ -10,7 +10,7 @@ public final class ImageHelper {
 
     /**
      * Saves this image to the specified stream in the specified format.
-     * 
+     *
      * @param image
      *            the image.
      * @param stream

@@ -19,7 +19,7 @@ public class ArgumentException extends IllegalArgumentException {
     /**
      * Initializes a new instance of the {@link ArgumentException} class with a specified
      * error message.
-     * 
+     *
      * @param message
      *            The error message that explains the reason for the exception.
      */
@@ -32,7 +32,7 @@ public class ArgumentException extends IllegalArgumentException {
      * Initializes a new instance of the {@link ArgumentException} class with a specified
      * error message and a reference to the inner exception that is the cause of this
      * exception.
-     * 
+     *
      * @param message
      *            The error message that explains the reason for the exception.
      * @param cause
@@ -46,7 +46,7 @@ public class ArgumentException extends IllegalArgumentException {
     /**
      * Initializes a new instance of the {@link ArgumentException} class with a specified
      * error message and the name of the parameter that causes this exception.
-     * 
+     *
      * @param message
      *            The error message that explains the reason for the exception.
      * @param paramName
@@ -61,7 +61,7 @@ public class ArgumentException extends IllegalArgumentException {
      * Initializes a new instance of the {@link ArgumentException} class with a specified
      * error message, the parameter name, and a reference to the inner exception that is
      * the cause of this exception.
-     * 
+     *
      * @param message
      *            The error message that explains the reason for the exception.
      * @param paramName
@@ -85,7 +85,7 @@ public class ArgumentException extends IllegalArgumentException {
 
     /**
      * Gets the name of the parameter that causes this exception.
-     * 
+     *
      * @return The parameter name.
      */
     public String getParamName() {

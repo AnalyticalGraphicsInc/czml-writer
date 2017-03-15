@@ -2,7 +2,7 @@ package agi.foundation.compatibility;
 
 /**
  * Represents a method that has no parameters and returns a value of the type specified by
- * the TResult parameter.
+ * the {@code TResult} parameter.
  *
  * @param <TResult>
  *            The type of the return value of the method.

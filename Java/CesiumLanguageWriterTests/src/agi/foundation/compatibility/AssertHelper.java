@@ -32,8 +32,8 @@ public final class AssertHelper {
         assertThat(message, actual, not(equalTo(expected)));
     }
 
-    public static void assertIsEmpty(String str) {
-        assertThat(str, isEmptyString());
+    public static void assertIsEmpty(String actual) {
+        assertThat(actual, isEmptyString());
     }
 
     public static <T extends Comparable<T>> void assertLess(T a, T b) {

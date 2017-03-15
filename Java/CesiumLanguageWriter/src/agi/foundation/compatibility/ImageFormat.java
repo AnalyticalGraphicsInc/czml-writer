@@ -21,7 +21,7 @@ public final class ImageFormat {
 
     /**
      * Gets the bitmap (BMP) image format.
-     * 
+     *
      * @return An ImageFormat object that indicates the bitmap image format.
      */
     public static ImageFormat getBmp() {
@@ -30,7 +30,7 @@ public final class ImageFormat {
 
     /**
      * Gets the Graphics Interchange Format (GIF) image format.
-     * 
+     *
      * @return An ImageFormat object that indicates the GIF image format.
      */
     public static ImageFormat getGif() {
@@ -39,7 +39,7 @@ public final class ImageFormat {
 
     /**
      * Gets the Joint Photographic Experts Group (JPEG) image format.
-     * 
+     *
      * @return An ImageFormat object that indicates the JPEG image format.
      */
     public static ImageFormat getJpeg() {
@@ -48,7 +48,7 @@ public final class ImageFormat {
 
     /**
      * Gets the W3C Portable Network Graphics (PNG) image format.
-     * 
+     *
      * @return An ImageFormat object that indicates the PNG image format.
      */
     public static ImageFormat getPng() {

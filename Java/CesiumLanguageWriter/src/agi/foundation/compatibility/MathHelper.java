@@ -11,7 +11,7 @@ public final class MathHelper {
 
     /**
      * Rounds a double-precision floating-point value to the nearest integral value.
-     * 
+     *
      * @param a
      *            A double-precision floating-point number to be rounded.
      * @return The integer nearest a. If the fractional component of a is halfway between
@@ -25,7 +25,7 @@ public final class MathHelper {
     /**
      * Rounds a double-precision floating-point value to a specified number of fractional
      * digits.
-     * 
+     *
      * @param value
      *            A double-precision floating-point number to be rounded.
      * @param digits
@@ -41,7 +41,7 @@ public final class MathHelper {
      * Rounds a double-precision floating-point value to the specified number of
      * fractional digits. A parameter specifies how to round the value if it is midway
      * between two other numbers.
-     * 
+     *
      * @param value
      *            A double-precision floating-point number to be rounded.
      * @param digits

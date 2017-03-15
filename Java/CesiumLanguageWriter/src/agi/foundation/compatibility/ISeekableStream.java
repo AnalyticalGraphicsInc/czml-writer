@@ -1,7 +1,7 @@
 package agi.foundation.compatibility;
 
 /**
- * ISeekableStream provides methods to get and set the position in a stream.
+ * Seekable streams can get and set their position and length.
  */
 public interface ISeekableStream {
     /**
@@ -11,9 +11,24 @@ public interface ISeekableStream {
 
     /**
      * Sets the current position of this stream.
-     * 
+     *
      * @param position
      *            The new position of this stream.
      */
     void setPosition(long position);
+
+    /**
+     * Gets the length in bytes of this stream.
+     *
+     * @return The length of the stream in bytes.
+     */
+    long getLength();
+
+    /**
+     * Sets the length of this stream.
+     *
+     * @param length
+     *            The new length of this stream in bytes.
+     */
+    void setLength(long length);
 }

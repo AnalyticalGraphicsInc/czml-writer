@@ -7,7 +7,7 @@ package agi.foundation.compatibility;
 public interface ICloneable extends Cloneable {
     /**
      * Creates a new object that is a copy of the current instance.
-     * 
+     *
      * @return A new object that is a copy of this instance.
      */
     Object clone();

@@ -18,7 +18,7 @@ public class ArgumentNullException extends ArgumentException {
     /**
      * Initializes a new instance of the {@link ArgumentNullException} class with the name
      * of the parameter that causes this exception.
-     * 
+     *
      * @param paramName
      *            The name of the parameter that caused the exception.
      */
@@ -29,7 +29,7 @@ public class ArgumentNullException extends ArgumentException {
     /**
      * Initializes a new instance of the {@link ArgumentNullException} class with a
      * specified error message and the exception that is the cause of this exception.
-     * 
+     *
      * @param message
      *            The error message that explains the reason for this exception.
      * @param cause
@@ -43,7 +43,7 @@ public class ArgumentNullException extends ArgumentException {
     /**
      * Initializes an instance of the {@link ArgumentNullException} class with a specified
      * error message and the name of the parameter that causes this exception.
-     * 
+     *
      * @param paramName
      *            The name of the parameter that caused the exception.
      * @param message
