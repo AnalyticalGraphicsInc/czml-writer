@@ -3022,6 +3022,7 @@ public class TestGenerateValidationDocument {
             }
         }
         writeConstantValuesIndividual();
+        writeConstantValuesCustomProperties();
     }
 
     private final void writeConstantValuesIndividual() {
@@ -16082,6 +16083,269 @@ public class TestGenerateValidationDocument {
         }
     }
 
+    private final void writeConstantValuesCustomProperties() {
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_custom");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_custom')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.CustomPropertiesCesiumWriter w = packet.openPropertiesProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_boolean");
+                            try {
+                                w2.writeBoolean(true);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_boolean.getValue(date)).toEqual(true);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_boundingRectangle");
+                            try {
+                                w2.writeBoundingRectangle(BoundingRectangle.fromWidthHeight(9369D, 63524D, 6904D, 17690D));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_boundingRectangle.getValue(date)).toEqual(new BoundingRectangle(9369, 63524, 6904, 17690));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_cartesian");
+                            try {
+                                w2.writeCartesian(new Cartesian(28502D, 45167D, 944D));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartesian.getValue(date)).toEqual(new Cartesian3(28502, 45167, 944));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_cartographicRadians");
+                            try {
+                                w2.writeCartographicRadians(new Cartographic(0.350571264887744, 0.633274262413284, 42979D));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_cartographicRadians.getValue(date)).toEqual(Cartesian3.fromRadians(0.350571264887744, 0.633274262413284, 42979));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_cartographicDegrees");
+                            try {
+                                w2.writeCartographicDegrees(new Cartographic(18D, 36D, 37743D));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartographicDegrees.getValue(date)).toEqual(Cartesian3.fromDegrees(18, 36, 37743));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_cartesian2");
+                            try {
+                                w2.writeCartesian2(new Rectangular(44825D, 16303D));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartesian2.getValue(date)).toEqual(new Cartesian2(44825, 16303));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_unitCartesian");
+                            try {
+                                w2.writeUnitCartesian(new UnitCartesian(0.77935070007851, 0.565493818550955, 0.269868907930861));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_unitCartesian.getValue(date)).toEqualEpsilon(new Cartesian3(0.77935070007851, 0.565493818550955, 0.269868907930861), 1e-14);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_spherical");
+                            try {
+                                w2.writeSpherical(new Spherical(1705D, 13830D, 21558D));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_spherical.getValue(date)).toEqual(Cartesian3.fromSpherical(new Spherical(1705, 13830, 21558)));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_unitSpherical");
+                            try {
+                                w2.writeUnitSpherical(new UnitSpherical(59387D, 15591D));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_unitSpherical.getValue(date)).toEqual(Cartesian3.fromSpherical(new Spherical(59387, 15591)));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_rgba");
+                            try {
+                                w2.writeRgba(ColorHelper.fromArgb(147, 50, 149, 175));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_rgba.getValue(date)).toEqual(Color.fromBytes(50, 149, 175, 147));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_rgbaf");
+                            try {
+                                w2.writeRgbaf(ColorHelper.fromArgb(109, 17, 17, 59));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.properties.custom_rgbaf.getValue(date)).toEqualEpsilon(new Color(0.0666666666666667, 0.0666666666666667, 0.231372549019608, 0.427450980392157), 1e-14);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_colorBlendMode");
+                            try {
+                                w2.writeColorBlendMode(CesiumColorBlendMode.REPLACE);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_colorBlendMode.getValue(date)).toEqual(ColorBlendMode.REPLACE);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_cornerType");
+                            try {
+                                w2.writeCornerType(CesiumCornerType.BEVELED);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cornerType.getValue(date)).toEqual(CornerType.BEVELED);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_heightReference");
+                            try {
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_horizontalOrigin");
+                            try {
+                                w2.writeHorizontalOrigin(CesiumHorizontalOrigin.LEFT);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_horizontalOrigin.getValue(date)).toEqual(HorizontalOrigin.LEFT);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_labelStyle");
+                            try {
+                                w2.writeLabelStyle(CesiumLabelStyle.FILL_AND_OUTLINE);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_labelStyle.getValue(date)).toEqual(LabelStyle.FILL_AND_OUTLINE);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_number");
+                            try {
+                                w2.writeNumber(31507.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_number.getValue(date)).toEqual(31507.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_nearFarScalar");
+                            try {
+                                w2.writeNearFarScalar(new NearFarScalar(14621D, 24121D, 16734D, 56129D));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_nearFarScalar.getValue(date)).toEqual(new NearFarScalar(14621, 24121, 16734, 56129));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_unitQuaternion");
+                            try {
+                                w2.writeUnitQuaternion(new UnitQuaternion(0.344558178514049, 0.742737937277143, 0.267679401430615, 0.507905263014791));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.properties.custom_unitQuaternion.getValue(date)).toEqualEpsilon(new Quaternion(0.742737937277143, 0.267679401430615, 0.507905263014791, 0.344558178514049), 1e-14);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_shadowMode");
+                            try {
+                                w2.writeShadowMode(CesiumShadowMode.CAST_ONLY);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_shadowMode.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_string");
+                            try {
+                                w2.writeString("string41758");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_string.getValue(date)).toEqual('string41758');");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_stripeOrientation");
+                            try {
+                                w2.writeStripeOrientation(CesiumStripeOrientation.VERTICAL);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_stripeOrientation.getValue(date)).toEqual(StripeOrientation.VERTICAL);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_wsen");
+                            try {
+                                w2.writeWsen(new CartographicExtent(1.47520917005826, 1.17615981869183, 0.973692387723505, 1.00039738410474));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_wsen.getValue(date)).toEqual(new Rectangle(1.47520917005826, 1.17615981869183, 0.973692387723505, 1.00039738410474));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_wsenDegrees");
+                            try {
+                                w2.writeWsenDegrees(new CartographicExtent(5D, 3D, 6D, 19D));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_wsenDegrees.getValue(date)).toEqual(Rectangle.fromDegrees(5, 3, 6, 19));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_uri");
+                            try {
+                                w2.writeUri("http://example.com/41986", CesiumResourceBehavior.LINK_TO);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_uri.getValue(date)).toEqual('http://example.com/41986');");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_verticalOrigin");
+                            try {
+                                w2.writeVerticalOrigin(CesiumVerticalOrigin.BOTTOM);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_verticalOrigin.getValue(date)).toEqual(VerticalOrigin.BOTTOM);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+    }
+
     private final void writeReferenceValues() {
         {
             cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
@@ -28576,6 +28840,7 @@ public class TestGenerateValidationDocument {
             }
         }
         writeSampledValuesIndividual();
+        writeSampledValuesCustomProperties();
     }
 
     private final void writeSampledValuesIndividual() {
@@ -42258,6 +42523,224 @@ public class TestGenerateValidationDocument {
                                         "    expect(e.vector.direction.getValue(documentStartDate)).toEqualEpsilon(new Cartesian3(0.553282791500359, 0.696109910096765, 0.457503164682654), 1e-14);");
                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                         "    expect(e.vector.direction.getValue(documentStopDate)).toEqualEpsilon(new Cartesian3(0.754665701430316, 0.115201313599266, 0.645916663687888), 1e-14);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+    }
+
+    private final void writeSampledValuesCustomProperties() {
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_custom");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_custom')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.CustomPropertiesCesiumWriter w = packet.openPropertiesProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_boundingRectangle");
+                            try {
+                                w2.writeBoundingRectangle(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<BoundingRectangle> createList(BoundingRectangle.fromWidthHeight(10924D, 3626D, 12558D, 56113D), BoundingRectangle.fromWidthHeight(59127D, 45286D, 34992D,
+                                                17032D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_boundingRectangle.getValue(documentStartDate)).toEqual(new BoundingRectangle(10924, 3626, 12558, 56113));");
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_boundingRectangle.getValue(documentStopDate)).toEqual(new BoundingRectangle(59127, 45286, 34992, 17032));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_cartesian");
+                            try {
+                                w2.writeCartesian(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<Cartesian> createList(new Cartesian(59456D, 60648D, 1004D), new Cartesian(37915D, 14740D, 14905D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartesian.getValue(documentStartDate)).toEqual(new Cartesian3(59456, 60648, 1004));");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartesian.getValue(documentStopDate)).toEqual(new Cartesian3(37915, 14740, 14905));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_cartographicRadians");
+                            try {
+                                w2.writeCartographicRadians(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<Cartographic> createList(new Cartographic(1.25380297085855, 1.03510976346284, 7102D), new Cartographic(1.10648839763778, 0.231915563506949, 340D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_cartographicRadians.getValue(documentStartDate)).toEqual(Cartesian3.fromRadians(1.25380297085855, 1.03510976346284, 7102));");
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_cartographicRadians.getValue(documentStopDate)).toEqual(Cartesian3.fromRadians(1.10648839763778, 0.231915563506949, 340));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_cartographicDegrees");
+                            try {
+                                w2.writeCartographicDegrees(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<Cartographic> createList(new Cartographic(44D, 31D, 55762D), new Cartographic(10D, 18D, 28847D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_cartographicDegrees.getValue(documentStartDate)).toEqual(Cartesian3.fromDegrees(44, 31, 55762));");
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_cartographicDegrees.getValue(documentStopDate)).toEqual(Cartesian3.fromDegrees(10, 18, 28847));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_cartesian2");
+                            try {
+                                w2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<Rectangular> createList(new Rectangular(9033D, 9251D), new Rectangular(34048D, 58501D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartesian2.getValue(documentStartDate)).toEqual(new Cartesian2(9033, 9251));");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartesian2.getValue(documentStopDate)).toEqual(new Cartesian2(34048, 58501));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_unitCartesian");
+                            try {
+                                w2.writeUnitCartesian(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<UnitCartesian> createList(new UnitCartesian(0.0501133095086564, 0.917195967206924, 0.395272328843601), new UnitCartesian(0.797476048450763, 0.40584478979077,
+                                                0.446454878735849)));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.properties.custom_unitCartesian.getValue(documentStartDate)).toEqualEpsilon(new Cartesian3(0.0501133095086564, 0.917195967206924, 0.395272328843601), 1e-14);");
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.properties.custom_unitCartesian.getValue(documentStopDate)).toEqualEpsilon(new Cartesian3(0.797476048450763, 0.40584478979077, 0.446454878735849), 1e-14);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_spherical");
+                            try {
+                                w2.writeSpherical(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<Spherical> createList(new Spherical(47098D, 2231D, 14088D), new Spherical(34883D, 48264D, 41148D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_spherical.getValue(documentStartDate)).toEqual(Cartesian3.fromSpherical(new Spherical(47098, 2231, 14088)));");
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_spherical.getValue(documentStopDate)).toEqual(Cartesian3.fromSpherical(new Spherical(34883, 48264, 41148)));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_unitSpherical");
+                            try {
+                                w2.writeUnitSpherical(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<UnitSpherical> createList(new UnitSpherical(48811D, 24254D), new UnitSpherical(44800D, 8111D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_unitSpherical.getValue(documentStartDate)).toEqual(Cartesian3.fromSpherical(new Spherical(48811, 24254)));");
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_unitSpherical.getValue(documentStopDate)).toEqual(Cartesian3.fromSpherical(new Spherical(44800, 8111)));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_rgba");
+                            try {
+                                w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Color> createList(
+                                        ColorHelper.fromArgb(46, 179, 175, 115), ColorHelper.fromArgb(156, 136, 187, 237)));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_rgba.getValue(documentStartDate)).toEqual(Color.fromBytes(179, 175, 115, 46));");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_rgba.getValue(documentStopDate)).toEqual(Color.fromBytes(136, 187, 237, 156));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_rgbaf");
+                            try {
+                                w2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Color> createList(
+                                        ColorHelper.fromArgb(184, 227, 115, 150), ColorHelper.fromArgb(108, 107, 215, 92)));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.properties.custom_rgbaf.getValue(documentStartDate)).toEqualEpsilon(new Color(0.890196078431373, 0.450980392156863, 0.588235294117647, 0.72156862745098), 1e-14);");
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.properties.custom_rgbaf.getValue(documentStopDate)).toEqualEpsilon(new Color(0.419607843137255, 0.843137254901961, 0.36078431372549, 0.423529411764706), 1e-14);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_number");
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
+                                        24561.0, 45446.0));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_number.getValue(documentStartDate)).toEqual(24561.0);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_number.getValue(documentStopDate)).toEqual(45446.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_nearFarScalar");
+                            try {
+                                w2.writeNearFarScalar(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<NearFarScalar> createList(new NearFarScalar(64112D, 15354D, 32827D, 10368D), new NearFarScalar(55643D, 45785D, 33458D, 29826D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_nearFarScalar.getValue(documentStartDate)).toEqual(new NearFarScalar(64112, 15354, 32827, 10368));");
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_nearFarScalar.getValue(documentStopDate)).toEqual(new NearFarScalar(55643, 45785, 33458, 29826));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_unitQuaternion");
+                            try {
+                                w2.writeUnitQuaternion(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<UnitQuaternion> createList(new UnitQuaternion(0.253327354041402, 0.697299305414108, 0.26496667122144, 0.615947719782462), new UnitQuaternion(
+                                                0.0332513608247514, 0.134764165794432, 0.408681085292446, 0.902060273565587)));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.properties.custom_unitQuaternion.getValue(documentStartDate)).toEqualEpsilon(new Quaternion(0.697299305414108, 0.26496667122144, 0.615947719782462, 0.253327354041402), 1e-14);");
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.properties.custom_unitQuaternion.getValue(documentStopDate)).toEqualEpsilon(new Quaternion(0.134764165794432, 0.408681085292446, 0.902060273565587, 0.0332513608247514), 1e-14);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_wsen");
+                            try {
+                                w2.writeWsen(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<CartographicExtent> createList(new CartographicExtent(1.4164143530628, 1.2888469381038, 0.679756561409663, 1.29649258884014), new CartographicExtent(
+                                                1.19133054275098, 0.9154648059314, 0.71347968461712, 1.32750822775441)));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.properties.custom_wsen.getValue(documentStartDate)).toEqual(new Rectangle(1.4164143530628, 1.2888469381038, 0.679756561409663, 1.29649258884014));");
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.properties.custom_wsen.getValue(documentStopDate)).toEqual(new Rectangle(1.19133054275098, 0.9154648059314, 0.71347968461712, 1.32750822775441));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_wsenDegrees");
+                            try {
+                                w2.writeWsenDegrees(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<CartographicExtent> createList(new CartographicExtent(29D, 11D, 17D, 36D), new CartographicExtent(37D, 16D, 25D, 23D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.properties.custom_wsenDegrees.getValue(documentStartDate)).toEqual(Rectangle.fromDegrees(29, 11, 17, 36));");
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter, "    expect(e.properties.custom_wsenDegrees.getValue(documentStopDate)).toEqual(Rectangle.fromDegrees(37, 16, 25, 23));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }

@@ -17,11 +17,11 @@ import cesiumlanguagewriter.Reference;
 public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOrientationCesiumWriter> {
     /**
     *  
-    The name of the {@code StripeOrientation} property.
+    The name of the {@code stripeOrientation} property.
     
 
     */
-    public static final String StripeOrientationPropertyName = "StripeOrientation";
+    public static final String StripeOrientationPropertyName = "stripeOrientation";
     /**
     *  
     The name of the {@code reference} property.
@@ -85,7 +85,7 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
     /**
     *  
-    Writes the value expressed as a {@code StripeOrientation}, which is the orientation of stripes in the stripe material.
+    Writes the value expressed as a {@code stripeOrientation}, which is the orientation of stripes in the stripe material.
     
     
 

@@ -2,6 +2,7 @@ package agi.foundation.compatibility;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.isEmptyString;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.not;
@@ -18,6 +19,10 @@ import org.junit.internal.ArrayComparisonFailure;
  */
 public final class AssertHelper {
     private AssertHelper() {}
+
+    public static <T> void assertContains(T expected, Iterable<T> actual) {
+        assertThat(actual, hasItem(expected));
+    }
 
     public static void assertNotEqual(Object expected, Object actual) {
         assertNotEqual("", expected, actual);

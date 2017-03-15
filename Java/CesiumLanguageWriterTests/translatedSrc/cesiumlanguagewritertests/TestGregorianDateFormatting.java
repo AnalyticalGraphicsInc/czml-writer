@@ -2,9 +2,12 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Locale;
 import org.junit.Assert;
 import org.junit.Before;
@@ -40,8 +43,14 @@ public class TestGregorianDateFormatting {
         Assert.assertEquals("5:25 AM", date.toString("t", m_cultureInfo));
         Assert.assertEquals("5:25:13 AM", date.toString("T", m_cultureInfo));
         Assert.assertEquals("2002-02-25 05:25:13Z", date.toString("u", m_cultureInfo));
-        Assert.assertEquals("February, 2002", date.toString("y", m_cultureInfo));
-        Assert.assertEquals("February, 2002", date.toString("Y", m_cultureInfo));
+        final ArrayList<String> tempCollection$0 = new ArrayList<String>();
+        tempCollection$0.add("February, 2002");
+        tempCollection$0.add("February 2002");
+        AssertHelper.assertContains(date.toString("y", m_cultureInfo), tempCollection$0);
+        final ArrayList<String> tempCollection$1 = new ArrayList<String>();
+        tempCollection$1.add("February, 2002");
+        tempCollection$1.add("February 2002");
+        AssertHelper.assertContains(date.toString("Y", m_cultureInfo), tempCollection$1);
         Assert.assertEquals("2/25/2002 5:25:13 AM", date.toString("", m_cultureInfo));
         Assert.assertEquals("25", date.toString("%d", m_cultureInfo));
         Assert.assertEquals("25", date.toString("dd", m_cultureInfo));

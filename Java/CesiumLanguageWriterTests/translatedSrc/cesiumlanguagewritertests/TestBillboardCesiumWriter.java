@@ -50,9 +50,72 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
     }
 
     @Test
-    public final void testScaleByDistanceProperty() {
+    public final void testShowPropertyInterval() {
+        cesiumlanguagewriter.JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        cesiumlanguagewriter.JulianDate stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0D));
         {
             final PacketCesiumWriter usingExpression_1 = (getPacket());
+            try {
+                {
+                    cesiumlanguagewriter.BillboardCesiumWriter billboardWriter = getPacket().openBillboardProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.BooleanCesiumWriter showWriter = billboardWriter.openShowProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.CesiumIntervalListWriter<cesiumlanguagewriter.BooleanCesiumWriter> intervalListWriter = showWriter.openMultipleIntervals();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.BooleanCesiumWriter intervalWriter = intervalListWriter.openInterval(startDate, startDate.addSeconds(1D));
+                                            try {
+                                                intervalWriter.writeBoolean(true);
+                                            } finally {
+                                                DisposeHelper.dispose(intervalWriter);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.BooleanCesiumWriter intervalWriter = intervalListWriter.openInterval(startDate.addSeconds(1D), startDate.addSeconds(2D));
+                                            try {
+                                                intervalWriter.writeBoolean(false);
+                                            } finally {
+                                                DisposeHelper.dispose(intervalWriter);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.BooleanCesiumWriter intervalWriter = intervalListWriter.openInterval(startDate.addSeconds(2D), stopDate);
+                                            try {
+                                                intervalWriter.writeBoolean(true);
+                                            } finally {
+                                                DisposeHelper.dispose(intervalWriter);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(intervalListWriter);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(showWriter);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(billboardWriter);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(usingExpression_1);
+            }
+        }
+        String interval1String = CesiumFormattingHelper.toIso8601Interval(startDate, startDate.addSeconds(1D), Iso8601Format.COMPACT);
+        String interval2String = CesiumFormattingHelper.toIso8601Interval(startDate.addSeconds(1D), startDate.addSeconds(2D), Iso8601Format.COMPACT);
+        String interval3String = CesiumFormattingHelper.toIso8601Interval(startDate.addSeconds(2D), stopDate, Iso8601Format.COMPACT);
+        Assert.assertEquals("{\"billboard\":{\"show\":[{\"interval\":\"" + interval1String + "\",\"boolean\":true}," + "{\"interval\":\"" + interval2String + "\",\"boolean\":false},"
+                + "{\"interval\":\"" + interval3String + "\",\"boolean\":true}" + "]}}", getStringWriter().toString());
+    }
+
+    @Test
+    public final void testScaleByDistanceProperty() {
+        {
+            final PacketCesiumWriter usingExpression_2 = (getPacket());
             try {
                 {
                     BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
@@ -70,7 +133,7 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression_2);
             }
         }
         Assert.assertEquals("{\"billboard\":{\"scaleByDistance\":{\"nearFarScalar\":[100,1,200,2]}}}", getStringWriter().toString());
@@ -80,7 +143,7 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
     public final void testScaleByDistancePropertySamples() {
         JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
         {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
+            final PacketCesiumWriter usingExpression_3 = (getPacket());
             try {
                 {
                     BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
@@ -111,7 +174,7 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_2);
+                DisposeHelper.dispose(usingExpression_3);
             }
         }
         Assert.assertEquals("{\"billboard\":{\"scaleByDistance\":{\"epoch\":\"20120402T12Z\",\"nearFarScalar\":[0,100,1,200,2,60,200,1,300,2]}}}", getStringWriter().toString());
