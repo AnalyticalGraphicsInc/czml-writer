@@ -13,5 +13,6 @@
     <description>$description$</description>
     <copyright>$copyright$</copyright>
     <tags>Cesium CZML</tags>
+    <releaseNotes>See https://github.com/AnalyticalGraphicsInc/czml-writer/releases/tag/$version$ for release notes.</releaseNotes>
   </metadata>
 </package>
