@@ -29,12 +29,16 @@ namespace GenerateFromSchema
 
             m_writtenSchemas.Add(schema);
 
-            using (StreamWriter output = new StreamWriter(Path.Combine(m_outputDirectory, string.Format("{0}{1}.md", schema.Name, isValue ? "Value" : ""))))
+            string fileName = schema.Name;
+            if (isValue)
+                fileName += "Value";
+
+            using (var output = new StreamWriter(Path.Combine(m_outputDirectory, $"{fileName}.md")))
             {
                 output.WriteLine("This page describes the possible content of a CZML document or stream.  Please read [[CZML Structure]] for an explanation of how a CZML document is put together.");
                 output.WriteLine();
 
-                output.WriteLine("#{0}{1}", schema.Name, isValue ? " (value)" : "");
+                output.WriteLine("# {0}{1}", schema.Name, isValue ? " (value)" : "");
                 output.WriteLine();
 
                 output.WriteLine(schema.Description);
@@ -81,7 +85,7 @@ namespace GenerateFromSchema
 
                 if (schema.EnumValues.Any())
                 {
-                    output.WriteLine("##Values");
+                    output.WriteLine("## Values");
                     output.WriteLine();
 
                     foreach (SchemaEnumValue enumValue in schema.EnumValues)
@@ -93,7 +97,7 @@ namespace GenerateFromSchema
 
                 if (schema.Properties.Count > 0)
                 {
-                    output.WriteLine("##Properties");
+                    output.WriteLine("## Properties");
                     output.WriteLine();
 
                     foreach (Property property in schema.Properties)
