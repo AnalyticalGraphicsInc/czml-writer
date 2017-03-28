@@ -29,7 +29,8 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: AssemblyVersion("2.1.0.0")]
+[assembly: AssemblyFileVersion("2.1.0.0")]
+[assembly: AssemblyInformationalVersion("2.1.0")]
 
 [assembly: InternalsVisibleTo("CesiumLanguageWriterTests,PublicKey=00240000048000009400000006020000002400005253413100040000010001009b7aa680a19ae7c27dca3e265540bd729fe5cd48c2fcdf8a91c6dff09fe42e9f8fdabca5c9f3c7597d8f7302894a6d45195cb75e7373f24062b6862343c433ba7bbbe73e6686f9657dd7486bf146d9b4da31b1cbc0997c64130d244eda655f94c65d6719f64cd6350a77e84164afa8cd3a996c04d3373121d49f4b5fbd6b66ba")]
