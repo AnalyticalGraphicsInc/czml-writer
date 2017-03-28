@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("CesiumLanguageWriterTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Analytical Graphics, Inc.")]
 [assembly: AssemblyProduct("CesiumLanguageWriterTests")]
-[assembly: AssemblyCopyright("Copyright © 2011-2012 Cesium Contributors")]
+[assembly: AssemblyCopyright("Copyright © 2011-2017 Cesium Contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

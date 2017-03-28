@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GenerateWritersFromSchema")]
+[assembly: AssemblyTitle("GenerateFromSchema")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Analytical Graphics, Inc.")]
 [assembly: AssemblyProduct("GenerateWritersFromSchema")]
-[assembly: AssemblyCopyright("Copyright © 2011-2016 Cesium Contributors")]
+[assembly: AssemblyCopyright("Copyright © 2011-2017 Cesium Contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
