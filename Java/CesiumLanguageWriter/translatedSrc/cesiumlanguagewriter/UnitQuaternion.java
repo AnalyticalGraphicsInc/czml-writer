@@ -473,7 +473,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     private static void normalizeCoordinates(double[] w, double[] x, double[] y, double[] z, double[] magnitude) {
         magnitude[0] = Math.sqrt(w[0] * w[0] + x[0] * x[0] + y[0] * y[0] + z[0] * z[0]);
         // ReSharper disable once CompareOfFloatsByEqualityOperator
-		if (magnitude[0] == 0.0) {
+        if (magnitude[0] == 0.0) {
             throw new ArithmeticException(CesiumLocalization.getMagnitudeMustNotBeZero());
         }
         if (Double.isInfinite(magnitude[0])) {

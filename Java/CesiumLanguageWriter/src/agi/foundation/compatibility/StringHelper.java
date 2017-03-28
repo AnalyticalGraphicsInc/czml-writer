@@ -880,6 +880,14 @@ public final class StringHelper {
         return str.substring(index);
     }
 
+    private static boolean arrayContains(char[] array, char charToFind) {
+        for (char c : array) {
+            if (c == charToFind)
+                return true;
+        }
+        return false;
+    }
+
     /**
      * Appends a copy of a specified substring to the given StringBuilder object.
      *
@@ -896,13 +904,5 @@ public final class StringHelper {
      */
     public static StringBuilder append(StringBuilder builder, String value, int startIndex, int count) {
         return builder.append(value, startIndex, startIndex + count);
-    }
-
-    private static boolean arrayContains(char[] array, char charToFind) {
-        for (char c : array) {
-            if (c == charToFind)
-                return true;
-        }
-        return false;
     }
 }

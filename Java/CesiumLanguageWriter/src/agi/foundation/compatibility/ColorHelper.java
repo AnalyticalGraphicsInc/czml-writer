@@ -12,7 +12,7 @@ public final class ColorHelper {
      * Creates a Color from the four ARGB component (alpha, red, green, and blue) values.
      * Although this method allows a 32-bit value to be passed for each component, the
      * value of each component is limited to 8 bits.
-     * 
+     *
      * @param alpha
      *            The alpha component. Valid values are 0 through 255.
      * @param red

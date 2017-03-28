@@ -20,7 +20,7 @@ public class ArgumentOutOfRangeException extends ArgumentException {
     /**
      * Initializes a new instance of the {@link ArgumentOutOfRangeException} class with
      * the name of the parameter that causes this exception.
-     * 
+     *
      * @param paramName
      *            The name of the parameter that causes this exception.
      */
@@ -32,7 +32,7 @@ public class ArgumentOutOfRangeException extends ArgumentException {
     /**
      * Initializes a new instance of the {@link ArgumentOutOfRangeException} class with a
      * specified error message and the exception that is the cause of this exception.
-     * 
+     *
      * @param message
      *            The error message that explains the reason for this exception.
      * @param cause
@@ -47,7 +47,7 @@ public class ArgumentOutOfRangeException extends ArgumentException {
     /**
      * Initializes a new instance of the {@link ArgumentOutOfRangeException} class with a
      * specified error message and the name of the parameter that causes this exception.
-     * 
+     *
      * @param paramName
      *            The name of the parameter that caused the exception.
      * @param message
@@ -61,7 +61,7 @@ public class ArgumentOutOfRangeException extends ArgumentException {
     /**
      * Initializes a new instance of the {@link ArgumentOutOfRangeException} class with a
      * specified error message, the parameter name, and the value of the argument.
-     * 
+     *
      * @param paramName
      *            The name of the parameter that caused the exception.
      * @param actualValue
@@ -84,7 +84,7 @@ public class ArgumentOutOfRangeException extends ArgumentException {
 
     /**
      * Gets the argument value that causes this exception.
-     * 
+     *
      * @return An Object that contains the value of the parameter that caused the current
      *         Exception.
      */

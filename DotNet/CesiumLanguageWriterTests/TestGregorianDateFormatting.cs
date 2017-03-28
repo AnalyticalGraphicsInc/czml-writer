@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using CesiumLanguageWriter;
 using NUnit.Framework;
@@ -35,8 +36,8 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual("5:25 AM", date.ToString("t", m_cultureInfo));
             Assert.AreEqual("5:25:13 AM", date.ToString("T", m_cultureInfo));
             Assert.AreEqual("2002-02-25 05:25:13Z", date.ToString("u", m_cultureInfo));
-            Assert.AreEqual("February, 2002", date.ToString("y", m_cultureInfo));
-            Assert.AreEqual("February, 2002", date.ToString("Y", m_cultureInfo));
+            Assert.Contains(date.ToString("y", m_cultureInfo), new List<string> { "February, 2002", "February 2002" });
+            Assert.Contains(date.ToString("Y", m_cultureInfo), new List<string> { "February, 2002", "February 2002" });
             Assert.AreEqual("2/25/2002 5:25:13 AM", date.ToString("", m_cultureInfo));
             Assert.AreEqual("25", date.ToString("%d", m_cultureInfo));
             Assert.AreEqual("25", date.ToString("dd", m_cultureInfo));

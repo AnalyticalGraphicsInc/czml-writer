@@ -6,7 +6,7 @@ public final class ConsoleHelper {
     /**
      * Writes the specified string value, followed by the current line terminator, to the
      * standard output stream.
-     * 
+     *
      * @param value
      *            The value to write.
      */

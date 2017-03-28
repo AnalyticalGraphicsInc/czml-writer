@@ -11,7 +11,7 @@ public final class DisposeHelper {
 
     /**
      * Dispose the given object if not null.
-     * 
+     *
      * @param closeable
      *            the object to dispose.
      */
@@ -26,7 +26,7 @@ public final class DisposeHelper {
 
     /**
      * Dispose the given object if not null.
-     * 
+     *
      * @param disposable
      *            the object to dispose.
      */
@@ -37,7 +37,7 @@ public final class DisposeHelper {
 
     /**
      * Dispose the given object if not null.
-     * 
+     *
      * @param memoryStream
      *            the object to dispose.
      */

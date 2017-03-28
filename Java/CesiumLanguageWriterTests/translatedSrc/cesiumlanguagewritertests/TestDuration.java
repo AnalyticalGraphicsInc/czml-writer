@@ -59,7 +59,7 @@ public class TestDuration {
     @Test
     public final void testNormalization() {
         // A duration's day and time should either be both negative or both positive
-		Duration duration = new Duration(1, 100.0);
+        Duration duration = new Duration(1, 100.0);
         Assert.assertEquals((int) 1, (int) duration.getDays());
         Assert.assertEquals(100.0, duration.getSeconds(), 0d);
         duration = new Duration(-1, -100.0);
@@ -120,7 +120,7 @@ public class TestDuration {
         Assert.assertTrue(first.equalsEpsilon(second, 1e-4));
         Assert.assertTrue(second.equalsEpsilon(first, 1e-4));
         // Make sure a Duration compared with a non-Duration returns false
-		Assert.assertFalse(first.equals(5));
+        Assert.assertFalse(first.equals(5));
     }
 
     /**

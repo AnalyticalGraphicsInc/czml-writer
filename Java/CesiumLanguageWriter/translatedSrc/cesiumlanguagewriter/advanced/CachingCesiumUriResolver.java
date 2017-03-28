@@ -67,13 +67,13 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
         if (temp$0) {
             if (m_lruList.getFirst() != node) {
                 //move to front
-				m_lruList.remove(node);
+                m_lruList.remove(node);
                 m_lruList.addFirst(node);
             }
             return node.getValue().ResolvedUri;
         }
         //load image into data URI
-		String resolvedUri = CesiumFormattingHelper.downloadUriIntoDataUri(uri);
+        String resolvedUri = CesiumFormattingHelper.downloadUriIntoDataUri(uri);
         addUri(uri, resolvedUri);
         return resolvedUri;
     }
@@ -93,7 +93,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
         MapHelper.add(m_dictionary, sourceUri, newNode);
         if (m_lruList.size() > m_max) {
             //trim least recently used
-			MapHelper.remove(m_dictionary, m_lruList.getLast().getValue().SourceUri);
+            MapHelper.remove(m_dictionary, m_lruList.getLast().getValue().SourceUri);
             m_lruList.removeLast();
         }
     }

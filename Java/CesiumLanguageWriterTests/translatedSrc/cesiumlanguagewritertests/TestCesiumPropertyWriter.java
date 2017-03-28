@@ -51,7 +51,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
     }
 
     @Before
-    public final void setUp() {
+    public final void testCesiumPropertyWriterSetUp() {
         setStringWriter(new StringWriter());
         setOutputStream(new CesiumOutputStream(getStringWriter()));
         setWriter(new CesiumStreamWriter());

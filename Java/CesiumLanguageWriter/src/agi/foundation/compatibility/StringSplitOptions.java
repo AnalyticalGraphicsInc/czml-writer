@@ -11,7 +11,8 @@ public class StringSplitOptions implements Enumeration {
     public static final StringSplitOptions REMOVE_EMPTY_ENTRIES = new StringSplitOptions(Values.REMOVE_EMPTY_ENTRIES);
 
     private enum Values {
-        NONE(0), REMOVE_EMPTY_ENTRIES(1);
+        NONE(0),
+        REMOVE_EMPTY_ENTRIES(1);
         private final int value;
 
         Values(int value) {
@@ -20,7 +21,7 @@ public class StringSplitOptions implements Enumeration {
 
         /**
          * Get the numeric value associated with this enum constant.
-         * 
+         *
          * @return A numeric value.
          */
         public int getValue() {
@@ -29,7 +30,7 @@ public class StringSplitOptions implements Enumeration {
 
         /**
          * Get the enum constant that is associated with the given numeric value.
-         * 
+         *
          * @return The enum constant associated with value.
          * @param value
          *            a numeric value.
@@ -49,26 +50,26 @@ public class StringSplitOptions implements Enumeration {
     private final EnumSet<Values> value;
 
     private StringSplitOptions() {
-        this.value = EnumSet.noneOf(Values.class);
+        value = EnumSet.noneOf(Values.class);
     }
 
     private StringSplitOptions(StringSplitOptions... enums) {
         this();
         for (int i = 0; i < enums.length; ++i) {
-            this.value.addAll(enums[i].value);
+            value.addAll(enums[i].value);
         }
     }
 
     private StringSplitOptions(Values... values) {
         this();
         for (int i = 0; i < values.length; ++i) {
-            this.value.add(values[i]);
+            value.add(values[i]);
         }
     }
 
     /**
      * Create a new value built by combining the specified values.
-     * 
+     *
      * @return A value that is the combination of the specified values.
      * @param enums
      *            the values that the new value will contain.
@@ -79,7 +80,7 @@ public class StringSplitOptions implements Enumeration {
 
     /**
      * Add the specified value to the current set and return the result.
-     * 
+     *
      * @return A value that is the combination of the current set and the specified value.
      * @param other
      *            the new value to be added into the current set.
@@ -90,7 +91,7 @@ public class StringSplitOptions implements Enumeration {
 
     /**
      * Determines whether the specified value is present in the current set.
-     * 
+     *
      * @return True if the specified value is present in the current set, false otherwise.
      * @param other
      *            the value to be checked against the current set.
@@ -101,9 +102,10 @@ public class StringSplitOptions implements Enumeration {
 
     /**
      * Get the numeric value associated with this value.
-     * 
+     *
      * @return A numeric value.
      */
+    @Override
     public int getValue() {
         int result = 0;
         for (Values v : value) {
@@ -114,7 +116,7 @@ public class StringSplitOptions implements Enumeration {
 
     /**
      * Get the set of values that are associated with the given numeric value.
-     * 
+     *
      * @return The set of values associated with the numeric value.
      * @param value
      *            a numeric value.
@@ -131,7 +133,7 @@ public class StringSplitOptions implements Enumeration {
 
     /**
      * Get the value that is considered to be the default.
-     * 
+     *
      * @return The default value.
      */
     public static StringSplitOptions getDefault() {
@@ -148,7 +150,7 @@ public class StringSplitOptions implements Enumeration {
         if (!(o instanceof StringSplitOptions))
             return false;
         StringSplitOptions e = (StringSplitOptions) o;
-        return this.value.equals(e.value);
+        return value.equals(e.value);
     }
 
     @Override

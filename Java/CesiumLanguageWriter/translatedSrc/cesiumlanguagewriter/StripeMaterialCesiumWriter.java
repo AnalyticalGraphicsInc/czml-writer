@@ -129,7 +129,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code orientation} property as a {@code StripeOrientation} value.  The {@code orientation} property specifies the value indicating if the stripes are horizontal or vertical.
+    Writes a value for the {@code orientation} property as a {@code stripeOrientation} value.  The {@code orientation} property specifies the value indicating if the stripes are horizontal or vertical.
     
     
 

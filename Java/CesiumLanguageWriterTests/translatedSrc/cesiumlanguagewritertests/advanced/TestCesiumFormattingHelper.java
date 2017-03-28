@@ -17,8 +17,8 @@ public class TestCesiumFormattingHelper {
     @Test
     public final void passToIso8601Interval() {
         //Since ToIso8601Interval is just a simple wrapper around two calls to
-		//CesiumFormattingHelper.ToIso8601, this test is just a smoke screen.
-		String expectedBasicInterval = "19800801T000000Z/20720703T000000Z";
+        //CesiumFormattingHelper.ToIso8601, this test is just a smoke screen.
+        String expectedBasicInterval = "19800801T000000Z/20720703T000000Z";
         String expectedExtendedInterval = "1980-08-01T00:00:00Z/2072-07-03T00:00:00Z";
         String expectedCompactInterval = "19800801T00Z/20720703T00Z";
         JulianDate start = new GregorianDate(1980, 8, 1).toJulianDate();

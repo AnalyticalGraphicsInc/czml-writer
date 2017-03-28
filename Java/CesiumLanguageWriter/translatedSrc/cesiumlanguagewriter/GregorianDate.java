@@ -204,7 +204,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             }
             DateTimeFormatInfo dfi = DateTimeFormatInfo.getInstance(provider);
             // Try first all the combinations of ParseAllDateFormats & ParseTimeFormats
-			String[] allDateFormats = yearMonthDayFormats(dfi, setExceptionOnError, exception);
+            String[] allDateFormats = yearMonthDayFormats(dfi, setExceptionOnError, exception);
             if (allDateFormats == null) {
                 result[0] = MinValue;
                 return false;
@@ -244,9 +244,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 }
             }
             //
-			// Month day formats
-			//
-			int dayIndex = dfi.getMonthDayPattern().indexOf('d');
+            // Month day formats
+            //
+            int dayIndex = dfi.getMonthDayPattern().indexOf('d');
             int monthIndex = dfi.getMonthDayPattern().indexOf('M');
             if (dayIndex == -1 || monthIndex == -1) {
                 result[0] = MinValue;
@@ -319,7 +319,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     longYear = ref$longYear$29[0];
                     incompleteFormat = ref$incompleteFormat$28[0];
                     // T formats must be before the time part
-					if (temp$27) {
+                    if (temp$27) {
                         return true;
                     }
                 }
@@ -330,7 +330,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             final boolean temp$30 = parseExact(s, dfi.getAllDateTimePatterns(), dfi, result, false, ref$longYear$31, setExceptionOnError, exception);
             longYear = ref$longYear$31[0];
             // Try as a last resort all the patterns
-			if (temp$30) {
+            if (temp$30) {
                 return true;
             }
             final boolean[] ref$longYear$33 = {
@@ -339,12 +339,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             final boolean temp$32 = parseExact(s, s_extraDateTimePatterns, dfi, result, false, ref$longYear$33, setExceptionOnError, exception);
             longYear = ref$longYear$33[0];
             //then try the extra patterns that aren't listed in GetAllDateTimePatterns()
-			if (temp$32) {
+            if (temp$32) {
                 return true;
             }
             // Since the above formats (.NET formatting) can't handle "day-of-year" very well,
-			// try parsing it here as a last resort
-			if (parseIso8601DayOfYear(s, dfi, result, setExceptionOnError, exception)) {
+            // try parsing it here as a last resort
+            if (parseIso8601DayOfYear(s, dfi, result, setExceptionOnError, exception)) {
                 return true;
             }
             if (!setExceptionOnError) {
@@ -371,7 +371,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     return s_parseYearDayMonthFormats;
                 } else {
                     // The year cannot be between the date and the month
-					if (setExceptionOnError) {
+                    if (setExceptionOnError) {
                         String msg = StringHelper.format(CesiumLocalization.getGregorianDateOrderOfYearMonthAndDateNotSupported(), dfi.getShortDatePattern());
                         ex[0] = new NumberFormatException(msg);
                     }
@@ -385,7 +385,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 return s_parseMonthDayYearFormats;
             }
             // The year cannot be between the month and the date
-			if (setExceptionOnError) {
+            if (setExceptionOnError) {
                 String msg = StringHelper.format(CesiumLocalization.getGregorianDateOrderOfYearMonthAndDateNotSupported(), dfi.getShortDatePattern());
                 ex[0] = new NumberFormatException(msg);
             }
@@ -439,12 +439,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
         private static int parseEnum(String s, int sPos, String[] values, String[] invValues, boolean exact, int[] numParsed) {
             // FIXME: I know this is somehow lame code. Probably
-			// it should iterate all the enum value and return
-			// the longest match. However right now I don't see
-			// anything but "1" and "10" - "12" that might match
-			// two or more values. (They are only abbrev month
-			// names, so do reverse order search). See bug #80094.
-			for (int i = values.length - 1; i >= 0; i--) {
+            // it should iterate all the enum value and return
+            // the longest match. However right now I don't see
+            // anything but "1" and "10" - "12" that might match
+            // two or more values. (They are only abbrev month
+            // names, so do reverse order search). See bug #80094.
+            for (int i = values.length - 1; i >= 0; i--) {
                 if (!exact && invValues[i].length() > values[i].length()) {
                     if (invValues[i].length() > 0 && parseString(s, sPos, 0, invValues[i], numParsed)) {
                         return i;
@@ -478,8 +478,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         }
 
         // Note that in case of Parse (exact == false) we check both for AM/PM
-		// and the culture specific AM/PM strings.
-		private static boolean parseAmPm(String s, int valuePos, int num, DateTimeFormatInfo dfi, boolean exact, int[] numParsed, int[] ampm) {
+        // and the culture specific AM/PM strings.
+        private static boolean parseAmPm(String s, int valuePos, int num, DateTimeFormatInfo dfi, boolean exact, int[] numParsed, int[] ampm) {
             numParsed[0] = -1;
             if (ampm[0] != -1) {
                 return false;
@@ -509,16 +509,16 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         }
 
         // Note that in case of Parse (exact == false) we check both for ':'
-		// and the culture specific TimeSperator
-		private static boolean parseTimeSeparator(String s, int sPos, DateTimeFormatInfo dfi, boolean exact, int[] numParsed) {
+        // and the culture specific TimeSperator
+        private static boolean parseTimeSeparator(String s, int sPos, DateTimeFormatInfo dfi, boolean exact, int[] numParsed) {
             String timeSeparator = dfi.getTimeSeparator();
             return parseString(s, sPos, 0, timeSeparator, numParsed) || !exact && parseString(s, sPos, 0, ":", numParsed);
         }
 
         // Accept any character for DateSeparator, except TimeSeparator,
-		// a digit or a letter.
-		// Not documented, but seems to be MS behaviour here.  See bug 54047.
-		private static boolean isLetter(String s, int pos) {
+        // a digit or a letter.
+        // Not documented, but seems to be MS behaviour here.  See bug 54047.
+        private static boolean isLetter(String s, int pos) {
             return pos < s.length() && Character.isLetter(s.charAt(pos));
         }
 
@@ -713,7 +713,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     }
                     pos = ws;
                     // A whitespace may match a '/' in the pattern.
-					if (!exact && pos < chars.length() && chars.charAt(pos) == '/') {
+                    if (!exact && pos < chars.length() && chars.charAt(pos) == '/') {
                         final int[] out$numParsed$45 = {
                             0
                         };
@@ -866,7 +866,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                         num = 3;
                     }
                     //FIXME: We should do use dfi.Calendat.TwoDigitYearMax
-					if (numParsed <= 2) {
+                    if (numParsed <= 2) {
                         year += year < 30 ? 2000 : 1900;
                     }
                     break;
@@ -1055,18 +1055,18 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             if (pos + 1 < len && chars.charAt(pos) == '.' && chars.charAt(pos + 1) == 'F') {
                 pos++;
                 // '.FFF....' can be mapped to nothing. See bug #444103
-				while (pos < len && chars.charAt(pos) == 'F')
+                while (pos < len && chars.charAt(pos) == 'F')
                     pos++;
             }
             // 'K' can be mapped to nothing
-			while (pos < len && chars.charAt(pos) == 'K')
+            while (pos < len && chars.charAt(pos) == 'K')
                 pos++;
             if (pos < len) {
                 return false;
             }
             if (s.length() > valuePos) {
                 // extraneous tail.
-				if (valuePos == 0) {
+                if (valuePos == 0) {
                     return false;
                 }
                 if (Character.isDigit(s.charAt(valuePos)) && Character.isDigit(s.charAt(valuePos - 1))) {
@@ -1091,7 +1091,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 fractionalSeconds = 0D;
             }
             // If no date was given
-			if ((day == -1) && (month == -1) && (year == -1)) {
+            if ((day == -1) && (month == -1) && (year == -1)) {
                 day = DateTimeHelper.today().getDayOfMonth();
                 month = DateTimeHelper.today().getMonthOfYear();
                 year = DateTimeHelper.today().getYear();
@@ -1203,7 +1203,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
         private static void zeroPad(StringBuilder output, long digits, int len) {
             // more than enough for an int
-			char[] buffer = new char[16];
+            char[] buffer = new char[16];
             int pos = 16;
             do {
                 buffer[--pos] = (char) ('0' + digits % 10);
@@ -1217,7 +1217,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
         private static int parseQuotedString(String fmt, int pos, StringBuilder output) {
             // pos == position of " or '
-			int len = fmt.length();
+            int len = fmt.length();
             int start = pos;
             char quoteChar = fmt.charAt(pos++);
             while (pos < len) {
@@ -1227,7 +1227,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 }
                 if (ch == '\\') {
                     // C-Style escape
-					if (pos >= len) {
+                    if (pos >= len) {
                         throw new NumberFormatException(CesiumLocalization.getGregorianDateQuoteNotTerminated());
                     }
                     output.append(fmt.charAt(pos++));
@@ -1239,16 +1239,16 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         }
 
         // This is intended as a last resort when all the other formats fail to parse a "day of year" format
-		// This will throw exceptions if it cannot parse the string
-		private static boolean parseIso8601DayOfYear(String isoString, DateTimeFormatInfo dfi, GregorianDate[] result, boolean setExceptionOnError, NumberFormatException[] exception) {
+        // This will throw exceptions if it cannot parse the string
+        private static boolean parseIso8601DayOfYear(String isoString, DateTimeFormatInfo dfi, GregorianDate[] result, boolean setExceptionOnError, NumberFormatException[] exception) {
             // This is a last resort case to handle the ISO8601 "day of year" format supported by STK
-			// Format: yyyy-dddTHH:mm:ss.f*
-			result[0] = new GregorianDate();
+            // Format: yyyy-dddTHH:mm:ss.f*
+            result[0] = new GregorianDate();
             String[] tokens = StringHelper.split(isoString, '-');
             if (tokens.length != 2) {
                 // In this case we simply have no idea what this format is.
-				// Defer the exception to the surrounding code
-				return false;
+                // Defer the exception to the surrounding code
+                return false;
             }
             int yr4 = 0;
             boolean temp$100 = tokens[0].length() != 4;
@@ -1275,7 +1275,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             final boolean temp$102 = IntHelper.tryParse(tokens[0], out$doy$103);
             doy = out$doy$103[0];
             // The 366 out-of-range check below will handle cases where there are 4 or more digits
-			if (!temp$102) {
+            if (!temp$102) {
                 exception[0] = new NumberFormatException(StringHelper.format(CesiumLocalization.getGregorianDateStringNotRecognized(), isoString));
                 if (setExceptionOnError) {
                     return false;
@@ -1293,7 +1293,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             }
             if (tokens.length > 1) {
                 // Let the existing code handle the time portion
-				boolean incompleteFormat = true, longYear = false;
+                boolean incompleteFormat = true, longYear = false;
                 for (int j = 0; j < s_parseTimeFormats.length; j++) {
                     final boolean[] ref$incompleteFormat$105 = {
                         incompleteFormat
@@ -1333,11 +1333,11 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 }
             }
             // the length of the format is usually a good guess of the number
-			// of chars in the result. Might save us a few bytes sometimes
-			// Add + 10 for cases like mmmm dddd
-			StringBuilder result = new StringBuilder(format.length() + 10);
+            // of chars in the result. Might save us a few bytes sometimes
+            // Add + 10 for cases like mmmm dddd
+            StringBuilder result = new StringBuilder(format.length() + 10);
             // For some cases, the output should not use culture dependent calendar
-			if (useInvariant) {
+            if (useInvariant) {
                 dfi = DateTimeFormatInfo.getInvariantInfo();
                 nfi = NumberFormatInfo.getInvariantInfo();
             }
@@ -1346,7 +1346,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 int tokLen;
                 char ch = format.charAt(i);
                 // catch all
-				switch (ch) {
+                switch (ch) {
                 case 'h': {
                     tokLen = countRepeat(format, i, ch);
                     int hr = dt.getHour() % 12;
@@ -1396,7 +1396,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                         while (result.length() > startLen && result.charAt(result.length() - 1) == '0')
                             result.setLength(result.length() - 1);
                         // when the value was 0, then trim even preceding '.' (!) It is fixed character.
-						if (result.length() == startLen && startLen >= nfi.getNumberDecimalSeparator().length()) {
+                        if (result.length() == startLen && startLen >= nfi.getNumberDecimalSeparator().length()) {
                             boolean matchesSeparator = true;
                             for (int separatorIndex = 0; matchesSeparator && separatorIndex < nfi.getNumberDecimalSeparator().length(); ++separatorIndex) {
                                 matchesSeparator = result.charAt(result.length() - nfi.getNumberDecimalSeparator().length() + separatorIndex) == nfi.getNumberDecimalSeparator().charAt(separatorIndex);
@@ -1480,7 +1480,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                         throw new NumberFormatException(StringHelper.format(CesiumLocalization.getGregorianDateInvalidCharacter(), "%%"));
                     }
                     // Look for the next char
-					tokLen = 1;
+                    tokLen = 1;
                     break;
                 }
                 case '\\': {
@@ -1523,10 +1523,10 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 "yyyyMMddTHHmmss.f*"
         };
         // DateTime.Parse patterns
-		// Patterns are divided to date and time patterns. The algorithm will
-		// try combinations of these patterns. The algorithm also looks for
-		// day of the week, AM/PM GMT and Z independently of the patterns.
-		private static String[] s_parseTimeFormatsTemplate = {
+        // Patterns are divided to date and time patterns. The algorithm will
+        // try combinations of these patterns. The algorithm also looks for
+        // day of the week, AM/PM GMT and Z independently of the patterns.
+        private static String[] s_parseTimeFormatsTemplate = {
                 "H:m:s.f*",
                 "H:m:s",
                 "H:m",
@@ -1534,16 +1534,16 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 "H'\u6642'm'\u5206's'\u79d2'"
         };
         // Specifies AM to disallow '8'.
-		private static String[] s_extraDateTimePatterns = buildDateTimePatterns(s_extraDateTimePatternTemplates, 17);
+        private static String[] s_extraDateTimePatterns = buildDateTimePatterns(s_extraDateTimePatternTemplates, 17);
         private static String[] s_parseTimeFormats = buildDateTimePatterns(s_parseTimeFormatsTemplate, 17);
         // DateTime.Parse date patterns extend ParseExact patterns as follows:
-		//   MMM - month short name or month full name
-		//   MMMM - month number or short name or month full name
-		// Parse behaves differently according to the ShortDatePattern of the
-		// DateTimeFormatInfo. The following define the date patterns for
-		// different orders of day, month and year in ShortDatePattern.
-		// Note that the year cannot go between the day and the month.
-		private static String[] s_parseYearDayMonthFormats = {
+        //   MMM - month short name or month full name
+        //   MMMM - month number or short name or month full name
+        // Parse behaves differently according to the ShortDatePattern of the
+        // DateTimeFormatInfo. The following define the date patterns for
+        // different orders of day, month and year in ShortDatePattern.
+        // Note that the year cannot go between the day and the month.
+        private static String[] s_parseYearDayMonthFormats = {
                 "yyyy/M/dT",
                 "M/yyyy/dT",
                 "yyyy'\u5e74'M'\u6708'd'\u65e5",
@@ -1604,8 +1604,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 "yy/d/MMM"
         };
         // Patterns influenced by the MonthDayPattern in DateTimeFormatInfo.
-		// Note that these patterns cannot be followed by the time.
-		private static String[] s_monthDayShortFormats = {
+        // Note that these patterns cannot be followed by the time.
+        private static String[] s_monthDayShortFormats = {
                 "MMMM/d",
                 "d/MMM",
                 "yyyy/MMMM"
@@ -1788,7 +1788,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             m_second += 1D;
         }
         // JulianDates are noon-based
-		m_hour += 12;
+        m_hour += 12;
         if (m_hour > 23) {
             m_hour -= 24;
         }
@@ -1888,7 +1888,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     */
     public final double getJulianSecondsOfDay() {
         // JulianDates are noon-based
-		int hour = m_hour - 12;
+        int hour = m_hour - 12;
         if (hour < 0) {
             hour += 24;
         }
@@ -1966,7 +1966,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         }
         if (second >= 60 && second < 61) {
             //check to see if it's a valid leap second
-			boolean dayHasLeapSecond = LeapSeconds.getInstance().doesDayHaveLeapSecond(new YearMonthDay(year, month, day).getJulianDayNumber());
+            boolean dayHasLeapSecond = LeapSeconds.getInstance().doesDayHaveLeapSecond(new YearMonthDay(year, month, day).getJulianDayNumber());
             return dayHasLeapSecond && hour == 23 && minute == 59;
         }
         return true;

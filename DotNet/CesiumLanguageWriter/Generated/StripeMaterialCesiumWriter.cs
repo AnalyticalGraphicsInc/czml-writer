@@ -85,7 +85,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>orientation</c> property as a <c>StripeOrientation</c> value.  The <c>orientation</c> property specifies the value indicating if the stripes are horizontal or vertical.
+        /// Writes a value for the <c>orientation</c> property as a <c>stripeOrientation</c> value.  The <c>orientation</c> property specifies the value indicating if the stripes are horizontal or vertical.
         /// </summary>
         /// <param name="value">The orientation.</param>
         public void WriteOrientationProperty(CesiumStripeOrientation value)

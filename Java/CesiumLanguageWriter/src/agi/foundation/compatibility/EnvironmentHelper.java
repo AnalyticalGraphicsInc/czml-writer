@@ -8,7 +8,7 @@ public final class EnvironmentHelper {
 
     /**
      * Gets the newline string defined for this environment.
-     * 
+     *
      * @return A string containing "\r\n" for non-Unix platforms, or a string containing
      *         "\n" for Unix platforms.
      */

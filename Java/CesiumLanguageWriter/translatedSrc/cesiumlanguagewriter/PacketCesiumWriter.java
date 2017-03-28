@@ -12,6 +12,7 @@ import cesiumlanguagewriter.ClockCesiumWriter;
 import cesiumlanguagewriter.ConicSensorCesiumWriter;
 import cesiumlanguagewriter.CorridorCesiumWriter;
 import cesiumlanguagewriter.CustomPatternSensorCesiumWriter;
+import cesiumlanguagewriter.CustomPropertiesCesiumWriter;
 import cesiumlanguagewriter.CylinderCesiumWriter;
 import cesiumlanguagewriter.EllipseCesiumWriter;
 import cesiumlanguagewriter.EllipsoidCesiumWriter;
@@ -95,6 +96,13 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
     */
     public static final String AvailabilityPropertyName = "availability";
+    /**
+    *  
+    The name of the {@code properties} property.
+    
+
+    */
+    public static final String PropertiesPropertyName = "properties";
     /**
     *  
     The name of the {@code position} property.
@@ -257,6 +265,11 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     private Lazy<ClockCesiumWriter> m_clock = new Lazy<cesiumlanguagewriter.ClockCesiumWriter>(new Func1<cesiumlanguagewriter.ClockCesiumWriter>() {
         public cesiumlanguagewriter.ClockCesiumWriter invoke() {
             return new ClockCesiumWriter(ClockPropertyName);
+        }
+    }, false);
+    private Lazy<CustomPropertiesCesiumWriter> m_properties = new Lazy<cesiumlanguagewriter.CustomPropertiesCesiumWriter>(new Func1<cesiumlanguagewriter.CustomPropertiesCesiumWriter>() {
+        public cesiumlanguagewriter.CustomPropertiesCesiumWriter invoke() {
+            return new CustomPropertiesCesiumWriter(PropertiesPropertyName);
         }
     }, false);
     private Lazy<PositionCesiumWriter> m_position = new Lazy<cesiumlanguagewriter.PositionCesiumWriter>(new Func1<cesiumlanguagewriter.PositionCesiumWriter>() {
@@ -640,6 +653,25 @@ public class PacketCesiumWriter extends CesiumElementWriter {
         final String PropertyName = AvailabilityPropertyName;
         getOutput().writePropertyName(PropertyName);
         CesiumWritingHelper.writeTimeIntervalCollection(getOutput(), value);
+    }
+
+    /**
+    *  Gets the writer for the {@code properties} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code properties} property defines a set of custom properties for this object.
+    
+
+    */
+    public final CustomPropertiesCesiumWriter getPropertiesWriter() {
+        return m_properties.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code properties} property.  The {@code properties} property defines a set of custom properties for this object.
+    
+
+    */
+    public final CustomPropertiesCesiumWriter openPropertiesProperty() {
+        return this.<CustomPropertiesCesiumWriter> openAndReturn(getPropertiesWriter());
     }
 
     /**

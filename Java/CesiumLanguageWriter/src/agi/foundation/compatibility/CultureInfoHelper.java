@@ -28,7 +28,7 @@ public final class CultureInfoHelper {
 
     /**
      * Gets the locale using the specified C#-style culture name.
-     * 
+     *
      * The format for the culture name is
      * "&lt;languagecode2&gt;-&lt;country/regioncode2&gt;", where &lt;languagecode2&gt; is
      * the language code and &lt;country/regioncode2&gt; is the subculture code. Examples

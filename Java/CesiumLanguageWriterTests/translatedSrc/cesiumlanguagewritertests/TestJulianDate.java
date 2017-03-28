@@ -175,18 +175,18 @@ public class TestJulianDate {
     @Test
     public final void testSecondsDifference() {
         // Test same standard - both safe
-		JulianDate first = new JulianDate(2451545.0);
+        JulianDate first = new JulianDate(2451545.0);
         JulianDate second = JulianDate.add(first, Duration.fromSeconds(120000D));
         Assert.assertEquals(120000, first.secondsDifference(second), 0d);
         Assert.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds(), first.secondsDifference(second), 0d);
         //Test same standard - both unsafe
-		first = new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME);
+        first = new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         second = JulianDate.add(first, Duration.fromSeconds(120000D));
         second = new JulianDate(second.getDay(), second.getSecondsOfDay(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
         Assert.assertEquals(120000, first.secondsDifference(second), 0d);
         Assert.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds(), first.secondsDifference(second), 0d);
         // Test diff standard - one unsafe, one safe
-		first = new JulianDate(2451545.0);
+        first = new JulianDate(2451545.0);
         second = JulianDate.add(first, Duration.fromSeconds(120000D));
         JulianDate secondDiffStandard = second.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
         Assert.assertEquals(120000, first.secondsDifference(secondDiffStandard), 0d);
@@ -204,18 +204,18 @@ public class TestJulianDate {
         double totalElapsedTime = TimeConstants.SecondsPerDay * 2.5;
         double totalElapsedTimeMinutes = totalElapsedTime / TimeConstants.SecondsPerMinute;
         //Test same time standard, both safe
-		JulianDate first = new JulianDate(2451545.0);
+        JulianDate first = new JulianDate(2451545.0);
         JulianDate second = JulianDate.add(first, Duration.fromSeconds(totalElapsedTime));
         Assert.assertEquals(totalElapsedTimeMinutes, first.minutesDifference(second), 0d);
         Assert.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds() / TimeConstants.SecondsPerMinute, first.minutesDifference(second), 0d);
         //Test same time standard, both unsafe
-		first = new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME);
+        first = new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         second = JulianDate.add(first, Duration.fromSeconds(totalElapsedTime));
         second = new JulianDate(second.getDay(), second.getSecondsOfDay(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
         Assert.assertEquals(totalElapsedTimeMinutes, first.minutesDifference(second), 0d);
         Assert.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds() / TimeConstants.SecondsPerMinute, first.minutesDifference(second), 0d);
         //Test diff time standard, one safe, one unsafe
-		first = new JulianDate(2451545.0);
+        first = new JulianDate(2451545.0);
         second = JulianDate.add(first, Duration.fromSeconds(totalElapsedTime));
         JulianDate secondDiffStandard = second.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
         Assert.assertEquals(totalElapsedTimeMinutes, first.minutesDifference(secondDiffStandard), 0d);
@@ -263,7 +263,7 @@ public class TestJulianDate {
     @Test
     public final void testAddSeconds() {
         // Make sure AddSeconds produces the correct answer in the correct time standard.
-		JulianDate test = new JulianDate(2451912, 43200.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
+        JulianDate test = new JulianDate(2451912, 43200.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         JulianDate result = test.addSeconds(45.123);
         AssertHelper.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, result.getStandard());
         Assert.assertEquals((int) 2451912, (int) result.getDay());
@@ -279,7 +279,7 @@ public class TestJulianDate {
     @Test
     public final void testAddDays() {
         // Make sure AddDays produces the correct answer in the correct time standard.
-		JulianDate test = new JulianDate(2451912, 43200.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
+        JulianDate test = new JulianDate(2451912, 43200.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         JulianDate result = test.addDays(45.5);
         AssertHelper.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, result.getStandard());
         Assert.assertEquals((int) 2451958, (int) result.getDay());

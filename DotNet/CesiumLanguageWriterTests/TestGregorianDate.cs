@@ -266,20 +266,20 @@ namespace CesiumLanguageWriterTests
             CultureInfo originalCulture = Thread.CurrentThread.CurrentCulture;
             try
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
                 GregorianDate gd1 = new GregorianDate(2001, 1, 1, 6, 3, 14);
-                Assert.AreEqual("1/1/2001 6:03:14 AM", gd1.ToString());
-                Assert.AreEqual("Monday, January 01, 2001", gd1.ToLongDateString());
-                Assert.AreEqual("6:03:14 AM", gd1.ToLongTimeString());
-                Assert.AreEqual("1/1/2001", gd1.ToShortDateString());
-                Assert.AreEqual("6:03 AM", gd1.ToShortTimeString());
+                Assert.AreEqual("01/01/2001 06:03:14", gd1.ToString());
+                Assert.AreEqual("Monday, 01 January 2001", gd1.ToLongDateString());
+                Assert.AreEqual("06:03:14", gd1.ToLongTimeString());
+                Assert.AreEqual("01/01/2001", gd1.ToShortDateString());
+                Assert.AreEqual("06:03", gd1.ToShortTimeString());
 
                 gd1 = new GregorianDate(2003, 3, 4, 16, 43, 23.23452);
-                Assert.AreEqual("3/4/2003 4:43:23 PM", gd1.ToString());
-                Assert.AreEqual("Tuesday, March 04, 2003", gd1.ToLongDateString());
-                Assert.AreEqual("4:43:23 PM", gd1.ToLongTimeString());
-                Assert.AreEqual("3/4/2003", gd1.ToShortDateString());
-                Assert.AreEqual("4:43 PM", gd1.ToShortTimeString());
+                Assert.AreEqual("03/04/2003 16:43:23", gd1.ToString());
+                Assert.AreEqual("Tuesday, 04 March 2003", gd1.ToLongDateString());
+                Assert.AreEqual("16:43:23", gd1.ToLongTimeString());
+                Assert.AreEqual("03/04/2003", gd1.ToShortDateString());
+                Assert.AreEqual("16:43", gd1.ToShortTimeString());
             }
             finally
             {

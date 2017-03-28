@@ -12,9 +12,9 @@ namespace CesiumLanguageWriter
     public class StripeOrientationCesiumWriter : CesiumPropertyWriter<StripeOrientationCesiumWriter>
     {
         /// <summary>
-        /// The name of the <c>StripeOrientation</c> property.
+        /// The name of the <c>stripeOrientation</c> property.
         /// </summary>
-        public const string StripeOrientationPropertyName = "StripeOrientation";
+        public const string StripeOrientationPropertyName = "stripeOrientation";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>StripeOrientation</c>, which is the orientation of stripes in the stripe material.
+        /// Writes the value expressed as a <c>stripeOrientation</c>, which is the orientation of stripes in the stripe material.
         /// </summary>
         /// <param name="value">The orientation.</param>
         public void WriteStripeOrientation(CesiumStripeOrientation value)

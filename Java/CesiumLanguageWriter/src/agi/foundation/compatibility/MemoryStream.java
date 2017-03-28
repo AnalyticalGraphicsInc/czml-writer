@@ -29,7 +29,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
     /**
      * Initializes a new instance of the MemoryStream class with an expandable capacity
      * initialized as specified.
-     * 
+     *
      * @param capacity
      *            The initial size of the internal array in bytes.
      */
@@ -49,7 +49,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
     /**
      * Initializes a new non-resizable instance of the MemoryStream class based on the
      * specified byte array.
-     * 
+     *
      * @param buffer
      *            The array of unsigned bytes from which to create the current stream.
      */
@@ -60,7 +60,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
     /**
      * Initializes a new non-resizable instance of the MemoryStream class based on the
      * specified byte array, with writable set as specified.
-     * 
+     *
      * @param buffer
      *            The array of unsigned bytes from which to create this stream.
      * @param writable
@@ -82,7 +82,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
     /**
      * Initializes a new non-resizable instance of the MemoryStream class based on the
      * specified region of a byte array.
-     * 
+     *
      * @param buffer
      *            The array of unsigned bytes from which to create this stream.
      * @param index
@@ -97,7 +97,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
     /**
      * Initializes a new non-resizable instance of the MemoryStream class based on the
      * specified region of a byte array, with writable set as specified.
-     * 
+     *
      * @param buffer
      *            The array of unsigned bytes from which to create this stream.
      * @param index
@@ -115,7 +115,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      * Initializes a new instance of the MemoryStream class based on the specified region
      * of a byte array, with writable set as specified, and publiclyVisible set as
      * specified.
-     * 
+     *
      * @param buffer
      *            The array of unsigned bytes from which to create this stream.
      * @param index
@@ -142,7 +142,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
 
     @Override
     public synchronized int available() {
-        return this.length - this.position;
+        return length - position;
     }
 
     @Override
@@ -155,7 +155,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
 
     @Override
     public void mark(int readAheadLimit) {
-        this.mark = this.position;
+        mark = position;
     }
 
     @Override
@@ -165,40 +165,40 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
 
     @Override
     public synchronized void reset() {
-        this.position = this.mark;
+        position = mark;
     }
 
     @Override
     public synchronized int read() {
-        if (this.position >= this.length)
+        if (position >= length)
             return -1;
 
-        return this.buffer[this.position++] & 0xff;
+        return buffer[position++] & 0xff;
     }
 
     @Override
     public synchronized int read(byte[] b, int off, int len) {
-        if (this.position >= this.length || len == 0)
+        if (position >= length || len == 0)
             return 0;
 
-        if (this.position > this.length - len)
-            len = this.length - this.position;
+        if (position > length - len)
+            len = length - position;
 
-        System.arraycopy(this.buffer, this.position, b, off, len);
+        System.arraycopy(buffer, position, b, off, len);
         position += len;
         return len;
     }
 
     @Override
     public synchronized long skip(long n) {
-        int previousPosition = this.position;
+        int previousPosition = position;
         long newPosition = seek(n, SeekOrigin.CURRENT);
         return newPosition - previousPosition;
     }
 
     /**
      * Returns the array of bytes from which this stream was created.
-     * 
+     *
      * @return byte[] The byte array from which this stream was created, or the underlying
      *         array if a byte array was not provided to the MemoryStream constructor
      *         during construction of the current instance.
@@ -207,21 +207,21 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
         if (!bufferVisible)
             throw new RuntimeIllegalAccessException("Cannot call getBuffer().");
 
-        return this.buffer;
+        return buffer;
     }
 
     /**
      * Gets the number of bytes allocated for this stream.
-     * 
+     *
      * @return The length of the usable portion of the buffer for the stream.
      */
     public int getCapacity() {
-        return this.capacity - this.origin;
+        return capacity - origin;
     }
 
     /**
      * Sets the number of bytes allocated for this stream.
-     * 
+     *
      * @param value
      *            The new length of the usable portion of the buffer for the stream.
      */
@@ -229,32 +229,32 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
         if (!expandable)
             throw new UnsupportedOperationException("Cannot expand this MemoryStream");
 
-        if (this.buffer != null && value == this.buffer.length)
+        if (buffer != null && value == buffer.length)
             return;
 
         byte[] newBuffer = null;
         if (value > 0) {
             newBuffer = new byte[value];
-            if (this.buffer != null)
-                System.arraycopy(this.buffer, 0, newBuffer, 0, length);
+            if (buffer != null)
+                System.arraycopy(buffer, 0, newBuffer, 0, length);
         }
 
-        this.buffer = newBuffer;
-        this.capacity = value;
+        buffer = newBuffer;
+        capacity = value;
     }
 
     /**
      * Gets the length of the stream in bytes.
-     * 
+     *
      * @return The length of the stream in bytes.
      */
     public long getLength() {
-        return this.length - this.origin;
+        return length - origin;
     }
 
     /**
      * Sets the length of this stream to the given value.
-     * 
+     *
      * @param value
      *            The new length of the stream.
      */
@@ -264,42 +264,42 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
         if (!writable)
             throw new UnsupportedOperationException("Cannot write to this stream.");
 
-        int newLength = (int) value + this.origin;
+        int newLength = (int) value + origin;
 
         boolean newArray = expand(newLength);
-        if (!newArray && newLength > this.length) {
-            clearBuffer(this.length, newLength);
+        if (!newArray && newLength > length) {
+            clearBuffer(length, newLength);
         }
 
-        this.length = newLength;
-        if (this.position > this.length)
-            this.position = this.length;
+        length = newLength;
+        if (position > length)
+            position = length;
     }
 
     /**
      * Gets the current position within the stream.
-     * 
+     *
      * @return The current position within the stream.
      */
     @Override
     public long getPosition() {
-        return this.position - this.origin;
+        return position - origin;
     }
 
     /**
      * Sets the current position within the stream.
-     * 
+     *
      * @param value
      *            The new position within the stream.
      */
     @Override
     public void setPosition(long value) {
-        this.position = this.origin + (int) value;
+        position = origin + (int) value;
     }
 
     /**
      * Sets the position within the current stream to the specified value.
-     * 
+     *
      * @param offset
      *            The new position within the stream. This is relative to the loc
      *            parameter, and can be positive or negative.
@@ -312,25 +312,25 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
         int reference;
         switch (loc) {
         case BEGIN:
-            reference = this.origin;
+            reference = origin;
             break;
         case CURRENT:
-            reference = this.position;
+            reference = position;
             break;
         case END:
-            reference = this.length;
+            reference = length;
             break;
         default:
             throw new ArgumentException("loc");
         }
 
-        this.position = reference + (int) offset;
-        return this.position;
+        position = reference + (int) offset;
+        return position;
     }
 
     /**
      * Writes a block of bytes to the current stream using data read from buffer.
-     * 
+     *
      * @param buffer
      *            The buffer to write data from.
      * @param offset
@@ -343,19 +343,19 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
         if (!writable)
             throw new UnsupportedOperationException("Cannot write to this stream.");
 
-        int newPosition = this.position + count;
-        if (newPosition > this.length) {
+        int newPosition = position + count;
+        if (newPosition > length) {
             boolean newArray = expand(newPosition);
-            if (!newArray && this.position > this.length) {
-                clearBuffer(this.length, newPosition);
+            if (!newArray && position > length) {
+                clearBuffer(length, newPosition);
             }
         }
 
-        System.arraycopy(buffer, offset, this.buffer, this.position, count);
-        this.position = newPosition;
+        System.arraycopy(buffer, offset, this.buffer, position, count);
+        position = newPosition;
 
-        if (newPosition > this.length) {
-            this.length = newPosition;
+        if (newPosition > length) {
+            length = newPosition;
         }
     }
 
@@ -363,26 +363,26 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
         if (!writable)
             throw new UnsupportedOperationException("Cannot write to this stream.");
 
-        if (this.position >= this.length) {
-            int newLength = this.position + 1;
+        if (position >= length) {
+            int newLength = position + 1;
             boolean newArray = expand(newLength);
-            if (!newArray && this.position > this.length) {
-                clearBuffer(this.length, this.position);
+            if (!newArray && position > length) {
+                clearBuffer(length, position);
             }
-            this.length = newLength;
+            length = newLength;
         }
-        this.buffer[this.position++] = value;
+        buffer[position++] = value;
     }
 
     private void clearBuffer(int from, int to) {
         for (int i = from; i < to; i++)
-            this.buffer[i] = 0;
+            buffer[i] = 0;
     }
 
     private boolean expand(int newLength) {
         if (newLength > capacity) {
             int newCapacity = Math.max(256, newLength);
-            newCapacity = Math.max(this.capacity * 2, newCapacity);
+            newCapacity = Math.max(capacity * 2, newCapacity);
 
             setCapacity(newCapacity);
             return true;
@@ -392,7 +392,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
 
     /**
      * Get an OutputStream that will write to this MemoryStream, at the current position.
-     * 
+     *
      * @return an OutputStream that will write in-place to this MemoryStream.
      */
     public OutputStream asOutputStream() {

@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/CustomProperties.json",
+    "title": "CustomProperties",
+    "description": "A set of custom properties.",
+    "type": "object",
+    "czmlExamples": [
+        
+    ],
+    "additionalProperties": {
+        "$ref": "CustomProperty.json",
+        "description": "A custom property."
+    }
+}

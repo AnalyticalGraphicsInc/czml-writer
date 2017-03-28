@@ -15,6 +15,7 @@ public final class ArrayHelper {
         public ArrayList(E[] array) {
             if (array == null)
                 throw new NullPointerException();
+
             this.array = array;
         }
 
@@ -24,7 +25,7 @@ public final class ArrayHelper {
 
         public Object[] toArray() {
             Object[] result = new Object[array.length];
-            for (int i = 0; i < array.length; i++) {
+            for (int i = 0; i < array.length; ++i) {
                 result[i] = array[i];
             }
             return result;
@@ -33,13 +34,15 @@ public final class ArrayHelper {
         @SuppressWarnings("unchecked")
         public <T> T[] toArray(T[] a) {
             int size = array.length;
-            if (a.length < size)
+            if (a.length < size) {
                 a = (T[]) Array.newInstance(a.getClass().getComponentType(), size);
+            }
 
             copy(array, 0, a, 0, size);
 
-            if (a.length > size)
+            if (a.length > size) {
                 a[size] = null;
+            }
 
             return a;
         }
@@ -58,9 +61,11 @@ public final class ArrayHelper {
             if (o == null)
                 return -1;
 
-            for (int i = 0; i < array.length; i++)
-                if (o.equals(array[i]))
+            for (int i = 0; i < array.length; ++i) {
+                if (o.equals(array[i])) {
                     return i;
+                }
+            }
 
             return -1;
         }

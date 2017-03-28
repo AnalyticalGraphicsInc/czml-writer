@@ -8,19 +8,14 @@ import java.util.regex.Pattern;
 
 public final class UriHelper {
     // from rfc2396, appendix B
-    private static final Pattern uriRegex;
-    private static final Pattern opaqueUriRegex;
-
-    static {
-        opaqueUriRegex = Pattern.compile("^(?:([^:/?#]+):)([^/][^#]*)(?:#(.*))?");
-        uriRegex = Pattern.compile("^(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*)(?:\\?([^#]*))?(?:#(.*))?");
-    }
+    private static final Pattern uriRegex = Pattern.compile("^(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*)(?:\\?([^#]*))?(?:#(.*))?");
+    private static final Pattern opaqueUriRegex = Pattern.compile("^(?:([^:/?#]+):)([^/][^#]*)(?:#(.*))?");
 
     private UriHelper() {}
 
     /**
      * Initializes a new instance of the URI class with the specified URI.
-     * 
+     *
      * @param uri
      *            A URI.
      */
@@ -119,7 +114,7 @@ public final class UriHelper {
      * Initializes a new instance of the URI class with the specified URI. This
      * constructor allows you to specify if the URI string is a relative URI, absolute
      * URI, or is indeterminate.
-     * 
+     *
      * @param uriString
      * @param uriKind
      * @return

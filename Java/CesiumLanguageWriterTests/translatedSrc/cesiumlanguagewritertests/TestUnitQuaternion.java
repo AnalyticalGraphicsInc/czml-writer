@@ -68,19 +68,19 @@ public class TestUnitQuaternion {
     public final void testFromMatrix3By3() {
         double angle = Math.PI / 6;
         // 60 degrees.
-		// Test "type == 0:"
-		_TestFromMatrix3By3(angle, new Cartesian(2.0, 3.0, 6.0));
+        // Test "type == 0:"
+        _TestFromMatrix3By3(angle, new Cartesian(2.0, 3.0, 6.0));
         //rotation about 2/7, 3/7, 6/7 vector.
-		angle = 2 * Math.PI / 3;
+        angle = 2 * Math.PI / 3;
         // 120 degrees.
-		// Test "type == 1:"
-		_TestFromMatrix3By3(angle, new Cartesian(6.0, -3.0, -2.0));
+        // Test "type == 1:"
+        _TestFromMatrix3By3(angle, new Cartesian(6.0, -3.0, -2.0));
         // rotation about 6/7, -3/7, -2/7 vector.
-		// Test "type == 2:"
-		_TestFromMatrix3By3(angle, new Cartesian(-2.0, -3.0, 6.0));
+        // Test "type == 2:"
+        _TestFromMatrix3By3(angle, new Cartesian(-2.0, -3.0, 6.0));
         // rotation about -2/7, -3/7, 6/7 vector.
-		// Test "type == 3:"
-		_TestFromMatrix3By3(angle, new Cartesian(-2.0, 6.0, -3.0));
+        // Test "type == 3:"
+        _TestFromMatrix3By3(angle, new Cartesian(-2.0, 6.0, -3.0));
         // rotation about -2/7, 6/7, -3/7 vector.
     }
 
@@ -271,8 +271,8 @@ public class TestUnitQuaternion {
     @Test
     public final void testMultiplicationByUnitQuaternion() {
         // Choose quaternions whose vector portions (x, y, z) do not produce zeros
-		// when dotted or crossed.  They should also have non-zero scalar (w) portions as well.
-		UnitQuaternion first = new UnitQuaternion(7.0, 2.0, 3.0, 6.0);
+        // when dotted or crossed.  They should also have non-zero scalar (w) portions as well.
+        UnitQuaternion first = new UnitQuaternion(7.0, 2.0, 3.0, 6.0);
         UnitQuaternion second = new UnitQuaternion(7.0, 2.0, 3.0, 6.0);
         UnitQuaternion result = first.multiply(second);
         Assert.assertEquals(0.0 / 7.0, result.getW(), Constants.Epsilon15);

@@ -35,7 +35,7 @@ package agi.foundation.compatibility;
 
 /**
  * Represents a node in a LinkedList.
- * 
+ *
  * @param <T>
  *            Specifies the element type of the linked list.
  */
@@ -48,7 +48,7 @@ public final class LinkedListNode<T> {
     /**
      * Initializes a new instance of the LinkedListNode class, containing the specified
      * value.
-     * 
+     *
      * @param value
      *            The value to contain in the LinkedListNode.
      */
@@ -96,7 +96,7 @@ public final class LinkedListNode<T> {
 
     /**
      * Gets the LinkedList that the LinkedListNode belongs to.
-     * 
+     *
      * @return A reference to the LinkedList that the LinkedListNode belongs to, or null
      *         if the LinkedListNode is not linked.
      */
@@ -106,7 +106,7 @@ public final class LinkedListNode<T> {
 
     /**
      * Gets the next node in the LinkedList.
-     * 
+     *
      * @return A reference to the next node in the LinkedList, or null if the current node
      *         is the last element of the LinkedList.
      */
@@ -116,7 +116,7 @@ public final class LinkedListNode<T> {
 
     /**
      * Gets the previous node in the LinkedList.
-     * 
+     *
      * @return A reference to the previous node in the LinkedList, or null if the current
      *         node is the first element of the LinkedList.
      */
@@ -126,7 +126,7 @@ public final class LinkedListNode<T> {
 
     /**
      * Gets the value contained in the node.
-     * 
+     *
      * @return The value contained in the node.
      */
     public final T getValue() {
@@ -135,7 +135,7 @@ public final class LinkedListNode<T> {
 
     /**
      * Sets the value contained in the node.
-     * 
+     *
      * @param value
      *            T The new value to contain in the LinkedListNode.
      */

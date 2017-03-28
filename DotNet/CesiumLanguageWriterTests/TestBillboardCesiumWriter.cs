@@ -26,6 +26,43 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        public void TestShowPropertyInterval()
+        {
+            var startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0));
+
+            using (Packet)
+            using (var billboardWriter = Packet.OpenBillboardProperty())
+            using (var showWriter = billboardWriter.OpenShowProperty())
+            {
+                using (var intervalListWriter = showWriter.OpenMultipleIntervals())
+                {
+                    using (var intervalWriter = intervalListWriter.OpenInterval(startDate, startDate.AddSeconds(1)))
+                    {
+                        intervalWriter.WriteBoolean(true);
+                    }
+                    using (var intervalWriter = intervalListWriter.OpenInterval(startDate.AddSeconds(1), startDate.AddSeconds(2)))
+                    {
+                        intervalWriter.WriteBoolean(false);
+                    }
+                    using (var intervalWriter = intervalListWriter.OpenInterval(startDate.AddSeconds(2), stopDate))
+                    {
+                        intervalWriter.WriteBoolean(true);
+                    }
+                }
+            }
+
+            string interval1String = CesiumFormattingHelper.ToIso8601Interval(startDate, startDate.AddSeconds(1), Iso8601Format.Compact);
+            string interval2String = CesiumFormattingHelper.ToIso8601Interval(startDate.AddSeconds(1), startDate.AddSeconds(2), Iso8601Format.Compact);
+            string interval3String = CesiumFormattingHelper.ToIso8601Interval(startDate.AddSeconds(2), stopDate, Iso8601Format.Compact);
+
+            Assert.AreEqual("{\"billboard\":{\"show\":[{\"interval\":\"" + interval1String + "\",\"boolean\":true}," +
+                            "{\"interval\":\"" + interval2String + "\",\"boolean\":false}," +
+                            "{\"interval\":\"" + interval3String + "\",\"boolean\":true}" +
+                            "]}}", StringWriter.ToString());
+        }
+
+        [Test]
         public void TestScaleByDistanceProperty()
         {
             using (Packet)

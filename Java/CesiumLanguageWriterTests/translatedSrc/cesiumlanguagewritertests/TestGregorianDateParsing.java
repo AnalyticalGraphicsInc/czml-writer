@@ -44,7 +44,7 @@ public class TestGregorianDateParsing {
         result = GregorianDate.parse("1985-042");
         AssertHelper.assertEquals(iso, result);
         // Make sure to check each month to ensure we have it right
-		String first = "1986-";
+        String first = "1986-";
         String last = "T02:01:04Z";
         JulianDate baseDate = new JulianDate(new GregorianDate(1986, 1, 12, 2, 1, 4D));
         for (int i = 1; i < 12; i++) {
@@ -136,7 +136,7 @@ public class TestGregorianDateParsing {
     @Test
     public final void testToISO8601String() {
         // Full format
-		String isoString = "1985-04-12T10:15:30Z";
+        String isoString = "1985-04-12T10:15:30Z";
         GregorianDate iso = new GregorianDate(1985, 4, 12, 10, 15, 30D);
         GregorianDate result = GregorianDate.parse(isoString);
         AssertHelper.assertEquals(iso, result);

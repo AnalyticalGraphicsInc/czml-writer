@@ -12,7 +12,7 @@
         "$ref": "#"
     },
     "properties": {
-        "StripeOrientation": {
+        "stripeOrientation": {
             "$ref": "StripeOrientationValue.json",
             "description": "The orientation of stripes in the stripe material.",
             "czmlValue": true

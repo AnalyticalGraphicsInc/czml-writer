@@ -328,9 +328,9 @@ public class TestCartesian {
         double b = 2.0 * (sin * sin + sin * cos * Math.sqrt(3.0)) / 3.0;
         double c = 2.0 * (sin * sin - sin * cos * Math.sqrt(3.0)) / 3.0;
         // The three vectors here are the orthonormal set obtained by rotating
-		// the x-axis, y-axis, and z-axis through an angle of 45 degrees about
-		// the (1,1,1) vector.
-		Cartesian first = new Cartesian(a, b, c);
+        // the x-axis, y-axis, and z-axis through an angle of 45 degrees about
+        // the (1,1,1) vector.
+        Cartesian first = new Cartesian(a, b, c);
         Cartesian second = new Cartesian(c, a, b);
         Cartesian third = new Cartesian(b, c, a);
         Cartesian result = first.cross(second);
@@ -349,18 +349,18 @@ public class TestCartesian {
     public final void testRotateByUnitQuaternion() {
         double angle = Math.PI / 3.0;
         // half angle of 120 degree rotation
-		double cos = Math.cos(angle);
+        double cos = Math.cos(angle);
         double sin = Math.sin(angle);
         Cartesian axis = Cartesian.toCartesian((new Cartesian(1.0, 1.0, 1.0)).normalize());
         // unit vector along [1,1,1]
-		double w = cos;
+        double w = cos;
         double x = sin * axis.getX();
         double y = sin * axis.getY();
         double z = sin * axis.getZ();
         // The original vector is along the x-axis.
-		Cartesian original = new Cartesian(1.0, 0.0, 0.0);
+        Cartesian original = new Cartesian(1.0, 0.0, 0.0);
         // The rotated vector is along the z-axis.
-		Cartesian rotated = original.rotate(new UnitQuaternion(w, x, y, z));
+        Cartesian rotated = original.rotate(new UnitQuaternion(w, x, y, z));
         Assert.assertEquals(0.0, rotated.getX(), Constants.Epsilon15);
         Assert.assertEquals(0.0, rotated.getY(), Constants.Epsilon15);
         Assert.assertEquals(1.0, rotated.getZ(), Constants.Epsilon15);
@@ -376,18 +376,18 @@ public class TestCartesian {
     public final void testRotateByMatrix3By3() {
         double angle = Math.PI / 3.0;
         // half angle of 120 degree rotation
-		double cos = Math.cos(angle);
+        double cos = Math.cos(angle);
         double sin = Math.sin(angle);
         Cartesian axis = Cartesian.toCartesian((new Cartesian(1.0, 1.0, 1.0)).normalize());
         // unit vector along [1,1,1]
-		double w = cos;
+        double w = cos;
         double x = sin * axis.getX();
         double y = sin * axis.getY();
         double z = sin * axis.getZ();
         // The original vector is along the x-axis.
-		Cartesian original = new Cartesian(1.0, 0.0, 0.0);
+        Cartesian original = new Cartesian(1.0, 0.0, 0.0);
         // The rotated vector is along the z-axis.
-		Cartesian rotated = original.rotate(new Matrix3By3(new UnitQuaternion(w, x, y, z)));
+        Cartesian rotated = original.rotate(new Matrix3By3(new UnitQuaternion(w, x, y, z)));
         Assert.assertEquals(0.0, rotated.getX(), Constants.Epsilon15);
         Assert.assertEquals(0.0, rotated.getY(), Constants.Epsilon15);
         Assert.assertEquals(1.0, rotated.getZ(), Constants.Epsilon15);
