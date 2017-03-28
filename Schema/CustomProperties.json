@@ -4,9 +4,6 @@
     "title": "CustomProperties",
     "description": "A set of custom properties.",
     "type": "object",
-    "czmlExamples": [
-        
-    ],
     "additionalProperties": {
         "$ref": "CustomProperty.json",
         "description": "A custom property."
