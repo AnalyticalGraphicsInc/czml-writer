@@ -23,6 +23,10 @@
             "$ref": "PolylineArrowMaterial.json",
             "description": "A material that fills the line with an arrow."
         },
+        "polylineDash": {
+            "$ref": "PolylineDashMaterial.json",
+            "description": "A material that fills the line with a pattern of dashes."
+        },
         "polylineGlow": {
             "$ref": "PolylineGlowMaterial.json",
             "description": "A material that fills the line with a glowing color."
