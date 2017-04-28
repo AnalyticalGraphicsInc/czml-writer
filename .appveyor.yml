@@ -1,4 +1,4 @@
-version: 2.1.0.{build}
+version: 2.2.0.{build}
 image: Visual Studio 2017
 configuration: Release
 platform: Any CPU
@@ -7,7 +7,7 @@ assembly_info:
   file: DotNet\CesiumLanguageWriter\Properties\AssemblyInfo.cs
   assembly_version: '{version}'
   assembly_file_version: '{version}'
-  assembly_informational_version: 2.1.0
+  assembly_informational_version: 2.2.0
 before_build:
 - cmd: nuget restore DotNet\CesiumLanguageWriter.sln
 build:
