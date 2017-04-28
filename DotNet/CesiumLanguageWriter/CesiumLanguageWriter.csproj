@@ -236,6 +236,7 @@
     <Compile Include="Generated\PolylineCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\PolylineDashMaterialCesiumWriter.cs" />
     <Compile Include="Generated\PolylineGlowMaterialCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>
