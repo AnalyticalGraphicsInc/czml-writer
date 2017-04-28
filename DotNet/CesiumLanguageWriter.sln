@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CesiumLanguageWriter", "CesiumLanguageWriter\CesiumLanguageWriter.csproj", "{085359F8-CC1D-4561-94C7-0BF067B8E370}"
 EndProject
@@ -78,6 +78,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\Polygon.json = ..\Schema\Polygon.json
 		..\Schema\Polyline.json = ..\Schema\Polyline.json
 		..\Schema\PolylineArrowMaterial.json = ..\Schema\PolylineArrowMaterial.json
+		..\Schema\PolylineDashMaterial.json = ..\Schema\PolylineDashMaterial.json
 		..\Schema\PolylineGlowMaterial.json = ..\Schema\PolylineGlowMaterial.json
 		..\Schema\PolylineMaterial.json = ..\Schema\PolylineMaterial.json
 		..\Schema\PolylineOutlineMaterial.json = ..\Schema\PolylineOutlineMaterial.json
