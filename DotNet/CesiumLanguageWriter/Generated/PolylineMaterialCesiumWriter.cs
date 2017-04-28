@@ -29,6 +29,11 @@ namespace CesiumLanguageWriter
         public const string PolylineArrowPropertyName = "polylineArrow";
 
         /// <summary>
+        /// The name of the <c>polylineDash</c> property.
+        /// </summary>
+        public const string PolylineDashPropertyName = "polylineDash";
+
+        /// <summary>
         /// The name of the <c>polylineGlow</c> property.
         /// </summary>
         public const string PolylineGlowPropertyName = "polylineGlow";
@@ -51,6 +56,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<SolidColorMaterialCesiumWriter>(() => new SolidColorMaterialCesiumWriter(SolidColorPropertyName), false);
         private readonly Lazy<PolylineOutlineMaterialCesiumWriter> m_polylineOutline = new Lazy<PolylineOutlineMaterialCesiumWriter>(() => new PolylineOutlineMaterialCesiumWriter(PolylineOutlinePropertyName), false);
         private readonly Lazy<PolylineArrowMaterialCesiumWriter> m_polylineArrow = new Lazy<PolylineArrowMaterialCesiumWriter>(() => new PolylineArrowMaterialCesiumWriter(PolylineArrowPropertyName), false);
+        private readonly Lazy<PolylineDashMaterialCesiumWriter> m_polylineDash = new Lazy<PolylineDashMaterialCesiumWriter>(() => new PolylineDashMaterialCesiumWriter(PolylineDashPropertyName), false);
         private readonly Lazy<PolylineGlowMaterialCesiumWriter> m_polylineGlow = new Lazy<PolylineGlowMaterialCesiumWriter>(() => new PolylineGlowMaterialCesiumWriter(PolylineGlowPropertyName), false);
         private readonly Lazy<ImageMaterialCesiumWriter> m_image = new Lazy<ImageMaterialCesiumWriter>(() => new ImageMaterialCesiumWriter(ImagePropertyName), false);
         private readonly Lazy<GridMaterialCesiumWriter> m_grid = new Lazy<GridMaterialCesiumWriter>(() => new GridMaterialCesiumWriter(GridPropertyName), false);
@@ -128,6 +134,23 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(PolylineArrowWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>polylineDash</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>polylineDash</c> property defines a material that fills the line with a pattern of dashes.
+        /// </summary>
+        public PolylineDashMaterialCesiumWriter PolylineDashWriter
+        {
+            get { return m_polylineDash.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>polylineDash</c> property.  The <c>polylineDash</c> property defines a material that fills the line with a pattern of dashes.
+        /// </summary>
+        public PolylineDashMaterialCesiumWriter OpenPolylineDashProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(PolylineDashWriter);
         }
 
         /// <summary>

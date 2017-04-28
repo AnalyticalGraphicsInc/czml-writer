@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code LineOffset} to a  {@link CesiumOutputStream}.  A {@code LineOffset} is the offset of grid lines along each axis, as a percentage from 0 to 1.
+ Writes a {@code LineOffset} to a {@link CesiumOutputStream}.  A {@code LineOffset} is the offset of grid lines along each axis, as a percentage from 0 to 1.
  
 
  */
@@ -213,7 +213,7 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Cartesian2} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Cartesian2} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -238,7 +238,7 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

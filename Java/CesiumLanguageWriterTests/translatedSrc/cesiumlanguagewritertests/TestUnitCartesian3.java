@@ -16,7 +16,7 @@ import org.junit.Test;
 
 /**
  *  
- Tests the  {@link UnitCartesian} type.
+ Tests the {@link UnitCartesian} type.
  
 
  */
@@ -38,7 +38,7 @@ public class TestUnitCartesian3 {
 
     /**
     *  
-    Tests initialization from  {@link Cartesian} coordinates.
+    Tests initialization from {@link Cartesian} coordinates.
     
 
     */
@@ -52,7 +52,7 @@ public class TestUnitCartesian3 {
 
     /**
     *  
-    Tests initialization from  {@link Cartesian} coordinates.
+    Tests initialization from {@link Cartesian} coordinates.
     
 
     */
@@ -155,7 +155,7 @@ public class TestUnitCartesian3 {
 
     /**
     *  
-    Tests the  {@link UnitCartesian#equalsEpsilon} method.
+    Tests the {@link UnitCartesian#equalsEpsilon} method.
     
 
     */
@@ -200,7 +200,7 @@ public class TestUnitCartesian3 {
 
     /**
     *  
-    Tests that rotation by an invalid  {@link ElementaryRotation} produces an
+    Tests that rotation by an invalid {@link ElementaryRotation} produces an
     {@link ArithmeticException}.
     
 
@@ -213,7 +213,7 @@ public class TestUnitCartesian3 {
 
     /**
     *  
-    Tests that rotation by an invalid  {@link ElementaryRotation} produces an
+    Tests that rotation by an invalid {@link ElementaryRotation} produces an
     {@link ArithmeticException}.
     
 
@@ -226,7 +226,7 @@ public class TestUnitCartesian3 {
 
     /**
     *  
-    Tests the  {@link UnitCartesian#invert} method.
+    Tests the {@link UnitCartesian#invert} method.
     
 
     */

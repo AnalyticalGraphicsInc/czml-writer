@@ -18,7 +18,7 @@ import agi.foundation.compatibility.StringHelper;
  
 
  * <p>
- To transform a  {@link Cartesian} with this rotation, see  {@link Cartesian#rotate(UnitQuaternion)}.
+ To transform a {@link Cartesian} with this rotation, see {@link Cartesian#rotate(UnitQuaternion)}.
  
  * @see Matrix3By3
  */
@@ -30,14 +30,14 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     public UnitQuaternion() {}
 
     /**
-    *  Gets a set of  {@link UnitQuaternion} coordinates with values of  {@link Double#NaN}.
+    *  Gets a set of {@link UnitQuaternion} coordinates with values of {@link Double#NaN}.
     
     
 
     * <p>
-    Use {@code IsUndefined} ({@link UnitQuaternion#getIsUndefined get}) to test whether a  {@link UnitQuaternion} instance
+    Use {@code IsUndefined} ({@link UnitQuaternion#getIsUndefined get}) to test whether a {@link UnitQuaternion} instance
     is undefined since it will return {@code true} if any of the coordinate values
-    are  {@link Double#NaN}.
+    are {@link Double#NaN}.
     
     */
     public static UnitQuaternion getUndefined() {
@@ -45,7 +45,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  Gets a set of  {@link UnitQuaternion} coordinates representing the identity vector.
+    *  Gets a set of {@link UnitQuaternion} coordinates representing the identity vector.
     
 
     */
@@ -55,7 +55,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
 
     /**
     *  
-    Initializes a set of  {@link UnitQuaternion} coordinates from the provided values.
+    Initializes a set of {@link UnitQuaternion} coordinates from the provided values.
     
     
     
@@ -84,7 +84,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
 
     /**
     *  
-    Initializes a set of  {@link UnitQuaternion} coordinates from the provided values.
+    Initializes a set of {@link UnitQuaternion} coordinates from the provided values.
     
     
     
@@ -139,9 +139,9 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
 
     /**
     *  
-    Initializes a set of  {@link UnitQuaternion} coordinates from the provided rotation matrix ( {@link Matrix3By3}).
+    Initializes a set of {@link UnitQuaternion} coordinates from the provided rotation matrix ({@link Matrix3By3}).
     Note that if the given {@code matrix} is not an orthogonal rotation matrix, 
-    it will create a non-unit  {@link UnitQuaternion} and could cause problems in code which assumes that the  {@link UnitQuaternion} represents a rotation.
+    it will create a non-unit {@link UnitQuaternion} and could cause problems in code which assumes that the {@link UnitQuaternion} represents a rotation.
     
     
     
@@ -252,7 +252,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     
     
 
-    * @return A set of  {@link UnitQuaternion} coordinates that represents the conjugate of this instance.
+    * @return A set of {@link UnitQuaternion} coordinates that represents the conjugate of this instance.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final UnitQuaternion conjugate() {
@@ -261,7 +261,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
 
     /**
     *  
-    Multiplies this instance by the specified  {@link UnitQuaternion}, yielding a new  {@link UnitQuaternion}.
+    Multiplies this instance by the specified {@link UnitQuaternion}, yielding a new {@link UnitQuaternion}.
     
     
     
@@ -278,7 +278,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
 
     /**
     *  
-    Multiplies a specified  {@link UnitQuaternion} by another specified  {@link UnitQuaternion}, yielding a new  {@link UnitQuaternion}.
+    Multiplies a specified {@link UnitQuaternion} by another specified {@link UnitQuaternion}, yielding a new {@link UnitQuaternion}.
     
     
     
@@ -295,13 +295,13 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
 
     /**
     *  
-    Negates the specified  {@link UnitQuaternion}, yielding a new  {@link UnitQuaternion}.
+    Negates the specified {@link UnitQuaternion}, yielding a new {@link UnitQuaternion}.
     
     
     
 
     * @param coordinates The set of coordinates.
-    * @return The result of negating the elements of the original  {@link UnitQuaternion}.
+    * @return The result of negating the elements of the original {@link UnitQuaternion}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'UnitQuaternion -(UnitQuaternion)'")
     public static UnitQuaternion negate(UnitQuaternion coordinates) {
@@ -347,7 +347,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     
     
 
-    * @param other The set of  {@link UnitQuaternion} coordinates to compare to this instance.
+    * @param other The set of {@link UnitQuaternion} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
     * @return 
     {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
@@ -426,7 +426,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  Gets whether or not any of the coordinates for this instance have the value  {@link Double#NaN}.
+    *  Gets whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
     
 
     */

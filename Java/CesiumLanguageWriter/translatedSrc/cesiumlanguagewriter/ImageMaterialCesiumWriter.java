@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code ImageMaterial} to a  {@link CesiumOutputStream}.  A {@code ImageMaterial} is a material that fills the surface with an image.
+ Writes a {@code ImageMaterial} to a {@link CesiumOutputStream}.  A {@code ImageMaterial} is a material that fills the surface with an image.
  
 
  */
@@ -99,7 +99,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  Gets the writer for the {@code image} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code image} property defines the image to display on the surface.
+    *  Gets the writer for the {@code image} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code image} property defines the image to display on the surface.
     
 
     */
@@ -342,7 +342,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  Gets the writer for the {@code repeat} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code repeat} property defines the number of times the image repeats along each axis.
+    *  Gets the writer for the {@code repeat} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code repeat} property defines the number of times the image repeats along each axis.
     
 
     */
@@ -528,7 +528,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the image. This color value is multiplied with the image to produce the final color.
+    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the image. This color value is multiplied with the image to produce the final color.
     
 
     */
@@ -808,7 +808,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  Gets the writer for the {@code transparent} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code transparent} property defines whether or not the image has transparency.
+    *  Gets the writer for the {@code transparent} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code transparent} property defines whether or not the image has transparency.
     
 
     */

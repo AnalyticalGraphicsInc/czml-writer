@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code PolylineGlowMaterial} to a  {@link CesiumOutputStream}.  A {@code PolylineGlowMaterial} is a material that fills the surface of a line with a glowing color.
+ Writes a {@code PolylineGlowMaterial} to a {@link CesiumOutputStream}.  A {@code PolylineGlowMaterial} is a material that fills the surface of a line with a glowing color.
  
 
  */
@@ -71,7 +71,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface.
+    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface.
     
 
     */
@@ -351,7 +351,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  Gets the writer for the {@code glowPower} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code glowPower} property defines the strength of the glow.
+    *  Gets the writer for the {@code glowPower} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code glowPower} property defines the strength of the glow.
     
 
     */

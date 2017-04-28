@@ -22,7 +22,7 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
     public Spherical() {}
 
     /**
-    *  Gets a set of  {@link Spherical} coordinates with values of zero.
+    *  Gets a set of {@link Spherical} coordinates with values of zero.
     
 
     */
@@ -32,7 +32,7 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
 
     /**
     *  
-    Initializes a set of  {@link Spherical} coordinates from the provided clock angle, cone angle, and magnitude.
+    Initializes a set of {@link Spherical} coordinates from the provided clock angle, cone angle, and magnitude.
     
     
     
@@ -50,7 +50,7 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
 
     /**
     *  
-    Initializes a set of  {@link Spherical} coordinates from the provided set of  {@link Cartesian} coordinates.
+    Initializes a set of {@link Spherical} coordinates from the provided set of {@link Cartesian} coordinates.
     
     
 
@@ -95,11 +95,11 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
 
     /**
     *  
-    Forms a set of  {@link UnitSpherical} coordinates from this instance.
+    Forms a set of {@link UnitSpherical} coordinates from this instance.
     
     
 
-    * @return The resulting set of  {@link UnitSpherical} coordinates.
+    * @return The resulting set of {@link UnitSpherical} coordinates.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final UnitSpherical normalize() {
@@ -145,7 +145,7 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
     
     
 
-    * @param other The set of  {@link Spherical} coordinates to compare to this instance.
+    * @param other The set of {@link Spherical} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
     * @return 
     {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.

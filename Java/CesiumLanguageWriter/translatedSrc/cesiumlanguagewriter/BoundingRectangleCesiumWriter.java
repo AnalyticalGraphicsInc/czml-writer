@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code BoundingRectangle} to a  {@link CesiumOutputStream}.  A {@code BoundingRectangle} is a bounding rectangle specified by a corner, width and height.
+ Writes a {@code BoundingRectangle} to a {@link CesiumOutputStream}.  A {@code BoundingRectangle} is a bounding rectangle specified by a corner, width and height.
  
 
  */
@@ -199,7 +199,7 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code BoundingRectangle} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code BoundingRectangle} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -224,7 +224,7 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

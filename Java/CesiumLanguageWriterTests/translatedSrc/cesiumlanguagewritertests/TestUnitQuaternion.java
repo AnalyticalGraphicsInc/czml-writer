@@ -16,7 +16,7 @@ import org.junit.Test;
 
 /**
  *  
- Tests the  {@link UnitQuaternion} type.
+ Tests the {@link UnitQuaternion} type.
  
 
  */
@@ -60,7 +60,7 @@ public class TestUnitQuaternion {
 
     /**
     *  
-    Tests initialization from a  {@link Matrix3By3} rotation.
+    Tests initialization from a {@link Matrix3By3} rotation.
     
 
     */
@@ -142,7 +142,7 @@ public class TestUnitQuaternion {
 
     /**
     *  
-    Tests the  {@link UnitQuaternion#equalsEpsilon} method.
+    Tests the {@link UnitQuaternion#equalsEpsilon} method.
     
 
     */
@@ -185,7 +185,7 @@ public class TestUnitQuaternion {
 
     /**
     *  
-    Tests the  {@link UnitQuaternion#conjugate} method.
+    Tests the {@link UnitQuaternion#conjugate} method.
     
 
     */
@@ -264,7 +264,7 @@ public class TestUnitQuaternion {
 
     /**
     *  
-    Tests multiplication by another  {@link UnitQuaternion}.
+    Tests multiplication by another {@link UnitQuaternion}.
     
 
     */

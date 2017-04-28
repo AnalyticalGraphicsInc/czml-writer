@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code StripeMaterial} to a  {@link CesiumOutputStream}.  A {@code StripeMaterial} is a material that fills the surface with alternating colors.
+ Writes a {@code StripeMaterial} to a {@link CesiumOutputStream}.  A {@code StripeMaterial} is a material that fills the surface with alternating colors.
  
 
  */
@@ -108,7 +108,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     }
 
     /**
-    *  Gets the writer for the {@code orientation} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code orientation} property defines the value indicating if the stripes are horizontal or vertical.
+    *  Gets the writer for the {@code orientation} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code orientation} property defines the value indicating if the stripes are horizontal or vertical.
     
 
     */
@@ -227,7 +227,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     }
 
     /**
-    *  Gets the writer for the {@code evenColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code evenColor} property defines the even color.
+    *  Gets the writer for the {@code evenColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code evenColor} property defines the even color.
     
 
     */
@@ -507,7 +507,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     }
 
     /**
-    *  Gets the writer for the {@code oddColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code oddColor} property defines the odd color.
+    *  Gets the writer for the {@code oddColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code oddColor} property defines the odd color.
     
 
     */
@@ -787,7 +787,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     }
 
     /**
-    *  Gets the writer for the {@code offset} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code offset} property defines the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+    *  Gets the writer for the {@code offset} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code offset} property defines the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
     
 
     */
@@ -952,7 +952,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     }
 
     /**
-    *  Gets the writer for the {@code repeat} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code repeat} property defines the number of times the stripes repeat.
+    *  Gets the writer for the {@code repeat} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code repeat} property defines the number of times the stripes repeat.
     
 
     */

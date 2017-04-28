@@ -27,7 +27,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a  {@link JulianDate} as an ISO 8601 interval string.
+    Writes a {@link JulianDate} as an ISO 8601 interval string.
     
     
     
@@ -41,7 +41,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a  {@link TimeInterval} as an ISO 8601 interval string.
+    Writes a {@link TimeInterval} as an ISO 8601 interval string.
     
     
     
@@ -55,7 +55,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a list of  {@link TimeInterval TimeIntervals}.  If the collection has a single
+    Writes a list of {@link TimeInterval TimeIntervals}.  If the collection has a single
     interval, the interval is written as an ISO 8601 interval string.  If it has multiple intervals,
     it is written as an array of ISO 8601 interval strings.
     
@@ -80,7 +80,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a  {@link Rectangular} value as an array in X, Y order.
+    Writes a {@link Rectangular} value as an array in X, Y order.
     
     
     
@@ -97,7 +97,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes time-tagged  {@link Rectangular} values as an array in [Time, X, Y] order.
+    Writes time-tagged {@link Rectangular} values as an array in [Time, X, Y] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
     
@@ -135,7 +135,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a  {@link CartographicExtent} value as an array in WestLongitude, SouthLatitude, EastLongitude, NorthLatitude order.
+    Writes a {@link CartographicExtent} value as an array in WestLongitude, SouthLatitude, EastLongitude, NorthLatitude order.
     
     
     
@@ -154,7 +154,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes time-tagged  {@link CartographicExtent} values as an array in [Time, WestLongitude, SouthLatitude, EastLongitude, NorthLatitude] order.
+    Writes time-tagged {@link CartographicExtent} values as an array in [Time, WestLongitude, SouthLatitude, EastLongitude, NorthLatitude] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
     
@@ -194,7 +194,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a  {@link Cartesian} value as an array in X, Y, Z order.
+    Writes a {@link Cartesian} value as an array in X, Y, Z order.
     
     
     
@@ -212,7 +212,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes time-tagged  {@link Cartesian} values as an array in [Time, X, Y, Z] order.
+    Writes time-tagged {@link Cartesian} values as an array in [Time, X, Y, Z] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
     
@@ -251,7 +251,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a  {@link Motion1} value as an array in X, Y, Z, vX, vY, vZ order.
+    Writes a {@link Motion1} value as an array in X, Y, Z, vX, vY, vZ order.
     
     
     
@@ -272,7 +272,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes time-tagged  {@link Motion1} values as an array in [Time, X, Y, Z, vX, vY, vZ] order.
+    Writes time-tagged {@link Motion1} values as an array in [Time, X, Y, Z, vX, vY, vZ] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
     
@@ -315,7 +315,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a  {@link UnitCartesian} value as an array in X, Y, Z order.
+    Writes a {@link UnitCartesian} value as an array in X, Y, Z order.
     
     
     
@@ -333,7 +333,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes time-tagged  {@link UnitCartesian} values as an array in [Time, X, Y, Z] order.
+    Writes time-tagged {@link UnitCartesian} values as an array in [Time, X, Y, Z] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
     
@@ -372,7 +372,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a  {@link Spherical} value as an array in Clock, Cone, Magnitude order.
+    Writes a {@link Spherical} value as an array in Clock, Cone, Magnitude order.
     
     
     
@@ -390,7 +390,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes time-tagged  {@link Spherical} values as an array in [Time, Clock, Cone, Magnitude] order.
+    Writes time-tagged {@link Spherical} values as an array in [Time, Clock, Cone, Magnitude] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
     
@@ -429,7 +429,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a  {@link BoundingRectangle} value as an array in X, Y, Width, Height order.
+    Writes a {@link BoundingRectangle} value as an array in X, Y, Width, Height order.
     
     
     
@@ -448,7 +448,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes time-tagged  {@link BoundingRectangle} values as an array in [Time, Clock, Cone, Magnitude] order.
+    Writes time-tagged {@link BoundingRectangle} values as an array in [Time, Clock, Cone, Magnitude] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
     
@@ -488,7 +488,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a  {@link NearFarScalar} value as an array in Clock, Cone, Magnitude order.
+    Writes a {@link NearFarScalar} value as an array in Clock, Cone, Magnitude order.
     
     
     
@@ -507,7 +507,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes time-tagged  {@link NearFarScalar} values as an array in [Time, Clock, Cone, Magnitude] order.
+    Writes time-tagged {@link NearFarScalar} values as an array in [Time, Clock, Cone, Magnitude] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
     
@@ -547,7 +547,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a  {@link UnitSpherical} value as an array in Clock, Cone order.
+    Writes a {@link UnitSpherical} value as an array in Clock, Cone order.
     
     
     
@@ -564,7 +564,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes time-tagged  {@link UnitSpherical} values as an array in [Time, Clock, Cone] order.
+    Writes time-tagged {@link UnitSpherical} values as an array in [Time, Clock, Cone] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
     
@@ -602,7 +602,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a list of  {@code double} values as an array in X, Y, Z order.
+    Writes a list of {@code double} values as an array in X, Y, Z order.
     
     
     
@@ -620,7 +620,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a list of  {@link Cartesian} values as an array in X, Y, Z order.
+    Writes a list of {@link Cartesian} values as an array in X, Y, Z order.
     
     
     
@@ -640,7 +640,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a  {@link Cartographic} value as an array in Longitude, Latitude, Height order.
+    Writes a {@link Cartographic} value as an array in Longitude, Latitude, Height order.
     
     
     
@@ -658,7 +658,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes time-tagged  {@link Cartographic} values as an array in [Time, Longitude, Latitude, Height] order.
+    Writes time-tagged {@link Cartographic} values as an array in [Time, Longitude, Latitude, Height] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
     
@@ -697,7 +697,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a list of  {@link Cartographic} values as an array in Longitude, Latitude, Height order.
+    Writes a list of {@link Cartographic} values as an array in Longitude, Latitude, Height order.
     
     
     
@@ -911,7 +911,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a  {@link UnitQuaternion} as an array in [X, Y, Z, W] order.
+    Writes a {@link UnitQuaternion} as an array in [X, Y, Z, W] order.
     
     
     
@@ -930,7 +930,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes the time-tagged  {@link UnitQuaternion} collection as an array in
+    Writes the time-tagged {@link UnitQuaternion} collection as an array in
     [Time, X, Y, Z, W] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
@@ -1049,7 +1049,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a list of  {@link UnitCartesian} values as an array in X, Y, Z order.
+    Writes a list of {@link UnitCartesian} values as an array in X, Y, Z order.
     
     
     
@@ -1069,7 +1069,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a list of  {@link Spherical} values as an array in Clock, Cone, Magnitude order.
+    Writes a list of {@link Spherical} values as an array in Clock, Cone, Magnitude order.
     
     
     
@@ -1089,7 +1089,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a list of  {@link UnitSpherical} values as an array in Clock, Cone order.
+    Writes a list of {@link UnitSpherical} values as an array in Clock, Cone order.
     
     
     
@@ -1108,7 +1108,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Gets an appropriate epoch from a list of dates and writes it to the  {@link CesiumOutputStream}
+    Gets an appropriate epoch from a list of dates and writes it to the {@link CesiumOutputStream}
     as the "epoch" property.  If the {@code dates} collection is empty, the {@code startIndex}
     is past the end of the collection, or the {@code length} is zero, this method does not write
     the "epoch" property and returns {@code MinValue} ({@link JulianDate#getMinValue get}).

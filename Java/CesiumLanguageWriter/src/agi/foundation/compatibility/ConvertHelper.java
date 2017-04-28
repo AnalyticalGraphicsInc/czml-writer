@@ -10,15 +10,15 @@ public final class ConvertHelper {
     }
 
     public static int toInt32(byte value) {
-        return (int) value;
+        return value;
     }
 
     public static int toInt32(char value) {
-        return (int) value;
+        return value;
     }
 
     public static int toInt32(short value) {
-        return (int) value;
+        return value;
     }
 
     public static int toInt32(int value) {
@@ -30,6 +30,14 @@ public final class ConvertHelper {
             throw new RuntimeException("Overflow");
 
         return (int) value;
+    }
+
+    public static int toInt32(String value) {
+        return value == null ? 0 : IntHelper.parse(value);
+    }
+
+    public static int toInt32(String value, int fromBase) {
+        return value == null ? 0 : Integer.parseInt(value, fromBase);
     }
 
     public static int toInt32(float value) {
@@ -74,19 +82,19 @@ public final class ConvertHelper {
     }
 
     public static long toInt64(byte value) {
-        return (long) value;
+        return value;
     }
 
     public static long toInt64(char value) {
-        return (long) value;
+        return value;
     }
 
     public static long toInt64(short value) {
-        return (long) value;
+        return value;
     }
 
     public static long toInt64(int value) {
-        return (long) value;
+        return value;
     }
 
     public static long toInt64(long value) {
@@ -135,7 +143,7 @@ public final class ConvertHelper {
     }
 
     public static float toSingle(byte value) {
-        return (float) value;
+        return value;
     }
 
     public static float toSingle(char value) {
@@ -143,15 +151,15 @@ public final class ConvertHelper {
     }
 
     public static float toSingle(short value) {
-        return (float) value;
+        return value;
     }
 
     public static float toSingle(int value) {
-        return (float) value;
+        return value;
     }
 
     public static float toSingle(long value) {
-        return (float) value;
+        return value;
     }
 
     public static float toSingle(float value) {
@@ -191,7 +199,7 @@ public final class ConvertHelper {
     }
 
     public static double toDouble(byte value) {
-        return (double) value;
+        return value;
     }
 
     public static double toDouble(char value) {
@@ -199,19 +207,19 @@ public final class ConvertHelper {
     }
 
     public static double toDouble(short value) {
-        return (double) value;
+        return value;
     }
 
     public static double toDouble(int value) {
-        return (double) value;
+        return value;
     }
 
     public static double toDouble(long value) {
-        return (double) value;
+        return value;
     }
 
     public static double toDouble(float value) {
-        return (double) value;
+        return value;
     }
 
     public static double toDouble(double value) {

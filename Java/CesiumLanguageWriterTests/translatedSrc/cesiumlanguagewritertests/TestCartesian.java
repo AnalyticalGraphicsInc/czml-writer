@@ -18,7 +18,7 @@ import org.junit.Test;
 
 /**
  *  
- Tests the  {@link Cartesian} type.
+ Tests the {@link Cartesian} type.
  
 
  */
@@ -40,7 +40,7 @@ public class TestCartesian {
 
     /**
     *  
-    Tests implicit conversion from  {@link UnitCartesian} coordinates.
+    Tests implicit conversion from {@link UnitCartesian} coordinates.
     
 
     */
@@ -102,7 +102,7 @@ public class TestCartesian {
 
     /**
     *  
-    Tests the  {@link Cartesian#equalsEpsilon} method.
+    Tests the {@link Cartesian#equalsEpsilon} method.
     
 
     */
@@ -131,7 +131,7 @@ public class TestCartesian {
 
     /**
     *  
-    Tests the  {@link Cartesian#normalize()} method.
+    Tests the {@link Cartesian#normalize()} method.
     
 
     */
@@ -146,8 +146,8 @@ public class TestCartesian {
 
     /**
     *  
-    Tests that normalization of a  {@link Cartesian} with zero magnitude
-    produces an  {@link UnsupportedCaseException}.
+    Tests that normalization of a {@link Cartesian} with zero magnitude
+    produces an {@link UnsupportedCaseException}.
     
 
     */
@@ -160,8 +160,8 @@ public class TestCartesian {
 
     /**
     *  
-    Tests that normalization of a  {@link Cartesian} with infinite magnitude
-    produces an  {@link ArithmeticException}.
+    Tests that normalization of a {@link Cartesian} with infinite magnitude
+    produces an {@link ArithmeticException}.
     
 
     */
@@ -301,7 +301,7 @@ public class TestCartesian {
 
     /**
     *  
-    Tests the  {@link Cartesian#dot} method.
+    Tests the {@link Cartesian#dot} method.
     
 
     */
@@ -315,7 +315,7 @@ public class TestCartesian {
 
     /**
     *  
-    Tests the  {@link Cartesian#cross} method.
+    Tests the {@link Cartesian#cross} method.
     
 
     */
@@ -341,7 +341,7 @@ public class TestCartesian {
 
     /**
     *  
-    Tests rotation by a  {@link UnitQuaternion}.
+    Tests rotation by a {@link UnitQuaternion}.
     
 
     */
@@ -368,7 +368,7 @@ public class TestCartesian {
 
     /**
     *  
-    Tests rotation by an  {@link Matrix3By3}.
+    Tests rotation by an {@link Matrix3By3}.
     
 
     */

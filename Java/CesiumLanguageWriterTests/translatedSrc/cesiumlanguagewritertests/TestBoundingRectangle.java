@@ -19,7 +19,7 @@ import org.junit.Test;
 
 /**
  *  
- Tests the  {@link BoundingRectangle} type.
+ Tests the {@link BoundingRectangle} type.
  
 
  */
@@ -102,7 +102,7 @@ public class TestBoundingRectangle {
 
     /**
     *  
-    Tests the  {@link BoundingRectangle#equalsEpsilon} method.
+    Tests the {@link BoundingRectangle#equalsEpsilon} method.
     
 
     */
@@ -118,7 +118,7 @@ public class TestBoundingRectangle {
 
     /**
     *  
-    Tests that  {@link BoundingRectangle#hashCode} returns something at least reasonably random.
+    Tests that {@link BoundingRectangle#hashCode} returns something at least reasonably random.
     
 
     */
@@ -133,7 +133,7 @@ public class TestBoundingRectangle {
 
     /**
     *  
-    Tests the  {@link BoundingRectangle#toString} method.
+    Tests the {@link BoundingRectangle#toString} method.
     
 
     */

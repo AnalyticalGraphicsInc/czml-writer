@@ -35,7 +35,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code Packet} to a  {@link CesiumOutputStream}.  A {@code Packet} is describes the graphical properties of a single object in a scene, such as a single aircraft.
+ Writes a {@code Packet} to a {@link CesiumOutputStream}.  A {@code Packet} is describes the graphical properties of a single object in a scene, such as a single aircraft.
  
 
  */
@@ -463,7 +463,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code description} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code description} property defines an HTML description of the object.
+    *  Gets the writer for the {@code description} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code description} property defines an HTML description of the object.
     
 
     */
@@ -581,7 +581,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code clock} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code clock} property defines the clock settings for the entire data set. Only valid on the document object.
+    *  Gets the writer for the {@code clock} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code clock} property defines the clock settings for the entire data set. Only valid on the document object.
     
 
     */
@@ -656,7 +656,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code properties} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code properties} property defines a set of custom properties for this object.
+    *  Gets the writer for the {@code properties} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code properties} property defines a set of custom properties for this object.
     
 
     */
@@ -675,7 +675,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code position} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code position} property defines the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other graphical items attached to the object.
+    *  Gets the writer for the {@code position} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code position} property defines the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other graphical items attached to the object.
     
 
     */
@@ -1034,7 +1034,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code orientation} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code orientation} property defines the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+    *  Gets the writer for the {@code orientation} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code orientation} property defines the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
     
 
     */
@@ -1198,7 +1198,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code viewFrom} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code viewFrom} property defines a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+    *  Gets the writer for the {@code viewFrom} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code viewFrom} property defines a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
     
 
     */
@@ -1362,7 +1362,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code billboard} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code billboard} property defines a billboard, or viewport-aligned image, sometimes called a marker.  The billboard is positioned in the scene by the {@code position} property.
+    *  Gets the writer for the {@code billboard} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code billboard} property defines a billboard, or viewport-aligned image, sometimes called a marker.  The billboard is positioned in the scene by the {@code position} property.
     
 
     */
@@ -1381,7 +1381,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code box} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code box} property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the {@code position} and {@code orientation} properties.
+    *  Gets the writer for the {@code box} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code box} property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1400,7 +1400,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code corridor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code corridor} property defines a corridor, which is a shape defined by a centerline and width.
+    *  Gets the writer for the {@code corridor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code corridor} property defines a corridor, which is a shape defined by a centerline and width.
     
 
     */
@@ -1419,7 +1419,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code cylinder} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code cylinder} property defines a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.  The cylinder is positioned and oriented using the {@code position} and {@code orientation} properties.
+    *  Gets the writer for the {@code cylinder} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code cylinder} property defines a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.  The cylinder is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1438,7 +1438,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code ellipse} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipse} property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the {@code position} property.
+    *  Gets the writer for the {@code ellipse} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipse} property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the {@code position} property.
     
 
     */
@@ -1457,7 +1457,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code ellipsoid} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipsoid} property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the {@code position} and {@code orientation} properties.
+    *  Gets the writer for the {@code ellipsoid} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipsoid} property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1476,7 +1476,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code label} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code label} property defines a string of text.  The label is positioned in the scene by the {@code position} property.
+    *  Gets the writer for the {@code label} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code label} property defines a string of text.  The label is positioned in the scene by the {@code position} property.
     
 
     */
@@ -1495,7 +1495,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code model} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code model} property defines a 3D model.  The model is positioned and oriented using the {@code position} and {@code orientation} properties.
+    *  Gets the writer for the {@code model} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code model} property defines a 3D model.  The model is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1514,7 +1514,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code path} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code path} property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the {@code position} property.
+    *  Gets the writer for the {@code path} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code path} property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the {@code position} property.
     
 
     */
@@ -1533,7 +1533,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code point} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code point} property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the {@code position} property.
+    *  Gets the writer for the {@code point} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code point} property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the {@code position} property.
     
 
     */
@@ -1552,7 +1552,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code polygon} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code polygon} property defines a polygon, which is a closed figure on the surface of the Earth.
+    *  Gets the writer for the {@code polygon} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code polygon} property defines a polygon, which is a closed figure on the surface of the Earth.
     
 
     */
@@ -1571,7 +1571,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code polyline} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code polyline} property defines a polyline, which is a line in the scene composed of multiple segments.
+    *  Gets the writer for the {@code polyline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code polyline} property defines a polyline, which is a line in the scene composed of multiple segments.
     
 
     */
@@ -1590,7 +1590,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code rectangle} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code rectangle} property defines a cartographic rectangle, which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+    *  Gets the writer for the {@code rectangle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code rectangle} property defines a cartographic rectangle, which conforms to the curvature of the globe and can be placed along the surface or at altitude.
     
 
     */
@@ -1609,7 +1609,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code wall} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code wall} property defines a two dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+    *  Gets the writer for the {@code wall} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code wall} property defines a two dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude.
     
 
     */
@@ -1628,7 +1628,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code agi_conicSensor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_conicSensor} property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the {@code position} and {@code orientation} properties.
+    *  Gets the writer for the {@code agi_conicSensor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_conicSensor} property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1647,7 +1647,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code agi_customPatternSensor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_customPatternSensor} property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the {@code position} and {@code orientation} properties.
+    *  Gets the writer for the {@code agi_customPatternSensor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_customPatternSensor} property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1666,7 +1666,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code agi_rectangularSensor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_rectangularSensor} property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the {@code position} and {@code orientation} properties.
+    *  Gets the writer for the {@code agi_rectangularSensor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_rectangularSensor} property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1685,7 +1685,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code agi_fan} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_fan} property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.  The fan is positioned and oriented using the {@code position} and {@code orientation} properties.
+    *  Gets the writer for the {@code agi_fan} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_fan} property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.  The fan is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1704,7 +1704,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code agi_vector} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_vector} property defines defines a graphical vector that originates at the {@code position} property and extends in the provided direction for the provided length.  The vector is positioned using the {@code position} property.
+    *  Gets the writer for the {@code agi_vector} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_vector} property defines defines a graphical vector that originates at the {@code position} property and extends in the provided direction for the provided length.  The vector is positioned using the {@code position} property.
     
 
     */

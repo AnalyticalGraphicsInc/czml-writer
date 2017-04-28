@@ -23,7 +23,7 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
 
     /**
     *  
-    Initializes a set of  {@link UnitSpherical} coordinates from the provided clock angle and cone angle.
+    Initializes a set of {@link UnitSpherical} coordinates from the provided clock angle and cone angle.
     
     
     
@@ -38,7 +38,7 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
 
     /**
     *  
-    Initializes a set of  {@link UnitSpherical} coordinates from a  {@link Spherical} instance.
+    Initializes a set of {@link UnitSpherical} coordinates from a {@link Spherical} instance.
     <param name="spherical">An existing Spherical instance.</param>
     
 
@@ -49,7 +49,7 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
 
     /**
     *  
-    Initializes a set of  {@link UnitSpherical} coordinates from the provided set of  {@link UnitCartesian} coordinates.
+    Initializes a set of {@link UnitSpherical} coordinates from the provided set of {@link UnitCartesian} coordinates.
     
     
 
@@ -130,7 +130,7 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
     
     
 
-    * @param other The set of  {@link UnitSpherical} coordinates to compare to this instance.
+    * @param other The set of {@link UnitSpherical} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
     * @return 
     {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.

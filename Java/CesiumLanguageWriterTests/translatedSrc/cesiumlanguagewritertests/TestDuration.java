@@ -51,7 +51,7 @@ public class TestDuration {
 
     /**
     *  
-    Tests that initialization produces a  {@link Duration} in canonical form
+    Tests that initialization produces a {@link Duration} in canonical form
     with day and seconds elements being either both positive or both negative.
     
 
@@ -75,7 +75,7 @@ public class TestDuration {
 
     /**
     *  
-    Tests that initialization produces a  {@link Duration} which is normalized with the
+    Tests that initialization produces a {@link Duration} which is normalized with the
     seconds element in the range -86400.0 < seconds < 86400.0.
     
 
@@ -157,7 +157,7 @@ public class TestDuration {
 
     /**
     *  
-    Tests the addition operation between two  {@link Duration} instances
+    Tests the addition operation between two {@link Duration} instances
     with unspecified time standards.
     
 
@@ -183,7 +183,7 @@ public class TestDuration {
 
     /**
     *  
-    Tests the subtraction operation between two  {@link Duration} instances
+    Tests the subtraction operation between two {@link Duration} instances
     with unspecified time standards.
     
 
@@ -216,7 +216,7 @@ public class TestDuration {
 
     /**
     *  
-    Tests multiplication of a  {@link Duration} instance by a constant.
+    Tests multiplication of a {@link Duration} instance by a constant.
     
 
     */
@@ -256,7 +256,7 @@ public class TestDuration {
 
     /**
     *  
-    Tests division of a  {@link Duration} by another.
+    Tests division of a {@link Duration} by another.
     
 
     */
@@ -282,7 +282,7 @@ public class TestDuration {
 
     /**
     *  
-    Tests division of a  {@link Duration} by a constant.
+    Tests division of a {@link Duration} by a constant.
     
 
     */
@@ -378,7 +378,7 @@ public class TestDuration {
 
     /**
     *  
-    Test the  {@link Duration#toString} method.
+    Test the {@link Duration#toString} method.
     
 
     */
@@ -390,7 +390,7 @@ public class TestDuration {
 
     /**
     *  
-    Tests construction of a  {@link Duration} with a really small negative
+    Tests construction of a {@link Duration} with a really small negative
     seconds.  Duration will attempt to eliminate the negative Seconds
     by rolling the Days back one day, but doing so results in setting the Seconds to
     86400.0 seconds.  This is still not normalized, so Duration should bump the Days

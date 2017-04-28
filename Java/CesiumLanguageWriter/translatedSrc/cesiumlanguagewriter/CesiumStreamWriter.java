@@ -8,7 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 
 /**
  *  
- Writes data to a  {@link CesiumOutputStream}.
+ Writes data to a {@link CesiumOutputStream}.
  
 
  */
@@ -36,9 +36,9 @@ public class CesiumStreamWriter {
     }
 
     /**
-    *  Gets the  {@link PacketCesiumWriter} that this instances uses to write packets.
-    The packet writer must be opened by calling  {@link CesiumElementWriter#open}
-    before it can be use for writing.  Consider calling  {@link #openPacket} instead,
+    *  Gets the {@link PacketCesiumWriter} that this instances uses to write packets.
+    The packet writer must be opened by calling {@link CesiumElementWriter#open}
+    before it can be use for writing.  Consider calling {@link #openPacket} instead,
     which returns the same instance but opens it first.
     
 

@@ -46,8 +46,8 @@ public interface ICesiumPropertyWriter extends ICesiumElementWriter {
 
     /**
     *  Gets a writer for intervals of this property.  The returned instance must be opened by calling
-    the  {@link ICesiumElementWriter#open} method before it can be used for writing.  Consider
-    calling the  {@link #openInterval} or  {@link #openMultipleIntervals} method, which will automatically
+    the {@link ICesiumElementWriter#open} method before it can be used for writing.  Consider
+    calling the {@link #openInterval} or {@link #openMultipleIntervals} method, which will automatically
     open the writer, instead of accessing this property directly.
     
 

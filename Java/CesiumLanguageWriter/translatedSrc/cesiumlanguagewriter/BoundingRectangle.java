@@ -23,7 +23,7 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     public BoundingRectangle() {}
 
     /**
-    *  Gets a  {@link BoundingRectangle} with all values set to zero.
+    *  Gets a {@link BoundingRectangle} with all values set to zero.
     
 
     */
@@ -173,7 +173,7 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     
     
 
-    * @param other The set of  {@link BoundingRectangle} coordinates to compare to this instance.
+    * @param other The set of {@link BoundingRectangle} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
     * @return 
     {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.

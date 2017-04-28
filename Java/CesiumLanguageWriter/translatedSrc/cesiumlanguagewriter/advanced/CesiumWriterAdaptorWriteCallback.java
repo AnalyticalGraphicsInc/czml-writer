@@ -7,7 +7,7 @@ import cesiumlanguagewriter.*;
 
 /**
  *  
- A callback to write a value to a  {@link CesiumOutputStream} using a given
+ A callback to write a value to a {@link CesiumOutputStream} using a given
  wrapped property writer.
  
  
@@ -48,7 +48,7 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
 
     /**
     *  
-    A callback to write a value to a  {@link CesiumOutputStream} using a given
+    A callback to write a value to a {@link CesiumOutputStream} using a given
     wrapped property writer.
     
     
@@ -89,7 +89,7 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
     public interface Function<TWrappedWriter, TValue> {
         /**
         *  
-        A callback to write a value to a  {@link CesiumOutputStream} using a given
+        A callback to write a value to a {@link CesiumOutputStream} using a given
         wrapped property writer.
         
         

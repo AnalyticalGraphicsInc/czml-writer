@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code Cylinder} to a  {@link CesiumOutputStream}.  A {@code Cylinder} is a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.
+ Writes a {@code Cylinder} to a {@link CesiumOutputStream}.  A {@code Cylinder} is a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.
  
 
  */
@@ -194,7 +194,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the cylinder is shown.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the cylinder is shown.  If not specified, the default value is {@code true}.
     
 
     */
@@ -313,7 +313,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code length} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code length} property defines the length of the cylinder.
+    *  Gets the writer for the {@code length} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code length} property defines the length of the cylinder.
     
 
     */
@@ -478,7 +478,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code topRadius} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code topRadius} property defines the radius of the top of the cylinder.
+    *  Gets the writer for the {@code topRadius} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code topRadius} property defines the radius of the top of the cylinder.
     
 
     */
@@ -643,7 +643,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code bottomRadius} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code bottomRadius} property defines the radius of the bottom of the cylinder.
+    *  Gets the writer for the {@code bottomRadius} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code bottomRadius} property defines the radius of the bottom of the cylinder.
     
 
     */
@@ -808,7 +808,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the cylinder is filled.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the cylinder is filled.  If not specified, the default value is {@code true}.
     
 
     */
@@ -927,7 +927,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the cylinder.
+    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the cylinder.
     
 
     */
@@ -947,7 +947,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the cylinder is outlined.  If not specified, the default value is {@code false}.
+    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the cylinder is outlined.  If not specified, the default value is {@code false}.
     
 
     */
@@ -1066,7 +1066,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the cylinder outline.
+    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the cylinder outline.
     
 
     */
@@ -1346,7 +1346,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the cylinder outline.  If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the cylinder outline.  If not specified, the default value is 1.0.
     
 
     */
@@ -1511,7 +1511,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code numberOfVerticalLines} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code numberOfVerticalLines} property defines the number of vertical lines to draw along the perimeter for the outline.
+    *  Gets the writer for the {@code numberOfVerticalLines} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code numberOfVerticalLines} property defines the number of vertical lines to draw along the perimeter for the outline.
     
 
     */
@@ -1676,7 +1676,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code slices} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code slices} property defines the number of edges around the perimeter of the cylinder.
+    *  Gets the writer for the {@code slices} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code slices} property defines the number of edges around the perimeter of the cylinder.
     
 
     */
@@ -1841,7 +1841,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the cylinder casts or receives shadows.  If not specified, the default value is DISABLED.
+    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the cylinder casts or receives shadows.  If not specified, the default value is DISABLED.
     
 
     */

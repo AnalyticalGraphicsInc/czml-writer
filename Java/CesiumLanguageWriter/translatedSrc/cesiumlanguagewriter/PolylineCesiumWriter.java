@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code Polyline} to a  {@link CesiumOutputStream}.  A {@code Polyline} is a polyline, which is a line in the scene composed of multiple segments.
+ Writes a {@code Polyline} to a {@link CesiumOutputStream}.  A {@code Polyline} is a polyline, which is a line in the scene composed of multiple segments.
  
 
  */
@@ -133,7 +133,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the polyline is shown.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the polyline is shown.  If not specified, the default value is {@code true}.
     
 
     */
@@ -252,7 +252,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code positions} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code positions} property defines the array of positions defining the polyline as a line strip.
+    *  Gets the writer for the {@code positions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code positions} property defines the array of positions defining the polyline as a line strip.
     
 
     */
@@ -348,7 +348,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code width} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code width} property defines the width of the polyline.
+    *  Gets the writer for the {@code width} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code width} property defines the width of the polyline.
     
 
     */
@@ -513,7 +513,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians.
+    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians.
     
 
     */
@@ -678,7 +678,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to use to draw the polyline.
+    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to use to draw the polyline.
     
 
     */
@@ -698,7 +698,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code followSurface} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code followSurface} property defines whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code followSurface} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code followSurface} property defines whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is {@code true}.
     
 
     */
@@ -817,7 +817,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the polyline casts or receives shadows.  If not specified, the default value is DISABLED.
+    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the polyline casts or receives shadows.  If not specified, the default value is DISABLED.
     
 
     */

@@ -145,9 +145,11 @@ public class LeapSeconds {
     {@link TimeStandard}.
     * @return The resulting UTC 
     {@link JulianDate}, if it was possible to convert.
+    * @deprecated Internal use only.
     * @exception ArgumentOutOfRangeException Thrown if the date could not be
     converted to UTC.
     */
+    @Deprecated
     @Internal
     public final JulianDate convertTaiToUtc(JulianDate date) {
         @CS2JInfo("Initialization of C# struct variable 'result' added by translator.")
@@ -177,7 +179,9 @@ public class LeapSeconds {
     {@link JulianDate}, if it was possible to convert.
     * @return {@code true} if {@code date} could be converted
     to UTC, otherwise false.
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public final boolean tryConvertTaiToUtc(JulianDate date, JulianDate[] result) {
         //treat the request date as if it were UTC, and search for the most recent leap second.

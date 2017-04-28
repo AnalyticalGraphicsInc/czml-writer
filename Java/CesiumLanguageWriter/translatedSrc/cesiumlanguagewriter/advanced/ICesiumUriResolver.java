@@ -7,8 +7,8 @@ import cesiumlanguagewriter.*;
 /**
  *  
  A URI resolver transforms URIs into another form for inclusion in a CZML document.
- For example,  {@link CachingCesiumUriResolver} downloads files and converts them to data URIs,
- while  {@link PassThroughCesiumUriResolver} leaves URIs unchanged.
+ For example, {@link CachingCesiumUriResolver} downloads files and converts them to data URIs,
+ while {@link PassThroughCesiumUriResolver} leaves URIs unchanged.
  
 
  */

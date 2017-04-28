@@ -17,9 +17,9 @@ public final class ListHelper {
      *            The sequence whose elements are copied to the new list.
      * @return The new list.
      */
-    public static <T> ArrayList<T> create(Iterable<T> iterable) {
+    public static <T> ArrayList<T> create(Iterable<? extends T> iterable) {
         if (iterable instanceof Collection<?>) {
-            return new ArrayList<T>((Collection<T>) iterable);
+            return new ArrayList<T>((Collection<? extends T>) iterable);
         }
 
         ArrayList<T> result = new ArrayList<T>();

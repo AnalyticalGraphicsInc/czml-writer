@@ -114,7 +114,7 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     
     
 
-    * @param other The set of  {@link CartographicExtent} to compare to this instance.
+    * @param other The set of {@link CartographicExtent} to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
     * @return 
     {@code true} if the absolute differences are less than {@code epsilon}; otherwise, {@code false}.
@@ -126,12 +126,12 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
 
     /**
     *  
-    Indicates whether another  {@link CartographicExtent} is exactly equal to this instance.
+    Indicates whether another {@link CartographicExtent} is exactly equal to this instance.
     
     
     
 
-    * @param other The  {@link CartographicExtent} to compare to this instance.
+    * @param other The {@link CartographicExtent} to compare to this instance.
     * @return {@code true} if {@code other} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
     public final boolean equalsType(CartographicExtent other) {

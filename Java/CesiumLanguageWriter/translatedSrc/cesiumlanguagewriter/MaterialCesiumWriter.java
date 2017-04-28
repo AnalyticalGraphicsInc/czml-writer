@@ -12,7 +12,7 @@ import cesiumlanguagewriter.StripeMaterialCesiumWriter;
 
 /**
  *  
- Writes a {@code Material} to a  {@link CesiumOutputStream}.  A {@code Material} is a definition of how a surface is colored or shaded.
+ Writes a {@code Material} to a {@link CesiumOutputStream}.  A {@code Material} is a definition of how a surface is colored or shaded.
  
 
  */
@@ -94,7 +94,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code solidColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code solidColor} property defines a material that fills the surface with a solid color, which may be translucent.
+    *  Gets the writer for the {@code solidColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code solidColor} property defines a material that fills the surface with a solid color, which may be translucent.
     
 
     */
@@ -114,7 +114,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code image} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code image} property defines a material that fills the surface with an image.
+    *  Gets the writer for the {@code image} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code image} property defines a material that fills the surface with an image.
     
 
     */
@@ -134,7 +134,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code grid} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code grid} property defines a material that fills the surface with a grid.
+    *  Gets the writer for the {@code grid} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code grid} property defines a material that fills the surface with a grid.
     
 
     */
@@ -154,7 +154,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code stripe} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code stripe} property defines a material that fills the surface with alternating colors.
+    *  Gets the writer for the {@code stripe} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code stripe} property defines a material that fills the surface with alternating colors.
     
 
     */

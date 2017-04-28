@@ -256,7 +256,7 @@ public class TestYearMonthDay {
 
     /**
     *  
-    Tests the  {@link YearMonthDay#toString} method.
+    Tests the {@link YearMonthDay#toString} method.
     
 
     */
@@ -268,7 +268,7 @@ public class TestYearMonthDay {
 
     /**
     *  
-    Tests the constructor overload that takes a  {@link JulianDate}.
+    Tests the constructor overload that takes a {@link JulianDate}.
     
 
     */

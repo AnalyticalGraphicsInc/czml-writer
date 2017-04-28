@@ -10,7 +10,7 @@ import cesiumlanguagewriter.Reference;
 
 /**
  *  
- Writes a {@code ColorBlendMode} to a  {@link CesiumOutputStream}.  A {@code ColorBlendMode} is defines different modes for blending between a target color and an entity's source color.
+ Writes a {@code ColorBlendMode} to a {@link CesiumOutputStream}.  A {@code ColorBlendMode} is defines different modes for blending between a target color and an entity's source color.
  
 
  */
@@ -168,7 +168,7 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code ColorBlendMode} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code ColorBlendMode} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -189,7 +189,7 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code ConicSensor} to a  {@link CesiumOutputStream}.  A {@code ConicSensor} is a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
+ Writes a {@code ConicSensor} to a {@link CesiumOutputStream}.  A {@code ConicSensor} is a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
  
 
  */
@@ -339,7 +339,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the entire conical sensor is shown.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the entire conical sensor is shown.
     
 
     */
@@ -458,7 +458,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code innerHalfAngle} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code innerHalfAngle} property defines the inner half angle of the cone.
+    *  Gets the writer for the {@code innerHalfAngle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code innerHalfAngle} property defines the inner half angle of the cone.
     
 
     */
@@ -623,7 +623,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code outerHalfAngle} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outerHalfAngle} property defines the outer half angle of the cone.
+    *  Gets the writer for the {@code outerHalfAngle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outerHalfAngle} property defines the outer half angle of the cone.
     
 
     */
@@ -788,7 +788,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code minimumClockAngle} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code minimumClockAngle} property defines the minimum clock angle limit of the cone.
+    *  Gets the writer for the {@code minimumClockAngle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code minimumClockAngle} property defines the minimum clock angle limit of the cone.
     
 
     */
@@ -953,7 +953,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code maximumClockAngle} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code maximumClockAngle} property defines the maximum clock angle limit of the cone.
+    *  Gets the writer for the {@code maximumClockAngle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code maximumClockAngle} property defines the maximum clock angle limit of the cone.
     
 
     */
@@ -1118,7 +1118,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code radius} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code radius} property defines the radial limit of the cone.
+    *  Gets the writer for the {@code radius} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code radius} property defines the radial limit of the cone.
     
 
     */
@@ -1283,7 +1283,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code showIntersection} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showIntersection} property defines whether or not the intersection of the cone with the Earth is shown.
+    *  Gets the writer for the {@code showIntersection} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showIntersection} property defines whether or not the intersection of the cone with the Earth is shown.
     
 
     */
@@ -1402,7 +1402,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code intersectionColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code intersectionColor} property defines the color of the intersection of the cone with the Earth.
+    *  Gets the writer for the {@code intersectionColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code intersectionColor} property defines the color of the intersection of the cone with the Earth.
     
 
     */
@@ -1682,7 +1682,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code intersectionWidth} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code intersectionWidth} property defines the width of the intersection in pixels.
+    *  Gets the writer for the {@code intersectionWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code intersectionWidth} property defines the width of the intersection in pixels.
     
 
     */
@@ -1847,7 +1847,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code showLateralSurfaces} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showLateralSurfaces} property defines whether or not the lateral surfaces of the cone are shown.
+    *  Gets the writer for the {@code showLateralSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showLateralSurfaces} property defines whether or not the lateral surfaces of the cone are shown.
     
 
     */
@@ -1966,7 +1966,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code lateralSurfaceMaterial} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lateralSurfaceMaterial} property defines the material to use for the cone's lateral surfaces.
+    *  Gets the writer for the {@code lateralSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lateralSurfaceMaterial} property defines the material to use for the cone's lateral surfaces.
     
 
     */
@@ -1986,7 +1986,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code showEllipsoidSurfaces} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEllipsoidSurfaces} property defines whether or not ellipsoid surfaces are shown.
+    *  Gets the writer for the {@code showEllipsoidSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEllipsoidSurfaces} property defines whether or not ellipsoid surfaces are shown.
     
 
     */
@@ -2105,7 +2105,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code ellipsoidSurfaceMaterial} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipsoidSurfaceMaterial} property defines the material to use for the cone's ellipsoid surfaces.
+    *  Gets the writer for the {@code ellipsoidSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipsoidSurfaceMaterial} property defines the material to use for the cone's ellipsoid surfaces.
     
 
     */
@@ -2125,7 +2125,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code showEllipsoidHorizonSurfaces} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEllipsoidHorizonSurfaces} property defines whether or not ellipsoid horizon surfaces are shown.
+    *  Gets the writer for the {@code showEllipsoidHorizonSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEllipsoidHorizonSurfaces} property defines whether or not ellipsoid horizon surfaces are shown.
     
 
     */
@@ -2244,7 +2244,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code ellipsoidHorizonSurfaceMaterial} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipsoidHorizonSurfaceMaterial} property defines the material to use for the cone's ellipsoid horizon surfaces.
+    *  Gets the writer for the {@code ellipsoidHorizonSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipsoidHorizonSurfaceMaterial} property defines the material to use for the cone's ellipsoid horizon surfaces.
     
 
     */
@@ -2264,7 +2264,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code showDomeSurfaces} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showDomeSurfaces} property defines whether or not dome surfaces are shown.
+    *  Gets the writer for the {@code showDomeSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showDomeSurfaces} property defines whether or not dome surfaces are shown.
     
 
     */
@@ -2383,7 +2383,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code domeSurfaceMaterial} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code domeSurfaceMaterial} property defines the material to use for the cone's dome surfaces.
+    *  Gets the writer for the {@code domeSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code domeSurfaceMaterial} property defines the material to use for the cone's dome surfaces.
     
 
     */
@@ -2403,7 +2403,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code portionToDisplay} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code portionToDisplay} property defines what part of the sensor should be displayed.
+    *  Gets the writer for the {@code portionToDisplay} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code portionToDisplay} property defines what part of the sensor should be displayed.
     
 
     */
@@ -2522,7 +2522,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code environmentConstraint} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentConstraint} property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
+    *  Gets the writer for the {@code environmentConstraint} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentConstraint} property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
     
 
     */
@@ -2641,7 +2641,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code showEnvironmentOcclusion} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEnvironmentOcclusion} property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+    *  Gets the writer for the {@code showEnvironmentOcclusion} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEnvironmentOcclusion} property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
     
 
     */
@@ -2760,7 +2760,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code environmentOcclusionMaterial} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentOcclusionMaterial} property defines the material to use for the portion of the sensor occluded by the environment.
+    *  Gets the writer for the {@code environmentOcclusionMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentOcclusionMaterial} property defines the material to use for the portion of the sensor occluded by the environment.
     
 
     */
@@ -2780,7 +2780,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code showEnvironmentIntersection} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEnvironmentIntersection} property defines whether or not a line showing where the sensor intersects the environment will be drawn.
+    *  Gets the writer for the {@code showEnvironmentIntersection} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEnvironmentIntersection} property defines whether or not a line showing where the sensor intersects the environment will be drawn.
     
 
     */
@@ -2899,7 +2899,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code environmentIntersectionColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentIntersectionColor} property defines the color of the intersection line between the sensor and the environment.
+    *  Gets the writer for the {@code environmentIntersectionColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentIntersectionColor} property defines the color of the intersection line between the sensor and the environment.
     
 
     */
@@ -3179,7 +3179,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code environmentIntersectionWidth} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentIntersectionWidth} property defines the width in meters of the intersection line between the sensor and the environment.
+    *  Gets the writer for the {@code environmentIntersectionWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentIntersectionWidth} property defines the width in meters of the intersection line between the sensor and the environment.
     
 
     */

@@ -27,7 +27,7 @@ import org.junit.Test;
 public class TestJulianDateConversions {
     /**
     *  
-    Tests conversion from a  {@link JulianDate} to a  {@link DateTime}.
+    Tests conversion from a {@link JulianDate} to a {@link DateTime}.
     
 
     */
@@ -118,7 +118,7 @@ public class TestJulianDateConversions {
 
     /**
     *  
-    Tests conversion from a  {@link DateTime} to a  {@link JulianDate}.
+    Tests conversion from a {@link DateTime} to a {@link JulianDate}.
     
 
     */
@@ -160,8 +160,8 @@ public class TestJulianDateConversions {
 
     /**
     *  
-    Tests conversion of a  {@link DateTime} to a  {@link JulianDate} when
-    the  {@link DateTime} is specified as a local time instead of as UTC.
+    Tests conversion of a {@link DateTime} to a {@link JulianDate} when
+    the {@link DateTime} is specified as a local time instead of as UTC.
     
 
     */
@@ -181,7 +181,7 @@ public class TestJulianDateConversions {
 
     /**
     *  
-    Tests the "round-trip" conversion between a  {@link DateTime} and a  {@link JulianDate}.
+    Tests the "round-trip" conversion between a {@link DateTime} and a {@link JulianDate}.
     
 
     */

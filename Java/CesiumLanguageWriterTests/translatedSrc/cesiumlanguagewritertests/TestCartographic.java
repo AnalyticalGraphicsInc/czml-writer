@@ -16,7 +16,7 @@ import org.junit.Test;
 
 /**
  *  
- Tests the  {@link Cartographic} type.
+ Tests the {@link Cartographic} type.
  
 
  */
@@ -67,7 +67,7 @@ public class TestCartographic {
 
     /**
     *  
-    Tests the  {@link Cartesian#equalsEpsilon} method.
+    Tests the {@link Cartesian#equalsEpsilon} method.
     
 
     */

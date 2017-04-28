@@ -16,7 +16,7 @@ import org.junit.Test;
 
 /**
  *  
- Tests the  {@link UnitSpherical} type.
+ Tests the {@link UnitSpherical} type.
  
 
  */
@@ -37,7 +37,7 @@ public class TestUnitSpherical {
 
     /**
     *  
-    Tests initialization from  {@link UnitCartesian} coordinates.
+    Tests initialization from {@link UnitCartesian} coordinates.
     
 
     */
@@ -81,7 +81,7 @@ public class TestUnitSpherical {
 
     /**
     *  
-    Tests the  {@link UnitSpherical#equalsEpsilon} method.
+    Tests the {@link UnitSpherical#equalsEpsilon} method.
     
 
     */

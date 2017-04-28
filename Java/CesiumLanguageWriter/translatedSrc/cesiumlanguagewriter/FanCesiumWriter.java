@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code Fan} to a  {@link CesiumOutputStream}.  A {@code Fan} is a fan.  A fan starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
+ Writes a {@code Fan} to a {@link CesiumOutputStream}.  A {@code Fan} is a fan.  A fan starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
  
 
  */
@@ -170,7 +170,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the fan is shown.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the fan is shown.
     
 
     */
@@ -289,7 +289,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code directions} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code directions} property defines the list of directions defining the fan.
+    *  Gets the writer for the {@code directions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code directions} property defines the list of directions defining the fan.
     
 
     */
@@ -385,7 +385,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code radius} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code radius} property defines the radial limit of the fan.
+    *  Gets the writer for the {@code radius} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code radius} property defines the radial limit of the fan.
     
 
     */
@@ -550,7 +550,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code perDirectionRadius} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code perDirectionRadius} property defines whether the magnitude of each direction is used instead of a constant radius.
+    *  Gets the writer for the {@code perDirectionRadius} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code perDirectionRadius} property defines whether the magnitude of each direction is used instead of a constant radius.
     
 
     */
@@ -669,7 +669,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the fan.
+    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the fan.
     
 
     */
@@ -689,7 +689,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the fan is filled.
+    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the fan is filled.
     
 
     */
@@ -808,7 +808,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the fan is outlined.
+    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the fan is outlined.
     
 
     */
@@ -927,7 +927,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the fan outline.
+    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the fan outline.
     
 
     */
@@ -1207,7 +1207,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the fan outline.
+    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the fan outline.
     
 
     */
@@ -1372,7 +1372,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code numberOfRings} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code numberOfRings} property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+    *  Gets the writer for the {@code numberOfRings} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code numberOfRings} property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
     
 
     */

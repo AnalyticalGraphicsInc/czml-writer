@@ -214,7 +214,7 @@ public final class Motion2<T, TDerivative> implements IEquatable<Motion2<T, TDer
     
     
 
-    * <p>Requesting index 0 will result in an  {@link ArgumentOutOfRangeException}.
+    * <p>Requesting index 0 will result in an {@link ArgumentOutOfRangeException}.
     * @param index The index of the derivative to retrieve.
     * @return The requested derivative.
     * @exception ArgumentOutOfRangeException 

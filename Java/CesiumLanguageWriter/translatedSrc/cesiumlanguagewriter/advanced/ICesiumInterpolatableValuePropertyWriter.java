@@ -18,7 +18,7 @@ public interface ICesiumInterpolatableValuePropertyWriter<TValue> extends ICesiu
     *  
     Writes time-tagged samples for this property.  Clients will interpolate over the samples
     to determine the property value at a given time.  The {@code dates} need not all
-    fall within the  {@link CesiumPropertyWriter#writeInterval(TimeInterval)}, because having samples
+    fall within the {@link CesiumPropertyWriter#writeInterval(TimeInterval)}, because having samples
     outside the interval is often useful for interpolation.  However, the samples within an interval
     will never be used to determine the value within another interval.
     

@@ -6,7 +6,7 @@ import cesiumlanguagewriter.*;
 
 /**
  *  
- Interface for classes that adapt a class derived from  {@link CesiumPropertyWriter}.
+ Interface for classes that adapt a class derived from {@link CesiumPropertyWriter}.
  
  
 

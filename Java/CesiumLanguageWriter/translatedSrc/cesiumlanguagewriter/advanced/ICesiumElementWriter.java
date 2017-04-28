@@ -20,7 +20,7 @@ public interface ICesiumElementWriter extends IDisposable {
     boolean getIsOpen();
 
     /**
-    *  Gets the  {@link CesiumOutputStream} on which this writer is currently open.  If the writer is
+    *  Gets the {@link CesiumOutputStream} on which this writer is currently open.  If the writer is
     not open, accessing this property will throw an exception.
     
     
@@ -31,7 +31,7 @@ public interface ICesiumElementWriter extends IDisposable {
 
     /**
     *  
-    Opens this writer on a given  {@link CesiumOutputStream}.  A single writer can write to multiple
+    Opens this writer on a given {@link CesiumOutputStream}.  A single writer can write to multiple
     streams over its lifetime.  Opening a writer on a stream may cause data to be written to the stream.
     
     

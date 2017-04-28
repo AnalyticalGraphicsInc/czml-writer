@@ -40,7 +40,7 @@ import java.util.Iterator;
 /**
  * Represents a doubly linked list. Unlike the built-in LinkedList, this class allows
  * direct access to the nodes in the linked list, instead of only operating on values.
- * 
+ *
  * @param <T>
  *            Specifies the element type of the linked list.
  */
@@ -58,11 +58,11 @@ public class LinkedList<T> implements Collection<T> {
     /**
      * Initializes a new instance of the LinkedList class that contains elements copied
      * from the specified Iterable.
-     * 
+     *
      * @param collection
      *            The Iterable whose elements are copied to the new LinkedList.
      */
-    public LinkedList(Iterable<T> collection) {
+    public LinkedList(Iterable<? extends T> collection) {
         for (T item : collection) {
             addLast(item);
         }
@@ -88,7 +88,7 @@ public class LinkedList<T> implements Collection<T> {
 
     /**
      * Adds the specified new node at the start of the LinkedList.
-     * 
+     *
      * @param node
      *            The new LinkedListNode to add at the start of the LinkedList.
      */
@@ -105,7 +105,7 @@ public class LinkedList<T> implements Collection<T> {
 
     /**
      * Adds a new node containing the specified value at the start of the LinkedList.
-     * 
+     *
      * @param value
      *            The value to add at the start of the LinkedList.
      * @return The new LinkedListNode containing value.
@@ -124,7 +124,7 @@ public class LinkedList<T> implements Collection<T> {
 
     /**
      * Adds a new node containing the specified value at the end of the LinkedList.
-     * 
+     *
      * @param value
      *            The value to add at the end of the LinkedList.
      * @return The new LinkedListNode containing value.
@@ -165,7 +165,7 @@ public class LinkedList<T> implements Collection<T> {
 
     /**
      * Finds the first node that contains the specified value.
-     * 
+     *
      * @param value
      *            The value to locate in the LinkedList.
      * @return The first LinkedListNode that contains the specified value, if found;
@@ -208,7 +208,7 @@ public class LinkedList<T> implements Collection<T> {
 
     /**
      * Removes the specified node from the LinkedList.
-     * 
+     *
      * @param node
      *            The LinkedListNode to remove from the LinkedList.
      */
@@ -246,7 +246,7 @@ public class LinkedList<T> implements Collection<T> {
 
     /**
      * Gets the first node of the LinkedList.
-     * 
+     *
      * @return The first LinkedListNode of the LinkedList.
      */
     public final LinkedListNode<T> getFirst() {
@@ -255,7 +255,7 @@ public class LinkedList<T> implements Collection<T> {
 
     /**
      * Gets the last node of the LinkedList.
-     * 
+     *
      * @return The last LinkedListNode of the LinkedList.
      */
     public final LinkedListNode<T> getLast() {
@@ -337,12 +337,14 @@ public class LinkedList<T> implements Collection<T> {
 
         private int __state;
 
+        @Override
         public final boolean hasNext() {
             if (__state == 0)
                 __state = moveNext() ? 1 : 2;
             return __state == 1;
         }
 
+        @Override
         public final T next() {
             if (__state == 0) {
                 if (moveNext())
@@ -354,6 +356,7 @@ public class LinkedList<T> implements Collection<T> {
             throw new java.util.NoSuchElementException();
         }
 
+        @Override
         public final void remove() {
             throw new UnsupportedOperationException("Method not implemented.");
         }
@@ -375,6 +378,7 @@ public class LinkedList<T> implements Collection<T> {
         return true;
     }
 
+    @Override
     public final Object[] toArray() {
         Object[] r = new Object[count];
         int i = 0;
@@ -385,6 +389,7 @@ public class LinkedList<T> implements Collection<T> {
         return r;
     }
 
+    @Override
     @SuppressWarnings({
             "unchecked",
             "hiding"
@@ -399,14 +404,17 @@ public class LinkedList<T> implements Collection<T> {
         return r;
     }
 
+    @Override
     public final boolean removeAll(Collection<?> c) {
         throw new UnsupportedOperationException("Method not implemented.");
     }
 
+    @Override
     public final boolean addAll(Collection<? extends T> c) {
         throw new UnsupportedOperationException("Method not implemented.");
     }
 
+    @Override
     public final boolean retainAll(Collection<?> c) {
         throw new UnsupportedOperationException("Method not implemented.");
     }

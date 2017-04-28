@@ -19,7 +19,7 @@ public enum CesiumVerticalOrigin implements Enumeration {
     */
     BOTTOM(0), /**
                *  
-               The item is at the vertical center between  {@link #Baseline} and  {@link #Top}.
+               The item is at the vertical center between {@link #Baseline} and {@link #Top}.
                
 
                */

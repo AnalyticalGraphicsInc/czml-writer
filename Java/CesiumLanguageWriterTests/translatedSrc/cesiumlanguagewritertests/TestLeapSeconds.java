@@ -46,7 +46,7 @@ public class TestLeapSeconds {
     /**
     *  
     Tests that the look-up operation produces the same result using either the
-    {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} standard or the  {@link TimeStandard#COORDINATED_UNIVERSAL_TIME} standard.
+    {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} standard or the {@link TimeStandard#COORDINATED_UNIVERSAL_TIME} standard.
     
 
     */
@@ -127,7 +127,7 @@ public class TestLeapSeconds {
 
     /**
     *  
-    Tests that a  {@link JulianDate} in the 
+    Tests that a {@link JulianDate} in the 
     {@link TimeStandard#COORDINATED_UNIVERSAL_TIME} standard cannot correctly
     represent a day containing a leap second.
     

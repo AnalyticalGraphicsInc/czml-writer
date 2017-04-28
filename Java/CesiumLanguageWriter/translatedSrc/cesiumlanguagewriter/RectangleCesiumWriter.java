@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code Rectangle} to a  {@link CesiumOutputStream}.  A {@code Rectangle} is a cartographic rectangle, which conforms to the curvature of the globe and can be placed on the surface or at altitude and can optionally be extruded into a volume.
+ Writes a {@code Rectangle} to a {@link CesiumOutputStream}.  A {@code Rectangle} is a cartographic rectangle, which conforms to the curvature of the globe and can be placed on the surface or at altitude and can optionally be extruded into a volume.
  
 
  */
@@ -231,7 +231,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the rectangle is shown.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the rectangle is shown.  If not specified, the default value is {@code true}.
     
 
     */
@@ -350,7 +350,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code coordinates} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code coordinates} property defines the coordinates of the rectangle.
+    *  Gets the writer for the {@code coordinates} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code coordinates} property defines the coordinates of the rectangle.
     
 
     */
@@ -630,7 +630,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code height} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code height} property defines the height of the rectangle.
+    *  Gets the writer for the {@code height} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code height} property defines the height of the rectangle.
     
 
     */
@@ -795,7 +795,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code extrudedHeight} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code extrudedHeight} property defines the extruded height of the rectangle.
+    *  Gets the writer for the {@code extrudedHeight} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code extrudedHeight} property defines the extruded height of the rectangle.
     
 
     */
@@ -960,7 +960,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code rotation} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code rotation} property defines the rotation of the rectangle clockwise from north.
+    *  Gets the writer for the {@code rotation} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code rotation} property defines the rotation of the rectangle clockwise from north.
     
 
     */
@@ -1125,7 +1125,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code stRotation} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code stRotation} property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
+    *  Gets the writer for the {@code stRotation} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code stRotation} property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
     
 
     */
@@ -1290,7 +1290,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians.
+    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians.
     
 
     */
@@ -1455,7 +1455,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the rectangle is filled.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the rectangle is filled.  If not specified, the default value is {@code true}.
     
 
     */
@@ -1574,7 +1574,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the rectangle.
+    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the rectangle.
     
 
     */
@@ -1594,7 +1594,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the rectangle is outlined.  If not specified, the default value is {@code false}.
+    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the rectangle is outlined.  If not specified, the default value is {@code false}.
     
 
     */
@@ -1713,7 +1713,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the rectangle outline.
+    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the rectangle outline.
     
 
     */
@@ -1993,7 +1993,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the rectangle outline.  If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the rectangle outline.  If not specified, the default value is 1.0.
     
 
     */
@@ -2158,7 +2158,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code closeTop} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code closeTop} property defines whether to close the top of the rectangle.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code closeTop} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code closeTop} property defines whether to close the top of the rectangle.  If not specified, the default value is {@code true}.
     
 
     */
@@ -2277,7 +2277,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code closeBottom} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code closeBottom} property defines whether to close the bottom of the rectangle.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code closeBottom} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code closeBottom} property defines whether to close the bottom of the rectangle.  If not specified, the default value is {@code true}.
     
 
     */
@@ -2396,7 +2396,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the rectangle casts or receives shadows.  If not specified, the default value is DISABLED.
+    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the rectangle casts or receives shadows.  If not specified, the default value is DISABLED.
     
 
     */
