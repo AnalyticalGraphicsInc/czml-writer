@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/PolylineGlowMaterial.json",
-    "title": "PolylineGlowMaterial",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/PolylineDashMaterial.json",
+    "title": "PolylineDashMaterial",
     "description": "A material that fills the surface of a line with a pattern of dashes.",
     "type": [
         "array",
@@ -17,15 +17,17 @@
         },
         "gapColor": {
             "$ref": "Color.json",
-            "description": "The color of the gaps between dashes on the line.  Default is transparent."
+            "description": "The color of the gaps between dashes on the line.  The default is transparent."
         },
         "dashLength": {
             "$ref": "Double.json",
-            "description": "The length in screen-space pixels of a single dash+gap pattern."
+            "description": "The length in screen-space pixels of a single dash and gap pattern.",
+            "default": 16
         },
         "dashPattern": {
             "$ref": "Double.json",
-            "description": "A big-endian 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default is 255 (0000000011111111) indicating 50% gap followed by 50% dash."
+            "description": "A 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.",
+            "default": 255
         }
     }
 }
