@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code EyeOffset} to a  {@link CesiumOutputStream}.  A {@code EyeOffset} is an offset in eye coordinates which can optionally vary over time.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen.
+ Writes a {@code EyeOffset} to a {@link CesiumOutputStream}.  A {@code EyeOffset} is an offset in eye coordinates which can optionally vary over time.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen.
  
 
  */
@@ -199,7 +199,7 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Cartesian} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Cartesian} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -224,7 +224,7 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

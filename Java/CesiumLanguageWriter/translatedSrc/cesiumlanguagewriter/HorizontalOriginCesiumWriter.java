@@ -10,7 +10,7 @@ import cesiumlanguagewriter.Reference;
 
 /**
  *  
- Writes a {@code HorizontalOrigin} to a  {@link CesiumOutputStream}.  A {@code HorizontalOrigin} is the horizontal origin of an element, which can optionally vary over time.  It controls whether the element is left-, center-, or right-aligned with the {@code position}.
+ Writes a {@code HorizontalOrigin} to a {@link CesiumOutputStream}.  A {@code HorizontalOrigin} is the horizontal origin of an element, which can optionally vary over time.  It controls whether the element is left-, center-, or right-aligned with the {@code position}.
  
 
  */
@@ -168,7 +168,7 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code HorizontalOrigin} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code HorizontalOrigin} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -189,7 +189,7 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

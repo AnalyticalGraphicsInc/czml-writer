@@ -8,7 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 
 /**
  *  
- Writes a {@code PositionList} to a  {@link CesiumOutputStream}.  A {@code PositionList} is a list of positions.
+ Writes a {@code PositionList} to a {@link CesiumOutputStream}.  A {@code PositionList} is a list of positions.
  
 
  */
@@ -205,7 +205,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code Cartesian} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Cartesian} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -226,7 +226,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code CartographicRadians} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code CartographicRadians} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -247,7 +247,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code CartographicDegrees} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code CartographicDegrees} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -268,7 +268,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code References} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code References} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

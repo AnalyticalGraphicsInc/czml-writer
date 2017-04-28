@@ -13,7 +13,7 @@ import org.junit.Test;
 
 /**
  *  
- Tests the  {@link LeapSecond} type.
+ Tests the {@link LeapSecond} type.
  
 
  */

@@ -15,7 +15,9 @@ import java.util.ResourceBundle;
    A strongly-typed resource class, for looking up localized strings, etc.
  
 
+ * @deprecated Internal use only.
  */
+@Deprecated
 @Internal
 @CS2JWarning( {
         "Unhandled attribute removed: System.CodeDom.Compiler.GeneratedCodeAttribute",
@@ -27,6 +29,10 @@ public class CesiumLocalization {
     private static ResourceBundle resourceMan;
     private static Locale resourceCulture;
 
+    /**
+    * @deprecated Internal use only.
+    */
+    @Deprecated
     @Internal
     @CS2JWarning("Unhandled attribute removed: System.Diagnostics.CodeAnalysis.SuppressMessageAttribute")
     public CesiumLocalization() {}
@@ -36,7 +42,9 @@ public class CesiumLocalization {
     Returns the cached ResourceManager instance used by this class.
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static ResourceBundle getResourceManager() {
         if (ObjectHelper.referenceEquals(resourceMan, null)) {
@@ -52,7 +60,9 @@ public class CesiumLocalization {
     resource lookups using this strongly typed resource class.
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static Locale getCulture() {
         return resourceCulture;
@@ -64,7 +74,9 @@ public class CesiumLocalization {
     resource lookups using this strongly typed resource class.
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static void setCulture(Locale value) {
         resourceCulture = value;
@@ -75,7 +87,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to The argument is not an expected type for the method..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getArgumentTypeInvalid() {
         return getResourceManager().getString("ArgumentTypeInvalid");
@@ -86,7 +100,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to JulianDate cannot represent the moment of a leap second with the UTC time standard..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getCannotRepresentLeapSecondAsUTCJulianDate() {
         return getResourceManager().getString("CannotRepresentLeapSecondAsUTCJulianDate");
@@ -97,7 +113,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to The Day of Year must be between 1 and 366 inclusive..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getDayOfYearOutOfRange() {
         return getResourceManager().getString("DayOfYearOutOfRange");
@@ -108,7 +126,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to Invalid format string..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getGregorianDateFormatInvalid() {
         return getResourceManager().getString("GregorianDateFormatInvalid");
@@ -119,7 +139,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to Invalid character {0} in format specifier..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getGregorianDateInvalidCharacter() {
         return getResourceManager().getString("GregorianDateInvalidCharacter");
@@ -130,7 +152,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to Invalid character {0} at the end of the format specifier..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getGregorianDateInvalidCharacterAtEnd() {
         return getResourceManager().getString("GregorianDateInvalidCharacterAtEnd");
@@ -141,7 +165,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to {0} is not one of the format specifier characters defined for DateTimeFormatInfo..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getGregorianDateInvalidFormatSpecifier() {
         return getResourceManager().getString("GregorianDateInvalidFormatSpecifier");
@@ -152,7 +178,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to Order of month and date is not defined by {0}..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getGregorianDateOrderOfMonthAndDateNotDefined() {
         return getResourceManager().getString("GregorianDateOrderOfMonthAndDateNotDefined");
@@ -163,7 +191,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to Order of year, month and date is not defined by {0}..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getGregorianDateOrderOfYearMonthAndDateNotDefined() {
         return getResourceManager().getString("GregorianDateOrderOfYearMonthAndDateNotDefined");
@@ -174,7 +204,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to Order of year, month and date defined by {0} is not supported..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getGregorianDateOrderOfYearMonthAndDateNotSupported() {
         return getResourceManager().getString("GregorianDateOrderOfYearMonthAndDateNotSupported");
@@ -185,7 +217,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to A quote was not terminated..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getGregorianDateQuoteNotTerminated() {
         return getResourceManager().getString("GregorianDateQuoteNotTerminated");
@@ -196,7 +230,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to Input {0} was not recognized as a valid GregorianDate..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getGregorianDateStringNotRecognized() {
         return getResourceManager().getString("GregorianDateStringNotRecognized");
@@ -207,7 +243,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to One or more of the hour, minute, and second arguments is outside of the acceptable range..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getHourMinuteSecondInvalidArgument() {
         return getResourceManager().getString("HourMinuteSecondInvalidArgument");
@@ -218,7 +256,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to The provided reference string is not in the correct format..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getInvalidReferenceString() {
         return getResourceManager().getString("InvalidReferenceString");
@@ -229,7 +269,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to The magnitude of the provided coordinates must not be infinite..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getMagnitudeMustNotBeInfinite() {
         return getResourceManager().getString("MagnitudeMustNotBeInfinite");
@@ -240,7 +282,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to The magnitude of the provided coordinates must not be zero..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getMagnitudeMustNotBeZero() {
         return getResourceManager().getString("MagnitudeMustNotBeZero");
@@ -251,7 +295,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to This collection must have the same number of elements as the "dates" collection..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getMismatchedNumberOfDatesAndValues() {
         return getResourceManager().getString("MismatchedNumberOfDatesAndValues");
@@ -262,7 +308,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to A Motion instance must be constructed with at least one value..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getMotionMustContainValue() {
         return getResourceManager().getString("MotionMustContainValue");
@@ -273,7 +321,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to An object of the type {0} must be constructed from an array with at least {1} elements..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getMustBeConstructedFromSpecificNumberOfElements() {
         return getResourceManager().getString("MustBeConstructedFromSpecificNumberOfElements");
@@ -284,7 +334,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to TAI.
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getTaiAbbreviation() {
         return getResourceManager().getString("TaiAbbreviation");
@@ -295,7 +347,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to International Atomic Time.
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getTaiName() {
         return getResourceManager().getString("TaiName");
@@ -306,7 +360,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to The enumeration has an invalid or unsupported value..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getUnknownEnumerationValue() {
         return getResourceManager().getString("UnknownEnumerationValue");
@@ -317,7 +373,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to UTC.
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getUtcAbbreviation() {
         return getResourceManager().getString("UtcAbbreviation");
@@ -328,7 +386,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to Coordinated Universal Time.
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getUtcName() {
         return getResourceManager().getString("UtcName");
@@ -339,7 +399,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to The Cesium writer cannot be closed because it is not open..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getWriterAlreadyClosed() {
         return getResourceManager().getString("WriterAlreadyClosed");
@@ -350,7 +412,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to The Cesium writer cannot be opened because it is already opened.  Please close the previous element before opening a new one..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getWriterAlreadyOpen() {
         return getResourceManager().getString("WriterAlreadyOpen");
@@ -361,7 +425,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to The Cesium writer cannot be used to write elements because it is not currently open.  This usually indicates an attempt to use a writer after is has been closed..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getWriterNotOpen() {
         return getResourceManager().getString("WriterNotOpen");
@@ -372,7 +438,9 @@ public class CesiumLocalization {
     Looks up a localized string similar to One or more of the year, month, and day arguments is outside of the acceptable range..
     
 
+    * @deprecated Internal use only.
     */
+    @Deprecated
     @Internal
     public static String getYearMonthDayInvalidArgument() {
         return getResourceManager().getString("YearMonthDayInvalidArgument");

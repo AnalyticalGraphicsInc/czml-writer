@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code NodeTransformation} to a  {@link CesiumOutputStream}.  A {@code NodeTransformation} is a set of transformations to apply to a particular node in a 3D model.
+ Writes a {@code NodeTransformation} to a {@link CesiumOutputStream}.  A {@code NodeTransformation} is a set of transformations to apply to a particular node in a 3D model.
  
 
  */
@@ -83,7 +83,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  Gets the writer for the {@code translation} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code translation} property defines the translation to apply to the model node.
+    *  Gets the writer for the {@code translation} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code translation} property defines the translation to apply to the model node.
     
 
     */
@@ -248,7 +248,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  Gets the writer for the {@code rotation} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code rotation} property defines the rotation to apply to the model node.
+    *  Gets the writer for the {@code rotation} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code rotation} property defines the rotation to apply to the model node.
     
 
     */
@@ -413,7 +413,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  Gets the writer for the {@code scale} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code scale} property defines the scaling to apply to the model node.
+    *  Gets the writer for the {@code scale} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code scale} property defines the scaling to apply to the model node.
     
 
     */

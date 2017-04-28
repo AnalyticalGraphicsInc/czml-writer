@@ -15,8 +15,8 @@ import agi.foundation.compatibility.StringHelper;
  Represents a span of time.
  
  This class
- offers the same precision as the  {@link JulianDate} type.  It stores a
- number of days as an  {@code int} and a number of seconds as a  {@code double}.
+ offers the same precision as the {@link JulianDate} type.  It stores a
+ number of days as an {@code int} and a number of seconds as a {@code double}.
  
 
  */
@@ -27,12 +27,12 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     public Duration() {}
 
     /**
-    *  Gets the largest possible value of a  {@link Duration}.
+    *  Gets the largest possible value of a {@link Duration}.
     
     
 
     * <p>
-    The value is  {@link Integer#MAX_VALUE} days and 86399.0 seconds.
+    The value is {@link Integer#MAX_VALUE} days and 86399.0 seconds.
     
     */
     public static Duration getMaxValue() {
@@ -40,12 +40,12 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     }
 
     /**
-    *  Gets the smallest possible value of a  {@link Duration}.
+    *  Gets the smallest possible value of a {@link Duration}.
     
     
 
     * <p>
-    The value is  {@link Integer#MIN_VALUE} days and -86399.0 seconds.
+    The value is {@link Integer#MIN_VALUE} days and -86399.0 seconds.
     
     */
     public static Duration getMinValue() {
@@ -53,7 +53,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     }
 
     /**
-    *  Gets a  {@link Duration} of 0 days and seconds.
+    *  Gets a {@link Duration} of 0 days and seconds.
     
 
     */
@@ -177,7 +177,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
 
     /**
     *  
-    Returns the value of the  {@link Duration} in {@code Days} ({@link #getDays get}):{@code Seconds} ({@link #getSeconds get}).
+    Returns the value of the {@link Duration} in {@code Days} ({@link #getDays get}):{@code Seconds} ({@link #getSeconds get}).
     
     
 
@@ -293,7 +293,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     
 
     * @param other The duration to add to this instance.
-    * @return A  {@link Duration} that represents the value of this instance plus the value of {@code other}.
+    * @return A {@link Duration} that represents the value of this instance plus the value of {@code other}.
     */
     public final Duration add(Duration other) {
         return new Duration(m_days + other.m_days, m_seconds + other.m_seconds);
@@ -354,8 +354,8 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     
     
 
-    * @param constant The constant by which to divide the  {@link Duration}.
-    * @return A  {@link Duration} that represents the value of this instance divided by the constant.
+    * @param constant The constant by which to divide the {@link Duration}.
+    * @return A {@link Duration} that represents the value of this instance divided by the constant.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Duration divide(double constant) {
@@ -613,7 +613,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     
 
     * @param days The number of days to be represented by the returned duration.
-    * @return A  {@link Duration} representing the specified number of days.
+    * @return A {@link Duration} representing the specified number of days.
     */
     public static Duration fromDays(double days) {
         int wholeDays = (int) days;
@@ -629,7 +629,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     
 
     * @param seconds The number of seconds to be represented by the returned duration.
-    * @return A  {@link Duration} representing the specified number of seconds.
+    * @return A {@link Duration} representing the specified number of seconds.
     */
     public static Duration fromSeconds(double seconds) {
         return new Duration(0, seconds);

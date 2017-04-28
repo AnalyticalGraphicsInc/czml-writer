@@ -25,7 +25,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code Billboard} to a  {@link CesiumOutputStream}.  A {@code Billboard} is a billboard, or viewport-aligned image.  The billboard is positioned in the scene by the {@code position} property.  A billboard is sometimes called a marker.
+ Writes a {@code Billboard} to a {@link CesiumOutputStream}.  A {@code Billboard} is a billboard, or viewport-aligned image.  The billboard is positioned in the scene by the {@code position} property.  A billboard is sometimes called a marker.
  
 
  */
@@ -275,7 +275,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the billboard is shown.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the billboard is shown.  If not specified, the default value is {@code true}.
     
 
     */
@@ -394,7 +394,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code image} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code image} property defines the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+    *  Gets the writer for the {@code image} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code image} property defines the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
     
 
     */
@@ -637,7 +637,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code scale} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code scale} property defines the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's {@code image}.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the {@code image}.  If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code scale} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code scale} property defines the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's {@code image}.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the {@code image}.  If not specified, the default value is 1.0.
     
 
     */
@@ -802,7 +802,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code pixelOffset} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code pixelOffset} property defines the offset, in viewport pixels, of the billboard origin from the {@code position}.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the {@code position}.
+    *  Gets the writer for the {@code pixelOffset} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code pixelOffset} property defines the offset, in viewport pixels, of the billboard origin from the {@code position}.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the {@code position}.
     
 
     */
@@ -988,7 +988,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code eyeOffset} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code eyeOffset} property defines the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the {@code position} property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
+    *  Gets the writer for the {@code eyeOffset} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code eyeOffset} property defines the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the {@code position} property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
     
 
     */
@@ -1153,7 +1153,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code horizontalOrigin} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code horizontalOrigin} property defines the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the {@code position}.  If not specified, the default value is CENTER.
+    *  Gets the writer for the {@code horizontalOrigin} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code horizontalOrigin} property defines the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the {@code position}.  If not specified, the default value is CENTER.
     
 
     */
@@ -1272,7 +1272,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code verticalOrigin} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code verticalOrigin} property defines the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the {@code position}.  If not specified, the default value is CENTER.
+    *  Gets the writer for the {@code verticalOrigin} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code verticalOrigin} property defines the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the {@code position}.  If not specified, the default value is CENTER.
     
 
     */
@@ -1391,7 +1391,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code heightReference} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code heightReference} property defines the height reference of the billboard, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+    *  Gets the writer for the {@code heightReference} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code heightReference} property defines the height reference of the billboard, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
     
 
     */
@@ -1510,7 +1510,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
+    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
     
 
     */
@@ -1790,7 +1790,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code rotation} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code rotation} property defines the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
+    *  Gets the writer for the {@code rotation} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code rotation} property defines the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
     
 
     */
@@ -1955,7 +1955,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code alignedAxis} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code alignedAxis} property defines the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
+    *  Gets the writer for the {@code alignedAxis} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code alignedAxis} property defines the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
     
 
     */
@@ -2265,7 +2265,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code sizeInMeters} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code sizeInMeters} property defines whether this billboard's size ({@code width} and {@code height}) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is {@code false}.
+    *  Gets the writer for the {@code sizeInMeters} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code sizeInMeters} property defines whether this billboard's size ({@code width} and {@code height}) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is {@code false}.
     
 
     */
@@ -2384,7 +2384,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code width} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code width} property defines the width of the billboard, in pixels (or meters, if {@code sizeInMeters} is true). By default, the native width of the image is used.
+    *  Gets the writer for the {@code width} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code width} property defines the width of the billboard, in pixels (or meters, if {@code sizeInMeters} is true). By default, the native width of the image is used.
     
 
     */
@@ -2549,7 +2549,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code height} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code height} property defines the height of the billboard, in pixels (or meters, if {@code sizeInMeters} is true). By default, the native height of the image is used.
+    *  Gets the writer for the {@code height} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code height} property defines the height of the billboard, in pixels (or meters, if {@code sizeInMeters} is true). By default, the native height of the image is used.
     
 
     */
@@ -2714,7 +2714,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code scaleByDistance} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code scaleByDistance} property defines how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by {@code scale}.
+    *  Gets the writer for the {@code scaleByDistance} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code scaleByDistance} property defines how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by {@code scale}.
     
 
     */
@@ -2904,7 +2904,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code translucencyByDistance} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code translucencyByDistance} property defines how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
+    *  Gets the writer for the {@code translucencyByDistance} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code translucencyByDistance} property defines how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
     
 
     */
@@ -3094,7 +3094,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code pixelOffsetScaleByDistance} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code pixelOffsetScaleByDistance} property defines how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by {@code pixelOffset}.
+    *  Gets the writer for the {@code pixelOffsetScaleByDistance} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code pixelOffsetScaleByDistance} property defines how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by {@code pixelOffset}.
     
 
     */
@@ -3284,7 +3284,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code imageSubRegion} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code imageSubRegion} property defines a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
+    *  Gets the writer for the {@code imageSubRegion} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code imageSubRegion} property defines a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
     
 
     */

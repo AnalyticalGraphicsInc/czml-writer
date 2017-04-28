@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  *  
- A callback to write a value to a  {@link CesiumOutputStream} using a given
+ A callback to write a value to a {@link CesiumOutputStream} using a given
  wrapped property writer.
  
  
@@ -52,7 +52,7 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TV
 
     /**
     *  
-    A callback to write a value to a  {@link CesiumOutputStream} using a given
+    A callback to write a value to a {@link CesiumOutputStream} using a given
     wrapped property writer.
     
     
@@ -99,7 +99,7 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TV
     public interface Function<TWrappedWriter, TValue> {
         /**
         *  
-        A callback to write a value to a  {@link CesiumOutputStream} using a given
+        A callback to write a value to a {@link CesiumOutputStream} using a given
         wrapped property writer.
         
         

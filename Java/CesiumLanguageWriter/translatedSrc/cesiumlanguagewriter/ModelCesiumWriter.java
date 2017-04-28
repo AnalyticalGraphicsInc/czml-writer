@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code Model} to a  {@link CesiumOutputStream}.  A {@code Model} is a 3D model.
+ Writes a {@code Model} to a {@link CesiumOutputStream}.  A {@code Model} is a 3D model.
  
 
  */
@@ -236,7 +236,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the model is shown.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the model is shown.  If not specified, the default value is {@code true}.
     
 
     */
@@ -355,7 +355,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code gltf} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code gltf} property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
+    *  Gets the writer for the {@code gltf} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code gltf} property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
     
 
     */
@@ -598,7 +598,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code scale} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code scale} property defines the scale of the model.
+    *  Gets the writer for the {@code scale} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code scale} property defines the scale of the model.
     
 
     */
@@ -763,7 +763,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code minimumPixelSize} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code minimumPixelSize} property defines the approximate minimum pixel size of the model regardless of zoom.
+    *  Gets the writer for the {@code minimumPixelSize} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code minimumPixelSize} property defines the approximate minimum pixel size of the model regardless of zoom.
     
 
     */
@@ -928,7 +928,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code maximumScale} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code maximumScale} property defines the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
+    *  Gets the writer for the {@code maximumScale} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code maximumScale} property defines the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
     
 
     */
@@ -1093,7 +1093,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code incrementallyLoadTextures} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code incrementallyLoadTextures} property defines whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code incrementallyLoadTextures} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code incrementallyLoadTextures} property defines whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is {@code true}.
     
 
     */
@@ -1212,7 +1212,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code runAnimations} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code runAnimations} property defines whether or not to run all animations defined in the glTF model.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code runAnimations} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code runAnimations} property defines whether or not to run all animations defined in the glTF model.  If not specified, the default value is {@code true}.
     
 
     */
@@ -1331,7 +1331,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
+    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
     
 
     */
@@ -1450,7 +1450,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code heightReference} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code heightReference} property defines the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+    *  Gets the writer for the {@code heightReference} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code heightReference} property defines the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
     
 
     */
@@ -1569,7 +1569,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code silhouetteColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code silhouetteColor} property defines the color of the silhouette drawn around the model.
+    *  Gets the writer for the {@code silhouetteColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code silhouetteColor} property defines the color of the silhouette drawn around the model.
     
 
     */
@@ -1849,7 +1849,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code silhouetteSize} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code silhouetteSize} property defines the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
+    *  Gets the writer for the {@code silhouetteSize} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code silhouetteSize} property defines the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
     
 
     */
@@ -2014,7 +2014,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color to blend with the model's rendered color.
+    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color to blend with the model's rendered color.
     
 
     */
@@ -2294,7 +2294,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code colorBlendMode} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code colorBlendMode} property defines the mode to use for blending between {@code color} and the model's color.  If not specified, the default value is HIGHLIGHT.
+    *  Gets the writer for the {@code colorBlendMode} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code colorBlendMode} property defines the mode to use for blending between {@code color} and the model's color.  If not specified, the default value is HIGHLIGHT.
     
 
     */
@@ -2413,7 +2413,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code colorBlendAmount} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code colorBlendAmount} property defines the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.  If not specified, the default value is 0.5.
+    *  Gets the writer for the {@code colorBlendAmount} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code colorBlendAmount} property defines the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.  If not specified, the default value is 0.5.
     
 
     */
@@ -2578,7 +2578,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code nodeTransformations} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code nodeTransformations} property defines a mapping of node names to node transformations.
+    *  Gets the writer for the {@code nodeTransformations} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code nodeTransformations} property defines a mapping of node names to node transformations.
     
 
     */

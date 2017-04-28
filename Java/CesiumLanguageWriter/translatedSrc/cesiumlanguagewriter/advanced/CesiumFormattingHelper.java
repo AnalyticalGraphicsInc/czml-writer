@@ -31,7 +31,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link TimeInterval} as an ISO8601 interval string.
+    Converts a {@link TimeInterval} as an ISO8601 interval string.
     
     
     
@@ -49,7 +49,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link TimeInterval} as an ISO8601 interval string.
+    Converts a {@link TimeInterval} as an ISO8601 interval string.
     
     
     
@@ -65,7 +65,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link JulianDate} to an ISO8601 date string.
+    Converts a {@link JulianDate} to an ISO8601 date string.
     
     
     
@@ -239,7 +239,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link CesiumStripeOrientation} to the corresponding string in a CZML stream.
+    Converts a {@link CesiumStripeOrientation} to the corresponding string in a CZML stream.
     
     
     
@@ -263,7 +263,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link CesiumHorizontalOrigin} to the corresponding string in a CZML stream.
+    Converts a {@link CesiumHorizontalOrigin} to the corresponding string in a CZML stream.
     
     
     
@@ -290,7 +290,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link CesiumVerticalOrigin} to the corresponding string in a CZML stream.
+    Converts a {@link CesiumVerticalOrigin} to the corresponding string in a CZML stream.
     
     
     
@@ -317,7 +317,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link CesiumHeightReference} to the corresponding string in a CZML stream.
+    Converts a {@link CesiumHeightReference} to the corresponding string in a CZML stream.
     
     
     
@@ -344,7 +344,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link CesiumShadowMode} to the corresponding string in a CZML stream.
+    Converts a {@link CesiumShadowMode} to the corresponding string in a CZML stream.
     
     
     
@@ -374,7 +374,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link CesiumInterpolationAlgorithm} to the corresponding string in a CZML stream.
+    Converts a {@link CesiumInterpolationAlgorithm} to the corresponding string in a CZML stream.
     
     
     
@@ -401,7 +401,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link CesiumExtrapolationType} to the corresponding string in a CZML stream.
+    Converts a {@link CesiumExtrapolationType} to the corresponding string in a CZML stream.
     
     
     
@@ -428,7 +428,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link ClockRange} to the corresponding string in a CZML stream.
+    Converts a {@link ClockRange} to the corresponding string in a CZML stream.
     
     
     
@@ -455,7 +455,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link ClockStep} to the corresponding string in a CZML stream.
+    Converts a {@link ClockStep} to the corresponding string in a CZML stream.
     
     
     
@@ -482,7 +482,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link CesiumLabelStyle} to the corresponding string in a CZML stream.
+    Converts a {@link CesiumLabelStyle} to the corresponding string in a CZML stream.
     
     
     
@@ -509,7 +509,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link CesiumCornerType} to the corresponding string in a CZML stream.
+    Converts a {@link CesiumCornerType} to the corresponding string in a CZML stream.
     
     
     
@@ -536,7 +536,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link CesiumColorBlendMode} to the corresponding string in a CZML stream.
+    Converts a {@link CesiumColorBlendMode} to the corresponding string in a CZML stream.
     
     
     
@@ -563,7 +563,7 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Converts a  {@link CesiumSensorVolumePortionToDisplay} to the corresponding string in a CZML stream.
+    Converts a {@link CesiumSensorVolumePortionToDisplay} to the corresponding string in a CZML stream.
     
     
     
@@ -590,14 +590,14 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
-    Returns a resolved url, using the given  {@link CesiumResourceBehavior}.
+    Returns a resolved url, using the given {@link CesiumResourceBehavior}.
     
     
     
     
 
     * @param uri The url of the resource.
-    * @param resourceBehavior A  {@link CesiumResourceBehavior} specifying how include the resource into a CZML document.
+    * @param resourceBehavior A {@link CesiumResourceBehavior} specifying how include the resource into a CZML document.
     * @return The resolved url.
     */
     public static String getResourceUri(String uri, CesiumResourceBehavior resourceBehavior) {

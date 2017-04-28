@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code Point} to a  {@link CesiumOutputStream}.  A {@code Point} is a point, or viewport-aligned circle.
+ Writes a {@code Point} to a {@link CesiumOutputStream}.  A {@code Point} is a point, or viewport-aligned circle.
  
 
  */
@@ -146,7 +146,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the point is shown.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the point is shown.  If not specified, the default value is {@code true}.
     
 
     */
@@ -265,7 +265,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code pixelSize} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code pixelSize} property defines the size of the point, in pixels.  If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code pixelSize} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code pixelSize} property defines the size of the point, in pixels.  If not specified, the default value is 1.0.
     
 
     */
@@ -430,7 +430,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code heightReference} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code heightReference} property defines the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
+    *  Gets the writer for the {@code heightReference} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code heightReference} property defines the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
     
 
     */
@@ -549,7 +549,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the point.
+    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the point.
     
 
     */
@@ -829,7 +829,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the outline of the point.
+    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the outline of the point.
     
 
     */
@@ -1109,7 +1109,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the outline of the point.  If not specified, the default value is 0.0.
+    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the outline of the point.  If not specified, the default value is 0.0.
     
 
     */
@@ -1274,7 +1274,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code scaleByDistance} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code scaleByDistance} property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by {@code pixelSize}.
+    *  Gets the writer for the {@code scaleByDistance} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code scaleByDistance} property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by {@code pixelSize}.
     
 
     */
@@ -1464,7 +1464,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code translucencyByDistance} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code translucencyByDistance} property defines how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
+    *  Gets the writer for the {@code translucencyByDistance} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code translucencyByDistance} property defines how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
     
 
     */

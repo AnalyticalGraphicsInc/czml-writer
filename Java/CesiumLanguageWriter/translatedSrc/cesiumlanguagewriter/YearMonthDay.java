@@ -29,7 +29,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
 
     /**
     *  
-    Initializes a  {@link YearMonthDay} from the provided values.
+    Initializes a {@link YearMonthDay} from the provided values.
     
     
     
@@ -57,7 +57,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
 
     /**
     *  
-    Initializes a  {@link YearMonthDay} from the provided values.
+    Initializes a {@link YearMonthDay} from the provided values.
     
     
     
@@ -89,7 +89,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
 
     /**
     *  
-    Initializes a  {@link YearMonthDay} in the Gregorian calendar from the
+    Initializes a {@link YearMonthDay} in the Gregorian calendar from the
     provided astronomical  Julian day number, assuming the beginning of the Julian
     day (noon).
     
@@ -122,7 +122,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
 
     /**
     *  
-    Initializes a new instance from a  {@link JulianDate}.
+    Initializes a new instance from a {@link JulianDate}.
     
     
 
@@ -214,7 +214,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  Gets the Julian day number for this  {@link YearMonthDay} instance,
+    *  Gets the Julian day number for this {@link YearMonthDay} instance,
     assuming noon on this day.
     
 

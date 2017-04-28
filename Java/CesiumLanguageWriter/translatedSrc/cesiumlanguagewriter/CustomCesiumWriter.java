@@ -6,10 +6,10 @@ import cesiumlanguagewriter.advanced.*;
 
 /**
  *  
- A  {@link CesiumPropertyWriter} used to write custom properties.  To write custom
- properties, create writers of the appropriate type (for example,  {@link DoubleCesiumWriter})
- and with the desired property name.  Then, after opening this  {@link CustomCesiumWriter},
-  {@link CesiumElementWriter#open} the sub-property writers and use them to write values.
+ A {@link CesiumPropertyWriter} used to write custom properties.  To write custom
+ properties, create writers of the appropriate type (for example, {@link DoubleCesiumWriter})
+ and with the desired property name.  Then, after opening this {@link CustomCesiumWriter},
+ {@link CesiumElementWriter#open} the sub-property writers and use them to write values.
  
 
  */

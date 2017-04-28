@@ -130,7 +130,7 @@ public class TestTimeInterval {
 
     /**
     *  
-    Tests the  {@link TimeInterval#contains} method.
+    Tests the {@link TimeInterval#contains} method.
     
 
     */
@@ -146,7 +146,7 @@ public class TestTimeInterval {
 
     /**
     *  
-    Tests the  {@link TimeInterval#equalsEpsilon} method.
+    Tests the {@link TimeInterval#equalsEpsilon} method.
     
 
     */
@@ -162,7 +162,7 @@ public class TestTimeInterval {
 
     /**
     *  
-    Tests the  {@link TimeInterval#toTimeStandard} method.
+    Tests the {@link TimeInterval#toTimeStandard} method.
     
 
     */
@@ -189,7 +189,7 @@ public class TestTimeInterval {
 
     /**
     *  
-    Tests the  {@link TimeInterval#toString} method
+    Tests the {@link TimeInterval#toString} method
     
 
     */

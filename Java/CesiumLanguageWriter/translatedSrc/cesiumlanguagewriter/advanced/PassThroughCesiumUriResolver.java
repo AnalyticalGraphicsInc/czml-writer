@@ -29,7 +29,7 @@ public class PassThroughCesiumUriResolver implements ICesiumUriResolver {
 
     /**
     *  
-    A static instance of  {@link PassThroughCesiumUriResolver} usable from any thread.
+    A static instance of {@link PassThroughCesiumUriResolver} usable from any thread.
     
 
     */

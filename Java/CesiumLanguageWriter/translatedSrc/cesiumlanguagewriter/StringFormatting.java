@@ -8,6 +8,10 @@ import agi.foundation.compatibility.NumberFormatInfo;
 import agi.foundation.compatibility.StringComparison;
 import agi.foundation.compatibility.StringHelper;
 
+/**
+ * @deprecated Internal use only.
+ */
+@Deprecated
 @Internal
 public final class StringFormatting {
     private StringFormatting() {}

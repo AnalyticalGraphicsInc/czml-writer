@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code GridMaterial} to a  {@link CesiumOutputStream}.  A {@code GridMaterial} is a material that fills the surface with a two dimensional grid.
+ Writes a {@code GridMaterial} to a {@link CesiumOutputStream}.  A {@code GridMaterial} is a material that fills the surface with a two dimensional grid.
  
 
  */
@@ -110,7 +110,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface.
+    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface.
     
 
     */
@@ -390,7 +390,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     }
 
     /**
-    *  Gets the writer for the {@code cellAlpha} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code cellAlpha} property defines the alpha value for the space between grid lines.  This will be combined with the color alpha.
+    *  Gets the writer for the {@code cellAlpha} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code cellAlpha} property defines the alpha value for the space between grid lines.  This will be combined with the color alpha.
     
 
     */
@@ -555,7 +555,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     }
 
     /**
-    *  Gets the writer for the {@code lineCount} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lineCount} property defines the number of grid lines along each axis.
+    *  Gets the writer for the {@code lineCount} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lineCount} property defines the number of grid lines along each axis.
     
 
     */
@@ -741,7 +741,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     }
 
     /**
-    *  Gets the writer for the {@code lineThickness} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lineThickness} property defines the thickness of grid lines along each axis, in pixels.
+    *  Gets the writer for the {@code lineThickness} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lineThickness} property defines the thickness of grid lines along each axis, in pixels.
     
 
     */
@@ -927,7 +927,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     }
 
     /**
-    *  Gets the writer for the {@code lineOffset} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lineOffset} property defines the offset of grid lines along each axis, as a percentage from 0 to 1.
+    *  Gets the writer for the {@code lineOffset} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lineOffset} property defines the offset of grid lines along each axis, as a percentage from 0 to 1.
     
 
     */

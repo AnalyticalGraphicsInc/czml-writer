@@ -39,7 +39,7 @@ public class TestJulianDate {
     *  
     Tests that initialization of and access to the structure time standard
     element is performed correctly.  Also tests that the default time standard
-    is  {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME}.
+    is {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME}.
     
 
     */
@@ -55,7 +55,7 @@ public class TestJulianDate {
 
     /**
     *  
-    Tests that initialization produces a  {@link JulianDate} which is
+    Tests that initialization produces a {@link JulianDate} which is
     normalized with the time element in the range 0.0 <= seconds < 86400.0.
     
 
@@ -72,7 +72,7 @@ public class TestJulianDate {
 
     /**
     *  
-    Tests that initialization produces a  {@link JulianDate} which is
+    Tests that initialization produces a {@link JulianDate} which is
     normalized with the time element in the range 0.0 <= seconds < 86400.0.
     
 
@@ -89,7 +89,7 @@ public class TestJulianDate {
 
     /**
     *  
-    Tests that initialization produces a  {@link JulianDate} which is
+    Tests that initialization produces a {@link JulianDate} which is
     normalized with the time element in the range 0.0 <= seconds < 86400.0.
     
 
@@ -133,8 +133,8 @@ public class TestJulianDate {
 
     /**
     *  
-    Tests the addition operation between a  {@link Duration} with unspecified time standard
-    and a  {@link JulianDate}.
+    Tests the addition operation between a {@link Duration} with unspecified time standard
+    and a {@link JulianDate}.
     
 
     */
@@ -306,7 +306,7 @@ public class TestJulianDate {
 
     /**
     *  
-    Tests the JulianDate override of the  {@link Object#toString} method.
+    Tests the JulianDate override of the {@link Object#toString} method.
     
 
     */
@@ -342,7 +342,7 @@ public class TestJulianDate {
 
     /**
     *  
-    Tests construction of a  {@link JulianDate} with a really small negative
+    Tests construction of a {@link JulianDate} with a really small negative
     secondsOfDay.  JulianDate will attempt to eliminate the negative SecondsOfDay
     by rolling the Day back one day, but doing so results in setting the SecondsOfDay to
     86400.0 seconds.  This is still not normalized, so JulianDate should bump the Day

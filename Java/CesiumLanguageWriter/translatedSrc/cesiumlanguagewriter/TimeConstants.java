@@ -89,7 +89,7 @@ public final class TimeConstants {
     *  
     The next representable 64-bit double before 86400.0.  This is useful for normalizing
     times that must be less than a day (for example, the {@code SecondsOfDay} ({@link JulianDate#getSecondsOfDay get}) property
-    of  {@link JulianDate}).
+    of {@link JulianDate}).
     
 
     */

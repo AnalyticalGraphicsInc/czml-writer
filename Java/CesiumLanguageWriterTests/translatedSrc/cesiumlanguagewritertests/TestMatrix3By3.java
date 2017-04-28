@@ -17,7 +17,7 @@ import org.junit.Test;
 
 /**
  *  
- Tests the  {@link Matrix3By3} type.
+ Tests the {@link Matrix3By3} type.
  
 
  */
@@ -45,7 +45,7 @@ public class TestMatrix3By3 {
 
     /**
     *  
-    Tests construction from a  {@link Quaternion}.
+    Tests construction from a {@link Quaternion}.
     
 
     */
@@ -122,7 +122,7 @@ public class TestMatrix3By3 {
 
     /**
     *  
-    Tests the  {@link Matrix3By3#equalsEpsilon} method.
+    Tests the {@link Matrix3By3#equalsEpsilon} method.
     
 
     */
@@ -164,7 +164,7 @@ public class TestMatrix3By3 {
 
     /**
     *  
-    Tests the  {@link Matrix3By3#transpose} method.
+    Tests the {@link Matrix3By3#transpose} method.
     
 
     */
@@ -267,7 +267,7 @@ public class TestMatrix3By3 {
 
     /**
     *  
-    Tests multiplication by another  {@link Matrix3By3}.
+    Tests multiplication by another {@link Matrix3By3}.
     
 
     */

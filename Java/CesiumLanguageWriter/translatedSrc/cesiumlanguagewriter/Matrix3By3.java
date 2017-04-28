@@ -25,7 +25,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     public Matrix3By3() {}
 
     /**
-    *  Gets a  {@link Matrix3By3} representing an identity transformation.
+    *  Gets a {@link Matrix3By3} representing an identity transformation.
     
     
 
@@ -36,14 +36,14 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  Gets a  {@link Matrix3By3} with elements of  {@link Double#NaN}.
+    *  Gets a {@link Matrix3By3} with elements of {@link Double#NaN}.
     
     
 
     * <p>
-    Use {@code IsUndefined} ({@link Matrix3By3#getIsUndefined get}) to test whether a  {@link Matrix3By3} instance
+    Use {@code IsUndefined} ({@link Matrix3By3#getIsUndefined get}) to test whether a {@link Matrix3By3} instance
     is undefined since it will return {@code true} if any of the element values
-    are  {@link Double#NaN}.
+    are {@link Double#NaN}.
     
     */
     public static Matrix3By3 getUndefined() {
@@ -51,7 +51,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  Gets a  {@link Matrix3By3} representing the zero matrix.
+    *  Gets a {@link Matrix3By3} representing the zero matrix.
     
     
 
@@ -110,7 +110,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
 
     /**
     *  
-    Initializes a new instance from a  {@link UnitQuaternion}.
+    Initializes a new instance from a {@link UnitQuaternion}.
     
     
     
@@ -344,7 +344,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  Gets an indication as to whether any of the matrix values are  {@link Double#NaN}.
+    *  Gets an indication as to whether any of the matrix values are {@link Double#NaN}.
     
 
     */
@@ -578,7 +578,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     
     
 
-    * @param other The  {@link Matrix3By3} to compare to this matrix.
+    * @param other The {@link Matrix3By3} to compare to this matrix.
     * @param epsilon The largest difference between the elements of the matrices for which they will be considered equal.
     * @return true if the matrices are equal as defined by the epsilon value.
     */

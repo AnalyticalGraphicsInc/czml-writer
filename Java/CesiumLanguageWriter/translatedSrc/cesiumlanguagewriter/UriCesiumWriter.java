@@ -12,7 +12,7 @@ import java.net.URI;
 
 /**
  *  
- Writes a {@code Uri} to a  {@link CesiumOutputStream}.  A {@code Uri} is a URI value.  The URI can optionally vary with time.
+ Writes a {@code Uri} to a {@link CesiumOutputStream}.  A {@code Uri} is a URI value.  The URI can optionally vary with time.
  
 
  */
@@ -266,7 +266,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code Uri} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Uri} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -287,7 +287,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

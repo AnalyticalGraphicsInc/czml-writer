@@ -10,7 +10,7 @@ import cesiumlanguagewriter.Reference;
 
 /**
  *  
- Writes a {@code CornerType} to a  {@link CesiumOutputStream}.  A {@code CornerType} is the style of a corner.
+ Writes a {@code CornerType} to a {@link CesiumOutputStream}.  A {@code CornerType} is the style of a corner.
  
 
  */
@@ -168,7 +168,7 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code CornerType} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code CornerType} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -189,7 +189,7 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
     /**
     *  
-    Returns a wrapper for this instance that implements  {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call  {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

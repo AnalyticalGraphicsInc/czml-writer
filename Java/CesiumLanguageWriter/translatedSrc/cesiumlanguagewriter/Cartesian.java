@@ -16,7 +16,7 @@ import agi.foundation.compatibility.StringHelper;
  
 
  * <p>
- The corresponding 2-dimensional coordinates are  {@link Rectangular} coordinates.
+ The corresponding 2-dimensional coordinates are {@link Rectangular} coordinates.
  
  */
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
@@ -27,7 +27,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     public Cartesian() {}
 
     /**
-    *  Gets a set of  {@link Cartesian} coordinates with values of zero.
+    *  Gets a set of {@link Cartesian} coordinates with values of zero.
     
 
     */
@@ -36,14 +36,14 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     }
 
     /**
-    *  Gets a set of  {@link Cartesian} coordinates with values of  {@link Double#NaN}.
+    *  Gets a set of {@link Cartesian} coordinates with values of {@link Double#NaN}.
     
     
 
     * <p>
-    Use {@code IsUndefined} ({@link Cartesian#getIsUndefined get}) to test whether a  {@link Cartesian} instance
+    Use {@code IsUndefined} ({@link Cartesian#getIsUndefined get}) to test whether a {@link Cartesian} instance
     is undefined since it will return {@code true} if any of the coordinate values
-    are  {@link Double#NaN}.
+    are {@link Double#NaN}.
     
     */
     public static Cartesian getUndefined() {
@@ -52,7 +52,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    Initializes a set of  {@link Cartesian} coordinates from the provided values.
+    Initializes a set of {@link Cartesian} coordinates from the provided values.
     
     
     
@@ -104,7 +104,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     
 
     * @param scalar The multiplier, or value which is to multiply this instance.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the multiplication.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the multiplication.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian multiply(double scalar) {
@@ -119,7 +119,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     
 
     * @param scalar The divisor, or value which is to divide this instance.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the division.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the division.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian divide(double scalar) {
@@ -128,13 +128,13 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    Adds the specified set of  {@link Cartesian} coordinates to this instance.
+    Adds the specified set of {@link Cartesian} coordinates to this instance.
     
     
     
 
     * @param other The addend, or value which is to be added to this instance.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the addition.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the addition.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian add(Cartesian other) {
@@ -143,13 +143,13 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    Subtracts the specified set of  {@link Cartesian} coordinates from this instance.
+    Subtracts the specified set of {@link Cartesian} coordinates from this instance.
     
     
     
 
     * @param other The subtrahend, or value which is to be subtracted from this instance.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the subtraction.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the subtraction.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian subtract(Cartesian other) {
@@ -158,13 +158,13 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    Forms the cross product of the specified set of  {@link Cartesian} coordinates with this instance.
+    Forms the cross product of the specified set of {@link Cartesian} coordinates with this instance.
     
     
     
 
-    * @param other The set of  {@link Cartesian} coordinates to cross with this instance.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the product.
+    * @param other The set of {@link Cartesian} coordinates to cross with this instance.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the product.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian cross(Cartesian other) {
@@ -173,13 +173,13 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    Forms the dot product of the specified set of  {@link Cartesian} coordinates with this instance.
+    Forms the dot product of the specified set of {@link Cartesian} coordinates with this instance.
     
     
     
 
-    * @param other The set of  {@link Cartesian} coordinates to dot with this instance.
-    * @return A  {@code double} that represents the result of the product.
+    * @param other The set of {@link Cartesian} coordinates to dot with this instance.
+    * @return A {@code double} that represents the result of the product.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final double dot(Cartesian other) {
@@ -188,7 +188,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    Multiplies a specified set of  {@link Cartesian} coordinates by a scalar.
+    Multiplies a specified set of {@link Cartesian} coordinates by a scalar.
     
     
     
@@ -196,7 +196,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     * @param left The multiplicand, or value which is to be multiplied by {@code right}.
     * @param right The multiplier, or value which is to multiply {@code left}.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the multiplication.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian *(Cartesian,System.Double)'")
     public static Cartesian multiply(Cartesian left, double right) {
@@ -205,7 +205,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    Multiplies a scalar by a specified set of set of  {@link Cartesian} coordinates.
+    Multiplies a scalar by a specified set of set of {@link Cartesian} coordinates.
     
     
     
@@ -213,7 +213,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     * @param left The multiplicand, or value which is to be multiplied by {@code right}.
     * @param right The multiplier, or value which is to multiply {@code left}.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the multiplication.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian *(System.Double,Cartesian)'")
     public static Cartesian multiply(double left, Cartesian right) {
@@ -222,7 +222,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    Divides a specified set of  {@link Cartesian} coordinates by a scalar.
+    Divides a specified set of {@link Cartesian} coordinates by a scalar.
     
     
     
@@ -230,7 +230,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     * @param left The dividend, or value which is to be divided by {@code right}.
     * @param right The divisor, or value which is to divide {@code left}.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the division.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the division.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian /(Cartesian,System.Double)'")
     public static Cartesian divide(Cartesian left, double right) {
@@ -239,7 +239,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    Adds a specified set of  {@link Cartesian} coordinates to another specified set of  {@link Cartesian} coordinates.
+    Adds a specified set of {@link Cartesian} coordinates to another specified set of {@link Cartesian} coordinates.
     
     
     
@@ -247,7 +247,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     * @param left The augend, or value to which {@code right} is to be added.
     * @param right The addend, or value which is to be added to {@code left}.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the addition.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the addition.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian +(Cartesian,Cartesian)'")
     public static Cartesian add(Cartesian left, Cartesian right) {
@@ -256,7 +256,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    Subtracts a specified set of  {@link Cartesian} coordinates from another specified set of  {@link Cartesian} coordinates.
+    Subtracts a specified set of {@link Cartesian} coordinates from another specified set of {@link Cartesian} coordinates.
     
     
     
@@ -264,7 +264,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     * @param left The minuend, or value from which {@code right} is to be subtracted.
     * @param right The subtrahend, or value which is to be subtracted from {@code left}.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the subtraction.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the subtraction.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(Cartesian,Cartesian)'")
     public static Cartesian subtract(Cartesian left, Cartesian right) {
@@ -273,13 +273,13 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    Negates the specified set of  {@link Cartesian} coordinates, yielding a new set of  {@link Cartesian} coordinates.
+    Negates the specified set of {@link Cartesian} coordinates, yielding a new set of {@link Cartesian} coordinates.
     
     
     
 
     * @param coordinates The set of coordinates.
-    * @return The result of negating the elements of the original set of  {@link Cartesian} coordinates.
+    * @return The result of negating the elements of the original set of {@link Cartesian} coordinates.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(Cartesian)'")
     public static Cartesian negate(Cartesian coordinates) {
@@ -289,16 +289,16 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     /**
     *  
     <p>
-    Produces a set of  {@link Cartesian} coordinates representing this instance which results from rotating
-    the original axes used to represent this instance by the provided  {@link Matrix3By3} rotation. 
+    Produces a set of {@link Cartesian} coordinates representing this instance which results from rotating
+    the original axes used to represent this instance by the provided {@link Matrix3By3} rotation. 
     This type of rotation is sometimes referred to as an "alias rotation".
     </p>
     
     
     
 
-    * @param rotation The  {@link Matrix3By3} rotation.
-    * @return A set of  {@link Cartesian} coordinates which is the result of the rotation.
+    * @param rotation The {@link Matrix3By3} rotation.
+    * @return A set of {@link Cartesian} coordinates which is the result of the rotation.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian rotate(Matrix3By3 rotation) {
@@ -310,16 +310,16 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     /**
     *  
     <p>
-    Produces a set of  {@link Cartesian} coordinates representing this instance which results from rotating
-    the original axes used to represent this instance by the provided  {@link UnitQuaternion} rotation.
+    Produces a set of {@link Cartesian} coordinates representing this instance which results from rotating
+    the original axes used to represent this instance by the provided {@link UnitQuaternion} rotation.
     This type of rotation is sometimes referred to as an "alias rotation".
     </p>
     
     
     
 
-    * @param rotation The  {@link UnitQuaternion} rotation.
-    * @return A set of  {@link Cartesian} coordinates which is the result of the rotation.
+    * @param rotation The {@link UnitQuaternion} rotation.
+    * @return A set of {@link Cartesian} coordinates which is the result of the rotation.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian rotate(UnitQuaternion rotation) {
@@ -347,7 +347,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     }
 
     /**
-    *  Gets whether or not any of the coordinates for this instance have the value  {@link Double#NaN}.
+    *  Gets whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
     
 
     */
@@ -393,7 +393,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     
     
 
-    * @param other The set of  {@link Cartesian} coordinates to compare to this instance.
+    * @param other The set of {@link Cartesian} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
     * @return 
     {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
@@ -491,13 +491,13 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    Forms a set of  {@link UnitCartesian} coordinates from this instance.
+    Forms a set of {@link UnitCartesian} coordinates from this instance.
     
     
     
     
 
-    * @return The resulting set of  {@link UnitCartesian} coordinates.
+    * @return The resulting set of {@link UnitCartesian} coordinates.
     * @exception ArithmeticException 
     The magnitude of the provided coordinates must not be zero.
     
@@ -517,7 +517,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    Forms a set of  {@link UnitCartesian} coordinates from this instance
+    Forms a set of {@link UnitCartesian} coordinates from this instance
     and returns the {@code Magnitude} ({@link #getMagnitude get}) of the original instance in the provided parameter.
     
     
@@ -528,9 +528,9 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @param magnitude 
     On input, an array with one element.  On return, the array is populated with
     
-    the magnitude of the original set of  {@link Cartesian} coordinates.
+    the magnitude of the original set of {@link Cartesian} coordinates.
     
-    * @return The resulting set of  {@link UnitCartesian} coordinates.
+    * @return The resulting set of {@link UnitCartesian} coordinates.
     * @exception ArithmeticException 
     The magnitude of the provided coordinates must not be zero.
     
@@ -545,13 +545,13 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    Converts a set of  {@link UnitCartesian} coordinates to a set of  {@link Cartesian} coordinates.
+    Converts a set of {@link UnitCartesian} coordinates to a set of {@link Cartesian} coordinates.
     
     
     
 
-    * @param coordinates The set of  {@link UnitCartesian} coordinates.
-    * @return The resulting set of  {@link Cartesian} coordinates.
+    * @param coordinates The set of {@link UnitCartesian} coordinates.
+    * @return The resulting set of {@link Cartesian} coordinates.
     */
     @CS2JInfo("This method implements the functionality of the implicit conversion operation 'Cartesian <= UnitCartesian'")
     public static Cartesian toCartesian(UnitCartesian coordinates) {

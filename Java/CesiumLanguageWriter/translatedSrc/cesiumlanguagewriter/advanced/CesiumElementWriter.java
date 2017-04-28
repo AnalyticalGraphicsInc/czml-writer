@@ -16,7 +16,7 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
 
     /**
     *  
-    Opens this writer on a given  {@link CesiumOutputStream}.  A single writer can write to multiple
+    Opens this writer on a given {@link CesiumOutputStream}.  A single writer can write to multiple
     streams over its lifetime.  Opening a writer on a stream may cause data to be written to the stream.
     
     
@@ -64,7 +64,7 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
     }
 
     /**
-    *  Gets the  {@link CesiumOutputStream} on which this writer is currently open.  If the writer is
+    *  Gets the {@link CesiumOutputStream} on which this writer is currently open.  If the writer is
     not open, accessing this property will throw an exception.
     
     
@@ -81,7 +81,7 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
     }
 
     /**
-    *  Gets the  {@link CesiumOutputStream} on which this writer is currently open, or
+    *  Gets the {@link CesiumOutputStream} on which this writer is currently open, or
     {@code null} if the writer is not open.
     
     
@@ -110,7 +110,7 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
 
     /**
     *  
-    Opens a  {@link CesiumElementWriter} on the same stream on which this one is currently open.
+    Opens a {@link CesiumElementWriter} on the same stream on which this one is currently open.
     For convenience, this method returns a reference to the same writer passed to it.
     
     

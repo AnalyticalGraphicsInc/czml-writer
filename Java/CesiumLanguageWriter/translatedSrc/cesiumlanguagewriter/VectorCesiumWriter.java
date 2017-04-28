@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code Vector} to a  {@link CesiumOutputStream}.  A {@code Vector} is defines a graphical vector that originates at the {@code position} property and extends in the provided direction for the provided length.
+ Writes a {@code Vector} to a {@link CesiumOutputStream}.  A {@code Vector} is defines a graphical vector that originates at the {@code position} property and extends in the provided direction for the provided length.
  
 
  */
@@ -109,7 +109,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the vector is shown.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the vector is shown.
     
 
     */
@@ -228,7 +228,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the vector.
+    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the vector.
     
 
     */
@@ -508,7 +508,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     }
 
     /**
-    *  Gets the writer for the {@code direction} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code direction} property defines the direction of the vector.
+    *  Gets the writer for the {@code direction} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code direction} property defines the direction of the vector.
     
 
     */
@@ -868,7 +868,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     }
 
     /**
-    *  Gets the writer for the {@code length} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code length} property defines the graphical length of the vector.
+    *  Gets the writer for the {@code length} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code length} property defines the graphical length of the vector.
     
 
     */
@@ -1033,7 +1033,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     }
 
     /**
-    *  Gets the writer for the {@code minimumLengthInPixels} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code minimumLengthInPixels} property defines the minimum graphical length of the vector in pixels.
+    *  Gets the writer for the {@code minimumLengthInPixels} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code minimumLengthInPixels} property defines the minimum graphical length of the vector in pixels.
     
 
     */

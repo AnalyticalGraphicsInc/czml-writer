@@ -16,7 +16,7 @@ import agi.foundation.compatibility.StringHelper;
  
 
  * <p>
- The corresponding 3-dimensional coordinates are  {@link Cartesian} coordinates.
+ The corresponding 3-dimensional coordinates are {@link Cartesian} coordinates.
  
  */
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
@@ -27,7 +27,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     public Rectangular() {}
 
     /**
-    *  Gets a set of  {@link Rectangular} coordinates with values of zero.
+    *  Gets a set of {@link Rectangular} coordinates with values of zero.
     
 
     */
@@ -36,14 +36,14 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  Gets a set of  {@link Rectangular} coordinates with values of  {@link Double#NaN}.
+    *  Gets a set of {@link Rectangular} coordinates with values of {@link Double#NaN}.
     
     
 
     * <p>
-    Use {@code IsUndefined} ({@link Rectangular#getIsUndefined get}) to test whether a  {@link Rectangular} instance
+    Use {@code IsUndefined} ({@link Rectangular#getIsUndefined get}) to test whether a {@link Rectangular} instance
     is undefined since it will return {@code true} if any of the coordinate values
-    are  {@link Double#NaN}.
+    are {@link Double#NaN}.
     
     */
     public static Rectangular getUndefined() {
@@ -52,7 +52,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     /**
     *  
-    Initializes a set of  {@link Rectangular} coordinates from the provided values.
+    Initializes a set of {@link Rectangular} coordinates from the provided values.
     
     
     
@@ -90,7 +90,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     
     
 
-    * @return A set of  {@link Rectangular} coordinates that represents the inverse of this instance.
+    * @return A set of {@link Rectangular} coordinates that represents the inverse of this instance.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Rectangular invert() {
@@ -105,7 +105,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     
 
     * @param scalar The multiplier, or value which is to multiply this instance.
-    * @return A set of  {@link Rectangular} coordinates that represents the result of the multiplication.
+    * @return A set of {@link Rectangular} coordinates that represents the result of the multiplication.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Rectangular multiply(double scalar) {
@@ -120,7 +120,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     
 
     * @param scalar The divisor, or value which is to divide this instance.
-    * @return A set of  {@link Rectangular} coordinates that represents the result of the division.
+    * @return A set of {@link Rectangular} coordinates that represents the result of the division.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Rectangular divide(double scalar) {
@@ -129,13 +129,13 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     /**
     *  
-    Adds the specified set of  {@link Rectangular} coordinates to this instance.
+    Adds the specified set of {@link Rectangular} coordinates to this instance.
     
     
     
 
     * @param other The addend, or value which is to be added to this instance.
-    * @return A set of  {@link Rectangular} coordinates that represents the result of the addition.
+    * @return A set of {@link Rectangular} coordinates that represents the result of the addition.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Rectangular add(Rectangular other) {
@@ -144,13 +144,13 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     /**
     *  
-    Subtracts the specified set of  {@link Rectangular} coordinates from this instance.
+    Subtracts the specified set of {@link Rectangular} coordinates from this instance.
     
     
     
 
     * @param other The subtrahend, or value which is to be subtracted from this instance.
-    * @return A set of  {@link Rectangular} coordinates that represents the result of the subtraction.
+    * @return A set of {@link Rectangular} coordinates that represents the result of the subtraction.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Rectangular subtract(Rectangular other) {
@@ -159,13 +159,13 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     /**
     *  
-    Forms the dot product of the specified set of  {@link Rectangular} coordinates with this instance.
+    Forms the dot product of the specified set of {@link Rectangular} coordinates with this instance.
     
     
     
 
-    * @param other The set of  {@link Rectangular} coordinates to dot with this instance.
-    * @return A  {@code double} that represents the result of the product.
+    * @param other The set of {@link Rectangular} coordinates to dot with this instance.
+    * @return A {@code double} that represents the result of the product.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final double dot(Rectangular other) {
@@ -174,7 +174,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     /**
     *  
-    Multiplies a specified set of  {@link Rectangular} coordinates by a scalar.
+    Multiplies a specified set of {@link Rectangular} coordinates by a scalar.
     
     
     
@@ -182,7 +182,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     * @param left The multiplicand, or value which is to be multiplied by {@code right}.
     * @param right The multiplier, or value which is to multiply {@code left}.
-    * @return A set of  {@link Rectangular} coordinates that represents the result of the multiplication.
+    * @return A set of {@link Rectangular} coordinates that represents the result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular *(Rectangular,System.Double)'")
     public static Rectangular multiply(Rectangular left, double right) {
@@ -191,7 +191,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     /**
     *  
-    Multiplies a scalar by a specified set of set of  {@link Rectangular} coordinates.
+    Multiplies a scalar by a specified set of set of {@link Rectangular} coordinates.
     
     
     
@@ -199,7 +199,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     * @param left The multiplicand, or value which is to be multiplied by {@code right}.
     * @param right The multiplier, or value which is to multiply {@code left}.
-    * @return A set of  {@link Rectangular} coordinates that represents the result of the multiplication.
+    * @return A set of {@link Rectangular} coordinates that represents the result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular *(System.Double,Rectangular)'")
     public static Rectangular multiply(double left, Rectangular right) {
@@ -208,7 +208,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     /**
     *  
-    Divides a specified set of  {@link Rectangular} coordinates by a scalar.
+    Divides a specified set of {@link Rectangular} coordinates by a scalar.
     
     
     
@@ -216,7 +216,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     * @param left The dividend, or value which is to be divided by {@code right}.
     * @param right The divisor, or value which is to divide {@code left}.
-    * @return A set of  {@link Rectangular} coordinates that represents the result of the division.
+    * @return A set of {@link Rectangular} coordinates that represents the result of the division.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular /(Rectangular,System.Double)'")
     public static Rectangular divide(Rectangular left, double right) {
@@ -225,7 +225,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     /**
     *  
-    Adds a specified set of  {@link Rectangular} coordinates to another specified set of  {@link Cartesian} coordinates.
+    Adds a specified set of {@link Rectangular} coordinates to another specified set of {@link Cartesian} coordinates.
     
     
     
@@ -233,7 +233,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     * @param left The augend, or value to which {@code right} is to be added.
     * @param right The addend, or value which is to be added to {@code left}.
-    * @return A set of  {@link Rectangular} coordinates that represents the result of the addition.
+    * @return A set of {@link Rectangular} coordinates that represents the result of the addition.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular +(Rectangular,Rectangular)'")
     public static Rectangular add(Rectangular left, Rectangular right) {
@@ -242,7 +242,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     /**
     *  
-    Subtracts a specified set of  {@link Rectangular} coordinates from another specified set of  {@link Rectangular} coordinates.
+    Subtracts a specified set of {@link Rectangular} coordinates from another specified set of {@link Rectangular} coordinates.
     
     
     
@@ -250,7 +250,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     * @param left The minuend, or value from which {@code right} is to be subtracted.
     * @param right The subtrahend, or value which is to be subtracted from {@code left}.
-    * @return A set of  {@link Rectangular} coordinates that represents the result of the subtraction.
+    * @return A set of {@link Rectangular} coordinates that represents the result of the subtraction.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular -(Rectangular,Rectangular)'")
     public static Rectangular subtract(Rectangular left, Rectangular right) {
@@ -259,13 +259,13 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     /**
     *  
-    Negates the specified set of  {@link Rectangular} coordinates, yielding a new set of  {@link Rectangular} coordinates.
+    Negates the specified set of {@link Rectangular} coordinates, yielding a new set of {@link Rectangular} coordinates.
     
     
     
 
     * @param coordinates The set of coordinates.
-    * @return The result of negating the elements of the original set of  {@link Rectangular} coordinates.
+    * @return The result of negating the elements of the original set of {@link Rectangular} coordinates.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular -(Rectangular)'")
     public static Rectangular negate(Rectangular coordinates) {
@@ -274,7 +274,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     /**
     *  
-    Produces a set of  {@link Rectangular} coordinates representing this instance which results from rotating
+    Produces a set of {@link Rectangular} coordinates representing this instance which results from rotating
     the original axes used to represent this instance by the provided angle.
     
     
@@ -285,7 +285,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     This type of rotation is sometimes referred to as an "alias rotation".
     
     * @param angle The angle of rotation.
-    * @return A set of  {@link Rectangular} coordinates which is the result of the rotation.
+    * @return A set of {@link Rectangular} coordinates which is the result of the rotation.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Rectangular rotate(double angle) {
@@ -333,7 +333,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     
     
 
-    * @param other The set of  {@link Rectangular} coordinates to compare to this instance.
+    * @param other The set of {@link Rectangular} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
     * @return 
     {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
@@ -411,7 +411,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  Gets whether or not any of the coordinates for this instance have the value  {@link Double#NaN}.
+    *  Gets whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
     
 
     */

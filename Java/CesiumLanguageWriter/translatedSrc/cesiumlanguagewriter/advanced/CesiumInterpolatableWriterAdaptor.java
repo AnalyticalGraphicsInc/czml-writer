@@ -11,15 +11,15 @@ import java.util.List;
 
 /**
  *  
- Adapts a class derived from  {@link CesiumInterpolatablePropertyWriter} to implement
-  {@link ICesiumValuePropertyWriter} for a different type of value.  Typically, the
+ Adapts a class derived from {@link CesiumInterpolatablePropertyWriter} to implement
+ {@link ICesiumValuePropertyWriter} for a different type of value.  Typically, the
  class has a method to write values of the new type, but that method is not exposed via an interface.
  This class adapts the method to the interface via a callback delegate.
  
  
  
 
- * @param <TFrom> The class derived from  {@link CesiumInterpolatablePropertyWriter} to adapt.
+ * @param <TFrom> The class derived from {@link CesiumInterpolatablePropertyWriter} to adapt.
  * @param <TValue> The type of value to which to adapt the class to write.
  */
 public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWriter & ICesiumInterpolationInformationWriter, TValue> implements ICesiumInterpolatableValuePropertyWriter<TValue>,

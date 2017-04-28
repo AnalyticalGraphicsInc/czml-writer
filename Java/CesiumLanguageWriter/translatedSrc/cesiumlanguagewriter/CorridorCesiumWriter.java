@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code Corridor} to a  {@link CesiumOutputStream}.  A {@code Corridor} is a corridor, which is a shape defined by a centerline and width that conforms to the curvature of the globe. It can be placed on the surface or at altitude and can optionally be extruded into a volume.
+ Writes a {@code Corridor} to a {@link CesiumOutputStream}.  A {@code Corridor} is a corridor, which is a shape defined by a centerline and width that conforms to the curvature of the globe. It can be placed on the surface or at altitude and can optionally be extruded into a volume.
  
 
  */
@@ -208,7 +208,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the corridor is shown.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the corridor is shown.  If not specified, the default value is {@code true}.
     
 
     */
@@ -327,7 +327,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code positions} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code positions} property defines the array of positions defining the centerline of the corridor.
+    *  Gets the writer for the {@code positions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code positions} property defines the array of positions defining the centerline of the corridor.
     
 
     */
@@ -423,7 +423,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code width} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code width} property defines the width of the corridor, which is the distance between the edges of the corridor.
+    *  Gets the writer for the {@code width} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code width} property defines the width of the corridor, which is the distance between the edges of the corridor.
     
 
     */
@@ -588,7 +588,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code height} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code height} property defines the height of the corridor, which is the altitude of the corridor relative to the surface.
+    *  Gets the writer for the {@code height} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code height} property defines the height of the corridor, which is the altitude of the corridor relative to the surface.
     
 
     */
@@ -753,7 +753,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code extrudedHeight} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code extrudedHeight} property defines the extruded height of the corridor, which is the altitude of the corridor's extruded face relative to the surface.
+    *  Gets the writer for the {@code extrudedHeight} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code extrudedHeight} property defines the extruded height of the corridor, which is the altitude of the corridor's extruded face relative to the surface.
     
 
     */
@@ -918,7 +918,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code cornerType} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code cornerType} property defines the style of the corners of the corridor.
+    *  Gets the writer for the {@code cornerType} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code cornerType} property defines the style of the corners of the corridor.
     
 
     */
@@ -1037,7 +1037,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians.
+    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians.
     
 
     */
@@ -1202,7 +1202,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the corridor is filled.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the corridor is filled.  If not specified, the default value is {@code true}.
     
 
     */
@@ -1321,7 +1321,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the corridor.
+    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the corridor.
     
 
     */
@@ -1341,7 +1341,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the corridor is outlined.  If not specified, the default value is {@code false}.
+    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the corridor is outlined.  If not specified, the default value is {@code false}.
     
 
     */
@@ -1460,7 +1460,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the corridor outline.
+    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the corridor outline.
     
 
     */
@@ -1740,7 +1740,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the corridor outline.  If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the corridor outline.  If not specified, the default value is 1.0.
     
 
     */
@@ -1905,7 +1905,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
     
 
     */

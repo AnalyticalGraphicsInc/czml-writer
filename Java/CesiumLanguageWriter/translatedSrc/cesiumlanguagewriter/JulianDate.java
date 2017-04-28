@@ -15,17 +15,17 @@ import org.joda.time.DateTime;
 /**
  *  
  An astronomical Julian Date, which is the number of days since noon on January 1, -4712 (4713 BC).
- For increased precision, this class stores the whole number part of the date as an  {@code int}
- and the seconds into the day as a  {@code double}.
+ For increased precision, this class stores the whole number part of the date as an {@code int}
+ and the seconds into the day as a {@code double}.
  
  
 
  * <p>
- This type assumes that days always have  {@link TimeConstants#SecondsPerDay} (86400.0) seconds.
- When using a  {@link JulianDate} with the  {@link TimeStandard#COORDINATED_UNIVERSAL_TIME} (UTC) time standard,
- a day with a leap second actually has 86401.0 seconds.  The end result is that  {@link JulianDate} cannot
+ This type assumes that days always have {@link TimeConstants#SecondsPerDay} (86400.0) seconds.
+ When using a {@link JulianDate} with the {@link TimeStandard#COORDINATED_UNIVERSAL_TIME} (UTC) time standard,
+ a day with a leap second actually has 86401.0 seconds.  The end result is that {@link JulianDate} cannot
  represent the moment of a leap second with the UTC time standard.  It CAN represent the moment of a
- leap second in  {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} (TAI), however.  Also, subtracting two
+ leap second in {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} (TAI), however.  Also, subtracting two
  UTC dates that are on opposite sides of a leap second will correctly take the leap second into account.
  
  */
@@ -37,12 +37,12 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Initializes a  {@link JulianDate} from a  {@link DateTime}.
+    Initializes a {@link JulianDate} from a {@link DateTime}.
     The time standard will be Coordinated Universal Time (UTC).
     
     
 
-    * @param dateTime The  {@link DateTime}.
+    * @param dateTime The {@link DateTime}.
     */
     public JulianDate(DateTime dateTime) {
         this(new GregorianDate(dateTime));
@@ -50,15 +50,15 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Initializes a  {@link JulianDate} from a  {@link GregorianDate}.
-    The time standard will be  {@link TimeStandard#COORDINATED_UNIVERSAL_TIME} (UTC), except when
+    Initializes a {@link JulianDate} from a {@link GregorianDate}.
+    The time standard will be {@link TimeStandard#COORDINATED_UNIVERSAL_TIME} (UTC), except when
     the {@code gregorianDate} represents time during a leap second.  During a leap second,
-    the  {@link JulianDate} will be in the  {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} (TAI)
+    the {@link JulianDate} will be in the {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} (TAI)
     standard.
     
     
 
-    * @param gregorianDate The  {@link GregorianDate} to use to specify the
+    * @param gregorianDate The {@link GregorianDate} to use to specify the
     {@link JulianDate}.
     */
     public JulianDate(GregorianDate gregorianDate) {
@@ -70,12 +70,12 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Initializes a  {@link JulianDate} from a  {@link DateTime} and specified time standard.
+    Initializes a {@link JulianDate} from a {@link DateTime} and specified time standard.
     
     
     
 
-    * @param dateTime The  {@link DateTime}.
+    * @param dateTime The {@link DateTime}.
     * @param standard 
     The time standard to use for this Julian Date.  The {@code dateTime} is assumed to be expressed
     in this time standard.
@@ -87,14 +87,14 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Initializes a  {@link JulianDate} from a  {@link GregorianDate} where the  {@link GregorianDate}
-    is expressed in the given  {@link TimeStandard}.  If the date is during a leap second, the
-    {@link JulianDate} will be expressed in  {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} (TAI).
+    Initializes a {@link JulianDate} from a {@link GregorianDate} where the {@link GregorianDate}
+    is expressed in the given {@link TimeStandard}.  If the date is during a leap second, the
+    {@link JulianDate} will be expressed in {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} (TAI).
     
     
     
 
-    * @param gregorianDate The  {@link GregorianDate}.
+    * @param gregorianDate The {@link GregorianDate}.
     * @param standard 
     The time standard in which the {@code gregorianDate} is expressed.
     
@@ -108,7 +108,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Initializes a  {@link JulianDate} from the provided values.  The values will be
+    Initializes a {@link JulianDate} from the provided values.  The values will be
     normalized so that the {@code SecondsOfDay} ({@link #getSecondsOfDay get}) property is less than the length of a day.
     The time standard will be International Atomic Time (TAI).
     
@@ -124,7 +124,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Initializes a  {@link JulianDate} from the provided values.  The values will be
+    Initializes a {@link JulianDate} from the provided values.  The values will be
     normalized so that the {@code SecondsOfDay} ({@link #getSecondsOfDay get}) property is less than the length of the day.
     
     
@@ -157,8 +157,8 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Initializes a  {@link JulianDate} from a double expressing the complete astronomical Julian Date.
-    The time standard will be  {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME International Atomic Time (TAI)}.
+    Initializes a {@link JulianDate} from a double expressing the complete astronomical Julian Date.
+    The time standard will be {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME International Atomic Time (TAI)}.
     
     
 
@@ -170,7 +170,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Initializes a  {@link JulianDate} from a double expressing the complete astronomical Julian Date.
+    Initializes a {@link JulianDate} from a double expressing the complete astronomical Julian Date.
     
     
     
@@ -185,7 +185,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     }
 
     /**
-    *  Gets the smallest value possible of  {@link JulianDate}.
+    *  Gets the smallest value possible of {@link JulianDate}.
     
 
     */
@@ -194,7 +194,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     }
 
     /**
-    *  Gets the largest possible value of  {@link JulianDate}.
+    *  Gets the largest possible value of {@link JulianDate}.
     
 
     */
@@ -230,7 +230,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     }
 
     /**
-    *  Gets the  {@link TimeStandard} that this astronomical Julian date is based upon.
+    *  Gets the {@link TimeStandard} that this astronomical Julian date is based upon.
     
 
     */
@@ -240,18 +240,18 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Converts this  {@link JulianDate} to the specified time standard.
+    Converts this {@link JulianDate} to the specified time standard.
     
     
     
     
 
     * @param timeStandard The requested time standard.
-    * @return An equivalent  {@link JulianDate} using the requested time
+    * @return An equivalent {@link JulianDate} using the requested time
     standard.
     * @exception ArgumentOutOfRangeException 
-    Thrown if the specified  {@link TimeStandard} is not capable of
-    representing this  {@link JulianDate}.
+    Thrown if the specified {@link TimeStandard} is not capable of
+    representing this {@link JulianDate}.
     
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
@@ -271,8 +271,8 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Try to convert this  {@link JulianDate} to the specified
-    {@link TimeStandard}, if the specified  {@link TimeStandard} is
+    Try to convert this {@link JulianDate} to the specified
+    {@link TimeStandard}, if the specified {@link TimeStandard} is
     capable of representing this time.
     
     
@@ -284,11 +284,11 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     On input, an array with one element.  On return, the array is populated with
     
     an equivalent
-    {@link JulianDate} using the requested  {@link TimeStandard}, if it
+    {@link JulianDate} using the requested {@link TimeStandard}, if it
     is capable  of representing this time, otherwise {@code MinValue} ({@link JulianDate#getMinValue get}).
     
     * @return {@code true} if this date could be converted to the
-    requested  {@link TimeStandard}, otherwise false.
+    requested {@link TimeStandard}, otherwise false.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final boolean tryConvertTimeStandard(TimeStandard timeStandard, JulianDate[] result) {
@@ -309,7 +309,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Converts this date to  {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} (TAI).
+    Converts this date to {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} (TAI).
     
     
 
@@ -405,14 +405,14 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Adds a  {@link Duration} to this Julian date, producing a new Julian date.
+    Adds a {@link Duration} to this Julian date, producing a new Julian date.
     
     
     
 
     * @param duration The duration to add.
     * @return 
-    A new  {@link JulianDate} that is the result of the addition.
+    A new {@link JulianDate} that is the result of the addition.
     
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
@@ -454,7 +454,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     * <p>
     This method subtracts the {@code subtrahend} Julian date from this
-    Julian date and returns the  {@link Duration} between them.  The computation is done in
+    Julian date and returns the {@link Duration} between them.  The computation is done in
     the time standard of the {@code subtrahend}, or the closest standard that is safe for
     arithmetic if the subtrahend's time standard is not safe.  For best performance, this Julian date
     and the subtrahend Julian date should have the same time standard and it should be
@@ -488,7 +488,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Subtracts a  {@link Duration} from this Julian date, producing a new
+    Subtracts a {@link Duration} from this Julian date, producing a new
     Julian date.
     
     
@@ -496,7 +496,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     * @param duration The duration to subtract.
     * @return 
-    A new  {@link JulianDate} that is the result of the subtraction.
+    A new {@link JulianDate} that is the result of the subtraction.
     
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
@@ -574,7 +574,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Subtracts a  {@link Duration} from a Julian date, yielding a new
+    Subtracts a {@link Duration} from a Julian date, yielding a new
     {@link JulianDate}.
     
     
@@ -595,7 +595,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Adds a  {@link Duration} to a  {@link JulianDate}, producing a new
+    Adds a {@link Duration} to a {@link JulianDate}, producing a new
     Julian date.
     
     
@@ -615,7 +615,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     *  
     Returns true if the two dates are exactly equal.  To be considered equal, the {@code Day} ({@link #getDay get})
     and {@code SecondsOfDay} ({@link #getSecondsOfDay get}) properties must be identical when converted to a common time standard.
-    It is highly recommended that you use  {@link #equalsEpsilon} or  {@link #isIdentical}
+    It is highly recommended that you use {@link #equalsEpsilon} or {@link #isIdentical}
     instead of this method.
     
     
@@ -635,7 +635,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     *  
     Returns true if the two dates are NOT exactly equal.  To be considered equal, the {@code Day} ({@link #getDay get})
     and {@code SecondsOfDay} ({@link #getSecondsOfDay get}) properties must be identical when converted to a common time standard.
-    It is highly recommended that you use  {@link #equalsEpsilon} or  {@link #isIdentical}
+    It is highly recommended that you use {@link #equalsEpsilon} or {@link #isIdentical}
     instead of this method.
     
     
@@ -723,7 +723,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     *  
     Returns true if this date exactly equals another date.  To be considered equal, the {@code Day} ({@link #getDay get})
     and {@code SecondsOfDay} ({@link #getSecondsOfDay get}) properties must be identical when converted to a common time standard.
-    It is highly recommended that you use  {@link #equalsEpsilon} or  {@link #isIdentical}
+    It is highly recommended that you use {@link #equalsEpsilon} or {@link #isIdentical}
     instead of this method.
     
     
@@ -741,7 +741,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     *  
     Returns true if this date exactly equals another date.  To be considered equal, the {@code Day} ({@link #getDay get})
     and {@code SecondsOfDay} ({@link #getSecondsOfDay get}) properties must be identical when converted to a common time standard.
-    It is highly recommended that you use  {@link #equalsEpsilon} or  {@link #isIdentical}
+    It is highly recommended that you use {@link #equalsEpsilon} or {@link #isIdentical}
     instead of this method.
     
     
@@ -756,7 +756,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Returns true if this date is identical to another date.  Unlike  {@link #equalsType(JulianDate)}, this method will
+    Returns true if this date is identical to another date.  Unlike {@link #equalsType(JulianDate)}, this method will
     consider two dates with different time standards to be different even if the dates represent the same
     moment when expressed in the same time standard.
     
@@ -809,7 +809,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Returns the value of this  {@link JulianDate} in the standard format.
+    Returns the value of this {@link JulianDate} in the standard format.
     
     
 
@@ -872,13 +872,13 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Converts this  {@link JulianDate} to a 
+    Converts this {@link JulianDate} to a 
     {@link DateTime} with a default time standard of Coordinated Universal
     Time.
     
     
 
-    * @return The  {@link DateTime}.
+    * @return The {@link DateTime}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final DateTime toDateTime() {
@@ -887,7 +887,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Converts this  {@link JulianDate} to a 
+    Converts this {@link JulianDate} to a 
     {@link DateTime} expressed in the specified time standard.
     
     
@@ -895,7 +895,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     * @param standard The time standard in which to express the returned
     {@link DateTime}.
-    * @return The  {@link DateTime}.
+    * @return The {@link DateTime}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final DateTime toDateTime(TimeStandard standard) {
@@ -904,12 +904,12 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Converts this  {@link JulianDate} to a  {@link GregorianDate} with a
+    Converts this {@link JulianDate} to a {@link GregorianDate} with a
     default time standard of Coordinated Universal Time.
     
     
 
-    * @return The  {@link GregorianDate}.
+    * @return The {@link GregorianDate}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final GregorianDate toGregorianDate() {
@@ -918,7 +918,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Converts this  {@link JulianDate} to a  {@link GregorianDate}
+    Converts this {@link JulianDate} to a {@link GregorianDate}
     expressed in the specified time standard.
     
     
@@ -926,7 +926,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     * @param standard The time standard in which to express the returned
     {@link GregorianDate}.
-    * @return The  {@link GregorianDate}.
+    * @return The {@link GregorianDate}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final GregorianDate toGregorianDate(TimeStandard standard) {

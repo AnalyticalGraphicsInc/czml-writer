@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code Ellipse} to a  {@link CesiumOutputStream}.  A {@code Ellipse} is an ellipse, which is a closed curve on or above the surface of the Earth.
+ Writes a {@code Ellipse} to a {@link CesiumOutputStream}.  A {@code Ellipse} is an ellipse, which is a closed curve on or above the surface of the Earth.
  
 
  */
@@ -230,7 +230,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the ellipse is shown.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the ellipse is shown.  If not specified, the default value is {@code true}.
     
 
     */
@@ -349,7 +349,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code semiMajorAxis} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code semiMajorAxis} property defines the length of the ellipse's semi-major axis in meters.
+    *  Gets the writer for the {@code semiMajorAxis} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code semiMajorAxis} property defines the length of the ellipse's semi-major axis in meters.
     
 
     */
@@ -514,7 +514,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code semiMinorAxis} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code semiMinorAxis} property defines the length of the ellipse's semi-minor axis in meters.
+    *  Gets the writer for the {@code semiMinorAxis} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code semiMinorAxis} property defines the length of the ellipse's semi-minor axis in meters.
     
 
     */
@@ -679,7 +679,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code height} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code height} property defines the altitude of the ellipse relative to the surface.
+    *  Gets the writer for the {@code height} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code height} property defines the altitude of the ellipse relative to the surface.
     
 
     */
@@ -844,7 +844,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code extrudedHeight} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code extrudedHeight} property defines the altitude of the ellipse's extruded face relative to the surface.
+    *  Gets the writer for the {@code extrudedHeight} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code extrudedHeight} property defines the altitude of the ellipse's extruded face relative to the surface.
     
 
     */
@@ -1009,7 +1009,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code rotation} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code rotation} property defines the angle from north (counter-clockwise) in radians.
+    *  Gets the writer for the {@code rotation} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code rotation} property defines the angle from north (counter-clockwise) in radians.
     
 
     */
@@ -1174,7 +1174,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code stRotation} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code stRotation} property defines the rotation of any applied texture coordinates.
+    *  Gets the writer for the {@code stRotation} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code stRotation} property defines the rotation of any applied texture coordinates.
     
 
     */
@@ -1339,7 +1339,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians.
+    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians.
     
 
     */
@@ -1504,7 +1504,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the ellipse is filled.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the ellipse is filled.  If not specified, the default value is {@code true}.
     
 
     */
@@ -1623,7 +1623,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to use to fill the ellipse.
+    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to use to fill the ellipse.
     
 
     */
@@ -1643,7 +1643,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the ellipse is outlined.  If not specified, the default value is {@code false}.
+    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the ellipse is outlined.  If not specified, the default value is {@code false}.
     
 
     */
@@ -1762,7 +1762,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the ellipse outline.
+    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the ellipse outline.
     
 
     */
@@ -2042,7 +2042,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the ellipse outline.  If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the ellipse outline.  If not specified, the default value is 1.0.
     
 
     */
@@ -2207,7 +2207,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code numberOfVerticalLines} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code numberOfVerticalLines} property defines the number of vertical lines to use when outlining an extruded ellipse.
+    *  Gets the writer for the {@code numberOfVerticalLines} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code numberOfVerticalLines} property defines the number of vertical lines to use when outlining an extruded ellipse.
     
 
     */
@@ -2372,7 +2372,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the ellipse casts or receives shadows.  If not specified, the default value is DISABLED.
+    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the ellipse casts or receives shadows.  If not specified, the default value is DISABLED.
     
 
     */

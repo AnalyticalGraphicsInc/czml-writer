@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code PolylineOutlineMaterial} to a  {@link CesiumOutputStream}.  A {@code PolylineOutlineMaterial} is a material that fills the surface of a line with an outlined color.
+ Writes a {@code PolylineOutlineMaterial} to a {@link CesiumOutputStream}.  A {@code PolylineOutlineMaterial} is a material that fills the surface of a line with an outlined color.
  
 
  */
@@ -83,7 +83,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface.
+    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface.
     
 
     */
@@ -363,7 +363,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the surface outline.
+    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the surface outline.
     
 
     */
@@ -643,7 +643,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the outline.
+    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the outline.
     
 
     */

@@ -15,7 +15,7 @@ public final class Constants {
 
     /**
     *  
-    Half of  {@link Math#PI}.
+    Half of {@link Math#PI}.
     
 
     */
@@ -23,7 +23,7 @@ public final class Constants {
     public static final double HalfPi = Math.PI / 2;
     /**
     *  
-    Twice  {@link Math#PI}.
+    Twice {@link Math#PI}.
     
 
     */
@@ -31,7 +31,7 @@ public final class Constants {
     public static final double TwoPi = Math.PI * 2;
     /**
     *  
-    Three-halves  {@link Math#PI}.
+    Three-halves {@link Math#PI}.
     
 
     */

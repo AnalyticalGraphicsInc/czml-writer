@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code RectangularSensor} to a  {@link CesiumOutputStream}.  A {@code RectangularSensor} is a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
+ Writes a {@code RectangularSensor} to a {@link CesiumOutputStream}.  A {@code RectangularSensor} is a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
  
 
  */
@@ -315,7 +315,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the entire rectangular pyramid sensor is shown.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the entire rectangular pyramid sensor is shown.
     
 
     */
@@ -434,7 +434,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code xHalfAngle} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code xHalfAngle} property defines the X half angle.
+    *  Gets the writer for the {@code xHalfAngle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code xHalfAngle} property defines the X half angle.
     
 
     */
@@ -599,7 +599,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code yHalfAngle} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code yHalfAngle} property defines the Y half angle.
+    *  Gets the writer for the {@code yHalfAngle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code yHalfAngle} property defines the Y half angle.
     
 
     */
@@ -764,7 +764,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code radius} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code radius} property defines the radial limit of the pyramid.
+    *  Gets the writer for the {@code radius} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code radius} property defines the radial limit of the pyramid.
     
 
     */
@@ -929,7 +929,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code showIntersection} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showIntersection} property defines whether or not the intersection of the pyramid with the Earth is shown.
+    *  Gets the writer for the {@code showIntersection} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showIntersection} property defines whether or not the intersection of the pyramid with the Earth is shown.
     
 
     */
@@ -1048,7 +1048,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code intersectionColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code intersectionColor} property defines the color of the intersection of the pyramid with the Earth.
+    *  Gets the writer for the {@code intersectionColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code intersectionColor} property defines the color of the intersection of the pyramid with the Earth.
     
 
     */
@@ -1328,7 +1328,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code intersectionWidth} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code intersectionWidth} property defines the width of the intersection in pixels.
+    *  Gets the writer for the {@code intersectionWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code intersectionWidth} property defines the width of the intersection in pixels.
     
 
     */
@@ -1493,7 +1493,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code showLateralSurfaces} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showLateralSurfaces} property defines whether or not the lateral surfaces of the pyramid are shown.
+    *  Gets the writer for the {@code showLateralSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showLateralSurfaces} property defines whether or not the lateral surfaces of the pyramid are shown.
     
 
     */
@@ -1612,7 +1612,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code lateralSurfaceMaterial} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lateralSurfaceMaterial} property defines the material to use for the pyramid's lateral surfaces.
+    *  Gets the writer for the {@code lateralSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lateralSurfaceMaterial} property defines the material to use for the pyramid's lateral surfaces.
     
 
     */
@@ -1632,7 +1632,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code showEllipsoidSurfaces} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEllipsoidSurfaces} property defines whether or not ellipsoid surfaces are shown.
+    *  Gets the writer for the {@code showEllipsoidSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEllipsoidSurfaces} property defines whether or not ellipsoid surfaces are shown.
     
 
     */
@@ -1751,7 +1751,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code ellipsoidSurfaceMaterial} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipsoidSurfaceMaterial} property defines the material to use for the pyramid's ellipsoid surfaces.
+    *  Gets the writer for the {@code ellipsoidSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipsoidSurfaceMaterial} property defines the material to use for the pyramid's ellipsoid surfaces.
     
 
     */
@@ -1771,7 +1771,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code showEllipsoidHorizonSurfaces} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEllipsoidHorizonSurfaces} property defines whether or not ellipsoid horizon surfaces are shown.
+    *  Gets the writer for the {@code showEllipsoidHorizonSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEllipsoidHorizonSurfaces} property defines whether or not ellipsoid horizon surfaces are shown.
     
 
     */
@@ -1890,7 +1890,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code ellipsoidHorizonSurfaceMaterial} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipsoidHorizonSurfaceMaterial} property defines the material to use for the pyramid's ellipsoid horizon surfaces.
+    *  Gets the writer for the {@code ellipsoidHorizonSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipsoidHorizonSurfaceMaterial} property defines the material to use for the pyramid's ellipsoid horizon surfaces.
     
 
     */
@@ -1910,7 +1910,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code showDomeSurfaces} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showDomeSurfaces} property defines whether or not dome surfaces are shown.
+    *  Gets the writer for the {@code showDomeSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showDomeSurfaces} property defines whether or not dome surfaces are shown.
     
 
     */
@@ -2029,7 +2029,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code domeSurfaceMaterial} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code domeSurfaceMaterial} property defines the material to use for the pyramid's dome surfaces.
+    *  Gets the writer for the {@code domeSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code domeSurfaceMaterial} property defines the material to use for the pyramid's dome surfaces.
     
 
     */
@@ -2049,7 +2049,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code portionToDisplay} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code portionToDisplay} property defines what part of the sensor should be displayed.
+    *  Gets the writer for the {@code portionToDisplay} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code portionToDisplay} property defines what part of the sensor should be displayed.
     
 
     */
@@ -2168,7 +2168,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code environmentConstraint} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentConstraint} property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
+    *  Gets the writer for the {@code environmentConstraint} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentConstraint} property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
     
 
     */
@@ -2287,7 +2287,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code showEnvironmentOcclusion} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEnvironmentOcclusion} property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+    *  Gets the writer for the {@code showEnvironmentOcclusion} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEnvironmentOcclusion} property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
     
 
     */
@@ -2406,7 +2406,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code environmentOcclusionMaterial} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentOcclusionMaterial} property defines the material to use for the portion of the sensor occluded by the environment.
+    *  Gets the writer for the {@code environmentOcclusionMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentOcclusionMaterial} property defines the material to use for the portion of the sensor occluded by the environment.
     
 
     */
@@ -2426,7 +2426,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code showEnvironmentIntersection} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEnvironmentIntersection} property defines whether or not a line showing where the sensor intersects the environment will be drawn.
+    *  Gets the writer for the {@code showEnvironmentIntersection} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEnvironmentIntersection} property defines whether or not a line showing where the sensor intersects the environment will be drawn.
     
 
     */
@@ -2545,7 +2545,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code environmentIntersectionColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentIntersectionColor} property defines the color of the intersection line between the sensor and the environment.
+    *  Gets the writer for the {@code environmentIntersectionColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentIntersectionColor} property defines the color of the intersection line between the sensor and the environment.
     
 
     */
@@ -2825,7 +2825,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code environmentIntersectionWidth} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentIntersectionWidth} property defines the width in meters of the intersection line between the sensor and the environment.
+    *  Gets the writer for the {@code environmentIntersectionWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentIntersectionWidth} property defines the width in meters of the intersection line between the sensor and the environment.
     
 
     */

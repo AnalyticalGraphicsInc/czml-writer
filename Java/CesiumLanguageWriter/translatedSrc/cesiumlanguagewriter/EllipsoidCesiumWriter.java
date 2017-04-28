@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code Ellipsoid} to a  {@link CesiumOutputStream}.  A {@code Ellipsoid} is a closed quadric surface that is a three dimensional analogue of an ellipse.
+ Writes a {@code Ellipsoid} to a {@link CesiumOutputStream}.  A {@code Ellipsoid} is a closed quadric surface that is a three dimensional analogue of an ellipse.
  
 
  */
@@ -183,7 +183,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the ellipsoid is shown.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the ellipsoid is shown.  If not specified, the default value is {@code true}.
     
 
     */
@@ -302,7 +302,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code radii} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code radii} property defines the dimensions of the ellipsoid.
+    *  Gets the writer for the {@code radii} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code radii} property defines the dimensions of the ellipsoid.
     
 
     */
@@ -467,7 +467,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the ellipsoid is filled.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the ellipsoid is filled.  If not specified, the default value is {@code true}.
     
 
     */
@@ -586,7 +586,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the ellipsoid.
+    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the ellipsoid.
     
 
     */
@@ -606,7 +606,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the ellipsoid is outlined.  If not specified, the default value is {@code false}.
+    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the ellipsoid is outlined.  If not specified, the default value is {@code false}.
     
 
     */
@@ -725,7 +725,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the ellipsoid outline.
+    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the ellipsoid outline.
     
 
     */
@@ -1005,7 +1005,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the ellipsoid outline.  If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the ellipsoid outline.  If not specified, the default value is 1.0.
     
 
     */
@@ -1170,7 +1170,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code stackPartitions} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code stackPartitions} property defines the number of times to partition the ellipsoid into stacks.
+    *  Gets the writer for the {@code stackPartitions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code stackPartitions} property defines the number of times to partition the ellipsoid into stacks.
     
 
     */
@@ -1335,7 +1335,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code slicePartitions} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code slicePartitions} property defines the number of times to partition the ellipsoid into radial slices.
+    *  Gets the writer for the {@code slicePartitions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code slicePartitions} property defines the number of times to partition the ellipsoid into radial slices.
     
 
     */
@@ -1500,7 +1500,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code subdivisions} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code subdivisions} property defines the number of samples per outline ring, determining the granularity of the curvature.
+    *  Gets the writer for the {@code subdivisions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code subdivisions} property defines the number of samples per outline ring, determining the granularity of the curvature.
     
 
     */
@@ -1665,7 +1665,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the ellipsoid casts or receives shadows.  If not specified, the default value is DISABLED.
+    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the ellipsoid casts or receives shadows.  If not specified, the default value is DISABLED.
     
 
     */

@@ -61,7 +61,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
 
     /**
     *  
-    Returns a  {@link Duration} representing the span of time between the
+    Returns a {@link Duration} representing the span of time between the
     {@code Start} ({@link #getStart get}) and {@code Stop} ({@link #getStop get}) of the interval.
     
     
@@ -74,7 +74,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
 
     /**
     *  
-    Returns a  {@link TimeInterval} equivalent to this one where the time standard
+    Returns a {@link TimeInterval} equivalent to this one where the time standard
     of the start and end dates has been converted to the specified standard.
     
     

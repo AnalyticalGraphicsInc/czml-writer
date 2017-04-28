@@ -28,14 +28,14 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     public UnitCartesian() {}
 
     /**
-    *  Gets a set of  {@link UnitCartesian} coordinates with values of  {@link Double#NaN}.
+    *  Gets a set of {@link UnitCartesian} coordinates with values of {@link Double#NaN}.
     
     
 
     * <p>
-    Use {@code IsUndefined} ({@link UnitCartesian#getIsUndefined get}) to test whether a  {@link UnitCartesian} instance
+    Use {@code IsUndefined} ({@link UnitCartesian#getIsUndefined get}) to test whether a {@link UnitCartesian} instance
     is undefined since it will return {@code true} if any of the coordinate values
-    are  {@link Double#NaN}.
+    are {@link Double#NaN}.
     
     */
     public static UnitCartesian getUndefined() {
@@ -43,7 +43,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     }
 
     /**
-    *  Gets a set of  {@link UnitCartesian} coordinates representing the x-axis.
+    *  Gets a set of {@link UnitCartesian} coordinates representing the x-axis.
     
 
     */
@@ -52,7 +52,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     }
 
     /**
-    *  Gets a set of  {@link UnitCartesian} coordinates representing the y-axis.
+    *  Gets a set of {@link UnitCartesian} coordinates representing the y-axis.
     
 
     */
@@ -61,7 +61,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     }
 
     /**
-    *  Gets a set of  {@link UnitCartesian} coordinates representing the z-axis.
+    *  Gets a set of {@link UnitCartesian} coordinates representing the z-axis.
     
 
     */
@@ -71,7 +71,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Initializes a set of  {@link UnitCartesian} coordinates from the provided values.
+    Initializes a set of {@link UnitCartesian} coordinates from the provided values.
     
     
     
@@ -96,7 +96,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Initializes a set of  {@link UnitCartesian} coordinates from the provided values.
+    Initializes a set of {@link UnitCartesian} coordinates from the provided values.
     
     
     
@@ -142,13 +142,13 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Initializes a set of  {@link UnitCartesian} coordinates from the provided set of  {@link Cartesian} coordinates.
+    Initializes a set of {@link UnitCartesian} coordinates from the provided set of {@link Cartesian} coordinates.
     
     
     
     
 
-    * @param coordinates The set of  {@link Cartesian} coordinates.
+    * @param coordinates The set of {@link Cartesian} coordinates.
     * @exception ArithmeticException 
     The magnitude of the provided coordinates must not be zero.
     
@@ -162,14 +162,14 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Initializes a set of  {@link UnitCartesian} coordinates from the provided set of  {@link Cartesian} coordinates.
+    Initializes a set of {@link UnitCartesian} coordinates from the provided set of {@link Cartesian} coordinates.
     
     
     
     
     
 
-    * @param coordinates The set of  {@link Cartesian} coordinates.
+    * @param coordinates The set of {@link Cartesian} coordinates.
     * @param magnitude 
     On input, an array with one element.  On return, the array is populated with
     
@@ -189,7 +189,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Initializes a set of  {@link UnitCartesian} coordinates from the provided spherical coordinates.
+    Initializes a set of {@link UnitCartesian} coordinates from the provided spherical coordinates.
     
     
     
@@ -206,12 +206,12 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Initializes a set of  {@link UnitCartesian} coordinates from the provided set of
+    Initializes a set of {@link UnitCartesian} coordinates from the provided set of
     {@link UnitSpherical} coordinates.
     
     
 
-    * @param unitSpherical The set of  {@link UnitSpherical} coordinates.
+    * @param unitSpherical The set of {@link UnitSpherical} coordinates.
     */
     public UnitCartesian(UnitSpherical unitSpherical) {
         this(unitSpherical.getClock(), unitSpherical.getCone());
@@ -280,7 +280,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
     
 
-    * @return A set of  {@link UnitCartesian} coordinates that represents the inverse of this instance.
+    * @return A set of {@link UnitCartesian} coordinates that represents the inverse of this instance.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final UnitCartesian invert() {
@@ -295,7 +295,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
 
     * @param scalar The multiplier, or value by which to multiply this instance.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the multiplication.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the multiplication.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian multiply(double scalar) {
@@ -310,7 +310,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
 
     * @param scalar The divisor, or value by which to divide this instance.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the division.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the division.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian divide(double scalar) {
@@ -319,13 +319,13 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Adds the specified set of  {@link Cartesian} coordinates to this instance.
+    Adds the specified set of {@link Cartesian} coordinates to this instance.
     
     
     
 
     * @param other The addend, or value which is to be added to this instance.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the addition.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the addition.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian add(Cartesian other) {
@@ -334,13 +334,13 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Adds the specified set of  {@link UnitCartesian} coordinates to this instance.
+    Adds the specified set of {@link UnitCartesian} coordinates to this instance.
     
     
     
 
     * @param other The addend, or value which is to be added to this instance.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the addition.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the addition.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian add(UnitCartesian other) {
@@ -349,13 +349,13 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Subtracts the specified set of  {@link Cartesian} coordinates from this instance.
+    Subtracts the specified set of {@link Cartesian} coordinates from this instance.
     
     
     
 
     * @param other The subtrahend, or value which is to be subtracted from this instance.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the subtraction.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the subtraction.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian subtract(Cartesian other) {
@@ -364,13 +364,13 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Subtracts the specified set of  {@link UnitCartesian} coordinates from this instance.
+    Subtracts the specified set of {@link UnitCartesian} coordinates from this instance.
     
     
     
 
     * @param other The subtrahend, or value which is to be subtracted from this instance.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the subtraction.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the subtraction.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian subtract(UnitCartesian other) {
@@ -379,13 +379,13 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Forms the cross product of the specified set of  {@link Cartesian} coordinates with this instance.
+    Forms the cross product of the specified set of {@link Cartesian} coordinates with this instance.
     
     
     
 
-    * @param other The set of  {@link Cartesian} coordinates to cross with this instance.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the product.
+    * @param other The set of {@link Cartesian} coordinates to cross with this instance.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the product.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian cross(Cartesian other) {
@@ -394,13 +394,13 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Forms the cross product of the specified set of  {@link UnitCartesian} coordinates with this instance.
+    Forms the cross product of the specified set of {@link UnitCartesian} coordinates with this instance.
     
     
     
 
-    * @param other The set of  {@link Cartesian} coordinates to cross with this instance.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the product.
+    * @param other The set of {@link Cartesian} coordinates to cross with this instance.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the product.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final Cartesian cross(UnitCartesian other) {
@@ -409,13 +409,13 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Forms the dot product of the specified set of  {@link Cartesian} coordinates with this instance.
+    Forms the dot product of the specified set of {@link Cartesian} coordinates with this instance.
     
     
     
 
-    * @param other The set of  {@link Cartesian} coordinates to dot with this instance.
-    * @return A  {@code double} that represents the result of the product.
+    * @param other The set of {@link Cartesian} coordinates to dot with this instance.
+    * @return A {@code double} that represents the result of the product.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final double dot(Cartesian other) {
@@ -424,13 +424,13 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Forms the dot product of the specified set of  {@link UnitCartesian} coordinates with this instance.
+    Forms the dot product of the specified set of {@link UnitCartesian} coordinates with this instance.
     
     
     
 
-    * @param other The set of  {@link Cartesian} coordinates to dot with this instance.
-    * @return A  {@code double} that represents the result of the product.
+    * @param other The set of {@link Cartesian} coordinates to dot with this instance.
+    * @return A {@code double} that represents the result of the product.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final double dot(UnitCartesian other) {
@@ -439,7 +439,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Multiplies a specified set of  {@link UnitCartesian} coordinates by a scalar.
+    Multiplies a specified set of {@link UnitCartesian} coordinates by a scalar.
     
     
     
@@ -447,7 +447,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     * @param left The multiplicand, or value which is to be multiplied by {@code right}.
     * @param right The multiplier, or value which is to multiply {@code left}.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the multiplication.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian *(UnitCartesian,System.Double)'")
     public static Cartesian multiply(UnitCartesian left, double right) {
@@ -456,7 +456,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Multiplies a scalar by a specified set of  {@link UnitCartesian} coordinates.
+    Multiplies a scalar by a specified set of {@link UnitCartesian} coordinates.
     
     
     
@@ -464,7 +464,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     * @param left The multiplicand, or value to be multiplied by {@code right}.
     * @param right The multiplier, or value which by which {@code left} is to be multiplied.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the multiplication.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian *(System.Double,UnitCartesian)'")
     public static Cartesian multiply(double left, UnitCartesian right) {
@@ -473,7 +473,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Divides a specified set of  {@link UnitCartesian} coordinates by a scalar.
+    Divides a specified set of {@link UnitCartesian} coordinates by a scalar.
     
     
     
@@ -481,7 +481,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     * @param left The dividend, or value to be divided by {@code right}.
     * @param right The divisor, or value by which {@code left} is to be divided.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the division.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the division.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian /(UnitCartesian,System.Double)'")
     public static Cartesian divide(UnitCartesian left, double right) {
@@ -490,7 +490,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Adds a specified set of  {@link UnitCartesian} coordinates to another specified set of  {@link UnitCartesian} coordinates.
+    Adds a specified set of {@link UnitCartesian} coordinates to another specified set of {@link UnitCartesian} coordinates.
     
     
     
@@ -498,7 +498,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     * @param left The augend, or value to which {@code right} is to be added.
     * @param right The addend, or value which is to be added to {@code left}.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the addition.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the addition.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian +(UnitCartesian,UnitCartesian)'")
     public static Cartesian add(UnitCartesian left, UnitCartesian right) {
@@ -507,7 +507,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Adds a specified set of  {@link Cartesian} coordinates to a specified set of  {@link UnitCartesian} coordinates.
+    Adds a specified set of {@link Cartesian} coordinates to a specified set of {@link UnitCartesian} coordinates.
     
     
     
@@ -515,7 +515,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     * @param left The augend, or value to which {@code right} is to be added.
     * @param right The addend, or value which is to be added to {@code left}.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the addition.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the addition.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian +(UnitCartesian,Cartesian)'")
     public static Cartesian add(UnitCartesian left, Cartesian right) {
@@ -524,7 +524,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Adds a specified set of  {@link UnitCartesian} coordinates to a specified set of  {@link Cartesian} coordinates.
+    Adds a specified set of {@link UnitCartesian} coordinates to a specified set of {@link Cartesian} coordinates.
     
     
     
@@ -532,7 +532,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     * @param left The augend, or value to which {@code right} is to be added.
     * @param right The addend, or value which is to be added to {@code left}.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the addition.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the addition.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian +(Cartesian,UnitCartesian)'")
     public static Cartesian add(Cartesian left, UnitCartesian right) {
@@ -541,7 +541,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Subtracts a specified set of  {@link UnitCartesian} coordinates from another specified set of  {@link UnitCartesian} coordinates.
+    Subtracts a specified set of {@link UnitCartesian} coordinates from another specified set of {@link UnitCartesian} coordinates.
     
     
     
@@ -549,7 +549,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     * @param left The minuend, or value from which {@code right} is to be subtracted.
     * @param right The subtrahend, or value which is to be subtracted from {@code left}.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the subtraction.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the subtraction.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(UnitCartesian,UnitCartesian)'")
     public static Cartesian subtract(UnitCartesian left, UnitCartesian right) {
@@ -558,7 +558,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Subtracts a specified set of  {@link Cartesian} coordinates from a specified set of  {@link UnitCartesian} coordinates.
+    Subtracts a specified set of {@link Cartesian} coordinates from a specified set of {@link UnitCartesian} coordinates.
     
     
     
@@ -566,7 +566,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     * @param left The minuend, or value from which {@code right} is to be subtracted.
     * @param right The subtrahend, or value which is to be subtracted from {@code left}.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the subtraction.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the subtraction.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(UnitCartesian,Cartesian)'")
     public static Cartesian subtract(UnitCartesian left, Cartesian right) {
@@ -575,7 +575,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Subtracts a specified set of  {@link UnitCartesian} coordinates from a specified set of  {@link Cartesian} coordinates.
+    Subtracts a specified set of {@link UnitCartesian} coordinates from a specified set of {@link Cartesian} coordinates.
     
     
     
@@ -583,7 +583,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     * @param left The minuend, or value from which {@code right} is to be subtracted.
     * @param right The subtrahend, or value which is to be subtracted from {@code left}.
-    * @return A set of  {@link Cartesian} coordinates that represents the result of the subtraction.
+    * @return A set of {@link Cartesian} coordinates that represents the result of the subtraction.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(Cartesian,UnitCartesian)'")
     public static Cartesian subtract(Cartesian left, UnitCartesian right) {
@@ -592,13 +592,13 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     /**
     *  
-    Negates the specified  {@link UnitCartesian}, yielding a new  {@link UnitCartesian}.
+    Negates the specified {@link UnitCartesian}, yielding a new {@link UnitCartesian}.
     
     
     
 
     * @param coordinates The set of coordinates.
-    * @return The result of negating the elements of the original  {@link UnitCartesian}.
+    * @return The result of negating the elements of the original {@link UnitCartesian}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'UnitCartesian -(UnitCartesian)'")
     public static UnitCartesian negate(UnitCartesian coordinates) {
@@ -606,7 +606,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     }
 
     /**
-    *  Gets whether or not any of the coordinates for this instance have the value  {@link Double#NaN}.
+    *  Gets whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
     
 
     */
@@ -653,7 +653,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
     
 
-    * @param other The set of  {@link UnitCartesian} coordinates to compare to this instance.
+    * @param other The set of {@link UnitCartesian} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
     * @return 
     {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.

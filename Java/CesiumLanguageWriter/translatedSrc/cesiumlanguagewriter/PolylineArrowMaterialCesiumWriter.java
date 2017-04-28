@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code PolylineArrowMaterial} to a  {@link CesiumOutputStream}.  A {@code PolylineArrowMaterial} is a material that fills the surface of a line with an arrow.
+ Writes a {@code PolylineArrowMaterial} to a {@link CesiumOutputStream}.  A {@code PolylineArrowMaterial} is a material that fills the surface of a line with an arrow.
  
 
  */
@@ -58,7 +58,7 @@ public class PolylineArrowMaterialCesiumWriter extends CesiumPropertyWriter<Poly
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface.
+    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface.
     
 
     */

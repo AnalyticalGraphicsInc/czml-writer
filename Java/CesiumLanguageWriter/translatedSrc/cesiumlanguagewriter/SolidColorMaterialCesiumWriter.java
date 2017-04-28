@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code SolidColorMaterial} to a  {@link CesiumOutputStream}.  A {@code SolidColorMaterial} is a material that fills the surface with a solid color.
+ Writes a {@code SolidColorMaterial} to a {@link CesiumOutputStream}.  A {@code SolidColorMaterial} is a material that fills the surface with a solid color.
  
 
  */
@@ -58,7 +58,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface.
+    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface.
     
 
     */

@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code Box} to a  {@link CesiumOutputStream}.  A {@code Box} is a box, which is a closed rectangular cuboid.
+ Writes a {@code Box} to a {@link CesiumOutputStream}.  A {@code Box} is a box, which is a closed rectangular cuboid.
  
 
  */
@@ -147,7 +147,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the box is shown.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the box is shown.  If not specified, the default value is {@code true}.
     
 
     */
@@ -266,7 +266,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code dimensions} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code dimensions} property defines the dimensions of the box.
+    *  Gets the writer for the {@code dimensions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code dimensions} property defines the dimensions of the box.
     
 
     */
@@ -431,7 +431,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the box is filled.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the box is filled.  If not specified, the default value is {@code true}.
     
 
     */
@@ -550,7 +550,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the box.
+    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the box.
     
 
     */
@@ -570,7 +570,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the box is outlined.  If not specified, the default value is {@code false}.
+    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the box is outlined.  If not specified, the default value is {@code false}.
     
 
     */
@@ -689,7 +689,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the box outline.
+    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the box outline.
     
 
     */
@@ -969,7 +969,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the box outline.  If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the box outline.  If not specified, the default value is 1.0.
     
 
     */
@@ -1134,7 +1134,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the  {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the box casts or receives shadows.  If not specified, the default value is DISABLED.
+    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the box casts or receives shadows.  If not specified, the default value is DISABLED.
     
 
     */

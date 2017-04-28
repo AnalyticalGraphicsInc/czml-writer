@@ -22,7 +22,7 @@ public final class Cartographic implements IEquatable<Cartographic>, ImmutableVa
     public Cartographic() {}
 
     /**
-    *  Gets a set of  {@link Cartographic} coordinates representing the zero vector.
+    *  Gets a set of {@link Cartographic} coordinates representing the zero vector.
     
 
     */
@@ -32,7 +32,7 @@ public final class Cartographic implements IEquatable<Cartographic>, ImmutableVa
 
     /**
     *  
-    Initializes a set of  {@link Cartographic} coordinates from the provided values.
+    Initializes a set of {@link Cartographic} coordinates from the provided values.
     
     
     
@@ -113,7 +113,7 @@ public final class Cartographic implements IEquatable<Cartographic>, ImmutableVa
     
     
 
-    * @param other The set of  {@link Cartographic} coordinates to compare to this instance.
+    * @param other The set of {@link Cartographic} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
     * @return 
     {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
