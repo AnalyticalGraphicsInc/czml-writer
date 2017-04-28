@@ -19,10 +19,12 @@ public final class ArrayHelper {
             this.array = array;
         }
 
+        @Override
         public int size() {
             return array.length;
         }
 
+        @Override
         public Object[] toArray() {
             Object[] result = new Object[array.length];
             for (int i = 0; i < array.length; ++i) {
@@ -31,6 +33,7 @@ public final class ArrayHelper {
             return result;
         }
 
+        @Override
         @SuppressWarnings("unchecked")
         public <T> T[] toArray(T[] a) {
             int size = array.length;
@@ -47,16 +50,19 @@ public final class ArrayHelper {
             return a;
         }
 
+        @Override
         public E get(int index) {
             return array[index];
         }
 
+        @Override
         public E set(int index, E element) {
             E oldValue = array[index];
             array[index] = element;
             return oldValue;
         }
 
+        @Override
         public int indexOf(Object o) {
             if (o == null)
                 return -1;
@@ -70,6 +76,7 @@ public final class ArrayHelper {
             return -1;
         }
 
+        @Override
         public boolean contains(Object o) {
             return indexOf(o) != -1;
         }
