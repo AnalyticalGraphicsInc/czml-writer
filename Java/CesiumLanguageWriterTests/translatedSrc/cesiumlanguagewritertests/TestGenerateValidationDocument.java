@@ -5755,6 +5755,72 @@ public class TestGenerateValidationDocument {
         {
             cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
             try {
+                packet.writeId("material_path_material_polylineDash");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('material_path_material_polylineDash')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PathCesiumWriter w = packet.openPathProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PolylineMaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter m = w2.openPolylineDashProperty();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgba(ColorHelper.fromArgb(7, 190, 189, 9));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.color.getValue(date)).toEqual(Color.fromBytes(190, 189, 9, 7));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openGapColorProperty();
+                                            try {
+                                                m2.writeRgba(ColorHelper.fromArgb(24, 170, 88, 12));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.gapColor.getValue(date)).toEqual(Color.fromBytes(170, 88, 12, 24));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashLengthProperty();
+                                            try {
+                                                m2.writeNumber(45848.0);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.dashLength.getValue(date)).toEqual(45848.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashPatternProperty();
+                                            try {
+                                                m2.writeNumber(13519.0);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.dashPattern.getValue(date)).toEqual(13519.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
                 packet.writeId("material_path_material_polylineGlow");
                 writeAssertionBoth("    expect(e = dataSource.entities.getById('material_path_material_polylineGlow')).toBeDefined();");
                 {
@@ -6119,6 +6185,88 @@ public class TestGenerateValidationDocument {
                                                 TextWriterHelper
                                                         .writeLine(m_assertionsWriter,
                                                                 "    expect(e.path.material.color.getValue(date)).toEqualEpsilon(new Color(0.627450980392157, 0.27843137254902, 0.972549019607843, 0.92156862745098), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_path_material_polylineDash_color");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_path_material_polylineDash_color')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PathCesiumWriter w = packet.openPathProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PolylineMaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter m = w2.openPolylineDashProperty();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgbaf(ColorHelper.fromArgb(190, 29, 94, 105));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.path.material.color.getValue(date)).toEqualEpsilon(new Color(0.113725490196078, 0.368627450980392, 0.411764705882353, 0.745098039215686), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_path_material_polylineDash_gapColor");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_path_material_polylineDash_gapColor')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PathCesiumWriter w = packet.openPathProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PolylineMaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter m = w2.openPolylineDashProperty();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openGapColorProperty();
+                                            try {
+                                                m2.writeRgbaf(ColorHelper.fromArgb(191, 212, 80, 87));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.path.material.gapColor.getValue(date)).toEqualEpsilon(new Color(0.831372549019608, 0.313725490196078, 0.341176470588235, 0.749019607843137), 1e-14);");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -7103,6 +7251,72 @@ public class TestGenerateValidationDocument {
         {
             cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
             try {
+                packet.writeId("material_polyline_material_polylineDash");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('material_polyline_material_polylineDash')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PolylineCesiumWriter w = packet.openPolylineProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PolylineMaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter m = w2.openPolylineDashProperty();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgba(ColorHelper.fromArgb(141, 22, 214, 57));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.color.getValue(date)).toEqual(Color.fromBytes(22, 214, 57, 141));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openGapColorProperty();
+                                            try {
+                                                m2.writeRgba(ColorHelper.fromArgb(117, 150, 91, 109));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.gapColor.getValue(date)).toEqual(Color.fromBytes(150, 91, 109, 117));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashLengthProperty();
+                                            try {
+                                                m2.writeNumber(60297.0);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.dashLength.getValue(date)).toEqual(60297.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashPatternProperty();
+                                            try {
+                                                m2.writeNumber(40430.0);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.dashPattern.getValue(date)).toEqual(40430.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
                 packet.writeId("material_polyline_material_polylineGlow");
                 writeAssertionBoth("    expect(e = dataSource.entities.getById('material_polyline_material_polylineGlow')).toBeDefined();");
                 {
@@ -7467,6 +7681,88 @@ public class TestGenerateValidationDocument {
                                                 TextWriterHelper
                                                         .writeLine(m_assertionsWriter,
                                                                 "    expect(e.polyline.material.color.getValue(date)).toEqualEpsilon(new Color(0.831372549019608, 0.823529411764706, 0.631372549019608, 0.443137254901961), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_polyline_material_polylineDash_color");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_material_polylineDash_color')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PolylineCesiumWriter w = packet.openPolylineProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PolylineMaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter m = w2.openPolylineDashProperty();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgbaf(ColorHelper.fromArgb(0, 118, 47, 84));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polyline.material.color.getValue(date)).toEqualEpsilon(new Color(0.462745098039216, 0.184313725490196, 0.329411764705882, 0), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_polyline_material_polylineDash_gapColor");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_material_polylineDash_gapColor')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PolylineCesiumWriter w = packet.openPolylineProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PolylineMaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter m = w2.openPolylineDashProperty();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openGapColorProperty();
+                                            try {
+                                                m2.writeRgbaf(ColorHelper.fromArgb(102, 13, 8, 61));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polyline.material.gapColor.getValue(date)).toEqualEpsilon(new Color(0.0509803921568627, 0.0313725490196078, 0.23921568627451, 0.4), 1e-14);");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -20843,6 +21139,80 @@ public class TestGenerateValidationDocument {
         {
             cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
             try {
+                packet.writeId("reference_path_material_polylineDash");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('reference_path_material_polylineDash')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PathCesiumWriter w = packet.openPathProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PolylineMaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter m = w2.openPolylineDashProperty();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_path_material_polylineDash", createList("path", "material", "color")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.path.material.color.getValue(date)).toEqual(dataSource.entities.getById('material_path_material_polylineDash').path.material.color.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openGapColorProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_path_material_polylineDash", createList("path", "material", "gapColor")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.path.material.gapColor.getValue(date)).toEqual(dataSource.entities.getById('material_path_material_polylineDash').path.material.gapColor.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashLengthProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_path_material_polylineDash", createList("path", "material", "dashLength")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.path.material.dashLength.getValue(date)).toEqual(dataSource.entities.getById('material_path_material_polylineDash').path.material.dashLength.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashPatternProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_path_material_polylineDash", createList("path", "material", "dashPattern")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.path.material.dashPattern.getValue(date)).toEqual(dataSource.entities.getById('material_path_material_polylineDash').path.material.dashPattern.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
                 packet.writeId("reference_path_material_polylineGlow");
                 writeAssertionBoth("    expect(e = dataSource.entities.getById('reference_path_material_polylineGlow')).toBeDefined();");
                 {
@@ -21472,6 +21842,80 @@ public class TestGenerateValidationDocument {
                                                 TextWriterHelper
                                                         .writeLine(m_assertionsWriter,
                                                                 "    expect(e.polyline.material.color.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_material_polylineArrow').polyline.material.color.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("reference_polyline_material_polylineDash");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('reference_polyline_material_polylineDash')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PolylineCesiumWriter w = packet.openPolylineProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PolylineMaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter m = w2.openPolylineDashProperty();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polyline_material_polylineDash", createList("polyline", "material", "color")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polyline.material.color.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_material_polylineDash').polyline.material.color.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openGapColorProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polyline_material_polylineDash", createList("polyline", "material", "gapColor")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polyline.material.gapColor.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_material_polylineDash').polyline.material.gapColor.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashLengthProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polyline_material_polylineDash", createList("polyline", "material", "dashLength")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polyline.material.dashLength.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_material_polylineDash').polyline.material.dashLength.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashPatternProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polyline_material_polylineDash", createList("polyline", "material", "dashPattern")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polyline.material.dashPattern.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_material_polylineDash').polyline.material.dashPattern.getValue(date));");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -31752,6 +32196,84 @@ public class TestGenerateValidationDocument {
         {
             cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
             try {
+                packet.writeId("sampled_path_material_polylineDash");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_path_material_polylineDash')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PathCesiumWriter w = packet.openPathProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PolylineMaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter m = w2.openPolylineDashProperty();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(119, 140, 167, 151), ColorHelper.fromArgb(104, 65, 100, 228)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.path.material.color.getValue(documentStartDate)).toEqual(Color.fromBytes(140, 167, 151, 119));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.path.material.color.getValue(documentStopDate)).toEqual(Color.fromBytes(65, 100, 228, 104));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openGapColorProperty();
+                                            try {
+                                                m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(151, 154, 198, 168), ColorHelper.fromArgb(42, 16, 23, 0)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.path.material.gapColor.getValue(documentStartDate)).toEqual(Color.fromBytes(154, 198, 168, 151));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.path.material.gapColor.getValue(documentStopDate)).toEqual(Color.fromBytes(16, 23, 0, 42));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashLengthProperty();
+                                            try {
+                                                m2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Double> createList(38294.0, 33057.0));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.dashLength.getValue(documentStartDate)).toEqual(38294.0);");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.dashLength.getValue(documentStopDate)).toEqual(33057.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashPatternProperty();
+                                            try {
+                                                m2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Double> createList(58660.0, 3340.0));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.dashPattern.getValue(documentStartDate)).toEqual(58660.0);");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.dashPattern.getValue(documentStopDate)).toEqual(3340.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
                 packet.writeId("sampled_path_material_polylineGlow");
                 writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_path_material_polylineGlow')).toBeDefined();");
                 {
@@ -32143,6 +32665,96 @@ public class TestGenerateValidationDocument {
                                                 TextWriterHelper
                                                         .writeLine(m_assertionsWriter,
                                                                 "    expect(e.path.material.color.getValue(documentStopDate)).toEqualEpsilon(new Color(0.2, 0.482352941176471, 0.498039215686275, 0.219607843137255), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_path_material_polylineDash_color");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_path_material_polylineDash_color')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PathCesiumWriter w = packet.openPathProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PolylineMaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter m = w2.openPolylineDashProperty();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(181, 205, 173, 45), ColorHelper.fromArgb(205, 172, 25, 114)));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.path.material.color.getValue(documentStartDate)).toEqualEpsilon(new Color(0.803921568627451, 0.67843137254902, 0.176470588235294, 0.709803921568627), 1e-14);");
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.path.material.color.getValue(documentStopDate)).toEqualEpsilon(new Color(0.674509803921569, 0.0980392156862745, 0.447058823529412, 0.803921568627451), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_path_material_polylineDash_gapColor");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_path_material_polylineDash_gapColor')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PathCesiumWriter w = packet.openPathProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PolylineMaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter m = w2.openPolylineDashProperty();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openGapColorProperty();
+                                            try {
+                                                m2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(230, 59, 190, 197), ColorHelper.fromArgb(79, 182, 46, 81)));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.path.material.gapColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.231372549019608, 0.745098039215686, 0.772549019607843, 0.901960784313726), 1e-14);");
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.path.material.gapColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.713725490196078, 0.180392156862745, 0.317647058823529, 0.309803921568627), 1e-14);");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -33100,6 +33712,84 @@ public class TestGenerateValidationDocument {
         {
             cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
             try {
+                packet.writeId("sampled_polyline_material_polylineDash");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_material_polylineDash')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PolylineCesiumWriter w = packet.openPolylineProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PolylineMaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter m = w2.openPolylineDashProperty();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(158, 77, 159, 238), ColorHelper.fromArgb(158, 206, 194, 234)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polyline.material.color.getValue(documentStartDate)).toEqual(Color.fromBytes(77, 159, 238, 158));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polyline.material.color.getValue(documentStopDate)).toEqual(Color.fromBytes(206, 194, 234, 158));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openGapColorProperty();
+                                            try {
+                                                m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(164, 232, 145, 15), ColorHelper.fromArgb(138, 173, 151, 118)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polyline.material.gapColor.getValue(documentStartDate)).toEqual(Color.fromBytes(232, 145, 15, 164));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polyline.material.gapColor.getValue(documentStopDate)).toEqual(Color.fromBytes(173, 151, 118, 138));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashLengthProperty();
+                                            try {
+                                                m2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Double> createList(41757.0, 10126.0));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.dashLength.getValue(documentStartDate)).toEqual(41757.0);");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.dashLength.getValue(documentStopDate)).toEqual(10126.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashPatternProperty();
+                                            try {
+                                                m2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Double> createList(33948.0, 16892.0));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.dashPattern.getValue(documentStartDate)).toEqual(33948.0);");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.dashPattern.getValue(documentStopDate)).toEqual(16892.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
                 packet.writeId("sampled_polyline_material_polylineGlow");
                 writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_material_polylineGlow')).toBeDefined();");
                 {
@@ -33493,6 +34183,96 @@ public class TestGenerateValidationDocument {
                                                 TextWriterHelper
                                                         .writeLine(m_assertionsWriter,
                                                                 "    expect(e.polyline.material.color.getValue(documentStopDate)).toEqualEpsilon(new Color(0.772549019607843, 0.862745098039216, 0.325490196078431, 0), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_polyline_material_polylineDash_color");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_material_polylineDash_color')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PolylineCesiumWriter w = packet.openPolylineProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PolylineMaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter m = w2.openPolylineDashProperty();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(93, 134, 253, 246), ColorHelper.fromArgb(49, 71, 34, 114)));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polyline.material.color.getValue(documentStartDate)).toEqualEpsilon(new Color(0.525490196078431, 0.992156862745098, 0.964705882352941, 0.364705882352941), 1e-14);");
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polyline.material.color.getValue(documentStopDate)).toEqualEpsilon(new Color(0.27843137254902, 0.133333333333333, 0.447058823529412, 0.192156862745098), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_polyline_material_polylineDash_gapColor");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_material_polylineDash_gapColor')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PolylineCesiumWriter w = packet.openPolylineProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PolylineMaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter m = w2.openPolylineDashProperty();
+                                    try {
+                                        {
+                                            cesiumlanguagewriter.ColorCesiumWriter m2 = m.openGapColorProperty();
+                                            try {
+                                                m2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(176, 127, 198, 205), ColorHelper.fromArgb(229, 96, 229, 43)));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polyline.material.gapColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.498039215686275, 0.776470588235294, 0.803921568627451, 0.690196078431373), 1e-14);");
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polyline.material.gapColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.376470588235294, 0.898039215686275, 0.168627450980392, 0.898039215686275), 1e-14);");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
