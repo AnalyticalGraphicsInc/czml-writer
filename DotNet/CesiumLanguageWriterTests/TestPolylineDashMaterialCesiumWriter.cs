@@ -18,7 +18,7 @@ namespace CesiumLanguageWriterTests
             using (var polylineDashMaterial = material.OpenPolylineDashProperty())
             {
                 polylineDashMaterial.WriteColorProperty(Color.Red);
-                polylineDashMaterial.WriteDashPatternProperty(Convert.ToInt16("0011001100110011", 2));
+                polylineDashMaterial.WriteDashPatternProperty(Convert.ToInt32("0011001100110011", 2));
                 polylineDashMaterial.WriteGapColorProperty(Color.Blue);
                 polylineDashMaterial.WriteDashLengthProperty(25);
             }
