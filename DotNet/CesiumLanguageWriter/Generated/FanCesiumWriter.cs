@@ -72,7 +72,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(OutlinePropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_numberOfRings = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(NumberOfRingsPropertyName), false);
+        private readonly Lazy<IntegerCesiumWriter> m_numberOfRings = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(NumberOfRingsPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -889,7 +889,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>numberOfRings</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>numberOfRings</c> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
         /// </summary>
-        public DoubleCesiumWriter NumberOfRingsWriter
+        public IntegerCesiumWriter NumberOfRingsWriter
         {
             get { return m_numberOfRings.Value; }
         }
@@ -897,7 +897,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>numberOfRings</c> property.  The <c>numberOfRings</c> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
         /// </summary>
-        public DoubleCesiumWriter OpenNumberOfRingsProperty()
+        public IntegerCesiumWriter OpenNumberOfRingsProperty()
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(NumberOfRingsWriter);
@@ -907,7 +907,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <c>numberOfRings</c> property as a <c>number</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteNumberOfRingsProperty(double value)
+        public void WriteNumberOfRingsProperty(int value)
         {
             using (var writer = OpenNumberOfRingsProperty())
             {
@@ -920,7 +920,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteNumberOfRingsProperty(IList<JulianDate> dates, IList<double> values)
+        public void WriteNumberOfRingsProperty(IList<JulianDate> dates, IList<int> values)
         {
             using (var writer = OpenNumberOfRingsProperty())
             {
@@ -935,7 +935,7 @@ namespace CesiumLanguageWriter
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to write.</param>
         /// <param name="length">The number of elements to write.</param>
-        public void WriteNumberOfRingsProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        public void WriteNumberOfRingsProperty(IList<JulianDate> dates, IList<int> values, int startIndex, int length)
         {
             using (var writer = OpenNumberOfRingsProperty())
             {

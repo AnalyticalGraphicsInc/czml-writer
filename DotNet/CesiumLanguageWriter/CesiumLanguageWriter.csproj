@@ -182,6 +182,7 @@
     <Compile Include="Generated\ImageMaterialCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\IntegerCesiumWriter.cs" />
     <Compile Include="Generated\LabelCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>

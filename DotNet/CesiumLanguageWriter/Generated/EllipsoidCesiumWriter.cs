@@ -75,8 +75,8 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(OutlinePropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_stackPartitions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(StackPartitionsPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_slicePartitions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SlicePartitionsPropertyName), false);
+        private readonly Lazy<IntegerCesiumWriter> m_stackPartitions = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(StackPartitionsPropertyName), false);
+        private readonly Lazy<IntegerCesiumWriter> m_slicePartitions = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(SlicePartitionsPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_subdivisions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SubdivisionsPropertyName), false);
         private readonly Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<ShadowModeCesiumWriter>(() => new ShadowModeCesiumWriter(ShadowsPropertyName), false);
 
@@ -749,27 +749,27 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>stackPartitions</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>stackPartitions</c> property defines the number of times to partition the ellipsoid into stacks.
+        /// Gets the writer for the <c>stackPartitions</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>stackPartitions</c> property defines the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
         /// </summary>
-        public DoubleCesiumWriter StackPartitionsWriter
+        public IntegerCesiumWriter StackPartitionsWriter
         {
             get { return m_stackPartitions.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>stackPartitions</c> property.  The <c>stackPartitions</c> property defines the number of times to partition the ellipsoid into stacks.
+        /// Opens and returns the writer for the <c>stackPartitions</c> property.  The <c>stackPartitions</c> property defines the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
         /// </summary>
-        public DoubleCesiumWriter OpenStackPartitionsProperty()
+        public IntegerCesiumWriter OpenStackPartitionsProperty()
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(StackPartitionsWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <c>stackPartitions</c> property as a <c>number</c> value.  The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks.
+        /// Writes a value for the <c>stackPartitions</c> property as a <c>number</c> value.  The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteStackPartitionsProperty(double value)
+        public void WriteStackPartitionsProperty(int value)
         {
             using (var writer = OpenStackPartitionsProperty())
             {
@@ -778,11 +778,11 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>stackPartitions</c> property as a <c>number</c> value.  The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks.
+        /// Writes a value for the <c>stackPartitions</c> property as a <c>number</c> value.  The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteStackPartitionsProperty(IList<JulianDate> dates, IList<double> values)
+        public void WriteStackPartitionsProperty(IList<JulianDate> dates, IList<int> values)
         {
             using (var writer = OpenStackPartitionsProperty())
             {
@@ -791,13 +791,13 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>stackPartitions</c> property as a <c>number</c> value.  The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks.
+        /// Writes a value for the <c>stackPartitions</c> property as a <c>number</c> value.  The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to write.</param>
         /// <param name="length">The number of elements to write.</param>
-        public void WriteStackPartitionsProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        public void WriteStackPartitionsProperty(IList<JulianDate> dates, IList<int> values, int startIndex, int length)
         {
             using (var writer = OpenStackPartitionsProperty())
             {
@@ -806,7 +806,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>stackPartitions</c> property as a <c>reference</c> value.  The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks.
+        /// Writes a value for the <c>stackPartitions</c> property as a <c>reference</c> value.  The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteStackPartitionsPropertyReference(Reference value)
@@ -818,7 +818,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>stackPartitions</c> property as a <c>reference</c> value.  The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks.
+        /// Writes a value for the <c>stackPartitions</c> property as a <c>reference</c> value.  The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteStackPartitionsPropertyReference(string value)
@@ -830,7 +830,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>stackPartitions</c> property as a <c>reference</c> value.  The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks.
+        /// Writes a value for the <c>stackPartitions</c> property as a <c>reference</c> value.  The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -843,7 +843,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>stackPartitions</c> property as a <c>reference</c> value.  The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks.
+        /// Writes a value for the <c>stackPartitions</c> property as a <c>reference</c> value.  The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -856,27 +856,27 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>slicePartitions</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>slicePartitions</c> property defines the number of times to partition the ellipsoid into radial slices.
+        /// Gets the writer for the <c>slicePartitions</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>slicePartitions</c> property defines the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
         /// </summary>
-        public DoubleCesiumWriter SlicePartitionsWriter
+        public IntegerCesiumWriter SlicePartitionsWriter
         {
             get { return m_slicePartitions.Value; }
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>slicePartitions</c> property.  The <c>slicePartitions</c> property defines the number of times to partition the ellipsoid into radial slices.
+        /// Opens and returns the writer for the <c>slicePartitions</c> property.  The <c>slicePartitions</c> property defines the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
         /// </summary>
-        public DoubleCesiumWriter OpenSlicePartitionsProperty()
+        public IntegerCesiumWriter OpenSlicePartitionsProperty()
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(SlicePartitionsWriter);
         }
 
         /// <summary>
-        /// Writes a value for the <c>slicePartitions</c> property as a <c>number</c> value.  The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices.
+        /// Writes a value for the <c>slicePartitions</c> property as a <c>number</c> value.  The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteSlicePartitionsProperty(double value)
+        public void WriteSlicePartitionsProperty(int value)
         {
             using (var writer = OpenSlicePartitionsProperty())
             {
@@ -885,11 +885,11 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>slicePartitions</c> property as a <c>number</c> value.  The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices.
+        /// Writes a value for the <c>slicePartitions</c> property as a <c>number</c> value.  The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteSlicePartitionsProperty(IList<JulianDate> dates, IList<double> values)
+        public void WriteSlicePartitionsProperty(IList<JulianDate> dates, IList<int> values)
         {
             using (var writer = OpenSlicePartitionsProperty())
             {
@@ -898,13 +898,13 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>slicePartitions</c> property as a <c>number</c> value.  The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices.
+        /// Writes a value for the <c>slicePartitions</c> property as a <c>number</c> value.  The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to write.</param>
         /// <param name="length">The number of elements to write.</param>
-        public void WriteSlicePartitionsProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        public void WriteSlicePartitionsProperty(IList<JulianDate> dates, IList<int> values, int startIndex, int length)
         {
             using (var writer = OpenSlicePartitionsProperty())
             {
@@ -913,7 +913,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>slicePartitions</c> property as a <c>reference</c> value.  The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices.
+        /// Writes a value for the <c>slicePartitions</c> property as a <c>reference</c> value.  The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteSlicePartitionsPropertyReference(Reference value)
@@ -925,7 +925,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>slicePartitions</c> property as a <c>reference</c> value.  The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices.
+        /// Writes a value for the <c>slicePartitions</c> property as a <c>reference</c> value.  The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteSlicePartitionsPropertyReference(string value)
@@ -937,7 +937,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>slicePartitions</c> property as a <c>reference</c> value.  The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices.
+        /// Writes a value for the <c>slicePartitions</c> property as a <c>reference</c> value.  The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -950,7 +950,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>slicePartitions</c> property as a <c>reference</c> value.  The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices.
+        /// Writes a value for the <c>slicePartitions</c> property as a <c>reference</c> value.  The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
