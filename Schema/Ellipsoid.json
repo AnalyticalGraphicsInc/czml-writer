@@ -44,12 +44,14 @@
             "default": 1.0
         },
         "stackPartitions": {
-            "$ref": "Double.json",
-            "description": "The number of times to partition the ellipsoid into stacks."
+            "$ref": "Integer.json",
+            "description": "The number of times to partition the ellipsoid into stacks.",
+            "default": 64
         },
         "slicePartitions": {
-            "$ref": "Double.json",
-            "description": "The number of times to partition the ellipsoid into radial slices."
+            "$ref": "Integer.json",
+            "description": "The number of times to partition the ellipsoid into radial slices.",
+            "default": 64
         },
         "subdivisions": {
             "$ref": "Double.json",

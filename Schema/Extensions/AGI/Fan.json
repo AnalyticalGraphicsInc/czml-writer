@@ -49,7 +49,7 @@
             "description": "The width of the fan outline."
         },
         "numberOfRings": {
-            "$ref": "../../Double.json",
+            "$ref": "../../Integer.json",
             "description": "The number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center."
         }
     }
