@@ -36,7 +36,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_gapColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(GapColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_dashLength = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(DashLengthPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_dashPattern = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(DashPatternPropertyName), false);
+        private readonly Lazy<IntegerCesiumWriter> m_dashPattern = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(DashPatternPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -525,7 +525,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>dashPattern</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>dashPattern</c> property defines a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.  If not specified, the default value is 255.
         /// </summary>
-        public DoubleCesiumWriter DashPatternWriter
+        public IntegerCesiumWriter DashPatternWriter
         {
             get { return m_dashPattern.Value; }
         }
@@ -533,7 +533,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>dashPattern</c> property.  The <c>dashPattern</c> property defines a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.  If not specified, the default value is 255.
         /// </summary>
-        public DoubleCesiumWriter OpenDashPatternProperty()
+        public IntegerCesiumWriter OpenDashPatternProperty()
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(DashPatternWriter);
@@ -543,7 +543,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <c>dashPattern</c> property as a <c>number</c> value.  The <c>dashPattern</c> property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.  If not specified, the default value is 255.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteDashPatternProperty(double value)
+        public void WriteDashPatternProperty(int value)
         {
             using (var writer = OpenDashPatternProperty())
             {
@@ -556,7 +556,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteDashPatternProperty(IList<JulianDate> dates, IList<double> values)
+        public void WriteDashPatternProperty(IList<JulianDate> dates, IList<int> values)
         {
             using (var writer = OpenDashPatternProperty())
             {
@@ -571,7 +571,7 @@ namespace CesiumLanguageWriter
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to write.</param>
         /// <param name="length">The number of elements to write.</param>
-        public void WriteDashPatternProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        public void WriteDashPatternProperty(IList<JulianDate> dates, IList<int> values, int startIndex, int length)
         {
             using (var writer = OpenDashPatternProperty())
             {

@@ -911,6 +911,42 @@ public final class CesiumWritingHelper {
 
     /**
     *  
+    Writes time-tagged floating-point values as an array in [Time, Value] order.
+    Times are epoch seconds since an epoch that is determined from the first date to be written.
+    The epoch property is written as well.
+    
+    
+    
+    
+    
+    
+    
+
+    * @param output The stream to which to write the array.
+    * @param propertyName The name of the property to write.
+    * @param dates The dates at which the value is specified.
+    * @param values The corresponding value for each date.
+    * @param startIndex The index of the first element to use in the {@code values} collection.
+    * @param length The number of elements to use from the {@code values} collection.
+    */
+    public static void writeInteger(CesiumOutputStream output, String propertyName, List<JulianDate> dates, List<Integer> values, int startIndex, int length) {
+        if (dates.size() != values.size()) {
+            throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
+        }
+        JulianDate epoch = getAndWriteEpoch(output, dates, startIndex, length);
+        output.writePropertyName(propertyName);
+        output.writeStartSequence();
+        int last = startIndex + length;
+        for (int i = startIndex; i < last; ++i) {
+            output.writeValue(epoch.secondsDifference(dates.get(i)));
+            output.writeValue(values.get(i));
+            output.writeLineBreak();
+        }
+        output.writeEndSequence();
+    }
+
+    /**
+    *  
     Writes a {@link UnitQuaternion} as an array in [X, Y, Z, W] order.
     
     

@@ -25,7 +25,7 @@
             "default": 16
         },
         "dashPattern": {
-            "$ref": "Double.json",
+            "$ref": "Integer.json",
             "description": "A 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.",
             "default": 255
         }

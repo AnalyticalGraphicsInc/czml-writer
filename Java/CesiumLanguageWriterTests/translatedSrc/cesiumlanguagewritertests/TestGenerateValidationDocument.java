@@ -934,19 +934,19 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openStackPartitionsProperty();
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openStackPartitionsProperty();
                             try {
-                                w2.writeNumber(54278.0);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.stackPartitions.getValue(date)).toEqual(54278.0);");
+                                w2.writeNumber(54278);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.stackPartitions.getValue(date)).toEqual(54278);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openSlicePartitionsProperty();
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openSlicePartitionsProperty();
                             try {
-                                w2.writeNumber(28562.0);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.slicePartitions.getValue(date)).toEqual(28562.0);");
+                                w2.writeNumber(28562);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.slicePartitions.getValue(date)).toEqual(28562);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -2953,10 +2953,10 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openNumberOfRingsProperty();
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openNumberOfRingsProperty();
                             try {
-                                w2.writeNumber(33012.0);
-                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.numberOfRings.getValue(date)).toEqual(33012.0);");
+                                w2.writeNumber(33012);
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.numberOfRings.getValue(date)).toEqual(33012);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -5794,10 +5794,10 @@ public class TestGenerateValidationDocument {
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashPatternProperty();
+                                            cesiumlanguagewriter.IntegerCesiumWriter m2 = m.openDashPatternProperty();
                                             try {
-                                                m2.writeNumber(13519.0);
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.dashPattern.getValue(date)).toEqual(13519.0);");
+                                                m2.writeNumber(13519);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.dashPattern.getValue(date)).toEqual(13519);");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -7290,10 +7290,10 @@ public class TestGenerateValidationDocument {
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashPatternProperty();
+                                            cesiumlanguagewriter.IntegerCesiumWriter m2 = m.openDashPatternProperty();
                                             try {
-                                                m2.writeNumber(40430.0);
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.dashPattern.getValue(date)).toEqual(40430.0);");
+                                                m2.writeNumber(40430);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.dashPattern.getValue(date)).toEqual(40430);");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -17549,7 +17549,7 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openStackPartitionsProperty();
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openStackPartitionsProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipsoid", "stackPartitions")));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.stackPartitions.getValue(date)).toEqual(constant.ellipsoid.stackPartitions.getValue(date));");
@@ -17558,7 +17558,7 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openSlicePartitionsProperty();
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openSlicePartitionsProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipsoid", "slicePartitions")));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.slicePartitions.getValue(date)).toEqual(constant.ellipsoid.slicePartitions.getValue(date));");
@@ -19635,7 +19635,7 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openNumberOfRingsProperty();
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openNumberOfRingsProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("fan", "numberOfRings")));
                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.numberOfRings.getValue(date)).toEqual(constant.fan.numberOfRings.getValue(date));");
@@ -21184,7 +21184,7 @@ public class TestGenerateValidationDocument {
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashPatternProperty();
+                                            cesiumlanguagewriter.IntegerCesiumWriter m2 = m.openDashPatternProperty();
                                             try {
                                                 m2.writeReference(new Reference("material_path_material_polylineDash", createList("path", "material", "dashPattern")));
                                                 TextWriterHelper
@@ -21910,7 +21910,7 @@ public class TestGenerateValidationDocument {
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashPatternProperty();
+                                            cesiumlanguagewriter.IntegerCesiumWriter m2 = m.openDashPatternProperty();
                                             try {
                                                 m2.writeReference(new Reference("material_polyline_material_polylineDash", createList("polyline", "material", "dashPattern")));
                                                 TextWriterHelper
@@ -27730,23 +27730,23 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openStackPartitionsProperty();
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openStackPartitionsProperty();
                             try {
-                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
-                                        5841.0, 39170.0));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.stackPartitions.getValue(documentStartDate)).toEqual(5841.0);");
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.stackPartitions.getValue(documentStopDate)).toEqual(39170.0);");
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(
+                                        5841, 39170));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.stackPartitions.getValue(documentStartDate)).toEqual(5841);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.stackPartitions.getValue(documentStopDate)).toEqual(39170);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openSlicePartitionsProperty();
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openSlicePartitionsProperty();
                             try {
-                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
-                                        50327.0, 4672.0));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.slicePartitions.getValue(documentStartDate)).toEqual(50327.0);");
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.slicePartitions.getValue(documentStopDate)).toEqual(4672.0);");
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(
+                                        50327, 4672));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.slicePartitions.getValue(documentStartDate)).toEqual(50327);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.slicePartitions.getValue(documentStopDate)).toEqual(4672);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -29213,12 +29213,12 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openNumberOfRingsProperty();
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openNumberOfRingsProperty();
                             try {
-                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
-                                        30719.0, 44188.0));
-                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.numberOfRings.getValue(documentStartDate)).toEqual(30719.0);");
-                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.numberOfRings.getValue(documentStopDate)).toEqual(44188.0);");
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(
+                                        30719, 44188));
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.numberOfRings.getValue(documentStartDate)).toEqual(30719);");
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.numberOfRings.getValue(documentStopDate)).toEqual(44188);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -32245,12 +32245,12 @@ public class TestGenerateValidationDocument {
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashPatternProperty();
+                                            cesiumlanguagewriter.IntegerCesiumWriter m2 = m.openDashPatternProperty();
                                             try {
                                                 m2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
-                                                        .<Double> createList(58660.0, 3340.0));
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.dashPattern.getValue(documentStartDate)).toEqual(58660.0);");
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.dashPattern.getValue(documentStopDate)).toEqual(3340.0);");
+                                                        .<Integer> createList(58660, 3340));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.dashPattern.getValue(documentStartDate)).toEqual(58660);");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.dashPattern.getValue(documentStopDate)).toEqual(3340);");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -33761,12 +33761,12 @@ public class TestGenerateValidationDocument {
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openDashPatternProperty();
+                                            cesiumlanguagewriter.IntegerCesiumWriter m2 = m.openDashPatternProperty();
                                             try {
                                                 m2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
-                                                        .<Double> createList(33948.0, 16892.0));
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.dashPattern.getValue(documentStartDate)).toEqual(33948.0);");
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.dashPattern.getValue(documentStopDate)).toEqual(16892.0);");
+                                                        .<Integer> createList(33948, 16892));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.dashPattern.getValue(documentStartDate)).toEqual(33948);");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.dashPattern.getValue(documentStopDate)).toEqual(16892);");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }

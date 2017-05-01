@@ -1159,6 +1159,12 @@ namespace GenerateFromSchema
                     valueType = "double";
                     return;
                 }
+                case "Integer":
+                {
+                    value = assertionValue = getNumber(0).ToString();
+                    valueType = "int";
+                    return;
+                }
                 case "DoubleList":
                 {
                     int v1 = getNumber(0);
