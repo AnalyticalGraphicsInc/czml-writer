@@ -523,13 +523,13 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenStackPartitionsProperty())
                     {
-                        w2.WriteNumber(54278.0);
-                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.stackPartitions.getValue(date)).toEqual(54278.0);");
+                        w2.WriteNumber(54278);
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.stackPartitions.getValue(date)).toEqual(54278);");
                     }
                     using (var w2 = w.OpenSlicePartitionsProperty())
                     {
-                        w2.WriteNumber(28562.0);
-                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.slicePartitions.getValue(date)).toEqual(28562.0);");
+                        w2.WriteNumber(28562);
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.slicePartitions.getValue(date)).toEqual(28562);");
                     }
                     using (var w2 = w.OpenSubdivisionsProperty())
                     {
@@ -1576,8 +1576,8 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenNumberOfRingsProperty())
                     {
-                        w2.WriteNumber(33012.0);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.numberOfRings.getValue(date)).toEqual(33012.0);");
+                        w2.WriteNumber(33012);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.numberOfRings.getValue(date)).toEqual(33012);");
                     }
                 }
                 using (var w = packet.OpenVectorProperty())
@@ -2763,8 +2763,8 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var m2 = m.OpenDashPatternProperty())
                     {
-                        m2.WriteNumber(13519.0);
-                        m_assertionsWriter.WriteLine("    expect(e.path.material.dashPattern.getValue(date)).toEqual(13519.0);");
+                        m2.WriteNumber(13519);
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.dashPattern.getValue(date)).toEqual(13519);");
                     }
                 }
             }
@@ -3347,8 +3347,8 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var m2 = m.OpenDashPatternProperty())
                     {
-                        m2.WriteNumber(40430.0);
-                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.dashPattern.getValue(date)).toEqual(40430.0);");
+                        m2.WriteNumber(40430);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.dashPattern.getValue(date)).toEqual(40430);");
                     }
                 }
             }
@@ -11729,15 +11729,15 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenStackPartitionsProperty())
                     {
-                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(5841.0, 39170.0));
-                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.stackPartitions.getValue(documentStartDate)).toEqual(5841.0);");
-                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.stackPartitions.getValue(documentStopDate)).toEqual(39170.0);");
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(5841, 39170));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.stackPartitions.getValue(documentStartDate)).toEqual(5841);");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.stackPartitions.getValue(documentStopDate)).toEqual(39170);");
                     }
                     using (var w2 = w.OpenSlicePartitionsProperty())
                     {
-                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(50327.0, 4672.0));
-                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.slicePartitions.getValue(documentStartDate)).toEqual(50327.0);");
-                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.slicePartitions.getValue(documentStopDate)).toEqual(4672.0);");
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(50327, 4672));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.slicePartitions.getValue(documentStartDate)).toEqual(50327);");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.slicePartitions.getValue(documentStopDate)).toEqual(4672);");
                     }
                     using (var w2 = w.OpenSubdivisionsProperty())
                     {
@@ -12455,9 +12455,9 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenNumberOfRingsProperty())
                     {
-                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(30719.0, 44188.0));
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.numberOfRings.getValue(documentStartDate)).toEqual(30719.0);");
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.numberOfRings.getValue(documentStopDate)).toEqual(44188.0);");
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(30719, 44188));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.numberOfRings.getValue(documentStartDate)).toEqual(30719);");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.numberOfRings.getValue(documentStopDate)).toEqual(44188);");
                     }
                 }
                 using (var w = packet.OpenVectorProperty())
@@ -13648,9 +13648,9 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var m2 = m.OpenDashPatternProperty())
                     {
-                        m2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(58660.0, 3340.0));
-                        m_assertionsWriter.WriteLine("    expect(e.path.material.dashPattern.getValue(documentStartDate)).toEqual(58660.0);");
-                        m_assertionsWriter.WriteLine("    expect(e.path.material.dashPattern.getValue(documentStopDate)).toEqual(3340.0);");
+                        m2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(58660, 3340));
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.dashPattern.getValue(documentStartDate)).toEqual(58660);");
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.dashPattern.getValue(documentStopDate)).toEqual(3340);");
                     }
                 }
             }
@@ -14209,9 +14209,9 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var m2 = m.OpenDashPatternProperty())
                     {
-                        m2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(33948.0, 16892.0));
-                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.dashPattern.getValue(documentStartDate)).toEqual(33948.0);");
-                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.dashPattern.getValue(documentStopDate)).toEqual(16892.0);");
+                        m2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(33948, 16892));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.dashPattern.getValue(documentStartDate)).toEqual(33948);");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.dashPattern.getValue(documentStopDate)).toEqual(16892);");
                     }
                 }
             }
