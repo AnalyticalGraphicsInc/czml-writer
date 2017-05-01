@@ -8,6 +8,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
+import cesiumlanguagewriter.IntegerCesiumWriter;
 import java.awt.Color;
 import java.util.List;
 
@@ -61,9 +62,9 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
             return new DoubleCesiumWriter(DashLengthPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_dashPattern = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(DashPatternPropertyName);
+    private Lazy<IntegerCesiumWriter> m_dashPattern = new Lazy<cesiumlanguagewriter.IntegerCesiumWriter>(new Func1<cesiumlanguagewriter.IntegerCesiumWriter>() {
+        public cesiumlanguagewriter.IntegerCesiumWriter invoke() {
+            return new IntegerCesiumWriter(DashPatternPropertyName);
         }
     }, false);
 
@@ -824,7 +825,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
 
     */
-    public final DoubleCesiumWriter getDashPatternWriter() {
+    public final IntegerCesiumWriter getDashPatternWriter() {
         return m_dashPattern.getValue();
     }
 
@@ -834,9 +835,9 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
 
     */
-    public final DoubleCesiumWriter openDashPatternProperty() {
+    public final IntegerCesiumWriter openDashPatternProperty() {
         openIntervalIfNecessary();
-        return this.<DoubleCesiumWriter> openAndReturn(getDashPatternWriter());
+        return this.<IntegerCesiumWriter> openAndReturn(getDashPatternWriter());
     }
 
     /**
@@ -847,9 +848,9 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     * @param value The value.
     */
-    public final void writeDashPatternProperty(double value) {
+    public final void writeDashPatternProperty(int value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openDashPatternProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openDashPatternProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -868,9 +869,9 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
-    public final void writeDashPatternProperty(List<JulianDate> dates, List<Double> values) {
+    public final void writeDashPatternProperty(List<JulianDate> dates, List<Integer> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openDashPatternProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openDashPatternProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -893,9 +894,9 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     * @param startIndex The index of the first element to write.
     * @param length The number of elements to write.
     */
-    public final void writeDashPatternProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+    public final void writeDashPatternProperty(List<JulianDate> dates, List<Integer> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openDashPatternProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openDashPatternProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -914,7 +915,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeDashPatternPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openDashPatternProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openDashPatternProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -933,7 +934,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeDashPatternPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openDashPatternProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openDashPatternProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -954,7 +955,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeDashPatternPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openDashPatternProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openDashPatternProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -975,7 +976,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeDashPatternPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openDashPatternProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openDashPatternProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

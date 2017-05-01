@@ -10,6 +10,7 @@ import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.EllipsoidRadiiCesiumWriter;
+import cesiumlanguagewriter.IntegerCesiumWriter;
 import cesiumlanguagewriter.MaterialCesiumWriter;
 import cesiumlanguagewriter.ShadowModeCesiumWriter;
 import java.awt.Color;
@@ -134,14 +135,14 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
             return new DoubleCesiumWriter(OutlineWidthPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_stackPartitions = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(StackPartitionsPropertyName);
+    private Lazy<IntegerCesiumWriter> m_stackPartitions = new Lazy<cesiumlanguagewriter.IntegerCesiumWriter>(new Func1<cesiumlanguagewriter.IntegerCesiumWriter>() {
+        public cesiumlanguagewriter.IntegerCesiumWriter invoke() {
+            return new IntegerCesiumWriter(StackPartitionsPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_slicePartitions = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(SlicePartitionsPropertyName);
+    private Lazy<IntegerCesiumWriter> m_slicePartitions = new Lazy<cesiumlanguagewriter.IntegerCesiumWriter>(new Func1<cesiumlanguagewriter.IntegerCesiumWriter>() {
+        public cesiumlanguagewriter.IntegerCesiumWriter invoke() {
+            return new IntegerCesiumWriter(SlicePartitionsPropertyName);
         }
     }, false);
     private Lazy<DoubleCesiumWriter> m_subdivisions = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
@@ -1170,36 +1171,36 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code stackPartitions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code stackPartitions} property defines the number of times to partition the ellipsoid into stacks.
+    *  Gets the writer for the {@code stackPartitions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code stackPartitions} property defines the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
     
 
     */
-    public final DoubleCesiumWriter getStackPartitionsWriter() {
+    public final IntegerCesiumWriter getStackPartitionsWriter() {
         return m_stackPartitions.getValue();
     }
 
     /**
     *  
-    Opens and returns the writer for the {@code stackPartitions} property.  The {@code stackPartitions} property defines the number of times to partition the ellipsoid into stacks.
+    Opens and returns the writer for the {@code stackPartitions} property.  The {@code stackPartitions} property defines the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
     
 
     */
-    public final DoubleCesiumWriter openStackPartitionsProperty() {
+    public final IntegerCesiumWriter openStackPartitionsProperty() {
         openIntervalIfNecessary();
-        return this.<DoubleCesiumWriter> openAndReturn(getStackPartitionsWriter());
+        return this.<IntegerCesiumWriter> openAndReturn(getStackPartitionsWriter());
     }
 
     /**
     *  
-    Writes a value for the {@code stackPartitions} property as a {@code number} value.  The {@code stackPartitions} property specifies the number of times to partition the ellipsoid into stacks.
+    Writes a value for the {@code stackPartitions} property as a {@code number} value.  The {@code stackPartitions} property specifies the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
     
     
 
     * @param value The value.
     */
-    public final void writeStackPartitionsProperty(double value) {
+    public final void writeStackPartitionsProperty(int value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openStackPartitionsProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openStackPartitionsProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -1210,7 +1211,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code stackPartitions} property as a {@code number} value.  The {@code stackPartitions} property specifies the number of times to partition the ellipsoid into stacks.
+    Writes a value for the {@code stackPartitions} property as a {@code number} value.  The {@code stackPartitions} property specifies the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
     
     
     
@@ -1218,9 +1219,9 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
-    public final void writeStackPartitionsProperty(List<JulianDate> dates, List<Double> values) {
+    public final void writeStackPartitionsProperty(List<JulianDate> dates, List<Integer> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openStackPartitionsProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openStackPartitionsProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -1231,7 +1232,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code stackPartitions} property as a {@code number} value.  The {@code stackPartitions} property specifies the number of times to partition the ellipsoid into stacks.
+    Writes a value for the {@code stackPartitions} property as a {@code number} value.  The {@code stackPartitions} property specifies the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
     
     
     
@@ -1243,9 +1244,9 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     * @param startIndex The index of the first element to write.
     * @param length The number of elements to write.
     */
-    public final void writeStackPartitionsProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+    public final void writeStackPartitionsProperty(List<JulianDate> dates, List<Integer> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openStackPartitionsProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openStackPartitionsProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -1256,7 +1257,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code stackPartitions} property as a {@code reference} value.  The {@code stackPartitions} property specifies the number of times to partition the ellipsoid into stacks.
+    Writes a value for the {@code stackPartitions} property as a {@code reference} value.  The {@code stackPartitions} property specifies the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
     
     
 
@@ -1264,7 +1265,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     */
     public final void writeStackPartitionsPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openStackPartitionsProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openStackPartitionsProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1275,7 +1276,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code stackPartitions} property as a {@code reference} value.  The {@code stackPartitions} property specifies the number of times to partition the ellipsoid into stacks.
+    Writes a value for the {@code stackPartitions} property as a {@code reference} value.  The {@code stackPartitions} property specifies the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
     
     
 
@@ -1283,7 +1284,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     */
     public final void writeStackPartitionsPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openStackPartitionsProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openStackPartitionsProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1294,7 +1295,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code stackPartitions} property as a {@code reference} value.  The {@code stackPartitions} property specifies the number of times to partition the ellipsoid into stacks.
+    Writes a value for the {@code stackPartitions} property as a {@code reference} value.  The {@code stackPartitions} property specifies the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
     
     
     
@@ -1304,7 +1305,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     */
     public final void writeStackPartitionsPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openStackPartitionsProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openStackPartitionsProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1315,7 +1316,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code stackPartitions} property as a {@code reference} value.  The {@code stackPartitions} property specifies the number of times to partition the ellipsoid into stacks.
+    Writes a value for the {@code stackPartitions} property as a {@code reference} value.  The {@code stackPartitions} property specifies the number of times to partition the ellipsoid into stacks.  If not specified, the default value is 64.
     
     
     
@@ -1325,7 +1326,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     */
     public final void writeStackPartitionsPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openStackPartitionsProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openStackPartitionsProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1335,36 +1336,36 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code slicePartitions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code slicePartitions} property defines the number of times to partition the ellipsoid into radial slices.
+    *  Gets the writer for the {@code slicePartitions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code slicePartitions} property defines the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
     
 
     */
-    public final DoubleCesiumWriter getSlicePartitionsWriter() {
+    public final IntegerCesiumWriter getSlicePartitionsWriter() {
         return m_slicePartitions.getValue();
     }
 
     /**
     *  
-    Opens and returns the writer for the {@code slicePartitions} property.  The {@code slicePartitions} property defines the number of times to partition the ellipsoid into radial slices.
+    Opens and returns the writer for the {@code slicePartitions} property.  The {@code slicePartitions} property defines the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
     
 
     */
-    public final DoubleCesiumWriter openSlicePartitionsProperty() {
+    public final IntegerCesiumWriter openSlicePartitionsProperty() {
         openIntervalIfNecessary();
-        return this.<DoubleCesiumWriter> openAndReturn(getSlicePartitionsWriter());
+        return this.<IntegerCesiumWriter> openAndReturn(getSlicePartitionsWriter());
     }
 
     /**
     *  
-    Writes a value for the {@code slicePartitions} property as a {@code number} value.  The {@code slicePartitions} property specifies the number of times to partition the ellipsoid into radial slices.
+    Writes a value for the {@code slicePartitions} property as a {@code number} value.  The {@code slicePartitions} property specifies the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
     
     
 
     * @param value The value.
     */
-    public final void writeSlicePartitionsProperty(double value) {
+    public final void writeSlicePartitionsProperty(int value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicePartitionsProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openSlicePartitionsProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -1375,7 +1376,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code slicePartitions} property as a {@code number} value.  The {@code slicePartitions} property specifies the number of times to partition the ellipsoid into radial slices.
+    Writes a value for the {@code slicePartitions} property as a {@code number} value.  The {@code slicePartitions} property specifies the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
     
     
     
@@ -1383,9 +1384,9 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
-    public final void writeSlicePartitionsProperty(List<JulianDate> dates, List<Double> values) {
+    public final void writeSlicePartitionsProperty(List<JulianDate> dates, List<Integer> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicePartitionsProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openSlicePartitionsProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -1396,7 +1397,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code slicePartitions} property as a {@code number} value.  The {@code slicePartitions} property specifies the number of times to partition the ellipsoid into radial slices.
+    Writes a value for the {@code slicePartitions} property as a {@code number} value.  The {@code slicePartitions} property specifies the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
     
     
     
@@ -1408,9 +1409,9 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     * @param startIndex The index of the first element to write.
     * @param length The number of elements to write.
     */
-    public final void writeSlicePartitionsProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+    public final void writeSlicePartitionsProperty(List<JulianDate> dates, List<Integer> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicePartitionsProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openSlicePartitionsProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -1421,7 +1422,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code slicePartitions} property as a {@code reference} value.  The {@code slicePartitions} property specifies the number of times to partition the ellipsoid into radial slices.
+    Writes a value for the {@code slicePartitions} property as a {@code reference} value.  The {@code slicePartitions} property specifies the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
     
     
 
@@ -1429,7 +1430,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     */
     public final void writeSlicePartitionsPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicePartitionsProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openSlicePartitionsProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1440,7 +1441,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code slicePartitions} property as a {@code reference} value.  The {@code slicePartitions} property specifies the number of times to partition the ellipsoid into radial slices.
+    Writes a value for the {@code slicePartitions} property as a {@code reference} value.  The {@code slicePartitions} property specifies the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
     
     
 
@@ -1448,7 +1449,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     */
     public final void writeSlicePartitionsPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicePartitionsProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openSlicePartitionsProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1459,7 +1460,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code slicePartitions} property as a {@code reference} value.  The {@code slicePartitions} property specifies the number of times to partition the ellipsoid into radial slices.
+    Writes a value for the {@code slicePartitions} property as a {@code reference} value.  The {@code slicePartitions} property specifies the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
     
     
     
@@ -1469,7 +1470,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     */
     public final void writeSlicePartitionsPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicePartitionsProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openSlicePartitionsProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1480,7 +1481,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code slicePartitions} property as a {@code reference} value.  The {@code slicePartitions} property specifies the number of times to partition the ellipsoid into radial slices.
+    Writes a value for the {@code slicePartitions} property as a {@code reference} value.  The {@code slicePartitions} property specifies the number of times to partition the ellipsoid into radial slices.  If not specified, the default value is 64.
     
     
     
@@ -1490,7 +1491,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     */
     public final void writeSlicePartitionsPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openSlicePartitionsProperty();
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openSlicePartitionsProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
