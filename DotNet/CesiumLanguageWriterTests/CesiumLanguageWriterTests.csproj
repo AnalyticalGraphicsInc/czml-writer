@@ -54,6 +54,7 @@
     <Compile Include="TestCartographic.cs" />
     <Compile Include="TestCesiumFormattingHelper.cs" />
     <Compile Include="TestCesiumInterpolatablePropertyWriter.cs" />
+    <Compile Include="TestCesiumResource.cs" />
     <Compile Include="TestCustomPropertiesCesiumWriter.cs" />
     <Compile Include="TestDoubleCesiumWriter.cs" />
     <Compile Include="TestGenerateValidationDocument.cs" />
@@ -99,6 +100,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

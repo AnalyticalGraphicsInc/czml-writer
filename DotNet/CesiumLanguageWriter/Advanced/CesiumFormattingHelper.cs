@@ -85,7 +85,7 @@ namespace CesiumLanguageWriter.Advanced
             using (Stream responseStream = webResponse.GetResponseStream())
             {
                 string mimeType = webResponse.ContentType;
-                return BuildDataUri(mimeType, responseStream);
+                return StreamToDataUri(responseStream, mimeType);
             }
         }
 
@@ -102,7 +102,7 @@ namespace CesiumLanguageWriter.Advanced
         public static string ImageToDataUri(Stream stream, CesiumImageFormat imageFormat)
         {
             string mimeType = GetMimeTypeFromCesiumImageFormat(imageFormat);
-            return BuildDataUri(mimeType, stream);
+            return StreamToDataUri(stream, mimeType);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace CesiumLanguageWriter.Advanced
             {
                 image.Save(stream, CesiumImageFormatToImageFormat(imageFormat));
                 stream.Position = 0;
-                return BuildDataUri(mimeType, stream);
+                return StreamToDataUri(stream, mimeType);
             }
         }
 
@@ -142,7 +142,16 @@ namespace CesiumLanguageWriter.Advanced
             }
         }
 
-        private static string BuildDataUri(string mimeType, Stream dataStream)
+        /// <summary>
+        /// Reads data from a stream into a data URI in the form
+        /// <c>data:&lt;MimeType&gt;;base64,&lt;ImageData&gt;</c>, where
+        /// <c>&lt;MimeType&gt;</c> is the given MIME type, and
+        /// <c>&lt;ImageData&gt;</c> is the image data encoded as a Base 64 string.
+        /// </summary>
+        /// <param name="stream">The stream to read from.</param>
+        /// <param name="mimeType">The mime type of the data in the stream.</param>
+        /// <returns>A data URI containing the contents of the stream.</returns>
+        public static string StreamToDataUri(Stream stream, string mimeType)
         {
             StringBuilder builder = new StringBuilder();
             builder.Append("data:");
@@ -153,7 +162,7 @@ namespace CesiumLanguageWriter.Advanced
             {
                 byte[] buffer = new byte[8192];
                 int bytesRead;
-                while ((bytesRead = dataStream.Read(buffer, 0, buffer.Length)) > 0)
+                while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
                     memoryStream.Write(buffer, 0, bytesRead);
 
                 builder.Append(Convert.ToBase64String(memoryStream.GetBuffer(), 0, (int)memoryStream.Length));

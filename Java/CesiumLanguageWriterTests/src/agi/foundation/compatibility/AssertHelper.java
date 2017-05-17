@@ -1,11 +1,13 @@
 package agi.foundation.compatibility;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.isEmptyString;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.startsWith;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
@@ -42,6 +44,22 @@ public final class AssertHelper {
 
     public static <T extends Comparable<T>> void assertGreater(T a, T b) {
         assertThat(a, greaterThan(b));
+    }
+
+    public static void assertStringContains(String expected, String actual) {
+        assertThat(actual, containsString(expected));
+    }
+
+    public static void assertStringContains(String message, String expected, String actual) {
+        assertThat(message, actual, containsString(expected));
+    }
+
+    public static void assertStringStartsWith(String expected, String actual) {
+        assertThat(actual, startsWith(expected));
+    }
+
+    public static void assertStringStartsWith(String message, String expected, String actual) {
+        assertThat(message, actual, startsWith(expected));
     }
 
     // NUnit allows comparing two boxed numbers of different type.
