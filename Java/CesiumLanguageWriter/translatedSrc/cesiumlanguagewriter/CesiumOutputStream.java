@@ -126,7 +126,7 @@ public class CesiumOutputStream {
     
     
 
-    * @param propertyName 
+    * @param propertyName The name of the property.
     */
     public final void writePropertyName(String propertyName) {
         m_nextValueOnNewLine = true;
