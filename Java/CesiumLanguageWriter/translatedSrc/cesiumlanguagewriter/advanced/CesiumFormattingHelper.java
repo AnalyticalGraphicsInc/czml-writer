@@ -116,7 +116,7 @@ public final class CesiumFormattingHelper {
                     InputStream responseStream = webResponse.getResponseStream();
                     try {
                         String mimeType = webResponse.getContentType();
-                        return buildDataUri(mimeType, responseStream);
+                        return streamToDataUri(responseStream, mimeType);
                     } finally {
                         DisposeHelper.dispose(responseStream);
                     }
@@ -145,7 +145,7 @@ public final class CesiumFormattingHelper {
     */
     public static String imageToDataUri(InputStream stream, CesiumImageFormat imageFormat) {
         String mimeType = getMimeTypeFromCesiumImageFormat(imageFormat);
-        return buildDataUri(mimeType, stream);
+        return streamToDataUri(stream, mimeType);
     }
 
     /**
@@ -170,7 +170,7 @@ public final class CesiumFormattingHelper {
             try {
                 ImageHelper.save(image, stream, cesiumImageFormatToImageFormat(imageFormat));
                 stream.setPosition(0L);
-                return buildDataUri(mimeType, stream);
+                return streamToDataUri(stream, mimeType);
             } finally {
                 DisposeHelper.dispose(stream);
             }
@@ -197,7 +197,22 @@ public final class CesiumFormattingHelper {
         }
     }
 
-    private static String buildDataUri(String mimeType, InputStream dataStream) {
+    /**
+    *  
+    Reads data from a stream into a data URI in the form
+    {@code data:<MimeType>;base64,<ImageData>}, where
+    {@code <MimeType>} is the given MIME type, and
+    {@code <ImageData>} is the image data encoded as a Base 64 string.
+    
+    
+    
+    
+
+    * @param stream The stream to read from.
+    * @param mimeType The mime type of the data in the stream.
+    * @return A data URI containing the contents of the stream.
+    */
+    public static String streamToDataUri(InputStream stream, String mimeType) {
         StringBuilder builder = new StringBuilder();
         builder.append("data:");
         builder.append(mimeType);
@@ -207,7 +222,7 @@ public final class CesiumFormattingHelper {
             try {
                 byte[] buffer = new byte[8192];
                 int bytesRead;
-                while ((bytesRead = StreamHelper.read(dataStream, buffer, 0, buffer.length)) > 0)
+                while ((bytesRead = StreamHelper.read(stream, buffer, 0, buffer.length)) > 0)
                     memoryStream.write(buffer, 0, bytesRead);
                 builder.append(ConvertHelper.toBase64String(memoryStream.getBuffer(), 0, (int) memoryStream.getLength()));
             } finally {
