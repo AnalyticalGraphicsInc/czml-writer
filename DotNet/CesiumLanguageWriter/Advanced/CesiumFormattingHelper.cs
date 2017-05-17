@@ -232,6 +232,8 @@ namespace CesiumLanguageWriter.Advanced
                     return "CENTER";
                 case CesiumVerticalOrigin.Top:
                     return "TOP";
+                case CesiumVerticalOrigin.Baseline:
+                    return "BASELINE";
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
             }
