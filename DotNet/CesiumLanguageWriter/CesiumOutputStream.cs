@@ -94,7 +94,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the name of a property.
         /// </summary>
-        /// <param name="propertyName"></param>
+        /// <param name="propertyName">The name of the property.</param>
         public void WritePropertyName(string propertyName)
         {
             m_nextValueOnNewLine = true;
