@@ -30,7 +30,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// The lower bound of the camera distance range.
+        /// Gets the lower bound of the camera distance range.
         /// </summary>
         public double NearDistance
         {
@@ -38,7 +38,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// The value to use at the lower bound of the camera distance range.
+        /// Gets the value to use at the lower bound of the camera distance range.
         /// </summary>
         public double NearValue
         {
@@ -46,7 +46,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// The upper bound of the camera distance range.
+        /// Gets the upper bound of the camera distance range.
         /// </summary>
         public double FarDistance
         {
@@ -54,7 +54,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// The value to use at the upper bound of the camera distance range.
+        /// Gets the value to use at the upper bound of the camera distance range.
         /// </summary>
         public double FarValue
         {

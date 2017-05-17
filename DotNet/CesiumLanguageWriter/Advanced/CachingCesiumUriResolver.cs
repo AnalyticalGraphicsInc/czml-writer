@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Add a URI to the cache for future calls to ResolveUri.
+        /// Add a URI to the cache for future calls to <see cref="ResolveUri"/>.
         /// </summary>
         /// <param name="sourceUri">The source URI.</param>
         /// <param name="resolvedUri">The resolved URI.</param>
