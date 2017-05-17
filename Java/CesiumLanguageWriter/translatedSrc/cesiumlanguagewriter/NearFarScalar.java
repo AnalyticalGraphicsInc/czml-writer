@@ -48,8 +48,7 @@ public final class NearFarScalar implements IEquatable<NearFarScalar>, Immutable
     }
 
     /**
-    *  
-    The lower bound of the camera distance range.
+    *  Gets the lower bound of the camera distance range.
     
 
     */
@@ -58,8 +57,7 @@ public final class NearFarScalar implements IEquatable<NearFarScalar>, Immutable
     }
 
     /**
-    *  
-    The value to use at the lower bound of the camera distance range.
+    *  Gets the value to use at the lower bound of the camera distance range.
     
 
     */
@@ -68,8 +66,7 @@ public final class NearFarScalar implements IEquatable<NearFarScalar>, Immutable
     }
 
     /**
-    *  
-    The upper bound of the camera distance range.
+    *  Gets the upper bound of the camera distance range.
     
 
     */
@@ -78,8 +75,7 @@ public final class NearFarScalar implements IEquatable<NearFarScalar>, Immutable
     }
 
     /**
-    *  
-    The value to use at the upper bound of the camera distance range.
+    *  Gets the value to use at the upper bound of the camera distance range.
     
 
     */

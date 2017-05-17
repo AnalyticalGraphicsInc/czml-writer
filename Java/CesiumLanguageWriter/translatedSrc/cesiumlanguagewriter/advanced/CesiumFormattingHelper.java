@@ -309,6 +309,9 @@ public final class CesiumFormattingHelper {
         case TOP: {
             return "TOP";
         }
+        case BASELINE: {
+            return "BASELINE";
+        }
         default: {
             throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
         }

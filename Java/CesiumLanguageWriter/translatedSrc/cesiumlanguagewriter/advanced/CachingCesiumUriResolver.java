@@ -80,7 +80,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
 
     /**
     *  
-    Add a URI to the cache for future calls to ResolveUri.
+    Add a URI to the cache for future calls to {@link #resolveUri}.
     
     
     

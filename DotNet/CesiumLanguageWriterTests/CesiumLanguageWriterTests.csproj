@@ -52,6 +52,7 @@
     <Compile Include="TestBoundingRectangle.cs" />
     <Compile Include="TestCartesian3.cs" />
     <Compile Include="TestCartographic.cs" />
+    <Compile Include="TestCesiumFormattingHelper.cs" />
     <Compile Include="TestCesiumInterpolatablePropertyWriter.cs" />
     <Compile Include="TestCustomPropertiesCesiumWriter.cs" />
     <Compile Include="TestDoubleCesiumWriter.cs" />
