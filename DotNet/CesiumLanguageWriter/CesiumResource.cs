@@ -64,7 +64,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Create a CZML resource from an stream containing image data.  The image data will 
+        /// Create a CZML resource from a stream containing image data.  The image data will 
         /// be embedded in the CZML document using a data URI.
         /// </summary>
         /// <param name="stream">The stream containing image data to write.</param>
@@ -77,7 +77,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Create a CZML resource from an stream.  The data will 
+        /// Create a CZML resource from a stream.  The data will 
         /// be embedded in the CZML document using a data URI.
         /// </summary>
         /// <param name="stream">The stream containing data to write.</param>
