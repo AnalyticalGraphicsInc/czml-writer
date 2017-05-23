@@ -14,7 +14,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestFromImage()
         {
-            var image = Image.FromStream(EmbeddedData.Read("satellite.png"));
+            var image = new Bitmap(EmbeddedData.Read("satellite.png"));
             var resource = CesiumResource.FromImage(image, CesiumImageFormat.Png);
 
             Assert.IsNotNull(resource);
@@ -26,7 +26,7 @@ namespace CesiumLanguageWriterTests
         [TestCaseSource("ImageFormatValues")]
         public void TestFromImageFormats(CesiumImageFormat format)
         {
-            var image = Image.FromStream(EmbeddedData.Read("satellite.png"));
+            var image = new Bitmap(EmbeddedData.Read("satellite.png"));
 
             var resource = CesiumResource.FromImage(image, format);
 
