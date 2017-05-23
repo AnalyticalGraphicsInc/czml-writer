@@ -16,6 +16,7 @@ import agi.foundation.compatibility.StringHelper;
 
 
  */
+@SuppressWarnings("unused")
 public final class BoundingRectangle implements IEquatable<BoundingRectangle>, ImmutableValueType {
     /**
     * Initializes a new instance.

@@ -39,6 +39,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class PacketCesiumWriter extends CesiumElementWriter {
     /**
     *  

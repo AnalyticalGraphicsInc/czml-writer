@@ -16,6 +16,7 @@ import java.net.URI;
  
 
  */
+@SuppressWarnings("unused")
 public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     /**
     *  

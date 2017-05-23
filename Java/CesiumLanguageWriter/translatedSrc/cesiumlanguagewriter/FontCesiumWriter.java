@@ -13,6 +13,7 @@ import cesiumlanguagewriter.Reference;
  
 
  */
+@SuppressWarnings("unused")
 public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
     /**
     *  

@@ -10,6 +10,7 @@ import agi.foundation.compatibility.annotations.CS2JWarning;
  
 
  */
+@SuppressWarnings("unused")
 public final class TimeConstants {
     private TimeConstants() {}
 

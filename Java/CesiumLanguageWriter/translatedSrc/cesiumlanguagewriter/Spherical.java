@@ -15,6 +15,7 @@ import agi.foundation.compatibility.StringHelper;
  
 
  */
+@SuppressWarnings("unused")
 public final class Spherical implements IEquatable<Spherical>, ImmutableValueType {
     /**
     * Initializes a new instance.

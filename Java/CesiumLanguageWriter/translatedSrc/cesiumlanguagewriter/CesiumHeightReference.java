@@ -10,6 +10,7 @@ import agi.foundation.compatibility.Enumeration;
  
 
  */
+@SuppressWarnings("unused")
 public enum CesiumHeightReference implements Enumeration {
     /**
     *  

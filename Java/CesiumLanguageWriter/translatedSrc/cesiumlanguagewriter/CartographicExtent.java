@@ -13,6 +13,7 @@ import agi.foundation.compatibility.PrimitiveHelper;
  
 
  */
+@SuppressWarnings("unused")
 public class CartographicExtent implements IEquatable<CartographicExtent> {
     /**
     *  

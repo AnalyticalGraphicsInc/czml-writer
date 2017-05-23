@@ -52,4 +52,9 @@ public class ArgumentNullException extends ArgumentException {
     public ArgumentNullException(String paramName, String message) {
         super(message, paramName);
     }
+
+    public static <T> void assertNonNull(T value, String paramName) {
+        if (value == null)
+            throw new ArgumentNullException(paramName);
+    }
 }

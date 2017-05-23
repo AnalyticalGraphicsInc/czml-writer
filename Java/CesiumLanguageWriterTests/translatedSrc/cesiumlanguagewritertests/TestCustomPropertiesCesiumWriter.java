@@ -18,6 +18,7 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
+@SuppressWarnings("unused")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<CustomPropertiesCesiumWriter> {
     @Before

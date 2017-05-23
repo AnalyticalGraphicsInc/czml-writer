@@ -8,6 +8,8 @@ import java.lang.reflect.TypeVariable;
 import java.util.Arrays;
 import java.util.EnumSet;
 
+import javax.annotation.Nonnull;
+
 import agi.foundation.TypeLiteral;
 
 /**
@@ -21,8 +23,11 @@ class CachingMethodFinder {
         CHECK_PARAMETER_TYPES
     }
 
+    @Nonnull
     private static final EnumSet<SearchCriteria> delegateObjectSearchCriteria;
+    @Nonnull
     private static final EnumSet<SearchCriteria> instanceMethodSearchCriteria;
+    @Nonnull
     private static final EnumSet<SearchCriteria> staticMethodSearchCriteria;
 
     static {
@@ -35,7 +40,7 @@ class CachingMethodFinder {
     private final Object targetObject;
     private final Class<?> targetClass;
     private final String methodName;
-    private final Class<?>[] methodParams;
+    private final Class<?>[] methodParameterClasses;
     private Method cachedMethod;
 
     /**
@@ -47,29 +52,29 @@ class CachingMethodFinder {
         this.targetObject = null;
         this.targetClass = null;
         this.methodName = null;
-        this.methodParams = null;
+        this.methodParameterClasses = null;
     }
 
     /**
      * Find a static method on a target class.
      */
-    public CachingMethodFinder(Class<?> targetClass, String methodName, Class<?>[] methodParams) {
+    public CachingMethodFinder(@Nonnull Class<?> targetClass, @Nonnull String methodName, @Nonnull Class<?>[] methodParameterClasses) {
         this.delegateObject = null;
         this.targetObject = null;
         this.targetClass = targetClass;
         this.methodName = methodName;
-        this.methodParams = methodParams;
+        this.methodParameterClasses = methodParameterClasses;
     }
 
     /**
      * Find an instance method on a target object.
      */
-    public CachingMethodFinder(Object targetObject, String methodName, Class<?>[] methodParams) {
+    public CachingMethodFinder(@Nonnull Object targetObject, @Nonnull String methodName, @Nonnull Class<?>[] methodParameterClasses) {
         this.delegateObject = null;
         this.targetObject = targetObject;
         this.targetClass = null;
         this.methodName = methodName;
-        this.methodParams = methodParams;
+        this.methodParameterClasses = methodParameterClasses;
     }
 
     /**
@@ -141,10 +146,10 @@ class CachingMethodFinder {
             }
         }
 
-        if ((numberOfParameters - index) != methodParams.length)
+        if ((numberOfParameters - index) != methodParameterClasses.length)
             return false;
 
-        for (int i = index, j = 0; i < parameterTypes.length && j < methodParams.length; ++i, ++j) {
+        for (int i = index, j = 0; i < parameterTypes.length && j < methodParameterClasses.length; ++i, ++j) {
             Type type = parameterTypes[i];
             if (type instanceof TypeVariable<?>)
                 // don't compare type variables, i.e. parameters of type T.
@@ -155,7 +160,7 @@ class CachingMethodFinder {
             if (type instanceof ParameterizedType)
                 type = ((ParameterizedType) type).getRawType();
 
-            if (!type.equals(methodParams[j]))
+            if (!type.equals(methodParameterClasses[j]))
                 return false;
         }
 
@@ -199,7 +204,7 @@ class CachingMethodFinder {
 
         if (methodName != null) {
             // refers to a named method, check method name and parameters
-            return methodName.equals(that.methodName) && Arrays.equals(methodParams, that.methodParams);
+            return methodName.equals(that.methodName) && Arrays.equals(methodParameterClasses, that.methodParameterClasses);
         }
 
         // refers to an anonymous function expression.
@@ -214,7 +219,7 @@ class CachingMethodFinder {
         // e.g.
 
         // @formatter:off
-        
+
         // private Action CreateActionDelegate()
         // {
         //    return () => { };
@@ -253,7 +258,7 @@ class CachingMethodFinder {
 
         result = 31 * result + (targetClass == null ? 0 : targetClass.hashCode());
         result = 31 * result + (targetObject == null ? 0 : targetObject.hashCode());
-        result = 31 * result + Arrays.hashCode(methodParams);
+        result = 31 * result + Arrays.hashCode(methodParameterClasses);
 
         return result;
     }

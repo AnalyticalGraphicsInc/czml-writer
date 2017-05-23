@@ -13,6 +13,7 @@ import java.util.List;
 
  * @param <TValue> The type of the value.
  */
+@SuppressWarnings("unused")
 public interface ICesiumInterpolatableValuePropertyWriter<TValue> extends ICesiumValuePropertyWriter<TValue>, ICesiumInterpolationInformationWriter {
     /**
     *  

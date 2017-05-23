@@ -22,6 +22,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumWriter> {
     /**
     *  

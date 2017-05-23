@@ -11,6 +11,7 @@ import cesiumlanguagewriter.*;
  
 
  */
+@SuppressWarnings("unused")
 public interface ICesiumIntervalListWriter extends ICesiumElementWriter {
     /**
     *  

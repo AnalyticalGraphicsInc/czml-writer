@@ -21,6 +21,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     /**
     *  

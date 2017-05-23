@@ -23,6 +23,7 @@ import java.io.InputStream;
  
 
  */
+@SuppressWarnings("unused")
 public final class CesiumFormattingHelper {
     private CesiumFormattingHelper() {}
 

@@ -19,6 +19,7 @@ import agi.foundation.compatibility.StringHelper;
  The corresponding 3-dimensional coordinates are {@link Cartesian} coordinates.
  
  */
+@SuppressWarnings("unused")
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class Rectangular implements IEquatable<Rectangular>, ImmutableValueType {
     /**

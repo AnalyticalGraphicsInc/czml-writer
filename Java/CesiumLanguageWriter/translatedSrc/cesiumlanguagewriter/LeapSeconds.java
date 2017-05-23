@@ -18,6 +18,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class LeapSeconds {
     private static LeapSeconds s_leapSeconds = new LeapSeconds();
 

@@ -8,6 +8,7 @@ import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -19,6 +20,7 @@ import agi.foundation.compatibility.PrimitiveHelper;
  * @param <T> The coordinate type used to describe the motion.
  * @param <TDerivative> The derivative type used to describe the motion.
  */
+@SuppressWarnings("unused")
 public final class Motion2<T, TDerivative> implements IEquatable<Motion2<T, TDerivative>>, ImmutableValueType {
     /**
     * Initializes a new instance.

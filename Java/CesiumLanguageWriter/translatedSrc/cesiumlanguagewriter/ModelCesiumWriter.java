@@ -25,6 +25,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     /**
     *  

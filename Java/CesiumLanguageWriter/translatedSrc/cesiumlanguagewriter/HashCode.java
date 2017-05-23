@@ -9,6 +9,7 @@ import agi.foundation.compatibility.*;
  
 
  */
+@SuppressWarnings("unused")
 public final class HashCode {
     private HashCode() {}
 

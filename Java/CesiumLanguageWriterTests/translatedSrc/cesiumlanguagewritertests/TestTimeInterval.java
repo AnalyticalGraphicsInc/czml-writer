@@ -19,6 +19,7 @@ import org.junit.Test;
  
 
  */
+@SuppressWarnings("unused")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestTimeInterval {
     /**

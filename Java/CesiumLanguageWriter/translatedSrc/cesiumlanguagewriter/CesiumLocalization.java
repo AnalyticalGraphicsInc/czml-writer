@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 
  * @deprecated Internal use only.
  */
+@SuppressWarnings("unused")
 @Deprecated
 @Internal
 @CS2JWarning( {

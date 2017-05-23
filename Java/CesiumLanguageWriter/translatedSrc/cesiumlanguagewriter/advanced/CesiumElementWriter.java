@@ -11,6 +11,7 @@ import cesiumlanguagewriter.*;
  
 
  */
+@SuppressWarnings("unused")
 public abstract class CesiumElementWriter implements ICesiumElementWriter {
     private CesiumOutputStream m_output;
 

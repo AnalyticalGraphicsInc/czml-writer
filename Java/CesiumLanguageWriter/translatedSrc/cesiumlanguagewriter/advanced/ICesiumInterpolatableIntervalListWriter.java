@@ -11,6 +11,7 @@ import cesiumlanguagewriter.*;
  
 
  */
+@SuppressWarnings("unused")
 public interface ICesiumInterpolatableIntervalListWriter<TValue> extends ICesiumIntervalListWriter {
     /**
     *  

@@ -20,6 +20,7 @@ import agi.foundation.compatibility.StringHelper;
  
 
  */
+@SuppressWarnings("unused")
 public final class NearFarScalar implements IEquatable<NearFarScalar>, ImmutableValueType {
     /**
     * Initializes a new instance.

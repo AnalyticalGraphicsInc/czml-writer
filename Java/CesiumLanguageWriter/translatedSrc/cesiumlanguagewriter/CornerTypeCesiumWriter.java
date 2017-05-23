@@ -14,6 +14,7 @@ import cesiumlanguagewriter.Reference;
  
 
  */
+@SuppressWarnings("unused")
 public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiumWriter> {
     /**
     *  

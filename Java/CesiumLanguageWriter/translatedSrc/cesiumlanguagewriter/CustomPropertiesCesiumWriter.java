@@ -11,6 +11,7 @@ import cesiumlanguagewriter.CustomPropertyCesiumWriter;
  
 
  */
+@SuppressWarnings("unused")
 public class CustomPropertiesCesiumWriter extends CesiumPropertyWriter<CustomPropertiesCesiumWriter> {
     /**
     *  

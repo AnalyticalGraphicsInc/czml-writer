@@ -12,6 +12,7 @@ import cesiumlanguagewriter.*;
 
  * @param <TFrom> The type of property writer class to adapt.
  */
+@SuppressWarnings("unused")
 public interface ICesiumWriterAdaptor<TFrom> {
     /**
     *  Gets the parent being adapted.

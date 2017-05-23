@@ -24,6 +24,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class Reference implements IEquatable<Reference> {
     /**
     *  

@@ -11,6 +11,7 @@ import agi.foundation.compatibility.StringHelper;
 /**
  * @deprecated Internal use only.
  */
+@SuppressWarnings("unused")
 @Deprecated
 @Internal
 public final class StringFormatting {

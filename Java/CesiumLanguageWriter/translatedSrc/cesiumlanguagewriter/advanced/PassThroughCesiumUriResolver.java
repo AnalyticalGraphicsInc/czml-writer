@@ -10,6 +10,7 @@ import cesiumlanguagewriter.*;
  
 
  */
+@SuppressWarnings("unused")
 public class PassThroughCesiumUriResolver implements ICesiumUriResolver {
     private static PassThroughCesiumUriResolver s_instance = new PassThroughCesiumUriResolver();
 

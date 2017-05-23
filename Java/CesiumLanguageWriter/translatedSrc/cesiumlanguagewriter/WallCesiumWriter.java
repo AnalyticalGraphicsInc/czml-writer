@@ -22,6 +22,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     /**
     *  

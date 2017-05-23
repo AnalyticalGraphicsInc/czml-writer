@@ -13,6 +13,7 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
+@SuppressWarnings("unused")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends CesiumInterpolatablePropertyWriter<TDerived>> extends TestCesiumPropertyWriter<TDerived> {
     @Test

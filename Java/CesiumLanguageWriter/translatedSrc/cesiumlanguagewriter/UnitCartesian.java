@@ -20,6 +20,7 @@ import cesiumlanguagewriter.Cartesian;
  * <p>
  
  */
+@SuppressWarnings("unused")
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class UnitCartesian implements IEquatable<UnitCartesian>, ImmutableValueType {
     /**

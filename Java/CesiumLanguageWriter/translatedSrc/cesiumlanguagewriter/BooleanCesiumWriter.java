@@ -13,6 +13,7 @@ import cesiumlanguagewriter.Reference;
  
 
  */
+@SuppressWarnings("unused")
 public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWriter> {
     /**
     *  

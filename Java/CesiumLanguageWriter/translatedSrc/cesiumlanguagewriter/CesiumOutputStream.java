@@ -18,6 +18,7 @@ import java.net.URI;
  
 
  */
+@SuppressWarnings("unused")
 public class CesiumOutputStream {
     private Writer m_writer;
     private boolean m_firstInContainer = true;

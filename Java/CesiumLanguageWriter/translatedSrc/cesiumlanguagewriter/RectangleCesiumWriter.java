@@ -21,6 +21,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumWriter> {
     /**
     *  

@@ -20,6 +20,7 @@ import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
+@SuppressWarnings("unused")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestGregorianDateParsing {
     private Locale m_cultureInfo;

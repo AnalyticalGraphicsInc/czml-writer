@@ -20,6 +20,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCesiumWriter> {
     /**
     *  

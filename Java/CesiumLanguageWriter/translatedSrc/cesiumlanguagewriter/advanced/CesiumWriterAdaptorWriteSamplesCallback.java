@@ -22,6 +22,7 @@ import java.util.List;
  * @param <TWrappedWriter> The type of the wrapped writer.
  * @param <TValue> The type of the value to write.
  */
+@SuppressWarnings("unused")
 public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> extends Delegate {
     /**
     * Creates a new instance of this delegate.
@@ -34,20 +35,21 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TV
     * Initializes a delegate that will invoke an instance method on a class instance.
     * @param targetObject The class instance on which the delegate will invoke the method.
     * @param methodName The name of the instance method.
-    * @param methodParams The type of the parameters of the instance method.
+    * @param methodParameterClasses The type of the parameters of the instance method.
     */
-    public CesiumWriterAdaptorWriteSamplesCallback(Object targetObject, String methodName, Class<?>[] methodParams) {
-        super(targetObject, methodName, methodParams);
+    public CesiumWriterAdaptorWriteSamplesCallback(@javax.annotation.Nonnull Object targetObject, @javax.annotation.Nonnull String methodName,
+            @javax.annotation.Nonnull Class<?>... methodParameterClasses) {
+        super(targetObject, methodName, methodParameterClasses);
     }
 
     /**
     * Initializes a delegate that will invoke a static method on a class.
     * @param targetClass The class that defines the method.
     * @param methodName The name of the static method.
-    * @param methodParams The type of the parameters of the static method.
+    * @param methodParameterClasses The type of the parameters of the static method.
     */
-    public CesiumWriterAdaptorWriteSamplesCallback(Class<?> targetClass, String methodName, Class<?>[] methodParams) {
-        super(targetClass, methodName, methodParams);
+    public CesiumWriterAdaptorWriteSamplesCallback(Class<?> targetClass, String methodName, Class<?>[] methodParameterClasses) {
+        super(targetClass, methodName, methodParameterClasses);
     }
 
     /**
@@ -87,7 +89,7 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TV
     * @param f The function which will be invoked.
     * @return A new delegate that will invoke the given function.
     */
-    public static <TWrappedWriter, TValue> CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> of(Function<TWrappedWriter, TValue> f) {
+    public static <TWrappedWriter, TValue> CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> of(@javax.annotation.Nonnull Function<TWrappedWriter, TValue> f) {
         return new FunctionImpl<TWrappedWriter, TValue>(f);
     }
 
@@ -120,9 +122,10 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TV
     }
 
     private static final class FunctionImpl<TWrappedWriter, TValue> extends CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> {
+        @javax.annotation.Nonnull
         private final Function<TWrappedWriter, TValue> f;
 
-        public FunctionImpl(Function<TWrappedWriter, TValue> f) {
+        public FunctionImpl(@javax.annotation.Nonnull Function<TWrappedWriter, TValue> f) {
             this.f = f;
         }
 

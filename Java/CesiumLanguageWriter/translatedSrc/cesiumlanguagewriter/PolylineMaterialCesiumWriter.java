@@ -20,6 +20,7 @@ import cesiumlanguagewriter.StripeMaterialCesiumWriter;
  
 
  */
+@SuppressWarnings("unused")
 public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineMaterialCesiumWriter> {
     /**
     *  

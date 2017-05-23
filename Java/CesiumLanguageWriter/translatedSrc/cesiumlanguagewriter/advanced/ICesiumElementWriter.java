@@ -11,6 +11,7 @@ import cesiumlanguagewriter.*;
  
 
  */
+@SuppressWarnings("unused")
 public interface ICesiumElementWriter extends IDisposable {
     /**
     *  Gets {@code true} if the writer is open; otherwise, {@code false}.

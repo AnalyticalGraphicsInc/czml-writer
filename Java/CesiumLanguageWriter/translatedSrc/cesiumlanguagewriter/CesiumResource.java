@@ -13,6 +13,7 @@ import java.net.URI;
  
 
  */
+@SuppressWarnings("unused")
 public class CesiumResource {
     private String m_uri;
     private CesiumResourceBehavior m_behavior = CesiumResourceBehavior.getDefault();

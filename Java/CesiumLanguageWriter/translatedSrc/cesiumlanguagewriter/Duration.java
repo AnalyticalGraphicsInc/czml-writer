@@ -20,6 +20,7 @@ import agi.foundation.compatibility.StringHelper;
  
 
  */
+@SuppressWarnings("unused")
 public final class Duration implements Comparable<Duration>, IEquatable<Duration>, ImmutableValueType {
     /**
     * Initializes a new instance.

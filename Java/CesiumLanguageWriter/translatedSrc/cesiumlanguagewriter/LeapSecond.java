@@ -25,6 +25,7 @@ import agi.foundation.compatibility.StringHelper;
  be applied at the end of any month.
  
  */
+@SuppressWarnings("unused")
 public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueType {
     /**
     * Initializes a new instance.

@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import javax.annotation.Nonnull;
+
 /**
  * Represents a method that has no parameters and returns a value of the type specified by
  * the {@code TResult} parameter.
@@ -22,11 +24,11 @@ public abstract class Func1<TResult> extends Delegate {
      *            The class instance on which the delegate will invoke the method.
      * @param methodName
      *            The name of the instance method.
-     * @param methodParams
+     * @param methodParameterClasses
      *            The type of the parameters of the instance method.
      */
-    public Func1(Object targetObject, String methodName, Class<?>[] methodParams) {
-        super(targetObject, methodName, methodParams);
+    public Func1(@Nonnull Object targetObject, @Nonnull String methodName, @Nonnull Class<?>... methodParameterClasses) {
+        super(targetObject, methodName, methodParameterClasses);
     }
 
     /**
@@ -36,11 +38,11 @@ public abstract class Func1<TResult> extends Delegate {
      *            The class that defines the method.
      * @param methodName
      *            The name of the static method.
-     * @param methodParams
+     * @param methodParameterClasses
      *            The type of the parameters of the static method.
      */
-    public Func1(Class<?> targetClass, String methodName, Class<?>[] methodParams) {
-        super(targetClass, methodName, methodParams);
+    public Func1(@Nonnull Class<?> targetClass, @Nonnull String methodName, @Nonnull Class<?>... methodParameterClasses) {
+        super(targetClass, methodName, methodParameterClasses);
     }
 
     /**
@@ -70,7 +72,7 @@ public abstract class Func1<TResult> extends Delegate {
      *            The function which will be invoked.
      * @return A new delegate that will invoke the given function.
      */
-    public static <TResult> Func1<TResult> of(Function<TResult> f) {
+    public static <TResult> Func1<TResult> of(@Nonnull Function<TResult> f) {
         return new FunctionImpl<TResult>(f);
     }
 
@@ -88,9 +90,10 @@ public abstract class Func1<TResult> extends Delegate {
     }
 
     private static final class FunctionImpl<TResult> extends Func1<TResult> {
+        @Nonnull
         private final Function<TResult> f;
 
-        public FunctionImpl(Function<TResult> f) {
+        public FunctionImpl(@Nonnull Function<TResult> f) {
             this.f = f;
         }
 

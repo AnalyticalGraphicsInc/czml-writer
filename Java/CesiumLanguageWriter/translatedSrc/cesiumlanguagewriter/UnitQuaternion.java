@@ -22,6 +22,7 @@ import agi.foundation.compatibility.StringHelper;
  
  * @see Matrix3By3
  */
+@SuppressWarnings("unused")
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class UnitQuaternion implements IEquatable<UnitQuaternion>, ImmutableValueType {
     /**

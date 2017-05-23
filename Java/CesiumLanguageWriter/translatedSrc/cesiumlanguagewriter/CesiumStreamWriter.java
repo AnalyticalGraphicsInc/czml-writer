@@ -12,6 +12,7 @@ import cesiumlanguagewriter.advanced.*;
  
 
  */
+@SuppressWarnings("unused")
 public class CesiumStreamWriter {
     private Lazy<PacketCesiumWriter> m_packetWriter = new Lazy<PacketCesiumWriter>(new Func1<PacketCesiumWriter>() {
         public PacketCesiumWriter invoke() {

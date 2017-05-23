@@ -13,6 +13,7 @@ import cesiumlanguagewriter.*;
 
  * @param <TDerived> The type of the class derived from this one.
  */
+@SuppressWarnings("unused")
 public abstract class CesiumInterpolatablePropertyWriter<TDerived extends CesiumInterpolatablePropertyWriter<TDerived>> extends CesiumPropertyWriter<TDerived> implements
         ICesiumInterpolationInformationWriter {
     /**

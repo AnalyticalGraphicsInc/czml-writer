@@ -11,6 +11,7 @@ import cesiumlanguagewriter.NodeTransformationCesiumWriter;
  
 
  */
+@SuppressWarnings("unused")
 public class NodeTransformationsCesiumWriter extends CesiumPropertyWriter<NodeTransformationsCesiumWriter> {
     /**
     *  

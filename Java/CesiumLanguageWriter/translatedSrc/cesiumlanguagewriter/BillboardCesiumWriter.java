@@ -29,6 +29,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumWriter> {
     /**
     *  

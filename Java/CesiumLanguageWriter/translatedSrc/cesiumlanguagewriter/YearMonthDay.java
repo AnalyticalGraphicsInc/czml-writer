@@ -21,6 +21,7 @@ import org.joda.time.DateTime;
  
 
  */
+@SuppressWarnings("unused")
 public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<YearMonthDay>, ImmutableValueType {
     /**
     * Initializes a new instance.

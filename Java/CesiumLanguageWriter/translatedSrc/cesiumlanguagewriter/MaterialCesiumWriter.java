@@ -16,6 +16,7 @@ import cesiumlanguagewriter.StripeMaterialCesiumWriter;
  
 
  */
+@SuppressWarnings("unused")
 public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWriter> {
     /**
     *  

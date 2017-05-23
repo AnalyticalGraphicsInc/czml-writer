@@ -20,6 +20,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     /**
     *  

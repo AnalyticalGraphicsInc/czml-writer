@@ -17,6 +17,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTransformationCesiumWriter> {
     /**
     *  

@@ -14,6 +14,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public final class CesiumWritingHelper {
     private CesiumWritingHelper() {}
 

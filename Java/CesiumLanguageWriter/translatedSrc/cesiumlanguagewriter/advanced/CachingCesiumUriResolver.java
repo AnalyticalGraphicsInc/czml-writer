@@ -17,6 +17,7 @@ import java.util.Map;
  
 
  */
+@SuppressWarnings("unused")
 public class CachingCesiumUriResolver implements ICesiumUriResolver {
     private static class CacheItem {
         public final String SourceUri;
@@ -125,8 +126,9 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
         return s_threadLocalInstance.get();
     }
 
-    private static class ThreadLocal_0 extends ThreadLocal<CachingCesiumUriResolver> {
-        protected final CachingCesiumUriResolver initialValue() {
+    private static final class ThreadLocal_0 extends ThreadLocal<CachingCesiumUriResolver> {
+        @Override
+        protected CachingCesiumUriResolver initialValue() {
             return (CachingCesiumUriResolver) null;
         }
     }

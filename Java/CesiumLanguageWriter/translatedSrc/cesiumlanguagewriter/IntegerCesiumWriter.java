@@ -14,6 +14,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<IntegerCesiumWriter> {
     /**
     *  

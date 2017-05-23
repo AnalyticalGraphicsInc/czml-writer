@@ -8,6 +8,7 @@ import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -17,6 +18,7 @@ import agi.foundation.compatibility.PrimitiveHelper;
 
  * @param <T> The coordinate type used to describe the motion.
  */
+@SuppressWarnings("unused")
 public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -45,7 +47,7 @@ public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueT
     Thrown when the {@code motion} does not contain any values.
     
     */
-    public Motion1(T... motion) {
+    public Motion1(@Nonnull T... motion) {
         if (motion == null) {
             throw new ArgumentNullException("motion");
         }

@@ -35,6 +35,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWriter<CustomPropertyCesiumWriter> {
     /**
     *  

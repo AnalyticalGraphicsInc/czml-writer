@@ -20,6 +20,7 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
+@SuppressWarnings("unused")
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestGenerateValidationDocument {

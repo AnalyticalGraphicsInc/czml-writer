@@ -13,6 +13,7 @@ import cesiumlanguagewriter.advanced.*;
  
 
  */
+@SuppressWarnings("unused")
 public class CustomCesiumWriter extends CesiumPropertyWriter<CustomCesiumWriter> {
     /**
     *  

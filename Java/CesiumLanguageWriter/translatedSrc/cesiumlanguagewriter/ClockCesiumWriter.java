@@ -10,6 +10,7 @@ import cesiumlanguagewriter.advanced.*;
  
 
  */
+@SuppressWarnings("unused")
 public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
     /**
     *  

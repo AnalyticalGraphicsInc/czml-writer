@@ -12,6 +12,7 @@ import cesiumlanguagewriter.advanced.*;
  
 
  */
+@SuppressWarnings("unused")
 public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListCesiumWriter> {
     /**
     *  

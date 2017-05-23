@@ -29,6 +29,7 @@ import org.joda.time.DateTime;
  UTC dates that are on opposite sides of a leap second will correctly take the leap second into account.
  
  */
+@SuppressWarnings("unused")
 public final class JulianDate implements Comparable<JulianDate>, IEquatable<JulianDate>, ImmutableValueType {
     /**
     * Initializes a new instance.

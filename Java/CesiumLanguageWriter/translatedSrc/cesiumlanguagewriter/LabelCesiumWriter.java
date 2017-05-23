@@ -28,6 +28,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     /**
     *  

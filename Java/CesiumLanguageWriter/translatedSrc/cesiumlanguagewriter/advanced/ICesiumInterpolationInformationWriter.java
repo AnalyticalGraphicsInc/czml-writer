@@ -10,6 +10,7 @@ import cesiumlanguagewriter.*;
  
 
  */
+@SuppressWarnings("unused")
 public interface ICesiumInterpolationInformationWriter {
     /**
     *  

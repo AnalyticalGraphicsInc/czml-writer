@@ -15,6 +15,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<RotationCesiumWriter> {
     /**
     *  

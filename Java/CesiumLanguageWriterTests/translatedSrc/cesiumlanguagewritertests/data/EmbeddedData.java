@@ -6,6 +6,7 @@ import agi.foundation.compatibility.Assembly;
 import cesiumlanguagewritertests.*;
 import java.io.InputStream;
 
+@SuppressWarnings("unused")
 public final class EmbeddedData {
     private EmbeddedData() {}
 

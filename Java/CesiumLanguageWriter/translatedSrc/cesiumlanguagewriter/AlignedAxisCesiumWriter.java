@@ -16,6 +16,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<AlignedAxisCesiumWriter> {
     /**
     *  

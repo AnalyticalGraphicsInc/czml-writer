@@ -20,6 +20,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialCesiumWriter> {
     /**
     *  

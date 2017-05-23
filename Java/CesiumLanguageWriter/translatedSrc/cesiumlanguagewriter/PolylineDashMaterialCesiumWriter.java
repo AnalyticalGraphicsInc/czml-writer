@@ -18,6 +18,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<PolylineDashMaterialCesiumWriter> {
     /**
     *  

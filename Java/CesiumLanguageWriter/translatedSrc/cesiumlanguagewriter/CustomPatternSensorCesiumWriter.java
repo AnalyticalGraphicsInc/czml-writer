@@ -21,6 +21,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<CustomPatternSensorCesiumWriter> {
     /**
     *  

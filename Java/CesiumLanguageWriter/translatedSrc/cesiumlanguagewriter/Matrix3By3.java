@@ -17,6 +17,7 @@ import agi.foundation.compatibility.PrimitiveHelper;
 
  * @see UnitQuaternion
  */
+@SuppressWarnings("unused")
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
     /**

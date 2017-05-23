@@ -15,6 +15,7 @@ import java.util.List;
  
 
  */
+@SuppressWarnings("unused")
 public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWriter<NearFarScalarCesiumWriter> {
     /**
     *  

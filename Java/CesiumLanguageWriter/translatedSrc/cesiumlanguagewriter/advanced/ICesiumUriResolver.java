@@ -12,6 +12,7 @@ import cesiumlanguagewriter.*;
  
 
  */
+@SuppressWarnings("unused")
 public interface ICesiumUriResolver {
     /**
     *  

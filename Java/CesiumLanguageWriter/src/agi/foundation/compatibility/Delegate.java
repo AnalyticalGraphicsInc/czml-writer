@@ -4,6 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import javax.annotation.Nonnull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 /**
@@ -87,11 +89,13 @@ public abstract class Delegate {
     /**
      * Finder to locate the method we are a delegate to.
      */
+    @Nonnull
     private final CachingMethodFinder methodFinder;
 
     /**
      * Finder to locate our own invoke method for use by dynamicInvoke.
      */
+    @Nonnull
     private final CachingMethodFinder invokeFinder = new CachingMethodFinder(this);
 
     /**
@@ -111,11 +115,11 @@ public abstract class Delegate {
      *            The class that defines the method.
      * @param methodName
      *            The name of the static method that the delegate represents.
-     * @param methodParams
+     * @param methodParameterClasses
      *            The classes of all method parameters.
      */
-    protected Delegate(Class<?> targetClass, String methodName, Class<?>[] methodParams) {
-        this.methodFinder = new CachingMethodFinder(targetClass, methodName, methodParams);
+    protected Delegate(@Nonnull Class<?> targetClass, @Nonnull String methodName, @Nonnull Class<?>[] methodParameterClasses) {
+        this.methodFinder = new CachingMethodFinder(targetClass, methodName, methodParameterClasses);
     }
 
     /**
@@ -128,11 +132,11 @@ public abstract class Delegate {
      *            The class instance on which the delegate will invoke the method.
      * @param methodName
      *            The name of the instance method that the delegate represents.
-     * @param methodParams
+     * @param methodParameterClasses
      *            The classes of all method parameters.
      */
-    protected Delegate(Object targetObject, String methodName, Class<?>[] methodParams) {
-        this.methodFinder = new CachingMethodFinder(targetObject, methodName, methodParams);
+    protected Delegate(@Nonnull Object targetObject, @Nonnull String methodName, @Nonnull Class<?>[] methodParameterClasses) {
+        this.methodFinder = new CachingMethodFinder(targetObject, methodName, methodParameterClasses);
     }
 
     /**

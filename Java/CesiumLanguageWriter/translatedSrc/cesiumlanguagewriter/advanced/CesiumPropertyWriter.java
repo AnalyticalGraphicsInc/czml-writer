@@ -16,6 +16,7 @@ import cesiumlanguagewriter.*;
 
  * @param <TDerived> The type of the class derived from this one.
  */
+@SuppressWarnings("unused")
 public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter<TDerived>> extends CesiumElementWriter implements ICesiumPropertyWriter {
     private String m_propertyName;
     private Lazy<CesiumIntervalListWriter<TDerived>> m_multipleIntervals;

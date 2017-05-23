@@ -19,6 +19,7 @@ import agi.foundation.compatibility.StringHelper;
  The corresponding 2-dimensional coordinates are {@link Rectangular} coordinates.
  
  */
+@SuppressWarnings("unused")
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
     /**

@@ -12,6 +12,7 @@ import cesiumlanguagewriter.advanced.*;
 
  * @param <TPropertyWriter> The type used to represent the value of this property for a single interval.
  */
+@SuppressWarnings("unused")
 public class CesiumIntervalListWriter<TPropertyWriter extends CesiumPropertyWriter<TPropertyWriter>> extends CesiumElementWriter implements ICesiumIntervalListWriter {
     private TPropertyWriter m_propertyWriter;
 

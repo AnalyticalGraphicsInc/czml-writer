@@ -1,6 +1,7 @@
 package agi.foundation.compatibility;
 
 import java.io.IOException;
+import javax.annotation.Nonnull;
 
 public final class ConvertHelper {
     private ConvertHelper() {}
@@ -259,9 +260,8 @@ public final class ConvertHelper {
      *            An array of 8-bit unsigned integers.
      * @return The string representation, in base 64, of the contents of inArray.
      */
-    public static String toBase64String(byte[] inArray) {
-        if (inArray == null)
-            throw new ArgumentNullException("inArray");
+    public static String toBase64String(@Nonnull byte[] inArray) {
+        ArgumentNullException.assertNonNull(inArray, "inArray");
 
         return toBase64String(inArray, 0, inArray.length);
     }
@@ -283,9 +283,8 @@ public final class ConvertHelper {
      * @return The string representation in base 64 of length elements of inArray,
      *         starting at position offset.
      */
-    public static String toBase64String(byte[] inArray, int offset, int length) {
-        if (inArray == null)
-            throw new ArgumentNullException("inArray");
+    public static String toBase64String(@Nonnull byte[] inArray, int offset, int length) {
+        ArgumentNullException.assertNonNull(inArray, "inArray");
         if (length < 0)
             throw new ArgumentOutOfRangeException("length");
         if (offset < 0)

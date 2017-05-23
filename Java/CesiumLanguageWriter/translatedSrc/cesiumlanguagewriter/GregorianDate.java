@@ -37,6 +37,7 @@ import org.joda.time.DateTimeZone;
  
 
  */
+@SuppressWarnings("unused")
 public final class GregorianDate implements Comparable<GregorianDate>, IEquatable<GregorianDate>, ImmutableValueType {
     /**
     * Initializes a new instance.
