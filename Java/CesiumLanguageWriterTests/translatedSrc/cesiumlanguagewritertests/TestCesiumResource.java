@@ -8,7 +8,8 @@ import agi.foundation.compatibility.EnumHelper;
 import agi.foundation.compatibility.MemoryStream;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
-import java.awt.image.BufferedImage;
+import cesiumlanguagewritertests.data.*;
+import java.awt.image.RenderedImage;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -19,14 +20,14 @@ import org.junit.Test;
 public class TestCesiumResource {
     @Test
     public final void testFromImage() {
-        BufferedImage image = new BufferedImage(5, 5, BufferedImage.TYPE_INT_ARGB);
+        RenderedImage image = Image.fromStream(EmbeddedData.read("satellite.png"));
         cesiumlanguagewriter.CesiumResource resource = CesiumResource.fromImage(image, CesiumImageFormat.PNG);
         Assert.assertNotNull(resource);
         AssertHelper.assertStringStartsWith("data:image/png;base64,", resource.getUri());
     }
 
     public final void testFromImageFormats(CesiumImageFormat format) {
-        BufferedImage image = new BufferedImage(5, 5, BufferedImage.TYPE_INT_ARGB);
+        RenderedImage image = Image.fromStream(EmbeddedData.read("satellite.png"));
         cesiumlanguagewriter.CesiumResource resource = CesiumResource.fromImage(image, format);
         Assert.assertNotNull(resource);
         AssertHelper.assertStringStartsWith("data:", resource.getUri());
