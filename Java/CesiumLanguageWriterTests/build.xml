@@ -25,7 +25,8 @@
 			<src path="translatedSrc" />
 		</javac>
 		<copy todir="${bin.dir}">
-			<fileset dir="src" includes="**/*.properties" />
+			<fileset dir="src" excludes="**/*.java" />
+			<fileset dir="translatedSrc" excludes="**/*.java" />
 		</copy>
 	</target>
 
