@@ -84,7 +84,7 @@ public class CesiumResource {
 
     /**
     *  
-    Create a CZML resource from an stream containing image data.  The image data will 
+    Create a CZML resource from a stream containing image data.  The image data will 
     be embedded in the CZML document using a data URI.
     
     
@@ -102,7 +102,7 @@ public class CesiumResource {
 
     /**
     *  
-    Create a CZML resource from an stream.  The data will 
+    Create a CZML resource from a stream.  The data will 
     be embedded in the CZML document using a data URI.
     
     

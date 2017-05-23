@@ -4,12 +4,13 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArrayHelper;
 import agi.foundation.compatibility.AssertHelper;
+import agi.foundation.compatibility.BitmapHelper;
 import agi.foundation.compatibility.EnumHelper;
 import agi.foundation.compatibility.MemoryStream;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewritertests.data.*;
-import java.awt.image.RenderedImage;
+import java.awt.image.BufferedImage;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -20,14 +21,14 @@ import org.junit.Test;
 public class TestCesiumResource {
     @Test
     public final void testFromImage() {
-        RenderedImage image = Image.fromStream(EmbeddedData.read("satellite.png"));
+        BufferedImage image = BitmapHelper.create(EmbeddedData.read("satellite.png"));
         cesiumlanguagewriter.CesiumResource resource = CesiumResource.fromImage(image, CesiumImageFormat.PNG);
         Assert.assertNotNull(resource);
         AssertHelper.assertStringStartsWith("data:image/png;base64,", resource.getUri());
     }
 
     public final void testFromImageFormats(CesiumImageFormat format) {
-        RenderedImage image = Image.fromStream(EmbeddedData.read("satellite.png"));
+        BufferedImage image = BitmapHelper.create(EmbeddedData.read("satellite.png"));
         cesiumlanguagewriter.CesiumResource resource = CesiumResource.fromImage(image, format);
         Assert.assertNotNull(resource);
         AssertHelper.assertStringStartsWith("data:", resource.getUri());
