@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using CesiumLanguageWriter;
+using CesiumLanguageWriterTests.Data;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
@@ -13,7 +14,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestFromImage()
         {
-            var image = new Bitmap(5, 5);
+            var image = Image.FromStream(EmbeddedData.Read("satellite.png"));
             var resource = CesiumResource.FromImage(image, CesiumImageFormat.Png);
 
             Assert.IsNotNull(resource);
@@ -25,7 +26,8 @@ namespace CesiumLanguageWriterTests
         [TestCaseSource("ImageFormatValues")]
         public void TestFromImageFormats(CesiumImageFormat format)
         {
-            var image = new Bitmap(5, 5);
+            var image = Image.FromStream(EmbeddedData.Read("satellite.png"));
+
             var resource = CesiumResource.FromImage(image, format);
 
             Assert.IsNotNull(resource);
