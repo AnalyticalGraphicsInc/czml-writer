@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter.Advanced
 {
@@ -10,46 +11,55 @@ namespace CesiumLanguageWriter.Advanced
     public abstract class CesiumPropertyWriter<TDerived> : CesiumElementWriter, ICesiumPropertyWriter
         where TDerived : CesiumPropertyWriter<TDerived>
     {
-        private readonly string m_propertyName;
-        private readonly Lazy<CesiumIntervalListWriter<TDerived>> m_multipleIntervals;
-        private readonly Lazy<TDerived> m_interval;
-        private ElementType m_elementType = ElementType.Property;
-
-        private enum ElementType
-        {
-            Property,
-            Interval,
-            PropertyConvertedToInterval
-        }
-
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
         /// <param name="propertyName">The name of the property.</param>
-        protected CesiumPropertyWriter(string propertyName)
+        protected CesiumPropertyWriter([NotNull] string propertyName)
+            : this()
         {
-            m_propertyName = propertyName;
-            m_multipleIntervals = new Lazy<CesiumIntervalListWriter<TDerived>>(CreateIntervalListWriter, false);
-            m_interval = new Lazy<TDerived>(CopyForInterval, false);
-        }
+            if (propertyName == null)
+                throw new ArgumentNullException("propertyName");
 
-        private CesiumIntervalListWriter<TDerived> CreateIntervalListWriter()
-        {
-            return new CesiumIntervalListWriter<TDerived>((TDerived)this);
+            m_propertyName = propertyName;
         }
 
         /// <summary>
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected CesiumPropertyWriter(CesiumPropertyWriter<TDerived> existingInstance)
-            : this(existingInstance.m_propertyName)
+        protected CesiumPropertyWriter([NotNull] CesiumPropertyWriter<TDerived> existingInstance)
+            : this()
         {
+            if (existingInstance == null)
+                throw new ArgumentNullException("existingInstance");
+
+            m_propertyName = existingInstance.m_propertyName;
+        }
+
+        private CesiumPropertyWriter()
+        {
+            m_multipleIntervals = new Lazy<CesiumIntervalListWriter<TDerived>>(CreateIntervalListWriter, false);
+            m_interval = new Lazy<TDerived>(CopyForInterval, false);
+        }
+
+        /// <summary>
+        /// Copies this instance and returns the copy.
+        /// </summary>
+        /// <returns>The copy.</returns>
+        [NotNull]
+        public abstract TDerived Clone();
+
+        [NotNull]
+        private CesiumIntervalListWriter<TDerived> CreateIntervalListWriter()
+        {
+            return new CesiumIntervalListWriter<TDerived>((TDerived)this);
         }
 
         /// <summary>
         /// Gets the name of the property written by this instance.
         /// </summary>
+        [NotNull]
         public string PropertyName
         {
             get { return m_propertyName; }
@@ -80,15 +90,10 @@ namespace CesiumLanguageWriter.Advanced
         public bool ForceInterval { get; set; }
 
         /// <summary>
-        /// Copies this instance and returns the copy.
-        /// </summary>
-        /// <returns>The copy.</returns>
-        public abstract TDerived Clone();
-
-        /// <summary>
         /// Opens a writer that is used to write information about this property for a single interval.
         /// </summary>
         /// <returns>The writer.</returns>
+        [NotNull]
         public TDerived OpenInterval()
         {
             return OpenAndReturn(m_interval.Value);
@@ -100,6 +105,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="start">The start of the interval of time covered by this interval element.</param>
         /// <param name="stop">The end of the interval of time covered by this interval element.</param>
         /// <returns>The writer.</returns>
+        [NotNull]
         public TDerived OpenInterval(JulianDate start, JulianDate stop)
         {
             TDerived result = OpenAndReturn(m_interval.Value);
@@ -111,6 +117,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Opens a writer that is used to write information about this property for multiple discrete intervals.
         /// </summary>
         /// <returns>The writer.</returns>
+        [NotNull]
         public CesiumIntervalListWriter<TDerived> OpenMultipleIntervals()
         {
             return OpenAndReturn(m_multipleIntervals.Value);
@@ -130,8 +137,11 @@ namespace CesiumLanguageWriter.Advanced
         /// Writes the actual interval of time covered by this CZML interval.
         /// </summary>
         /// <param name="interval">The interval.</param>
-        public void WriteInterval(TimeInterval interval)
+        public void WriteInterval([NotNull] TimeInterval interval)
         {
+            if (interval == null)
+                throw new ArgumentNullException("interval");
+
             OpenIntervalIfNecessary();
             Output.WritePropertyName("interval");
             Output.WriteValue(CesiumFormattingHelper.ToIso8601Interval(interval.Start, interval.Stop, Output.PrettyFormatting ? Iso8601Format.Extended : Iso8601Format.Compact));
@@ -169,6 +179,7 @@ namespace CesiumLanguageWriter.Advanced
             }
         }
 
+        [NotNull]
         private TDerived CopyForInterval()
         {
             TDerived result = Clone();
@@ -192,6 +203,21 @@ namespace CesiumLanguageWriter.Advanced
         ICesiumPropertyWriter ICesiumPropertyWriter.IntervalWriter
         {
             get { return IntervalWriter; }
+        }
+
+        [NotNull]
+        private readonly string m_propertyName;
+        [NotNull]
+        private readonly Lazy<CesiumIntervalListWriter<TDerived>> m_multipleIntervals;
+        [NotNull]
+        private readonly Lazy<TDerived> m_interval;
+        private ElementType m_elementType = ElementType.Property;
+
+        private enum ElementType
+        {
+            Property,
+            Interval,
+            PropertyConvertedToInterval
         }
     }
 }

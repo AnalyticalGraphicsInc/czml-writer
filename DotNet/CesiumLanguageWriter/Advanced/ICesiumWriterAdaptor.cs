@@ -1,4 +1,6 @@
-﻿namespace CesiumLanguageWriter.Advanced
+﻿using JetBrains.Annotations;
+
+namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
     /// Interface for classes that adapt a class derived from <see cref="CesiumPropertyWriter{TDerived}"/>.
@@ -9,6 +11,7 @@
         /// <summary>
         /// Gets the parent being adapted.
         /// </summary>
+        [NotNull]
         TFrom Parent { get; }
     }
 }

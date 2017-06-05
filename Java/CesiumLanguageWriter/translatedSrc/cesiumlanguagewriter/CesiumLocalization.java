@@ -111,6 +111,19 @@ public class CesiumLocalization {
 
     /**
     *  
+    Looks up a localized string similar to The requested data cannot be downloaded..
+    
+
+    * @deprecated Internal use only.
+    */
+    @Deprecated
+    @Internal
+    public static String getDataDownloadFailed() {
+        return getResourceManager().getString("DataDownloadFailed");
+    }
+
+    /**
+    *  
     Looks up a localized string similar to The Day of Year must be between 1 and 366 inclusive..
     
 

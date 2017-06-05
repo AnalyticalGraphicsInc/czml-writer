@@ -4,6 +4,7 @@ package cesiumlanguagewriter.advanced;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.IDisposable;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -28,6 +29,7 @@ public interface ICesiumElementWriter extends IDisposable {
 
     * @exception IllegalStateException The writer is not currently open on a stream.
     */
+    @Nonnull
     CesiumOutputStream getOutput();
 
     /**
@@ -41,7 +43,7 @@ public interface ICesiumElementWriter extends IDisposable {
     * @param output The stream to which to write.
     * @exception IllegalStateException The writer is already open on a stream.
     */
-    void open(CesiumOutputStream output);
+    void open(@Nonnull CesiumOutputStream output);
 
     /**
     *  

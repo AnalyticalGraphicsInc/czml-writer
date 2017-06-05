@@ -3,6 +3,7 @@ package cesiumlanguagewriter.advanced;
 
 import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -12,8 +13,6 @@ import cesiumlanguagewriter.*;
  */
 @SuppressWarnings("unused")
 public class PassThroughCesiumUriResolver implements ICesiumUriResolver {
-    private static PassThroughCesiumUriResolver s_instance = new PassThroughCesiumUriResolver();
-
     /**
     *  
     Resolves a URI, leaving it unchanged.
@@ -34,7 +33,11 @@ public class PassThroughCesiumUriResolver implements ICesiumUriResolver {
     
 
     */
+    @Nonnull
     public static PassThroughCesiumUriResolver getInstance() {
         return s_instance;
     }
+
+    @Nonnull
+    private static PassThroughCesiumUriResolver s_instance = new PassThroughCesiumUriResolver();
 }

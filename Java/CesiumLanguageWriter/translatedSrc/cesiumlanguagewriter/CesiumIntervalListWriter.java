@@ -3,6 +3,7 @@ package cesiumlanguagewriter;
 
 import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.advanced.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -58,6 +59,7 @@ public class CesiumIntervalListWriter<TPropertyWriter extends CesiumPropertyWrit
 
     * @return The interval writer.
     */
+    @Nonnull
     public final TPropertyWriter openInterval() {
         return m_propertyWriter.openInterval();
     }
@@ -74,6 +76,7 @@ public class CesiumIntervalListWriter<TPropertyWriter extends CesiumPropertyWrit
     * @param stop The end of the interval of time covered by this interval element.
     * @return The interval writer.
     */
+    @Nonnull
     public final TPropertyWriter openInterval(JulianDate start, JulianDate stop) {
         return m_propertyWriter.openInterval(start, stop);
     }

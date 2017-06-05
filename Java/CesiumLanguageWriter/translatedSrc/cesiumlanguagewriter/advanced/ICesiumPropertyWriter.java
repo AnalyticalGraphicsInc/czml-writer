@@ -3,6 +3,7 @@ package cesiumlanguagewriter.advanced;
 
 import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -33,6 +34,7 @@ public interface ICesiumPropertyWriter extends ICesiumElementWriter {
 
     * @return The writer.
     */
+    @Nonnull
     ICesiumPropertyWriter openInterval();
 
     /**
@@ -43,6 +45,7 @@ public interface ICesiumPropertyWriter extends ICesiumElementWriter {
 
     * @return The writer.
     */
+    @Nonnull
     ICesiumIntervalListWriter openMultipleIntervals();
 
     /**

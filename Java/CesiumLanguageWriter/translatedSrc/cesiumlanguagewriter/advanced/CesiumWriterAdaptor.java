@@ -6,6 +6,7 @@ import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -22,10 +23,6 @@ import cesiumlanguagewriter.*;
  */
 @SuppressWarnings("unused")
 public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> implements ICesiumValuePropertyWriter<TValue>, ICesiumWriterAdaptor<TFrom> {
-    private TFrom m_parent;
-    private CesiumWriterAdaptorWriteCallback<TFrom, TValue> m_writeValueCallback;
-    private Lazy<CesiumWriterAdaptor<TFrom, TValue>> m_interval;
-
     /**
     *  
     Initializes a new instance.
@@ -36,7 +33,7 @@ public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> im
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@code TValue}.
     */
-    public CesiumWriterAdaptor(TFrom parent, CesiumWriterAdaptorWriteCallback<TFrom, TValue> writeValueCallback) {
+    public CesiumWriterAdaptor(@Nonnull TFrom parent, @Nonnull CesiumWriterAdaptorWriteCallback<TFrom, TValue> writeValueCallback) {
         if (parent == null) {
             throw new ArgumentNullException("parent");
         }
@@ -50,6 +47,10 @@ public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> im
                 return new CesiumWriterAdaptor<TFrom, TValue>((TFrom) m_parent.getIntervalWriter(), m_writeValueCallback);
             }
         }, false);
+    }
+
+    public final void dispose() {
+        m_parent.close();
     }
 
     /**
@@ -106,7 +107,10 @@ public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> im
         m_parent.close();
     }
 
-    public final void dispose() {
-        m_parent.close();
-    }
+    @Nonnull
+    private TFrom m_parent;
+    @Nonnull
+    private CesiumWriterAdaptorWriteCallback<TFrom, TValue> m_writeValueCallback;
+    @Nonnull
+    private Lazy<CesiumWriterAdaptor<TFrom, TValue>> m_interval;
 }

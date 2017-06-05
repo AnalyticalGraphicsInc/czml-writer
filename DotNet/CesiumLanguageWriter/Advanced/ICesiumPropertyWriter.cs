@@ -1,4 +1,6 @@
-﻿namespace CesiumLanguageWriter.Advanced
+﻿using JetBrains.Annotations;
+
+namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
     /// An interface to an object that writes the values of a CZML
@@ -17,12 +19,14 @@
         /// Opens a writer that is used to write information about this property for a single interval.
         /// </summary>
         /// <returns>The writer.</returns>
+        [NotNull]
         ICesiumPropertyWriter OpenInterval();
 
         /// <summary>
         /// Opens a writer that is used to write information about this property for multiple discrete intervals.
         /// </summary>
         /// <returns>The writer.</returns>
+        [NotNull]
         ICesiumIntervalListWriter OpenMultipleIntervals();
 
         /// <summary>

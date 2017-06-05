@@ -30,6 +30,7 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+// ReSharper disable All
 
 namespace GrisuDotNet
 {

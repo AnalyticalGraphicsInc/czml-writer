@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -11,19 +12,15 @@ namespace CesiumLanguageWriter
     /// </summary>
     public class CesiumOutputStream
     {
-        private readonly TextWriter m_writer;
-        private bool m_firstInContainer = true;
-        private bool m_inProperty;
-        private bool m_nextValueOnNewLine;
-        private int m_indent = 0;
-        private const int IndentLevel = 2;
-
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
         /// <param name="writer">The text stream to which to write data.</param>
-        public CesiumOutputStream(TextWriter writer)
+        public CesiumOutputStream([NotNull] TextWriter writer)
         {
+            if (writer == null)
+                throw new ArgumentNullException("writer");
+
             m_writer = writer;
         }
 
@@ -95,12 +92,15 @@ namespace CesiumLanguageWriter
         /// Writes the name of a property.
         /// </summary>
         /// <param name="propertyName">The name of the property.</param>
-        public void WritePropertyName(string propertyName)
+        public void WritePropertyName([NotNull] string propertyName)
         {
+            if (propertyName == null)
+                throw new ArgumentNullException("propertyName");
+
             m_nextValueOnNewLine = true;
             StartNewValue();
             m_writer.Write('"');
-            WriteEscapedString(m_writer, propertyName);
+            WriteEscapedString(propertyName);
             m_writer.Write('"');
             m_writer.Write(':');
             m_firstInContainer = true;
@@ -111,7 +111,7 @@ namespace CesiumLanguageWriter
         /// Writes the value of a property or element in a sequence.
         /// </summary>
         /// <param name="value">The value to write.</param>
-        public void WriteValue(string value)
+        public void WriteValue([CanBeNull] string value)
         {
             StartNewValue();
             m_firstInContainer = false;
@@ -124,7 +124,7 @@ namespace CesiumLanguageWriter
             else
             {
                 m_writer.Write('"');
-                WriteEscapedString(m_writer, value);
+                WriteEscapedString(value);
                 m_writer.Write('"');
             }
         }
@@ -185,8 +185,11 @@ namespace CesiumLanguageWriter
         /// Writes the value of a property or element in a sequence.
         /// </summary>
         /// <param name="value">The value to write.</param>
-        public void WriteValue(Uri value)
+        public void WriteValue([NotNull] Uri value)
         {
+            if (value == null)
+                throw new ArgumentNullException("value");
+
             WriteValue(value.ToString());
         }
 
@@ -199,7 +202,7 @@ namespace CesiumLanguageWriter
             m_nextValueOnNewLine = true;
         }
 
-        private static void WriteEscapedString(TextWriter writer, string value)
+        private void WriteEscapedString([NotNull] string value)
         {
             int lastWritePosition = 0;
             int skipped = 0;
@@ -253,7 +256,7 @@ namespace CesiumLanguageWriter
                         break;
 
                     default:
-                        escapedValue = (c <= '\u001f') ? ToCharAsUnicode(c) : null;
+                        escapedValue = c <= '\u001f' ? ToCharAsUnicode(c) : null;
                         break;
                 }
 
@@ -265,12 +268,12 @@ namespace CesiumLanguageWriter
                     // write skipped text
                     if (skipped > 0)
                     {
-                        writer.Write(chars, lastWritePosition, skipped);
+                        m_writer.Write(chars, lastWritePosition, skipped);
                         skipped = 0;
                     }
 
                     // write escaped value and note position
-                    writer.Write(escapedValue);
+                    m_writer.Write(escapedValue);
                     lastWritePosition = i + 1;
                 }
                 else
@@ -283,9 +286,9 @@ namespace CesiumLanguageWriter
             if (skipped > 0)
             {
                 if (lastWritePosition == 0)
-                    writer.Write(value);
+                    m_writer.Write(value);
                 else
-                    writer.Write(chars, lastWritePosition, skipped);
+                    m_writer.Write(chars, lastWritePosition, skipped);
             }
         }
 
@@ -305,7 +308,7 @@ namespace CesiumLanguageWriter
             {
                 return (char)(n + 48);
             }
-            return (char)((n - 10) + 97);
+            return (char)(n - 10 + 97);
         }
 
         private void StartNewValue()
@@ -327,5 +330,13 @@ namespace CesiumLanguageWriter
             for (int i = 0; i < m_indent; ++i)
                 m_writer.Write(' ');
         }
+
+        [NotNull]
+        private readonly TextWriter m_writer;
+        private bool m_firstInContainer = true;
+        private bool m_inProperty;
+        private bool m_nextValueOnNewLine;
+        private int m_indent = 0;
+        private const int IndentLevel = 2;
     }
 }

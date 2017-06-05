@@ -2,8 +2,11 @@ package cesiumlanguagewriter.advanced;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.IDisposable;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  *  
@@ -13,7 +16,9 @@ import cesiumlanguagewriter.*;
  */
 @SuppressWarnings("unused")
 public abstract class CesiumElementWriter implements ICesiumElementWriter {
-    private CesiumOutputStream m_output;
+    public final void dispose() {
+        close();
+    }
 
     /**
     *  
@@ -27,6 +32,9 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
     * @exception IllegalStateException The writer is already open on a stream.
     */
     public final void open(CesiumOutputStream output) {
+        if (output == null) {
+            throw new ArgumentNullException("output");
+        }
         if (m_output != null) {
             throw new IllegalStateException(CesiumLocalization.getWriterAlreadyOpen());
         }
@@ -51,17 +59,13 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
         m_output = null;
     }
 
-    public final void dispose() {
-        close();
-    }
-
     /**
     *  Gets {@code true} if the writer is open; otherwise, {@code false}.
     
 
     */
     public final boolean getIsOpen() {
-        return getOutputOrNull() != null;
+        return m_output != null;
     }
 
     /**
@@ -75,10 +79,10 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
     * @see #getOutputOrNull
     */
     public final CesiumOutputStream getOutput() {
-        if (getOutputOrNull() == null) {
+        if (m_output == null) {
             throw new IllegalStateException(CesiumLocalization.getWriterNotOpen());
         }
-        return getOutputOrNull();
+        return m_output;
     }
 
     /**
@@ -89,6 +93,7 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
 
     * @see #getOutput
     */
+    @Nullable
     protected final CesiumOutputStream getOutputOrNull() {
         return m_output;
     }
@@ -122,8 +127,15 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
     * @param writer The writer.
     * @return The same writer, now opened on the stream.
     */
-    protected final <T extends CesiumElementWriter> T openAndReturn(T writer) {
+    @Nonnull
+    protected final <T extends CesiumElementWriter> T openAndReturn(@Nonnull T writer) {
+        if (writer == null) {
+            throw new ArgumentNullException("writer");
+        }
         writer.open(getOutput());
         return writer;
     }
+
+    @Nullable
+    private CesiumOutputStream m_output;
 }

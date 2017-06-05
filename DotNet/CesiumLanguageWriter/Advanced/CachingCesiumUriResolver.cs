@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter.Advanced
 {
@@ -9,25 +10,6 @@ namespace CesiumLanguageWriter.Advanced
     /// </summary>
     public class CachingCesiumUriResolver : ICesiumUriResolver
     {
-        private class CacheItem
-        {
-            public readonly string SourceUri;
-            public readonly string ResolvedUri;
-
-            public CacheItem(string sourceUri, string resolvedUri)
-            {
-                SourceUri = sourceUri;
-                ResolvedUri = resolvedUri;
-            }
-        }
-
-        [ThreadStatic]
-        private static CachingCesiumUriResolver s_threadLocalInstance;
-
-        private readonly int m_max;
-        private readonly Dictionary<string, LinkedListNode<CacheItem>> m_dictionary;
-        private readonly LinkedList<CacheItem> m_lruList;
-
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
@@ -46,6 +28,9 @@ namespace CesiumLanguageWriter.Advanced
         /// <returns>A URI suitable for CZML.</returns>
         public string ResolveUri(string uri)
         {
+            if (uri == null)
+                throw new ArgumentNullException("uri");
+
             LinkedListNode<CacheItem> node;
             if (m_dictionary.TryGetValue(uri, out node))
             {
@@ -69,8 +54,13 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="sourceUri">The source URI.</param>
         /// <param name="resolvedUri">The resolved URI.</param>
-        public void AddUri(string sourceUri, string resolvedUri)
+        public void AddUri([NotNull] string sourceUri, [NotNull] string resolvedUri)
         {
+            if (sourceUri == null)
+                throw new ArgumentNullException("sourceUri");
+            if (resolvedUri == null)
+                throw new ArgumentNullException("resolvedUri");
+
             var newNode = m_lruList.AddFirst(new CacheItem(sourceUri, resolvedUri));
             m_dictionary.Add(sourceUri, newNode);
 
@@ -87,14 +77,18 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="sourceUri">The source URI.</param>
         /// <returns>True if the cache already has a resolved URI for that URI, false otherwise.</returns>
-        public bool ContainsUri(string sourceUri)
+        public bool ContainsUri([NotNull] string sourceUri)
         {
+            if (sourceUri == null)
+                throw new ArgumentNullException("sourceUri");
+
             return m_dictionary.ContainsKey(sourceUri);
         }
 
         /// <summary>
         /// An instance of <see cref="CachingCesiumUriResolver"/> local to the calling thread.
         /// </summary>
+        [NotNull]
         public static CachingCesiumUriResolver ThreadLocalInstance
         {
             get
@@ -104,6 +98,29 @@ namespace CesiumLanguageWriter.Advanced
 
                 return s_threadLocalInstance;
             }
+        }
+
+        [ThreadStatic]
+        private static CachingCesiumUriResolver s_threadLocalInstance;
+
+        private readonly int m_max;
+        [NotNull]
+        private readonly Dictionary<string, LinkedListNode<CacheItem>> m_dictionary;
+        [NotNull]
+        private readonly LinkedList<CacheItem> m_lruList;
+
+        private class CacheItem
+        {
+            public CacheItem([NotNull] string sourceUri, [NotNull] string resolvedUri)
+            {
+                SourceUri = sourceUri;
+                ResolvedUri = resolvedUri;
+            }
+
+            [NotNull]
+            public readonly string SourceUri;
+            [NotNull]
+            public readonly string ResolvedUri;
         }
     }
 }

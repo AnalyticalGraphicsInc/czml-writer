@@ -8,6 +8,7 @@ import agi.foundation.compatibility.IDisposable;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.*;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -25,11 +26,6 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWriter & ICesiumInterpolationInformationWriter, TValue> implements ICesiumInterpolatableValuePropertyWriter<TValue>,
         ICesiumWriterAdaptor<TFrom> {
-    private TFrom m_parent;
-    private CesiumWriterAdaptorWriteCallback<TFrom, TValue> m_writeValueCallback;
-    private CesiumWriterAdaptorWriteSamplesCallback<TFrom, TValue> m_writeSamplesCallback;
-    private Lazy<CesiumInterpolatableWriterAdaptor<TFrom, TValue>> m_interval;
-
     /**
     *  
     Initializes a new instance.
@@ -42,8 +38,8 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
     * @param writeValueCallback The callback to write a value of type {@code TValue}.
     * @param writeSamplesCallback The callback to write samples of type {@code TValue}.
     */
-    public CesiumInterpolatableWriterAdaptor(TFrom parent, CesiumWriterAdaptorWriteCallback<TFrom, TValue> writeValueCallback,
-            CesiumWriterAdaptorWriteSamplesCallback<TFrom, TValue> writeSamplesCallback) {
+    public CesiumInterpolatableWriterAdaptor(@Nonnull TFrom parent, @Nonnull CesiumWriterAdaptorWriteCallback<TFrom, TValue> writeValueCallback,
+            @Nonnull CesiumWriterAdaptorWriteSamplesCallback<TFrom, TValue> writeSamplesCallback) {
         if (parent == null) {
             throw new ArgumentNullException("parent");
         }
@@ -61,6 +57,10 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
                 return new CesiumInterpolatableWriterAdaptor<TFrom, TValue>((TFrom) m_parent.getIntervalWriter(), m_writeValueCallback, m_writeSamplesCallback);
             }
         }, false);
+    }
+
+    public final void dispose() {
+        m_parent.close();
     }
 
     /**
@@ -116,11 +116,13 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
         m_parent.writeInterval(start, stop);
     }
 
+    @Nonnull
     public final ICesiumInterpolatableValuePropertyWriter<TValue> openInterval() {
         m_interval.getValue().open(m_parent.getOutput());
         return m_interval.getValue();
     }
 
+    @Nonnull
     public final ICesiumInterpolatableIntervalListWriter<TValue> openMultipleIntervals() {
         return new MultipleIntervalsAdaptor<TFrom, TValue>(this, m_parent.openMultipleIntervals());
     }
@@ -145,17 +147,29 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
         m_parent.close();
     }
 
-    public final void dispose() {
-        m_parent.close();
-    }
+    @Nonnull
+    private TFrom m_parent;
+    @Nonnull
+    private CesiumWriterAdaptorWriteCallback<TFrom, TValue> m_writeValueCallback;
+    @Nonnull
+    private CesiumWriterAdaptorWriteSamplesCallback<TFrom, TValue> m_writeSamplesCallback;
+    @Nonnull
+    private Lazy<CesiumInterpolatableWriterAdaptor<TFrom, TValue>> m_interval;
 
     private static class MultipleIntervalsAdaptor<TFrom extends ICesiumPropertyWriter & ICesiumInterpolationInformationWriter, TValue> implements ICesiumInterpolatableIntervalListWriter<TValue> {
-        private CesiumInterpolatableWriterAdaptor<TFrom, TValue> m_intervalAdaptor;
-        private ICesiumIntervalListWriter m_parent;
-
-        public MultipleIntervalsAdaptor(CesiumInterpolatableWriterAdaptor<TFrom, TValue> intervalAdaptor, ICesiumIntervalListWriter parent) {
+        public MultipleIntervalsAdaptor(@Nonnull CesiumInterpolatableWriterAdaptor<TFrom, TValue> intervalAdaptor, @Nonnull ICesiumIntervalListWriter parent) {
+            if (intervalAdaptor == null) {
+                throw new ArgumentNullException("intervalAdaptor");
+            }
+            if (parent == null) {
+                throw new ArgumentNullException("parent");
+            }
             m_intervalAdaptor = intervalAdaptor;
             m_parent = parent;
+        }
+
+        public final void dispose() {
+            m_parent.dispose();
         }
 
         public final ICesiumInterpolatableValuePropertyWriter<TValue> openInterval() {
@@ -184,8 +198,9 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
             m_parent.close();
         }
 
-        public final void dispose() {
-            m_parent.dispose();
-        }
+        @Nonnull
+        private CesiumInterpolatableWriterAdaptor<TFrom, TValue> m_intervalAdaptor;
+        @Nonnull
+        private ICesiumIntervalListWriter m_parent;
     }
 }

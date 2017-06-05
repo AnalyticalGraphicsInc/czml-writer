@@ -28,6 +28,7 @@
 
 using System;
 using System.Diagnostics;
+// ReSharper disable All
 
 namespace GrisuDotNet
 {

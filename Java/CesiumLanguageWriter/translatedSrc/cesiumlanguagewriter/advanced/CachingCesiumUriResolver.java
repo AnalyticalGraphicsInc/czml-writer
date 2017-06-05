@@ -2,6 +2,7 @@ package cesiumlanguagewriter.advanced;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.LinkedList;
 import agi.foundation.compatibility.LinkedListNode;
 import agi.foundation.compatibility.MapHelper;
@@ -9,6 +10,7 @@ import cesiumlanguagewriter.*;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -19,21 +21,6 @@ import java.util.Map;
  */
 @SuppressWarnings("unused")
 public class CachingCesiumUriResolver implements ICesiumUriResolver {
-    private static class CacheItem {
-        public final String SourceUri;
-        public final String ResolvedUri;
-
-        public CacheItem(String sourceUri, String resolvedUri) {
-            SourceUri = sourceUri;
-            ResolvedUri = resolvedUri;
-        }
-    }
-
-    private static ThreadLocal_0 s_threadLocalInstance = new ThreadLocal_0();
-    private int m_max;
-    private Map<String, LinkedListNode<CacheItem>> m_dictionary;
-    private LinkedList<CacheItem> m_lruList;
-
     /**
     *  
     Initializes a new instance.
@@ -59,6 +46,9 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
     * @return A URI suitable for CZML.
     */
     public final String resolveUri(String uri) {
+        if (uri == null) {
+            throw new ArgumentNullException("uri");
+        }
         LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUriResolver.CacheItem> node = null;
         final LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUriResolver.CacheItem>[] out$node$1 = new LinkedListNode[] {
             null
@@ -89,7 +79,13 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
     * @param sourceUri The source URI.
     * @param resolvedUri The resolved URI.
     */
-    public final void addUri(String sourceUri, String resolvedUri) {
+    public final void addUri(@Nonnull String sourceUri, @Nonnull String resolvedUri) {
+        if (sourceUri == null) {
+            throw new ArgumentNullException("sourceUri");
+        }
+        if (resolvedUri == null) {
+            throw new ArgumentNullException("resolvedUri");
+        }
         LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUriResolver.CacheItem> newNode = m_lruList.addFirst(new CacheItem(sourceUri, resolvedUri));
         MapHelper.add(m_dictionary, sourceUri, newNode);
         if (m_lruList.size() > m_max) {
@@ -109,7 +105,10 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
     * @param sourceUri The source URI.
     * @return True if the cache already has a resolved URI for that URI, false otherwise.
     */
-    public final boolean containsUri(String sourceUri) {
+    public final boolean containsUri(@Nonnull String sourceUri) {
+        if (sourceUri == null) {
+            throw new ArgumentNullException("sourceUri");
+        }
         return m_dictionary.containsKey(sourceUri);
     }
 
@@ -119,11 +118,31 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
     
 
     */
+    @Nonnull
     public static CachingCesiumUriResolver getThreadLocalInstance() {
         if (s_threadLocalInstance.get() == null) {
             s_threadLocalInstance.set(new CachingCesiumUriResolver(50));
         }
         return s_threadLocalInstance.get();
+    }
+
+    private static ThreadLocal_0 s_threadLocalInstance = new ThreadLocal_0();
+    private int m_max;
+    @Nonnull
+    private Map<String, LinkedListNode<CacheItem>> m_dictionary;
+    @Nonnull
+    private LinkedList<CacheItem> m_lruList;
+
+    private static class CacheItem {
+        public CacheItem(@Nonnull String sourceUri, @Nonnull String resolvedUri) {
+            SourceUri = sourceUri;
+            ResolvedUri = resolvedUri;
+        }
+
+        @Nonnull
+        public final String SourceUri;
+        @Nonnull
+        public final String ResolvedUri;
     }
 
     private static final class ThreadLocal_0 extends ThreadLocal<CachingCesiumUriResolver> {

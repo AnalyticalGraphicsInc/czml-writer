@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -14,12 +15,6 @@ import cesiumlanguagewriter.advanced.*;
  */
 @SuppressWarnings("unused")
 public class CesiumStreamWriter {
-    private Lazy<PacketCesiumWriter> m_packetWriter = new Lazy<PacketCesiumWriter>(new Func1<PacketCesiumWriter>() {
-        public PacketCesiumWriter invoke() {
-            return new PacketCesiumWriter();
-        }
-    }, false);
-
     /**
     *  
     Starts a new CZML packet on the given stream.
@@ -30,7 +25,8 @@ public class CesiumStreamWriter {
     * @param output The stream to which to write the packet.
     * @return The packet writer.
     */
-    public final PacketCesiumWriter openPacket(CesiumOutputStream output) {
+    @Nonnull
+    public final PacketCesiumWriter openPacket(@Nonnull CesiumOutputStream output) {
         PacketCesiumWriter packetWriter = m_packetWriter.getValue();
         packetWriter.open(output);
         return packetWriter;
@@ -44,7 +40,15 @@ public class CesiumStreamWriter {
     
 
     */
+    @Nonnull
     public final PacketCesiumWriter getPacketWriter() {
         return m_packetWriter.getValue();
     }
+
+    @Nonnull
+    private Lazy<PacketCesiumWriter> m_packetWriter = new Lazy<PacketCesiumWriter>(new Func1<PacketCesiumWriter>() {
+        public PacketCesiumWriter invoke() {
+            return new PacketCesiumWriter();
+        }
+    }, false);
 }

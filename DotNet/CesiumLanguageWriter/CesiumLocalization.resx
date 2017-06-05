@@ -123,6 +123,9 @@
   <data name="CannotRepresentLeapSecondAsUTCJulianDate" xml:space="preserve">
     <value>JulianDate cannot represent the moment of a leap second with the UTC time standard.</value>
   </data>
+  <data name="DataDownloadFailed" xml:space="preserve">
+    <value>The requested data cannot be downloaded.</value>
+  </data>
   <data name="DayOfYearOutOfRange" xml:space="preserve">
     <value>The Day of Year must be between 1 and 366 inclusive.</value>
   </data>

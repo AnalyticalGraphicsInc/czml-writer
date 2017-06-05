@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter.Advanced
 {
@@ -17,6 +18,7 @@ namespace CesiumLanguageWriter.Advanced
         /// not open, accessing this property will throw an exception.
         /// </summary>
         /// <exception cref="InvalidOperationException">The writer is not currently open on a stream.</exception>
+        [NotNull]
         CesiumOutputStream Output { get; }
 
         /// <summary>
@@ -25,7 +27,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which to write.</param>
         /// <exception cref="InvalidOperationException">The writer is already open on a stream.</exception>
-        void Open(CesiumOutputStream output);
+        void Open([NotNull] CesiumOutputStream output);
 
         /// <summary>
         /// Closes this writer on a given stream, but does not close the underlying stream.  Closing a writer

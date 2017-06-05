@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter.Advanced
 {
@@ -841,7 +842,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteReference(CesiumOutputStream output, string value)
+        public static void WriteReference([NotNull] CesiumOutputStream output, string value)
         {
             output.WriteValue(value);
         }

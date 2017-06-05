@@ -3,6 +3,7 @@ package cesiumlanguagewriter.advanced;
 
 import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -19,5 +20,6 @@ public interface ICesiumWriterAdaptor<TFrom> {
     
 
     */
+    @Nonnull
     TFrom getParent();
 }

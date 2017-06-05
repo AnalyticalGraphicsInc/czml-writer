@@ -1,5 +1,6 @@
 ﻿using System;
 using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -8,14 +9,13 @@ namespace CesiumLanguageWriter
     /// </summary>
     public class CesiumStreamWriter
     {
-        private readonly Lazy<PacketCesiumWriter> m_packetWriter = new Lazy<PacketCesiumWriter>(() => new PacketCesiumWriter(), false);
-
         /// <summary>
         /// Starts a new CZML packet on the given stream.
         /// </summary>
         /// <param name="output">The stream to which to write the packet.</param>
         /// <returns>The packet writer.</returns>
-        public PacketCesiumWriter OpenPacket(CesiumOutputStream output)
+        [NotNull]
+        public PacketCesiumWriter OpenPacket([NotNull] CesiumOutputStream output)
         {
             PacketCesiumWriter packetWriter = m_packetWriter.Value;
             packetWriter.Open(output);
@@ -28,9 +28,13 @@ namespace CesiumLanguageWriter
         /// before it can be use for writing.  Consider calling <see cref="OpenPacket"/> instead,
         /// which returns the same instance but opens it first.
         /// </summary>
+        [NotNull]
         public PacketCesiumWriter PacketWriter
         {
             get { return m_packetWriter.Value; }
         }
+
+        [NotNull]
+        private readonly Lazy<PacketCesiumWriter> m_packetWriter = new Lazy<PacketCesiumWriter>(() => new PacketCesiumWriter(), false);
     }
 }

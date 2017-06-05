@@ -1,12 +1,12 @@
-﻿namespace CesiumLanguageWriter.Advanced
+﻿using JetBrains.Annotations;
+
+namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
     /// A URI resolver that leaves URIs unchanged.
     /// </summary>
     public class PassThroughCesiumUriResolver : ICesiumUriResolver
     {
-        private static readonly PassThroughCesiumUriResolver s_instance = new PassThroughCesiumUriResolver();
-
         /// <summary>
         /// Resolves a URI, leaving it unchanged.
         /// </summary>
@@ -20,9 +20,13 @@
         /// <summary>
         /// A static instance of <see cref="PassThroughCesiumUriResolver"/> usable from any thread.
         /// </summary>
+        [NotNull]
         public static PassThroughCesiumUriResolver Instance
         {
             get { return s_instance; }
         }
+
+        [NotNull]
+        private static readonly PassThroughCesiumUriResolver s_instance = new PassThroughCesiumUriResolver();
     }
 }

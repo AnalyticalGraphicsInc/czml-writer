@@ -7,6 +7,7 @@ import agi.foundation.compatibility.ArrayHelper;
 import cesiumlanguagewriter.*;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -1016,7 +1017,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the value.
     * @param value The value to write.
     */
-    public static void writeReference(CesiumOutputStream output, String value) {
+    public static void writeReference(@Nonnull CesiumOutputStream output, String value) {
         output.writeValue(value);
     }
 

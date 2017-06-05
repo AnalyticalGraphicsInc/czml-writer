@@ -2,6 +2,7 @@ package cesiumlanguagewriter;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IntHelper;
@@ -9,6 +10,8 @@ import agi.foundation.compatibility.LongHelper;
 import agi.foundation.compatibility.TextWriterHelper;
 import java.io.Writer;
 import java.net.URI;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  *  
@@ -20,13 +23,6 @@ import java.net.URI;
  */
 @SuppressWarnings("unused")
 public class CesiumOutputStream {
-    private Writer m_writer;
-    private boolean m_firstInContainer = true;
-    private boolean m_inProperty;
-    private boolean m_nextValueOnNewLine;
-    private int m_indent = 0;
-    private static final int IndentLevel = 2;
-
     /**
     *  
     Initializes a new instance.
@@ -35,7 +31,10 @@ public class CesiumOutputStream {
 
     * @param writer The text stream to which to write data.
     */
-    public CesiumOutputStream(Writer writer) {
+    public CesiumOutputStream(@Nonnull Writer writer) {
+        if (writer == null) {
+            throw new ArgumentNullException("writer");
+        }
         m_writer = writer;
     }
 
@@ -129,11 +128,14 @@ public class CesiumOutputStream {
 
     * @param propertyName The name of the property.
     */
-    public final void writePropertyName(String propertyName) {
+    public final void writePropertyName(@Nonnull String propertyName) {
+        if (propertyName == null) {
+            throw new ArgumentNullException("propertyName");
+        }
         m_nextValueOnNewLine = true;
         startNewValue();
         TextWriterHelper.print(m_writer, '"');
-        writeEscapedString(m_writer, propertyName);
+        writeEscapedString(propertyName);
         TextWriterHelper.print(m_writer, '"');
         TextWriterHelper.print(m_writer, ':');
         m_firstInContainer = true;
@@ -148,7 +150,7 @@ public class CesiumOutputStream {
 
     * @param value The value to write.
     */
-    public final void writeValue(String value) {
+    public final void writeValue(@Nullable String value) {
         startNewValue();
         m_firstInContainer = false;
         m_inProperty = false;
@@ -156,7 +158,7 @@ public class CesiumOutputStream {
             TextWriterHelper.print(m_writer, "null");
         } else {
             TextWriterHelper.print(m_writer, '"');
-            writeEscapedString(m_writer, value);
+            writeEscapedString(value);
             TextWriterHelper.print(m_writer, '"');
         }
     }
@@ -229,7 +231,10 @@ public class CesiumOutputStream {
 
     * @param value The value to write.
     */
-    public final void writeValue(URI value) {
+    public final void writeValue(@Nonnull URI value) {
+        if (value == null) {
+            throw new ArgumentNullException("value");
+        }
         writeValue(value.toString());
     }
 
@@ -244,7 +249,7 @@ public class CesiumOutputStream {
         m_nextValueOnNewLine = true;
     }
 
-    private static void writeEscapedString(Writer writer, String value) {
+    private final void writeEscapedString(@Nonnull String value) {
         int lastWritePosition = 0;
         int skipped = 0;
         char[] chars = null;
@@ -294,7 +299,7 @@ public class CesiumOutputStream {
                 break;
             }
             default: {
-                escapedValue = (c <= '\u001f') ? toCharAsUnicode(c) : null;
+                escapedValue = c <= '\u001f' ? toCharAsUnicode(c) : null;
                 break;
             }
             }
@@ -304,11 +309,11 @@ public class CesiumOutputStream {
                 }
                 // write skipped text
                 if (skipped > 0) {
-                    TextWriterHelper.print(writer, chars, lastWritePosition, skipped);
+                    TextWriterHelper.print(m_writer, chars, lastWritePosition, skipped);
                     skipped = 0;
                 }
                 // write escaped value and note position
-                TextWriterHelper.print(writer, escapedValue);
+                TextWriterHelper.print(m_writer, escapedValue);
                 lastWritePosition = i + 1;
             } else {
                 skipped++;
@@ -317,9 +322,9 @@ public class CesiumOutputStream {
         // write any remaining skipped text
         if (skipped > 0) {
             if (lastWritePosition == 0) {
-                TextWriterHelper.print(writer, value);
+                TextWriterHelper.print(m_writer, value);
             } else {
-                TextWriterHelper.print(writer, chars, lastWritePosition, skipped);
+                TextWriterHelper.print(m_writer, chars, lastWritePosition, skipped);
             }
         }
     }
@@ -343,7 +348,7 @@ public class CesiumOutputStream {
         if (n <= 9) {
             return (char) (n + 48);
         }
-        return (char) ((n - 10) + 97);
+        return (char) (n - 10 + 97);
     }
 
     private final void startNewValue() {
@@ -362,5 +367,12 @@ public class CesiumOutputStream {
             TextWriterHelper.print(m_writer, ' ');
     }
 
+    @Nonnull
+    private Writer m_writer;
+    private boolean m_firstInContainer = true;
+    private boolean m_inProperty;
+    private boolean m_nextValueOnNewLine;
+    private int m_indent = 0;
+    private static final int IndentLevel = 2;
     private boolean backingField$PrettyFormatting;
 }

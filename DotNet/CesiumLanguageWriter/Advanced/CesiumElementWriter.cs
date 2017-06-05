@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter.Advanced
 {
@@ -7,7 +8,10 @@ namespace CesiumLanguageWriter.Advanced
     /// </summary>
     public abstract class CesiumElementWriter : ICesiumElementWriter
     {
-        private CesiumOutputStream m_output;
+        void IDisposable.Dispose()
+        {
+            Close();
+        }
 
         /// <summary>
         /// Opens this writer on a given <see cref="CesiumOutputStream"/>.  A single writer can write to multiple
@@ -17,8 +21,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <exception cref="InvalidOperationException">The writer is already open on a stream.</exception>
         public void Open(CesiumOutputStream output)
         {
+            if (output == null)
+                throw new ArgumentNullException("output");
+
             if (m_output != null)
                 throw new InvalidOperationException(CesiumLocalization.WriterAlreadyOpen);
+
             m_output = output;
             OnOpen();
         }
@@ -32,13 +40,9 @@ namespace CesiumLanguageWriter.Advanced
         {
             if (m_output == null)
                 throw new InvalidOperationException(CesiumLocalization.WriterAlreadyClosed);
+
             OnClose();
             m_output = null;
-        }
-
-        void IDisposable.Dispose()
-        {
-            Close();
         }
 
         /// <summary>
@@ -46,7 +50,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         public bool IsOpen
         {
-            get { return OutputOrNull != null; }
+            get { return m_output != null; }
         }
 
         /// <summary>
@@ -59,9 +63,9 @@ namespace CesiumLanguageWriter.Advanced
         {
             get
             {
-                if (OutputOrNull == null)
+                if (m_output == null)
                     throw new InvalidOperationException(CesiumLocalization.WriterNotOpen);
-                return OutputOrNull;
+                return m_output;
             }
         }
 
@@ -70,6 +74,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <see langword="null"/> if the writer is not open.
         /// </summary>
         /// <seealso cref="Output"/>
+        [CanBeNull]
         protected CesiumOutputStream OutputOrNull
         {
             get { return m_output; }
@@ -96,11 +101,18 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="T">The type of the writer to open.</typeparam>
         /// <param name="writer">The writer.</param>
         /// <returns>The same writer, now opened on the stream.</returns>
-        protected T OpenAndReturn<T>(T writer)
+        [NotNull]
+        protected T OpenAndReturn<T>([NotNull] T writer)
             where T : CesiumElementWriter
         {
+            if (writer == null)
+                throw new ArgumentNullException("writer");
+
             writer.Open(Output);
             return writer;
         }
+
+        [CanBeNull]
+        private CesiumOutputStream m_output;
     }
 }

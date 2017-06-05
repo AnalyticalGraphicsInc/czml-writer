@@ -4,6 +4,7 @@ package cesiumlanguagewriter.advanced;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JWarning;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -23,6 +24,7 @@ public interface ICesiumInterpolatableIntervalListWriter<TValue> extends ICesium
     */
     @CS2JWarning("This method was originally marked 'new' in C#.")
     @Override
+    @Nonnull
     ICesiumInterpolatableValuePropertyWriter<TValue> openInterval();
 
     /**
@@ -39,5 +41,6 @@ public interface ICesiumInterpolatableIntervalListWriter<TValue> extends ICesium
     */
     @CS2JWarning("This method was originally marked 'new' in C#.")
     @Override
+    @Nonnull
     ICesiumInterpolatableValuePropertyWriter<TValue> openInterval(JulianDate start, JulianDate stop);
 }

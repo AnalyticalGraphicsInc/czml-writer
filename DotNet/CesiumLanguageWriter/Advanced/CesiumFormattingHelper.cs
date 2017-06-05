@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using System.Text;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter.Advanced
 {
@@ -22,6 +23,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="stop">The end of the interval.</param>
         /// <param name="format">The format to use.</param>
         /// <returns>The interval represented as an ISO8601 interval string.</returns>
+        [NotNull]
         public static string ToIso8601Interval(JulianDate start, JulianDate stop, Iso8601Format format)
         {
             return ToIso8601(start, format) + "/" + ToIso8601(stop, format);
@@ -33,8 +35,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="interval">The interval to convert.</param>
         /// <param name="format">The format to use.</param>
         /// <returns>The interval represented as an ISO8601 interval string.</returns>
-        public static string ToIso8601Interval(TimeInterval interval, Iso8601Format format)
+        [NotNull]
+        public static string ToIso8601Interval([NotNull] TimeInterval interval, Iso8601Format format)
         {
+            if (interval == null)
+                throw new ArgumentNullException("interval");
+
             return ToIso8601Interval(interval.Start, interval.Stop, format);
         }
 
@@ -44,6 +50,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="date">The date to convert.</param>
         /// <param name="format">The format to use.</param>
         /// <returns>The date represented as an ISO8601 date string.</returns>
+        [NotNull]
         public static string ToIso8601(JulianDate date, Iso8601Format format)
         {
             //If the JulianDate is outside the range of supported CZML values,
@@ -69,23 +76,30 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="uri">The URI of the resource to convert.</param>
         /// <returns>A data URI containing the content of the resource.</returns>
-        public static string DownloadUriIntoDataUri(string uri)
+        [NotNull]
+        public static string DownloadUriIntoDataUri([NotNull] string uri)
         {
+            if (uri == null)
+                throw new ArgumentNullException("uri");
+
             if (uri.StartsWith("data:"))
                 return uri;
 
-            WebRequest request = WebRequest.Create(uri);
-            HttpWebRequest httpWebRequest = request as HttpWebRequest;
+            var webRequest = WebRequest.Create(uri);
+            var httpWebRequest = webRequest as HttpWebRequest;
             if (httpWebRequest != null)
             {
                 httpWebRequest.UserAgent = "CesiumWriter";
             }
 
-            using (WebResponse webResponse = request.GetResponse())
-            using (Stream responseStream = webResponse.GetResponseStream())
+            using (var webResponse = webRequest.GetResponse())
+            using (var stream = webResponse.GetResponseStream())
             {
+                if (stream == null)
+                    throw new InvalidOperationException(CesiumLocalization.DataDownloadFailed);
+
                 string mimeType = webResponse.ContentType;
-                return StreamToDataUri(responseStream, mimeType);
+                return StreamToDataUri(stream, mimeType);
             }
         }
 
@@ -99,7 +113,8 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="stream">The stream containing the image to encode into a data URI.</param>
         /// <param name="imageFormat">The format of the image, which controls the mime type.</param>
         /// <returns>A data URI containing the content of the image.</returns>
-        public static string ImageToDataUri(Stream stream, CesiumImageFormat imageFormat)
+        [NotNull]
+        public static string ImageToDataUri([NotNull] Stream stream, CesiumImageFormat imageFormat)
         {
             string mimeType = GetMimeTypeFromCesiumImageFormat(imageFormat);
             return StreamToDataUri(stream, mimeType);
@@ -114,7 +129,8 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="image">The image to convert.</param>
         /// <param name="imageFormat">The format of the image, which controls the mime type.</param>
         /// <returns>A data URI containing the content of the image.</returns>
-        public static string ImageToDataUri(Image image, CesiumImageFormat imageFormat)
+        [NotNull]
+        public static string ImageToDataUri([NotNull] Image image, CesiumImageFormat imageFormat)
         {
             string mimeType = GetMimeTypeFromCesiumImageFormat(imageFormat);
             using (MemoryStream stream = new MemoryStream())
@@ -125,6 +141,7 @@ namespace CesiumLanguageWriter.Advanced
             }
         }
 
+        [NotNull]
         private static ImageFormat CesiumImageFormatToImageFormat(CesiumImageFormat imageFormat)
         {
             switch (imageFormat)
@@ -151,8 +168,14 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="stream">The stream to read from.</param>
         /// <param name="mimeType">The mime type of the data in the stream.</param>
         /// <returns>A data URI containing the contents of the stream.</returns>
-        public static string StreamToDataUri(Stream stream, string mimeType)
+        [NotNull]
+        public static string StreamToDataUri([NotNull] Stream stream, [NotNull] string mimeType)
         {
+            if (stream == null)
+                throw new ArgumentNullException("stream");
+            if (mimeType == null)
+                throw new ArgumentNullException("mimeType");
+
             StringBuilder builder = new StringBuilder();
             builder.Append("data:");
             builder.Append(mimeType);
@@ -171,6 +194,7 @@ namespace CesiumLanguageWriter.Advanced
             return builder.ToString();
         }
 
+        [NotNull]
         private static string GetMimeTypeFromCesiumImageFormat(CesiumImageFormat imageFormat)
         {
             switch (imageFormat)
@@ -193,6 +217,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The string representing the specified value.</returns>
+        [NotNull]
         public static string StripeOrientationToString(CesiumStripeOrientation value)
         {
             switch (value)
@@ -211,6 +236,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The string representing the specified value.</returns>
+        [NotNull]
         public static string HorizontalOriginToString(CesiumHorizontalOrigin value)
         {
             switch (value)
@@ -231,6 +257,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The string representing the specified value.</returns>
+        [NotNull]
         public static string VerticalOriginToString(CesiumVerticalOrigin value)
         {
             switch (value)
@@ -253,6 +280,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The string representing the specified value.</returns>
+        [NotNull]
         public static string HeightReferenceToString(CesiumHeightReference value)
         {
             switch (value)
@@ -273,6 +301,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The string representing the specified value.</returns>
+        [NotNull]
         public static string ShadowModeToString(CesiumShadowMode value)
         {
             switch (value)
@@ -295,6 +324,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The string representing the specified value.</returns>
+        [NotNull]
         public static string InterpolationAlgorithmToString(CesiumInterpolationAlgorithm value)
         {
             switch (value)
@@ -315,6 +345,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The string representing the specified value.</returns>
+        [NotNull]
         public static string ExtrapolationTypeToString(CesiumExtrapolationType value)
         {
             switch (value)
@@ -335,6 +366,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The string representing the specified value.</returns>
+        [NotNull]
         public static string ClockRangeToString(ClockRange value)
         {
             switch (value)
@@ -355,6 +387,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The string representing the specified value.</returns>
+        [NotNull]
         public static string ClockStepToString(ClockStep value)
         {
             switch (value)
@@ -375,6 +408,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The string representing the specified value.</returns>
+        [NotNull]
         public static string LabelStyleToString(CesiumLabelStyle value)
         {
             switch (value)
@@ -395,6 +429,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The string representing the specified value.</returns>
+        [NotNull]
         public static string CornerTypeToString(CesiumCornerType value)
         {
             switch (value)
@@ -415,6 +450,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The string representing the specified value.</returns>
+        [NotNull]
         public static string ColorBlendModeToString(CesiumColorBlendMode value)
         {
             switch (value)
@@ -435,6 +471,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="value">The value to convert.</param>
         /// <returns>The string representing the specified value.</returns>
+        [NotNull]
         public static string SensorVolumePortionToDisplayToString(CesiumSensorVolumePortionToDisplay value)
         {
             switch (value)
@@ -456,8 +493,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="uri">The url of the resource.</param>
         /// <param name="resourceBehavior">A <see cref="CesiumResourceBehavior"/> specifying how include the resource into a CZML document.</param>
         /// <returns>The resolved url.</returns>
-        public static string GetResourceUri(string uri, CesiumResourceBehavior resourceBehavior)
+        [NotNull]
+        public static string GetResourceUri([NotNull] string uri, CesiumResourceBehavior resourceBehavior)
         {
+            if (uri == null)
+                throw new ArgumentNullException("uri");
+
             if (resourceBehavior == CesiumResourceBehavior.Embed)
                 return CachingCesiumUriResolver.ThreadLocalInstance.ResolveUri(uri);
 

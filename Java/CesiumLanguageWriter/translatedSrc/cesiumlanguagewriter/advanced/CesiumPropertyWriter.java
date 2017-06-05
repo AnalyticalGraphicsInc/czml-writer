@@ -2,10 +2,12 @@ package cesiumlanguagewriter.advanced;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.Enumeration;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -18,54 +20,6 @@ import cesiumlanguagewriter.*;
  */
 @SuppressWarnings("unused")
 public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter<TDerived>> extends CesiumElementWriter implements ICesiumPropertyWriter {
-    private String m_propertyName;
-    private Lazy<CesiumIntervalListWriter<TDerived>> m_multipleIntervals;
-    private Lazy<TDerived> m_interval;
-    private ElementType m_elementType = ElementType.PROPERTY;
-
-    private static enum ElementType implements Enumeration {
-        PROPERTY(0), INTERVAL(1), PROPERTY_CONVERTED_TO_INTERVAL(2);
-        private final int value;
-
-        ElementType(int value) {
-            this.value = value;
-        }
-
-        /**
-        * Get the numeric value associated with this enum constant.
-        * @return A numeric value.
-        */
-        public int getValue() {
-            return value;
-        }
-
-        /**
-        * Get the enum constant that is associated with the given numeric value.
-        * @return The enum constant associated with value.
-        * @param value a numeric value.
-        */
-        public static ElementType getFromValue(int value) {
-            switch (value) {
-            case 0:
-                return PROPERTY;
-            case 1:
-                return INTERVAL;
-            case 2:
-                return PROPERTY_CONVERTED_TO_INTERVAL;
-            default:
-                throw new IllegalArgumentException("Undefined enum value.");
-            }
-        }
-
-        /**
-        * Get the enum constant that is considered to be the default.
-        * @return The default enum constant.
-        */
-        public static ElementType getDefault() {
-            return PROPERTY;
-        }
-    }
-
     /**
     *  
     Initializes a new instance.
@@ -74,8 +28,31 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
 
     * @param propertyName The name of the property.
     */
-    protected CesiumPropertyWriter(String propertyName) {
+    protected CesiumPropertyWriter(@Nonnull String propertyName) {
+        this();
+        if (propertyName == null) {
+            throw new ArgumentNullException("propertyName");
+        }
         m_propertyName = propertyName;
+    }
+
+    /**
+    *  
+    Initializes a new instance as a copy of an existing instance.
+    
+    
+
+    * @param existingInstance The existing instance to copy.
+    */
+    protected CesiumPropertyWriter(@Nonnull CesiumPropertyWriter<TDerived> existingInstance) {
+        this();
+        if (existingInstance == null) {
+            throw new ArgumentNullException("existingInstance");
+        }
+        m_propertyName = existingInstance.m_propertyName;
+    }
+
+    private CesiumPropertyWriter() {
         m_multipleIntervals = new Lazy<cesiumlanguagewriter.CesiumIntervalListWriter<TDerived>>(new Func1<cesiumlanguagewriter.CesiumIntervalListWriter<TDerived>>(this, "createIntervalListWriter",
                 new Class[] {}) {
             public cesiumlanguagewriter.CesiumIntervalListWriter<TDerived> invoke() {
@@ -89,20 +66,20 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
         }, false);
     }
 
-    private final CesiumIntervalListWriter<TDerived> createIntervalListWriter() {
-        return new CesiumIntervalListWriter<TDerived>((TDerived) this);
-    }
-
     /**
     *  
-    Initializes a new instance as a copy of an existing instance.
+    Copies this instance and returns the copy.
     
     
 
-    * @param existingInstance The existing instance to copy.
+    * @return The copy.
     */
-    protected CesiumPropertyWriter(CesiumPropertyWriter<TDerived> existingInstance) {
-        this(existingInstance.m_propertyName);
+    @Nonnull
+    public abstract TDerived clone();
+
+    @Nonnull
+    private final CesiumIntervalListWriter<TDerived> createIntervalListWriter() {
+        return new CesiumIntervalListWriter<TDerived>((TDerived) this);
     }
 
     /**
@@ -110,6 +87,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     
 
     */
+    @Nonnull
     public final String getPropertyName() {
         return m_propertyName;
     }
@@ -155,22 +133,13 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
 
     /**
     *  
-    Copies this instance and returns the copy.
-    
-    
-
-    * @return The copy.
-    */
-    public abstract TDerived clone();
-
-    /**
-    *  
     Opens a writer that is used to write information about this property for a single interval.
     
     
 
     * @return The writer.
     */
+    @Nonnull
     public final TDerived openInterval() {
         return openAndReturn(m_interval.getValue());
     }
@@ -187,6 +156,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     * @param stop The end of the interval of time covered by this interval element.
     * @return The writer.
     */
+    @Nonnull
     public final TDerived openInterval(JulianDate start, JulianDate stop) {
         TDerived result = openAndReturn(m_interval.getValue());
         result.writeInterval(start, stop);
@@ -201,6 +171,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
 
     * @return The writer.
     */
+    @Nonnull
     public final CesiumIntervalListWriter<TDerived> openMultipleIntervals() {
         return openAndReturn(m_multipleIntervals.getValue());
     }
@@ -227,7 +198,10 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
 
     * @param interval The interval.
     */
-    public final void writeInterval(TimeInterval interval) {
+    public final void writeInterval(@Nonnull TimeInterval interval) {
+        if (interval == null) {
+            throw new ArgumentNullException("interval");
+        }
         openIntervalIfNecessary();
         getOutput().writePropertyName("interval");
         getOutput().writeValue(CesiumFormattingHelper.toIso8601Interval(interval.getStart(), interval.getStop(), getOutput().getPrettyFormatting() ? Iso8601Format.EXTENDED : Iso8601Format.COMPACT));
@@ -265,11 +239,63 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
         }
     }
 
+    @Nonnull
     private final TDerived copyForInterval() {
         TDerived result = clone();
         CesiumPropertyWriter<TDerived> cesiumPropertyWriter = result;
         cesiumPropertyWriter.m_elementType = ElementType.INTERVAL;
         return result;
+    }
+
+    @Nonnull
+    private String m_propertyName;
+    @Nonnull
+    private Lazy<CesiumIntervalListWriter<TDerived>> m_multipleIntervals;
+    @Nonnull
+    private Lazy<TDerived> m_interval;
+    private ElementType m_elementType = ElementType.PROPERTY;
+
+    private static enum ElementType implements Enumeration {
+        PROPERTY(0), INTERVAL(1), PROPERTY_CONVERTED_TO_INTERVAL(2);
+        private final int value;
+
+        ElementType(int value) {
+            this.value = value;
+        }
+
+        /**
+        * Get the numeric value associated with this enum constant.
+        * @return A numeric value.
+        */
+        public int getValue() {
+            return value;
+        }
+
+        /**
+        * Get the enum constant that is associated with the given numeric value.
+        * @return The enum constant associated with value.
+        * @param value a numeric value.
+        */
+        public static ElementType getFromValue(int value) {
+            switch (value) {
+            case 0:
+                return PROPERTY;
+            case 1:
+                return INTERVAL;
+            case 2:
+                return PROPERTY_CONVERTED_TO_INTERVAL;
+            default:
+                throw new IllegalArgumentException("Undefined enum value.");
+            }
+        }
+
+        /**
+        * Get the enum constant that is considered to be the default.
+        * @return The default enum constant.
+        */
+        public static ElementType getDefault() {
+            return PROPERTY;
+        }
     }
 
     private boolean backingField$ForceInterval;

@@ -3,6 +3,7 @@ package cesiumlanguagewriter.advanced;
 
 import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -24,5 +25,6 @@ public interface ICesiumUriResolver {
     * @param uri The source URI.
     * @return A URI suitable for CZML.
     */
-    String resolveUri(String uri);
+    @Nonnull
+    String resolveUri(@Nonnull String uri);
 }

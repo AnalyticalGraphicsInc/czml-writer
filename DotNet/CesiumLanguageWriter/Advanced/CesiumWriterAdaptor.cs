@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter.Advanced
 {
@@ -13,16 +14,12 @@ namespace CesiumLanguageWriter.Advanced
     public class CesiumWriterAdaptor<TFrom, TValue> : ICesiumValuePropertyWriter<TValue>, ICesiumWriterAdaptor<TFrom>
         where TFrom : class, ICesiumPropertyWriter
     {
-        private readonly TFrom m_parent;
-        private readonly CesiumWriterAdaptorWriteCallback<TFrom, TValue> m_writeValueCallback;
-        private readonly Lazy<CesiumWriterAdaptor<TFrom, TValue>> m_interval;
-
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
         /// <param name="parent">The instance to wrap.</param>
         /// <param name="writeValueCallback">The callback to write values of type <typeparamref name="TValue"/>.</param>
-        public CesiumWriterAdaptor(TFrom parent, CesiumWriterAdaptorWriteCallback<TFrom, TValue> writeValueCallback)
+        public CesiumWriterAdaptor([NotNull] TFrom parent, [NotNull] CesiumWriterAdaptorWriteCallback<TFrom, TValue> writeValueCallback)
         {
             if (parent == null)
                 throw new ArgumentNullException("parent");
@@ -32,6 +29,12 @@ namespace CesiumLanguageWriter.Advanced
             m_parent = parent;
             m_writeValueCallback = writeValueCallback;
             m_interval = new Lazy<CesiumWriterAdaptor<TFrom, TValue>>(() => new CesiumWriterAdaptor<TFrom, TValue>((TFrom)m_parent.IntervalWriter, m_writeValueCallback), false);
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            m_parent.Close();
         }
 
         /// <summary>
@@ -104,10 +107,11 @@ namespace CesiumLanguageWriter.Advanced
             m_parent.Close();
         }
 
-        /// <inheritdoc />
-        public void Dispose()
-        {
-            m_parent.Close();
-        }
+        [NotNull]
+        private readonly TFrom m_parent;
+        [NotNull]
+        private readonly CesiumWriterAdaptorWriteCallback<TFrom, TValue> m_writeValueCallback;
+        [NotNull]
+        private readonly Lazy<CesiumWriterAdaptor<TFrom, TValue>> m_interval;
     }
 }
