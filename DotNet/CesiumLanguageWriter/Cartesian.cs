@@ -402,7 +402,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="magnitude">
         /// <filter name="Java">On input, an array with one element.  On return, the array is populated with</filter>
-        /// <filter name="DotNet,Silverlight">On return,</filter>
+        /// <filter name="DotNet">On return,</filter>
         /// the magnitude of the original set of <see cref="Cartesian"/> coordinates.
         /// </param>
         /// <returns>The resulting set of <see cref="UnitCartesian"/> coordinates.</returns>
