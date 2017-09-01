@@ -1199,6 +1199,86 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
+    *  
+    Writes a value for the {@code orientation} property as a {@code velocityReference} value.  The {@code orientation} property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeOrientationPropertyVelocityReference(Reference value) {
+        {
+            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            try {
+                writer.writeVelocityReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code orientation} property as a {@code velocityReference} value.  The {@code orientation} property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeOrientationPropertyVelocityReference(String value) {
+        {
+            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            try {
+                writer.writeVelocityReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code orientation} property as a {@code velocityReference} value.  The {@code orientation} property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeOrientationPropertyVelocityReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            try {
+                writer.writeVelocityReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code orientation} property as a {@code velocityReference} value.  The {@code orientation} property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeOrientationPropertyVelocityReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            try {
+                writer.writeVelocityReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
     *  Gets the writer for the {@code viewFrom} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code viewFrom} property defines a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
     
 

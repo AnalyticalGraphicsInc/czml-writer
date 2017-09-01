@@ -740,6 +740,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes a value for the <c>orientation</c> property as a <c>velocityReference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteOrientationPropertyVelocityReference(Reference value)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteVelocityReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>orientation</c> property as a <c>velocityReference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteOrientationPropertyVelocityReference(string value)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteVelocityReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>orientation</c> property as a <c>velocityReference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteOrientationPropertyVelocityReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteVelocityReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>orientation</c> property as a <c>velocityReference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteOrientationPropertyVelocityReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenOrientationProperty())
+            {
+                writer.WriteVelocityReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <c>viewFrom</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>viewFrom</c> property defines a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         public ViewFromCesiumWriter ViewFromWriter
