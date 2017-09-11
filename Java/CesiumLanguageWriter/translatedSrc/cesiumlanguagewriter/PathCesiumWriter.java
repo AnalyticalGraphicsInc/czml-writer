@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *  
- Writes a {@code Path} to a {@link CesiumOutputStream}.  A {@code Path} is a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the {@code position} property.
+ Writes a {@code Path} to a {@link CesiumOutputStream}.  A {@code Path} is a path, which is a polyline defined by the motion of an object over time. The possible vertices of the path are specified by the {@code position} property. Note that because clients cannot render a truly infinite path, the path must be limited, either by defining availability for this object, or by using the {@code leadTime} and {@code trailTime} properties.
  
 
  */
@@ -404,7 +404,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code resolution} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code resolution} property defines the maximum step-size, in seconds, used to sample the path.  If the {@code position} property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+    *  Gets the writer for the {@code resolution} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code resolution} property defines the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
     
 
     */
@@ -414,7 +414,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code resolution} property.  The {@code resolution} property defines the maximum step-size, in seconds, used to sample the path.  If the {@code position} property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+    Opens and returns the writer for the {@code resolution} property.  The {@code resolution} property defines the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
     
 
     */
@@ -425,7 +425,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code resolution} property as a {@code number} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path.  If the {@code position} property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+    Writes a value for the {@code resolution} property as a {@code number} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
     
     
 
@@ -444,7 +444,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code resolution} property as a {@code number} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path.  If the {@code position} property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+    Writes a value for the {@code resolution} property as a {@code number} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
     
     
     
@@ -465,7 +465,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code resolution} property as a {@code number} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path.  If the {@code position} property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+    Writes a value for the {@code resolution} property as a {@code number} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
     
     
     
@@ -490,7 +490,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path.  If the {@code position} property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
     
     
 
@@ -509,7 +509,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path.  If the {@code position} property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
     
     
 
@@ -528,7 +528,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path.  If the {@code position} property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
     
     
     
@@ -549,7 +549,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path.  If the {@code position} property has data points farther apart than resolution specifies, additional steps will be taken, creating a smoother path.  If not specified, the default value is 60.0.
+    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
     
     
     
@@ -569,7 +569,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code leadTime} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code leadTime} property defines the time ahead of the animation time, in seconds, to show the path.
+    *  Gets the writer for the {@code leadTime} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code leadTime} property defines the time ahead of the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
 
     */
@@ -579,7 +579,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code leadTime} property.  The {@code leadTime} property defines the time ahead of the animation time, in seconds, to show the path.
+    Opens and returns the writer for the {@code leadTime} property.  The {@code leadTime} property defines the time ahead of the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
 
     */
@@ -590,7 +590,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code leadTime} property as a {@code number} value.  The {@code leadTime} property specifies the time ahead of the animation time, in seconds, to show the path.
+    Writes a value for the {@code leadTime} property as a {@code number} value.  The {@code leadTime} property specifies the time ahead of the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
     
 
@@ -609,7 +609,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code leadTime} property as a {@code number} value.  The {@code leadTime} property specifies the time ahead of the animation time, in seconds, to show the path.
+    Writes a value for the {@code leadTime} property as a {@code number} value.  The {@code leadTime} property specifies the time ahead of the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
     
     
@@ -630,7 +630,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code leadTime} property as a {@code number} value.  The {@code leadTime} property specifies the time ahead of the animation time, in seconds, to show the path.
+    Writes a value for the {@code leadTime} property as a {@code number} value.  The {@code leadTime} property specifies the time ahead of the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
     
     
@@ -655,7 +655,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code leadTime} property as a {@code reference} value.  The {@code leadTime} property specifies the time ahead of the animation time, in seconds, to show the path.
+    Writes a value for the {@code leadTime} property as a {@code reference} value.  The {@code leadTime} property specifies the time ahead of the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
     
 
@@ -674,7 +674,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code leadTime} property as a {@code reference} value.  The {@code leadTime} property specifies the time ahead of the animation time, in seconds, to show the path.
+    Writes a value for the {@code leadTime} property as a {@code reference} value.  The {@code leadTime} property specifies the time ahead of the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
     
 
@@ -693,7 +693,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code leadTime} property as a {@code reference} value.  The {@code leadTime} property specifies the time ahead of the animation time, in seconds, to show the path.
+    Writes a value for the {@code leadTime} property as a {@code reference} value.  The {@code leadTime} property specifies the time ahead of the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
     
     
@@ -714,7 +714,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code leadTime} property as a {@code reference} value.  The {@code leadTime} property specifies the time ahead of the animation time, in seconds, to show the path.
+    Writes a value for the {@code leadTime} property as a {@code reference} value.  The {@code leadTime} property specifies the time ahead of the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
     
     
@@ -734,7 +734,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code trailTime} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code trailTime} property defines the time behind the animation time, in seconds, to show the path.
+    *  Gets the writer for the {@code trailTime} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code trailTime} property defines the time behind the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
 
     */
@@ -744,7 +744,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code trailTime} property.  The {@code trailTime} property defines the time behind the animation time, in seconds, to show the path.
+    Opens and returns the writer for the {@code trailTime} property.  The {@code trailTime} property defines the time behind the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
 
     */
@@ -755,7 +755,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code trailTime} property as a {@code number} value.  The {@code trailTime} property specifies the time behind the animation time, in seconds, to show the path.
+    Writes a value for the {@code trailTime} property as a {@code number} value.  The {@code trailTime} property specifies the time behind the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
     
 
@@ -774,7 +774,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code trailTime} property as a {@code number} value.  The {@code trailTime} property specifies the time behind the animation time, in seconds, to show the path.
+    Writes a value for the {@code trailTime} property as a {@code number} value.  The {@code trailTime} property specifies the time behind the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
     
     
@@ -795,7 +795,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code trailTime} property as a {@code number} value.  The {@code trailTime} property specifies the time behind the animation time, in seconds, to show the path.
+    Writes a value for the {@code trailTime} property as a {@code number} value.  The {@code trailTime} property specifies the time behind the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
     
     
@@ -820,7 +820,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code trailTime} property as a {@code reference} value.  The {@code trailTime} property specifies the time behind the animation time, in seconds, to show the path.
+    Writes a value for the {@code trailTime} property as a {@code reference} value.  The {@code trailTime} property specifies the time behind the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
     
 
@@ -839,7 +839,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code trailTime} property as a {@code reference} value.  The {@code trailTime} property specifies the time behind the animation time, in seconds, to show the path.
+    Writes a value for the {@code trailTime} property as a {@code reference} value.  The {@code trailTime} property specifies the time behind the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
     
 
@@ -858,7 +858,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code trailTime} property as a {@code reference} value.  The {@code trailTime} property specifies the time behind the animation time, in seconds, to show the path.
+    Writes a value for the {@code trailTime} property as a {@code reference} value.  The {@code trailTime} property specifies the time behind the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
     
     
@@ -879,7 +879,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code trailTime} property as a {@code reference} value.  The {@code trailTime} property specifies the time behind the animation time, in seconds, to show the path.
+    Writes a value for the {@code trailTime} property as a {@code reference} value.  The {@code trailTime} property specifies the time behind the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
     
     
     
