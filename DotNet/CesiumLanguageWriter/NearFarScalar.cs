@@ -102,7 +102,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <returns>
         /// A string that represents the value of this instance in the form
-        /// "NearDistance, NearValue, FarDistance, FarValue".
+        /// "<see cref="NearDistance"/>, <see cref="NearValue"/>, <see cref="FarDistance"/>, <see cref="FarValue"/>".
         /// </returns>
         public override string ToString()
         {
