@@ -18,7 +18,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// A static instance of <see cref="PassThroughCesiumUriResolver"/> usable from any thread.
+        /// Gets a static instance of <see cref="PassThroughCesiumUriResolver"/> usable from any thread.
         /// </summary>
         [NotNull]
         public static PassThroughCesiumUriResolver Instance
