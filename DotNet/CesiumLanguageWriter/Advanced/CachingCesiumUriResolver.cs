@@ -86,7 +86,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// An instance of <see cref="CachingCesiumUriResolver"/> local to the calling thread.
+        /// Gets an instance of <see cref="CachingCesiumUriResolver"/> local to the calling thread.
         /// </summary>
         [NotNull]
         public static CachingCesiumUriResolver ThreadLocalInstance
