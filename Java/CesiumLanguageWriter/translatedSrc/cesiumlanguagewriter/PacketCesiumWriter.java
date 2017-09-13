@@ -1629,7 +1629,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code agi_conicSensor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_conicSensor} property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the {@code position} and {@code orientation} properties.
+    *  Gets the writer for the {@code agi_conicSensor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_conicSensor} property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1639,7 +1639,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
     /**
     *  
-    Opens and returns the writer for the {@code agi_conicSensor} property.  The {@code agi_conicSensor} property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the {@code position} and {@code orientation} properties.
+    Opens and returns the writer for the {@code agi_conicSensor} property.  The {@code agi_conicSensor} property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1648,7 +1648,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code agi_customPatternSensor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_customPatternSensor} property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the {@code position} and {@code orientation} properties.
+    *  Gets the writer for the {@code agi_customPatternSensor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_customPatternSensor} property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1658,7 +1658,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
     /**
     *  
-    Opens and returns the writer for the {@code agi_customPatternSensor} property.  The {@code agi_customPatternSensor} property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the {@code position} and {@code orientation} properties.
+    Opens and returns the writer for the {@code agi_customPatternSensor} property.  The {@code agi_customPatternSensor} property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1667,7 +1667,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code agi_rectangularSensor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_rectangularSensor} property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the {@code position} and {@code orientation} properties.
+    *  Gets the writer for the {@code agi_rectangularSensor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code agi_rectangularSensor} property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1677,7 +1677,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
     /**
     *  
-    Opens and returns the writer for the {@code agi_rectangularSensor} property.  The {@code agi_rectangularSensor} property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the {@code position} and {@code orientation} properties.
+    Opens and returns the writer for the {@code agi_rectangularSensor} property.  The {@code agi_rectangularSensor} property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */

@@ -135,7 +135,7 @@ public final class NearFarScalar implements IEquatable<NearFarScalar>, Immutable
 
     * @return 
     A string that represents the value of this instance in the form
-    "NearDistance, NearValue, FarDistance, FarValue".
+    "{@code NearDistance} ({@link #getNearDistance get}), {@code NearValue} ({@link #getNearValue get}), {@code FarDistance} ({@link #getFarDistance get}), {@code FarValue} ({@link #getFarValue get})".
     
     */
     @Override

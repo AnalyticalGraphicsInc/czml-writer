@@ -113,8 +113,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
     }
 
     /**
-    *  
-    An instance of {@link CachingCesiumUriResolver} local to the calling thread.
+    *  Gets an instance of {@link CachingCesiumUriResolver} local to the calling thread.
     
 
     */

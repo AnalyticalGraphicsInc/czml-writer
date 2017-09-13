@@ -1070,7 +1070,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>agi_conicSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_conicSensor</c> property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Gets the writer for the <c>agi_conicSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_conicSensor</c> property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public ConicSensorCesiumWriter ConicSensorWriter
         {
@@ -1078,7 +1078,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>agi_conicSensor</c> property.  The <c>agi_conicSensor</c> property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Opens and returns the writer for the <c>agi_conicSensor</c> property.  The <c>agi_conicSensor</c> property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public ConicSensorCesiumWriter OpenConicSensorProperty()
         {
@@ -1086,7 +1086,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>agi_customPatternSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_customPatternSensor</c> property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Gets the writer for the <c>agi_customPatternSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_customPatternSensor</c> property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public CustomPatternSensorCesiumWriter CustomPatternSensorWriter
         {
@@ -1094,7 +1094,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>agi_customPatternSensor</c> property.  The <c>agi_customPatternSensor</c> property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Opens and returns the writer for the <c>agi_customPatternSensor</c> property.  The <c>agi_customPatternSensor</c> property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public CustomPatternSensorCesiumWriter OpenCustomPatternSensorProperty()
         {
@@ -1102,7 +1102,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>agi_rectangularSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_rectangularSensor</c> property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Gets the writer for the <c>agi_rectangularSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_rectangularSensor</c> property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public RectangularSensorCesiumWriter RectangularSensorWriter
         {
@@ -1110,7 +1110,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>agi_rectangularSensor</c> property.  The <c>agi_rectangularSensor</c> property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Opens and returns the writer for the <c>agi_rectangularSensor</c> property.  The <c>agi_rectangularSensor</c> property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         public RectangularSensorCesiumWriter OpenRectangularSensorProperty()
         {

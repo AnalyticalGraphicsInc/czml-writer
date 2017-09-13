@@ -121,15 +121,15 @@
         },
         "agi_conicSensor": {
             "$ref": "Extensions/AGI/ConicSensor.json",
-            "description": "A conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the `position` and `orientation` properties."
+            "description": "A conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the `position` and `orientation` properties."
         },
         "agi_customPatternSensor": {
             "$ref": "Extensions/AGI/CustomPatternSensor.json",
-            "description": "A custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the `position` and `orientation` properties."
+            "description": "A custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the `position` and `orientation` properties."
         },
         "agi_rectangularSensor": {
             "$ref": "Extensions/AGI/RectangularSensor.json",
-            "description": "A rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is is positioned and oriented using the `position` and `orientation` properties."
+            "description": "A rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the `position` and `orientation` properties."
         },
         "agi_fan": {
             "$ref": "Extensions/AGI/Fan.json",
