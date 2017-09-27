@@ -27,6 +27,11 @@
             "$ref": "ReferenceValue.json",
             "description": "The orientation specified as a reference to another property.",
             "czmlValue": true
+        },
+        "velocityReference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The orientation specified as the normalized velocity vector of a position property. The reference must be to a `position` property.",
+            "czmlValue": true
         }
     }
 }

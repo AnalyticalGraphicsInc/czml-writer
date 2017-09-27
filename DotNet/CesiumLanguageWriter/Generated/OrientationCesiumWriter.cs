@@ -22,8 +22,14 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string ReferencePropertyName = "reference";
 
+        /// <summary>
+        /// The name of the <c>velocityReference</c> property.
+        /// </summary>
+        public const string VelocityReferencePropertyName = "velocityReference";
+
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>> m_asUnitQuaternion;
         private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asVelocityReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -33,6 +39,7 @@ namespace CesiumLanguageWriter
         {
             m_asUnitQuaternion = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(CreateUnitQuaternionAdaptor, false);
             m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asVelocityReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateVelocityReferenceAdaptor, false);
         }
 
         /// <summary>
@@ -44,6 +51,7 @@ namespace CesiumLanguageWriter
         {
             m_asUnitQuaternion = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(CreateUnitQuaternionAdaptor, false);
             m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asVelocityReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateVelocityReferenceAdaptor, false);
         }
 
         /// <inheritdoc />
@@ -139,6 +147,56 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Writes the value expressed as a <c>velocityReference</c>, which is the orientation specified as the normalized velocity vector of a position property. The reference must be to a <c>position</c> property.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteVelocityReference(Reference value)
+        {
+            const string PropertyName = VelocityReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, value);
+        }
+
+        /// <summary>
+        /// Writes the value expressed as a <c>velocityReference</c>, which is the orientation specified as the normalized velocity vector of a position property. The reference must be to a <c>position</c> property.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteVelocityReference(string value)
+        {
+            const string PropertyName = VelocityReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, value);
+        }
+
+        /// <summary>
+        /// Writes the value expressed as a <c>velocityReference</c>, which is the orientation specified as the normalized velocity vector of a position property. The reference must be to a <c>position</c> property.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteVelocityReference(string identifier, string propertyName)
+        {
+            const string PropertyName = VelocityReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, identifier, propertyName);
+        }
+
+        /// <summary>
+        /// Writes the value expressed as a <c>velocityReference</c>, which is the orientation specified as the normalized velocity vector of a position property. The reference must be to a <c>position</c> property.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteVelocityReference(string identifier, string[] propertyNames)
+        {
+            const string PropertyName = VelocityReferencePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            CesiumWritingHelper.WriteReference(Output, identifier, propertyNames);
+        }
+
+        /// <summary>
         /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>UnitQuaternion</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
@@ -164,6 +222,20 @@ namespace CesiumLanguageWriter
         private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
         {
             return new CesiumWriterAdaptor<OrientationCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+        }
+
+        /// <summary>
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>VelocityReference</c> format.  Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// </summary>
+        /// <returns>The wrapper.</returns>
+        public ICesiumValuePropertyWriter<Reference> AsVelocityReference()
+        {
+            return m_asVelocityReference.Value;
+        }
+
+        private ICesiumValuePropertyWriter<Reference> CreateVelocityReferenceAdaptor()
+        {
+            return new CesiumWriterAdaptor<OrientationCesiumWriter, Reference>(this, (me, value) => me.WriteVelocityReference(value));
         }
 
     }
