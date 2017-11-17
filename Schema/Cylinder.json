@@ -63,6 +63,10 @@
             "$ref": "ShadowMode.json",
             "description": "Whether or not the cylinder casts or receives shadows.",
             "default": "DISABLED"
+        },
+        "distanceDisplayCondition": {
+            "$ref": "DistanceDisplayCondition.json",
+            "description": "The display condition specifying the distance from the camera at which this cylinder will be displayed."
         }
     }
 }

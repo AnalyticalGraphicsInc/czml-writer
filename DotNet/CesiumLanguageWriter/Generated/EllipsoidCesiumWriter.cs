@@ -70,6 +70,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string ShadowsPropertyName = "shadows";
 
+        /// <summary>
+        /// The name of the <c>distanceDisplayCondition</c> property.
+        /// </summary>
+        public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
+
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<EllipsoidRadiiCesiumWriter> m_radii = new Lazy<EllipsoidRadiiCesiumWriter>(() => new EllipsoidRadiiCesiumWriter(RadiiPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_fill = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(FillPropertyName), false);
@@ -81,6 +86,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<IntegerCesiumWriter> m_slicePartitions = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(SlicePartitionsPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_subdivisions = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(SubdivisionsPropertyName), false);
         private readonly Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<ShadowModeCesiumWriter>(() => new ShadowModeCesiumWriter(ShadowsPropertyName), false);
+        private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -1145,6 +1151,126 @@ namespace CesiumLanguageWriter
         public void WriteShadowsPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenShadowsProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>distanceDisplayCondition</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>distanceDisplayCondition</c> property defines the display condition specifying at what distance from the camera this ellipsoid will be displayed.
+        /// </summary>
+        public DistanceDisplayConditionCesiumWriter DistanceDisplayConditionWriter
+        {
+            get { return m_distanceDisplayCondition.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>distanceDisplayCondition</c> property.  The <c>distanceDisplayCondition</c> property defines the display condition specifying at what distance from the camera this ellipsoid will be displayed.
+        /// </summary>
+        public DistanceDisplayConditionCesiumWriter OpenDistanceDisplayConditionProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(DistanceDisplayConditionWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>distanceDisplayCondition</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying at what distance from the camera this ellipsoid will be displayed.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteDistanceDisplayConditionProperty(Bounds value)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteDistanceDisplayCondition(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>distanceDisplayCondition</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying at what distance from the camera this ellipsoid will be displayed.
+        /// </summary>
+        /// <param name="lowerBound">The lower bound.</param>
+        /// <param name="upperBound">The upper bound.</param>
+        public void WriteDistanceDisplayConditionProperty(double lowerBound, double upperBound)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteDistanceDisplayCondition(lowerBound, upperBound);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>distanceDisplayCondition</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying at what distance from the camera this ellipsoid will be displayed.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteDistanceDisplayConditionProperty(IList<JulianDate> dates, IList<Bounds> values)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteDistanceDisplayCondition(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>distanceDisplayCondition</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying at what distance from the camera this ellipsoid will be displayed.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteDistanceDisplayConditionProperty(IList<JulianDate> dates, IList<Bounds> values, int startIndex, int length)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteDistanceDisplayCondition(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying at what distance from the camera this ellipsoid will be displayed.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteDistanceDisplayConditionPropertyReference(Reference value)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying at what distance from the camera this ellipsoid will be displayed.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteDistanceDisplayConditionPropertyReference(string value)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying at what distance from the camera this ellipsoid will be displayed.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteDistanceDisplayConditionPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying at what distance from the camera this ellipsoid will be displayed.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteDistanceDisplayConditionPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

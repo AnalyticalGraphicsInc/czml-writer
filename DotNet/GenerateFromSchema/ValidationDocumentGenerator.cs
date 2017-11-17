@@ -89,7 +89,6 @@ namespace GenerateFromSchema
                             {
                                 WriteAssertionBoth(writer, "return CzmlDataSource.load('Data/CZML/ValidationDocument.czml').then(function(dataSource) {");
                                 s_assertionIndent++;
-                                WriteAssertionBoth(writer, "/*jshint -W120 */");
                                 WriteAssertionBoth(writer, "var e;");
                                 WriteAssertionBoth(writer, "var date;");
                                 WriteAssertionBoth(writer, "var documentStartDate = JulianDate.fromIso8601('2016-06-17T12:00:00Z');");
@@ -1465,6 +1464,23 @@ namespace GenerateFromSchema
                     value = string.Format("new NearFarScalar({0}, {1}, {2}, {3})", nearDistance, nearValue, farDistance, farValue);
                     assertionValue = string.Format("new NearFarScalar({0}, {1}, {2}, {3})", nearDistance, nearValue, farDistance, farValue);
                     valueType = "NearFarScalar";
+                    return;
+                }
+                case "DistanceDisplayCondition":
+                {
+                    int nearDistance = getNumber(0);
+                    int farDistance = getNumber(1);
+                    // near must be less than far
+                    if (nearDistance > farDistance)
+                    {
+                        int temp = nearDistance;
+                        nearDistance = farDistance;
+                        farDistance = temp;
+                    }
+
+                    value = string.Format("new Bounds({0}, {1})", nearDistance, farDistance);
+                    assertionValue = string.Format("new DistanceDisplayCondition({0}, {1})", nearDistance, farDistance);
+                    valueType = "Bounds";
                     return;
                 }
                 case "BoundingRectangle":

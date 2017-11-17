@@ -75,6 +75,10 @@
             "description": "The color strength when `colorBlendMode` is `MIX`. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.",
             "default": 0.5
         },
+        "distanceDisplayCondition": {
+            "$ref": "DistanceDisplayCondition.json",
+            "description": "The display condition specifying at what distance from the camera this model will be displayed."
+        },
         "nodeTransformations": {
             "$ref": "NodeTransformations.json",
             "czmlExamples": [

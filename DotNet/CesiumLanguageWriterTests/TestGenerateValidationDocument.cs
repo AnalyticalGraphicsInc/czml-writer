@@ -42,7 +42,6 @@ namespace CesiumLanguageWriterTests
             using (m_extensionsAssertionsWriter = new StreamWriter("ValidationDocumentExtensionAssertions.js"))
             {
                 WriteAssertionBoth("return CzmlDataSource.load('Data/CZML/ValidationDocument.czml').then(function(dataSource) {");
-                WriteAssertionBoth("    /*jshint -W120 */");
                 WriteAssertionBoth("    var e;");
                 WriteAssertionBoth("    var date;");
                 WriteAssertionBoth("    var documentStartDate = JulianDate.fromIso8601('2016-06-17T12:00:00Z');");
@@ -201,6 +200,16 @@ namespace CesiumLanguageWriterTests
                         w2.WriteBoundingRectangle(BoundingRectangle.FromWidthHeight(62620, 63220, 23030, 63321));
                         m_assertionsWriter.WriteLine("    expect(e.billboard.imageSubRegion.getValue(date)).toEqual(new BoundingRectangle(62620, 63220, 23030, 63321));");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(new Bounds(22843, 27481));
+                        m_assertionsWriter.WriteLine("    expect(e.billboard.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(22843, 27481));");
+                    }
+                    using (var w2 = w.OpenDisableDepthTestDistanceProperty())
+                    {
+                        w2.WriteNumber(39764.0);
+                        m_assertionsWriter.WriteLine("    expect(e.billboard.disableDepthTestDistance.getValue(date)).toEqual(39764.0);");
+                    }
                 }
                 using (var w = packet.OpenBoxProperty())
                 {
@@ -249,6 +258,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteShadowMode(CesiumShadowMode.CastOnly);
                         m_assertionsWriter.WriteLine("    expect(e.box.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(new Bounds(3775, 49016));
+                        m_assertionsWriter.WriteLine("    expect(e.box.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(3775, 49016));");
                     }
                 }
                 using (var w = packet.OpenCorridorProperty())
@@ -324,6 +338,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteShadowMode(CesiumShadowMode.CastOnly);
                         m_assertionsWriter.WriteLine("    expect(e.corridor.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(new Bounds(15797, 46507));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(15797, 46507));");
+                    }
                 }
                 using (var w = packet.OpenCylinderProperty())
                 {
@@ -392,6 +411,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteShadowMode(CesiumShadowMode.CastOnly);
                         m_assertionsWriter.WriteLine("    expect(e.cylinder.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(new Bounds(43860, 52395));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(43860, 52395));");
                     }
                 }
                 using (var w = packet.OpenEllipseProperty())
@@ -477,6 +501,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteShadowMode(CesiumShadowMode.CastOnly);
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(new Bounds(27813, 30828));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(27813, 30828));");
+                    }
                 }
                 using (var w = packet.OpenEllipsoidProperty())
                 {
@@ -540,6 +569,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteShadowMode(CesiumShadowMode.CastOnly);
                         m_assertionsWriter.WriteLine("    expect(e.ellipsoid.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(new Bounds(3293, 56793));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(3293, 56793));");
                     }
                 }
                 using (var w = packet.OpenLabelProperty())
@@ -634,6 +668,21 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNearFarScalar(new NearFarScalar(21220, 35154, 33161, 36737));
                         m_assertionsWriter.WriteLine("    expect(e.label.pixelOffsetScaleByDistance.getValue(date)).toEqual(new NearFarScalar(21220, 35154, 33161, 36737));");
                     }
+                    using (var w2 = w.OpenScaleByDistanceProperty())
+                    {
+                        w2.WriteNearFarScalar(new NearFarScalar(7350, 32796, 1408, 55045));
+                        m_assertionsWriter.WriteLine("    expect(e.label.scaleByDistance.getValue(date)).toEqual(new NearFarScalar(7350, 32796, 1408, 55045));");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(new Bounds(5204, 21012));
+                        m_assertionsWriter.WriteLine("    expect(e.label.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(5204, 21012));");
+                    }
+                    using (var w2 = w.OpenDisableDepthTestDistanceProperty())
+                    {
+                        w2.WriteNumber(17959.0);
+                        m_assertionsWriter.WriteLine("    expect(e.label.disableDepthTestDistance.getValue(date)).toEqual(17959.0);");
+                    }
                 }
                 using (var w = packet.OpenModelProperty())
                 {
@@ -707,6 +756,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(7475.0);
                         m_assertionsWriter.WriteLine("    expect(e.model.colorBlendAmount.getValue(date)).toEqual(7475.0);");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(new Bounds(31861, 62844));
+                        m_assertionsWriter.WriteLine("    expect(e.model.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(31861, 62844));");
+                    }
                     using (var w2 = w.OpenNodeTransformationsProperty())
                     {
                         using (var a = w2.OpenNodeTransformationProperty("prop"))
@@ -767,6 +821,11 @@ namespace CesiumLanguageWriterTests
                             }
                         }
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(new Bounds(11646, 32422));
+                        m_assertionsWriter.WriteLine("    expect(e.path.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(11646, 32422));");
+                    }
                 }
                 using (var w = packet.OpenPointProperty())
                 {
@@ -809,6 +868,16 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteNearFarScalar(new NearFarScalar(52796, 43982, 61099, 50158));
                         m_assertionsWriter.WriteLine("    expect(e.point.translucencyByDistance.getValue(date)).toEqual(new NearFarScalar(52796, 43982, 61099, 50158));");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(new Bounds(29646, 52915));
+                        m_assertionsWriter.WriteLine("    expect(e.point.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(29646, 52915));");
+                    }
+                    using (var w2 = w.OpenDisableDepthTestDistanceProperty())
+                    {
+                        w2.WriteNumber(9675.0);
+                        m_assertionsWriter.WriteLine("    expect(e.point.disableDepthTestDistance.getValue(date)).toEqual(9675.0);");
                     }
                 }
                 using (var w = packet.OpenPolygonProperty())
@@ -894,6 +963,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteShadowMode(CesiumShadowMode.CastOnly);
                         m_assertionsWriter.WriteLine("    expect(e.polygon.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(new Bounds(5989, 26104));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(5989, 26104));");
+                    }
                 }
                 using (var w = packet.OpenPolylineProperty())
                 {
@@ -937,6 +1011,22 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteShadowMode(CesiumShadowMode.CastOnly);
                         m_assertionsWriter.WriteLine("    expect(e.polyline.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                    }
+                    using (var w2 = w.OpenDepthFailMaterialProperty())
+                    {
+                        using (var m = w2.OpenSolidColorProperty())
+                        {
+                            using (var m2 = m.OpenColorProperty())
+                            {
+                                m2.WriteRgba(Color.FromArgb(198, 197, 195, 115));
+                                m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqual(Color.fromBytes(197, 195, 115, 198));");
+                            }
+                        }
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(new Bounds(5807, 30486));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(5807, 30486));");
                     }
                 }
                 using (var w = packet.OpenRectangleProperty())
@@ -1022,6 +1112,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteShadowMode(CesiumShadowMode.CastOnly);
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(new Bounds(21388, 23379));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(21388, 23379));");
+                    }
                 }
                 using (var w = packet.OpenWallProperty())
                 {
@@ -1085,6 +1180,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteShadowMode(CesiumShadowMode.CastOnly);
                         m_assertionsWriter.WriteLine("    expect(e.wall.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(new Bounds(27810, 41691));
+                        m_assertionsWriter.WriteLine("    expect(e.wall.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(27810, 41691));");
                     }
                 }
                 using (var w = packet.OpenConicSensorProperty())
@@ -3600,6 +3700,339 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(71, 74, 199, 18));
                     m_assertionsWriter.WriteLine("    expect(e.polyline.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.290196078431373, 0.780392156862745, 0.0705882352941176, 0.27843137254902), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_depthFailMaterial_solidColor_color");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_depthFailMaterial_solidColor_color')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenSolidColorProperty())
+                using (var m2 = m.OpenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(161, 231, 162, 111));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqualEpsilon(new Color(0.905882352941176, 0.635294117647059, 0.435294117647059, 0.631372549019608), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("material_polyline_depthFailMaterial_polylineOutline");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_polyline_depthFailMaterial_polylineOutline')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineOutlineProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(18, 238, 116, 228));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqual(Color.fromBytes(238, 116, 228, 18));");
+                    }
+                    using (var m2 = m.OpenOutlineColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(134, 36, 55, 18));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.outlineColor.getValue(date)).toEqual(Color.fromBytes(36, 55, 18, 134));");
+                    }
+                    using (var m2 = m.OpenOutlineWidthProperty())
+                    {
+                        m2.WriteNumber(33747.0);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.outlineWidth.getValue(date)).toEqual(33747.0);");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("material_polyline_depthFailMaterial_polylineArrow");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_polyline_depthFailMaterial_polylineArrow')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineArrowProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(160, 80, 78, 117));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqual(Color.fromBytes(80, 78, 117, 160));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("material_polyline_depthFailMaterial_polylineDash");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_polyline_depthFailMaterial_polylineDash')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineDashProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(217, 139, 171, 44));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqual(Color.fromBytes(139, 171, 44, 217));");
+                    }
+                    using (var m2 = m.OpenGapColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(243, 253, 13, 109));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.gapColor.getValue(date)).toEqual(Color.fromBytes(253, 13, 109, 243));");
+                    }
+                    using (var m2 = m.OpenDashLengthProperty())
+                    {
+                        m2.WriteNumber(21429.0);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.dashLength.getValue(date)).toEqual(21429.0);");
+                    }
+                    using (var m2 = m.OpenDashPatternProperty())
+                    {
+                        m2.WriteNumber(13659);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.dashPattern.getValue(date)).toEqual(13659);");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("material_polyline_depthFailMaterial_polylineGlow");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_polyline_depthFailMaterial_polylineGlow')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineGlowProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(249, 82, 227, 164));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqual(Color.fromBytes(82, 227, 164, 249));");
+                    }
+                    using (var m2 = m.OpenGlowPowerProperty())
+                    {
+                        m2.WriteNumber(52932.0);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.glowPower.getValue(date)).toEqual(52932.0);");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("material_polyline_depthFailMaterial_image");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_polyline_depthFailMaterial_image')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenImageProperty())
+                {
+                    using (var m2 = m.OpenImageProperty())
+                    {
+                        m2.WriteUri("http://example.com/6349", CesiumResourceBehavior.LinkTo);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.image.getValue(date)).toEqual('http://example.com/6349');");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(24549, 50015));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.repeat.getValue(date)).toEqual(new Cartesian2(24549, 50015));");
+                    }
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(55, 71, 233, 193));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqual(Color.fromBytes(71, 233, 193, 55));");
+                    }
+                    using (var m2 = m.OpenTransparentProperty())
+                    {
+                        m2.WriteBoolean(true);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.transparent.getValue(date)).toEqual(true);");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("material_polyline_depthFailMaterial_grid");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_polyline_depthFailMaterial_grid')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenGridProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(116, 241, 160, 22));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqual(Color.fromBytes(241, 160, 22, 116));");
+                    }
+                    using (var m2 = m.OpenCellAlphaProperty())
+                    {
+                        m2.WriteNumber(32801.0);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.cellAlpha.getValue(date)).toEqual(32801.0);");
+                    }
+                    using (var m2 = m.OpenLineCountProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(27318, 57194));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(27318, 57194));");
+                    }
+                    using (var m2 = m.OpenLineThicknessProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(2299, 50440));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(2299, 50440));");
+                    }
+                    using (var m2 = m.OpenLineOffsetProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(16744, 62785));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(16744, 62785));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("material_polyline_depthFailMaterial_stripe");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_polyline_depthFailMaterial_stripe')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenStripeProperty())
+                {
+                    using (var m2 = m.OpenOrientationProperty())
+                    {
+                        m2.WriteStripeOrientation(CesiumStripeOrientation.Vertical);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.orientation.getValue(date)).toEqual(StripeOrientation.VERTICAL);");
+                    }
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(224, 174, 135, 160));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(174, 135, 160, 224));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(198, 8, 166, 115));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(8, 166, 115, 198));");
+                    }
+                    using (var m2 = m.OpenOffsetProperty())
+                    {
+                        m2.WriteNumber(58992.0);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.offset.getValue(date)).toEqual(58992.0);");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteNumber(7346.0);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.repeat.getValue(date)).toEqual(7346.0);");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_depthFailMaterial_polylineOutline_color");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_depthFailMaterial_polylineOutline_color')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineOutlineProperty())
+                using (var m2 = m.OpenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(177, 249, 34, 213));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqualEpsilon(new Color(0.976470588235294, 0.133333333333333, 0.835294117647059, 0.694117647058824), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_depthFailMaterial_polylineOutline_outlineColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_depthFailMaterial_polylineOutline_outlineColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineOutlineProperty())
+                using (var m2 = m.OpenOutlineColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(67, 204, 221, 56));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.outlineColor.getValue(date)).toEqualEpsilon(new Color(0.8, 0.866666666666667, 0.219607843137255, 0.262745098039216), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_depthFailMaterial_polylineArrow_color");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_depthFailMaterial_polylineArrow_color')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineArrowProperty())
+                using (var m2 = m.OpenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(54, 10, 252, 200));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqualEpsilon(new Color(0.0392156862745098, 0.988235294117647, 0.784313725490196, 0.211764705882353), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_depthFailMaterial_polylineDash_color");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_depthFailMaterial_polylineDash_color')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineDashProperty())
+                using (var m2 = m.OpenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(179, 11, 60, 113));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqualEpsilon(new Color(0.0431372549019608, 0.235294117647059, 0.443137254901961, 0.701960784313725), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_depthFailMaterial_polylineDash_gapColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_depthFailMaterial_polylineDash_gapColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineDashProperty())
+                using (var m2 = m.OpenGapColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(240, 99, 5, 199));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.gapColor.getValue(date)).toEqualEpsilon(new Color(0.388235294117647, 0.0196078431372549, 0.780392156862745, 0.941176470588235), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_depthFailMaterial_polylineGlow_color");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_depthFailMaterial_polylineGlow_color')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineGlowProperty())
+                using (var m2 = m.OpenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(43, 187, 46, 104));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqualEpsilon(new Color(0.733333333333333, 0.180392156862745, 0.407843137254902, 0.168627450980392), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_depthFailMaterial_image_color");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_depthFailMaterial_image_color')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenImageProperty())
+                using (var m2 = m.OpenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(122, 208, 122, 65));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqualEpsilon(new Color(0.815686274509804, 0.47843137254902, 0.254901960784314, 0.47843137254902), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_depthFailMaterial_grid_color");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_depthFailMaterial_grid_color')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenGridProperty())
+                using (var m2 = m.OpenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(247, 63, 241, 7));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqualEpsilon(new Color(0.247058823529412, 0.945098039215686, 0.0274509803921569, 0.968627450980392), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_depthFailMaterial_stripe_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_depthFailMaterial_stripe_evenColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenStripeProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(174, 132, 147, 157));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.517647058823529, 0.576470588235294, 0.615686274509804, 0.682352941176471), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_depthFailMaterial_stripe_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_depthFailMaterial_stripe_oddColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenStripeProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(168, 85, 137, 113));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.333333333333333, 0.537254901960784, 0.443137254901961, 0.658823529411765), 1e-14);");
                 }
             }
         }
@@ -7137,6 +7570,16 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("billboard", "imageSubRegion")));
                         m_assertionsWriter.WriteLine("    expect(e.billboard.imageSubRegion.getValue(date)).toEqual(constant.billboard.imageSubRegion.getValue(date));");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("billboard", "distanceDisplayCondition")));
+                        m_assertionsWriter.WriteLine("    expect(e.billboard.distanceDisplayCondition.getValue(date)).toEqual(constant.billboard.distanceDisplayCondition.getValue(date));");
+                    }
+                    using (var w2 = w.OpenDisableDepthTestDistanceProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("billboard", "disableDepthTestDistance")));
+                        m_assertionsWriter.WriteLine("    expect(e.billboard.disableDepthTestDistance.getValue(date)).toEqual(constant.billboard.disableDepthTestDistance.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenBoxProperty())
                 {
@@ -7183,6 +7626,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("box", "shadows")));
                         m_assertionsWriter.WriteLine("    expect(e.box.shadows.getValue(date)).toEqual(constant.box.shadows.getValue(date));");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("box", "distanceDisplayCondition")));
+                        m_assertionsWriter.WriteLine("    expect(e.box.distanceDisplayCondition.getValue(date)).toEqual(constant.box.distanceDisplayCondition.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenCorridorProperty())
@@ -7256,6 +7704,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("corridor", "shadows")));
                         m_assertionsWriter.WriteLine("    expect(e.corridor.shadows.getValue(date)).toEqual(constant.corridor.shadows.getValue(date));");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("corridor", "distanceDisplayCondition")));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.distanceDisplayCondition.getValue(date)).toEqual(constant.corridor.distanceDisplayCondition.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenCylinderProperty())
                 {
@@ -7322,6 +7775,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("cylinder", "shadows")));
                         m_assertionsWriter.WriteLine("    expect(e.cylinder.shadows.getValue(date)).toEqual(constant.cylinder.shadows.getValue(date));");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("cylinder", "distanceDisplayCondition")));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.distanceDisplayCondition.getValue(date)).toEqual(constant.cylinder.distanceDisplayCondition.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenEllipseProperty())
@@ -7405,6 +7863,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("ellipse", "shadows")));
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.shadows.getValue(date)).toEqual(constant.ellipse.shadows.getValue(date));");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("ellipse", "distanceDisplayCondition")));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.distanceDisplayCondition.getValue(date)).toEqual(constant.ellipse.distanceDisplayCondition.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenEllipsoidProperty())
                 {
@@ -7466,6 +7929,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("ellipsoid", "shadows")));
                         m_assertionsWriter.WriteLine("    expect(e.ellipsoid.shadows.getValue(date)).toEqual(constant.ellipsoid.shadows.getValue(date));");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("ellipsoid", "distanceDisplayCondition")));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.distanceDisplayCondition.getValue(date)).toEqual(constant.ellipsoid.distanceDisplayCondition.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenLabelProperty())
@@ -7560,6 +8028,21 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("label", "pixelOffsetScaleByDistance")));
                         m_assertionsWriter.WriteLine("    expect(e.label.pixelOffsetScaleByDistance.getValue(date)).toEqual(constant.label.pixelOffsetScaleByDistance.getValue(date));");
                     }
+                    using (var w2 = w.OpenScaleByDistanceProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("label", "scaleByDistance")));
+                        m_assertionsWriter.WriteLine("    expect(e.label.scaleByDistance.getValue(date)).toEqual(constant.label.scaleByDistance.getValue(date));");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("label", "distanceDisplayCondition")));
+                        m_assertionsWriter.WriteLine("    expect(e.label.distanceDisplayCondition.getValue(date)).toEqual(constant.label.distanceDisplayCondition.getValue(date));");
+                    }
+                    using (var w2 = w.OpenDisableDepthTestDistanceProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("label", "disableDepthTestDistance")));
+                        m_assertionsWriter.WriteLine("    expect(e.label.disableDepthTestDistance.getValue(date)).toEqual(constant.label.disableDepthTestDistance.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenModelProperty())
                 {
@@ -7633,6 +8116,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("model", "colorBlendAmount")));
                         m_assertionsWriter.WriteLine("    expect(e.model.colorBlendAmount.getValue(date)).toEqual(constant.model.colorBlendAmount.getValue(date));");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("model", "distanceDisplayCondition")));
+                        m_assertionsWriter.WriteLine("    expect(e.model.distanceDisplayCondition.getValue(date)).toEqual(constant.model.distanceDisplayCondition.getValue(date));");
+                    }
                     using (var w2 = w.OpenNodeTransformationsProperty())
                     using (var a = w2.OpenNodeTransformationProperty("referenceProp"))
                     {
@@ -7689,6 +8177,11 @@ namespace CesiumLanguageWriterTests
                             m_assertionsWriter.WriteLine("    expect(e.path.material.color.getValue(date)).toEqual(constant.path.material.color.getValue(date));");
                         }
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("path", "distanceDisplayCondition")));
+                        m_assertionsWriter.WriteLine("    expect(e.path.distanceDisplayCondition.getValue(date)).toEqual(constant.path.distanceDisplayCondition.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenPointProperty())
                 {
@@ -7731,6 +8224,16 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("point", "translucencyByDistance")));
                         m_assertionsWriter.WriteLine("    expect(e.point.translucencyByDistance.getValue(date)).toEqual(constant.point.translucencyByDistance.getValue(date));");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("point", "distanceDisplayCondition")));
+                        m_assertionsWriter.WriteLine("    expect(e.point.distanceDisplayCondition.getValue(date)).toEqual(constant.point.distanceDisplayCondition.getValue(date));");
+                    }
+                    using (var w2 = w.OpenDisableDepthTestDistanceProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("point", "disableDepthTestDistance")));
+                        m_assertionsWriter.WriteLine("    expect(e.point.disableDepthTestDistance.getValue(date)).toEqual(constant.point.disableDepthTestDistance.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenPolygonProperty())
@@ -7814,6 +8317,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("polygon", "shadows")));
                         m_assertionsWriter.WriteLine("    expect(e.polygon.shadows.getValue(date)).toEqual(constant.polygon.shadows.getValue(date));");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("polygon", "distanceDisplayCondition")));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.distanceDisplayCondition.getValue(date)).toEqual(constant.polygon.distanceDisplayCondition.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenPolylineProperty())
                 {
@@ -7855,6 +8363,20 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("polyline", "shadows")));
                         m_assertionsWriter.WriteLine("    expect(e.polyline.shadows.getValue(date)).toEqual(constant.polyline.shadows.getValue(date));");
+                    }
+                    using (var w2 = w.OpenDepthFailMaterialProperty())
+                    using (var m = w2.OpenSolidColorProperty())
+                    {
+                        using (var m2 = m.OpenColorProperty())
+                        {
+                            m2.WriteReference(new Reference("Constant", CreateList("polyline", "depthFailMaterial", "color")));
+                            m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqual(constant.polyline.depthFailMaterial.color.getValue(date));");
+                        }
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("polyline", "distanceDisplayCondition")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.distanceDisplayCondition.getValue(date)).toEqual(constant.polyline.distanceDisplayCondition.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenRectangleProperty())
@@ -7938,6 +8460,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("rectangle", "shadows")));
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.shadows.getValue(date)).toEqual(constant.rectangle.shadows.getValue(date));");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("rectangle", "distanceDisplayCondition")));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.distanceDisplayCondition.getValue(date)).toEqual(constant.rectangle.distanceDisplayCondition.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenWallProperty())
                 {
@@ -7999,6 +8526,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("wall", "shadows")));
                         m_assertionsWriter.WriteLine("    expect(e.wall.shadows.getValue(date)).toEqual(constant.wall.shadows.getValue(date));");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("wall", "distanceDisplayCondition")));
+                        m_assertionsWriter.WriteLine("    expect(e.wall.distanceDisplayCondition.getValue(date)).toEqual(constant.wall.distanceDisplayCondition.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenConicSensorProperty())
@@ -9555,6 +10087,196 @@ namespace CesiumLanguageWriterTests
                     {
                         m2.WriteReference(new Reference("material_polyline_material_stripe", CreateList("polyline", "material", "repeat")));
                         m_assertionsWriter.WriteLine("    expect(e.polyline.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_material_stripe').polyline.material.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_polyline_depthFailMaterial_polylineOutline");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_polyline_depthFailMaterial_polylineOutline')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineOutlineProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_polylineOutline", CreateList("polyline", "depthFailMaterial", "color")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_polylineOutline').polyline.depthFailMaterial.color.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOutlineColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_polylineOutline", CreateList("polyline", "depthFailMaterial", "outlineColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.outlineColor.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_polylineOutline').polyline.depthFailMaterial.outlineColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOutlineWidthProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_polylineOutline", CreateList("polyline", "depthFailMaterial", "outlineWidth")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.outlineWidth.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_polylineOutline').polyline.depthFailMaterial.outlineWidth.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_polyline_depthFailMaterial_polylineArrow");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_polyline_depthFailMaterial_polylineArrow')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineArrowProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_polylineArrow", CreateList("polyline", "depthFailMaterial", "color")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_polylineArrow').polyline.depthFailMaterial.color.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_polyline_depthFailMaterial_polylineDash");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_polyline_depthFailMaterial_polylineDash')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineDashProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_polylineDash", CreateList("polyline", "depthFailMaterial", "color")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_polylineDash').polyline.depthFailMaterial.color.getValue(date));");
+                    }
+                    using (var m2 = m.OpenGapColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_polylineDash", CreateList("polyline", "depthFailMaterial", "gapColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.gapColor.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_polylineDash').polyline.depthFailMaterial.gapColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenDashLengthProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_polylineDash", CreateList("polyline", "depthFailMaterial", "dashLength")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.dashLength.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_polylineDash').polyline.depthFailMaterial.dashLength.getValue(date));");
+                    }
+                    using (var m2 = m.OpenDashPatternProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_polylineDash", CreateList("polyline", "depthFailMaterial", "dashPattern")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.dashPattern.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_polylineDash').polyline.depthFailMaterial.dashPattern.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_polyline_depthFailMaterial_polylineGlow");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_polyline_depthFailMaterial_polylineGlow')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineGlowProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_polylineGlow", CreateList("polyline", "depthFailMaterial", "color")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_polylineGlow').polyline.depthFailMaterial.color.getValue(date));");
+                    }
+                    using (var m2 = m.OpenGlowPowerProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_polylineGlow", CreateList("polyline", "depthFailMaterial", "glowPower")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.glowPower.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_polylineGlow').polyline.depthFailMaterial.glowPower.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_polyline_depthFailMaterial_image");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_polyline_depthFailMaterial_image')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenImageProperty())
+                {
+                    using (var m2 = m.OpenImageProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_image", CreateList("polyline", "depthFailMaterial", "image")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.image.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_image').polyline.depthFailMaterial.image.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_image", CreateList("polyline", "depthFailMaterial", "repeat")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_image').polyline.depthFailMaterial.repeat.getValue(date));");
+                    }
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_image", CreateList("polyline", "depthFailMaterial", "color")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_image').polyline.depthFailMaterial.color.getValue(date));");
+                    }
+                    using (var m2 = m.OpenTransparentProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_image", CreateList("polyline", "depthFailMaterial", "transparent")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.transparent.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_image').polyline.depthFailMaterial.transparent.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_polyline_depthFailMaterial_grid");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_polyline_depthFailMaterial_grid')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenGridProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_grid", CreateList("polyline", "depthFailMaterial", "color")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_grid').polyline.depthFailMaterial.color.getValue(date));");
+                    }
+                    using (var m2 = m.OpenCellAlphaProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_grid", CreateList("polyline", "depthFailMaterial", "cellAlpha")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.cellAlpha.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_grid').polyline.depthFailMaterial.cellAlpha.getValue(date));");
+                    }
+                    using (var m2 = m.OpenLineCountProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_grid", CreateList("polyline", "depthFailMaterial", "lineCount")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.lineCount.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_grid').polyline.depthFailMaterial.lineCount.getValue(date));");
+                    }
+                    using (var m2 = m.OpenLineThicknessProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_grid", CreateList("polyline", "depthFailMaterial", "lineThickness")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.lineThickness.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_grid').polyline.depthFailMaterial.lineThickness.getValue(date));");
+                    }
+                    using (var m2 = m.OpenLineOffsetProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_grid", CreateList("polyline", "depthFailMaterial", "lineOffset")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.lineOffset.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_grid').polyline.depthFailMaterial.lineOffset.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_polyline_depthFailMaterial_stripe");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_polyline_depthFailMaterial_stripe')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenStripeProperty())
+                {
+                    using (var m2 = m.OpenOrientationProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_stripe", CreateList("polyline", "depthFailMaterial", "orientation")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.orientation.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_stripe').polyline.depthFailMaterial.orientation.getValue(date));");
+                    }
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_stripe", CreateList("polyline", "depthFailMaterial", "evenColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_stripe').polyline.depthFailMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_stripe", CreateList("polyline", "depthFailMaterial", "oddColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_stripe').polyline.depthFailMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOffsetProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_stripe", CreateList("polyline", "depthFailMaterial", "offset")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.offset.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_stripe').polyline.depthFailMaterial.offset.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_stripe", CreateList("polyline", "depthFailMaterial", "repeat")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_stripe').polyline.depthFailMaterial.repeat.getValue(date));");
                     }
                 }
             }
@@ -11478,6 +12200,18 @@ namespace CesiumLanguageWriterTests
                         m_assertionsWriter.WriteLine("    expect(e.billboard.imageSubRegion.getValue(documentStartDate)).toEqual(new BoundingRectangle(26590, 12135, 16431, 56640));");
                         m_assertionsWriter.WriteLine("    expect(e.billboard.imageSubRegion.getValue(documentStopDate)).toEqual(new BoundingRectangle(43063, 42664, 60326, 52715));");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(952, 47317), new Bounds(16896, 28226)));
+                        m_assertionsWriter.WriteLine("    expect(e.billboard.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(952, 47317));");
+                        m_assertionsWriter.WriteLine("    expect(e.billboard.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(16896, 28226));");
+                    }
+                    using (var w2 = w.OpenDisableDepthTestDistanceProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(18661.0, 61609.0));
+                        m_assertionsWriter.WriteLine("    expect(e.billboard.disableDepthTestDistance.getValue(documentStartDate)).toEqual(18661.0);");
+                        m_assertionsWriter.WriteLine("    expect(e.billboard.disableDepthTestDistance.getValue(documentStopDate)).toEqual(61609.0);");
+                    }
                 }
                 using (var w = packet.OpenBoxProperty())
                 {
@@ -11510,6 +12244,12 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(45211.0, 20490.0));
                         m_assertionsWriter.WriteLine("    expect(e.box.outlineWidth.getValue(documentStartDate)).toEqual(45211.0);");
                         m_assertionsWriter.WriteLine("    expect(e.box.outlineWidth.getValue(documentStopDate)).toEqual(20490.0);");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(8940, 60664), new Bounds(41202, 60832)));
+                        m_assertionsWriter.WriteLine("    expect(e.box.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(8940, 60664));");
+                        m_assertionsWriter.WriteLine("    expect(e.box.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(41202, 60832));");
                     }
                 }
                 using (var w = packet.OpenCorridorProperty())
@@ -11561,6 +12301,12 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(14678.0, 57820.0));
                         m_assertionsWriter.WriteLine("    expect(e.corridor.outlineWidth.getValue(documentStartDate)).toEqual(14678.0);");
                         m_assertionsWriter.WriteLine("    expect(e.corridor.outlineWidth.getValue(documentStopDate)).toEqual(57820.0);");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(10884, 63530), new Bounds(20076, 27683)));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(10884, 63530));");
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(20076, 27683));");
                     }
                 }
                 using (var w = packet.OpenCylinderProperty())
@@ -11618,6 +12364,12 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(46140.0, 53530.0));
                         m_assertionsWriter.WriteLine("    expect(e.cylinder.slices.getValue(documentStartDate)).toEqual(46140.0);");
                         m_assertionsWriter.WriteLine("    expect(e.cylinder.slices.getValue(documentStopDate)).toEqual(53530.0);");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(2783, 57220), new Bounds(13855, 50230)));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(2783, 57220));");
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(13855, 50230));");
                     }
                 }
                 using (var w = packet.OpenEllipseProperty())
@@ -11694,6 +12446,12 @@ namespace CesiumLanguageWriterTests
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.numberOfVerticalLines.getValue(documentStartDate)).toEqual(52822.0);");
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.numberOfVerticalLines.getValue(documentStopDate)).toEqual(45768.0);");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(38393, 63947), new Bounds(29119, 43121)));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(38393, 63947));");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(29119, 43121));");
+                    }
                 }
                 using (var w = packet.OpenEllipsoidProperty())
                 {
@@ -11744,6 +12502,12 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(10225.0, 53957.0));
                         m_assertionsWriter.WriteLine("    expect(e.ellipsoid.subdivisions.getValue(documentStartDate)).toEqual(10225.0);");
                         m_assertionsWriter.WriteLine("    expect(e.ellipsoid.subdivisions.getValue(documentStopDate)).toEqual(53957.0);");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(11751, 59227), new Bounds(4769, 41441)));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(11751, 59227));");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(4769, 41441));");
                     }
                 }
                 using (var w = packet.OpenLabelProperty())
@@ -11808,6 +12572,24 @@ namespace CesiumLanguageWriterTests
                         m_assertionsWriter.WriteLine("    expect(e.label.pixelOffsetScaleByDistance.getValue(documentStartDate)).toEqual(new NearFarScalar(45296, 62896, 38133, 40084));");
                         m_assertionsWriter.WriteLine("    expect(e.label.pixelOffsetScaleByDistance.getValue(documentStopDate)).toEqual(new NearFarScalar(28657, 25711, 9316, 62756));");
                     }
+                    using (var w2 = w.OpenScaleByDistanceProperty())
+                    {
+                        w2.WriteNearFarScalar(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new NearFarScalar(22356, 26711, 58216, 52963), new NearFarScalar(26464, 26471, 23143, 37466)));
+                        m_assertionsWriter.WriteLine("    expect(e.label.scaleByDistance.getValue(documentStartDate)).toEqual(new NearFarScalar(22356, 26711, 58216, 52963));");
+                        m_assertionsWriter.WriteLine("    expect(e.label.scaleByDistance.getValue(documentStopDate)).toEqual(new NearFarScalar(26464, 26471, 23143, 37466));");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(2314, 2614), new Bounds(23998, 48733)));
+                        m_assertionsWriter.WriteLine("    expect(e.label.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(2314, 2614));");
+                        m_assertionsWriter.WriteLine("    expect(e.label.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(23998, 48733));");
+                    }
+                    using (var w2 = w.OpenDisableDepthTestDistanceProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(250.0, 40425.0));
+                        m_assertionsWriter.WriteLine("    expect(e.label.disableDepthTestDistance.getValue(documentStartDate)).toEqual(250.0);");
+                        m_assertionsWriter.WriteLine("    expect(e.label.disableDepthTestDistance.getValue(documentStopDate)).toEqual(40425.0);");
+                    }
                 }
                 using (var w = packet.OpenModelProperty())
                 {
@@ -11853,6 +12635,12 @@ namespace CesiumLanguageWriterTests
                         m_assertionsWriter.WriteLine("    expect(e.model.colorBlendAmount.getValue(documentStartDate)).toEqual(64130.0);");
                         m_assertionsWriter.WriteLine("    expect(e.model.colorBlendAmount.getValue(documentStopDate)).toEqual(21967.0);");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(33246, 36993), new Bounds(5814, 10006)));
+                        m_assertionsWriter.WriteLine("    expect(e.model.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(33246, 36993));");
+                        m_assertionsWriter.WriteLine("    expect(e.model.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(5814, 10006));");
+                    }
                 }
                 using (var w = packet.OpenPathProperty())
                 {
@@ -11892,6 +12680,12 @@ namespace CesiumLanguageWriterTests
                             }
                         }
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(42994, 62047), new Bounds(52406, 59340)));
+                        m_assertionsWriter.WriteLine("    expect(e.path.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(42994, 62047));");
+                        m_assertionsWriter.WriteLine("    expect(e.path.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(52406, 59340));");
+                    }
                 }
                 using (var w = packet.OpenPointProperty())
                 {
@@ -11930,6 +12724,18 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNearFarScalar(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new NearFarScalar(61190, 16879, 16449, 10048), new NearFarScalar(46491, 47541, 35769, 13707)));
                         m_assertionsWriter.WriteLine("    expect(e.point.translucencyByDistance.getValue(documentStartDate)).toEqual(new NearFarScalar(61190, 16879, 16449, 10048));");
                         m_assertionsWriter.WriteLine("    expect(e.point.translucencyByDistance.getValue(documentStopDate)).toEqual(new NearFarScalar(46491, 47541, 35769, 13707));");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(7642, 55841), new Bounds(24270, 29534)));
+                        m_assertionsWriter.WriteLine("    expect(e.point.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(7642, 55841));");
+                        m_assertionsWriter.WriteLine("    expect(e.point.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(24270, 29534));");
+                    }
+                    using (var w2 = w.OpenDisableDepthTestDistanceProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(30881.0, 6667.0));
+                        m_assertionsWriter.WriteLine("    expect(e.point.disableDepthTestDistance.getValue(documentStartDate)).toEqual(30881.0);");
+                        m_assertionsWriter.WriteLine("    expect(e.point.disableDepthTestDistance.getValue(documentStopDate)).toEqual(6667.0);");
                     }
                 }
                 using (var w = packet.OpenPolygonProperty())
@@ -11982,6 +12788,12 @@ namespace CesiumLanguageWriterTests
                         m_assertionsWriter.WriteLine("    expect(e.polygon.outlineWidth.getValue(documentStartDate)).toEqual(48428.0);");
                         m_assertionsWriter.WriteLine("    expect(e.polygon.outlineWidth.getValue(documentStopDate)).toEqual(41508.0);");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(22140, 31962), new Bounds(3927, 22422)));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(22140, 31962));");
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(3927, 22422));");
+                    }
                 }
                 using (var w = packet.OpenPolylineProperty())
                 {
@@ -12008,6 +12820,24 @@ namespace CesiumLanguageWriterTests
                                 m_assertionsWriter.WriteLine("    expect(e.polyline.material.color.getValue(documentStopDate)).toEqual(Color.fromBytes(39, 17, 221, 74));");
                             }
                         }
+                    }
+                    using (var w2 = w.OpenDepthFailMaterialProperty())
+                    {
+                        using (var m = w2.OpenSolidColorProperty())
+                        {
+                            using (var m2 = m.OpenColorProperty())
+                            {
+                                m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(152, 217, 122, 10), Color.FromArgb(67, 76, 105, 5)));
+                                m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStartDate)).toEqual(Color.fromBytes(217, 122, 10, 152));");
+                                m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStopDate)).toEqual(Color.fromBytes(76, 105, 5, 67));");
+                            }
+                        }
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(4857, 10258), new Bounds(36588, 47246)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(4857, 10258));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(36588, 47246));");
                     }
                 }
                 using (var w = packet.OpenRectangleProperty())
@@ -12072,6 +12902,12 @@ namespace CesiumLanguageWriterTests
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.outlineWidth.getValue(documentStartDate)).toEqual(41576.0);");
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.outlineWidth.getValue(documentStopDate)).toEqual(33933.0);");
                     }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(24813, 30560), new Bounds(34617, 40071)));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(24813, 30560));");
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(34617, 40071));");
+                    }
                 }
                 using (var w = packet.OpenWallProperty())
                 {
@@ -12104,6 +12940,12 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(62000.0, 40549.0));
                         m_assertionsWriter.WriteLine("    expect(e.wall.outlineWidth.getValue(documentStartDate)).toEqual(62000.0);");
                         m_assertionsWriter.WriteLine("    expect(e.wall.outlineWidth.getValue(documentStopDate)).toEqual(40549.0);");
+                    }
+                    using (var w2 = w.OpenDistanceDisplayConditionProperty())
+                    {
+                        w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(12470, 36912), new Bounds(35574, 63040)));
+                        m_assertionsWriter.WriteLine("    expect(e.wall.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(12470, 36912));");
+                        m_assertionsWriter.WriteLine("    expect(e.wall.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(35574, 63040));");
                     }
                 }
                 using (var w = packet.OpenConicSensorProperty())
@@ -14471,6 +15313,356 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(223, 109, 104, 120), Color.FromArgb(0, 130, 109, 249)));
                     m_assertionsWriter.WriteLine("    expect(e.polyline.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.427450980392157, 0.407843137254902, 0.470588235294118, 0.874509803921569), 1e-14);");
                     m_assertionsWriter.WriteLine("    expect(e.polyline.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.509803921568627, 0.427450980392157, 0.976470588235294, 0), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_solidColor_color");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_solidColor_color')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenSolidColorProperty())
+                using (var m2 = m.OpenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(138, 145, 62, 112), Color.FromArgb(7, 186, 129, 72)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStartDate)).toEqualEpsilon(new Color(0.568627450980392, 0.243137254901961, 0.43921568627451, 0.541176470588235), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStopDate)).toEqualEpsilon(new Color(0.729411764705882, 0.505882352941176, 0.282352941176471, 0.0274509803921569), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_polylineOutline");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_polylineOutline')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineOutlineProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(106, 247, 124, 164), Color.FromArgb(82, 91, 114, 116)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStartDate)).toEqual(Color.fromBytes(247, 124, 164, 106));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStopDate)).toEqual(Color.fromBytes(91, 114, 116, 82));");
+                    }
+                    using (var m2 = m.OpenOutlineColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(243, 35, 216, 157), Color.FromArgb(175, 111, 11, 143)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.outlineColor.getValue(documentStartDate)).toEqual(Color.fromBytes(35, 216, 157, 243));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.outlineColor.getValue(documentStopDate)).toEqual(Color.fromBytes(111, 11, 143, 175));");
+                    }
+                    using (var m2 = m.OpenOutlineWidthProperty())
+                    {
+                        m2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(45494.0, 8666.0));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.outlineWidth.getValue(documentStartDate)).toEqual(45494.0);");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.outlineWidth.getValue(documentStopDate)).toEqual(8666.0);");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_polylineArrow");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_polylineArrow')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineArrowProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(146, 143, 46, 33), Color.FromArgb(93, 1, 147, 34)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStartDate)).toEqual(Color.fromBytes(143, 46, 33, 146));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStopDate)).toEqual(Color.fromBytes(1, 147, 34, 93));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_polylineDash");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_polylineDash')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineDashProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(199, 64, 52, 179), Color.FromArgb(110, 251, 205, 86)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStartDate)).toEqual(Color.fromBytes(64, 52, 179, 199));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStopDate)).toEqual(Color.fromBytes(251, 205, 86, 110));");
+                    }
+                    using (var m2 = m.OpenGapColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(23, 98, 214, 1), Color.FromArgb(207, 108, 132, 28)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.gapColor.getValue(documentStartDate)).toEqual(Color.fromBytes(98, 214, 1, 23));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.gapColor.getValue(documentStopDate)).toEqual(Color.fromBytes(108, 132, 28, 207));");
+                    }
+                    using (var m2 = m.OpenDashLengthProperty())
+                    {
+                        m2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(59636.0, 9250.0));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.dashLength.getValue(documentStartDate)).toEqual(59636.0);");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.dashLength.getValue(documentStopDate)).toEqual(9250.0);");
+                    }
+                    using (var m2 = m.OpenDashPatternProperty())
+                    {
+                        m2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(33949, 58673));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.dashPattern.getValue(documentStartDate)).toEqual(33949);");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.dashPattern.getValue(documentStopDate)).toEqual(58673);");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_polylineGlow");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_polylineGlow')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineGlowProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(138, 253, 71, 171), Color.FromArgb(178, 112, 154, 76)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStartDate)).toEqual(Color.fromBytes(253, 71, 171, 138));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStopDate)).toEqual(Color.fromBytes(112, 154, 76, 178));");
+                    }
+                    using (var m2 = m.OpenGlowPowerProperty())
+                    {
+                        m2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(8542.0, 54440.0));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.glowPower.getValue(documentStartDate)).toEqual(8542.0);");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.glowPower.getValue(documentStopDate)).toEqual(54440.0);");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_image");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_image')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenImageProperty())
+                {
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(59796, 25065), new Rectangular(38054, 9108)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(59796, 25065));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(38054, 9108));");
+                    }
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(151, 32, 24, 155), Color.FromArgb(92, 9, 142, 253)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStartDate)).toEqual(Color.fromBytes(32, 24, 155, 151));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStopDate)).toEqual(Color.fromBytes(9, 142, 253, 92));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_grid");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_grid')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenGridProperty())
+                {
+                    using (var m2 = m.OpenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(173, 206, 138, 53), Color.FromArgb(253, 20, 11, 131)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStartDate)).toEqual(Color.fromBytes(206, 138, 53, 173));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStopDate)).toEqual(Color.fromBytes(20, 11, 131, 253));");
+                    }
+                    using (var m2 = m.OpenCellAlphaProperty())
+                    {
+                        m2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(36676.0, 5143.0));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.cellAlpha.getValue(documentStartDate)).toEqual(36676.0);");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.cellAlpha.getValue(documentStopDate)).toEqual(5143.0);");
+                    }
+                    using (var m2 = m.OpenLineCountProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(55344, 11736), new Rectangular(20410, 11343)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(55344, 11736));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(20410, 11343));");
+                    }
+                    using (var m2 = m.OpenLineThicknessProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(22967, 31065), new Rectangular(59168, 51431)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(22967, 31065));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(59168, 51431));");
+                    }
+                    using (var m2 = m.OpenLineOffsetProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(59000, 31974), new Rectangular(65334, 48383)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(59000, 31974));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(65334, 48383));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_stripe");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_stripe')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenStripeProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(230, 166, 16, 249), Color.FromArgb(216, 250, 177, 111)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(166, 16, 249, 230));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(250, 177, 111, 216));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(206, 210, 161, 181), Color.FromArgb(224, 194, 73, 70)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(210, 161, 181, 206));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(194, 73, 70, 224));");
+                    }
+                    using (var m2 = m.OpenOffsetProperty())
+                    {
+                        m2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(43239.0, 47157.0));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.offset.getValue(documentStartDate)).toEqual(43239.0);");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.offset.getValue(documentStopDate)).toEqual(47157.0);");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(58315.0, 45308.0));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.repeat.getValue(documentStartDate)).toEqual(58315.0);");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.repeat.getValue(documentStopDate)).toEqual(45308.0);");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_polylineOutline_color");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_polylineOutline_color')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineOutlineProperty())
+                using (var m2 = m.OpenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(97, 156, 104, 206), Color.FromArgb(94, 133, 167, 193)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStartDate)).toEqualEpsilon(new Color(0.611764705882353, 0.407843137254902, 0.807843137254902, 0.380392156862745), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStopDate)).toEqualEpsilon(new Color(0.52156862745098, 0.654901960784314, 0.756862745098039, 0.368627450980392), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_polylineOutline_outlineColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_polylineOutline_outlineColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineOutlineProperty())
+                using (var m2 = m.OpenOutlineColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(99, 171, 54, 155), Color.FromArgb(191, 156, 156, 76)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.outlineColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.670588235294118, 0.211764705882353, 0.607843137254902, 0.388235294117647), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.outlineColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.611764705882353, 0.611764705882353, 0.298039215686275, 0.749019607843137), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_polylineArrow_color");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_polylineArrow_color')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineArrowProperty())
+                using (var m2 = m.OpenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(152, 223, 138, 59), Color.FromArgb(116, 186, 136, 105)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStartDate)).toEqualEpsilon(new Color(0.874509803921569, 0.541176470588235, 0.231372549019608, 0.596078431372549), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStopDate)).toEqualEpsilon(new Color(0.729411764705882, 0.533333333333333, 0.411764705882353, 0.454901960784314), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_polylineDash_color");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_polylineDash_color')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineDashProperty())
+                using (var m2 = m.OpenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(198, 198, 21, 245), Color.FromArgb(227, 24, 164, 183)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStartDate)).toEqualEpsilon(new Color(0.776470588235294, 0.0823529411764706, 0.96078431372549, 0.776470588235294), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStopDate)).toEqualEpsilon(new Color(0.0941176470588235, 0.643137254901961, 0.717647058823529, 0.890196078431373), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_polylineDash_gapColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_polylineDash_gapColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineDashProperty())
+                using (var m2 = m.OpenGapColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(205, 56, 103, 208), Color.FromArgb(6, 75, 157, 44)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.gapColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.219607843137255, 0.403921568627451, 0.815686274509804, 0.803921568627451), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.gapColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.294117647058824, 0.615686274509804, 0.172549019607843, 0.0235294117647059), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_polylineGlow_color");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_polylineGlow_color')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenPolylineGlowProperty())
+                using (var m2 = m.OpenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(110, 43, 216, 247), Color.FromArgb(23, 51, 154, 240)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStartDate)).toEqualEpsilon(new Color(0.168627450980392, 0.847058823529412, 0.968627450980392, 0.431372549019608), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStopDate)).toEqualEpsilon(new Color(0.2, 0.603921568627451, 0.941176470588235, 0.0901960784313725), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_image_color");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_image_color')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenImageProperty())
+                using (var m2 = m.OpenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(171, 250, 115, 84), Color.FromArgb(180, 142, 163, 40)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStartDate)).toEqualEpsilon(new Color(0.980392156862745, 0.450980392156863, 0.329411764705882, 0.670588235294118), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStopDate)).toEqualEpsilon(new Color(0.556862745098039, 0.63921568627451, 0.156862745098039, 0.705882352941177), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_grid_color");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_grid_color')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenGridProperty())
+                using (var m2 = m.OpenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(152, 159, 155, 233), Color.FromArgb(247, 108, 247, 208)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStartDate)).toEqualEpsilon(new Color(0.623529411764706, 0.607843137254902, 0.913725490196078, 0.596078431372549), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.color.getValue(documentStopDate)).toEqualEpsilon(new Color(0.423529411764706, 0.968627450980392, 0.815686274509804, 0.968627450980392), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_stripe_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_stripe_evenColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenStripeProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(29, 218, 215, 179), Color.FromArgb(150, 240, 227, 238)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.854901960784314, 0.843137254901961, 0.701960784313725, 0.113725490196078), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.941176470588235, 0.890196078431373, 0.933333333333333, 0.588235294117647), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_stripe_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_stripe_oddColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenStripeProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(56, 109, 222, 245), Color.FromArgb(44, 56, 216, 192)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.427450980392157, 0.870588235294118, 0.96078431372549, 0.219607843137255), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.219607843137255, 0.847058823529412, 0.752941176470588, 0.172549019607843), 1e-14);");
                 }
             }
         }

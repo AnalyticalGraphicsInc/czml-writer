@@ -61,6 +61,10 @@
             "$ref": "ShadowMode.json",
             "description": "Whether or not the ellipsoid casts or receives shadows.",
             "default": "DISABLED"
+        },
+        "distanceDisplayCondition": {
+            "$ref": "DistanceDisplayCondition.json",
+            "description": "The display condition specifying at what distance from the camera this ellipsoid will be displayed."
         }
     }
 }

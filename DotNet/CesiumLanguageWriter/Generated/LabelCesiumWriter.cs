@@ -105,6 +105,21 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string PixelOffsetScaleByDistancePropertyName = "pixelOffsetScaleByDistance";
 
+        /// <summary>
+        /// The name of the <c>scaleByDistance</c> property.
+        /// </summary>
+        public const string ScaleByDistancePropertyName = "scaleByDistance";
+
+        /// <summary>
+        /// The name of the <c>distanceDisplayCondition</c> property.
+        /// </summary>
+        public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
+
+        /// <summary>
+        /// The name of the <c>disableDepthTestDistance</c> property.
+        /// </summary>
+        public const string DisableDepthTestDistancePropertyName = "disableDepthTestDistance";
+
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<StringCesiumWriter> m_text = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(TextPropertyName), false);
         private readonly Lazy<FontCesiumWriter> m_font = new Lazy<FontCesiumWriter>(() => new FontCesiumWriter(FontPropertyName), false);
@@ -123,6 +138,9 @@ namespace CesiumLanguageWriter
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
         private readonly Lazy<NearFarScalarCesiumWriter> m_translucencyByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(TranslucencyByDistancePropertyName), false);
         private readonly Lazy<NearFarScalarCesiumWriter> m_pixelOffsetScaleByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(PixelOffsetScaleByDistancePropertyName), false);
+        private readonly Lazy<NearFarScalarCesiumWriter> m_scaleByDistance = new Lazy<NearFarScalarCesiumWriter>(() => new NearFarScalarCesiumWriter(ScaleByDistancePropertyName), false);
+        private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_disableDepthTestDistance = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(DisableDepthTestDistancePropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -2110,6 +2128,355 @@ namespace CesiumLanguageWriter
         public void WritePixelOffsetScaleByDistancePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenPixelOffsetScaleByDistanceProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>scaleByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>scaleByDistance</c> property defines how the label's scale should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>scale</c>.
+        /// </summary>
+        public NearFarScalarCesiumWriter ScaleByDistanceWriter
+        {
+            get { return m_scaleByDistance.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>scaleByDistance</c> property.  The <c>scaleByDistance</c> property defines how the label's scale should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>scale</c>.
+        /// </summary>
+        public NearFarScalarCesiumWriter OpenScaleByDistanceProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ScaleByDistanceWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the label's scale should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>scale</c>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteScaleByDistanceProperty(NearFarScalar value)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the label's scale should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>scale</c>.
+        /// </summary>
+        /// <param name="nearDistance">The lower bound of the camera distance range.</param>
+        /// <param name="nearValue">The value to use at the lower bound of the camera distance range.</param>
+        /// <param name="farDistance">The upper bound of the camera distance range.</param>
+        /// <param name="farValue">The value to use at the upper bound of the camera distance range.</param>
+        public void WriteScaleByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(nearDistance, nearValue, farDistance, farValue);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the label's scale should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>scale</c>.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteScaleByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>nearFarScalar</c> value.  The <c>scaleByDistance</c> property specifies how the label's scale should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>scale</c>.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteScaleByDistanceProperty(IList<JulianDate> dates, IList<NearFarScalar> values, int startIndex, int length)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteNearFarScalar(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the label's scale should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>scale</c>.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteScaleByDistancePropertyReference(Reference value)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the label's scale should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>scale</c>.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteScaleByDistancePropertyReference(string value)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the label's scale should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>scale</c>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteScaleByDistancePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value.  The <c>scaleByDistance</c> property specifies how the label's scale should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>scale</c>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteScaleByDistancePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenScaleByDistanceProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>distanceDisplayCondition</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>distanceDisplayCondition</c> property defines the display condition specifying the distance from the camera at which this label will be displayed.
+        /// </summary>
+        public DistanceDisplayConditionCesiumWriter DistanceDisplayConditionWriter
+        {
+            get { return m_distanceDisplayCondition.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>distanceDisplayCondition</c> property.  The <c>distanceDisplayCondition</c> property defines the display condition specifying the distance from the camera at which this label will be displayed.
+        /// </summary>
+        public DistanceDisplayConditionCesiumWriter OpenDistanceDisplayConditionProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(DistanceDisplayConditionWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>distanceDisplayCondition</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteDistanceDisplayConditionProperty(Bounds value)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteDistanceDisplayCondition(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>distanceDisplayCondition</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+        /// </summary>
+        /// <param name="lowerBound">The lower bound.</param>
+        /// <param name="upperBound">The upper bound.</param>
+        public void WriteDistanceDisplayConditionProperty(double lowerBound, double upperBound)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteDistanceDisplayCondition(lowerBound, upperBound);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>distanceDisplayCondition</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteDistanceDisplayConditionProperty(IList<JulianDate> dates, IList<Bounds> values)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteDistanceDisplayCondition(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>distanceDisplayCondition</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteDistanceDisplayConditionProperty(IList<JulianDate> dates, IList<Bounds> values, int startIndex, int length)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteDistanceDisplayCondition(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteDistanceDisplayConditionPropertyReference(Reference value)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteDistanceDisplayConditionPropertyReference(string value)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteDistanceDisplayConditionPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value.  The <c>distanceDisplayCondition</c> property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteDistanceDisplayConditionPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>disableDepthTestDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>disableDepthTestDistance</c> property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+        /// </summary>
+        public DoubleCesiumWriter DisableDepthTestDistanceWriter
+        {
+            get { return m_disableDepthTestDistance.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>disableDepthTestDistance</c> property.  The <c>disableDepthTestDistance</c> property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+        /// </summary>
+        public DoubleCesiumWriter OpenDisableDepthTestDistanceProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(DisableDepthTestDistanceWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>disableDepthTestDistance</c> property as a <c>number</c> value.  The <c>disableDepthTestDistance</c> property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteDisableDepthTestDistanceProperty(double value)
+        {
+            using (var writer = OpenDisableDepthTestDistanceProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>disableDepthTestDistance</c> property as a <c>number</c> value.  The <c>disableDepthTestDistance</c> property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteDisableDepthTestDistanceProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenDisableDepthTestDistanceProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>disableDepthTestDistance</c> property as a <c>number</c> value.  The <c>disableDepthTestDistance</c> property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteDisableDepthTestDistanceProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenDisableDepthTestDistanceProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>disableDepthTestDistance</c> property as a <c>reference</c> value.  The <c>disableDepthTestDistance</c> property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteDisableDepthTestDistancePropertyReference(Reference value)
+        {
+            using (var writer = OpenDisableDepthTestDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>disableDepthTestDistance</c> property as a <c>reference</c> value.  The <c>disableDepthTestDistance</c> property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteDisableDepthTestDistancePropertyReference(string value)
+        {
+            using (var writer = OpenDisableDepthTestDistanceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>disableDepthTestDistance</c> property as a <c>reference</c> value.  The <c>disableDepthTestDistance</c> property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteDisableDepthTestDistancePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenDisableDepthTestDistanceProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>disableDepthTestDistance</c> property as a <c>reference</c> value.  The <c>disableDepthTestDistance</c> property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteDisableDepthTestDistancePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenDisableDepthTestDistanceProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

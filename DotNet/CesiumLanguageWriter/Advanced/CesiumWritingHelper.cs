@@ -371,7 +371,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Writes time-tagged <see cref="BoundingRectangle"/> values as an array in [Time, Clock, Cone, Magnitude] order.
+        /// Writes time-tagged <see cref="BoundingRectangle"/> values as an array in [Time, X, Y, Width, Height] order.
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
@@ -406,7 +406,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Writes a <see cref="NearFarScalar"/> value as an array in Clock, Cone, Magnitude order.
+        /// Writes a <see cref="NearFarScalar"/> value as an array in NearDistance, NearValue, FarDistance, FarValue order.
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
         /// <param name="value">The value to write.</param>
@@ -421,7 +421,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Writes time-tagged <see cref="NearFarScalar"/> values as an array in [Time, Clock, Cone, Magnitude] order.
+        /// Writes time-tagged <see cref="NearFarScalar"/> values as an array in [Time, NearDistance, NearValue, FarDistance, FarValue] order.
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
@@ -449,6 +449,52 @@ namespace CesiumLanguageWriter.Advanced
                 output.WriteValue(value.NearValue);
                 output.WriteValue(value.FarDistance);
                 output.WriteValue(value.FarValue);
+                output.WriteLineBreak();
+            }
+
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes a <see cref="Bounds"/> value as an array in LowerBound, UpperBound order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="value">The value to write.</param>
+        public static void WriteBounds(CesiumOutputStream output, Bounds value)
+        {
+            output.WriteStartSequence();
+            output.WriteValue(value.LowerBound);
+            output.WriteValue(value.UpperBound);
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes time-tagged <see cref="Bounds"/> values as an array in [Time, LowerBound, UpperBound] order.
+        /// Times are epoch seconds since an epoch that is determined from the first date to be written.
+        /// The epoch property is written as well.
+        /// </summary>
+        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="propertyName">The name of the property to write.</param>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The corresponding value for each date.</param>
+        /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
+        /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
+        public static void WriteBounds(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Bounds> values, int startIndex, int length)
+        {
+            if (dates.Count != values.Count)
+                throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
+
+            JulianDate epoch = GetAndWriteEpoch(output, dates, startIndex, length);
+
+            output.WritePropertyName(propertyName);
+            output.WriteStartSequence();
+            int last = startIndex + length;
+            for (int i = startIndex; i < last; ++i)
+            {
+                output.WriteValue(epoch.SecondsDifference(dates[i]));
+                Bounds value = values[i];
+                output.WriteValue(value.LowerBound);
+                output.WriteValue(value.UpperBound);
                 output.WriteLineBreak();
             }
 

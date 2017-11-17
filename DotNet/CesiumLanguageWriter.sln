@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CesiumLanguageWriter", "CesiumLanguageWriter\CesiumLanguageWriter.csproj", "{085359F8-CC1D-4561-94C7-0BF067B8E370}"
 EndProject
@@ -39,6 +39,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\Cylinder.json = ..\Schema\Cylinder.json
 		..\Schema\Direction.json = ..\Schema\Direction.json
 		..\Schema\DirectionList.json = ..\Schema\DirectionList.json
+		..\Schema\DistanceDisplayCondition.json = ..\Schema\DistanceDisplayCondition.json
+		..\Schema\DistanceDisplayConditionValue.json = ..\Schema\DistanceDisplayConditionValue.json
 		..\Schema\Document.json = ..\Schema\Document.json
 		..\Schema\Double.json = ..\Schema\Double.json
 		..\Schema\DoubleList.json = ..\Schema\DoubleList.json
@@ -138,6 +140,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{5E
 		..\Schema\Examples\CartographicValueSamples.json = ..\Schema\Examples\CartographicValueSamples.json
 		..\Schema\Examples\Clock.json = ..\Schema\Examples\Clock.json
 		..\Schema\Examples\DeletePacket.json = ..\Schema\Examples\DeletePacket.json
+		..\Schema\Examples\DistanceDisplayConditionValue.json = ..\Schema\Examples\DistanceDisplayConditionValue.json
+		..\Schema\Examples\DistanceDisplayConditionValueSamples.json = ..\Schema\Examples\DistanceDisplayConditionValueSamples.json
 		..\Schema\Examples\DocumentPacket.json = ..\Schema\Examples\DocumentPacket.json
 		..\Schema\Examples\ModelNodeTransformations.json = ..\Schema\Examples\ModelNodeTransformations.json
 		..\Schema\Examples\NearFarScalarValue.json = ..\Schema\Examples\NearFarScalarValue.json
@@ -214,5 +218,8 @@ Global
 		{5E4C0F36-35DC-4ED8-91EC-EAAC109836A0} = {04E49F4E-CD74-44F3-9A80-604BCA10FB67}
 		{F5502A67-ADA3-48EA-8DF8-19D7456AA44C} = {04E49F4E-CD74-44F3-9A80-604BCA10FB67}
 		{CF5572F1-2FF5-4169-AAAC-DE87E5C7F4B1} = {F5502A67-ADA3-48EA-8DF8-19D7456AA44C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {447148DC-E3FC-4D2E-87F8-6481D6F76095}
 	EndGlobalSection
 EndGlobal
