@@ -8,6 +8,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
+import cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.HeightReferenceCesiumWriter;
 import cesiumlanguagewriter.NearFarScalarCesiumWriter;
@@ -78,6 +79,20 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
     */
     public static final String TranslucencyByDistancePropertyName = "translucencyByDistance";
+    /**
+    *  
+    The name of the {@code distanceDisplayCondition} property.
+    
+
+    */
+    public static final String DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
+    /**
+    *  
+    The name of the {@code disableDepthTestDistance} property.
+    
+
+    */
+    public static final String DisableDepthTestDistancePropertyName = "disableDepthTestDistance";
     private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowPropertyName);
@@ -116,6 +131,17 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     private Lazy<NearFarScalarCesiumWriter> m_translucencyByDistance = new Lazy<cesiumlanguagewriter.NearFarScalarCesiumWriter>(new Func1<cesiumlanguagewriter.NearFarScalarCesiumWriter>() {
         public cesiumlanguagewriter.NearFarScalarCesiumWriter invoke() {
             return new NearFarScalarCesiumWriter(TranslucencyByDistancePropertyName);
+        }
+    }, false);
+    private Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter>(
+            new Func1<cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter>() {
+                public cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter invoke() {
+                    return new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName);
+                }
+            }, false);
+    private Lazy<DoubleCesiumWriter> m_disableDepthTestDistance = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+            return new DoubleCesiumWriter(DisableDepthTestDistancePropertyName);
         }
     }, false);
 
@@ -1646,6 +1672,357 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     public final void writeTranslucencyByDistancePropertyReference(String identifier, String[] propertyNames) {
         {
             cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code distanceDisplayCondition} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this point will be displayed.
+    
+
+    */
+    public final DistanceDisplayConditionCesiumWriter getDistanceDisplayConditionWriter() {
+        return m_distanceDisplayCondition.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code distanceDisplayCondition} property.  The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this point will be displayed.
+    
+
+    */
+    public final DistanceDisplayConditionCesiumWriter openDistanceDisplayConditionProperty() {
+        openIntervalIfNecessary();
+        return this.<DistanceDisplayConditionCesiumWriter> openAndReturn(getDistanceDisplayConditionWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeDistanceDisplayConditionProperty(Bounds value) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeDistanceDisplayCondition(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
+    
+    
+    
+
+    * @param lowerBound The lower bound.
+    * @param upperBound The upper bound.
+    */
+    public final void writeDistanceDisplayConditionProperty(double lowerBound, double upperBound) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeDistanceDisplayCondition(lowerBound, upperBound);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeDistanceDisplayConditionProperty(List<JulianDate> dates, List<Bounds> values) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeDistanceDisplayCondition(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeDistanceDisplayConditionProperty(List<JulianDate> dates, List<Bounds> values, int startIndex, int length) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeDistanceDisplayCondition(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeDistanceDisplayConditionPropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeDistanceDisplayConditionPropertyReference(String value) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeDistanceDisplayConditionPropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeDistanceDisplayConditionPropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code disableDepthTestDistance} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code disableDepthTestDistance} property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+    
+
+    */
+    public final DoubleCesiumWriter getDisableDepthTestDistanceWriter() {
+        return m_disableDepthTestDistance.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code disableDepthTestDistance} property.  The {@code disableDepthTestDistance} property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+    
+
+    */
+    public final DoubleCesiumWriter openDisableDepthTestDistanceProperty() {
+        openIntervalIfNecessary();
+        return this.<DoubleCesiumWriter> openAndReturn(getDisableDepthTestDistanceWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value.  The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeDisableDepthTestDistanceProperty(double value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
+            try {
+                writer.writeNumber(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value.  The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeDisableDepthTestDistanceProperty(List<JulianDate> dates, List<Double> values) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
+            try {
+                writer.writeNumber(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value.  The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The value corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeDisableDepthTestDistanceProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
+            try {
+                writer.writeNumber(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value.  The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeDisableDepthTestDistancePropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value.  The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeDisableDepthTestDistancePropertyReference(String value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value.  The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeDisableDepthTestDistancePropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value.  The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeDisableDepthTestDistancePropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

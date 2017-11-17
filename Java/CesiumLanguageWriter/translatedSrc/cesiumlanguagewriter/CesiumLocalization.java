@@ -384,6 +384,19 @@ public class CesiumLocalization {
 
     /**
     *  
+    Looks up a localized string similar to The upper bound cannot be less than the lower bound..
+    
+
+    * @deprecated Internal use only.
+    */
+    @Deprecated
+    @Internal
+    public static String getUpperBoundCannotBeLessThanLowerBound() {
+        return getResourceManager().getString("UpperBoundCannotBeLessThanLowerBound");
+    }
+
+    /**
+    *  
     Looks up a localized string similar to UTC.
     
 
