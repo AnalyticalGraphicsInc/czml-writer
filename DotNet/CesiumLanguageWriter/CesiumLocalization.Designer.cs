@@ -19,7 +19,7 @@ namespace CesiumLanguageWriter {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class CesiumLocalization {
@@ -264,6 +264,15 @@ namespace CesiumLanguageWriter {
         internal static string UnknownEnumerationValue {
             get {
                 return ResourceManager.GetString("UnknownEnumerationValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The upper bound cannot be less than the lower bound..
+        /// </summary>
+        internal static string UpperBoundCannotBeLessThanLowerBound {
+            get {
+                return ResourceManager.GetString("UpperBoundCannotBeLessThanLowerBound", resourceCulture);
             }
         }
         

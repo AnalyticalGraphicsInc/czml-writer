@@ -7,6 +7,7 @@ import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
+import cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.PolylineMaterialCesiumWriter;
 import java.util.List;
@@ -61,6 +62,13 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     */
     public static final String MaterialPropertyName = "material";
+    /**
+    *  
+    The name of the {@code distanceDisplayCondition} property.
+    
+
+    */
+    public static final String DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
     private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowPropertyName);
@@ -91,6 +99,12 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
             return new PolylineMaterialCesiumWriter(MaterialPropertyName);
         }
     }, false);
+    private Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter>(
+            new Func1<cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter>() {
+                public cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter invoke() {
+                    return new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName);
+                }
+            }, false);
 
     /**
     *  
@@ -916,5 +930,191 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     public final PolylineMaterialCesiumWriter openMaterialProperty() {
         openIntervalIfNecessary();
         return this.<PolylineMaterialCesiumWriter> openAndReturn(getMaterialWriter());
+    }
+
+    /**
+    *  Gets the writer for the {@code distanceDisplayCondition} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code distanceDisplayCondition} property defines the display condition specifying at what distance from the camera this path will be displayed.
+    
+
+    */
+    public final DistanceDisplayConditionCesiumWriter getDistanceDisplayConditionWriter() {
+        return m_distanceDisplayCondition.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code distanceDisplayCondition} property.  The {@code distanceDisplayCondition} property defines the display condition specifying at what distance from the camera this path will be displayed.
+    
+
+    */
+    public final DistanceDisplayConditionCesiumWriter openDistanceDisplayConditionProperty() {
+        openIntervalIfNecessary();
+        return this.<DistanceDisplayConditionCesiumWriter> openAndReturn(getDistanceDisplayConditionWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this path will be displayed.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeDistanceDisplayConditionProperty(Bounds value) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeDistanceDisplayCondition(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this path will be displayed.
+    
+    
+    
+
+    * @param lowerBound The lower bound.
+    * @param upperBound The upper bound.
+    */
+    public final void writeDistanceDisplayConditionProperty(double lowerBound, double upperBound) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeDistanceDisplayCondition(lowerBound, upperBound);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this path will be displayed.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeDistanceDisplayConditionProperty(List<JulianDate> dates, List<Bounds> values) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeDistanceDisplayCondition(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this path will be displayed.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeDistanceDisplayConditionProperty(List<JulianDate> dates, List<Bounds> values, int startIndex, int length) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeDistanceDisplayCondition(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this path will be displayed.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeDistanceDisplayConditionPropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this path will be displayed.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeDistanceDisplayConditionPropertyReference(String value) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this path will be displayed.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeDistanceDisplayConditionPropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this path will be displayed.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeDistanceDisplayConditionPropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
     }
 }

@@ -71,6 +71,7 @@
     <Compile Include="Attributes\CSToJavaRenameAttribute.cs" />
     <Compile Include="Attributes\CSToJavaUseNullForDefaultGenericTypeValueAttribute.cs" />
     <Compile Include="BoundingRectangle.cs" />
+    <Compile Include="Bounds.cs" />
     <Compile Include="Cartesian.cs" />
     <Compile Include="Cartographic.cs" />
     <Compile Include="CartographicExtent.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="Generated\DirectionListCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\DistanceDisplayConditionCesiumWriter.cs" />
     <Compile Include="Generated\DoubleCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>

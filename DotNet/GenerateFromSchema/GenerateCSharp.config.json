@@ -1457,6 +1457,76 @@
                 "writePropertyName": false,
                 "writeValue": "CesiumWritingHelper.WriteNearFarScalar(Output, PropertyName, dates, values, startIndex, length);"
             }
+        ],
+        "DistanceDisplayCondition": [
+            {
+                "parameters": [
+                    {
+                        "type": "Bounds",
+                        "name": "value",
+                        "description": "The value."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteBounds(Output, value);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "double",
+                        "name": "lowerBound",
+                        "description": "The lower bound."
+                    },
+                    {
+                        "type": "double",
+                        "name": "upperBound",
+                        "description": "The upper bound."
+                    }
+                ],
+                "callOverload": "new Bounds(lowerBound, upperBound)"
+            },
+            {
+                "namespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<Bounds>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
+                "namespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<Bounds>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to write."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to write."
+                    }
+                ],
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteBounds(Output, PropertyName, dates, values, startIndex, length);"
+            }
         ]
     }
 }

@@ -186,6 +186,9 @@
   <data name="UnknownEnumerationValue" xml:space="preserve">
     <value>The enumeration has an invalid or unsupported value.</value>
   </data>
+  <data name="UpperBoundCannotBeLessThanLowerBound" xml:space="preserve">
+    <value>The upper bound cannot be less than the lower bound.</value>
+  </data>
   <data name="UtcAbbreviation" xml:space="preserve">
     <value>UTC</value>
   </data>

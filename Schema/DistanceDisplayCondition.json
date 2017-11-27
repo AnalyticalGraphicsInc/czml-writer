@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/DistanceDisplayCondition.json",
+    "title": "DistanceDisplayCondition",
+    "description": "Indicates the visibility of an object based on the distance to the camera.",
+    "extends": {
+        "$ref": "InterpolatableProperty.json"
+    },
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "distanceDisplayCondition": {
+            "$ref": "DistanceDisplayConditionValue.json",
+            "description": "The value specified as two values `[NearDistance, FarDistance]`, with distances in meters.",
+            "czmlValue": true
+        },
+        "reference": {
+            "$ref": "ReferenceValue.json",
+            "description": "The value specified as a reference to another property.",
+            "czmlValue": true
+        }
+    }
+}
