@@ -1,0 +1,28 @@
+apply plugin: 'java-library'
+
+dependencies {
+    api 'joda-time:joda-time:2.2'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src', 'translatedSrc']
+        }
+        resources {
+            srcDirs = ['src', 'translatedSrc']
+			includes = ['**/*.properties']
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes('Implementation-Title': 'CesiumLanguageWriter',
+                    'Implementation-Vendor': 'Analytical Graphics, Inc.',
+                    'Implementation-Version': version)
+    }
+}
+
+test.enabled = false

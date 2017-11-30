@@ -1,5 +1,8 @@
+.gradle
+build/
 bin/
 ant/
 dist/
 *.json
 ErrorLog.txt
+
