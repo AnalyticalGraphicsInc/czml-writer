@@ -12,16 +12,17 @@ sourceSets {
         }
         resources {
             srcDirs = ['src', 'translatedSrc']
-			includes = ['**/*.properties']
+            includes = ['**/*.properties']
         }
     }
 }
 
 jar {
     manifest {
-        attributes('Implementation-Title': 'CesiumLanguageWriter',
-                    'Implementation-Vendor': 'Analytical Graphics, Inc.',
-                    'Implementation-Version': version)
+        attributes(
+                'Implementation-Title': 'CesiumLanguageWriter',
+                'Implementation-Vendor': 'Analytical Graphics, Inc.',
+                'Implementation-Version': version)
     }
 }
 
