@@ -11,3 +11,7 @@ build:
   publish_nuget: true
   parallel: true
   verbosity: minimal
+after_build:
+  - cmd: cd Java
+  - ps: cat gradle.properties | % { $_ -replace "^version = .*$", "version = $env:GitVersion_NuGetVersion" } > gradle.properties
+  - cmd: gradlew test
