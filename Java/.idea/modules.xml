@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CesiumLanguageWriter/CesiumLanguageWriter.iml" filepath="$PROJECT_DIR$/CesiumLanguageWriter/CesiumLanguageWriter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CesiumLanguageWriterTests/CesiumLanguageWriterTests.iml" filepath="$PROJECT_DIR$/CesiumLanguageWriterTests/CesiumLanguageWriterTests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Java.iml" filepath="$PROJECT_DIR$/.idea/modules/Java.iml" />
+    </modules>
+  </component>
+</project>
