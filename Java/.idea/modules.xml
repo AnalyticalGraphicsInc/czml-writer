@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CesiumLanguageWriter/CesiumLanguageWriter.iml" filepath="$PROJECT_DIR$/CesiumLanguageWriter/CesiumLanguageWriter.iml" />
       <module fileurl="file://$PROJECT_DIR$/CesiumLanguageWriterTests/CesiumLanguageWriterTests.iml" filepath="$PROJECT_DIR$/CesiumLanguageWriterTests/CesiumLanguageWriterTests.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Java.iml" filepath="$PROJECT_DIR$/.idea/modules/Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/czml-writer.iml" filepath="$PROJECT_DIR$/.idea/modules/czml-writer.iml" />
     </modules>
   </component>
 </project>

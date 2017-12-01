@@ -21,7 +21,7 @@ build:
   verbosity: minimal
 after_build:
   - ps: |
-      (gc Java\gradle.properties) | % { $_ -replace "^version = .*$", "version = $($env:GitVersion_NuGetVersion)" } | sc Java\gradle.properties
+      (gc Java\gradle.properties) | % { $_ -replace "^version = .*$", "version = $env:GitVersion_NuGetVersion" } | sc Java\gradle.properties
       .\Java\gradlew.bat --no-daemon -p Java assemble
       gci Java\CesiumLanguageWriter\build\libs\*.jar | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
 test:
@@ -30,6 +30,6 @@ test:
 after_test:
   - ps: |
       .\Java\gradlew.bat --no-daemon -p Java check
-      $wc = New-Object 'System.Net.WebClient'
-      $url = "https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)"
+      $wc = New-Object System.Net.WebClient
+      $url = "https://ci.appveyor.com/api/testresults/junit/$env:APPVEYOR_JOB_ID"
       gci Java\CesiumLanguageWriterTests\build\test-results\test\*.xml | % { $wc.UploadFile($url, $_) }

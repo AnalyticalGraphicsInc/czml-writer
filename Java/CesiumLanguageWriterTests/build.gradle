@@ -1,5 +1,3 @@
-apply plugin: 'java'
-
 dependencies {
     testCompile project(':CesiumLanguageWriter')
     testCompile 'junit:junit:4.12'
@@ -24,4 +22,9 @@ test {
     }
 }
 
-jar.enabled = false
+jar {
+    enabled = false
+}
+javadoc {
+    enabled = false
+}

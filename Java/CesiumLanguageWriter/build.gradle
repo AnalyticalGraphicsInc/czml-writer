@@ -26,4 +26,6 @@ jar {
     }
 }
 
-test.enabled = false
+test {
+    enabled = false
+}
