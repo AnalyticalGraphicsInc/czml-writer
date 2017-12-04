@@ -1,0 +1,30 @@
+dependencies {
+    testCompile project(':cesiumlanguagewriter')
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
+}
+
+sourceSets {
+    test {
+        java {
+            srcDirs = ['src', 'translatedSrc']
+        }
+        resources {
+            srcDirs = ['src', 'translatedSrc']
+            excludes = ['**/*.java']
+        }
+    }
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
+}
+
+jar {
+    enabled = false
+}
+javadoc {
+    enabled = false
+}

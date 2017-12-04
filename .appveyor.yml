@@ -1,17 +1,35 @@
-version: 2.6.0.{build}
 image: Visual Studio 2017
 configuration: Release
 platform: Any CPU
-assembly_info:
-  patch: true
-  file: DotNet\CesiumLanguageWriter\Properties\AssemblyInfo.cs
-  assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: 2.6.0
+environment:
+  JAVA_HOME: '%ProgramFiles%\Java\jdk1.8.0'
+cache:
+  - '%ProgramData%\chocolatey\bin -> .appveyor.yml'
+  - '%ProgramData%\chocolatey\lib -> .appveyor.yml'
+  - DotNet\packages -> DotNet\**\packages.config
+  - '%LocalAppData%\NuGet\v3-cache'
+  - '%UserProfile%\.gradle'
+install:
+  - choco install gitversion.portable -pre -y
 before_build:
-- cmd: nuget restore DotNet\CesiumLanguageWriter.sln
+  - cmd: nuget restore DotNet\CesiumLanguageWriter.sln
+  - ps: gitversion /l console /output buildserver /updateAssemblyInfo DotNet\CesiumLanguageWriter\Properties\AssemblyInfo.cs
 build:
   project: DotNet\CesiumLanguageWriter.sln
   publish_nuget: true
   parallel: true
   verbosity: minimal
+after_build:
+  - ps: |
+      (gc Java\gradle.properties) | % { $_ -replace "^version = .*$", "version = $env:GitVersion_NuGetVersion" } | sc Java\gradle.properties
+      .\Java\gradlew.bat --no-daemon -p Java assemble
+      gci Java\CesiumLanguageWriter\build\libs\*.jar | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
+test:
+  assemblies:
+    - DotNet\CesiumLanguageWriterTests\bin\$(configuration)\CesiumLanguageWriterTests.dll
+after_test:
+  - ps: |
+      .\Java\gradlew.bat --no-daemon -p Java check
+      $wc = New-Object System.Net.WebClient
+      $url = "https://ci.appveyor.com/api/testresults/junit/$env:APPVEYOR_JOB_ID"
+      gci Java\CesiumLanguageWriterTests\build\test-results\test\*.xml | % { $wc.UploadFile($url, $_) }

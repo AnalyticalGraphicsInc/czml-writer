@@ -1,0 +1,3 @@
+assembly-versioning-scheme: MajorMinorPatch
+assembly-informational-format: '{NuGetVersion}'
+mode: ContinuousDelivery

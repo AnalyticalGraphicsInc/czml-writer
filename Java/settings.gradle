@@ -1,0 +1,3 @@
+rootProject.name = 'czml-writer'
+include "CesiumLanguageWriter", "CesiumLanguageWriterTests"
+project(':CesiumLanguageWriter').name = 'cesiumlanguagewriter'
