@@ -25,7 +25,7 @@ namespace CesiumLanguageWriter
         /// Gets a set of <see cref="Cartesian"/> coordinates with values of <see cref="Double.NaN"/>.
         /// </summary>
         /// <remarks>
-        /// Use <see cref="Cartesian.IsUndefined"/> to test whether a <see cref="Cartesian"/> instance
+        /// Use <see cref="IsUndefined"/> to test whether a <see cref="Cartesian"/> instance
         /// is undefined since it will return <see langword="true"/> if any of the coordinate values
         /// are <see cref="Double.NaN"/>.
         /// </remarks>
@@ -209,11 +209,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// <para>
         /// Produces a set of <see cref="Cartesian"/> coordinates representing this instance which results from rotating
-        /// the original axes used to represent this instance by the provided <see cref="Matrix3By3"/> rotation. 
+        /// the original axes used to represent this instance by the provided <see cref="Matrix3By3"/> rotation.
         /// This type of rotation is sometimes referred to as an "alias rotation".
-        /// </para>
         /// </summary>
         /// <param name="rotation">The <see cref="Matrix3By3"/> rotation.</param>
         /// <returns>A set of <see cref="Cartesian"/> coordinates which is the result of the rotation.</returns>
@@ -226,11 +224,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// <para>
         /// Produces a set of <see cref="Cartesian"/> coordinates representing this instance which results from rotating
         /// the original axes used to represent this instance by the provided <see cref="UnitQuaternion"/> rotation.
         /// This type of rotation is sometimes referred to as an "alias rotation".
-        /// </para>
         /// </summary>
         /// <param name="rotation">The <see cref="UnitQuaternion"/> rotation.</param>
         /// <returns>A set of <see cref="Cartesian"/> coordinates which is the result of the rotation.</returns>
@@ -291,11 +287,12 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The instance to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(Cartesian other)
         {
-            return m_x.Equals(other.m_x) &&
-                   m_y.Equals(other.m_y) &&
-                   m_z.Equals(other.m_z);
+            return m_x == other.m_x &&
+                   m_y == other.m_y &&
+                   m_z == other.m_z;
         }
 
         /// <summary>
@@ -383,6 +380,10 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Forms a set of <see cref="UnitCartesian"/> coordinates from this instance.
         /// </summary>
+        /// <remarks>
+        /// The normalization of the cartesian components is accomplished in the usual way.
+        /// It should be noted that this does not guarantee a result whose magnitude will be 1.0 in cases where an individual component underflows upon squaring.
+        /// </remarks>
         /// <returns>The resulting set of <see cref="UnitCartesian"/> coordinates.</returns>
         /// <exception cref="DivideByZeroException">
         /// The magnitude of the provided coordinates must not be zero.
@@ -406,6 +407,10 @@ namespace CesiumLanguageWriter
         /// the magnitude of the original set of <see cref="Cartesian"/> coordinates.
         /// </param>
         /// <returns>The resulting set of <see cref="UnitCartesian"/> coordinates.</returns>
+        /// <remarks>
+        /// The normalization of the cartesian components is accomplished in the usual way.
+        /// It should be noted that this does not guarantee a result whose magnitude will be 1.0 in cases where an individual component underflows upon squaring.
+        /// </remarks>
         /// <exception cref="DivideByZeroException">
         /// The magnitude of the provided coordinates must not be zero.
         /// </exception>

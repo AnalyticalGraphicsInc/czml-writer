@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -50,6 +51,7 @@ namespace CesiumLanguageWriter
         /// <see cref="Start"/> and <see cref="Stop"/> of the interval.
         /// </summary>
         /// <returns>The duration.</returns>
+        [Pure]
         public Duration ToDuration()
         {
             return m_stop - m_start;
@@ -61,6 +63,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="timeStandard">The time standard of the new interval.</param>
         /// <returns>An equivalent interval with the new time standard.</returns>
+        [Pure]
+        [NotNull]
         public TimeInterval ToTimeStandard(TimeStandard timeStandard)
         {
             if (ReferenceEquals(m_start.Standard, timeStandard) &&
@@ -98,6 +102,7 @@ namespace CesiumLanguageWriter
         /// <param name="other">The time interval to compare to this time interval.</param>
         /// <param name="epsilon">The largest difference between the <see cref="Start"/> and <see cref="Stop"/> dates, in seconds, such that they will be considered equal.</param>
         /// <returns>true if the <see cref="Start"/> and <see cref="Stop"/> dates of the intervals are equal as defined by the epsilon value and all other properties are identical.</returns>
+        [Pure]
         public bool EqualsEpsilon(TimeInterval other, double epsilon)
         {
             if (ReferenceEquals(null, other))
@@ -158,8 +163,8 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return m_start.GetHashCode() ^
-                   m_stop.GetHashCode();
+            return HashCode.Combine(m_start.GetHashCode(),
+                                    m_stop.GetHashCode());
         }
 
         /// <summary>
@@ -194,11 +199,13 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets an empty interval.
         /// </summary>
+        [NotNull]
         public static TimeInterval Empty
         {
             get { return s_empty; }
         }
 
+        [NotNull]
         private static readonly TimeInterval s_empty = new TimeInterval(new JulianDate(0.0), new JulianDate(0.0));
 
         private readonly JulianDate m_start;

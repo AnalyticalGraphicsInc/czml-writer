@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
@@ -69,11 +70,12 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The instance to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(Cartographic other)
         {
-            return m_longitude.Equals(other.m_longitude) &&
-                   m_latitude.Equals(other.m_latitude) &&
-                   m_height.Equals(other.m_height);
+            return m_longitude == other.m_longitude &&
+                   m_latitude == other.m_latitude &&
+                   m_height == other.m_height;
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.Text;
 using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
@@ -9,80 +10,35 @@ namespace CesiumLanguageWriter
     /// <filter name="DotNet">This is different from the .NET <see cref="System.TimeSpan"/> class in that it</filter>
     /// <filter name="Java">This class</filter>
     /// offers the same precision as the <see cref="JulianDate"/> type.  It stores a
-    /// number of days as an <see cref="System.Int32"/> and a number of seconds as a <see cref="System.Double"/>.
+    /// number of days as an <see cref="int"/> and a number of seconds as a <see cref="double"/>.
     /// </summary>
     [CSToJavaExcludeBase("IComparable")]
     [CSToJavaImmutableValueType]
-    public struct Duration :
-        IComparable<Duration>,
-        IComparable,
-        IEquatable<Duration>
+    public struct Duration : IComparable<Duration>, IComparable, IEquatable<Duration>
     {
         /// <summary>
-        /// Gets the largest possible value of a <see cref="Duration"/>.
-        /// </summary>
-        /// <remarks>
-        /// The value is <see cref="Int32.MaxValue"/> days and 86399.0 seconds.
-        /// </remarks>
-        public static Duration MaxValue
-        {
-            get { return s_maxValue; }
-        }
-
-        /// <summary>
-        /// Gets the smallest possible value of a <see cref="Duration"/>.
-        /// </summary>
-        /// <remarks>
-        /// The value is <see cref="Int32.MinValue"/> days and -86399.0 seconds.
-        /// </remarks>
-        public static Duration MinValue
-        {
-            get { return s_minValue; }
-        }
-
-        /// <summary>
-        /// Gets a <see cref="Duration"/> of 0 days and seconds.
-        /// </summary>
-        public static Duration Zero
-        {
-            get { return s_zero; }
-        }
-
-        /// <summary>
-        /// Converts the specified number of hours, minutes, and seconds to total duration in seconds.
-        /// </summary>
-        /// <param name="hours">The number of hours.</param>
-        /// <param name="minutes">The number of minutes.</param>
-        /// <param name="seconds">The number of seconds.</param>
-        /// <returns>The corresponding duration in seconds.</returns>
-        public static double HoursMinutesSecondsToSeconds(int hours, int minutes, double seconds)
-        {
-            return hours * TimeConstants.SecondsPerHour + minutes * TimeConstants.SecondsPerMinute + seconds;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of Duration from a specified number
+        /// Initializes a new instance of <see cref="Duration"/> from a specified number
         /// of days, hours, minutes, and seconds.
         /// </summary>
-        /// <param name="days">The number of days in the new duration.</param>
-        /// <param name="hours">The number of hours in the new duration.</param>
-        /// <param name="minutes">The number of minutes in the new duration.</param>
-        /// <param name="seconds">The number of seconds in the new duration.</param>
+        /// <param name="days">The number of days in the new <see cref="Duration"/>.</param>
+        /// <param name="hours">The number of hours in the new <see cref="Duration"/>.</param>
+        /// <param name="minutes">The number of minutes in the new <see cref="Duration"/>.</param>
+        /// <param name="seconds">The number of seconds in the new <see cref="Duration"/>.</param>
         public Duration(int days, int hours, int minutes, double seconds)
             : this(days, HoursMinutesSecondsToSeconds(hours, minutes, seconds))
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of Duration from a specified number
+        /// Initializes a new instance of <see cref="Duration"/> from a specified number
         /// of days and seconds.
         /// </summary>
-        /// <param name="days">The number of days in the new duration.</param>
-        /// <param name="seconds">The number of seconds in the new duration.</param>
+        /// <param name="days">The number of days in the new <see cref="Duration"/>.</param>
+        /// <param name="seconds">The number of seconds in the new <see cref="Duration"/>.</param>
         public Duration(int days, double seconds)
         {
             // Ensure that the number of seconds is less than a whole (positive or negative) day.
-            if (seconds >= 86400.0 || seconds <= -86400.0)
+            if (seconds >= TimeConstants.SecondsPerDay || seconds <= -TimeConstants.SecondsPerDay)
             {
                 int newDays = (int)(seconds / TimeConstants.SecondsPerDay);
                 days += newDays;
@@ -140,7 +96,49 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the day component of this duration.
+        /// Converts the specified number of hours, minutes, and seconds to total duration in seconds.
+        /// </summary>
+        /// <param name="hours">The number of hours.</param>
+        /// <param name="minutes">The number of minutes.</param>
+        /// <param name="seconds">The number of seconds.</param>
+        /// <returns>The corresponding duration in seconds.</returns>
+        public static double HoursMinutesSecondsToSeconds(int hours, int minutes, double seconds)
+        {
+            return hours * TimeConstants.SecondsPerHour + minutes * TimeConstants.SecondsPerMinute + seconds;
+        }
+
+        /// <summary>
+        /// Gets the largest possible value of a <see cref="Duration"/>.
+        /// </summary>
+        /// <remarks>
+        /// The value is <see cref="int.MaxValue"/> days and 86399.0 seconds.
+        /// </remarks>
+        public static Duration MaxValue
+        {
+            get { return s_maxValue; }
+        }
+
+        /// <summary>
+        /// Gets the smallest possible value of a <see cref="Duration"/>.
+        /// </summary>
+        /// <remarks>
+        /// The value is <see cref="int.MinValue"/> days and -86399.0 seconds.
+        /// </remarks>
+        public static Duration MinValue
+        {
+            get { return s_minValue; }
+        }
+
+        /// <summary>
+        /// Gets a <see cref="Duration"/> of 0 days and seconds.
+        /// </summary>
+        public static Duration Zero
+        {
+            get { return s_zero; }
+        }
+
+        /// <summary>
+        /// Gets the day component of this <see cref="Duration"/>.
         /// </summary>
         public int Days
         {
@@ -148,8 +146,8 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the seconds component of this duration.  This is the number of seconds represented by
-        /// this duration in addition to the <see cref="Days"/>, so it will always be less than
+        /// Gets the seconds component of this <see cref="Duration"/>.  This is the number of seconds represented by
+        /// this <see cref="Duration"/> in addition to the <see cref="Days"/>, so it will always be less than
         /// <see cref="TimeConstants.SecondsPerDay"/>.
         /// </summary>
         public double Seconds
@@ -158,7 +156,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the total number of whole and fractional days represented by this Duration.
+        /// Gets the total number of whole and fractional days represented by this <see cref="Duration"/>.
         /// </summary>
         public double TotalDays
         {
@@ -166,7 +164,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the total number of seconds represented by this duration, including the seconds
+        /// Gets the total number of seconds represented by this <see cref="Duration"/>, including the seconds
         /// that compose the days returned by the <see cref="Days"/> property.
         /// </summary>
         public double TotalSeconds
@@ -180,7 +178,9 @@ namespace CesiumLanguageWriter
         /// <returns>The string.</returns>
         public override string ToString()
         {
-            return string.Format(CultureInfo.CurrentCulture, "{0}:{1}", m_days, m_seconds);
+            var builder = new StringBuilder();
+            builder.AppendFormat(CultureInfo.CurrentCulture, "{0}:{1}", m_days, m_seconds);
+            return builder.ToString();
         }
 
         /// <summary>
@@ -194,13 +194,13 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns true if this Duration exactly equals another duration, within the limits
+        /// Returns <see langword="true"/> if this <see cref="Duration"/> exactly equals another <see cref="Duration"/>, within the limits
         /// of floating point precision.  To be considered equal, the <see cref="Days"/>
         /// property must be identical and the
         /// difference between the <see cref="Seconds"/> properties must be less than 1.0e-10.
         /// </summary>
-        /// <param name="other">The other duration.</param>
-        /// <returns>true if this duration exactly equals the <paramref name="other"/> duration, within the limits of floating point precision.</returns>
+        /// <param name="other">The other <see cref="Duration"/>.</param>
+        /// <returns><see langword="true"/> if this <see cref="Duration"/> exactly equals the <paramref name="other"/> <see cref="Duration"/>, within the limits of floating point precision.</returns>
         public bool Equals(Duration other)
         {
             return m_days == other.m_days &&
@@ -208,27 +208,27 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns true if this Duration exactly equals another duration, within the limits
+        /// Returns <see langword="true"/> if this <see cref="Duration"/> exactly equals another <see cref="Duration"/>, within the limits
         /// of floating point precision.  To be considered equal, the <see cref="Days"/>
         /// property must be identical and the
         /// difference between the <see cref="Seconds"/> properties must be less than 1.0e-10.
         /// </summary>
-        /// <param name="obj">The other duration.</param>
-        /// <returns>true if this duration exactly equals the <paramref name="obj"/> duration, within the limits of floating point precision.</returns>
+        /// <param name="obj">The other <see cref="Duration"/>.</param>
+        /// <returns><see langword="true"/> if this <see cref="Duration"/> exactly equals the <paramref name="obj"/> <see cref="Duration"/>, within the limits of floating point precision.</returns>
         public override bool Equals(object obj)
         {
             return obj is Duration && Equals((Duration)obj);
         }
 
         /// <summary>
-        /// Returns true if this Duration is within <paramref name="epsilon"/> seconds of the
-        /// specified Duration.  That is, in order for the Durations to be considered equal (and for
-        /// this function to return true), the absolute value of the difference between them, in
-        /// seconds, must be less than <paramref name="epsilon"/>.
+        /// Returns <see langword="true"/> if this <see cref="Duration"/> is within <paramref name="epsilon"/> seconds of the
+        /// specified <see cref="Duration"/>.  That is, in order for the <see cref="Duration">Durations</see> to be considered equal (and for
+        /// this function to return <see langword="true"/>), the absolute value of the difference between them, in
+        /// seconds, must be less than or equal to <paramref name="epsilon"/>.
         /// </summary>
-        /// <param name="other">The Duration to compare to this Duration.</param>
-        /// <param name="epsilon">The largest difference between the Durations, in seconds, such that they will be considered equal.</param>
-        /// <returns>true if the dates are equal as defined by the epsilon value.</returns>
+        /// <param name="other">The <see cref="Duration"/> to compare to this <see cref="Duration"/>.</param>
+        /// <param name="epsilon">The largest difference between the <see cref="Duration">Durations</see>, in seconds, such that they will be considered equal.</param>
+        /// <returns><see langword="true"/> if the dates are equal as defined by the epsilon value.</returns>
         [Pure]
         public bool EqualsEpsilon(Duration other, double epsilon)
         {
@@ -271,6 +271,7 @@ namespace CesiumLanguageWriter
             if (m_days != other.m_days)
                 return m_days < other.m_days ? -1 : 1;
 
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
             if (m_seconds == other.m_seconds)
                 return 0;
 
@@ -320,30 +321,34 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Adds the specified Duration to this instance.
+        /// Adds the specified <see cref="Duration"/> to this instance.
         /// </summary>
-        /// <param name="other">The duration to add to this instance.</param>
+        /// <param name="other">The <see cref="Duration"/> to add to this instance.</param>
         /// <returns>A <see cref="Duration"/> that represents the value of this instance plus the value of <paramref name="other"/>.</returns>
         public Duration Add(Duration other)
         {
-            return new Duration(m_days + other.m_days, m_seconds + other.m_seconds);
+            int days = m_days + other.m_days;
+            double seconds = m_seconds + other.m_seconds;
+            return new Duration(days, seconds);
         }
 
         /// <summary>
-        /// Subtracts the specified Duration from this instance.
+        /// Subtracts the specified <see cref="Duration"/> from this instance.
         /// </summary>
-        /// <param name="other">The Duration to subtract from this instance.</param>
-        /// <returns>A Duration that represents the value of this instance minus the value of other.</returns>
+        /// <param name="other">The <see cref="Duration"/> to subtract from this instance.</param>
+        /// <returns>A <see cref="Duration"/> that represents the value of this instance minus the value of <paramref name="other"/>.</returns>
         public Duration Subtract(Duration other)
         {
-            return new Duration(m_days - other.m_days, m_seconds - other.m_seconds);
+            int days = m_days - other.m_days;
+            double seconds = m_seconds - other.m_seconds;
+            return new Duration(days, seconds);
         }
 
         /// <summary>
-        /// Multiplies the duration by a constant.
+        /// Multiplies the <see cref="Duration"/> by a constant.
         /// </summary>
-        /// <param name="constant">The constant by which to multiply the Duration.</param>
-        /// <returns>A Duration that represents the value of this instance multiplied by the constant.</returns>
+        /// <param name="constant">The constant by which to multiply the <see cref="Duration"/>.</param>
+        /// <returns>A <see cref="Duration"/> that represents the value of this instance multiplied by the constant.</returns>
         [Pure]
         public Duration Multiply(double constant)
         {
@@ -355,10 +360,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Divides the duration by another duration, yield a constant.
+        /// Divides the <see cref="Duration"/> by another <see cref="Duration"/>, yield a constant.
         /// </summary>
-        /// <param name="divisor">The duration by which to divide this duration.</param>
-        /// <returns>The result of dividing this Duration by another.</returns>
+        /// <param name="divisor">The <see cref="Duration"/> by which to divide this <see cref="Duration"/>.</param>
+        /// <returns>The result of dividing this <see cref="Duration"/> by another.</returns>
         [Pure]
         public double Divide(Duration divisor)
         {
@@ -366,7 +371,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Divides the duration by a constant.
+        /// Divides the <see cref="Duration"/> by a constant.
         /// </summary>
         /// <param name="constant">The constant by which to divide the <see cref="Duration"/>.</param>
         /// <returns>A <see cref="Duration"/> that represents the value of this instance divided by the constant.</returns>
@@ -381,10 +386,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Adds a specified number of seconds to this duration and returns the new duration.
+        /// Adds a specified number of seconds to this <see cref="Duration"/> and returns the new <see cref="Duration"/>.
         /// </summary>
         /// <param name="seconds">The number of seconds to add.</param>
-        /// <returns>A new duration which is the sum of the original duration and the specified number of seconds.</returns>
+        /// <returns>A new <see cref="Duration"/> which is the sum of the original <see cref="Duration"/> and the specified number of seconds.</returns>
         [Pure]
         public Duration AddSeconds(double seconds)
         {
@@ -392,10 +397,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Adds a specified number of days to this duration and returns the new duration.
+        /// Adds a specified number of days to this <see cref="Duration"/> and returns the new <see cref="Duration"/>.
         /// </summary>
         /// <param name="days">The number of days to add.</param>
-        /// <returns>A new duration which is the sum of the original duration and the specified number of days.</returns>
+        /// <returns>A new <see cref="Duration"/> which is the sum of the original <see cref="Duration"/> and the specified number of days.</returns>
         [Pure]
         public Duration AddDays(double days)
         {
@@ -403,82 +408,82 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns true if two Durations are exactly equal, within the limits
+        /// Returns <see langword="true"/> if two <see cref="Duration">Durations</see> are exactly equal, within the limits
         /// of floating point precision.  To be considered equal, the <see cref="Days"/>
         /// property must be identical and the
         /// difference between the <see cref="Seconds"/> properties must be less than 1.0e-10.
         /// </summary>
-        /// <param name="left">The left duration.</param>
-        /// <param name="right">The second duration.</param>
-        /// <returns><see langword="true"/> if the durations are equal, otherwise <see langword="false"/>.</returns>
+        /// <param name="left">The left <see cref="Duration"/>.</param>
+        /// <param name="right">The second <see cref="Duration"/>.</param>
+        /// <returns><see langword="true"/> if the <see cref="Duration">Durations</see> are equal, otherwise <see langword="false"/>.</returns>
         public static bool operator ==(Duration left, Duration right)
         {
             return left.Equals(right);
         }
 
         /// <summary>
-        /// Returns true if two Durations are NOT exactly equal, within the limits
+        /// Returns <see langword="true"/> if two <see cref="Duration">Durations</see> are NOT exactly equal, within the limits
         /// of floating point precision.  To be considered equal, the <see cref="Days"/>
         /// property must be identical (or one must be null) and the
         /// difference between the <see cref="Seconds"/> properties must be less than 1.0e-10.
         /// </summary>
-        /// <param name="left">The first duration.</param>
-        /// <param name="right">The second duration.</param>
-        /// <returns><see langword="true"/> if the durations are not equal, otherwise <see langword="false"/>.</returns>
+        /// <param name="left">The first <see cref="Duration"/>.</param>
+        /// <param name="right">The second <see cref="Duration"/>.</param>
+        /// <returns><see langword="true"/> if the <see cref="Duration">Durations</see> are not equal, otherwise <see langword="false"/>.</returns>
         public static bool operator !=(Duration left, Duration right)
         {
             return !left.Equals(right);
         }
 
         /// <summary>
-        /// Returns true if <paramref name="left"/> is shorter than <paramref name="right"/>.
+        /// Returns <see langword="true"/> if <paramref name="left"/> is shorter than <paramref name="right"/>.
         /// </summary>
-        /// <param name="left">The left duration.</param>
-        /// <param name="right">The right duration.</param>
-        /// <returns>true if left is less than right, otherwise false.</returns>
+        /// <param name="left">The left <see cref="Duration"/>.</param>
+        /// <param name="right">The right <see cref="Duration"/>.</param>
+        /// <returns><see langword="true"/> if left is less than right, otherwise <see langword="false"/>.</returns>
         public static bool operator <(Duration left, Duration right)
         {
             return left.CompareTo(right) < 0;
         }
 
         /// <summary>
-        /// Returns true if <paramref name="left"/> is longer than <paramref name="right"/>.
+        /// Returns <see langword="true"/> if <paramref name="left"/> is longer than <paramref name="right"/>.
         /// </summary>
-        /// <param name="left">The left duration.</param>
-        /// <param name="right">The right duration.</param>
-        /// <returns>true if left is greater than right, otherwise false.</returns>
+        /// <param name="left">The left <see cref="Duration"/>.</param>
+        /// <param name="right">The right <see cref="Duration"/>.</param>
+        /// <returns><see langword="true"/> if left is greater than right, otherwise <see langword="false"/>.</returns>
         public static bool operator >(Duration left, Duration right)
         {
             return left.CompareTo(right) > 0;
         }
 
         /// <summary>
-        /// Returns true if <paramref name="left"/> is shorter than or exactly equal to <paramref name="right"/>.
+        /// Returns <see langword="true"/> if <paramref name="left"/> is shorter than or exactly equal to <paramref name="right"/>.
         /// </summary>
-        /// <param name="left">The left duration.</param>
-        /// <param name="right">The right duration.</param>
-        /// <returns>true if left is less than or equal to right, otherwise false.</returns>
+        /// <param name="left">The left <see cref="Duration"/>.</param>
+        /// <param name="right">The right <see cref="Duration"/>.</param>
+        /// <returns><see langword="true"/> if left is less than or equal to right, otherwise <see langword="false"/>.</returns>
         public static bool operator <=(Duration left, Duration right)
         {
             return left.CompareTo(right) <= 0;
         }
 
         /// <summary>
-        /// Returns true if <paramref name="left"/> is longer than or exactly equal to <paramref name="right"/>.
+        /// Returns <see langword="true"/> if <paramref name="left"/> is longer than or exactly equal to <paramref name="right"/>.
         /// </summary>
-        /// <param name="left">The left duration.</param>
-        /// <param name="right">The right duration.</param>
-        /// <returns>true if left is greater than or equal to right, otherwise false.</returns>
+        /// <param name="left">The left <see cref="Duration"/>.</param>
+        /// <param name="right">The right <see cref="Duration"/>.</param>
+        /// <returns><see langword="true"/> if left is greater than or equal to right, otherwise <see langword="false"/>.</returns>
         public static bool operator >=(Duration left, Duration right)
         {
             return left.CompareTo(right) >= 0;
         }
 
         /// <summary>
-        /// Adds two specified Duration instances.
+        /// Adds two specified <see cref="Duration"/> instances.
         /// </summary>
-        /// <param name="left">The first duration to add.</param>
-        /// <param name="right">The second duration to add.</param>
+        /// <param name="left">The first <see cref="Duration"/> to add.</param>
+        /// <param name="right">The second <see cref="Duration"/> to add.</param>
         /// <returns>The sum of <paramref name="left"/> and <paramref name="right"/>.</returns>
         public static Duration operator +(Duration left, Duration right)
         {
@@ -486,7 +491,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Subtracts a specified Duration from another specified Duration.
+        /// Subtracts a specified <see cref="Duration"/> from another specified <see cref="Duration"/>.
         /// </summary>
         /// <param name="left">The subtrahend.</param>
         /// <param name="right">The minuend.</param>
@@ -497,32 +502,32 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Inverts a specified Duration.  For example, if the <paramref name="value"/> represents a positive
-        /// quantity of time, the returned Duration will be a negative quantity of time.
+        /// Inverts a specified <see cref="Duration"/>.  For example, if the <paramref name="value"/> represents a positive
+        /// quantity of time, the returned <see cref="Duration"/> will be a negative quantity of time.
         /// </summary>
         /// <param name="value">The value to invert.</param>
-        /// <returns>The inverted duration.</returns>
+        /// <returns>The inverted <see cref="Duration"/>.</returns>
         public static Duration operator -(Duration value)
         {
             return new Duration(-value.m_days, -value.m_seconds);
         }
 
         /// <summary>
-        /// Multiplies the duration by a constant.
+        /// Multiplies the <see cref="Duration"/> by a constant.
         /// </summary>
-        /// <param name="left">The duration to multiply.</param>
-        /// <param name="right">The constant by which to multiply the Duration.</param>
-        /// <returns>A Duration that represents the value of this instance multiplied by the constant.</returns>
+        /// <param name="left">The <see cref="Duration"/> to multiply.</param>
+        /// <param name="right">The constant by which to multiply the <see cref="Duration"/>.</param>
+        /// <returns>A <see cref="Duration"/> that represents the value of this instance multiplied by the constant.</returns>
         public static Duration operator *(Duration left, double right)
         {
             return left.Multiply(right);
         }
 
         /// <summary>
-        /// Divides the duration by another duration.
+        /// Divides the <see cref="Duration"/> by another duration.
         /// </summary>
-        /// <param name="dividend">The duration to divide.</param>
-        /// <param name="divisor">The duration by which to divide the Duration.</param>
+        /// <param name="dividend">The <see cref="Duration"/> to divide.</param>
+        /// <param name="divisor">The <see cref="Duration"/> by which to divide the <see cref="Duration"/>.</param>
         /// <returns>The result of dividing the dividend by the divisor.</returns>
         public static double operator /(Duration dividend, Duration divisor)
         {
@@ -530,10 +535,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Divides the duration by a constant.
+        /// Divides the <see cref="Duration"/> by a constant.
         /// </summary>
-        /// <param name="dividend">The duration to divide.</param>
-        /// <param name="divisor">The constant by which to divide the duration.</param>
+        /// <param name="dividend">The <see cref="Duration"/> to divide.</param>
+        /// <param name="divisor">The constant by which to divide the <see cref="Duration"/>.</param>
         /// <returns>The result of dividing the dividend by the divisor.</returns>
         public static Duration operator /(Duration dividend, double divisor)
         {
@@ -541,9 +546,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a Duration that represents the specified number of days.
+        /// Returns a <see cref="Duration"/> that represents the specified number of days.
         /// </summary>
-        /// <param name="days">The number of days to be represented by the returned duration.</param>
+        /// <param name="days">The number of days to be represented by the returned <see cref="Duration"/>.</param>
         /// <returns>A <see cref="Duration"/> representing the specified number of days.</returns>
         public static Duration FromDays(double days)
         {
@@ -553,9 +558,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a Duration that represents the specified number of seconds.
+        /// Returns a <see cref="Duration"/> that represents the specified number of seconds.
         /// </summary>
-        /// <param name="seconds">The number of seconds to be represented by the returned duration.</param>
+        /// <param name="seconds">The number of seconds to be represented by the returned <see cref="Duration"/>.</param>
         /// <returns>A <see cref="Duration"/> representing the specified number of seconds.</returns>
         public static Duration FromSeconds(double seconds)
         {
@@ -567,6 +572,6 @@ namespace CesiumLanguageWriter
 
         private static readonly Duration s_maxValue = new Duration(int.MaxValue, 0.0);
         private static readonly Duration s_minValue = new Duration(int.MinValue, 0.0);
-        private static readonly Duration s_zero = new Duration(0, 0);
+        private static readonly Duration s_zero = new Duration(0, 0.0);
     }
 }

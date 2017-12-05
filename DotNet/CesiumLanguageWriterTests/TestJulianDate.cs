@@ -317,7 +317,7 @@ namespace CesiumLanguageWriterTests
         public void TestToString()
         {
             JulianDate date = new JulianDate(2451545.5);
-            Assert.AreEqual("2451545:43200 (TAI)", date.ToString());
+            Assert.AreEqual("2451545:43200 TAI (1/1/2000 11:59:28 PM)", date.ToString());
         }
 
         /// <summary>

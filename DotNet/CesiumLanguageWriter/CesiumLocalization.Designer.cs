@@ -88,6 +88,15 @@ namespace CesiumLanguageWriter {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The given date must be in the UTC time standard..
+        /// </summary>
+        internal static string DateMustBeUTC {
+            get {
+                return ResourceManager.GetString("DateMustBeUTC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Day of Year must be between 1 and 366 inclusive..
         /// </summary>
         internal static string DayOfYearOutOfRange {
@@ -232,33 +241,6 @@ namespace CesiumLanguageWriter {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An object of the type {0} must be constructed from an array with at least {1} elements..
-        /// </summary>
-        internal static string MustBeConstructedFromSpecificNumberOfElements {
-            get {
-                return ResourceManager.GetString("MustBeConstructedFromSpecificNumberOfElements", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TAI.
-        /// </summary>
-        internal static string TaiAbbreviation {
-            get {
-                return ResourceManager.GetString("TaiAbbreviation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to International Atomic Time.
-        /// </summary>
-        internal static string TaiName {
-            get {
-                return ResourceManager.GetString("TaiName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The enumeration has an invalid or unsupported value..
         /// </summary>
         internal static string UnknownEnumerationValue {
@@ -273,24 +255,6 @@ namespace CesiumLanguageWriter {
         internal static string UpperBoundCannotBeLessThanLowerBound {
             get {
                 return ResourceManager.GetString("UpperBoundCannotBeLessThanLowerBound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to UTC.
-        /// </summary>
-        internal static string UtcAbbreviation {
-            get {
-                return ResourceManager.GetString("UtcAbbreviation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Coordinated Universal Time.
-        /// </summary>
-        internal static string UtcName {
-            get {
-                return ResourceManager.GetString("UtcName", resourceCulture);
             }
         }
         

@@ -24,7 +24,7 @@ namespace CesiumLanguageWriter
         /// Gets a <see cref="Matrix3By3"/> with elements of <see cref="double.NaN"/>.
         /// </summary>
         /// <remarks>
-        /// Use <see cref="Matrix3By3.IsUndefined"/> to test whether a <see cref="Matrix3By3"/> instance
+        /// Use <see cref="IsUndefined"/> to test whether a <see cref="Matrix3By3"/> instance
         /// is undefined since it will return <see langword="true"/> if any of the element values
         /// are <see cref="double.NaN"/>.
         /// </remarks>
@@ -41,7 +41,7 @@ namespace CesiumLanguageWriter
         {
             get { return s_zero; }
         }
-        
+
         /// <summary>
         /// Forms a diagonal matrix from the input elements.
         /// </summary>
@@ -79,7 +79,6 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance from a <see cref="UnitQuaternion"/>.
         /// </summary>
         /// <param name="quaternion">The quaternion.</param>
-        /// <returns>The resulting 3-by-3 matrix.</returns>
         public Matrix3By3(UnitQuaternion quaternion)
         {
             double x2 = quaternion.X * quaternion.X;
@@ -143,7 +142,7 @@ namespace CesiumLanguageWriter
         /// <param name="row">The row index.</param>
         /// <param name="column">The column index.</param>
         /// <returns>The value corresponding to the indicated element of the matrix.</returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">
+        /// <exception cref="ArgumentOutOfRangeException">
         /// Thrown when either <paramref name="row"/> or <paramref name="column"/> is less than 0 or greater than 2.
         /// </exception>
         [SuppressMessage("Microsoft.Design", "CA1023:IndexersShouldNotBeMultidimensional")]

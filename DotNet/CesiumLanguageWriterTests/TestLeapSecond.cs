@@ -49,7 +49,7 @@ namespace CesiumLanguageWriterTests
         {
             LeapSecond ls1 = new LeapSecond(2451545.0, 100.0);
 
-            Assert.AreEqual("2451545:0 (UTC), 100", ls1.ToString());
+            Assert.AreEqual("2451545:0 UTC (1/1/2000 12:00:00 PM), 100", ls1.ToString());
         }
     }
 }

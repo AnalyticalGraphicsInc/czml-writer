@@ -19,7 +19,7 @@ namespace CesiumLanguageWriter
     public struct LeapSecond : IEquatable<LeapSecond>
     {
         /// <summary>
-        /// Initializes a new instance of a Leap Second.
+        /// Initializes a new instance.
         /// </summary>
         /// <param name="date">The Julian date of the leap second, in Coordinated Universal Time (UTC).</param>
         /// <param name="totalTaiOffsetFromUtc">The offset of TAI from UTC after this leap second.</param>
@@ -31,12 +31,17 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance of a Leap Second.
         /// </summary>
-        /// <param name="date">The date of the leap second.  This will be assumed to be Coordinated Universal Time (UTC) regardless of the actual time standard associated with the date.</param>
+        /// <param name="date">The date of the leap second.  This date must be in Coordinated Universal Time (UTC).</param>
         /// <param name="totalTaiOffsetFromUtc">The offset of TAI from UTC after this leap second.</param>
+        /// <exception cref="ArgumentException">
+        /// Thrown if the given date is not in UTC.
+        /// </exception>
         public LeapSecond(JulianDate date, double totalTaiOffsetFromUtc)
         {
-            // Force the time standard to be UTC.
-            m_date = new JulianDate(date.Day, date.SecondsOfDay, TimeStandard.CoordinatedUniversalTime);
+            if (date.Standard != TimeStandard.CoordinatedUniversalTime)
+                throw new ArgumentException(CesiumLocalization.DateMustBeUTC, "date");
+
+            m_date = date;
             m_totalTaiOffsetFromUtc = totalTaiOffsetFromUtc;
         }
 

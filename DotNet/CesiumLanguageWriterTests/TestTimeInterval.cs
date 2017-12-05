@@ -177,7 +177,7 @@ namespace CesiumLanguageWriterTests
         public void TestToString()
         {
             TimeInterval interval = new TimeInterval(new JulianDate(2451545, 0.00), new JulianDate(2451546, 0.00));
-            Assert.AreEqual("[2451545:0 (TAI), 2451546:0 (TAI)]", interval.ToString());
+            Assert.AreEqual("[2451545:0 TAI (1/1/2000 11:59:28 AM), 2451546:0 TAI (1/2/2000 11:59:28 AM)]", interval.ToString());
         }
     }
 }

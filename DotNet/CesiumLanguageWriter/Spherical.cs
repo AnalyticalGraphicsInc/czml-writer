@@ -34,6 +34,10 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a set of <see cref="Spherical"/> coordinates from the provided set of <see cref="Cartesian"/> coordinates.
         /// </summary>
+        /// <remarks>
+        /// The radius and magnitude for spherical coordinates are computed using the standard methods. Note that if a component of the cartesian components underflows upon squaring the
+        /// resulting spherical coordinates may not be correct.
+        /// </remarks>
         /// <param name="coordinates">The set of Cartesian coordinates.</param>
         public Spherical(Cartesian coordinates)
         {
