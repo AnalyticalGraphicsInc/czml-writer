@@ -81,6 +81,19 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
+        /// Tests thats the <see cref="UnitSpherical.EqualsEpsilon"/> method returns true
+        /// when the difference is exactly epsilon.
+        /// </summary>
+        [Test]
+        public void TestEqualsEpsilonExact()
+        {
+            UnitSpherical first = new UnitSpherical(0.1, 0.1);
+            UnitSpherical second = new UnitSpherical(0.1, 0.1);
+
+            Assert.IsTrue(second.EqualsEpsilon(first, 0));
+        }
+
+        /// <summary>
         /// Tests to ensure the equality fails when comparing incorrect type.
         /// </summary>
         [Test]

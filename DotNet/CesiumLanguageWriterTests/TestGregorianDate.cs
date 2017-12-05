@@ -266,20 +266,23 @@ namespace CesiumLanguageWriterTests
             CultureInfo originalCulture = Thread.CurrentThread.CurrentCulture;
             try
             {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
                 GregorianDate gd1 = new GregorianDate(2001, 1, 1, 6, 3, 14);
-                Assert.AreEqual("01/01/2001 06:03:14", gd1.ToString());
-                Assert.AreEqual("Monday, 01 January 2001", gd1.ToLongDateString());
-                Assert.AreEqual("06:03:14", gd1.ToLongTimeString());
-                Assert.AreEqual("01/01/2001", gd1.ToShortDateString());
-                Assert.AreEqual("06:03", gd1.ToShortTimeString());
+                Assert.AreEqual("1/1/2001 6:03:14 AM", gd1.ToString());
+
+                // Windows 8 changed to no longer use a two digit day.  Either is ok.
+                Assert.IsTrue(gd1.ToLongDateString() == "Monday, January 01, 2001" || gd1.ToLongDateString() == "Monday, January 1, 2001");
+
+                Assert.AreEqual("6:03:14 AM", gd1.ToLongTimeString());
+                Assert.AreEqual("1/1/2001", gd1.ToShortDateString());
+                Assert.AreEqual("6:03 AM", gd1.ToShortTimeString());
 
                 gd1 = new GregorianDate(2003, 3, 4, 16, 43, 23.23452);
-                Assert.AreEqual("03/04/2003 16:43:23", gd1.ToString());
-                Assert.AreEqual("Tuesday, 04 March 2003", gd1.ToLongDateString());
-                Assert.AreEqual("16:43:23", gd1.ToLongTimeString());
-                Assert.AreEqual("03/04/2003", gd1.ToShortDateString());
-                Assert.AreEqual("16:43", gd1.ToShortTimeString());
+                Assert.AreEqual("3/4/2003 4:43:23 PM", gd1.ToString());
+                Assert.IsTrue(gd1.ToLongDateString() == "Tuesday, March 04, 2003" || gd1.ToLongDateString() == "Tuesday, March 4, 2003");
+                Assert.AreEqual("4:43:23 PM", gd1.ToLongTimeString());
+                Assert.AreEqual("3/4/2003", gd1.ToShortDateString());
+                Assert.AreEqual("4:43 PM", gd1.ToShortTimeString());
             }
             finally
             {
@@ -471,6 +474,19 @@ namespace CesiumLanguageWriterTests
             new GregorianDate(2008, 12, 30, 23, 59, 60);
         }
 
+        /// <summary>
+        /// A simple test of the <see cref="GregorianDate.Now"/> method.
+        /// </summary>
+        [Test]
+        public void TestGregorianDateNow()
+        {
+            GregorianDate first = GregorianDate.Now;
+            Thread.Sleep(100);
+            GregorianDate second = GregorianDate.Now;
+
+            Assert.Greater(second, first);
+        }
+
         [Test]
         public void TestConversionToJulianDate()
         {
@@ -525,6 +541,67 @@ namespace CesiumLanguageWriterTests
             GregorianDate gd2 = new GregorianDate(gd.ToJulianDate());
 
             Assert.AreEqual(gd, gd2);
+        }
+
+        [Test]
+        public void RoundSecondsRoundsFractionalSeconds()
+        {
+            GregorianDate gd = new GregorianDate(2012, 8, 7, 13, 59, 55.5152535);
+            Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 59, 55.5152535), gd.RoundSeconds(7));
+            Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 59, 55.515254), gd.RoundSeconds(6));
+            Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 59, 55.51525), gd.RoundSeconds(5));
+            Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 59, 55.5153), gd.RoundSeconds(4));
+            Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 59, 55.515), gd.RoundSeconds(3));
+            Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 59, 55.52), gd.RoundSeconds(2));
+            Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 59, 55.5), gd.RoundSeconds(1));
+            Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 59, 56), gd.RoundSeconds(0));
+        }
+
+        [Test]
+        public void RoundSecondsRollsOver()
+        {
+            GregorianDate gd = new GregorianDate(2012, 8, 7, 13, 55, 59.9999999);
+            Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 56, 0.0), gd.RoundSeconds(6));
+
+            gd = new GregorianDate(2012, 8, 7, 13, 59, 59.9999999);
+            Assert.AreEqual(new GregorianDate(2012, 8, 7, 14, 0, 0.0), gd.RoundSeconds(6));
+
+            gd = new GregorianDate(2012, 8, 7, 23, 59, 59.9999999);
+            Assert.AreEqual(new GregorianDate(2012, 8, 8, 0, 0, 0.0), gd.RoundSeconds(6));
+
+            gd = new GregorianDate(2012, 8, 31, 23, 59, 59.9999999);
+            Assert.AreEqual(new GregorianDate(2012, 9, 1, 0, 0, 0.0), gd.RoundSeconds(6));
+
+            gd = new GregorianDate(2012, 12, 31, 23, 59, 59.9999999);
+            Assert.AreEqual(new GregorianDate(2013, 1, 1, 0, 0, 0.0), gd.RoundSeconds(6));
+        }
+
+        [Test]
+        public void RoundSecondsAllows61SecondsDuringLeapSecond()
+        {
+            GregorianDate gd = new GregorianDate(2012, 6, 30, 23, 59, 59.9999999);
+            Assert.AreEqual(new GregorianDate(2012, 6, 30, 23, 59, 60.0), gd.RoundSeconds(6));
+
+            gd = new GregorianDate(2012, 6, 30, 23, 59, 60.9999999);
+            Assert.AreEqual(new GregorianDate(2012, 7, 1, 0, 0, 0.0), gd.RoundSeconds(6));
+        }
+
+        [Test]
+        public void RoundSecondsDoesNotAllow61SecondsDuringLeapSecondIfTimeStandardIsNotUtc()
+        {
+            GregorianDate gd = new GregorianDate(2012, 6, 30, 23, 59, 59.9999999);
+            Assert.AreEqual(new GregorianDate(2012, 7, 1, 0, 0, 0.0), gd.RoundSeconds(6, TimeStandard.InternationalAtomicTime));
+        }
+
+        [Test]
+        public void MaxValueRoundTripsThroughJulianDate()
+        {
+            JulianDate max = GregorianDate.MaxValue.ToJulianDate();
+            GregorianDate date = max.ToGregorianDate();
+            string iso = date.ToIso8601String(Iso8601Format.Extended, 6);
+            string expected = GregorianDate.MaxValue.ToIso8601String(Iso8601Format.Extended, 6);
+
+            Assert.AreEqual(expected, iso);
         }
     }
 }

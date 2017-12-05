@@ -68,6 +68,18 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
+        /// Tests thats the <see cref="Cartographic.EqualsEpsilon"/> method returns true
+        /// when the difference is exactly epsilon.
+        /// </summary>
+        [Test]
+        public void TestEqualsEpsilonExact()
+        {
+            Cartographic first = new Cartographic(0.1, 0.1, 0.1);
+            Cartographic second = new Cartographic(0.1, 0.1, 0.1);
+            Assert.IsTrue(second.EqualsEpsilon(first, 0));
+        }
+        
+        /// <summary>
         /// Tests to ensure the equality fails when comparing incorrect type.
         /// </summary>
         [Test]
@@ -76,6 +88,7 @@ namespace CesiumLanguageWriterTests
             Cartographic first = new Cartographic(1.0, 2.0, 3.0);
             Cartesian second = new Cartesian(1.0, 2.0, 3.0);
 
+            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.IsFalse(first.Equals(second));
         }
 
@@ -99,7 +112,7 @@ namespace CesiumLanguageWriterTests
         public void TestToString()
         {
             StringBuilder s = new StringBuilder(80);
-            s.Append((Math.PI).ToString(CultureInfo.CurrentCulture));
+            s.Append(Math.PI.ToString(CultureInfo.CurrentCulture));
             s.Append(", ");
             s.Append(Constants.HalfPi.ToString(CultureInfo.CurrentCulture));
             s.Append(", ");

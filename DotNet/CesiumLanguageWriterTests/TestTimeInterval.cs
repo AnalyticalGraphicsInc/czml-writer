@@ -142,6 +142,19 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
+        /// Tests thats the <see cref="TimeInterval.EqualsEpsilon"/> method returns true
+        /// when the difference is exactly epsilon.
+        /// </summary>
+        [Test]
+        public void TestEqualsEpsilonExact()
+        {
+            TimeInterval first = new TimeInterval(new JulianDate(2451545, 0.00), new JulianDate(2451545, 0.00));
+            TimeInterval second = new TimeInterval(new JulianDate(2451545, 0.00), new JulianDate(2451545, 0.00));
+
+            Assert.IsTrue(second.EqualsEpsilon(first, 0.00));
+        }
+
+        /// <summary>
         /// Tests the <see cref="TimeInterval.ToTimeStandard"/> method.
         /// </summary>
         [Test]

@@ -125,7 +125,7 @@ namespace CesiumLanguageWriterTests
             int val3 = 3;
             int val4 = 4;
             string sep = ", ";
-            String result = val1.ToString(CultureInfo.CurrentCulture) + sep +
+            string result = val1.ToString(CultureInfo.CurrentCulture) + sep +
                             val2.ToString(CultureInfo.CurrentCulture) + sep +
                             val3.ToString(CultureInfo.CurrentCulture) + sep +
                             val4.ToString(CultureInfo.CurrentCulture);

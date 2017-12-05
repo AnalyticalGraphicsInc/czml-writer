@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using CesiumLanguageWriter;
 using NUnit.Framework;
@@ -8,8 +9,6 @@ namespace CesiumLanguageWriterTests
     [TestFixture]
     public class TestGregorianDateParsing
     {
-        private CultureInfo m_cultureInfo;
-
         [SetUp]
         public virtual void SetUp()
         {
@@ -74,21 +73,21 @@ namespace CesiumLanguageWriterTests
         [ExpectedException(typeof(FormatException))]
         public void TestParseISO8601DayOfYearOutOfRange()
         {
-            GregorianDate result = GregorianDate.Parse("1985-367T02:00:05.2134");
+            GregorianDate unused = GregorianDate.Parse("1985-367T02:00:05.2134");
         }
 
         [Test]
         [ExpectedException(typeof(FormatException))]
         public void TestParseISO8601DayOfYearError()
         {
-            GregorianDate result = GregorianDate.Parse("1985-12#T02:00:05.2134");
+            GregorianDate unused = GregorianDate.Parse("1985-12#T02:00:05.2134");
         }
 
         [Test]
         [ExpectedException(typeof(FormatException))]
         public void TestParseISO8601YearOutOfRange()
         {
-            GregorianDate result = GregorianDate.Parse("21985-167T02:00:05.2134");
+            GregorianDate unused = GregorianDate.Parse("21985-167T02:00:05.2134");
         }
 
         [Test]
@@ -169,8 +168,7 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(expected, GregorianDate.ParseExact("15", "HH", m_cultureInfo));
 
             expected = new GregorianDate(2002, 02, 25, 05, 25, 13.444);
-            Assert.AreEqual(expected,
-                            GregorianDate.ParseExact("Monday, 25 February 2002 05:25:13.444", "dddd, dd MMMM yyyy HH:mm:ss.fff", m_cultureInfo));
+            Assert.AreEqual(expected, GregorianDate.ParseExact("Monday, 25 February 2002 05:25:13.444", "dddd, dd MMMM yyyy HH:mm:ss.fff", m_cultureInfo));
 
             expected = new GregorianDate(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 05, 25, 13.4444444);
             Assert.AreEqual(expected, GregorianDate.ParseExact("05:25:13.4444444", "HH:mm:ss.fffffff", m_cultureInfo));
@@ -182,26 +180,19 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(expected, GregorianDate.ParseExact("06/30/2009 05:25:13.1234567890", "MM/dd/yyyy HH:mm:ss.ffffffffff", m_cultureInfo));
 
             expected = new GregorianDate(2009, 06, 30, 05, 25, 13.44444444444444);
-            Assert.AreEqual(expected,
-                            GregorianDate.ParseExact("06/30/2009 05:25:13.44444444444444", "MM/dd/yyyy HH:mm:ss.ffffffffffffff", m_cultureInfo));
+            Assert.AreEqual(expected, GregorianDate.ParseExact("06/30/2009 05:25:13.44444444444444", "MM/dd/yyyy HH:mm:ss.ffffffffffffff", m_cultureInfo));
 
             expected = new GregorianDate(2009, 06, 30, 05, 25, 13.12345678901234);
-            Assert.AreEqual(expected,
-                            GregorianDate.ParseExact("06/30/2009 05:25:13.12345678901234", "MM/dd/yyyy HH:mm:ss.ffffffffffffff", m_cultureInfo));
-            Assert.AreNotEqual(expected,
-                               GregorianDate.ParseExact("06/30/2009 05:25:13.123456789012345", "MM/dd/yyyy HH:mm:ss.fffffffffffffff", m_cultureInfo));
+            Assert.AreEqual(expected, GregorianDate.ParseExact("06/30/2009 05:25:13.12345678901234", "MM/dd/yyyy HH:mm:ss.ffffffffffffff", m_cultureInfo));
+            Assert.AreNotEqual(expected, GregorianDate.ParseExact("06/30/2009 05:25:13.123456789012345", "MM/dd/yyyy HH:mm:ss.fffffffffffffff", m_cultureInfo));
 
             expected = new GregorianDate(2009, 06, 30, 05, 25, 13.444444444444444);
-            Assert.AreEqual(expected,
-                            GregorianDate.ParseExact("06/30/2009 05:25:13.444444444444444", "MM/dd/yyyy HH:mm:ss.fffffffffffffff", m_cultureInfo));
-            Assert.AreNotEqual(expected,
-                               GregorianDate.ParseExact("06/30/2009 05:25:13.444444444444446", "MM/dd/yyyy HH:mm:ss.fffffffffffffff", m_cultureInfo));
+            Assert.AreEqual(expected, GregorianDate.ParseExact("06/30/2009 05:25:13.444444444444444", "MM/dd/yyyy HH:mm:ss.fffffffffffffff", m_cultureInfo));
+            Assert.AreNotEqual(expected, GregorianDate.ParseExact("06/30/2009 05:25:13.444444444444446", "MM/dd/yyyy HH:mm:ss.fffffffffffffff", m_cultureInfo));
 
             expected = new GregorianDate(2009, 06, 30, 05, 25, 0.1234567890123456);
-            Assert.AreEqual(expected,
-                            GregorianDate.ParseExact("06/30/2009 05:25:00.1234567890123456", "MM/dd/yyyy HH:mm:ss.ffffffffffffffff", m_cultureInfo));
-            Assert.AreNotEqual(expected,
-                               GregorianDate.ParseExact("06/30/2009 05:25:00.1234567890123459", "MM/dd/yyyy HH:mm:ss.ffffffffffffffff", m_cultureInfo));
+            Assert.AreEqual(expected, GregorianDate.ParseExact("06/30/2009 05:25:00.1234567890123456", "MM/dd/yyyy HH:mm:ss.ffffffffffffffff", m_cultureInfo));
+            Assert.AreNotEqual(expected, GregorianDate.ParseExact("06/30/2009 05:25:00.1234567890123459", "MM/dd/yyyy HH:mm:ss.ffffffffffffffff", m_cultureInfo));
         }
 
         [Test]
@@ -213,13 +204,16 @@ namespace CesiumLanguageWriterTests
 
         [Test]
         [ExpectedException(typeof(FormatException))]
+        [SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
         public void ParseExactThrowsOnNullFormat()
         {
-            GregorianDate.ParseExact("1/1/2009", (string)null, m_cultureInfo);
+            string format = null;
+            GregorianDate.ParseExact("1/1/2009", format, m_cultureInfo);
         }
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
+        [SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
         public void ParseExactThrowsOnNullInput()
         {
             GregorianDate.ParseExact(null, "dddd, dd MMMM yyyy HH:mm:ss", m_cultureInfo);
@@ -316,6 +310,7 @@ namespace CesiumLanguageWriterTests
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
+        [SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
         public void ParseThrowsOnNullInput()
         {
             GregorianDate.Parse(null, m_cultureInfo);
@@ -323,6 +318,7 @@ namespace CesiumLanguageWriterTests
 
         [Test]
         [ExpectedException(typeof(ArgumentNullException))]
+        [SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
         public void ParseThrowsOnNullInputWithoutCultureInfo()
         {
             GregorianDate.Parse(null);
@@ -366,5 +362,16 @@ namespace CesiumLanguageWriterTests
 
             Assert.AreEqual(false, GregorianDate.TryParse("13/01/2002", m_cultureInfo, out result));
         }
+
+        [Test]
+        public void TestParseIso8601FormatBasic()
+        {
+            GregorianDate g1 = new GregorianDate(1985, 4, 12, 10, 15, 30);
+            string s1 = g1.ToIso8601String(Iso8601Format.Basic);
+            GregorianDate gp1 = GregorianDate.Parse(s1);
+            Assert.AreEqual(g1, gp1);
+        }
+
+        private CultureInfo m_cultureInfo;
     }
 }

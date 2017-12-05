@@ -8,7 +8,7 @@ namespace CesiumLanguageWriterTests
     /// Tests the <see cref="UnitCartesian"/> type.
     /// </summary>
     [TestFixture]
-    public class TestUnitCartesian3
+    public class TestUnitCartesian
     {
         /// <summary>
         /// Tests that initialization of and access to the type's values works correctly.
@@ -141,6 +141,19 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
+        /// Tests thats the <see cref="UnitCartesian.EqualsEpsilon"/> method returns true
+        /// when the difference is exactly epsilon.
+        /// </summary>
+        [Test]
+        public void TestEqualsEpsilonExact()
+        {
+            UnitCartesian first = new UnitCartesian(0.1, 0.1, 0.1);
+            UnitCartesian second = new UnitCartesian(0.1, 0.1, 0.1);
+
+            Assert.IsTrue(second.EqualsEpsilon(first, 0));
+        }
+
+        /// <summary>
         /// Tests to ensure the equality fails when comparing incorrect type.
         /// </summary>
         [Test]
@@ -193,8 +206,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestInvert()
         {
-            UnitCartesian Cartesian3 = new UnitCartesian(2.0, 3.0, 6.0);
-            UnitCartesian inverted = Cartesian3.Invert();
+            UnitCartesian cartesian = new UnitCartesian(2.0, 3.0, 6.0);
+            UnitCartesian inverted = cartesian.Invert();
             Assert.AreEqual(-2.0 / 7.0, inverted.X);
             Assert.AreEqual(-3.0 / 7.0, inverted.Y);
             Assert.AreEqual(-6.0 / 7.0, inverted.Z);
@@ -343,8 +356,8 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(third.Y, result.Y, Constants.Epsilon14);
             Assert.AreEqual(third.Z, result.Z, Constants.Epsilon14);
 
-            Cartesian Cartesian3 = new Cartesian(c, a, b);
-            result = first.Cross(Cartesian3);
+            Cartesian cartesian = new Cartesian(c, a, b);
+            result = first.Cross(cartesian);
 
             Assert.AreEqual(third.X, result.X, Constants.Epsilon14);
             Assert.AreEqual(third.Y, result.Y, Constants.Epsilon14);
@@ -352,7 +365,7 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests that Cartesian3.GetHashCode returns something at least reasonably random.
+        /// Tests that GetHashCode returns something at least reasonably random.
         /// </summary>
         [Test]
         public void TestGetHashCode()
@@ -363,7 +376,7 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(object1.GetHashCode(), object2.GetHashCode());
             Assert.AreNotEqual(object1.GetHashCode(), object3.GetHashCode());
         }
-        
+
         /// <summary>
         /// Tests ToString method
         /// </summary>

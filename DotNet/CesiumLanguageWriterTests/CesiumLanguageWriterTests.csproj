@@ -50,7 +50,7 @@
     <Compile Include="TestBillboardCesiumWriter.cs" />
     <Compile Include="TestBooleanCesiumWriter.cs" />
     <Compile Include="TestBoundingRectangle.cs" />
-    <Compile Include="TestCartesian3.cs" />
+    <Compile Include="TestCartesian.cs" />
     <Compile Include="TestCartographic.cs" />
     <Compile Include="TestCesiumFormattingHelper.cs" />
     <Compile Include="TestCesiumInterpolatablePropertyWriter.cs" />
@@ -82,7 +82,7 @@
     <Compile Include="TestReference.cs" />
     <Compile Include="TestStringCesiumWriter.cs" />
     <Compile Include="TestTimeInterval.cs" />
-    <Compile Include="TestUnitCartesian3.cs" />
+    <Compile Include="TestUnitCartesian.cs" />
     <Compile Include="TestUnitQuaternion.cs" />
     <Compile Include="TestUnitSpherical.cs" />
     <Compile Include="TestVerticalOriginCesiumWriter.cs" />

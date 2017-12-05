@@ -306,8 +306,8 @@ namespace CesiumLanguageWriter
             JulianDate start = ToInternationalAtomicTime();
             JulianDate end = other.ToInternationalAtomicTime();
 
-            int startDay = start.Day;
-            int endDay = end.Day;
+            long startDay = start.Day;
+            long endDay = end.Day;
             return (endDay - startDay) * TimeConstants.SecondsPerDay + (end.SecondsOfDay - start.SecondsOfDay);
         }
 
@@ -331,8 +331,8 @@ namespace CesiumLanguageWriter
             JulianDate start = ToInternationalAtomicTime();
             JulianDate end = other.ToInternationalAtomicTime();
 
-            int startDay = start.Day;
-            int endDay = end.Day;
+            long startDay = start.Day;
+            long endDay = end.Day;
             return (endDay - startDay) * TimeConstants.MinutesPerDay + (end.SecondsOfDay - start.SecondsOfDay) / TimeConstants.SecondsPerMinute;
         }
 
@@ -356,8 +356,8 @@ namespace CesiumLanguageWriter
             JulianDate start = ToInternationalAtomicTime();
             JulianDate end = other.ToInternationalAtomicTime();
 
-            int startDay = start.Day;
-            int endDay = end.Day;
+            long startDay = start.Day;
+            long endDay = end.Day;
             return endDay - startDay + (end.SecondsOfDay - start.SecondsOfDay) / TimeConstants.SecondsPerDay;
         }
 
@@ -870,7 +870,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         private int IsClose(JulianDate other)
         {
-            int dayDifference = m_day - other.m_day;
+            long dayDifference = (long)m_day - other.m_day;
             if (dayDifference > 1 || dayDifference < -1)
             {
                 return m_day < other.m_day ? -1 : 1;

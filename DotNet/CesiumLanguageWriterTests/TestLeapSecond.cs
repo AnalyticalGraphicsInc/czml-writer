@@ -1,3 +1,4 @@
+using System;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
@@ -9,22 +10,40 @@ namespace CesiumLanguageWriterTests
     [TestFixture]
     public class TestLeapSecond
     {
+        [Test]
+        public void TestConstructor()
+        {
+            LeapSecond leapSecond = new LeapSecond(2451545.0, 100.0);
+
+            Assert.AreEqual(2451545.0, leapSecond.Date.TotalDays);
+            Assert.AreEqual(100.0, leapSecond.TotalTaiOffsetFromUtc);
+            Assert.AreEqual(TimeStandard.CoordinatedUniversalTime, leapSecond.Date.Standard);
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentException), ExpectedMessage = "The given date must be in the UTC time standard", MatchType = MessageMatch.Contains)]
+        public void TestConstructorRequiresUTC()
+        {
+            // ReSharper disable once UnusedVariable
+            var leapSecond = new LeapSecond(new JulianDate(2451545.0, TimeStandard.InternationalAtomicTime), 100.0);
+        }
+
         /// <summary>
         /// Tests equality between leap second instances.
         /// </summary>
         [Test]
         public void TestEquality()
         {
-            LeapSecond ls1 = new LeapSecond(2451545.0, 100.0);
-            LeapSecond ls2 = new LeapSecond(2451545.0, 100.0);
-            LeapSecond ls3 = new LeapSecond(2451545.0, 101.0);
-            LeapSecond ls4 = new LeapSecond(2451546.0, 101.0);
-            Assert.AreEqual(ls1, ls2);
-            Assert.IsTrue(ls1 == ls2);
-            Assert.AreNotEqual(ls1, ls3);
-            Assert.IsTrue(ls1 != ls3);
-            Assert.AreNotEqual(ls1, 5);
-            Assert.AreNotEqual(ls3, ls4);
+            LeapSecond leapSecond1 = new LeapSecond(2451545.0, 100.0);
+            LeapSecond leapSecond2 = new LeapSecond(2451545.0, 100.0);
+            LeapSecond leapSecond3 = new LeapSecond(2451545.0, 101.0);
+            LeapSecond leapSecond4 = new LeapSecond(2451546.0, 101.0);
+            Assert.AreEqual(leapSecond1, leapSecond2);
+            Assert.IsTrue(leapSecond1 == leapSecond2);
+            Assert.AreNotEqual(leapSecond1, leapSecond3);
+            Assert.IsTrue(leapSecond1 != leapSecond3);
+            Assert.AreNotEqual(leapSecond1, 5);
+            Assert.AreNotEqual(leapSecond3, leapSecond4);
         }
 
         /// <summary>
@@ -33,12 +52,12 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestGetHashCode()
         {
-            LeapSecond ls1 = new LeapSecond(2451545.0, 100.0);
-            LeapSecond ls2 = new LeapSecond(2451545.0, 100.0);
-            LeapSecond ls3 = new LeapSecond(2451545.0, 101.0);
+            LeapSecond leapSecond1 = new LeapSecond(2451545.0, 100.0);
+            LeapSecond leapSecond2 = new LeapSecond(2451545.0, 100.0);
+            LeapSecond leapSecond3 = new LeapSecond(2451545.0, 101.0);
 
-            Assert.AreEqual(ls1.GetHashCode(), ls2.GetHashCode());
-            Assert.AreNotEqual(ls1.GetHashCode(), ls3.GetHashCode());
+            Assert.AreEqual(leapSecond1.GetHashCode(), leapSecond2.GetHashCode());
+            Assert.AreNotEqual(leapSecond1.GetHashCode(), leapSecond3.GetHashCode());
         }
 
         /// <summary>
@@ -47,9 +66,10 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestToString()
         {
-            LeapSecond ls1 = new LeapSecond(2451545.0, 100.0);
+            LeapSecond leapSecond = new LeapSecond(2451545.0, 100.0);
 
-            Assert.AreEqual("2451545:0 UTC (1/1/2000 12:00:00 PM), 100", ls1.ToString());
+            string expected = string.Format("2451545:0 UTC ({0}), 100", new GregorianDate(new JulianDate(2451545.0, TimeStandard.CoordinatedUniversalTime)));
+            Assert.AreEqual(expected, leapSecond.ToString());
         }
     }
 }

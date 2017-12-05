@@ -259,7 +259,7 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests that Cartesian3.GetHashCode returns something at least reasonably random.
+        /// Tests that GetHashCode returns something at least reasonably random.
         /// </summary>
         [Test]
         public void TestGetHashCode()

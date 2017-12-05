@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
@@ -98,7 +99,7 @@ namespace CesiumLanguageWriterTests
         /// </summary>
         [Test]
         [CSToJavaExclude] // Java DateTime only supports millisecond precision
-        public void TestBUG40644()
+        public void TestBug40644()
         {
             JulianDate jd1 = new JulianDate(2451545, 0.0, TimeStandard.CoordinatedUniversalTime);
             JulianDate jd2 = new JulianDate(2451545, -0.0001, TimeStandard.CoordinatedUniversalTime);
@@ -140,7 +141,7 @@ namespace CesiumLanguageWriterTests
         public void TestJulianDateMinimumToDateTime()
         {
             JulianDate date = JulianDate.MinValue;
-            DateTime dt = date.ToDateTime();
+            DateTime unused = date.ToDateTime();
         }
 
         /// <summary>
@@ -200,18 +201,18 @@ namespace CesiumLanguageWriterTests
             DateTime localNow = DateTime.Now;
             DateTime utcNow = localNow.ToUniversalTime();
 
-            JulianDate localJD = new JulianDate(localNow);
-            JulianDate utcJD = new JulianDate(utcNow);
+            JulianDate localJulianDate = new JulianDate(localNow);
+            JulianDate utcJulianDate = new JulianDate(utcNow);
 
-            Assert.IsTrue(localJD.EqualsEpsilon(utcJD, Constants.Epsilon14));
+            Assert.IsTrue(localJulianDate.EqualsEpsilon(utcJulianDate, Constants.Epsilon14));
 
             localNow = DateTime.Now;
             utcNow = localNow.ToUniversalTime();
 
-            localJD = new JulianDate(localNow, TimeStandard.InternationalAtomicTime);
-            utcJD = new JulianDate(utcNow, TimeStandard.InternationalAtomicTime);
+            localJulianDate = new JulianDate(localNow, TimeStandard.InternationalAtomicTime);
+            utcJulianDate = new JulianDate(utcNow, TimeStandard.InternationalAtomicTime);
 
-            Assert.IsTrue(localJD.EqualsEpsilon(utcJD, Constants.Epsilon14));
+            Assert.IsTrue(localJulianDate.EqualsEpsilon(utcJulianDate, Constants.Epsilon14));
         }
 
         /// <summary>
@@ -220,16 +221,33 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void JulianDateTimeRoundTrip()
         {
-            DateTime dateTime = DateTime.UtcNow;
-            JulianDate julianDate = new JulianDate(dateTime);
-            DateTime roundTrip = julianDate.ToDateTime();
-            Assert.AreEqual(dateTime.Year, roundTrip.Year);
-            Assert.AreEqual(dateTime.Month, roundTrip.Month);
-            Assert.AreEqual(dateTime.Day, roundTrip.Day);
-            Assert.AreEqual(dateTime.Hour, roundTrip.Hour);
-            Assert.AreEqual(dateTime.Minute, roundTrip.Minute);
-            Assert.AreEqual(dateTime.Second, roundTrip.Second);
-            Assert.AreEqual(dateTime.Millisecond, roundTrip.Millisecond);
+            var dateTimes = new List<DateTime>
+            {
+                DateTime.UtcNow,
+
+                // a previous version of the code didn't round-trip for this particular date due to 
+                // an error when values were rounded
+                new DateTime(2017, 8, 31, 13, 53, 32, 44, DateTimeKind.Utc)
+            };
+
+            // add a test date with all possible millisecond values
+            for (int millisecond = 0; millisecond < 999; millisecond++)
+            {
+                dateTimes.Add(new DateTime(2017, 8, 31, 13, 53, 32, millisecond, DateTimeKind.Utc));
+            }
+
+            foreach (DateTime dateTime in dateTimes)
+            {
+                JulianDate julianDate = new JulianDate(dateTime);
+                DateTime roundTrip = julianDate.ToDateTime();
+                Assert.AreEqual(dateTime.Year, roundTrip.Year);
+                Assert.AreEqual(dateTime.Month, roundTrip.Month);
+                Assert.AreEqual(dateTime.Day, roundTrip.Day);
+                Assert.AreEqual(dateTime.Hour, roundTrip.Hour);
+                Assert.AreEqual(dateTime.Minute, roundTrip.Minute);
+                Assert.AreEqual(dateTime.Second, roundTrip.Second);
+                Assert.AreEqual(dateTime.Millisecond, roundTrip.Millisecond);
+            }
         }
 
         [Test]
