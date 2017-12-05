@@ -15,7 +15,11 @@ import javax.annotation.Nonnull;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class CesiumWritingHelper {
     private CesiumWritingHelper() {}
 
@@ -37,7 +41,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the value.
     * @param date The date to write.
     */
-    public static void writeDate(CesiumOutputStream output, JulianDate date) {
+    public static void writeDate(CesiumOutputStream output, @Nonnull JulianDate date) {
         output.writeValue(CesiumFormattingHelper.toIso8601(date, output.getPrettyFormatting() ? Iso8601Format.EXTENDED : Iso8601Format.COMPACT));
     }
 
@@ -90,7 +94,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the value.
     * @param value The value to write.
     */
-    public static void writeCartesian2(CesiumOutputStream output, Rectangular value) {
+    public static void writeCartesian2(CesiumOutputStream output, @Nonnull Rectangular value) {
         output.writeStartSequence();
         output.writeValue(value.getX());
         output.writeValue(value.getY());
@@ -204,7 +208,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the value.
     * @param value The value to write.
     */
-    public static void writeCartesian3(CesiumOutputStream output, Cartesian value) {
+    public static void writeCartesian3(CesiumOutputStream output, @Nonnull Cartesian value) {
         output.writeStartSequence();
         output.writeValue(value.getX());
         output.writeValue(value.getY());
@@ -261,7 +265,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the value.
     * @param value The value to write.
     */
-    public static void writeCartesian3Velocity(CesiumOutputStream output, Motion1<Cartesian> value) {
+    public static void writeCartesian3Velocity(CesiumOutputStream output, @Nonnull Motion1<Cartesian> value) {
         output.writeStartSequence();
         output.writeValue(value.getValue().getX());
         output.writeValue(value.getValue().getY());
@@ -325,7 +329,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the value.
     * @param value The value to write.
     */
-    public static void writeUnitCartesian3(CesiumOutputStream output, UnitCartesian value) {
+    public static void writeUnitCartesian3(CesiumOutputStream output, @Nonnull UnitCartesian value) {
         output.writeStartSequence();
         output.writeValue(value.getX());
         output.writeValue(value.getY());
@@ -382,7 +386,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the value.
     * @param value The value to write.
     */
-    public static void writeSpherical(CesiumOutputStream output, Spherical value) {
+    public static void writeSpherical(CesiumOutputStream output, @Nonnull Spherical value) {
         output.writeStartSequence();
         output.writeValue(value.getClock());
         output.writeValue(value.getCone());
@@ -439,7 +443,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the value.
     * @param value The value to write.
     */
-    public static void writeBoundingRectangle(CesiumOutputStream output, BoundingRectangle value) {
+    public static void writeBoundingRectangle(CesiumOutputStream output, @Nonnull BoundingRectangle value) {
         output.writeStartSequence();
         output.writeValue(value.getLeft());
         output.writeValue(value.getBottom());
@@ -498,7 +502,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the value.
     * @param value The value to write.
     */
-    public static void writeNearFarScalar(CesiumOutputStream output, NearFarScalar value) {
+    public static void writeNearFarScalar(CesiumOutputStream output, @Nonnull NearFarScalar value) {
         output.writeStartSequence();
         output.writeValue(value.getNearDistance());
         output.writeValue(value.getNearValue());
@@ -557,7 +561,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the value.
     * @param value The value to write.
     */
-    public static void writeBounds(CesiumOutputStream output, Bounds value) {
+    public static void writeBounds(CesiumOutputStream output, @Nonnull Bounds value) {
         output.writeStartSequence();
         output.writeValue(value.getLowerBound());
         output.writeValue(value.getUpperBound());
@@ -612,7 +616,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the value.
     * @param value The value to write.
     */
-    public static void writeUnitSpherical(CesiumOutputStream output, UnitSpherical value) {
+    public static void writeUnitSpherical(CesiumOutputStream output, @Nonnull UnitSpherical value) {
         output.writeStartSequence();
         output.writeValue(value.getClock());
         output.writeValue(value.getCone());
@@ -705,7 +709,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the value.
     * @param value The value to write.
     */
-    public static void writeCartographic(CesiumOutputStream output, Cartographic value) {
+    public static void writeCartographic(CesiumOutputStream output, @Nonnull Cartographic value) {
         output.writeStartSequence();
         output.writeValue(value.getLongitude());
         output.writeValue(value.getLatitude());
@@ -782,7 +786,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the color.
     * @param value The value to write.
     */
-    public static void writeRgba(CesiumOutputStream output, Color value) {
+    public static void writeRgba(CesiumOutputStream output, @Nonnull Color value) {
         writeRgba(output, value.getRed(), value.getGreen(), value.getBlue(), value.getAlpha());
     }
 
@@ -861,7 +865,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the color.
     * @param value The value to write.
     */
-    public static void writeRgbaf(CesiumOutputStream output, Color value) {
+    public static void writeRgbaf(CesiumOutputStream output, @Nonnull Color value) {
         writeRgbaf(output, value.getRed() / 255.0, value.getGreen() / 255.0, value.getBlue() / 255.0, value.getAlpha() / 255.0);
     }
 
@@ -1012,7 +1016,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the value.
     * @param value The value to write.
     */
-    public static void writeUnitQuaternion(CesiumOutputStream output, UnitQuaternion value) {
+    public static void writeUnitQuaternion(CesiumOutputStream output, @Nonnull UnitQuaternion value) {
         output.writeStartSequence();
         output.writeValue(value.getX());
         output.writeValue(value.getY());
@@ -1218,6 +1222,7 @@ public final class CesiumWritingHelper {
     * @param length The number of items from the collection to use.
     * @return A suitable epoch determined from the collection.
     */
+    @Nonnull
     private static JulianDate getAndWriteEpoch(CesiumOutputStream output, List<JulianDate> dates, int startIndex, int length) {
         if (startIndex < dates.size()) {
             JulianDate epoch = dates.get(startIndex);

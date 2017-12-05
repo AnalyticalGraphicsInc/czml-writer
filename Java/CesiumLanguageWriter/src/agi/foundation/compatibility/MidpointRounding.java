@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import javax.annotation.Nonnull;
+
 /**
  * Specifies how mathematical rounding methods should process a number that is midway
  * between two numbers.
@@ -30,6 +32,7 @@ public enum MidpointRounding implements Enumeration {
      * @param value
      *            a numeric value.
      */
+    @Nonnull
     public static MidpointRounding getFromValue(int value) {
         switch (value) {
         case 0:

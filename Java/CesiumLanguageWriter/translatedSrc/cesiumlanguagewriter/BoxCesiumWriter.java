@@ -15,6 +15,7 @@ import cesiumlanguagewriter.MaterialCesiumWriter;
 import cesiumlanguagewriter.ShadowModeCesiumWriter;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -22,7 +23,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     /**
     *  
@@ -156,6 +161,15 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public BoxCesiumWriter clone() {
         return new BoxCesiumWriter(this);
@@ -308,7 +322,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
     * @param value The value.
     */
-    public final void writeDimensionsProperty(Cartesian value) {
+    public final void writeDimensionsProperty(@Nonnull Cartesian value) {
         {
             cesiumlanguagewriter.BoxDimensionsCesiumWriter writer = openDimensionsProperty();
             try {
@@ -731,7 +745,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeOutlineColorProperty(Color color) {
+    public final void writeOutlineColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
             try {
@@ -821,7 +835,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeOutlineColorPropertyRgbaf(Color color) {
+    public final void writeOutlineColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
             try {
@@ -1176,7 +1190,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
     * @param value The shadow mode.
     */
-    public final void writeShadowsProperty(CesiumShadowMode value) {
+    public final void writeShadowsProperty(@Nonnull CesiumShadowMode value) {
         {
             cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
             try {
@@ -1295,7 +1309,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
     * @param value The value.
     */
-    public final void writeDistanceDisplayConditionProperty(Bounds value) {
+    public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
         {
             cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {

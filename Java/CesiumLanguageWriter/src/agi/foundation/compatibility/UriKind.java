@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import javax.annotation.Nonnull;
+
 public enum UriKind implements Enumeration {
     RELATIVE_OR_ABSOLUTE(0),
     ABSOLUTE(1),
@@ -27,6 +29,7 @@ public enum UriKind implements Enumeration {
      * @param value
      *            a numeric value.
      */
+    @Nonnull
     public static UriKind getFromValue(int value) {
         switch (value) {
         case 0:

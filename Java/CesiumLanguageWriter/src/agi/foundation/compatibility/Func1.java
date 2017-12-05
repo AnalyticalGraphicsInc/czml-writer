@@ -72,8 +72,9 @@ public abstract class Func1<TResult> extends Delegate {
      *            The function which will be invoked.
      * @return A new delegate that will invoke the given function.
      */
+    @Nonnull
     public static <TResult> Func1<TResult> of(@Nonnull Function<TResult> f) {
-        return new FunctionImpl<TResult>(f);
+        return new FunctionImpl<>(f);
     }
 
     /**

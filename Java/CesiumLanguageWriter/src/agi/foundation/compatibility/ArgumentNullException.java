@@ -9,15 +9,15 @@ public class ArgumentNullException extends ArgumentException {
     private static final String DEFAULT_MESSAGE = "Value cannot be null.";
 
     /**
-     * Initializes a new instance of the {@link ArgumentNullException} class.
+     * Initializes a new instance.
      */
     public ArgumentNullException() {
         super(DEFAULT_MESSAGE);
     }
 
     /**
-     * Initializes a new instance of the {@link ArgumentNullException} class with the name
-     * of the parameter that causes this exception.
+     * Initializes a new instance with the name of the parameter that causes this
+     * exception.
      *
      * @param paramName
      *            The name of the parameter that caused the exception.
@@ -27,8 +27,8 @@ public class ArgumentNullException extends ArgumentException {
     }
 
     /**
-     * Initializes a new instance of the {@link ArgumentNullException} class with a
-     * specified error message and the exception that is the cause of this exception.
+     * Initializes a new instance with a specified error message and the exception that is
+     * the cause of this exception.
      *
      * @param message
      *            The error message that explains the reason for this exception.
@@ -41,8 +41,8 @@ public class ArgumentNullException extends ArgumentException {
     }
 
     /**
-     * Initializes an instance of the {@link ArgumentNullException} class with a specified
-     * error message and the name of the parameter that causes this exception.
+     * Initializes an instance with a specified error message and the name of the
+     * parameter that causes this exception.
      *
      * @param paramName
      *            The name of the parameter that caused the exception.

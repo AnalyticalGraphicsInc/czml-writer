@@ -8,6 +8,7 @@ import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -15,7 +16,11 @@ import agi.foundation.compatibility.StringHelper;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class UnitSpherical implements IEquatable<UnitSpherical>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -44,7 +49,7 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
     
 
     */
-    public UnitSpherical(Spherical spherical) {
+    public UnitSpherical(@Nonnull Spherical spherical) {
         this(spherical.getClock(), spherical.getCone());
     }
 
@@ -54,9 +59,9 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
     
     
 
-    * @param coordinates The set of UnitCartesian coordinates.
+    * @param coordinates The set of {@link UnitCartesian} coordinates.
     */
-    public UnitSpherical(UnitCartesian coordinates) {
+    public UnitSpherical(@Nonnull UnitCartesian coordinates) {
         double x = coordinates.getX();
         double y = coordinates.getY();
         double z = coordinates.getZ();
@@ -118,7 +123,7 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public final boolean equalsType(UnitSpherical other) {
+    public final boolean equalsType(@Nonnull UnitSpherical other) {
         return m_clock == other.m_clock && m_cone == other.m_cone;
     }
 
@@ -138,7 +143,7 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
     
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final boolean equalsEpsilon(UnitSpherical other, double epsilon) {
+    public final boolean equalsEpsilon(@Nonnull UnitSpherical other, double epsilon) {
         return Math.abs(m_clock - other.m_clock) <= epsilon && Math.abs(m_cone - other.m_cone) <= epsilon;
     }
 
@@ -186,7 +191,7 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(UnitSpherical,UnitSpherical)'")
-    public static boolean equals(UnitSpherical left, UnitSpherical right) {
+    public static boolean equals(@javax.annotation.Nonnull UnitSpherical left, @javax.annotation.Nonnull UnitSpherical right) {
         return left.equalsType(right);
     }
 
@@ -205,7 +210,7 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(UnitSpherical,UnitSpherical)'")
-    public static boolean notEquals(UnitSpherical left, UnitSpherical right) {
+    public static boolean notEquals(@javax.annotation.Nonnull UnitSpherical left, @javax.annotation.Nonnull UnitSpherical right) {
         return !left.equalsType(right);
     }
 

@@ -20,7 +20,11 @@ import org.junit.Test;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestUnitQuaternion {
     /**
@@ -231,7 +235,7 @@ public class TestUnitQuaternion {
         Assert.assertTrue(new UnitQuaternion(1.0, 1.0, 1.0, Double.NaN).getIsUndefined());
     }
 
-    private final void _TestFromMatrix3By3(double angle, Cartesian axis) {
+    private final void _TestFromMatrix3By3(double angle, @javax.annotation.Nonnull Cartesian axis) {
         Cartesian unit = Cartesian.toCartesian(axis.normalize());
         double c = Math.cos(angle);
         double s = Math.sin(angle);
@@ -289,7 +293,7 @@ public class TestUnitQuaternion {
 
     /**
     *  
-    Tests that Cartesian3.GetHashCode returns something at least reasonably random.
+    Tests that GetHashCode returns something at least reasonably random.
     
 
     */
@@ -320,14 +324,14 @@ public class TestUnitQuaternion {
         Assert.assertEquals("0, 0, 0, 1", test4.toString());
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 
-    private ExpectedException rule$expectedException = ExpectedException.none();
+    private final ExpectedException rule$expectedException = ExpectedException.none();
 
     @Rule
     public ExpectedException getRule$expectedException() {

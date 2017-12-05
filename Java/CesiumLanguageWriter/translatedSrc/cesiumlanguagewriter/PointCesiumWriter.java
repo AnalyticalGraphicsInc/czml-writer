@@ -14,6 +14,7 @@ import cesiumlanguagewriter.HeightReferenceCesiumWriter;
 import cesiumlanguagewriter.NearFarScalarCesiumWriter;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -21,7 +22,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     /**
     *  
@@ -167,6 +172,15 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public PointCesiumWriter clone() {
         return new PointCesiumWriter(this);
@@ -484,7 +498,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
     * @param value The height reference.
     */
-    public final void writeHeightReferenceProperty(CesiumHeightReference value) {
+    public final void writeHeightReferenceProperty(@Nonnull CesiumHeightReference value) {
         {
             cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
@@ -603,7 +617,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeColorProperty(Color color) {
+    public final void writeColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -693,7 +707,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeColorPropertyRgbaf(Color color) {
+    public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -883,7 +897,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeOutlineColorProperty(Color color) {
+    public final void writeOutlineColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
             try {
@@ -973,7 +987,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeOutlineColorPropertyRgbaf(Color color) {
+    public final void writeOutlineColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
             try {
@@ -1328,7 +1342,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
     * @param value The value.
     */
-    public final void writeScaleByDistanceProperty(NearFarScalar value) {
+    public final void writeScaleByDistanceProperty(@Nonnull NearFarScalar value) {
         {
             cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
             try {
@@ -1518,7 +1532,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
     * @param value The value.
     */
-    public final void writeTranslucencyByDistanceProperty(NearFarScalar value) {
+    public final void writeTranslucencyByDistanceProperty(@Nonnull NearFarScalar value) {
         {
             cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
             try {
@@ -1708,7 +1722,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
     * @param value The value.
     */
-    public final void writeDistanceDisplayConditionProperty(Bounds value) {
+    public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
         {
             cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {

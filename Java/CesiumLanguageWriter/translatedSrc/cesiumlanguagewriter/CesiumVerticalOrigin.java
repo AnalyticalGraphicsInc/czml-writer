@@ -3,6 +3,8 @@ package cesiumlanguagewriter;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Enumeration;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  *  
@@ -10,7 +12,11 @@ import agi.foundation.compatibility.Enumeration;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public enum CesiumVerticalOrigin implements Enumeration {
     /**
     *  
@@ -20,7 +26,7 @@ public enum CesiumVerticalOrigin implements Enumeration {
     */
     BOTTOM(0), /**
                *  
-               The item is at the vertical center between {@link #Baseline} and {@link #Top}.
+               The item is at the vertical center between {@link #BASELINE} and {@link #TOP}.
                
 
                */
@@ -47,6 +53,7 @@ public enum CesiumVerticalOrigin implements Enumeration {
     * Get the numeric value associated with this enum constant.
     * @return A numeric value.
     */
+    @Override
     public int getValue() {
         return value;
     }
@@ -56,6 +63,7 @@ public enum CesiumVerticalOrigin implements Enumeration {
     * @return The enum constant associated with value.
     * @param value a numeric value.
     */
+    @Nonnull
     public static CesiumVerticalOrigin getFromValue(int value) {
         switch (value) {
         case 0:
@@ -75,6 +83,7 @@ public enum CesiumVerticalOrigin implements Enumeration {
     * Get the enum constant that is considered to be the default.
     * @return The default enum constant.
     */
+    @Nonnull
     public static CesiumVerticalOrigin getDefault() {
         return BOTTOM;
     }

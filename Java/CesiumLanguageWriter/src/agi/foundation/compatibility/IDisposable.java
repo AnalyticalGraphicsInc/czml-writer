@@ -3,10 +3,15 @@ package agi.foundation.compatibility;
 /**
  * Defines a method to release allocated resources.
  */
-public interface IDisposable {
+public interface IDisposable extends AutoCloseable {
     /**
      * Performs application-defined tasks associated with freeing, releasing, or resetting
      * unmanaged resources.
      */
     public void dispose();
+
+    @Override
+    default void close() {
+        dispose();
+    }
 }

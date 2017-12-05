@@ -17,7 +17,11 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumResource {
     @Test
@@ -28,7 +32,7 @@ public class TestCesiumResource {
         AssertHelper.assertStringStartsWith("data:image/png;base64,", resource.getUri());
     }
 
-    public final void testFromImageFormats(CesiumImageFormat format) {
+    public final void testFromImageFormats(@javax.annotation.Nonnull CesiumImageFormat format) {
         BufferedImage image = BitmapHelper.create(EmbeddedData.read("satellite.png"));
         cesiumlanguagewriter.CesiumResource resource = CesiumResource.fromImage(image, format);
         Assert.assertNotNull(resource);
@@ -81,7 +85,7 @@ public class TestCesiumResource {
         Assert.assertEquals(expected, resource.getUri());
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {

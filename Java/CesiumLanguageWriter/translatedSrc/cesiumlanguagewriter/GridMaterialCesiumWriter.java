@@ -13,6 +13,7 @@ import cesiumlanguagewriter.LineOffsetCesiumWriter;
 import cesiumlanguagewriter.LineThicknessCesiumWriter;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -20,7 +21,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialCesiumWriter> {
     /**
     *  
@@ -105,6 +110,15 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public GridMaterialCesiumWriter clone() {
         return new GridMaterialCesiumWriter(this);
@@ -138,7 +152,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     * @param color The color.
     */
-    public final void writeColorProperty(Color color) {
+    public final void writeColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -228,7 +242,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     * @param color The color.
     */
-    public final void writeColorPropertyRgbaf(Color color) {
+    public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -583,7 +597,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     * @param value The value.
     */
-    public final void writeLineCountProperty(Rectangular value) {
+    public final void writeLineCountProperty(@Nonnull Rectangular value) {
         {
             cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
             try {
@@ -769,7 +783,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     * @param value The value.
     */
-    public final void writeLineThicknessProperty(Rectangular value) {
+    public final void writeLineThicknessProperty(@Nonnull Rectangular value) {
         {
             cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
             try {
@@ -955,7 +969,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     * @param value The value.
     */
-    public final void writeLineOffsetProperty(Rectangular value) {
+    public final void writeLineOffsetProperty(@Nonnull Rectangular value) {
         {
             cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
             try {

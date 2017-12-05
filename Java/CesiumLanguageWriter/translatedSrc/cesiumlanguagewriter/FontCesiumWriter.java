@@ -13,7 +13,11 @@ import cesiumlanguagewriter.Reference;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
     /**
     *  
@@ -40,14 +44,13 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
     */
     public FontCesiumWriter(String propertyName) {
         super(propertyName);
-        m_asFont = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this, "createFontAdaptor",
-                new Class[] {}) {
+        m_asFont = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this, "createFontAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
                 return createFontAdaptor();
             }
         }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -64,20 +67,28 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
     */
     protected FontCesiumWriter(FontCesiumWriter existingInstance) {
         super(existingInstance);
-        m_asFont = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this, "createFontAdaptor",
-                new Class[] {}) {
+        m_asFont = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this, "createFontAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
                 return createFontAdaptor();
             }
         }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public FontCesiumWriter clone() {
         return new FontCesiumWriter(this);

@@ -1,6 +1,9 @@
 package agi.foundation.compatibility;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+
 import javax.annotation.Nonnull;
 
 public final class ConvertHelper {
@@ -31,10 +34,6 @@ public final class ConvertHelper {
             throw new RuntimeException("Overflow");
 
         return (int) value;
-    }
-
-    public static int toInt32(String value) {
-        return value == null ? 0 : IntHelper.parse(value);
     }
 
     public static int toInt32(String value, int fromBase) {
@@ -252,21 +251,6 @@ public final class ConvertHelper {
     }
 
     /**
-     * Converts an array of 8-bit unsigned integers to its equivalent string
-     * representation that is encoded with base-64 digits. A parameter specifies whether
-     * to insert line breaks in the return value.
-     *
-     * @param inArray
-     *            An array of 8-bit unsigned integers.
-     * @return The string representation, in base 64, of the contents of inArray.
-     */
-    public static String toBase64String(@Nonnull byte[] inArray) {
-        ArgumentNullException.assertNonNull(inArray, "inArray");
-
-        return toBase64String(inArray, 0, inArray.length);
-    }
-
-    /**
      * Converts a subset of an array of 8-bit unsigned integers to its equivalent string
      * representation that is encoded with base-64 digits. Parameters specify the subset
      * as an offset in the input array, the number of elements in the array to convert,
@@ -278,11 +262,10 @@ public final class ConvertHelper {
      *            An offset in inArray.
      * @param length
      *            The number of elements of inArray to convert.
-     * @param options
-     *            whether to insert a line break every 76 characters, or not.
      * @return The string representation in base 64 of length elements of inArray,
      *         starting at position offset.
      */
+    @Nonnull
     public static String toBase64String(@Nonnull byte[] inArray, int offset, int length) {
         ArgumentNullException.assertNonNull(inArray, "inArray");
         if (length < 0)
@@ -295,7 +278,7 @@ public final class ConvertHelper {
         try {
             return Base64.encodeBytes(inArray, offset, length, Base64.NO_OPTIONS);
         } catch (IOException e) {
-            throw new RuntimeIOException(e);
+            throw new UncheckedIOException(e);
         }
     }
 
@@ -612,7 +595,7 @@ public final class ConvertHelper {
             byte[] encoded = encodeBytesToBytes( source, off, len, options );
 
             // Return value according to relevant encoding.
-                return new String( encoded, Encoding.ASCII );
+                return new String( encoded, StandardCharsets.US_ASCII );
         }   // end encodeBytes
 
 

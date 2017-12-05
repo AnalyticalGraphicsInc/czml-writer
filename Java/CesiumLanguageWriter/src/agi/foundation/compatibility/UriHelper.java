@@ -6,9 +6,13 @@ import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.annotation.Nonnull;
+
 public final class UriHelper {
     // from rfc2396, appendix B
+    @Nonnull
     private static final Pattern uriRegex = Pattern.compile("^(?:([^:/?#]+):)?(?://([^/?#]*))?([^?#]*)(?:\\?([^#]*))?(?:#(.*))?");
+    @Nonnull
     private static final Pattern opaqueUriRegex = Pattern.compile("^(?:([^:/?#]+):)([^/][^#]*)(?:#(.*))?");
 
     private UriHelper() {}
@@ -19,7 +23,8 @@ public final class UriHelper {
      * @param uri
      *            A URI.
      */
-    public static URI create(String uri) {
+    @Nonnull
+    public static URI create(@Nonnull String uri) {
         uri = uri.trim();
 
         int pos = uri.indexOf(':');
@@ -119,7 +124,8 @@ public final class UriHelper {
      * @param uriKind
      * @return
      */
-    public static URI create(String uriString, UriKind uriKind) {
+    @Nonnull
+    public static URI create(@Nonnull String uriString, @Nonnull UriKind uriKind) {
         return create(uriString);
     }
 }

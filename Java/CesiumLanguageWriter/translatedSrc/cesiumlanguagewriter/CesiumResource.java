@@ -6,6 +6,7 @@ import cesiumlanguagewriter.advanced.*;
 import java.awt.image.RenderedImage;
 import java.io.InputStream;
 import java.net.URI;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -13,9 +14,14 @@ import java.net.URI;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class CesiumResource {
     private String m_uri;
+    @Nonnull
     private CesiumResourceBehavior m_behavior = CesiumResourceBehavior.getDefault();
 
     /**
@@ -28,7 +34,7 @@ public class CesiumResource {
     * @param uri The URI of the resource.
     * @param behavior The enumeration describing how the resource is to be included in the document.
     */
-    public CesiumResource(URI uri, CesiumResourceBehavior behavior) {
+    public CesiumResource(URI uri, @Nonnull CesiumResourceBehavior behavior) {
         this(uri.toString(), behavior);
     }
 
@@ -42,7 +48,7 @@ public class CesiumResource {
     * @param uri The URI of the resource.
     * @param behavior The enumeration describing how the resource is to be included in the document.
     */
-    public CesiumResource(String uri, CesiumResourceBehavior behavior) {
+    public CesiumResource(String uri, @Nonnull CesiumResourceBehavior behavior) {
         m_uri = uri;
         m_behavior = behavior;
     }
@@ -61,6 +67,7 @@ public class CesiumResource {
     
 
     */
+    @Nonnull
     public final CesiumResourceBehavior getBehavior() {
         return m_behavior;
     }
@@ -78,7 +85,7 @@ public class CesiumResource {
     * @param imageFormat The format of the image.
     * @return A new {@link CesiumResource} containing the image data as a data URI.
     */
-    public static CesiumResource fromImage(RenderedImage image, CesiumImageFormat imageFormat) {
+    public static CesiumResource fromImage(RenderedImage image, @Nonnull CesiumImageFormat imageFormat) {
         String dataUri = CesiumFormattingHelper.imageToDataUri(image, imageFormat);
         return new CesiumResource(dataUri, CesiumResourceBehavior.EMBED);
     }
@@ -96,7 +103,7 @@ public class CesiumResource {
     * @param imageFormat The format of the image.
     * @return A new {@link CesiumResource} containing the image data as a data URI.
     */
-    public static CesiumResource fromStream(InputStream stream, CesiumImageFormat imageFormat) {
+    public static CesiumResource fromStream(InputStream stream, @Nonnull CesiumImageFormat imageFormat) {
         String dataUri = CesiumFormattingHelper.imageToDataUri(stream, imageFormat);
         return new CesiumResource(dataUri, CesiumResourceBehavior.EMBED);
     }

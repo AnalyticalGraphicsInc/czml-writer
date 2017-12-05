@@ -13,7 +13,11 @@ import javax.annotation.Nonnull;
 
  * @param <TPropertyWriter> The type used to represent the value of this property for a single interval.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class CesiumIntervalListWriter<TPropertyWriter extends CesiumPropertyWriter<TPropertyWriter>> extends CesiumElementWriter implements ICesiumIntervalListWriter {
     private TPropertyWriter m_propertyWriter;
 
@@ -77,7 +81,7 @@ public class CesiumIntervalListWriter<TPropertyWriter extends CesiumPropertyWrit
     * @return The interval writer.
     */
     @Nonnull
-    public final TPropertyWriter openInterval(JulianDate start, JulianDate stop) {
+    public final TPropertyWriter openInterval(@Nonnull JulianDate start, @Nonnull JulianDate stop) {
         return m_propertyWriter.openInterval(start, stop);
     }
 }

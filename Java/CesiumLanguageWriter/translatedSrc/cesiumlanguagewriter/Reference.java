@@ -10,6 +10,7 @@ import agi.foundation.compatibility.StringHelper;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -24,7 +25,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class Reference implements IEquatable<Reference> {
     /**
     *  
@@ -194,7 +199,7 @@ public class Reference implements IEquatable<Reference> {
         }
     }
 
-    private static void parse(String value, String[] identifier, ArrayList<String>[] values) {
+    private static void parse(String value, @Nonnull String[] identifier, @Nonnull ArrayList<String>[] values) {
         identifier[0] = StringHelper.empty;
         values[0] = new ArrayList<String>();
         boolean inIdentifier = true;

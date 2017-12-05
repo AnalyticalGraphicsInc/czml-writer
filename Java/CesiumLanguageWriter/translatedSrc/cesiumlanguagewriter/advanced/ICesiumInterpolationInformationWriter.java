@@ -3,6 +3,7 @@ package cesiumlanguagewriter.advanced;
 
 import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -10,7 +11,11 @@ import cesiumlanguagewriter.*;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public interface ICesiumInterpolationInformationWriter {
     /**
     *  
@@ -20,7 +25,7 @@ public interface ICesiumInterpolationInformationWriter {
 
     * @param interpolationAlgorithm The interpolation algorithm.
     */
-    void writeInterpolationAlgorithm(CesiumInterpolationAlgorithm interpolationAlgorithm);
+    void writeInterpolationAlgorithm(@Nonnull CesiumInterpolationAlgorithm interpolationAlgorithm);
 
     /**
     *  
@@ -40,7 +45,7 @@ public interface ICesiumInterpolationInformationWriter {
 
     * @param extrapolationType The extrapolation type.
     */
-    void writeForwardExtrapolationType(CesiumExtrapolationType extrapolationType);
+    void writeForwardExtrapolationType(@Nonnull CesiumExtrapolationType extrapolationType);
 
     /**
     *  
@@ -50,7 +55,7 @@ public interface ICesiumInterpolationInformationWriter {
 
     * @param duration The duration.
     */
-    void writeForwardExtrapolationDuration(Duration duration);
+    void writeForwardExtrapolationDuration(@Nonnull Duration duration);
 
     /**
     *  
@@ -60,7 +65,7 @@ public interface ICesiumInterpolationInformationWriter {
 
     * @param extrapolationType The extrapolation type.
     */
-    void writeBackwardExtrapolationType(CesiumExtrapolationType extrapolationType);
+    void writeBackwardExtrapolationType(@Nonnull CesiumExtrapolationType extrapolationType);
 
     /**
     *  
@@ -70,5 +75,5 @@ public interface ICesiumInterpolationInformationWriter {
 
     * @param duration The duration.
     */
-    void writeBackwardExtrapolationDuration(Duration duration);
+    void writeBackwardExtrapolationDuration(@Nonnull Duration duration);
 }

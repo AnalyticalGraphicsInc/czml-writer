@@ -2,15 +2,21 @@ package agi.foundation.compatibility;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UncheckedIOException;
+
+import javax.annotation.Nonnull;
 
 public final class StreamHelper {
     private StreamHelper() {}
 
-    public static int read(InputStream stream, byte[] b, int off, int len) {
+    public static int read(@Nonnull InputStream stream, @Nonnull byte[] b, int off, int len) {
+        ArgumentNullException.assertNonNull(stream, "stream");
+        ArgumentNullException.assertNonNull(b, "b");
+
         try {
             return stream.read(b, off, len);
         } catch (IOException e) {
-            throw new RuntimeIOException(e);
+            throw new UncheckedIOException(e);
         }
     }
 }

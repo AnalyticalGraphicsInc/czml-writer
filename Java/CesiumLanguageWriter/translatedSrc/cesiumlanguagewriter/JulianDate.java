@@ -6,11 +6,13 @@ import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.CultureInfoHelper;
+import agi.foundation.compatibility.DateTimeHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
-import org.joda.time.DateTime;
+import java.time.ZonedDateTime;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -29,7 +31,11 @@ import org.joda.time.DateTime;
  UTC dates that are on opposite sides of a leap second will correctly take the leap second into account.
  
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class JulianDate implements Comparable<JulianDate>, IEquatable<JulianDate>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -38,14 +44,14 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Initializes a {@link JulianDate} from a {@link DateTime}.
+    Initializes a {@link JulianDate} from a {@link ZonedDateTime}.
     The time standard will be Coordinated Universal Time (UTC).
     
     
 
-    * @param dateTime The {@link DateTime}.
+    * @param dateTime The {@link ZonedDateTime}.
     */
-    public JulianDate(DateTime dateTime) {
+    public JulianDate(@Nonnull ZonedDateTime dateTime) {
         this(new GregorianDate(dateTime));
     }
 
@@ -62,7 +68,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @param gregorianDate The {@link GregorianDate} to use to specify the
     {@link JulianDate}.
     */
-    public JulianDate(GregorianDate gregorianDate) {
+    public JulianDate(@Nonnull GregorianDate gregorianDate) {
         JulianDate converted = gregorianDate.toJulianDate();
         m_day = converted.m_day;
         m_secondsOfDay = converted.m_secondsOfDay;
@@ -71,18 +77,18 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     /**
     *  
-    Initializes a {@link JulianDate} from a {@link DateTime} and specified time standard.
+    Initializes a {@link JulianDate} from a {@link ZonedDateTime} and specified time standard.
     
     
     
 
-    * @param dateTime The {@link DateTime}.
+    * @param dateTime The {@link ZonedDateTime}.
     * @param standard 
     The time standard to use for this Julian Date.  The {@code dateTime} is assumed to be expressed
     in this time standard.
     
     */
-    public JulianDate(DateTime dateTime, TimeStandard standard) {
+    public JulianDate(@Nonnull ZonedDateTime dateTime, @Nonnull TimeStandard standard) {
         this(new GregorianDate(dateTime), standard);
     }
 
@@ -100,7 +106,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     The time standard in which the {@code gregorianDate} is expressed.
     
     */
-    public JulianDate(GregorianDate gregorianDate, TimeStandard standard) {
+    public JulianDate(@Nonnull GregorianDate gregorianDate, @Nonnull TimeStandard standard) {
         JulianDate converted = gregorianDate.toJulianDate(standard);
         m_day = converted.m_day;
         m_secondsOfDay = converted.m_secondsOfDay;
@@ -136,13 +142,14 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @param secondsOfDay The time of day, expressed as seconds past noon on the given whole-number day.
     * @param timeStandard The time standard to use for this Julian Date.
     */
-    public JulianDate(int day, double secondsOfDay, TimeStandard timeStandard) {
+    public JulianDate(int day, double secondsOfDay, @Nonnull TimeStandard timeStandard) {
         m_timeStandard = timeStandard;
         m_day = day;
         m_secondsOfDay = secondsOfDay;
         // Normalize so that the number of seconds is >= 0 and < a day.
         if (m_secondsOfDay < 0) {
-            int wholeDays = (int) (m_secondsOfDay / TimeConstants.SecondsPerDay) - 1;
+            int wholeDays = (int) (m_secondsOfDay / TimeConstants.SecondsPerDay);
+            --wholeDays;
             m_day += wholeDays;
             m_secondsOfDay -= TimeConstants.SecondsPerDay * wholeDays;
             if (m_secondsOfDay > TimeConstants.NextBefore86400) {
@@ -179,7 +186,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @param dayCount The complete Julian date.
     * @param timeStandard The time standard to use for this Julian Date.
     */
-    public JulianDate(double dayCount, TimeStandard timeStandard) {
+    public JulianDate(double dayCount, @Nonnull TimeStandard timeStandard) {
         m_timeStandard = timeStandard;
         m_day = (int) dayCount;
         m_secondsOfDay = (dayCount - m_day) * TimeConstants.SecondsPerDay;
@@ -190,6 +197,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     
 
     */
+    @Nonnull
     public static JulianDate getMinValue() {
         return s_minValue;
     }
@@ -199,6 +207,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     
 
     */
+    @Nonnull
     public static JulianDate getMaxValue() {
         return s_maxValue;
     }
@@ -235,8 +244,19 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     
 
     */
+    @Nonnull
     public final TimeStandard getStandard() {
         return m_timeStandard;
+    }
+
+    /**
+    *  Gets the {@link JulianDate} that represents the current date and time. The time standard will be Coordinated Universal Time (UTC).
+    
+
+    */
+    @Nonnull
+    public static JulianDate getNow() {
+        return new JulianDate(DateTimeHelper.utcNow());
     }
 
     /**
@@ -248,15 +268,15 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     
 
     * @param timeStandard The requested time standard.
-    * @return An equivalent {@link JulianDate} using the requested time
-    standard.
+    * @return An equivalent {@link JulianDate} using the requested time standard.
     * @exception ArgumentOutOfRangeException 
     Thrown if the specified {@link TimeStandard} is not capable of
     representing this {@link JulianDate}.
     
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final JulianDate toTimeStandard(TimeStandard timeStandard) {
+    @Nonnull
+    public final JulianDate toTimeStandard(@Nonnull TimeStandard timeStandard) {
         @CS2JInfo("Initialization of C# struct variable 'result' added by translator.")
         JulianDate result = new JulianDate();
         final JulianDate[] out$result$1 = {
@@ -286,25 +306,25 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     
     an equivalent
     {@link JulianDate} using the requested {@link TimeStandard}, if it
-    is capable  of representing this time, otherwise {@code MinValue} ({@link JulianDate#getMinValue get}).
+    is capable of representing this time, otherwise {@code MinValue} ({@link #getMinValue get}).
     
     * @return {@code true} if this date could be converted to the
     requested {@link TimeStandard}, otherwise false.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final boolean tryConvertTimeStandard(TimeStandard timeStandard, JulianDate[] result) {
-        if (timeStandard == m_timeStandard) {
+    public final boolean tryConvertTimeStandard(@Nonnull TimeStandard timeStandard, @Nonnull JulianDate[] result) {
+        if (timeStandard == getStandard()) {
             result[0] = this;
             return true;
         }
-        if (timeStandard == TimeStandard.INTERNATIONAL_ATOMIC_TIME && m_timeStandard == TimeStandard.COORDINATED_UNIVERSAL_TIME) {
+        if (timeStandard == TimeStandard.INTERNATIONAL_ATOMIC_TIME && getStandard() == TimeStandard.COORDINATED_UNIVERSAL_TIME) {
             result[0] = new JulianDate(getDay(), getSecondsOfDay() + LeapSeconds.getInstance().getTaiMinusUtc(this), timeStandard);
             return true;
         }
-        if (timeStandard == TimeStandard.COORDINATED_UNIVERSAL_TIME && m_timeStandard == TimeStandard.INTERNATIONAL_ATOMIC_TIME) {
+        if (timeStandard == TimeStandard.COORDINATED_UNIVERSAL_TIME && getStandard() == TimeStandard.INTERNATIONAL_ATOMIC_TIME) {
             return LeapSeconds.getInstance().tryConvertTaiToUtc(this, result);
         }
-        result[0] = JulianDate.getMinValue();
+        result[0] = getMinValue();
         return false;
     }
 
@@ -316,8 +336,9 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
 
     * @return An equivalent date expressed in TAI.
     */
+    @Nonnull
     public final JulianDate toInternationalAtomicTime() {
-        if (m_timeStandard == TimeStandard.INTERNATIONAL_ATOMIC_TIME) {
+        if (getStandard() == TimeStandard.INTERNATIONAL_ATOMIC_TIME) {
             return this;
         }
         return new JulianDate(getDay(), getSecondsOfDay() + LeapSeconds.getInstance().getTaiMinusUtc(this), TimeStandard.INTERNATIONAL_ATOMIC_TIME);
@@ -344,10 +365,12 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return The number of seconds that have elapsed from this Julian date to the other Julian date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final double secondsDifference(JulianDate other) {
+    public final double secondsDifference(@Nonnull JulianDate other) {
         JulianDate start = toInternationalAtomicTime();
         JulianDate end = other.toInternationalAtomicTime();
-        return ((end.getDay() - start.getDay()) * (TimeConstants.SecondsPerDay) + (end.getSecondsOfDay() - start.getSecondsOfDay()));
+        long startDay = start.getDay();
+        long endDay = end.getDay();
+        return (endDay - startDay) * TimeConstants.SecondsPerDay + (end.getSecondsOfDay() - start.getSecondsOfDay());
     }
 
     /**
@@ -371,10 +394,12 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return The number of minutes that have elapsed from this Julian date to the other Julian date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final double minutesDifference(JulianDate other) {
+    public final double minutesDifference(@Nonnull JulianDate other) {
         JulianDate start = toInternationalAtomicTime();
         JulianDate end = other.toInternationalAtomicTime();
-        return ((end.getDay() - start.getDay()) * (TimeConstants.MinutesPerDay) + (end.getSecondsOfDay() - start.getSecondsOfDay()) / (TimeConstants.SecondsPerMinute));
+        long startDay = start.getDay();
+        long endDay = end.getDay();
+        return (endDay - startDay) * TimeConstants.MinutesPerDay + (end.getSecondsOfDay() - start.getSecondsOfDay()) / TimeConstants.SecondsPerMinute;
     }
 
     /**
@@ -398,10 +423,12 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return The number of days that have elapsed from this Julian date to the other Julian date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final double daysDifference(JulianDate other) {
+    public final double daysDifference(@Nonnull JulianDate other) {
         JulianDate start = toInternationalAtomicTime();
         JulianDate end = other.toInternationalAtomicTime();
-        return ((end.getDay() - start.getDay()) + (end.getSecondsOfDay() - start.getSecondsOfDay()) / (TimeConstants.SecondsPerDay));
+        long startDay = start.getDay();
+        long endDay = end.getDay();
+        return endDay - startDay + (end.getSecondsOfDay() - start.getSecondsOfDay()) / TimeConstants.SecondsPerDay;
     }
 
     /**
@@ -417,17 +444,19 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final JulianDate add(Duration duration) {
-        if (m_timeStandard == TimeStandard.COORDINATED_UNIVERSAL_TIME) {
+    @Nonnull
+    public final JulianDate add(@Nonnull Duration duration) {
+        final TimeStandard additionTimeStandard = TimeStandard.INTERNATIONAL_ATOMIC_TIME;
+        if (additionTimeStandard != getStandard()) {
             // Do the addition in the addition time standard
-            JulianDate resultInAdditionStandard = toTimeStandard(TimeStandard.INTERNATIONAL_ATOMIC_TIME).addIgnoringTimeStandard(duration);
+            JulianDate resultInAdditionStandard = toInternationalAtomicTime().addIgnoringTimeStandard(duration);
             //then convert back if possible
             @CS2JInfo("Initialization of C# struct variable 'result' added by translator.")
             JulianDate result = new JulianDate();
             final JulianDate[] out$result$3 = {
                 null
             };
-            final boolean temp$2 = resultInAdditionStandard.tryConvertTimeStandard(m_timeStandard, out$result$3);
+            final boolean temp$2 = resultInAdditionStandard.tryConvertTimeStandard(getStandard(), out$result$3);
             result = out$result$3[0];
             if (temp$2) {
                 return result;
@@ -439,7 +468,8 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
         return addIgnoringTimeStandard(duration);
     }
 
-    private final JulianDate addIgnoringTimeStandard(Duration duration) {
+    @Nonnull
+    private final JulianDate addIgnoringTimeStandard(@Nonnull Duration duration) {
         int days = getDay() + duration.getDays();
         double seconds = getSecondsOfDay() + duration.getSeconds();
         return new JulianDate(days, seconds, getStandard());
@@ -465,25 +495,29 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return The Duration that is the result of the subtraction.  The time standard will be the same as the time standard of the subtrahend.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Duration subtract(JulianDate subtrahend) {
-        if (getStandard() != TimeStandard.INTERNATIONAL_ATOMIC_TIME && subtrahend.getStandard() != TimeStandard.INTERNATIONAL_ATOMIC_TIME) {
+    @Nonnull
+    public final Duration subtract(@Nonnull JulianDate subtrahend) {
+        final TimeStandard subtractionTimeStandard = TimeStandard.INTERNATIONAL_ATOMIC_TIME;
+        if (subtractionTimeStandard != getStandard() && subtractionTimeStandard != subtrahend.getStandard()) {
             // Convert both the subtrahend and the minuend to the subtraction time standard.
-            return toInternationalAtomicTime().subtractIgnoringTimeStandard(subtrahend.toInternationalAtomicTime(), subtrahend.getStandard());
-        } else if (getStandard() != TimeStandard.INTERNATIONAL_ATOMIC_TIME) {
-            return toInternationalAtomicTime().subtractIgnoringTimeStandard(subtrahend, subtrahend.getStandard());
-        } else if (subtrahend.getStandard() != TimeStandard.INTERNATIONAL_ATOMIC_TIME) {
-            return subtractIgnoringTimeStandard(subtrahend.toInternationalAtomicTime(), subtrahend.getStandard());
-        } else {
-            // Convert the minuend to the subtraction time standard - subtrahend is already in the correct standard.
-            // Convert the subtrahend to the subtraction time standard - minuend is already in the correct standard.
-            // Time standards match up, so do the subtraction directly.
-            return subtractIgnoringTimeStandard(subtrahend, subtrahend.getStandard());
+            return toInternationalAtomicTime().subtractIgnoringTimeStandard(subtrahend.toInternationalAtomicTime());
         }
+        if (subtractionTimeStandard != getStandard()) {
+            // Convert the minuend to the subtraction time standard - subtrahend is already in the correct standard.
+            return toInternationalAtomicTime().subtractIgnoringTimeStandard(subtrahend);
+        }
+        if (subtractionTimeStandard != subtrahend.getStandard()) {
+            // Convert the subtrahend to the subtraction time standard - minuend is already in the correct standard.
+            return subtractIgnoringTimeStandard(subtrahend.toInternationalAtomicTime());
+        }
+        // Time standards match up, so do the subtraction directly.
+        return subtractIgnoringTimeStandard(subtrahend);
     }
 
-    private final Duration subtractIgnoringTimeStandard(JulianDate value, TimeStandard standard) {
-        int days = getDay() - value.getDay();
-        double seconds = getSecondsOfDay() - value.getSecondsOfDay();
+    @Nonnull
+    private final Duration subtractIgnoringTimeStandard(@Nonnull JulianDate subtrahend) {
+        int days = getDay() - subtrahend.getDay();
+        double seconds = getSecondsOfDay() - subtrahend.getSecondsOfDay();
         return new Duration(days, seconds);
     }
 
@@ -501,7 +535,8 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final JulianDate subtract(Duration duration) {
+    @Nonnull
+    public final JulianDate subtract(@Nonnull Duration duration) {
         return add(new Duration(-duration.getDays(), -duration.getSeconds()));
     }
 
@@ -516,6 +551,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return The new date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final JulianDate addSeconds(double seconds) {
         return add(Duration.fromSeconds(seconds));
     }
@@ -532,6 +568,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return The new date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final JulianDate subtractSeconds(double seconds) {
         return subtract(Duration.fromSeconds(seconds));
     }
@@ -547,6 +584,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return The new date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final JulianDate addDays(double days) {
         return add(Duration.fromDays(days));
     }
@@ -569,7 +607,8 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Duration -(JulianDate,JulianDate)'")
-    public static Duration subtract(JulianDate left, JulianDate right) {
+    @Nonnull
+    public static Duration subtract(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull JulianDate right) {
         return left.subtract(right);
     }
 
@@ -590,7 +629,8 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'JulianDate -(JulianDate,Duration)'")
-    public static JulianDate subtract(JulianDate left, Duration right) {
+    @Nonnull
+    public static JulianDate subtract(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull Duration right) {
         return left.subtract(right);
     }
 
@@ -608,7 +648,8 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return A new Julian Date that is the result of the addition.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'JulianDate +(JulianDate,Duration)'")
-    public static JulianDate add(JulianDate left, Duration right) {
+    @Nonnull
+    public static JulianDate add(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull Duration right) {
         return left.add(right);
     }
 
@@ -628,7 +669,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return {@code true} if the dates are equal, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(JulianDate,JulianDate)'")
-    public static boolean equals(JulianDate left, JulianDate right) {
+    public static boolean equals(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull JulianDate right) {
         return left.equalsType(right);
     }
 
@@ -648,7 +689,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return {@code true} if the dates are not equal, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(JulianDate,JulianDate)'")
-    public static boolean notEquals(JulianDate left, JulianDate right) {
+    public static boolean notEquals(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull JulianDate right) {
         return !left.equalsType(right);
     }
 
@@ -665,7 +706,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return {@code true} if the {@code left} is less than {@code right}, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <(JulianDate,JulianDate)'")
-    public static boolean lessThan(JulianDate left, JulianDate right) {
+    public static boolean lessThan(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull JulianDate right) {
         return left.compareTo(right) < 0;
     }
 
@@ -682,7 +723,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return {@code true} if the {@code left} is greater than {@code right}, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >(JulianDate,JulianDate)'")
-    public static boolean greaterThan(JulianDate left, JulianDate right) {
+    public static boolean greaterThan(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull JulianDate right) {
         return left.compareTo(right) > 0;
     }
 
@@ -699,7 +740,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return {@code true} if the {@code left} is less than or equal to {@code right}, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <=(JulianDate,JulianDate)'")
-    public static boolean lessThanOrEqual(JulianDate left, JulianDate right) {
+    public static boolean lessThanOrEqual(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull JulianDate right) {
         return left.compareTo(right) <= 0;
     }
 
@@ -716,7 +757,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return {@code true} if the {@code left} is greater than or equal to {@code right}, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >=(JulianDate,JulianDate)'")
-    public static boolean greaterThanOrEqual(JulianDate left, JulianDate right) {
+    public static boolean greaterThanOrEqual(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull JulianDate right) {
         return left.compareTo(right) >= 0;
     }
 
@@ -751,7 +792,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @param other The date to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
-    public final boolean equalsType(JulianDate other) {
+    public final boolean equalsType(@Nonnull JulianDate other) {
         return compareTo(other) == 0;
     }
 
@@ -771,7 +812,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
             "Unhandled attribute removed: Pure",
             "Unhandled attribute removed: SuppressMessage"
     })
-    public final boolean isIdentical(JulianDate other) {
+    public final boolean isIdentical(@Nonnull JulianDate other) {
         return m_day == other.m_day && m_secondsOfDay == other.m_secondsOfDay && m_timeStandard == other.m_timeStandard;
     }
 
@@ -791,7 +832,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return true if the dates are equal as defined by the epsilon value.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final boolean equalsEpsilon(JulianDate other, double epsilon) {
+    public final boolean equalsEpsilon(@Nonnull JulianDate other, double epsilon) {
         return Math.abs(other.secondsDifference(this)) <= epsilon;
     }
 
@@ -818,7 +859,17 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     */
     @Override
     public String toString() {
-        return StringHelper.format(CultureInfoHelper.getCurrentCulture(), "{0}:{1} ({2})", getDay(), getSecondsOfDay(), getStandard() == TimeStandard.COORDINATED_UNIVERSAL_TIME ? "UTC" : "TAI");
+        StringBuilder builder = new StringBuilder();
+        StringHelper.appendFormat(builder, CultureInfoHelper.getCurrentCulture(), "{0}:{1} ", m_day, m_secondsOfDay);
+        builder.append(getStandard() == TimeStandard.COORDINATED_UNIVERSAL_TIME ? "UTC" : "TAI");
+        if (JulianDate.lessThan(this, GregorianDate.MinValue.toJulianDate())) {
+            StringHelper.appendFormat(builder, CultureInfoHelper.getCurrentCulture(), " (before {0})", GregorianDate.MinValue);
+        } else if (JulianDate.greaterThan(this, GregorianDate.MaxValue.toJulianDate())) {
+            StringHelper.appendFormat(builder, CultureInfoHelper.getCurrentCulture(), " (after {0})", GregorianDate.MaxValue);
+        } else {
+            StringHelper.appendFormat(builder, CultureInfoHelper.getCurrentCulture(), " ({0})", toGregorianDate());
+        }
+        return builder.toString();
     }
 
     /**
@@ -840,7 +891,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     </td><td></td></tr><tr></tr></table>
     
     */
-    public final int compareTo(JulianDate other) {
+    public final int compareTo(@Nonnull JulianDate other) {
         // If the days aren't even close, don't bother thinking about the time standard.
         int isClose = isClose(other);
         if (isClose != 0) {
@@ -874,32 +925,34 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     /**
     *  
     Converts this {@link JulianDate} to a 
-    {@link DateTime} with a default time standard of Coordinated Universal
+    {@link ZonedDateTime} with a default time standard of Coordinated Universal
     Time.
     
     
 
-    * @return The {@link DateTime}.
+    * @return The {@link ZonedDateTime}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final DateTime toDateTime() {
+    @Nonnull
+    public final ZonedDateTime toDateTime() {
         return toGregorianDate().toDateTime();
     }
 
     /**
     *  
     Converts this {@link JulianDate} to a 
-    {@link DateTime} expressed in the specified time standard.
+    {@link ZonedDateTime} expressed in the specified time standard.
     
     
     
 
     * @param standard The time standard in which to express the returned
-    {@link DateTime}.
-    * @return The {@link DateTime}.
+    {@link ZonedDateTime}.
+    * @return The {@link ZonedDateTime}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final DateTime toDateTime(TimeStandard standard) {
+    @Nonnull
+    public final ZonedDateTime toDateTime(@Nonnull TimeStandard standard) {
         return toGregorianDate(standard).toDateTime();
     }
 
@@ -913,8 +966,9 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return The {@link GregorianDate}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final GregorianDate toGregorianDate() {
-        return new GregorianDate(this, TimeStandard.COORDINATED_UNIVERSAL_TIME);
+        return toGregorianDate(TimeStandard.COORDINATED_UNIVERSAL_TIME);
     }
 
     /**
@@ -930,7 +984,8 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return The {@link GregorianDate}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final GregorianDate toGregorianDate(TimeStandard standard) {
+    @Nonnull
+    public final GregorianDate toGregorianDate(@Nonnull TimeStandard standard) {
         return new GregorianDate(this, standard);
     }
 
@@ -942,18 +997,20 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     
 
     */
-    private final int isClose(JulianDate other) {
-        int dayDifference = m_day - other.m_day;
+    private final int isClose(@Nonnull JulianDate other) {
+        long dayDifference = (long) m_day - other.m_day;
         if (dayDifference > 1 || dayDifference < -1) {
             return m_day < other.m_day ? -1 : 1;
-        } else {
-            return 0;
         }
+        return 0;
     }
 
     private int m_day;
     private double m_secondsOfDay;
+    @Nonnull
     private TimeStandard m_timeStandard = TimeStandard.getDefault();
+    @Nonnull
     private static JulianDate s_maxValue = new JulianDate(Integer.MAX_VALUE, 0.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
+    @Nonnull
     private static JulianDate s_minValue = new JulianDate(Integer.MIN_VALUE, 0.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
 }

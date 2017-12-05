@@ -11,6 +11,7 @@ import cesiumlanguagewriter.Spherical;
 import cesiumlanguagewriter.UnitCartesian;
 import cesiumlanguagewriter.UnitSpherical;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -18,7 +19,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<DirectionCesiumWriter> {
     /**
     *  
@@ -70,31 +75,31 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     public DirectionCesiumWriter(String propertyName) {
         super(propertyName);
         m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(this, "createSphericalAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(this, "createSphericalAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical> invoke() {
                         return createSphericalAdaptor();
                     }
                 }, false);
         m_asUnitSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(this, "createUnitSphericalAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(this, "createUnitSphericalAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical> invoke() {
                         return createUnitSphericalAdaptor();
                     }
                 }, false);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
                         return createCartesianAdaptor();
                     }
                 }, false);
         m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian> invoke() {
                         return createUnitCartesianAdaptor();
                     }
                 }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -112,37 +117,46 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     protected DirectionCesiumWriter(DirectionCesiumWriter existingInstance) {
         super(existingInstance);
         m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(this, "createSphericalAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(this, "createSphericalAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical> invoke() {
                         return createSphericalAdaptor();
                     }
                 }, false);
         m_asUnitSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(this, "createUnitSphericalAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(this, "createUnitSphericalAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical> invoke() {
                         return createUnitSphericalAdaptor();
                     }
                 }, false);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
                         return createCartesianAdaptor();
                     }
                 }, false);
         m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian> invoke() {
                         return createUnitCartesianAdaptor();
                     }
                 }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public DirectionCesiumWriter clone() {
         return new DirectionCesiumWriter(this);
@@ -156,7 +170,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     * @param value The value.
     */
-    public final void writeSpherical(Spherical value) {
+    public final void writeSpherical(@Nonnull Spherical value) {
         final String PropertyName = SphericalPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -205,7 +219,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     * @param value The value.
     */
-    public final void writeUnitSpherical(UnitSpherical value) {
+    public final void writeUnitSpherical(@Nonnull UnitSpherical value) {
         final String PropertyName = UnitSphericalPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -254,7 +268,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     * @param value The value.
     */
-    public final void writeCartesian(Cartesian value) {
+    public final void writeCartesian(@Nonnull Cartesian value) {
         final String PropertyName = CartesianPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -303,7 +317,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     * @param value The value.
     */
-    public final void writeUnitCartesian(UnitCartesian value) {
+    public final void writeUnitCartesian(@Nonnull UnitCartesian value) {
         final String PropertyName = UnitCartesianPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);

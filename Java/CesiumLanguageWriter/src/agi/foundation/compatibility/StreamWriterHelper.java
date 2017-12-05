@@ -3,6 +3,8 @@ package agi.foundation.compatibility;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Helper methods related to StreamWriter.
@@ -20,9 +22,9 @@ public final class StreamWriterHelper {
      */
     public static OutputStreamWriter create(String path) {
         try {
-            return new OutputStreamWriter(new FileOutputStream(path), Encoding.UTF8);
+            return new OutputStreamWriter(new FileOutputStream(path), StandardCharsets.UTF_8);
         } catch (IOException e) {
-            throw new RuntimeIOException(e);
+            throw new UncheckedIOException(e);
         }
     }
 }

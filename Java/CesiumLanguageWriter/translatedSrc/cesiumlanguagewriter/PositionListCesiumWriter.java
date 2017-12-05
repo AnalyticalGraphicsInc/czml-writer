@@ -12,7 +12,11 @@ import cesiumlanguagewriter.advanced.*;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListCesiumWriter> {
     /**
     *  
@@ -63,25 +67,25 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     public PositionListCesiumWriter(String propertyName) {
         super(propertyName);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(this, "createCartesianAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(this, "createCartesianAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>> invoke() {
                         return createCartesianAdaptor();
                     }
                 }, false);
         m_asCartographicRadians = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>>>(this, "createCartographicRadiansAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>>>(this, "createCartographicRadiansAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>> invoke() {
                         return createCartographicRadiansAdaptor();
                     }
                 }, false);
         m_asCartographicDegrees = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>>>(this, "createCartographicDegreesAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>>>(this, "createCartographicDegreesAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>> invoke() {
                         return createCartographicDegreesAdaptor();
                     }
                 }, false);
         m_asReferences = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(this, "createReferencesAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(this, "createReferencesAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>> invoke() {
                         return createReferencesAdaptor();
                     }
@@ -99,31 +103,40 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     protected PositionListCesiumWriter(PositionListCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(this, "createCartesianAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(this, "createCartesianAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>> invoke() {
                         return createCartesianAdaptor();
                     }
                 }, false);
         m_asCartographicRadians = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>>>(this, "createCartographicRadiansAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>>>(this, "createCartographicRadiansAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>> invoke() {
                         return createCartographicRadiansAdaptor();
                     }
                 }, false);
         m_asCartographicDegrees = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>>>(this, "createCartographicDegreesAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>>>(this, "createCartographicDegreesAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartographic>> invoke() {
                         return createCartographicDegreesAdaptor();
                     }
                 }, false);
         m_asReferences = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(this, "createReferencesAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(this, "createReferencesAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>> invoke() {
                         return createReferencesAdaptor();
                     }
                 }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public PositionListCesiumWriter clone() {
         return new PositionListCesiumWriter(this);

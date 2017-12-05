@@ -14,7 +14,11 @@ import javax.annotation.Nullable;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public abstract class CesiumElementWriter implements ICesiumElementWriter {
     public final void dispose() {
         close();

@@ -17,7 +17,11 @@ import java.util.ResourceBundle;
 
  * @deprecated Internal use only.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @Deprecated
 @Internal
 @CS2JWarning( {
@@ -120,6 +124,19 @@ public class CesiumLocalization {
     @Internal
     public static String getDataDownloadFailed() {
         return getResourceManager().getString("DataDownloadFailed");
+    }
+
+    /**
+    *  
+    Looks up a localized string similar to The given date must be in the UTC time standard..
+    
+
+    * @deprecated Internal use only.
+    */
+    @Deprecated
+    @Internal
+    public static String getDateMustBeUTC() {
+        return getResourceManager().getString("DateMustBeUTC");
     }
 
     /**
@@ -332,45 +349,6 @@ public class CesiumLocalization {
 
     /**
     *  
-    Looks up a localized string similar to An object of the type {0} must be constructed from an array with at least {1} elements..
-    
-
-    * @deprecated Internal use only.
-    */
-    @Deprecated
-    @Internal
-    public static String getMustBeConstructedFromSpecificNumberOfElements() {
-        return getResourceManager().getString("MustBeConstructedFromSpecificNumberOfElements");
-    }
-
-    /**
-    *  
-    Looks up a localized string similar to TAI.
-    
-
-    * @deprecated Internal use only.
-    */
-    @Deprecated
-    @Internal
-    public static String getTaiAbbreviation() {
-        return getResourceManager().getString("TaiAbbreviation");
-    }
-
-    /**
-    *  
-    Looks up a localized string similar to International Atomic Time.
-    
-
-    * @deprecated Internal use only.
-    */
-    @Deprecated
-    @Internal
-    public static String getTaiName() {
-        return getResourceManager().getString("TaiName");
-    }
-
-    /**
-    *  
     Looks up a localized string similar to The enumeration has an invalid or unsupported value..
     
 
@@ -393,32 +371,6 @@ public class CesiumLocalization {
     @Internal
     public static String getUpperBoundCannotBeLessThanLowerBound() {
         return getResourceManager().getString("UpperBoundCannotBeLessThanLowerBound");
-    }
-
-    /**
-    *  
-    Looks up a localized string similar to UTC.
-    
-
-    * @deprecated Internal use only.
-    */
-    @Deprecated
-    @Internal
-    public static String getUtcAbbreviation() {
-        return getResourceManager().getString("UtcAbbreviation");
-    }
-
-    /**
-    *  
-    Looks up a localized string similar to Coordinated Universal Time.
-    
-
-    * @deprecated Internal use only.
-    */
-    @Deprecated
-    @Internal
-    public static String getUtcName() {
-        return getResourceManager().getString("UtcName");
     }
 
     /**

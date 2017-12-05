@@ -8,6 +8,7 @@ import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -20,7 +21,11 @@ import agi.foundation.compatibility.StringHelper;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class NearFarScalar implements IEquatable<NearFarScalar>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -95,7 +100,7 @@ public final class NearFarScalar implements IEquatable<NearFarScalar>, Immutable
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public final boolean equalsType(NearFarScalar other) {
+    public final boolean equalsType(@Nonnull NearFarScalar other) {
         return m_nearDistance == other.m_nearDistance && m_nearValue == other.m_nearValue && m_farDistance == other.m_farDistance && m_farValue == other.m_farValue;
     }
 
@@ -158,7 +163,7 @@ public final class NearFarScalar implements IEquatable<NearFarScalar>, Immutable
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(NearFarScalar,NearFarScalar)'")
-    public static boolean equals(NearFarScalar left, NearFarScalar right) {
+    public static boolean equals(@javax.annotation.Nonnull NearFarScalar left, @javax.annotation.Nonnull NearFarScalar right) {
         return left.equalsType(right);
     }
 
@@ -177,7 +182,7 @@ public final class NearFarScalar implements IEquatable<NearFarScalar>, Immutable
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(NearFarScalar,NearFarScalar)'")
-    public static boolean notEquals(NearFarScalar left, NearFarScalar right) {
+    public static boolean notEquals(@javax.annotation.Nonnull NearFarScalar left, @javax.annotation.Nonnull NearFarScalar right) {
         return !left.equalsType(right);
     }
 

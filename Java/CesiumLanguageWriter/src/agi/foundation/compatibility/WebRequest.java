@@ -1,26 +1,35 @@
 package agi.foundation.compatibility;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.net.MalformedURLException;
 import java.net.Proxy;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import javax.annotation.Nonnull;
+
 public abstract class WebRequest {
+    @Nonnull
     protected URL url;
     protected Proxy proxy;
     protected int timeout;
 
-    public static WebRequest create(String requestUriString) {
-        try {
-            return create(new URL(requestUriString));
-        } catch (MalformedURLException e) {
-            throw new RuntimeMalformedURLException(e);
-        }
+    protected WebRequest(@Nonnull URL url) {
+        this.url = url;
     }
 
-    public static WebRequest create(URI requestUri) {
+    public static WebRequest create(@Nonnull String requestUriString) {
+        ArgumentNullException.assertNonNull(requestUriString, "requestUriString");
+
+        return create(UriHelper.create(requestUriString));
+    }
+
+    public static WebRequest create(@Nonnull URI requestUri) {
+        ArgumentNullException.assertNonNull(requestUri, "requestUriString");
+
         try {
             return create(requestUri.toURL());
         } catch (MalformedURLException e) {
@@ -28,7 +37,7 @@ public abstract class WebRequest {
         }
     }
 
-    private static WebRequest create(URL url) {
+    private static WebRequest create(@Nonnull URL url) {
         String protocol = url.getProtocol();
 
         if ("http".equals(protocol) || "https".equals(protocol)) {
@@ -46,7 +55,7 @@ public abstract class WebRequest {
      * Fallback class for which there is no specifically registered scheme.
      */
     private static final class UnknownWebRequest extends WebRequest {
-        UnknownWebRequest(URL url) {
+        UnknownWebRequest(@Nonnull URL url) {
             super(url);
         }
 
@@ -56,7 +65,7 @@ public abstract class WebRequest {
 
     /**
      * Gets the network proxy to use to access this Internet resource.
-     * 
+     *
      * @return The Proxy to use to access the Internet resource.
      */
     public Proxy getProxy() {
@@ -65,7 +74,7 @@ public abstract class WebRequest {
 
     /**
      * Sets the network proxy to use to access this Internet resource.
-     * 
+     *
      * @param proxy
      *            The Proxy to use to access the Internet resource.
      */
@@ -75,7 +84,7 @@ public abstract class WebRequest {
 
     /**
      * Gets the length of time, in milliseconds, before the request times out.
-     * 
+     *
      * @return The length of time, in milliseconds, until the request times out.
      */
     public int getTimeout() {
@@ -84,7 +93,7 @@ public abstract class WebRequest {
 
     /**
      * Sets the length of time, in milliseconds, before the request times out.
-     * 
+     *
      * @param timeout
      *            The length of time, in milliseconds, until the request times out.
      */
@@ -92,12 +101,9 @@ public abstract class WebRequest {
         this.timeout = timeout;
     }
 
-    protected WebRequest(URL url) {
-        this.url = url;
-    }
-
     public WebResponse getResponse() {
         try {
+            @Nonnull
             URLConnection connection;
             if (proxy == null) {
                 connection = url.openConnection();
@@ -113,11 +119,25 @@ public abstract class WebRequest {
 
             connection.connect();
 
-            return new WebResponse(connection);
+            return createResponse(connection);
         } catch (IOException e) {
-            throw new RuntimeIOException(e);
+            throw new UncheckedIOException(e);
         }
     }
 
-    protected abstract void configureConnection(URLConnection connection);
+    @Nonnull
+    public URI getRequestUri() {
+        try {
+            return url.toURI();
+        } catch (URISyntaxException e) {
+            throw new RuntimeURISyntaxException(e);
+        }
+    }
+
+    @Nonnull
+    protected WebResponse createResponse(@Nonnull URLConnection connection) {
+        return new WebResponse(connection);
+    }
+
+    protected abstract void configureConnection(@Nonnull URLConnection connection);
 }

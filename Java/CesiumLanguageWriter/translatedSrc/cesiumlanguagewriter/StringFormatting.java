@@ -11,7 +11,11 @@ import agi.foundation.compatibility.StringHelper;
 /**
  * @deprecated Internal use only.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @Deprecated
 @Internal
 public final class StringFormatting {

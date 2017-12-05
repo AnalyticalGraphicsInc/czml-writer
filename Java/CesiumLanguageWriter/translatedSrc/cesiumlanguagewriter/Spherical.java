@@ -8,6 +8,7 @@ import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -15,7 +16,11 @@ import agi.foundation.compatibility.StringHelper;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class Spherical implements IEquatable<Spherical>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -27,6 +32,7 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
     
 
     */
+    @Nonnull
     public static Spherical getZero() {
         return s_zero;
     }
@@ -54,10 +60,15 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
     Initializes a set of {@link Spherical} coordinates from the provided set of {@link Cartesian} coordinates.
     
     
+    
 
+    * <p>
+    The radius and magnitude for spherical coordinates are computed using the standard methods. Note that if a component of the cartesian components underflows upon squaring the
+    resulting spherical coordinates may not be correct.
+    
     * @param coordinates The set of Cartesian coordinates.
     */
-    public Spherical(Cartesian coordinates) {
+    public Spherical(@Nonnull Cartesian coordinates) {
         double x = coordinates.getX();
         double y = coordinates.getY();
         double z = coordinates.getZ();
@@ -103,6 +114,7 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
     * @return The resulting set of {@link UnitSpherical} coordinates.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final UnitSpherical normalize() {
         return new UnitSpherical(this);
     }
@@ -133,7 +145,7 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public final boolean equalsType(Spherical other) {
+    public final boolean equalsType(@Nonnull Spherical other) {
         return m_clock == other.m_clock && m_cone == other.m_cone && m_magnitude == other.m_magnitude;
     }
 
@@ -153,7 +165,7 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
     
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final boolean equalsEpsilon(Spherical other, double epsilon) {
+    public final boolean equalsEpsilon(@Nonnull Spherical other, double epsilon) {
         return Math.abs(m_clock - other.m_clock) <= epsilon && Math.abs(m_cone - other.m_cone) <= epsilon && Math.abs(m_magnitude - other.m_magnitude) <= epsilon;
     }
 
@@ -201,7 +213,7 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Spherical,Spherical)'")
-    public static boolean equals(Spherical left, Spherical right) {
+    public static boolean equals(@javax.annotation.Nonnull Spherical left, @javax.annotation.Nonnull Spherical right) {
         return left.equalsType(right);
     }
 
@@ -220,12 +232,13 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Spherical,Spherical)'")
-    public static boolean notEquals(Spherical left, Spherical right) {
+    public static boolean notEquals(@javax.annotation.Nonnull Spherical left, @javax.annotation.Nonnull Spherical right) {
         return !left.equalsType(right);
     }
 
     private double m_clock;
     private double m_cone;
     private double m_magnitude;
+    @Nonnull
     private static Spherical s_zero = new Spherical(0.0, 0.0, 0.0);
 }

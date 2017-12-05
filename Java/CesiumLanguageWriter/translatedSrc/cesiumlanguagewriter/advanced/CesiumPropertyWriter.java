@@ -8,6 +8,7 @@ import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  *  
@@ -18,7 +19,11 @@ import javax.annotation.Nonnull;
 
  * @param <TDerived> The type of the class derived from this one.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter<TDerived>> extends CesiumElementWriter implements ICesiumPropertyWriter {
     /**
     *  
@@ -53,13 +58,12 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     }
 
     private CesiumPropertyWriter() {
-        m_multipleIntervals = new Lazy<cesiumlanguagewriter.CesiumIntervalListWriter<TDerived>>(new Func1<cesiumlanguagewriter.CesiumIntervalListWriter<TDerived>>(this, "createIntervalListWriter",
-                new Class[] {}) {
+        m_multipleIntervals = new Lazy<cesiumlanguagewriter.CesiumIntervalListWriter<TDerived>>(new Func1<cesiumlanguagewriter.CesiumIntervalListWriter<TDerived>>(this, "createIntervalListWriter") {
             public cesiumlanguagewriter.CesiumIntervalListWriter<TDerived> invoke() {
                 return createIntervalListWriter();
             }
         }, false);
-        m_interval = new Lazy<TDerived>(new Func1<TDerived>(this, "copyForInterval", new Class[] {}) {
+        m_interval = new Lazy<TDerived>(new Func1<TDerived>(this, "copyForInterval") {
             public TDerived invoke() {
                 return copyForInterval();
             }
@@ -157,7 +161,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     * @return The writer.
     */
     @Nonnull
-    public final TDerived openInterval(JulianDate start, JulianDate stop) {
+    public final TDerived openInterval(@Nonnull JulianDate start, @Nonnull JulianDate stop) {
         TDerived result = openAndReturn(m_interval.getValue());
         result.writeInterval(start, stop);
         return result;
@@ -186,7 +190,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     * @param start The first date of the interval.
     * @param stop The last date of the interval.
     */
-    public final void writeInterval(JulianDate start, JulianDate stop) {
+    public final void writeInterval(@Nonnull JulianDate start, @Nonnull JulianDate stop) {
         writeInterval(new TimeInterval(start, stop));
     }
 
@@ -207,6 +211,13 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
         getOutput().writeValue(CesiumFormattingHelper.toIso8601Interval(interval.getStart(), interval.getStop(), getOutput().getPrettyFormatting() ? Iso8601Format.EXTENDED : Iso8601Format.COMPACT));
     }
 
+    /**
+    *  
+    
+    When overridden in a derived class, writes content to the stream immediately after opening the writer on it.
+    
+
+    */
     @Override
     protected final void onOpen() {
         if (m_elementType == ElementType.INTERVAL || m_elementType == ElementType.PROPERTY_CONVERTED_TO_INTERVAL) {
@@ -216,6 +227,13 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
         }
     }
 
+    /**
+    *  
+    
+    When overridden in a derived class, writes content to the stream immediately before closing the writer on it.
+    
+
+    */
     @Override
     protected final void onClose() {
         if (m_elementType == ElementType.INTERVAL || m_elementType == ElementType.PROPERTY_CONVERTED_TO_INTERVAL) {
@@ -253,6 +271,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     private Lazy<CesiumIntervalListWriter<TDerived>> m_multipleIntervals;
     @Nonnull
     private Lazy<TDerived> m_interval;
+    @Nonnull
     private ElementType m_elementType = ElementType.PROPERTY;
 
     private static enum ElementType implements Enumeration {
@@ -267,6 +286,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
         * Get the numeric value associated with this enum constant.
         * @return A numeric value.
         */
+        @Override
         public int getValue() {
             return value;
         }
@@ -276,6 +296,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
         * @return The enum constant associated with value.
         * @param value a numeric value.
         */
+        @Nonnull
         public static ElementType getFromValue(int value) {
             switch (value) {
             case 0:
@@ -293,6 +314,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
         * Get the enum constant that is considered to be the default.
         * @return The default enum constant.
         */
+        @Nonnull
         public static ElementType getDefault() {
             return PROPERTY;
         }

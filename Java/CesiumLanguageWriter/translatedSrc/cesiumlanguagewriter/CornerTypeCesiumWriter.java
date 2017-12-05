@@ -7,6 +7,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.CesiumCornerType;
 import cesiumlanguagewriter.Reference;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -14,7 +15,11 @@ import cesiumlanguagewriter.Reference;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiumWriter> {
     /**
     *  
@@ -42,13 +47,13 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
     public CornerTypeCesiumWriter(String propertyName) {
         super(propertyName);
         m_asCornerType = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(
-                this, "createCornerTypeAdaptor", new Class[] {}) {
+                this, "createCornerTypeAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType> invoke() {
                 return createCornerTypeAdaptor();
             }
         }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -66,19 +71,28 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
     protected CornerTypeCesiumWriter(CornerTypeCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCornerType = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(
-                this, "createCornerTypeAdaptor", new Class[] {}) {
+                this, "createCornerTypeAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType> invoke() {
                 return createCornerTypeAdaptor();
             }
         }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public CornerTypeCesiumWriter clone() {
         return new CornerTypeCesiumWriter(this);
@@ -92,7 +106,7 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
     * @param value The style of a corner.
     */
-    public final void writeCornerType(CesiumCornerType value) {
+    public final void writeCornerType(@Nonnull CesiumCornerType value) {
         final String PropertyName = CornerTypePropertyName;
         if (getForceInterval()) {
             openIntervalIfNecessary();
@@ -182,7 +196,7 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
     private final ICesiumValuePropertyWriter<CesiumCornerType> createCornerTypeAdaptor() {
         return new CesiumWriterAdaptor<cesiumlanguagewriter.CornerTypeCesiumWriter, cesiumlanguagewriter.CesiumCornerType>(this,
                 new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.CornerTypeCesiumWriter, cesiumlanguagewriter.CesiumCornerType>() {
-                    public void invoke(CornerTypeCesiumWriter me, CesiumCornerType value) {
+                    public void invoke(CornerTypeCesiumWriter me, @Nonnull CesiumCornerType value) {
                         me.writeCornerType(value);
                     }
                 });

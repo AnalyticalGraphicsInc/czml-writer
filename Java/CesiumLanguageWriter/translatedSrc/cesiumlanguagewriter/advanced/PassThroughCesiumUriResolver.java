@@ -11,7 +11,11 @@ import javax.annotation.Nonnull;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class PassThroughCesiumUriResolver implements ICesiumUriResolver {
     /**
     *  

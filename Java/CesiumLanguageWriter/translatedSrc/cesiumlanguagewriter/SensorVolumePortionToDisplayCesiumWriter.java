@@ -7,6 +7,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.CesiumSensorVolumePortionToDisplay;
 import cesiumlanguagewriter.Reference;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -14,7 +15,11 @@ import cesiumlanguagewriter.Reference;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWriter<SensorVolumePortionToDisplayCesiumWriter> {
     /**
     *  
@@ -42,13 +47,13 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     public SensorVolumePortionToDisplayCesiumWriter(String propertyName) {
         super(propertyName);
         m_asPortionToDisplay = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumSensorVolumePortionToDisplay>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumSensorVolumePortionToDisplay>>(this, "createPortionToDisplayAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumSensorVolumePortionToDisplay>>(this, "createPortionToDisplayAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumSensorVolumePortionToDisplay> invoke() {
                         return createPortionToDisplayAdaptor();
                     }
                 }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -66,19 +71,28 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     protected SensorVolumePortionToDisplayCesiumWriter(SensorVolumePortionToDisplayCesiumWriter existingInstance) {
         super(existingInstance);
         m_asPortionToDisplay = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumSensorVolumePortionToDisplay>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumSensorVolumePortionToDisplay>>(this, "createPortionToDisplayAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumSensorVolumePortionToDisplay>>(this, "createPortionToDisplayAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumSensorVolumePortionToDisplay> invoke() {
                         return createPortionToDisplayAdaptor();
                     }
                 }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public SensorVolumePortionToDisplayCesiumWriter clone() {
         return new SensorVolumePortionToDisplayCesiumWriter(this);
@@ -92,7 +106,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
 
     * @param value The portion of the sensor to display.
     */
-    public final void writePortionToDisplay(CesiumSensorVolumePortionToDisplay value) {
+    public final void writePortionToDisplay(@Nonnull CesiumSensorVolumePortionToDisplay value) {
         final String PropertyName = PortionToDisplayPropertyName;
         if (getForceInterval()) {
             openIntervalIfNecessary();
@@ -182,7 +196,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     private final ICesiumValuePropertyWriter<CesiumSensorVolumePortionToDisplay> createPortionToDisplayAdaptor() {
         return new CesiumWriterAdaptor<cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter, cesiumlanguagewriter.CesiumSensorVolumePortionToDisplay>(this,
                 new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter, cesiumlanguagewriter.CesiumSensorVolumePortionToDisplay>() {
-                    public void invoke(SensorVolumePortionToDisplayCesiumWriter me, CesiumSensorVolumePortionToDisplay value) {
+                    public void invoke(SensorVolumePortionToDisplayCesiumWriter me, @Nonnull CesiumSensorVolumePortionToDisplay value) {
                         me.writePortionToDisplay(value);
                     }
                 });

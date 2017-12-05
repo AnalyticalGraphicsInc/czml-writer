@@ -14,6 +14,7 @@ import cesiumlanguagewriter.IntegerCesiumWriter;
 import cesiumlanguagewriter.MaterialCesiumWriter;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -21,7 +22,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     /**
     *  
@@ -166,6 +171,15 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public FanCesiumWriter clone() {
         return new FanCesiumWriter(this);
@@ -956,7 +970,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeOutlineColorProperty(Color color) {
+    public final void writeOutlineColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
             try {
@@ -1046,7 +1060,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeOutlineColorPropertyRgbaf(Color color) {
+    public final void writeOutlineColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
             try {

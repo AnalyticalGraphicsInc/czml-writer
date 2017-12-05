@@ -13,7 +13,11 @@ import cesiumlanguagewriter.Reference;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWriter> {
     /**
     *  
@@ -41,13 +45,13 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
     public BooleanCesiumWriter(String propertyName) {
         super(propertyName);
         m_asBoolean = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(this,
-                "createBooleanAdaptor", new Class[] {}) {
+                "createBooleanAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean> invoke() {
                 return createBooleanAdaptor();
             }
         }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -65,19 +69,28 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
     protected BooleanCesiumWriter(BooleanCesiumWriter existingInstance) {
         super(existingInstance);
         m_asBoolean = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(this,
-                "createBooleanAdaptor", new Class[] {}) {
+                "createBooleanAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean> invoke() {
                 return createBooleanAdaptor();
             }
         }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public BooleanCesiumWriter clone() {
         return new BooleanCesiumWriter(this);

@@ -28,7 +28,7 @@ public abstract class Delegate {
 
         @SuppressWarnings("unchecked")
         public MulticastList(T a, T b) {
-            list = new ArrayList<T>();
+            list = new ArrayList<>();
 
             if (a instanceof MulticastDelegate<?>) {
                 list.addAll(((MulticastDelegate<T>) a).list().list);
@@ -48,14 +48,14 @@ public abstract class Delegate {
         }
 
         public MulticastList<T> removeLast(T t) {
-            ArrayList<T> resultList = new ArrayList<T>(list);
+            ArrayList<T> resultList = new ArrayList<>(list);
             for (int i = resultList.size() - 1; i >= 0; i--) {
                 if (resultList.get(i).equals(t)) {
                     resultList.remove(i);
                     break;
                 }
             }
-            return new MulticastList<T>(resultList);
+            return new MulticastList<>(resultList);
         }
 
         public ArrayList<T> list() {
@@ -102,7 +102,7 @@ public abstract class Delegate {
      * Called from anonymous delegates. No external target or method.
      */
     protected Delegate() {
-        this.methodFinder = invokeFinder;
+        methodFinder = invokeFinder;
     }
 
     /**

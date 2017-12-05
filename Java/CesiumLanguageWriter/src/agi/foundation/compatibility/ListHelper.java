@@ -19,10 +19,10 @@ public final class ListHelper {
      */
     public static <T> ArrayList<T> create(Iterable<? extends T> iterable) {
         if (iterable instanceof Collection<?>) {
-            return new ArrayList<T>((Collection<? extends T>) iterable);
+            return new ArrayList<>((Collection<? extends T>) iterable);
         }
 
-        ArrayList<T> result = new ArrayList<T>();
+        ArrayList<T> result = new ArrayList<>();
         for (T t : iterable) {
             result.add(t);
         }

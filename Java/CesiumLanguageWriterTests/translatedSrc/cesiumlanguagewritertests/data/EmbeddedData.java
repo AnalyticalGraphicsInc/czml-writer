@@ -6,7 +6,11 @@ import agi.foundation.compatibility.Assembly;
 import cesiumlanguagewritertests.*;
 import java.io.InputStream;
 
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class EmbeddedData {
     private EmbeddedData() {}
 

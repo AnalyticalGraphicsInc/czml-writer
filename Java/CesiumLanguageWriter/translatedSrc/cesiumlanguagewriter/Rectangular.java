@@ -8,6 +8,7 @@ import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -19,7 +20,11 @@ import agi.foundation.compatibility.StringHelper;
  The corresponding 3-dimensional coordinates are {@link Cartesian} coordinates.
  
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class Rectangular implements IEquatable<Rectangular>, ImmutableValueType {
     /**
@@ -32,6 +37,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     
 
     */
+    @Nonnull
     public static Rectangular getZero() {
         return s_zero;
     }
@@ -47,6 +53,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     are {@link Double#NaN}.
     
     */
+    @Nonnull
     public static Rectangular getUndefined() {
         return s_undefined;
     }
@@ -94,6 +101,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @return A set of {@link Rectangular} coordinates that represents the inverse of this instance.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final Rectangular invert() {
         return new Rectangular(-m_x, -m_y);
     }
@@ -109,6 +117,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @return A set of {@link Rectangular} coordinates that represents the result of the multiplication.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final Rectangular multiply(double scalar) {
         return new Rectangular(m_x * scalar, m_y * scalar);
     }
@@ -124,6 +133,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @return A set of {@link Rectangular} coordinates that represents the result of the division.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final Rectangular divide(double scalar) {
         return new Rectangular(m_x / scalar, m_y / scalar);
     }
@@ -139,7 +149,8 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @return A set of {@link Rectangular} coordinates that represents the result of the addition.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Rectangular add(Rectangular other) {
+    @Nonnull
+    public final Rectangular add(@Nonnull Rectangular other) {
         return new Rectangular(m_x + other.m_x, m_y + other.m_y);
     }
 
@@ -154,7 +165,8 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @return A set of {@link Rectangular} coordinates that represents the result of the subtraction.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Rectangular subtract(Rectangular other) {
+    @Nonnull
+    public final Rectangular subtract(@Nonnull Rectangular other) {
         return new Rectangular(m_x - other.m_x, m_y - other.m_y);
     }
 
@@ -169,7 +181,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @return A {@code double} that represents the result of the product.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final double dot(Rectangular other) {
+    public final double dot(@Nonnull Rectangular other) {
         return m_x * other.m_x + m_y * other.m_y;
     }
 
@@ -186,7 +198,8 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @return A set of {@link Rectangular} coordinates that represents the result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular *(Rectangular,System.Double)'")
-    public static Rectangular multiply(Rectangular left, double right) {
+    @Nonnull
+    public static Rectangular multiply(@javax.annotation.Nonnull Rectangular left, double right) {
         return left.multiply(right);
     }
 
@@ -203,7 +216,8 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @return A set of {@link Rectangular} coordinates that represents the result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular *(System.Double,Rectangular)'")
-    public static Rectangular multiply(double left, Rectangular right) {
+    @Nonnull
+    public static Rectangular multiply(double left, @javax.annotation.Nonnull Rectangular right) {
         return right.multiply(left);
     }
 
@@ -220,7 +234,8 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @return A set of {@link Rectangular} coordinates that represents the result of the division.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular /(Rectangular,System.Double)'")
-    public static Rectangular divide(Rectangular left, double right) {
+    @Nonnull
+    public static Rectangular divide(@javax.annotation.Nonnull Rectangular left, double right) {
         return left.divide(right);
     }
 
@@ -237,7 +252,8 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @return A set of {@link Rectangular} coordinates that represents the result of the addition.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular +(Rectangular,Rectangular)'")
-    public static Rectangular add(Rectangular left, Rectangular right) {
+    @Nonnull
+    public static Rectangular add(@javax.annotation.Nonnull Rectangular left, @javax.annotation.Nonnull Rectangular right) {
         return left.add(right);
     }
 
@@ -254,7 +270,8 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @return A set of {@link Rectangular} coordinates that represents the result of the subtraction.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular -(Rectangular,Rectangular)'")
-    public static Rectangular subtract(Rectangular left, Rectangular right) {
+    @Nonnull
+    public static Rectangular subtract(@javax.annotation.Nonnull Rectangular left, @javax.annotation.Nonnull Rectangular right) {
         return left.subtract(right);
     }
 
@@ -269,7 +286,8 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @return The result of negating the elements of the original set of {@link Rectangular} coordinates.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular -(Rectangular)'")
-    public static Rectangular negate(Rectangular coordinates) {
+    @Nonnull
+    public static Rectangular negate(@javax.annotation.Nonnull Rectangular coordinates) {
         return new Rectangular(-coordinates.m_x, -coordinates.m_y);
     }
 
@@ -289,6 +307,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @return A set of {@link Rectangular} coordinates which is the result of the rotation.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final Rectangular rotate(double angle) {
         double c = Math.cos(angle);
         double s = Math.sin(angle);
@@ -321,7 +340,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public final boolean equalsType(Rectangular other) {
+    public final boolean equalsType(@Nonnull Rectangular other) {
         return m_x == other.m_x && m_y == other.m_y;
     }
 
@@ -340,7 +359,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
     
     */
-    public final boolean equalsEpsilon(Rectangular other, double epsilon) {
+    public final boolean equalsEpsilon(@Nonnull Rectangular other, double epsilon) {
         return Math.abs(m_x - other.m_x) <= epsilon && Math.abs(m_y - other.m_y) <= epsilon;
     }
 
@@ -388,7 +407,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Rectangular,Rectangular)'")
-    public static boolean equals(Rectangular left, Rectangular right) {
+    public static boolean equals(@javax.annotation.Nonnull Rectangular left, @javax.annotation.Nonnull Rectangular right) {
         return left.equalsType(right);
     }
 
@@ -407,7 +426,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Rectangular,Rectangular)'")
-    public static boolean notEquals(Rectangular left, Rectangular right) {
+    public static boolean notEquals(@javax.annotation.Nonnull Rectangular left, @javax.annotation.Nonnull Rectangular right) {
         return !left.equalsType(right);
     }
 
@@ -422,6 +441,8 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
 
     private double m_x;
     private double m_y;
+    @Nonnull
     private static Rectangular s_zero = new Rectangular(0.0, 0.0);
+    @Nonnull
     private static Rectangular s_undefined = new Rectangular(Double.NaN, Double.NaN);
 }

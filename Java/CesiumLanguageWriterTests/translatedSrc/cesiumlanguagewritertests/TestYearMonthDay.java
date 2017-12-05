@@ -4,12 +4,13 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
-import agi.foundation.compatibility.DayOfWeek;
+import agi.foundation.compatibility.DateTimeHelper;
 import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
-import org.joda.time.DateTime;
+import java.time.DayOfWeek;
+import java.time.ZonedDateTime;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -23,7 +24,11 @@ import org.junit.Test;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestYearMonthDay {
     /**
@@ -275,19 +280,19 @@ public class TestYearMonthDay {
     */
     @Test
     public final void testConstructFromJulianDate() {
-        DateTime dt = new DateTime(2008, 10, 23, 12, 0, 0, 0, org.joda.time.DateTimeZone.UTC);
+        ZonedDateTime dt = DateTimeHelper.create(2008, 10, 23, 12, 0, 0);
         JulianDate jd = new JulianDate(dt);
         YearMonthDay ymd = new YearMonthDay(jd);
         Assert.assertEquals((int) 2008, (int) ymd.getYear());
         Assert.assertEquals((int) 10, (int) ymd.getMonth());
         Assert.assertEquals((int) 23, (int) ymd.getDay());
-        dt = new DateTime(2008, 10, 23, 0, 0, 0, 0, org.joda.time.DateTimeZone.UTC);
+        dt = DateTimeHelper.create(2008, 10, 23, 0, 0, 0);
         jd = new JulianDate(dt);
         ymd = new YearMonthDay(jd);
         Assert.assertEquals((int) 2008, (int) ymd.getYear());
         Assert.assertEquals((int) 10, (int) ymd.getMonth());
         Assert.assertEquals((int) 23, (int) ymd.getDay());
-        dt = new DateTime(2008, 10, 23, 23, 59, 59, 0, org.joda.time.DateTimeZone.UTC);
+        dt = DateTimeHelper.create(2008, 10, 23, 23, 59, 59);
         jd = new JulianDate(dt);
         ymd = new YearMonthDay(jd);
         Assert.assertEquals((int) 2008, (int) ymd.getYear());
@@ -359,14 +364,14 @@ public class TestYearMonthDay {
         Assert.assertEquals((int) ymd.getDayOfYear(), (int) ymd2.getDayOfYear());
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 
-    private ExpectedException rule$expectedException = ExpectedException.none();
+    private final ExpectedException rule$expectedException = ExpectedException.none();
 
     @Rule
     public ExpectedException getRule$expectedException() {

@@ -1,7 +1,6 @@
 apply plugin: 'java-library'
 
 dependencies {
-    api 'joda-time:joda-time:2.2'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
 }
 

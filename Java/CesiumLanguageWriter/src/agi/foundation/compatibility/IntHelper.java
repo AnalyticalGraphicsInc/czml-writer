@@ -4,12 +4,15 @@ import java.text.NumberFormat;
 import java.text.ParsePosition;
 import java.util.Locale;
 
+import javax.annotation.Nonnull;
+
 /**
  * Helper methods related to Ints.
  */
 public final class IntHelper {
     private IntHelper() {}
 
+    @Nonnull
     private static NumberStyles defaultNumberStyle = NumberStyles.INTEGER;
 
     /**
@@ -71,7 +74,7 @@ public final class IntHelper {
      *            An object that supplies culture-specific formatting information about s.
      * @return A 32-bit signed integer equivalent to the number contained in s.
      */
-    public static int parse(String s, NumberStyles style, Locale locale) {
+    public static int parse(String s, @Nonnull NumberStyles style, Locale locale) {
         if (locale == null)
             locale = CultureInfoHelper.getCurrentCulture();
 
@@ -124,7 +127,7 @@ public final class IntHelper {
      *            uninitialized.
      * @return true if s was converted successfully; otherwise, false.
      */
-    public static boolean tryParse(String s, NumberStyles style, Locale locale, int[] out_result) {
+    public static boolean tryParse(String s, @Nonnull NumberStyles style, Locale locale, int[] out_result) {
         if (locale == null)
             locale = CultureInfoHelper.getCurrentCulture();
 

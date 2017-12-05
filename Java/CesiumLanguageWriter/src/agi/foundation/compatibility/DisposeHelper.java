@@ -2,6 +2,7 @@ package agi.foundation.compatibility;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 
 /**
  * Helper methods to safely dispose various types.
@@ -20,7 +21,7 @@ public final class DisposeHelper {
             if (closeable != null)
                 closeable.close();
         } catch (IOException e) {
-            throw new RuntimeIOException(e);
+            throw new UncheckedIOException(e);
         }
     }
 

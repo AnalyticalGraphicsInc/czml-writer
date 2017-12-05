@@ -16,7 +16,11 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumWritingHelper {
     @Before
@@ -42,7 +46,7 @@ public class TestCesiumWritingHelper {
 
     private StringWriter m_stringWriter;
     private CesiumOutputStream m_outputStream;
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {

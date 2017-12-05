@@ -40,11 +40,11 @@ public final class PrimitiveHelper {
     }
 
     public static int hashCode(byte value) {
-        return (int) value;
+        return value;
     }
 
     public static int hashCode(char value) {
-        return (int) value;
+        return value;
     }
 
     public static int hashCode(double value) {
@@ -65,6 +65,6 @@ public final class PrimitiveHelper {
     }
 
     public static int hashCode(short value) {
-        return (int) value;
+        return value;
     }
 }

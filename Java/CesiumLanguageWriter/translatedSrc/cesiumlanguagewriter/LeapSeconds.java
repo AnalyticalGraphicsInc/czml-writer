@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -18,9 +19,64 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class LeapSeconds {
-    private static LeapSeconds s_leapSeconds = new LeapSeconds();
+    /**
+    *  
+    Initializes a new instance with the list of leap seconds that was available
+    when the library was released.
+    
+
+    */
+    public LeapSeconds() {
+        final ArrayList<cesiumlanguagewriter.LeapSecond> tempCollection$0 = new ArrayList<LeapSecond>();
+        tempCollection$0.add(new LeapSecond(2441317.5, 10D));
+        tempCollection$0.add(new LeapSecond(2441499.5, 11D));
+        tempCollection$0.add(new LeapSecond(2441683.5, 12D));
+        tempCollection$0.add(new LeapSecond(2442048.5, 13D));
+        tempCollection$0.add(new LeapSecond(2442413.5, 14D));
+        tempCollection$0.add(new LeapSecond(2442778.5, 15D));
+        tempCollection$0.add(new LeapSecond(2443144.5, 16D));
+        tempCollection$0.add(new LeapSecond(2443509.5, 17D));
+        tempCollection$0.add(new LeapSecond(2443874.5, 18D));
+        tempCollection$0.add(new LeapSecond(2444239.5, 19D));
+        tempCollection$0.add(new LeapSecond(2444786.5, 20D));
+        tempCollection$0.add(new LeapSecond(2445151.5, 21D));
+        tempCollection$0.add(new LeapSecond(2445516.5, 22D));
+        tempCollection$0.add(new LeapSecond(2446247.5, 23D));
+        tempCollection$0.add(new LeapSecond(2447161.5, 24D));
+        tempCollection$0.add(new LeapSecond(2447892.5, 25D));
+        tempCollection$0.add(new LeapSecond(2448257.5, 26D));
+        tempCollection$0.add(new LeapSecond(2448804.5, 27D));
+        tempCollection$0.add(new LeapSecond(2449169.5, 28D));
+        tempCollection$0.add(new LeapSecond(2449534.5, 29D));
+        tempCollection$0.add(new LeapSecond(2450083.5, 30D));
+        tempCollection$0.add(new LeapSecond(2450630.5, 31D));
+        tempCollection$0.add(new LeapSecond(2451179.5, 32D));
+        tempCollection$0.add(new LeapSecond(2453736.5, 33D));
+        tempCollection$0.add(new LeapSecond(2454832.5, 34D));
+        tempCollection$0.add(new LeapSecond(2456109.5, 35D));
+        tempCollection$0.add(new LeapSecond(2457204.5, 36D));
+        tempCollection$0.add(new LeapSecond(2457754.5, 37D));
+        m_leapSeconds = tempCollection$0;
+    }
+
+    /**
+    *  
+    Initializes a new instance with the specified list of leap seconds.
+    
+    
+
+    * @param leapSeconds The list of leap seconds.
+    */
+    public LeapSeconds(Iterable<LeapSecond> leapSeconds) {
+        m_leapSeconds = ListHelper.create(leapSeconds);
+        Collections.sort(m_leapSeconds, s_leapSecondComparer);
+    }
 
     /**
     *  Gets the default (and usually only) instance.
@@ -38,57 +94,6 @@ public class LeapSeconds {
     */
     public static void setInstance(LeapSeconds value) {
         s_leapSeconds = value;
-    }
-
-    /**
-    *  
-    Initializes a new instance with the list of leap seconds that was available
-    when the library was released.
-    
-
-    */
-    public LeapSeconds() {
-        m_leapSeconds = new ArrayList<LeapSecond>();
-        m_leapSeconds.add(new LeapSecond(2441317.5, 10D));
-        m_leapSeconds.add(new LeapSecond(2441499.5, 11D));
-        m_leapSeconds.add(new LeapSecond(2441683.5, 12D));
-        m_leapSeconds.add(new LeapSecond(2442048.5, 13D));
-        m_leapSeconds.add(new LeapSecond(2442413.5, 14D));
-        m_leapSeconds.add(new LeapSecond(2442778.5, 15D));
-        m_leapSeconds.add(new LeapSecond(2443144.5, 16D));
-        m_leapSeconds.add(new LeapSecond(2443509.5, 17D));
-        m_leapSeconds.add(new LeapSecond(2443874.5, 18D));
-        m_leapSeconds.add(new LeapSecond(2444239.5, 19D));
-        m_leapSeconds.add(new LeapSecond(2444786.5, 20D));
-        m_leapSeconds.add(new LeapSecond(2445151.5, 21D));
-        m_leapSeconds.add(new LeapSecond(2445516.5, 22D));
-        m_leapSeconds.add(new LeapSecond(2446247.5, 23D));
-        m_leapSeconds.add(new LeapSecond(2447161.5, 24D));
-        m_leapSeconds.add(new LeapSecond(2447892.5, 25D));
-        m_leapSeconds.add(new LeapSecond(2448257.5, 26D));
-        m_leapSeconds.add(new LeapSecond(2448804.5, 27D));
-        m_leapSeconds.add(new LeapSecond(2449169.5, 28D));
-        m_leapSeconds.add(new LeapSecond(2449534.5, 29D));
-        m_leapSeconds.add(new LeapSecond(2450083.5, 30D));
-        m_leapSeconds.add(new LeapSecond(2450630.5, 31D));
-        m_leapSeconds.add(new LeapSecond(2451179.5, 32D));
-        m_leapSeconds.add(new LeapSecond(2453736.5, 33D));
-        m_leapSeconds.add(new LeapSecond(2454832.5, 34D));
-        m_leapSeconds.add(new LeapSecond(2456109.5, 35D));
-        m_leapSeconds.add(new LeapSecond(2457204.5, 36D));
-    }
-
-    /**
-    *  
-    Initializes a new instance with the specified list of leap seconds.
-    
-    
-
-    * @param leapSeconds The list of leap seconds.
-    */
-    public LeapSeconds(Iterable<LeapSecond> leapSeconds) {
-        m_leapSeconds = ListHelper.create(leapSeconds);
-        Collections.sort(m_leapSeconds, s_compareLeapSecondDate);
     }
 
     /**
@@ -110,11 +115,12 @@ public class LeapSeconds {
     * @param date The date.
     * @return The difference.
     */
-    public final double getTaiMinusUtc(JulianDate date) {
+    public final double getTaiMinusUtc(@Nonnull JulianDate date) {
+        date = date.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
         LeapSecond toFind = new LeapSecond(date, 0.0);
         // Start by assuming we're working with UTC, we'll check later if we're
         // off by one because we really have TAI.
-        int index = Collections.binarySearch(m_leapSeconds, toFind, s_compareLeapSecondDate);
+        int index = Collections.binarySearch(m_leapSeconds, toFind, s_leapSecondComparer);
         if (index < 0) {
             index = ~index;
             --index;
@@ -142,9 +148,9 @@ public class LeapSeconds {
     
     
 
-    * @param date The date, which must be in the TAI 
+    * @param date The date, which must be in the TAI
     {@link TimeStandard}.
-    * @return The resulting UTC 
+    * @return The resulting UTC
     {@link JulianDate}, if it was possible to convert.
     * @deprecated Internal use only.
     * @exception ArgumentOutOfRangeException Thrown if the date could not be
@@ -152,7 +158,8 @@ public class LeapSeconds {
     */
     @Deprecated
     @Internal
-    public final JulianDate convertTaiToUtc(JulianDate date) {
+    @Nonnull
+    public final JulianDate convertTaiToUtc(@Nonnull JulianDate date) {
         @CS2JInfo("Initialization of C# struct variable 'result' added by translator.")
         JulianDate result = new JulianDate();
         final JulianDate[] out$result$1 = {
@@ -174,9 +181,9 @@ public class LeapSeconds {
     
     
 
-    * @param date The date, which must be in the TAI 
+    * @param date The date, which must be in the TAI
     {@link TimeStandard}.
-    * @param result Out parameter for returning the resulting UTC 
+    * @param result Out parameter for returning the resulting UTC
     {@link JulianDate}, if it was possible to convert.
     * @return {@code true} if {@code date} could be converted
     to UTC, otherwise false.
@@ -184,10 +191,10 @@ public class LeapSeconds {
     */
     @Deprecated
     @Internal
-    public final boolean tryConvertTaiToUtc(JulianDate date, JulianDate[] result) {
+    public final boolean tryConvertTaiToUtc(@Nonnull JulianDate date, @Nonnull JulianDate[] result) {
         //treat the request date as if it were UTC, and search for the most recent leap second.
-        LeapSecond toFind = new LeapSecond(date, 0.0);
-        int index = Collections.binarySearch(m_leapSeconds, toFind, s_compareLeapSecondDate);
+        LeapSecond toFind = new LeapSecond(date.getTotalDays(), 0.0);
+        int index = Collections.binarySearch(m_leapSeconds, toFind, s_leapSecondComparer);
         if (index < 0) {
             index = ~index;
             --index;
@@ -213,6 +220,7 @@ public class LeapSeconds {
         return true;
     }
 
+    @Nonnull
     private final JulianDate getDateForIndex(int index) {
         if (index < 0) {
             return new JulianDate(0, 0.0, TimeStandard.COORDINATED_UNIVERSAL_TIME);
@@ -239,15 +247,17 @@ public class LeapSeconds {
     */
     public final boolean doesDayHaveLeapSecond(int julianDayNumber) {
         LeapSecond potentialLeapSecond = new LeapSecond(new JulianDate(julianDayNumber, 43200D, TimeStandard.COORDINATED_UNIVERSAL_TIME), 0.0);
-        return Collections.binarySearch(m_leapSeconds, potentialLeapSecond, s_compareLeapSecondDate) >= 0;
+        return Collections.binarySearch(m_leapSeconds, potentialLeapSecond, s_leapSecondComparer) >= 0;
     }
 
-    private static class CompareLeapSecondDate implements Comparator<LeapSecond> {
-        public final int compare(LeapSecond x, LeapSecond y) {
+    private static LeapSecondComparer s_leapSecondComparer = new LeapSecondComparer();
+    private static LeapSeconds s_leapSeconds = new LeapSeconds();
+    @Nonnull
+    private ArrayList<LeapSecond> m_leapSeconds;
+
+    private static class LeapSecondComparer implements Comparator<LeapSecond> {
+        public final int compare(@Nonnull LeapSecond x, @Nonnull LeapSecond y) {
             return x.getDate().compareTo(y.getDate());
         }
     }
-
-    private ArrayList<LeapSecond> m_leapSeconds;
-    private static CompareLeapSecondDate s_compareLeapSecondDate = new CompareLeapSecondDate();
 }

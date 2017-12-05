@@ -20,7 +20,11 @@ import org.junit.Test;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCartographic {
     /**
@@ -85,6 +89,20 @@ public class TestCartographic {
 
     /**
     *  
+    Tests thats the {@link Cartographic#equalsEpsilon} method returns true
+    when the difference is exactly epsilon.
+    
+
+    */
+    @Test
+    public final void testEqualsEpsilonExact() {
+        Cartographic first = new Cartographic(0.1, 0.1, 0.1);
+        Cartographic second = new Cartographic(0.1, 0.1, 0.1);
+        Assert.assertTrue(second.equalsEpsilon(first, 0D));
+    }
+
+    /**
+    *  
     Tests to ensure the equality fails when comparing incorrect type.
     
 
@@ -93,6 +111,7 @@ public class TestCartographic {
     public final void testEqualityWithWrongType() {
         Cartographic first = new Cartographic(1.0, 2.0, 3.0);
         Cartesian second = new Cartesian(1.0, 2.0, 3.0);
+        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(second));
     }
 
@@ -120,7 +139,7 @@ public class TestCartographic {
     @Test
     public final void testToString() {
         StringBuilder s = new StringBuilder(80);
-        s.append(DoubleHelper.toString((Math.PI), CultureInfoHelper.getCurrentCulture()));
+        s.append(DoubleHelper.toString(Math.PI, CultureInfoHelper.getCurrentCulture()));
         s.append(", ");
         s.append(DoubleHelper.toString(Constants.HalfPi, CultureInfoHelper.getCurrentCulture()));
         s.append(", ");
@@ -130,7 +149,7 @@ public class TestCartographic {
         Assert.assertEquals(s.toString(), test.toString());
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {

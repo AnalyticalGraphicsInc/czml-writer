@@ -21,7 +21,11 @@ import org.junit.Test;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestMatrix3By3 {
     /**
@@ -462,14 +466,14 @@ public class TestMatrix3By3 {
         Assert.assertTrue((new Cartesian(17D, 23D, 32D).equalsType(Matrix3By3.multiply(test, mult))));
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 
-    private ExpectedException rule$expectedException = ExpectedException.none();
+    private final ExpectedException rule$expectedException = ExpectedException.none();
 
     @Rule
     public ExpectedException getRule$expectedException() {

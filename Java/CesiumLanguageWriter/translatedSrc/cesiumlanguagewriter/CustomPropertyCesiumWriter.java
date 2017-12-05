@@ -28,6 +28,7 @@ import java.awt.Color;
 import java.awt.image.RenderedImage;
 import java.net.URI;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -35,7 +36,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWriter<CustomPropertyCesiumWriter> {
     /**
     *  
@@ -255,157 +260,157 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     public CustomPropertyCesiumWriter(String propertyName) {
         super(propertyName);
         m_asBoolean = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(this,
-                "createBooleanAdaptor", new Class[] {}) {
+                "createBooleanAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean> invoke() {
                 return createBooleanAdaptor();
             }
         }, false);
         m_asBoundingRectangle = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createBoundingRectangleAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createBoundingRectangleAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> invoke() {
                         return createBoundingRectangleAdaptor();
                     }
                 }, false);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
                         return createCartesianAdaptor();
                     }
                 }, false);
         m_asCartographicRadians = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic>>(this, "createCartographicRadiansAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic>>(this, "createCartographicRadiansAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic> invoke() {
                         return createCartographicRadiansAdaptor();
                     }
                 }, false);
         m_asCartographicDegrees = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic>>(this, "createCartographicDegreesAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic>>(this, "createCartographicDegreesAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic> invoke() {
                         return createCartographicDegreesAdaptor();
                     }
                 }, false);
         m_asCartesian2 = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular> invoke() {
                         return createCartesian2Adaptor();
                     }
                 }, false);
         m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian> invoke() {
                         return createUnitCartesianAdaptor();
                     }
                 }, false);
         m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(this, "createSphericalAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(this, "createSphericalAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical> invoke() {
                         return createSphericalAdaptor();
                     }
                 }, false);
         m_asUnitSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(this, "createUnitSphericalAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(this, "createUnitSphericalAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical> invoke() {
                         return createUnitSphericalAdaptor();
                     }
                 }, false);
         m_asRgba = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(
-                this, "createRgbaAdaptor", new Class[] {}) {
+                this, "createRgbaAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color> invoke() {
                 return createRgbaAdaptor();
             }
         }, false);
         m_asRgbaf = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(
-                this, "createRgbafAdaptor", new Class[] {}) {
+                this, "createRgbafAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color> invoke() {
                 return createRgbafAdaptor();
             }
         }, false);
         m_asColorBlendMode = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode>>(this, "createColorBlendModeAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode>>(this, "createColorBlendModeAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode> invoke() {
                         return createColorBlendModeAdaptor();
                     }
                 }, false);
         m_asCornerType = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(
-                this, "createCornerTypeAdaptor", new Class[] {}) {
+                this, "createCornerTypeAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType> invoke() {
                 return createCornerTypeAdaptor();
             }
         }, false);
         m_asHeightReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(this, "createHeightReferenceAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(this, "createHeightReferenceAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference> invoke() {
                         return createHeightReferenceAdaptor();
                     }
                 }, false);
         m_asHorizontalOrigin = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(this, "createHorizontalOriginAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(this, "createHorizontalOriginAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHorizontalOrigin> invoke() {
                         return createHorizontalOriginAdaptor();
                     }
                 }, false);
         m_asLabelStyle = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle>>(
-                this, "createLabelStyleAdaptor", new Class[] {}) {
+                this, "createLabelStyleAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle> invoke() {
                 return createLabelStyleAdaptor();
             }
         }, false);
         m_asNumber = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double>>(this, "createNumberAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double>>(this, "createNumberAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double> invoke() {
                         return createNumberAdaptor();
                     }
                 }, false);
         m_asNearFarScalar = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<NearFarScalar>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<NearFarScalar>>(this, "createNearFarScalarAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<NearFarScalar>>(this, "createNearFarScalarAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<NearFarScalar> invoke() {
                         return createNearFarScalarAdaptor();
                     }
                 }, false);
         m_asUnitQuaternion = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(this, "createUnitQuaternionAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(this, "createUnitQuaternionAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion> invoke() {
                         return createUnitQuaternionAdaptor();
                     }
                 }, false);
         m_asShadowMode = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(
-                this, "createShadowModeAdaptor", new Class[] {}) {
+                this, "createShadowModeAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode> invoke() {
                 return createShadowModeAdaptor();
             }
         }, false);
-        m_asString = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this,
-                "createStringAdaptor", new Class[] {}) {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
-                return createStringAdaptor();
-            }
-        }, false);
+        m_asString = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this, "createStringAdaptor") {
+                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
+                        return createStringAdaptor();
+                    }
+                }, false);
         m_asStripeOrientation = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation>>(this, "createStripeOrientationAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation>>(this, "createStripeOrientationAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation> invoke() {
                         return createStripeOrientationAdaptor();
                     }
                 }, false);
         m_asWsen = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(this, "createWsenAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(this, "createWsenAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent> invoke() {
                         return createWsenAdaptor();
                     }
                 }, false);
         m_asWsenDegrees = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(this, "createWsenDegreesAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(this, "createWsenDegreesAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent> invoke() {
                         return createWsenDegreesAdaptor();
                     }
                 }, false);
         m_asUri = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(this,
-                "createUriAdaptor", new Class[] {}) {
+                "createUriAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource> invoke() {
                 return createUriAdaptor();
             }
         }, false);
         m_asVerticalOrigin = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(this, "createVerticalOriginAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(this, "createVerticalOriginAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin> invoke() {
                         return createVerticalOriginAdaptor();
                     }
@@ -423,163 +428,172 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     protected CustomPropertyCesiumWriter(CustomPropertyCesiumWriter existingInstance) {
         super(existingInstance);
         m_asBoolean = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(this,
-                "createBooleanAdaptor", new Class[] {}) {
+                "createBooleanAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean> invoke() {
                 return createBooleanAdaptor();
             }
         }, false);
         m_asBoundingRectangle = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createBoundingRectangleAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createBoundingRectangleAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> invoke() {
                         return createBoundingRectangleAdaptor();
                     }
                 }, false);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
                         return createCartesianAdaptor();
                     }
                 }, false);
         m_asCartographicRadians = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic>>(this, "createCartographicRadiansAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic>>(this, "createCartographicRadiansAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic> invoke() {
                         return createCartographicRadiansAdaptor();
                     }
                 }, false);
         m_asCartographicDegrees = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic>>(this, "createCartographicDegreesAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic>>(this, "createCartographicDegreesAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartographic> invoke() {
                         return createCartographicDegreesAdaptor();
                     }
                 }, false);
         m_asCartesian2 = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular> invoke() {
                         return createCartesian2Adaptor();
                     }
                 }, false);
         m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian> invoke() {
                         return createUnitCartesianAdaptor();
                     }
                 }, false);
         m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(this, "createSphericalAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(this, "createSphericalAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical> invoke() {
                         return createSphericalAdaptor();
                     }
                 }, false);
         m_asUnitSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(this, "createUnitSphericalAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(this, "createUnitSphericalAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitSpherical> invoke() {
                         return createUnitSphericalAdaptor();
                     }
                 }, false);
         m_asRgba = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(
-                this, "createRgbaAdaptor", new Class[] {}) {
+                this, "createRgbaAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color> invoke() {
                 return createRgbaAdaptor();
             }
         }, false);
         m_asRgbaf = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(
-                this, "createRgbafAdaptor", new Class[] {}) {
+                this, "createRgbafAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color> invoke() {
                 return createRgbafAdaptor();
             }
         }, false);
         m_asColorBlendMode = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode>>(this, "createColorBlendModeAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode>>(this, "createColorBlendModeAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode> invoke() {
                         return createColorBlendModeAdaptor();
                     }
                 }, false);
         m_asCornerType = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(
-                this, "createCornerTypeAdaptor", new Class[] {}) {
+                this, "createCornerTypeAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType> invoke() {
                 return createCornerTypeAdaptor();
             }
         }, false);
         m_asHeightReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(this, "createHeightReferenceAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(this, "createHeightReferenceAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference> invoke() {
                         return createHeightReferenceAdaptor();
                     }
                 }, false);
         m_asHorizontalOrigin = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(this, "createHorizontalOriginAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(this, "createHorizontalOriginAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHorizontalOrigin> invoke() {
                         return createHorizontalOriginAdaptor();
                     }
                 }, false);
         m_asLabelStyle = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle>>(
-                this, "createLabelStyleAdaptor", new Class[] {}) {
+                this, "createLabelStyleAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle> invoke() {
                 return createLabelStyleAdaptor();
             }
         }, false);
         m_asNumber = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double>>(this, "createNumberAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double>>(this, "createNumberAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double> invoke() {
                         return createNumberAdaptor();
                     }
                 }, false);
         m_asNearFarScalar = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<NearFarScalar>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<NearFarScalar>>(this, "createNearFarScalarAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<NearFarScalar>>(this, "createNearFarScalarAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<NearFarScalar> invoke() {
                         return createNearFarScalarAdaptor();
                     }
                 }, false);
         m_asUnitQuaternion = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(this, "createUnitQuaternionAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(this, "createUnitQuaternionAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion> invoke() {
                         return createUnitQuaternionAdaptor();
                     }
                 }, false);
         m_asShadowMode = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(
-                this, "createShadowModeAdaptor", new Class[] {}) {
+                this, "createShadowModeAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode> invoke() {
                 return createShadowModeAdaptor();
             }
         }, false);
-        m_asString = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this,
-                "createStringAdaptor", new Class[] {}) {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
-                return createStringAdaptor();
-            }
-        }, false);
+        m_asString = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this, "createStringAdaptor") {
+                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
+                        return createStringAdaptor();
+                    }
+                }, false);
         m_asStripeOrientation = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation>>(this, "createStripeOrientationAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation>>(this, "createStripeOrientationAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation> invoke() {
                         return createStripeOrientationAdaptor();
                     }
                 }, false);
         m_asWsen = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(this, "createWsenAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(this, "createWsenAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent> invoke() {
                         return createWsenAdaptor();
                     }
                 }, false);
         m_asWsenDegrees = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(this, "createWsenDegreesAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(this, "createWsenDegreesAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent> invoke() {
                         return createWsenDegreesAdaptor();
                     }
                 }, false);
         m_asUri = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(this,
-                "createUriAdaptor", new Class[] {}) {
+                "createUriAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource> invoke() {
                 return createUriAdaptor();
             }
         }, false);
         m_asVerticalOrigin = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(this, "createVerticalOriginAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(this, "createVerticalOriginAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin> invoke() {
                         return createVerticalOriginAdaptor();
                     }
                 }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public CustomPropertyCesiumWriter clone() {
         return new CustomPropertyCesiumWriter(this);
@@ -612,7 +626,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The value.
     */
-    public final void writeBoundingRectangle(BoundingRectangle value) {
+    public final void writeBoundingRectangle(@Nonnull BoundingRectangle value) {
         final String PropertyName = BoundingRectanglePropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -661,7 +675,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The value.
     */
-    public final void writeCartesian(Cartesian value) {
+    public final void writeCartesian(@Nonnull Cartesian value) {
         final String PropertyName = CartesianPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -710,7 +724,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The interval.
     */
-    public final void writeCartographicRadians(Cartographic value) {
+    public final void writeCartographicRadians(@Nonnull Cartographic value) {
         final String PropertyName = CartographicRadiansPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -759,7 +773,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The interval.
     */
-    public final void writeCartographicDegrees(Cartographic value) {
+    public final void writeCartographicDegrees(@Nonnull Cartographic value) {
         final String PropertyName = CartographicDegreesPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -808,7 +822,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The value.
     */
-    public final void writeCartesian2(Rectangular value) {
+    public final void writeCartesian2(@Nonnull Rectangular value) {
         final String PropertyName = Cartesian2PropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -871,7 +885,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The value.
     */
-    public final void writeUnitCartesian(UnitCartesian value) {
+    public final void writeUnitCartesian(@Nonnull UnitCartesian value) {
         final String PropertyName = UnitCartesianPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -920,7 +934,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The value.
     */
-    public final void writeSpherical(Spherical value) {
+    public final void writeSpherical(@Nonnull Spherical value) {
         final String PropertyName = SphericalPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -969,7 +983,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The value.
     */
-    public final void writeUnitSpherical(UnitSpherical value) {
+    public final void writeUnitSpherical(@Nonnull UnitSpherical value) {
         final String PropertyName = UnitSphericalPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1018,7 +1032,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param color The color.
     */
-    public final void writeRgba(Color color) {
+    public final void writeRgba(@Nonnull Color color) {
         final String PropertyName = RgbaPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1088,7 +1102,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param color The color.
     */
-    public final void writeRgbaf(Color color) {
+    public final void writeRgbaf(@Nonnull Color color) {
         final String PropertyName = RgbafPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1158,7 +1172,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The blend mode.
     */
-    public final void writeColorBlendMode(CesiumColorBlendMode value) {
+    public final void writeColorBlendMode(@Nonnull CesiumColorBlendMode value) {
         final String PropertyName = ColorBlendModePropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1173,7 +1187,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The style of a corner.
     */
-    public final void writeCornerType(CesiumCornerType value) {
+    public final void writeCornerType(@Nonnull CesiumCornerType value) {
         final String PropertyName = CornerTypePropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1188,7 +1202,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The height reference.
     */
-    public final void writeHeightReference(CesiumHeightReference value) {
+    public final void writeHeightReference(@Nonnull CesiumHeightReference value) {
         final String PropertyName = HeightReferencePropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1203,7 +1217,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The horizontal origin.
     */
-    public final void writeHorizontalOrigin(CesiumHorizontalOrigin value) {
+    public final void writeHorizontalOrigin(@Nonnull CesiumHorizontalOrigin value) {
         final String PropertyName = HorizontalOriginPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1218,7 +1232,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The label style.
     */
-    public final void writeLabelStyle(CesiumLabelStyle value) {
+    public final void writeLabelStyle(@Nonnull CesiumLabelStyle value) {
         final String PropertyName = LabelStylePropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1282,7 +1296,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The value.
     */
-    public final void writeNearFarScalar(NearFarScalar value) {
+    public final void writeNearFarScalar(@Nonnull NearFarScalar value) {
         final String PropertyName = NearFarScalarPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1349,7 +1363,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The value.
     */
-    public final void writeUnitQuaternion(UnitQuaternion value) {
+    public final void writeUnitQuaternion(@Nonnull UnitQuaternion value) {
         final String PropertyName = UnitQuaternionPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1398,7 +1412,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The shadow mode.
     */
-    public final void writeShadowMode(CesiumShadowMode value) {
+    public final void writeShadowMode(@Nonnull CesiumShadowMode value) {
         final String PropertyName = ShadowModePropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1428,7 +1442,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The orientation.
     */
-    public final void writeStripeOrientation(CesiumStripeOrientation value) {
+    public final void writeStripeOrientation(@Nonnull CesiumStripeOrientation value) {
         final String PropertyName = StripeOrientationPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1591,7 +1605,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
-    public final void writeUri(URI uri, CesiumResourceBehavior resourceBehavior) {
+    public final void writeUri(URI uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         writeUri(uri.toString(), resourceBehavior);
     }
 
@@ -1605,7 +1619,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
-    public final void writeUri(String uri, CesiumResourceBehavior resourceBehavior) {
+    public final void writeUri(String uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         final String PropertyName = UriPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1665,7 +1679,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * @param image The image.  A data URI will be created for this image.
     * @param imageFormat The image format to use to encode the image in the data URI.
     */
-    public final void writeUri(RenderedImage image, CesiumImageFormat imageFormat) {
+    public final void writeUri(RenderedImage image, @Nonnull CesiumImageFormat imageFormat) {
         final String PropertyName = UriPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1680,7 +1694,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param value The vertical origin.
     */
-    public final void writeVerticalOrigin(CesiumVerticalOrigin value) {
+    public final void writeVerticalOrigin(@Nonnull CesiumVerticalOrigin value) {
         final String PropertyName = VerticalOriginPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -1973,7 +1987,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     private final ICesiumValuePropertyWriter<CesiumColorBlendMode> createColorBlendModeAdaptor() {
         return new CesiumWriterAdaptor<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumColorBlendMode>(this,
                 new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumColorBlendMode>() {
-                    public void invoke(CustomPropertyCesiumWriter me, CesiumColorBlendMode value) {
+                    public void invoke(CustomPropertyCesiumWriter me, @Nonnull CesiumColorBlendMode value) {
                         me.writeColorBlendMode(value);
                     }
                 });
@@ -1994,7 +2008,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     private final ICesiumValuePropertyWriter<CesiumCornerType> createCornerTypeAdaptor() {
         return new CesiumWriterAdaptor<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumCornerType>(this,
                 new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumCornerType>() {
-                    public void invoke(CustomPropertyCesiumWriter me, CesiumCornerType value) {
+                    public void invoke(CustomPropertyCesiumWriter me, @Nonnull CesiumCornerType value) {
                         me.writeCornerType(value);
                     }
                 });
@@ -2015,7 +2029,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     private final ICesiumValuePropertyWriter<CesiumHeightReference> createHeightReferenceAdaptor() {
         return new CesiumWriterAdaptor<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumHeightReference>(this,
                 new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumHeightReference>() {
-                    public void invoke(CustomPropertyCesiumWriter me, CesiumHeightReference value) {
+                    public void invoke(CustomPropertyCesiumWriter me, @Nonnull CesiumHeightReference value) {
                         me.writeHeightReference(value);
                     }
                 });
@@ -2036,7 +2050,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     private final ICesiumValuePropertyWriter<CesiumHorizontalOrigin> createHorizontalOriginAdaptor() {
         return new CesiumWriterAdaptor<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumHorizontalOrigin>(this,
                 new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumHorizontalOrigin>() {
-                    public void invoke(CustomPropertyCesiumWriter me, CesiumHorizontalOrigin value) {
+                    public void invoke(CustomPropertyCesiumWriter me, @Nonnull CesiumHorizontalOrigin value) {
                         me.writeHorizontalOrigin(value);
                     }
                 });
@@ -2057,7 +2071,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     private final ICesiumValuePropertyWriter<CesiumLabelStyle> createLabelStyleAdaptor() {
         return new CesiumWriterAdaptor<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumLabelStyle>(this,
                 new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumLabelStyle>() {
-                    public void invoke(CustomPropertyCesiumWriter me, CesiumLabelStyle value) {
+                    public void invoke(CustomPropertyCesiumWriter me, @Nonnull CesiumLabelStyle value) {
                         me.writeLabelStyle(value);
                     }
                 });
@@ -2153,7 +2167,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     private final ICesiumValuePropertyWriter<CesiumShadowMode> createShadowModeAdaptor() {
         return new CesiumWriterAdaptor<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumShadowMode>(this,
                 new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumShadowMode>() {
-                    public void invoke(CustomPropertyCesiumWriter me, CesiumShadowMode value) {
+                    public void invoke(CustomPropertyCesiumWriter me, @Nonnull CesiumShadowMode value) {
                         me.writeShadowMode(value);
                     }
                 });
@@ -2194,7 +2208,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     private final ICesiumValuePropertyWriter<CesiumStripeOrientation> createStripeOrientationAdaptor() {
         return new CesiumWriterAdaptor<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumStripeOrientation>(this,
                 new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumStripeOrientation>() {
-                    public void invoke(CustomPropertyCesiumWriter me, CesiumStripeOrientation value) {
+                    public void invoke(CustomPropertyCesiumWriter me, @Nonnull CesiumStripeOrientation value) {
                         me.writeStripeOrientation(value);
                     }
                 });
@@ -2286,7 +2300,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     private final ICesiumValuePropertyWriter<CesiumVerticalOrigin> createVerticalOriginAdaptor() {
         return new CesiumWriterAdaptor<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumVerticalOrigin>(this,
                 new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.CustomPropertyCesiumWriter, cesiumlanguagewriter.CesiumVerticalOrigin>() {
-                    public void invoke(CustomPropertyCesiumWriter me, CesiumVerticalOrigin value) {
+                    public void invoke(CustomPropertyCesiumWriter me, @Nonnull CesiumVerticalOrigin value) {
                         me.writeVerticalOrigin(value);
                     }
                 });

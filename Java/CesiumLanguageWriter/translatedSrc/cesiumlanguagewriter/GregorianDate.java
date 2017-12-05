@@ -19,11 +19,14 @@ import agi.foundation.compatibility.ObjectHelper;
 import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringComparison;
 import agi.foundation.compatibility.StringHelper;
+import java.time.DayOfWeek;
+import java.time.ZonedDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Locale;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  *  
@@ -37,7 +40,11 @@ import org.joda.time.DateTimeZone;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class GregorianDate implements Comparable<GregorianDate>, IEquatable<GregorianDate>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -46,11 +53,11 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     /**
     *  
-    This class was taken from the Mono {@link DateTime} class, and
+    This class was taken from the Mono {@link ZonedDateTime} class, and
     substantially altered to fit the needs of Gregorian Date.  Gregorian Date
     assumes UTC, so all time-zone handling was ripped out.  The "f" parsing was
     also changed to allow more precision than the 7 digits that
-    {@link DateTime} mandates.
+    {@link ZonedDateTime} mandates.
 
     Note: any comment from here on is taken from the Mono source, so any references
     to bug numbers refer to their bugs.
@@ -62,7 +69,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         /**
         *  
         Build an array of date/time patterns that support up to the number of
-        fractional second digits specified.  {@link DateTime} will only parse up
+        fractional second digits specified.  {@link ZonedDateTime} will only parse up
         to seven.
         
         
@@ -91,7 +98,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             return result.toArray(new String[result.size()]);
         }
 
-        public static GregorianDate parse(String s, Locale provider) {
+        @Nonnull
+        public static GregorianDate parse(@Nonnull String s, @Nullable Locale provider) {
             if (s == null) {
                 throw new ArgumentNullException("s");
             }
@@ -113,7 +121,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             return res;
         }
 
-        public static GregorianDate parseExact(String s, String[] format, Locale provider) {
+        @Nonnull
+        public static GregorianDate parseExact(@Nonnull String s, @Nonnull String[] format, @Nullable Locale provider) {
             if (s == null) {
                 throw new ArgumentNullException("s");
             }
@@ -144,7 +153,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             return result;
         }
 
-        public static boolean tryParse(String s, Locale provider, GregorianDate[] result) {
+        public static boolean tryParse(String s, Locale provider, @Nonnull GregorianDate[] result) {
             if (s != null) {
                 try {
                     NumberFormatException exception = null;
@@ -160,8 +169,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             return false;
         }
 
-        private static boolean parseExact(String s, String[] formats, DateTimeFormatInfo dfi, GregorianDate[] ret, boolean exact, boolean[] longYear, boolean setExceptionOnError,
-                NumberFormatException[] exception) {
+        private static boolean parseExact(String s, String[] formats, DateTimeFormatInfo dfi, @Nonnull GregorianDate[] ret, boolean exact, @Nonnull boolean[] longYear, boolean setExceptionOnError,
+                @Nonnull NumberFormatException[] exception) {
             int i;
             boolean incompleteFormat = false;
             for (i = 0; i < formats.length; i++) {
@@ -192,7 +201,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             return false;
         }
 
-        private static boolean coreParse(String s, Locale provider, GregorianDate[] result, boolean setExceptionOnError, NumberFormatException[] exception) {
+        private static boolean coreParse(String s, Locale provider, @Nonnull GregorianDate[] result, boolean setExceptionOnError, @Nonnull NumberFormatException[] exception) {
             if (StringHelper.isNullOrEmpty(s)) {
                 if (setExceptionOnError) {
                     exception[0] = new NumberFormatException(CesiumLocalization.getGregorianDateFormatInvalid());
@@ -355,7 +364,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             return false;
         }
 
-        private static String[] yearMonthDayFormats(DateTimeFormatInfo dfi, boolean setExceptionOnError, NumberFormatException[] ex) {
+        private static String[] yearMonthDayFormats(DateTimeFormatInfo dfi, boolean setExceptionOnError, @Nonnull NumberFormatException[] ex) {
             int dayIndex = dfi.getShortDatePattern().indexOf('d');
             int monthIndex = dfi.getShortDatePattern().indexOf('M');
             int yearIndex = dfi.getShortDatePattern().indexOf('y');
@@ -393,7 +402,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             return null;
         }
 
-        private static boolean parseDateSeparator(String s, int sPos, DateTimeFormatInfo dfi, boolean exact, int[] numParsed) {
+        private static boolean parseDateSeparator(String s, int sPos, DateTimeFormatInfo dfi, boolean exact, @Nonnull int[] numParsed) {
             numParsed[0] = -1;
             if (exact && s.charAt(sPos) != '/') {
                 return false;
@@ -405,7 +414,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             return true;
         }
 
-        private static long parseNumber(String s, int valuePos, int minDigits, int digits, boolean leadingzero, int[] numParsed) {
+        private static long parseNumber(String s, int valuePos, int minDigits, int digits, boolean leadingzero, @Nonnull int[] numParsed) {
             long number = 0;
             int i;
             if (!leadingzero) {
@@ -438,7 +447,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             return number;
         }
 
-        private static int parseEnum(String s, int sPos, String[] values, String[] invValues, boolean exact, int[] numParsed) {
+        private static int parseEnum(String s, int sPos, String[] values, String[] invValues, boolean exact, @Nonnull int[] numParsed) {
             // FIXME: I know this is somehow lame code. Probably
             // it should iterate all the enum value and return
             // the longest match. However right now I don't see
@@ -466,7 +475,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             return -1;
         }
 
-        private static boolean parseString(String s, int sPos, int maxlength, String value, int[] numParsed) {
+        private static boolean parseString(String s, int sPos, int maxlength, String value, @Nonnull int[] numParsed) {
             if (maxlength <= 0) {
                 maxlength = value.length();
             }
@@ -480,7 +489,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
         // Note that in case of Parse (exact == false) we check both for AM/PM
         // and the culture specific AM/PM strings.
-        private static boolean parseAmPm(String s, int valuePos, int num, DateTimeFormatInfo dfi, boolean exact, int[] numParsed, int[] ampm) {
+        private static boolean parseAmPm(String s, int valuePos, int num, DateTimeFormatInfo dfi, boolean exact, @Nonnull int[] numParsed, @Nonnull int[] ampm) {
             numParsed[0] = -1;
             if (ampm[0] != -1) {
                 return false;
@@ -511,7 +520,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
         // Note that in case of Parse (exact == false) we check both for ':'
         // and the culture specific TimeSperator
-        private static boolean parseTimeSeparator(String s, int sPos, DateTimeFormatInfo dfi, boolean exact, int[] numParsed) {
+        private static boolean parseTimeSeparator(String s, int sPos, DateTimeFormatInfo dfi, boolean exact, @Nonnull int[] numParsed) {
             String timeSeparator = dfi.getTimeSeparator();
             return parseString(s, sPos, 0, timeSeparator, numParsed) || !exact && parseString(s, sPos, 0, ":", numParsed);
         }
@@ -523,7 +532,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             return pos < s.length() && Character.isLetter(s.charAt(pos));
         }
 
-        private static boolean doParse(String s, String firstPart, String secondPart, boolean exact, GregorianDate[] result, DateTimeFormatInfo dfi, boolean[] incompleteFormat, boolean[] longYear) {
+        private static boolean doParse(String s, String firstPart, String secondPart, boolean exact, @Nonnull GregorianDate[] result, DateTimeFormatInfo dfi, @Nonnull boolean[] incompleteFormat,
+                @Nonnull boolean[] longYear) {
             boolean useInvariant = false;
             boolean flexibleTwoPartsParsing = !exact && secondPart != null;
             incompleteFormat[0] = false;
@@ -1094,7 +1104,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             // If no date was given
             if ((day == -1) && (month == -1) && (year == -1)) {
                 day = DateTimeHelper.today().getDayOfMonth();
-                month = DateTimeHelper.today().getMonthOfYear();
+                month = DateTimeHelper.today().getMonthValue();
                 year = DateTimeHelper.today().getYear();
             }
             if (day == -1) {
@@ -1120,7 +1130,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             return true;
         }
 
-        private static String getStandardPattern(char format, DateTimeFormatInfo dfi, boolean[] useInvariant) {
+        private static String getStandardPattern(char format, DateTimeFormatInfo dfi, @Nonnull boolean[] useInvariant) {
             String pattern;
             useInvariant[0] = false;
             switch (format) {
@@ -1241,7 +1251,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
         // This is intended as a last resort when all the other formats fail to parse a "day of year" format
         // This will throw exceptions if it cannot parse the string
-        private static boolean parseIso8601DayOfYear(String isoString, DateTimeFormatInfo dfi, GregorianDate[] result, boolean setExceptionOnError, NumberFormatException[] exception) {
+        private static boolean parseIso8601DayOfYear(String isoString, DateTimeFormatInfo dfi, @Nonnull GregorianDate[] result, boolean setExceptionOnError, @Nonnull NumberFormatException[] exception) {
             // This is a last resort case to handle the ISO8601 "day of year" format supported by STK
             // Format: yyyy-dddTHH:mm:ss.f*
             result[0] = new GregorianDate();
@@ -1314,7 +1324,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             return true;
         }
 
-        public static String toString(GregorianDate dt, String format, Locale provider) {
+        @Nonnull
+        public static String toString(@Nonnull GregorianDate dt, @Nullable String format, @Nullable Locale provider) {
             DateTimeFormatInfo dfi = DateTimeFormatInfo.getInstance(provider);
             NumberFormatInfo nfi = NumberFormatInfo.getInstance(provider);
             if (StringHelper.isNullOrEmpty(format)) {
@@ -1645,14 +1656,13 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     public GregorianDate(int year, int month, int day, int hour, int minute, double second) {
-        if (isValid(year, month, day, hour, minute, second)) {
-            m_yearMonthDay = new YearMonthDay(year, month, day);
-            m_hour = hour;
-            m_minute = minute;
-            m_second = second;
-        } else {
+        if (!isValid(year, month, day, hour, minute, second)) {
             throw new ArgumentException(CesiumLocalization.getHourMinuteSecondInvalidArgument());
         }
+        m_yearMonthDay = new YearMonthDay(year, month, day);
+        m_hour = hour;
+        m_minute = minute;
+        m_second = second;
     }
 
     /**
@@ -1702,15 +1712,14 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     public GregorianDate(int year, int dayOfYear, int hour, int minute, double second) {
-        YearMonthDay ymd = new YearMonthDay(year, dayOfYear);
-        if (isValid(year, ymd.getMonth(), ymd.getDay(), hour, minute, second)) {
-            m_yearMonthDay = ymd;
-            m_hour = hour;
-            m_minute = minute;
-            m_second = second;
-        } else {
+        cesiumlanguagewriter.YearMonthDay yearMonthDay = new YearMonthDay(year, dayOfYear);
+        if (!isValid(year, yearMonthDay.getMonth(), yearMonthDay.getDay(), hour, minute, second)) {
             throw new ArgumentException(CesiumLocalization.getHourMinuteSecondInvalidArgument());
         }
+        m_yearMonthDay = yearMonthDay;
+        m_hour = hour;
+        m_minute = minute;
+        m_second = second;
     }
 
     /**
@@ -1729,7 +1738,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     public GregorianDate(int year, double daysOfYear) {
         m_yearMonthDay = new YearMonthDay(year, (int) daysOfYear);
         double fraction = daysOfYear % 1;
-        double seconds = fraction * 86400.0;
+        double seconds = fraction * TimeConstants.SecondsPerDay;
         m_hour = (int) (seconds / SecondsPerHour);
         seconds -= m_hour * SecondsPerHour;
         m_minute = (int) (seconds / SecondsPerMinute);
@@ -1747,7 +1756,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     * @param julianDate The {@link JulianDate}.
     */
-    public GregorianDate(JulianDate julianDate) {
+    public GregorianDate(@Nonnull JulianDate julianDate) {
         this(julianDate, TimeStandard.COORDINATED_UNIVERSAL_TIME);
     }
 
@@ -1766,7 +1775,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     in.
     
     */
-    public GregorianDate(JulianDate julianDate, TimeStandard timeStandard) {
+    public GregorianDate(@Nonnull JulianDate julianDate, @Nonnull TimeStandard timeStandard) {
         boolean isLeapSecond = false;
         @CS2JInfo("Initialization of C# struct variable 'convertedJulianDate' added by translator.")
         JulianDate convertedJulianDate = new JulianDate();
@@ -1798,20 +1807,20 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     /**
     *  
     Initializes a {@link GregorianDate} from the provided
-    {@link DateTime}.  If the provided {@link DateTime} is in local
+    {@link ZonedDateTime}.  If the provided {@link ZonedDateTime} is in local
     time, it is converted to UTC.
     
     
 
-    * @param dateTime The {@link DateTime}.
+    * @param dateTime The {@link ZonedDateTime}.
     */
-    public GregorianDate(DateTime dateTime) {
-        if (dateTime.getZone() == DateTimeZone.getDefault()) {
-            dateTime = dateTime.withZone(org.joda.time.DateTimeZone.UTC);
+    public GregorianDate(@Nonnull ZonedDateTime dateTime) {
+        {
+            dateTime = DateTimeHelper.toUniversalTime(dateTime);
         }
-        m_yearMonthDay = new YearMonthDay(dateTime.getYear(), dateTime.getMonthOfYear(), dateTime.getDayOfMonth());
-        m_hour = dateTime.getHourOfDay();
-        m_minute = dateTime.getMinuteOfHour();
+        m_yearMonthDay = new YearMonthDay(dateTime.getYear(), dateTime.getMonthValue(), dateTime.getDayOfMonth());
+        m_hour = dateTime.getHour();
+        m_minute = dateTime.getMinute();
         final long ticksPerMinute = 600000000L;
         final double ticksPerSecond = 1.0e7;
         m_second = DateTimeHelper.getTicks(dateTime) % ticksPerMinute / ticksPerSecond;
@@ -1904,7 +1913,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     of the week. This property value ranges from zero, indicating Sunday, to six,
     indicating Saturday.
     */
-    public final int getDayOfWeek() {
+    @Nonnull
+    public final DayOfWeek getDayOfWeek() {
         return m_yearMonthDay.getDayOfWeek();
     }
 
@@ -1928,6 +1938,16 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     */
     private final boolean getIsLeapSecond() {
         return m_second >= 60.0;
+    }
+
+    /**
+    *  Gets the {@link GregorianDate} that represents the current date and time.
+    
+
+    */
+    @Nonnull
+    public static GregorianDate getNow() {
+        return new GregorianDate(DateTimeHelper.utcNow());
     }
 
     /**
@@ -1986,6 +2006,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @return A {@link JulianDate} representing this date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final JulianDate toJulianDate() {
         return toJulianDate(TimeStandard.COORDINATED_UNIVERSAL_TIME);
     }
@@ -2006,7 +2027,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @return A {@link JulianDate} representing this date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final JulianDate toJulianDate(TimeStandard timeStandard) {
+    @Nonnull
+    public final JulianDate toJulianDate(@Nonnull TimeStandard timeStandard) {
         int julianDayNumber = m_yearMonthDay.getJulianDayNumber();
         double julianSecondsOfDay = getJulianSecondsOfDay();
         if (getIsLeapSecond()) {
@@ -2022,24 +2044,25 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    * Convert this {@link GregorianDate} to a {@link DateTime}.
-    The {@link DateTime} will be in UTC.
+    * Convert this {@link GregorianDate} to a {@link ZonedDateTime}.
+    The {@link ZonedDateTime} will be in UTC.
 
 
 
-    * @return A {@link DateTime} representing this date.
+    * @return A {@link ZonedDateTime} representing this date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final DateTime toDateTime() {
-        DateTime date = new DateTime(m_yearMonthDay.getYear(), m_yearMonthDay.getMonth(), m_yearMonthDay.getDay(), 0, 0, 0, 0, org.joda.time.DateTimeZone.UTC);
+    @Nonnull
+    public final ZonedDateTime toDateTime() {
+        ZonedDateTime date = DateTimeHelper.create(m_yearMonthDay.getYear(), m_yearMonthDay.getMonth(), m_yearMonthDay.getDay());
         final long ticksPerHour = 36000000000L;
         final long ticksPerMinute = 600000000L;
         final long ticksPerSecond = 10000000L;
         long ticks = DateTimeHelper.getTicks(date);
         ticks += m_hour * ticksPerHour;
         ticks += m_minute * ticksPerMinute;
-        ticks += (long) (MathHelper.round(m_second, 7) * ticksPerSecond);
-        return DateTimeHelper.fromTicks(ticks, DateTimeZone.UTC);
+        ticks += (long) MathHelper.round(m_second * ticksPerSecond);
+        return DateTimeHelper.create(ticks, ZoneOffset.UTC);
     }
 
     /**
@@ -2055,6 +2078,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @return The rounded date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final GregorianDate roundSeconds(int digits) {
         return roundSeconds(digits, TimeStandard.COORDINATED_UNIVERSAL_TIME);
     }
@@ -2075,39 +2099,15 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @return The rounded date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final GregorianDate roundSeconds(int digits, TimeStandard timeStandard) {
-        double maxSeconds = 60.0;
-        if (timeStandard == TimeStandard.COORDINATED_UNIVERSAL_TIME && m_hour == 23 && m_minute == 59
-                && LeapSeconds.getInstance().doesDayHaveLeapSecond(new YearMonthDay(getYear(), getMonth(), getDay()).getJulianDayNumber())) {
-            maxSeconds = 61.0;
-        }
-        int year = getYear();
-        int month = getMonth();
-        int day = getDay();
-        int hour = m_hour;
-        int minute = m_minute;
+    @Nonnull
+    public final GregorianDate roundSeconds(int digits, @Nonnull TimeStandard timeStandard) {
         double roundedSeconds = MathHelper.round(m_second, digits);
-        if (roundedSeconds >= maxSeconds) {
-            roundedSeconds = 0.0;
-            ++minute;
+        double secondsDifference = roundedSeconds - m_second;
+        // no need to rollover if rounding down or within same minute
+        if (roundedSeconds < 60.0 || secondsDifference <= 0) {
+            return new GregorianDate(getYear(), getMonth(), getDay(), getHour(), getMinute(), roundedSeconds);
         }
-        if (minute > 59) {
-            minute = 0;
-            ++hour;
-        }
-        if (hour > 23) {
-            hour = 0;
-            ++day;
-        }
-        if (!YearMonthDay.isValidDate(year, month, day)) {
-            day = 1;
-            ++month;
-        }
-        if (!YearMonthDay.isValidDate(year, month, day)) {
-            month = 1;
-            ++year;
-        }
-        return new GregorianDate(year, month, day, hour, minute, roundedSeconds);
+        return rolloverTime(0D, 0D, 0D, secondsDifference, timeStandard);
     }
 
     /**
@@ -2129,18 +2129,18 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     </td><td></td></tr><tr></tr></table>
     
     */
-    public final int compareTo(GregorianDate other) {
+    public final int compareTo(@Nonnull GregorianDate other) {
         int result = m_yearMonthDay.compareTo(other.m_yearMonthDay);
-        if (result == 0) {
-            if (m_hour != other.m_hour) {
-                return m_hour < other.m_hour ? -1 : 1;
-            }
-            if (m_minute != other.m_minute) {
-                return m_minute < other.m_minute ? -1 : 1;
-            }
-            return m_second == other.m_second ? 0 : (m_second < other.m_second ? -1 : 1);
+        if (result != 0) {
+            return result;
         }
-        return result;
+        if (m_hour != other.m_hour) {
+            return m_hour < other.m_hour ? -1 : 1;
+        }
+        if (m_minute != other.m_minute) {
+            return m_minute < other.m_minute ? -1 : 1;
+        }
+        return m_second == other.m_second ? 0 : (m_second < other.m_second ? -1 : 1);
     }
 
     /**
@@ -2181,7 +2181,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
-    public final boolean equalsType(GregorianDate other) {
+    public final boolean equalsType(@Nonnull GregorianDate other) {
         return compareTo(other) == 0;
     }
 
@@ -2212,7 +2212,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     {@link DateTimeFormatInfo}.-or- {@code format} does not
     contain a valid custom format pattern. 
     */
-    public final String toString(String format) {
+    @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
+    public final String toString(@Nullable String format) {
         return toString(format, null);
     }
 
@@ -2228,7 +2230,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @return A string representation of value of this instance as specified by
     {@code provider}.
     */
-    public final String toString(Locale provider) {
+    @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
+    public final String toString(@Nullable Locale provider) {
         return toString(null, provider);
     }
 
@@ -2251,7 +2255,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     {@link DateTimeFormatInfo}.-or- {@code format} does not
     contain a valid custom format pattern. 
     */
-    public final String toString(String format, Locale provider) {
+    @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
+    public final String toString(@Nullable String format, @Nullable Locale provider) {
         return Parser.toString(this, format, provider);
     }
 
@@ -2266,6 +2272,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @return A string representing this date and time in ISO8601 format.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final String toIso8601String() {
         return toIso8601String(Iso8601Format.EXTENDED);
     }
@@ -2283,8 +2290,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @return A string representing this date and time in ISO8601 format.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final String toIso8601String(Iso8601Format format) {
-        return toIso8601String(format, StringHelper.create('#', 15));
+    @Nonnull
+    public final String toIso8601String(@Nonnull Iso8601Format format) {
+        return toIso8601String(format, 15, false);
     }
 
     /**
@@ -2302,34 +2310,67 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @return A string representing this date and time in ISO8601 format.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final String toIso8601String(Iso8601Format format, int digitsOfFractionalSeconds) {
-        String fractionalSecondsFormatString = StringHelper.create('0', digitsOfFractionalSeconds);
-        return roundSeconds(digitsOfFractionalSeconds).toIso8601String(format, fractionalSecondsFormatString);
+    @Nonnull
+    public final String toIso8601String(@Nonnull Iso8601Format format, int digitsOfFractionalSeconds) {
+        return toIso8601String(format, digitsOfFractionalSeconds, true);
     }
 
-    private final String toIso8601String(Iso8601Format format, String fractionalSecondsFormatString) {
+    @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
+    private final String toIso8601String(@Nonnull Iso8601Format format, int digitsOfFractionalSeconds, boolean requireFractionalSeconds) {
+        String formatString = buildIso8601FormatString(format, digitsOfFractionalSeconds, requireFractionalSeconds);
+        return Parser.toString(this, formatString, CultureInfoHelper.getInvariantCulture());
+    }
+
+    @CS2JWarning( {
+            "Unhandled attribute removed: Pure",
+            "Unhandled attribute removed: SuppressMessage"
+    })
+    @Nonnull
+    private final String buildIso8601FormatString(@Nonnull Iso8601Format format, int digitsOfFractionalSeconds, boolean requireFractionalSeconds) {
+        StringBuilder formatStringBuilder = new StringBuilder(50);
         switch (format) {
         case BASIC: {
-            return StringHelper.format(CultureInfoHelper.getInvariantCulture(), "{0:0000}{1:00}{2:00}T{3:00}{4:00}{5:00." + fractionalSecondsFormatString + "}Z", m_yearMonthDay.getYear(),
-                    m_yearMonthDay.getMonth(), m_yearMonthDay.getDay(), m_hour, m_minute, m_second);
+            formatStringBuilder.append("yyyyMMdd'T'HHmmss");
+            appendIso8601FractionalSeconds(formatStringBuilder, digitsOfFractionalSeconds, requireFractionalSeconds);
+            formatStringBuilder.append('Z');
+            break;
         }
         case EXTENDED: {
-            return StringHelper.format(CultureInfoHelper.getInvariantCulture(), "{0:0000}-{1:00}-{2:00}T{3:00}:{4:00}:{5:00." + fractionalSecondsFormatString + "}Z", m_yearMonthDay.getYear(),
-                    m_yearMonthDay.getMonth(), m_yearMonthDay.getDay(), m_hour, m_minute, m_second);
+            formatStringBuilder.append("yyyy'-'MM'-'dd'T'HH':'mm':'ss");
+            appendIso8601FractionalSeconds(formatStringBuilder, digitsOfFractionalSeconds, requireFractionalSeconds);
+            formatStringBuilder.append('Z');
+            break;
         }
         case COMPACT: {
-            if (m_second != 0) {
-                return StringHelper.format(CultureInfoHelper.getInvariantCulture(), "{0:0000}{1:00}{2:00}T{3:00}{4:00}{5:00." + fractionalSecondsFormatString + "}Z", m_yearMonthDay.getYear(),
-                        m_yearMonthDay.getMonth(), m_yearMonthDay.getDay(), m_hour, m_minute, m_second);
+            formatStringBuilder.append("yyyyMMdd'T'HH");
+            boolean hasMinutes = m_minute != 0;
+            if (hasMinutes) {
+                formatStringBuilder.append("mm");
             }
-            if (m_minute != 0) {
-                return StringHelper.format(CultureInfoHelper.getInvariantCulture(), "{0:0000}{1:00}{2:00}T{3:00}{4:00}Z", m_yearMonthDay.getYear(), m_yearMonthDay.getMonth(), m_yearMonthDay.getDay(),
-                        m_hour, m_minute);
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            boolean hasSeconds = m_second != 0.0;
+            if (hasSeconds) {
+                formatStringBuilder.append("ss");
+                appendIso8601FractionalSeconds(formatStringBuilder, digitsOfFractionalSeconds, requireFractionalSeconds);
             }
-            return StringHelper.format(CultureInfoHelper.getInvariantCulture(), "{0:0000}{1:00}{2:00}T{3:00}Z", m_yearMonthDay.getYear(), m_yearMonthDay.getMonth(), m_yearMonthDay.getDay(), m_hour);
+            formatStringBuilder.append('Z');
+            break;
+        }
+        default: {
+            throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "format");
         }
         }
-        throw new IllegalStateException();
+        return formatStringBuilder.toString();
+    }
+
+    private final void appendIso8601FractionalSeconds(@Nonnull StringBuilder formatStringBuilder, int digitsOfFractionalSeconds, boolean requireFractionalSeconds) {
+        // ReSharper disable once CompareOfFloatsByEqualityOperator
+        boolean hasSeconds = m_second != 0.0;
+        if ((hasSeconds || requireFractionalSeconds) && digitsOfFractionalSeconds > 0) {
+            formatStringBuilder.append('.');
+            StringHelper.append(formatStringBuilder, requireFractionalSeconds ? 'f' : 'F', digitsOfFractionalSeconds);
+        }
     }
 
     /**
@@ -2339,6 +2380,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @return A string containing the name of the day of the week, the name of the month, the numeric day of the month, and the year equivalent to the date value of this instance.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final String toLongDateString() {
         return toString("D");
     }
@@ -2353,6 +2395,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     time value of this instance.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final String toLongTimeString() {
         return toString("T");
     }
@@ -2366,6 +2409,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     and the year equivalent to the date value of this instance.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final String toShortDateString() {
         return toString("d");
     }
@@ -2380,6 +2424,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     time value of this instance.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final String toShortTimeString() {
         return toString("t");
     }
@@ -2399,7 +2444,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(GregorianDate,GregorianDate)'")
-    public static boolean equals(GregorianDate left, GregorianDate right) {
+    public static boolean equals(@javax.annotation.Nonnull GregorianDate left, @javax.annotation.Nonnull GregorianDate right) {
         return left.equalsType(right);
     }
 
@@ -2418,7 +2463,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(GregorianDate,GregorianDate)'")
-    public static boolean notEquals(GregorianDate left, GregorianDate right) {
+    public static boolean notEquals(@javax.annotation.Nonnull GregorianDate left, @javax.annotation.Nonnull GregorianDate right) {
         return !left.equalsType(right);
     }
 
@@ -2437,7 +2482,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <(GregorianDate,GregorianDate)'")
-    public static boolean lessThan(GregorianDate left, GregorianDate right) {
+    public static boolean lessThan(@javax.annotation.Nonnull GregorianDate left, @javax.annotation.Nonnull GregorianDate right) {
         return left.compareTo(right) < 0;
     }
 
@@ -2456,7 +2501,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >(GregorianDate,GregorianDate)'")
-    public static boolean greaterThan(GregorianDate left, GregorianDate right) {
+    public static boolean greaterThan(@javax.annotation.Nonnull GregorianDate left, @javax.annotation.Nonnull GregorianDate right) {
         return left.compareTo(right) > 0;
     }
 
@@ -2475,7 +2520,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <=(GregorianDate,GregorianDate)'")
-    public static boolean lessThanOrEqual(GregorianDate left, GregorianDate right) {
+    public static boolean lessThanOrEqual(@javax.annotation.Nonnull GregorianDate left, @javax.annotation.Nonnull GregorianDate right) {
         return left.compareTo(right) <= 0;
     }
 
@@ -2494,7 +2539,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >=(GregorianDate,GregorianDate)'")
-    public static boolean greaterThanOrEqual(GregorianDate left, GregorianDate right) {
+    public static boolean greaterThanOrEqual(@javax.annotation.Nonnull GregorianDate left, @javax.annotation.Nonnull GregorianDate right) {
         return left.compareTo(right) >= 0;
     }
 
@@ -2526,7 +2571,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     and time.
     
     */
-    public static GregorianDate parse(String s) {
+    @Nonnull
+    public static GregorianDate parse(@Nonnull String s) {
         return parse(s, null);
     }
 
@@ -2563,7 +2609,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     and time.
     
     */
-    public static GregorianDate parse(String s, Locale provider) {
+    @Nonnull
+    public static GregorianDate parse(@Nonnull String s, @Nullable Locale provider) {
         return Parser.parse(s, provider);
     }
 
@@ -2603,7 +2650,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     {@code format}.
     
     */
-    public static GregorianDate parseExact(String s, String format, Locale provider) {
+    @Nonnull
+    public static GregorianDate parseExact(@Nonnull String s, @Nonnull String format, @Nullable Locale provider) {
         return Parser.parseExact(s, new String[] {
             format
         }, provider);
@@ -2645,7 +2693,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     {@code format}.
     
     */
-    public static GregorianDate parseExact(String s, String[] format, Locale provider) {
+    @Nonnull
+    public static GregorianDate parseExact(@Nonnull String s, @Nonnull String[] format, @Nullable Locale provider) {
         return Parser.parseExact(s, format, provider);
     }
 
@@ -2680,7 +2729,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     otherwise, false.
     
     */
-    public static boolean tryParse(String s, GregorianDate[] result) {
+    @CS2JWarning("Unhandled attribute removed: ContractAnnotation")
+    public static boolean tryParse(String s, @Nonnull GregorianDate[] result) {
         return tryParse(s, null, result);
     }
 
@@ -2719,8 +2769,22 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     otherwise, false.
     
     */
-    public static boolean tryParse(String s, Locale provider, GregorianDate[] result) {
+    @CS2JWarning("Unhandled attribute removed: ContractAnnotation")
+    public static boolean tryParse(String s, Locale provider, @Nonnull GregorianDate[] result) {
         return Parser.tryParse(s, provider, result);
+    }
+
+    @Nonnull
+    private final GregorianDate rolloverTime(double days, double hours, double minutes, double seconds, @Nonnull TimeStandard timeStandard) {
+        int wholeDays = (int) days;
+        seconds += (days - wholeDays) * TimeConstants.SecondsPerDay;
+        int wholeHours = (int) hours;
+        seconds += (hours - wholeHours) * TimeConstants.SecondsPerHour;
+        int wholeMinutes = (int) minutes;
+        seconds += (minutes - wholeMinutes) * TimeConstants.SecondsPerMinute;
+        Duration timeToAdd = new Duration(wholeDays, wholeHours, wholeMinutes, seconds);
+        JulianDate julianResult = toJulianDate(timeStandard).add(timeToAdd);
+        return new GregorianDate(julianResult, timeStandard);
     }
 
     /**
@@ -2730,6 +2794,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
 
     */
+    @Nonnull
     public static final GregorianDate MaxValue = new GregorianDate(DateTimeHelper.maxValue());
     /**
     *  
@@ -2738,10 +2803,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
 
     */
+    @Nonnull
     public static final GregorianDate MinValue = new GregorianDate(DateTimeHelper.minValue());
     private static final int SecondsPerHour = 3600;
     private static final int SecondsPerMinute = 60;
     @CS2JInfo("Initialization of C# struct variable 'm_yearMonthDay' added by translator.")
+    @Nonnull
     private YearMonthDay m_yearMonthDay = new YearMonthDay();
     private int m_hour;
     private int m_minute;

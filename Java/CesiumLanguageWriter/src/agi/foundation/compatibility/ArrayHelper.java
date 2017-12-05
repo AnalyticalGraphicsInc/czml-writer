@@ -82,7 +82,6 @@ public final class ArrayHelper {
         }
     }
 
-
     /**
      * Returns a fixed-size list backed by the specified array, or null if the specified
      * array is null.
@@ -91,8 +90,9 @@ public final class ArrayHelper {
      *            the array by which the list will be backed
      * @return a list view of the specified array
      */
+    @SafeVarargs
     public static <T> List<T> arrayAsList(T... a) {
-        return a == null ? null : new ArrayList<T>(a);
+        return a == null ? null : new ArrayList<>(a);
     }
 
     /**

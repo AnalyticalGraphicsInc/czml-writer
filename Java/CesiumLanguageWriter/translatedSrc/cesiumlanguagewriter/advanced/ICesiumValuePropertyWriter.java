@@ -13,7 +13,11 @@ import cesiumlanguagewriter.*;
 
  * @param <T> The type written by the property writer.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public interface ICesiumValuePropertyWriter<T> extends ICesiumPropertyWriter {
     /**
     *  

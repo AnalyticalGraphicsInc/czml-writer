@@ -13,10 +13,14 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumFormattingHelper {
-    public final void testClockRangeToString(ClockRange value) {
+    public final void testClockRangeToString(@javax.annotation.Nonnull ClockRange value) {
         String s = CesiumFormattingHelper.clockRangeToString(value);
         Assert.assertNotNull(s);
     }
@@ -32,7 +36,7 @@ public class TestCesiumFormattingHelper {
         return ArrayHelper.arrayAsList((ClockRange[]) EnumHelper.getValues(ClockRange.class));
     }
 
-    public final void testClockStepToString(ClockStep value) {
+    public final void testClockStepToString(@javax.annotation.Nonnull ClockStep value) {
         String s = CesiumFormattingHelper.clockStepToString(value);
         Assert.assertNotNull(s);
     }
@@ -48,7 +52,7 @@ public class TestCesiumFormattingHelper {
         return ArrayHelper.arrayAsList((ClockStep[]) EnumHelper.getValues(ClockStep.class));
     }
 
-    public final void testColorBlendModeToString(CesiumColorBlendMode value) {
+    public final void testColorBlendModeToString(@javax.annotation.Nonnull CesiumColorBlendMode value) {
         String s = CesiumFormattingHelper.colorBlendModeToString(value);
         Assert.assertNotNull(s);
     }
@@ -64,7 +68,7 @@ public class TestCesiumFormattingHelper {
         return ArrayHelper.arrayAsList((CesiumColorBlendMode[]) EnumHelper.getValues(CesiumColorBlendMode.class));
     }
 
-    public final void testCornerTypeToString(CesiumCornerType value) {
+    public final void testCornerTypeToString(@javax.annotation.Nonnull CesiumCornerType value) {
         String s = CesiumFormattingHelper.cornerTypeToString(value);
         Assert.assertNotNull(s);
     }
@@ -80,7 +84,7 @@ public class TestCesiumFormattingHelper {
         return ArrayHelper.arrayAsList((CesiumCornerType[]) EnumHelper.getValues(CesiumCornerType.class));
     }
 
-    public final void testExtrapolationTypeToString(CesiumExtrapolationType value) {
+    public final void testExtrapolationTypeToString(@javax.annotation.Nonnull CesiumExtrapolationType value) {
         String s = CesiumFormattingHelper.extrapolationTypeToString(value);
         Assert.assertNotNull(s);
     }
@@ -96,7 +100,7 @@ public class TestCesiumFormattingHelper {
         return ArrayHelper.arrayAsList((CesiumExtrapolationType[]) EnumHelper.getValues(CesiumExtrapolationType.class));
     }
 
-    public final void testHeightReferenceToString(CesiumHeightReference value) {
+    public final void testHeightReferenceToString(@javax.annotation.Nonnull CesiumHeightReference value) {
         String s = CesiumFormattingHelper.heightReferenceToString(value);
         Assert.assertNotNull(s);
     }
@@ -112,7 +116,7 @@ public class TestCesiumFormattingHelper {
         return ArrayHelper.arrayAsList((CesiumHeightReference[]) EnumHelper.getValues(CesiumHeightReference.class));
     }
 
-    public final void testHorizontalOriginToString(CesiumHorizontalOrigin value) {
+    public final void testHorizontalOriginToString(@javax.annotation.Nonnull CesiumHorizontalOrigin value) {
         String s = CesiumFormattingHelper.horizontalOriginToString(value);
         Assert.assertNotNull(s);
     }
@@ -128,7 +132,7 @@ public class TestCesiumFormattingHelper {
         return ArrayHelper.arrayAsList((CesiumHorizontalOrigin[]) EnumHelper.getValues(CesiumHorizontalOrigin.class));
     }
 
-    public final void testInterpolationAlgorithmToString(CesiumInterpolationAlgorithm value) {
+    public final void testInterpolationAlgorithmToString(@javax.annotation.Nonnull CesiumInterpolationAlgorithm value) {
         String s = CesiumFormattingHelper.interpolationAlgorithmToString(value);
         Assert.assertNotNull(s);
     }
@@ -144,7 +148,7 @@ public class TestCesiumFormattingHelper {
         return ArrayHelper.arrayAsList((CesiumInterpolationAlgorithm[]) EnumHelper.getValues(CesiumInterpolationAlgorithm.class));
     }
 
-    public final void testLabelStyleToString(CesiumLabelStyle value) {
+    public final void testLabelStyleToString(@javax.annotation.Nonnull CesiumLabelStyle value) {
         String s = CesiumFormattingHelper.labelStyleToString(value);
         Assert.assertNotNull(s);
     }
@@ -160,7 +164,7 @@ public class TestCesiumFormattingHelper {
         return ArrayHelper.arrayAsList((CesiumLabelStyle[]) EnumHelper.getValues(CesiumLabelStyle.class));
     }
 
-    public final void testSensorVolumePortionToDisplayToString(CesiumSensorVolumePortionToDisplay value) {
+    public final void testSensorVolumePortionToDisplayToString(@javax.annotation.Nonnull CesiumSensorVolumePortionToDisplay value) {
         String s = CesiumFormattingHelper.sensorVolumePortionToDisplayToString(value);
         Assert.assertNotNull(s);
     }
@@ -176,7 +180,7 @@ public class TestCesiumFormattingHelper {
         return ArrayHelper.arrayAsList((CesiumSensorVolumePortionToDisplay[]) EnumHelper.getValues(CesiumSensorVolumePortionToDisplay.class));
     }
 
-    public final void testShadowModeToString(CesiumShadowMode value) {
+    public final void testShadowModeToString(@javax.annotation.Nonnull CesiumShadowMode value) {
         String s = CesiumFormattingHelper.shadowModeToString(value);
         Assert.assertNotNull(s);
     }
@@ -192,7 +196,7 @@ public class TestCesiumFormattingHelper {
         return ArrayHelper.arrayAsList((CesiumShadowMode[]) EnumHelper.getValues(CesiumShadowMode.class));
     }
 
-    public final void testStripeOrientationToString(CesiumStripeOrientation value) {
+    public final void testStripeOrientationToString(@javax.annotation.Nonnull CesiumStripeOrientation value) {
         String s = CesiumFormattingHelper.stripeOrientationToString(value);
         Assert.assertNotNull(s);
     }
@@ -208,7 +212,7 @@ public class TestCesiumFormattingHelper {
         return ArrayHelper.arrayAsList((CesiumStripeOrientation[]) EnumHelper.getValues(CesiumStripeOrientation.class));
     }
 
-    public final void testVerticalOriginToString(CesiumVerticalOrigin value) {
+    public final void testVerticalOriginToString(@javax.annotation.Nonnull CesiumVerticalOrigin value) {
         String s = CesiumFormattingHelper.verticalOriginToString(value);
         Assert.assertNotNull(s);
     }
@@ -224,7 +228,7 @@ public class TestCesiumFormattingHelper {
         return ArrayHelper.arrayAsList((CesiumVerticalOrigin[]) EnumHelper.getValues(CesiumVerticalOrigin.class));
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {

@@ -3,6 +3,7 @@ package cesiumlanguagewriter.advanced;
 
 import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -13,7 +14,11 @@ import cesiumlanguagewriter.*;
 
  * @param <TDerived> The type of the class derived from this one.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public abstract class CesiumInterpolatablePropertyWriter<TDerived extends CesiumInterpolatablePropertyWriter<TDerived>> extends CesiumPropertyWriter<TDerived> implements
         ICesiumInterpolationInformationWriter {
     /**
@@ -48,7 +53,7 @@ public abstract class CesiumInterpolatablePropertyWriter<TDerived extends Cesium
 
     * @param interpolationAlgorithm The interpolation algorithm.
     */
-    public final void writeInterpolationAlgorithm(CesiumInterpolationAlgorithm interpolationAlgorithm) {
+    public final void writeInterpolationAlgorithm(@Nonnull CesiumInterpolationAlgorithm interpolationAlgorithm) {
         openIntervalIfNecessary();
         getOutput().writePropertyName("interpolationAlgorithm");
         getOutput().writeValue(CesiumFormattingHelper.interpolationAlgorithmToString(interpolationAlgorithm));
@@ -76,7 +81,7 @@ public abstract class CesiumInterpolatablePropertyWriter<TDerived extends Cesium
 
     * @param extrapolationType The extrapolation type.
     */
-    public final void writeForwardExtrapolationType(CesiumExtrapolationType extrapolationType) {
+    public final void writeForwardExtrapolationType(@Nonnull CesiumExtrapolationType extrapolationType) {
         openIntervalIfNecessary();
         getOutput().writePropertyName("forwardExtrapolationType");
         getOutput().writeValue(CesiumFormattingHelper.extrapolationTypeToString(extrapolationType));
@@ -90,7 +95,7 @@ public abstract class CesiumInterpolatablePropertyWriter<TDerived extends Cesium
 
     * @param duration The duration.
     */
-    public final void writeForwardExtrapolationDuration(Duration duration) {
+    public final void writeForwardExtrapolationDuration(@Nonnull Duration duration) {
         openIntervalIfNecessary();
         getOutput().writePropertyName("forwardExtrapolationDuration");
         getOutput().writeValue(duration.getTotalSeconds());
@@ -104,7 +109,7 @@ public abstract class CesiumInterpolatablePropertyWriter<TDerived extends Cesium
 
     * @param extrapolationType The extrapolation type.
     */
-    public final void writeBackwardExtrapolationType(CesiumExtrapolationType extrapolationType) {
+    public final void writeBackwardExtrapolationType(@Nonnull CesiumExtrapolationType extrapolationType) {
         openIntervalIfNecessary();
         getOutput().writePropertyName("backwardExtrapolationType");
         getOutput().writeValue(CesiumFormattingHelper.extrapolationTypeToString(extrapolationType));
@@ -118,7 +123,7 @@ public abstract class CesiumInterpolatablePropertyWriter<TDerived extends Cesium
 
     * @param duration The duration.
     */
-    public final void writeBackwardExtrapolationDuration(Duration duration) {
+    public final void writeBackwardExtrapolationDuration(@Nonnull Duration duration) {
         openIntervalIfNecessary();
         getOutput().writePropertyName("backwardExtrapolationDuration");
         getOutput().writeValue(duration.getTotalSeconds());

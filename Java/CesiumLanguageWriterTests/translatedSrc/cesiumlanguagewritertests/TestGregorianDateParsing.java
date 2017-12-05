@@ -3,6 +3,7 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.DateTimeHelper;
@@ -10,8 +11,8 @@ import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.StringHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
+import java.time.ZonedDateTime;
 import java.util.Locale;
-import org.joda.time.DateTime;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -20,11 +21,13 @@ import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestGregorianDateParsing {
-    private Locale m_cultureInfo;
-
     @Before
     public void setUp() {
         m_cultureInfo = new Locale("en-US");
@@ -119,19 +122,19 @@ public class TestGregorianDateParsing {
     @Test
     public final void testParseISO8601DayOfYearOutOfRange() {
         ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
-        GregorianDate result = GregorianDate.parse("1985-367T02:00:05.2134");
+        GregorianDate unused = GregorianDate.parse("1985-367T02:00:05.2134");
     }
 
     @Test
     public final void testParseISO8601DayOfYearError() {
         ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
-        GregorianDate result = GregorianDate.parse("1985-12#T02:00:05.2134");
+        GregorianDate unused = GregorianDate.parse("1985-12#T02:00:05.2134");
     }
 
     @Test
     public final void testParseISO8601YearOutOfRange() {
         ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
-        GregorianDate result = GregorianDate.parse("21985-167T02:00:05.2134");
+        GregorianDate unused = GregorianDate.parse("21985-167T02:00:05.2134");
     }
 
     @Test
@@ -167,9 +170,9 @@ public class TestGregorianDateParsing {
         expected = new GregorianDate(DateTimeHelper.today().getYear(), 2, 25);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("February 25", "m", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("February 25", "M", m_cultureInfo));
-        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthOfYear(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 0D);
+        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 0D);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("05:25 AM", "t", m_cultureInfo));
-        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthOfYear(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 13D);
+        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 13D);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("05:25:13 AM", "T", m_cultureInfo));
         expected = new GregorianDate(2002, 2, 1);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("February, 2002", "y", m_cultureInfo));
@@ -186,21 +189,21 @@ public class TestGregorianDateParsing {
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("5", "%y", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("05", "yy", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("2005", "yyyy", m_cultureInfo));
-        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthOfYear(), DateTimeHelper.today().getDayOfMonth(), 5, 0, 0D);
+        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 5, 0, 0D);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("5A", "ht", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("05A", "hht", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("5", "%H", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("05", "HH", m_cultureInfo));
-        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthOfYear(), DateTimeHelper.today().getDayOfMonth(), 15, 0, 0D);
+        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 15, 0, 0D);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("3P", "ht", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("03P", "hht", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("15", "%H", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("15", "HH", m_cultureInfo));
         expected = new GregorianDate(2002, 2, 25, 5, 25, 13.444);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("Monday, 25 February 2002 05:25:13.444", "dddd, dd MMMM yyyy HH:mm:ss.fff", m_cultureInfo));
-        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthOfYear(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 13.4444444);
+        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 13.4444444);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("05:25:13.4444444", "HH:mm:ss.fffffff", m_cultureInfo));
-        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthOfYear(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 13.1234567);
+        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 13.1234567);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("05:25:13.1234567", "HH:mm:ss.fffffff", m_cultureInfo));
         expected = new GregorianDate(2009, 6, 30, 5, 25, 13.1234567890);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("06/30/2009 05:25:13.1234567890", "MM/dd/yyyy HH:mm:ss.ffffffffff", m_cultureInfo));
@@ -223,12 +226,15 @@ public class TestGregorianDateParsing {
         GregorianDate.parseExact("1/1/2009", "dddd, dd MMMM yyyy HH:mm:ss", m_cultureInfo);
     }
 
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void parseExactThrowsOnNullFormat() {
         ExpectedExceptionHelper.expectException(getRule$expectedException(), NumberFormatException.class);
-        GregorianDate.parseExact("1/1/2009", (String) null, m_cultureInfo);
+        String format = null;
+        GregorianDate.parseExact("1/1/2009", format, m_cultureInfo);
     }
 
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void parseExactThrowsOnNullInput() {
         ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentNullException.class);
@@ -285,9 +291,9 @@ public class TestGregorianDateParsing {
         AssertHelper.assertEquals(expected, GregorianDate.parse("February 8", m_cultureInfo));
         expected = new GregorianDate(2002, 2, 1);
         AssertHelper.assertEquals(expected, GregorianDate.parse("2002 February", m_cultureInfo));
-        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthOfYear(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 13.4444444);
+        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 13.4444444);
         AssertHelper.assertEquals(expected, GregorianDate.parse("05:25:13.4444444", m_cultureInfo));
-        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthOfYear(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 13.1234567);
+        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 13.1234567);
         AssertHelper.assertEquals(expected, GregorianDate.parse("05:25:13.1234567", m_cultureInfo));
         expected = new GregorianDate(2009, 6, 30, 5, 25, 13.1234567890);
         AssertHelper.assertEquals(expected, GregorianDate.parse("06/30/2009 05:25:13.1234567890", m_cultureInfo));
@@ -312,12 +318,14 @@ public class TestGregorianDateParsing {
         AssertHelper.assertEquals(expected, unusedDate);
     }
 
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void parseThrowsOnNullInput() {
         ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentNullException.class);
         GregorianDate.parse(null, m_cultureInfo);
     }
 
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void parseThrowsOnNullInputWithoutCultureInfo() {
         ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentNullException.class);
@@ -378,14 +386,23 @@ public class TestGregorianDateParsing {
         result = out$result$16[0];
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    @Test
+    public final void testParseIso8601FormatBasic() {
+        GregorianDate g1 = new GregorianDate(1985, 4, 12, 10, 15, 30D);
+        String s1 = g1.toIso8601String(Iso8601Format.BASIC);
+        GregorianDate gp1 = GregorianDate.parse(s1);
+        AssertHelper.assertEquals(g1, gp1);
+    }
+
+    private Locale m_cultureInfo;
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 
-    private ExpectedException rule$expectedException = ExpectedException.none();
+    private final ExpectedException rule$expectedException = ExpectedException.none();
 
     @Rule
     public ExpectedException getRule$expectedException() {

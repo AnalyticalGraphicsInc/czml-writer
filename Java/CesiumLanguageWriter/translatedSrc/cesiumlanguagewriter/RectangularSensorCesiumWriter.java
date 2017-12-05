@@ -13,6 +13,7 @@ import cesiumlanguagewriter.MaterialCesiumWriter;
 import cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -20,7 +21,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<RectangularSensorCesiumWriter> {
     /**
     *  
@@ -310,6 +315,15 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public RectangularSensorCesiumWriter clone() {
         return new RectangularSensorCesiumWriter(this);
@@ -1076,7 +1090,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     * @param color The color.
     */
-    public final void writeIntersectionColorProperty(Color color) {
+    public final void writeIntersectionColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
             try {
@@ -1166,7 +1180,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     * @param color The color.
     */
-    public final void writeIntersectionColorPropertyRgbaf(Color color) {
+    public final void writeIntersectionColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
             try {
@@ -2077,7 +2091,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     * @param value The portion of the sensor to display.
     */
-    public final void writePortionToDisplayProperty(CesiumSensorVolumePortionToDisplay value) {
+    public final void writePortionToDisplayProperty(@Nonnull CesiumSensorVolumePortionToDisplay value) {
         {
             cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
             try {
@@ -2573,7 +2587,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     * @param color The color.
     */
-    public final void writeEnvironmentIntersectionColorProperty(Color color) {
+    public final void writeEnvironmentIntersectionColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
             try {
@@ -2663,7 +2677,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     * @param color The color.
     */
-    public final void writeEnvironmentIntersectionColorPropertyRgbaf(Color color) {
+    public final void writeEnvironmentIntersectionColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
             try {

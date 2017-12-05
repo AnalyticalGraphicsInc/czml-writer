@@ -8,6 +8,9 @@ import java.util.Scanner;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
  * Helper methods related to Strings.
  */
@@ -17,7 +20,9 @@ public final class StringHelper {
         RIGHT,
     }
 
+    @Nonnull
     private static final Pattern splitWhitespacePattern;
+    @Nonnull
     private static final char[] trimWhitespaceChars;
 
     static {
@@ -103,6 +108,7 @@ public final class StringHelper {
      *            The number of times c occurs.
      * @return the new String.
      */
+    @Nonnull
     public static String create(char c, int count) {
         char[] array = new char[count];
         Arrays.fill(array, c);
@@ -117,11 +123,11 @@ public final class StringHelper {
      * @return true if the value parameter is null or an empty string (""); otherwise,
      *         false.
      */
-    public static boolean isNullOrEmpty(String str) {
+    public static boolean isNullOrEmpty(@Nullable String str) {
         return str == null || str.length() == 0;
     }
 
-    public static boolean isNotNullOrEmpty(String str) {
+    public static boolean isNotNullOrEmpty(@Nullable String str) {
         return !isNullOrEmpty(str);
     }
 
@@ -137,7 +143,7 @@ public final class StringHelper {
      * @return An array whose elements contain the substrings in this instance that are
      *         delimited by one or more characters in separator.
      */
-    public static String[] split(String string, char... separator) {
+    public static String[] split(@Nonnull String string, @Nullable char... separator) {
         return split(string, separator, -1);
     }
 
@@ -146,7 +152,7 @@ public final class StringHelper {
      * delimited by elements of a specified Unicode character array. A parameter specifies
      * the maximum number of substrings to return.
      *
-     * @param string
+     * @param s
      *            the String to split.
      * @param separator
      *            An array of Unicode characters that delimit the substrings in this
@@ -156,8 +162,8 @@ public final class StringHelper {
      * @return An array whose elements contain the substrings in this instance that are
      *         delimited by one or more characters in separator.
      */
-    public static String[] split(String string, char[] separator, int count) {
-        return split(string, separator, count, StringSplitOptions.NONE);
+    public static String[] split(@Nonnull String s, @Nullable char[] separator, int count) {
+        return split(s, separator, count, StringSplitOptions.NONE);
     }
 
     /**
@@ -165,7 +171,7 @@ public final class StringHelper {
      * delimited by elements of a specified Unicode character array. A parameter specifies
      * whether to return empty array elements.
      *
-     * @param string
+     * @param s
      *            the String to split.
      * @param separator
      *            An array of Unicode characters that delimit the substrings in this
@@ -179,7 +185,7 @@ public final class StringHelper {
      * @return An array whose elements contain the substrings in this string that are
      *         delimited by one or more characters in separator.
      */
-    public static String[] split(String string, char[] separator, int count, StringSplitOptions options) {
+    public static String[] split(@Nonnull String s, @Nullable char[] separator, int count, @Nonnull StringSplitOptions options) {
         String regex = null;
         if (separator != null && separator.length > 0) {
             StringBuilder builder = new StringBuilder("[");
@@ -187,8 +193,7 @@ public final class StringHelper {
                 // Encode the characters with \\uhhhh where hhhh is the hex
                 // representation of the value of the character. Alternatively,
                 // we could just escape the characters that have special meaning
-                // in a regular expression, but that approach is more error
-                // prone.
+                // in a regular expression, but that approach is more error prone.
                 builder.append("\\u");
                 builder.append(StringHelper.padLeft(Integer.toHexString(separator[i]), 4, '0'));
             }
@@ -196,24 +201,23 @@ public final class StringHelper {
             regex = builder.toString();
         }
 
-        return split(string, regex, options, count);
+        return split(s, regex, options, count);
     }
 
     /**
      * Do the work of splitting the string according to the specified regex and options.
      */
-    private static String[] split(String string, String regex, StringSplitOptions options, int count) {
-        if (options == null) {
-            throw new IllegalArgumentException("String split option is invalid.");
-        }
+    private static String[] split(@Nonnull String s, @Nullable String regex, @Nonnull StringSplitOptions options, int count) {
+        ArgumentNullException.assertNonNull(s, "s");
+        ArgumentNullException.assertNonNull(options, "options");
 
         Pattern pattern = regex == null ? splitWhitespacePattern : Pattern.compile(regex);
 
-        Scanner scanner = new Scanner(string);
+        Scanner scanner = new Scanner(s);
         scanner.useDelimiter(pattern);
 
         boolean removeEmptyEntries = options == StringSplitOptions.REMOVE_EMPTY_ENTRIES;
-        ArrayList<String> result = new ArrayList<String>();
+        ArrayList<String> result = new ArrayList<>();
 
         boolean firstToken = true;
         int lastMatchEnd = 0;
@@ -243,8 +247,8 @@ public final class StringHelper {
                 // if we've exceeded our maximum result count, just use the
                 // end of the input string, starting from the current
                 // token's start, as the final token, then break
-                result.add(string.substring(match.start()));
-                lastMatchEnd = string.length();
+                result.add(s.substring(match.start()));
+                lastMatchEnd = s.length();
                 break;
             }
 
@@ -254,7 +258,9 @@ public final class StringHelper {
             lastMatchEnd = match.end();
         }
 
-        if (lastMatchEnd < string.length() && !removeEmptyEntries) {
+        scanner.close();
+
+        if (lastMatchEnd < s.length() && !removeEmptyEntries) {
             // if the end of the last match is not at the end of the string,
             // and we're not supposed to remove empty entries, then that means
             // there is a delimiter at the end of the string, and so we should
@@ -270,7 +276,7 @@ public final class StringHelper {
      * Deletes a specified number of characters from this instance beginning at a
      * specified position.
      *
-     * @param str
+     * @param s
      *            The string.
      * @param startIndex
      *            The zero-based position to begin deleting characters.
@@ -279,19 +285,21 @@ public final class StringHelper {
      * @return A new string that is equivalent to this string except for the removed
      *         characters.
      */
-    public static String remove(String str, int startIndex, int count) {
+    @Nonnull
+    public static String remove(String s, int startIndex, int count) {
+        ArgumentNullException.assertNonNull(s, "s");
         if (startIndex < 0)
             throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be less than zero.");
         if (count < 0)
             throw new ArgumentOutOfRangeException("count", "count cannot be less than zero.");
 
-        int strLength = str.length();
+        int strLength = s.length();
         if (startIndex > strLength - count)
             throw new ArgumentOutOfRangeException("startIndex", "startIndex must be less than length of string minus count.");
 
         StringBuilder result = new StringBuilder(strLength - count);
-        result.append(str.substring(0, startIndex));
-        result.append(str.substring(startIndex + count));
+        result.append(s.substring(0, startIndex));
+        result.append(s.substring(startIndex + count));
         return result.toString();
     }
 
@@ -299,7 +307,7 @@ public final class StringHelper {
      * Returns a new string that right-aligns the characters in this instance by padding
      * them on the left with a specified Unicode character, for a specified total length.
      *
-     * @param str
+     * @param s
      *            The string.
      * @param totalWidth
      *            The number of characters in the resulting string, equal to the number of
@@ -311,15 +319,16 @@ public final class StringHelper {
      *         a length of totalWidth. Or, if totalWidth is less than the length of this
      *         instance, a new string that is identical to this instance.
      */
-    public static String padLeft(String str, int totalWidth, char paddingChar) {
-        return pad(str, totalWidth, paddingChar, PaddingType.LEFT);
+    @Nonnull
+    public static String padLeft(@Nonnull String s, int totalWidth, char paddingChar) {
+        return pad(s, totalWidth, paddingChar, PaddingType.LEFT);
     }
 
     /**
      * Returns a new string that left-aligns the characters in this string by padding them
      * on the right with a specified Unicode character, for a specified total length.
      *
-     * @param str
+     * @param s
      *            The string.
      * @param totalWidth
      *            The number of characters in the resulting string, equal to the number of
@@ -331,33 +340,36 @@ public final class StringHelper {
      *         a length of totalWidth. Or, if totalWidth is less than the length of this
      *         instance, a new string that is identical to this instance.
      */
-    public static String padRight(String str, int totalWidth, char paddingChar) {
-        return pad(str, totalWidth, paddingChar, PaddingType.RIGHT);
+    @Nonnull
+    public static String padRight(@Nonnull String s, int totalWidth, char paddingChar) {
+        return pad(s, totalWidth, paddingChar, PaddingType.RIGHT);
     }
 
-    private static String pad(String str, int totalWidth, char paddingChar, PaddingType paddingType) {
+    @Nonnull
+    private static String pad(@Nonnull String s, int totalWidth, char paddingChar, @Nonnull PaddingType paddingType) {
+        ArgumentNullException.assertNonNull(s, "s");
         if (totalWidth < 0)
             throw new ArgumentOutOfRangeException("totalWidth", "Non-negative number required.");
 
-        int numPaddingChars = totalWidth - str.length();
+        int numPaddingChars = totalWidth - s.length();
         if (numPaddingChars <= 0)
-            return str;
+            return s;
 
         StringBuilder result = new StringBuilder(totalWidth);
 
         if (paddingType == PaddingType.RIGHT)
-            result.append(str);
+            result.append(s);
 
         for (int i = 0; i < numPaddingChars; ++i)
             result.append(paddingChar);
 
         if (paddingType == PaddingType.LEFT)
-            result.append(str);
+            result.append(s);
 
         return result.toString();
     }
 
-    private static boolean getIgnoreCase(StringComparison comparisonType) {
+    private static boolean getIgnoreCase(@Nonnull StringComparison comparisonType) {
         switch (comparisonType) {
         case CURRENT_CULTURE_IGNORE_CASE:
         case INVARIANT_CULTURE_IGNORE_CASE:
@@ -372,7 +384,7 @@ public final class StringHelper {
         }
     }
 
-    private static Locale getLocale(StringComparison comparisonType) {
+    private static Locale getLocale(@Nonnull StringComparison comparisonType) {
         switch (comparisonType) {
         case INVARIANT_CULTURE:
         case INVARIANT_CULTURE_IGNORE_CASE:
@@ -403,7 +415,7 @@ public final class StringHelper {
      * @return A 32-bit signed integer indicating the lexical relationship between the two
      *         comparands.
      */
-    public static int compare(String strA, String strB, boolean ignoreCase, Locale locale) {
+    public static int compare(@Nullable String strA, @Nullable String strB, boolean ignoreCase, Locale locale) {
         if (strA == null) {
             return strB == null ? 0 : -1;
         } else if (strB == null) {
@@ -436,7 +448,7 @@ public final class StringHelper {
      *            An object that supplies culture-specific comparison information.
      * @return An integer indicating the lexical relationship between the two comparands.
      */
-    public static int compare(String strA, int indexA, String strB, int indexB, int length, boolean ignoreCase, Locale locale) {
+    public static int compare(@Nullable String strA, int indexA, @Nullable String strB, int indexB, int length, boolean ignoreCase, Locale locale) {
         if (length == 0)
             return 0;
         if (strA == null) {
@@ -473,13 +485,14 @@ public final class StringHelper {
      *            comparison.
      * @return An integer indicating the lexical relationship between the two comparands.
      */
-    public static int compare(String strA, int indexA, String strB, int indexB, int length, StringComparison comparisonType) {
+    public static int compare(@Nullable String strA, int indexA, @Nullable String strB, int indexB, int length, @Nonnull StringComparison comparisonType) {
         return compare(strA, indexA, strB, indexB, length, getIgnoreCase(comparisonType), getLocale(comparisonType));
     }
 
     /**
      * Represents the empty string. This field is read-only.
      */
+    @Nonnull
     public static final String empty = "";
 
     /**
@@ -728,7 +741,7 @@ public final class StringHelper {
      * String object. A parameter specifies the type of search to use for the specified
      * string.
      *
-     * @param string
+     * @param s
      * @param value
      *            The String object to seek.
      * @param comparisonType
@@ -736,28 +749,32 @@ public final class StringHelper {
      * @return The index position of the value parameter if that string is found, or -1 if
      *         it is not. If value is Empty, the return value is 0.
      */
-    public static int indexOf(String string, String value, StringComparison comparisonType) {
+    public static int indexOf(@Nonnull String s, @Nonnull String value, @Nonnull StringComparison comparisonType) {
+        ArgumentNullException.assertNonNull(s, "s");
+        ArgumentNullException.assertNonNull(value, "value");
+
         if (getIgnoreCase(comparisonType)) {
             Locale locale = getLocale(comparisonType);
 
-            String stringLowerCase = string.toLowerCase(locale);
-            String valueLowerCase = value.toLowerCase(locale);
-            return stringLowerCase.indexOf(valueLowerCase);
-        } else {
-            return string.indexOf(value);
+            s = s.toLowerCase(locale);
+            value = value.toLowerCase(locale);
         }
+
+        return s.indexOf(value);
     }
 
     /**
      * Returns a copy of this String object converted to lowercase using the casing rules
      * of the invariant culture.
      *
-     * @param str
+     * @param s
      *            The string.
      * @return A String object in lowercase.
      */
-    public static String toLowerInvariant(String str) {
-        return str.toLowerCase(CultureInfoHelper.getInvariantCulture());
+    @Nonnull
+    public static String toLowerInvariant(@Nonnull String s) {
+        ArgumentNullException.assertNonNull(s, "s");
+        return s.toLowerCase(CultureInfoHelper.getInvariantCulture());
     }
 
     /**
@@ -798,7 +815,7 @@ public final class StringHelper {
      * Retrieves a substring from this instance. The substring starts at a specified
      * character position and has a specified length.
      *
-     * @param str
+     * @param s
      *            The string.
      * @param startIndex
      *            The zero-based starting character position of a substring in this
@@ -809,11 +826,13 @@ public final class StringHelper {
      *         at startIndex in this instance, or Empty if startIndex is equal to the
      *         length of this instance and length is zero.
      */
-    public static String substring(String str, int startIndex, int length) {
+    @Nonnull
+    public static String substring(@Nonnull String s, int startIndex, int length) {
+        ArgumentNullException.assertNonNull(s, "s");
         if (startIndex < 0)
             throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be less than zero.");
 
-        int strLen = str.length();
+        int strLen = s.length();
         if (startIndex > strLen)
             throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be larger than length of string.");
 
@@ -828,7 +847,7 @@ public final class StringHelper {
         if (length == 0)
             return "";
 
-        return str.substring(startIndex, endIndex);
+        return s.substring(startIndex, endIndex);
     }
 
     /**
@@ -865,7 +884,8 @@ public final class StringHelper {
      *         trimChars are removed from the end. If trimChars is null, white space
      *         characters are removed instead.
      */
-    public static String trimStart(String str, char... trimChars) {
+    @Nonnull
+    public static String trimStart(@Nonnull String str, char... trimChars) {
         if (trimChars == null || trimChars.length == 0)
             trimChars = trimWhitespaceChars;
 
@@ -880,12 +900,59 @@ public final class StringHelper {
         return str.substring(index);
     }
 
-    private static boolean arrayContains(char[] array, char charToFind) {
+    private static boolean arrayContains(@Nonnull char[] array, char charToFind) {
         for (char c : array) {
             if (c == charToFind)
                 return true;
         }
         return false;
+    }
+
+    /**
+     * Appends the string returned by processing a composite format string, which contains
+     * zero or more format items, to this instance. Each format item is replaced by the
+     * string representation of a corresponding argument in a parameter array.
+     *
+     * @param builder
+     *            The StringBuilder.
+     * @param locale
+     *            An object that supplies culture-specific comparison information.
+     * @param format
+     *            A composite format string
+     * @param args
+     *            An array of objects to format.
+     * @return A reference to this instance with format appended. Each format item in
+     *         format is replaced by the string representation of the corresponding object
+     *         argument.
+     */
+    @Nonnull
+    public static StringBuilder appendFormat(@Nonnull StringBuilder builder, Locale locale, @Nonnull String format, @Nonnull Object... args) {
+        ArgumentNullException.assertNonNull(builder, "builder");
+        ArgumentNullException.assertNonNull(format, "format");
+        ArgumentNullException.assertNonNull(args, "args");
+
+        return builder.append(format(locale, format, args));
+    }
+
+    /**
+     * Appends a specified number of copies of the string representation of a Unicode
+     * character to a given instance.
+     *
+     * @param s
+     *            The StringBuilder
+     * @param c
+     *            The character to append
+     * @param repeatCount
+     *            The number of times to append c.
+     * @return The StringBuilder after the append operation has completed.
+     */
+    @Nonnull
+    public static StringBuilder append(@Nonnull StringBuilder s, char c, int repeatCount) {
+        s.ensureCapacity(s.length() + repeatCount);
+        for (int i = 0; i < repeatCount; ++i) {
+            s.append(c);
+        }
+        return s;
     }
 
     /**
@@ -902,7 +969,8 @@ public final class StringHelper {
      * @return A reference to the StringBuilder object after the append operation has
      *         completed.
      */
-    public static StringBuilder append(StringBuilder builder, String value, int startIndex, int count) {
+    @Nonnull
+    public static StringBuilder append(@Nonnull StringBuilder builder, String value, int startIndex, int count) {
         return builder.append(value, startIndex, startIndex + count);
     }
 }

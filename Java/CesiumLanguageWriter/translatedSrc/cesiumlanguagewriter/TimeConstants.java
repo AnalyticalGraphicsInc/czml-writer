@@ -2,7 +2,6 @@ package cesiumlanguagewriter;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.annotations.CS2JWarning;
 
 /**
  *  
@@ -10,7 +9,11 @@ import agi.foundation.compatibility.annotations.CS2JWarning;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class TimeConstants {
     private TimeConstants() {}
 
@@ -20,7 +23,6 @@ public final class TimeConstants {
     
 
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public static final double SecondsPerMinute = 60.0;
     /**
     *  
@@ -28,7 +30,6 @@ public final class TimeConstants {
     
 
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public static final double MinutesPerHour = 60.0;
     /**
     *  
@@ -36,7 +37,6 @@ public final class TimeConstants {
     
 
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public static final double HoursPerDay = 24.0;
     /**
     *  
@@ -44,7 +44,6 @@ public final class TimeConstants {
     
 
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public static final double SecondsPerHour = SecondsPerMinute * MinutesPerHour;
     /**
     *  
@@ -52,7 +51,6 @@ public final class TimeConstants {
     
 
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public static final double MinutesPerDay = HoursPerDay * MinutesPerHour;
     /**
     *  
@@ -60,32 +58,7 @@ public final class TimeConstants {
     
 
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public static final double SecondsPerDay = HoursPerDay * MinutesPerHour * SecondsPerMinute;
-    /**
-    *  
-    The number of standard days in a Julian century.
-    
-
-    */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public static final double DaysPerJulianCentury = 36525.0;
-    /**
-    *  
-    One picosecond
-    
-
-    */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public static final double PicoSecond = .000000001;
-    /**
-    *  
-    The difference between a Julian date and a modified Julian date.
-    
-
-    */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public static final double ModifiedJulianDateDifference = 2400000.5;
     /**
     *  
     The next representable 64-bit double before 86400.0.  This is useful for normalizing

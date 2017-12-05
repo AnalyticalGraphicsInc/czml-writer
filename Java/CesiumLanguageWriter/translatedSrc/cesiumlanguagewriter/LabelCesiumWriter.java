@@ -22,6 +22,7 @@ import cesiumlanguagewriter.StringCesiumWriter;
 import cesiumlanguagewriter.VerticalOriginCesiumWriter;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -29,7 +30,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     /**
     *  
@@ -307,6 +312,15 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public LabelCesiumWriter clone() {
         return new LabelCesiumWriter(this);
@@ -697,7 +711,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param value The label style.
     */
-    public final void writeStyleProperty(CesiumLabelStyle value) {
+    public final void writeStyleProperty(@Nonnull CesiumLabelStyle value) {
         {
             cesiumlanguagewriter.LabelStyleCesiumWriter writer = openStyleProperty();
             try {
@@ -1100,7 +1114,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeBackgroundColorProperty(Color color) {
+    public final void writeBackgroundColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openBackgroundColorProperty();
             try {
@@ -1190,7 +1204,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeBackgroundColorPropertyRgbaf(Color color) {
+    public final void writeBackgroundColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openBackgroundColorProperty();
             try {
@@ -1380,7 +1394,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param value The value.
     */
-    public final void writeBackgroundPaddingProperty(Rectangular value) {
+    public final void writeBackgroundPaddingProperty(@Nonnull Rectangular value) {
         {
             cesiumlanguagewriter.BackgroundPaddingCesiumWriter writer = openBackgroundPaddingProperty();
             try {
@@ -1566,7 +1580,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param value The value.
     */
-    public final void writePixelOffsetProperty(Rectangular value) {
+    public final void writePixelOffsetProperty(@Nonnull Rectangular value) {
         {
             cesiumlanguagewriter.PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
             try {
@@ -1752,7 +1766,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param value The value.
     */
-    public final void writeEyeOffsetProperty(Cartesian value) {
+    public final void writeEyeOffsetProperty(@Nonnull Cartesian value) {
         {
             cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
             try {
@@ -1917,7 +1931,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param value The horizontal origin.
     */
-    public final void writeHorizontalOriginProperty(CesiumHorizontalOrigin value) {
+    public final void writeHorizontalOriginProperty(@Nonnull CesiumHorizontalOrigin value) {
         {
             cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
             try {
@@ -2036,7 +2050,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param value The vertical origin.
     */
-    public final void writeVerticalOriginProperty(CesiumVerticalOrigin value) {
+    public final void writeVerticalOriginProperty(@Nonnull CesiumVerticalOrigin value) {
         {
             cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
             try {
@@ -2155,7 +2169,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param value The height reference.
     */
-    public final void writeHeightReferenceProperty(CesiumHeightReference value) {
+    public final void writeHeightReferenceProperty(@Nonnull CesiumHeightReference value) {
         {
             cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
@@ -2274,7 +2288,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeFillColorProperty(Color color) {
+    public final void writeFillColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openFillColorProperty();
             try {
@@ -2364,7 +2378,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeFillColorPropertyRgbaf(Color color) {
+    public final void writeFillColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openFillColorProperty();
             try {
@@ -2554,7 +2568,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeOutlineColorProperty(Color color) {
+    public final void writeOutlineColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
             try {
@@ -2644,7 +2658,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeOutlineColorPropertyRgbaf(Color color) {
+    public final void writeOutlineColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
             try {
@@ -2999,7 +3013,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param value The value.
     */
-    public final void writeTranslucencyByDistanceProperty(NearFarScalar value) {
+    public final void writeTranslucencyByDistanceProperty(@Nonnull NearFarScalar value) {
         {
             cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
             try {
@@ -3189,7 +3203,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param value The value.
     */
-    public final void writePixelOffsetScaleByDistanceProperty(NearFarScalar value) {
+    public final void writePixelOffsetScaleByDistanceProperty(@Nonnull NearFarScalar value) {
         {
             cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
             try {
@@ -3379,7 +3393,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param value The value.
     */
-    public final void writeScaleByDistanceProperty(NearFarScalar value) {
+    public final void writeScaleByDistanceProperty(@Nonnull NearFarScalar value) {
         {
             cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
             try {
@@ -3569,7 +3583,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     * @param value The value.
     */
-    public final void writeDistanceDisplayConditionProperty(Bounds value) {
+    public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
         {
             cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {

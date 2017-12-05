@@ -11,7 +11,11 @@ import cesiumlanguagewriter.CustomPropertyCesiumWriter;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class CustomPropertiesCesiumWriter extends CesiumPropertyWriter<CustomPropertiesCesiumWriter> {
     /**
     *  
@@ -35,6 +39,15 @@ public class CustomPropertiesCesiumWriter extends CesiumPropertyWriter<CustomPro
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public CustomPropertiesCesiumWriter clone() {
         return new CustomPropertiesCesiumWriter(this);

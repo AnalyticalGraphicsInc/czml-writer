@@ -2,6 +2,8 @@ package agi.foundation.compatibility;
 
 import java.awt.Color;
 
+import javax.annotation.Nonnull;
+
 /**
  * Helper methods related to Color.
  */
@@ -23,6 +25,7 @@ public final class ColorHelper {
      *            The blue component. Valid values are 0 through 255.
      * @return The Color that this method creates.
      */
+    @Nonnull
     public static Color fromArgb(int alpha, int red, int green, int blue) {
         return new Color(red, green, blue, alpha);
     }

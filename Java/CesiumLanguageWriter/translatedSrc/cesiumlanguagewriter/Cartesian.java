@@ -8,6 +8,7 @@ import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -19,7 +20,11 @@ import agi.foundation.compatibility.StringHelper;
  The corresponding 2-dimensional coordinates are {@link Rectangular} coordinates.
  
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
     /**
@@ -32,6 +37,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     
 
     */
+    @Nonnull
     public static Cartesian getZero() {
         return s_zero;
     }
@@ -42,11 +48,12 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     
 
     * <p>
-    Use {@code IsUndefined} ({@link Cartesian#getIsUndefined get}) to test whether a {@link Cartesian} instance
+    Use {@code IsUndefined} ({@link #getIsUndefined get}) to test whether a {@link Cartesian} instance
     is undefined since it will return {@code true} if any of the coordinate values
     are {@link Double#NaN}.
     
     */
+    @Nonnull
     public static Cartesian getUndefined() {
         return s_undefined;
     }
@@ -108,6 +115,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return A set of {@link Cartesian} coordinates that represents the result of the multiplication.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final Cartesian multiply(double scalar) {
         return new Cartesian(m_x * scalar, m_y * scalar, m_z * scalar);
     }
@@ -123,6 +131,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return A set of {@link Cartesian} coordinates that represents the result of the division.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final Cartesian divide(double scalar) {
         return new Cartesian(m_x / scalar, m_y / scalar, m_z / scalar);
     }
@@ -138,7 +147,8 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return A set of {@link Cartesian} coordinates that represents the result of the addition.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Cartesian add(Cartesian other) {
+    @Nonnull
+    public final Cartesian add(@Nonnull Cartesian other) {
         return new Cartesian(m_x + other.m_x, m_y + other.m_y, m_z + other.m_z);
     }
 
@@ -153,7 +163,8 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return A set of {@link Cartesian} coordinates that represents the result of the subtraction.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Cartesian subtract(Cartesian other) {
+    @Nonnull
+    public final Cartesian subtract(@Nonnull Cartesian other) {
         return new Cartesian(m_x - other.m_x, m_y - other.m_y, m_z - other.m_z);
     }
 
@@ -168,7 +179,8 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return A set of {@link Cartesian} coordinates that represents the result of the product.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Cartesian cross(Cartesian other) {
+    @Nonnull
+    public final Cartesian cross(@Nonnull Cartesian other) {
         return new Cartesian(m_y * other.m_z - m_z * other.m_y, m_z * other.m_x - m_x * other.m_z, m_x * other.m_y - m_y * other.m_x);
     }
 
@@ -183,7 +195,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return A {@code double} that represents the result of the product.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final double dot(Cartesian other) {
+    public final double dot(@Nonnull Cartesian other) {
         return m_x * other.m_x + m_y * other.m_y + m_z * other.m_z;
     }
 
@@ -200,7 +212,8 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return A set of {@link Cartesian} coordinates that represents the result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian *(Cartesian,System.Double)'")
-    public static Cartesian multiply(Cartesian left, double right) {
+    @Nonnull
+    public static Cartesian multiply(@javax.annotation.Nonnull Cartesian left, double right) {
         return left.multiply(right);
     }
 
@@ -217,7 +230,8 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return A set of {@link Cartesian} coordinates that represents the result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian *(System.Double,Cartesian)'")
-    public static Cartesian multiply(double left, Cartesian right) {
+    @Nonnull
+    public static Cartesian multiply(double left, @javax.annotation.Nonnull Cartesian right) {
         return right.multiply(left);
     }
 
@@ -234,7 +248,8 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return A set of {@link Cartesian} coordinates that represents the result of the division.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian /(Cartesian,System.Double)'")
-    public static Cartesian divide(Cartesian left, double right) {
+    @Nonnull
+    public static Cartesian divide(@javax.annotation.Nonnull Cartesian left, double right) {
         return left.divide(right);
     }
 
@@ -251,7 +266,8 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return A set of {@link Cartesian} coordinates that represents the result of the addition.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian +(Cartesian,Cartesian)'")
-    public static Cartesian add(Cartesian left, Cartesian right) {
+    @Nonnull
+    public static Cartesian add(@javax.annotation.Nonnull Cartesian left, @javax.annotation.Nonnull Cartesian right) {
         return left.add(right);
     }
 
@@ -268,7 +284,8 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return A set of {@link Cartesian} coordinates that represents the result of the subtraction.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(Cartesian,Cartesian)'")
-    public static Cartesian subtract(Cartesian left, Cartesian right) {
+    @Nonnull
+    public static Cartesian subtract(@javax.annotation.Nonnull Cartesian left, @javax.annotation.Nonnull Cartesian right) {
         return left.subtract(right);
     }
 
@@ -283,17 +300,16 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return The result of negating the elements of the original set of {@link Cartesian} coordinates.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(Cartesian)'")
-    public static Cartesian negate(Cartesian coordinates) {
+    @Nonnull
+    public static Cartesian negate(@javax.annotation.Nonnull Cartesian coordinates) {
         return new Cartesian(-coordinates.m_x, -coordinates.m_y, -coordinates.m_z);
     }
 
     /**
     *  
-    <p>
     Produces a set of {@link Cartesian} coordinates representing this instance which results from rotating
-    the original axes used to represent this instance by the provided {@link Matrix3By3} rotation. 
+    the original axes used to represent this instance by the provided {@link Matrix3By3} rotation.
     This type of rotation is sometimes referred to as an "alias rotation".
-    </p>
     
     
     
@@ -302,7 +318,8 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return A set of {@link Cartesian} coordinates which is the result of the rotation.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Cartesian rotate(Matrix3By3 rotation) {
+    @Nonnull
+    public final Cartesian rotate(@Nonnull Matrix3By3 rotation) {
         return new Cartesian(rotation.getM11() * m_x + rotation.getM12() * m_y + rotation.getM13() * m_z, rotation.getM21() * m_x + rotation.getM22() * m_y + rotation.getM23() * m_z, rotation
                 .getM31()
                 * m_x + rotation.getM32() * m_y + rotation.getM33() * m_z);
@@ -310,11 +327,9 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
 
     /**
     *  
-    <p>
     Produces a set of {@link Cartesian} coordinates representing this instance which results from rotating
     the original axes used to represent this instance by the provided {@link UnitQuaternion} rotation.
     This type of rotation is sometimes referred to as an "alias rotation".
-    </p>
     
     
     
@@ -323,7 +338,8 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return A set of {@link Cartesian} coordinates which is the result of the rotation.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Cartesian rotate(UnitQuaternion rotation) {
+    @Nonnull
+    public final Cartesian rotate(@Nonnull UnitQuaternion rotation) {
         double w = rotation.getW();
         double difference = w * w - rotation.getX() * rotation.getX() - rotation.getY() * rotation.getY() - rotation.getZ() * rotation.getZ();
         double dot = m_x * rotation.getX() + m_y * rotation.getY() + m_z * rotation.getZ();
@@ -336,6 +352,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     
 
     */
+    @Nonnull
     public final UnitCartesian getMostOrthogonalAxis() {
         double x = Math.abs(m_x);
         double y = Math.abs(m_y);
@@ -381,8 +398,9 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
-    public final boolean equalsType(Cartesian other) {
-        return PrimitiveHelper.equals(m_x, other.m_x) && PrimitiveHelper.equals(m_y, other.m_y) && PrimitiveHelper.equals(m_z, other.m_z);
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
+    public final boolean equalsType(@Nonnull Cartesian other) {
+        return m_x == other.m_x && m_y == other.m_y && m_z == other.m_z;
     }
 
     /**
@@ -401,7 +419,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final boolean equalsEpsilon(Cartesian other, double epsilon) {
+    public final boolean equalsEpsilon(@Nonnull Cartesian other, double epsilon) {
         return Math.abs(m_x - other.m_x) <= epsilon && Math.abs(m_y - other.m_y) <= epsilon && Math.abs(m_z - other.m_z) <= epsilon;
     }
 
@@ -449,7 +467,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Cartesian,Cartesian)'")
-    public static boolean equals(Cartesian left, Cartesian right) {
+    public static boolean equals(@javax.annotation.Nonnull Cartesian left, @javax.annotation.Nonnull Cartesian right) {
         return left.equalsType(right);
     }
 
@@ -468,7 +486,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Cartesian,Cartesian)'")
-    public static boolean notEquals(Cartesian left, Cartesian right) {
+    public static boolean notEquals(@javax.annotation.Nonnull Cartesian left, @javax.annotation.Nonnull Cartesian right) {
         return !left.equalsType(right);
     }
 
@@ -497,7 +515,12 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     
     
     
+    
 
+    * <p>
+    The normalization of the cartesian components is accomplished in the usual way.
+    It should be noted that this does not guarantee a result whose magnitude will be 1.0 in cases where an individual component underflows upon squaring.
+    
     * @return The resulting set of {@link UnitCartesian} coordinates.
     * @exception ArithmeticException 
     The magnitude of the provided coordinates must not be zero.
@@ -506,6 +529,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     The magnitude of the provided coordinates must not be infinite.
     
     */
+    @Nonnull
     public final UnitCartesian normalize() {
         double magnitude = 0D;
         final double[] out$magnitude$1 = {
@@ -525,7 +549,12 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     
     
     
+    
 
+    * <p>
+    The normalization of the cartesian components is accomplished in the usual way.
+    It should be noted that this does not guarantee a result whose magnitude will be 1.0 in cases where an individual component underflows upon squaring.
+    
     * @param magnitude 
     On input, an array with one element.  On return, the array is populated with
     
@@ -540,7 +569,8 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public final UnitCartesian normalize(double[] magnitude) {
+    @Nonnull
+    public final UnitCartesian normalize(@Nonnull double[] magnitude) {
         return new UnitCartesian(m_x, m_y, m_z, magnitude);
     }
 
@@ -555,13 +585,16 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @return The resulting set of {@link Cartesian} coordinates.
     */
     @CS2JInfo("This method implements the functionality of the implicit conversion operation 'Cartesian <= UnitCartesian'")
-    public static Cartesian toCartesian(UnitCartesian coordinates) {
+    @Nonnull
+    public static Cartesian toCartesian(@javax.annotation.Nonnull UnitCartesian coordinates) {
         return new Cartesian(coordinates.getX(), coordinates.getY(), coordinates.getZ());
     }
 
     private double m_x;
     private double m_y;
     private double m_z;
+    @Nonnull
     private static Cartesian s_zero = new Cartesian(0.0, 0.0, 0.0);
+    @Nonnull
     private static Cartesian s_undefined = new Cartesian(Double.NaN, Double.NaN, Double.NaN);
 }

@@ -9,16 +9,15 @@ public class ArgumentException extends IllegalArgumentException {
     private final String paramName;
 
     /**
-     * Initializes a new instance of the {@link ArgumentException} class.
+     * Initializes a new instance.
      */
     public ArgumentException() {
-        super();
+        super("Value does not fall within the expected range.");
         paramName = null;
     }
 
     /**
-     * Initializes a new instance of the {@link ArgumentException} class with a specified
-     * error message.
+     * Initializes a new instance with a specified error message.
      *
      * @param message
      *            The error message that explains the reason for the exception.
@@ -29,9 +28,8 @@ public class ArgumentException extends IllegalArgumentException {
     }
 
     /**
-     * Initializes a new instance of the {@link ArgumentException} class with a specified
-     * error message and a reference to the inner exception that is the cause of this
-     * exception.
+     * Initializes a new instance with a specified error message and a reference to the
+     * inner exception that is the cause of this exception.
      *
      * @param message
      *            The error message that explains the reason for the exception.
@@ -44,8 +42,8 @@ public class ArgumentException extends IllegalArgumentException {
     }
 
     /**
-     * Initializes a new instance of the {@link ArgumentException} class with a specified
-     * error message and the name of the parameter that causes this exception.
+     * Initializes a new instance with a specified error message and the name of the
+     * parameter that causes this exception.
      *
      * @param message
      *            The error message that explains the reason for the exception.
@@ -58,9 +56,8 @@ public class ArgumentException extends IllegalArgumentException {
     }
 
     /**
-     * Initializes a new instance of the {@link ArgumentException} class with a specified
-     * error message, the parameter name, and a reference to the inner exception that is
-     * the cause of this exception.
+     * Initializes a new instance with a specified error message, the parameter name, and
+     * a reference to the inner exception that is the cause of this exception.
      *
      * @param message
      *            The error message that explains the reason for the exception.
@@ -77,10 +74,10 @@ public class ArgumentException extends IllegalArgumentException {
     @Override
     public String getMessage() {
         String message = super.getMessage();
-        if (paramName != null && paramName.length() > 0) {
-            return message + EnvironmentHelper.newLine() + "Parameter name: " + paramName;
+        if (StringHelper.isNullOrEmpty(paramName)) {
+            return message;
         }
-        return message;
+        return message + EnvironmentHelper.newLine() + "Parameter name: " + paramName;
     }
 
     /**

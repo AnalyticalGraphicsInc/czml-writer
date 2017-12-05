@@ -18,7 +18,11 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<CustomPropertiesCesiumWriter> {
     @Before
@@ -343,12 +347,14 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
     }
 
     @CS2JInfo("Initialization of C# struct variable 'm_startDate' added by translator.")
+    @javax.annotation.Nonnull
     private JulianDate m_startDate = new JulianDate();
     private String m_isoStartString;
     @CS2JInfo("Initialization of C# struct variable 'm_stopDate' added by translator.")
+    @javax.annotation.Nonnull
     private JulianDate m_stopDate = new JulianDate();
     private String m_isoIntervalString;
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {

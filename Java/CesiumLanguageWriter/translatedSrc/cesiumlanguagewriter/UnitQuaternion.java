@@ -9,20 +9,31 @@ import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  *  
  A set of 4-dimensional coordinates used to represent rotation in 3-dimensional space.
+ To transform a {@link Cartesian} 
+ with this rotation, see {@link Cartesian#rotate(UnitQuaternion)}.
  
  
  
 
  * <p>
- To transform a {@link Cartesian} with this rotation, see {@link Cartesian#rotate(UnitQuaternion)}.
+ <p>
+ The normalization of the quaternion is accomplished in the usual way.
+ It should be noted that this does not guarantee a result whose magnitude will be 1.0 in cases where an individual component underflows upon squaring.
+ </p>
  
  * @see Matrix3By3
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class UnitQuaternion implements IEquatable<UnitQuaternion>, ImmutableValueType {
     /**
@@ -41,6 +52,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     are {@link Double#NaN}.
     
     */
+    @Nonnull
     public static UnitQuaternion getUndefined() {
         return s_undefined;
     }
@@ -50,6 +62,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     
 
     */
+    @Nonnull
     public static UnitQuaternion getIdentity() {
         return s_identity;
     }
@@ -114,7 +127,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public UnitQuaternion(double w, double x, double y, double z, double[] magnitude) {
+    public UnitQuaternion(double w, double x, double y, double z, @Nonnull double[] magnitude) {
         final double[] ref$w$0 = {
             w
         };
@@ -141,9 +154,8 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     /**
     *  
     Initializes a set of {@link UnitQuaternion} coordinates from the provided rotation matrix ({@link Matrix3By3}).
-    Note that if the given {@code matrix} is not an orthogonal rotation matrix, 
+    Note that if the given {@code matrix} is not an orthogonal rotation matrix,
     it will create a non-unit {@link UnitQuaternion} and could cause problems in code which assumes that the {@link UnitQuaternion} represents a rotation.
-    
     
     
     
@@ -152,9 +164,8 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     to converting to a unit quaternion.  If necessary, the surrounding code is responsible for ensuring that the given
     {@code matrix} is a valid orthogonal rotation matrix.
     * @param matrix The 3-by-3 rotation matrix.
-    * @return The resulting quaternion.
     */
-    public UnitQuaternion(Matrix3By3 matrix) {
+    public UnitQuaternion(@Nonnull Matrix3By3 matrix) {
         double factor = matrix.getM11() + matrix.getM22() + matrix.getM33();
         int type = 0;
         if (matrix.getM11() > factor) {
@@ -256,6 +267,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     * @return A set of {@link UnitQuaternion} coordinates that represents the conjugate of this instance.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final UnitQuaternion conjugate() {
         return new UnitQuaternion(m_w, -m_x, -m_y, -m_z, Normalization.NORMALIZED);
     }
@@ -271,7 +283,8 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     * @return The result of the multiplication.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final UnitQuaternion multiply(UnitQuaternion quaternion) {
+    @Nonnull
+    public final UnitQuaternion multiply(@Nonnull UnitQuaternion quaternion) {
         return new UnitQuaternion(m_w * quaternion.m_w - m_x * quaternion.m_x - m_y * quaternion.m_y - m_z * quaternion.m_z, m_w * quaternion.m_x + m_x * quaternion.m_w - m_y * quaternion.m_z + m_z
                 * quaternion.m_y, m_w * quaternion.m_y + m_x * quaternion.m_z + m_y * quaternion.m_w - m_z * quaternion.m_x, m_w * quaternion.m_z - m_x * quaternion.m_y + m_y * quaternion.m_x + m_z
                 * quaternion.m_w);
@@ -290,7 +303,8 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     * @return The result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'UnitQuaternion *(UnitQuaternion,UnitQuaternion)'")
-    public static UnitQuaternion multiply(UnitQuaternion left, UnitQuaternion right) {
+    @Nonnull
+    public static UnitQuaternion multiply(@javax.annotation.Nonnull UnitQuaternion left, @javax.annotation.Nonnull UnitQuaternion right) {
         return left.multiply(right);
     }
 
@@ -305,7 +319,8 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     * @return The result of negating the elements of the original {@link UnitQuaternion}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'UnitQuaternion -(UnitQuaternion)'")
-    public static UnitQuaternion negate(UnitQuaternion coordinates) {
+    @Nonnull
+    public static UnitQuaternion negate(@javax.annotation.Nonnull UnitQuaternion coordinates) {
         return new UnitQuaternion(-coordinates.m_w, -coordinates.m_x, -coordinates.m_y, -coordinates.m_z, Normalization.NORMALIZED);
     }
 
@@ -335,7 +350,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public final boolean equalsType(UnitQuaternion other) {
+    public final boolean equalsType(@Nonnull UnitQuaternion other) {
         return m_w == other.m_w && m_x == other.m_x && m_y == other.m_y && m_z == other.m_z;
     }
 
@@ -355,7 +370,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final boolean equalsEpsilon(UnitQuaternion other, double epsilon) {
+    public final boolean equalsEpsilon(@Nonnull UnitQuaternion other, double epsilon) {
         return Math.abs(m_w - other.m_w) <= epsilon && Math.abs(m_x - other.m_x) <= epsilon && Math.abs(m_y - other.m_y) <= epsilon && Math.abs(m_z - other.m_z) <= epsilon;
     }
 
@@ -403,7 +418,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(UnitQuaternion,UnitQuaternion)'")
-    public static boolean equals(UnitQuaternion left, UnitQuaternion right) {
+    public static boolean equals(@javax.annotation.Nonnull UnitQuaternion left, @javax.annotation.Nonnull UnitQuaternion right) {
         return left.equalsType(right);
     }
 
@@ -422,7 +437,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(UnitQuaternion,UnitQuaternion)'")
-    public static boolean notEquals(UnitQuaternion left, UnitQuaternion right) {
+    public static boolean notEquals(@javax.annotation.Nonnull UnitQuaternion left, @javax.annotation.Nonnull UnitQuaternion right) {
         return !left.equalsType(right);
     }
 
@@ -435,7 +450,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
         return Double.isNaN(m_w) || Double.isNaN(m_x) || Double.isNaN(m_y) || Double.isNaN(m_z);
     }
 
-    private UnitQuaternion(double w, double x, double y, double z, Normalization normalization) {
+    private UnitQuaternion(double w, double x, double y, double z, @Nonnull Normalization normalization) {
         if (normalization == Normalization.NORMALIZED) {
             m_w = w;
             m_x = x;
@@ -471,7 +486,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
         }
     }
 
-    private static void normalizeCoordinates(double[] w, double[] x, double[] y, double[] z, double[] magnitude) {
+    private static void normalizeCoordinates(@Nonnull double[] w, @Nonnull double[] x, @Nonnull double[] y, @Nonnull double[] z, @Nonnull double[] magnitude) {
         magnitude[0] = Math.sqrt(w[0] * w[0] + x[0] * x[0] + y[0] * y[0] + z[0] * z[0]);
         // ReSharper disable once CompareOfFloatsByEqualityOperator
         if (magnitude[0] == 0.0) {
@@ -490,7 +505,9 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     private double m_x;
     private double m_y;
     private double m_z;
+    @Nonnull
     private static UnitQuaternion s_identity = new UnitQuaternion(1.0, 0.0, 0.0, 0.0);
+    @Nonnull
     private static UnitQuaternion s_undefined = new UnitQuaternion(Double.NaN, Double.NaN, Double.NaN, Double.NaN, Normalization.NORMALIZED);
 
     private static enum Normalization implements Enumeration {
@@ -505,6 +522,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
         * Get the numeric value associated with this enum constant.
         * @return A numeric value.
         */
+        @Override
         public int getValue() {
             return value;
         }
@@ -514,6 +532,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
         * @return The enum constant associated with value.
         * @param value a numeric value.
         */
+        @Nonnull
         public static Normalization getFromValue(int value) {
             switch (value) {
             case 0:
@@ -529,6 +548,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
         * Get the enum constant that is considered to be the default.
         * @return The default enum constant.
         */
+        @Nonnull
         public static Normalization getDefault() {
             return UNNORMALIZED;
         }

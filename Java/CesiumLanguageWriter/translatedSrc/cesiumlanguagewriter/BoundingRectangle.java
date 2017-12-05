@@ -9,6 +9,7 @@ import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
+import javax.annotation.Nonnull;
 
 /**
  * 
@@ -16,7 +17,11 @@ import agi.foundation.compatibility.StringHelper;
 
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class BoundingRectangle implements IEquatable<BoundingRectangle>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -28,6 +33,7 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     
 
     */
+    @Nonnull
     public static BoundingRectangle getEmpty() {
         return s_empty;
     }
@@ -71,12 +77,15 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     
     
     
+    
 
     * @param x The x coordinate of the lower-left corner.
     * @param y The y coordinate of the lower-left corner.
     * @param width The width of the rectangle.
     * @param height The height of the rectangle.
+    * @return A new {@link BoundingRectangle}.
     */
+    @Nonnull
     public static BoundingRectangle fromWidthHeight(double x, double y, double width, double height) {
         return new BoundingRectangle(x, y, x + width, y + height);
     }
@@ -160,9 +169,9 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
-    public final boolean equalsType(BoundingRectangle other) {
-        return PrimitiveHelper.equals(m_left, other.m_left) && PrimitiveHelper.equals(m_bottom, other.m_bottom) && PrimitiveHelper.equals(m_right, other.m_right)
-                && PrimitiveHelper.equals(m_top, other.m_top);
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
+    public final boolean equalsType(@Nonnull BoundingRectangle other) {
+        return m_left == other.m_left && m_bottom == other.m_bottom && m_right == other.m_right && m_top == other.m_top;
     }
 
     /**
@@ -181,7 +190,7 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final boolean equalsEpsilon(BoundingRectangle other, double epsilon) {
+    public final boolean equalsEpsilon(@Nonnull BoundingRectangle other, double epsilon) {
         return Math.abs(m_left - other.m_left) <= epsilon && Math.abs(m_bottom - other.m_bottom) <= epsilon && Math.abs(m_right - other.m_right) <= epsilon && Math.abs(m_top - other.m_top) <= epsilon;
     }
 
@@ -229,7 +238,7 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(BoundingRectangle,BoundingRectangle)'")
-    public static boolean equals(BoundingRectangle left, BoundingRectangle right) {
+    public static boolean equals(@javax.annotation.Nonnull BoundingRectangle left, @javax.annotation.Nonnull BoundingRectangle right) {
         return left.equalsType(right);
     }
 
@@ -248,7 +257,7 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(BoundingRectangle,BoundingRectangle)'")
-    public static boolean notEquals(BoundingRectangle left, BoundingRectangle right) {
+    public static boolean notEquals(@javax.annotation.Nonnull BoundingRectangle left, @javax.annotation.Nonnull BoundingRectangle right) {
         return !left.equalsType(right);
     }
 
@@ -256,5 +265,6 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     private double m_right;
     private double m_bottom;
     private double m_top;
+    @Nonnull
     private static BoundingRectangle s_empty = new BoundingRectangle(0D, 0D, 0D, 0D);
 }

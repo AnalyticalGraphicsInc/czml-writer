@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import javax.annotation.Nonnull;
+
 /**
  * Specifies the culture, case, and sort rules to be used by certain overloads of the
  * {@link StringHelper#compare(String,String)} and {@link String#equals(Object)} methods.
@@ -34,6 +36,7 @@ public enum StringComparison implements Enumeration {
      * @param value
      *            a numeric value.
      */
+    @Nonnull
     public static StringComparison getFromValue(int value) {
         switch (value) {
         case 0:

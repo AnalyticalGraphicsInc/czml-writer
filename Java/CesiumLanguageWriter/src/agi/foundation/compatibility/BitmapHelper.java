@@ -3,6 +3,7 @@ package agi.foundation.compatibility;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UncheckedIOException;
 
 import javax.imageio.ImageIO;
 
@@ -23,7 +24,7 @@ public final class BitmapHelper {
         try {
             return ImageIO.read(stream);
         } catch (IOException e) {
-            throw new RuntimeIOException(e);
+            throw new UncheckedIOException(e);
         }
     }
 }

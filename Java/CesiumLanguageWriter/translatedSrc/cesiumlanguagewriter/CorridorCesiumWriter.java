@@ -16,6 +16,7 @@ import cesiumlanguagewriter.PositionListCesiumWriter;
 import cesiumlanguagewriter.ShadowModeCesiumWriter;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -23,7 +24,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWriter> {
     /**
     *  
@@ -217,6 +222,15 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public CorridorCesiumWriter clone() {
         return new CorridorCesiumWriter(this);
@@ -960,7 +974,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     * @param value The style of a corner.
     */
-    public final void writeCornerTypeProperty(CesiumCornerType value) {
+    public final void writeCornerTypeProperty(@Nonnull CesiumCornerType value) {
         {
             cesiumlanguagewriter.CornerTypeCesiumWriter writer = openCornerTypeProperty();
             try {
@@ -1502,7 +1516,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     * @param color The color.
     */
-    public final void writeOutlineColorProperty(Color color) {
+    public final void writeOutlineColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
             try {
@@ -1592,7 +1606,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     * @param color The color.
     */
-    public final void writeOutlineColorPropertyRgbaf(Color color) {
+    public final void writeOutlineColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
             try {
@@ -1947,7 +1961,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     * @param value The shadow mode.
     */
-    public final void writeShadowsProperty(CesiumShadowMode value) {
+    public final void writeShadowsProperty(@Nonnull CesiumShadowMode value) {
         {
             cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
             try {
@@ -2066,7 +2080,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     * @param value The value.
     */
-    public final void writeDistanceDisplayConditionProperty(Bounds value) {
+    public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
         {
             cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {

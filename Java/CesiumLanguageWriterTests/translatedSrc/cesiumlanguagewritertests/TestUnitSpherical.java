@@ -20,7 +20,11 @@ import org.junit.Test;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestUnitSpherical {
     /**
@@ -99,6 +103,20 @@ public class TestUnitSpherical {
 
     /**
     *  
+    Tests thats the {@link UnitSpherical#equalsEpsilon} method returns true
+    when the difference is exactly epsilon.
+    
+
+    */
+    @Test
+    public final void testEqualsEpsilonExact() {
+        UnitSpherical first = new UnitSpherical(0.1, 0.1);
+        UnitSpherical second = new UnitSpherical(0.1, 0.1);
+        Assert.assertTrue(second.equalsEpsilon(first, 0D));
+    }
+
+    /**
+    *  
     Tests to ensure the equality fails when comparing incorrect type.
     
 
@@ -141,7 +159,7 @@ public class TestUnitSpherical {
         Assert.assertEquals(s.toString(), test.toString());
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {

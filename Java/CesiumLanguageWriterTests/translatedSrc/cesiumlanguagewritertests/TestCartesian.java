@@ -22,7 +22,11 @@ import org.junit.Test;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCartesian {
     /**
@@ -120,6 +124,33 @@ public class TestCartesian {
 
     /**
     *  
+    Tests thats the {@link Cartesian#equalsEpsilon} method returns true
+    when the difference is exactly epsilon.
+    
+
+    */
+    @Test
+    public final void testEqualsEpsilonExact() {
+        Cartesian first = new Cartesian(0.1, 0.1, 0.1);
+        Cartesian second = new Cartesian(0.1, 0.1, 0.1);
+        Assert.assertTrue(second.equalsEpsilon(first, 0D));
+    }
+
+    /**
+    *  
+    Tests to ensure the equality fails when comparing incorrect type.
+    
+
+    */
+    @Test
+    public final void testEqualityWithWrongType() {
+        Cartesian first = new Cartesian(1.0, 2.0, 3.0);
+        Cartographic second = new Cartographic(1.0, 2.0, 3.0);
+        Assert.assertFalse(first.equals(second));
+    }
+
+    /**
+    *  
     Tests the {@code Magnitude} ({@link Cartesian#getMagnitude get}) property.
     
 
@@ -195,13 +226,13 @@ public class TestCartesian {
 
     */
     @Test
-    public final void mostOrthogonalAxis() {
-        Cartesian v = Cartesian.toCartesian(new UnitCartesian(1.0, 2.0, 3.0));
-        AssertHelper.assertEquals(UnitCartesian.getUnitX(), v.getMostOrthogonalAxis());
-        v = Cartesian.toCartesian(new UnitCartesian(2.0, 3.0, 1.0));
-        AssertHelper.assertEquals(UnitCartesian.getUnitZ(), v.getMostOrthogonalAxis());
-        v = Cartesian.toCartesian(new UnitCartesian(3.0, 1.0, 2.0));
-        AssertHelper.assertEquals(UnitCartesian.getUnitY(), v.getMostOrthogonalAxis());
+    public final void testMostOrthogonalAxis() {
+        Cartesian cartesian = new Cartesian(1.0, 2.0, 3.0);
+        AssertHelper.assertEquals(UnitCartesian.getUnitX(), cartesian.getMostOrthogonalAxis());
+        cartesian = new Cartesian(2.0, 3.0, 1.0);
+        AssertHelper.assertEquals(UnitCartesian.getUnitZ(), cartesian.getMostOrthogonalAxis());
+        cartesian = new Cartesian(3.0, 1.0, 2.0);
+        AssertHelper.assertEquals(UnitCartesian.getUnitY(), cartesian.getMostOrthogonalAxis());
     }
 
     /**
@@ -396,7 +427,7 @@ public class TestCartesian {
 
     /**
     *  
-    Tests that Cartesian3.GetHashCode returns something at least reasonably random.
+    Tests that GetHashCode returns something at least reasonably random.
     
 
     */
@@ -427,14 +458,14 @@ public class TestCartesian {
         Assert.assertEquals(result, test.toString());
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 
-    private ExpectedException rule$expectedException = ExpectedException.none();
+    private final ExpectedException rule$expectedException = ExpectedException.none();
 
     @Rule
     public ExpectedException getRule$expectedException() {

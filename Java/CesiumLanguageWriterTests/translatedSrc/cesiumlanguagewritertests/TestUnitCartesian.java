@@ -20,9 +20,13 @@ import org.junit.Test;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestUnitCartesian3 {
+public class TestUnitCartesian {
     /**
     *  
     Tests that initialization of and access to the type's values works correctly.
@@ -173,6 +177,20 @@ public class TestUnitCartesian3 {
 
     /**
     *  
+    Tests thats the {@link UnitCartesian#equalsEpsilon} method returns true
+    when the difference is exactly epsilon.
+    
+
+    */
+    @Test
+    public final void testEqualsEpsilonExact() {
+        UnitCartesian first = new UnitCartesian(0.1, 0.1, 0.1);
+        UnitCartesian second = new UnitCartesian(0.1, 0.1, 0.1);
+        Assert.assertTrue(second.equalsEpsilon(first, 0D));
+    }
+
+    /**
+    *  
     Tests to ensure the equality fails when comparing incorrect type.
     
 
@@ -233,8 +251,8 @@ public class TestUnitCartesian3 {
     */
     @Test
     public final void testInvert() {
-        UnitCartesian Cartesian3 = new UnitCartesian(2.0, 3.0, 6.0);
-        UnitCartesian inverted = Cartesian3.invert();
+        UnitCartesian cartesian = new UnitCartesian(2.0, 3.0, 6.0);
+        UnitCartesian inverted = cartesian.invert();
         Assert.assertEquals(-2.0 / 7.0, inverted.getX(), 0d);
         Assert.assertEquals(-3.0 / 7.0, inverted.getY(), 0d);
         Assert.assertEquals(-6.0 / 7.0, inverted.getZ(), 0d);
@@ -386,8 +404,8 @@ public class TestUnitCartesian3 {
         Assert.assertEquals(third.getX(), result.getX(), Constants.Epsilon14);
         Assert.assertEquals(third.getY(), result.getY(), Constants.Epsilon14);
         Assert.assertEquals(third.getZ(), result.getZ(), Constants.Epsilon14);
-        Cartesian Cartesian3 = new Cartesian(c, a, b);
-        result = first.cross(Cartesian3);
+        Cartesian cartesian = new Cartesian(c, a, b);
+        result = first.cross(cartesian);
         Assert.assertEquals(third.getX(), result.getX(), Constants.Epsilon14);
         Assert.assertEquals(third.getY(), result.getY(), Constants.Epsilon14);
         Assert.assertEquals(third.getZ(), result.getZ(), Constants.Epsilon14);
@@ -395,7 +413,7 @@ public class TestUnitCartesian3 {
 
     /**
     *  
-    Tests that Cartesian3.GetHashCode returns something at least reasonably random.
+    Tests that GetHashCode returns something at least reasonably random.
     
 
     */
@@ -424,14 +442,14 @@ public class TestUnitCartesian3 {
         Assert.assertEquals("0, 0, 1", test3.toString());
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 
-    private ExpectedException rule$expectedException = ExpectedException.none();
+    private final ExpectedException rule$expectedException = ExpectedException.none();
 
     @Rule
     public ExpectedException getRule$expectedException() {

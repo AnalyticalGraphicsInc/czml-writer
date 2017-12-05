@@ -8,6 +8,7 @@ import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -17,7 +18,11 @@ import agi.foundation.compatibility.PrimitiveHelper;
 
  * @see UnitQuaternion
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
     /**
@@ -32,6 +37,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
 
     * @return The 3-by-3 identity matrix.
     */
+    @Nonnull
     public static Matrix3By3 getIdentity() {
         return s_identity;
     }
@@ -42,11 +48,12 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     
 
     * <p>
-    Use {@code IsUndefined} ({@link Matrix3By3#getIsUndefined get}) to test whether a {@link Matrix3By3} instance
+    Use {@code IsUndefined} ({@link #getIsUndefined get}) to test whether a {@link Matrix3By3} instance
     is undefined since it will return {@code true} if any of the element values
     are {@link Double#NaN}.
     
     */
+    @Nonnull
     public static Matrix3By3 getUndefined() {
         return s_undefined;
     }
@@ -58,6 +65,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
 
     * @return The 3-by-3 zero matrix.
     */
+    @Nonnull
     public static Matrix3By3 getZero() {
         return s_zero;
     }
@@ -77,6 +85,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return The diagonal matrix.
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
+    @Nonnull
     public static Matrix3By3 diagonalMatrix(double m11, double m22, double m33) {
         return new Matrix3By3(m11, 0.0, 0.0, 0.0, m22, 0.0, 0.0, 0.0, m33);
     }
@@ -91,7 +100,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @param vector The vector.
     * @return The diagonal matrix
     */
-    public static Matrix3By3 diagonalMatrix(Cartesian vector) {
+    @Nonnull
+    public static Matrix3By3 diagonalMatrix(@Nonnull Cartesian vector) {
         return diagonalMatrix(vector.getX(), vector.getY(), vector.getZ());
     }
 
@@ -105,7 +115,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @param vector The vector.
     * @return The diagonal matrix.
     */
-    public static Matrix3By3 diagonalMatrix(UnitCartesian vector) {
+    @Nonnull
+    public static Matrix3By3 diagonalMatrix(@Nonnull UnitCartesian vector) {
         return diagonalMatrix(vector.getX(), vector.getY(), vector.getZ());
     }
 
@@ -114,12 +125,10 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     Initializes a new instance from a {@link UnitQuaternion}.
     
     
-    
 
     * @param quaternion The quaternion.
-    * @return The resulting 3-by-3 matrix.
     */
-    public Matrix3By3(UnitQuaternion quaternion) {
+    public Matrix3By3(@Nonnull UnitQuaternion quaternion) {
         double x2 = quaternion.getX() * quaternion.getX();
         double xy = quaternion.getX() * quaternion.getY();
         double xz = quaternion.getX() * quaternion.getZ();
@@ -340,6 +349,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return The transposed matrix.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final Matrix3By3 transpose() {
         return new Matrix3By3(m_m11, m_m21, m_m31, m_m12, m_m22, m_m32, m_m13, m_m23, m_m33);
     }
@@ -365,7 +375,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return The sum of the matrices.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Matrix3By3 add(Matrix3By3 matrix) {
+    @Nonnull
+    public final Matrix3By3 add(@Nonnull Matrix3By3 matrix) {
         return new Matrix3By3(m_m11 + matrix.m_m11, m_m12 + matrix.m_m12, m_m13 + matrix.m_m13, m_m21 + matrix.m_m21, m_m22 + matrix.m_m22, m_m23 + matrix.m_m23, m_m31 + matrix.m_m31, m_m32
                 + matrix.m_m32, m_m33 + matrix.m_m33);
     }
@@ -381,7 +392,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return The result of the subtraction.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Matrix3By3 subtract(Matrix3By3 matrix) {
+    @Nonnull
+    public final Matrix3By3 subtract(@Nonnull Matrix3By3 matrix) {
         return new Matrix3By3(m_m11 - matrix.m_m11, m_m12 - matrix.m_m12, m_m13 - matrix.m_m13, m_m21 - matrix.m_m21, m_m22 - matrix.m_m22, m_m23 - matrix.m_m23, m_m31 - matrix.m_m31, m_m32
                 - matrix.m_m32, m_m33 - matrix.m_m33);
     }
@@ -397,6 +409,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return The result of the multiplication.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final Matrix3By3 multiply(double scalar) {
         return new Matrix3By3(m_m11 * scalar, m_m12 * scalar, m_m13 * scalar, m_m21 * scalar, m_m22 * scalar, m_m23 * scalar, m_m31 * scalar, m_m32 * scalar, m_m33 * scalar);
     }
@@ -412,7 +425,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return The result of the multiplication.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Matrix3By3 multiply(Matrix3By3 matrix) {
+    @Nonnull
+    public final Matrix3By3 multiply(@Nonnull Matrix3By3 matrix) {
         return new Matrix3By3(m_m11 * matrix.m_m11 + m_m12 * matrix.m_m21 + m_m13 * matrix.m_m31, m_m11 * matrix.m_m12 + m_m12 * matrix.m_m22 + m_m13 * matrix.m_m32, m_m11 * matrix.m_m13 + m_m12
                 * matrix.m_m23 + m_m13 * matrix.m_m33, m_m21 * matrix.m_m11 + m_m22 * matrix.m_m21 + m_m23 * matrix.m_m31, m_m21 * matrix.m_m12 + m_m22 * matrix.m_m22 + m_m23 * matrix.m_m32, m_m21
                 * matrix.m_m13 + m_m22 * matrix.m_m23 + m_m23 * matrix.m_m33, m_m31 * matrix.m_m11 + m_m32 * matrix.m_m21 + m_m33 * matrix.m_m31, m_m31 * matrix.m_m12 + m_m32 * matrix.m_m22 + m_m33
@@ -430,7 +444,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return The resulting Cartesian vector.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Cartesian multiply(Cartesian vector) {
+    @Nonnull
+    public final Cartesian multiply(@Nonnull Cartesian vector) {
         return new Cartesian(m_m11 * vector.getX() + m_m12 * vector.getY() + m_m13 * vector.getZ(), m_m21 * vector.getX() + m_m22 * vector.getY() + m_m23 * vector.getZ(), m_m31 * vector.getX()
                 + m_m32 * vector.getY() + m_m33 * vector.getZ());
     }
@@ -448,7 +463,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return The result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Matrix3By3 *(Matrix3By3,System.Double)'")
-    public static Matrix3By3 multiply(Matrix3By3 matrix, double scalar) {
+    @Nonnull
+    public static Matrix3By3 multiply(@javax.annotation.Nonnull Matrix3By3 matrix, double scalar) {
         return matrix.multiply(scalar);
     }
 
@@ -465,7 +481,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return The result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Matrix3By3 *(System.Double,Matrix3By3)'")
-    public static Matrix3By3 multiply(double scalar, Matrix3By3 matrix) {
+    @Nonnull
+    public static Matrix3By3 multiply(double scalar, @javax.annotation.Nonnull Matrix3By3 matrix) {
         return matrix.multiply(scalar);
     }
 
@@ -482,7 +499,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return The result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Matrix3By3 *(Matrix3By3,Matrix3By3)'")
-    public static Matrix3By3 multiply(Matrix3By3 left, Matrix3By3 right) {
+    @Nonnull
+    public static Matrix3By3 multiply(@javax.annotation.Nonnull Matrix3By3 left, @javax.annotation.Nonnull Matrix3By3 right) {
         return left.multiply(right);
     }
 
@@ -499,7 +517,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return The result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian *(Matrix3By3,Cartesian)'")
-    public static Cartesian multiply(Matrix3By3 matrix, Cartesian vector) {
+    @Nonnull
+    public static Cartesian multiply(@javax.annotation.Nonnull Matrix3By3 matrix, @javax.annotation.Nonnull Cartesian vector) {
         return matrix.multiply(vector);
     }
 
@@ -516,7 +535,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return The sum of the matrices.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Matrix3By3 +(Matrix3By3,Matrix3By3)'")
-    public static Matrix3By3 add(Matrix3By3 left, Matrix3By3 right) {
+    @Nonnull
+    public static Matrix3By3 add(@javax.annotation.Nonnull Matrix3By3 left, @javax.annotation.Nonnull Matrix3By3 right) {
         return left.add(right);
     }
 
@@ -533,7 +553,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return The result of subtracting the second matrix from the first.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Matrix3By3 -(Matrix3By3,Matrix3By3)'")
-    public static Matrix3By3 subtract(Matrix3By3 left, Matrix3By3 right) {
+    @Nonnull
+    public static Matrix3By3 subtract(@javax.annotation.Nonnull Matrix3By3 left, @javax.annotation.Nonnull Matrix3By3 right) {
         return left.subtract(right);
     }
 
@@ -563,7 +584,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public final boolean equalsType(Matrix3By3 other) {
+    public final boolean equalsType(@Nonnull Matrix3By3 other) {
         return m_m11 == other.m_m11 && m_m12 == other.m_m12 && m_m13 == other.m_m13 && m_m21 == other.m_m21 && m_m22 == other.m_m22 && m_m23 == other.m_m23 && m_m31 == other.m_m31
                 && m_m32 == other.m_m32 && m_m33 == other.m_m33;
     }
@@ -584,7 +605,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @return true if the matrices are equal as defined by the epsilon value.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final boolean equalsEpsilon(Matrix3By3 other, double epsilon) {
+    public final boolean equalsEpsilon(@Nonnull Matrix3By3 other, double epsilon) {
         return Math.abs(m_m11 - other.m_m11) <= epsilon && Math.abs(m_m12 - other.m_m12) <= epsilon && Math.abs(m_m13 - other.m_m13) <= epsilon && Math.abs(m_m21 - other.m_m21) <= epsilon
                 && Math.abs(m_m22 - other.m_m22) <= epsilon && Math.abs(m_m23 - other.m_m23) <= epsilon && Math.abs(m_m31 - other.m_m31) <= epsilon && Math.abs(m_m32 - other.m_m32) <= epsilon
                 && Math.abs(m_m33 - other.m_m33) <= epsilon;
@@ -619,7 +640,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Matrix3By3,Matrix3By3)'")
-    public static boolean equals(Matrix3By3 left, Matrix3By3 right) {
+    public static boolean equals(@javax.annotation.Nonnull Matrix3By3 left, @javax.annotation.Nonnull Matrix3By3 right) {
         return left.equalsType(right);
     }
 
@@ -638,7 +659,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Matrix3By3,Matrix3By3)'")
-    public static boolean notEquals(Matrix3By3 left, Matrix3By3 right) {
+    public static boolean notEquals(@javax.annotation.Nonnull Matrix3By3 left, @javax.annotation.Nonnull Matrix3By3 right) {
         return !left.equalsType(right);
     }
 
@@ -651,7 +672,10 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     private double m_m31;
     private double m_m32;
     private double m_m33;
+    @Nonnull
     private static Matrix3By3 s_identity = new Matrix3By3(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0);
+    @Nonnull
     private static Matrix3By3 s_undefined = new Matrix3By3(Double.NaN, Double.NaN, Double.NaN, Double.NaN, Double.NaN, Double.NaN, Double.NaN, Double.NaN, Double.NaN);
+    @Nonnull
     private static Matrix3By3 s_zero = new Matrix3By3(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 }
