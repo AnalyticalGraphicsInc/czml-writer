@@ -31,12 +31,12 @@ namespace ExampleCesiumLanguageServer
             {
                 var cesiumWriter = new CesiumStreamWriter();
                 var output = new CesiumOutputStream(outputStream)
-                             {
-                                 // Since this is a demo, turning on PrettyFormatting makes the response easier to view
-                                 // with web browser developer tools.  It just adds whitespace and newlines to the response,
-                                 // so production environments would typically leave this turned off.
-                                 PrettyFormatting = true
-                             };
+                {
+                    // Since this is a demo, turning on PrettyFormatting makes the response easier to view
+                    // with web browser developer tools.  It just adds whitespace and newlines to the response,
+                    // so production environments would typically leave this turned off.
+                    PrettyFormatting = true
+                };
 
                 // The whole body of CZML must be wrapped in a JSON array, opened here.
                 output.WriteStartSequence();
