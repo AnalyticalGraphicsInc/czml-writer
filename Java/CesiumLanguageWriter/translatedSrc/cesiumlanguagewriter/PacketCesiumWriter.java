@@ -32,6 +32,7 @@ import cesiumlanguagewriter.VectorCesiumWriter;
 import cesiumlanguagewriter.ViewFromCesiumWriter;
 import cesiumlanguagewriter.WallCesiumWriter;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -39,7 +40,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class PacketCesiumWriter extends CesiumElementWriter {
     /**
     *  
@@ -638,7 +643,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param start The earliest date of the interval.
     * @param stop The latest date of the interval.
     */
-    public final void writeAvailability(JulianDate start, JulianDate stop) {
+    public final void writeAvailability(@Nonnull JulianDate start, @Nonnull JulianDate stop) {
         writeAvailability(new TimeInterval(start, stop));
     }
 
@@ -702,7 +707,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
     * @param value The value.
     */
-    public final void writePositionProperty(Cartesian value) {
+    public final void writePositionProperty(@Nonnull Cartesian value) {
         {
             cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
             try {
@@ -767,7 +772,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
     * @param value The interval.
     */
-    public final void writePositionPropertyCartographicRadians(Cartographic value) {
+    public final void writePositionPropertyCartographicRadians(@Nonnull Cartographic value) {
         {
             cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
             try {
@@ -832,7 +837,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
     * @param value The interval.
     */
-    public final void writePositionPropertyCartographicDegrees(Cartographic value) {
+    public final void writePositionPropertyCartographicDegrees(@Nonnull Cartographic value) {
         {
             cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
             try {
@@ -897,7 +902,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
     * @param value The value.
     */
-    public final void writePositionPropertyCartesianVelocity(Motion1<Cartesian> value) {
+    public final void writePositionPropertyCartesianVelocity(@Nonnull Motion1<Cartesian> value) {
         {
             cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
             try {
@@ -1061,7 +1066,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
     * @param value The value.
     */
-    public final void writeOrientationProperty(UnitQuaternion value) {
+    public final void writeOrientationProperty(@Nonnull UnitQuaternion value) {
         {
             cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
             try {
@@ -1305,7 +1310,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
     * @param value The value.
     */
-    public final void writeViewFromProperty(Cartesian value) {
+    public final void writeViewFromProperty(@Nonnull Cartesian value) {
         {
             cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
             try {

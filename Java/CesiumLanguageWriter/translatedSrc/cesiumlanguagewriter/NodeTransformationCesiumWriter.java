@@ -10,6 +10,7 @@ import cesiumlanguagewriter.RotationCesiumWriter;
 import cesiumlanguagewriter.ScaleCesiumWriter;
 import cesiumlanguagewriter.TranslationCesiumWriter;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -17,7 +18,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTransformationCesiumWriter> {
     /**
     *  
@@ -78,6 +83,15 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public NodeTransformationCesiumWriter clone() {
         return new NodeTransformationCesiumWriter(this);
@@ -111,7 +125,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
     * @param value The value.
     */
-    public final void writeTranslationProperty(Cartesian value) {
+    public final void writeTranslationProperty(@Nonnull Cartesian value) {
         {
             cesiumlanguagewriter.TranslationCesiumWriter writer = openTranslationProperty();
             try {
@@ -276,7 +290,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
     * @param value The value.
     */
-    public final void writeRotationProperty(UnitQuaternion value) {
+    public final void writeRotationProperty(@Nonnull UnitQuaternion value) {
         {
             cesiumlanguagewriter.RotationCesiumWriter writer = openRotationProperty();
             try {
@@ -441,7 +455,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
     * @param value The value.
     */
-    public final void writeScaleProperty(Cartesian value) {
+    public final void writeScaleProperty(@Nonnull Cartesian value) {
         {
             cesiumlanguagewriter.ScaleCesiumWriter writer = openScaleProperty();
             try {

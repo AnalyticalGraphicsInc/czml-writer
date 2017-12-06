@@ -33,7 +33,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a set of <see cref="UnitSpherical"/> coordinates from the provided set of <see cref="UnitCartesian"/> coordinates.
         /// </summary>
-        /// <param name="coordinates">The set of UnitCartesian coordinates.</param>
+        /// <param name="coordinates">The set of <see cref="UnitCartesian"/> coordinates.</param>
         public UnitSpherical(UnitCartesian coordinates)
         {
             double x = coordinates.X;

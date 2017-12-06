@@ -10,6 +10,7 @@ import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -17,7 +18,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<PolylineGlowMaterialCesiumWriter> {
     /**
     *  
@@ -66,6 +71,15 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public PolylineGlowMaterialCesiumWriter clone() {
         return new PolylineGlowMaterialCesiumWriter(this);
@@ -99,7 +113,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     * @param color The color.
     */
-    public final void writeColorProperty(Color color) {
+    public final void writeColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -189,7 +203,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     * @param color The color.
     */
-    public final void writeColorPropertyRgbaf(Color color) {
+    public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {

@@ -20,11 +20,17 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestGenerateValidationDocument {
+    @javax.annotation.Nonnull
     private JulianDate m_documentStartDate = new GregorianDate(2016, 6, 17, 12, 0, 0D).toJulianDate();
+    @javax.annotation.Nonnull
     private JulianDate m_documentStopDate = new GregorianDate(2016, 6, 17, 13, 0, 0D).toJulianDate();
     private Writer m_streamWriter;
     private Writer m_assertionsWriter;
@@ -46527,7 +46533,7 @@ public class TestGenerateValidationDocument {
         }
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {

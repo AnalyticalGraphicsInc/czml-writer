@@ -6,9 +6,14 @@ namespace CesiumLanguageWriter
 {
     /// <summary>
     /// A set of 4-dimensional coordinates used to represent rotation in 3-dimensional space.
+    /// To transform a <see cref="Cartesian"/> 
+    /// with this rotation, see <see cref="Cartesian.Rotate(UnitQuaternion)"/>.
     /// </summary>
     /// <remarks>
-    /// To transform a <see cref="Cartesian"/> with this rotation, see <see cref="Cartesian.Rotate(UnitQuaternion)"/>.
+    /// <para>
+    /// The normalization of the quaternion is accomplished in the usual way.
+    /// It should be noted that this does not guarantee a result whose magnitude will be 1.0 in cases where an individual component underflows upon squaring.
+    /// </para>
     /// </remarks>
     /// <seealso cref="Matrix3By3"/>
     [CSToJavaImmutableValueType]
@@ -93,11 +98,10 @@ namespace CesiumLanguageWriter
 
         /// <summary>
         /// Initializes a set of <see cref="UnitQuaternion"/> coordinates from the provided rotation matrix (<see cref="Matrix3By3"/>).
-        /// Note that if the given <paramref name="matrix"/> is not an orthogonal rotation matrix, 
+        /// Note that if the given <paramref name="matrix"/> is not an orthogonal rotation matrix,
         /// it will create a non-unit <see cref="UnitQuaternion"/> and could cause problems in code which assumes that the <see cref="UnitQuaternion"/> represents a rotation.
         /// </summary>
         /// <param name="matrix">The 3-by-3 rotation matrix.</param>
-        /// <returns>The resulting quaternion.</returns>
         /// <remarks>For performance reasons, there is no check to ensure that the <paramref name="matrix"/> is a unit rotation prior
         /// to converting to a unit quaternion.  If necessary, the surrounding code is responsible for ensuring that the given
         /// <paramref name="matrix"/> is a valid orthogonal rotation matrix.</remarks>

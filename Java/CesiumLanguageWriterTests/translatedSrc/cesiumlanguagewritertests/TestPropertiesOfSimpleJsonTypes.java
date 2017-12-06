@@ -13,7 +13,11 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPropertiesOfSimpleJsonTypes extends TestCesiumPropertyWriter<BillboardCesiumWriter> {
     @Test
@@ -285,7 +289,7 @@ public class TestPropertiesOfSimpleJsonTypes extends TestCesiumPropertyWriter<Bi
         return new BillboardCesiumWriter(propertyName);
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {

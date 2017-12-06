@@ -21,7 +21,11 @@ import javax.annotation.Nonnull;
  * @param <TFrom> The class derived from {@link CesiumPropertyWriter} to adapt.
  * @param <TValue> The type of value to which to adapt the class to write.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> implements ICesiumValuePropertyWriter<TValue>, ICesiumWriterAdaptor<TFrom> {
     /**
     *  
@@ -49,6 +53,10 @@ public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> im
         }, false);
     }
 
+    /**
+    *  
+
+    */
     public final void dispose() {
         m_parent.close();
     }
@@ -62,47 +70,138 @@ public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> im
         return m_parent;
     }
 
+    /**
+    *  
+    Gets {@code true} if the writer is open; otherwise, {@code false}.
+    
+
+    */
     public final boolean getIsOpen() {
         return m_parent.getIsOpen();
     }
 
+    /**
+    *  
+    Gets the {@link CesiumOutputStream} on which this writer is currently open.  If the writer is
+    not open, accessing this property will throw an exception.
+    
+    
+
+    * @exception IllegalStateException The writer is not currently open on a stream.
+    */
     public final CesiumOutputStream getOutput() {
         return m_parent.getOutput();
     }
 
+    /**
+    *  
+
+    */
     public final void writeValue(TValue value) {
         m_writeValueCallback.invoke(m_parent, value);
     }
 
-    public final void writeInterval(JulianDate start, JulianDate stop) {
+    /**
+    *  
+    
+    Writes the actual interval of time covered by this CZML interval.
+    
+    
+    
+
+    * @param start The start of the interval.
+    * @param stop The end of the interval.
+    */
+    public final void writeInterval(@Nonnull JulianDate start, @Nonnull JulianDate stop) {
         m_parent.writeInterval(start, stop);
     }
 
+    /**
+    *  
+    
+    Opens a writer that is used to write information about this property for a single interval.
+    
+    
+
+    * @return The writer.
+    */
     public final ICesiumPropertyWriter openInterval() {
         m_interval.getValue().open(m_parent.getOutput());
         return m_interval.getValue();
     }
 
+    /**
+    *  
+    
+    Opens a writer that is used to write information about this property for multiple discrete intervals.
+    
+    
+
+    * @return The writer.
+    */
     public final ICesiumIntervalListWriter openMultipleIntervals() {
         return m_parent.openMultipleIntervals();
     }
 
+    /**
+    *  
+    Gets a writer for intervals of this property.  The returned instance must be opened by calling
+    the {@link ICesiumElementWriter#open} method before it can be used for writing.  Consider
+    calling the {@link #openInterval} or {@link #openMultipleIntervals} method, which will automatically
+    open the writer, instead of accessing this property directly.
+    
+
+    */
     public final ICesiumPropertyWriter getIntervalWriter() {
         return m_interval.getValue();
     }
 
+    /**
+    *  
+    Gets a value indicating whether this instance should always open an interval.
+    
+
+    */
     public final boolean getForceInterval() {
         return m_parent.getForceInterval();
     }
 
+    /**
+    *  
+    Sets a value indicating whether this instance should always open an interval.
+    
+
+    */
     public final void setForceInterval(boolean value) {
         m_parent.setForceInterval(value);
     }
 
+    /**
+    *  
+    
+    Opens this writer on a given {@link CesiumOutputStream}.  A single writer can write to multiple
+    streams over its lifetime.  Opening a writer on a stream may cause data to be written to the stream.
+    
+    
+    
+
+    * @param output The stream to which to write.
+    * @exception IllegalStateException The writer is already open on a stream.
+    */
     public final void open(CesiumOutputStream output) {
         m_parent.open(output);
     }
 
+    /**
+    *  
+    
+    Closes this writer on a given stream, but does not close the underlying stream.  Closing a writer
+    on a stream may cause data to be written to the stream.
+    
+    
+
+    * @exception IllegalStateException The writer is not open on a stream.
+    */
     public final void close() {
         m_parent.close();
     }

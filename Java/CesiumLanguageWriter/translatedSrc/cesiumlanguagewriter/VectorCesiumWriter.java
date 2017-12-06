@@ -12,6 +12,7 @@ import cesiumlanguagewriter.DirectionCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -19,7 +20,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter> {
     /**
     *  
@@ -104,6 +109,15 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public VectorCesiumWriter clone() {
         return new VectorCesiumWriter(this);
@@ -256,7 +270,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     * @param color The color.
     */
-    public final void writeColorProperty(Color color) {
+    public final void writeColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -346,7 +360,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     * @param color The color.
     */
-    public final void writeColorPropertyRgbaf(Color color) {
+    public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -536,7 +550,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     * @param value The value.
     */
-    public final void writeDirectionProperty(Spherical value) {
+    public final void writeDirectionProperty(@Nonnull Spherical value) {
         {
             cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
             try {
@@ -601,7 +615,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     * @param value The value.
     */
-    public final void writeDirectionPropertyUnitSpherical(UnitSpherical value) {
+    public final void writeDirectionPropertyUnitSpherical(@Nonnull UnitSpherical value) {
         {
             cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
             try {
@@ -666,7 +680,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     * @param value The value.
     */
-    public final void writeDirectionPropertyCartesian(Cartesian value) {
+    public final void writeDirectionPropertyCartesian(@Nonnull Cartesian value) {
         {
             cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
             try {
@@ -731,7 +745,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     * @param value The value.
     */
-    public final void writeDirectionPropertyUnitCartesian(UnitCartesian value) {
+    public final void writeDirectionPropertyUnitCartesian(@Nonnull UnitCartesian value) {
         {
             cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
             try {

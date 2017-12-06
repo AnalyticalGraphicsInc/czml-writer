@@ -8,6 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.Reference;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -15,7 +16,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorCesiumWriter> {
     /**
     *  
@@ -51,19 +56,19 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     public ColorCesiumWriter(String propertyName) {
         super(propertyName);
         m_asRgba = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(
-                this, "createRgbaAdaptor", new Class[] {}) {
+                this, "createRgbaAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color> invoke() {
                 return createRgbaAdaptor();
             }
         }, false);
         m_asRgbaf = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(
-                this, "createRgbafAdaptor", new Class[] {}) {
+                this, "createRgbafAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color> invoke() {
                 return createRgbafAdaptor();
             }
         }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -81,25 +86,34 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     protected ColorCesiumWriter(ColorCesiumWriter existingInstance) {
         super(existingInstance);
         m_asRgba = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(
-                this, "createRgbaAdaptor", new Class[] {}) {
+                this, "createRgbaAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color> invoke() {
                 return createRgbaAdaptor();
             }
         }, false);
         m_asRgbaf = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(
-                this, "createRgbafAdaptor", new Class[] {}) {
+                this, "createRgbafAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color> invoke() {
                 return createRgbafAdaptor();
             }
         }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public ColorCesiumWriter clone() {
         return new ColorCesiumWriter(this);
@@ -113,7 +127,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
     * @param color The color.
     */
-    public final void writeRgba(Color color) {
+    public final void writeRgba(@Nonnull Color color) {
         final String PropertyName = RgbaPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -183,7 +197,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
     * @param color The color.
     */
-    public final void writeRgbaf(Color color) {
+    public final void writeRgbaf(@Nonnull Color color) {
         final String PropertyName = RgbafPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);

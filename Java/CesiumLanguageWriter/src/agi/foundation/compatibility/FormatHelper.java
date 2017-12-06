@@ -308,7 +308,7 @@ public final class FormatHelper {
         }
     }
 
-    private static ConcurrentHashMap<FormatCacheKey, Format> cache = new ConcurrentHashMap<FormatHelper.FormatCacheKey, Format>();
+    private static ConcurrentHashMap<FormatCacheKey, Format> cache = new ConcurrentHashMap<>();
 
     private static Format createFormat(Locale locale, String pattern, int width) {
         if (pattern == null || pattern.length() == 0) {

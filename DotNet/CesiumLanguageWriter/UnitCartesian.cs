@@ -8,6 +8,10 @@ namespace CesiumLanguageWriter
     /// A set of rectilinear 3-dimensional coordinates with unit magnitude.
     /// </summary>
     /// <remarks>
+    /// <para>
+    /// The normalization of the cartesian components is accomplished in the usual way.
+    /// It should be noted that this does not guarantee a result whose magnitude will be 1.0 in cases where an individual component underflows upon squaring.
+    /// </para>
     /// </remarks>
     [CSToJavaImmutableValueType]
     public struct UnitCartesian : IEquatable<UnitCartesian>

@@ -8,12 +8,13 @@ import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DateTimeHelper;
-import agi.foundation.compatibility.DayOfWeek;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
-import org.joda.time.DateTime;
+import java.time.DayOfWeek;
+import java.time.ZonedDateTime;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -21,7 +22,11 @@ import org.joda.time.DateTime;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<YearMonthDay>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -129,7 +134,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
 
     * @param date The date.
     */
-    public YearMonthDay(JulianDate date) {
+    public YearMonthDay(@Nonnull JulianDate date) {
         this(getAdjustedJulianDayNumber(date));
     }
 
@@ -151,7 +156,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     * @return The Julian day number that will produce the correct Gregorian day
     number.
     */
-    private static int getAdjustedJulianDayNumber(JulianDate date) {
+    private static int getAdjustedJulianDayNumber(@Nonnull JulianDate date) {
         int day = date.getDay();
         if (date.getSecondsOfDay() >= 43200.0) {
             ++day;
@@ -210,8 +215,9 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     of the week. This property value ranges from zero, indicating Sunday, to six,
     indicating Saturday.
     */
-    public final int getDayOfWeek() {
-        return DayOfWeek.fromJoda(new DateTime(getYear(), getMonth(), getDay(), 0, 0, 0, 0, org.joda.time.DateTimeZone.UTC).getDayOfWeek());
+    @Nonnull
+    public final DayOfWeek getDayOfWeek() {
+        return DateTimeHelper.create(getYear(), getMonth(), getDay()).getDayOfWeek();
     }
 
     /**
@@ -330,7 +336,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
-    public final boolean equalsType(YearMonthDay other) {
+    public final boolean equalsType(@Nonnull YearMonthDay other) {
         return m_year == other.m_year && m_month == other.m_month && m_day == other.m_day;
     }
 
@@ -381,7 +387,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     </td><td></td></tr><tr></tr></table>
     
     */
-    public final int compareTo(YearMonthDay other) {
+    public final int compareTo(@Nonnull YearMonthDay other) {
         if (m_year != other.m_year) {
             return m_year < other.m_year ? -1 : 1;
         }
@@ -406,7 +412,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(YearMonthDay,YearMonthDay)'")
-    public static boolean equals(YearMonthDay left, YearMonthDay right) {
+    public static boolean equals(@javax.annotation.Nonnull YearMonthDay left, @javax.annotation.Nonnull YearMonthDay right) {
         return left.equalsType(right);
     }
 
@@ -425,7 +431,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(YearMonthDay,YearMonthDay)'")
-    public static boolean notEquals(YearMonthDay left, YearMonthDay right) {
+    public static boolean notEquals(@javax.annotation.Nonnull YearMonthDay left, @javax.annotation.Nonnull YearMonthDay right) {
         return !left.equalsType(right);
     }
 
@@ -444,7 +450,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <(YearMonthDay,YearMonthDay)'")
-    public static boolean lessThan(YearMonthDay left, YearMonthDay right) {
+    public static boolean lessThan(@javax.annotation.Nonnull YearMonthDay left, @javax.annotation.Nonnull YearMonthDay right) {
         return left.compareTo(right) < 0;
     }
 
@@ -463,7 +469,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >(YearMonthDay,YearMonthDay)'")
-    public static boolean greaterThan(YearMonthDay left, YearMonthDay right) {
+    public static boolean greaterThan(@javax.annotation.Nonnull YearMonthDay left, @javax.annotation.Nonnull YearMonthDay right) {
         return left.compareTo(right) > 0;
     }
 
@@ -482,7 +488,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <=(YearMonthDay,YearMonthDay)'")
-    public static boolean lessThanOrEqual(YearMonthDay left, YearMonthDay right) {
+    public static boolean lessThanOrEqual(@javax.annotation.Nonnull YearMonthDay left, @javax.annotation.Nonnull YearMonthDay right) {
         return left.compareTo(right) <= 0;
     }
 
@@ -501,7 +507,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >=(YearMonthDay,YearMonthDay)'")
-    public static boolean greaterThanOrEqual(YearMonthDay left, YearMonthDay right) {
+    public static boolean greaterThanOrEqual(@javax.annotation.Nonnull YearMonthDay left, @javax.annotation.Nonnull YearMonthDay right) {
         return left.compareTo(right) >= 0;
     }
 

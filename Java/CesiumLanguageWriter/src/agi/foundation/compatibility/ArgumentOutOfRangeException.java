@@ -10,7 +10,7 @@ public class ArgumentOutOfRangeException extends ArgumentException {
     private final Object actualValue;
 
     /**
-     * Initializes a new instance of the {@link ArgumentOutOfRangeException} class.
+     * Initializes a new instance.
      */
     public ArgumentOutOfRangeException() {
         super(DEFAULT_MESSAGE);
@@ -18,8 +18,8 @@ public class ArgumentOutOfRangeException extends ArgumentException {
     }
 
     /**
-     * Initializes a new instance of the {@link ArgumentOutOfRangeException} class with
-     * the name of the parameter that causes this exception.
+     * Initializes a new instance with the name of the parameter that causes this
+     * exception.
      *
      * @param paramName
      *            The name of the parameter that causes this exception.
@@ -30,8 +30,8 @@ public class ArgumentOutOfRangeException extends ArgumentException {
     }
 
     /**
-     * Initializes a new instance of the {@link ArgumentOutOfRangeException} class with a
-     * specified error message and the exception that is the cause of this exception.
+     * Initializes a new instance with a specified error message and the exception that is
+     * the cause of this exception.
      *
      * @param message
      *            The error message that explains the reason for this exception.
@@ -45,8 +45,8 @@ public class ArgumentOutOfRangeException extends ArgumentException {
     }
 
     /**
-     * Initializes a new instance of the {@link ArgumentOutOfRangeException} class with a
-     * specified error message and the name of the parameter that causes this exception.
+     * Initializes a new instance with a specified error message and the name of the
+     * parameter that causes this exception.
      *
      * @param paramName
      *            The name of the parameter that caused the exception.
@@ -59,8 +59,8 @@ public class ArgumentOutOfRangeException extends ArgumentException {
     }
 
     /**
-     * Initializes a new instance of the {@link ArgumentOutOfRangeException} class with a
-     * specified error message, the parameter name, and the value of the argument.
+     * Initializes a new instance with a specified error message, the parameter name, and
+     * the value of the argument.
      *
      * @param paramName
      *            The name of the parameter that caused the exception.

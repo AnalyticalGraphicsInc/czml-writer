@@ -12,7 +12,11 @@ import javax.annotation.Nonnull;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public interface ICesiumElementWriter extends IDisposable {
     /**
     *  Gets {@code true} if the writer is open; otherwise, {@code false}.

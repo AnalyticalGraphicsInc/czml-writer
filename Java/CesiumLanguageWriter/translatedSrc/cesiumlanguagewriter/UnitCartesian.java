@@ -10,6 +10,8 @@ import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
 import cesiumlanguagewriter.Cartesian;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  *  
@@ -18,9 +20,17 @@ import cesiumlanguagewriter.Cartesian;
  
 
  * <p>
+ <p>
+ The normalization of the cartesian components is accomplished in the usual way.
+ It should be noted that this does not guarantee a result whose magnitude will be 1.0 in cases where an individual component underflows upon squaring.
+ </p>
  
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class UnitCartesian implements IEquatable<UnitCartesian>, ImmutableValueType {
     /**
@@ -39,6 +49,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     are {@link Double#NaN}.
     
     */
+    @Nonnull
     public static UnitCartesian getUndefined() {
         return s_undefined;
     }
@@ -48,6 +59,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
 
     */
+    @Nonnull
     public static UnitCartesian getUnitX() {
         return s_x;
     }
@@ -57,6 +69,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
 
     */
+    @Nonnull
     public static UnitCartesian getUnitY() {
         return s_y;
     }
@@ -66,6 +79,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
 
     */
+    @Nonnull
     public static UnitCartesian getUnitZ() {
         return s_z;
     }
@@ -122,7 +136,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public UnitCartesian(double x, double y, double z, double[] magnitude) {
+    public UnitCartesian(double x, double y, double z, @Nonnull double[] magnitude) {
         final double[] ref$x$0 = {
             x
         };
@@ -157,7 +171,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     The magnitude of the provided coordinates must not be infinite.
     
     */
-    public UnitCartesian(Cartesian coordinates) {
+    public UnitCartesian(@Nonnull Cartesian coordinates) {
         this(coordinates.getX(), coordinates.getY(), coordinates.getZ(), Normalization.UNNORMALIZED);
     }
 
@@ -184,7 +198,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public UnitCartesian(Cartesian coordinates, double[] magnitude) {
+    public UnitCartesian(@Nonnull Cartesian coordinates, @Nonnull double[] magnitude) {
         this(coordinates.getX(), coordinates.getY(), coordinates.getZ(), magnitude);
     }
 
@@ -214,11 +228,11 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
 
     * @param unitSpherical The set of {@link UnitSpherical} coordinates.
     */
-    public UnitCartesian(UnitSpherical unitSpherical) {
+    public UnitCartesian(@Nonnull UnitSpherical unitSpherical) {
         this(unitSpherical.getClock(), unitSpherical.getCone());
     }
 
-    private UnitCartesian(double x, double y, double z, Normalization normalization) {
+    private UnitCartesian(double x, double y, double z, @Nonnull Normalization normalization) {
         if (normalization == Normalization.NORMALIZED) {
             m_x = x;
             m_y = y;
@@ -284,6 +298,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link UnitCartesian} coordinates that represents the inverse of this instance.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final UnitCartesian invert() {
         return new UnitCartesian(-m_x, -m_y, -m_z, Normalization.NORMALIZED);
     }
@@ -299,6 +314,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the multiplication.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final Cartesian multiply(double scalar) {
         return new Cartesian(m_x * scalar, m_y * scalar, m_z * scalar);
     }
@@ -314,6 +330,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the division.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final Cartesian divide(double scalar) {
         return new Cartesian(m_x / scalar, m_y / scalar, m_z / scalar);
     }
@@ -329,7 +346,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the addition.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Cartesian add(Cartesian other) {
+    @Nonnull
+    public final Cartesian add(@Nonnull Cartesian other) {
         return new Cartesian(m_x + other.getX(), m_y + other.getY(), m_z + other.getZ());
     }
 
@@ -344,7 +362,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the addition.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Cartesian add(UnitCartesian other) {
+    @Nonnull
+    public final Cartesian add(@Nonnull UnitCartesian other) {
         return new Cartesian(m_x + other.m_x, m_y + other.m_y, m_z + other.m_z);
     }
 
@@ -359,7 +378,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the subtraction.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Cartesian subtract(Cartesian other) {
+    @Nonnull
+    public final Cartesian subtract(@Nonnull Cartesian other) {
         return new Cartesian(m_x - other.getX(), m_y - other.getY(), m_z - other.getZ());
     }
 
@@ -374,7 +394,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the subtraction.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Cartesian subtract(UnitCartesian other) {
+    @Nonnull
+    public final Cartesian subtract(@Nonnull UnitCartesian other) {
         return new Cartesian(m_x - other.m_x, m_y - other.m_y, m_z - other.m_z);
     }
 
@@ -389,7 +410,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the product.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Cartesian cross(Cartesian other) {
+    @Nonnull
+    public final Cartesian cross(@Nonnull Cartesian other) {
         return new Cartesian(m_y * other.getZ() - m_z * other.getY(), m_z * other.getX() - m_x * other.getZ(), m_x * other.getY() - m_y * other.getX());
     }
 
@@ -404,7 +426,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the product.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final Cartesian cross(UnitCartesian other) {
+    @Nonnull
+    public final Cartesian cross(@Nonnull UnitCartesian other) {
         return new Cartesian(m_y * other.m_z - m_z * other.m_y, m_z * other.m_x - m_x * other.m_z, m_x * other.m_y - m_y * other.m_x);
     }
 
@@ -419,7 +442,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A {@code double} that represents the result of the product.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final double dot(Cartesian other) {
+    public final double dot(@Nonnull Cartesian other) {
         return m_x * other.getX() + m_y * other.getY() + m_z * other.getZ();
     }
 
@@ -434,7 +457,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A {@code double} that represents the result of the product.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final double dot(UnitCartesian other) {
+    public final double dot(@Nonnull UnitCartesian other) {
         return m_x * other.m_x + m_y * other.m_y + m_z * other.m_z;
     }
 
@@ -451,7 +474,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian *(UnitCartesian,System.Double)'")
-    public static Cartesian multiply(UnitCartesian left, double right) {
+    @Nonnull
+    public static Cartesian multiply(@javax.annotation.Nonnull UnitCartesian left, double right) {
         return left.multiply(right);
     }
 
@@ -468,7 +492,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the multiplication.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian *(System.Double,UnitCartesian)'")
-    public static Cartesian multiply(double left, UnitCartesian right) {
+    @Nonnull
+    public static Cartesian multiply(double left, @javax.annotation.Nonnull UnitCartesian right) {
         return right.multiply(left);
     }
 
@@ -485,7 +510,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the division.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian /(UnitCartesian,System.Double)'")
-    public static Cartesian divide(UnitCartesian left, double right) {
+    @Nonnull
+    public static Cartesian divide(@javax.annotation.Nonnull UnitCartesian left, double right) {
         return left.divide(right);
     }
 
@@ -502,7 +528,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the addition.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian +(UnitCartesian,UnitCartesian)'")
-    public static Cartesian add(UnitCartesian left, UnitCartesian right) {
+    @Nonnull
+    public static Cartesian add(@javax.annotation.Nonnull UnitCartesian left, @javax.annotation.Nonnull UnitCartesian right) {
         return left.add(Cartesian.toCartesian(right));
     }
 
@@ -519,7 +546,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the addition.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian +(UnitCartesian,Cartesian)'")
-    public static Cartesian add(UnitCartesian left, Cartesian right) {
+    @Nonnull
+    public static Cartesian add(@javax.annotation.Nonnull UnitCartesian left, @javax.annotation.Nonnull Cartesian right) {
         return left.add(right);
     }
 
@@ -536,7 +564,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the addition.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian +(Cartesian,UnitCartesian)'")
-    public static Cartesian add(Cartesian left, UnitCartesian right) {
+    @Nonnull
+    public static Cartesian add(@javax.annotation.Nonnull Cartesian left, @javax.annotation.Nonnull UnitCartesian right) {
         return right.add(left);
     }
 
@@ -553,7 +582,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the subtraction.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(UnitCartesian,UnitCartesian)'")
-    public static Cartesian subtract(UnitCartesian left, UnitCartesian right) {
+    @Nonnull
+    public static Cartesian subtract(@javax.annotation.Nonnull UnitCartesian left, @javax.annotation.Nonnull UnitCartesian right) {
         return left.subtract(Cartesian.toCartesian(right));
     }
 
@@ -570,7 +600,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the subtraction.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(UnitCartesian,Cartesian)'")
-    public static Cartesian subtract(UnitCartesian left, Cartesian right) {
+    @Nonnull
+    public static Cartesian subtract(@javax.annotation.Nonnull UnitCartesian left, @javax.annotation.Nonnull Cartesian right) {
         return left.subtract(right);
     }
 
@@ -587,7 +618,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return A set of {@link Cartesian} coordinates that represents the result of the subtraction.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(Cartesian,UnitCartesian)'")
-    public static Cartesian subtract(Cartesian left, UnitCartesian right) {
+    @Nonnull
+    public static Cartesian subtract(@javax.annotation.Nonnull Cartesian left, @javax.annotation.Nonnull UnitCartesian right) {
         return left.subtract(Cartesian.toCartesian(right));
     }
 
@@ -602,7 +634,8 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return The result of negating the elements of the original {@link UnitCartesian}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'UnitCartesian -(UnitCartesian)'")
-    public static UnitCartesian negate(UnitCartesian coordinates) {
+    @Nonnull
+    public static UnitCartesian negate(@javax.annotation.Nonnull UnitCartesian coordinates) {
         return new UnitCartesian(-coordinates.m_x, -coordinates.m_y, -coordinates.m_z, Normalization.NORMALIZED);
     }
 
@@ -641,7 +674,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public final boolean equalsType(UnitCartesian other) {
+    public final boolean equalsType(@Nonnull UnitCartesian other) {
         return m_x == other.m_x && m_y == other.m_y && m_z == other.m_z;
     }
 
@@ -661,7 +694,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final boolean equalsEpsilon(UnitCartesian other, double epsilon) {
+    public final boolean equalsEpsilon(@Nonnull UnitCartesian other, double epsilon) {
         return Math.abs(m_x - other.m_x) <= epsilon && Math.abs(m_y - other.m_y) <= epsilon && Math.abs(m_z - other.m_z) <= epsilon;
     }
 
@@ -709,7 +742,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(UnitCartesian,UnitCartesian)'")
-    public static boolean equals(UnitCartesian left, UnitCartesian right) {
+    public static boolean equals(@javax.annotation.Nonnull UnitCartesian left, @javax.annotation.Nonnull UnitCartesian right) {
         return left.equalsType(right);
     }
 
@@ -728,11 +761,11 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(UnitCartesian,UnitCartesian)'")
-    public static boolean notEquals(UnitCartesian left, UnitCartesian right) {
+    public static boolean notEquals(@javax.annotation.Nonnull UnitCartesian left, @javax.annotation.Nonnull UnitCartesian right) {
         return !left.equalsType(right);
     }
 
-    private static void normalizeCoordinates(double[] x, double[] y, double[] z, double[] magnitude) {
+    private static void normalizeCoordinates(@Nonnull double[] x, @Nonnull double[] y, @Nonnull double[] z, @Nonnull double[] magnitude) {
         magnitude[0] = Math.sqrt(x[0] * x[0] + y[0] * y[0] + z[0] * z[0]);
         // ReSharper disable once CompareOfFloatsByEqualityOperator
         if (magnitude[0] == 0.0) {
@@ -758,6 +791,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
         * Get the numeric value associated with this enum constant.
         * @return A numeric value.
         */
+        @Override
         public int getValue() {
             return value;
         }
@@ -767,6 +801,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
         * @return The enum constant associated with value.
         * @param value a numeric value.
         */
+        @Nonnull
         public static Normalization getFromValue(int value) {
             switch (value) {
             case 0:
@@ -782,6 +817,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
         * Get the enum constant that is considered to be the default.
         * @return The default enum constant.
         */
+        @Nonnull
         public static Normalization getDefault() {
             return UNNORMALIZED;
         }
@@ -790,8 +826,12 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     private double m_x;
     private double m_y;
     private double m_z;
+    @Nonnull
     private static UnitCartesian s_x = new UnitCartesian(1.0, 0.0, 0.0, Normalization.NORMALIZED);
+    @Nonnull
     private static UnitCartesian s_y = new UnitCartesian(0.0, 1.0, 0.0, Normalization.NORMALIZED);
+    @Nonnull
     private static UnitCartesian s_z = new UnitCartesian(0.0, 0.0, 1.0, Normalization.NORMALIZED);
+    @Nonnull
     private static UnitCartesian s_undefined = new UnitCartesian(Double.NaN, Double.NaN, Double.NaN, Normalization.NORMALIZED);
 }

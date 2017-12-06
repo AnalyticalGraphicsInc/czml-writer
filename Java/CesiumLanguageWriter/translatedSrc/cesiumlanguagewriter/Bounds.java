@@ -11,6 +11,7 @@ import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -18,7 +19,11 @@ import agi.foundation.compatibility.StringHelper;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -57,6 +62,7 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     since it will return {@code true} if the values range from {@link Double#NEGATIVE_INFINITY} to {@link Double#POSITIVE_INFINITY}.
     
     */
+    @Nonnull
     public static Bounds getUnbounded() {
         return s_unbounded;
     }
@@ -105,7 +111,7 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public final boolean equalsType(Bounds other) {
+    public final boolean equalsType(@Nonnull Bounds other) {
         return m_lowerBound == other.m_lowerBound && m_upperBound == other.m_upperBound;
     }
 
@@ -124,7 +130,7 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
     
     */
-    public final boolean equalsEpsilon(Bounds other, double epsilon) {
+    public final boolean equalsEpsilon(@Nonnull Bounds other, double epsilon) {
         return Math.abs(m_lowerBound - other.m_lowerBound) <= epsilon && Math.abs(m_upperBound - other.m_upperBound) <= epsilon;
     }
 
@@ -172,7 +178,7 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Bounds,Bounds)'")
-    public static boolean equals(Bounds left, Bounds right) {
+    public static boolean equals(@javax.annotation.Nonnull Bounds left, @javax.annotation.Nonnull Bounds right) {
         return left.equalsType(right);
     }
 
@@ -191,7 +197,7 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Bounds,Bounds)'")
-    public static boolean notEquals(Bounds left, Bounds right) {
+    public static boolean notEquals(@javax.annotation.Nonnull Bounds left, @javax.annotation.Nonnull Bounds right) {
         return !left.equalsType(right);
     }
 
@@ -213,6 +219,7 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
         return DoubleHelper.isNegativeInfinity(m_lowerBound) && DoubleHelper.isPositiveInfinity(m_upperBound);
     }
 
+    @Nonnull
     private static Bounds s_unbounded = new Bounds(Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
     private double m_lowerBound;
     private double m_upperBound;

@@ -9,6 +9,7 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -16,7 +17,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidColorMaterialCesiumWriter> {
     /**
     *  
@@ -53,6 +58,15 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public SolidColorMaterialCesiumWriter clone() {
         return new SolidColorMaterialCesiumWriter(this);
@@ -86,7 +100,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     * @param color The color.
     */
-    public final void writeColorProperty(Color color) {
+    public final void writeColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -176,7 +190,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     * @param color The color.
     */
-    public final void writeColorPropertyRgbaf(Color color) {
+    public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {

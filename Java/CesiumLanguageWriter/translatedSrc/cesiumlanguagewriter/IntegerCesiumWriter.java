@@ -14,7 +14,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<IntegerCesiumWriter> {
     /**
     *  
@@ -42,13 +46,13 @@ public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<Inte
     public IntegerCesiumWriter(String propertyName) {
         super(propertyName);
         m_asNumber = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Integer>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Integer>>(this, "createNumberAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Integer>>(this, "createNumberAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Integer> invoke() {
                         return createNumberAdaptor();
                     }
                 }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -66,19 +70,28 @@ public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<Inte
     protected IntegerCesiumWriter(IntegerCesiumWriter existingInstance) {
         super(existingInstance);
         m_asNumber = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Integer>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Integer>>(this, "createNumberAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Integer>>(this, "createNumberAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Integer> invoke() {
                         return createNumberAdaptor();
                     }
                 }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public IntegerCesiumWriter clone() {
         return new IntegerCesiumWriter(this);

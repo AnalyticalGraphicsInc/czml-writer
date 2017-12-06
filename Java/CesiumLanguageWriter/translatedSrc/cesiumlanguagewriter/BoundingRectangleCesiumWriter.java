@@ -8,6 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BoundingRectangle;
 import cesiumlanguagewriter.Reference;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -15,7 +16,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyWriter<BoundingRectangleCesiumWriter> {
     /**
     *  
@@ -43,13 +48,13 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
     public BoundingRectangleCesiumWriter(String propertyName) {
         super(propertyName);
         m_asBoundingRectangle = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createBoundingRectangleAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createBoundingRectangleAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> invoke() {
                         return createBoundingRectangleAdaptor();
                     }
                 }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -67,19 +72,28 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
     protected BoundingRectangleCesiumWriter(BoundingRectangleCesiumWriter existingInstance) {
         super(existingInstance);
         m_asBoundingRectangle = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createBoundingRectangleAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createBoundingRectangleAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> invoke() {
                         return createBoundingRectangleAdaptor();
                     }
                 }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public BoundingRectangleCesiumWriter clone() {
         return new BoundingRectangleCesiumWriter(this);
@@ -93,7 +107,7 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 
     * @param value The value.
     */
-    public final void writeBoundingRectangle(BoundingRectangle value) {
+    public final void writeBoundingRectangle(@Nonnull BoundingRectangle value) {
         final String PropertyName = BoundingRectanglePropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);

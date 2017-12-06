@@ -13,6 +13,7 @@ import cesiumlanguagewriter.PolylineMaterialCesiumWriter;
 import cesiumlanguagewriter.PositionListCesiumWriter;
 import cesiumlanguagewriter.ShadowModeCesiumWriter;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -20,7 +21,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWriter> {
     /**
     *  
@@ -154,6 +159,15 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public PolylineCesiumWriter clone() {
         return new PolylineCesiumWriter(this);
@@ -871,7 +885,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     * @param value The shadow mode.
     */
-    public final void writeShadowsProperty(CesiumShadowMode value) {
+    public final void writeShadowsProperty(@Nonnull CesiumShadowMode value) {
         {
             cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
             try {
@@ -1010,7 +1024,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     * @param value The value.
     */
-    public final void writeDistanceDisplayConditionProperty(Bounds value) {
+    public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
         {
             cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {

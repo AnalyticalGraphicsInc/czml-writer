@@ -9,6 +9,7 @@ import cesiumlanguagewriter.CesiumResource;
 import cesiumlanguagewriter.Reference;
 import java.awt.image.RenderedImage;
 import java.net.URI;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -16,7 +17,11 @@ import java.net.URI;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     /**
     *  
@@ -44,13 +49,13 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     public UriCesiumWriter(String propertyName) {
         super(propertyName);
         m_asUri = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(this,
-                "createUriAdaptor", new Class[] {}) {
+                "createUriAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource> invoke() {
                 return createUriAdaptor();
             }
         }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -68,19 +73,28 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     protected UriCesiumWriter(UriCesiumWriter existingInstance) {
         super(existingInstance);
         m_asUri = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(this,
-                "createUriAdaptor", new Class[] {}) {
+                "createUriAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource> invoke() {
                 return createUriAdaptor();
             }
         }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public UriCesiumWriter clone() {
         return new UriCesiumWriter(this);
@@ -108,7 +122,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
-    public final void writeUri(URI uri, CesiumResourceBehavior resourceBehavior) {
+    public final void writeUri(URI uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         writeUri(uri.toString(), resourceBehavior);
     }
 
@@ -122,7 +136,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
-    public final void writeUri(String uri, CesiumResourceBehavior resourceBehavior) {
+    public final void writeUri(String uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         final String PropertyName = UriPropertyName;
         if (getForceInterval()) {
             openIntervalIfNecessary();
@@ -190,7 +204,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     * @param image The image.  A data URI will be created for this image.
     * @param imageFormat The image format to use to encode the image in the data URI.
     */
-    public final void writeUri(RenderedImage image, CesiumImageFormat imageFormat) {
+    public final void writeUri(RenderedImage image, @Nonnull CesiumImageFormat imageFormat) {
         final String PropertyName = UriPropertyName;
         if (getForceInterval()) {
             openIntervalIfNecessary();

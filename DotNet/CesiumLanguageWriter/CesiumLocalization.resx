@@ -126,6 +126,9 @@
   <data name="DataDownloadFailed" xml:space="preserve">
     <value>The requested data cannot be downloaded.</value>
   </data>
+  <data name="DateMustBeUTC" xml:space="preserve">
+    <value>The given date must be in the UTC time standard.</value>
+  </data>
   <data name="DayOfYearOutOfRange" xml:space="preserve">
     <value>The Day of Year must be between 1 and 366 inclusive.</value>
   </data>
@@ -174,26 +177,11 @@
   <data name="MotionMustContainValue" xml:space="preserve">
     <value>A Motion instance must be constructed with at least one value.</value>
   </data>
-  <data name="MustBeConstructedFromSpecificNumberOfElements" xml:space="preserve">
-    <value>An object of the type {0} must be constructed from an array with at least {1} elements.</value>
-  </data>
-  <data name="TaiAbbreviation" xml:space="preserve">
-    <value>TAI</value>
-  </data>
-  <data name="TaiName" xml:space="preserve">
-    <value>International Atomic Time</value>
-  </data>
   <data name="UnknownEnumerationValue" xml:space="preserve">
     <value>The enumeration has an invalid or unsupported value.</value>
   </data>
   <data name="UpperBoundCannotBeLessThanLowerBound" xml:space="preserve">
     <value>The upper bound cannot be less than the lower bound.</value>
-  </data>
-  <data name="UtcAbbreviation" xml:space="preserve">
-    <value>UTC</value>
-  </data>
-  <data name="UtcName" xml:space="preserve">
-    <value>Coordinated Universal Time</value>
   </data>
   <data name="WriterAlreadyClosed" xml:space="preserve">
     <value>The Cesium writer cannot be closed because it is not open.</value>

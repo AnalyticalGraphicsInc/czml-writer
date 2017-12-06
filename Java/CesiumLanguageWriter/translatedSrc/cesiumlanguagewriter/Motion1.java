@@ -18,7 +18,11 @@ import javax.annotation.Nonnull;
 
  * @param <T> The coordinate type used to describe the motion.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -72,7 +76,7 @@ public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueT
     * @param other The object to compare to this instance.
     * @return {@code true} if {@code other} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
-    public final boolean equalsType(Motion1<T> other) {
+    public final boolean equalsType(@Nonnull Motion1<T> other) {
         if (m_motion == null && other.m_motion == null) {
             return true;
         }
@@ -117,13 +121,7 @@ public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueT
     */
     @Override
     public int hashCode() {
-        int hashValue = PrimitiveHelper.hashCode(getOrder());
-        if (m_motion != null) {
-            for (int i = 0; i < m_motion.length; ++i) {
-                hashValue ^= m_motion[i].hashCode();
-            }
-        }
-        return hashValue;
+        return HashCode.combine(PrimitiveHelper.hashCode(getOrder()), HashCode.getHashCode(m_motion));
     }
 
     /**
@@ -146,7 +144,7 @@ public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueT
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Motion,Motion)'")
-    public static <T> boolean equals(Motion1<T> left, Motion1<T> right) {
+    public static <T> boolean equals(@javax.annotation.Nonnull Motion1<T> left, @javax.annotation.Nonnull Motion1<T> right) {
         return left.equalsType(right);
     }
 
@@ -170,7 +168,7 @@ public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueT
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Motion,Motion)'")
-    public static <T> boolean notEquals(Motion1<T> left, Motion1<T> right) {
+    public static <T> boolean notEquals(@javax.annotation.Nonnull Motion1<T> left, @javax.annotation.Nonnull Motion1<T> right) {
         return !left.equalsType(right);
     }
 

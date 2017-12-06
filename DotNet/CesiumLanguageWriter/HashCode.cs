@@ -1,23 +1,35 @@
-﻿namespace CesiumLanguageWriter
+﻿using JetBrains.Annotations;
+
+namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Helper class to combine hashcodes.
+    /// Contains static methods for working with hash codes.
     /// </summary>
     public static class HashCode
     {
         /// <summary>
-        /// Combine hashcodes into a single hashcode.
+        /// Combines an arbitrary number of hash codes.
         /// </summary>
-        /// <param name="hashcodes">The hashcodes to combine.</param>
-        /// <returns>A single overall hashcode.</returns>
-        public static int Combine(params int[] hashcodes)
+        /// <param name="hashes">The hash codes.</param>
+        /// <returns>The combined hash code.</returns>
+        public static int Combine([NotNull] params int[] hashes)
         {
-            int hash = 17;
-            foreach (int hashcode in hashcodes)
+            int result = 17;
+            foreach (int hash in hashes)
             {
-                hash = hash * 31 + hashcode;
+                result = result * 31 + hash;
             }
-            return hash;
+            return result;
+        }
+
+        /// <summary>
+        /// Gets a hash code for a specified object, or zero if the object is <see langword="null"/>.
+        /// </summary>
+        /// <param name="o">The object for which to get the hash code.</param>
+        /// <returns>The hash code of the object, or zero if the object is <see langword="null"/>.</returns>
+        public static int GetHashCode([CanBeNull] object o)
+        {
+            return o == null ? 0 : o.GetHashCode();
         }
     }
 }

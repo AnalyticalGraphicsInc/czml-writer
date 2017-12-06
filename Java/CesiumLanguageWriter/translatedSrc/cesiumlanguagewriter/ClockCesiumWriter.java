@@ -3,6 +3,7 @@ package cesiumlanguagewriter;
 
 import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.advanced.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -10,7 +11,11 @@ import cesiumlanguagewriter.advanced.*;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
     /**
     *  
@@ -63,6 +68,15 @@ public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public ClockCesiumWriter clone() {
         return new ClockCesiumWriter(this);
@@ -76,7 +90,7 @@ public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
 
     * @param value The time.
     */
-    public final void writeCurrentTime(JulianDate value) {
+    public final void writeCurrentTime(@Nonnull JulianDate value) {
         final String PropertyName = CurrentTimePropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -106,7 +120,7 @@ public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
 
     * @param value The clock range.
     */
-    public final void writeRange(ClockRange value) {
+    public final void writeRange(@Nonnull ClockRange value) {
         final String PropertyName = RangePropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
@@ -121,7 +135,7 @@ public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
 
     * @param value The clock step.
     */
-    public final void writeStep(ClockStep value) {
+    public final void writeStep(@Nonnull ClockStep value) {
         final String PropertyName = StepPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);

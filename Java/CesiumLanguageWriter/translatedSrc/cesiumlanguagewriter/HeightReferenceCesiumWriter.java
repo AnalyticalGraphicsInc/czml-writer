@@ -7,6 +7,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.CesiumHeightReference;
 import cesiumlanguagewriter.Reference;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -14,7 +15,11 @@ import cesiumlanguagewriter.Reference;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightReferenceCesiumWriter> {
     /**
     *  
@@ -42,13 +47,13 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     public HeightReferenceCesiumWriter(String propertyName) {
         super(propertyName);
         m_asHeightReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(this, "createHeightReferenceAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(this, "createHeightReferenceAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference> invoke() {
                         return createHeightReferenceAdaptor();
                     }
                 }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -66,19 +71,28 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     protected HeightReferenceCesiumWriter(HeightReferenceCesiumWriter existingInstance) {
         super(existingInstance);
         m_asHeightReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(this, "createHeightReferenceAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(this, "createHeightReferenceAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference> invoke() {
                         return createHeightReferenceAdaptor();
                     }
                 }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public HeightReferenceCesiumWriter clone() {
         return new HeightReferenceCesiumWriter(this);
@@ -92,7 +106,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
 
     * @param value The height reference.
     */
-    public final void writeHeightReference(CesiumHeightReference value) {
+    public final void writeHeightReference(@Nonnull CesiumHeightReference value) {
         final String PropertyName = HeightReferencePropertyName;
         if (getForceInterval()) {
             openIntervalIfNecessary();
@@ -182,7 +196,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     private final ICesiumValuePropertyWriter<CesiumHeightReference> createHeightReferenceAdaptor() {
         return new CesiumWriterAdaptor<cesiumlanguagewriter.HeightReferenceCesiumWriter, cesiumlanguagewriter.CesiumHeightReference>(this,
                 new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.HeightReferenceCesiumWriter, cesiumlanguagewriter.CesiumHeightReference>() {
-                    public void invoke(HeightReferenceCesiumWriter me, CesiumHeightReference value) {
+                    public void invoke(HeightReferenceCesiumWriter me, @Nonnull CesiumHeightReference value) {
                         me.writeHeightReference(value);
                     }
                 });

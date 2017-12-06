@@ -3,6 +3,8 @@ package cesiumlanguagewriter;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Enumeration;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  *  
@@ -10,7 +12,11 @@ import agi.foundation.compatibility.Enumeration;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public enum CesiumImageFormat implements Enumeration {
     /**
     *  
@@ -47,6 +53,7 @@ public enum CesiumImageFormat implements Enumeration {
     * Get the numeric value associated with this enum constant.
     * @return A numeric value.
     */
+    @Override
     public int getValue() {
         return value;
     }
@@ -56,6 +63,7 @@ public enum CesiumImageFormat implements Enumeration {
     * @return The enum constant associated with value.
     * @param value a numeric value.
     */
+    @Nonnull
     public static CesiumImageFormat getFromValue(int value) {
         switch (value) {
         case 0:
@@ -75,6 +83,7 @@ public enum CesiumImageFormat implements Enumeration {
     * Get the enum constant that is considered to be the default.
     * @return The default enum constant.
     */
+    @Nonnull
     public static CesiumImageFormat getDefault() {
         return PNG;
     }

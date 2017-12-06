@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.awt.image.RenderedImage;
 import java.net.URI;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -21,7 +22,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMaterialCesiumWriter> {
     /**
     *  
@@ -94,6 +99,15 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public ImageMaterialCesiumWriter clone() {
         return new ImageMaterialCesiumWriter(this);
@@ -148,7 +162,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
-    public final void writeImageProperty(URI uri, CesiumResourceBehavior resourceBehavior) {
+    public final void writeImageProperty(URI uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         {
             cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
             try {
@@ -169,7 +183,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
-    public final void writeImageProperty(String uri, CesiumResourceBehavior resourceBehavior) {
+    public final void writeImageProperty(String uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         {
             cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
             try {
@@ -251,7 +265,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     * @param image The image.  A data URI will be created for this image.
     * @param imageFormat The image format to use to encode the image in the data URI.
     */
-    public final void writeImageProperty(RenderedImage image, CesiumImageFormat imageFormat) {
+    public final void writeImageProperty(RenderedImage image, @Nonnull CesiumImageFormat imageFormat) {
         {
             cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
             try {
@@ -370,7 +384,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
     * @param value The value.
     */
-    public final void writeRepeatProperty(Rectangular value) {
+    public final void writeRepeatProperty(@Nonnull Rectangular value) {
         {
             cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
             try {
@@ -556,7 +570,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
     * @param color The color.
     */
-    public final void writeColorProperty(Color color) {
+    public final void writeColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -646,7 +660,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
     * @param color The color.
     */
-    public final void writeColorPropertyRgbaf(Color color) {
+    public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {

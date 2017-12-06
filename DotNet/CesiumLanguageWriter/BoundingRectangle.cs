@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
@@ -48,6 +49,7 @@ namespace CesiumLanguageWriter
         /// <param name="y">The y coordinate of the lower-left corner.</param>
         /// <param name="width">The width of the rectangle.</param>
         /// <param name="height">The height of the rectangle.</param>
+        /// <returns>A new <see cref="BoundingRectangle"/>.</returns>
         public static BoundingRectangle FromWidthHeight(double x, double y, double width, double height)
         {
             return new BoundingRectangle(x, y, x + width, y + height);
@@ -116,12 +118,13 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The instance to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool Equals(BoundingRectangle other)
         {
-            return m_left.Equals(other.m_left) &&
-                   m_bottom.Equals(other.m_bottom) &&
-                   m_right.Equals(other.m_right) &&
-                   m_top.Equals(other.m_top);
+            return m_left == other.m_left &&
+                   m_bottom == other.m_bottom &&
+                   m_right == other.m_right &&
+                   m_top == other.m_top;
         }
 
         /// <summary>

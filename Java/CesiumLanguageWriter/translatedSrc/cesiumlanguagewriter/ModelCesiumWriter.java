@@ -19,6 +19,7 @@ import java.awt.Color;
 import java.awt.image.RenderedImage;
 import java.net.URI;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -26,7 +27,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     /**
     *  
@@ -245,6 +250,15 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public ModelCesiumWriter clone() {
         return new ModelCesiumWriter(this);
@@ -418,7 +432,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
-    public final void writeGltfProperty(URI uri, CesiumResourceBehavior resourceBehavior) {
+    public final void writeGltfProperty(URI uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         {
             cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
             try {
@@ -439,7 +453,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
-    public final void writeGltfProperty(String uri, CesiumResourceBehavior resourceBehavior) {
+    public final void writeGltfProperty(String uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         {
             cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
             try {
@@ -521,7 +535,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     * @param image The image.  A data URI will be created for this image.
     * @param imageFormat The image format to use to encode the image in the data URI.
     */
-    public final void writeGltfProperty(RenderedImage image, CesiumImageFormat imageFormat) {
+    public final void writeGltfProperty(RenderedImage image, @Nonnull CesiumImageFormat imageFormat) {
         {
             cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
             try {
@@ -1373,7 +1387,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     * @param value The shadow mode.
     */
-    public final void writeShadowsProperty(CesiumShadowMode value) {
+    public final void writeShadowsProperty(@Nonnull CesiumShadowMode value) {
         {
             cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
             try {
@@ -1492,7 +1506,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     * @param value The height reference.
     */
-    public final void writeHeightReferenceProperty(CesiumHeightReference value) {
+    public final void writeHeightReferenceProperty(@Nonnull CesiumHeightReference value) {
         {
             cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
@@ -1611,7 +1625,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeSilhouetteColorProperty(Color color) {
+    public final void writeSilhouetteColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
             try {
@@ -1701,7 +1715,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeSilhouetteColorPropertyRgbaf(Color color) {
+    public final void writeSilhouetteColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
             try {
@@ -2056,7 +2070,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeColorProperty(Color color) {
+    public final void writeColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -2146,7 +2160,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     * @param color The color.
     */
-    public final void writeColorPropertyRgbaf(Color color) {
+    public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -2336,7 +2350,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     * @param value The blend mode.
     */
-    public final void writeColorBlendModeProperty(CesiumColorBlendMode value) {
+    public final void writeColorBlendModeProperty(@Nonnull CesiumColorBlendMode value) {
         {
             cesiumlanguagewriter.ColorBlendModeCesiumWriter writer = openColorBlendModeProperty();
             try {
@@ -2620,7 +2634,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     * @param value The value.
     */
-    public final void writeDistanceDisplayConditionProperty(Bounds value) {
+    public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
         {
             cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {

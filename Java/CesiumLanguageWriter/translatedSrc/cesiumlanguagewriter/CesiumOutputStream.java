@@ -21,7 +21,11 @@ import javax.annotation.Nullable;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class CesiumOutputStream {
     /**
     *  
@@ -67,7 +71,7 @@ public class CesiumOutputStream {
     public final void writeStartObject() {
         m_nextValueOnNewLine = true;
         startNewValue();
-        TextWriterHelper.print(m_writer, '{');
+        TextWriterHelper.write(m_writer, '{');
         m_firstInContainer = true;
         m_inProperty = false;
         m_indent += IndentLevel;
@@ -86,7 +90,7 @@ public class CesiumOutputStream {
             TextWriterHelper.writeLine(m_writer);
             writeIndent();
         }
-        TextWriterHelper.print(m_writer, '}');
+        TextWriterHelper.write(m_writer, '}');
     }
 
     /**
@@ -98,7 +102,7 @@ public class CesiumOutputStream {
     public final void writeStartSequence() {
         m_nextValueOnNewLine = true;
         startNewValue();
-        TextWriterHelper.print(m_writer, '[');
+        TextWriterHelper.write(m_writer, '[');
         m_firstInContainer = true;
         m_inProperty = false;
         m_indent += IndentLevel;
@@ -117,7 +121,7 @@ public class CesiumOutputStream {
             TextWriterHelper.writeLine(m_writer);
             writeIndent();
         }
-        TextWriterHelper.print(m_writer, ']');
+        TextWriterHelper.write(m_writer, ']');
     }
 
     /**
@@ -134,10 +138,10 @@ public class CesiumOutputStream {
         }
         m_nextValueOnNewLine = true;
         startNewValue();
-        TextWriterHelper.print(m_writer, '"');
+        TextWriterHelper.write(m_writer, '"');
         writeEscapedString(propertyName);
-        TextWriterHelper.print(m_writer, '"');
-        TextWriterHelper.print(m_writer, ':');
+        TextWriterHelper.write(m_writer, '"');
+        TextWriterHelper.write(m_writer, ':');
         m_firstInContainer = true;
         m_inProperty = true;
     }
@@ -155,11 +159,11 @@ public class CesiumOutputStream {
         m_firstInContainer = false;
         m_inProperty = false;
         if (value == null) {
-            TextWriterHelper.print(m_writer, "null");
+            TextWriterHelper.write(m_writer, "null");
         } else {
-            TextWriterHelper.print(m_writer, '"');
+            TextWriterHelper.write(m_writer, '"');
             writeEscapedString(value);
-            TextWriterHelper.print(m_writer, '"');
+            TextWriterHelper.write(m_writer, '"');
         }
     }
 
@@ -175,7 +179,7 @@ public class CesiumOutputStream {
         startNewValue();
         m_firstInContainer = false;
         m_inProperty = false;
-        TextWriterHelper.print(m_writer, DoubleHelper.toString(value, "R", CultureInfoHelper.getInvariantCulture()));
+        TextWriterHelper.write(m_writer, DoubleHelper.toString(value, "R", CultureInfoHelper.getInvariantCulture()));
     }
 
     /**
@@ -190,7 +194,7 @@ public class CesiumOutputStream {
         startNewValue();
         m_firstInContainer = false;
         m_inProperty = false;
-        TextWriterHelper.print(m_writer, IntHelper.toString(value, CultureInfoHelper.getInvariantCulture()));
+        TextWriterHelper.write(m_writer, IntHelper.toString(value, CultureInfoHelper.getInvariantCulture()));
     }
 
     /**
@@ -205,7 +209,7 @@ public class CesiumOutputStream {
         startNewValue();
         m_firstInContainer = false;
         m_inProperty = false;
-        TextWriterHelper.print(m_writer, LongHelper.toString(value, CultureInfoHelper.getInvariantCulture()));
+        TextWriterHelper.write(m_writer, LongHelper.toString(value, CultureInfoHelper.getInvariantCulture()));
     }
 
     /**
@@ -220,7 +224,7 @@ public class CesiumOutputStream {
         startNewValue();
         m_firstInContainer = false;
         m_inProperty = false;
-        TextWriterHelper.print(m_writer, value ? "true" : "false");
+        TextWriterHelper.write(m_writer, value ? "true" : "false");
     }
 
     /**
@@ -309,11 +313,11 @@ public class CesiumOutputStream {
                 }
                 // write skipped text
                 if (skipped > 0) {
-                    TextWriterHelper.print(m_writer, chars, lastWritePosition, skipped);
+                    TextWriterHelper.write(m_writer, chars, lastWritePosition, skipped);
                     skipped = 0;
                 }
                 // write escaped value and note position
-                TextWriterHelper.print(m_writer, escapedValue);
+                TextWriterHelper.write(m_writer, escapedValue);
                 lastWritePosition = i + 1;
             } else {
                 skipped++;
@@ -322,9 +326,9 @@ public class CesiumOutputStream {
         // write any remaining skipped text
         if (skipped > 0) {
             if (lastWritePosition == 0) {
-                TextWriterHelper.print(m_writer, value);
+                TextWriterHelper.write(m_writer, value);
             } else {
-                TextWriterHelper.print(m_writer, chars, lastWritePosition, skipped);
+                TextWriterHelper.write(m_writer, chars, lastWritePosition, skipped);
             }
         }
     }
@@ -353,7 +357,7 @@ public class CesiumOutputStream {
 
     private final void startNewValue() {
         if (!m_firstInContainer) {
-            TextWriterHelper.print(m_writer, ',');
+            TextWriterHelper.write(m_writer, ',');
         }
         if (!m_inProperty && getPrettyFormatting() && m_nextValueOnNewLine) {
             TextWriterHelper.writeLine(m_writer);
@@ -364,7 +368,7 @@ public class CesiumOutputStream {
 
     private final void writeIndent() {
         for (int i = 0; i < m_indent; ++i)
-            TextWriterHelper.print(m_writer, ' ');
+            TextWriterHelper.write(m_writer, ' ');
     }
 
     @Nonnull

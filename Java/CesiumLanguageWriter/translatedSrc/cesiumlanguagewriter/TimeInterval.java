@@ -3,10 +3,12 @@ package cesiumlanguagewriter;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ObjectHelper;
 import agi.foundation.compatibility.StringHelper;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -15,7 +17,11 @@ import agi.foundation.compatibility.StringHelper;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class TimeInterval implements IEquatable<TimeInterval> {
     /**
     *  
@@ -28,7 +34,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     * @param start The first date in the interval.
     * @param stop The last date in the interval.
     */
-    public TimeInterval(JulianDate start, JulianDate stop) {
+    public TimeInterval(@Nonnull JulianDate start, @Nonnull JulianDate stop) {
         m_start = start;
         m_stop = stop;
     }
@@ -38,6 +44,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     
 
     */
+    @Nonnull
     public final JulianDate getStart() {
         return m_start;
     }
@@ -47,6 +54,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     
 
     */
+    @Nonnull
     public final JulianDate getStop() {
         return m_stop;
     }
@@ -69,6 +77,8 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
 
     * @return The duration.
     */
+    @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
     public final Duration toDuration() {
         return JulianDate.subtract(m_stop, m_start);
     }
@@ -84,7 +94,9 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     * @param timeStandard The time standard of the new interval.
     * @return An equivalent interval with the new time standard.
     */
-    public final TimeInterval toTimeStandard(TimeStandard timeStandard) {
+    @CS2JWarning("Unhandled attribute removed: Pure")
+    @Nonnull
+    public final TimeInterval toTimeStandard(@Nonnull TimeStandard timeStandard) {
         if (ObjectHelper.referenceEquals(m_start.getStandard(), timeStandard) && ObjectHelper.referenceEquals(m_stop.getStandard(), timeStandard)) {
             return this;
         }
@@ -101,7 +113,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     * @param date The date to test.
     * @return true if the interval contains the date, otherwise false.
     */
-    public final boolean contains(JulianDate date) {
+    public final boolean contains(@Nonnull JulianDate date) {
         if (getIsEmpty()) {
             return false;
         }
@@ -126,6 +138,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     * @param epsilon The largest difference between the {@code Start} ({@link #getStart get}) and {@code Stop} ({@link #getStop get}) dates, in seconds, such that they will be considered equal.
     * @return true if the {@code Start} ({@link #getStart get}) and {@code Stop} ({@link #getStop get}) dates of the intervals are equal as defined by the epsilon value and all other properties are identical.
     */
+    @CS2JWarning("Unhandled attribute removed: Pure")
     public final boolean equalsEpsilon(TimeInterval other, double epsilon) {
         if (ObjectHelper.referenceEquals(null, other)) {
             return false;
@@ -202,7 +215,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     */
     @Override
     public int hashCode() {
-        return m_start.hashCode() ^ m_stop.hashCode();
+        return HashCode.combine(m_start.hashCode(), m_stop.hashCode());
     }
 
     /**
@@ -251,13 +264,17 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     
 
     */
+    @Nonnull
     public static TimeInterval getEmpty() {
         return s_empty;
     }
 
+    @Nonnull
     private static TimeInterval s_empty = new TimeInterval(new JulianDate(0.0), new JulianDate(0.0));
     @CS2JInfo("Initialization of C# struct variable 'm_start' added by translator.")
+    @Nonnull
     private JulianDate m_start = new JulianDate();
     @CS2JInfo("Initialization of C# struct variable 'm_stop' added by translator.")
+    @Nonnull
     private JulianDate m_stop = new JulianDate();
 }

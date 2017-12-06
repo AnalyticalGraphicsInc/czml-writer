@@ -12,7 +12,11 @@ import cesiumlanguagewriter.advanced.*;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionListCesiumWriter> {
     /**
     *  
@@ -56,25 +60,25 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     public DirectionListCesiumWriter(String propertyName) {
         super(propertyName);
         m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(this, "createSphericalAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(this, "createSphericalAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>> invoke() {
                         return createSphericalAdaptor();
                     }
                 }, false);
         m_asUnitSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>>>(this, "createUnitSphericalAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>>>(this, "createUnitSphericalAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>> invoke() {
                         return createUnitSphericalAdaptor();
                     }
                 }, false);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(this, "createCartesianAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(this, "createCartesianAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>> invoke() {
                         return createCartesianAdaptor();
                     }
                 }, false);
         m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>>>(this, "createUnitCartesianAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>>>(this, "createUnitCartesianAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>> invoke() {
                         return createUnitCartesianAdaptor();
                     }
@@ -92,31 +96,40 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     protected DirectionListCesiumWriter(DirectionListCesiumWriter existingInstance) {
         super(existingInstance);
         m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(this, "createSphericalAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(this, "createSphericalAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>> invoke() {
                         return createSphericalAdaptor();
                     }
                 }, false);
         m_asUnitSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>>>(this, "createUnitSphericalAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>>>(this, "createUnitSphericalAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>> invoke() {
                         return createUnitSphericalAdaptor();
                     }
                 }, false);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(this, "createCartesianAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(this, "createCartesianAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>> invoke() {
                         return createCartesianAdaptor();
                     }
                 }, false);
         m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>>>(this, "createUnitCartesianAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>>>(this, "createUnitCartesianAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>> invoke() {
                         return createUnitCartesianAdaptor();
                     }
                 }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public DirectionListCesiumWriter clone() {
         return new DirectionListCesiumWriter(this);

@@ -2,12 +2,16 @@ package agi.foundation.compatibility;
 
 import java.util.EnumSet;
 
+import javax.annotation.Nonnull;
+
 /**
  * Specifies whether applicable StringHelper.split method overloads include or omit empty
  * substrings from the return value.
  */
 public class StringSplitOptions implements Enumeration {
+    @Nonnull
     public static final StringSplitOptions NONE = new StringSplitOptions();
+    @Nonnull
     public static final StringSplitOptions REMOVE_EMPTY_ENTRIES = new StringSplitOptions(Values.REMOVE_EMPTY_ENTRIES);
 
     private enum Values {
@@ -35,6 +39,7 @@ public class StringSplitOptions implements Enumeration {
          * @param value
          *            a numeric value.
          */
+        @Nonnull
         public static Values getFromValue(int value) {
             switch (value) {
             case 0:
@@ -47,23 +52,24 @@ public class StringSplitOptions implements Enumeration {
         }
     }
 
+    @Nonnull
     private final EnumSet<Values> value;
 
     private StringSplitOptions() {
         value = EnumSet.noneOf(Values.class);
     }
 
-    private StringSplitOptions(StringSplitOptions... enums) {
+    private StringSplitOptions(@Nonnull StringSplitOptions... enums) {
         this();
-        for (int i = 0; i < enums.length; ++i) {
-            value.addAll(enums[i].value);
+        for (StringSplitOptions e : enums) {
+            value.addAll(e.value);
         }
     }
 
-    private StringSplitOptions(Values... values) {
+    private StringSplitOptions(@Nonnull Values... values) {
         this();
-        for (int i = 0; i < values.length; ++i) {
-            value.add(values[i]);
+        for (Values v : values) {
+            value.add(v);
         }
     }
 
@@ -74,7 +80,8 @@ public class StringSplitOptions implements Enumeration {
      * @param enums
      *            the values that the new value will contain.
      */
-    public static StringSplitOptions of(StringSplitOptions... enums) {
+    @Nonnull
+    public static StringSplitOptions of(@Nonnull StringSplitOptions... enums) {
         return new StringSplitOptions(enums);
     }
 
@@ -85,7 +92,8 @@ public class StringSplitOptions implements Enumeration {
      * @param other
      *            the new value to be added into the current set.
      */
-    public StringSplitOptions add(StringSplitOptions other) {
+    @Nonnull
+    public StringSplitOptions add(@Nonnull StringSplitOptions other) {
         return new StringSplitOptions(this, other);
     }
 
@@ -96,7 +104,7 @@ public class StringSplitOptions implements Enumeration {
      * @param other
      *            the value to be checked against the current set.
      */
-    public boolean contains(StringSplitOptions other) {
+    public boolean contains(@Nonnull StringSplitOptions other) {
         return value.containsAll(other.value);
     }
 
@@ -121,6 +129,7 @@ public class StringSplitOptions implements Enumeration {
      * @param value
      *            a numeric value.
      */
+    @Nonnull
     public static StringSplitOptions getFromValue(int value) {
         StringSplitOptions result = new StringSplitOptions();
         for (int i = 0; i <= 0; ++i) {
@@ -132,10 +141,25 @@ public class StringSplitOptions implements Enumeration {
     }
 
     /**
+     * Returns an array containing the constants of this enum type, in the order they're
+     * declared.
+     *
+     * @return The constants of this enum type.
+     */
+    @Nonnull
+    public static StringSplitOptions[] values() {
+        return new StringSplitOptions[] {
+                NONE,
+                REMOVE_EMPTY_ENTRIES
+        };
+    }
+
+    /**
      * Get the value that is considered to be the default.
      *
      * @return The default value.
      */
+    @Nonnull
     public static StringSplitOptions getDefault() {
         return NONE;
     }

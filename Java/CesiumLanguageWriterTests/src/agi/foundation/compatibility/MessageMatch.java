@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import javax.annotation.Nonnull;
+
 /**
  * Enumeration indicating how the expected message parameter is to be used
  */
@@ -47,6 +49,7 @@ public enum MessageMatch implements Enumeration {
      * @param value
      *            a numeric value.
      */
+    @Nonnull
     public static MessageMatch getFromValue(int value) {
         switch (value) {
         case 0:

@@ -13,7 +13,11 @@ import cesiumlanguagewriter.Reference;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter> {
     /**
     *  
@@ -40,14 +44,14 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     */
     public StringCesiumWriter(String propertyName) {
         super(propertyName);
-        m_asString = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this,
-                "createStringAdaptor", new Class[] {}) {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
-                return createStringAdaptor();
-            }
-        }, false);
+        m_asString = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this, "createStringAdaptor") {
+                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
+                        return createStringAdaptor();
+                    }
+                }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -64,20 +68,29 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     */
     protected StringCesiumWriter(StringCesiumWriter existingInstance) {
         super(existingInstance);
-        m_asString = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this,
-                "createStringAdaptor", new Class[] {}) {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
-                return createStringAdaptor();
-            }
-        }, false);
+        m_asString = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this, "createStringAdaptor") {
+                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
+                        return createStringAdaptor();
+                    }
+                }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public StringCesiumWriter clone() {
         return new StringCesiumWriter(this);

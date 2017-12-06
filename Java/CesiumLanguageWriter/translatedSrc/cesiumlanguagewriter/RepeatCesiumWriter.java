@@ -8,6 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.Rectangular;
 import cesiumlanguagewriter.Reference;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -15,7 +16,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<RepeatCesiumWriter> {
     /**
     *  
@@ -43,13 +48,13 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
     public RepeatCesiumWriter(String propertyName) {
         super(propertyName);
         m_asCartesian2 = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular> invoke() {
                         return createCartesian2Adaptor();
                     }
                 }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -67,19 +72,28 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
     protected RepeatCesiumWriter(RepeatCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCartesian2 = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular> invoke() {
                         return createCartesian2Adaptor();
                     }
                 }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public RepeatCesiumWriter clone() {
         return new RepeatCesiumWriter(this);
@@ -93,7 +107,7 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
     * @param value The value.
     */
-    public final void writeCartesian2(Rectangular value) {
+    public final void writeCartesian2(@Nonnull Rectangular value) {
         final String PropertyName = Cartesian2PropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);

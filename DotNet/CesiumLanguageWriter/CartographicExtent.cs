@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -63,6 +65,7 @@ namespace CesiumLanguageWriter
         /// <see langword="true"/> if the specified location is inside the extent (or on the border),
         /// otherwise <see langword="false"/>.
         /// </returns>
+        [Pure]
         public bool IsInsideExtent(double longitude, double latitude)
         {
             return longitude >= m_west &&
@@ -77,43 +80,13 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The other extent.</param>
         /// <returns>The union of the two extents.</returns>
+        [Pure]
         public CartographicExtent Union(CartographicExtent other)
         {
             return new CartographicExtent(Math.Min(m_west, other.m_west),
                                           Math.Min(m_south, other.m_south),
                                           Math.Max(m_east, other.m_east),
                                           Math.Max(m_north, other.m_north));
-        }
-
-        /// <summary>
-        /// Indicates whether each coordinate value of another instance of this type
-        /// is within the required tolerance of the corresponding coordinate value of this instance.
-        /// </summary>
-        /// <param name="other">The set of <see cref="CartographicExtent"/> to compare to this instance.</param>
-        /// <param name="epsilon">The limit at which the absolute differences between the coordinate values will not be considered equal.</param>
-        /// <returns>
-        /// <see langword="true"/> if the absolute differences are less than <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
-        /// </returns>
-        public bool EqualsEpsilon(CartographicExtent other, double epsilon)
-        {
-            return Math.Abs(m_north - other.m_north) < epsilon &&
-                   Math.Abs(m_south - other.m_south) < epsilon &&
-                   Math.Abs(m_east - other.m_east) < epsilon &&
-                   Math.Abs(m_west - other.m_west) < epsilon;
-        }
-
-        /// <summary>
-        /// Indicates whether another <see cref="CartographicExtent"/> is exactly equal to this instance.
-        /// </summary>
-        /// <param name="other">The <see cref="CartographicExtent"/> to compare to this instance.</param>
-        /// <returns><see langword="true"/> if <paramref name="other"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
-        public bool Equals(CartographicExtent other)
-        {
-            return other != null &&
-                   m_north == other.m_north &&
-                   m_south == other.m_south &&
-                   m_east == other.m_east &&
-                   m_west == other.m_west;
         }
 
         /// <summary>
@@ -127,12 +100,52 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Indicates whether another <see cref="CartographicExtent"/> is exactly equal to this instance.
+        /// </summary>
+        /// <param name="other">The <see cref="CartographicExtent"/> to compare to this instance.</param>
+        /// <returns><see langword="true"/> if <paramref name="other"/> is an instance of this type and represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
+        public bool Equals(CartographicExtent other)
+        {
+            if (ReferenceEquals(null, other))
+                return false;
+            if (ReferenceEquals(this, other))
+                return true;
+
+            return m_north == other.m_north &&
+                   m_south == other.m_south &&
+                   m_east == other.m_east &&
+                   m_west == other.m_west;
+        }
+
+        /// <summary>
+        /// Indicates whether each coordinate value of another instance of this type
+        /// is within the required tolerance of the corresponding coordinate value of this instance.
+        /// </summary>
+        /// <param name="other">The set of <see cref="CartographicExtent"/> to compare to this instance.</param>
+        /// <param name="epsilon">The limit at which the absolute differences between the coordinate values will not be considered equal.</param>
+        /// <returns>
+        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
+        /// </returns>
+        [Pure]
+        public bool EqualsEpsilon(CartographicExtent other, double epsilon)
+        {
+            return Math.Abs(m_north - other.m_north) <= epsilon &&
+                   Math.Abs(m_south - other.m_south) <= epsilon &&
+                   Math.Abs(m_east - other.m_east) <= epsilon &&
+                   Math.Abs(m_west - other.m_west) <= epsilon;
+        }
+
+        /// <summary>
         /// Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
         /// </summary>
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            return m_north.GetHashCode() ^ m_south.GetHashCode() ^ m_east.GetHashCode() ^ m_west.GetHashCode();
+            return HashCode.Combine(m_north.GetHashCode(),
+                                    m_south.GetHashCode(),
+                                    m_east.GetHashCode(),
+                                    m_west.GetHashCode());
         }
 
         /// <summary>
@@ -147,8 +160,8 @@ namespace CesiumLanguageWriter
         {
             if (ReferenceEquals(left, null))
                 return ReferenceEquals(right, null);
-            else
-                return left.Equals(right);
+
+            return left.Equals(right);
         }
 
         /// <summary>
@@ -161,10 +174,19 @@ namespace CesiumLanguageWriter
         /// </returns>
         public static bool operator !=(CartographicExtent left, CartographicExtent right)
         {
-            if (ReferenceEquals(left, null))
-                return !ReferenceEquals(right, null);
-            else
-                return !left.Equals(right);
+            return !(left == right);
+        }
+
+        /// <summary>
+        /// Returns the string representation of the value of this instance.
+        /// </summary>
+        /// <returns>
+        /// A string that represents the value of this instance in the form
+        /// WestLongitude, SouthLatitude, EastLongitude, NorthLatitude.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format("{0}, {1}, {2}, {3}", m_west, m_south, m_east, m_north);
         }
 
         private readonly double m_north;

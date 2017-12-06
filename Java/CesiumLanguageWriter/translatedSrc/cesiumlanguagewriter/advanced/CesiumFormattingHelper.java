@@ -25,11 +25,17 @@ import javax.annotation.Nonnull;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class CesiumFormattingHelper {
     private CesiumFormattingHelper() {}
 
+    @Nonnull
     private static JulianDate s_minimumDate = GregorianDate.MinValue.toJulianDate();
+    @Nonnull
     private static JulianDate s_maximumDate = GregorianDate.MaxValue.toJulianDate();
 
     /**
@@ -47,7 +53,7 @@ public final class CesiumFormattingHelper {
     * @return The interval represented as an ISO8601 interval string.
     */
     @Nonnull
-    public static String toIso8601Interval(JulianDate start, JulianDate stop, Iso8601Format format) {
+    public static String toIso8601Interval(@Nonnull JulianDate start, @Nonnull JulianDate stop, @Nonnull Iso8601Format format) {
         return toIso8601(start, format) + "/" + toIso8601(stop, format);
     }
 
@@ -64,7 +70,7 @@ public final class CesiumFormattingHelper {
     * @return The interval represented as an ISO8601 interval string.
     */
     @Nonnull
-    public static String toIso8601Interval(@Nonnull TimeInterval interval, Iso8601Format format) {
+    public static String toIso8601Interval(@Nonnull TimeInterval interval, @Nonnull Iso8601Format format) {
         if (interval == null) {
             throw new ArgumentNullException("interval");
         }
@@ -84,7 +90,7 @@ public final class CesiumFormattingHelper {
     * @return The date represented as an ISO8601 date string.
     */
     @Nonnull
-    public static String toIso8601(JulianDate date, Iso8601Format format) {
+    public static String toIso8601(@Nonnull JulianDate date, @Nonnull Iso8601Format format) {
         //If the JulianDate is outside the range of supported CZML values,
         //clamp it to the minimum/maximum CZML ISO8601 value.
         if (JulianDate.lessThanOrEqual(date, s_minimumDate)) {
@@ -160,7 +166,7 @@ public final class CesiumFormattingHelper {
     * @return A data URI containing the content of the image.
     */
     @Nonnull
-    public static String imageToDataUri(@Nonnull InputStream stream, CesiumImageFormat imageFormat) {
+    public static String imageToDataUri(@Nonnull InputStream stream, @Nonnull CesiumImageFormat imageFormat) {
         String mimeType = getMimeTypeFromCesiumImageFormat(imageFormat);
         return streamToDataUri(stream, mimeType);
     }
@@ -181,7 +187,7 @@ public final class CesiumFormattingHelper {
     * @return A data URI containing the content of the image.
     */
     @Nonnull
-    public static String imageToDataUri(@Nonnull RenderedImage image, CesiumImageFormat imageFormat) {
+    public static String imageToDataUri(@Nonnull RenderedImage image, @Nonnull CesiumImageFormat imageFormat) {
         String mimeType = getMimeTypeFromCesiumImageFormat(imageFormat);
         {
             MemoryStream stream = new MemoryStream();
@@ -196,7 +202,7 @@ public final class CesiumFormattingHelper {
     }
 
     @Nonnull
-    private static ImageFormat cesiumImageFormatToImageFormat(CesiumImageFormat imageFormat) {
+    private static ImageFormat cesiumImageFormatToImageFormat(@Nonnull CesiumImageFormat imageFormat) {
         switch (imageFormat) {
         case JPEG: {
             return ImageFormat.getJpeg();
@@ -259,7 +265,7 @@ public final class CesiumFormattingHelper {
     }
 
     @Nonnull
-    private static String getMimeTypeFromCesiumImageFormat(CesiumImageFormat imageFormat) {
+    private static String getMimeTypeFromCesiumImageFormat(@Nonnull CesiumImageFormat imageFormat) {
         switch (imageFormat) {
         case JPEG: {
             return "image/jpeg";
@@ -290,7 +296,7 @@ public final class CesiumFormattingHelper {
     * @return The string representing the specified value.
     */
     @Nonnull
-    public static String stripeOrientationToString(CesiumStripeOrientation value) {
+    public static String stripeOrientationToString(@Nonnull CesiumStripeOrientation value) {
         switch (value) {
         case HORIZONTAL: {
             return "HORIZONTAL";
@@ -315,7 +321,7 @@ public final class CesiumFormattingHelper {
     * @return The string representing the specified value.
     */
     @Nonnull
-    public static String horizontalOriginToString(CesiumHorizontalOrigin value) {
+    public static String horizontalOriginToString(@Nonnull CesiumHorizontalOrigin value) {
         switch (value) {
         case LEFT: {
             return "LEFT";
@@ -343,7 +349,7 @@ public final class CesiumFormattingHelper {
     * @return The string representing the specified value.
     */
     @Nonnull
-    public static String verticalOriginToString(CesiumVerticalOrigin value) {
+    public static String verticalOriginToString(@Nonnull CesiumVerticalOrigin value) {
         switch (value) {
         case BOTTOM: {
             return "BOTTOM";
@@ -374,7 +380,7 @@ public final class CesiumFormattingHelper {
     * @return The string representing the specified value.
     */
     @Nonnull
-    public static String heightReferenceToString(CesiumHeightReference value) {
+    public static String heightReferenceToString(@Nonnull CesiumHeightReference value) {
         switch (value) {
         case NONE: {
             return "NONE";
@@ -402,7 +408,7 @@ public final class CesiumFormattingHelper {
     * @return The string representing the specified value.
     */
     @Nonnull
-    public static String shadowModeToString(CesiumShadowMode value) {
+    public static String shadowModeToString(@Nonnull CesiumShadowMode value) {
         switch (value) {
         case DISABLED: {
             return "DISABLED";
@@ -433,7 +439,7 @@ public final class CesiumFormattingHelper {
     * @return The string representing the specified value.
     */
     @Nonnull
-    public static String interpolationAlgorithmToString(CesiumInterpolationAlgorithm value) {
+    public static String interpolationAlgorithmToString(@Nonnull CesiumInterpolationAlgorithm value) {
         switch (value) {
         case LINEAR: {
             return "LINEAR";
@@ -461,7 +467,7 @@ public final class CesiumFormattingHelper {
     * @return The string representing the specified value.
     */
     @Nonnull
-    public static String extrapolationTypeToString(CesiumExtrapolationType value) {
+    public static String extrapolationTypeToString(@Nonnull CesiumExtrapolationType value) {
         switch (value) {
         case NONE: {
             return "NONE";
@@ -489,7 +495,7 @@ public final class CesiumFormattingHelper {
     * @return The string representing the specified value.
     */
     @Nonnull
-    public static String clockRangeToString(ClockRange value) {
+    public static String clockRangeToString(@Nonnull ClockRange value) {
         switch (value) {
         case CLAMPED: {
             return "CLAMPED";
@@ -517,7 +523,7 @@ public final class CesiumFormattingHelper {
     * @return The string representing the specified value.
     */
     @Nonnull
-    public static String clockStepToString(ClockStep value) {
+    public static String clockStepToString(@Nonnull ClockStep value) {
         switch (value) {
         case SYSTEM_CLOCK: {
             return "SYSTEM_CLOCK";
@@ -545,7 +551,7 @@ public final class CesiumFormattingHelper {
     * @return The string representing the specified value.
     */
     @Nonnull
-    public static String labelStyleToString(CesiumLabelStyle value) {
+    public static String labelStyleToString(@Nonnull CesiumLabelStyle value) {
         switch (value) {
         case FILL: {
             return "FILL";
@@ -573,7 +579,7 @@ public final class CesiumFormattingHelper {
     * @return The string representing the specified value.
     */
     @Nonnull
-    public static String cornerTypeToString(CesiumCornerType value) {
+    public static String cornerTypeToString(@Nonnull CesiumCornerType value) {
         switch (value) {
         case ROUNDED: {
             return "ROUNDED";
@@ -601,7 +607,7 @@ public final class CesiumFormattingHelper {
     * @return The string representing the specified value.
     */
     @Nonnull
-    public static String colorBlendModeToString(CesiumColorBlendMode value) {
+    public static String colorBlendModeToString(@Nonnull CesiumColorBlendMode value) {
         switch (value) {
         case HIGHLIGHT: {
             return "HIGHLIGHT";
@@ -629,7 +635,7 @@ public final class CesiumFormattingHelper {
     * @return The string representing the specified value.
     */
     @Nonnull
-    public static String sensorVolumePortionToDisplayToString(CesiumSensorVolumePortionToDisplay value) {
+    public static String sensorVolumePortionToDisplayToString(@Nonnull CesiumSensorVolumePortionToDisplay value) {
         switch (value) {
         case COMPLETE: {
             return "COMPLETE";
@@ -659,7 +665,7 @@ public final class CesiumFormattingHelper {
     * @return The resolved url.
     */
     @Nonnull
-    public static String getResourceUri(@Nonnull String uri, CesiumResourceBehavior resourceBehavior) {
+    public static String getResourceUri(@Nonnull String uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         if (uri == null) {
             throw new ArgumentNullException("uri");
         }

@@ -100,6 +100,30 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
+        /// Tests thats the <see cref="Cartesian.EqualsEpsilon"/> method returns true
+        /// when the difference is exactly epsilon.
+        /// </summary>
+        [Test]
+        public void TestEqualsEpsilonExact()
+        {
+            Cartesian first = new Cartesian(0.1, 0.1, 0.1);
+            Cartesian second = new Cartesian(0.1, 0.1, 0.1);
+            Assert.IsTrue(second.EqualsEpsilon(first, 0));
+        }
+        
+        /// <summary>
+        /// Tests to ensure the equality fails when comparing incorrect type.
+        /// </summary>
+        [Test]
+        public void TestEqualityWithWrongType()
+        {
+            Cartesian first = new Cartesian(1.0, 2.0, 3.0);
+            Cartographic second = new Cartographic(1.0, 2.0, 3.0);
+
+            Assert.IsFalse(first.Equals(second));
+        }
+        
+        /// <summary>
         /// Tests the <see cref="Cartesian.Magnitude"/> property.
         /// </summary>
         [Test]
@@ -163,16 +187,14 @@ namespace CesiumLanguageWriterTests
         /// Tests the <see cref="Cartesian.MostOrthogonalAxis"/> method.
         /// </summary>
         [Test]
-        public void MostOrthogonalAxis()
+        public void TestMostOrthogonalAxis()
         {
-            Cartesian v = new UnitCartesian(1.0, 2.0, 3.0);
-            Assert.AreEqual(UnitCartesian.UnitX, v.MostOrthogonalAxis);
-
-            v = new UnitCartesian(2.0, 3.0, 1.0);
-            Assert.AreEqual(UnitCartesian.UnitZ, v.MostOrthogonalAxis);
-
-            v = new UnitCartesian(3.0, 1.0, 2.0);
-            Assert.AreEqual(UnitCartesian.UnitY, v.MostOrthogonalAxis);
+            Cartesian cartesian = new Cartesian(1.0, 2.0, 3.0);
+            Assert.AreEqual(UnitCartesian.UnitX, cartesian.MostOrthogonalAxis);
+            cartesian = new Cartesian(2.0, 3.0, 1.0);
+            Assert.AreEqual(UnitCartesian.UnitZ, cartesian.MostOrthogonalAxis);
+            cartesian = new Cartesian(3.0, 1.0, 2.0);
+            Assert.AreEqual(UnitCartesian.UnitY, cartesian.MostOrthogonalAxis);
         }
 
         /// <summary>
@@ -360,7 +382,7 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests that Cartesian3.GetHashCode returns something at least reasonably random.
+        /// Tests that GetHashCode returns something at least reasonably random.
         /// </summary>
         [Test]
         public void TestGetHashCode()

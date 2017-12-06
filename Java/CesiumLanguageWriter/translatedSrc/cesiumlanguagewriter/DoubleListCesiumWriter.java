@@ -12,7 +12,11 @@ import cesiumlanguagewriter.advanced.*;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiumWriter> {
     /**
     *  
@@ -40,13 +44,13 @@ public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiu
     public DoubleListCesiumWriter(String propertyName) {
         super(propertyName);
         m_asArray = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Double>>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Double>>>(this,
-                "createArrayAdaptor", new Class[] {}) {
+                "createArrayAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Double>> invoke() {
                 return createArrayAdaptor();
             }
         }, false);
         m_asReferences = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(this, "createReferencesAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(this, "createReferencesAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>> invoke() {
                         return createReferencesAdaptor();
                     }
@@ -64,19 +68,28 @@ public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiu
     protected DoubleListCesiumWriter(DoubleListCesiumWriter existingInstance) {
         super(existingInstance);
         m_asArray = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Double>>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Double>>>(this,
-                "createArrayAdaptor", new Class[] {}) {
+                "createArrayAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Double>> invoke() {
                 return createArrayAdaptor();
             }
         }, false);
         m_asReferences = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(this, "createReferencesAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>>>(this, "createReferencesAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Reference>> invoke() {
                         return createReferencesAdaptor();
                     }
                 }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public DoubleListCesiumWriter clone() {
         return new DoubleListCesiumWriter(this);

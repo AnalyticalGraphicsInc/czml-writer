@@ -12,7 +12,11 @@ import javax.annotation.Nonnull;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public interface ICesiumPropertyWriter extends ICesiumElementWriter {
     /**
     *  
@@ -24,7 +28,7 @@ public interface ICesiumPropertyWriter extends ICesiumElementWriter {
     * @param start The start of the interval.
     * @param stop The end of the interval.
     */
-    void writeInterval(JulianDate start, JulianDate stop);
+    void writeInterval(@Nonnull JulianDate start, @Nonnull JulianDate stop);
 
     /**
     *  

@@ -18,23 +18,30 @@ import org.junit.Test;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestDuration {
     /**
     *  
-    Tests the {@code MinValue} ({@link Duration#getMinValue get}) and {@code MaxValue} ({@link Duration#getMaxValue get}) can be constructed as claimed.
+    Tests that {@code MinValue} ({@link Duration#getMinValue get}), {@code MaxValue} ({@link Duration#getMaxValue get}), and {@code Zero} ({@link Duration#getZero get}) can be constructed as claimed.
     
 
     */
     @Test
-    public final void testMinValueMaxValue() {
+    public final void testMinValueMaxValueZeroValue() {
         Duration min = Duration.fromSeconds(Duration.getMinValue().getTotalSeconds());
         Assert.assertEquals((int) Integer.MIN_VALUE, (int) min.getDays());
         Assert.assertEquals(0.0, min.getSeconds(), 0d);
         Duration max = Duration.fromSeconds(Duration.getMaxValue().getTotalSeconds());
         Assert.assertEquals((int) Integer.MAX_VALUE, (int) max.getDays());
         Assert.assertEquals(0.0, max.getSeconds(), 0d);
+        Duration zero = Duration.fromSeconds(Duration.getZero().getTotalSeconds());
+        Assert.assertEquals(0.0, zero.getDays(), 0d);
+        Assert.assertEquals(0.0, zero.getSeconds(), 0d);
     }
 
     /**
@@ -121,6 +128,7 @@ public class TestDuration {
         Assert.assertTrue(first.equalsEpsilon(second, 1e-4));
         Assert.assertTrue(second.equalsEpsilon(first, 1e-4));
         // Make sure a Duration compared with a non-Duration returns false
+        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(5));
     }
 
@@ -273,7 +281,7 @@ public class TestDuration {
         Duration four = new Duration(1, 0D);
         Duration five = new Duration(0, -3600D);
         Assert.assertEquals(-24D, Duration.divide(four, five), Constants.Epsilon10);
-        Assert.assertEquals((-1.0 / 24.0), Duration.divide(five, four), Constants.Epsilon10);
+        Assert.assertEquals(-1.0 / 24.0, Duration.divide(five, four), Constants.Epsilon10);
         Duration six = new Duration(-2, 0D);
         Assert.assertEquals(-0.5, Duration.divide(four, six), 0d);
         Assert.assertEquals(48, Duration.divide(six, five), 0d);
@@ -385,8 +393,8 @@ public class TestDuration {
     */
     @Test
     public final void testToString() {
-        Duration duration = new Duration(1, 43200.0);
-        Assert.assertEquals(duration.toString(), "1:43200");
+        cesiumlanguagewriter.Duration duration = new Duration(1, 43200.0);
+        Assert.assertEquals("1:43200", duration.toString());
     }
 
     /**
@@ -409,7 +417,7 @@ public class TestDuration {
         Assert.assertEquals(0.0, duration.getSeconds(), 0d);
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {

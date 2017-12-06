@@ -2,6 +2,7 @@ package agi.foundation.compatibility;
 
 import java.awt.image.RenderedImage;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 
 import javax.imageio.ImageIO;
 
@@ -22,7 +23,7 @@ public final class ImageHelper {
         try {
             ImageIO.write(image, format.getFormatName(), stream.asOutputStream());
         } catch (IOException e) {
-            throw new RuntimeIOException(e);
+            throw new UncheckedIOException(e);
         }
     }
 }

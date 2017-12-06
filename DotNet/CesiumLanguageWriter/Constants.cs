@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace CesiumLanguageWriter
 {
@@ -8,78 +7,6 @@ namespace CesiumLanguageWriter
     /// </summary>
     public static class Constants
     {
-        /// <summary>
-        /// Half of <see cref="Math.PI" />.
-        /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        public static readonly double HalfPi = Math.PI / 2;
-
-        /// <summary>
-        /// Twice <see cref="Math.PI" />.
-        /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        public static readonly double TwoPi = Math.PI * 2;
-
-        /// <summary>
-        /// Three-halves <see cref="Math.PI"/>.
-        /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        public static readonly double ThreeHalvesPi = 3 * Math.PI / 2;
-
-        /// <summary>
-        /// The number of radians in a degree.
-        /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        public static readonly double RadiansPerDegree = (2 * Math.PI) / 360.0;
-
-        /// <summary>
-        /// The number of degrees in a radian.
-        /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        public static readonly double DegreesPerRadian = 360.0 / (2 * Math.PI);
-
-        /// <summary>
-        /// The number of degrees in a complete revolution.
-        /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        public static readonly double DegreesPerRevolution = 360.0;
-
-        /// <summary>
-        /// The number of minutes in a degree.
-        /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        public static readonly double MinutesPerDegree = 60.0;
-
-        /// <summary>
-        /// The number of seconds in a degree.
-        /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        public static readonly double SecondsPerDegree = 60.0 * 60.0;
-
-        /// <summary>
-        /// The number of seconds in a minute.
-        /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        public static readonly double SecondsPerMinute = 60.0;
-
-        /// <summary>
-        /// The number of degrees in an hour.
-        /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        public static readonly double DegreesPerHour = 15.0;
-
-        /// <summary>
-        /// The number of radians in one arc second.
-        /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        public static readonly double RadiansPerArcSecond = RadiansPerDegree / 3600.0;
-
-        /// <summary>
-        /// The number of arc seconds in one radian.
-        /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1802:UseLiteralsWhereAppropriate")]
-        public static readonly double ArcSecondsPerRadian = 3600.0 / RadiansPerDegree;
-
         /// <summary>
         /// A small number useful for comparisons, 1e-1
         /// </summary>
@@ -179,5 +106,25 @@ namespace CesiumLanguageWriter
         /// A small number useful for comparisons, 1e-20
         /// </summary>
         public const double Epsilon20 = 1e-20;
+
+        /// <summary>
+        /// Half of <see cref="Math.PI" />.
+        /// </summary>
+        public const double HalfPi = Math.PI / 2;
+
+        /// <summary>
+        /// Twice <see cref="Math.PI" />.
+        /// </summary>
+        public const double TwoPi = Math.PI * 2;
+
+        /// <summary>
+        /// The number of radians in a degree.
+        /// </summary>
+        public const double RadiansPerDegree = 2 * Math.PI / 360.0;
+
+        /// <summary>
+        /// The number of degrees in a radian.
+        /// </summary>
+        public const double DegreesPerRadian = 360.0 / (2 * Math.PI);
     }
 }

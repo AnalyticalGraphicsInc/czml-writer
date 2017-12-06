@@ -113,9 +113,9 @@ public class LinkedList<T> implements Collection<T> {
     public final LinkedListNode<T> addFirst(T value) {
         LinkedListNode<T> newNode;
         if (head == null) {
-            newNode = new LinkedListNode<T>(this, value);
+            newNode = new LinkedListNode<>(this, value);
         } else {
-            newNode = new LinkedListNode<T>(this, value, head.previous, head);
+            newNode = new LinkedListNode<>(this, value, head.previous, head);
         }
         count++;
         head = newNode;
@@ -132,10 +132,10 @@ public class LinkedList<T> implements Collection<T> {
     public final LinkedListNode<T> addLast(T value) {
         LinkedListNode<T> newNode;
         if (head == null) {
-            newNode = new LinkedListNode<T>(this, value);
+            newNode = new LinkedListNode<>(this, value);
             head = newNode;
         } else {
-            newNode = new LinkedListNode<T>(this, value, head.previous, head);
+            newNode = new LinkedListNode<>(this, value, head.previous, head);
         }
         count++;
         return newNode;
@@ -191,7 +191,7 @@ public class LinkedList<T> implements Collection<T> {
 
     @Override
     public final Iterator<T> iterator() {
-        return new Enumerator<T>(this);
+        return new Enumerator<>(this);
     }
 
     @Override

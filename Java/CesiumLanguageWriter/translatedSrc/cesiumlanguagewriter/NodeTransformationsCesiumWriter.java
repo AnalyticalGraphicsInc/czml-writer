@@ -11,7 +11,11 @@ import cesiumlanguagewriter.NodeTransformationCesiumWriter;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class NodeTransformationsCesiumWriter extends CesiumPropertyWriter<NodeTransformationsCesiumWriter> {
     /**
     *  
@@ -35,6 +39,15 @@ public class NodeTransformationsCesiumWriter extends CesiumPropertyWriter<NodeTr
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public NodeTransformationsCesiumWriter clone() {
         return new NodeTransformationsCesiumWriter(this);

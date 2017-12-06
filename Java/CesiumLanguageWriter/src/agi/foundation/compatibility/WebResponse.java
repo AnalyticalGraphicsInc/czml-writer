@@ -2,10 +2,11 @@ package agi.foundation.compatibility;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UncheckedIOException;
 import java.net.URLConnection;
 
 public class WebResponse implements IDisposable {
-    private final URLConnection connection;
+    protected final URLConnection connection;
     private InputStream inputStream;
 
     public WebResponse(URLConnection connection) {
@@ -17,7 +18,7 @@ public class WebResponse implements IDisposable {
             try {
                 inputStream = connection.getInputStream();
             } catch (IOException e) {
-                throw new RuntimeIOException(e);
+                throw new UncheckedIOException(e);
             }
         }
         return inputStream;

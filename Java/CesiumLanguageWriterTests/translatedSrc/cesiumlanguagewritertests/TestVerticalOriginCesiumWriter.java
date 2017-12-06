@@ -13,7 +13,11 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestVerticalOriginCesiumWriter extends TestCesiumPropertyWriter<VerticalOriginCesiumWriter> {
     @Test
@@ -65,7 +69,7 @@ public class TestVerticalOriginCesiumWriter extends TestCesiumPropertyWriter<Ver
         return new VerticalOriginCesiumWriter(propertyName);
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {

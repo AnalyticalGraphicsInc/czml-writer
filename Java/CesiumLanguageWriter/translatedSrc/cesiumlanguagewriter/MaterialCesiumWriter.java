@@ -16,7 +16,11 @@ import cesiumlanguagewriter.StripeMaterialCesiumWriter;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWriter> {
     /**
     *  
@@ -89,6 +93,15 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public MaterialCesiumWriter clone() {
         return new MaterialCesiumWriter(this);

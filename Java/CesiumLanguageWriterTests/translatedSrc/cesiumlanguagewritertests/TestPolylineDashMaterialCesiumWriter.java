@@ -15,7 +15,11 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPolylineDashMaterialCesiumWriter extends TestCesiumPropertyWriter<PolylineDashMaterialCesiumWriter> {
     @Test
@@ -61,7 +65,7 @@ public class TestPolylineDashMaterialCesiumWriter extends TestCesiumPropertyWrit
         return new PolylineDashMaterialCesiumWriter(propertyName);
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {

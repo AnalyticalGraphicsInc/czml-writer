@@ -23,6 +23,7 @@ import java.awt.Color;
 import java.awt.image.RenderedImage;
 import java.net.URI;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -30,7 +31,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumWriter> {
     /**
     *  
@@ -296,6 +301,15 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public BillboardCesiumWriter clone() {
         return new BillboardCesiumWriter(this);
@@ -469,7 +483,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
-    public final void writeImageProperty(URI uri, CesiumResourceBehavior resourceBehavior) {
+    public final void writeImageProperty(URI uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         {
             cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
             try {
@@ -490,7 +504,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
-    public final void writeImageProperty(String uri, CesiumResourceBehavior resourceBehavior) {
+    public final void writeImageProperty(String uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         {
             cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
             try {
@@ -572,7 +586,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     * @param image The image.  A data URI will be created for this image.
     * @param imageFormat The image format to use to encode the image in the data URI.
     */
-    public final void writeImageProperty(RenderedImage image, CesiumImageFormat imageFormat) {
+    public final void writeImageProperty(RenderedImage image, @Nonnull CesiumImageFormat imageFormat) {
         {
             cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
             try {
@@ -856,7 +870,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     * @param value The value.
     */
-    public final void writePixelOffsetProperty(Rectangular value) {
+    public final void writePixelOffsetProperty(@Nonnull Rectangular value) {
         {
             cesiumlanguagewriter.PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
             try {
@@ -1042,7 +1056,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     * @param value The value.
     */
-    public final void writeEyeOffsetProperty(Cartesian value) {
+    public final void writeEyeOffsetProperty(@Nonnull Cartesian value) {
         {
             cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
             try {
@@ -1207,7 +1221,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     * @param value The horizontal origin.
     */
-    public final void writeHorizontalOriginProperty(CesiumHorizontalOrigin value) {
+    public final void writeHorizontalOriginProperty(@Nonnull CesiumHorizontalOrigin value) {
         {
             cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
             try {
@@ -1326,7 +1340,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     * @param value The vertical origin.
     */
-    public final void writeVerticalOriginProperty(CesiumVerticalOrigin value) {
+    public final void writeVerticalOriginProperty(@Nonnull CesiumVerticalOrigin value) {
         {
             cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
             try {
@@ -1445,7 +1459,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     * @param value The height reference.
     */
-    public final void writeHeightReferenceProperty(CesiumHeightReference value) {
+    public final void writeHeightReferenceProperty(@Nonnull CesiumHeightReference value) {
         {
             cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
@@ -1564,7 +1578,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     * @param color The color.
     */
-    public final void writeColorProperty(Color color) {
+    public final void writeColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -1654,7 +1668,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     * @param color The color.
     */
-    public final void writeColorPropertyRgbaf(Color color) {
+    public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -2009,7 +2023,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     * @param value The value.
     */
-    public final void writeAlignedAxisProperty(UnitCartesian value) {
+    public final void writeAlignedAxisProperty(@Nonnull UnitCartesian value) {
         {
             cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
@@ -2074,7 +2088,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     * @param value The value.
     */
-    public final void writeAlignedAxisPropertyUnitSpherical(UnitSpherical value) {
+    public final void writeAlignedAxisPropertyUnitSpherical(@Nonnull UnitSpherical value) {
         {
             cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
@@ -2768,7 +2782,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     * @param value The value.
     */
-    public final void writeScaleByDistanceProperty(NearFarScalar value) {
+    public final void writeScaleByDistanceProperty(@Nonnull NearFarScalar value) {
         {
             cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
             try {
@@ -2958,7 +2972,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     * @param value The value.
     */
-    public final void writeTranslucencyByDistanceProperty(NearFarScalar value) {
+    public final void writeTranslucencyByDistanceProperty(@Nonnull NearFarScalar value) {
         {
             cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
             try {
@@ -3148,7 +3162,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     * @param value The value.
     */
-    public final void writePixelOffsetScaleByDistanceProperty(NearFarScalar value) {
+    public final void writePixelOffsetScaleByDistanceProperty(@Nonnull NearFarScalar value) {
         {
             cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
             try {
@@ -3338,7 +3352,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     * @param value The value.
     */
-    public final void writeImageSubRegionProperty(BoundingRectangle value) {
+    public final void writeImageSubRegionProperty(@Nonnull BoundingRectangle value) {
         {
             cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
             try {
@@ -3503,7 +3517,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     * @param value The value.
     */
-    public final void writeDistanceDisplayConditionProperty(Bounds value) {
+    public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
         {
             cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {

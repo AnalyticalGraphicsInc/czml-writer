@@ -8,6 +8,7 @@ import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -15,7 +16,11 @@ import agi.foundation.compatibility.StringHelper;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class Cartographic implements IEquatable<Cartographic>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -27,6 +32,7 @@ public final class Cartographic implements IEquatable<Cartographic>, ImmutableVa
     
 
     */
+    @Nonnull
     public static Cartographic getZero() {
         return s_zero;
     }
@@ -101,8 +107,9 @@ public final class Cartographic implements IEquatable<Cartographic>, ImmutableVa
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
-    public final boolean equalsType(Cartographic other) {
-        return PrimitiveHelper.equals(m_longitude, other.m_longitude) && PrimitiveHelper.equals(m_latitude, other.m_latitude) && PrimitiveHelper.equals(m_height, other.m_height);
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
+    public final boolean equalsType(@Nonnull Cartographic other) {
+        return m_longitude == other.m_longitude && m_latitude == other.m_latitude && m_height == other.m_height;
     }
 
     /**
@@ -121,7 +128,7 @@ public final class Cartographic implements IEquatable<Cartographic>, ImmutableVa
     
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final boolean equalsEpsilon(Cartographic other, double epsilon) {
+    public final boolean equalsEpsilon(@Nonnull Cartographic other, double epsilon) {
         return Math.abs(m_longitude - other.m_longitude) <= epsilon && Math.abs(m_latitude - other.m_latitude) <= epsilon && Math.abs(m_height - other.m_height) <= epsilon;
     }
 
@@ -169,7 +176,7 @@ public final class Cartographic implements IEquatable<Cartographic>, ImmutableVa
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Cartographic,Cartographic)'")
-    public static boolean equals(Cartographic left, Cartographic right) {
+    public static boolean equals(@javax.annotation.Nonnull Cartographic left, @javax.annotation.Nonnull Cartographic right) {
         return left.equalsType(right);
     }
 
@@ -188,12 +195,13 @@ public final class Cartographic implements IEquatable<Cartographic>, ImmutableVa
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Cartographic,Cartographic)'")
-    public static boolean notEquals(Cartographic left, Cartographic right) {
+    public static boolean notEquals(@javax.annotation.Nonnull Cartographic left, @javax.annotation.Nonnull Cartographic right) {
         return !left.equalsType(right);
     }
 
     private double m_latitude;
     private double m_longitude;
     private double m_height;
+    @Nonnull
     private static Cartographic s_zero = new Cartographic(0.0, 0.0, 0.0);
 }

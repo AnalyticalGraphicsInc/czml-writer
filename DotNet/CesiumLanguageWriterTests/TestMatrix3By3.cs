@@ -380,7 +380,7 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(0.0, zero.M32);
             Assert.AreEqual(0.0, zero.M33);
         }
-        
+
         /// <summary>
         /// Tests math operators
         /// </summary>

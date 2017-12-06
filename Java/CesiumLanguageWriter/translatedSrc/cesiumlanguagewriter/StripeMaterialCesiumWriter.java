@@ -11,6 +11,7 @@ import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.StripeOrientationCesiumWriter;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -18,7 +19,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMaterialCesiumWriter> {
     /**
     *  
@@ -103,6 +108,15 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public StripeMaterialCesiumWriter clone() {
         return new StripeMaterialCesiumWriter(this);
@@ -136,7 +150,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     * @param value The orientation.
     */
-    public final void writeOrientationProperty(CesiumStripeOrientation value) {
+    public final void writeOrientationProperty(@Nonnull CesiumStripeOrientation value) {
         {
             cesiumlanguagewriter.StripeOrientationCesiumWriter writer = openOrientationProperty();
             try {
@@ -255,7 +269,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     * @param color The color.
     */
-    public final void writeEvenColorProperty(Color color) {
+    public final void writeEvenColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
             try {
@@ -345,7 +359,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     * @param color The color.
     */
-    public final void writeEvenColorPropertyRgbaf(Color color) {
+    public final void writeEvenColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
             try {
@@ -535,7 +549,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     * @param color The color.
     */
-    public final void writeOddColorProperty(Color color) {
+    public final void writeOddColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
             try {
@@ -625,7 +639,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     * @param color The color.
     */
-    public final void writeOddColorPropertyRgbaf(Color color) {
+    public final void writeOddColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
             try {

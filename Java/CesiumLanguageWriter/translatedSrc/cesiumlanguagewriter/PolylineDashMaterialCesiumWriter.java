@@ -11,6 +11,7 @@ import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.IntegerCesiumWriter;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -18,7 +19,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<PolylineDashMaterialCesiumWriter> {
     /**
     *  
@@ -91,6 +96,15 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public PolylineDashMaterialCesiumWriter clone() {
         return new PolylineDashMaterialCesiumWriter(this);
@@ -124,7 +138,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     * @param color The color.
     */
-    public final void writeColorProperty(Color color) {
+    public final void writeColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -214,7 +228,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     * @param color The color.
     */
-    public final void writeColorPropertyRgbaf(Color color) {
+    public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
             try {
@@ -404,7 +418,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     * @param color The color.
     */
-    public final void writeGapColorProperty(Color color) {
+    public final void writeGapColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openGapColorProperty();
             try {
@@ -494,7 +508,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     * @param color The color.
     */
-    public final void writeGapColorPropertyRgbaf(Color color) {
+    public final void writeGapColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openGapColorProperty();
             try {

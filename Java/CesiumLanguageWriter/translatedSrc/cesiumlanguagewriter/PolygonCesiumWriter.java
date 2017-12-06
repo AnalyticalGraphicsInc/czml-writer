@@ -15,6 +15,7 @@ import cesiumlanguagewriter.PositionListCesiumWriter;
 import cesiumlanguagewriter.ShadowModeCesiumWriter;
 import java.awt.Color;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -22,7 +23,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWriter> {
     /**
     *  
@@ -240,6 +245,15 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public PolygonCesiumWriter clone() {
         return new PolygonCesiumWriter(this);
@@ -1406,7 +1420,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     * @param color The color.
     */
-    public final void writeOutlineColorProperty(Color color) {
+    public final void writeOutlineColorProperty(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
             try {
@@ -1496,7 +1510,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     * @param color The color.
     */
-    public final void writeOutlineColorPropertyRgbaf(Color color) {
+    public final void writeOutlineColorPropertyRgbaf(@Nonnull Color color) {
         {
             cesiumlanguagewriter.ColorCesiumWriter writer = openOutlineColorProperty();
             try {
@@ -2208,7 +2222,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     * @param value The shadow mode.
     */
-    public final void writeShadowsProperty(CesiumShadowMode value) {
+    public final void writeShadowsProperty(@Nonnull CesiumShadowMode value) {
         {
             cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
             try {
@@ -2327,7 +2341,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     * @param value The value.
     */
-    public final void writeDistanceDisplayConditionProperty(Bounds value) {
+    public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
         {
             cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {

@@ -7,6 +7,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.CesiumLabelStyle;
 import cesiumlanguagewriter.Reference;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -14,7 +15,11 @@ import cesiumlanguagewriter.Reference;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiumWriter> {
     /**
     *  
@@ -42,13 +47,13 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
     public LabelStyleCesiumWriter(String propertyName) {
         super(propertyName);
         m_asLabelStyle = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle>>(
-                this, "createLabelStyleAdaptor", new Class[] {}) {
+                this, "createLabelStyleAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle> invoke() {
                 return createLabelStyleAdaptor();
             }
         }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -66,19 +71,28 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
     protected LabelStyleCesiumWriter(LabelStyleCesiumWriter existingInstance) {
         super(existingInstance);
         m_asLabelStyle = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle>>(
-                this, "createLabelStyleAdaptor", new Class[] {}) {
+                this, "createLabelStyleAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle> invoke() {
                 return createLabelStyleAdaptor();
             }
         }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public LabelStyleCesiumWriter clone() {
         return new LabelStyleCesiumWriter(this);
@@ -92,7 +106,7 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 
     * @param value The label style.
     */
-    public final void writeLabelStyle(CesiumLabelStyle value) {
+    public final void writeLabelStyle(@Nonnull CesiumLabelStyle value) {
         final String PropertyName = LabelStylePropertyName;
         if (getForceInterval()) {
             openIntervalIfNecessary();
@@ -182,7 +196,7 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
     private final ICesiumValuePropertyWriter<CesiumLabelStyle> createLabelStyleAdaptor() {
         return new CesiumWriterAdaptor<cesiumlanguagewriter.LabelStyleCesiumWriter, cesiumlanguagewriter.CesiumLabelStyle>(this,
                 new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.LabelStyleCesiumWriter, cesiumlanguagewriter.CesiumLabelStyle>() {
-                    public void invoke(LabelStyleCesiumWriter me, CesiumLabelStyle value) {
+                    public void invoke(LabelStyleCesiumWriter me, @Nonnull CesiumLabelStyle value) {
                         me.writeLabelStyle(value);
                     }
                 });

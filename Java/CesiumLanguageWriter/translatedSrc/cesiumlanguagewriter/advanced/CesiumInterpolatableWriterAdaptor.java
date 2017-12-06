@@ -23,7 +23,11 @@ import javax.annotation.Nonnull;
  * @param <TFrom> The class derived from {@link CesiumInterpolatablePropertyWriter} to adapt.
  * @param <TValue> The type of value to which to adapt the class to write.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWriter & ICesiumInterpolationInformationWriter, TValue> implements ICesiumInterpolatableValuePropertyWriter<TValue>,
         ICesiumWriterAdaptor<TFrom> {
     /**
@@ -59,6 +63,10 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
         }, false);
     }
 
+    /**
+    *  
+
+    */
     public final void dispose() {
         m_parent.close();
     }
@@ -72,77 +80,226 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
         return m_parent;
     }
 
+    /**
+    *  
+    Gets {@code true} if the writer is open; otherwise, {@code false}.
+    
+
+    */
     public final boolean getIsOpen() {
         return m_parent.getIsOpen();
     }
 
+    /**
+    *  
+    Gets the {@link CesiumOutputStream} on which this writer is currently open.  If the writer is
+    not open, accessing this property will throw an exception.
+    
+    
+
+    * @exception IllegalStateException The writer is not currently open on a stream.
+    */
     public final CesiumOutputStream getOutput() {
         return m_parent.getOutput();
     }
 
+    /**
+    *  
+
+    */
     public final void writeValue(TValue value) {
         m_writeValueCallback.invoke(m_parent, value);
     }
 
+    /**
+    *  
+
+    */
     public final void writeValue(List<JulianDate> dates, List<TValue> values, int startIndex, int length) {
         m_writeSamplesCallback.invoke(m_parent, dates, values, startIndex, length);
     }
 
-    public final void writeInterpolationAlgorithm(CesiumInterpolationAlgorithm interpolationAlgorithm) {
+    /**
+    *  
+    
+    Writes the interpolation algorithm to use to interpolate the sampled data in this interval.
+    
+    
+
+    * @param interpolationAlgorithm The interpolation algorithm.
+    */
+    public final void writeInterpolationAlgorithm(@Nonnull CesiumInterpolationAlgorithm interpolationAlgorithm) {
         m_parent.writeInterpolationAlgorithm(interpolationAlgorithm);
     }
 
+    /**
+    *  
+    
+    Writes the degree of polynomial to use to interpolate sampled data in this interval.
+    
+    
+
+    * @param degree The degree.
+    */
     public final void writeInterpolationDegree(int degree) {
         m_parent.writeInterpolationDegree(degree);
     }
 
-    public final void writeForwardExtrapolationType(CesiumExtrapolationType extrapolationType) {
+    /**
+    *  
+    
+    Writes the type of extrapolation to perform when a value is requested at a time after any available samples.
+    
+    
+
+    * @param extrapolationType The extrapolation type.
+    */
+    public final void writeForwardExtrapolationType(@Nonnull CesiumExtrapolationType extrapolationType) {
         m_parent.writeForwardExtrapolationType(extrapolationType);
     }
 
-    public final void writeForwardExtrapolationDuration(Duration duration) {
+    /**
+    *  
+    
+    Writes the amount of time to extrapolate forward before the property becomes undefined.  A value of 0 will extrapolate forever.
+    
+    
+
+    * @param duration The duration.
+    */
+    public final void writeForwardExtrapolationDuration(@Nonnull Duration duration) {
         m_parent.writeForwardExtrapolationDuration(duration);
     }
 
-    public final void writeBackwardExtrapolationType(CesiumExtrapolationType extrapolationType) {
+    /**
+    *  
+    
+    Writes the type of extrapolation to perform when a value is requested at a time before any available samples.
+    
+    
+
+    * @param extrapolationType The extrapolation type.
+    */
+    public final void writeBackwardExtrapolationType(@Nonnull CesiumExtrapolationType extrapolationType) {
         m_parent.writeBackwardExtrapolationType(extrapolationType);
     }
 
-    public final void writeBackwardExtrapolationDuration(Duration duration) {
+    /**
+    *  
+    
+    Writes the amount of time to extrapolate backward before the property becomes undefined.  A value of 0 will extrapolate forever.
+    
+    
+
+    * @param duration The duration.
+    */
+    public final void writeBackwardExtrapolationDuration(@Nonnull Duration duration) {
         m_parent.writeBackwardExtrapolationDuration(duration);
     }
 
-    public final void writeInterval(JulianDate start, JulianDate stop) {
+    /**
+    *  
+    
+    Writes the actual interval of time covered by this CZML interval.
+    
+    
+    
+
+    * @param start The start of the interval.
+    * @param stop The end of the interval.
+    */
+    public final void writeInterval(@Nonnull JulianDate start, @Nonnull JulianDate stop) {
         m_parent.writeInterval(start, stop);
     }
 
+    /**
+    *  
+    
+    Opens a writer that is used to write information about this property for a single interval.
+    
+    
+
+    * @return The writer.
+    */
     @Nonnull
     public final ICesiumInterpolatableValuePropertyWriter<TValue> openInterval() {
         m_interval.getValue().open(m_parent.getOutput());
         return m_interval.getValue();
     }
 
+    /**
+    *  
+    
+    Opens a writer that is used to write information about this property for multiple discrete intervals.
+    
+    
+
+    * @return The writer.
+    */
     @Nonnull
     public final ICesiumInterpolatableIntervalListWriter<TValue> openMultipleIntervals() {
         return new MultipleIntervalsAdaptor<TFrom, TValue>(this, m_parent.openMultipleIntervals());
     }
 
+    /**
+    *  
+    Gets a writer for intervals of this property.  The returned instance must be opened by calling
+    the {@link ICesiumElementWriter#open} method before it can be used for writing.  Consider
+    calling the {@link #openInterval} or {@link #openMultipleIntervals} method, which will automatically
+    open the writer, instead of accessing this property directly.
+    
+
+    */
     public final ICesiumPropertyWriter getIntervalWriter() {
         return m_interval.getValue();
     }
 
+    /**
+    *  
+    Gets a value indicating whether this instance should always open an interval.
+    
+
+    */
     public final boolean getForceInterval() {
         return m_parent.getForceInterval();
     }
 
+    /**
+    *  
+    Sets a value indicating whether this instance should always open an interval.
+    
+
+    */
     public final void setForceInterval(boolean value) {
         m_parent.setForceInterval(value);
     }
 
+    /**
+    *  
+    
+    Opens this writer on a given {@link CesiumOutputStream}.  A single writer can write to multiple
+    streams over its lifetime.  Opening a writer on a stream may cause data to be written to the stream.
+    
+    
+    
+
+    * @param output The stream to which to write.
+    * @exception IllegalStateException The writer is already open on a stream.
+    */
     public final void open(CesiumOutputStream output) {
         m_parent.open(output);
     }
 
+    /**
+    *  
+    
+    Closes this writer on a given stream, but does not close the underlying stream.  Closing a writer
+    on a stream may cause data to be written to the stream.
+    
+    
+
+    * @exception IllegalStateException The writer is not open on a stream.
+    */
     public final void close() {
         m_parent.close();
     }
@@ -169,14 +326,14 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
         }
 
         public final void dispose() {
-            m_parent.dispose();
+            m_parent.close();
         }
 
         public final ICesiumInterpolatableValuePropertyWriter<TValue> openInterval() {
             return m_intervalAdaptor.openInterval();
         }
 
-        public final ICesiumInterpolatableValuePropertyWriter<TValue> openInterval(JulianDate start, JulianDate stop) {
+        public final ICesiumInterpolatableValuePropertyWriter<TValue> openInterval(@Nonnull JulianDate start, @Nonnull JulianDate stop) {
             ICesiumInterpolatableValuePropertyWriter<TValue> intervalWriter = m_intervalAdaptor.openInterval();
             intervalWriter.writeInterval(start, stop);
             return intervalWriter;

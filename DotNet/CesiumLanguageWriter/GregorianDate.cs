@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
                 return result.ToArray();
             }
 
-            public static GregorianDate Parse(string s, IFormatProvider provider)
+            public static GregorianDate Parse([NotNull] string s, [CanBeNull] IFormatProvider provider)
             {
                 if (s == null)
                     throw new ArgumentNullException("s");
@@ -78,7 +78,7 @@ namespace CesiumLanguageWriter
                 return res;
             }
 
-            public static GregorianDate ParseExact(string s, string[] format, IFormatProvider provider)
+            public static GregorianDate ParseExact([NotNull] string s, [NotNull] string[] format, [CanBeNull] IFormatProvider provider)
             {
                 if (s == null)
                     throw new ArgumentNullException("s");
@@ -1080,7 +1080,8 @@ namespace CesiumLanguageWriter
                 return true;
             }
 
-            public static string ToString(GregorianDate dt, string format, IFormatProvider provider)
+            [NotNull]
+            public static string ToString(GregorianDate dt, [CanBeNull] string format, [CanBeNull] IFormatProvider provider)
             {
                 DateTimeFormatInfo dfi = DateTimeFormatInfo.GetInstance(provider);
                 NumberFormatInfo nfi = NumberFormatInfo.GetInstance(provider);
@@ -1442,18 +1443,13 @@ namespace CesiumLanguageWriter
         /// </exception>
         public GregorianDate(int year, int month, int day, int hour, int minute, double second)
         {
-            if (IsValid(year, month, day, hour, minute, second))
-            {
-                m_yearMonthDay = new YearMonthDay(year, month, day);
-
-                m_hour = hour;
-                m_minute = minute;
-                m_second = second;
-            }
-            else
-            {
+            if (!IsValid(year, month, day, hour, minute, second))
                 throw new ArgumentException(CesiumLocalization.HourMinuteSecondInvalidArgument);
-            }
+
+            m_yearMonthDay = new YearMonthDay(year, month, day);
+            m_hour = hour;
+            m_minute = minute;
+            m_second = second;
         }
 
         /// <summary>
@@ -1489,18 +1485,15 @@ namespace CesiumLanguageWriter
         /// </exception>
         public GregorianDate(int year, int dayOfYear, int hour, int minute, double second)
         {
-            YearMonthDay ymd = new YearMonthDay(year, dayOfYear);
-            if (IsValid(year, ymd.Month, ymd.Day, hour, minute, second))
-            {
-                m_yearMonthDay = ymd;
-                m_hour = hour;
-                m_minute = minute;
-                m_second = second;
-            }
-            else
-            {
+            var yearMonthDay = new YearMonthDay(year, dayOfYear);
+
+            if (!IsValid(year, yearMonthDay.Month, yearMonthDay.Day, hour, minute, second))
                 throw new ArgumentException(CesiumLocalization.HourMinuteSecondInvalidArgument);
-            }
+
+            m_yearMonthDay = yearMonthDay;
+            m_hour = hour;
+            m_minute = minute;
+            m_second = second;
         }
 
         /// <summary>
@@ -1516,7 +1509,7 @@ namespace CesiumLanguageWriter
             m_yearMonthDay = new YearMonthDay(year, (int)daysOfYear);
 
             double fraction = daysOfYear % 1;
-            double seconds = fraction * 86400.0;
+            double seconds = fraction * TimeConstants.SecondsPerDay;
 
             m_hour = (int)(seconds / SecondsPerHour);
             seconds -= m_hour * SecondsPerHour;
@@ -1583,7 +1576,20 @@ namespace CesiumLanguageWriter
         /// <param name="dateTime">The <see cref="DateTime"/>.</param>
         public GregorianDate(DateTime dateTime)
         {
+#if !CSToJava
+            // In C# we have three kinds of DateTimes - Local, UTC, and Unspecified.
+            // We want to treat Unspecified as UTC, but the ToUniversalTime method treats it as
+            // if it were Local, so we have this if check.
+            // In Java, the concepts are different.  Dates always have a zone attached
+            // (we map to ZonedDateTime) so there is no concept of Unspecified.
+            // Hence we always want to convert to UTC (which is a no-op if it's already UTC).
+            // As an example, in Java it is possible for the user to pass in a date which is in a 
+            // different time zone than the local system time zone.  
+            // This if check would get translated to basically:
+            // "if dateTime's time zone is the system time zone..."
+            // which would lead to non-system (but non-UTC) zoned times not being converted.
             if (dateTime.Kind == DateTimeKind.Local)
+#endif
             {
                 dateTime = dateTime.ToUniversalTime();
             }
@@ -1699,6 +1705,14 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Gets the <see cref="GregorianDate"/> that represents the current date and time.
+        /// </summary>
+        public static GregorianDate Now
+        {
+            get { return new GregorianDate(DateTime.UtcNow); }
+        }
+
+        /// <summary>
         /// Indicates whether the date values provided are a valid representation of a date
         /// and time.
         /// </summary>
@@ -1793,7 +1807,7 @@ namespace CesiumLanguageWriter
             long ticks = date.Ticks;
             ticks += m_hour * ticksPerHour;
             ticks += m_minute * ticksPerMinute;
-            ticks += (long)(Math.Round(m_second, 7) * ticksPerSecond);
+            ticks += (long)Math.Round(m_second * ticksPerSecond);
 
             return new DateTime(ticks, DateTimeKind.Utc);
         }
@@ -1823,47 +1837,16 @@ namespace CesiumLanguageWriter
         [Pure]
         public GregorianDate RoundSeconds(int digits, TimeStandard timeStandard)
         {
-            double maxSeconds = 60.0;
-            if (timeStandard == TimeStandard.CoordinatedUniversalTime &&
-                m_hour == 23 && m_minute == 59 &&
-                LeapSeconds.Instance.DoesDayHaveLeapSecond(new YearMonthDay(Year, Month, Day).JulianDayNumber))
-            {
-                maxSeconds = 61.0;
-            }
-
-            int year = Year;
-            int month = Month;
-            int day = Day;
-            int hour = m_hour;
-            int minute = m_minute;
             double roundedSeconds = Math.Round(m_second, digits);
-            if (roundedSeconds >= maxSeconds)
+            double secondsDifference = roundedSeconds - m_second;
+
+            // no need to rollover if rounding down or within same minute
+            if (roundedSeconds < 60.0 || secondsDifference <= 0)
             {
-                roundedSeconds = 0.0;
-                ++minute;
-            }
-            if (minute > 59)
-            {
-                minute = 0;
-                ++hour;
-            }
-            if (hour > 23)
-            {
-                hour = 0;
-                ++day;
-            }
-            if (!YearMonthDay.IsValidDate(year, month, day))
-            {
-                day = 1;
-                ++month;
-            }
-            if (!YearMonthDay.IsValidDate(year, month, day))
-            {
-                month = 1;
-                ++year;
+                return new GregorianDate(Year, Month, Day, Hour, Minute, roundedSeconds);
             }
 
-            return new GregorianDate(year, month, day, hour, minute, roundedSeconds);
+            return RolloverTime(0, 0, 0, secondsDifference, timeStandard);
         }
 
         /// <summary>
@@ -1900,22 +1883,20 @@ namespace CesiumLanguageWriter
         public int CompareTo(GregorianDate other)
         {
             int result = m_yearMonthDay.CompareTo(other.m_yearMonthDay);
+            if (result != 0)
+                return result;
 
-            if (result == 0)
+            if (m_hour != other.m_hour)
             {
-                if (m_hour != other.m_hour)
-                {
-                    return m_hour < other.m_hour ? -1 : 1;
-                }
-
-                if (m_minute != other.m_minute)
-                {
-                    return m_minute < other.m_minute ? -1 : 1;
-                }
-
-                return m_second == other.m_second ? 0 : (m_second < other.m_second ? -1 : 1);
+                return m_hour < other.m_hour ? -1 : 1;
             }
-            return result;
+
+            if (m_minute != other.m_minute)
+            {
+                return m_minute < other.m_minute ? -1 : 1;
+            }
+
+            return m_second == other.m_second ? 0 : (m_second < other.m_second ? -1 : 1);
         }
 
         /// <summary>
@@ -2009,7 +1990,9 @@ namespace CesiumLanguageWriter
         /// and it is not one of the format specifier characters defined for
         /// <see cref="DateTimeFormatInfo"/>.-or- <paramref name="format"/> does not
         /// contain a valid custom format pattern. </exception>
-        public string ToString(string format)
+        [Pure]
+        [NotNull]
+        public string ToString([CanBeNull] string format)
         {
             return ToString(format, null);
         }
@@ -2021,7 +2004,9 @@ namespace CesiumLanguageWriter
         /// <paramref name="provider"/>.</returns>
         /// <param name="provider">An <see cref="IFormatProvider"/> that supplies
         /// culture-specific formatting information. </param>
-        public string ToString(IFormatProvider provider)
+        [Pure]
+        [NotNull]
+        public string ToString([CanBeNull] IFormatProvider provider)
         {
             return ToString(null, provider);
         }
@@ -2038,7 +2023,9 @@ namespace CesiumLanguageWriter
         /// and it is not one of the format specifier characters defined for
         /// <see cref="DateTimeFormatInfo" />.-or- <paramref name="format"/> does not
         /// contain a valid custom format pattern. </exception>
-        public string ToString(string format, IFormatProvider provider)
+        [Pure]
+        [NotNull]
+        public string ToString([CanBeNull] string format, [CanBeNull] IFormatProvider provider)
         {
             return Parser.ToString(this, format, provider);
         }
@@ -2050,6 +2037,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <returns>A string representing this date and time in ISO8601 format.</returns>
         [Pure]
+        [NotNull]
         public string ToIso8601String()
         {
             return ToIso8601String(Iso8601Format.Extended);
@@ -2063,9 +2051,10 @@ namespace CesiumLanguageWriter
         /// <param name="format">The type of ISO8601 string to create.</param>
         /// <returns>A string representing this date and time in ISO8601 format.</returns>
         [Pure]
+        [NotNull]
         public string ToIso8601String(Iso8601Format format)
         {
-            return ToIso8601String(format, new string('#', 15));
+            return ToIso8601String(format, 15, false);
         }
 
         /// <summary>
@@ -2077,43 +2066,85 @@ namespace CesiumLanguageWriter
         /// <param name="digitsOfFractionalSeconds">The number of digits after the decimal point in the 'seconds' portion of the time.</param>
         /// <returns>A string representing this date and time in ISO8601 format.</returns>
         [Pure]
+        [NotNull]
         public string ToIso8601String(Iso8601Format format, int digitsOfFractionalSeconds)
         {
-            string fractionalSecondsFormatString = new string('0', digitsOfFractionalSeconds);
-            return RoundSeconds(digitsOfFractionalSeconds).ToIso8601String(format, fractionalSecondsFormatString);
+            return ToIso8601String(format, digitsOfFractionalSeconds, true);
         }
 
-        private string ToIso8601String(Iso8601Format format, string fractionalSecondsFormatString)
+        [Pure]
+        [NotNull]
+        private string ToIso8601String(Iso8601Format format, int digitsOfFractionalSeconds, bool requireFractionalSeconds)
         {
+            string formatString = BuildIso8601FormatString(format, digitsOfFractionalSeconds, requireFractionalSeconds);
+            return Parser.ToString(this, formatString, CultureInfo.InvariantCulture);
+        }
+
+        [Pure]
+        [NotNull]
+        [SuppressMessage("ReSharper", "StringLiteralTypo")]
+        private string BuildIso8601FormatString(Iso8601Format format, int digitsOfFractionalSeconds, bool requireFractionalSeconds)
+        {
+            var formatStringBuilder = new StringBuilder(50);
             switch (format)
             {
                 case Iso8601Format.Basic:
-                    return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}{4:00}{5:00." + fractionalSecondsFormatString + "}Z",
-                                         m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute, m_second);
+                {
+                    formatStringBuilder.Append("yyyyMMdd'T'HHmmss");
+                    AppendIso8601FractionalSeconds(formatStringBuilder, digitsOfFractionalSeconds, requireFractionalSeconds);
+                    formatStringBuilder.Append('Z');
+                    break;
+                }
                 case Iso8601Format.Extended:
-                    return string.Format(CultureInfo.InvariantCulture, "{0:0000}-{1:00}-{2:00}T{3:00}:{4:00}:{5:00." + fractionalSecondsFormatString + "}Z",
-                                         m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute, m_second);
+                {
+                    formatStringBuilder.Append("yyyy'-'MM'-'dd'T'HH':'mm':'ss");
+                    AppendIso8601FractionalSeconds(formatStringBuilder, digitsOfFractionalSeconds, requireFractionalSeconds);
+                    formatStringBuilder.Append('Z');
+                    break;
+                }
                 case Iso8601Format.Compact:
                 {
-                    if (m_second != 0)
-                        return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}{4:00}{5:00." + fractionalSecondsFormatString + "}Z",
-                                             m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute, m_second);
+                    formatStringBuilder.Append("yyyyMMdd'T'HH");
 
-                    if (m_minute != 0)
-                        return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}{4:00}Z",
-                                             m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour, m_minute);
+                    bool hasMinutes = m_minute != 0;
+                    if (hasMinutes)
+                    {
+                        formatStringBuilder.Append("mm");
+                    }
 
-                    return string.Format(CultureInfo.InvariantCulture, "{0:0000}{1:00}{2:00}T{3:00}Z",
-                                         m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day, m_hour);
+                    // ReSharper disable once CompareOfFloatsByEqualityOperator
+                    bool hasSeconds = m_second != 0.0;
+                    if (hasSeconds)
+                    {
+                        formatStringBuilder.Append("ss");
+                        AppendIso8601FractionalSeconds(formatStringBuilder, digitsOfFractionalSeconds, requireFractionalSeconds);
+                    }
+
+                    formatStringBuilder.Append('Z');
+                    break;
                 }
+                default:
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "format");
             }
 
-            throw new InvalidOperationException();
+            return formatStringBuilder.ToString();
+        }
+
+        private void AppendIso8601FractionalSeconds([NotNull] StringBuilder formatStringBuilder, int digitsOfFractionalSeconds, bool requireFractionalSeconds)
+        {
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            bool hasSeconds = m_second != 0.0;
+            if ((hasSeconds || requireFractionalSeconds) && digitsOfFractionalSeconds > 0)
+            {
+                formatStringBuilder.Append('.');
+                formatStringBuilder.Append(requireFractionalSeconds ? 'f' : 'F', digitsOfFractionalSeconds);
+            }
         }
 
         /// <summary>Converts the value of this instance to its equivalent long date string representation.</summary>
         /// <returns>A string containing the name of the day of the week, the name of the month, the numeric day of the month, and the year equivalent to the date value of this instance.</returns>
         [Pure]
+        [NotNull]
         public string ToLongDateString()
         {
             return ToString("D");
@@ -2125,6 +2156,7 @@ namespace CesiumLanguageWriter
         /// month, the numeric day of the hours, minutes, and seconds equivalent to the
         /// time value of this instance.</returns>
         [Pure]
+        [NotNull]
         public string ToLongTimeString()
         {
             return ToString("T");
@@ -2135,6 +2167,7 @@ namespace CesiumLanguageWriter
         /// <returns>A string containing the numeric month, the numeric day of the month,
         /// and the year equivalent to the date value of this instance.</returns>
         [Pure]
+        [NotNull]
         public string ToShortDateString()
         {
             return ToString("d");
@@ -2146,6 +2179,7 @@ namespace CesiumLanguageWriter
         /// month, the numeric day of the hours, minutes, and seconds equivalent to the
         /// time value of this instance.</returns>
         [Pure]
+        [NotNull]
         public string ToShortTimeString()
         {
             return ToString("t");
@@ -2250,7 +2284,7 @@ namespace CesiumLanguageWriter
         /// <paramref name="s"/> does not contain a valid string representation of a date
         /// and time.
         /// </exception>
-        public static GregorianDate Parse(string s)
+        public static GregorianDate Parse([NotNull] string s)
         {
             return Parse(s, null);
         }
@@ -2280,7 +2314,7 @@ namespace CesiumLanguageWriter
         /// <paramref name="s"/> does not contain a valid string representation of a date
         /// and time.
         /// </exception>
-        public static GregorianDate Parse(string s, IFormatProvider provider)
+        public static GregorianDate Parse([NotNull] string s, [CanBeNull] IFormatProvider provider)
         {
             return Parser.Parse(s, provider);
         }
@@ -2312,7 +2346,7 @@ namespace CesiumLanguageWriter
         /// pattern specified in
         /// <paramref name="format"/>.
         /// </exception>
-        public static GregorianDate ParseExact(string s, string format, IFormatProvider provider)
+        public static GregorianDate ParseExact([NotNull] string s, [NotNull] string format, [CanBeNull] IFormatProvider provider)
         {
             return Parser.ParseExact(s, new[] { format }, provider);
         }
@@ -2344,7 +2378,7 @@ namespace CesiumLanguageWriter
         /// pattern specified in
         /// <paramref name="format"/>.
         /// </exception>
-        public static GregorianDate ParseExact(string s, string[] format, IFormatProvider provider)
+        public static GregorianDate ParseExact([NotNull] string s, [NotNull] string[] format, [CanBeNull] IFormatProvider provider)
         {
             return Parser.ParseExact(s, format, provider);
         }
@@ -2374,6 +2408,7 @@ namespace CesiumLanguageWriter
         /// valid string representation of a date and time. This parameter is passed
         /// uninitialized.
         /// </param>
+        [ContractAnnotation("s:null => false")]
         public static bool TryParse(string s, out GregorianDate result)
         {
             return TryParse(s, null, out result);
@@ -2407,9 +2442,27 @@ namespace CesiumLanguageWriter
         /// valid string representation of a date and time. This parameter is passed
         /// uninitialized.
         /// </param>
+        [ContractAnnotation("s:null => false")]
         public static bool TryParse(string s, IFormatProvider provider, out GregorianDate result)
         {
             return Parser.TryParse(s, provider, out result);
+        }
+
+        private GregorianDate RolloverTime(double days, double hours, double minutes, double seconds, TimeStandard timeStandard)
+        {
+            int wholeDays = (int)days;
+            seconds += (days - wholeDays) * TimeConstants.SecondsPerDay;
+
+            int wholeHours = (int)hours;
+            seconds += (hours - wholeHours) * TimeConstants.SecondsPerHour;
+
+            int wholeMinutes = (int)minutes;
+            seconds += (minutes - wholeMinutes) * TimeConstants.SecondsPerMinute;
+
+            Duration timeToAdd = new Duration(wholeDays, wholeHours, wholeMinutes, seconds);
+            JulianDate julianResult = ToJulianDate(timeStandard).Add(timeToAdd);
+
+            return new GregorianDate(julianResult, timeStandard);
         }
 
         /// <summary>

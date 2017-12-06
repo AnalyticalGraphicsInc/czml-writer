@@ -19,7 +19,11 @@ import org.junit.Test;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestTimeInterval {
     /**
@@ -163,6 +167,20 @@ public class TestTimeInterval {
 
     /**
     *  
+    Tests thats the {@link TimeInterval#equalsEpsilon} method returns true
+    when the difference is exactly epsilon.
+    
+
+    */
+    @Test
+    public final void testEqualsEpsilonExact() {
+        TimeInterval first = new TimeInterval(new JulianDate(2451545, 0.00), new JulianDate(2451545, 0.00));
+        TimeInterval second = new TimeInterval(new JulianDate(2451545, 0.00), new JulianDate(2451545, 0.00));
+        Assert.assertTrue(second.equalsEpsilon(first, 0.00));
+    }
+
+    /**
+    *  
     Tests the {@link TimeInterval#toTimeStandard} method.
     
 
@@ -197,10 +215,10 @@ public class TestTimeInterval {
     @Test
     public final void testToString() {
         TimeInterval interval = new TimeInterval(new JulianDate(2451545, 0.00), new JulianDate(2451546, 0.00));
-        Assert.assertEquals("[2451545:0 (TAI), 2451546:0 (TAI)]", interval.toString());
+        Assert.assertEquals("[2451545:0 TAI (1/1/2000 11:59:28 AM), 2451546:0 TAI (1/2/2000 11:59:28 AM)]", interval.toString());
     }
 
-    private TestContextRule rule$testContext = new TestContextRule();
+    private final TestContextRule rule$testContext = new TestContextRule();
 
     @Rule
     public TestContextRule getRule$testContext() {

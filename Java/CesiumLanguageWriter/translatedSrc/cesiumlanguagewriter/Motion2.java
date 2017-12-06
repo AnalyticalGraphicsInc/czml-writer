@@ -20,7 +20,11 @@ import javax.annotation.Nonnull;
  * @param <T> The coordinate type used to describe the motion.
  * @param <TDerivative> The derivative type used to describe the motion.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public final class Motion2<T, TDerivative> implements IEquatable<Motion2<T, TDerivative>>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -62,7 +66,7 @@ public final class Motion2<T, TDerivative> implements IEquatable<Motion2<T, TDer
     * @param other The object to compare to this instance.
     * @return {@code true} if {@code other} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
-    public final boolean equalsType(Motion2<T, TDerivative> other) {
+    public final boolean equalsType(@Nonnull Motion2<T, TDerivative> other) {
         if (m_value == null) {
             return other.m_value == null;
         }
@@ -113,13 +117,7 @@ public final class Motion2<T, TDerivative> implements IEquatable<Motion2<T, TDer
     */
     @Override
     public int hashCode() {
-        int hashValue = m_value.hashCode();
-        if (m_derivatives != null) {
-            for (int i = 0; i < m_derivatives.length; ++i) {
-                hashValue ^= m_derivatives[i].hashCode();
-            }
-        }
-        return hashValue;
+        return HashCode.combine(m_value.hashCode(), HashCode.getHashCode(m_derivatives));
     }
 
     /**
@@ -142,7 +140,7 @@ public final class Motion2<T, TDerivative> implements IEquatable<Motion2<T, TDer
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Motion,Motion)'")
-    public static <T, TDerivative> boolean equals(Motion2<T, TDerivative> left, Motion2<T, TDerivative> right) {
+    public static <T, TDerivative> boolean equals(@javax.annotation.Nonnull Motion2<T, TDerivative> left, @javax.annotation.Nonnull Motion2<T, TDerivative> right) {
         return left.equalsType(right);
     }
 
@@ -166,7 +164,7 @@ public final class Motion2<T, TDerivative> implements IEquatable<Motion2<T, TDer
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Motion,Motion)'")
-    public static <T, TDerivative> boolean notEquals(Motion2<T, TDerivative> left, Motion2<T, TDerivative> right) {
+    public static <T, TDerivative> boolean notEquals(@javax.annotation.Nonnull Motion2<T, TDerivative> left, @javax.annotation.Nonnull Motion2<T, TDerivative> right) {
         return !left.equalsType(right);
     }
 

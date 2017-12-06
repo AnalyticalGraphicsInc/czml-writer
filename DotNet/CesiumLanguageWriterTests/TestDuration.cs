@@ -11,18 +11,22 @@ namespace CesiumLanguageWriterTests
     public class TestDuration
     {
         /// <summary>
-        /// Tests the <see cref="Duration.MinValue"/> and <see cref="Duration.MaxValue"/> can be constructed as claimed.
+        /// Tests that <see cref="Duration.MinValue"/>, <see cref="Duration.MaxValue"/>, and <see cref="Duration.Zero"/> can be constructed as claimed.
         /// </summary>
         [Test]
-        public void TestMinValueMaxValue()
+        public void TestMinValueMaxValueZeroValue()
         {
             Duration min = Duration.FromSeconds(Duration.MinValue.TotalSeconds);
-            Assert.AreEqual(Int32.MinValue, min.Days);
+            Assert.AreEqual(int.MinValue, min.Days);
             Assert.AreEqual(0.0, min.Seconds);
 
             Duration max = Duration.FromSeconds(Duration.MaxValue.TotalSeconds);
-            Assert.AreEqual(Int32.MaxValue, max.Days);
+            Assert.AreEqual(int.MaxValue, max.Days);
             Assert.AreEqual(0.0, max.Seconds);
+
+            Duration zero = Duration.FromSeconds(Duration.Zero.TotalSeconds);
+            Assert.AreEqual(0.0, zero.Days);
+            Assert.AreEqual(0.0, zero.Seconds);
         }
 
         /// <summary>
@@ -106,6 +110,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(second.EqualsEpsilon(first, 1e-4));
 
             // Make sure a Duration compared with a non-Duration returns false
+            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.IsFalse(first.Equals(5));
         }
 
@@ -262,7 +267,7 @@ namespace CesiumLanguageWriterTests
             Duration four = new Duration(1, 0);
             Duration five = new Duration(0, -3600);
             Assert.AreEqual(-24, four / five, Constants.Epsilon10);
-            Assert.AreEqual((-1.0 / 24.0), five / four, Constants.Epsilon10);
+            Assert.AreEqual(-1.0 / 24.0, five / four, Constants.Epsilon10);
 
             Duration six = new Duration(-2, 0);
             Assert.AreEqual(-0.5, four / six);
@@ -397,8 +402,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestToString()
         {
-            Duration duration = new Duration(1, 43200.0);
-            Assert.AreEqual(duration.ToString(), "1:43200");
+            var duration = new Duration(1, 43200.0);
+            Assert.AreEqual("1:43200", duration.ToString());
         }
 
         /// <summary>

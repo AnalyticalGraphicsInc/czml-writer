@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Delegate;
 import cesiumlanguagewriter.*;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -22,7 +23,11 @@ import java.util.List;
  * @param <TWrappedWriter> The type of the wrapped writer.
  * @param <TValue> The type of the value to write.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> extends Delegate {
     /**
     * Creates a new instance of this delegate.
@@ -48,7 +53,8 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TV
     * @param methodName The name of the static method.
     * @param methodParameterClasses The type of the parameters of the static method.
     */
-    public CesiumWriterAdaptorWriteSamplesCallback(Class<?> targetClass, String methodName, Class<?>[] methodParameterClasses) {
+    public CesiumWriterAdaptorWriteSamplesCallback(@javax.annotation.Nonnull Class<?> targetClass, @javax.annotation.Nonnull String methodName,
+            @javax.annotation.Nonnull Class<?>... methodParameterClasses) {
         super(targetClass, methodName, methodParameterClasses);
     }
 
@@ -89,6 +95,7 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TV
     * @param f The function which will be invoked.
     * @return A new delegate that will invoke the given function.
     */
+    @Nonnull
     public static <TWrappedWriter, TValue> CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> of(@javax.annotation.Nonnull Function<TWrappedWriter, TValue> f) {
         return new FunctionImpl<TWrappedWriter, TValue>(f);
     }

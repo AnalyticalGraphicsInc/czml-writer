@@ -8,6 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.Bounds;
 import cesiumlanguagewriter.Reference;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -15,7 +16,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePropertyWriter<DistanceDisplayConditionCesiumWriter> {
     /**
     *  
@@ -43,13 +48,13 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     public DistanceDisplayConditionCesiumWriter(String propertyName) {
         super(propertyName);
         m_asDistanceDisplayCondition = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Bounds>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Bounds>>(this, "createDistanceDisplayConditionAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Bounds>>(this, "createDistanceDisplayConditionAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Bounds> invoke() {
                         return createDistanceDisplayConditionAdaptor();
                     }
                 }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -67,19 +72,28 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     protected DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionCesiumWriter existingInstance) {
         super(existingInstance);
         m_asDistanceDisplayCondition = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Bounds>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Bounds>>(this, "createDistanceDisplayConditionAdaptor", new Class[] {}) {
+                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Bounds>>(this, "createDistanceDisplayConditionAdaptor") {
                     public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Bounds> invoke() {
                         return createDistanceDisplayConditionAdaptor();
                     }
                 }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public DistanceDisplayConditionCesiumWriter clone() {
         return new DistanceDisplayConditionCesiumWriter(this);
@@ -93,7 +107,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
 
     * @param value The value.
     */
-    public final void writeDistanceDisplayCondition(Bounds value) {
+    public final void writeDistanceDisplayCondition(@Nonnull Bounds value) {
         final String PropertyName = DistanceDisplayConditionPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);

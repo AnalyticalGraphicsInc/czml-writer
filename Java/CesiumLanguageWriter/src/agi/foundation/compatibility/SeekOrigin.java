@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import javax.annotation.Nonnull;
+
 /**
  * Provides the fields that represent reference points in streams for seeking.
  */
@@ -30,6 +32,7 @@ public enum SeekOrigin implements Enumeration {
      * @param value
      *            a numeric value.
      */
+    @Nonnull
     public static SeekOrigin getFromValue(int value) {
         switch (value) {
         case 0:

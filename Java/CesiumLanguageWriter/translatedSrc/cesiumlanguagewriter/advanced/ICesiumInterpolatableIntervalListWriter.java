@@ -12,7 +12,11 @@ import javax.annotation.Nonnull;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public interface ICesiumInterpolatableIntervalListWriter<TValue> extends ICesiumIntervalListWriter {
     /**
     *  
@@ -42,5 +46,5 @@ public interface ICesiumInterpolatableIntervalListWriter<TValue> extends ICesium
     @CS2JWarning("This method was originally marked 'new' in C#.")
     @Override
     @Nonnull
-    ICesiumInterpolatableValuePropertyWriter<TValue> openInterval(JulianDate start, JulianDate stop);
+    ICesiumInterpolatableValuePropertyWriter<TValue> openInterval(@Nonnull JulianDate start, @Nonnull JulianDate stop);
 }

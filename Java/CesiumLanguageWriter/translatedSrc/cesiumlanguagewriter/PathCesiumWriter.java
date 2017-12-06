@@ -11,6 +11,7 @@ import cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.PolylineMaterialCesiumWriter;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -18,7 +19,11 @@ import java.util.List;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     /**
     *  
@@ -128,6 +133,15 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public PathCesiumWriter clone() {
         return new PathCesiumWriter(this);
@@ -960,7 +974,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     * @param value The value.
     */
-    public final void writeDistanceDisplayConditionProperty(Bounds value) {
+    public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
         {
             cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {

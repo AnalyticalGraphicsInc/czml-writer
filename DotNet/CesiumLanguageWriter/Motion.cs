@@ -89,15 +89,8 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            int hashValue = Order.GetHashCode();
-            if (m_motion != null)
-            {
-                for (int i = 0; i < m_motion.Length; ++i)
-                {
-                    hashValue ^= m_motion[i].GetHashCode();
-                }
-            }
-            return hashValue;
+            return HashCode.Combine(Order.GetHashCode(),
+                                    HashCode.GetHashCode(m_motion));
         }
 
         /// <summary>
@@ -301,15 +294,8 @@ namespace CesiumLanguageWriter
         /// <returns>A hash code for the current object.</returns>
         public override int GetHashCode()
         {
-            int hashValue = m_value.GetHashCode();
-            if (m_derivatives != null)
-            {
-                for (int i = 0; i < m_derivatives.Length; ++i)
-                {
-                    hashValue ^= m_derivatives[i].GetHashCode();
-                }
-            }
-            return hashValue;
+            return HashCode.Combine(m_value.GetHashCode(),
+                                    HashCode.GetHashCode(m_derivatives));
         }
 
         /// <summary>

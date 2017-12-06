@@ -20,7 +20,11 @@ import cesiumlanguagewriter.StripeMaterialCesiumWriter;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineMaterialCesiumWriter> {
     /**
     *  
@@ -143,6 +147,15 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
         super(existingInstance);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public PolylineMaterialCesiumWriter clone() {
         return new PolylineMaterialCesiumWriter(this);

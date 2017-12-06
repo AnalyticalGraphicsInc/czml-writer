@@ -3,9 +3,11 @@ package cesiumlanguagewriter;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ObjectHelper;
 import agi.foundation.compatibility.PrimitiveHelper;
+import agi.foundation.compatibility.StringHelper;
 
 /**
  *  
@@ -13,7 +15,11 @@ import agi.foundation.compatibility.PrimitiveHelper;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class CartographicExtent implements IEquatable<CartographicExtent> {
     /**
     *  
@@ -87,6 +93,7 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     otherwise {@code false}.
     
     */
+    @CS2JWarning("Unhandled attribute removed: Pure")
     public final boolean isInsideExtent(double longitude, double latitude) {
         return longitude >= m_west && longitude <= m_east && latitude >= m_south && latitude <= m_north;
     }
@@ -102,41 +109,9 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     * @param other The other extent.
     * @return The union of the two extents.
     */
+    @CS2JWarning("Unhandled attribute removed: Pure")
     public final CartographicExtent union(CartographicExtent other) {
         return new CartographicExtent(Math.min(m_west, other.m_west), Math.min(m_south, other.m_south), Math.max(m_east, other.m_east), Math.max(m_north, other.m_north));
-    }
-
-    /**
-    *  
-    Indicates whether each coordinate value of another instance of this type
-    is within the required tolerance of the corresponding coordinate value of this instance.
-    
-    
-    
-    
-
-    * @param other The set of {@link CartographicExtent} to compare to this instance.
-    * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
-    * @return 
-    {@code true} if the absolute differences are less than {@code epsilon}; otherwise, {@code false}.
-    
-    */
-    public final boolean equalsEpsilon(CartographicExtent other, double epsilon) {
-        return Math.abs(m_north - other.m_north) < epsilon && Math.abs(m_south - other.m_south) < epsilon && Math.abs(m_east - other.m_east) < epsilon && Math.abs(m_west - other.m_west) < epsilon;
-    }
-
-    /**
-    *  
-    Indicates whether another {@link CartographicExtent} is exactly equal to this instance.
-    
-    
-    
-
-    * @param other The {@link CartographicExtent} to compare to this instance.
-    * @return {@code true} if {@code other} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
-    */
-    public final boolean equalsType(CartographicExtent other) {
-        return other != null && m_north == other.m_north && m_south == other.m_south && m_east == other.m_east && m_west == other.m_west;
     }
 
     /**
@@ -156,6 +131,47 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
 
     /**
     *  
+    Indicates whether another {@link CartographicExtent} is exactly equal to this instance.
+    
+    
+    
+
+    * @param other The {@link CartographicExtent} to compare to this instance.
+    * @return {@code true} if {@code other} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
+    */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
+    public final boolean equalsType(CartographicExtent other) {
+        if (ObjectHelper.referenceEquals(null, other)) {
+            return false;
+        }
+        if (ObjectHelper.referenceEquals(this, other)) {
+            return true;
+        }
+        return m_north == other.m_north && m_south == other.m_south && m_east == other.m_east && m_west == other.m_west;
+    }
+
+    /**
+    *  
+    Indicates whether each coordinate value of another instance of this type
+    is within the required tolerance of the corresponding coordinate value of this instance.
+    
+    
+    
+    
+
+    * @param other The set of {@link CartographicExtent} to compare to this instance.
+    * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
+    * @return 
+    {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
+    
+    */
+    @CS2JWarning("Unhandled attribute removed: Pure")
+    public final boolean equalsEpsilon(CartographicExtent other, double epsilon) {
+        return Math.abs(m_north - other.m_north) <= epsilon && Math.abs(m_south - other.m_south) <= epsilon && Math.abs(m_east - other.m_east) <= epsilon && Math.abs(m_west - other.m_west) <= epsilon;
+    }
+
+    /**
+    *  
     Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
     
     
@@ -164,7 +180,7 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     */
     @Override
     public int hashCode() {
-        return PrimitiveHelper.hashCode(m_north) ^ PrimitiveHelper.hashCode(m_south) ^ PrimitiveHelper.hashCode(m_east) ^ PrimitiveHelper.hashCode(m_west);
+        return HashCode.combine(PrimitiveHelper.hashCode(m_north), PrimitiveHelper.hashCode(m_south), PrimitiveHelper.hashCode(m_east), PrimitiveHelper.hashCode(m_west));
     }
 
     /**
@@ -185,9 +201,8 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     public static boolean equals(CartographicExtent left, CartographicExtent right) {
         if (ObjectHelper.referenceEquals(left, null)) {
             return ObjectHelper.referenceEquals(right, null);
-        } else {
-            return left.equalsType(right);
         }
+        return left.equalsType(right);
     }
 
     /**
@@ -206,11 +221,23 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(CartographicExtent,CartographicExtent)'")
     public static boolean notEquals(CartographicExtent left, CartographicExtent right) {
-        if (ObjectHelper.referenceEquals(left, null)) {
-            return !ObjectHelper.referenceEquals(right, null);
-        } else {
-            return !left.equalsType(right);
-        }
+        return !(CartographicExtent.equals(left, right));
+    }
+
+    /**
+    *  
+    Returns the string representation of the value of this instance.
+    
+    
+
+    * @return 
+    A string that represents the value of this instance in the form
+    WestLongitude, SouthLatitude, EastLongitude, NorthLatitude.
+    
+    */
+    @Override
+    public String toString() {
+        return StringHelper.format("{0}, {1}, {2}, {3}", m_west, m_south, m_east, m_north);
     }
 
     private double m_north;

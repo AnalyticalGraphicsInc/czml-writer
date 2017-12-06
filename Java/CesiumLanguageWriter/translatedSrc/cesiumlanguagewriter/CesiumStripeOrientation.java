@@ -3,6 +3,8 @@ package cesiumlanguagewriter;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Enumeration;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  *  
@@ -10,7 +12,11 @@ import agi.foundation.compatibility.Enumeration;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public enum CesiumStripeOrientation implements Enumeration {
     /**
     *  
@@ -35,6 +41,7 @@ public enum CesiumStripeOrientation implements Enumeration {
     * Get the numeric value associated with this enum constant.
     * @return A numeric value.
     */
+    @Override
     public int getValue() {
         return value;
     }
@@ -44,6 +51,7 @@ public enum CesiumStripeOrientation implements Enumeration {
     * @return The enum constant associated with value.
     * @param value a numeric value.
     */
+    @Nonnull
     public static CesiumStripeOrientation getFromValue(int value) {
         switch (value) {
         case 0:
@@ -59,6 +67,7 @@ public enum CesiumStripeOrientation implements Enumeration {
     * Get the enum constant that is considered to be the default.
     * @return The default enum constant.
     */
+    @Nonnull
     public static CesiumStripeOrientation getDefault() {
         return HORIZONTAL;
     }

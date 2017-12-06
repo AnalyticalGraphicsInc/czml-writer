@@ -7,6 +7,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.CesiumShadowMode;
 import cesiumlanguagewriter.Reference;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -14,7 +15,11 @@ import cesiumlanguagewriter.Reference;
  
 
  */
-@SuppressWarnings("unused")
+@SuppressWarnings( {
+        "unused",
+        "deprecation",
+        "serial"
+})
 public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiumWriter> {
     /**
     *  
@@ -42,13 +47,13 @@ public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiu
     public ShadowModeCesiumWriter(String propertyName) {
         super(propertyName);
         m_asShadowMode = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(
-                this, "createShadowModeAdaptor", new Class[] {}) {
+                this, "createShadowModeAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode> invoke() {
                 return createShadowModeAdaptor();
             }
         }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
@@ -66,19 +71,28 @@ public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiu
     protected ShadowModeCesiumWriter(ShadowModeCesiumWriter existingInstance) {
         super(existingInstance);
         m_asShadowMode = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(
-                this, "createShadowModeAdaptor", new Class[] {}) {
+                this, "createShadowModeAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode> invoke() {
                 return createShadowModeAdaptor();
             }
         }, false);
         m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor", new Class[] {}) {
+                "createReferenceAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
                 return createReferenceAdaptor();
             }
         }, false);
     }
 
+    /**
+    *  
+    
+    Copies this instance and returns the copy.
+    
+    
+
+    * @return The copy.
+    */
     @Override
     public ShadowModeCesiumWriter clone() {
         return new ShadowModeCesiumWriter(this);
@@ -92,7 +106,7 @@ public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiu
 
     * @param value The shadow mode.
     */
-    public final void writeShadowMode(CesiumShadowMode value) {
+    public final void writeShadowMode(@Nonnull CesiumShadowMode value) {
         final String PropertyName = ShadowModePropertyName;
         if (getForceInterval()) {
             openIntervalIfNecessary();
@@ -182,7 +196,7 @@ public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiu
     private final ICesiumValuePropertyWriter<CesiumShadowMode> createShadowModeAdaptor() {
         return new CesiumWriterAdaptor<cesiumlanguagewriter.ShadowModeCesiumWriter, cesiumlanguagewriter.CesiumShadowMode>(this,
                 new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.ShadowModeCesiumWriter, cesiumlanguagewriter.CesiumShadowMode>() {
-                    public void invoke(ShadowModeCesiumWriter me, CesiumShadowMode value) {
+                    public void invoke(ShadowModeCesiumWriter me, @Nonnull CesiumShadowMode value) {
                         me.writeShadowMode(value);
                     }
                 });

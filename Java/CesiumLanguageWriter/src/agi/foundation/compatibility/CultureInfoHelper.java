@@ -4,10 +4,13 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.annotation.Nonnull;
+
 /**
  * Helper methods related to CultureInfo.
  */
 public final class CultureInfoHelper {
+    @Nonnull
     private static final Pattern nameSplitter = Pattern.compile("(\\p{Alpha}{2})-(\\p{Alpha}{2})");
 
     private CultureInfoHelper() {}
@@ -15,6 +18,8 @@ public final class CultureInfoHelper {
     /**
      * Gets the Locale that is culture-independent (invariant).
      */
+    @SuppressWarnings("null")
+    @Nonnull
     public static Locale getInvariantCulture() {
         return Locale.US;
     }
@@ -22,6 +27,7 @@ public final class CultureInfoHelper {
     /**
      * Gets the Locale that represents the culture used by the current VM.
      */
+    @Nonnull
     public static Locale getCurrentCulture() {
         return Locale.getDefault();
     }
@@ -34,6 +40,7 @@ public final class CultureInfoHelper {
      * the language code and &lt;country/regioncode2&gt; is the subculture code. Examples
      * include ja-JP for Japanese (Japan) and en-US for English (United States).
      */
+    @Nonnull
     public static Locale getCultureInfo(String name) {
         Matcher matcher = nameSplitter.matcher(name);
 
